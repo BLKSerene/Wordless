@@ -263,7 +263,7 @@
 👩🏽‍🌾	kadın çiftçi: orta cilt tonu
 👩🏾‍🌾	kadın çiftçi: orta koyu cilt tonu
 👩🏿‍🌾	kadın çiftçi: koyu cilt tonu
-👨‍🍳	adam aşçı
+👨‍🍳	erkek aşçı
 👨🏻‍🍳	erkek aşçı: açık cilt tonu
 👨🏼‍🍳	erkek aşçı: orta açık cilt tonu
 👨🏽‍🍳	erkek aşçı: orta cilt tonu
@@ -1242,7 +1242,7 @@
 💇‍♂	saçını kestiren adam
 💇🏻‍♂️	saçını kestiren erkek: açık cilt tonu
 💇🏻‍♂	saçını kestiren erkek: açık cilt tonu
-💇🏼‍♂️	saçını kestiren erkek: orta açık cilt tonu
+💇🏼‍♂️	saçını kestiren adam: orta açık cilt tonu
 💇🏼‍♂	saçını kestiren erkek: orta açık cilt tonu
 💇🏽‍♂️	saçını kestiren adam: orta cilt tonu
 💇🏽‍♂	saçını kestiren adam: orta cilt tonu
@@ -1441,8 +1441,8 @@
 🛌🏽	yataktaki kişi: orta cilt tonu
 🛌🏾	yataktaki kişi: orta koyu cilt tonu
 🛌🏿	yataktaki kişi: koyu cilt tonu
-🕴️	havaya uçan takım elbiseli adam
-🕴	havaya uçan takım elbiseli adam
+🕴️	takım elbiseli adam havaya uçuyor
+🕴	takım elbiseli adam havaya uçuyor
 🕴🏻	havalanan takım elbiseli adam: açık cilt tonu
 🕴🏼	havalanan takım elbiseli adam: orta açık cilt tonu
 🕴🏽	havalanan takım elbiseli adam: orta cilt tonu
@@ -1572,8 +1572,8 @@
 🏊‍♂	yüzen adam
 🏊🏻‍♂️	yüzen erkek: açık cilt tonu
 🏊🏻‍♂	yüzen erkek: açık cilt tonu
-🏊🏼‍♂️	yüzen erkek: orta açık cilt tonu
-🏊🏼‍♂	yüzen erkek: orta açık cilt tonu
+🏊🏼‍♂️	yüzen adam: orta açık cilt tonu
+🏊🏼‍♂	yüzen adam: orta açık cilt tonu
 🏊🏽‍♂️	yüzen erkek: orta cilt tonu
 🏊🏽‍♂	yüzen erkek: orta cilt tonu
 🏊🏾‍♂️	yüzen adam: orta koyu cilt tonu
@@ -1838,7 +1838,7 @@
 🤹🏾‍♂️	hokkabazlık yapan adam: orta koyu cilt tonu
 🤹🏾‍♂	hokkabazlık yapan adam: orta koyu cilt tonu
 🤹🏿‍♂️	hokkabazlık yapan adam: koyu cilt tonu
-🤹🏿‍♂	hokkabazlık yapan erkek: koyu cilt tonu
+🤹🏿‍♂	hokkabazlık yapan adam: koyu cilt tonu
 🤹‍♀️	hokkabazlık yapan kadın
 🤹‍♀	hokkabazlık yapan kadın
 🤹🏻‍♀️	hokkabazlık yapan kadın: açık cilt tonu
@@ -2083,7 +2083,7 @@
 🙌🏼	Elleri kaldırmak: orta açık cilt tonu
 🙌🏽	elleri kaldırmak: orta cilt tonu
 🙌🏾	elleri kaldırmak: orta koyu cilt tonu
-🙌🏿	ellerini kaldırmak: koyu cilt tonu
+🙌🏿	elleri kaldırmak: koyu cilt tonu
 🤲	avuç içi bir arada
 🤲🏻	avuç içi bir arada: açık cilt tonu
 🤲🏼	avuçlar bitişik: orta açık cilt tonu
@@ -2115,7 +2115,7 @@
 👃🏽	burun: orta cilt tonu
 👃🏾	burun: orta koyu cilt tonu
 👃🏿	burun: koyu cilt tonu
-🦰	Kızıl saçlı
+🦰	kızıl saçlı
 🦱	kıvırcık saçlı
 🦲	kel
 🦳	beyaz saçlı
@@ -2420,7 +2420,7 @@
 🍪	kurabiye
 🎂	doğumgünü pastası
 🍰	kurabiye
-🧁	kek
+🧁	çörek
 🥧	turta
 🍫	çikolata
 🍬	Şeker
@@ -2895,7 +2895,7 @@
 📫	bayrağı kaldırılmış kapalı posta kutusu
 📪	bayrağı indirilmiş kapalı posta kutusu
 📬	bayrağı kaldırılmış posta kutusunu aç
-📭	bayrağı indirilmiş posta kutusunu aç
+📭	indirilmiş bayrakla posta kutusunu aç
 📮	posta kutusu
 🗳️	oy pusulası ile oy sandığı
 🗳	oy pusulası ile oy sandığı
@@ -3551,7 +3551,7 @@
 🇺🇾	Uruguay
 🇺🇿	Özbekistan
 🇻🇦	Vatikan Şehri
-🇻🇨	St.Vincent ve Grenadinler
+🇻🇨	St. Vincent ve Grenadinler
 🇻🇪	Venezuela
 🇻🇬	Britanya Virjin Adaları
 🇻🇮	Amerika Birleşik Devletleri Virgin Adaları

@@ -90,7 +90,7 @@
 🧐	ffeesi nga erina monocle
 🤓	nerd ffeesi
 😈	ffeesi emwenya nga erina amayembe
-👿	ffeesi ennyiize nga erina amayembe
+👿	ffeesi enyiize nga erina amayembe
 🤡	ffeesi ya clown
 👹	ogre
 👺	goblin, omusajja
@@ -103,7 +103,7 @@
 🤖	ffeesi ya roboti
 💩	entuumu y’omusulo
 😺	ffeesi y’embwa ng’enyenya
-😸	ffeesi y’embwa emwenya ng’amaaso gamwenya
+😸	ffeesi y’embwa emwenya n’amaaso agamwenya
 😹	ffeesi y’embwa n’amaziga ag’essanyu
 😻	ffeesi y’embwa emwenya ng’erina amaaso g’omutima
 😼	ffeesi y’embwa n’akamwenyumwenyu akawunya
@@ -127,7 +127,7 @@
 👶🏿	baby: langi y’olususu enzirugavu
 🧒	omwaana
 🧒🏻	omwana: langi y’olususu eyaka
-🧒🏼	omwana: langi y’olususu eya wakati-etangaala
+🧒🏼	omwana: langi y’olususu eya wakati-ekitangaala
 🧒🏽	omwana: langi y’olususu eya wakati
 🧒🏾	omwana: langi y’olususu eya wakati-enzirugavu
 🧒🏿	omwana: langi y’olususu enzirugavu
@@ -175,7 +175,7 @@
 👴🏿	omukadde: langi y’olususu enzirugavu
 👵	omukazi omukadde
 👵🏻	omukyala omukadde: langi y’olususu etangaavu
-👵🏼	omukyala omukadde: langi y’olususu eya wakati-ekitangaala
+👵🏼	omukyala omukadde: langi y’olususu eya wakati-etangaala
 👵🏽	omukyala omukadde: langi y’olususu eya wakati
 👵🏾	omukyala omukadde: langi y’olususu eya wakati-enzirugavu
 👵🏿	omukyala omukadde: langi y’olususu enzirugavu
@@ -183,8 +183,8 @@
 👨‍⚕	omusajja omukozi w’ebyobulamu
 👨🏻‍⚕️	omusajja omukozi w’ebyobulamu: langi y’olususu etangaavu
 👨🏻‍⚕	omusajja omukozi w’ebyobulamu: langi y’olususu etangaavu
-👨🏼‍⚕️	omusajja omukozi w’ebyobulamu: langi y’olususu eya wakati-ekitangaala
-👨🏼‍⚕	omusajja omukozi w’ebyobulamu: langi y’olususu eya wakati-ekitangaala
+👨🏼‍⚕️	omusajja omukozi w’ebyobulamu: langi y’olususu eya wakati-etangaala
+👨🏼‍⚕	omusajja omukozi w’ebyobulamu: langi y’olususu eya wakati-etangaala
 👨🏽‍⚕️	omusajja omukozi w’ebyobulamu: langi y’olususu eya wakati
 👨🏽‍⚕	omusajja omukozi w’ebyobulamu: langi y’olususu eya wakati
 👨🏾‍⚕️	omusajja omukozi w’ebyobulamu: langi y’olususu eya wakati-enzirugavu
@@ -195,8 +195,8 @@
 👩‍⚕	omukyala omukozi w’ebyobulamu
 👩🏻‍⚕️	omukyala omukozi w’ebyobulamu: langi y’olususu etangaavu
 👩🏻‍⚕	omukyala omukozi w’ebyobulamu: langi y’olususu etangaavu
-👩🏼‍⚕️	omukyala omukozi w’ebyobulamu: langi y’olususu eya wakati-etangaala
-👩🏼‍⚕	omukyala omukozi w’ebyobulamu: langi y’olususu eya wakati-etangaala
+👩🏼‍⚕️	omukyala omukozi w’ebyobulamu: langi y’olususu eya wakati-ekitangaala
+👩🏼‍⚕	omukyala omukozi w’ebyobulamu: langi y’olususu eya wakati-ekitangaala
 👩🏽‍⚕️	omukyala omukozi w’ebyobulamu: langi y’olususu eya wakati
 👩🏽‍⚕	omukyala omukozi w’ebyobulamu: langi y’olususu eya wakati
 👩🏾‍⚕️	omukyala omukozi w’ebyobulamu: langi y’olususu eya wakati-enzirugavu
@@ -222,7 +222,7 @@
 👨🏾‍🏫	omusajja omusomesa: langi y’olususu eya wakati-enzirugavu
 👨🏿‍🏫	omusajja omusomesa: langi y’olususu enzirugavu
 👩‍🏫	omukyala omusomesa
-👩🏻‍🏫	omusomesa omukazi: langi y’olususu etangaavu
+👩🏻‍🏫	omusomesa omukazi: langi y’olususu eyaka
 👩🏼‍🏫	omusomesa omukazi: langi y’olususu eya wakati-ekitangaala
 👩🏽‍🏫	omusomesa omukazi: langi y’olususu eya wakati
 👩🏾‍🏫	omusomesa omukazi: langi y’olususu eya wakati-enzirugavu
@@ -245,8 +245,8 @@
 👩🏻‍⚖	omulamuzi omukazi: langi y’olususu etangaavu
 👩🏼‍⚖️	omulamuzi omukazi: langi y’olususu eya wakati-etangaala
 👩🏼‍⚖	omulamuzi omukazi: langi y’olususu eya wakati-etangaala
-👩🏽‍⚖️	omulamuzi omukazi: langi y’olususu eya wakati
-👩🏽‍⚖	omulamuzi omukazi: langi y’olususu eya wakati
+👩🏽‍⚖️	omukyala omulamuzi: langi y’olususu eya wakati
+👩🏽‍⚖	omukyala omulamuzi: langi y’olususu eya wakati
 👩🏾‍⚖️	omulamuzi omukazi: langi y’olususu eya wakati-enzirugavu
 👩🏾‍⚖	omulamuzi omukazi: langi y’olususu eya wakati-enzirugavu
 👩🏿‍⚖️	omulamuzi omukazi: langi y’olususu enzirugavu
@@ -255,12 +255,12 @@
 👨🏻‍🌾	omusajja omulimi: langi y’olususu etangaavu
 👨🏼‍🌾	omusajja omulimi: langi y’olususu eya wakati-ekitangaala
 👨🏽‍🌾	omusajja omulimi: langi y’olususu eya wakati
-👨🏾‍🌾	omusajja omulimi: langi y’olususu eya wakati-enzirugavu
+👨🏾‍🌾	omulimi omulimi: langi y’olususu eya wakati-enzirugavu
 👨🏿‍🌾	omusajja omulimi: langi y’olususu enzirugavu
 👩‍🌾	omukazi omulimi
 👩🏻‍🌾	omukazi omulimi: langi y’olususu etangaavu
 👩🏼‍🌾	omulimi omulimi: langi y’olususu eya wakati-etangaala
-👩🏽‍🌾	omulimi omulimi: langi y’olususu eya wakati
+👩🏽‍🌾	omukazi omulimi: langi y’olususu eya wakati
 👩🏾‍🌾	omulimi omulimi: langi y’olususu eya wakati-enzirugavu
 👩🏿‍🌾	omukazi omulimi: langi y’olususu enzirugavu
 👨‍🍳	omusajja afumba
@@ -279,7 +279,7 @@
 👨🏻‍🔧	omusajja makanika: langi y’olususu eyaka
 👨🏼‍🔧	man makanika: langi y’olususu eya wakati-etangaala
 👨🏽‍🔧	omusajja makanika: langi y’olususu eya wakati
-👨🏾‍🔧	omusajja makanika: langi y’olususu eya wakati-enzirugavu
+👨🏾‍🔧	man makanika: langi y’olususu eya wakati-enzirugavu
 👨🏿‍🔧	omusajja makanika: langi y’olususu enzirugavu
 👩‍🔧	omukazi makanika
 👩🏻‍🔧	omukazi makanika: langi y’olususu eyaka
@@ -294,7 +294,7 @@
 👨🏾‍🏭	omusajja omukozi mu kkolero: langi y’olususu eya wakati-enzirugavu
 👨🏿‍🏭	omusajja omukozi mu kkolero: langi y’olususu enzirugavu
 👩‍🏭	omukazi omukozi mu kkolero
-👩🏻‍🏭	omukyala omukozi mu kkolero: langi y’olususu eyaka
+👩🏻‍🏭	omukazi omukozi mu kkolero: langi y’olususu eyaka
 👩🏼‍🏭	omukazi omukozi mu kkolero: langi y’olususu eya wakati-etangaala
 👩🏽‍🏭	omukyala omukozi mu kkolero: langi y’olususu eya wakati
 👩🏾‍🏭	omukazi omukozi mu kkolero: langi y’olususu eya wakati-enzirugavu
@@ -306,7 +306,7 @@
 👨🏾‍💼	omusajja omukozi mu ofiisi: langi y’olususu eya wakati-enzirugavu
 👨🏿‍💼	omusajja omukozi mu ofiisi: langi y’olususu enzirugavu
 👩‍💼	omukyala omukozi mu ofiisi
-👩🏻‍💼	omukyala omukozi mu ofiisi: langi y’olususu eyaka
+👩🏻‍💼	omukyala omukozi mu ofiisi: langi y’olususu etangaavu
 👩🏼‍💼	omukyala omukozi mu ofiisi: langi y’olususu eya wakati-etangaala
 👩🏽‍💼	omukyala omukozi mu ofiisi: langi y’olususu eya wakati
 👩🏾‍💼	omukyala omukozi mu ofiisi: langi y’olususu eya wakati-enzirugavu
@@ -318,8 +318,8 @@
 👨🏾‍🔬	omusajja ssaayansi: langi y’olususu eya wakati-enzirugavu
 👨🏿‍🔬	omusajja ssaayansi: langi y’olususu enzirugavu
 👩‍🔬	omukyala munnasayansi
-👩🏻‍🔬	omukyala ssaayansi: langi y’olususu eyaka
-👩🏼‍🔬	omukyala ssaayansi: langi y’olususu eya wakati-etangaala
+👩🏻‍🔬	omukyala ssaayansi: langi y’olususu etangaavu
+👩🏼‍🔬	omukyala ssaayansi: langi y’olususu eya wakati-ekitangaala
 👩🏽‍🔬	omukyala ssaayansi: langi y’olususu eya wakati
 👩🏾‍🔬	omukyala ssaayansi: langi y’olususu eya wakati-enzirugavu
 👩🏿‍🔬	omukyala ssaayansi: langi y’olususu enzirugavu
@@ -331,7 +331,7 @@
 👨🏿‍💻	omusajja omukugu mu tekinologiya: langi y’olususu enzirugavu
 👩‍💻	omukyala omukugu mu tekinologiya
 👩🏻‍💻	omukyala omukugu mu tekinologiya: langi y’olususu eyaka
-👩🏼‍💻	omukyala omukugu mu tekinologiya: langi y’olususu eya wakati-ekitangaala
+👩🏼‍💻	omukyala omukugu mu tekinologiya: langi y’olususu eya wakati-etangaala
 👩🏽‍💻	omukyala omukugu mu tekinologiya: langi y’olususu eya wakati
 👩🏾‍💻	omukyala omukugu mu tekinologiya: langi y’olususu eya wakati-enzirugavu
 👩🏿‍💻	omukyala omukugu mu tekinologiya: langi y’olususu enzirugavu
@@ -341,7 +341,7 @@
 👨🏽‍🎤	omusajja omuyimbi: langi y’olususu eya wakati
 👨🏾‍🎤	omusajja omuyimbi: langi y’olususu eya wakati-enzirugavu
 👨🏿‍🎤	omusajja omuyimbi: langi y’olususu enzirugavu
-👩‍🎤	omukyala omuyimbi
+👩‍🎤	omukazi omuyimbi
 👩🏻‍🎤	omukyala omuyimbi: langi y’olususu etangaavu
 👩🏼‍🎤	omukyala omuyimbi: langi y’olususu eya wakati-etangaala
 👩🏽‍🎤	omukyala omuyimbi: langi y’olususu eya wakati
@@ -349,22 +349,22 @@
 👩🏿‍🎤	omukyala omuyimbi: langi y’olususu enzirugavu
 👨‍🎨	omusajja omuyimbi
 👨🏻‍🎨	omusajja omuyiiya: langi y’olususu etangaavu
-👨🏼‍🎨	omusajja omuyiiya: langi y’olususu eya wakati-ekitangaala
+👨🏼‍🎨	omusajja omuyiiya: langi y’olususu eya wakati-etangaala
 👨🏽‍🎨	omusajja omuyiiya: langi y’olususu eya wakati
 👨🏾‍🎨	omusajja omuyiiya: langi y’olususu eya wakati-enzirugavu
 👨🏿‍🎨	omusajja omuyiiya: langi y’olususu enzirugavu
 👩‍🎨	omukazi omuyimbi
-👩🏻‍🎨	omukazi omuyimbi: langi y’olususu etangaavu
-👩🏼‍🎨	omukazi omuyiiya: langi y’olususu eya wakati-ekitangaala
-👩🏽‍🎨	omukazi omuyimbi: langi y’olususu eya wakati
+👩🏻‍🎨	omukazi omuyimbi: langi y’olususu eyaka
+👩🏼‍🎨	omukazi omuyiiya: langi y’olususu eya wakati-etangaala
+👩🏽‍🎨	omukyala omuyimbi: langi y’olususu eya wakati
 👩🏾‍🎨	omukazi omuyiiya: langi y’olususu eya wakati-enzirugavu
 👩🏿‍🎨	omukyala omuyimbi: langi y’olususu enzirugavu
 👨‍✈️	omusajja omuvuzi w’ennyonyi
 👨‍✈	omusajja omuvuzi w’ennyonyi
 👨🏻‍✈️	omusajja omuvuzi w’ennyonyi: langi y’olususu etangaavu
 👨🏻‍✈	omusajja omuvuzi w’ennyonyi: langi y’olususu etangaavu
-👨🏼‍✈️	man pilot: langi y’olususu eya wakati-ekitangaala
-👨🏼‍✈	man pilot: langi y’olususu eya wakati-ekitangaala
+👨🏼‍✈️	man pilot: langi y’olususu eya wakati-etangaala
+👨🏼‍✈	man pilot: langi y’olususu eya wakati-etangaala
 👨🏽‍✈️	man pilot: langi y’olususu eya wakati
 👨🏽‍✈	man pilot: langi y’olususu eya wakati
 👨🏾‍✈️	man pilot: langi y’olususu eya wakati-enzirugavu
@@ -375,8 +375,8 @@
 👩‍✈	omukazi omuvuzi w’ennyonyi
 👩🏻‍✈️	omukazi omuvuzi w’ennyonyi: langi y’olususu eyaka
 👩🏻‍✈	omukazi omuvuzi w’ennyonyi: langi y’olususu eyaka
-👩🏼‍✈️	omukazi omuvuzi w’ennyonyi: langi y’olususu eya wakati-etangaala
-👩🏼‍✈	omukazi omuvuzi w’ennyonyi: langi y’olususu eya wakati-etangaala
+👩🏼‍✈️	omukazi omuvuzi w’ennyonyi: langi y’olususu eya wakati-ekitangaala
+👩🏼‍✈	omukazi omuvuzi w’ennyonyi: langi y’olususu eya wakati-ekitangaala
 👩🏽‍✈️	omukazi omuvuzi w’ennyonyi: langi y’olususu eya wakati
 👩🏽‍✈	omukazi omuvuzi w’ennyonyi: langi y’olususu eya wakati
 👩🏾‍✈️	omukazi omuvuzi w’ennyonyi: langi y’olususu eya wakati-enzirugavu
@@ -388,7 +388,7 @@
 👨🏼‍🚀	omusajja omugenda mu bwengula: langi y’olususu eya wakati-ekitangaala
 👨🏽‍🚀	omusajja omugenda mu bwengula: langi y’olususu eya wakati
 👨🏾‍🚀	omusajja agenda mu bwengula: langi y’olususu eya wakati-enzirugavu
-👨🏿‍🚀	omusajja omugenda mu bwengula: langi y’olususu enzirugavu
+👨🏿‍🚀	omusajja agenda mu bwengula: langi y’olususu enzirugavu
 👩‍🚀	omukazi omukugu mu by’omu bwengula
 👩🏻‍🚀	omukazi agenda mu bwengula: langi y’olususu etangaavu
 👩🏼‍🚀	omukazi agenda mu bwengula: langi y’olususu eya wakati-ekitangaala
@@ -512,8 +512,8 @@
 👷‍♂	omusajja omukozi w’okuzimba
 👷🏻‍♂️	omusajja omukozi w’okuzimba: langi y’olususu etangaavu
 👷🏻‍♂	omusajja omukozi w’okuzimba: langi y’olususu etangaavu
-👷🏼‍♂️	omusajja omukozi w’okuzimba: langi y’olususu eya wakati-ekitangaala
-👷🏼‍♂	omusajja omukozi w’okuzimba: langi y’olususu eya wakati-ekitangaala
+👷🏼‍♂️	omusajja omukozi w’okuzimba: langi y’olususu eya wakati-etangaala
+👷🏼‍♂	omusajja omukozi w’okuzimba: langi y’olususu eya wakati-etangaala
 👷🏽‍♂️	omusajja omukozi w’okuzimba: langi y’olususu eya wakati
 👷🏽‍♂	omusajja omukozi w’okuzimba: langi y’olususu eya wakati
 👷🏾‍♂️	omusajja omukozi w’okuzimba: langi y’olususu eya wakati-enzirugavu
@@ -536,7 +536,7 @@
 🤴🏻	omulangira: langi y’olususu eyaka
 🤴🏼	prince: langi y’olususu eya wakati-etangaala
 🤴🏽	omulangira: langi y’olususu eya wakati
-🤴🏾	omulangira: langi y’olususu eya wakati-enzirugavu
+🤴🏾	prince: langi y’olususu eya wakati-enzirugavu
 🤴🏿	omulangira: langi y’olususu enzirugavu
 👸	omumbejja
 👸🏻	princess: langi y’olususu eyaka
@@ -582,7 +582,7 @@
 👲🏿	omusajja alina enkoofiira y’Abachina: langi y’olususu enzirugavu
 🧕	omukazi ng’ayambadde akatambaala ku mutwe
 🧕🏻	omukazi ng’ayambadde akatambaala ku mutwe: langi y’olususu etangaavu
-🧕🏼	omukazi ng’ayambadde akatambaala: langi y’olususu eya wakati-etangaala
+🧕🏼	omukazi ng’ayambadde akatambaala ku mutwe: langi y’olususu eya wakati-etangaala
 🧕🏽	omukazi ng’ayambadde ekitambaala ku mutwe: langi y’olususu eya wakati
 🧕🏾	omukazi ng’ayambadde akatambaala: langi y’olususu eya wakati-enzirugavu
 🧕🏿	omukazi ng’ayambadde akatambaala: langi y’olususu enzirugavu
@@ -600,10 +600,10 @@
 👱🏿	omuntu ow’enviiri enzirugavu: langi y’olususu enzirugavu
 👱‍♂️	omusajja ow’enviiri eza blond
 👱‍♂	omusajja ow’enviiri eza blond
-👱🏻‍♂️	omusajja ow’enviiri eza blond: langi y’olususu eyaka
-👱🏻‍♂	omusajja ow’enviiri eza blond: langi y’olususu eyaka
-👱🏼‍♂️	omusajja ow’enviiri eza blond: langi y’olususu eya wakati-etangaala
-👱🏼‍♂	omusajja ow’enviiri eza blond: langi y’olususu eya wakati-etangaala
+👱🏻‍♂️	omusajja ow’enviiri enzirugavu: langi y’olususu eyaka
+👱🏻‍♂	omusajja ow’enviiri enzirugavu: langi y’olususu eyaka
+👱🏼‍♂️	omusajja ow’enviiri enzirugavu: langi y’olususu eya wakati-etangaala
+👱🏼‍♂	omusajja ow’enviiri enzirugavu: langi y’olususu eya wakati-etangaala
 👱🏽‍♂️	omusajja ow’enviiri eza blond: langi y’olususu eya wakati
 👱🏽‍♂	omusajja ow’enviiri eza blond: langi y’olususu eya wakati
 👱🏾‍♂️	omusajja ow’enviiri enzirugavu: langi y’olususu eya wakati-enzirugavu
@@ -618,12 +618,12 @@
 👱🏼‍♀	omukazi ow’enviiri eza blond: langi y’olususu eya wakati-etangaala
 👱🏽‍♀️	omukazi ow’enviiri eza blond: langi y’olususu eya wakati
 👱🏽‍♀	omukazi ow’enviiri eza blond: langi y’olususu eya wakati
-👱🏾‍♀️	omukazi ow’enviiri enzirugavu: langi y’olususu eya wakati-enzirugavu
-👱🏾‍♀	omukazi ow’enviiri enzirugavu: langi y’olususu eya wakati-enzirugavu
+👱🏾‍♀️	omukazi ow’enviiri eza blond: langi y’olususu eya wakati-enzirugavu
+👱🏾‍♀	omukazi ow’enviiri eza blond: langi y’olususu eya wakati-enzirugavu
 👱🏿‍♀️	omukazi ow’enviiri enzirugavu: langi y’olususu enzirugavu
 👱🏿‍♀	omukazi ow’enviiri enzirugavu: langi y’olususu enzirugavu
 👨‍🦰	omusajja, ow’enviiri emmyuufu
-👨🏻‍🦰	omusajja, enviiri emmyuufu: langi y’olususu etangaavu
+👨🏻‍🦰	omusajja, enviiri emmyuufu: langi y’olususu eyaka
 👨🏼‍🦰	omusajja, enviiri emmyuufu: langi y’olususu eya wakati-ekitangaala
 👨🏽‍🦰	omusajja, enviiri emmyuufu: langi y’olususu eya wakati
 👨🏾‍🦰	omusajja, enviiri emmyuufu: langi y’olususu eya wakati-enzirugavu
@@ -671,17 +671,17 @@
 👩🏾‍🦳	omukazi, enviiri enjeru: langi y’olususu eya wakati-enzirugavu
 👩🏿‍🦳	omukazi, enviiri enjeru: langi y’olususu enzirugavu
 🤵	omusajja mu tuxedo
-🤵🏻	omusajja mu tuxedo: langi y’olususu etangaavu
-🤵🏼	omusajja mu tuxedo: langi y’olususu eya wakati-ekitangaala
+🤵🏻	omusajja mu tuxedo: langi y’olususu eyaka
+🤵🏼	omusajja mu tuxedo: langi y’olususu eya wakati-etangaala
 🤵🏽	omusajja mu tuxedo: langi y’olususu eya wakati
 🤵🏾	omusajja mu tuxedo: langi y’olususu eya wakati-enzirugavu
 🤵🏿	omusajja mu tuxedo: langi y’olususu enzirugavu
-👰	omugole ng’alina olutimbe
+👰	omugole ng’ayambadde ekibikka
 👰🏻	omugole ng’ayambadde olugoye: langi y’olususu etangaavu
 👰🏼	omugole alina ekibikka: langi y’olususu eya wakati-etangaala
 👰🏽	omugole alina ekibikka: langi y’olususu eya wakati
 👰🏾	omugole alina ekibikka: langi y’olususu eya wakati-enzirugavu
-👰🏿	omugole alina olugoye: langi y’olususu enzirugavu
+👰🏿	omugole ng’ayambadde olugoye: langi y’olususu enzirugavu
 🤰	omukazi ow’olubuto
 🤰🏻	omukyala ow’olubuto: langi y’olususu etangaavu
 🤰🏼	omukyala ow’olubuto: langi y’olususu eya wakati-etangaala
@@ -702,7 +702,7 @@
 👼🏿	baby angel: langi y’olususu enzirugavu
 🎅	Santa Claus
 🎅🏻	Santa Claus: langi y’olususu eyaka
-🎅🏼	Santa Claus: langi y’olususu eya wakati-eyaka
+🎅🏼	Santa Claus: langi y’olususu eya wakati-etangaala
 🎅🏽	Santa Claus: langi y’olususu eya wakati
 🎅🏾	Santa Claus: langi y’olususu eya wakati-enzirugavu
 🎅🏿	Santa Claus: langi y’olususu enzirugavu
@@ -714,7 +714,7 @@
 🤶🏿	Mukyala Claus: langi y’olususu enzirugavu
 🦸	omuzira omukulu
 🦸🏻	superhero: langi y’olususu eyaka
-🦸🏼	superhero: langi y’olususu eya wakati-eyaka
+🦸🏼	superhero: langi y’olususu eya wakati-etangaala
 🦸🏽	superhero: langi y’olususu eya wakati
 🦸🏾	superhero: langi y’olususu eya wakati-enzirugavu
 🦸🏿	superhero: langi y’olususu enzirugavu
@@ -774,7 +774,7 @@
 🦹🏿‍♂	omusajja supervillain: langi y’olususu enzirugavu
 🧙	mage
 🧙🏻	mage: langi y’olususu eyaka
-🧙🏼	mage: langi y’olususu eya wakati-eyaka
+🧙🏼	mage: langi y’olususu eya wakati-etangaala
 🧙🏽	mage: langi y’olususu eya wakati
 🧙🏾	mage: langi y’olususu eya wakati-enzirugavu
 🧙🏿	mage: langi y’olususu enzirugavu
@@ -832,7 +832,7 @@
 🧚🏾‍♂	man fairy: langi y’olususu eya wakati-enzirugavu
 🧚🏿‍♂️	man fairy: langi y’olususu enzirugavu
 🧚🏿‍♂	man fairy: langi y’olususu enzirugavu
-🧛	vampire ayitibwa vampire
+🧛	vampire (vampire) nga
 🧛🏻	vampire: langi y’olususu eyaka
 🧛🏼	vampire: langi y’olususu eya wakati-etangaala
 🧛🏽	vampire: langi y’olususu eya wakati
@@ -864,7 +864,7 @@
 🧛🏿‍♂	man vampire: langi y’olususu enzirugavu
 🧜	merperson (omusuubuzi).
 🧜🏻	merperson: langi y’olususu eyaka
-🧜🏼	merperson: langi y’olususu eya wakati-ekitangaala
+🧜🏼	merperson: langi y’olususu eya wakati-etangaala
 🧜🏽	merperson: langi y’olususu eya wakati
 🧜🏾	merperson: langi y’olususu eya wakati-enzirugavu
 🧜🏿	mererson: langi y’olususu enzirugavu
@@ -872,8 +872,8 @@
 🧜‍♀	omuwala w’omu nnyanja
 🧜🏻‍♀️	mermaid: langi y’olususu eyaka
 🧜🏻‍♀	mermaid: langi y’olususu eyaka
-🧜🏼‍♀️	mermaid: langi y’olususu eya wakati-ekitangaala
-🧜🏼‍♀	mermaid: langi y’olususu eya wakati-ekitangaala
+🧜🏼‍♀️	mermaid: langi y’olususu eya wakati-eyaka
+🧜🏼‍♀	mermaid: langi y’olususu eya wakati-eyaka
 🧜🏽‍♀️	mermaid: langi y’olususu eya wakati
 🧜🏽‍♀	mermaid: langi y’olususu eya wakati
 🧜🏾‍♀️	mermaid: langi y’olususu eya wakati-enzirugavu
@@ -884,8 +884,8 @@
 🧜‍♂	merman, omusajja
 🧜🏻‍♂️	merman: langi y’olususu eyaka
 🧜🏻‍♂	merman: langi y’olususu eyaka
-🧜🏼‍♂️	merman: langi y’olususu eya wakati-etangaala
-🧜🏼‍♂	merman: langi y’olususu eya wakati-etangaala
+🧜🏼‍♂️	merman: langi y’olususu eya wakati-eyaka
+🧜🏼‍♂	merman: langi y’olususu eya wakati-eyaka
 🧜🏽‍♂️	merman: langi y’olususu eya wakati
 🧜🏽‍♂	merman: langi y’olususu eya wakati
 🧜🏾‍♂️	merman: langi y’olususu eya wakati-enzirugavu
@@ -894,7 +894,7 @@
 🧜🏿‍♂	merman: langi y’olususu enzirugavu
 🧝	elf
 🧝🏻	elf: langi y’olususu eyaka
-🧝🏼	elf: langi y’olususu eya wakati-eyaka
+🧝🏼	elf: langi y’olususu eya wakati-etangaala
 🧝🏽	elf: langi y’olususu eya wakati
 🧝🏾	elf: langi y’olususu eya wakati-enzirugavu
 🧝🏿	elf: langi y’olususu enzirugavu
@@ -912,10 +912,10 @@
 🧝🏿‍♀	omukazi elf: langi y’olususu enzirugavu
 🧝‍♂️	omusajja elf
 🧝‍♂	omusajja elf
-🧝🏻‍♂️	man elf: langi y’olususu etangaavu
-🧝🏻‍♂	man elf: langi y’olususu etangaavu
-🧝🏼‍♂️	man elf: langi y’olususu eya wakati-etangaala
-🧝🏼‍♂	man elf: langi y’olususu eya wakati-etangaala
+🧝🏻‍♂️	man elf: langi y’olususu enzirugavu
+🧝🏻‍♂	man elf: langi y’olususu enzirugavu
+🧝🏼‍♂️	man elf: langi y’olususu eya wakati-ekitangaala
+🧝🏼‍♂	man elf: langi y’olususu eya wakati-ekitangaala
 🧝🏽‍♂️	man elf: langi y’olususu eya wakati
 🧝🏽‍♂	man elf: langi y’olususu eya wakati
 🧝🏾‍♂️	man elf: langi y’olususu eya wakati-enzirugavu
@@ -934,7 +934,7 @@
 🧟‍♂	omusajja zombie
 🙍	omuntu ng’anyenya ennyindo
 🙍🏻	omuntu akuba ennyindo: langi y’olususu etangaavu
-🙍🏼	omuntu akuba ennyindo: langi y’olususu eya wakati-etangaala
+🙍🏼	omuntu akuba ennyindo: langi y’olususu eya wakati-ekitangaala
 🙍🏽	omuntu akuba ennyindo: langi y’olususu eya wakati
 🙍🏾	omuntu akuba ennyindo: langi y’olususu eya wakati-enzirugavu
 🙍🏿	omuntu akuba ennyindo: langi y’olususu enzirugavu
@@ -942,8 +942,8 @@
 🙍‍♂	omusajja ng’anyenya ennyindo
 🙍🏻‍♂️	omusajja akuba ennyindo: langi y’olususu etangaavu
 🙍🏻‍♂	omusajja akuba ennyindo: langi y’olususu etangaavu
-🙍🏼‍♂️	omusajja akuba ennyindo: langi y’olususu eya wakati-ekitangaala
-🙍🏼‍♂	omusajja akuba ennyindo: langi y’olususu eya wakati-ekitangaala
+🙍🏼‍♂️	omusajja akuba ennyindo: langi y’olususu eya wakati-etangaala
+🙍🏼‍♂	omusajja akuba ennyindo: langi y’olususu eya wakati-etangaala
 🙍🏽‍♂️	omusajja akuba ennyindo: langi y’olususu eya wakati
 🙍🏽‍♂	omusajja akuba ennyindo: langi y’olususu eya wakati
 🙍🏾‍♂️	omusajja akuba ennyindo: langi y’olususu eya wakati-enzirugavu
@@ -1024,7 +1024,7 @@
 🙅🏿‍♀	omukazi ng’akola akabonero nti NO: langi y’olususu enzirugavu
 🙆	omuntu ng’akola akabonero nti OK
 🙆🏻	omuntu ng’akola akabonero OK: langi y’olususu etangaavu
-🙆🏼	omuntu ng’akola akabonero nti OK: langi y’olususu eya wakati-etangaala
+🙆🏼	omuntu ng’alaga OK: langi y’olususu eya wakati-etangaala
 🙆🏽	omuntu ng’akola akabonero nti OK: langi y’olususu eya wakati
 🙆🏾	omuntu ng’akola akabonero nti OK: langi y’olususu eya wakati-enzirugavu
 🙆🏿	omuntu ng’akola akabonero OK: langi y’olususu enzirugavu
@@ -1084,7 +1084,7 @@
 💁🏿‍♀	omukazi akuba omukono: langi y’olususu enzirugavu
 🙋	omuntu ng’ayimusa omukono
 🙋🏻	omuntu ng’asitula omukono: langi y’olususu etangaavu
-🙋🏼	omuntu ng’asitula omukono: langi y’olususu eya wakati-ekitangaala
+🙋🏼	omuntu ng’asitula omukono: langi y’olususu eya wakati-etangaala
 🙋🏽	omuntu ng’asitula omukono: langi y’olususu eya wakati
 🙋🏾	omuntu ng’asitula omukono: langi y’olususu eya wakati-enzirugavu
 🙋🏿	omuntu ng’asitula omukono: langi y’olususu enzirugavu
@@ -1134,8 +1134,8 @@
 🙇‍♀	omukazi ng’afukamidde
 🙇🏻‍♀️	omukazi okufukamira: langi y’olususu etangaavu
 🙇🏻‍♀	omukazi okufukamira: langi y’olususu etangaavu
-🙇🏼‍♀️	omukazi okufukamira: langi y’olususu eya wakati-etangaala
-🙇🏼‍♀	omukazi okufukamira: langi y’olususu eya wakati-etangaala
+🙇🏼‍♀️	omukazi okufukamira: langi y’olususu eya wakati-ekitangaala
+🙇🏼‍♀	omukazi okufukamira: langi y’olususu eya wakati-ekitangaala
 🙇🏽‍♀️	omukazi okufukamira: langi y’olususu eya wakati
 🙇🏽‍♀	omukazi okufukamira: langi y’olususu eya wakati
 🙇🏾‍♀️	omukazi okufukamira: langi y’olususu eya wakati-enzirugavu
@@ -1162,10 +1162,10 @@
 🤦🏿‍♂	omusajja facepalming: langi y’olususu enzirugavu
 🤦‍♀️	omukazi okukuba facepalming
 🤦‍♀	omukazi okukuba facepalming
-🤦🏻‍♀️	omukazi facepalming: langi y’olususu eyaka
-🤦🏻‍♀	omukazi facepalming: langi y’olususu eyaka
-🤦🏼‍♀️	omukazi facepalming: langi y’olususu eya wakati-ekitangaala
-🤦🏼‍♀	omukazi facepalming: langi y’olususu eya wakati-ekitangaala
+🤦🏻‍♀️	omukazi facepalming: langi y’olususu etangaavu
+🤦🏻‍♀	omukazi facepalming: langi y’olususu etangaavu
+🤦🏼‍♀️	omukazi facepalming: langi y’olususu eya wakati-etangaala
+🤦🏼‍♀	omukazi facepalming: langi y’olususu eya wakati-etangaala
 🤦🏽‍♀️	omukazi facepalming: langi y’olususu eya wakati
 🤦🏽‍♀	omukazi facepalming: langi y’olususu eya wakati
 🤦🏾‍♀️	omukazi facepalming: langi y’olususu eya wakati-enzirugavu
@@ -1173,8 +1173,8 @@
 🤦🏿‍♀️	omukazi facepalming: langi y’olususu enzirugavu
 🤦🏿‍♀	omukazi facepalming: langi y’olususu enzirugavu
 🤷	omuntu ng’asika ebibegabega
-🤷🏻	omuntu okusitula ebibegabega: langi y’olususu etangaavu
-🤷🏼	omuntu okusika ebibegabega: langi y’olususu eya wakati-ekitangaala
+🤷🏻	omuntu okusika ebibegabega: langi y’olususu etangaavu
+🤷🏼	omuntu okusitula ebibegabega: langi y’olususu eya wakati-etangaala
 🤷🏽	omuntu okusika ebibegabega: langi y’olususu eya wakati
 🤷🏾	omuntu okusika ebibegabega: langi y’olususu eya wakati-enzirugavu
 🤷🏿	omuntu okusika ebibegabega: langi y’olususu enzirugavu
@@ -1234,7 +1234,7 @@
 💆🏿‍♀	omukazi ng’afuna masaagi: langi y’olususu enzirugavu
 💇	omuntu okusala enviiri
 💇🏻	omuntu okusala enviiri: langi y’olususu etangaavu
-💇🏼	omuntu okusala enviiri: langi y’olususu eya wakati-etangaala
+💇🏼	omuntu asala enviiri: langi y’olususu eya wakati-etangaala
 💇🏽	omuntu okusala enviiri: langi y’olususu eya wakati
 💇🏾	omuntu okusala enviiri: langi y’olususu eya wakati-enzirugavu
 💇🏿	omuntu okusala enviiri: langi y’olususu enzirugavu
@@ -1252,8 +1252,8 @@
 💇🏿‍♂	omusajja ng’asala enviiri: langi y’olususu enzirugavu
 💇‍♀️	omukazi ng'asala enviiri
 💇‍♀	omukazi ng'asala enviiri
-💇🏻‍♀️	omukazi ng’asala enviiri: langi y’olususu etangaavu
-💇🏻‍♀	omukazi ng’asala enviiri: langi y’olususu etangaavu
+💇🏻‍♀️	omukazi ng’asala enviiri: langi y’olususu enzirugavu
+💇🏻‍♀	omukazi ng’asala enviiri: langi y’olususu enzirugavu
 💇🏼‍♀️	omukazi ng’asala enviiri: langi y’olususu eya wakati-etangaala
 💇🏼‍♀	omukazi ng’asala enviiri: langi y’olususu eya wakati-etangaala
 💇🏽‍♀️	omukazi ng’asala enviiri: langi y’olususu eya wakati
@@ -1284,8 +1284,8 @@
 🚶‍♀	omukazi ng’atambula
 🚶🏻‍♀️	omukazi ng’atambula: langi y’olususu etangaavu
 🚶🏻‍♀	omukazi ng’atambula: langi y’olususu etangaavu
-🚶🏼‍♀️	omukazi ng’atambula: langi y’olususu eya wakati-ekitangaala
-🚶🏼‍♀	omukazi ng’atambula: langi y’olususu eya wakati-ekitangaala
+🚶🏼‍♀️	omukazi ng’atambula: langi y’olususu eya wakati-etangaala
+🚶🏼‍♀	omukazi ng’atambula: langi y’olususu eya wakati-etangaala
 🚶🏽‍♀️	omukazi ng’atambula: langi y’olususu eya wakati
 🚶🏽‍♀	omukazi ng’atambula: langi y’olususu eya wakati
 🚶🏾‍♀️	omukazi ng’atambula: langi y’olususu eya wakati-enzirugavu
@@ -1294,7 +1294,7 @@
 🚶🏿‍♀	omukazi ng’atambula: langi y’olususu enzirugavu
 🏃	omuntu ng’adduka
 🏃🏻	omuntu adduka: langi y’olususu etangaavu
-🏃🏼	omuntu adduka: langi y’olususu eya wakati-ekitangaala
+🏃🏼	omuntu adduka: langi y’olususu eya wakati-etangaala
 🏃🏽	omuntu adduka: langi y’olususu eya wakati
 🏃🏾	omuntu adduka: langi y’olususu eya wakati-enzirugavu
 🏃🏿	omuntu adduka: langi y’olususu enzirugavu
@@ -1361,8 +1361,8 @@
 🧖‍♂	omusajja mu kisenge ekirimu omukka
 🧖🏻‍♂️	omusajja mu kisenge ekirimu omukka: langi y’olususu etangaavu
 🧖🏻‍♂	omusajja mu kisenge ekirimu omukka: langi y’olususu etangaavu
-🧖🏼‍♂️	omusajja mu kisenge ekirimu omukka: langi y’olususu eya wakati-ekitangaala
-🧖🏼‍♂	omusajja mu kisenge ekirimu omukka: langi y’olususu eya wakati-ekitangaala
+🧖🏼‍♂️	omusajja mu kisenge ekirimu omukka: langi y’olususu eya wakati-etangaala
+🧖🏼‍♂	omusajja mu kisenge ekirimu omukka: langi y’olususu eya wakati-etangaala
 🧖🏽‍♂️	omusajja mu kisenge ekirimu omukka: langi y’olususu eya wakati
 🧖🏽‍♂	omusajja mu kisenge ekirimu omukka: langi y’olususu eya wakati
 🧖🏾‍♂️	omusajja mu kisenge ekirimu omukka: langi y’olususu eya wakati-enzirugavu
@@ -1407,7 +1407,7 @@
 🧘🏿	omuntu ali mu mbeera ya lotus: langi y’olususu enzirugavu
 🧘‍♀️	omukazi mu mbeera ya lotus
 🧘‍♀	omukazi mu mbeera ya lotus
-🧘🏻‍♀️	omukazi mu mbeera ya lotus: langi y’olususu etangaavu
+🧘🏻‍♀️	omukazi mu mbeera ya lotus: langi y’olususu eyaka
 🧘🏻‍♀	omukazi mu mbeera ya lotus: langi y’olususu etangaavu
 🧘🏼‍♀️	omukazi mu mbeera ya lotus: langi y’olususu eya wakati-ekitangaala
 🧘🏼‍♀	omukazi mu mbeera ya lotus: langi y’olususu eya wakati-ekitangaala
@@ -1437,7 +1437,7 @@
 🛀🏿	omuntu anaaba: langi y’olususu enzirugavu
 🛌	omuntu mu buliri
 🛌🏻	omuntu mu buliri: langi y’olususu etangaavu
-🛌🏼	omuntu mu buliri: langi y’olususu eya wakati-etangaala
+🛌🏼	omuntu ali ku kitanda: langi y’olususu eya wakati-etangaala
 🛌🏽	omuntu mu buliri: langi y’olususu eya wakati
 🛌🏾	omuntu ali ku kitanda: langi y’olususu eya wakati-enzirugavu
 🛌🏿	omuntu mu buliri: langi y’olususu enzirugavu
@@ -1445,9 +1445,9 @@
 🕴	omusajja mu ssuuti ng’asikambula
 🕴🏻	omusajja mu ssuuti ng’asitula: langi y’olususu etangaavu
 🕴🏼	omusajja mu ssuuti ng’asitula: langi y’olususu eya wakati-etangaala
-🕴🏽	omusajja mu ssuuti ng’asitula: langi y’olususu eya wakati
+🕴🏽	omusajja mu ssuuti levitating: langi y’olususu eya wakati
 🕴🏾	omusajja mu ssuuti ng’asitula: langi y’olususu eya wakati-enzirugavu
-🕴🏿	omusajja mu ssuuti levitating: langi y’olususu enzirugavu
+🕴🏿	omusajja mu ssuuti ng’asitula: langi y’olususu enzirugavu
 🗣️	omutwe ogwogera
 🗣	omutwe ogwogera
 👤	bust mu silhouette mu ngeri ya silhouette
@@ -1512,8 +1512,8 @@
 🏄‍♂	omusajja ng’akuba surf
 🏄🏻‍♂️	man surfing: langi y’olususu etangaavu
 🏄🏻‍♂	man surfing: langi y’olususu etangaavu
-🏄🏼‍♂️	man surfing: langi y’olususu eya wakati-ekitangaala
-🏄🏼‍♂	man surfing: langi y’olususu eya wakati-ekitangaala
+🏄🏼‍♂️	man surfing: langi y’olususu eya wakati-etangaala
+🏄🏼‍♂	man surfing: langi y’olususu eya wakati-etangaala
 🏄🏽‍♂️	man surfing: langi y’olususu eya wakati
 🏄🏽‍♂	man surfing: langi y’olususu eya wakati
 🏄🏾‍♂️	man surfing: langi y’olususu eya wakati-enzirugavu
@@ -1605,8 +1605,8 @@
 ⛹‍♂	omusajja ng’abuuka omupiira
 ⛹🏻‍♂️	omusajja abuuka omupiira: langi y’olususu etangaavu
 ⛹🏻‍♂	omusajja abuuka omupiira: langi y’olususu etangaavu
-⛹🏼‍♂️	omusajja abuuka omupiira: langi y’olususu eya wakati-ekitangaala
-⛹🏼‍♂	omusajja abuuka omupiira: langi y’olususu eya wakati-ekitangaala
+⛹🏼‍♂️	omusajja abuuka omupiira: langi y’olususu eya wakati-etangaala
+⛹🏼‍♂	omusajja abuuka omupiira: langi y’olususu eya wakati-etangaala
 ⛹🏽‍♂️	omusajja abuuka omupiira: langi y’olususu eya wakati
 ⛹🏽‍♂	omusajja abuuka omupiira: langi y’olususu eya wakati
 ⛹🏾‍♂️	omusajja abuuka omupiira: langi y’olususu eya wakati-enzirugavu
@@ -1630,7 +1630,7 @@
 🏋️	omuntu ng’asitula obuzito
 🏋	omuntu ng’asitula obuzito
 🏋🏻	omuntu okusitula obuzito: langi y’olususu etangaavu
-🏋🏼	omuntu ng’asitula obuzito: langi y’olususu eya wakati-eyaka
+🏋🏼	omuntu ng’asitula obuzito: langi y’olususu eya wakati-etangaala
 🏋🏽	omuntu okusitula obuzito: langi y’olususu eya wakati
 🏋🏾	omuntu okusitula obuzito: langi y’olususu eya wakati-enzirugavu
 🏋🏿	omuntu okusitula obuzito: langi y’olususu enzirugavu
@@ -1684,8 +1684,8 @@
 🚴‍♀	omukazi ng’avuga obugaali
 🚴🏻‍♀️	omukazi okuvuga obugaali: langi y’olususu etangaavu
 🚴🏻‍♀	omukazi okuvuga obugaali: langi y’olususu etangaavu
-🚴🏼‍♀️	omukazi okuvuga obugaali: langi y’olususu eya wakati-ekitangaala
-🚴🏼‍♀	omukazi okuvuga obugaali: langi y’olususu eya wakati-ekitangaala
+🚴🏼‍♀️	omukazi okuvuga obugaali: langi y’olususu eya wakati-etangaala
+🚴🏼‍♀	omukazi okuvuga obugaali: langi y’olususu eya wakati-etangaala
 🚴🏽‍♀️	omukazi okuvuga obugaali: langi y’olususu eya wakati
 🚴🏽‍♀	omukazi okuvuga obugaali: langi y’olususu eya wakati
 🚴🏾‍♀️	omukazi okuvuga obugaali: langi y’olususu eya wakati-enzirugavu
@@ -1700,12 +1700,12 @@
 🚵🏿	omuntu okuvuga obugaali bw’oku nsozi: langi y’olususu enzirugavu
 🚵‍♂️	omusajja okuvuga obugaali ku nsozi
 🚵‍♂	omusajja okuvuga obugaali ku nsozi
-🚵🏻‍♂️	omusajja obugaali bw’oku nsozi: langi y’olususu etangaavu
-🚵🏻‍♂	omusajja obugaali bw’oku nsozi: langi y’olususu etangaavu
+🚵🏻‍♂️	omusajja okuvuga obugaali bw’oku nsozi: langi y’olususu etangaavu
+🚵🏻‍♂	omusajja okuvuga obugaali bw’oku nsozi: langi y’olususu etangaavu
 🚵🏼‍♂️	man mountain biking: langi y’olususu eya wakati-etangaala
 🚵🏼‍♂	man mountain biking: langi y’olususu eya wakati-etangaala
-🚵🏽‍♂️	man mountain biking: langi y’olususu eya wakati
-🚵🏽‍♂	man mountain biking: langi y’olususu eya wakati
+🚵🏽‍♂️	omusajja obugaali bw’oku nsozi: langi y’olususu eya wakati
+🚵🏽‍♂	omusajja obugaali bw’oku nsozi: langi y’olususu eya wakati
 🚵🏾‍♂️	man mountain biking: langi y’olususu eya wakati-enzirugavu
 🚵🏾‍♂	man mountain biking: langi y’olususu eya wakati-enzirugavu
 🚵🏿‍♂️	man mountain biking: langi y’olususu enzirugavu
@@ -1714,8 +1714,8 @@
 🚵‍♀	omukazi ng’avuga obugaali bw’oku nsozi
 🚵🏻‍♀️	omukazi okuvuga obugaali bw’oku nsozi: langi y’olususu etangaavu
 🚵🏻‍♀	omukazi okuvuga obugaali bw’oku nsozi: langi y’olususu etangaavu
-🚵🏼‍♀️	omukazi okuvuga obugaali bw’oku nsozi: langi y’olususu eya wakati-etangaala
-🚵🏼‍♀	omukazi okuvuga obugaali bw’oku nsozi: langi y’olususu eya wakati-etangaala
+🚵🏼‍♀️	omukazi okuvuga obugaali bw’oku nsozi: langi y’olususu eya wakati-ekitangaala
+🚵🏼‍♀	omukazi okuvuga obugaali bw’oku nsozi: langi y’olususu eya wakati-ekitangaala
 🚵🏽‍♀️	omukazi okuvuga obugaali bw’oku nsozi: langi y’olususu eya wakati
 🚵🏽‍♀	omukazi okuvuga obugaali bw’oku nsozi: langi y’olususu eya wakati
 🚵🏾‍♀️	omukazi okuvuga obugaali bw’oku nsozi: langi y’olususu eya wakati-enzirugavu
@@ -1813,8 +1813,8 @@
 🤾‍♀	omukazi ng’azannya omupiira gw’omu ngalo
 🤾🏻‍♀️	omukazi ng’azannya omupiira gw’omu ngalo: langi y’olususu etangaavu
 🤾🏻‍♀	omukazi ng’azannya omupiira gw’omu ngalo: langi y’olususu etangaavu
-🤾🏼‍♀️	omukazi ng’azannya omupiira gw’omu ngalo: langi y’olususu eya wakati-etangaala
-🤾🏼‍♀	omukazi ng’azannya omupiira gw’omu ngalo: langi y’olususu eya wakati-etangaala
+🤾🏼‍♀️	omukazi ng’azannya omupiira gw’omu ngalo: langi y’olususu eya wakati-ekitangaala
+🤾🏼‍♀	omukazi ng’azannya omupiira gw’omu ngalo: langi y’olususu eya wakati-ekitangaala
 🤾🏽‍♀️	omukazi ng’azannya omupiira gw’omu ngalo: langi y’olususu eya wakati
 🤾🏽‍♀	omukazi ng’azannya omupiira gw’omu ngalo: langi y’olususu eya wakati
 🤾🏾‍♀️	omukazi ng’azannya omupiira gw’omu ngalo: langi y’olususu eya wakati-enzirugavu
@@ -1911,7 +1911,7 @@
 🦵🏼	ekigere: langi y’olususu eya wakati-eyaka
 🦵🏽	okugulu: langi y’olususu eya wakati
 🦵🏾	ekigere: langi y’olususu eya wakati-enzirugavu
-🦵🏿	ekigere: langi y’olususu enzirugavu
+🦵🏿	okugulu: langi y’olususu enzirugavu
 🦶	ekigere
 🦶🏻	ekigere: langi y’olususu eyaka
 🦶🏼	ekigere: langi y’olususu eya wakati-etangaala
@@ -1919,7 +1919,7 @@
 🦶🏾	ekigere: langi y’olususu eya wakati-enzirugavu
 🦶🏿	ekigere: langi y’olususu enzirugavu
 👈	backhand index nga esonga ku kkono
-👈🏻	backhand index esonga ku kkono: langi y’olususu enzirugavu
+👈🏻	backhand index esonga ku kkono: langi y’olususu etangaavu
 👈🏼	backhand index esonga ku kkono: langi y’olususu eya wakati-ekitangaala
 👈🏽	backhand index esonga ku kkono: langi y’olususu eya wakati
 👈🏾	backhand index esonga ku kkono: langi y’olususu eya wakati-enzirugavu
@@ -1932,7 +1932,7 @@
 👉🏿	backhand index esonga ku ddyo: langi y’olususu enzirugavu
 ☝️	index nga esonga waggulu
 ☝	index nga esonga waggulu
-☝🏻	index pointing up: langi y’olususu eyaka
+☝🏻	index pointing up: langi y’olususu etangaavu
 ☝🏼	index pointing up: langi y’olususu eya wakati-ekitangaala
 ☝🏽	index pointing up: langi y’olususu eya wakati
 ☝🏾	index pointing up: langi y’olususu eya wakati-enzirugavu
@@ -1944,13 +1944,13 @@
 👆🏾	backhand index pointing up: langi y’olususu eya wakati-enzirugavu
 👆🏿	backhand index pointing up: langi y’olususu enzirugavu
 🖕	engalo eya wakati
-🖕🏻	engalo eya wakati: langi y’olususu eyaka
-🖕🏼	engalo eya wakati: langi y’olususu eya wakati-ekitangaala
+🖕🏻	engalo eya wakati: langi y’olususu etangaavu
+🖕🏼	engalo eya wakati: langi y’olususu eya wakati-etangaala
 🖕🏽	engalo eya wakati: langi y’olususu eya wakati
 🖕🏾	engalo eya wakati: langi y’olususu eya wakati-enzirugavu
 🖕🏿	engalo eya wakati: langi y’olususu enzirugavu
 👇	backhand index nga esonga wansi
-👇🏻	backhand index pointing down: langi y’olususu eyaka
+👇🏻	backhand index pointing down: langi y’olususu etangaavu
 👇🏼	backhand index pointing down: langi y’olususu eya wakati-ekitangaala
 👇🏽	backhand index pointing down: langi y’olususu eya wakati
 👇🏾	backhand index pointing down: langi y’olususu eya wakati-enzirugavu
@@ -1964,12 +1964,12 @@
 ✌🏿	omukono gw’obuwanguzi: langi y’olususu enzirugavu
 🤞	engalo ezisalagana
 🤞🏻	engalo ezisalasala: langi y’olususu etangaavu
-🤞🏼	engalo ezisalasala: langi y’olususu eya wakati-etangaala
+🤞🏼	engalo ezisalasala: langi y’olususu eya wakati-ekitangaala
 🤞🏽	engalo ezisalasala: langi y’olususu eya wakati
 🤞🏾	engalo ezisalasala: langi y’olususu eya wakati-enzirugavu
 🤞🏿	engalo ezisalasala: langi y’olususu enzirugavu
 🖖	saluti ya vulcan
-🖖🏻	vulcan salute: langi y’olususu eyaka
+🖖🏻	vulcan salute: langi y’olususu etangaavu
 🖖🏼	vulcan salute: langi y’olususu eya wakati-etangaala
 🖖🏽	vulcan salute: langi y’olususu eya wakati
 🖖🏾	vulcan salute: langi y’olususu eya wakati-enzirugavu
@@ -2043,7 +2043,7 @@
 🤜🏿	ekikonde ekitunudde ku ddyo: langi y’olususu enzirugavu
 🤚	esituddwa emabega w’omukono
 🤚🏻	okusitulwa emabega w’omukono: langi y’olususu etangaavu
-🤚🏼	omugongo oguwaniriddwa: langi y’olususu eya wakati-etangaala
+🤚🏼	okusitulwa emabega w’omukono: langi y’olususu eya wakati-ekitangaala
 🤚🏽	okusitulwa emabega w’omukono: langi y’olususu eya wakati
 🤚🏾	okusitulwa emabega w’omukono: langi y’olususu eya wakati-enzirugavu
 🤚🏿	okusitulwa emabega w’omukono: langi y’olususu enzirugavu
@@ -2062,13 +2062,13 @@
 ✍️	omukono gw’okuwandiika
 ✍	omukono gw’okuwandiika
 ✍🏻	omukono gw’okuwandiika: langi y’olususu etangaavu
-✍🏼	omukono gw’okuwandiika: langi y’olususu eya wakati-ekitangaala
+✍🏼	omukono gw’okuwandiika: langi y’olususu eya wakati-eyaka
 ✍🏽	omukono gw’okuwandiika: langi y’olususu eya wakati
 ✍🏾	omukono gw’okuwandiika: langi y’olususu eya wakati-enzirugavu
 ✍🏿	omukono gw’okuwandiika: langi y’olususu enzirugavu
 👏	nga bakuba mu ngalo
 👏🏻	okukuba mu ngalo: langi y’olususu etangaavu
-👏🏼	okukuba mu ngalo: langi y’olususu eya wakati-etangaala
+👏🏼	okukuba mu ngalo: langi y’olususu eya wakati-ekitangaala
 👏🏽	okukuba mu ngalo: langi y’olususu eya wakati
 👏🏾	okukuba mu ngalo: langi y’olususu eya wakati-enzirugavu
 👏🏿	okukuba mu ngalo: langi y’olususu enzirugavu
@@ -2123,10 +2123,10 @@
 👀	amaaso
 👁️	eriiso
 👁	eriiso
-👁️‍🗨️	eriiso mu bubble bw’okwogera
-👁‍🗨️	eriiso mu bubble bw’okwogera
-👁️‍🗨	eriiso mu bubble bw’okwogera
-👁‍🗨	eriiso mu bubble bw’okwogera
+👁️‍🗨️	eriiso mu kiwujjo ky’okwogera
+👁‍🗨️	eriiso mu kiwujjo ky’okwogera
+👁️‍🗨	eriiso mu kiwujjo ky’okwogera
+👁‍🗨	eriiso mu kiwujjo ky’okwogera
 🧠	obwongo
 🦴	eggumba
 🦷	erinnyo
@@ -2329,7 +2329,7 @@
 🌲	omuti oguwangaala buli kiseera
 🌳	omuti ogugwako ebikoola
 🌴	omuti gw’enkindu
-🌵	cactus (cactus) nga kino
+🌵	cactus (cactus) nga bwe kiri
 🌾	ekikuta ky’omuceere
 🌿	omuddo
 ☘️	shamrock ekika kya shamrock
@@ -2381,11 +2381,11 @@
 🥓	bacon bacon
 🍔	hamburger eyitibwa hamburger
 🍟	ebikuta bya french fries
-🍕	pizza ya pizza
+🍕	pizza eya pizza
 🌭	hot dog
 🥪	sandwich
 🌮	taco
-🌯	burrito (burrito) nga
+🌯	burrito (burrito) ey’ekika kya burrito
 🥙	omugaati ogwa fulaati ogujjudde
 🥚	ejji
 🍳	okufumba
@@ -2464,8 +2464,8 @@
 🗻	olusozi fuji
 🏕️	okusimba enkambi
 🏕	okusimba enkambi
-🏖️	bbiici nga eriko amaliba
-🏖	bbiici nga eriko amaliba
+🏖️	bbiici nga mulimu amaliba
+🏖	bbiici nga mulimu amaliba
 🏜️	eddungu
 🏜	eddungu
 🏝️	ekizinga ky’eddungu
@@ -2478,7 +2478,7 @@
 🏛	ekizimbe kya classical
 🏗️	okuzimba ebizimbe
 🏗	okuzimba ebizimbe
-🧱	amatoffaali
+🧱	amabaati
 🏘️	amayumba
 🏘	amayumba
 🏚️	ennyumba esuuliddwa
@@ -2491,7 +2491,7 @@
 🏥	eddwaaliro
 🏦	banka
 🏨	woteeri
-🏩	love hotel
+🏩	omukwano gwa wooteeri
 🏪	edduuka ly’ebintu ebikalu
 🏫	essomero
 🏬	edduuka eddene
@@ -2499,7 +2499,7 @@
 🏯	Olubiri lw’e Japan
 🏰	olubiri
 💒	embaga
-🗼	Omunaala gw’e Tokyo
+🗼	Omunaala gwa Tokyo
 🗽	Ekibumbe ky’Eddembe
 ⛪	ekereziya
 🕌	omuzikiti
@@ -2543,7 +2543,7 @@
 🚎	bbaasi ya trolleybus
 🚐	minibus
 🚑	ambyulensi
-🚒	yingini ezikiza omuliro
+🚒	yingini ezizikiriza omuliro
 🚓	mmotoka ya poliisi
 🚔	mmotoka ya poliisi ejja
 🚕	takisi
@@ -2619,7 +2619,7 @@
 🕒	ssaawa ssatu
 🕞	ssatu ku asatu
 🕓	ssaawa nnya
-🕟	ana mu asatu
+🕟	nnya mu asatu
 🕔	ssaawa ttaano
 🕠	ataano mu asatu
 🕕	ssaawa mukaaga
@@ -2633,7 +2633,7 @@
 🕙	ssaawa kkumi
 🕥	kkumi mu asatu
 🕚	ssaawa kkumi n’emu
-🕦	kkumi na gumu mu asatu
+🕦	kkumi na lumu mu asatu
 🌑	omwezi omuggya
 🌒	waxing omwezi ogw’omwezi ogw’enjuba
 🌓	omwezi gwa kwata y’okusooka
@@ -2644,7 +2644,7 @@
 🌘	omwezi ogw’enjuba ogugenda gukendeera
 🌙	omwezi ogw’enjuba (crescent moon).
 🌚	ffeesi y’omwezi omuggya
-🌛	ffeesi y’omwezi mu kwata y’okusooka
+🌛	kwata y’okusooka ffeesi y’omwezi
 🌜	last quarter ffeesi y’omwezi
 🌡️	ekipima ebbugumu
 🌡	ekipima ebbugumu
@@ -2847,7 +2847,7 @@
 📸	kamera nga erina flash
 📹	kkamera ya vidiyo
 📼	kaseti ya vidiyo
-🔍	endabirwamu enkulu ewanise ku kkono
+🔍	endabirwamu enkulu ng’ewanise ku kkono
 🔎	endabirwamu enkulu ewanise ku ddyo
 🕯️	kandulo
 🕯	kandulo
@@ -2869,7 +2869,7 @@
 📰	olupapula lw’amawulire
 🗞️	olupapula lw’amawulire oluzingiddwa
 🗞	olupapula lw’amawulire oluzingiddwa
-📑	obubonero obulaga obubonero (bookmark tabs).
+📑	tabu eziteekebwako obubonero (bookmark tabs).
 🔖	akabonero akalaga nti
 🏷️	erinnya
 🏷	erinnya
@@ -2927,7 +2927,7 @@
 📈	chati okweyongera
 📉	chati okukendeera
 📊	ekipande ky’ebbaala
-📋	clipboard
+📋	ekipande ekikwata ebifaananyi
 📌	pushpin
 📍	ekyuma ekikuba ekyekulungirivu
 📎	ekikwaso ky’empapula
@@ -3166,11 +3166,11 @@
 ✖️	okukubisaamu okuzitowa x
 ✖	okukubisaamu okuzitowa x
 ❌	akabonero k’omusalaba
-❎	button y’akabonero k’omusalaba
+❎	button y'akabonero k'omusalaba
 ➕	akabonero akazitowa plus
 ➖	akabonero akazitowa minus
 ➗	akabonero k’okugabanyaamu okuzitowa
-➰	loopu eriko enkokola (curly loop).
+➰	olukoba oluzitowa
 ➿	olukoba oluliko emirundi ebiri
 〽️	akabonero k’okukyusakyusa ekitundu
 〽	akabonero k’okukyusakyusa ekitundu
@@ -3222,7 +3222,7 @@
 9⃣	ekisumuluzo: 9
 🔟	ekisumuluzo: 10
 💯	obubonero kikumi
-🔠	okuyingiza ennukuta ennene ez’olulatini
+🔠	okuyingiza ennukuta ennene mu latin
 🔡	input latin ennukuta entono
 🔢	ennamba z’okuyingiza
 🔣	obubonero bw’okuyingiza
@@ -3258,13 +3258,13 @@
 🈶	Ekitabo ky’Olujapaani “si kya bwereere”.
 🈯	Ekitabo ky’Olujapaani “ekiterekeddwa”.
 🉐	Ekitabo ky’Olujapaani “eky’okusuubula”.
-🈹	Ekitabo ky’Olujapaani “eky’okusasula”
+🈹	Ekitabo ky’Olujapaani ekya “discount”.
 🈚	Ekitabo ky’Olujapaani “eky’obwereere”.
 🈲	Ekitabo ky’Olujapaani “ekikugirwa”.
 🉑	Ekitabo ky’Olujapaani “ekikkirizibwa.”
 🈸	Ekitabo ky’Olujapaani “okusaba”
 🈴	Ekitabo ky’Olujapaani “okuyita mu ddaala”.
-🈳	Ekifo ky’Olujapaani “ebifo ebikalu” button
+🈳	Ekifo ky’Olujapaani “eky’obwereere” button
 ㊗️	Abajapaani “okuyozaayoza” button
 ㊗	Abajapaani “okuyozaayoza” button
 ㊙️	Butaamu y’Olujapaani “ey’ekyama”.
@@ -3284,7 +3284,7 @@
 ⬛	omuddugavu ekinene square
 ⬜	enjeru ennene square
 🔶	dayimanda omunene ow’emicungwa
-🔷	dayimanda omunene ogwa bbululu
+🔷	dayimanda omunene owa bbululu
 🔸	dayimanda omutono ow’emicungwa
 🔹	dayimanda omutono owa bbululu
 🔺	enjuyi essatu emmyufu ezisonga waggulu
@@ -3521,7 +3521,7 @@
 🇸🇴	Somalia
 🇸🇷	Suriname eyitibwa Suriname
 🇸🇸	South Sudan
-🇸🇹	São Tomé & Príncipe, abaana abato
+🇸🇹	São Tomé & Príncipe nga bano
 🇸🇻	El Salvador
 🇸🇽	Sint Maarten, omuwandiisi w’ebitabo
 🇸🇾	Busuuli
@@ -3561,7 +3561,7 @@
 🇼🇸	Samoa
 🇽🇰	Kosovo
 🇾🇪	Yemen
-🇾🇹	Mayotte
+🇾🇹	Mayotte, omuwandiisi w’ebitabo
 🇿🇦	South Afrika
 🇿🇲	Zambia
 🇿🇼	Zimbabwe

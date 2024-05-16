@@ -26,7 +26,7 @@
 😐	neutrální tvář
 😑	bezvýrazná tvář
 😶	obličej bez úst
-🙄	obličej s vykulenýma očima
+🙄	tvář s vykulenýma očima
 😏	usměvavý obličej
 😣	vytrvalá tvář
 😥	smutný, ale úlevný obličej
@@ -245,8 +245,8 @@
 👩🏻‍⚖	soudkyně: světlý odstín pleti
 👩🏼‍⚖️	rozhodčí: středně světlý odstín pleti
 👩🏼‍⚖	rozhodčí: středně světlý odstín pleti
-👩🏽‍⚖️	žena rozhodčí: střední odstín pleti
-👩🏽‍⚖	žena rozhodčí: střední odstín pleti
+👩🏽‍⚖️	žena rozhodčí: střední tón pleti
+👩🏽‍⚖	žena rozhodčí: střední tón pleti
 👩🏾‍⚖️	rozhodčí: středně tmavý odstín pleti
 👩🏾‍⚖	rozhodčí: středně tmavý odstín pleti
 👩🏿‍⚖️	soudkyně: tmavý odstín pleti
@@ -272,7 +272,7 @@
 👩‍🍳	žena kuchařka
 👩🏻‍🍳	kuchařka: světlý odstín pleti
 👩🏼‍🍳	kuchařka: středně světlý odstín pleti
-👩🏽‍🍳	kuchařka: střední odstín pleti
+👩🏽‍🍳	kuchařka: střední tón pleti
 👩🏾‍🍳	kuchařka: středně tmavý odstín pleti
 👩🏿‍🍳	žena kuchařka: tmavý odstín pleti
 👨‍🔧	muž mechanik
@@ -390,7 +390,7 @@
 👨🏾‍🚀	muž astronaut: středně tmavý odstín pleti
 👨🏿‍🚀	muž astronaut: tmavý odstín pleti
 👩‍🚀	žena astronautka
-👩🏻‍🚀	astronautka: světlý odstín pleti
+👩🏻‍🚀	žena astronaut: světlý odstín pleti
 👩🏼‍🚀	astronautka: středně světlý odstín pleti
 👩🏽‍🚀	astronautka: střední odstín pleti
 👩🏾‍🚀	žena astronautka: středně tmavý odstín pleti
@@ -448,16 +448,16 @@
 🕵‍♂️	muž detektiv
 🕵️‍♂	muž detektiv
 🕵‍♂	muž detektiv
-🕵🏻‍♂️	mužský detektiv: světlý odstín pleti
-🕵🏻‍♂	mužský detektiv: světlý odstín pleti
+🕵🏻‍♂️	muž detektiv: světlý odstín pleti
+🕵🏻‍♂	muž detektiv: světlý odstín pleti
 🕵🏼‍♂️	muž detektiv: středně světlý odstín pleti
 🕵🏼‍♂	muž detektiv: středně světlý odstín pleti
 🕵🏽‍♂️	mužský detektiv: střední odstín pleti
 🕵🏽‍♂	mužský detektiv: střední odstín pleti
 🕵🏾‍♂️	muž detektiv: středně tmavý odstín pleti
 🕵🏾‍♂	muž detektiv: středně tmavý odstín pleti
-🕵🏿‍♂️	muž detektiv: tmavý odstín pleti
-🕵🏿‍♂	muž detektiv: tmavý odstín pleti
+🕵🏿‍♂️	mužský detektiv: tmavý odstín pleti
+🕵🏿‍♂	mužský detektiv: tmavý odstín pleti
 🕵️‍♀️	žena detektiv
 🕵‍♀️	žena detektiv
 🕵️‍♀	žena detektiv
@@ -478,8 +478,8 @@
 💂🏽	chránič: střední odstín pleti
 💂🏾	chránič: středně tmavý odstín pleti
 💂🏿	stráž: tmavý odstín pleti
-💂‍♂️	muž stráž
-💂‍♂	muž stráž
+💂‍♂️	muž strážný
+💂‍♂	muž strážný
 💂🏻‍♂️	mužský strážce: světlý odstín pleti
 💂🏻‍♂	mužský strážce: světlý odstín pleti
 💂🏼‍♂️	mužský strážce: středně světlý tón pleti
@@ -633,7 +633,7 @@
 👩🏼‍🦰	žena, zrzavé vlasy: středně světlý odstín pleti
 👩🏽‍🦰	žena, zrzavé vlasy: střední odstín pleti
 👩🏾‍🦰	žena, zrzavé vlasy: středně tmavý odstín pleti
-👩🏿‍🦰	žena, červené vlasy: tmavý odstín pleti
+👩🏿‍🦰	žena, zrzavé vlasy: tmavý odstín pleti
 👨‍🦱	muž, kudrnaté vlasy
 👨🏻‍🦱	muž, kudrnaté vlasy: světlý odstín pleti
 👨🏼‍🦱	muž, kudrnaté vlasy: středně světlý odstín pleti
@@ -689,8 +689,8 @@
 🤰🏾	těhotná žena: středně tmavý odstín pleti
 🤰🏿	těhotná žena: tmavý odstín pleti
 🤱	kojení
-🤱🏻	kojení: světlý tón pleti
-🤱🏼	kojení: středně světlý tón pleti
+🤱🏻	kojení: světlý odstín pleti
+🤱🏼	kojení: středně světlý odstín pleti
 🤱🏽	kojení: střední tón pleti
 🤱🏾	kojení: středně tmavý odstín pleti
 🤱🏿	kojení: tmavý odstín pleti
@@ -722,8 +722,8 @@
 🦸‍♀	žena superhrdinka
 🦸🏻‍♀️	žena superhrdinka: světlý odstín pleti
 🦸🏻‍♀	žena superhrdinka: světlý odstín pleti
-🦸🏼‍♀️	žena superhrdinka: středně světlý odstín pleti
-🦸🏼‍♀	žena superhrdinka: středně světlý odstín pleti
+🦸🏼‍♀️	ženská superhrdinka: středně světlý odstín pleti
+🦸🏼‍♀	ženská superhrdinka: středně světlý odstín pleti
 🦸🏽‍♀️	žena superhrdinka: střední odstín pleti
 🦸🏽‍♀	žena superhrdinka: střední odstín pleti
 🦸🏾‍♀️	žena superhrdinka: středně tmavý odstín pleti
@@ -864,7 +864,7 @@
 🧛🏿‍♂	muž upír: tmavý odstín pleti
 🧜	merperson
 🧜🏻	merperson: světlý odstín pleti
-🧜🏼	merperson: středně světlý tón pleti
+🧜🏼	merperson: středně světlý odstín pleti
 🧜🏽	merperson: střední odstín pleti
 🧜🏾	merperson: středně tmavý odstín pleti
 🧜🏿	merperson: tmavý odstín pleti
@@ -880,8 +880,8 @@
 🧜🏾‍♀	mořská panna: středně tmavý odstín pleti
 🧜🏿‍♀️	mořská panna: tmavý odstín pleti
 🧜🏿‍♀	mořská panna: tmavý odstín pleti
-🧜‍♂️	mořský muž
-🧜‍♂	mořský muž
+🧜‍♂️	mořský
+🧜‍♂	mořský
 🧜🏻‍♂️	merman: světlý odstín pleti
 🧜🏻‍♂	merman: světlý odstín pleti
 🧜🏼‍♂️	merman: středně světlý odstín pleti
@@ -980,8 +980,8 @@
 🙎🏾‍♂	muž našpulený: středně tmavý odstín pleti
 🙎🏿‍♂️	muž našpulený: tmavý odstín pleti
 🙎🏿‍♂	muž našpulený: tmavý odstín pleti
-🙎‍♀️	žena našpulená
-🙎‍♀	žena našpulená
+🙎‍♀️	našpulená žena
+🙎‍♀	našpulená žena
 🙎🏻‍♀️	žena našpulená: světlý odstín pleti
 🙎🏻‍♀	žena našpulená: světlý odstín pleti
 🙎🏼‍♀️	žena našpulená: středně světlý tón pleti
@@ -1054,7 +1054,7 @@
 🙆🏿‍♀	žena ukazuje OK: tmavý odstín pleti
 💁	osoba sklápějící ruku
 💁🏻	překlápěcí ruka: světlý odstín pleti
-💁🏼	překlápěcí ruka: středně světlý odstín pleti
+💁🏼	překlápěcí ruka: středně světlý tón pleti
 💁🏽	překlápěcí ruka: střední odstín pleti
 💁🏾	překlápěcí ruka: středně tmavý odstín pleti
 💁🏿	osoba naklánějící se ruka: tmavý odstín pleti
@@ -1064,16 +1064,16 @@
 💁🏻‍♂	muž sklápěcí ruka: světlý odstín pleti
 💁🏼‍♂️	muž sklápěcí ruka: středně světlý odstín pleti
 💁🏼‍♂	muž sklápěcí ruka: středně světlý odstín pleti
-💁🏽‍♂️	muž sklápěcí ruka: střední odstín pleti
-💁🏽‍♂	muž sklápěcí ruka: střední odstín pleti
+💁🏽‍♂️	muž sklápěcí ruka: střední tón pleti
+💁🏽‍♂	muž sklápěcí ruka: střední tón pleti
 💁🏾‍♂️	muž sklápěcí ruka: středně tmavý odstín pleti
 💁🏾‍♂	muž sklápěcí ruka: středně tmavý odstín pleti
 💁🏿‍♂️	muž sklápěcí ruka: tmavý odstín pleti
 💁🏿‍♂	muž sklápěcí ruka: tmavý odstín pleti
 💁‍♀️	žena sklápěcí ruku
 💁‍♀	žena sklápěcí ruku
-💁🏻‍♀️	žena sklápěcí ruka: světlý odstín pleti
-💁🏻‍♀	žena sklápěcí ruka: světlý odstín pleti
+💁🏻‍♀️	žena sklápěcí ruka: světlý tón pleti
+💁🏻‍♀	žena sklápěcí ruka: světlý tón pleti
 💁🏼‍♀️	žena sklápěcí ruka: středně světlý tón pleti
 💁🏼‍♀	žena sklápěcí ruka: středně světlý tón pleti
 💁🏽‍♀️	žena sklápěcí ruka: střední tón pleti
@@ -1104,8 +1104,8 @@
 🙋‍♀	žena zvedla ruku
 🙋🏻‍♀️	žena zvedla ruku: světlý odstín pleti
 🙋🏻‍♀	žena zvedla ruku: světlý odstín pleti
-🙋🏼‍♀️	žena zvedající ruku: středně světlý tón pleti
-🙋🏼‍♀	žena zvedající ruku: středně světlý tón pleti
+🙋🏼‍♀️	žena zvedající ruku: středně světlý odstín pleti
+🙋🏼‍♀	žena zvedající ruku: středně světlý odstín pleti
 🙋🏽‍♀️	žena zvedla ruku: střední tón pleti
 🙋🏽‍♀	žena zvedla ruku: střední tón pleti
 🙋🏾‍♀️	žena zvedající ruku: středně tmavý odstín pleti
@@ -1116,7 +1116,7 @@
 🙇🏻	osoba uklánějící se: světlý odstín pleti
 🙇🏼	osoba uklánějící se: středně světlý odstín pleti
 🙇🏽	osoba uklánějící se: střední odstín pleti
-🙇🏾	osoba uklánějící se: středně tmavý odstín pleti
+🙇🏾	uklánějící se osoba: středně tmavý odstín pleti
 🙇🏿	osoba uklánějící se: tmavý odstín pleti
 🙇‍♂️	muž se uklonil
 🙇‍♂	muž se uklonil
@@ -1198,25 +1198,25 @@
 🤷🏼‍♀	žena krčí rameny: středně světlý tón pleti
 🤷🏽‍♀️	žena krčí rameny: střední tón pleti
 🤷🏽‍♀	žena krčí rameny: střední tón pleti
-🤷🏾‍♀️	woman shrugging: medium-dark skin tone
-🤷🏾‍♀	woman shrugging: medium-dark skin tone
-🤷🏿‍♀️	woman shrugging: dark skin tone
-🤷🏿‍♀	woman shrugging: dark skin tone
+🤷🏾‍♀️	žena krčí rameny: středně tmavý odstín pleti
+🤷🏾‍♀	žena krčí rameny: středně tmavý odstín pleti
+🤷🏿‍♀️	žena krčí rameny: tmavý odstín pleti
+🤷🏿‍♀	žena krčí rameny: tmavý odstín pleti
 💆	osoba, která dostává masáž
-💆🏻	person getting massage: light skin tone
-💆🏼	person getting massage: medium-light skin tone
-💆🏽	person getting massage: medium skin tone
-💆🏾	person getting massage: medium-dark skin tone
-💆🏿	person getting massage: dark skin tone
+💆🏻	osoba, která dostává masáž: světlý tón pleti
+💆🏼	osoba na masáži: středně světlý tón pleti
+💆🏽	osoba, která dostává masáž: střední tón pleti
+💆🏾	osoba na masáži: středně tmavý odstín pleti
+💆🏿	osoba, která dostává masáž: tmavý odstín pleti
 💆‍♂️	muž dostává masáž
 💆‍♂	muž dostává masáž
-💆🏻‍♂️	man getting massage: light skin tone
-💆🏻‍♂	man getting massage: light skin tone
-💆🏼‍♂️	man getting massage: medium-light skin tone
-💆🏼‍♂	man getting massage: medium-light skin tone
-💆🏽‍♂️	man getting massage: medium skin tone
-💆🏽‍♂	man getting massage: medium skin tone
-💆🏾‍♂️	man getting massage: medium-dark skin tone
+💆🏻‍♂️	muž dostává masáž: světlý tón pleti
+💆🏻‍♂	muž dostává masáž: světlý tón pleti
+💆🏼‍♂️	muž dostává masáž: středně světlý tón pleti
+💆🏼‍♂	muž dostává masáž: středně světlý tón pleti
+💆🏽‍♂️	muž dostává masáž: střední tón pleti
+💆🏽‍♂	muž dostává masáž: střední tón pleti
+💆🏾‍♂️	muž dostává masáž: středně tmavý odstín pleti
 💆🏾‍♂	muž dostává masáž: středně tmavý odstín pleti
 💆🏿‍♂️	muž dostává masáž: tmavý odstín pleti
 💆🏿‍♂	muž dostává masáž: tmavý odstín pleti
@@ -1268,8 +1268,8 @@
 🚶🏽	chodící osoba: střední odstín pleti
 🚶🏾	chodící osoba: středně tmavý odstín pleti
 🚶🏿	chodící osoba: tmavý odstín pleti
-🚶‍♂️	muž chodící
-🚶‍♂	muž chodící
+🚶‍♂️	muž chůze
+🚶‍♂	muž chůze
 🚶🏻‍♂️	muž chodící: světlý tón pleti
 🚶🏻‍♂	muž chodící: světlý tón pleti
 🚶🏼‍♂️	muž chodící: středně světlý tón pleti
@@ -1304,8 +1304,8 @@
 🏃🏻‍♂	muž běží: světlý odstín pleti
 🏃🏼‍♂️	muž běží: středně světlý odstín pleti
 🏃🏼‍♂	muž běží: středně světlý odstín pleti
-🏃🏽‍♂️	muž běží: střední odstín pleti
-🏃🏽‍♂	muž běží: střední odstín pleti
+🏃🏽‍♂️	muž běžící: střední odstín pleti
+🏃🏽‍♂	muž běžící: střední odstín pleti
 🏃🏾‍♂️	muž běží: středně tmavý odstín pleti
 🏃🏾‍♂	muž běží: středně tmavý odstín pleti
 🏃🏿‍♂️	muž běží: tmavý odstín pleti
@@ -1314,8 +1314,8 @@
 🏃‍♀	žena běží
 🏃🏻‍♀️	žena běží: světlý tón pleti
 🏃🏻‍♀	žena běží: světlý tón pleti
-🏃🏼‍♀️	žena běží: středně světlý odstín pleti
-🏃🏼‍♀	žena běží: středně světlý odstín pleti
+🏃🏼‍♀️	žena běží: středně světlý tón pleti
+🏃🏼‍♀	žena běží: středně světlý tón pleti
 🏃🏽‍♀️	žena běží: střední odstín pleti
 🏃🏽‍♀	žena běží: střední odstín pleti
 🏃🏾‍♀️	žena běží: středně tmavý odstín pleti
@@ -1494,8 +1494,8 @@
 🏌‍♀	žena golf
 🏌🏻‍♀️	žena golf: světlý odstín pleti
 🏌🏻‍♀	žena golf: světlý odstín pleti
-🏌🏼‍♀️	žena golf: středně světlý tón pleti
-🏌🏼‍♀	žena golf: středně světlý tón pleti
+🏌🏼‍♀️	žena golf: středně světlý odstín pleti
+🏌🏼‍♀	žena golf: středně světlý odstín pleti
 🏌🏽‍♀️	žena golf: střední odstín pleti
 🏌🏽‍♀	žena golf: střední odstín pleti
 🏌🏾‍♀️	žena golf: středně tmavý odstín pleti
@@ -1556,8 +1556,8 @@
 🚣🏻‍♀	žena veslice: světlý odstín pleti
 🚣🏼‍♀️	ženská veslice: středně světlý odstín pleti
 🚣🏼‍♀	ženská veslice: středně světlý odstín pleti
-🚣🏽‍♀️	ženská veslice: střední odstín pleti
-🚣🏽‍♀	ženská veslice: střední odstín pleti
+🚣🏽‍♀️	žena veslice: střední odstín pleti
+🚣🏽‍♀	žena veslice: střední odstín pleti
 🚣🏾‍♀️	ženská veslice: středně tmavý odstín pleti
 🚣🏾‍♀	ženská veslice: středně tmavý odstín pleti
 🚣🏿‍♀️	žena veslice: tmavý odstín pleti
@@ -1567,7 +1567,7 @@
 🏊🏼	plavající osoba: středně světlý tón pleti
 🏊🏽	plavající osoba: střední tón pleti
 🏊🏾	plavající osoba: středně tmavý odstín pleti
-🏊🏿	plavající osoba: tmavý odstín pleti
+🏊🏿	plavající se osoba: tmavý odstín pleti
 🏊‍♂️	muž plavání
 🏊‍♂	muž plavání
 🏊🏻‍♂️	muž plavání: světlý tón pleti
@@ -1598,7 +1598,7 @@
 ⛹🏼	skákací míč osoby: středně světlý odstín pleti
 ⛹🏽	skákací míč osoby: střední odstín pleti
 ⛹🏾	skákací míč osoby: středně tmavý odstín pleti
-⛹🏿	osoba skákací míč: tmavý odstín pleti
+⛹🏿	skákací míč osoby: tmavý odstín pleti
 ⛹️‍♂️	muž skákací míč
 ⛹‍♂️	muž skákací míč
 ⛹️‍♂	muž skákací míč
@@ -1619,8 +1619,8 @@
 ⛹‍♀	žena skákací míč
 ⛹🏻‍♀️	žena skákací míč: světlý odstín pleti
 ⛹🏻‍♀	žena skákací míč: světlý odstín pleti
-⛹🏼‍♀️	skákací míč pro ženy: středně světlý odstín pleti
-⛹🏼‍♀	skákací míč pro ženy: středně světlý odstín pleti
+⛹🏼‍♀️	ženský skákací míč: středně světlý odstín pleti
+⛹🏼‍♀	ženský skákací míč: středně světlý odstín pleti
 ⛹🏽‍♀️	žena skákací míč: střední odstín pleti
 ⛹🏽‍♀	žena skákací míč: střední odstín pleti
 ⛹🏾‍♀️	žena skákací míč: středně tmavý odstín pleti
@@ -1630,7 +1630,7 @@
 🏋️	osoba zvedání závaží
 🏋	osoba zvedání závaží
 🏋🏻	osoba zvedající závaží: světlý tón pleti
-🏋🏼	osoba zvedající závaží: středně světlý tón pleti
+🏋🏼	osoba, která zvedá závaží: středně světlý tón pleti
 🏋🏽	osoba zvedající závaží: střední tón pleti
 🏋🏾	osoba zvedající závaží: středně tmavý odstín pleti
 🏋🏿	osoba zvedající závaží: tmavý odstín pleti
@@ -1728,7 +1728,7 @@
 🏍	motocykl
 🤸	osoba přehánějící se
 🤸🏻	osoba, která se pohybuje: světlý odstín pleti
-🤸🏼	váhavý člověk: středně světlý odstín pleti
+🤸🏼	náklonnost osoby: středně světlý odstín pleti
 🤸🏽	náklonnost osoby: střední odstín pleti
 🤸🏾	osoba: středně tmavý odstín pleti
 🤸🏿	převoz: tmavý odstín pleti
@@ -1736,8 +1736,8 @@
 🤸‍♂	muž přehánějící se
 🤸🏻‍♂️	muž přehánějící se: světlý odstín pleti
 🤸🏻‍♂	muž přehánějící se: světlý odstín pleti
-🤸🏼‍♂️	muž překotný: středně světlý odstín pleti
-🤸🏼‍♂	muž překotný: středně světlý odstín pleti
+🤸🏼‍♂️	mužský převoz: středně světlý odstín pleti
+🤸🏼‍♂	mužský převoz: středně světlý odstín pleti
 🤸🏽‍♂️	mužský převoz: střední odstín pleti
 🤸🏽‍♂	mužský převoz: střední odstín pleti
 🤸🏾‍♂️	mužský tahák: středně tmavý odstín pleti
@@ -1824,7 +1824,7 @@
 🤹	člověk žongluje
 🤹🏻	osoba, která žongluje: světlý odstín pleti
 🤹🏼	osoba, která žongluje: středně světlý odstín pleti
-🤹🏽	osoba, která žongluje: střední odstín pleti
+🤹🏽	osoba žonglování: střední odstín pleti
 🤹🏾	osoba žonglující: středně tmavý odstín pleti
 🤹🏿	osoba žonglování: tmavý odstín pleti
 🤹‍♂️	muž žonglování
@@ -1926,8 +1926,8 @@
 👈🏿	ukazováček směřující doleva: tmavý odstín pleti
 👉	bekhendový index směřující doprava
 👉🏻	backhand index směřující doprava: světlý odstín pleti
-👉🏼	backhand index směřující doprava: středně světlý tón pleti
-👉🏽	ukazováček směřující vpravo: střední odstín pleti
+👉🏼	backhand index směřující doprava: středně světlý odstín pleti
+👉🏽	backhand index směřující doprava: střední odstín pleti
 👉🏾	backhand index směřující doprava: středně tmavý odstín pleti
 👉🏿	backhand index směřující doprava: tmavý odstín pleti
 ☝️	index směřující nahoru
@@ -1944,7 +1944,7 @@
 👆🏾	backhand index směřující nahoru: středně tmavý odstín pleti
 👆🏿	backhand index směřující nahoru: tmavý odstín pleti
 🖕	prostředníček
-🖕🏻	prostředníček: světlý tón pleti
+🖕🏻	prostředníček: světlý odstín pleti
 🖕🏼	prostředníček: středně světlý tón pleti
 🖕🏽	prostředníček: střední odstín pleti
 🖕🏾	prostředníček: středně tmavý odstín pleti
@@ -1965,7 +1965,7 @@
 🤞	zkřížené prsty
 🤞🏻	zkřížené prsty: světlý odstín pleti
 🤞🏼	zkřížené prsty: středně světlý tón pleti
-🤞🏽	zkřížené prsty: střední tón pleti
+🤞🏽	zkřížené prsty: střední odstín pleti
 🤞🏾	zkřížené prsty: středně tmavý odstín pleti
 🤞🏿	zkřížené prsty: tmavý odstín pleti
 🖖	vulkánský pozdrav
@@ -1978,12 +1978,12 @@
 🤘🏻	znamení rohů: světlý odstín pleti
 🤘🏼	znamení rohů: středně světlý odstín pleti
 🤘🏽	znamení rohů: střední odstín pleti
-🤘🏾	znak rohů: středně tmavý odstín pleti
+🤘🏾	znamení rohů: středně tmavý odstín pleti
 🤘🏿	znamení rohů: tmavý odstín pleti
 🤙	zavolej mi ruku
 🤙🏻	zavolej mi ruku: světlý odstín pleti
 🤙🏼	call me hand: středně světlý tón pleti
-🤙🏽	call me hand: střední odstín pleti
+🤙🏽	call me hand: střední tón pleti
 🤙🏾	call me hand: středně tmavý odstín pleti
 🤙🏿	zavolej mi ruku: tmavý odstín pleti
 🖐️	ruka s roztaženými prsty
@@ -1993,7 +1993,7 @@
 🖐🏽	ruka s roztaženými prsty: střední odstín pleti
 🖐🏾	ruka s roztaženými prsty: středně tmavý odstín pleti
 🖐🏿	ruka s roztaženými prsty: tmavý odstín pleti
-✋	zdviženou ruku
+✋	zdvižená ruka
 ✋🏻	zvednutá ruka: světlý odstín pleti
 ✋🏼	zvednutá ruka: středně světlý tón pleti
 ✋🏽	zvednutá ruka: střední tón pleti
@@ -2019,7 +2019,7 @@
 👎🏿	palec dolů: tmavý odstín pleti
 ✊	zvednutá pěst
 ✊🏻	zvednutá pěst: světlý odstín pleti
-✊🏼	zvednutá pěst: středně světlý odstín pleti
+✊🏼	zvednutá pěst: středně světlý tón pleti
 ✊🏽	zvednutá pěst: střední odstín pleti
 ✊🏾	zvednutá pěst: středně tmavý odstín pleti
 ✊🏿	zvednutá pěst: tmavý odstín pleti
@@ -2031,7 +2031,7 @@
 👊🏿	blížící se pěst: tmavý odstín pleti
 🤛	levou pěstí
 🤛🏻	pěst směřující doleva: světlý odstín pleti
-🤛🏼	pěst směřující doleva: středně světlý tón pleti
+🤛🏼	pěst směřující doleva: středně světlý odstín pleti
 🤛🏽	pěst směřující doleva: střední odstín pleti
 🤛🏾	pěst směřující doleva: středně tmavý odstín pleti
 🤛🏿	pěst směřující doleva: tmavý odstín pleti
@@ -2043,7 +2043,7 @@
 🤜🏿	pěst směřující vpravo: tmavý odstín pleti
 🤚	zvednutý hřbet ruky
 🤚🏻	zvednutý hřbet ruky: světlý odstín pleti
-🤚🏼	zvednutý hřbet ruky: středně světlý odstín pleti
+🤚🏼	zvednutý hřbet ruky: středně světlý tón pleti
 🤚🏽	zvednutý hřbet ruky: střední tón pleti
 🤚🏾	zvednutý hřbet ruky: středně tmavý odstín pleti
 🤚🏿	zvednutý hřbet ruky: tmavý odstín pleti
@@ -2057,7 +2057,7 @@
 🤟🏻	gesto lásky: světlý odstín pleti
 🤟🏼	gesto lásky: středně světlý odstín pleti
 🤟🏽	gesto lásky: střední odstín pleti
-🤟🏾	gesto love-you: středně tmavý odstín pleti
+🤟🏾	gesto lásky: středně tmavý odstín pleti
 🤟🏿	gesto lásky: tmavý odstín pleti
 ✍️	psací rukou
 ✍	psací rukou
@@ -2228,7 +2228,7 @@
 🦄	obličej jednorožce
 🦓	zebra
 🦌	Jelen
-🐮	kravský obličej
+🐮	tvář krávy
 🐂	vůl
 🐃	vodní buvol
 🐄	kráva
@@ -2265,7 +2265,7 @@
 🦃	krocan
 🐔	kuře
 🐓	kohout
-🐣	líhnoucí se mládě
+🐣	líhnoucí se kuřátko
 🐤	mládě kuřátko
 🐥	kuřátko směřující dopředu
 🐦	pták
@@ -2292,7 +2292,7 @@
 🐬	delfín
 🐟	Ryba
 🐠	tropická ryba
-🐡	blowfish
+🐡	nafukovací ryba
 🦈	žralok
 🐙	chobotnice
 🐚	spirálový plášť
@@ -2449,7 +2449,7 @@
 🔪	kuchyňský nůž
 🏺	amfora
 🌍	zeměkoule zobrazující evropu afriku
-🌎	zeměkoule zobrazující ameriku
+🌎	zeměkoule ukazující Ameriku
 🌏	zeměkoule zobrazující Asii a Austrálii
 🌐	zeměkoule s poledníky
 🗺️	mapa světa
@@ -2600,7 +2600,7 @@
 🛎️	zvonek poslíček
 🛎	zvonek poslíček
 🧳	zavazadlo
-⌛	přesýpací hodiny hotové
+⌛	přesýpací hodiny hotovo
 ⏳	přesýpací hodiny neudělané
 ⌚	hodinky
 ⏰	budík
@@ -2640,11 +2640,11 @@
 🌔	dorůstající gibbous měsíc
 🌕	úplněk
 🌖	ubývající gibbous měsíc
-🌗	poslední čtvrt měsíce
+🌗	poslední čtvrtina měsíce
 🌘	ubývající srpek měsíce
 🌙	srpek měsíce
 🌚	tvář novoluní
-🌛	tvář první čtvrtiny měsíce
+🌛	tvář první čtvrti měsíce
 🌜	tvář poslední čtvrtiny měsíce
 🌡️	teploměr
 🌡	teploměr
@@ -3125,7 +3125,7 @@
 ⏮️	tlačítko poslední stopy
 ⏮	tlačítko poslední stopy
 🔼	tlačítko nahoru
-⏫	tlačítko zrychlení
+⏫	tlačítko zrychlit
 🔽	tlačítko dolů
 ⏬	tlačítko rychlého dolů
 ⏸️	tlačítko pauza
@@ -3200,8 +3200,8 @@
 #⃣	klíčenka: #
 *️⃣	klíčenka: *
 *⃣	klíčenka: *
-0️⃣	klávesa: 0
-0⃣	klávesa: 0
+0️⃣	klíčenka: 0
+0⃣	klíčenka: 0
 1️⃣	klíčenka: 1
 1⃣	klíčenka: 1
 2️⃣	klíčenka: 2
@@ -3265,8 +3265,8 @@
 🈸	Japonské tlačítko „aplikace“.
 🈴	Japonské tlačítko pro úspěšné složení
 🈳	Japonské tlačítko „volné místo“.
-㊗️	Japonské tlačítko „blahopřání“.
-㊗	Japonské tlačítko „blahopřání“.
+㊗️	Japonské tlačítko "blahopřání".
+㊗	Japonské tlačítko "blahopřání".
 ㊙️	Japonské tlačítko „tajné“.
 ㊙	Japonské tlačítko „tajné“.
 🈺	Japonské tlačítko „otevřeno pro podnikání“.
@@ -3513,7 +3513,7 @@
 🇸🇬	Singapur
 🇸🇭	Svatá Helena
 🇸🇮	Slovinsko
-🇸🇯	Svalbard & Jan Mayen
+🇸🇯	Svalbard a Jan Mayen
 🇸🇰	Slovensko
 🇸🇱	Sierra Leone
 🇸🇲	San Marino

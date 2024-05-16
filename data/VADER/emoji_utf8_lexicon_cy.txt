@@ -82,7 +82,7 @@
 😇	wyneb gwenu gyda halo
 🤠	wyneb het cowboi
 🥳	wyneb parti
-🥴	wyneb gwae
+🥴	wyneb gwayw
 🥺	wyneb pledio
 🤥	wyneb gorwedd
 🤫	wyneb shushing
@@ -105,15 +105,15 @@
 😺	wyneb cath yn gwenu
 😸	wyneb cath yn gwenu gyda llygaid gwenu
 😹	wyneb cath gyda dagrau o lawenydd
-😻	wyneb cath gwenu gyda chalon-llygaid
+😻	wyneb cath yn gwenu gyda llygaid calon
 😼	wyneb cath gyda gwên wyllt
 😽	wyneb cath mochyn
 🙀	wyneb cath blinedig
 😿	wyneb cath crio
 😾	pwdu wyneb cath
 🙈	mwnci gweld-dim drwg
-🙉	clywed-dim-drwg mwnci
-🙊	siarad-dim-drwg mwnci
+🙉	clyw-dim-drwg mwnci
+🙊	siarad-dim-mwnci drwg
 🏻	tôn croen ysgafn
 🏼	tôn croen canolig-golau
 🏽	tôn croen canolig
@@ -282,7 +282,7 @@
 👨🏾‍🔧	mecanic dyn: medium-dark skin tone
 👨🏿‍🔧	mecanic dyn: dark skin tone
 👩‍🔧	mecanic benywaidd
-👩🏻‍🔧	mecanic menyw: ton croen golau
+👩🏻‍🔧	mecanic menyw: tôn croen ysgafn
 👩🏼‍🔧	mecanic menyw: tôn croen canolig-ysgafn
 👩🏽‍🔧	mecanic menyw: tôn croen canolig
 👩🏾‍🔧	mecanic menyw: tôn croen canolig-dywyll
@@ -294,7 +294,7 @@
 👨🏾‍🏭	gweithiwr ffatri dyn: medium-dark skin tone
 👨🏿‍🏭	gweithiwr ffatri dyn: dark skin tone
 👩‍🏭	gwraig gweithiwr ffatri
-👩🏻‍🏭	menyw gweithiwr ffatri: light skin tone
+👩🏻‍🏭	gwraig gweithiwr ffatri: light skin tone
 👩🏼‍🏭	menyw gweithiwr ffatri: medium-light skin tone
 👩🏽‍🏭	gwraig gweithiwr ffatri: medium skin tone
 👩🏾‍🏭	menyw gweithiwr ffatri: medium-dark skin tone
@@ -367,8 +367,8 @@
 👨🏼‍✈	peilot dyn: medium-light skin tone
 👨🏽‍✈️	peilot dyn: medium skin tone
 👨🏽‍✈	peilot dyn: medium skin tone
-👨🏾‍✈️	peilot dyn: medium- dark skin tone
-👨🏾‍✈	peilot dyn: medium- dark skin tone
+👨🏾‍✈️	peilot dyn: medium-dark skin tone
+👨🏾‍✈	peilot dyn: medium-dark skin tone
 👨🏿‍✈️	peilot dyn: dark skin tone
 👨🏿‍✈	peilot dyn: dark skin tone
 👩‍✈️	peilot benywaidd
@@ -404,7 +404,7 @@
 👩‍🚒	dynes diffoddwr tân
 👩🏻‍🚒	dynes diffoddwr tân: light skin tone
 👩🏼‍🚒	dynes diffoddwr tân: medium-light skin tone
-👩🏽‍🚒	diffoddwr tân menyw: medium skin tone
+👩🏽‍🚒	dynes diffoddwr tân: medium skin tone
 👩🏾‍🚒	dynes diffoddwr tân: medium-dark skin tone
 👩🏿‍🚒	dynes diffoddwr tân: dark skin tone
 👮	plismon
@@ -417,8 +417,8 @@
 👮‍♂	swyddog heddlu dyn
 👮🏻‍♂️	heddwas dyn: light skin tone
 👮🏻‍♂	heddwas dyn: light skin tone
-👮🏼‍♂️	swyddog heddlu dyn: medium-light skin tone
-👮🏼‍♂	swyddog heddlu dyn: medium-light skin tone
+👮🏼‍♂️	heddwas dyn: medium-light skin tone
+👮🏼‍♂	heddwas dyn: medium-light skin tone
 👮🏽‍♂️	heddwas dyn: medium skin tone
 👮🏽‍♂	heddwas dyn: medium skin tone
 👮🏾‍♂️	heddwas dyn: medium-dark skin tone
@@ -506,7 +506,7 @@
 👷🏻	gweithiwr adeiladu: light skin tone
 👷🏼	gweithiwr adeiladu: medium-light skin tone
 👷🏽	gweithiwr adeiladu: medium skin tone
-👷🏾	gweithiwr adeiladu: canolig-tywyll croen tôn
+👷🏾	gweithiwr adeiladu: medium- dark skin tone
 👷🏿	gweithiwr adeiladu: dark skin tone
 👷‍♂️	gweithiwr adeiladu dyn
 👷‍♂	gweithiwr adeiladu dyn
@@ -522,14 +522,14 @@
 👷🏿‍♂	gweithiwr adeiladu dyn: dark skin tone
 👷‍♀️	gwraig weithiwr adeiladu
 👷‍♀	gwraig weithiwr adeiladu
-👷🏻‍♀️	gwraig adeiladu gweithiwr: light skin tone
-👷🏻‍♀	gwraig adeiladu gweithiwr: light skin tone
+👷🏻‍♀️	gwraig weithiwr adeiladu: light skin tone
+👷🏻‍♀	gwraig weithiwr adeiladu: light skin tone
 👷🏼‍♀️	gwraig adeiladu gweithiwr: medium-light skin tone
 👷🏼‍♀	gwraig adeiladu gweithiwr: medium-light skin tone
 👷🏽‍♀️	gweithiwr adeiladu menyw: tôn croen canolig
 👷🏽‍♀	gweithiwr adeiladu menyw: tôn croen canolig
 👷🏾‍♀️	gwraig adeiladu gweithiwr: medium-dark skin tone
-👷🏾‍♀	gweithiwr adeiladu menyw: tôn croen canolig-dywyll
+👷🏾‍♀	gwraig adeiladu gweithiwr: medium-dark skin tone
 👷🏿‍♀️	gwraig weithiwr adeiladu: dark skin tone
 👷🏿‍♀	gwraig weithiwr adeiladu: dark skin tone
 🤴	tywysog
@@ -547,7 +547,7 @@
 👳	person yn gwisgo twrban
 👳🏻	person yn gwisgo twrban: light skin tone
 👳🏼	person yn gwisgo twrban: medium-light skin tone
-👳🏽	person yn gwisgo twrban: tôn croen canolig
+👳🏽	person yn gwisgo twrban: medium skin tone
 👳🏾	person yn gwisgo twrban: medium-dark skin tone
 👳🏿	person yn gwisgo twrban: dark skin tone
 👳‍♂️	dyn yn gwisgo twrban
@@ -582,7 +582,7 @@
 👲🏿	dyn gyda chap Tsieineaidd: tôn croen tywyll
 🧕	gwraig gyda sgarff pen
 🧕🏻	gwraig â sgarff pen: light skin tone
-🧕🏼	gwraig â sgarff pen: medium-light skin tone
+🧕🏼	gwraig gyda sgarff pen: medium-light skin tone
 🧕🏽	menyw â sgarff pen: tôn croen canolig
 🧕🏾	gwraig â sgarff pen: medium-dark skin tone
 🧕🏿	gwraig â sgarff pen: dark skin tone
@@ -628,7 +628,7 @@
 👨🏽‍🦰	dyn, gwallt coch: medium skin tone
 👨🏾‍🦰	dyn, gwallt coch: medium-dark skin tone
 👨🏿‍🦰	dyn, gwallt coch: dark skin tone
-👩‍🦰	gwraig, gwallt coch
+👩‍🦰	menyw, gwallt coch
 👩🏻‍🦰	menyw, gwallt coch: light skin tone
 👩🏼‍🦰	menyw, gwallt coch: medium-light skin tone
 👩🏽‍🦰	menyw, gwallt coch: medium skin tone
@@ -650,7 +650,7 @@
 👨🏻‍🦲	dyn, moel: light skin tone
 👨🏼‍🦲	dyn, moel: medium-light skin tone
 👨🏽‍🦲	dyn, moel: medium skin tone
-👨🏾‍🦲	dyn, moel: medium- dark skin tone
+👨🏾‍🦲	dyn, moel: medium-dark skin tone
 👨🏿‍🦲	dyn, moel: dark skin tone
 👩‍🦲	gwraig, moel
 👩🏻‍🦲	gwraig, moel: light skin tone
@@ -720,8 +720,8 @@
 🦸🏿	archarwr: dark skin tone
 🦸‍♀️	archarwr benywaidd
 🦸‍♀	archarwr benywaidd
-🦸🏻‍♀️	archarwr benywaidd: tôn croen ysgafn
-🦸🏻‍♀	archarwr benywaidd: tôn croen ysgafn
+🦸🏻‍♀️	archarwr benywaidd: tôn croen golau
+🦸🏻‍♀	archarwr benywaidd: tôn croen golau
 🦸🏼‍♀️	archarwr benywaidd: tôn croen canolig-ysgafn
 🦸🏼‍♀	archarwr benywaidd: tôn croen canolig-ysgafn
 🦸🏽‍♀️	archarwr benywaidd: tôn croen canolig
@@ -833,7 +833,7 @@
 🧚🏿‍♂️	tylwyth teg dyn: dark skin tone
 🧚🏿‍♂	tylwyth teg dyn: dark skin tone
 🧛	fampir
-🧛🏻	fampir: light skin tone
+🧛🏻	fampir: tôn croen golau
 🧛🏼	fampir: tôn croen canolig-ysgafn
 🧛🏽	fampir: tôn croen canolig
 🧛🏾	fampir: tôn croen canolig-dywyll
@@ -846,7 +846,7 @@
 🧛🏼‍♀	fampir fenyw: tôn croen canolig-ysgafn
 🧛🏽‍♀️	fampir fenyw: tôn croen canolig
 🧛🏽‍♀	fampir fenyw: tôn croen canolig
-🧛🏾‍♀️	fampir benywaidd: tôn croen canolig-dywyll
+🧛🏾‍♀️	fampir fenyw: tôn croen canolig-dywyll
 🧛🏾‍♀	fampir fenyw: tôn croen canolig-dywyll
 🧛🏿‍♀️	fampir fenyw: tôn croen tywyll
 🧛🏿‍♀	fampir fenyw: tôn croen tywyll
@@ -890,11 +890,11 @@
 🧜🏽‍♂	merman: tôn croen canolig
 🧜🏾‍♂️	merman: medium-dark skin tone
 🧜🏾‍♂	merman: medium-dark skin tone
-🧜🏿‍♂️	merman: tôn croen tywyll
-🧜🏿‍♂	merman: tôn croen tywyll
+🧜🏿‍♂️	merman: dark skin tone
+🧜🏿‍♂	merman: dark skin tone
 🧝	coblyn
 🧝🏻	elf: light skin tone
-🧝🏼	Elf: tôn croen canolig-ysgafn
+🧝🏼	elf: tôn croen canolig-ysgafn
 🧝🏽	Elf: tôn croen canolig
 🧝🏾	Elf: tôn croen canolig-tywyll
 🧝🏿	elf: dark skin tone
@@ -1024,12 +1024,12 @@
 🙅🏿‍♀	menyw ystumio NA: tôn croen tywyll
 🙆	person yn ystumio'n iawn
 🙆🏻	person yn ystumio'n iawn: tôn croen golau
-🙆🏼	person yn ystumio'n iawn: tôn croen golau canolig
+🙆🏼	person yn ystumio'n iawn: tôn croen canolig-ysgafn
 🙆🏽	person yn ystumio'n iawn: tôn croen canolig
 🙆🏾	person yn ystumio'n iawn: tôn croen canolig-tywyll
 🙆🏿	person yn ystumio'n iawn: tôn croen tywyll
 🙆‍♂️	dyn yn ystumio'n iawn
-🙆‍♂	dyn yn ystumio'n iawn
+🙆‍♂	dyn ystumio iawn
 🙆🏻‍♂️	dyn ystumio'n iawn: tôn croen golau
 🙆🏻‍♂	dyn ystumio'n iawn: tôn croen golau
 🙆🏼‍♂️	dyn ystumio'n iawn: tôn croen canolig-ysgafn
@@ -1050,12 +1050,12 @@
 🙆🏽‍♀	menyw yn ystumio'n iawn: tôn croen canolig
 🙆🏾‍♀️	menyw yn ystumio'n iawn: tôn croen canolig-tywyll
 🙆🏾‍♀	menyw yn ystumio'n iawn: tôn croen canolig-tywyll
-🙆🏿‍♀️	menyw yn ystumio'n iawn: tôn croen tywyll
-🙆🏿‍♀	menyw yn ystumio'n iawn: tôn croen tywyll
+🙆🏿‍♀️	menyw ystumio'n iawn: tôn croen tywyll
+🙆🏿‍♀	menyw ystumio'n iawn: tôn croen tywyll
 💁	person yn tipio llaw
 💁🏻	tipio llaw person: light skin tone
 💁🏼	person tipio llaw: medium-light skin tone
-💁🏽	person yn tipio llaw: medium skin tone
+💁🏽	tipio llaw person: tôn croen canolig
 💁🏾	person tipio llaw: medium-dark skin tone
 💁🏿	person yn tipio llaw: dark skin tone
 💁‍♂️	dyn yn tipio llaw
@@ -1143,7 +1143,7 @@
 🙇🏿‍♀️	menyw yn ymgrymu: dark skin tone
 🙇🏿‍♀	menyw yn ymgrymu: dark skin tone
 🤦	wyneb palmwydd person
-🤦🏻	palmwydd wyneb person: tôn croen ysgafn
+🤦🏻	palmwydd wyneb person: ton croen golau
 🤦🏼	palmwydd wyneb person: tôn croen canolig-ysgafn
 🤦🏽	palmwydd wyneb person: tôn croen canolig
 🤦🏾	palmwydd wyneb person: tôn croen canolig-dywyll
@@ -1156,8 +1156,8 @@
 🤦🏼‍♂	palmwydd wyneb dyn: tôn croen canolig-ysgafn
 🤦🏽‍♂️	palmwydd wyneb dyn: tôn croen canolig
 🤦🏽‍♂	palmwydd wyneb dyn: tôn croen canolig
-🤦🏾‍♂️	palmwydd wyneb dyn: tôn croen canolig-tywyll
-🤦🏾‍♂	palmwydd wyneb dyn: tôn croen canolig-tywyll
+🤦🏾‍♂️	palmwydd wyneb dyn: tôn croen canolig-dywyll
+🤦🏾‍♂	palmwydd wyneb dyn: tôn croen canolig-dywyll
 🤦🏿‍♂️	palmwydd wyneb dyn: tôn croen tywyll
 🤦🏿‍♂	palmwydd wyneb dyn: tôn croen tywyll
 🤦‍♀️	menyw palmwydd wyneb
@@ -1190,8 +1190,8 @@
 🤷🏾‍♂	crebachu dyn: medium-dark skin tone
 🤷🏿‍♂️	dyn shrugging: tywyll croen tôn
 🤷🏿‍♂	dyn shrugging: tywyll croen tôn
-🤷‍♀️	gwraig shrugging
-🤷‍♀	gwraig shrugging
+🤷‍♀️	fenyw shrugging
+🤷‍♀	fenyw shrugging
 🤷🏻‍♀️	fenyw shrugging: light skin tone
 🤷🏻‍♀	fenyw shrugging: light skin tone
 🤷🏼‍♀️	fenyw shrugging: medium-light skin tone
@@ -1228,8 +1228,8 @@
 💆🏼‍♀	menyw yn cael tylino: tôn croen canolig-ysgafn
 💆🏽‍♀️	menyw yn cael tylino: tôn croen canolig
 💆🏽‍♀	menyw yn cael tylino: tôn croen canolig
-💆🏾‍♀️	menyw yn cael tylino: tôn croen canolig-dywyll
-💆🏾‍♀	menyw yn cael tylino: tôn croen canolig-dywyll
+💆🏾‍♀️	menyw yn cael tylino: medium- dark skin tone
+💆🏾‍♀	menyw yn cael tylino: medium- dark skin tone
 💆🏿‍♀️	gwraig yn cael tylino: dark skin tone
 💆🏿‍♀	gwraig yn cael tylino: dark skin tone
 💇	person yn cael torri gwallt
@@ -1240,14 +1240,14 @@
 💇🏿	person yn cael torri ei wallt: dark skin tone
 💇‍♂️	dyn yn cael torri ei wallt
 💇‍♂	dyn yn cael torri ei wallt
-💇🏻‍♂️	dyn yn cael torri gwallt: light skin tone
-💇🏻‍♂	dyn yn cael torri gwallt: light skin tone
+💇🏻‍♂️	dyn yn cael torri ei wallt: light skin tone
+💇🏻‍♂	dyn yn cael torri ei wallt: light skin tone
 💇🏼‍♂️	dyn yn cael torri ei wallt: medium-light skin tone
 💇🏼‍♂	dyn yn cael torri ei wallt: medium-light skin tone
-💇🏽‍♂️	dyn yn cael torri gwallt: medium skin tone
-💇🏽‍♂	dyn yn cael torri gwallt: medium skin tone
-💇🏾‍♂️	dyn yn cael torri gwallt: medium-dark skin tone
-💇🏾‍♂	dyn yn cael torri gwallt: medium-dark skin tone
+💇🏽‍♂️	dyn yn cael torri ei wallt: medium skin tone
+💇🏽‍♂	dyn yn cael torri ei wallt: medium skin tone
+💇🏾‍♂️	dyn yn cael torri ei wallt: medium-dark skin tone
+💇🏾‍♂	dyn yn cael torri ei wallt: medium-dark skin tone
 💇🏿‍♂️	dyn yn cael torri ei wallt: dark skin tone
 💇🏿‍♂	dyn yn cael torri ei wallt: dark skin tone
 💇‍♀️	menyw yn cael torri gwallt
@@ -1316,13 +1316,13 @@
 🏃🏻‍♀	gwraig yn rhedeg: light skin tone
 🏃🏼‍♀️	menyw yn rhedeg: medium-light skin tone
 🏃🏼‍♀	menyw yn rhedeg: medium-light skin tone
-🏃🏽‍♀️	gwraig yn rhedeg: medium skin tone
-🏃🏽‍♀	gwraig yn rhedeg: medium skin tone
+🏃🏽‍♀️	menyw yn rhedeg: medium skin tone
+🏃🏽‍♀	menyw yn rhedeg: medium skin tone
 🏃🏾‍♀️	menyw yn rhedeg: medium-dark skin tone
 🏃🏾‍♀	menyw yn rhedeg: medium-dark skin tone
 🏃🏿‍♀️	gwraig yn rhedeg: dark skin tone
 🏃🏿‍♀	gwraig yn rhedeg: dark skin tone
-💃	menyw yn dawnsio
+💃	gwraig yn dawnsio
 💃🏻	menyw yn dawnsio: light skin tone
 💃🏼	menyw yn dawnsio: medium-light skin tone
 💃🏽	menyw yn dawnsio: medium skin tone
@@ -1341,7 +1341,7 @@
 👯‍♀	merched gyda chlustiau cwningen
 🧖	person mewn ystafell stêm
 🧖🏻	person mewn ystafell ager: tôn croen golau
-🧖🏼	person mewn ystafell stêm: tôn croen canolig-ysgafn
+🧖🏼	person mewn ystafell ager: tôn croen canolig-ysgafn
 🧖🏽	person mewn ystafell stêm: tôn croen canolig
 🧖🏾	person mewn ystafell ager: tôn croen canolig-dywyll
 🧖🏿	person mewn ystafell ager: tôn croen tywyll
@@ -1351,8 +1351,8 @@
 🧖🏻‍♀	gwraig mewn stafell ager: light skin tone
 🧖🏼‍♀️	gwraig mewn stafell ager: medium-light skin tone
 🧖🏼‍♀	gwraig mewn stafell ager: medium-light skin tone
-🧖🏽‍♀️	gwraig mewn ystafell stêm: tôn croen canolig
-🧖🏽‍♀	gwraig mewn ystafell stêm: tôn croen canolig
+🧖🏽‍♀️	menyw mewn ystafell stêm: tôn croen canolig
+🧖🏽‍♀	menyw mewn ystafell stêm: tôn croen canolig
 🧖🏾‍♀️	gwraig mewn stafell ager: medium-dark skin tone
 🧖🏾‍♀	gwraig mewn stafell ager: medium-dark skin tone
 🧖🏿‍♀️	gwraig mewn stafell ager: dark skin tone
@@ -1365,12 +1365,12 @@
 🧖🏼‍♂	dyn mewn stafell ager: medium-light skin tone
 🧖🏽‍♂️	dyn mewn ystafell stêm: tôn croen canolig
 🧖🏽‍♂	dyn mewn ystafell stêm: tôn croen canolig
-🧖🏾‍♂️	dyn mewn stafell ager: canolig-tywyll croen tôn
-🧖🏾‍♂	dyn mewn stafell ager: canolig-tywyll croen tôn
+🧖🏾‍♂️	dyn mewn ystafell ager: tôn croen canolig-dywyll
+🧖🏾‍♂	dyn mewn ystafell ager: tôn croen canolig-dywyll
 🧖🏿‍♂️	dyn mewn ystafell ager: tôn croen tywyll
 🧖🏿‍♂	dyn mewn ystafell ager: tôn croen tywyll
 🧗	person yn dringo
-🧗🏻	dringo person: light skin tone
+🧗🏻	person yn dringo: light skin tone
 🧗🏼	dringo person: medium-light skin tone
 🧗🏽	dringo person: tôn croen canolig
 🧗🏾	dringo person: medium-dark skin tone
@@ -1379,10 +1379,10 @@
 🧗‍♀	menyw yn dringo
 🧗🏻‍♀️	menyw yn dringo: light skin tone
 🧗🏻‍♀	menyw yn dringo: light skin tone
-🧗🏼‍♀️	menyw dringo: medium-light skin tone
-🧗🏼‍♀	menyw dringo: medium-light skin tone
-🧗🏽‍♀️	dringo menyw: tôn croen canolig
-🧗🏽‍♀	dringo menyw: tôn croen canolig
+🧗🏼‍♀️	menyw yn dringo: medium-light skin tone
+🧗🏼‍♀	menyw yn dringo: medium-light skin tone
+🧗🏽‍♀️	menyw dringo: tôn croen canolig
+🧗🏽‍♀	menyw dringo: tôn croen canolig
 🧗🏾‍♀️	dringo menyw: medium-dark skin tone
 🧗🏾‍♀	dringo menyw: medium-dark skin tone
 🧗🏿‍♀️	menyw yn dringo: dark skin tone
@@ -1447,7 +1447,7 @@
 🕴🏼	dyn mewn siwt levitating: medium-light skin tone
 🕴🏽	dyn mewn siwt levitating: medium skin tone
 🕴🏾	dyn mewn siwt levitating: medium-dark skin tone
-🕴🏿	dyn mewn siwt levitating: dark skin tone
+🕴🏿	dyn mewn siwt levitating: tywyll croen tôn
 🗣️	siarad pen
 🗣	siarad pen
 👤	Penddelw mewn silwét
@@ -1482,8 +1482,8 @@
 🏌🏻‍♂	dyn yn golffio: light skin tone
 🏌🏼‍♂️	golffio dyn: medium-light skin tone
 🏌🏼‍♂	golffio dyn: medium-light skin tone
-🏌🏽‍♂️	golff dyn: tôn croen canolig
-🏌🏽‍♂	golff dyn: tôn croen canolig
+🏌🏽‍♂️	golffio dyn: medium skin tone
+🏌🏽‍♂	golffio dyn: medium skin tone
 🏌🏾‍♂️	golffio dyn: medium-dark skin tone
 🏌🏾‍♂	golffio dyn: medium-dark skin tone
 🏌🏿‍♂️	dyn yn golffio: dark skin tone
@@ -1496,8 +1496,8 @@
 🏌🏻‍♀	menyw golffio: light skin tone
 🏌🏼‍♀️	menyw golffio: medium-light skin tone
 🏌🏼‍♀	menyw golffio: medium-light skin tone
-🏌🏽‍♀️	menyw golffio: tôn croen canolig
-🏌🏽‍♀	menyw golffio: tôn croen canolig
+🏌🏽‍♀️	menyw golffio: medium skin tone
+🏌🏽‍♀	menyw golffio: medium skin tone
 🏌🏾‍♀️	menyw golffio: medium-dark skin tone
 🏌🏾‍♀	menyw golffio: medium-dark skin tone
 🏌🏿‍♀️	menyw golffio: dark skin tone
@@ -1746,8 +1746,8 @@
 🤸🏿‍♂	dyn cartwheeling: dark skin tone
 🤸‍♀️	gwraig cartwheeling
 🤸‍♀	gwraig cartwheeling
-🤸🏻‍♀️	merch cartwheeling: light skin tone
-🤸🏻‍♀	merch cartwheeling: light skin tone
+🤸🏻‍♀️	gwraig cartwheeling: light skin tone
+🤸🏻‍♀	gwraig cartwheeling: light skin tone
 🤸🏼‍♀️	fenyw cartwheeling: medium-light skin tone
 🤸🏼‍♀	fenyw cartwheeling: medium-light skin tone
 🤸🏽‍♀️	menyw cartwheeling: tôn croen canolig
@@ -1770,7 +1770,7 @@
 🤽‍♂️	dyn yn chwarae polo dŵr
 🤽‍♂	dyn yn chwarae polo dŵr
 🤽🏻‍♂️	dyn yn chwarae polo dŵr: light skin tone
-🤽🏻‍♂	dyn yn chwarae polo dwr: light skin tone
+🤽🏻‍♂	dyn yn chwarae polo dŵr: light skin tone
 🤽🏼‍♂️	dyn yn chwarae polo dŵr: medium-light skin tone
 🤽🏼‍♂	dyn yn chwarae polo dŵr: medium-light skin tone
 🤽🏽‍♂️	dyn yn chwarae polo dŵr: medium skin tone
@@ -1785,11 +1785,11 @@
 🤽🏻‍♀	gwraig yn chwarae polo dwr: light skin tone
 🤽🏼‍♀️	gwraig yn chwarae polo dŵr: medium-light skin tone
 🤽🏼‍♀	gwraig yn chwarae polo dŵr: medium-light skin tone
-🤽🏽‍♀️	menyw yn chwarae polo dŵr: tôn croen canolig
+🤽🏽‍♀️	gwraig yn chwarae polo dŵr: medium skin tone
 🤽🏽‍♀	menyw yn chwarae polo dŵr: tôn croen canolig
 🤽🏾‍♀️	gwraig yn chwarae polo dŵr: medium-dark skin tone
 🤽🏾‍♀	gwraig yn chwarae polo dŵr: medium-dark skin tone
-🤽🏿‍♀️	gwraig yn chwarae polo dŵr: dark skin tone
+🤽🏿‍♀️	gwraig yn chwarae polo dwr: dark skin tone
 🤽🏿‍♀	gwraig yn chwarae polo dŵr: dark skin tone
 🤾	person yn chwarae pêl law
 🤾🏻	person yn chwarae pêl law: light skin tone
@@ -1822,7 +1822,7 @@
 🤾🏿‍♀️	gwraig yn chwarae pêl law: dark skin tone
 🤾🏿‍♀	gwraig yn chwarae pêl law: dark skin tone
 🤹	person jyglo
-🤹🏻	person yn jyglo: light skin tone
+🤹🏻	person jyglo: light skin tone
 🤹🏼	person jyglo: medium-light skin tone
 🤹🏽	person jyglo: tôn croen canolig
 🤹🏾	person yn jyglo: medium-dark skin tone
@@ -1839,8 +1839,8 @@
 🤹🏾‍♂	jyglo dyn: medium-dark skin tone
 🤹🏿‍♂️	dyn jyglo: dark skin tone
 🤹🏿‍♂	dyn jyglo: dark skin tone
-🤹‍♀️	gwraig jyglo
-🤹‍♀	gwraig jyglo
+🤹‍♀️	menyw jyglo
+🤹‍♀	menyw jyglo
 🤹🏻‍♀️	menyw jyglo: light skin tone
 🤹🏻‍♀	menyw jyglo: light skin tone
 🤹🏼‍♀️	menyw jyglo: medium-light skin tone
@@ -1928,7 +1928,7 @@
 👉🏻	mynegai cefn llaw yn pwyntio i'r dde: tôn croen ysgafn
 👉🏼	mynegai cefn llaw yn pwyntio i'r dde: tôn croen canolig-ysgafn
 👉🏽	mynegai cefn llaw yn pwyntio i'r dde: tôn croen canolig
-👉🏾	mynegai cefn llaw yn pwyntio i'r dde: tôn croen canolig-tywyll
+👉🏾	mynegai cefn yn pwyntio i'r dde: tôn croen canolig-tywyll
 👉🏿	mynegai cefn llaw yn pwyntio i'r dde: tôn croen tywyll
 ☝️	pwyntio mynegai i fyny
 ☝	pwyntio mynegai i fyny
@@ -1985,7 +1985,7 @@
 🤙🏼	ffoniwch fi llaw: medium-light skin tone
 🤙🏽	ffoniwch fi law: tôn croen canolig
 🤙🏾	ffoniwch fi law: tôn croen canolig-tywyll
-🤙🏿	ffoniwch fi law: dark skin tone
+🤙🏿	galw fi law: dark skin tone
 🖐️	llaw gyda bysedd ar led
 🖐	llaw gyda bysedd ar led
 🖐🏻	llaw â bysedd ar led: light skin tone
@@ -2000,7 +2000,7 @@
 ✋🏾	llaw wedi'i chodi: medium-dark skin tone
 ✋🏿	llaw wedi’i chodi: dark skin tone
 👌	Llaw iawn
-👌🏻	Llaw iawn: tôn croen ysgafn
+👌🏻	Llaw iawn: tôn croen golau
 👌🏼	Llaw iawn: arlliw croen canolig-golau
 👌🏽	Llaw iawn: arlliw croen canolig
 👌🏾	Llaw iawn: arlliw croen canolig-tywyll
@@ -2008,7 +2008,7 @@
 👍	bodiau i fyny
 👍🏻	bodiau i fyny: light skin tone
 👍🏼	bodiau i fyny: medium-light skin tone
-👍🏽	bodiau i fyny: tôn croen canolig
+👍🏽	bodiau i fyny: medium skin tone
 👍🏾	bodiau i fyny: medium- dark skin tone
 👍🏿	bodiau i fyny: dark skin tone
 👎	bodiau i lawr
@@ -2025,7 +2025,7 @@
 ✊🏿	dwrn codi: dark skin tone
 👊	dwrn sy'n dod tuag atoch
 👊🏻	dwrn sy'n dod tuag atoch: light skin tone
-👊🏼	dwrn sy'n dod tuag atoch: tôn croen canolig-ysgafn
+👊🏼	dwrn sy'n dod tuag atoch: medium-light skin tone
 👊🏽	dwrn sy'n dod tuag atoch: tôn croen canolig
 👊🏾	dwrn sy'n dod tuag atoch: tôn croen canolig-dywyll
 👊🏿	dwrn sy'n dod tuag atoch: dark skin tone
@@ -2044,7 +2044,7 @@
 🤚	cefn llaw wedi'i godi
 🤚🏻	cefn llaw wedi'i godi: light skin tone
 🤚🏼	cefn llaw wedi'i godi: medium-light skin tone
-🤚🏽	cefn llaw wedi'i godi: tôn croen canolig
+🤚🏽	cefn llaw wedi'i godi: medium skin tone
 🤚🏾	cefn llaw wedi'i godi: medium-dark skin tone
 🤚🏿	cefn llaw wedi'i godi: dark skin tone
 👋	chwifio llaw
@@ -2195,7 +2195,7 @@
 🥾	cist heicio
 🥿	esgid fflat menyw
 👠	esgid sodlau uchel
-👡	sandal gwraig
+👡	sandal menyw
 👢	cist gwraig
 👑	goron
 👒	het gwraig
@@ -2336,7 +2336,7 @@
 ☘	shamrock
 🍀	meillion pedair dail
 🍁	deilen masarn
-🍂	dail syrthiedig
+🍂	deilen syrthiedig
 🍃	dail yn fluttering yn gwynt
 🍇	grawnwin
 🍈	melon
@@ -2468,8 +2468,8 @@
 🏖	traeth gydag ymbarél
 🏜️	anialwch
 🏜	anialwch
-🏝️	ynys anialwch
-🏝	ynys anialwch
+🏝️	ynys anial
+🏝	ynys anial
 🏞️	Parc Cenedlaethol
 🏞	Parc Cenedlaethol
 🏟️	stadiwm
@@ -2621,7 +2621,7 @@
 🕓	pedwar o'r gloch
 🕟	pedwar ar ddeg ar hugain
 🕔	pump o'r gloch
-🕠	pump ar ddeg ar hugain
+🕠	pump-tri deg
 🕕	chwech o'r gloch
 🕡	hanner awr wedi chwech
 🕖	saith o'r gloch
@@ -2635,7 +2635,7 @@
 🕚	unarddeg o'r gloch
 🕦	unarddeg-tri deg
 🌑	lleuad newydd
-🌒	cwyr lleuad cilgant
+🌒	lleuad cilgant cwyr
 🌓	lleuad chwarter cyntaf
 🌔	lleuad gibbous cwyr
 🌕	lleuad llawn
@@ -2657,7 +2657,7 @@
 🌠	seren saethu
 ☁️	cwmwl
 ☁	cwmwl
-⛅	haul tu ôl i'r cwmwl
+⛅	haul tu ôl i gwmwl
 ⛈️	cwmwl gyda mellt a glaw
 ⛈	cwmwl gyda mellt a glaw
 🌤️	haul tu ôl i gwmwl bach
@@ -2895,7 +2895,7 @@
 📫	blwch post caeedig gyda baner wedi'i chodi
 📪	blwch post caeedig gyda baner wedi'i gostwng
 📬	blwch post agored gyda baner wedi'i chodi
-📭	blwch post agored gyda baner is
+📭	blwch post agored gyda baner wedi'i gostwng
 📮	blwch post
 🗳️	blwch pleidleisio gyda phleidlais
 🗳	blwch pleidleisio gyda phleidlais
@@ -3111,7 +3111,7 @@
 ⛎	Ophiuchus
 🔀	botwm siffrwd traciau
 🔁	botwm ailadrodd
-🔂	botwm sengl ailadrodd
+🔂	ailadrodd botwm sengl
 ▶️	botwm chwarae
 ▶	botwm chwarae
 ⏩	botwm cyflym-ymlaen
@@ -3230,18 +3230,18 @@
 🅰️	Botwm (math o waed)
 🅰	Botwm (math o waed)
 🆎	Botwm AB (math o waed)
-🅱️	Botwm B (math gwaed)
-🅱	Botwm B (math gwaed)
+🅱️	Botwm B (math o waed)
+🅱	Botwm B (math o waed)
 🆑	botwm CL
-🆒	Botwm COOL
+🆒	botwm COOL
 🆓	botwm AM DDIM
 ℹ️	gwybodaeth
 ℹ	gwybodaeth
-🆔	ID botwm
+🆔	botwm ID
 Ⓜ️	cylchu M
 Ⓜ	cylchu M
 🆕	botwm NEWYDD
-🆖	NG botwm
+🆖	Botwm NG
 🅾️	Botwm O (math gwaed)
 🅾	Botwm O (math gwaed)
 🆗	OK botwm
@@ -3259,7 +3259,7 @@
 🈯	Botwm “cadw” Japaneaidd
 🉐	Botwm “bargen” Japaneaidd
 🈹	Botwm “gostyngiad” Japaneaidd
-🈚	Botwm “am ddim” Japaneaidd
+🈚	Botwm Japaneaidd “am ddim”.
 🈲	Botwm “gwaharddedig” Japaneaidd
 🉑	Botwm “derbyniol” Japaneaidd
 🈸	Botwm “cais” Japaneaidd
@@ -3336,7 +3336,7 @@
 🇧🇱	Barthélemy St
 🇧🇲	Bermuda
 🇧🇳	Brunei
-🇧🇴	Bolivia
+🇧🇴	Bolifia
 🇧🇶	Iseldiroedd Caribïaidd
 🇧🇷	Brasil
 🇧🇸	Bahamas
@@ -3492,7 +3492,7 @@
 🇵🇭	Pilipinas
 🇵🇰	Pacistan
 🇵🇱	Gwlad Pwyl
-🇵🇲	St Pierre a Miquelon
+🇵🇲	St. Pierre a Miquelon
 🇵🇳	Ynysoedd Pitcairn
 🇵🇷	Puerto Rico
 🇵🇸	Tiriogaethau Palestina

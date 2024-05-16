@@ -5,7 +5,7 @@
 😃	aurpegi irribarretsu begi handiekin
 😄	aurpegi irribarretsu begi irribarrez
 😅	aurpegi irribarretsu izerdiz
-😆	irribarretsu aurpegia bizkorra
+😆	irribarretsu aurpegia zurbil
 😉	aurpegia keinu eginez
 😊	aurpegi irribarretsu begi irribarretsuekin
 😋	aurpegia janaria dastatzen
@@ -56,7 +56,7 @@
 😟	kezkatuta dagoen aurpegia
 😤	aurpegia sudurretik lurrunarekin
 😢	negar aurpegia
-😭	ozenki negar aurpegia
+😭	ozen negar aurpegia
 😦	aurpegia zimurtuta aho zabalik
 😧	larritasun aurpegia
 😨	aurpegi beldurgarria
@@ -79,7 +79,7 @@
 🤢	goragale aurpegia
 🤮	aurpegiko oka
 🤧	doministiku aurpegia
-😇	aurpegi irribarretsu haloarekin
+😇	aurpegi irribarretsua aureoarekin
 🤠	cowboy kapela aurpegia
 🥳	parranda aurpegia
 🥴	aurpegia zoratuta
@@ -129,7 +129,7 @@
 🧒🏻	umea: azal-tonu argia
 🧒🏼	umea: azal-tonu ertaina-argia
 🧒🏽	umea: azal-tonu ertaina
-🧒🏾	umea: azal-tonu ilun ertainekoa
+🧒🏾	umea: azal-tonu ertaine-iluna
 🧒🏿	umea: azal-tonua iluna
 👦	mutila
 👦🏻	mutila: azal-tonu argia
@@ -151,7 +151,7 @@
 🧑🏿	heldua: azal-tonua iluna
 👨	gizon
 👨🏻	gizona: azal-tonu argia
-👨🏼	gizona: azal-tonu ertain-argia
+👨🏼	gizona: azal-tonu ertainekoa
 👨🏽	gizona: bitarteko azal-tonua
 👨🏾	gizona: azal-tonu ilun ertainekoa
 👨🏿	gizona: azal iluna
@@ -163,14 +163,14 @@
 👩🏿	emakumea: azal iluna
 🧓	adineko heldua
 🧓🏻	heldua: azal-tonu argia
-🧓🏼	adineko heldua: azal-tonu ertaina-argia
-🧓🏽	heldua: azal-tonu ertaina
-🧓🏾	adineko heldua: azal-tonu ertain-iluna
+🧓🏼	adineko heldua: azal-tonu ertain-argia
+🧓🏽	heldua: bitarteko azal-tonua
+🧓🏾	adineko heldua: azal-tonu ilun ertainekoa
 🧓🏿	adineko heldua: azal-tonua iluna
 👴	agure
-👴🏻	agure: azala argia
-👴🏼	agurea: azal-tonu ertain-argia
-👴🏽	agurea: azal-tonu ertainekoa
+👴🏻	agurea: azala argia
+👴🏼	agurea: azal-tonu ertaineko argia
+👴🏽	agurea: bitarteko azal-tonua
 👴🏾	agurea: azal-tonu ilun ertainekoa
 👴🏿	agurea: azal iluna
 👵	emakume zaharra
@@ -193,8 +193,8 @@
 👨🏿‍⚕	gizon osasun langilea: azal iluna
 👩‍⚕️	emakumezko osasun langilea
 👩‍⚕	emakumezko osasun langilea
-👩🏻‍⚕️	emakumezko osasun langilea: azaleko tonu argia
-👩🏻‍⚕	emakumezko osasun langilea: azaleko tonu argia
+👩🏻‍⚕️	emakumezko osasun langilea: azal-tonu argia
+👩🏻‍⚕	emakumezko osasun langilea: azal-tonu argia
 👩🏼‍⚕️	emakumezko osasun langilea: azal-tonu ertain-argia
 👩🏼‍⚕	emakumezko osasun langilea: azal-tonu ertain-argia
 👩🏽‍⚕️	emakumezko osasun langilea: bitarteko azal-tonua
@@ -213,7 +213,7 @@
 👩🏻‍🎓	emakume ikaslea: azal-tonu argia
 👩🏼‍🎓	emakume ikaslea: azal-tonu ertaina-argia
 👩🏽‍🎓	emakume ikaslea: bitarteko azal-tonua
-👩🏾‍🎓	emakume ikaslea: azal-tonu ertainekoa
+👩🏾‍🎓	emakume ikaslea: azal-tonu ilun ertainekoa
 👩🏿‍🎓	emakume ikaslea: azal iluna
 👨‍🏫	gizon irakaslea
 👨🏻‍🏫	gizon irakaslea: azal argia
@@ -249,16 +249,16 @@
 👩🏽‍⚖	emakume epailea: bitarteko azal-tonua
 👩🏾‍⚖️	emakume epailea: azal-tonu ilun ertainekoa
 👩🏾‍⚖	emakume epailea: azal-tonu ilun ertainekoa
-👩🏿‍⚖️	emakume epailea: azal iluna
-👩🏿‍⚖	emakume epailea: azal iluna
+👩🏿‍⚖️	emakume epaile: azal iluna
+👩🏿‍⚖	emakume epaile: azal iluna
 👨‍🌾	gizon nekazaria
 👨🏻‍🌾	gizon baserritarra: azal-tonu argia
 👨🏼‍🌾	gizon nekazaria: azal-tonu ertain-argia
 👨🏽‍🌾	gizon baserritarra: bitarteko azal-tonua
-👨🏾‍🌾	gizon baserritarra: azal-tonu ilun ertainekoa
+👨🏾‍🌾	gizon nekazaria: azal-tonu ilun ertainekoa
 👨🏿‍🌾	gizon baserritarra: azal iluna
 👩‍🌾	emakume baserritarra
-👩🏻‍🌾	emakume baserritarra: azal argia
+👩🏻‍🌾	emakume baserritarra: azal-tonu argia
 👩🏼‍🌾	emakume baserritarra: azal-tonu ertaina-argia
 👩🏽‍🌾	emakume baserritarra: bitarteko azal-tonua
 👩🏾‍🌾	emakume baserritarra: azal-tonu ilun ertainekoa
@@ -273,13 +273,13 @@
 👩🏻‍🍳	emakume sukaldaria: azal-tonu argia
 👩🏼‍🍳	emakume sukaldaria: azal-tonu ertainekoa
 👩🏽‍🍳	emakume sukaldaria: bitarteko azal-tonua
-👩🏾‍🍳	emakume sukaldaria: azal-tonu ertainekoa
+👩🏾‍🍳	emakume sukaldaria: azal-tonu ilun ertainekoa
 👩🏿‍🍳	emakume sukaldaria: azal iluna
 👨‍🔧	gizon mekanikaria
 👨🏻‍🔧	gizon mekanikoa: azal-tonu argia
 👨🏼‍🔧	gizon mekanikaria: azal-tonu ertain-argia
 👨🏽‍🔧	gizon mekanikaria: bitarteko azal-tonua
-👨🏾‍🔧	gizon mekanikaria: azal-tonu ilun ertainekoa
+👨🏾‍🔧	gizon mekanikoa: azal-tonu ilun ertainekoa
 👨🏿‍🔧	gizon mekanikoa: azal iluna
 👩‍🔧	emakume mekanikaria
 👩🏻‍🔧	emakume mekanikaria: azal-tonu argia
@@ -289,9 +289,9 @@
 👩🏿‍🔧	emakume mekanikaria: azal iluna
 👨‍🏭	gizon fabrikako langilea
 👨🏻‍🏭	gizon fabrikako langilea: azal-tonu argia
-👨🏼‍🏭	gizon fabrikako langilea: azal-tonu ertaineko argia
+👨🏼‍🏭	gizon fabrikako langilea: azal-tonu ertaina-argia
 👨🏽‍🏭	gizon fabrikako langilea: bitarteko azal-tonua
-👨🏾‍🏭	gizon fabrikako langilea: azal-tonu ilun ertainekoa
+👨🏾‍🏭	gizon fabrikako langilea: azal-tonu ilun-ertaina
 👨🏿‍🏭	gizon fabrikako langilea: azal iluna
 👩‍🏭	emakume lantegiko langilea
 👩🏻‍🏭	emakume lantegiko langilea: azal-tonu argia
@@ -345,7 +345,7 @@
 👩🏻‍🎤	emakume abeslaria: azal-tonu argia
 👩🏼‍🎤	emakume abeslaria: azal-tonu ertain-argia
 👩🏽‍🎤	emakume abeslaria: bitarteko azal-tonua
-👩🏾‍🎤	emakume abeslaria: azal-tonu ilun-ertaina
+👩🏾‍🎤	emakume abeslaria: azal-tonu ilun ertainekoa
 👩🏿‍🎤	emakume abeslaria: azal iluna
 👨‍🎨	gizon artista
 👨🏻‍🎨	gizon artista: azal-tonu argia
@@ -482,8 +482,8 @@
 💂‍♂	gizon guardia
 💂🏻‍♂️	gizon guardia: azal-tonu argia
 💂🏻‍♂	gizon guardia: azal-tonu argia
-💂🏼‍♂️	gizon guardia: azal-tonu ertaineko argia
-💂🏼‍♂	gizon guardia: azal-tonu ertaineko argia
+💂🏼‍♂️	gizon guardia: azal-tonu ertain-argia
+💂🏼‍♂	gizon guardia: azal-tonu ertain-argia
 💂🏽‍♂️	gizon guardia: bitarteko azal-tonua
 💂🏽‍♂	gizon guardia: bitarteko azal-tonua
 💂🏾‍♂️	gizon guardia: azal-tonu ilun ertainekoa
@@ -496,8 +496,8 @@
 💂🏻‍♀	emakume guarda: azal-tonu argia
 💂🏼‍♀️	emakume zaindaria: azal-tonu ertainekoa
 💂🏼‍♀	emakume zaindaria: azal-tonu ertainekoa
-💂🏽‍♀️	emakume guarda: bitarteko azal-tonua
-💂🏽‍♀	emakume guarda: bitarteko azal-tonua
+💂🏽‍♀️	emakume zaindaria: bitarteko azal-tonua
+💂🏽‍♀	emakume zaindaria: bitarteko azal-tonua
 💂🏾‍♀️	emakume zaindaria: azal-tonu ilun ertainekoa
 💂🏾‍♀	emakume zaindaria: azal-tonu ilun ertainekoa
 💂🏿‍♀️	emakume zaindaria: azal iluna
@@ -533,10 +533,10 @@
 👷🏿‍♀️	eraikuntzako emakume langilea: azal iluna
 👷🏿‍♀	eraikuntzako emakume langilea: azal iluna
 🤴	printzea
-🤴🏻	printze: azal-tonu argia
-🤴🏼	printzea: azal-tonu ertain-argia
+🤴🏻	printzea: azal-tonu argia
+🤴🏼	printzea: azal-tonu ertaineko argia
 🤴🏽	printzea: bitarteko azal-tonua
-🤴🏾	printzea: azal-tonu ilun ertainekoa
+🤴🏾	printzea: azal-tonu ertaineko iluna
 🤴🏿	printzea: azal iluna
 👸	printzesa
 👸🏻	printzesa: azal-tonu argia
@@ -546,7 +546,7 @@
 👸🏿	printzesa: azal iluna
 👳	turbantea jantzita daraman pertsona
 👳🏻	turbantea daraman pertsona: azal-tonu argia
-👳🏼	turbantea daraman pertsona: azal-tonu ertaineko argia
+👳🏼	turbantea daraman pertsona: azal-tonu ertain-argia
 👳🏽	turbantea daraman pertsona: bitarteko azal-tonua
 👳🏾	turbantea daraman pertsona: azal-tonu ilun-ertaina
 👳🏿	turbantea daraman pertsona: azal iluna
@@ -566,8 +566,8 @@
 👳‍♀	turbantea jantzita duen emakumea
 👳🏻‍♀️	turbantea daraman emakumea: azal argia
 👳🏻‍♀	turbantea daraman emakumea: azal argia
-👳🏼‍♀️	turbantea daraman emakumea: azal-tonu ertain-argia
-👳🏼‍♀	turbantea daraman emakumea: azal-tonu ertain-argia
+👳🏼‍♀️	turbantea daraman emakumea: azal-tonu ertaineko argia
+👳🏼‍♀	turbantea daraman emakumea: azal-tonu ertainekoa
 👳🏽‍♀️	turbantea daraman emakumea: bitarteko azal-tonua
 👳🏽‍♀	turbantea daraman emakumea: bitarteko azal-tonua
 👳🏾‍♀️	turbantea daraman emakumea: azal-tonu ilun-ertaina
@@ -575,10 +575,10 @@
 👳🏿‍♀️	turbantea daraman emakumea: azal iluna
 👳🏿‍♀	turbantea daraman emakumea: azal iluna
 👲	txinatar txapela duen gizona
-👲🏻	txinatar txanodun gizona: azal-tonu argia
+👲🏻	txapel txinatarra duen gizona: azal-tonu argia
 👲🏼	txapel txinatarra duen gizona: azal-tonu ertainekoa
 👲🏽	txapel txinatarra duen gizona: bitarteko azal-tonua
-👲🏾	txapel txinatarra duen gizona: azal-tonu ilun ertainekoa
+👲🏾	txinatar txanodun gizona: azal-tonu ilun ertainekoa
 👲🏿	txinatar txanodun gizona: azal iluna
 🧕	buruko zapia duen emakumea
 🧕🏻	buruko zapia duen emakumea: azal argia
@@ -587,7 +587,7 @@
 🧕🏾	buruko zapia duen emakumea: azal-tonu ilun-ertaina
 🧕🏿	buruko zapia duen emakumea: azal iluna
 🧔	pertsona bizardun
-🧔🏻	bizarduna: azal-tonu argia
+🧔🏻	bizarduna: azal-tonua
 🧔🏼	bizarduna: azal-tonu ertainekoa
 🧔🏽	bizarduna: bitarteko azal-tonua
 🧔🏾	bizarduna: azal-tonu ertainekoa
@@ -624,25 +624,25 @@
 👱🏿‍♀	emakume ilehoria: azal iluna
 👨‍🦰	gizona, ile gorria
 👨🏻‍🦰	gizona, ilegorria: azal-tonu argia
-👨🏼‍🦰	gizona, ilegorria: azal-tonu ertaineko argia
+👨🏼‍🦰	gizona, ile gorria: azal-tonu ertain-argia
 👨🏽‍🦰	gizona, ilegorria: bitarteko azal-tonua
-👨🏾‍🦰	gizona, ile gorria: azal-tonu ilun ertainekoa
+👨🏾‍🦰	gizona, ilegorria: azal-tonu ilun ertainekoa
 👨🏿‍🦰	gizona, ile gorria: azal iluna
 👩‍🦰	emakumea, ile gorria
 👩🏻‍🦰	emakumea, ilegorria: azal-tonua argia
 👩🏼‍🦰	emakumea, ile gorria: azal-tonu ertainekoa
-👩🏽‍🦰	emakumea, ilegorria: bitarteko azal-tonua
+👩🏽‍🦰	emakumea, ile gorria: bitarteko azal-tonua
 👩🏾‍🦰	emakumea, ile gorria: azal-tonu ilun-ertaina
 👩🏿‍🦰	emakumea, ile gorria: azal iluna
 👨‍🦱	gizona, ile kizkurduna
 👨🏻‍🦱	gizona, ile kizkurra: azal-tonu argia
-👨🏼‍🦱	gizona, ile kizkurra: azal-tonu ertain-argia
+👨🏼‍🦱	gizona, ile kizkurra: azal-tonu ertaineko argia
 👨🏽‍🦱	gizona, ile kizkurra: bitarteko azal-tonua
 👨🏾‍🦱	gizona, ile kizkurra: azal-tonu ilun ertainekoa
 👨🏿‍🦱	gizona, ile kizkurra: azal iluna
 👩‍🦱	emakumea, ile kizkurduna
 👩🏻‍🦱	emakumea, ile kizkurra: azal-tonu argia
-👩🏼‍🦱	emakumea, ile kizkurra: azal-tonu ertain-argia
+👩🏼‍🦱	emakumea, ile kizkurra: azal-tonu ertainekoa
 👩🏽‍🦱	emakumea, ile kizkurra: bitarteko azal-tonua
 👩🏾‍🦱	emakumea, ile kizkurra: azal-tonu ilun-ertaina
 👩🏿‍🦱	emakumea, ile kizkurra: azal iluna
@@ -656,13 +656,13 @@
 👩🏻‍🦲	emakumea, burusoila: azal-tonu argia
 👩🏼‍🦲	emakumea, burusoila: azal-tonu ertain-argia
 👩🏽‍🦲	emakumea, burusoila: bitarteko azal-tonua
-👩🏾‍🦲	emakumea, burusoila: azal-tonu ilun ertainekoa
+👩🏾‍🦲	emakumea, burusoila: azal-tonu ilun-ertaina
 👩🏿‍🦲	emakumea, burusoila: azal iluna
 👨‍🦳	gizona, ile zuria
 👨🏻‍🦳	gizona, ile zuria: azal-tonu argia
 👨🏼‍🦳	gizona, ile zuria: azal-tonu ertaineko argia
 👨🏽‍🦳	gizona, ile zuria: bitarteko azal-tonua
-👨🏾‍🦳	gizona, ile zuria: azal-tonu ilun-ertaina
+👨🏾‍🦳	gizona, ile zuria: azal-tonu ilun ertainekoa
 👨🏿‍🦳	gizona, ile zuria: azal iluna
 👩‍🦳	emakumea, ile zuria
 👩🏻‍🦳	emakumea, ile zuria: azal-tonu argia
@@ -672,14 +672,14 @@
 👩🏿‍🦳	emakumea, ile zuria: azal iluna
 🤵	esmokin jantzita
 🤵🏻	esmokin jantzita: azal argia
-🤵🏼	esmokin jantzita: azal-tonu ertaineko argia
+🤵🏼	smokingeko gizona: azal-tonu ertaineko argia
 🤵🏽	esmokin jantzita: bitarteko azal-tonua
-🤵🏾	esmokin jantzitako gizona: azal-tonu ilun ertainekoa
+🤵🏾	esmokin jantzitako gizona: azal-tonu ilun-ertaina
 🤵🏿	esmokin jantzita: azal iluna
 👰	emaztegaia beloarekin
-👰🏻	ezkongaia beloarekin: azal-tonu argia
+👰🏻	emaztegaia beloarekin: azal-tonu argia
 👰🏼	emaztegaia beloarekin: azal-tonu ertain-argia
-👰🏽	emaztegaia beloarekin: bitarteko azal-tonua
+👰🏽	ezkongaia beloarekin: bitarteko azal-tonua
 👰🏾	emaztegaia beloarekin: azal-tonu ilun ertainekoa
 👰🏿	ezkongaia beloarekin: azal iluna
 🤰	haurdun dagoen emakumea
@@ -690,7 +690,7 @@
 🤰🏿	haurdun dagoen emakumea: azal iluna
 🤱	edoskitzea
 🤱🏻	edoskitzea: azal-tonu argia
-🤱🏼	edoskitzea: azal-tonu ertaineko argia
+🤱🏼	edoskitzea: azal-tonu ertain-argia
 🤱🏽	edoskitzea: bitarteko azal-tonua
 🤱🏾	edoskitzea: azal-tonu ilun ertainekoa
 🤱🏿	edoskitzea: azal-tonu iluna
@@ -702,9 +702,9 @@
 👼🏿	aingeru haurra: azal iluna
 🎅	Bizarzuri
 🎅🏻	Santa Claus: azal-tonu argia
-🎅🏼	Santa Claus: azal-tonu ertain-argia
+🎅🏼	Santa Claus: azal-tonu ertaineko argia
 🎅🏽	Santa Claus: bitarteko azal-tonua
-🎅🏾	Santa Claus: azal-tonu ilun ertainekoa
+🎅🏾	Santa Claus: azal-tonu ertaineko iluna
 🎅🏿	Santa Claus: azal iluna
 🤶	Claus andrea
 🤶🏻	Claus andrea: azal-tonu argia
@@ -714,7 +714,7 @@
 🤶🏿	Claus andrea: azal iluna
 🦸	superheroia
 🦸🏻	superheroi: azal-tonu argia
-🦸🏼	superheroia: azal-tonu ertain-argia
+🦸🏼	superheroia: azal-tonu ertaineko argia
 🦸🏽	superheroi: bitarteko azal-tonua
 🦸🏾	superheroia: azal-tonu ilun ertainekoa
 🦸🏿	superheroi: azal-tonu iluna
@@ -746,7 +746,7 @@
 🦹🏻	supervillain: azal-tonu argia
 🦹🏼	supervillain: azal-tonu ertain-argia
 🦹🏽	supervillain: bitarteko azal-tonua
-🦹🏾	supervillain: azal-tonu ilun ertainekoa
+🦹🏾	supervillain: azal-tonu ertain-ilun
 🦹🏿	supervillain: azal-tonu iluna
 🦹‍♀️	emakume supervillain
 🦹‍♀	emakume supervillain
@@ -770,8 +770,8 @@
 🦹🏽‍♂	man supervillain: bitarteko azal-tonua
 🦹🏾‍♂️	man supervillain: azal-tonu ilun ertainekoa
 🦹🏾‍♂	man supervillain: azal-tonu ilun ertainekoa
-🦹🏿‍♂️	man supervillain: azal-tonu iluna
-🦹🏿‍♂	man supervillain: azal-tonu iluna
+🦹🏿‍♂️	gizon supervillain: azal-tonu iluna
+🦹🏿‍♂	gizon supervillain: azal-tonu iluna
 🧙	magoa
 🧙🏻	mago: azal-tonu argia
 🧙🏼	magoa: azal-tonu ertain-argia
@@ -816,8 +816,8 @@
 🧚🏼‍♀	emakume maitagarri: azal-tonu ertainekoa
 🧚🏽‍♀️	emakume maitagarri: bitarteko azal-tonua
 🧚🏽‍♀	emakume maitagarri: bitarteko azal-tonua
-🧚🏾‍♀️	emakume maitagarri: azal-tonu ilun ertainekoa
-🧚🏾‍♀	emakume maitagarri: azal-tonu ilun ertainekoa
+🧚🏾‍♀️	emakume maitagarri: azal-tonu ilun-ertaina
+🧚🏾‍♀	emakume maitagarri: azal-tonu ilun-ertaina
 🧚🏿‍♀️	emakume maitagarri: azal iluna
 🧚🏿‍♀	emakume maitagarri: azal iluna
 🧚‍♂️	gizon maitagarri
@@ -854,19 +854,19 @@
 🧛‍♂	gizon banpiroa
 🧛🏻‍♂️	gizon banpiroa: azal-tonu argia
 🧛🏻‍♂	gizon banpiroa: azal-tonu argia
-🧛🏼‍♂️	gizon banpiroa: azal-tonu ertain-argia
-🧛🏼‍♂	gizon banpiroa: azal-tonu ertain-argia
+🧛🏼‍♂️	gizon banpiroa: azal-tonu ertaineko argia
+🧛🏼‍♂	gizon banpiroa: azal-tonu ertaineko argia
 🧛🏽‍♂️	gizon banpiroa: bitarteko azal-tonua
 🧛🏽‍♂	gizon banpiroa: bitarteko azal-tonua
 🧛🏾‍♂️	gizon banpiroa: azal-tonu ilun ertainekoa
 🧛🏾‍♂	gizon banpiroa: azal-tonu ilun ertainekoa
 🧛🏿‍♂️	gizon banpiroa: azal iluna
 🧛🏿‍♂	gizon banpiroa: azal iluna
-🧜	merpersona
+🧜	merperson
 🧜🏻	merperson: azal-tonu argia
 🧜🏼	merperson: azal-tonu ertaineko argia
 🧜🏽	merperson: bitarteko azal-tonua
-🧜🏾	merperson: azal-tonu ertain-ilun
+🧜🏾	merperson: azal-tonu ilun ertainekoa
 🧜🏿	merperson: azal-tonu iluna
 🧜‍♀️	sirena
 🧜‍♀	sirena
@@ -876,8 +876,8 @@
 🧜🏼‍♀	sirena: azal-tonu ertain-argia
 🧜🏽‍♀️	sirena: bitarteko azal-tonua
 🧜🏽‍♀	sirena: bitarteko azal-tonua
-🧜🏾‍♀️	sirena: azal-tonu ertaineko iluna
-🧜🏾‍♀	sirena: azal-tonu ertaineko iluna
+🧜🏾‍♀️	sirena: azal-tonu ilun ertainekoa
+🧜🏾‍♀	sirena: azal-tonu ilun ertainekoa
 🧜🏿‍♀️	sirena: azal iluna
 🧜🏿‍♀	sirena: azal iluna
 🧜‍♂️	sirena
@@ -893,10 +893,10 @@
 🧜🏿‍♂️	sirena: azal-tonu iluna
 🧜🏿‍♂	sirena: azal-tonu iluna
 🧝	iratxo
-🧝🏻	elfo: azal-tonu argia
-🧝🏼	elfo: azal-tonu ertaineko argia
+🧝🏻	iratxo: azal-tonu argia
+🧝🏼	elfo: azal-tonu ertain-argia
 🧝🏽	elfo: bitarteko azal-tonua
-🧝🏾	iratxoa: azal-tonu ilun ertainekoa
+🧝🏾	iratxoa: azal-tonu ertain-iluna
 🧝🏿	elfo: azal-tonu iluna
 🧝‍♀️	emakume iratxo
 🧝‍♀	emakume iratxo
@@ -972,9 +972,9 @@
 🙎‍♂	gizona puska egiten
 🙎🏻‍♂️	gizon puxkaduna: azal-tonu argia
 🙎🏻‍♂	gizon puxkaduna: azal-tonu argia
-🙎🏼‍♂️	gizona puska egiten duena: azal-tonu ertain-argia
+🙎🏼‍♂️	gizona puska egiten duena: azal-tonu ertaineko argia
 🙎🏼‍♂	gizona puska egiten duena: azal-tonu ertain-argia
-🙎🏽‍♂️	gizona puska: bitarteko azal-tonua
+🙎🏽‍♂️	gizon puxka: bitarteko azal-tonua
 🙎🏽‍♂	gizona puska: bitarteko azal-tonua
 🙎🏾‍♂️	gizona puska egiten duena: azal-tonu ilun ertainekoa
 🙎🏾‍♂	gizona puska egiten duena: azal-tonu ilun ertainekoa
@@ -1015,11 +1015,11 @@
 🙅🏻‍♀️	EZ keinua egiten duen emakumea: azal-tonu argia
 🙅🏻‍♀	EZ keinua egiten duen emakumea: azal-tonu argia
 🙅🏼‍♀️	EZ keinua egiten duen emakumea: azal-tonu ertain-argia
-🙅🏼‍♀	EZ keinua egiten duen emakumea: azal-tonu ertain-argia
+🙅🏼‍♀	EZ keinua egiten duen emakumea: azal-tonu ertaina-argia
 🙅🏽‍♀️	EZ keinua egiten duen emakumea: azal-tonu ertaina
 🙅🏽‍♀	EZ keinua egiten duen emakumea: azal-tonu ertaina
-🙅🏾‍♀️	EZ keinua egiten duen emakumea: azal-tonu ilun ertaina
-🙅🏾‍♀	EZ keinua egiten duen emakumea: azal-tonu ilun ertaina
+🙅🏾‍♀️	EZ keinua egiten duen emakumea: azal-tonu ilun-ertaina
+🙅🏾‍♀	EZ keinua egiten duen emakumea: azal-tonu ilun-ertaina
 🙅🏿‍♀️	EZ keinua egiten duen emakumea: azal-tonu iluna
 🙅🏿‍♀	EZ keinua egiten duen emakumea: azal-tonu iluna
 🙆	OK keinua egiten duen pertsona
@@ -1036,8 +1036,8 @@
 🙆🏼‍♂	OK keinua egiten duen gizona: azal-tonu ertaina-argia
 🙆🏽‍♂️	OK keinua egiten duen gizona: azal-tonu ertaina
 🙆🏽‍♂	OK keinua egiten duen gizona: azal-tonu ertaina
-🙆🏾‍♂️	OK keinua egiten duen gizona: azal-tonu ilun-ertaina
-🙆🏾‍♂	OK keinua egiten duen gizona: azal-tonu ilun-ertaina
+🙆🏾‍♂️	OK keinua egiten duen gizona: azal-tonu ilun ertaina
+🙆🏾‍♂	OK keinua egiten duen gizona: azal-tonu ilun ertaina
 🙆🏿‍♂️	gizona OK keinua egiten: azal-tonu iluna
 🙆🏿‍♂	gizona OK keinua egiten: azal-tonu iluna
 🙆‍♀️	emakumea ados keinu eginez
@@ -1072,22 +1072,22 @@
 💁🏿‍♂	gizona eskua okertuz: azal iluna
 💁‍♀️	emakumea eskua iraultzen
 💁‍♀	emakumea eskua iraultzen
-💁🏻‍♀️	eskua okertzen duen emakumea: azal-tonua
-💁🏻‍♀	eskua okertzen duen emakumea: azal-tonua
+💁🏻‍♀️	emakumea eskua okertuz: azal-tonua
+💁🏻‍♀	emakumea eskua okertuz: azal-tonua
 💁🏼‍♀️	eskua okertzen duen emakumea: azal-tonu ertainekoa
 💁🏼‍♀	eskua okertzen duen emakumea: azal-tonu ertainekoa
 💁🏽‍♀️	eskua okertzen duen emakumea: bitarteko azal-tonua
 💁🏽‍♀	eskua okertzen duen emakumea: bitarteko azal-tonua
 💁🏾‍♀️	eskua okertzen duen emakumea: azal-tonu ilun-ertaina
 💁🏾‍♀	eskua okertzen duen emakumea: azal-tonu ilun-ertaina
-💁🏿‍♀️	emakumea eskua okertuz: azal-tonua
+💁🏿‍♀️	eskua okertzen duen emakumea: azal-tonua
 💁🏿‍♀	emakumea eskua okertuz: azal-tonua
 🙋	eskua altxatzen duen pertsona
 🙋🏻	eskua altxatzen duen pertsona: azal-tonua
 🙋🏼	eskua altxatzen duen pertsona: bitarteko azal-tonu argia
 🙋🏽	eskua altxatzen duen pertsona: bitarteko azal-tonua
 🙋🏾	eskua altxatzen duen pertsona: azal-tonu ilun-ertaina
-🙋🏿	eskua altxatzen duen pertsona: azal iluna
+🙋🏿	eskua altxatzen duen pertsona: azal-tonua
 🙋‍♂️	gizona eskua altxatuz
 🙋‍♂	gizona eskua altxatuz
 🙋🏻‍♂️	eskua altxatzen duen gizona: azal-tonua
@@ -1096,8 +1096,8 @@
 🙋🏼‍♂	eskua altxatzen duen gizona: azal-tonu ertainekoa
 🙋🏽‍♂️	eskua altxatzen duen gizona: bitarteko azal-tonua
 🙋🏽‍♂	eskua altxatzen duen gizona: bitarteko azal-tonua
-🙋🏾‍♂️	eskua altxatzen duen gizona: azal-tonu ilun ertainekoa
-🙋🏾‍♂	eskua altxatzen duen gizona: azal-tonu ilun ertainekoa
+🙋🏾‍♂️	eskua altxatzen duen gizona: azal-tonu ilun-ertaina
+🙋🏾‍♂	eskua altxatzen duen gizona: azal-tonu ilun-ertaina
 🙋🏿‍♂️	eskua altxatzen duen gizona: azal iluna
 🙋🏿‍♂	eskua altxatzen duen gizona: azal iluna
 🙋‍♀️	emakumea eskua altxatuz
@@ -1110,11 +1110,11 @@
 🙋🏽‍♀	eskua altxatzen duen emakumea: bitarteko azal-tonua
 🙋🏾‍♀️	eskua altxatzen duen emakumea: azal-tonu ilun-ertaina
 🙋🏾‍♀	eskua altxatzen duen emakumea: azal-tonu ilun-ertaina
-🙋🏿‍♀️	eskua altxatzen duen emakumea: azal-tonua
+🙋🏿‍♀️	eskua altxatzen duen emakumea: azal iluna
 🙋🏿‍♀	eskua altxatzen duen emakumea: azal-tonua
 🙇	pertsona makurtzen
 🙇🏻	pertsona makurtzen: azal-tonu argia
-🙇🏼	makurtzen ari den pertsona: azal-tonu ertaineko argia
+🙇🏼	makurtzen ari den pertsona: azal-tonu ertain-argia
 🙇🏽	pertsona makurtzen: bitarteko azal-tonua
 🙇🏾	makurtzen ari den pertsona: azal-tonu ilun-ertaina
 🙇🏿	pertsona makurtzen: azal-tonu iluna
@@ -1145,15 +1145,15 @@
 🤦	pertsona aurpegia palming
 🤦🏻	pertsona aurpegia azaltzea: azal-tonu argia
 🤦🏼	pertsona aurpegi-palmatzea: azal-tonu ertain-argia
-🤦🏽	pertsona aurpegia azaltzea: bitarteko azal-tonua
-🤦🏾	pertsona aurpegia palming: azal-tonu ilun ertainekoa
+🤦🏽	pertsona aurpegia palming: bitarteko azal-tonua
+🤦🏾	pertsona aurpegi-palmatzea: azal-tonu ilun-ertaina
 🤦🏿	pertsona aurpegia azaltzea: azal-tonu iluna
 🤦‍♂️	gizon aurpegia palming
 🤦‍♂	gizon aurpegia palming
 🤦🏻‍♂️	man facepalming: azal-tonu argia
 🤦🏻‍♂	man facepalming: azal-tonu argia
-🤦🏼‍♂️	gizon aurpegia palminga: azal-tonu ertain-argia
-🤦🏼‍♂	gizon aurpegia palminga: azal-tonu ertain-argia
+🤦🏼‍♂️	man facepalming: azal-tonu ertain-argia
+🤦🏼‍♂	man facepalming: azal-tonu ertain-argia
 🤦🏽‍♂️	man facepalming: bitarteko azal-tonua
 🤦🏽‍♂	man facepalming: bitarteko azal-tonua
 🤦🏾‍♂️	man facepalming: azal-tonu ertain-ilun
@@ -1168,10 +1168,10 @@
 🤦🏼‍♀	emakume aurpegia palminga: azal-tonu ertain-argia
 🤦🏽‍♀️	emakume aurpegia palming: bitarteko azal-tonua
 🤦🏽‍♀	emakume aurpegia palming: bitarteko azal-tonua
-🤦🏾‍♀️	emakume aurpegia palminga: azal-tonu ertain-ilun
-🤦🏾‍♀	emakume aurpegia palminga: azal-tonu ertain-ilun
+🤦🏾‍♀️	emakumearen aurpegia palminga: azal-tonu ilun ertainekoa
+🤦🏾‍♀	emakumearen aurpegia palminga: azal-tonu ilun ertainekoa
 🤦🏿‍♀️	emakume aurpegia palming: azal-tonu iluna
-🤦🏿‍♀	emakume aurpegia palming: azal-tonu iluna
+🤦🏿‍♀	emakume aurpegia palming: azal-tonua iluna
 🤷	pertsona sorbaldak altxatzen
 🤷🏻	sorbaldak altxatzen dituen pertsona: azal-tonu argia
 🤷🏼	sorbaldak altxatzen dituen pertsona: azal-tonu ertain-argia
@@ -1182,8 +1182,8 @@
 🤷‍♂	gizona sorbaldak altxatuz
 🤷🏻‍♂️	gizona sorbaldak altxatzen: azal-tonu argia
 🤷🏻‍♂	gizona sorbaldak altxatzen: azal-tonu argia
-🤷🏼‍♂️	sorbaldak altxatzen dituen gizona: azal-tonu ertain-argia
-🤷🏼‍♂	sorbaldak altxatzen dituen gizona: azal-tonu ertain-argia
+🤷🏼‍♂️	gizona sorbaldak altxatzen: azal-tonu ertain-argia
+🤷🏼‍♂	gizona sorbaldak altxatzen: azal-tonu ertain-argia
 🤷🏽‍♂️	gizona sorbaldak altxatzen: bitarteko azal-tonua
 🤷🏽‍♂	gizona sorbaldak altxatzen: bitarteko azal-tonua
 🤷🏾‍♂️	gizona sorbaldak altxatzen: azal-tonu ilun ertainekoa
@@ -1194,8 +1194,8 @@
 🤷‍♀	emakumea sorbaldak altxatuz
 🤷🏻‍♀️	emakumea sorbaldak altxatzen: azal-tonu argia
 🤷🏻‍♀	emakumea sorbaldak altxatzen: azal-tonu argia
-🤷🏼‍♀️	sorbaldak altxatzen ari den emakumea: azal-tonu ertain-argia
-🤷🏼‍♀	sorbaldak altxatzen ari den emakumea: azal-tonu ertain-argia
+🤷🏼‍♀️	emakumea sorbaldak altxatzen: azal-tonu ertain-argia
+🤷🏼‍♀	emakumea sorbaldak altxatzen: azal-tonu ertain-argia
 🤷🏽‍♀️	emakumea sorbaldak altxatzen: bitarteko azal-tonua
 🤷🏽‍♀	emakumea sorbaldak altxatzen: bitarteko azal-tonua
 🤷🏾‍♀️	emakumea sorbaldak altxatzen: azal-tonu ilun ertainekoa
@@ -1234,11 +1234,11 @@
 💆🏿‍♀	masajea jasotzen duen emakumea: azal iluna
 💇	ilea mozten ari den pertsona
 💇🏻	ilea mozten ari den pertsona: azal-tonu argia
-💇🏼	ilea mozten ari den pertsona: azal-tonu ertain-argia
-💇🏽	ilea mozten duen pertsona: bitarteko azal-tonua
+💇🏼	ilea mozten ari den pertsona: azal-tonu ertaineko argia
+💇🏽	ilea mozten ari den pertsona: bitarteko azal-tonua
 💇🏾	ilea mozten ari den pertsona: azal-tonu ilun-ertaina
 💇🏿	ilea mozten ari den pertsona: azal iluna
-💇‍♂️	ilea mozten ari den gizona
+💇‍♂️	gizona ilea mozten
 💇‍♂	ilea mozten ari den gizona
 💇🏻‍♂️	ilea mozten ari den gizona: azal-tonu argia
 💇🏻‍♂	ilea mozten ari den gizona: azal-tonu argia
@@ -1282,8 +1282,8 @@
 🚶🏿‍♂	gizon paseatzen: azal iluna
 🚶‍♀️	emakumea oinez
 🚶‍♀	emakumea oinez
-🚶🏻‍♀️	emakume ibiltzen: azal-tonua
-🚶🏻‍♀	emakume ibiltzen: azal-tonua
+🚶🏻‍♀️	emakume ibiltzen: azal-tonu argia
+🚶🏻‍♀	emakume ibiltzen: azal-tonu argia
 🚶🏼‍♀️	ibiltzen den emakumea: azal-tonu ertainekoa
 🚶🏼‍♀	ibiltzen den emakumea: azal-tonu ertainekoa
 🚶🏽‍♀️	emakume ibiltzen: bitarteko azal-tonua
@@ -1317,7 +1317,7 @@
 🏃🏼‍♀️	korrika egiten duen emakumea: azal-tonu ertainekoa
 🏃🏼‍♀	korrika egiten duen emakumea: azal-tonu ertainekoa
 🏃🏽‍♀️	emakumea korrika: bitarteko azal-tonua
-🏃🏽‍♀	emakumea korrika: bitarteko azal-tonua
+🏃🏽‍♀	emakume korrika: bitarteko azal-tonua
 🏃🏾‍♀️	korrika egiten duen emakumea: azal-tonu ilun-ertaina
 🏃🏾‍♀	korrika egiten duen emakumea: azal-tonu ilun-ertaina
 🏃🏿‍♀️	emakume korrika: azal iluna
@@ -1340,7 +1340,7 @@
 👯‍♀️	untxi belarriak dituzten emakumeak
 👯‍♀	untxi belarriak dituzten emakumeak
 🧖	pertsona gela lurrunetan
-🧖🏻	gela lurrunetan dagoen pertsona: azal-tonu argia
+🧖🏻	gela lurruneko pertsona: azal-tonu argia
 🧖🏼	lurrun-gelan dagoen pertsona: azal-tonu ertaineko argia
 🧖🏽	gela lurruneko pertsona: bitarteko azal-tonua
 🧖🏾	lurrun-gelan dagoen pertsona: azal-tonu ilun-ertaina
@@ -1359,49 +1359,49 @@
 🧖🏿‍♀	emakumea gela lurrunean: azal-tonu iluna
 🧖‍♂️	gizona gela lurrunetan
 🧖‍♂	gizona gela lurrunetan
-🧖🏻‍♂️	gizona gela lurrunetan: azal-tonu argia
-🧖🏻‍♂	gizona gela lurrunetan: azal-tonu argia
-🧖🏼‍♂️	gizona gela lurrunean: azal-tonu ertaineko argia
-🧖🏼‍♂	gizona gela lurrunean: azal-tonu ertaineko argia
+🧖🏻‍♂️	gizona gela lurrunean: azal-tonu argia
+🧖🏻‍♂	gizona gela lurrunean: azal-tonu argia
+🧖🏼‍♂️	gizona lurrun-gelan: azal-tonu ertaineko argia
+🧖🏼‍♂	gizona lurrun-gelan: azal-tonu ertaineko argia
 🧖🏽‍♂️	man in steamy room: bitarteko azal-tonua
 🧖🏽‍♂	man in steamy room: bitarteko azal-tonua
 🧖🏾‍♂️	gizona gela lurrunetan: azal-tonu ilun ertainekoa
-🧖🏾‍♂	gizona gela lurrunetan: azal-tonu ilun ertainekoa
+🧖🏾‍♂	gizona gela lurrunean: azal-tonu ilun ertainekoa
 🧖🏿‍♂️	man in steamy room: azal-tonu iluna
 🧖🏿‍♂	man in steamy room: azal-tonu iluna
 🧗	pertsona eskalatzen
-🧗🏻	pertsona eskalada: azal-tonua
-🧗🏼	eskalatzen ari den pertsona: bitarteko azal-tonu argia
+🧗🏻	pertsona eskalada: azal-tonu argia
+🧗🏼	pertsona eskalatzailea: azal-tonu ertaina-argia
 🧗🏽	pertsona eskalada: bitarteko azal-tonua
-🧗🏾	eskalatzen ari den pertsona: azal-tonu ilun-ertaina
+🧗🏾	pertsona eskalatzailea: azal-tonu ilun ertainekoa
 🧗🏿	pertsona eskalada: azal iluna
 🧗‍♀️	emakumea eskalada
 🧗‍♀	emakumea eskalada
 🧗🏻‍♀️	emakume eskalada: azal-tonua
 🧗🏻‍♀	emakume eskalada: azal-tonua
-🧗🏼‍♀️	emakume eskalatzailea: azal-tonu ertaina-argia
+🧗🏼‍♀️	emakume eskalada: azal-tonu ertaina-argia
 🧗🏼‍♀	emakume eskalatzailea: azal-tonu ertaina-argia
 🧗🏽‍♀️	emakume eskalada: bitarteko azal-tonua
 🧗🏽‍♀	emakume eskalada: bitarteko azal-tonua
-🧗🏾‍♀️	emakume eskalada: azal-tonu ilun ertainekoa
-🧗🏾‍♀	emakume eskalada: azal-tonu ilun ertainekoa
+🧗🏾‍♀️	emakume eskalada: azal-tonu ilun-ertaina
+🧗🏾‍♀	emakume eskalada: azal-tonu ilun-ertaina
 🧗🏿‍♀️	emakume eskalada: azal iluna
 🧗🏿‍♀	emakume eskalada: azal iluna
 🧗‍♂️	gizona eskalatzen
 🧗‍♂	gizona eskalatzen
 🧗🏻‍♂️	gizona eskalada: azal-tonua
 🧗🏻‍♂	gizona eskalada: azal-tonua
-🧗🏼‍♂️	gizon eskalada: azal-tonu ertain-argia
-🧗🏼‍♂	gizon eskalada: azal-tonu ertain-argia
+🧗🏼‍♂️	gizon eskalatzailea: azal-tonu ertaineko argia
+🧗🏼‍♂	gizon eskalatzailea: azal-tonu ertaineko argia
 🧗🏽‍♂️	gizon eskalada: bitarteko azal-tonua
 🧗🏽‍♂	gizon eskalada: bitarteko azal-tonua
-🧗🏾‍♂️	gizon eskalatzailea: azal-tonu ilun ertainekoa
-🧗🏾‍♂	gizon eskalatzailea: azal-tonu ilun ertainekoa
+🧗🏾‍♂️	gizon eskalada: azal-tonu ilun ertainekoa
+🧗🏾‍♂	gizon eskalada: azal-tonu ilun ertainekoa
 🧗🏿‍♂️	gizon eskalatzailea: azal iluna
 🧗🏿‍♂	gizon eskalatzailea: azal iluna
-🧘	lotus posizioan dagoen pertsona
+🧘	loto posizioan dagoen pertsona
 🧘🏻	loto-posizioan dagoen pertsona: azal-tonu argia
-🧘🏼	loto-posizioan dagoen pertsona: azal-tonu ertaineko argia
+🧘🏼	loto-posizioan dagoen pertsona: azal-tonu ertaina-argia
 🧘🏽	loto-posizioan dagoen pertsona: bitarteko azal-tonua
 🧘🏾	loto-posizioan dagoen pertsona: azal-tonu ilun-ertaina
 🧘🏿	loto-posizioan dagoen pertsona: azal-tonu iluna
@@ -1409,7 +1409,7 @@
 🧘‍♀	loto posizioan dagoen emakumea
 🧘🏻‍♀️	loto posizioan dagoen emakumea: azal-tonu argia
 🧘🏻‍♀	loto posizioan dagoen emakumea: azal-tonu argia
-🧘🏼‍♀️	loto posizioan dagoen emakumea: azal-tonu ertaina-argia
+🧘🏼‍♀️	loto-posizioan dagoen emakumea: azal-tonu ertaineko argia
 🧘🏼‍♀	loto posizioan dagoen emakumea: azal-tonu ertaina-argia
 🧘🏽‍♀️	loto posizioan dagoen emakumea: bitarteko azal-tonua
 🧘🏽‍♀	loto posizioan dagoen emakumea: bitarteko azal-tonua
@@ -1421,17 +1421,17 @@
 🧘‍♂	loto posizioan dagoen gizona
 🧘🏻‍♂️	loto posizioan dagoen gizona: azal-tonu argia
 🧘🏻‍♂	loto posizioan dagoen gizona: azal-tonu argia
-🧘🏼‍♂️	loto-posizioan dagoen gizona: azal-tonu ertaina-argia
-🧘🏼‍♂	loto-posizioan dagoen gizona: azal-tonu ertaina-argia
+🧘🏼‍♂️	loto-posizioan dagoen gizona: azal-tonu ertain-argia
+🧘🏼‍♂	loto-posizioan dagoen gizona: azal-tonu ertain-argia
 🧘🏽‍♂️	loto-posizioan dagoen gizona: bitarteko azal-tonua
 🧘🏽‍♂	loto-posizioan dagoen gizona: bitarteko azal-tonua
 🧘🏾‍♂️	loto-posizioan dagoen gizona: azal-tonu ilun ertainekoa
-🧘🏾‍♂	loto-posizioan dagoen gizona: azal-tonu ilun ertainekoa
+🧘🏾‍♂	loto-posizioan dagoen gizona: azal-tonu ilun-ertaina
 🧘🏿‍♂️	loto posizioan dagoen gizona: azal iluna
 🧘🏿‍♂	loto posizioan dagoen gizona: azal iluna
 🛀	bainua hartzen duen pertsona
 🛀🏻	bainu hartzen duen pertsona: azal-tonu argia
-🛀🏼	bainua hartzen duen pertsona: azal-tonu ertaineko argia
+🛀🏼	bainu hartzen duen pertsona: azal-tonu ertaineko argia
 🛀🏽	bainu hartzen duen pertsona: bitarteko azal-tonua
 🛀🏾	bainu hartzen duen pertsona: azal-tonu ilun-ertaina
 🛀🏿	bainu hartzen duen pertsona: azal iluna
@@ -1442,7 +1442,7 @@
 🛌🏾	ohean dagoen pertsona: azal-tonu ilun ertainekoa
 🛌🏿	ohean dagoen pertsona: azal iluna
 🕴️	gizon jantzia lebitatzen
-🕴	gizon jantzia lebitatzen
+🕴	trajez jantzitako gizona lebitatzen
 🕴🏻	gizon jantzia lebitatzen: azal-tonu argia
 🕴🏼	trajez jantzitako gizona lebitatzen: azal-tonu ertaineko argia
 🕴🏽	gizon jantzia lebitatzen: bitarteko azal-tonua
@@ -1472,8 +1472,8 @@
 🏌🏻	golfean aritzen den pertsona: azal-tonu argia
 🏌🏼	golfean aritzen den pertsona: azal-tonu ertain-argia
 🏌🏽	golfean aritzen den pertsona: bitarteko azal-tonua
-🏌🏾	golfean aritzen den pertsona: azal-tonu ilun-ertaina
-🏌🏿	golfean aritzen den pertsona: azal iluna
+🏌🏾	golfean aritzen den pertsona: azal-tonu ilun ertainekoa
+🏌🏿	golfean aritzen den pertsona: azal-tonu iluna
 🏌️‍♂️	gizona golfean jokatzen
 🏌‍♂️	gizona golfean jokatzen
 🏌️‍♂	gizona golfean jokatzen
@@ -1487,7 +1487,7 @@
 🏌🏾‍♂️	gizona golfean: azal-tonu ilun ertainekoa
 🏌🏾‍♂	gizona golfean: azal-tonu ilun ertainekoa
 🏌🏿‍♂️	gizona golfean: azal-tonu iluna
-🏌🏿‍♂	gizona golfean: azal-tonu iluna
+🏌🏿‍♂	gizona golfean: azal iluna
 🏌️‍♀️	emakumea golfean
 🏌‍♀️	emakumea golfean
 🏌️‍♀	emakumea golfean
@@ -1597,7 +1597,7 @@
 ⛹🏻	baloia errebotatzen duen pertsona: azal-tonu argia
 ⛹🏼	baloia errebotatzen duen pertsona: azal-tonu ertain-argia
 ⛹🏽	baloia errebotatzen duen pertsona: bitarteko azal-tonua
-⛹🏾	pertsona errebotatzeko baloia: azal-tonu ilun-ertaina
+⛹🏾	baloia errebotatzeko pertsona: azal-tonu ilun-ertaina
 ⛹🏿	baloia errebotatzen duen pertsona: azal iluna
 ⛹️‍♂️	gizona baloia errebotatzen
 ⛹‍♂️	gizona baloia errebotatzen
@@ -1619,8 +1619,8 @@
 ⛹‍♀	emakumea baloia errebotatzen
 ⛹🏻‍♀️	emakumea errebotatzeko baloia: azal-tonu argia
 ⛹🏻‍♀	emakumea errebotatzeko baloia: azal-tonu argia
-⛹🏼‍♀️	emakumea errebotatzeko baloia: azal-tonu ertain-argia
-⛹🏼‍♀	emakumea errebotatzeko baloia: azal-tonu ertain-argia
+⛹🏼‍♀️	emakumea errebotatzeko baloia: azal-tonu ertainekoa
+⛹🏼‍♀	emakumea errebotatzeko baloia: azal-tonu ertainekoa
 ⛹🏽‍♀️	emakumea errebotatzeko baloia: bitarteko azal-tonua
 ⛹🏽‍♀	emakumea errebotatzeko baloia: bitarteko azal-tonua
 ⛹🏾‍♀️	emakumea errebotatzeko baloia: azal-tonu ilun-ertaina
@@ -1666,11 +1666,11 @@
 🚴🏻	pertsona bizikletaz: azal-tonua
 🚴🏼	pertsona bizikletaz: azal-tonu ertain-argia
 🚴🏽	pertsona bizikletaz: bitarteko azal-tonua
-🚴🏾	pertsona bizikletaz: azal-tonu ilun ertainekoa
+🚴🏾	pertsona bizikletaz: azal-tonu ilun-ertaina
 🚴🏿	pertsona bizikletaz: azal-tonua
 🚴‍♂️	gizona bizikletaz
 🚴‍♂	gizona bizikletaz
-🚴🏻‍♂️	gizona bizikletaz: azal-tonu argia
+🚴🏻‍♂️	gizona bizikletaz: azal-tonua
 🚴🏻‍♂	gizona bizikletaz: azal-tonua
 🚴🏼‍♂️	gizona bizikletaz: azal-tonu ertainekoa
 🚴🏼‍♂	gizona bizikletaz: azal-tonu ertainekoa
@@ -1684,19 +1684,19 @@
 🚴‍♀	emakumea bizikletaz
 🚴🏻‍♀️	emakume bizikletaz: azal-tonua
 🚴🏻‍♀	emakume bizikletaz: azal-tonua
-🚴🏼‍♀️	emakumea bizikletan: azal-tonu ertainekoa
-🚴🏼‍♀	emakumea bizikletan: azal-tonu ertainekoa
+🚴🏼‍♀️	emakume bizikletaz: azal-tonu ertainekoa
+🚴🏼‍♀	emakume bizikletaz: azal-tonu ertainekoa
 🚴🏽‍♀️	emakume bizikletaz: bitarteko azal-tonua
 🚴🏽‍♀	emakume bizikletaz: bitarteko azal-tonua
-🚴🏾‍♀️	emakume bizikletaz: azal-tonu ilun ertainekoa
-🚴🏾‍♀	emakume bizikletaz: azal-tonu ilun-ertaina
-🚴🏿‍♀️	emakume bizikletaz: azal iluna
-🚴🏿‍♀	emakume bizikletaz: azal iluna
+🚴🏾‍♀️	emakume bizikletaz: azal-tonu ilun-ertaina
+🚴🏾‍♀	emakume bizikletaz: azal-tonu ilun ertainekoa
+🚴🏿‍♀️	emakume bizikletaz: azal-tonua iluna
+🚴🏿‍♀	emakume bizikletaz: azal-tonua iluna
 🚵	pertsona mendiko bizikleta
 🚵🏻	pertsona mendi bizikleta: azal-tonu argia
 🚵🏼	pertsona mendiko bizikleta: azal-tonu ertaineko argia
 🚵🏽	pertsona mendi bizikleta: bitarteko azal-tonua
-🚵🏾	pertsona mendi bizikleta: azal-tonu ilun-ertaina
+🚵🏾	pertsona mendiko bizikleta: azal-tonu ilun-ertaina
 🚵🏿	pertsona mendi bizikleta: azal iluna
 🚵‍♂️	gizona mendiko bizikleta
 🚵‍♂	gizona mendiko bizikleta
@@ -1714,8 +1714,8 @@
 🚵‍♀	emakumea mendiko bizikletan
 🚵🏻‍♀️	mendiko bizikleta emakumea: azal-tonua
 🚵🏻‍♀	mendiko bizikleta emakumea: azal-tonua
-🚵🏼‍♀️	emakumezko mendi bizikleta: azal-tonu ertaineko argia
-🚵🏼‍♀	emakumezko mendi bizikleta: azal-tonu ertaineko argia
+🚵🏼‍♀️	mendiko bizikleta emakumea: azal-tonu ertainekoa
+🚵🏼‍♀	mendiko bizikleta emakumea: azal-tonu ertainekoa
 🚵🏽‍♀️	mendiko bizikleta emakumea: bitarteko azal-tonua
 🚵🏽‍♀	mendiko bizikleta emakumea: bitarteko azal-tonua
 🚵🏾‍♀️	emakumezko mendi bizikleta: azal-tonu ilun-ertaina
@@ -1741,15 +1741,15 @@
 🤸🏽‍♂️	gurpildun gizona: bitarteko azal-tonua
 🤸🏽‍♂	gurpildun gizona: bitarteko azal-tonua
 🤸🏾‍♂️	man cartwheeling: azal-tonu ertain-ilun
-🤸🏾‍♂	man cartwheeling: azal-tonu ilun ertainekoa
+🤸🏾‍♂	man cartwheeling: azal-tonu ertain-ilun
 🤸🏿‍♂️	gurpildun gizona: azal iluna
 🤸🏿‍♂	gurpildun gizona: azal iluna
 🤸‍♀️	emakume gurdilari
 🤸‍♀	emakume gurdilari
 🤸🏻‍♀️	emakume gurpildun: azal-tonu argia
 🤸🏻‍♀	emakume gurpildun: azal-tonu argia
-🤸🏼‍♀️	emakume gurpildun: azal-tonu ertain-argia
-🤸🏼‍♀	emakume gurpildun: azal-tonu ertain-argia
+🤸🏼‍♀️	emakume gurpildun: azal-tonu ertaineko argia
+🤸🏼‍♀	emakume gurpildun: azal-tonu ertaineko argia
 🤸🏽‍♀️	emakume gurpildun: bitarteko azal-tonua
 🤸🏽‍♀	emakume gurpildun: bitarteko azal-tonua
 🤸🏾‍♀️	emakume gurpildun: azal-tonu ilun ertainekoa
@@ -1763,7 +1763,7 @@
 🤼‍♀	emakumeak borrokan
 🤽	waterpoloan jokatzen duen pertsona
 🤽🏻	waterpoloan jokatzen duen pertsona: azal argia
-🤽🏼	waterpoloan jokatzen duen pertsona: azal-tonu ertaineko argia
+🤽🏼	waterpoloan jokatzen duen pertsona: azal-tonu ertain-argia
 🤽🏽	waterpoloan jokatzen duen pertsona: bitarteko azal-tonua
 🤽🏾	waterpoloan jokatzen duen pertsona: azal-tonu ilun-ertaina
 🤽🏿	waterpoloan jokatzen duen pertsona: azal iluna
@@ -1772,7 +1772,7 @@
 🤽🏻‍♂️	waterpoloan jokatzen duen gizona: azal argia
 🤽🏻‍♂	waterpoloan jokatzen duen gizona: azal argia
 🤽🏼‍♂️	waterpoloan jokatzen duen gizona: azal-tonu ertain-argia
-🤽🏼‍♂	waterpoloan jokatzen duen gizona: azal-tonu ertaina-argia
+🤽🏼‍♂	waterpoloan jokatzen duen gizona: azal-tonu ertainekoa
 🤽🏽‍♂️	waterpoloan jokatzen duen gizona: bitarteko azal-tonua
 🤽🏽‍♂	waterpoloan jokatzen duen gizona: bitarteko azal-tonua
 🤽🏾‍♂️	waterpoloan jokatzen duen gizona: azal-tonu ilun-ertaina
@@ -1793,7 +1793,7 @@
 🤽🏿‍♀	waterpoloan jokatzen duen emakumea: azal iluna
 🤾	eskubaloian jokatzen duen pertsona
 🤾🏻	eskubaloian jokatzen duen pertsona: azal argia
-🤾🏼	eskubaloian jokatzen duen pertsona: azal-tonu ertaina-argia
+🤾🏼	eskubaloian jokatzen duen pertsona: bitarteko azal-tonu argia
 🤾🏽	eskubaloian jokatzen duen pertsona: bitarteko azal-tonua
 🤾🏾	eskubaloian jokatzen duen pertsona: azal-tonu ilun-ertaina
 🤾🏿	eskubaloian jokatzen duen pertsona: azal iluna
@@ -1825,15 +1825,15 @@
 🤹🏻	pertsona malabarista: azal-tonu argia
 🤹🏼	malabarismoa egiten duen pertsona: azal-tonu ertain-argia
 🤹🏽	pertsona malabarista: bitarteko azal-tonua
-🤹🏾	malabarismoa egiten duen pertsona: azal-tonu ilun ertainekoa
+🤹🏾	pertsona malabarista: azal-tonu ilun ertainekoa
 🤹🏿	pertsona malabarista: azal-tonu iluna
-🤹‍♂️	gizona malabareak egiten
-🤹‍♂	gizona malabareak egiten
+🤹‍♂️	gizona malabarismoa
+🤹‍♂	gizona malabarismoa
 🤹🏻‍♂️	gizona malabarismoa: azal-tonu argia
 🤹🏻‍♂	gizona malabarismoa: azal-tonu argia
 🤹🏼‍♂️	gizona malabarismoa: azal-tonu ertain-argia
 🤹🏼‍♂	gizona malabarismoa: azal-tonu ertain-argia
-🤹🏽‍♂️	gizona malabarismoa: bitarteko azal-tonua
+🤹🏽‍♂️	gizon malabarista: bitarteko azal-tonua
 🤹🏽‍♂	gizona malabarismoa: bitarteko azal-tonua
 🤹🏾‍♂️	gizona malabarismoa: azal-tonu ilun ertainekoa
 🤹🏾‍♂	gizona malabarismoa: azal-tonu ilun ertainekoa
@@ -1862,8 +1862,8 @@
 👩‍❤️‍💋‍👩	musu: emakume, emakume
 👩‍❤‍💋‍👩	musu: emakume, emakume
 💑	bikote bihotzarekin
-👩‍❤️‍👨	bihotzeko bikote: emakume, gizon
-👩‍❤‍👨	bihotzeko bikote: emakume, gizon
+👩‍❤️‍👨	bihotzeko bikote: emakumea, gizona
+👩‍❤‍👨	bihotzeko bikote: emakumea, gizona
 👨‍❤️‍👨	bihotzeko bikote: gizon, gizon
 👨‍❤‍👨	bihotzeko bikote: gizon, gizon
 👩‍❤️‍👩	bihotzeko bikote: emakume, emakume
@@ -1950,7 +1950,7 @@
 🖕🏾	erdiko hatza: azal-tonu ertain-iluna
 🖕🏿	erdiko hatza: azal-tonu iluna
 👇	atzerako indizea behera begira
-👇🏻	atzera begirako indizea behera begira: azal-tonu argia
+👇🏻	atzera begirako indizea: azal-tonu argia
 👇🏼	atzera begirako indizea: azal-tonu ertain-argia
 👇🏽	atzera begirako indizea behera begira: azal-tonu ertaina
 👇🏾	beherantz begiratzen duen atzeko indizea: azal-tonu ertain-ilun
@@ -1972,19 +1972,19 @@
 🖖🏻	saludo vulcano: azal-tonu argia
 🖖🏼	agurra vulkanoa: azal-tonu ertaineko argia
 🖖🏽	saludo vulcano: bitarteko azal-tonua
-🖖🏾	agurra vulkanoa: azal-tonu ilun-ertaina
+🖖🏾	agurra vulkanoa: azal-tonu ilun ertainekoa
 🖖🏿	saludo vulcano: azal-tonu iluna
 🤘	adarren seinale
 🤘🏻	adarren seinale: azal-tonu argia
 🤘🏼	adarren seinalea: azal-tonu ertain-argia
 🤘🏽	adarren zeinua: azal-tonu ertaina
 🤘🏾	adarren seinalea: azal-tonu ilun ertainekoa
-🤘🏿	adarren zeinua: azal-tonu iluna
+🤘🏿	adarren zeinua: azal iluna
 🤙	deitu eskua
 🤙🏻	deitu eskua: azal-tonu argia
 🤙🏼	deitu eskua: azal-tonu ertaineko argia
 🤙🏽	deitu eskua: bitarteko azal-tonua
-🤙🏾	deitu eskua: azal-tonu ilun ertainekoa
+🤙🏾	deitu eskua: azal-tonu ilun ertaina
 🤙🏿	deitu eskua: azal iluna
 🖐️	eskua behatzak zabalduta
 🖐	eskua behatzak zabalduta
@@ -1995,7 +1995,7 @@
 🖐🏿	behatzak zabalduta dituen eskua: azal-tonua iluna
 ✋	eskua altxatuta
 ✋🏻	esku altxatua: azal-tonu argia
-✋🏼	eskua altxatua: azal-tonu ertainekoa
+✋🏼	eskua altxatua: azal-tonu ertain-argia
 ✋🏽	esku altxatua: bitarteko azal-tonua
 ✋🏾	eskua altxatua: azal-tonu ertaineko iluna
 ✋🏿	esku altxatua: azal iluna
@@ -2017,7 +2017,7 @@
 👎🏽	erpuruak behera: azal-tonu ertaina
 👎🏾	erpuruak behera: azal-tonu ertaine-iluna
 👎🏿	thumbs down: azalaren tonu iluna
-✊	ukabila altxatuta
+✊	ukabila jasota
 ✊🏻	ukabil altxatua: azal-tonu argia
 ✊🏼	ukabila altxatua: azal-tonu ertain-argia
 ✊🏽	ukabila altxatua: azal-tonu ertaina
@@ -2051,12 +2051,12 @@
 👋🏻	eskua astintzen: azal-tonu argia
 👋🏼	eskua astinduz: azal-tonu ertain-argia
 👋🏽	eskua astintzen: bitarteko azal-tonua
-👋🏾	eskua astintzen: azal-tonu ilun ertainekoa
+👋🏾	eskua astintzen: azal-tonu ertaineko iluna
 👋🏿	eskua astintzen: azal-tonua iluna
 🤟	maitatzeko keinua
 🤟🏻	maite zaituen keinua: azal-tonu argia
-🤟🏼	maite zaituen keinua: azal-tonu ertain-argia
-🤟🏽	maitatzeko keinua: azal-tonu ertaina
+🤟🏼	maite zaituen keinua: azal-tonu ertaineko argia
+🤟🏽	maite zaituen keinua: azal-tonu ertainekoa
 🤟🏾	maite zaituen keinua: azal-tonu ilun ertainekoa
 🤟🏿	maite zaituen keinua: azal-tonu iluna
 ✍️	eskuz idazten
@@ -2086,15 +2086,15 @@
 🙌🏿	eskuak altxatuz: azal iluna
 🤲	palmondoak elkarrekin
 🤲🏻	palmondoak elkarrekin: azal-tonu argia
-🤲🏼	palmondoak elkarrekin: azal-tonu ertaineko argia
-🤲🏽	palmondoak elkarrekin: bitarteko azal-tonua
-🤲🏾	palmondoak elkarrekin: azal-tonu ertaine-iluna
+🤲🏼	palmondoak batera: ertaineko azal-tonua
+🤲🏽	palmondoak elkarrekin: azal-tonu ertaina
+🤲🏾	palmondoak elkarrekin: azal-tonu ilun ertainekoa
 🤲🏿	palmondoak elkarrekin: azal-tonua iluna
 🙏	eskuak tolestuta
 🙏🏻	eskuak tolestuta: azal-tonua
 🙏🏼	eskuak tolestuta: azal-tonu ertainekoa
 🙏🏽	eskuak tolestuta: bitarteko azal-tonua
-🙏🏾	eskuak tolestuta: azal-tonu ertain-iluna
+🙏🏾	eskuak tolestuta: azal-tonu ertaine-iluna
 🙏🏿	eskuak tolestuta: azal iluna
 🤝	bostekoa
 💅	azazkalak
@@ -2192,13 +2192,13 @@
 🎒	eskolako motxila
 👞	gizonaren zapata
 👟	korrika egiteko zapata
-🥾	mendi-bota
+🥾	mendiko bota
 🥿	emakumearen zapata laua
 👠	takoidun zapata
 👡	emakumearen sandalia
 👢	emakumearen bota
 👑	koroa
-👒	emakumearen kapela
+👒	emakumearen txapela
 🎩	txapela
 🎓	graduazio txapela
 🧢	fakturatutako txanoa
@@ -2216,7 +2216,7 @@
 🐩	poodle
 🐺	otso aurpegia
 🦊	azeri aurpegia
-🦝	mapatxea
+🦝	mapache
 🐱	katu aurpegia
 🐈	katua
 🦁	lehoi aurpegia
@@ -2351,7 +2351,7 @@
 🍐	madari
 🍑	mertxika
 🍒	gereziak
-🍓	marrubia
+🍓	marrubi
 🥝	kiwi fruta
 🍅	tomatea
 🥥	kokoa
@@ -2431,7 +2431,7 @@
 🥛	edalontzi esne
 ☕	edari beroa
 🍵	kikara heldulekurik gabe
-🍶	sake
+🍶	sakea
 🍾	kortxoa lehertzen duen botila
 🍷	ardo kopa
 🍸	koktel kopa
@@ -2441,10 +2441,10 @@
 🥂	edalontziak tindaka
 🥃	edalontziaren beira
 🥤	kopa lastoarekin
-🥢	makilak
+🥢	txuletak
 🍽️	sardexka eta labana platerarekin
 🍽	sardexka eta labana platerarekin
-🍴	sardexka eta aiztoa
+🍴	sardexka eta labana
 🥄	koilara
 🔪	sukaldeko aiztoa
 🏺	anfora
@@ -2795,7 +2795,7 @@
 🔕	txirrina barrarekin
 🎼	partitura musikala
 🎵	musika nota
-🎶	musika-notak
+🎶	musika notak
 🎙️	estudioko mikrofonoa
 🎙	estudioko mikrofonoa
 🎚️	maila graduatzailea
@@ -3054,7 +3054,7 @@
 ↙	behera-ezkerreko gezia
 ⬅️	ezkerreko gezia
 ⬅	ezkerreko gezia
-↖️	gora-ezkerrera gezia
+↖️	gora-ezkerreko gezia
 ↖	gora-ezkerrera gezia
 ↕️	gora-behera gezia
 ↕	gora-behera gezia
@@ -3109,7 +3109,7 @@
 ♒	Aquarius
 ♓	Piscis
 ⛎	Ofiuko
-🔀	pistak nahasteko botoia
+🔀	pistak nahastu botoia
 🔁	errepikatu botoia
 🔂	errepikatu botoi bakarra
 ▶️	erreproduzitzeko botoia
@@ -3153,12 +3153,12 @@
 ♻️	birziklapenaren ikurra
 ♻	birziklapenaren ikurra
 ⚜️	lis-flora
-⚜	lis-flora
+⚜	lore-liz
 🔱	tridente ikurra
 📛	izen-txapa
 🔰	Hasiberrientzako japoniar sinboloa
 ⭕	zirkulu handi astuna
-✅	kontrol-marka astuna zuria
+✅	kontrol marka astuna zuria
 ☑️	hautestontzia txekearekin
 ☑	hautestontzia txekearekin
 ✔️	kontrol marka astuna
@@ -3367,7 +3367,7 @@
 🇨🇿	Txekia
 🇩🇪	Alemania
 🇩🇬	Diego Garcia
-🇩🇯	Djibutin
+🇩🇯	Djibouti
 🇩🇰	Danimarka
 🇩🇲	Dominika
 🇩🇴	Dominikar Errepublika

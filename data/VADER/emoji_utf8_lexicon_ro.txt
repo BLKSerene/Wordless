@@ -103,7 +103,7 @@
 🤖	fata de robot
 💩	morman de caca
 😺	fața de pisică rânjită
-😸	față de pisică rânjită cu ochi zâmbitori
+😸	fața de pisică rânjită cu ochi zâmbitori
 😹	fata de pisica cu lacrimi de bucurie
 😻	chip de pisică zâmbitor cu ochi de inimă
 😼	chip de pisică cu zâmbet ironic
@@ -120,11 +120,11 @@
 🏾	ton mediu-întunecat al pielii
 🏿	tonul închis al pielii
 👶	bebelus
-👶🏻	bebeluș: nuanță deschisă a pielii
+👶🏻	bebe: nuanță deschisă a pielii
 👶🏼	bebeluș: ton mediu-deschis al pielii
 👶🏽	bebeluș: ton mediu al pielii
-👶🏾	bebeluș: ton mediu-întunecat al pielii
-👶🏿	bebeluș: nuanță închisă a pielii
+👶🏾	bebeluș: nuanță medie-închisă a pielii
+👶🏿	bebelus: nuanta inchisa a pielii
 🧒	copil
 🧒🏻	copil: nuanță deschisă a pielii
 🧒🏼	copil: ton mediu-deschis al pielii
@@ -140,7 +140,7 @@
 👧	fată
 👧🏻	fata: ton deschis al pielii
 👧🏼	fată: ton mediu-deschis al pielii
-👧🏽	fata: ton mediu al pielii
+👧🏽	fată: ton mediu al pielii
 👧🏾	fată: ton mediu-întunecat al pielii
 👧🏿	fata: nuanta inchisa a pielii
 🧑	adult
@@ -150,7 +150,7 @@
 🧑🏾	adult: ton mediu-întunecat al pielii
 🧑🏿	adult: nuanță închisă a pielii
 👨	om
-👨🏻	bărbat: piele deschisă
+👨🏻	bărbat: ton deschis al pielii
 👨🏼	bărbat: ton mediu-deschis al pielii
 👨🏽	bărbat: ton mediu al pielii
 👨🏾	bărbat: ton mediu-întunecat al pielii
@@ -164,7 +164,7 @@
 🧓	adult în vârstă
 🧓🏻	adult în vârstă: nuanță deschisă a pielii
 🧓🏼	adult în vârstă: ton mediu-deschis al pielii
-🧓🏽	adult în vârstă: nuanță medie a pielii
+🧓🏽	adult în vârstă: ton mediu al pielii
 🧓🏾	adult în vârstă: nuanță medie-închisă a pielii
 🧓🏿	adult în vârstă: nuanță închisă a pielii
 👴	om batran
@@ -174,7 +174,7 @@
 👴🏾	bătrân: ton mediu-întunecat al pielii
 👴🏿	bătrân: nuanță închisă a pielii
 👵	femeie in varsta
-👵🏻	bătrână: ton deschis al pielii
+👵🏻	bătrână: piele deschisă
 👵🏼	bătrână: ton mediu-deschis al pielii
 👵🏽	bătrână: ton mediu al pielii
 👵🏾	bătrână: ton mediu-întunecat al pielii
@@ -187,8 +187,8 @@
 👨🏼‍⚕	lucrător sanitar: nuanță medie-deschisă a pielii
 👨🏽‍⚕️	lucrător sanitar: nuanță medie a pielii
 👨🏽‍⚕	lucrător sanitar: nuanță medie a pielii
-👨🏾‍⚕️	lucrător sanitar: nuanță medie-închisă a pielii
-👨🏾‍⚕	lucrător sanitar: nuanță medie-închisă a pielii
+👨🏾‍⚕️	lucrător în sănătate: nuanță medie-închisă a pielii
+👨🏾‍⚕	lucrător în sănătate: nuanță medie-închisă a pielii
 👨🏿‍⚕️	lucrător sanitar: nuanță închisă a pielii
 👨🏿‍⚕	lucrător sanitar: nuanță închisă a pielii
 👩‍⚕️	femeie lucrătoare în sănătate
@@ -206,8 +206,8 @@
 👨‍🎓	om student
 👨🏻‍🎓	bărbat student: piele deschisă
 👨🏼‍🎓	student bărbat: ton mediu-deschis al pielii
-👨🏽‍🎓	bărbat student: ton mediu al pielii
-👨🏾‍🎓	bărbat student: ton mediu-întunecat al pielii
+👨🏽‍🎓	student bărbat: ton mediu al pielii
+👨🏾‍🎓	student bărbat: ton mediu-întunecat al pielii
 👨🏿‍🎓	student bărbat: nuanță închisă a pielii
 👩‍🎓	studenta
 👩🏻‍🎓	studentă: ton deschis al pielii
@@ -231,8 +231,8 @@
 👨‍⚖	om judecător
 👨🏻‍⚖️	judecător bărbat: piele deschisă
 👨🏻‍⚖	judecător bărbat: piele deschisă
-👨🏼‍⚖️	arbitru bărbat: ton mediu-deschis al pielii
-👨🏼‍⚖	arbitru bărbat: ton mediu-deschis al pielii
+👨🏼‍⚖️	judecător bărbat: ton mediu-deschis al pielii
+👨🏼‍⚖	judecător bărbat: ton mediu-deschis al pielii
 👨🏽‍⚖️	judecător bărbat: ton mediu al pielii
 👨🏽‍⚖	judecător bărbat: ton mediu al pielii
 👨🏾‍⚖️	arbitru bărbat: ton mediu-întunecat al pielii
@@ -252,10 +252,10 @@
 👩🏿‍⚖️	femeie judecător: nuanță închisă a pielii
 👩🏿‍⚖	femeie judecător: nuanță închisă a pielii
 👨‍🌾	om fermier
-👨🏻‍🌾	bărbat fermier: ton deschis al pielii
+👨🏻‍🌾	bărbat fermier: piele deschisă
 👨🏼‍🌾	fermier: ton mediu-deschis al pielii
 👨🏽‍🌾	fermier: ton mediu al pielii
-👨🏾‍🌾	fermier: ton mediu-închis al pielii
+👨🏾‍🌾	bărbat fermier: ton mediu-întunecat al pielii
 👨🏿‍🌾	bărbat fermier: nuanță închisă a pielii
 👩‍🌾	femeie fermieră
 👩🏻‍🌾	fermieră: ton deschis al pielii
@@ -265,27 +265,27 @@
 👩🏿‍🌾	fermieră: nuanță închisă a pielii
 👨‍🍳	bucătar
 👨🏻‍🍳	bărbat bucătar: piele deschisă
-👨🏼‍🍳	bucătar bărbat: ton mediu-deschis al pielii
+👨🏼‍🍳	bucătar bărbat: nuanță medie-deschisă a pielii
 👨🏽‍🍳	bucătar bărbat: nuanță medie a pielii
-👨🏾‍🍳	bucătar bărbat: nuanță medie-închisă a pielii
+👨🏾‍🍳	bucătar bărbat: ton mediu-întunecat al pielii
 👨🏿‍🍳	bărbat bucătar: nuanță închisă a pielii
 👩‍🍳	femeie bucătar
 👩🏻‍🍳	femeie bucătar: ton deschis al pielii
-👩🏼‍🍳	femeie bucătar: ton mediu-deschis al pielii
-👩🏽‍🍳	femeie bucătar: nuanță medie a pielii
-👩🏾‍🍳	femeie bucătar: ton mediu-întunecat al pielii
+👩🏼‍🍳	femeie bucătar: nuanță medie-deschisă a pielii
+👩🏽‍🍳	femeie bucătar: ton mediu al pielii
+👩🏾‍🍳	femeie bucătar: nuanță medie-închisă a pielii
 👩🏿‍🍳	femeie bucătar: nuanță închisă a pielii
 👨‍🔧	om mecanic
 👨🏻‍🔧	mecanic mecanic: piele deschisă
 👨🏼‍🔧	mecanic mecanic: ton mediu-deschis al pielii
 👨🏽‍🔧	mecanic mecanic: ton mediu al pielii
-👨🏾‍🔧	mecanic mecanic: ton mediu-închis al pielii
+👨🏾‍🔧	mecanic mecanic: ton mediu-întunecat al pielii
 👨🏿‍🔧	mecanic mecanic: nuanță închisă a pielii
 👩‍🔧	femeie mecanic
 👩🏻‍🔧	femeie mecanică: piele deschisă
 👩🏼‍🔧	mecanic femeie: ton mediu-deschis al pielii
-👩🏽‍🔧	femeie mecanică: ton mediu al pielii
-👩🏾‍🔧	mecanic femeie: ton mediu-întunecat al pielii
+👩🏽‍🔧	mecanic femeie: ton mediu al pielii
+👩🏾‍🔧	femeie mecanică: nuanță medie-închisă a pielii
 👩🏿‍🔧	femeie mecanică: nuanță închisă a pielii
 👨‍🏭	om muncitor din fabrică
 👨🏻‍🏭	bărbat muncitor din fabrică: piele deschisă
@@ -294,13 +294,13 @@
 👨🏾‍🏭	bărbat muncitor din fabrică: ton mediu-închis al pielii
 👨🏿‍🏭	bărbat muncitor din fabrică: nuanță închisă a pielii
 👩‍🏭	femeie muncitoare din fabrică
-👩🏻‍🏭	femeie muncitoare din fabrică: piele deschisă
+👩🏻‍🏭	femeie lucrătoare în fabrică: nuanță deschisă a pielii
 👩🏼‍🏭	femeie muncitoare din fabrică: ton mediu-deschis al pielii
 👩🏽‍🏭	femeie lucrătoare în fabrică: ton mediu al pielii
 👩🏾‍🏭	femeie muncitoare din fabrică: ton mediu-întunecat al pielii
 👩🏿‍🏭	femeie muncitoare din fabrică: nuanță închisă a pielii
 👨‍💼	om angajat de birou
-👨🏻‍💼	om angajat de birou: piele deschisă
+👨🏻‍💼	bărbat angajat de birou: piele deschisă
 👨🏼‍💼	bărbat angajat de birou: ton mediu-deschis al pielii
 👨🏽‍💼	om angajat de birou: ton mediu al pielii
 👨🏾‍💼	bărbat angajat de birou: ton mediu-închis al pielii
@@ -327,7 +327,7 @@
 👨🏻‍💻	om tehnolog: piele deschisă
 👨🏼‍💻	om tehnolog: ton mediu-deschis al pielii
 👨🏽‍💻	om tehnolog: ton mediu al pielii
-👨🏾‍💻	om tehnolog: ton mediu-întunecat al pielii
+👨🏾‍💻	om tehnolog: ton mediu-închis al pielii
 👨🏿‍💻	om tehnolog: nuanță închisă a pielii
 👩‍💻	femeie tehnolog
 👩🏻‍💻	femeie tehnolog: piele deschisă
@@ -393,7 +393,7 @@
 👩🏻‍🚀	femeie astronaută: piele deschisă
 👩🏼‍🚀	femeie astronaută: ton mediu-deschis al pielii
 👩🏽‍🚀	femeie astronaută: ton mediu al pielii
-👩🏾‍🚀	femeie astronaută: ton mediu-întunecat al pielii
+👩🏾‍🚀	femeie astronaută: ton mediu-închis al pielii
 👩🏿‍🚀	femeie astronaută: nuanță închisă a pielii
 👨‍🚒	om pompier
 👨🏻‍🚒	bărbat pompier: piele deschisă
@@ -433,8 +433,8 @@
 👮🏼‍♀	femeie polițist: ton mediu-deschis al pielii
 👮🏽‍♀️	femeie polițist: ton mediu al pielii
 👮🏽‍♀	femeie polițist: ton mediu al pielii
-👮🏾‍♀️	polițist femeie: ton mediu-închis al pielii
-👮🏾‍♀	polițist femeie: ton mediu-închis al pielii
+👮🏾‍♀️	femeie polițist: ton mediu-închis al pielii
+👮🏾‍♀	femeie polițist: ton mediu-închis al pielii
 👮🏿‍♀️	femeie ofițer de poliție: nuanță închisă a pielii
 👮🏿‍♀	femeie ofițer de poliție: nuanță închisă a pielii
 🕵️	detectiv
@@ -473,9 +473,9 @@
 🕵🏿‍♀️	detectiv femeie: nuanță închisă a pielii
 🕵🏿‍♀	detectiv femeie: nuanță închisă a pielii
 💂	paznic
-💂🏻	gardă: piele deschisă
+💂🏻	garda: ton deschis al pielii
 💂🏼	gardă: ton mediu-deschis al pielii
-💂🏽	gardă: ton mediu al pielii
+💂🏽	garda: ton mediu al pielii
 💂🏾	gardă: ton mediu-întunecat al pielii
 💂🏿	gardian: nuanță închisă a pielii
 💂‍♂️	paza omului
@@ -484,44 +484,44 @@
 💂🏻‍♂	paznic barbat: nuanta deschisa a pielii
 💂🏼‍♂️	garda barbat: nuanta medie-deschis a pielii
 💂🏼‍♂	garda barbat: nuanta medie-deschis a pielii
-💂🏽‍♂️	paznic barbat: nuanta medie a pielii
-💂🏽‍♂	paznic barbat: nuanta medie a pielii
-💂🏾‍♂️	garda barbat: nuanta pielii mediu-închisa
-💂🏾‍♂	garda barbat: nuanta pielii mediu-închisa
+💂🏽‍♂️	garda barbat: nuanta medie a pielii
+💂🏽‍♂	garda barbat: nuanta medie a pielii
+💂🏾‍♂️	paznic barbat: nuanta pielii mediu-inchisa
+💂🏾‍♂	paznic barbat: nuanta pielii mediu-inchisa
 💂🏿‍♂️	paznic barbat: nuanta inchisa a pielii
 💂🏿‍♂	paznic barbat: nuanta inchisa a pielii
 💂‍♀️	femeie de gardă
 💂‍♀	femeie de gardă
 💂🏻‍♀️	paznic femeie: piele deschisă
 💂🏻‍♀	paznic femeie: piele deschisă
-💂🏼‍♀️	garda femeie: nuanță medie-deschisă a pielii
-💂🏼‍♀	garda femeie: nuanță medie-deschisă a pielii
+💂🏼‍♀️	paznic femeie: ton mediu-deschis al pielii
+💂🏼‍♀	paznic femeie: ton mediu-deschis al pielii
 💂🏽‍♀️	garda femeie: ton mediu al pielii
 💂🏽‍♀	garda femeie: ton mediu al pielii
-💂🏾‍♀️	pază femeie: nuanță medie-închisă a pielii
-💂🏾‍♀	pază femeie: nuanță medie-închisă a pielii
-💂🏿‍♀️	gardian femeie: nuanță închisă a pielii
-💂🏿‍♀	gardian femeie: nuanță închisă a pielii
-👷	muncitor in constructii
+💂🏾‍♀️	paznic femeie: nuanță medie-închisă a pielii
+💂🏾‍♀	paznic femeie: nuanță medie-închisă a pielii
+💂🏿‍♀️	paznic femeie: nuanță închisă a pielii
+💂🏿‍♀	paznic femeie: nuanță închisă a pielii
+👷	muncitor în construcţii
 👷🏻	muncitor în construcții: piele deschisă
 👷🏼	muncitor în construcții: ton mediu-deschis al pielii
 👷🏽	muncitor în construcții: ton mediu al pielii
-👷🏾	muncitor în construcții: ton mediu-închis al pielii
+👷🏾	muncitor în construcții: nuanță medie-închisă a pielii
 👷🏿	muncitor în construcții: nuanță închisă a pielii
 👷‍♂️	om muncitor în construcții
 👷‍♂	om muncitor în construcții
 👷🏻‍♂️	bărbat muncitor în construcții: piele deschisă
 👷🏻‍♂	bărbat muncitor în construcții: piele deschisă
-👷🏼‍♂️	bărbat muncitor în construcții: ton mediu-deschis al pielii
-👷🏼‍♂	bărbat muncitor în construcții: ton mediu-deschis al pielii
+👷🏼‍♂️	muncitor în construcții: ton mediu-deschis al pielii
+👷🏼‍♂	muncitor în construcții: ton mediu-deschis al pielii
 👷🏽‍♂️	muncitor în construcții: ton mediu al pielii
 👷🏽‍♂	muncitor în construcții: ton mediu al pielii
 👷🏾‍♂️	muncitor în construcții: ton mediu-închis al pielii
 👷🏾‍♂	muncitor în construcții: ton mediu-închis al pielii
 👷🏿‍♂️	muncitor în construcții: piele închisă
 👷🏿‍♂	muncitor în construcții: piele închisă
-👷‍♀️	femeie muncitor in constructii
-👷‍♀	femeie muncitor in constructii
+👷‍♀️	femeie muncitoare în construcții
+👷‍♀	femeie muncitoare în construcții
 👷🏻‍♀️	femeie muncitoare în construcții: piele deschisă
 👷🏻‍♀	femeie muncitoare în construcții: piele deschisă
 👷🏼‍♀️	femeie muncitoare în construcții: ton mediu-deschis al pielii
@@ -536,7 +536,7 @@
 🤴🏻	prinț: ton deschis al pielii
 🤴🏼	prinț: ton mediu-deschis al pielii
 🤴🏽	prinț: ton mediu al pielii
-🤴🏾	prinț: ton mediu-întunecat al pielii
+🤴🏾	prinț: ton mediu-închis al pielii
 🤴🏿	prinț: nuanță închisă a pielii
 👸	prinţesă
 👸🏻	printesa: ton deschis al pielii
@@ -560,8 +560,8 @@
 👳🏽‍♂	bărbat care poartă turban: ton mediu al pielii
 👳🏾‍♂️	bărbat care poartă turban: nuanță medie-închisă a pielii
 👳🏾‍♂	bărbat care poartă turban: nuanță medie-închisă a pielii
-👳🏿‍♂️	bărbat purtând turban: nuanță închisă a pielii
-👳🏿‍♂	bărbat purtând turban: nuanță închisă a pielii
+👳🏿‍♂️	bărbat care poartă turban: nuanță închisă a pielii
+👳🏿‍♂	bărbat care poartă turban: nuanță închisă a pielii
 👳‍♀️	femeie care poartă turban
 👳‍♀	femeie care poartă turban
 👳🏻‍♀️	femeie care poartă turban: piele deschisă
@@ -578,23 +578,23 @@
 👲🏻	bărbat cu șapcă chinezească: piele deschisă
 👲🏼	bărbat cu șapcă chinezească: ton mediu-deschis al pielii
 👲🏽	bărbat cu șapcă chinezească: ton mediu al pielii
-👲🏾	bărbat cu șapcă chinezească: ton mediu-închis al pielii
+👲🏾	bărbat cu șapcă chinezească: nuanță medie-închisă a pielii
 👲🏿	bărbat cu șapcă chinezească: nuanță închisă a pielii
 🧕	femeie cu batic
 🧕🏻	femeie cu batic: piele deschisă
 🧕🏼	femeie cu batic: ton mediu-deschis al pielii
 🧕🏽	femeie cu batic: ton mediu al pielii
-🧕🏾	femeie cu batic: ton mediu-închis al pielii
+🧕🏾	femeie cu batic: nuanță medie-închisă a pielii
 🧕🏿	femeie cu batic: nuanță închisă a pielii
 🧔	persoană cu barbă
 🧔🏻	bărbos: piele deschisă
 🧔🏼	bărbos: nuanță medie-deschisă a pielii
-🧔🏽	bărbos: nuanță medie a pielii
-🧔🏾	bărbos: nuanță a pielii mediu-închisă
+🧔🏽	bărbos: ton mediu al pielii
+🧔🏾	bărbos: nuanță de piele mediu-închisă
 🧔🏿	bărbos: nuanță închisă a pielii
 👱	persoană cu părul blond
 👱🏻	persoană cu părul blond: nuanță deschisă a pielii
-👱🏼	persoană cu părul blond: nuanță a pielii mediu-deschisă
+👱🏼	persoană cu părul blond: nuanță de piele mediu-deschisă
 👱🏽	persoană cu părul blond: nuanță medie a pielii
 👱🏾	persoană cu părul blond: nuanță de piele mediu-închisă
 👱🏿	persoană cu părul blond: nuanță închisă a pielii
@@ -606,7 +606,7 @@
 👱🏼‍♂	bărbat cu părul blond: ton mediu-deschis al pielii
 👱🏽‍♂️	bărbat cu părul blond: ton mediu al pielii
 👱🏽‍♂	bărbat cu părul blond: ton mediu al pielii
-👱🏾‍♂️	bărbat cu părul blond: nuanță medie-închisă a pielii
+👱🏾‍♂️	bărbat cu părul blond: nuanță de piele mediu-închisă
 👱🏾‍♂	bărbat cu părul blond: nuanță de piele mediu-închisă
 👱🏿‍♂️	bărbat cu părul blond: nuanță închisă a pielii
 👱🏿‍♂	bărbat cu părul blond: nuanță închisă a pielii
@@ -626,7 +626,7 @@
 👨🏻‍🦰	bărbat, roșcat: piele deschisă
 👨🏼‍🦰	bărbat, cu părul roșu: ton mediu-deschis al pielii
 👨🏽‍🦰	bărbat, roșcat: ton mediu al pielii
-👨🏾‍🦰	bărbat, cu părul roșu: nuanță medie-închisă a pielii
+👨🏾‍🦰	bărbat, roșcat: nuanță medie-închisă a pielii
 👨🏿‍🦰	bărbat, roșcat: nuanță închisă a pielii
 👩‍🦰	femeie, cu părul roșu
 👩🏻‍🦰	femeie, cu părul roșu: nuanță deschisă a pielii
@@ -635,7 +635,7 @@
 👩🏾‍🦰	femeie, roșcată: nuanță medie-închisă a pielii
 👩🏿‍🦰	femeie, cu părul roșu: nuanță închisă a pielii
 👨‍🦱	bărbat, cu părul creț
-👨🏻‍🦱	bărbat, cu părul creț: nuanță deschisă a pielii
+👨🏻‍🦱	bărbat, cu părul creț: piele deschisă
 👨🏼‍🦱	bărbat, cu părul creț: ton mediu-deschis al pielii
 👨🏽‍🦱	bărbat, cu părul creț: nuanță medie a pielii
 👨🏾‍🦱	bărbat, cu părul creț: nuanță medie-închisă a pielii
@@ -643,19 +643,19 @@
 👩‍🦱	femeie, cu părul creț
 👩🏻‍🦱	femeie, cu părul creț: nuanță deschisă a pielii
 👩🏼‍🦱	femeie, cu părul creț: ton mediu-deschis al pielii
-👩🏽‍🦱	femeie, cu părul creț: nuanță medie a pielii
+👩🏽‍🦱	femeie, cu păr creț: nuanță medie a pielii
 👩🏾‍🦱	femeie, cu părul creț: nuanță medie-închisă a pielii
 👩🏿‍🦱	femeie, cu părul creț: nuanță închisă a pielii
 👨‍🦲	bărbat, chel
 👨🏻‍🦲	bărbat, chel: nuanță deschisă a pielii
 👨🏼‍🦲	bărbat, chel: ton mediu-deschis al pielii
 👨🏽‍🦲	bărbat, chel: ton mediu al pielii
-👨🏾‍🦲	bărbat, chel: ton mediu-întunecat al pielii
+👨🏾‍🦲	bărbat, chel: ton mediu-închis al pielii
 👨🏿‍🦲	bărbat, chel: nuanță închisă a pielii
 👩‍🦲	femeie, cheală
 👩🏻‍🦲	femeie, cheală: nuanță deschisă a pielii
 👩🏼‍🦲	femeie, cheală: ton mediu-deschis al pielii
-👩🏽‍🦲	femeie, cheală: ton mediu al pielii
+👩🏽‍🦲	femeie, cheală: nuanță medie a pielii
 👩🏾‍🦲	femeie, cheală: nuanță medie-închisă a pielii
 👩🏿‍🦲	femeie, cheală: nuanță închisă a pielii
 👨‍🦳	bărbat, cu părul alb
@@ -698,7 +698,7 @@
 👼🏻	baby inger: ton deschis al pielii
 👼🏼	baby inger: ton mediu-deschis al pielii
 👼🏽	baby inger: ton mediu al pielii
-👼🏾	baby angel: ton mediu-închis al pielii
+👼🏾	baby angel: nuanță medie-închisă a pielii
 👼🏿	baby inger: nuanta inchisa a pielii
 🎅	Moș Crăciun
 🎅🏻	Moș Crăciun: ton deschis al pielii
@@ -710,18 +710,18 @@
 🤶🏻	Doamna Crăciun: piele deschisă
 🤶🏼	Doamna Crăciun: ton mediu-deschis al pielii
 🤶🏽	Doamna Crăciun: ton mediu al pielii
-🤶🏾	Doamna Crăciun: ton mediu-închis al pielii
+🤶🏾	Doamna Crăciun: ton mediu-întunecat al pielii
 🤶🏿	Doamna Crăciun: nuanță închisă a pielii
 🦸	supererou
 🦸🏻	supererou: ton deschis al pielii
-🦸🏼	super-erou: ton mediu-deschis al pielii
-🦸🏽	super-erou: ton mediu al pielii
+🦸🏼	supererou: ton mediu-deschis al pielii
+🦸🏽	supererou: ton mediu al pielii
 🦸🏾	super-erou: ton mediu-întunecat al pielii
 🦸🏿	super-erou: nuanță închisă a pielii
 🦸‍♀️	femeie super-erou
 🦸‍♀	femeie super-erou
-🦸🏻‍♀️	femeie super-erou: ton deschis al pielii
-🦸🏻‍♀	femeie super-erou: ton deschis al pielii
+🦸🏻‍♀️	femeie super-eroă: ton deschis al pielii
+🦸🏻‍♀	femeie super-eroă: ton deschis al pielii
 🦸🏼‍♀️	femeie super-eroă: ton mediu-deschis al pielii
 🦸🏼‍♀	femeie super-eroă: ton mediu-deschis al pielii
 🦸🏽‍♀️	femeie super-eroă: ton mediu al pielii
@@ -750,16 +750,16 @@
 🦹🏿	supervilan: nuanță închisă a pielii
 🦹‍♀️	femeie superticălosă
 🦹‍♀	femeie superticălosă
-🦹🏻‍♀️	femeie supercriminală: nuanță deschisă a pielii
-🦹🏻‍♀	femeie supercriminală: nuanță deschisă a pielii
+🦹🏻‍♀️	supercriminală femeie: nuanță deschisă a pielii
+🦹🏻‍♀	supercriminală femeie: nuanță deschisă a pielii
 🦹🏼‍♀️	supercriminală femeie: ton mediu-deschis al pielii
 🦹🏼‍♀	supercriminală femeie: ton mediu-deschis al pielii
 🦹🏽‍♀️	supercriminală femeie: ton mediu al pielii
 🦹🏽‍♀	supercriminală femeie: ton mediu al pielii
 🦹🏾‍♀️	supercriminală femeie: ton mediu-întunecat al pielii
 🦹🏾‍♀	supercriminală femeie: ton mediu-întunecat al pielii
-🦹🏿‍♀️	supercriminală femeie: nuanță închisă a pielii
-🦹🏿‍♀	supercriminală femeie: nuanță închisă a pielii
+🦹🏿‍♀️	femeie supercriminală: nuanță închisă a pielii
+🦹🏿‍♀	femeie supercriminală: nuanță închisă a pielii
 🦹‍♂️	om supercriminal
 🦹‍♂	om supercriminal
 🦹🏻‍♂️	om supercriminal: ton deschis al pielii
@@ -770,8 +770,8 @@
 🦹🏽‍♂	om supercriminal: ton mediu al pielii
 🦹🏾‍♂️	barbat supercriminal: ton mediu-întunecat al pielii
 🦹🏾‍♂	barbat supercriminal: ton mediu-întunecat al pielii
-🦹🏿‍♂️	om supercriminal: nuanță închisă a pielii
-🦹🏿‍♂	om supercriminal: nuanță închisă a pielii
+🦹🏿‍♂️	barbat supercriminal: nuanta inchisa a pielii
+🦹🏿‍♂	barbat supercriminal: nuanta inchisa a pielii
 🧙	mag
 🧙🏻	mag: ton deschis al pielii
 🧙🏼	mag: ton mediu-deschis al pielii
@@ -782,20 +782,20 @@
 🧙‍♀	femeie mag
 🧙🏻‍♀️	femeie mag: ton deschis al pielii
 🧙🏻‍♀	femeie mag: ton deschis al pielii
-🧙🏼‍♀️	femeie mag: ton mediu-deschis al pielii
-🧙🏼‍♀	femeie mag: ton mediu-deschis al pielii
+🧙🏼‍♀️	femeie magică: ton mediu-deschis al pielii
+🧙🏼‍♀	femeie magică: ton mediu-deschis al pielii
 🧙🏽‍♀️	femeie mag: ton mediu al pielii
 🧙🏽‍♀	femeie mag: ton mediu al pielii
-🧙🏾‍♀️	femeie mag: ton mediu-întunecat al pielii
-🧙🏾‍♀	femeie mag: ton mediu-întunecat al pielii
+🧙🏾‍♀️	femeie magică: nuanță medie-închisă a pielii
+🧙🏾‍♀	femeie magică: nuanță medie-închisă a pielii
 🧙🏿‍♀️	femeie mag: nuanță închisă a pielii
 🧙🏿‍♀	femeie mag: nuanță închisă a pielii
 🧙‍♂️	om mag
 🧙‍♂	om mag
 🧙🏻‍♂️	om mag: ton deschis al pielii
 🧙🏻‍♂	om mag: ton deschis al pielii
-🧙🏼‍♂️	om mag: ton mediu-deschis al pielii
-🧙🏼‍♂	om mag: ton mediu-deschis al pielii
+🧙🏼‍♂️	mage bărbat: ton mediu-deschis al pielii
+🧙🏼‍♂	mage bărbat: ton mediu-deschis al pielii
 🧙🏽‍♂️	om mag: ton mediu al pielii
 🧙🏽‍♂	om mag: ton mediu al pielii
 🧙🏾‍♂️	mage bărbat: ton mediu-întunecat al pielii
@@ -876,10 +876,10 @@
 🧜🏼‍♀	sirena: ton mediu-deschis al pielii
 🧜🏽‍♀️	sirena: ton mediu al pielii
 🧜🏽‍♀	sirena: ton mediu al pielii
-🧜🏾‍♀️	sirena: ton mediu-închis al pielii
-🧜🏾‍♀	sirena: ton mediu-închis al pielii
-🧜🏿‍♀️	sirena: nuanță închisă a pielii
-🧜🏿‍♀	sirena: nuanță închisă a pielii
+🧜🏾‍♀️	sirena: ton mediu-întunecat al pielii
+🧜🏾‍♀	sirena: ton mediu-întunecat al pielii
+🧜🏿‍♀️	sirenă: nuanță închisă a pielii
+🧜🏿‍♀	sirenă: nuanță închisă a pielii
 🧜‍♂️	siren
 🧜‍♂	siren
 🧜🏻‍♂️	siren: ton deschis al pielii
@@ -895,12 +895,12 @@
 🧝	elf
 🧝🏻	elf: nuanță deschisă a pielii
 🧝🏼	elf: ton mediu-deschis al pielii
-🧝🏽	elf: ton mediu al pielii
+🧝🏽	elf: nuanță medie a pielii
 🧝🏾	spiriduș: nuanță medie-închisă a pielii
 🧝🏿	elf: nuanță închisă a pielii
 🧝‍♀️	elf femeie
 🧝‍♀	elf femeie
-🧝🏻‍♀️	elf: nuanță deschisă a pielii
+🧝🏻‍♀️	elf: ton deschis al pielii
 🧝🏻‍♀	elf: nuanță deschisă a pielii
 🧝🏼‍♀️	elf: ton mediu-deschis al pielii
 🧝🏼‍♀	elf: ton mediu-deschis al pielii
@@ -972,8 +972,8 @@
 🙎‍♂	bărbat făcând bofă
 🙎🏻‍♂️	bărbat care se îmburcă: piele deschisă
 🙎🏻‍♂	bărbat care se îmburcă: piele deschisă
-🙎🏼‍♂️	bărbat care se îmburcă: ton mediu-deschis al pielii
-🙎🏼‍♂	bărbat care se îmburcă: ton mediu-deschis al pielii
+🙎🏼‍♂️	bărbat care se îmbucănește: ton mediu-deschis al pielii
+🙎🏼‍♂	bărbat care se îmbucănește: ton mediu-deschis al pielii
 🙎🏽‍♂️	bărbat care se îmburcă: nuanță medie a pielii
 🙎🏽‍♂	bărbat care se îmburcă: nuanță medie a pielii
 🙎🏾‍♂️	bărbat care se îmburcă: nuanță medie-închisă a pielii
@@ -1008,8 +1008,8 @@
 🙅🏽‍♂	bărbat care gesticulează NU: ton mediu al pielii
 🙅🏾‍♂️	bărbat care gesticulează NU: tonul pielii mediu-întunecat
 🙅🏾‍♂	bărbat care gesticulează NU: tonul pielii mediu-întunecat
-🙅🏿‍♂️	bărbat care gesticulează NU: tonul închis al pielii
-🙅🏿‍♂	bărbat care gesticulează NU: tonul închis al pielii
+🙅🏿‍♂️	bărbat care gesticulează NU: nuanță închisă a pielii
+🙅🏿‍♂	bărbat care gesticulează NU: nuanță închisă a pielii
 🙅‍♀️	femeie gesticulând NU
 🙅‍♀	femeie gesticulând NU
 🙅🏻‍♀️	femeie care gesticulează NU: piele deschisă
@@ -1136,28 +1136,28 @@
 🙇🏻‍♀	femeie înclinată: nuanță deschisă a pielii
 🙇🏼‍♀️	femeie înclinată: ton mediu-deschis al pielii
 🙇🏼‍♀	femeie înclinată: ton mediu-deschis al pielii
-🙇🏽‍♀️	femeie înclinată: nuanță medie a pielii
-🙇🏽‍♀	femeie înclinată: nuanță medie a pielii
-🙇🏾‍♀️	femeie înclinată: nuanță medie-închisă a pielii
-🙇🏾‍♀	femeie înclinată: nuanță medie-închisă a pielii
+🙇🏽‍♀️	femeie înclinată: ton mediu al pielii
+🙇🏽‍♀	femeie înclinată: ton mediu al pielii
+🙇🏾‍♀️	femeie care se înclină: tonul pielii mediu-întunecat
+🙇🏾‍♀	femeie care se înclină: tonul pielii mediu-întunecat
 🙇🏿‍♀️	femeie înclinată: nuanță închisă a pielii
 🙇🏿‍♀	femeie înclinată: nuanță închisă a pielii
 🤦	persoană facepalming
 🤦🏻	persoană facepalming: nuanță deschisă a pielii
-🤦🏼	Facepalming persoană: nuanță medie-deschisă a pielii
-🤦🏽	Facepalming persoană: nuanță medie a pielii
+🤦🏼	Facepalming persoană: ton mediu-deschis al pielii
+🤦🏽	persoană facepalming: ton mediu al pielii
 🤦🏾	Facepalming persoană: nuanță medie-închisă a pielii
-🤦🏿	Facepalming persoană: nuanță închisă a pielii
+🤦🏿	persoană facepalming: nuanță închisă a pielii
 🤦‍♂️	bărbat face palming
 🤦‍♂	bărbat face palming
 🤦🏻‍♂️	facepalming bărbat: nuanță deschisă a pielii
 🤦🏻‍♂	facepalming bărbat: nuanță deschisă a pielii
 🤦🏼‍♂️	Facepalming bărbat: nuanță medie-deschisă a pielii
 🤦🏼‍♂	Facepalming bărbat: nuanță medie-deschisă a pielii
-🤦🏽‍♂️	Facepalming bărbat: nuanță medie a pielii
-🤦🏽‍♂	Facepalming bărbat: nuanță medie a pielii
+🤦🏽‍♂️	facepalming bărbat: nuanță medie a pielii
+🤦🏽‍♂	facepalming bărbat: nuanță medie a pielii
 🤦🏾‍♂️	facepalming bărbat: nuanță medie-închisă a pielii
-🤦🏾‍♂	facepalming bărbat: nuanță medie-închisă a pielii
+🤦🏾‍♂	Facepalming bărbat: nuanță medie-închisă a pielii
 🤦🏿‍♂️	facepalming bărbat: nuanță închisă a pielii
 🤦🏿‍♂	facepalming bărbat: nuanță închisă a pielii
 🤦‍♀️	femeie face palming
@@ -1186,8 +1186,8 @@
 🤷🏼‍♂	bărbat care ridică din umeri: ton mediu-deschis al pielii
 🤷🏽‍♂️	bărbat care ridică din umeri: ton mediu al pielii
 🤷🏽‍♂	bărbat care ridică din umeri: ton mediu al pielii
-🤷🏾‍♂️	bărbat care ridică din umeri: nuanță medie-închisă a pielii
-🤷🏾‍♂	bărbat care ridică din umeri: nuanță medie-închisă a pielii
+🤷🏾‍♂️	bărbat care ridică din umeri: ton mediu-închis al pielii
+🤷🏾‍♂	bărbat care ridică din umeri: ton mediu-închis al pielii
 🤷🏿‍♂️	bărbat care ridică din umeri: nuanță închisă a pielii
 🤷🏿‍♂	bărbat care ridică din umeri: nuanță închisă a pielii
 🤷‍♀️	femeie ridicând din umeri
@@ -1204,7 +1204,7 @@
 🤷🏿‍♀	femeie care ridică din umeri: nuanță închisă a pielii
 💆	persoană care primește masaj
 💆🏻	persoană care primește masaj: nuanță deschisă a pielii
-💆🏼	persoana care primește masaj: nuanță medie-deschisă a pielii
+💆🏼	persoană care primește masaj: nuanță medie-deschisă a pielii
 💆🏽	persoană care primește masaj: nuanță medie a pielii
 💆🏾	persoană care primește masaj: nuanță medie-închisă a pielii
 💆🏿	persoană care primește masaj: nuanță închisă a pielii
@@ -1233,11 +1233,11 @@
 💆🏿‍♀️	femeie care primește masaj: nuanță închisă a pielii
 💆🏿‍♀	femeie care primește masaj: nuanță închisă a pielii
 💇	persoana care se tunde
-💇🏻	persoană care se tunde: piele deschisă
+💇🏻	persoana care se tunde: nuanță deschisă a pielii
 💇🏼	persoană care se tunde: nuanță medie-deschisă a pielii
 💇🏽	persoană care se tunde: nuanță medie a pielii
-💇🏾	persoana care se tunde: nuanța pielii mediu-închisă
-💇🏿	persoana care se tunde: nuanță închisă a pielii
+💇🏾	persoană care se tunde: nuanță a pielii mediu-închisă
+💇🏿	persoană care se tunsează: nuanță închisă a pielii
 💇‍♂️	bărbat care se tunde
 💇‍♂	bărbat care se tunde
 💇🏻‍♂️	bărbat care se tunde: piele deschisă
@@ -1246,16 +1246,16 @@
 💇🏼‍♂	bărbat care se tunde: nuanță medie-deschisă a pielii
 💇🏽‍♂️	bărbat care se tunde: ton mediu al pielii
 💇🏽‍♂	bărbat care se tunde: ton mediu al pielii
-💇🏾‍♂️	bărbat care se tunde: nuanță medie-închisă a pielii
-💇🏾‍♂	bărbat care se tunde: nuanță medie-închisă a pielii
+💇🏾‍♂️	bărbat care se tunsează: nuanță medie-închisă a pielii
+💇🏾‍♂	bărbat care se tunsează: nuanță medie-închisă a pielii
 💇🏿‍♂️	bărbat care se tunde: nuanță închisă a pielii
 💇🏿‍♂	bărbat care se tunde: nuanță închisă a pielii
 💇‍♀️	femeie care se tunde
 💇‍♀	femeie care se tunde
 💇🏻‍♀️	femeie care se tunde: piele deschisă
 💇🏻‍♀	femeie care se tunde: piele deschisă
-💇🏼‍♀️	femeie care se tunsează: ton mediu-deschis al pielii
-💇🏼‍♀	femeie care se tunsează: ton mediu-deschis al pielii
+💇🏼‍♀️	femeie care se tunde: nuanță medie-deschisă a pielii
+💇🏼‍♀	femeie care se tunde: nuanță medie-deschisă a pielii
 💇🏽‍♀️	femeie care se tunde: ton mediu al pielii
 💇🏽‍♀	femeie care se tunde: ton mediu al pielii
 💇🏾‍♀️	femeie care se tunde: nuanță medie-închisă a pielii
@@ -1263,7 +1263,7 @@
 💇🏿‍♀️	femeie care se tunde: nuanță închisă a pielii
 💇🏿‍♀	femeie care se tunde: nuanță închisă a pielii
 🚶	persoană care merge
-🚶🏻	persoană care merge: piele deschisă
+🚶🏻	persoană care merge: nuanță deschisă a pielii
 🚶🏼	persoană care merge: ton mediu-deschis al pielii
 🚶🏽	persoană care merge: nuanță medie a pielii
 🚶🏾	persoană care merge: nuanță medie-închisă a pielii
@@ -1274,8 +1274,8 @@
 🚶🏻‍♂	bărbat care merge: piele deschisă
 🚶🏼‍♂️	bărbat care merge: ton mediu-deschis al pielii
 🚶🏼‍♂	bărbat care merge: ton mediu-deschis al pielii
-🚶🏽‍♂️	bărbat care merge: nuanță medie a pielii
-🚶🏽‍♂	bărbat care merge: nuanță medie a pielii
+🚶🏽‍♂️	bărbat care merge: ton mediu al pielii
+🚶🏽‍♂	bărbat care merge: ton mediu al pielii
 🚶🏾‍♂️	bărbat care merge: tonul pielii mediu-întunecat
 🚶🏾‍♂	bărbat care merge: tonul pielii mediu-întunecat
 🚶🏿‍♂️	bărbat care merge: nuanță închisă a pielii
@@ -1342,19 +1342,19 @@
 🧖	persoană în cameră aburindă
 🧖🏻	persoană într-o cameră aburită: nuanță deschisă a pielii
 🧖🏼	persoană în cameră aburită: nuanță medie-deschisă a pielii
-🧖🏽	persoană într-o cameră aburită: ton mediu al pielii
-🧖🏾	persoană în cameră aburită: nuanță medie-închisă a pielii
-🧖🏿	persoană într-o cameră aburită: nuanță închisă a pielii
+🧖🏽	persoană în cameră aburintă: nuanță medie a pielii
+🧖🏾	persoană aflată într-o cameră aburită: nuanță medie-închisă a pielii
+🧖🏿	persoană în cameră aburindă: nuanță închisă a pielii
 🧖‍♀️	femeie în cameră aburindă
 🧖‍♀	femeie în cameră aburindă
 🧖🏻‍♀️	femeie într-o cameră aburindă: nuanță deschisă a pielii
 🧖🏻‍♀	femeie într-o cameră aburindă: nuanță deschisă a pielii
 🧖🏼‍♀️	femeie într-o cameră aburindă: ton mediu-deschis al pielii
 🧖🏼‍♀	femeie într-o cameră aburindă: ton mediu-deschis al pielii
-🧖🏽‍♀️	femeie în camera de aburi: ton mediu al pielii
-🧖🏽‍♀	femeie în camera de aburi: ton mediu al pielii
-🧖🏾‍♀️	femeie în cameră aburindă: nuanță medie-închisă a pielii
-🧖🏾‍♀	femeie în cameră aburindă: nuanță medie-închisă a pielii
+🧖🏽‍♀️	femeie într-o cameră de aburi: ton mediu al pielii
+🧖🏽‍♀	femeie într-o cameră de aburi: ton mediu al pielii
+🧖🏾‍♀️	femeie într-o cameră aburindă: ton mediu-întunecat al pielii
+🧖🏾‍♀	femeie într-o cameră aburindă: ton mediu-întunecat al pielii
 🧖🏿‍♀️	femeie într-o cameră aburită: nuanță închisă a pielii
 🧖🏿‍♀	femeie într-o cameră aburită: nuanță închisă a pielii
 🧖‍♂️	bărbat în cameră aburindă
@@ -1365,22 +1365,22 @@
 🧖🏼‍♂	bărbat în cameră cu aburi: nuanță medie-deschisă a pielii
 🧖🏽‍♂️	bărbat în cameră cu aburi: ton mediu al pielii
 🧖🏽‍♂	bărbat în cameră cu aburi: ton mediu al pielii
-🧖🏾‍♂️	bărbat în cameră cu aburi: nuanță medie-închisă a pielii
-🧖🏾‍♂	bărbat în cameră cu aburi: nuanță medie-închisă a pielii
+🧖🏾‍♂️	bărbat în cameră aburită: nuanță medie-închisă a pielii
+🧖🏾‍♂	bărbat în cameră aburită: nuanță medie-închisă a pielii
 🧖🏿‍♂️	barbat in camera aburita: nuanta inchisa a pielii
 🧖🏿‍♂	barbat in camera aburita: nuanta inchisa a pielii
 🧗	persoană care urcă
 🧗🏻	persoană care urcă: piele deschisă
 🧗🏼	persoană care urcă: ton mediu-deschis al pielii
 🧗🏽	persoană care urcă: nuanță medie a pielii
-🧗🏾	persoană care urcă: ton mediu-întunecat al pielii
+🧗🏾	persoană care urcă: nuanță medie-închisă a pielii
 🧗🏿	persoană care urcă: nuanță închisă a pielii
 🧗‍♀️	femeie care se catara
 🧗‍♀	femeie care se catara
-🧗🏻‍♀️	femeie care urcă: piele deschisă
-🧗🏻‍♀	femeie care urcă: piele deschisă
-🧗🏼‍♀️	femeie cățărătoare: nuanță medie-deschisă a pielii
-🧗🏼‍♀	femeie cățărătoare: nuanță medie-deschisă a pielii
+🧗🏻‍♀️	femeie cățărătoare: piele deschisă
+🧗🏻‍♀	femeie cățărătoare: piele deschisă
+🧗🏼‍♀️	femeie care urcă: ton mediu-deschis al pielii
+🧗🏼‍♀	femeie care urcă: ton mediu-deschis al pielii
 🧗🏽‍♀️	femeie cățărătoare: nuanță medie a pielii
 🧗🏽‍♀	femeie cățărătoare: nuanță medie a pielii
 🧗🏾‍♀️	femeie cățărătoare: nuanță medie-închisă a pielii
@@ -1407,10 +1407,10 @@
 🧘🏿	persoană în poziție lotus: nuanță închisă a pielii
 🧘‍♀️	femeie în poziție de lotus
 🧘‍♀	femeie în poziție de lotus
-🧘🏻‍♀️	femeie în poziție lotus: piele deschisă
-🧘🏻‍♀	femeie în poziție lotus: piele deschisă
-🧘🏼‍♀️	femeie în poziție lotus: nuanță medie-deschisă a pielii
-🧘🏼‍♀	femeie în poziție lotus: nuanță medie-deschisă a pielii
+🧘🏻‍♀️	femeie în poziție lotus: nuanță deschisă a pielii
+🧘🏻‍♀	femeie în poziție lotus: nuanță deschisă a pielii
+🧘🏼‍♀️	femeie în poziție de lotus: ton mediu-deschis al pielii
+🧘🏼‍♀	femeie în poziție de lotus: ton mediu-deschis al pielii
 🧘🏽‍♀️	femeie în poziție lotus: nuanță medie a pielii
 🧘🏽‍♀	femeie în poziție lotus: nuanță medie a pielii
 🧘🏾‍♀️	femeie în poziție lotus: nuanță medie-închisă a pielii
@@ -1419,14 +1419,14 @@
 🧘🏿‍♀	femeie în poziție lotus: nuanță închisă a pielii
 🧘‍♂️	bărbat în poziție de lotus
 🧘‍♂	bărbat în poziție de lotus
-🧘🏻‍♂️	bărbat în poziție de lotus: nuanță deschisă a pielii
-🧘🏻‍♂	bărbat în poziție de lotus: nuanță deschisă a pielii
+🧘🏻‍♂️	bărbat în poziție de lotus: piele deschisă
+🧘🏻‍♂	bărbat în poziție de lotus: piele deschisă
 🧘🏼‍♂️	bărbat în poziție lotus: nuanță medie-deschisă a pielii
 🧘🏼‍♂	bărbat în poziție lotus: nuanță medie-deschisă a pielii
-🧘🏽‍♂️	bărbat în poziție de lotus: ton mediu al pielii
-🧘🏽‍♂	bărbat în poziție de lotus: ton mediu al pielii
-🧘🏾‍♂️	bărbat în poziție de lotus: nuanță medie-închisă a pielii
-🧘🏾‍♂	bărbat în poziție de lotus: nuanță medie-închisă a pielii
+🧘🏽‍♂️	bărbat în poziție de lotus: nuanță medie a pielii
+🧘🏽‍♂	bărbat în poziție de lotus: nuanță medie a pielii
+🧘🏾‍♂️	bărbat în poziție lotus: nuanță medie-închisă a pielii
+🧘🏾‍♂	bărbat în poziție lotus: nuanță medie-închisă a pielii
 🧘🏿‍♂️	barbat in pozitia lotus: nuanta inchisa a pielii
 🧘🏿‍♂	barbat in pozitia lotus: nuanta inchisa a pielii
 🛀	persoana care face baie
@@ -1439,14 +1439,14 @@
 🛌🏻	persoană în pat: nuanță deschisă a pielii
 🛌🏼	persoană în pat: ton mediu-deschis al pielii
 🛌🏽	persoană în pat: ton mediu al pielii
-🛌🏾	persoană în pat: ton mediu-întunecat al pielii
+🛌🏾	persoană în pat: nuanță medie-închisă a pielii
 🛌🏿	persoană în pat: nuanță închisă a pielii
 🕴️	bărbat în costum levitând
 🕴	bărbat în costum levitând
 🕴🏻	bărbat în costum care levita: piele deschisă
 🕴🏼	bărbat în costum care levita: ton mediu-deschis al pielii
 🕴🏽	bărbat în costum care levita: ton mediu al pielii
-🕴🏾	bărbat în costum care levita: nuanță medie-închisă a pielii
+🕴🏾	bărbat în costum care levita: tonul pielii mediu-întunecat
 🕴🏿	bărbat în costum care levita: tonul închis al pielii
 🗣️	cap vorbitor
 🗣	cap vorbitor
@@ -1498,8 +1498,8 @@
 🏌🏼‍♀	femeie care joacă golf: ton mediu-deschis al pielii
 🏌🏽‍♀️	femeie care joacă golf: ton mediu al pielii
 🏌🏽‍♀	femeie care joacă golf: ton mediu al pielii
-🏌🏾‍♀️	femeie care joacă golf: ton mediu-întunecat al pielii
-🏌🏾‍♀	femeie care joacă golf: ton mediu-întunecat al pielii
+🏌🏾‍♀️	femeie care joacă golf: nuanță medie-închisă a pielii
+🏌🏾‍♀	femeie care joacă golf: nuanță medie-închisă a pielii
 🏌🏿‍♀️	femeie care joacă golf: nuanță închisă a pielii
 🏌🏿‍♀	femeie care joacă golf: nuanță închisă a pielii
 🏄	persoană care face surfing
@@ -1516,8 +1516,8 @@
 🏄🏼‍♂	bărbat care face surf: ton mediu-deschis al pielii
 🏄🏽‍♂️	bărbat care face surf: ton mediu al pielii
 🏄🏽‍♂	bărbat care face surf: ton mediu al pielii
-🏄🏾‍♂️	bărbat care face surf: ton mediu-închis al pielii
-🏄🏾‍♂	bărbat care face surf: ton mediu-închis al pielii
+🏄🏾‍♂️	bărbat care face surf: ton mediu-întunecat al pielii
+🏄🏾‍♂	bărbat care face surf: ton mediu-întunecat al pielii
 🏄🏿‍♂️	bărbat care face surf: nuanță închisă a pielii
 🏄🏿‍♂	bărbat care face surf: nuanță închisă a pielii
 🏄‍♀️	femeie care face surf
@@ -1583,13 +1583,13 @@
 🏊‍♀️	femeie înotând
 🏊‍♀	femeie înotând
 🏊🏻‍♀️	femeie care înoată: piele deschisă
-🏊🏻‍♀	femeie care înoată: piele deschisă
+🏊🏻‍♀	femeie care înot: piele deschisă
 🏊🏼‍♀️	femeie care înoată: ton mediu-deschis al pielii
 🏊🏼‍♀	femeie care înoată: ton mediu-deschis al pielii
-🏊🏽‍♀️	femeie care înoată: nuanță medie a pielii
+🏊🏽‍♀️	femeie care înoată: ton mediu al pielii
 🏊🏽‍♀	femeie care înoată: nuanță medie a pielii
 🏊🏾‍♀️	femeie care înot: nuanță medie-închisă a pielii
-🏊🏾‍♀	femeie care înot: nuanță medie-închisă a pielii
+🏊🏾‍♀	femeie care înoată: nuanță medie-închisă a pielii
 🏊🏿‍♀️	femeie care înoată: nuanță închisă a pielii
 🏊🏿‍♀	femeie care înoată: nuanță închisă a pielii
 ⛹️	persoană care sare mingea
@@ -1609,18 +1609,18 @@
 ⛹🏼‍♂	minge săritură bărbat: ton mediu-deschis al pielii
 ⛹🏽‍♂️	minge care săritură bărbat: ton mediu al pielii
 ⛹🏽‍♂	minge care săritură bărbat: ton mediu al pielii
-⛹🏾‍♂️	minge săritură bărbat: ton mediu-întunecat al pielii
-⛹🏾‍♂	minge săritură bărbat: ton mediu-întunecat al pielii
-⛹🏿‍♂️	om care sărită minge: nuanță închisă a pielii
-⛹🏿‍♂	om care sărită minge: nuanță închisă a pielii
+⛹🏾‍♂️	minge care săritură bărbat: ton mediu-întunecat al pielii
+⛹🏾‍♂	minge care săritură bărbat: ton mediu-întunecat al pielii
+⛹🏿‍♂️	minge care sară bărbat: nuanță închisă a pielii
+⛹🏿‍♂	minge care sară bărbat: nuanță închisă a pielii
 ⛹️‍♀️	femeie care sară mingea
 ⛹‍♀️	femeie care sară mingea
 ⛹️‍♀	femeie care sară mingea
 ⛹‍♀	femeie care sară mingea
 ⛹🏻‍♀️	femeie care sărită minge: piele deschisă
 ⛹🏻‍♀	femeie care sărită minge: piele deschisă
-⛹🏼‍♀️	minge care sărită femeie: ton mediu-deschis al pielii
-⛹🏼‍♀	minge care sărită femeie: ton mediu-deschis al pielii
+⛹🏼‍♀️	femeie care sărită minge: ton mediu-deschis al pielii
+⛹🏼‍♀	femeie care sărită minge: ton mediu-deschis al pielii
 ⛹🏽‍♀️	femeie care sărită minge: ton mediu al pielii
 ⛹🏽‍♀	femeie care sărită minge: ton mediu al pielii
 ⛹🏾‍♀️	femeie care sărită minge: ton mediu-întunecat al pielii
@@ -1656,8 +1656,8 @@
 🏋🏻‍♀	femeie care ridică greutăți: piele deschisă
 🏋🏼‍♀️	femeie care ridică greutăți: ton mediu-deschis al pielii
 🏋🏼‍♀	femeie care ridică greutăți: ton mediu-deschis al pielii
-🏋🏽‍♀️	femeie care ridică greutăți: ton mediu al pielii
-🏋🏽‍♀	femeie care ridică greutăți: ton mediu al pielii
+🏋🏽‍♀️	femeie care ridică greutăți: nuanță medie a pielii
+🏋🏽‍♀	femeie care ridică greutăți: nuanță medie a pielii
 🏋🏾‍♀️	femeie care ridică greutăți: ton mediu-întunecat al pielii
 🏋🏾‍♀	femeie care ridică greutăți: ton mediu-întunecat al pielii
 🏋🏿‍♀️	femeie care ridică greutăți: nuanță închisă a pielii
@@ -1688,8 +1688,8 @@
 🚴🏼‍♀	femeie cu bicicleta: ton mediu-deschis al pielii
 🚴🏽‍♀️	femeie cu bicicleta: ton mediu al pielii
 🚴🏽‍♀	femeie cu bicicleta: ton mediu al pielii
-🚴🏾‍♀️	femeie cu bicicleta: nuanță medie-închisă a pielii
-🚴🏾‍♀	femeie cu bicicleta: nuanță medie-închisă a pielii
+🚴🏾‍♀️	femeie cu bicicleta: ton mediu-întunecat al pielii
+🚴🏾‍♀	femeie cu bicicleta: ton mediu-întunecat al pielii
 🚴🏿‍♀️	femeie cu bicicleta: nuanță închisă a pielii
 🚴🏿‍♀	femeie cu bicicleta: nuanță închisă a pielii
 🚵	persoană ciclism montan
@@ -1704,8 +1704,8 @@
 🚵🏻‍♂	bărbat ciclism montan: piele deschisă
 🚵🏼‍♂️	ciclism montan barbat: ton mediu-deschis al pielii
 🚵🏼‍♂	ciclism montan barbat: ton mediu-deschis al pielii
-🚵🏽‍♂️	barbat mountain bike: nuanta medie a pielii
-🚵🏽‍♂	barbat mountain bike: nuanta medie a pielii
+🚵🏽‍♂️	ciclism montan barbat: nuanta medie a pielii
+🚵🏽‍♂	ciclism montan barbat: nuanta medie a pielii
 🚵🏾‍♂️	ciclism montan barbat: ton mediu-închis al pielii
 🚵🏾‍♂	ciclism montan barbat: ton mediu-închis al pielii
 🚵🏿‍♂️	bărbat ciclism montan: nuanță închisă a pielii
@@ -1746,14 +1746,14 @@
 🤸🏿‍♂	bărbat care se învârte în roată: nuanță închisă a pielii
 🤸‍♀️	femeie în roată
 🤸‍♀	femeie în roată
-🤸🏻‍♀️	femeie în roată: piele deschisă
-🤸🏻‍♀	femeie în roată: piele deschisă
+🤸🏻‍♀️	femeie care rulează în roată: piele deschisă
+🤸🏻‍♀	femeie care rulează în roată: piele deschisă
 🤸🏼‍♀️	femeie care rulează în roată: ton mediu-deschis al pielii
 🤸🏼‍♀	femeie care rulează în roată: ton mediu-deschis al pielii
-🤸🏽‍♀️	femeie în roată: ton mediu al pielii
-🤸🏽‍♀	femeie în roată: ton mediu al pielii
-🤸🏾‍♀️	femeie care rulează în roată: ton mediu-întunecat al pielii
-🤸🏾‍♀	femeie care rulează în roată: ton mediu-întunecat al pielii
+🤸🏽‍♀️	femeie care face roată: nuanță medie a pielii
+🤸🏽‍♀	femeie care face roată: nuanță medie a pielii
+🤸🏾‍♀️	femeie în roată: nuanță medie-închisă a pielii
+🤸🏾‍♀	femeie în roată: nuanță medie-închisă a pielii
 🤸🏿‍♀️	femeie care rulează în roată: nuanță închisă a pielii
 🤸🏿‍♀	femeie care rulează în roată: nuanță închisă a pielii
 🤼	oameni care se luptă
@@ -1765,7 +1765,7 @@
 🤽🏻	persoană care joacă polo pe apă: ton deschis al pielii
 🤽🏼	persoană care joacă polo pe apă: ton mediu-deschis al pielii
 🤽🏽	persoană care joacă polo pe apă: ton mediu al pielii
-🤽🏾	persoană care joacă polo pe apă: ton mediu-închis al pielii
+🤽🏾	persoană care joacă polo pe apă: nuanță medie-închisă a pielii
 🤽🏿	persoană care joacă polo pe apă: nuanță închisă a pielii
 🤽‍♂️	bărbat care joacă polo pe apă
 🤽‍♂	bărbat care joacă polo pe apă
@@ -1822,7 +1822,7 @@
 🤾🏿‍♀️	femeie care joacă handbal: nuanță închisă a pielii
 🤾🏿‍♀	femeie care joacă handbal: nuanță închisă a pielii
 🤹	persoană care jonglează
-🤹🏻	persoană care jonglează: nuanță deschisă a pielii
+🤹🏻	persoană care jonglează: piele deschisă
 🤹🏼	persoană care jonglează: nuanță medie-deschisă a pielii
 🤹🏽	persoană care jonglează: nuanță medie a pielii
 🤹🏾	persoană care jonglează: nuanță medie-închisă a pielii
@@ -1835,8 +1835,8 @@
 🤹🏼‍♂	bărbat care jonglează: ton mediu-deschis al pielii
 🤹🏽‍♂️	bărbat care jonglează: nuanță medie a pielii
 🤹🏽‍♂	bărbat care jonglează: nuanță medie a pielii
-🤹🏾‍♂️	bărbat care jonglează: nuanță medie-închisă a pielii
-🤹🏾‍♂	bărbat care jonglează: nuanță medie-închisă a pielii
+🤹🏾‍♂️	bărbat care jonglează: tonul pielii mediu-întunecat
+🤹🏾‍♂	bărbat care jonglează: tonul pielii mediu-întunecat
 🤹🏿‍♂️	bărbat care jonglează: nuanță închisă a pielii
 🤹🏿‍♂	bărbat care jonglează: nuanță închisă a pielii
 🤹‍♀️	femeie care jonglează
@@ -1903,7 +1903,7 @@
 💪	biceps flectat
 💪🏻	biceps flexat: nuanță deschisă a pielii
 💪🏼	biceps flexat: ton mediu-deschis al pielii
-💪🏽	biceps flexat: nuanță medie a pielii
+💪🏽	biceps flexat: ton mediu al pielii
 💪🏾	biceps flexat: ton mediu-închis al pielii
 💪🏿	biceps flexat: nuanță închisă a pielii
 🦵	picior
@@ -1928,15 +1928,15 @@
 👉🏻	indexul reversului îndreptat spre dreapta: ton deschis al pielii
 👉🏼	indexul reversului îndreptat spre dreapta: ton mediu-deschis al pielii
 👉🏽	indexul reversului îndreptat spre dreapta: ton mediu al pielii
-👉🏾	indexul reversului îndreptat spre dreapta: ton mediu-întunecat al pielii
+👉🏾	indexul reversului îndreptat spre dreapta: ton mediu-închis al pielii
 👉🏿	indexul reversului îndreptat spre dreapta: nuanță închisă a pielii
 ☝️	index îndreptat în sus
 ☝	index îndreptat în sus
-☝🏻	indice în sus: ton deschis al pielii
+☝🏻	index îndreptat în sus: ton deschis al pielii
 ☝🏼	indice în sus: ton mediu-deschis al pielii
-☝🏽	index în sus: ton mediu al pielii
+☝🏽	indice în sus: ton mediu al pielii
 ☝🏾	indice în sus: tonul pielii mediu-întunecat
-☝🏿	indice în sus: tonul închis al pielii
+☝🏿	index îndreptat în sus: tonul închis al pielii
 👆	indexul reversului îndreptat în sus
 👆🏻	indexul reversului îndreptat în sus: ton deschis al pielii
 👆🏼	indexul reversului îndreptat în sus: ton mediu-deschis al pielii
@@ -1973,24 +1973,24 @@
 🖖🏼	salut vulcanian: ton mediu-deschis al pielii
 🖖🏽	salut vulcanian: ton mediu al pielii
 🖖🏾	salut vulcanian: ton mediu-întunecat al pielii
-🖖🏿	salut vulcan: nuanță închisă a pielii
+🖖🏿	salut vulcanian: nuanță închisă a pielii
 🤘	semnul coarnelor
-🤘🏻	semnul coarnelor: ton deschis al pielii
+🤘🏻	semnul coarnelor: nuanță deschisă a pielii
 🤘🏼	semnul coarnelor: ton mediu-deschis al pielii
 🤘🏽	semnul coarnelor: ton mediu al pielii
-🤘🏾	semnul coarnelor: nuanța pielii mediu-închisă
+🤘🏾	semnul coarnelor: tonul pielii mediu-întunecat
 🤘🏿	semnul coarnelor: tonul închis al pielii
 🤙	cheamă-mă mână
 🤙🏻	sună-mă mână: ton deschis al pielii
 🤙🏼	call me hand: ton mediu-deschis al pielii
 🤙🏽	call me hand: ton mediu al pielii
-🤙🏾	call me hand: ton mediu-întunecat al pielii
+🤙🏾	sunați-mă mână: nuanță de piele mediu-închisă
 🤙🏿	suna-mi mana: nuanta inchisa a pielii
 🖐️	mâna cu degetele întinse
 🖐	mâna cu degetele întinse
 🖐🏻	mână cu degetele întinse: nuanță deschisă a pielii
-🖐🏼	mână cu degetele întinse: ton mediu-deschis al pielii
-🖐🏽	mână cu degetele întinse: ton mediu al pielii
+🖐🏼	mâna cu degetele întinse: ton mediu-deschis al pielii
+🖐🏽	mână cu degetele întinse: nuanță medie a pielii
 🖐🏾	mâna cu degetele întinse: tonul pielii mediu-întunecat
 🖐🏿	mână cu degetele întinse: nuanță închisă a pielii
 ✋	mana ridicata
@@ -2018,22 +2018,22 @@
 👎🏾	degetul mare în jos: tonul pielii mediu-întunecat
 👎🏿	degetul mare în jos: tonul închis al pielii
 ✊	pumnul ridicat
-✊🏻	pumnul ridicat: nuanță deschisă a pielii
+✊🏻	pumnul ridicat: ton deschis al pielii
 ✊🏼	pumnul ridicat: ton mediu-deschis al pielii
 ✊🏽	pumn ridicat: ton mediu al pielii
 ✊🏾	pumnul ridicat: tonul pielii mediu-întunecat
-✊🏿	pumn ridicat: nuanță închisă a pielii
+✊🏿	pumnul ridicat: nuanță închisă a pielii
 👊	pumnul care se apropie
 👊🏻	pumnul care se apropie: nuanță deschisă a pielii
 👊🏼	pumnul care se apropie: ton mediu-deschis al pielii
 👊🏽	pumnul care se apropie: nuanță medie a pielii
-👊🏾	pumnul care se apropie: nuanța pielii mediu-închisă
+👊🏾	pumnul care se apropie: tonul pielii mediu-întunecat
 👊🏿	pumnul care se apropie: nuanță închisă a pielii
 🤛	pumnul cu fața la stânga
 🤛🏻	pumnul cu fața la stânga: nuanță deschisă a pielii
 🤛🏼	pumnul cu fața la stânga: ton mediu-deschis al pielii
 🤛🏽	pumnul cu fața la stânga: nuanță medie a pielii
-🤛🏾	pumnul cu fața la stânga: ton mediu-întunecat al pielii
+🤛🏾	pumnul cu fața la stânga: nuanță medie-închisă a pielii
 🤛🏿	pumnul cu fața la stânga: nuanță închisă a pielii
 🤜	pumnul cu fața la dreapta
 🤜🏻	pumnul cu fața la dreapta: nuanță deschisă a pielii
@@ -2048,10 +2048,10 @@
 🤚🏾	dosul mâinii ridicat: ton mediu-întunecat al pielii
 🤚🏿	dosul mâinii ridicat: nuanță închisă a pielii
 👋	fluturând mâna
-👋🏻	fluturând mâna: nuanță deschisă a pielii
+👋🏻	fluturând mâna: ton deschis al pielii
 👋🏼	mâna fluturând: ton mediu-deschis al pielii
 👋🏽	mâna fluturând: ton mediu al pielii
-👋🏾	fluturând mâna: tonul pielii mediu-întunecat
+👋🏾	mâna fluturând: tonul pielii mediu-întunecat
 👋🏿	fluturând mâna: nuanță închisă a pielii
 🤟	gest de dragoste
 🤟🏻	Gestul te iubesc: ton deschis al pielii
@@ -2063,13 +2063,13 @@
 ✍	mână scrisă
 ✍🏻	mâna de scris: ton deschis al pielii
 ✍🏼	mâna de scris: ton mediu-deschis al pielii
-✍🏽	mâna de scris: ton mediu al pielii
-✍🏾	mâna de scris: ton mediu-întunecat al pielii
+✍🏽	mâna care scrie: ton mediu al pielii
+✍🏾	mâna de scris: tonul pielii mediu-întunecat
 ✍🏿	mâna care scrie: nuanță închisă a pielii
 👏	bătând din palme
 👏🏻	batând din palme: piele deschisă
 👏🏼	batând din palme: ton mediu-deschis al pielii
-👏🏽	din palme: ton mediu al pielii
+👏🏽	batând din palme: ton mediu al pielii
 👏🏾	batând din palme: ton mediu-întunecat al pielii
 👏🏿	batând din palme: nuanță închisă a pielii
 👐	mâinile deschise
@@ -2121,8 +2121,8 @@
 🦳	cu părul alb
 👣	urme de pasi
 👀	ochi
-👁️	ochi
-👁	ochi
+👁️	ochiul
+👁	ochiul
 👁️‍🗨️	ochi în balon de vorbire
 👁‍🗨️	ochi în balon de vorbire
 👁️‍🗨	ochi în balon de vorbire
@@ -2140,7 +2140,7 @@
 💔	inimă frântă
 💕	doua inimi
 💖	inimă sclipitoare
-💗	inimă în creștere
+💗	inima în creștere
 💙	inima albastra
 💚	inimă verde
 💛	inimă galbenă
@@ -2403,7 +2403,7 @@
 🍛	orez curry
 🍜	bol aburind
 🍝	spaghete
-🍠	cartof dulce prăjit
+🍠	cartofi dulci prăjiți
 🍢	oden
 🍣	sushi
 🍤	creveti prajiti
@@ -2775,12 +2775,12 @@
 ♣	costum de club
 ♟️	pion de șah
 ♟	pion de șah
-🃏	joker
+🃏	glumeţ
 🀄	mahjong dragon roșu
 🎴	cărți de joc cu flori
 🎭	artele spectacolului
-🖼️	poza incadrata
-🖼	poza incadrata
+🖼️	poza inramata
+🖼	poza inramata
 🎨	paleta artistului
 🧵	fir
 🧶	fire
@@ -3182,8 +3182,8 @@
 ❇	scânteie
 ‼️	semn dublu de exclamare
 ‼	semn dublu de exclamare
-⁉️	semnul de întrebare cu exclamare
-⁉	semnul de întrebare cu exclamare
+⁉️	semn de întrebare cu exclamare
+⁉	semn de întrebare cu exclamare
 ❓	semnul întrebării
 ❔	semn alb de întrebare
 ❕	semnul exclamării alb

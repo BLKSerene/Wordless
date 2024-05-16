@@ -158,13 +158,13 @@
 👩	žena
 👩🏻	žena: svetla koža
 👩🏼	žena: srednje svetla koža
-👩🏽	žena: srednji ten
+👩🏽	žena: srednja boja kože
 👩🏾	žena: srednje tamna koža
 👩🏿	žena: tamna koža
 🧓	starija odrasla osoba
 🧓🏻	starija osoba: svetla koža
 🧓🏼	starija odrasla osoba: srednje svetla koža
-🧓🏽	starija osoba: srednja boja kože
+🧓🏽	starija odrasla osoba: srednja boja kože
 🧓🏾	starija odrasla osoba: srednje tamna koža
 🧓🏿	starija osoba: tamna koža
 👴	starac
@@ -196,7 +196,7 @@
 👩🏻‍⚕️	žena zdravstveni radnik: svetla koža
 👩🏻‍⚕	žena zdravstveni radnik: svetla koža
 👩🏼‍⚕️	zdravstveni radnik: srednje svetla koža
-👩🏼‍⚕	zdravstveni radnik: srednje svetla koža
+👩🏼‍⚕	žena zdravstveni radnik: srednje svetla koža
 👩🏽‍⚕️	žena zdravstveni radnik: srednji ten
 👩🏽‍⚕	žena zdravstveni radnik: srednji ten
 👩🏾‍⚕️	žena zdravstveni radnik: srednje tamna koža
@@ -274,7 +274,7 @@
 👩🏼‍🍳	kuvarica: srednje svetla koža
 👩🏽‍🍳	žena kuvarica: srednja boja kože
 👩🏾‍🍳	kuvarica: srednje tamna koža
-👩🏿‍🍳	žena kuvarica: tamna koža
+👩🏿‍🍳	kuvarica: tamna koža
 👨‍🔧	čovek mehaničar
 👨🏻‍🔧	čovek mehaničar: svetla koža
 👨🏼‍🔧	čovek mehaničar: srednje svetla koža
@@ -296,7 +296,7 @@
 👩‍🏭	žena radnica u fabrici
 👩🏻‍🏭	žena u fabrici: svetla koža
 👩🏼‍🏭	žena u fabrici: srednje svetla koža
-👩🏽‍🏭	žena u fabrici: srednji ten
+👩🏽‍🏭	žena radnica u fabrici: srednji ten
 👩🏾‍🏭	žena u fabrici: srednje tamna koža
 👩🏿‍🏭	žena u fabrici: tamna koža
 👨‍💼	čovek kancelarijski radnik
@@ -475,12 +475,12 @@
 💂	stražar
 💂🏻	čuvar: svetla koža
 💂🏼	čuvar: srednje svetla koža
-💂🏽	čuvar: srednji ten
+💂🏽	čuvar: srednja boja kože
 💂🏾	čuvar: srednje tamna koža
 💂🏿	čuvar: tamna koža
 💂‍♂️	čovek stražar
 💂‍♂	čovek stražar
-💂🏻‍♂️	čovek čuvar: svetla koža
+💂🏻‍♂️	čuvar: svetla koža
 💂🏻‍♂	čovek čuvar: svetla koža
 💂🏼‍♂️	muškarac čuvar: srednje svetla koža
 💂🏼‍♂	muškarac čuvar: srednje svetla koža
@@ -514,8 +514,8 @@
 👷🏻‍♂	čovek građevinski radnik: svetla koža
 👷🏼‍♂️	muškarac građevinski radnik: srednje svetla koža
 👷🏼‍♂	muškarac građevinski radnik: srednje svetla koža
-👷🏽‍♂️	muškarac građevinski radnik: srednja boja kože
-👷🏽‍♂	muškarac građevinski radnik: srednja boja kože
+👷🏽‍♂️	muškarac građevinski radnik: srednji ten kože
+👷🏽‍♂	muškarac građevinski radnik: srednji ten kože
 👷🏾‍♂️	muškarac građevinski radnik: srednje tamna koža
 👷🏾‍♂	muškarac građevinski radnik: srednje tamna koža
 👷🏿‍♂️	muškarac građevinski radnik: tamna koža
@@ -526,8 +526,8 @@
 👷🏻‍♀	žena građevinski radnik: svetla koža
 👷🏼‍♀️	žena građevinski radnik: srednje svetla koža
 👷🏼‍♀	žena građevinski radnik: srednje svetla koža
-👷🏽‍♀️	žena građevinski radnik: srednja boja kože
-👷🏽‍♀	žena građevinski radnik: srednja boja kože
+👷🏽‍♀️	žena građevinski radnik: srednji ten
+👷🏽‍♀	žena građevinski radnik: srednji ten
 👷🏾‍♀️	žena građevinski radnik: srednje tamna koža
 👷🏾‍♀	žena građevinski radnik: srednje tamna koža
 👷🏿‍♀️	žena građevinski radnik: tamna koža
@@ -576,8 +576,8 @@
 👳🏿‍♀	žena koja nosi turban: tamna koža
 👲	čovek sa kineskom kapom
 👲🏻	čovek sa kineskom kapom: svetla koža
-👲🏼	muškarac sa kineskom kapom: srednje svetla koža
-👲🏽	čovek sa kineskom kapom: srednja boja kože
+👲🏼	čovek sa kineskom kapom: srednje svetla koža
+👲🏽	čovek sa kineskom kapom: srednji ten
 👲🏾	čovek sa kineskom kapom: srednje tamna koža
 👲🏿	čovek sa kineskom kapom: tamna koža
 🧕	žena sa maramom
@@ -598,8 +598,8 @@
 👱🏽	plavokosa osoba: srednji ten
 👱🏾	plavokosa osoba: srednje tamna koža
 👱🏿	plavokosa osoba: tamna koža
-👱‍♂️	čovek plave kose
-👱‍♂	čovek plave kose
+👱‍♂️	plavokos čovek
+👱‍♂	plavokos čovek
 👱🏻‍♂️	plavokos muškarac: svetla koža
 👱🏻‍♂	plavokos muškarac: svetla koža
 👱🏼‍♂️	plavokos muškarac: srednje svetla koža
@@ -637,14 +637,14 @@
 👨‍🦱	muškarac, kovrdžave kose
 👨🏻‍🦱	muškarac, kovrdžave kose: svetla koža
 👨🏼‍🦱	muškarac, kovrdžave kose: srednje svetla koža
-👨🏽‍🦱	muškarac, kovrdžave kose: srednje boje kože
+👨🏽‍🦱	muškarac, kovrdžave kose: srednja boja kože
 👨🏾‍🦱	muškarac, kovrdžave kose: srednje tamna koža
-👨🏿‍🦱	muškarac, kovrdžava kosa: tamna koža
+👨🏿‍🦱	muškarac, kovrdžave kose: tamna koža
 👩‍🦱	žena, kovrdžave kose
 👩🏻‍🦱	žena, kovrdžave kose: svetla koža
 👩🏼‍🦱	žena, kovrdžave kose: srednje svetla koža
 👩🏽‍🦱	žena, kovrdžave kose: srednja boja kože
-👩🏾‍🦱	žena, kovrdžava kosa: srednje tamna koža
+👩🏾‍🦱	žena, kovrdžave kose: srednje tamna koža
 👩🏿‍🦱	žena, kovrdžave kose: tamna koža
 👨‍🦲	čovek, ćelav
 👨🏻‍🦲	muškarac, ćelav: svetla koža
@@ -661,20 +661,20 @@
 👨‍🦳	čovek, bele kose
 👨🏻‍🦳	muškarac, bele kose: svetla koža
 👨🏼‍🦳	muškarac, sede kose: srednje svetla koža
-👨🏽‍🦳	muškarac, sede kose: srednje boje kože
-👨🏾‍🦳	muškarac, bele kose: srednje tamna koža
+👨🏽‍🦳	muškarac, bela kosa: srednja boja kože
+👨🏾‍🦳	muškarac, sede kose: srednje tamna koža
 👨🏿‍🦳	muškarac, bele kose: tamna koža
 👩‍🦳	žena, bele kose
-👩🏻‍🦳	žena, sede kose: svetla koža
+👩🏻‍🦳	žena, bela kosa: svetla koža
 👩🏼‍🦳	žena, sede kose: srednje svetla koža
 👩🏽‍🦳	žena, bela kosa: srednja boja kože
 👩🏾‍🦳	žena, sede kose: srednje tamna koža
-👩🏿‍🦳	žena, bela kosa: tamna koža
+👩🏿‍🦳	žena, sede kose: tamna koža
 🤵	čovek u smokingu
 🤵🏻	čovek u smokingu: svetla koža
 🤵🏼	muškarac u smokingu: srednje svetla koža
 🤵🏽	muškarac u smokingu: srednja boja kože
-🤵🏾	čovek u smokingu: srednje tamna koža
+🤵🏾	muškarac u smokingu: srednje tamna koža
 🤵🏿	čovek u smokingu: tamna koža
 👰	nevesta sa velom
 👰🏻	mlada sa velom: svetla koža
@@ -709,12 +709,12 @@
 🤶	gospođo Claus
 🤶🏻	Gospođa Mraz: svetla koža
 🤶🏼	Gospođa Claus: srednje svetla koža
-🤶🏽	Gospođa Mraz: srednji ten
+🤶🏽	Gospođa Mraz: srednji ten kože
 🤶🏾	Gospođa Claus: srednje tamna koža
-🤶🏿	Gospođa Mraz: tamna koža
+🤶🏿	Gospođa Claus: tamna koža
 🦸	superheroj
 🦸🏻	superheroj: svetla koža
-🦸🏼	superheroj: srednje svetla boja kože
+🦸🏼	superheroj: srednje svetla koža
 🦸🏽	superheroj: srednja boja kože
 🦸🏾	superheroj: srednje tamna koža
 🦸🏿	superheroj: tamna koža
@@ -744,7 +744,7 @@
 🦸🏿‍♂	čovek superheroj: tamna koža
 🦹	superzlikovac
 🦹🏻	superzlikovac: svetla koža
-🦹🏼	superzlikovac: srednje svetla boja kože
+🦹🏼	superzlikovac: srednje svetla koža
 🦹🏽	superzlikovac: srednja boja kože
 🦹🏾	superzlikovac: srednje tamna koža
 🦹🏿	superzlikovac: tamna koža
@@ -782,8 +782,8 @@
 🧙‍♀	žena mag
 🧙🏻‍♀️	žena mag: svetla koža
 🧙🏻‍♀	žena mag: svetla koža
-🧙🏼‍♀️	žena mag: srednje svetla boja kože
-🧙🏼‍♀	žena mag: srednje svetla boja kože
+🧙🏼‍♀️	žena mag: srednje svetla koža
+🧙🏼‍♀	žena mag: srednje svetla koža
 🧙🏽‍♀️	žena mag: srednja boja kože
 🧙🏽‍♀	žena mag: srednja boja kože
 🧙🏾‍♀️	žena mag: srednje tamna koža
@@ -884,8 +884,8 @@
 🧜‍♂	merman
 🧜🏻‍♂️	merman: svetla koža
 🧜🏻‍♂	merman: svetla koža
-🧜🏼‍♂️	merman: srednje svetla koža
-🧜🏼‍♂	merman: srednje svetla koža
+🧜🏼‍♂️	merman: srednje svetla boja kože
+🧜🏼‍♂	merman: srednje svetla boja kože
 🧜🏽‍♂️	merman: srednja boja kože
 🧜🏽‍♂	merman: srednja boja kože
 🧜🏾‍♂️	merman: srednje tamna koža
@@ -916,12 +916,12 @@
 🧝🏻‍♂	čovek vilenjak: svetla koža
 🧝🏼‍♂️	vilenjak: srednje svetla boja kože
 🧝🏼‍♂	vilenjak: srednje svetla boja kože
-🧝🏽‍♂️	čovek vilenjak: srednja boja kože
-🧝🏽‍♂	čovek vilenjak: srednja boja kože
+🧝🏽‍♂️	vilenjak: srednja boja kože
+🧝🏽‍♂	vilenjak: srednja boja kože
 🧝🏾‍♂️	čovek vilenjak: srednje tamna koža
 🧝🏾‍♂	čovek vilenjak: srednje tamna koža
-🧝🏿‍♂️	čovek vilenjak: tamna koža
-🧝🏿‍♂	čovek vilenjak: tamna koža
+🧝🏿‍♂️	vilenjak: tamna koža
+🧝🏿‍♂	vilenjak: tamna koža
 🧞	genie
 🧞‍♀️	žena duh
 🧞‍♀	žena duh
@@ -1012,8 +1012,8 @@
 🙅🏿‍♂	muškarac koji gestikulira NE: tamna koža
 🙅‍♀️	žena koja gestikulira NE
 🙅‍♀	žena koja gestikulira NE
-🙅🏻‍♀️	žena koja gestikulira NE: svetla koža
-🙅🏻‍♀	žena koja gestikulira NE: svetla koža
+🙅🏻‍♀️	žena gestikulira NE: svetla koža
+🙅🏻‍♀	žena gestikulira NE: svetla koža
 🙅🏼‍♀️	žena koja pokazuje NE: srednje svetla boja kože
 🙅🏼‍♀	žena koja pokazuje NE: srednje svetla boja kože
 🙅🏽‍♀️	žena koja gestikulira NE: srednji ten
@@ -1058,14 +1058,14 @@
 💁🏽	osoba koja prebacuje ruku: srednja boja kože
 💁🏾	osoba koja prebacuje ruku: srednje tamna koža
 💁🏿	osoba koja prebacuje ruku: tamna koža
-💁‍♂️	čovek prebacuje ruku
-💁‍♂	čovek prebacuje ruku
+💁‍♂️	čovek nagnuo ruku
+💁‍♂	čovek nagnuo ruku
 💁🏻‍♂️	čovek koji prebacuje ruku: svetla koža
 💁🏻‍♂	čovek koji prebacuje ruku: svetla koža
 💁🏼‍♂️	muškarac koji se okreće rukom: srednje svetla koža
 💁🏼‍♂	muškarac koji se okreće rukom: srednje svetla koža
-💁🏽‍♂️	čovek koji prebacuje ruku: srednja boja kože
-💁🏽‍♂	čovek koji prebacuje ruku: srednja boja kože
+💁🏽‍♂️	muškarac koji prebacuje ruku: srednja boja kože
+💁🏽‍♂	muškarac koji prebacuje ruku: srednja boja kože
 💁🏾‍♂️	čovek koji prebacuje ruku: srednje tamna koža
 💁🏾‍♂	čovek koji prebacuje ruku: srednje tamna koža
 💁🏿‍♂️	čovek koji prebacuje ruku: tamna koža
@@ -1098,8 +1098,8 @@
 🙋🏽‍♂	muškarac koji podiže ruku: srednja boja kože
 🙋🏾‍♂️	muškarac koji podiže ruku: srednje tamna koža
 🙋🏾‍♂	muškarac koji podiže ruku: srednje tamna koža
-🙋🏿‍♂️	čovek koji podiže ruku: tamna koža
-🙋🏿‍♂	čovek koji podiže ruku: tamna koža
+🙋🏿‍♂️	muškarac koji podiže ruku: tamna koža
+🙋🏿‍♂	muškarac koji podiže ruku: tamna koža
 🙋‍♀️	žena diže ruku
 🙋‍♀	žena diže ruku
 🙋🏻‍♀️	žena koja podiže ruku: svetla koža
@@ -1118,28 +1118,28 @@
 🙇🏽	osoba koja se klanja: srednji ten
 🙇🏾	osoba koja se klanja: srednje tamna koža
 🙇🏿	osoba koja se klanja: tamna koža
-🙇‍♂️	čovek klanjajući se
-🙇‍♂	čovek klanjajući se
+🙇‍♂️	čovek se klanja
+🙇‍♂	čovek se klanja
 🙇🏻‍♂️	čovek se klanja: svetla koža
 🙇🏻‍♂	čovek se klanja: svetla koža
 🙇🏼‍♂️	muškarac koji se klanja: srednje svetla koža
 🙇🏼‍♂	muškarac koji se klanja: srednje svetla koža
-🙇🏽‍♂️	muškarac se klanja: srednji ten
-🙇🏽‍♂	muškarac se klanja: srednji ten
+🙇🏽‍♂️	muškarac koji se klanja: srednji ten
+🙇🏽‍♂	muškarac koji se klanja: srednji ten
 🙇🏾‍♂️	muškarac koji se klanja: srednje tamna koža
 🙇🏾‍♂	muškarac koji se klanja: srednje tamna koža
-🙇🏿‍♂️	čovek se klanja: tamna koža
-🙇🏿‍♂	čovek se klanja: tamna koža
+🙇🏿‍♂️	čovek koji se klanja: tamna koža
+🙇🏿‍♂	čovek koji se klanja: tamna koža
 🙇‍♀️	žena se klanja
 🙇‍♀	žena se klanja
 🙇🏻‍♀️	žena se klanja: svetla koža
 🙇🏻‍♀	žena se klanja: svetla koža
-🙇🏼‍♀️	žena koja se klanja: srednje svetla koža
-🙇🏼‍♀	žena koja se klanja: srednje svetla koža
+🙇🏼‍♀️	žena se klanja: srednje svetla koža
+🙇🏼‍♀	žena se klanja: srednje svetla koža
 🙇🏽‍♀️	žena se klanja: srednji ten
 🙇🏽‍♀	žena se klanja: srednji ten
-🙇🏾‍♀️	žena se klanja: srednje tamna koža
-🙇🏾‍♀	žena se klanja: srednje tamna koža
+🙇🏾‍♀️	žena koja se klanja: srednje tamna koža
+🙇🏾‍♀	žena koja se klanja: srednje tamna koža
 🙇🏿‍♀️	žena koja se klanja: tamna koža
 🙇🏿‍♀	žena koja se klanja: tamna koža
 🤦	osoba facepalming
@@ -1184,8 +1184,8 @@
 🤷🏻‍♂	čovek sleže ramenima: svetla koža
 🤷🏼‍♂️	muškarac sleže ramenima: srednje svetla boja kože
 🤷🏼‍♂	muškarac sleže ramenima: srednje svetla boja kože
-🤷🏽‍♂️	muškarac sleže ramenima: srednja boja kože
-🤷🏽‍♂	muškarac sleže ramenima: srednja boja kože
+🤷🏽‍♂️	muškarac sleže ramenima: srednji ten
+🤷🏽‍♂	muškarac sleže ramenima: srednji ten
 🤷🏾‍♂️	muškarac sleže ramenima: srednje tamna koža
 🤷🏾‍♂	muškarac sleže ramenima: srednje tamna koža
 🤷🏿‍♂️	muškarac sleže ramenima: tamna koža
@@ -1203,7 +1203,7 @@
 🤷🏿‍♀️	žena sleže ramenima: tamna koža
 🤷🏿‍♀	žena sleže ramenima: tamna koža
 💆	osoba koja se masira
-💆🏻	osoba na masaži: svetla koža
+💆🏻	osoba koja se masira: svetla koža
 💆🏼	osoba na masaži: srednje svetla koža
 💆🏽	osoba koja se masira: srednji ton kože
 💆🏾	osoba koja se masira: srednje tamna koža
@@ -1304,8 +1304,8 @@
 🏃🏻‍♂	čovek trči: svetla koža
 🏃🏼‍♂️	muškarac koji trči: srednje svetla boja kože
 🏃🏼‍♂	muškarac koji trči: srednje svetla boja kože
-🏃🏽‍♂️	muškarac trči: srednja boja kože
-🏃🏽‍♂	muškarac trči: srednja boja kože
+🏃🏽‍♂️	muškarac koji trči: srednja boja kože
+🏃🏽‍♂	muškarac koji trči: srednja boja kože
 🏃🏾‍♂️	muškarac trči: srednje tamna koža
 🏃🏾‍♂	muškarac trči: srednje tamna koža
 🏃🏿‍♂️	čovek trči: tamna koža
@@ -1391,8 +1391,8 @@
 🧗‍♂	čovek penjanje
 🧗🏻‍♂️	čovek penjanje: svetla koža
 🧗🏻‍♂	čovek penjanje: svetla koža
-🧗🏼‍♂️	muškarac penjanje: srednje svetla boja kože
-🧗🏼‍♂	muškarac penjanje: srednje svetla boja kože
+🧗🏼‍♂️	penjanje: srednje svetla koža
+🧗🏼‍♂	penjanje: srednje svetla koža
 🧗🏽‍♂️	muškarac penjanje: srednja boja kože
 🧗🏽‍♂	muškarac penjanje: srednja boja kože
 🧗🏾‍♂️	muškarac penjanje: srednje tamna koža
@@ -1437,7 +1437,7 @@
 🛀🏿	osoba koja se kupa: tamna koža
 🛌	osoba u krevetu
 🛌🏻	osoba u krevetu: svetla koža
-🛌🏼	osoba u krevetu: srednje svetla boja kože
+🛌🏼	osoba u krevetu: srednje svetla koža
 🛌🏽	osoba u krevetu: srednji ten
 🛌🏾	osoba u krevetu: srednje tamna koža
 🛌🏿	osoba u krevetu: tamna koža
@@ -1664,7 +1664,7 @@
 🏋🏿‍♀	žena koja diže tegove: tamna koža
 🚴	osoba biciklizam
 🚴🏻	osoba koja vozi bicikl: svetla koža
-🚴🏼	osoba koja vozi bicikl: srednje svetla koža
+🚴🏼	osoba koja vozi bicikl: srednje svetla boja kože
 🚴🏽	osoba koja vozi bicikl: srednja boja kože
 🚴🏾	osoba koja vozi bicikl: srednje tamna koža
 🚴🏿	osoba koja vozi bicikl: tamna koža
@@ -1801,8 +1801,8 @@
 🤾‍♂	čovek igra rukomet
 🤾🏻‍♂️	čovek koji igra rukomet: svetla koža
 🤾🏻‍♂	čovek koji igra rukomet: svetla koža
-🤾🏼‍♂️	muškarac koji igra rukomet: srednje svetla boja kože
-🤾🏼‍♂	muškarac koji igra rukomet: srednje svetla boja kože
+🤾🏼‍♂️	muškarac koji igra rukomet: srednje svetla koža
+🤾🏼‍♂	muškarac koji igra rukomet: srednje svetla koža
 🤾🏽‍♂️	muškarac koji igra rukomet: srednja boja kože
 🤾🏽‍♂	muškarac koji igra rukomet: srednja boja kože
 🤾🏾‍♂️	muškarac koji igra rukomet: srednje tamna koža
@@ -1833,20 +1833,20 @@
 🤹🏻‍♂	muškarac koji žonglira: svetla koža
 🤹🏼‍♂️	muškarac koji žonglira: srednje svetla koža
 🤹🏼‍♂	muškarac koji žonglira: srednje svetla koža
-🤹🏽‍♂️	muškarac koji žonglira: srednja boja kože
-🤹🏽‍♂	muškarac koji žonglira: srednja boja kože
+🤹🏽‍♂️	muškarac koji žonglira: srednji ten
+🤹🏽‍♂	muškarac koji žonglira: srednji ten
 🤹🏾‍♂️	muškarac koji žonglira: srednje tamna koža
 🤹🏾‍♂	muškarac koji žonglira: srednje tamna koža
 🤹🏿‍♂️	muškarac koji žonglira: tamna koža
 🤹🏿‍♂	muškarac koji žonglira: tamna koža
 🤹‍♀️	žena žongliranje
 🤹‍♀	žena žongliranje
-🤹🏻‍♀️	žena koja žonglira: svetla koža
-🤹🏻‍♀	žena koja žonglira: svetla koža
+🤹🏻‍♀️	žena žonglira: svetla koža
+🤹🏻‍♀	žena žonglira: svetla koža
 🤹🏼‍♀️	žena koja žonglira: srednje svetla koža
 🤹🏼‍♀	žena koja žonglira: srednje svetla koža
-🤹🏽‍♀️	žena koja žonglira: srednji ten
-🤹🏽‍♀	žena koja žonglira: srednji ten
+🤹🏽‍♀️	žena žonglira: srednji ten
+🤹🏽‍♀	žena žonglira: srednji ten
 🤹🏾‍♀️	žena koja žonglira: srednje tamna koža
 🤹🏾‍♀	žena koja žonglira: srednje tamna koža
 🤹🏿‍♀️	žena koja žonglira: tamna koža
@@ -1914,14 +1914,14 @@
 🦵🏿	noga: tamna koža
 🦶	nogom
 🦶🏻	stopalo: svetla koža
-🦶🏼	stopalo: srednje svetla boja kože
+🦶🏼	stopalo: srednje svetla koža
 🦶🏽	stopalo: srednja boja kože
 🦶🏾	stopalo: srednje tamna koža
 🦶🏿	stopalo: tamna koža
 👈	bekhend indeks pokazuje levo
 👈🏻	bekhend indeks pokazuje levo: svetla koža
 👈🏼	bekhend indeks pokazuje levo: srednje svetla boja kože
-👈🏽	bekhend indeks pokazuje levo: srednja boja kože
+👈🏽	bekhend indeks pokazuje nalevo: srednja boja kože
 👈🏾	bekhend indeks pokazuje levo: srednje tamna koža
 👈🏿	bekhend indeks pokazuje levo: tamna koža
 👉	bekhend indeks pokazuje desno
@@ -2019,7 +2019,7 @@
 👎🏿	palac nadole: tamna koža
 ✊	podignuta pesnica
 ✊🏻	podignuta pesnica: svetla koža
-✊🏼	podignuta pesnica: srednje svetla boja kože
+✊🏼	podignuta pesnica: srednje svetla koža
 ✊🏽	podignuta pesnica: srednji ten
 ✊🏾	podignuta pesnica: srednje tamna koža
 ✊🏿	podignuta pesnica: tamna koža
@@ -2036,10 +2036,10 @@
 🤛🏾	pesnica okrenuta levo: srednje tamna koža
 🤛🏿	pesnica okrenuta levo: tamna koža
 🤜	pesnica okrenuta udesno
-🤜🏻	pesnica okrenuta desno: svetla koža
+🤜🏻	pesnica okrenuta udesno: svetla koža
 🤜🏼	pesnica okrenuta udesno: srednje svetla koža
 🤜🏽	pesnica okrenuta udesno: srednja boja kože
-🤜🏾	pesnica okrenuta desno: srednje tamna koža
+🤜🏾	pesnica okrenuta udesno: srednje tamna koža
 🤜🏿	pesnica okrenuta desno: tamna koža
 🤚	podignuta nadlanica
 🤚🏻	podignuta nadlanica: svetla koža
@@ -2086,7 +2086,7 @@
 🙌🏿	podizanje ruku: tamna koža
 🤲	dlanovi nagore zajedno
 🤲🏻	dlanovi nagore zajedno: svetla koža
-🤲🏼	dlanovi zajedno: srednje svetla koža
+🤲🏼	dlanovi nagore zajedno: srednje svetla koža
 🤲🏽	dlanovi zajedno: srednji ten
 🤲🏾	dlanovi zajedno: srednje tamna koža
 🤲🏿	dlanovi nagore zajedno: tamna koža
@@ -2419,7 +2419,7 @@
 🍩	krofna
 🍪	kolačić
 🎂	rođendanska torta
-🍰	shortcake
+🍰	kolačić
 🧁	kolačiću
 🥧	pita
 🍫	čokolada
@@ -2841,7 +2841,7 @@
 🎞	filmski okviri
 📽️	filmski projektor
 📽	filmski projektor
-🎬	klapper board
+🎬	klaper daska
 📺	televizija
 📷	Kamera
 📸	kamera sa blicem
@@ -2890,7 +2890,7 @@
 📨	dolaznu kovertu
 📩	koverat sa strelicom
 📤	kaseta za slanje
-📥	inbok trai
+📥	ležište za prijemno sanduče
 📦	paket
 📫	zatvoreno poštansko sanduče sa podignutom zastavom
 📪	zatvoreno poštansko sanduče sa spuštenom zastavicom
@@ -2943,7 +2943,7 @@
 🗄	ormar za kartoteku
 🗑️	korpa za otpatke
 🗑	korpa za otpatke
-🔒	zaključan
+🔒	zaključano
 🔓	otključana
 🔏	zaključan perom
 🔐	zaključan ključem
@@ -2985,7 +2985,7 @@
 🧬	dna
 🔬	mikroskop
 🔭	teleskop
-📡	satelitsku antenu
+📡	satelitska antena
 💉	špric
 💊	pilula
 🚪	vrata
@@ -3166,7 +3166,7 @@
 ✖️	teško množenje h
 ✖	teško množenje h
 ❌	krstić
-❎	dugme krstić
+❎	dugme za krstić
 ➕	težak znak plus
 ➖	težak znak minusa
 ➗	znak teške divizije
@@ -3192,8 +3192,8 @@
 〰	talasasta crtica
 ©️	Autorsko pravo
 ©	Autorsko pravo
-®️	registrovan
-®	registrovan
+®️	registrovani
+®	registrovani
 ™️	zaštitni znak
 ™	zaštitni znak
 #️⃣	taster: #
@@ -3248,7 +3248,7 @@
 🅿️	P dugme
 🅿	P dugme
 🆘	SOS dugme
-🆙	dugme GORE
+🆙	Dugme GORE
 🆚	Dugme VS
 🈁	Japansko dugme „ovde“.
 🈂️	Japansko dugme „naplata usluge“.
@@ -3308,7 +3308,7 @@
 🏴‍☠️	gusarska zastava
 🏴‍☠	gusarska zastava
 🇦🇨	Ostrvo Vaznesenje
-🇦🇩	Andora
+🇦🇩	Andorra
 🇦🇪	Ujedinjeni arapski Emirati
 🇦🇫	Avganistan
 🇦🇬	Antigva i Barbuda
@@ -3374,7 +3374,7 @@
 🇩🇿	Alžir
 🇪🇦	Seuta i Melilja
 🇪🇨	Ekvador
-🇪🇪	Estonia
+🇪🇪	Estonija
 🇪🇬	Egipat
 🇪🇭	zapadna Sahara
 🇪🇷	Eritreja

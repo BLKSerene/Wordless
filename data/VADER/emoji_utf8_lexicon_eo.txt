@@ -111,7 +111,7 @@
 🙀	laca kata vizaĝo
 😿	ploranta kata vizaĝo
 😾	paŭtanta kata vizaĝo
-🙈	see-no-malbon simio
+🙈	vidu-ne-malbonan simio
 🙉	aŭd-ne-malbona simio
 🙊	parol-ne-malbone simio
 🏻	hela haŭta nuanco
@@ -187,8 +187,8 @@
 👨🏼‍⚕	vira sanlaboristo: mez-hela haŭta nuanco
 👨🏽‍⚕️	vira sanlaboristo: meza haŭta nuanco
 👨🏽‍⚕	vira sanlaboristo: meza haŭta nuanco
-👨🏾‍⚕️	vira sanlaboristo: mez-malhela haŭttono
-👨🏾‍⚕	vira sanlaboristo: mez-malhela haŭttono
+👨🏾‍⚕️	vira sanlaboristo: mez-malhela haŭta nuanco
+👨🏾‍⚕	vira sanlaboristo: mez-malhela haŭta nuanco
 👨🏿‍⚕️	viro sanlaboristo: malhela haŭta nuanco
 👨🏿‍⚕	viro sanlaboristo: malhela haŭta nuanco
 👩‍⚕️	virina sanlaboristino
@@ -209,7 +209,7 @@
 👨🏽‍🎓	viro studento: meza haŭta nuanco
 👨🏾‍🎓	viro studento: mez-malhela haŭta nuanco
 👨🏿‍🎓	viro studento: malhela haŭta nuanco
-👩‍🎓	studento
+👩‍🎓	virino studento
 👩🏻‍🎓	studento: hela haŭta nuanco
 👩🏼‍🎓	studento: mez-hela haŭta nuanco
 👩🏽‍🎓	studento: meza haŭta nuanco
@@ -219,11 +219,11 @@
 👨🏻‍🏫	viro instruisto: hela haŭta nuanco
 👨🏼‍🏫	viro instruisto: mez-hela haŭttono
 👨🏽‍🏫	viro instruisto: meza haŭta nuanco
-👨🏾‍🏫	viro instruisto: mez-malhela haŭta nuanco
+👨🏾‍🏫	viro instruisto: mez-malhela haŭttono
 👨🏿‍🏫	viro instruisto: malhela haŭta nuanco
 👩‍🏫	virino instruistino
 👩🏻‍🏫	instruistino: hela haŭta nuanco
-👩🏼‍🏫	virina instruistino: mez-hela haŭttono
+👩🏼‍🏫	virina instruistino: mez-hela haŭta nuanco
 👩🏽‍🏫	instruistino: meza haŭta nuanco
 👩🏾‍🏫	virina instruistino: mez-malhela haŭta nuanco
 👩🏿‍🏫	virina instruistino: malhela haŭta nuanco
@@ -260,18 +260,18 @@
 👩‍🌾	virino farmisto
 👩🏻‍🌾	farmistino: hela haŭtnuanco
 👩🏼‍🌾	kultivisto: mez-hela haŭttono
-👩🏽‍🌾	farmistino: meza haŭta nuanco
+👩🏽‍🌾	kultivisto: meza haŭta nuanco
 👩🏾‍🌾	virina kamparano: mez-malhela haŭta nuanco
-👩🏿‍🌾	farmistino: malhela haŭta nuanco
+👩🏿‍🌾	kultivisto: malhela haŭta nuanco
 👨‍🍳	viro kuiristo
 👨🏻‍🍳	viro kuiristo: hela haŭta nuanco
-👨🏼‍🍳	viro kuiristo: mez-hela haŭttono
+👨🏼‍🍳	viro kuiristo: mez-hela haŭta nuanco
 👨🏽‍🍳	viro kuiristo: meza haŭta nuanco
 👨🏾‍🍳	viro kuiristo: mez-malhela haŭta nuanco
 👨🏿‍🍳	viro kuiristo: malhela haŭta nuanco
 👩‍🍳	virino kuiristino
 👩🏻‍🍳	virino kuiristino: hela haŭta nuanco
-👩🏼‍🍳	virino kuiristino: mez-hela haŭta nuanco
+👩🏼‍🍳	virino kuiristino: mez-hela haŭttono
 👩🏽‍🍳	virino kuiristino: meza haŭta nuanco
 👩🏾‍🍳	virino kuiristino: mez-malhela haŭta nuanco
 👩🏿‍🍳	virino kuiristino: malhela haŭta nuanco
@@ -280,7 +280,7 @@
 👨🏼‍🔧	vira mekanikisto: mez-hela haŭttono
 👨🏽‍🔧	vira mekanikisto: meza haŭta nuanco
 👨🏾‍🔧	vira mekanikisto: mez-malhela haŭta nuanco
-👨🏿‍🔧	viro mekanikisto: malhela haŭtnuanco
+👨🏿‍🔧	hommeĥanikisto: malhela haŭta nuanco
 👩‍🔧	virino mekanikisto
 👩🏻‍🔧	virina mekanikisto: hela haŭta nuanco
 👩🏼‍🔧	virina mekanikisto: mez-hela haŭta nuanco
@@ -301,7 +301,7 @@
 👩🏿‍🏭	virina fabriklaboristo: malhela haŭta nuanco
 👨‍💼	viro oficejisto
 👨🏻‍💼	viro oficejisto: hela haŭta nuanco
-👨🏼‍💼	viro oficejisto: mez-hela haŭttono
+👨🏼‍💼	viro oficejisto: mez-hela haŭta nuanco
 👨🏽‍💼	viro oficejisto: meza haŭta nuanco
 👨🏾‍💼	viro oficejisto: mez-malhela haŭttono
 👨🏿‍💼	viro oficejisto: malhela haŭta nuanco
@@ -314,7 +314,7 @@
 👨‍🔬	viro sciencisto
 👨🏻‍🔬	viro sciencisto: hela haŭta nuanco
 👨🏼‍🔬	viro sciencisto: mez-hela haŭta nuanco
-👨🏽‍🔬	viro sciencisto: meza haŭtnuanco
+👨🏽‍🔬	viro sciencisto: meza haŭta nuanco
 👨🏾‍🔬	viro sciencisto: mez-malhela haŭta nuanco
 👨🏿‍🔬	viro sciencisto: malhela haŭta nuanco
 👩‍🔬	virino sciencisto
@@ -345,12 +345,12 @@
 👩🏻‍🎤	kantistino: hela haŭta nuanco
 👩🏼‍🎤	kantistino: mez-hela haŭta nuanco
 👩🏽‍🎤	kantistino: meza haŭta nuanco
-👩🏾‍🎤	kantistino: mez-malhela haŭta nuanco
+👩🏾‍🎤	virina kantisto: mez-malhela haŭta nuanco
 👩🏿‍🎤	kantistino: malhela haŭta nuanco
 👨‍🎨	viro artisto
 👨🏻‍🎨	viro artisto: hela haŭta nuanco
-👨🏼‍🎨	viro artisto: mez-hela haŭtnuanco
-👨🏽‍🎨	viro artisto: meza haŭta nuanco
+👨🏼‍🎨	vira artisto: mez-hela haŭttono
+👨🏽‍🎨	viro artisto: meza haŭtnuanco
 👨🏾‍🎨	viro artisto: mez-malhela haŭtnuanco
 👨🏿‍🎨	viro artisto: malhela haŭta nuanco
 👩‍🎨	virina artisto
@@ -367,16 +367,16 @@
 👨🏼‍✈	viro piloto: mez-hela haŭtnuanco
 👨🏽‍✈️	viro piloto: meza haŭta nuanco
 👨🏽‍✈	viro piloto: meza haŭta nuanco
-👨🏾‍✈️	viro piloto: mez-malhela haŭtnuanco
-👨🏾‍✈	viro piloto: mez-malhela haŭtnuanco
+👨🏾‍✈️	viro piloto: mez-malhela haŭta nuanco
+👨🏾‍✈	viro piloto: mez-malhela haŭta nuanco
 👨🏿‍✈️	viro piloto: malhela haŭta nuanco
 👨🏿‍✈	viro piloto: malhela haŭta nuanco
 👩‍✈️	virino piloto
 👩‍✈	virino piloto
 👩🏻‍✈️	virina piloto: hela haŭta nuanco
 👩🏻‍✈	virina piloto: hela haŭta nuanco
-👩🏼‍✈️	virina piloto: mez-hela haŭtnuanco
-👩🏼‍✈	virina piloto: mez-hela haŭtnuanco
+👩🏼‍✈️	virina piloto: mez-hela haŭta nuanco
+👩🏼‍✈	virina piloto: mez-hela haŭta nuanco
 👩🏽‍✈️	virina piloto: meza haŭta nuanco
 👩🏽‍✈	virina piloto: meza haŭta nuanco
 👩🏾‍✈️	virina piloto: mez-malhela haŭta nuanco
@@ -403,24 +403,24 @@
 👨🏿‍🚒	viro fajrobrigadisto: malhela haŭta nuanco
 👩‍🚒	virino fajrobrigadisto
 👩🏻‍🚒	virina fajrobrigadisto: hela haŭta nuanco
-👩🏼‍🚒	virina fajrobrigadisto: mez-hela haŭta nuanco
+👩🏼‍🚒	virina fajrobrigadisto: mez-hela haŭttono
 👩🏽‍🚒	virina fajrobrigadisto: meza haŭta nuanco
 👩🏾‍🚒	virina fajrobrigadisto: mez-malhela haŭttono
 👩🏿‍🚒	virina fajrobrigadisto: malhela haŭta nuanco
 👮	polica oficiro
-👮🏻	policisto: hela haŭttono
+👮🏻	policisto: hela haŭta nuanco
 👮🏼	policisto: mez-hela haŭttono
 👮🏽	policisto: meza haŭta nuanco
 👮🏾	policisto: mez-malhela haŭtkoloro
 👮🏿	policisto: malhela haŭtkoloro
 👮‍♂️	viro policisto
 👮‍♂	viro policisto
-👮🏻‍♂️	viro policisto: hela haŭttono
-👮🏻‍♂	viro policisto: hela haŭttono
-👮🏼‍♂️	viro policisto: mez-hela haŭttono
-👮🏼‍♂	viro policisto: mez-hela haŭttono
-👮🏽‍♂️	viro policisto: meza haŭtnuanco
-👮🏽‍♂	viro policisto: meza haŭtnuanco
+👮🏻‍♂️	viro policisto: hela haŭta nuanco
+👮🏻‍♂	viro policisto: hela haŭta nuanco
+👮🏼‍♂️	viro policisto: mez-hela haŭtnuanco
+👮🏼‍♂	viro policisto: mez-hela haŭtnuanco
+👮🏽‍♂️	viro policisto: meza haŭta nuanco
+👮🏽‍♂	viro policisto: meza haŭta nuanco
 👮🏾‍♂️	viro policisto: mez-malhela haŭttono
 👮🏾‍♂	viro policisto: mez-malhela haŭttono
 👮🏿‍♂️	viro policisto: malhela haŭta nuanco
@@ -429,10 +429,10 @@
 👮‍♀	virino policisto
 👮🏻‍♀️	virina policisto: hela haŭta nuanco
 👮🏻‍♀	virina policisto: hela haŭta nuanco
-👮🏼‍♀️	virina policisto: mez-hela haŭtnuanco
-👮🏼‍♀	virina policisto: mez-hela haŭtnuanco
-👮🏽‍♀️	virina policisto: meza haŭta nuanco
-👮🏽‍♀	virina policisto: meza haŭta nuanco
+👮🏼‍♀️	virina policisto: mez-hela haŭttono
+👮🏼‍♀	virina policisto: mez-hela haŭttono
+👮🏽‍♀️	virina policisto: meza haŭtnuanco
+👮🏽‍♀	virina policisto: meza haŭtnuanco
 👮🏾‍♀️	virina policisto: mez-malhela haŭtkoloro
 👮🏾‍♀	virina policisto: mez-malhela haŭtkoloro
 👮🏿‍♀️	virina policisto: malhela haŭta nuanco
@@ -448,14 +448,14 @@
 🕵‍♂️	viro detektivo
 🕵️‍♂	viro detektivo
 🕵‍♂	viro detektivo
-🕵🏻‍♂️	viro detektivo: hela haŭtnuanco
-🕵🏻‍♂	viro detektivo: hela haŭtnuanco
+🕵🏻‍♂️	viro detektivo: hela haŭta nuanco
+🕵🏻‍♂	viro detektivo: hela haŭta nuanco
 🕵🏼‍♂️	viro detektivo: mez-hela haŭtnuanco
 🕵🏼‍♂	viro detektivo: mez-hela haŭtnuanco
 🕵🏽‍♂️	viro detektivo: meza haŭtnuanco
 🕵🏽‍♂	viro detektivo: meza haŭtnuanco
-🕵🏾‍♂️	viro detektivo: mez-malhela haŭtnuanco
-🕵🏾‍♂	viro detektivo: mez-malhela haŭtnuanco
+🕵🏾‍♂️	viro detektivo: mez-malhela haŭta nuanco
+🕵🏾‍♂	viro detektivo: mez-malhela haŭta nuanco
 🕵🏿‍♂️	viro detektivo: malhela haŭta nuanco
 🕵🏿‍♂	viro detektivo: malhela haŭta nuanco
 🕵️‍♀️	virino detektivo
@@ -484,15 +484,15 @@
 💂🏻‍♂	viro gardisto: hela haŭtkoloro
 💂🏼‍♂️	vira gardisto: mez-hela haŭttono
 💂🏼‍♂	vira gardisto: mez-hela haŭttono
-💂🏽‍♂️	vira gardisto: meza haŭta nuanco
-💂🏽‍♂	vira gardisto: meza haŭta nuanco
-💂🏾‍♂️	vira gardisto: mez-malhela haŭttono
-💂🏾‍♂	vira gardisto: mez-malhela haŭttono
+💂🏽‍♂️	viro gardisto: meza haŭtnuanco
+💂🏽‍♂	viro gardisto: meza haŭtnuanco
+💂🏾‍♂️	vira gardisto: mez-malhela haŭtkoloro
+💂🏾‍♂	vira gardisto: mez-malhela haŭtkoloro
 💂🏿‍♂️	viro gardisto: malhela haŭtnuanco
 💂🏿‍♂	viro gardisto: malhela haŭtnuanco
 💂‍♀️	virina gardisto
 💂‍♀	virina gardisto
-💂🏻‍♀️	virina gardisto: hela haŭtkoloro
+💂🏻‍♀️	virina gardisto: hela haŭta nuanco
 💂🏻‍♀	virina gardisto: hela haŭta nuanco
 💂🏼‍♀️	virina gardisto: mez-hela haŭttono
 💂🏼‍♀	virina gardisto: mez-hela haŭttono
@@ -528,8 +528,8 @@
 👷🏼‍♀	virina konstrulaboristo: mez-hela haŭttono
 👷🏽‍♀️	virina konstrulaboristo: meza haŭta nuanco
 👷🏽‍♀	virina konstrulaboristo: meza haŭta nuanco
-👷🏾‍♀️	virina konstrulaboristo: mez-malhela haŭta nuanco
-👷🏾‍♀	virina konstrulaboristo: mez-malhela haŭta nuanco
+👷🏾‍♀️	virina konstrulaboristo: mez-malhela haŭtkoloro
+👷🏾‍♀	virina konstrulaboristo: mez-malhela haŭtkoloro
 👷🏿‍♀️	virina konstrulaboristo: malhela haŭta nuanco
 👷🏿‍♀	virina konstrulaboristo: malhela haŭta nuanco
 🤴	princo
@@ -560,13 +560,13 @@
 👳🏽‍♂	viro portanta turbanon: meza haŭtnuanco
 👳🏾‍♂️	viro portanta turbanon: mez-malhela haŭttono
 👳🏾‍♂	viro portanta turbanon: mez-malhela haŭttono
-👳🏿‍♂️	viro portanta turbanon: malhela haŭtnuanco
-👳🏿‍♂	viro portanta turbanon: malhela haŭtnuanco
+👳🏿‍♂️	viro portanta turbanon: malhela haŭta nuanco
+👳🏿‍♂	viro portanta turbanon: malhela haŭta nuanco
 👳‍♀️	virino portanta turbanon
 👳‍♀	virino portanta turbanon
-👳🏻‍♀️	virino portanta turbanon: hela haŭta nuanco
-👳🏻‍♀	virino portanta turbanon: hela haŭta nuanco
-👳🏼‍♀️	virino portanta turbanon: mez-hela haŭtnuanco
+👳🏻‍♀️	virino portanta turbanon: hela haŭtnuanco
+👳🏻‍♀	virino portanta turbanon: hela haŭtnuanco
+👳🏼‍♀️	virino portanta turbanon: mez-hela haŭta nuanco
 👳🏼‍♀	virino portanta turbanon: mez-hela haŭtnuanco
 👳🏽‍♀️	virino portanta turbanon: meza haŭta nuanco
 👳🏽‍♀	virino portanta turbanon: meza haŭta nuanco
@@ -575,10 +575,10 @@
 👳🏿‍♀️	virino portanta turbanon: malhela haŭta nuanco
 👳🏿‍♀	virino portanta turbanon: malhela haŭta nuanco
 👲	viro kun ĉina ĉapo
-👲🏻	viro kun ĉina ĉapo: hela haŭtnuanco
+👲🏻	viro kun ĉina ĉapo: hela haŭta nuanco
 👲🏼	viro kun ĉina ĉapo: mez-hela haŭtnuanco
-👲🏽	viro kun ĉina ĉapo: meza haŭtnuanco
-👲🏾	viro kun ĉina ĉapo: mez-malhela haŭta nuanco
+👲🏽	viro kun ĉina ĉapo: meza haŭta nuanco
+👲🏾	viro kun ĉina ĉapo: mez-malhela haŭtnuanco
 👲🏿	viro kun ĉina ĉapo: malhela haŭta nuanco
 🧕	virino kun kaptuko
 🧕🏻	virino kun kaptuko: hela haŭta nuanco
@@ -624,7 +624,7 @@
 👱🏿‍♀	blondhara virino: malhela haŭta nuanco
 👨‍🦰	viro, ruĝhara
 👨🏻‍🦰	viro, ruĝhara: hela haŭta nuanco
-👨🏼‍🦰	viro, ruĝhara: mez-hela haŭta nuanco
+👨🏼‍🦰	viro, ruĝhara: mez-hela haŭtnuanco
 👨🏽‍🦰	viro, ruĝhara: meza haŭta nuanco
 👨🏾‍🦰	viro, ruĝhara: mez-malhela haŭta nuanco
 👨🏿‍🦰	viro, ruĝhara: malhela haŭta nuanco
@@ -687,16 +687,16 @@
 🤰🏼	graveda virino: mez-hela haŭta nuanco
 🤰🏽	graveda virino: meza haŭta nuanco
 🤰🏾	graveda virino: mez-malhela haŭta nuanco
-🤰🏿	gravedulino: malhela haŭta nuanco
+🤰🏿	graveda virino: malhela haŭta nuanco
 🤱	mamnutrado
 🤱🏻	mamnutrado: hela haŭta nuanco
 🤱🏼	mamnutrado: mez-hela haŭta nuanco
 🤱🏽	mamnutrado: meza haŭta nuanco
-🤱🏾	mamnutrado: mez-malhela haŭta tono
+🤱🏾	mamnutrado: mez-malhela haŭta nuanco
 🤱🏿	mamnutrado: malhela haŭta nuanco
 👼	bebo anĝelo
 👼🏻	bebo anĝelo: hela haŭta nuanco
-👼🏼	bebo anĝelo: mez-hela haŭta nuanco
+👼🏼	beba anĝelo: mez-hela haŭta nuanco
 👼🏽	bebo anĝelo: meza haŭta nuanco
 👼🏾	bebo anĝelo: mez-malhela haŭta nuanco
 👼🏿	bebo anĝelo: malhela haŭta nuanco
@@ -732,8 +732,8 @@
 🦸🏿‍♀	virina superheroo: malhela haŭta nuanco
 🦸‍♂️	viro superheroo
 🦸‍♂	viro superheroo
-🦸🏻‍♂️	viro superheroo: hela haŭta nuanco
-🦸🏻‍♂	viro superheroo: hela haŭta nuanco
+🦸🏻‍♂️	viro superheroo: hela haŭtnuanco
+🦸🏻‍♂	viro superheroo: hela haŭtnuanco
 🦸🏼‍♂️	viro superheroo: mez-hela haŭtnuanco
 🦸🏼‍♂	viro superheroo: mez-hela haŭtnuanco
 🦸🏽‍♂️	viro superheroo: meza haŭta nuanco
@@ -754,9 +754,9 @@
 🦹🏻‍♀	virino superfiulo: hela haŭta nuanco
 🦹🏼‍♀️	virino superfiulo: mez-hela haŭtnuanco
 🦹🏼‍♀	virino superfiulo: mez-hela haŭtnuanco
-🦹🏽‍♀️	virino superfiulo: meza haŭtnuanco
-🦹🏽‍♀	virino superfiulo: meza haŭtnuanco
-🦹🏾‍♀️	virino superfiulo: mez-malhela haŭtnuanco
+🦹🏽‍♀️	virino superfiulo: meza haŭta nuanco
+🦹🏽‍♀	virino superfiulo: meza haŭta nuanco
+🦹🏾‍♀️	virina superfiulo: mez-malhela haŭttono
 🦹🏾‍♀	virino superfiulo: mez-malhela haŭtnuanco
 🦹🏿‍♀️	virino superfiulo: malhela haŭtnuanco
 🦹🏿‍♀	virino superfiulo: malhela haŭtnuanco
@@ -814,10 +814,10 @@
 🧚🏻‍♀	virino feino: hela haŭtnuanco
 🧚🏼‍♀️	virino feino: mez-hela haŭtnuanco
 🧚🏼‍♀	virino feino: mez-hela haŭtnuanco
-🧚🏽‍♀️	virino feino: meza haŭtnuanco
+🧚🏽‍♀️	virino feino: meza haŭta nuanco
 🧚🏽‍♀	virino feino: meza haŭtnuanco
 🧚🏾‍♀️	virino feino: mez-malhela haŭtnuanco
-🧚🏾‍♀	virino feino: mez-malhela haŭtnuanco
+🧚🏾‍♀	virino feino: mez-malhela haŭta nuanco
 🧚🏿‍♀️	virino feino: malhela haŭta nuanco
 🧚🏿‍♀	virino feino: malhela haŭta nuanco
 🧚‍♂️	viro feino
@@ -884,8 +884,8 @@
 🧜‍♂	marman
 🧜🏻‍♂️	marman: hela haŭta nuanco
 🧜🏻‍♂	marman: hela haŭta nuanco
-🧜🏼‍♂️	merman: mez-hela haŭta nuanco
-🧜🏼‍♂	merman: mez-hela haŭta nuanco
+🧜🏼‍♂️	marman: mez-hela haŭta nuanco
+🧜🏼‍♂	marman: mez-hela haŭta nuanco
 🧜🏽‍♂️	marman: meza haŭta nuanco
 🧜🏽‍♂	marman: meza haŭta nuanco
 🧜🏾‍♂️	marman: mez-malhela haŭta nuanco
@@ -917,7 +917,7 @@
 🧝🏼‍♂️	viro elfo: mez-hela haŭtnuanco
 🧝🏼‍♂	viro elfo: mez-hela haŭtnuanco
 🧝🏽‍♂️	viro elfo: meza haŭta nuanco
-🧝🏽‍♂	viro elfo: meza haŭtnuanco
+🧝🏽‍♂	viro elfo: meza haŭta nuanco
 🧝🏾‍♂️	viro elfo: mez-malhela haŭtnuanco
 🧝🏾‍♂	viro elfo: mez-malhela haŭtnuanco
 🧝🏿‍♂️	viro elfo: malhela haŭta nuanco
@@ -964,16 +964,16 @@
 🙍🏿‍♀	virino sulkiĝanta: malhela haŭta nuanco
 🙎	persono paŭtante
 🙎🏻	persono paŭtado: hela haŭtnuanco
-🙎🏼	persono paŭtante: mez-hela haŭtnuanco
-🙎🏽	persono paŭtado: meza haŭta nuanco
+🙎🏼	persono paŭtanta: mez-hela haŭta nuanco
+🙎🏽	persono paŭtanta: meza haŭta nuanco
 🙎🏾	persono paŭtanta: mez-malhela haŭta nuanco
-🙎🏿	persono paŭtanta: malhela haŭta nuanco
+🙎🏿	persono paŭtado: malhela haŭta nuanco
 🙎‍♂️	viro paŭtante
 🙎‍♂	viro paŭtante
 🙎🏻‍♂️	viro paŭtado: hela haŭtnuanco
 🙎🏻‍♂	viro paŭtado: hela haŭtnuanco
-🙎🏼‍♂️	viro paŭtado: mez-hela haŭtnuanco
-🙎🏼‍♂	viro paŭtado: mez-hela haŭtnuanco
+🙎🏼‍♂️	viro paŭtado: mez-hela haŭta nuanco
+🙎🏼‍♂	viro paŭtado: mez-hela haŭta nuanco
 🙎🏽‍♂️	viro paŭtado: meza haŭta nuanco
 🙎🏽‍♂	viro paŭtado: meza haŭta nuanco
 🙎🏾‍♂️	viro paŭtado: mez-malhela haŭtnuanco
@@ -982,16 +982,16 @@
 🙎🏿‍♂	viro paŭtanta: malhela haŭta nuanco
 🙎‍♀️	virino paŭtante
 🙎‍♀	virino paŭtante
-🙎🏻‍♀️	virino paŭtante: hela haŭta nuanco
-🙎🏻‍♀	virino paŭtante: hela haŭta nuanco
-🙎🏼‍♀️	virino paŭtante: mez-hela haŭtnuanco
-🙎🏼‍♀	virino paŭtante: mez-hela haŭtnuanco
+🙎🏻‍♀️	virino paŭdante: hela haŭtnuanco
+🙎🏻‍♀	virino paŭdante: hela haŭtnuanco
+🙎🏼‍♀️	virino paŭdante: mez-hela haŭtnuanco
+🙎🏼‍♀	virino paŭdante: mez-hela haŭtnuanco
 🙎🏽‍♀️	virino paŭtanta: meza haŭta nuanco
 🙎🏽‍♀	virino paŭtanta: meza haŭta nuanco
 🙎🏾‍♀️	virina paŭtado: mez-malhela haŭta nuanco
 🙎🏾‍♀	virina paŭtado: mez-malhela haŭta nuanco
-🙎🏿‍♀️	virino paŭdante: malhela haŭta nuanco
-🙎🏿‍♀	virino paŭdante: malhela haŭta nuanco
+🙎🏿‍♀️	virino paŭtante: malhela haŭta nuanco
+🙎🏿‍♀	virino paŭtante: malhela haŭta nuanco
 🙅	persono gestante NE
 🙅🏻	persono gestanta NE: hela haŭtnuanco
 🙅🏼	persono gestanta NE: mez-hela haŭtnuanco
@@ -1002,8 +1002,8 @@
 🙅‍♂	viro gestante NE
 🙅🏻‍♂️	viro gestante NE: hela haŭtnuanco
 🙅🏻‍♂	viro gestante NE: hela haŭtnuanco
-🙅🏼‍♂️	viro gestanta NE: mez-hela haŭtnuanco
-🙅🏼‍♂	viro gestanta NE: mez-hela haŭtnuanco
+🙅🏼‍♂️	viro gestante NE: mez-hela haŭtnuanco
+🙅🏼‍♂	viro gestante NE: mez-hela haŭtnuanco
 🙅🏽‍♂️	viro gestante NE: meza haŭta nuanco
 🙅🏽‍♂	viro gestante NE: meza haŭta nuanco
 🙅🏾‍♂️	viro gestante NE: mez-malhela haŭttono
@@ -1024,20 +1024,20 @@
 🙅🏿‍♀	virino gestante NE: malhela haŭta nuanco
 🙆	persono gestante OK
 🙆🏻	persono gestanta Bone: hela haŭta nuanco
-🙆🏼	persono gestanta OK: mez-hela haŭtnuanco
-🙆🏽	persono gestanta Bone: meza haŭtnuanco
+🙆🏼	persono gestanta Bone: mez-hela haŭtnuanco
+🙆🏽	persono gestanta OK: meza haŭtnuanco
 🙆🏾	persono gestanta OK: mez-malhela haŭtnuanco
 🙆🏿	persono gestanta Bone: malhela haŭta nuanco
 🙆‍♂️	viro gestante OK
 🙆‍♂	viro gestante OK
-🙆🏻‍♂️	viro gestante OK: hela haŭtnuanco
-🙆🏻‍♂	viro gestante OK: hela haŭtnuanco
-🙆🏼‍♂️	viro gestanta Bone: mez-hela haŭtnuanco
-🙆🏼‍♂	viro gestanta Bone: mez-hela haŭtnuanco
-🙆🏽‍♂️	viro gestanta Bone: meza haŭtnuanco
-🙆🏽‍♂	viro gestanta Bone: meza haŭtnuanco
-🙆🏾‍♂️	viro gestanta Bone: mez-malhela haŭttono
-🙆🏾‍♂	viro gestanta Bone: mez-malhela haŭttono
+🙆🏻‍♂️	viro gestanta Bone: hela haŭtnuanco
+🙆🏻‍♂	viro gestanta Bone: hela haŭtnuanco
+🙆🏼‍♂️	viro gestanta Bone: mez-hela haŭttono
+🙆🏼‍♂	viro gestanta Bone: mez-hela haŭttono
+🙆🏽‍♂️	viro gestante OK: meza haŭtnuanco
+🙆🏽‍♂	viro gestante OK: meza haŭtnuanco
+🙆🏾‍♂️	viro gestanta OK: mez-malhela haŭtnuanco
+🙆🏾‍♂	viro gestanta OK: mez-malhela haŭtnuanco
 🙆🏿‍♂️	viro gestante OK: malhela haŭtnuanco
 🙆🏿‍♂	viro gestante OK: malhela haŭtnuanco
 🙆‍♀️	virino gestante OK
@@ -1050,8 +1050,8 @@
 🙆🏽‍♀	virino gestante OK: meza haŭtnuanco
 🙆🏾‍♀️	virino gestante OK: mez-malhela haŭtnuanco
 🙆🏾‍♀	virino gestante OK: mez-malhela haŭtnuanco
-🙆🏿‍♀️	virino gestante Bone: malhela haŭta nuanco
-🙆🏿‍♀	virino gestante Bone: malhela haŭta nuanco
+🙆🏿‍♀️	virino gestante OK: malhela haŭta nuanco
+🙆🏿‍♀	virino gestante OK: malhela haŭta nuanco
 💁	persono klinanta manon
 💁🏻	persono klinanta manon: hela haŭta nuanco
 💁🏼	persono klinanta manon: mez-hela haŭta nuanco
@@ -1060,22 +1060,22 @@
 💁🏿	persono klinanta manon: malhela haŭta nuanco
 💁‍♂️	viro klinanta manon
 💁‍♂	viro klinanta manon
-💁🏻‍♂️	viro klinanta manon: hela haŭta nuanco
-💁🏻‍♂	viro klinanta manon: hela haŭta nuanco
+💁🏻‍♂️	viro klinanta manon: hela haŭtkoloro
+💁🏻‍♂	viro klinanta manon: hela haŭtkoloro
 💁🏼‍♂️	viro klinanta manon: mez-hela haŭttono
 💁🏼‍♂	viro klinanta manon: mez-hela haŭttono
-💁🏽‍♂️	viro klinanta manon: meza haŭta nuanco
-💁🏽‍♂	viro klinanta manon: meza haŭta nuanco
+💁🏽‍♂️	viro renversanta manon: meza haŭta nuanco
+💁🏽‍♂	viro renversanta manon: meza haŭta nuanco
 💁🏾‍♂️	viro klinanta manon: mez-malhela haŭttono
 💁🏾‍♂	viro klinanta manon: mez-malhela haŭttono
 💁🏿‍♂️	viro klinanta manon: malhela haŭtkoloro
 💁🏿‍♂	viro klinanta manon: malhela haŭtkoloro
 💁‍♀️	virino klinanta manon
 💁‍♀	virino klinanta manon
-💁🏻‍♀️	virino klinanta manon: hela haŭta nuanco
-💁🏻‍♀	virino klinanta manon: hela haŭta nuanco
-💁🏼‍♀️	virino klinanta manon: mez-hela haŭttono
-💁🏼‍♀	virino klinanta manon: mez-hela haŭttono
+💁🏻‍♀️	virino klinanta manon: hela haŭtnuanco
+💁🏻‍♀	virino klinanta manon: hela haŭtnuanco
+💁🏼‍♀️	virino klinanta manon: mez-hela haŭta nuanco
+💁🏼‍♀	virino klinanta manon: mez-hela haŭta nuanco
 💁🏽‍♀️	virino klinanta manon: meza haŭta nuanco
 💁🏽‍♀	virino klinanta manon: meza haŭta nuanco
 💁🏾‍♀️	virino klinanta manon: mez-malhela haŭta nuanco
@@ -1094,8 +1094,8 @@
 🙋🏻‍♂	viro levante manon: hela haŭttono
 🙋🏼‍♂️	viro levante manon: mez-hela haŭttono
 🙋🏼‍♂	viro levante manon: mez-hela haŭttono
-🙋🏽‍♂️	viro levante manon: meza haŭta nuanco
-🙋🏽‍♂	viro levante manon: meza haŭta nuanco
+🙋🏽‍♂️	viro levante manon: meza haŭtnuanco
+🙋🏽‍♂	viro levante manon: meza haŭtnuanco
 🙋🏾‍♂️	viro levante manon: mez-malhela haŭttono
 🙋🏾‍♂	viro levante manon: mez-malhela haŭttono
 🙋🏿‍♂️	viro levante manon: malhela haŭtkoloro
@@ -1104,10 +1104,10 @@
 🙋‍♀	virino levas manon
 🙋🏻‍♀️	virino levante manon: hela haŭta nuanco
 🙋🏻‍♀	virino levante manon: hela haŭta nuanco
-🙋🏼‍♀️	virino levante manon: mez-hela haŭttono
-🙋🏼‍♀	virino levante manon: mez-hela haŭttono
-🙋🏽‍♀️	virino levante manon: meza haŭta nuanco
-🙋🏽‍♀	virino levante manon: meza haŭta nuanco
+🙋🏼‍♀️	virino levante manon: mez-hela haŭtnuanco
+🙋🏼‍♀	virino levante manon: mez-hela haŭtnuanco
+🙋🏽‍♀️	virino levante manon: meza haŭtnuanco
+🙋🏽‍♀	virino levante manon: meza haŭtnuanco
 🙋🏾‍♀️	virino levante manon: mez-malhela haŭttono
 🙋🏾‍♀	virino levante manon: mez-malhela haŭttono
 🙋🏿‍♀️	virino levante manon: malhela haŭta nuanco
@@ -1124,8 +1124,8 @@
 🙇🏻‍♂	viro riverencante: hela haŭttono
 🙇🏼‍♂️	viro riverencante: mez-hela haŭttono
 🙇🏼‍♂	viro riverencante: mez-hela haŭttono
-🙇🏽‍♂️	viro riverencante: meza haŭta tono
-🙇🏽‍♂	viro riverencante: meza haŭta tono
+🙇🏽‍♂️	viro riverencante: meza haŭta nuanco
+🙇🏽‍♂	viro riverencante: meza haŭta nuanco
 🙇🏾‍♂️	viro riverencante: mez-malhela haŭttono
 🙇🏾‍♂	viro riverencante: mez-malhela haŭttono
 🙇🏿‍♂️	viro riverencante: malhela haŭta nuanco
@@ -1156,8 +1156,8 @@
 🤦🏼‍♂	viro vizaĝpalmado: mez-hela haŭta nuanco
 🤦🏽‍♂️	viro facepalming: meza haŭta nuanco
 🤦🏽‍♂	viro facepalming: meza haŭta nuanco
-🤦🏾‍♂️	viro facepalming: mez-malhela haŭta nuanco
-🤦🏾‍♂	viro facepalming: mez-malhela haŭta nuanco
+🤦🏾‍♂️	viro vizaĝpalmado: mez-malhela haŭta nuanco
+🤦🏾‍♂	viro vizaĝpalmado: mez-malhela haŭta nuanco
 🤦🏿‍♂️	viro facepalming: malhela haŭta nuanco
 🤦🏿‍♂	viro facepalming: malhela haŭta nuanco
 🤦‍♀️	virino vizaĝpalming
@@ -1236,8 +1236,8 @@
 💇🏻	persono tondanta: hela haŭtnuanco
 💇🏼	persono ricevanta hararon: mez-hela haŭtnuanco
 💇🏽	persono ricevanta hararon: meza haŭtnuanco
-💇🏾	persono ricevanta hararon: mez-malhela haŭta nuanco
-💇🏿	persono ricevanta hararon: malhela haŭtnuanco
+💇🏾	persono ricevanta hararon: mez-malhela haŭtnuanco
+💇🏿	persono tondanta: malhela haŭtnuanco
 💇‍♂️	viro tondante
 💇‍♂	viro tondante
 💇🏻‍♂️	viro akiranta hararon: hela haŭtnuanco
@@ -1314,8 +1314,8 @@
 🏃‍♀	virino kuranta
 🏃🏻‍♀️	virino kuranta: hela haŭta nuanco
 🏃🏻‍♀	virino kuranta: hela haŭta nuanco
-🏃🏼‍♀️	virino kuranta: mez-hela haŭttono
-🏃🏼‍♀	virino kuranta: mez-hela haŭttono
+🏃🏼‍♀️	virino kuranta: mez-hela haŭta nuanco
+🏃🏼‍♀	virino kuranta: mez-hela haŭta nuanco
 🏃🏽‍♀️	virino kuranta: meza haŭta nuanco
 🏃🏽‍♀	virino kuranta: meza haŭta nuanco
 🏃🏾‍♀️	virino kuranta: mez-malhela haŭta nuanco
@@ -1329,11 +1329,11 @@
 💃🏾	virina dancante: mez-malhela haŭttono
 💃🏿	virino dancanta: malhela haŭtnuanco
 🕺	viro dancanta
-🕺🏻	viro dancante: hela haŭta nuanco
+🕺🏻	viro dancanta: hela haŭta nuanco
 🕺🏼	viro dancanta: mez-hela haŭttono
-🕺🏽	viro dancante: meza haŭta nuanco
-🕺🏾	viro dancanta: mez-malhela haŭta nuanco
-🕺🏿	viro dancanta: malhela haŭta nuanco
+🕺🏽	viro dancanta: meza haŭta nuanco
+🕺🏾	viro dancanta: mez-malhela haŭttono
+🕺🏿	viro dancante: malhela haŭta nuanco
 👯	homoj kun kuniklaj oreloj
 👯‍♂️	viroj kun kuniklaj oreloj
 👯‍♂	viroj kun kuniklaj oreloj
@@ -1373,7 +1373,7 @@
 🧗🏻	persono grimpanta: hela haŭta nuanco
 🧗🏼	persono grimpanta: mez-hela haŭttono
 🧗🏽	persono grimpanta: meza haŭta nuanco
-🧗🏾	persono grimpanta: mez-malhela haŭta nuanco
+🧗🏾	persono grimpanta: mez-malhela haŭttono
 🧗🏿	persono grimpanta: malhela haŭta nuanco
 🧗‍♀️	virino grimpanta
 🧗‍♀	virino grimpanta
@@ -1420,7 +1420,7 @@
 🧘‍♂️	viro en lotusa pozicio
 🧘‍♂	viro en lotusa pozicio
 🧘🏻‍♂️	viro en lotusa pozicio: hela haŭtnuanco
-🧘🏻‍♂	viro en lotusa pozicio: hela haŭtnuanco
+🧘🏻‍♂	viro en lotusa pozicio: hela haŭta nuanco
 🧘🏼‍♂️	viro en lotusa pozicio: mez-hela haŭttono
 🧘🏼‍♂	viro en lotusa pozicio: mez-hela haŭttono
 🧘🏽‍♂️	viro en lotusa pozicio: meza haŭta nuanco
@@ -1462,7 +1462,7 @@
 ⛷️	skianto
 ⛷	skianto
 🏂	neĝbretisto
-🏂🏻	snowboarder: hela haŭtnuanco
+🏂🏻	snowboarder: hela haŭta nuanco
 🏂🏼	snowboarder: mez-hela haŭtnuanco
 🏂🏽	snowboarder: meza haŭta nuanco
 🏂🏾	snowboarder: mez-malhela haŭta nuanco
@@ -1480,12 +1480,12 @@
 🏌‍♂	viro golfanta
 🏌🏻‍♂️	viro golfanta: hela haŭta nuanco
 🏌🏻‍♂	viro golfanta: hela haŭta nuanco
-🏌🏼‍♂️	viro golfanta: mez-hela haŭta nuanco
-🏌🏼‍♂	viro golfanta: mez-hela haŭta nuanco
+🏌🏼‍♂️	viro golfanta: mez-hela haŭtnuanco
+🏌🏼‍♂	viro golfanta: mez-hela haŭtnuanco
 🏌🏽‍♂️	viro golfanta: meza haŭta nuanco
 🏌🏽‍♂	viro golfanta: meza haŭta nuanco
 🏌🏾‍♂️	viro golfanta: mez-malhela haŭtnuanco
-🏌🏾‍♂	viro golfanta: mez-malhela haŭtnuanco
+🏌🏾‍♂	viro golfanta: mez-malhela haŭta nuanco
 🏌🏿‍♂️	viro golfanta: malhela haŭta nuanco
 🏌🏿‍♂	viro golfanta: malhela haŭta nuanco
 🏌️‍♀️	virino golfanta
@@ -1510,22 +1510,22 @@
 🏄🏿	persono surfanta: malhela haŭta nuanco
 🏄‍♂️	viro surfanta
 🏄‍♂	viro surfanta
-🏄🏻‍♂️	viro surfanta: hela haŭta nuanco
-🏄🏻‍♂	viro surfanta: hela haŭta nuanco
+🏄🏻‍♂️	viro surfanta: hela haŭtnuanco
+🏄🏻‍♂	viro surfanta: hela haŭtnuanco
 🏄🏼‍♂️	viro surfado: mez-hela haŭtnuanco
 🏄🏼‍♂	viro surfado: mez-hela haŭtnuanco
-🏄🏽‍♂️	viro surfado: meza haŭtnuanco
-🏄🏽‍♂	viro surfado: meza haŭtnuanco
-🏄🏾‍♂️	viro surfanta: mez-malhela haŭtnuanco
-🏄🏾‍♂	viro surfanta: mez-malhela haŭtnuanco
+🏄🏽‍♂️	viro surfado: meza haŭta nuanco
+🏄🏽‍♂	viro surfado: meza haŭta nuanco
+🏄🏾‍♂️	viro surfado: mez-malhela haŭtnuanco
+🏄🏾‍♂	viro surfado: mez-malhela haŭtnuanco
 🏄🏿‍♂️	viro surfanta: malhela haŭtnuanco
 🏄🏿‍♂	viro surfanta: malhela haŭtnuanco
 🏄‍♀️	virino surfanta
 🏄‍♀	virino surfanta
-🏄🏻‍♀️	virino surfanta: hela haŭta nuanco
-🏄🏻‍♀	virino surfanta: hela haŭta nuanco
-🏄🏼‍♀️	virina surfado: mez-hela haŭta nuanco
-🏄🏼‍♀	virina surfado: mez-hela haŭta nuanco
+🏄🏻‍♀️	virina surfado: hela haŭta nuanco
+🏄🏻‍♀	virina surfado: hela haŭta nuanco
+🏄🏼‍♀️	virina surfado: mez-hela haŭttono
+🏄🏼‍♀	virina surfado: mez-hela haŭttono
 🏄🏽‍♀️	virina surfado: meza haŭta nuanco
 🏄🏽‍♀	virina surfado: meza haŭta nuanco
 🏄🏾‍♀️	virina surfado: mez-malhela haŭta nuanco
@@ -1540,16 +1540,16 @@
 🚣🏿	persono remboato: malhela haŭtkoloro
 🚣‍♂️	viro remanta boaton
 🚣‍♂	viro remanta boaton
-🚣🏻‍♂️	viro remboato: hela haŭtkoloro
-🚣🏻‍♂	viro remboato: hela haŭtkoloro
+🚣🏻‍♂️	viro remboato: hela haŭtnuanco
+🚣🏻‍♂	viro remboato: hela haŭtnuanco
 🚣🏼‍♂️	viro remboato: mez-hela haŭtnuanco
 🚣🏼‍♂	viro remboato: mez-hela haŭtnuanco
 🚣🏽‍♂️	viro remboato: meza haŭtnuanco
 🚣🏽‍♂	viro remboato: meza haŭtnuanco
-🚣🏾‍♂️	viro remboato: mez-malhela haŭtnuanco
-🚣🏾‍♂	viro remboato: mez-malhela haŭtnuanco
-🚣🏿‍♂️	viro remboato: malhela haŭtnuanco
-🚣🏿‍♂	viro remboato: malhela haŭtnuanco
+🚣🏾‍♂️	viro remboato: mez-malhela haŭttono
+🚣🏾‍♂	viro remboato: mez-malhela haŭttono
+🚣🏿‍♂️	viro remboato: malhela haŭtkoloro
+🚣🏿‍♂	viro remboato: malhela haŭtkoloro
 🚣‍♀️	virino remboato
 🚣‍♀	virino remboato
 🚣🏻‍♀️	virino remboato: hela haŭtnuanco
@@ -1595,7 +1595,7 @@
 ⛹️	persono saltanta pilkon
 ⛹	persono saltanta pilkon
 ⛹🏻	persono saltanta pilko: hela haŭta nuanco
-⛹🏼	persono saltanta pilko: mez-hela haŭttono
+⛹🏼	persono saltanta pilko: mez-hela haŭtnuanco
 ⛹🏽	persono saltanta pilko: meza haŭta nuanco
 ⛹🏾	persono saltanta pilko: mez-malhela haŭttono
 ⛹🏿	persono saltanta pilko: malhela haŭta nuanco
@@ -1617,8 +1617,8 @@
 ⛹‍♀️	virino saltanta pilkon
 ⛹️‍♀	virino saltanta pilkon
 ⛹‍♀	virino saltanta pilkon
-⛹🏻‍♀️	virino saltanta pilko: hela haŭta nuanco
-⛹🏻‍♀	virino saltanta pilko: hela haŭta nuanco
+⛹🏻‍♀️	virino saltanta pilko: hela haŭttono
+⛹🏻‍♀	virino saltanta pilko: hela haŭttono
 ⛹🏼‍♀️	virino saltanta pilko: mez-hela haŭttono
 ⛹🏼‍♀	virino saltanta pilko: mez-hela haŭttono
 ⛹🏽‍♀️	virino saltanta pilko: meza haŭta nuanco
@@ -1630,7 +1630,7 @@
 🏋️	persono levante pezojn
 🏋	persono levante pezojn
 🏋🏻	persono levante pezojn: hela haŭta nuanco
-🏋🏼	persono levanta pezojn: mez-hela haŭta nuanco
+🏋🏼	persono levante pezojn: mez-hela haŭta nuanco
 🏋🏽	persono levante pezojn: meza haŭta nuanco
 🏋🏾	persono levante pezojn: mez-malhela haŭta tono
 🏋🏿	persono levante pezojn: malhela haŭta nuanco
@@ -1638,13 +1638,13 @@
 🏋‍♂️	viro levante pezojn
 🏋️‍♂	viro levante pezojn
 🏋‍♂	viro levante pezojn
-🏋🏻‍♂️	viro levanta pezojn: hela haŭta nuanco
-🏋🏻‍♂	viro levanta pezojn: hela haŭta nuanco
+🏋🏻‍♂️	viro levante pezojn: hela haŭta nuanco
+🏋🏻‍♂	viro levante pezojn: hela haŭta nuanco
 🏋🏼‍♂️	viro levanta pezojn: mez-hela haŭttono
 🏋🏼‍♂	viro levanta pezojn: mez-hela haŭttono
 🏋🏽‍♂️	viro levanta pezojn: meza haŭta nuanco
 🏋🏽‍♂	viro levanta pezojn: meza haŭta nuanco
-🏋🏾‍♂️	viro levanta pezojn: mez-malhela haŭta nuanco
+🏋🏾‍♂️	viro levante pezojn: mez-malhela haŭttono
 🏋🏾‍♂	viro levante pezojn: mez-malhela haŭttono
 🏋🏿‍♂️	viro levanta pezojn: malhela haŭta nuanco
 🏋🏿‍♂	viro levanta pezojn: malhela haŭta nuanco
@@ -1658,14 +1658,14 @@
 🏋🏼‍♀	virino levante pezojn: mez-hela haŭttono
 🏋🏽‍♀️	virino levante pezojn: meza haŭta nuanco
 🏋🏽‍♀	virino levante pezojn: meza haŭta nuanco
-🏋🏾‍♀️	virino levante pezojn: mez-malhela haŭta tono
-🏋🏾‍♀	virino levante pezojn: mez-malhela haŭta tono
+🏋🏾‍♀️	virino levante pezojn: mez-malhela haŭta nuanco
+🏋🏾‍♀	virino levante pezojn: mez-malhela haŭta nuanco
 🏋🏿‍♀️	virino levante pezojn: malhela haŭta nuanco
 🏋🏿‍♀	virino levante pezojn: malhela haŭta nuanco
 🚴	persono biciklanta
-🚴🏻	persono biciklanta: hela haŭtnuanco
+🚴🏻	persono biciklanta: hela haŭta nuanco
 🚴🏼	persono biciklanta: mez-hela haŭtnuanco
-🚴🏽	persono biciklanta: meza haŭtnuanco
+🚴🏽	persono biciklanta: meza haŭta nuanco
 🚴🏾	persono biciklanta: mez-malhela haŭtnuanco
 🚴🏿	persono biciklanta: malhela haŭta nuanco
 🚴‍♂️	viro biciklanta
@@ -1684,8 +1684,8 @@
 🚴‍♀	virino biciklanta
 🚴🏻‍♀️	virina biciklado: hela haŭta nuanco
 🚴🏻‍♀	virina biciklado: hela haŭta nuanco
-🚴🏼‍♀️	virina biciklado: mez-hela haŭttono
-🚴🏼‍♀	virina biciklado: mez-hela haŭttono
+🚴🏼‍♀️	virina biciklado: mez-hela haŭta nuanco
+🚴🏼‍♀	virina biciklado: mez-hela haŭta nuanco
 🚴🏽‍♀️	virina biciklado: meza haŭta nuanco
 🚴🏽‍♀	virina biciklado: meza haŭta nuanco
 🚴🏾‍♀️	virina biciklado: mez-malhela haŭta nuanco
@@ -1706,20 +1706,20 @@
 🚵🏼‍♂	viro montbiciklado: mez-hela haŭta nuanco
 🚵🏽‍♂️	viro montbiciklado: meza haŭta nuanco
 🚵🏽‍♂	viro montbiciklado: meza haŭta nuanco
-🚵🏾‍♂️	viro montbiciklado: mez-malhela haŭtnuanco
-🚵🏾‍♂	viro montbiciklado: mez-malhela haŭtnuanco
+🚵🏾‍♂️	viro montbiciklado: mez-malhela haŭta nuanco
+🚵🏾‍♂	viro montbiciklado: mez-malhela haŭta nuanco
 🚵🏿‍♂️	viro montbiciklado: malhela haŭta nuanco
 🚵🏿‍♂	viro montbiciklado: malhela haŭta nuanco
 🚵‍♀️	virino montbiciklo
 🚵‍♀	virino montbiciklo
 🚵🏻‍♀️	virino montbiciklanta: hela haŭta nuanco
-🚵🏻‍♀	virino montbiciklanta: hela haŭttono
+🚵🏻‍♀	virino montbiciklanta: hela haŭta nuanco
 🚵🏼‍♀️	virino montbiciklanta: mez-hela haŭtnuanco
 🚵🏼‍♀	virino montbiciklanta: mez-hela haŭtnuanco
 🚵🏽‍♀️	virino montbiciklanta: meza haŭtnuanco
 🚵🏽‍♀	virino montbiciklanta: meza haŭtnuanco
-🚵🏾‍♀️	virina montbiciklado: mez-malhela haŭta nuanco
-🚵🏾‍♀	virino montbiciklanta: mez-malhela haŭtnuanco
+🚵🏾‍♀️	virina montbiciklado: mez-malhela haŭtkoloro
+🚵🏾‍♀	virina montbiciklado: mez-malhela haŭtkoloro
 🚵🏿‍♀️	virino montbiciklanta: malhela haŭta nuanco
 🚵🏿‍♀	virino montbiciklanta: malhela haŭta nuanco
 🏎️	konkursaŭto
@@ -1727,7 +1727,7 @@
 🏍️	motorciklo
 🏍	motorciklo
 🤸	persono carwheeling
-🤸🏻	persono carwheeling: hela haŭta nuanco
+🤸🏻	persono carwheeling: hela haŭttono
 🤸🏼	persono carwheeling: mez-hela haŭttono
 🤸🏽	persono carwheeling: meza haŭta nuanco
 🤸🏾	persono carwheeling: mez-malhela haŭttono
@@ -1746,14 +1746,14 @@
 🤸🏿‍♂	viro veturanta: malhela haŭta nuanco
 🤸‍♀️	virina ĉarrado
 🤸‍♀	virina ĉarrado
-🤸🏻‍♀️	virino carwheeling: hela haŭtnuanco
-🤸🏻‍♀	virino carwheeling: hela haŭtnuanco
-🤸🏼‍♀️	virina veturanta: mez-hela haŭttono
-🤸🏼‍♀	virina veturanta: mez-hela haŭttono
-🤸🏽‍♀️	virino veturanta: meza haŭtnuanco
-🤸🏽‍♀	virino veturanta: meza haŭtnuanco
-🤸🏾‍♀️	virina veturanta: mez-malhela haŭta nuanco
-🤸🏾‍♀	virina veturanta: mez-malhela haŭta nuanco
+🤸🏻‍♀️	virino carwheeling: hela haŭttono
+🤸🏻‍♀	virino carwheeling: hela haŭttono
+🤸🏼‍♀️	virina veturanta: mez-hela haŭtnuanco
+🤸🏼‍♀	virina veturanta: mez-hela haŭtnuanco
+🤸🏽‍♀️	virino veturanta: meza haŭta nuanco
+🤸🏽‍♀	virino veturanta: meza haŭta nuanco
+🤸🏾‍♀️	virina veturanta: mez-malhela haŭttono
+🤸🏾‍♀	virina veturanta: mez-malhela haŭttono
 🤸🏿‍♀️	virino carwheeling: malhela haŭta nuanco
 🤸🏿‍♀	virino carwheeling: malhela haŭta nuanco
 🤼	homoj luktantaj
@@ -1763,7 +1763,7 @@
 🤼‍♀	virinoj luktantaj
 🤽	persono ludanta akvopilkon
 🤽🏻	persono ludanta akvopilkon: hela haŭtkoloro
-🤽🏼	persono ludanta akvopilkon: mez-hela haŭtkoloro
+🤽🏼	persono ludanta akvopilkon: mez-hela haŭttono
 🤽🏽	persono ludanta akvopilkon: meza haŭtnuanco
 🤽🏾	persono ludanta akvopilkon: mez-malhela haŭtkoloro
 🤽🏿	persono ludanta akvopilkon: malhela haŭtkoloro
@@ -1771,20 +1771,20 @@
 🤽‍♂	viro ludanta akvopilkon
 🤽🏻‍♂️	viro ludanta akvopilkon: hela haŭtkoloro
 🤽🏻‍♂	viro ludanta akvopilkon: hela haŭtkoloro
-🤽🏼‍♂️	viro ludanta akvopilkon: mez-hela haŭtnuanco
-🤽🏼‍♂	viro ludanta akvopilkon: mez-hela haŭtnuanco
+🤽🏼‍♂️	viro ludanta akvopilkon: mez-hela haŭttono
+🤽🏼‍♂	viro ludanta akvopilkon: mez-hela haŭttono
 🤽🏽‍♂️	viro ludanta akvopilkon: meza haŭtnuanco
 🤽🏽‍♂	viro ludanta akvopilkon: meza haŭtnuanco
 🤽🏾‍♂️	viro ludanta akvopilkon: mez-malhela haŭttono
-🤽🏾‍♂	viro ludanta akvopilkon: mez-malhela haŭtkoloro
-🤽🏿‍♂️	viro ludanta akvopilkon: malhela haŭtnuanco
-🤽🏿‍♂	viro ludanta akvopilkon: malhela haŭtnuanco
+🤽🏾‍♂	viro ludanta akvopilkon: mez-malhela haŭttono
+🤽🏿‍♂️	viro ludanta akvopilkon: malhela haŭtkoloro
+🤽🏿‍♂	viro ludanta akvopilkon: malhela haŭtkoloro
 🤽‍♀️	virino ludanta akvopilkon
 🤽‍♀	virino ludanta akvopilkon
 🤽🏻‍♀️	virino ludanta akvopilkon: hela haŭtkoloro
 🤽🏻‍♀	virino ludanta akvopilkon: hela haŭtkoloro
-🤽🏼‍♀️	virino ludanta akvopilkon: mez-hela haŭtnuanco
-🤽🏼‍♀	virino ludanta akvopilkon: mez-hela haŭtnuanco
+🤽🏼‍♀️	virino ludanta akvopilkon: mez-hela haŭttono
+🤽🏼‍♀	virino ludanta akvopilkon: mez-hela haŭttono
 🤽🏽‍♀️	virino ludanta akvopilkon: meza haŭtnuanco
 🤽🏽‍♀	virino ludanta akvopilkon: meza haŭtnuanco
 🤽🏾‍♀️	virino ludanta akvopilkon: mez-malhela haŭttono
@@ -1799,16 +1799,16 @@
 🤾🏿	persono ludanta manpilkon: malhela haŭta nuanco
 🤾‍♂️	viro ludanta manpilkon
 🤾‍♂	viro ludanta manpilkon
-🤾🏻‍♂️	viro ludanta manpilkon: hela haŭttono
-🤾🏻‍♂	viro ludanta manpilkon: hela haŭttono
-🤾🏼‍♂️	viro ludanta manpilkon: mez-hela haŭtnuanco
-🤾🏼‍♂	viro ludanta manpilkon: mez-hela haŭtnuanco
+🤾🏻‍♂️	viro ludanta manpilkon: hela haŭtnuanco
+🤾🏻‍♂	viro ludanta manpilkon: hela haŭtnuanco
+🤾🏼‍♂️	viro ludanta manpilkon: mez-hela haŭttono
+🤾🏼‍♂	viro ludanta manpilkon: mez-hela haŭttono
 🤾🏽‍♂️	viro ludanta manpilkon: meza haŭtnuanco
 🤾🏽‍♂	viro ludanta manpilkon: meza haŭtnuanco
-🤾🏾‍♂️	viro ludanta manpilkon: mez-malhela haŭttono
-🤾🏾‍♂	viro ludanta manpilkon: mez-malhela haŭttono
-🤾🏿‍♂️	viro ludanta manpilkon: malhela haŭtnuanco
-🤾🏿‍♂	viro ludanta manpilkon: malhela haŭtnuanco
+🤾🏾‍♂️	viro ludanta manpilkon: mez-malhela haŭtkoloro
+🤾🏾‍♂	viro ludanta manpilkon: mez-malhela haŭtkoloro
+🤾🏿‍♂️	viro ludanta manpilkon: malhela haŭta nuanco
+🤾🏿‍♂	viro ludanta manpilkon: malhela haŭta nuanco
 🤾‍♀️	virino ludanta manpilkon
 🤾‍♀	virino ludanta manpilkon
 🤾🏻‍♀️	virino ludanta manpilkon: hela haŭttono
@@ -1817,8 +1817,8 @@
 🤾🏼‍♀	virino ludanta manpilkon: mez-hela haŭttono
 🤾🏽‍♀️	virino ludanta manpilkon: meza haŭtnuanco
 🤾🏽‍♀	virino ludanta manpilkon: meza haŭtnuanco
-🤾🏾‍♀️	virino ludanta manpilkadon: mez-malhela haŭttono
-🤾🏾‍♀	virino ludanta manpilkadon: mez-malhela haŭttono
+🤾🏾‍♀️	virino ludanta manpilkon: mez-malhela haŭtkoloro
+🤾🏾‍♀	virino ludanta manpilkon: mez-malhela haŭtkoloro
 🤾🏿‍♀️	virino ludanta manpilkon: malhela haŭta nuanco
 🤾🏿‍♀	virino ludanta manpilkon: malhela haŭta nuanco
 🤹	persono ĵonglante
@@ -1847,8 +1847,8 @@
 🤹🏼‍♀	virina ĵonglado: mez-hela haŭttono
 🤹🏽‍♀️	virina ĵonglado: meza haŭta nuanco
 🤹🏽‍♀	virina ĵonglado: meza haŭta nuanco
-🤹🏾‍♀️	virina ĵonglado: mez-malhela haŭtkoloro
-🤹🏾‍♀	virina ĵonglado: mez-malhela haŭtkoloro
+🤹🏾‍♀️	virina ĵonglado: mez-malhela haŭta nuanco
+🤹🏾‍♀	virina ĵonglado: mez-malhela haŭta nuanco
 🤹🏿‍♀️	virino ĵonglante: malhela haŭta nuanco
 🤹🏿‍♀	virino ĵonglante: malhela haŭta nuanco
 👫	viro kaj virino tenante la manojn
@@ -1920,11 +1920,11 @@
 🦶🏿	piedo: malhela haŭta nuanco
 👈	dorsa indekso indikanta maldekstren
 👈🏻	dorsa indekso indikanta maldekstren: hela haŭtnuanco
-👈🏼	malantaŭa indekso indikanta maldekstren: mez-hela haŭtnuanco
+👈🏼	dorsa indekso indikanta maldekstren: mez-hela haŭtnuanco
 👈🏽	dorsa indekso indikanta maldekstren: meza haŭtnuanco
 👈🏾	dorsa indekso indikanta maldekstren: mez-malhela haŭtnuanco
 👈🏿	dorsa indekso indikanta maldekstren: malhela haŭtnuanco
-👉	malantaŭa indekso indikanta dekstren
+👉	dorsa indekso indikanta dekstren
 👉🏻	dorsa indekso indikanta dekstren: hela haŭtnuanco
 👉🏼	malantaŭa indekso indikanta dekstren: mez-hela haŭtnuanco
 👉🏽	dorsa indekso indikanta dekstren: meza haŭtnuanco
@@ -1932,7 +1932,7 @@
 👉🏿	dorsa indekso indikanta dekstren: malhela haŭtnuanco
 ☝️	indekso indikante supren
 ☝	indekso indikante supren
-☝🏻	indekso indikanta supren: hela haŭta nuanco
+☝🏻	indekso indikanta supren: hela haŭtnuanco
 ☝🏼	indekso indikanta supren: mez-hela haŭta nuanco
 ☝🏽	indekso indikanta supren: meza haŭta nuanco
 ☝🏾	indekso indikanta supren: mez-malhela haŭta nuanco
@@ -1942,7 +1942,7 @@
 👆🏼	dorsa indekso indikanta supren: mez-hela haŭtnuanco
 👆🏽	dorsa indekso indikanta supren: meza haŭtnuanco
 👆🏾	dorsa indekso indikanta supren: mez-malhela haŭtnuanco
-👆🏿	dorsa indekso indikanta supren: malhela haŭta nuanco
+👆🏿	dorsa indekso indikanta supren: malhela haŭtnuanco
 🖕	meza fingro
 🖕🏻	meza fingro: hela haŭta nuanco
 🖕🏼	meza fingro: mez-hela haŭta tono
@@ -1956,7 +1956,7 @@
 👇🏾	dorsa indekso indikanta malsupren: mez-malhela haŭtnuanco
 👇🏿	dorsa indekso indikanta malsupren: malhela haŭtnuanco
 ✌️	venko mano
-✌	venko mano
+✌	venka mano
 ✌🏻	venko mano: hela haŭta nuanco
 ✌🏼	venka mano: mez-hela haŭttono
 ✌🏽	venko mano: meza haŭta nuanco
@@ -1978,19 +1978,19 @@
 🤘🏻	signo de la kornoj: hela haŭta nuanco
 🤘🏼	signo de la kornoj: mez-hela haŭttono
 🤘🏽	signo de la kornoj: meza haŭta nuanco
-🤘🏾	signo de la kornoj: mez-malhela haŭttono
+🤘🏾	signo de la kornoj: mez-malhela haŭta nuanco
 🤘🏿	signo de la kornoj: malhela haŭta nuanco
 🤙	voku min mano
-🤙🏻	voku min mano: hela haŭtkoloro
-🤙🏼	voku min mano: mez-hela haŭttono
+🤙🏻	voku min mano: hela haŭta nuanco
+🤙🏼	voku min mano: mez-hela haŭtnuanco
 🤙🏽	voku min mano: meza haŭta nuanco
-🤙🏾	voku min mano: mez-malhela haŭtkoloro
-🤙🏿	voku min mano: malhela haŭta nuanco
+🤙🏾	voku min mano: mez-malhela haŭta nuanco
+🤙🏿	voku min mano: malhela haŭtkoloro
 🖐️	mano kun fingroj etenditaj
 🖐	mano kun fingroj etenditaj
 🖐🏻	mano kun fingroj disverditaj: hela haŭta nuanco
-🖐🏼	mano kun fingroj etenditaj: mez-hela haŭtnuanco
-🖐🏽	mano kun fingroj disverditaj: meza haŭta nuanco
+🖐🏼	mano kun fingroj disverditaj: mez-hela haŭttono
+🖐🏽	mano kun fingroj disvastigitaj: meza haŭta nuanco
 🖐🏾	mano kun fingroj disverditaj: mez-malhela haŭta nuanco
 🖐🏿	mano kun fingroj disverditaj: malhela haŭta nuanco
 ✋	levita mano
@@ -2031,18 +2031,18 @@
 👊🏿	venanta pugno: malhela haŭtnuanco
 🤛	pugno maldekstren
 🤛🏻	maldekstrema pugno: hela haŭta nuanco
-🤛🏼	maldekstra-vizaĝa pugno: mez-hela haŭta nuanco
+🤛🏼	maldekstrema pugno: mez-hela haŭta nuanco
 🤛🏽	maldekstrema pugno: meza haŭta nuanco
 🤛🏾	maldekstra-vizaĝa pugno: mez-malhela haŭta nuanco
 🤛🏿	maldekstrema pugno: malhela haŭta nuanco
 🤜	pugno dekstren
 🤜🏻	dekstre-vizaĝa pugno: hela haŭta nuanco
 🤜🏼	dekstre-vizaĝa pugno: mez-hela haŭta nuanco
-🤜🏽	dekstre-vizaĝa pugno: meza haŭta nuanco
+🤜🏽	pugno dekstre: meza haŭta nuanco
 🤜🏾	dekstre-vizaĝa pugno: mez-malhela haŭta nuanco
-🤜🏿	dekstre-vizaĝa pugno: malhela haŭta nuanco
+🤜🏿	pugno dekstre: malhela haŭta nuanco
 🤚	levita dorso de la mano
-🤚🏻	levita dorso de la mano: hela haŭta nuanco
+🤚🏻	levita mandorso: hela haŭta nuanco
 🤚🏼	levita dorso de la mano: mez-hela haŭta nuanco
 🤚🏽	levita dorso de la mano: meza haŭta nuanco
 🤚🏾	levita mandorso: mez-malhela haŭta nuanco
@@ -2054,22 +2054,22 @@
 👋🏾	svinganta mano: mez-malhela haŭta nuanco
 👋🏿	svinganta mano: malhela haŭta nuanco
 🤟	gesto de amo
-🤟🏻	amu-gesto: hela haŭtnuanco
-🤟🏼	amu-gesto: mez-hela haŭta nuanco
+🤟🏻	amu-gesto: hela haŭta nuanco
+🤟🏼	amu-gesto: mez-hela haŭtnuanco
 🤟🏽	amu-gesto: meza haŭta nuanco
 🤟🏾	amu-gesto: mez-malhela haŭta nuanco
 🤟🏿	amu-gesto: malhela haŭta nuanco
 ✍️	skriba mano
 ✍	skriba mano
 ✍🏻	skriba mano: hela haŭta nuanco
-✍🏼	skriba mano: mez-hela haŭttono
+✍🏼	skriba mano: mez-hela haŭta nuanco
 ✍🏽	skriba mano: meza haŭta nuanco
 ✍🏾	skriba mano: mez-malhela haŭta nuanco
 ✍🏿	skriba mano: malhela haŭta nuanco
 👏	manfrapante
 👏🏻	aplaŭdante: hela haŭta nuanco
-👏🏼	aplaŭdante: mez-hela haŭttono
-👏🏽	aplaŭdante: meza haŭta nuanco
+👏🏼	aplaŭdante: mez-hela haŭta nuanco
+👏🏽	aplaŭdante: meza haŭta tono
 👏🏾	aplaŭdante: mez-malhela haŭta nuanco
 👏🏿	aplaŭdante: malhela haŭta nuanco
 👐	malfermitaj manoj
@@ -2088,7 +2088,7 @@
 🤲🏻	manplatoj supren kune: hela haŭta nuanco
 🤲🏼	manplatoj supren kune: mez-hela haŭta nuanco
 🤲🏽	manplatoj supren kune: meza haŭta nuanco
-🤲🏾	palmoj supren kune: mez-malhela haŭta nuanco
+🤲🏾	manplatoj supren kune: mez-malhela haŭta nuanco
 🤲🏿	manplatoj supren kune: malhela haŭta nuanco
 🙏	kunmetitaj manoj
 🙏🏻	kunmetitaj manoj: hela haŭta nuanco
@@ -2099,7 +2099,7 @@
 🤝	manpremo
 💅	Ungolako
 💅🏻	najlo: hela haŭta nuanco
-💅🏼	najlo: mez-hela haŭta tono
+💅🏼	najlo: mez-hela haŭta nuanco
 💅🏽	najlo: meza haŭta tono
 💅🏾	najlo: mez-malhela haŭta tono
 💅🏿	najlo: malhela haŭta nuanco
@@ -2335,7 +2335,7 @@
 ☘️	shamrock
 ☘	shamrock
 🍀	kvarfolia trifolio
-🍁	acerfolio
+🍁	acero folio
 🍂	falinta folio
 🍃	folio flirtante en vento
 🍇	vinberoj
@@ -2363,7 +2363,7 @@
 🌶️	varma pipro
 🌶	varma pipro
 🥒	kukumo
-🥬	foliverda
+🥬	folie verda
 🥦	brokolo
 🍄	fungo
 🥜	arakidoj
@@ -2423,7 +2423,7 @@
 🧁	kuketo
 🥧	torto
 🍫	ĉokolado trinkejo
-🍬	bombono
+🍬	dolĉaĵo
 🍭	lollipop
 🍮	kustardo
 🍯	mielpoto
@@ -2586,7 +2586,7 @@
 ✈	aviadilo
 🛩️	malgranda aviadilo
 🛩	malgranda aviadilo
-🛫	aviadilo foriro
+🛫	aviadila foriro
 🛬	aviadilo alveno
 💺	sidloko
 🚁	helikoptero
@@ -2630,7 +2630,7 @@
 🕣	la oka kaj duono
 🕘	la naŭa
 🕤	la naŭa kaj duono
-🕙	la deka horo
+🕙	la deka
 🕥	la deka kaj duono
 🕚	la dek-unua horo
 🕦	la dekunua kaj duono
@@ -2877,7 +2877,7 @@
 💴	monbileto de eno
 💵	dolara monbileto
 💶	eŭro monbileto
-💷	pundan monbileton
+💷	punda monbileto
 💸	mono kun flugiloj
 💳	kreditkarto
 🧾	kvitanco
@@ -3114,7 +3114,7 @@
 🔂	ripeti ununuran butonon
 ▶️	ludbutono
 ▶	ludbutono
-⏩	butono de rapida antaŭenigo
+⏩	butono rapida antaŭen
 ⏭️	sekva spurbutono
 ⏭	sekva spurbutono
 ⏯️	butonon ludi aŭ paŭzi
@@ -3215,7 +3215,7 @@
 6️⃣	klavĉapo: 6
 6⃣	klavĉapo: 6
 7️⃣	klavĉapo: 7
-7⃣	klavĉapo: 7
+7⃣	klavklavo: 7
 8️⃣	klavĉapo: 8
 8⃣	klavĉapo: 8
 9️⃣	klavĉapo: 9
@@ -3264,7 +3264,7 @@
 🉑	Japana "akceptebla" butono
 🈸	Japana "aplikaĵo" butono
 🈴	Japana "pasa grado" butono
-🈳	Japana "vaka" butono
+🈳	Japana "vakant" butono
 ㊗️	Japana butono "gratuloj".
 ㊗	Japana butono "gratuloj".
 ㊙️	Japana "sekreta" butono
@@ -3407,7 +3407,7 @@
 🇬🇼	Gvineo Bisaŭa
 🇬🇾	Gujano
 🇭🇰	Honkonga SAR Ĉinio
-🇭🇲	Insuloj Heard & McDonald
+🇭🇲	Insuloj Heard kaj McDonald
 🇭🇳	Honduro
 🇭🇷	Kroatio
 🇭🇹	Haitio

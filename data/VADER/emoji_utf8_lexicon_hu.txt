@@ -193,8 +193,8 @@
 👨🏿‍⚕	férfi egészségügyi dolgozó: sötét bőrtónus
 👩‍⚕️	egészségügyi dolgozó nő
 👩‍⚕	egészségügyi dolgozó nő
-👩🏻‍⚕️	nő egészségügyi dolgozó: világos bőrtónus
-👩🏻‍⚕	nő egészségügyi dolgozó: világos bőrtónus
+👩🏻‍⚕️	egészségügyi dolgozó nő: világos bőrtónus
+👩🏻‍⚕	egészségügyi dolgozó nő: világos bőrtónus
 👩🏼‍⚕️	egészségügyi dolgozó nő: közepesen világos bőrtónus
 👩🏼‍⚕	egészségügyi dolgozó nő: közepesen világos bőrtónus
 👩🏽‍⚕️	nő egészségügyi dolgozó: közepes bőrtónus
@@ -281,7 +281,7 @@
 👨🏽‍🔧	férfi szerelő: közepes bőrtónus
 👨🏾‍🔧	férfi szerelő: közepesen sötét bőrtónus
 👨🏿‍🔧	férfi szerelő: sötét bőrtónus
-👩‍🔧	szerelő nő
+👩‍🔧	női szerelő
 👩🏻‍🔧	női szerelő: világos bőrtónus
 👩🏼‍🔧	női szerelő: közepesen világos bőrtónus
 👩🏽‍🔧	női szerelő: közepes bőrtónus
@@ -316,7 +316,7 @@
 👨🏼‍🔬	férfi tudós: közepesen világos bőrtónus
 👨🏽‍🔬	férfi tudós: közepes bőrtónus
 👨🏾‍🔬	férfi tudós: közepesen sötét bőrtónus
-👨🏿‍🔬	ember tudós: sötét bőrtónus
+👨🏿‍🔬	férfi tudós: sötét bőrtónus
 👩‍🔬	tudós nő
 👩🏻‍🔬	tudós nő: világos bőrtónus
 👩🏼‍🔬	tudós nő: közepesen világos bőrtónus
@@ -425,8 +425,8 @@
 👮🏾‍♂	férfi rendőr: közepesen sötét bőrtónus
 👮🏿‍♂️	férfi rendőr: sötét bőrtónus
 👮🏿‍♂	férfi rendőr: sötét bőrtónus
-👮‍♀️	rendőr nő
-👮‍♀	rendőr nő
+👮‍♀️	nő rendőr
+👮‍♀	nő rendőr
 👮🏻‍♀️	rendőrnő: világos bőrtónus
 👮🏻‍♀	rendőrnő: világos bőrtónus
 👮🏼‍♀️	rendőrnő: közepesen világos bőrtónus
@@ -780,8 +780,8 @@
 🧙🏿	mágus: sötét bőrtónus
 🧙‍♀️	nő mágus
 🧙‍♀	nő mágus
-🧙🏻‍♀️	női mágus: világos bőrtónus
-🧙🏻‍♀	női mágus: világos bőrtónus
+🧙🏻‍♀️	nő mágus: világos bőrtónus
+🧙🏻‍♀	nő mágus: világos bőrtónus
 🧙🏼‍♀️	női mágus: közepesen világos bőrtónus
 🧙🏼‍♀	női mágus: közepesen világos bőrtónus
 🧙🏽‍♀️	női mágus: közepes bőrtónus
@@ -824,8 +824,8 @@
 🧚‍♂	férfi tündér
 🧚🏻‍♂️	férfi tündér: világos bőrtónus
 🧚🏻‍♂	férfi tündér: világos bőrtónus
-🧚🏼‍♂️	férfitündér: közepesen világos bőrtónus
-🧚🏼‍♂	férfitündér: közepesen világos bőrtónus
+🧚🏼‍♂️	férfi tündér: közepesen világos bőrtónus
+🧚🏼‍♂	férfi tündér: közepesen világos bőrtónus
 🧚🏽‍♂️	férfi tündér: közepes bőrtónus
 🧚🏽‍♂	férfi tündér: közepes bőrtónus
 🧚🏾‍♂️	férfi tündér: közepesen sötét bőrtónus
@@ -846,8 +846,8 @@
 🧛🏼‍♀	női vámpír: közepesen világos bőrtónus
 🧛🏽‍♀️	nő vámpír: közepes bőrtónus
 🧛🏽‍♀	nő vámpír: közepes bőrtónus
-🧛🏾‍♀️	nő vámpír: közepesen sötét bőrtónus
-🧛🏾‍♀	nő vámpír: közepesen sötét bőrtónus
+🧛🏾‍♀️	női vámpír: közepesen sötét bőrtónus
+🧛🏾‍♀	női vámpír: közepesen sötét bőrtónus
 🧛🏿‍♀️	nő vámpír: sötét bőrtónus
 🧛🏿‍♀	nő vámpír: sötét bőrtónus
 🧛‍♂️	férfi vámpír
@@ -898,8 +898,8 @@
 🧝🏽	elf: közepes bőrtónus
 🧝🏾	elf: közepesen sötét bőrtónus
 🧝🏿	elf: sötét bőrtónus
-🧝‍♀️	nőmanó
-🧝‍♀	nőmanó
+🧝‍♀️	nő manó
+🧝‍♀	nő manó
 🧝🏻‍♀️	nőmanó: világos bőrtónus
 🧝🏻‍♀	nőmanó: világos bőrtónus
 🧝🏼‍♀️	nőmanó: közepesen világos bőrtónus
@@ -966,7 +966,7 @@
 🙎🏻	duzzadó személy: világos bőrtónus
 🙎🏼	duzzadó személy: közepesen világos bőrtónus
 🙎🏽	duzzadó személy: közepes bőrtónus
-🙎🏾	duzzogó személy: közepesen sötét bőrtónus
+🙎🏾	duzzadó személy: közepesen sötét bőrtónus
 🙎🏿	duzzogó személy: sötét bőrtónus
 🙎‍♂️	duzzogva férfi
 🙎‍♂	duzzogva férfi
@@ -978,8 +978,8 @@
 🙎🏽‍♂	férfi duzzogva: közepes bőrtónus
 🙎🏾‍♂️	férfi duzzogva: közepesen sötét bőrtónus
 🙎🏾‍♂	férfi duzzogva: közepesen sötét bőrtónus
-🙎🏿‍♂️	férfi duzzogva: sötét bőrtónus
-🙎🏿‍♂	férfi duzzogva: sötét bőrtónus
+🙎🏿‍♂️	duzzogva férfi: sötét bőrtónus
+🙎🏿‍♂	duzzogva férfi: sötét bőrtónus
 🙎‍♀️	nő duzzogva
 🙎‍♀	nő duzzogva
 🙎🏻‍♀️	nő duzzog: világos bőrtónus
@@ -990,7 +990,7 @@
 🙎🏽‍♀	nő duzzog: közepes bőrtónus
 🙎🏾‍♀️	duzzogva nő: közepesen sötét bőrtónus
 🙎🏾‍♀	duzzogva nő: közepesen sötét bőrtónus
-🙎🏿‍♀️	duzzogva nő: sötét bőrtónus
+🙎🏿‍♀️	nő duzzog: sötét bőrtónus
 🙎🏿‍♀	duzzogva nő: sötét bőrtónus
 🙅	személy intett NEM
 🙅🏻	személy intett NEM: világos bőrtónus
@@ -1170,8 +1170,8 @@
 🤦🏽‍♀	női arcpalming: közepes bőrtónus
 🤦🏾‍♀️	női arcpalming: közepesen sötét bőrtónus
 🤦🏾‍♀	női arcpalming: közepesen sötét bőrtónus
-🤦🏿‍♀️	női arcpalming: sötét bőrtónus
-🤦🏿‍♀	női arcpalming: sötét bőrtónus
+🤦🏿‍♀️	nő arcpalming: sötét bőrtónus
+🤦🏿‍♀	nő arcpalming: sötét bőrtónus
 🤷	személy vállat von
 🤷🏻	személy vállat von: világos bőrtónus
 🤷🏼	személy vállat von: közepesen világos bőrtónus
@@ -1192,8 +1192,8 @@
 🤷🏿‍♂	férfi vállat von: sötét bőrtónus
 🤷‍♀️	nő vállat vont
 🤷‍♀	nő vállat vont
-🤷🏻‍♀️	nő vállat vonva: világos bőrtónus
-🤷🏻‍♀	nő vállat vonva: világos bőrtónus
+🤷🏻‍♀️	nő vállat von: világos bőrtónus
+🤷🏻‍♀	nő vállat von: világos bőrtónus
 🤷🏼‍♀️	nő vállat vonva: közepesen világos bőrtónus
 🤷🏼‍♀	nő vállat vonva: közepesen világos bőrtónus
 🤷🏽‍♀️	nő vállat vonva: közepes bőrtónus
@@ -1203,11 +1203,11 @@
 🤷🏿‍♀️	nő vállat von: sötét bőrtónus
 🤷🏿‍♀	nő vállat von: sötét bőrtónus
 💆	masszázsban részesülő személy
-💆🏻	masszírozó személy: világos bőrtónus
+💆🏻	masszázsban részesülő személy: világos bőrtónus
 💆🏼	masszírozó személy: közepesen világos bőrtónus
 💆🏽	masszázsban részesülő személy: közepes bőrtónus
 💆🏾	masszírozó személy: közepesen sötét bőrtónus
-💆🏿	masszírozó személy: sötét bőrtónus
+💆🏿	masszázsban részesülő személy: sötét bőrtónus
 💆‍♂️	férfi kap masszázst
 💆‍♂	férfi kap masszázst
 💆🏻‍♂️	masszázsban részesülő férfi: világos bőrtónus
@@ -1240,8 +1240,8 @@
 💇🏿	hajvágást végző személy: sötét bőrtónus
 💇‍♂️	férfi hajvágás
 💇‍♂	férfi hajvágás
-💇🏻‍♂️	férfi hajvágás: világos bőrtónus
-💇🏻‍♂	férfi hajvágás: világos bőrtónus
+💇🏻‍♂️	frizurát kapó férfi: világos bőrtónus
+💇🏻‍♂	frizurát kapó férfi: világos bőrtónus
 💇🏼‍♂️	frizurát kapó férfi: közepesen világos bőrtónus
 💇🏼‍♂	frizurát kapó férfi: közepesen világos bőrtónus
 💇🏽‍♂️	frizurát kapó férfi: közepes bőrtónus
@@ -1348,7 +1348,7 @@
 🧖‍♀️	nő a párás szobában
 🧖‍♀	nő a párás szobában
 🧖🏻‍♀️	nő párás szobában: világos bőrtónus
-🧖🏻‍♀	nő a párás szobában: világos bőrtónus
+🧖🏻‍♀	nő párás szobában: világos bőrtónus
 🧖🏼‍♀️	nő párás szobában: közepesen világos bőrtónus
 🧖🏼‍♀	nő párás szobában: közepesen világos bőrtónus
 🧖🏽‍♀️	nő párás szobában: közepes bőrtónus
@@ -1388,7 +1388,7 @@
 🧗🏿‍♀️	nő mászó: sötét bőrtónus
 🧗🏿‍♀	nő mászó: sötét bőrtónus
 🧗‍♂️	ember hegymászó
-🧗‍♂	ember hegymászó
+🧗‍♂	férfi hegymászó
 🧗🏻‍♂️	férfi mászó: világos bőrtónus
 🧗🏻‍♂	férfi mászó: világos bőrtónus
 🧗🏼‍♂️	férfi mászó: közepesen világos bőrtónus
@@ -1404,7 +1404,7 @@
 🧘🏼	személy lótuszállásban: közepesen világos bőrtónus
 🧘🏽	személy lótuszállásban: közepes bőrtónus
 🧘🏾	személy lótuszállásban: közepesen sötét bőrtónus
-🧘🏿	személy lótuszállásban: sötét bőrtónus
+🧘🏿	személy lótusz pózban: sötét bőrtónus
 🧘‍♀️	nő lótusz helyzetben
 🧘‍♀	nő lótusz helyzetben
 🧘🏻‍♀️	nő lótusz pózban: világos bőrtónus
@@ -1474,10 +1474,10 @@
 🏌🏽	golfozó személy: közepes bőrtónus
 🏌🏾	golfozó személy: közepesen sötét bőrtónus
 🏌🏿	golfozó személy: sötét bőrtónus
-🏌️‍♂️	férfi golfozó
+🏌️‍♂️	golfozó férfi
 🏌‍♂️	férfi golfozó
 🏌️‍♂	férfi golfozó
-🏌‍♂	férfi golfozó
+🏌‍♂	golfozó férfi
 🏌🏻‍♂️	férfi golfozó: világos bőrtónus
 🏌🏻‍♂	férfi golfozó: világos bőrtónus
 🏌🏼‍♂️	férfi golfozó: közepesen világos bőrtónus
@@ -1530,7 +1530,7 @@
 🏄🏽‍♀	szörfölő nő: közepes bőrtónus
 🏄🏾‍♀️	szörfölő nő: közepesen sötét bőrtónus
 🏄🏾‍♀	szörföző nő: közepesen sötét bőrtónus
-🏄🏿‍♀️	szörföző nő: sötét bőrtónus
+🏄🏿‍♀️	szörfölő nő: sötét bőrtónus
 🏄🏿‍♀	szörfölő nő: sötét bőrtónus
 🚣	személy evezős csónak
 🚣🏻	személy evezős csónak: világos bőrtónus
@@ -1580,8 +1580,8 @@
 🏊🏾‍♂	férfi úszás: közepesen sötét bőrtónus
 🏊🏿‍♂️	úszó férfi: sötét bőrtónus
 🏊🏿‍♂	úszó férfi: sötét bőrtónus
-🏊‍♀️	nő úszás
-🏊‍♀	nő úszás
+🏊‍♀️	nő úszik
+🏊‍♀	nő úszik
 🏊🏻‍♀️	úszó nő: világos bőrtónus
 🏊🏻‍♀	úszó nő: világos bőrtónus
 🏊🏼‍♀️	úszó nő: közepesen világos bőrtónus
@@ -1645,9 +1645,9 @@
 🏋🏽‍♂️	súlyemelő férfi: közepes bőrtónus
 🏋🏽‍♂	súlyemelő férfi: közepes bőrtónus
 🏋🏾‍♂️	súlyemelő férfi: közepesen sötét bőrtónus
-🏋🏾‍♂	súlyemelő férfi: közepesen sötét bőrtónus
+🏋🏾‍♂	súlyzó férfi: közepesen sötét bőrtónus
 🏋🏿‍♂️	súlyzó férfi: sötét bőrtónus
-🏋🏿‍♂	súlyemelő férfi: sötét bőrtónus
+🏋🏿‍♂	súlyzó férfi: sötét bőrtónus
 🏋️‍♀️	nő súlyzózás
 🏋‍♀️	nő súlyzózás
 🏋️‍♀	nő súlyzózás
@@ -1734,8 +1734,8 @@
 🤸🏿	személy szekér: sötét bőrtónus
 🤸‍♂️	férfi szekér
 🤸‍♂	férfi szekér
-🤸🏻‍♂️	férfi szekér: világos bőrtónus
-🤸🏻‍♂	férfi szekér: világos bőrtónus
+🤸🏻‍♂️	férfi kocsikázás: világos bőrtónus
+🤸🏻‍♂	férfi kocsikázás: világos bőrtónus
 🤸🏼‍♂️	férfi kocsikázás: közepesen világos bőrtónus
 🤸🏼‍♂	férfi kocsikázás: közepesen világos bőrtónus
 🤸🏽‍♂️	férfi kocsikázás: közepes bőrtónus
@@ -1825,7 +1825,7 @@
 🤹🏻	zsonglőrködő személy: világos bőrtónus
 🤹🏼	személy zsonglőr: közepesen világos bőrtónus
 🤹🏽	személy zsonglőr: közepes bőrtónus
-🤹🏾	személy zsonglőrködik: közepesen sötét bőrtónus
+🤹🏾	személy zsonglőr: közepesen sötét bőrtónus
 🤹🏿	zsonglőrködő személy: sötét bőrtónus
 🤹‍♂️	ember zsonglőrködik
 🤹‍♂	ember zsonglőrködik
@@ -1913,19 +1913,19 @@
 🦵🏾	láb: közepesen sötét bőrtónus
 🦵🏿	láb: sötét bőrtónus
 🦶	láb
-🦶🏻	lábfej: világos bőrtónus
+🦶🏻	láb: világos bőrtónus
 🦶🏼	lábfej: közepesen világos bőrtónus
 🦶🏽	láb: közepes bőrtónus
-🦶🏾	lábfej: közepesen sötét bőrtónus
+🦶🏾	láb: közepesen sötét bőrtónus
 🦶🏿	lábfej: sötét bőrtónus
 👈	balra mutató fonák index
-👈🏻	balra mutató hátkézi index: világos bőrtónus
-👈🏼	hátramutató balra mutató: közepesen világos bőrtónus
+👈🏻	hátramutató balra mutató: világos bőrtónus
+👈🏼	balra mutató hátkézi index: közepesen világos bőrtónus
 👈🏽	balra mutató hátkézi index: közepes bőrtónus
 👈🏾	balra mutató hátkézi index: közepesen sötét bőrtónus
-👈🏿	balra mutató hátkézi index: sötét bőrtónus
+👈🏿	hátramutató balra mutató: sötét bőrtónus
 👉	jobbra mutató fonák index
-👉🏻	jobbra mutató hátkézi index: világos bőrtónus
+👉🏻	jobbra mutató hátsó kéz index: világos bőrtónus
 👉🏼	jobbra mutató hátsó kéz index: közepesen világos bőrtónus
 👉🏽	jobbra mutató hátkézi index: közepes bőrtónus
 👉🏾	jobbra mutató hátsó kéz index: közepesen sötét bőrtónus
@@ -1935,7 +1935,7 @@
 ☝🏻	index felfelé: világos bőrtónus
 ☝🏼	index felfelé mutat: közepesen világos bőrtónus
 ☝🏽	index felfelé: közepes bőrtónus
-☝🏾	index felfelé mutat: közepesen sötét bőrtónus
+☝🏾	index felfelé: közepesen sötét bőrtónus
 ☝🏿	index felfelé: sötét bőrtónus
 👆	hátramutató index felfelé mutat
 👆🏻	hátramutató index felfelé: világos bőrtónus
@@ -1953,7 +1953,7 @@
 👇🏻	hátramutató lefelé mutat: világos bőrtónus
 👇🏼	hátramutató lefelé mutat: közepesen világos bőrtónus
 👇🏽	lefelé mutató hátkéz index: közepes bőrtónus
-👇🏾	lefelé mutató hátkézi index: közepesen sötét bőrtónus
+👇🏾	hátramutató lefelé mutat: közepesen sötét bőrtónus
 👇🏿	hátramutató lefelé mutat: sötét bőrtónus
 ✌️	győzelmi kéz
 ✌	győzelmi kéz
@@ -2055,7 +2055,7 @@
 👋🏿	integető kéz: sötét bőrtónus
 🤟	szeretlek gesztus
 🤟🏻	szeretlek gesztus: világos bőrtónus
-🤟🏼	szeretlek gesztus: közepesen világos bőrtónus
+🤟🏼	szerető gesztus: közepesen világos bőrtónus
 🤟🏽	szeretlek gesztus: közepes bőrtónus
 🤟🏾	szerető gesztus: közepesen sötét bőrtónus
 🤟🏿	szeretlek gesztus: sötét bőrtónus
@@ -2161,8 +2161,8 @@
 💨	elrohanva
 💫	szédülő
 💬	beszéd lufi
-🗨️	bal szövegbuborék
-🗨	bal szövegbuborék
+🗨️	bal oldali szövegbuborék
+🗨	bal oldali szövegbuborék
 🗯️	jobb harag buborék
 🗯	jobb harag buborék
 💭	gondolat léggömb
@@ -2579,8 +2579,8 @@
 🛳	személyszállító hajó
 ⛴️	komp
 ⛴	komp
-🛥️	motoros csónak
-🛥	motoros csónak
+🛥️	motorcsónak
+🛥	motorcsónak
 🚢	hajó
 ✈️	repülőgép
 ✈	repülőgép
@@ -2863,7 +2863,7 @@
 📚	könyveket
 📓	jegyzetfüzet
 📒	főkönyv
-📃	göndörítő oldal
+📃	oldal a göndörítéssel
 📜	tekercs
 📄	oldal felfelé nézzen
 📰	újság
@@ -3244,7 +3244,7 @@
 🆖	NG gomb
 🅾️	O gomb (vércsoport)
 🅾	O gomb (vércsoport)
-🆗	OK gomb
+🆗	OK gombot
 🅿️	P gomb
 🅿	P gomb
 🆘	SOS gomb

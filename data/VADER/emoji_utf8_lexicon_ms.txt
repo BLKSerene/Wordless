@@ -5,7 +5,7 @@
 😃	muka tersengih dengan mata besar
 😄	muka tersengih dengan mata tersenyum
 😅	muka tersengih dengan peluh
-😆	tersengih menjeling muka
+😆	muka tersengih-sengih
 😉	muka mengenyit mata
 😊	muka tersenyum dengan mata tersenyum
 😋	muka menyedap makanan
@@ -87,7 +87,7 @@
 🤥	muka berbohong
 🤫	muka tersipu-sipu
 🤭	muka dengan tangan menutup mulut
-🧐	muka dengan monocle
+🧐	muka dengan monokel
 🤓	muka nerd
 😈	muka tersenyum dengan tanduk
 👿	muka marah bertanduk
@@ -535,7 +535,7 @@
 🤴	putera raja
 🤴🏻	putera raja: ton kulit cerah
 🤴🏼	putera: ton kulit sederhana cerah
-🤴🏽	putera: ton kulit sederhana
+🤴🏽	putera raja: ton kulit sederhana
 🤴🏾	putera: ton kulit sederhana gelap
 🤴🏿	putera: ton kulit gelap
 👸	puteri
@@ -655,7 +655,7 @@
 👩‍🦲	perempuan, botak
 👩🏻‍🦲	perempuan, botak: ton kulit cerah
 👩🏼‍🦲	wanita, botak: ton kulit sederhana cerah
-👩🏽‍🦲	wanita, botak: ton kulit sederhana
+👩🏽‍🦲	perempuan, botak: ton kulit sederhana
 👩🏾‍🦲	wanita, botak: ton kulit sederhana gelap
 👩🏿‍🦲	perempuan, botak: ton kulit gelap
 👨‍🦳	lelaki, berambut putih
@@ -698,7 +698,7 @@
 👼🏻	baby angel: ton kulit cerah
 👼🏼	bidadari bayi: ton kulit sederhana cerah
 👼🏽	bidadari bayi: ton kulit sederhana
-👼🏾	bidadari bayi: ton kulit sederhana gelap
+👼🏾	bayi malaikat: ton kulit sederhana gelap
 👼🏿	baby angel: ton kulit gelap
 🎅	Santa Claus
 🎅🏻	Santa Claus: ton kulit cerah
@@ -743,11 +743,11 @@
 🦸🏿‍♂️	adiwira lelaki: ton kulit gelap
 🦸🏿‍♂	adiwira lelaki: ton kulit gelap
 🦹	supervillain
-🦹🏻	supervillain: ton kulit cerah
+🦹🏻	penjahat super: ton kulit cerah
 🦹🏼	supervillain: ton kulit sederhana cerah
 🦹🏽	penjahat super: ton kulit sederhana
 🦹🏾	penjahat super: ton kulit sederhana gelap
-🦹🏿	supervillain: ton kulit gelap
+🦹🏿	penjahat super: ton kulit gelap
 🦹‍♀️	penjahat super wanita
 🦹‍♀	penjahat super wanita
 🦹🏻‍♀️	penjahat super wanita: ton kulit cerah
@@ -822,16 +822,16 @@
 🧚🏿‍♀	peri wanita: ton kulit gelap
 🧚‍♂️	dongeng lelaki
 🧚‍♂	dongeng lelaki
-🧚🏻‍♂️	dongeng lelaki: ton kulit cerah
-🧚🏻‍♂	dongeng lelaki: ton kulit cerah
+🧚🏻‍♂️	pari-pari lelaki: ton kulit cerah
+🧚🏻‍♂	pari-pari lelaki: ton kulit cerah
 🧚🏼‍♂️	dongeng lelaki: ton kulit sederhana cerah
 🧚🏼‍♂	dongeng lelaki: ton kulit sederhana cerah
 🧚🏽‍♂️	dongeng lelaki: ton kulit sederhana
 🧚🏽‍♂	dongeng lelaki: ton kulit sederhana
 🧚🏾‍♂️	dongeng lelaki: ton kulit sederhana gelap
 🧚🏾‍♂	dongeng lelaki: ton kulit sederhana gelap
-🧚🏿‍♂️	dongeng lelaki: ton kulit gelap
-🧚🏿‍♂	dongeng lelaki: ton kulit gelap
+🧚🏿‍♂️	pari-pari lelaki: ton kulit gelap
+🧚🏿‍♂	pari-pari lelaki: ton kulit gelap
 🧛	Pontianak
 🧛🏻	pontianak: ton kulit cerah
 🧛🏼	vampire: ton kulit sederhana cerah
@@ -1064,12 +1064,12 @@
 💁🏻‍♂	lelaki menjongket tangan: ton kulit cerah
 💁🏼‍♂️	lelaki menjongket tangan: ton kulit sederhana cerah
 💁🏼‍♂	lelaki menjongket tangan: ton kulit sederhana cerah
-💁🏽‍♂️	lelaki menjinjit tangan: ton kulit sederhana
-💁🏽‍♂	lelaki menjinjit tangan: ton kulit sederhana
-💁🏾‍♂️	lelaki menjongket tangan: ton kulit sederhana gelap
-💁🏾‍♂	lelaki menjongket tangan: ton kulit sederhana gelap
-💁🏿‍♂️	lelaki menjongket tangan: ton kulit gelap
-💁🏿‍♂	lelaki menjongket tangan: ton kulit gelap
+💁🏽‍♂️	lelaki mencungkil tangan: ton kulit sederhana
+💁🏽‍♂	lelaki mencungkil tangan: ton kulit sederhana
+💁🏾‍♂️	lelaki mencungkil tangan: ton kulit sederhana gelap
+💁🏾‍♂	lelaki mencungkil tangan: ton kulit sederhana gelap
+💁🏿‍♂️	lelaki menjinjit tangan: ton kulit gelap
+💁🏿‍♂	lelaki menjinjit tangan: ton kulit gelap
 💁‍♀️	wanita menjinjit tangan
 💁‍♀	wanita menjinjit tangan
 💁🏻‍♀️	wanita menjongket tangan: ton kulit cerah
@@ -1080,8 +1080,8 @@
 💁🏽‍♀	wanita mencungkil tangan: ton kulit sederhana
 💁🏾‍♀️	wanita menjongket tangan: ton kulit sederhana gelap
 💁🏾‍♀	wanita menjongket tangan: ton kulit sederhana gelap
-💁🏿‍♀️	wanita mencungkil tangan: ton kulit gelap
-💁🏿‍♀	wanita mencungkil tangan: ton kulit gelap
+💁🏿‍♀️	wanita menjongket tangan: ton kulit gelap
+💁🏿‍♀	wanita menjongket tangan: ton kulit gelap
 🙋	orang mengangkat tangan
 🙋🏻	orang mengangkat tangan: ton kulit cerah
 🙋🏼	orang mengangkat tangan: ton kulit sederhana cerah
@@ -1148,8 +1148,8 @@
 🤦🏽	orang menepuk muka: ton kulit sederhana
 🤦🏾	orang menepuk muka: ton kulit sederhana gelap
 🤦🏿	orang tepuk muka: ton kulit gelap
-🤦‍♂️	lelaki sambil muka tapak tangan
-🤦‍♂	lelaki sambil muka tapak tangan
+🤦‍♂️	lelaki bermuka telapak tangan
+🤦‍♂	lelaki bermuka telapak tangan
 🤦🏻‍♂️	lelaki menepuk muka: ton kulit cerah
 🤦🏻‍♂	lelaki menepuk muka: ton kulit cerah
 🤦🏼‍♂️	lelaki menepuk muka: ton kulit sederhana cerah
@@ -1248,8 +1248,8 @@
 💇🏽‍♂	lelaki dipotong rambut: ton kulit sederhana
 💇🏾‍♂️	lelaki dipotong rambut: ton kulit sederhana gelap
 💇🏾‍♂	lelaki dipotong rambut: ton kulit sederhana gelap
-💇🏿‍♂️	lelaki potong rambut: ton kulit gelap
-💇🏿‍♂	lelaki potong rambut: ton kulit gelap
+💇🏿‍♂️	lelaki dipotong rambut: ton kulit gelap
+💇🏿‍♂	lelaki dipotong rambut: ton kulit gelap
 💇‍♀️	wanita sedang potong rambut
 💇‍♀	wanita sedang potong rambut
 💇🏻‍♀️	wanita dipotong rambut: ton kulit cerah
@@ -1334,7 +1334,7 @@
 🕺🏽	lelaki menari: ton kulit sederhana
 🕺🏾	lelaki menari: ton kulit sederhana gelap
 🕺🏿	lelaki menari: ton kulit gelap
-👯	orang dengan telinga arnab
+👯	orang yang mempunyai telinga arnab
 👯‍♂️	lelaki dengan telinga arnab
 👯‍♂	lelaki dengan telinga arnab
 👯‍♀️	wanita dengan telinga arnab
@@ -1462,7 +1462,7 @@
 ⛷️	pemain ski
 ⛷	pemain ski
 🏂	pemain papan salji
-🏂🏻	pemain papan salji: ton kulit cerah
+🏂🏻	papan salji: ton kulit cerah
 🏂🏼	pemain papan salji: ton kulit sederhana cerah
 🏂🏽	pemain papan salji: ton kulit sederhana
 🏂🏾	pemain papan salji: ton kulit sederhana gelap
@@ -1617,8 +1617,8 @@
 ⛹‍♀️	wanita melantun bola
 ⛹️‍♀	wanita melantun bola
 ⛹‍♀	wanita melantun bola
-⛹🏻‍♀️	wanita melantun bola: ton kulit cerah
-⛹🏻‍♀	wanita melantun bola: ton kulit cerah
+⛹🏻‍♀️	bola melantun wanita: ton kulit cerah
+⛹🏻‍♀	bola melantun wanita: ton kulit cerah
 ⛹🏼‍♀️	bola melantun wanita: ton kulit sederhana cerah
 ⛹🏼‍♀	bola melantun wanita: ton kulit sederhana cerah
 ⛹🏽‍♀️	bola melantun wanita: ton kulit sederhana
@@ -1726,7 +1726,7 @@
 🏎	kereta lumba
 🏍️	motosikal
 🏍	motosikal
-🤸	orang sedang menggelinding kereta
+🤸	orang mengendarai kereta
 🤸🏻	orang sedang bergoyang: ton kulit cerah
 🤸🏼	orang sedang bergoyang: ton kulit sederhana cerah
 🤸🏽	orang sedang bergoyang: ton kulit sederhana
@@ -1752,15 +1752,15 @@
 🤸🏼‍♀	wanita mengendarai kereta: ton kulit sederhana cerah
 🤸🏽‍♀️	wanita mengendarai kereta: ton kulit sederhana
 🤸🏽‍♀	wanita mengendarai kereta: ton kulit sederhana
-🤸🏾‍♀️	wanita mengendarai kereta: ton kulit sederhana gelap
-🤸🏾‍♀	wanita mengendarai kereta: ton kulit sederhana gelap
+🤸🏾‍♀️	wanita mengemudi kereta: ton kulit sederhana gelap
+🤸🏾‍♀	wanita mengemudi kereta: ton kulit sederhana gelap
 🤸🏿‍♀️	wanita mengendarai kereta: ton kulit gelap
 🤸🏿‍♀	wanita mengendarai kereta: ton kulit gelap
 🤼	orang bergelut
 🤼‍♂️	gusti lelaki
 🤼‍♂	gusti lelaki
-🤼‍♀️	wanita bergusti
-🤼‍♀	wanita bergusti
+🤼‍♀️	gusti wanita
+🤼‍♀	gusti wanita
 🤽	orang bermain polo air
 🤽🏻	orang bermain polo air: ton kulit cerah
 🤽🏼	orang bermain polo air: ton kulit sederhana cerah
@@ -1866,8 +1866,8 @@
 👩‍❤‍👨	pasangan dengan hati: perempuan, lelaki
 👨‍❤️‍👨	pasangan dengan hati: lelaki, lelaki
 👨‍❤‍👨	pasangan dengan hati: lelaki, lelaki
-👩‍❤️‍👩	pasangan dengan hati: perempuan, perempuan
-👩‍❤‍👩	pasangan dengan hati: perempuan, perempuan
+👩‍❤️‍👩	pasangan dengan hati: wanita, wanita
+👩‍❤‍👩	pasangan dengan hati: wanita, wanita
 👪	keluarga
 👨‍👩‍👦	keluarga: lelaki, perempuan, lelaki
 👨‍👩‍👧	keluarga: lelaki, perempuan, perempuan
@@ -1902,9 +1902,9 @@
 🤳🏿	selfie: ton kulit gelap
 💪	bisep lentur
 💪🏻	bisep lentur: ton kulit cerah
-💪🏼	bisep lentur: ton kulit sederhana cerah
+💪🏼	bisep melentur: ton kulit sederhana cerah
 💪🏽	bisep melentur: ton kulit sederhana
-💪🏾	bisep melentur: ton kulit sederhana gelap
+💪🏾	bisep lentur: ton kulit sederhana gelap
 💪🏿	bisep lentur: ton kulit gelap
 🦵	kaki
 🦵🏻	kaki: ton kulit cerah
@@ -1918,7 +1918,7 @@
 🦶🏽	kaki: ton kulit sederhana
 🦶🏾	kaki: ton kulit sederhana gelap
 🦶🏿	kaki: ton kulit gelap
-👈	indeks pukulan kilas menghala ke kiri
+👈	indeks pukulan kilas menunjuk ke kiri
 👈🏻	indeks pukulan kilas menghala ke kiri: ton kulit cerah
 👈🏼	indeks pukulan kilas menghala ke kiri: ton kulit sederhana cerah
 👈🏽	indeks pukulan kilas menghala ke kiri: ton kulit sederhana
@@ -1993,7 +1993,7 @@
 🖐🏽	tangan dengan jari terhampar: ton kulit sederhana
 🖐🏾	tangan dengan jari terhampar: ton kulit sederhana gelap
 🖐🏿	tangan dengan jari terhampar: ton kulit gelap
-✋	mengangkat tangan
+✋	angkat tangan
 ✋🏻	angkat tangan: ton kulit cerah
 ✋🏼	angkat tangan: ton kulit sederhana cerah
 ✋🏽	angkat tangan: ton kulit sederhana
@@ -2027,8 +2027,8 @@
 👊🏻	penumbuk mendekat: ton kulit cerah
 👊🏼	penumbuk mendekat: ton kulit sederhana cerah
 👊🏽	penumbuk mendekat: ton kulit sederhana
-👊🏾	penumbuk menghala: ton kulit sederhana gelap
-👊🏿	penumbuk menghala: ton kulit gelap
+👊🏾	penumbuk mendekat: ton kulit sederhana gelap
+👊🏿	penumbuk mendekat: ton kulit gelap
 🤛	penumbuk menghadap kiri
 🤛🏻	penumbuk menghadap kiri: ton kulit cerah
 🤛🏼	penumbuk menghadap kiri: ton kulit sederhana cerah
@@ -2044,7 +2044,7 @@
 🤚	mengangkat belakang tangan
 🤚🏻	belakang tangan terangkat: ton kulit cerah
 🤚🏼	belakang tangan diangkat: ton kulit sederhana cerah
-🤚🏽	angkat belakang tangan: ton kulit sederhana
+🤚🏽	belakang tangan diangkat: ton kulit sederhana
 🤚🏾	belakang tangan terangkat: ton kulit sederhana gelap
 🤚🏿	belakang tangan terangkat: ton kulit gelap
 👋	melambai tangan
@@ -2159,7 +2159,7 @@
 💥	perlanggaran
 💦	titisan peluh
 💨	berlari menjauh
-💫	pening kepala
+💫	pening
 💬	belon ucapan
 🗨️	gelembung pertuturan kiri
 🗨	gelembung pertuturan kiri
@@ -2267,7 +2267,7 @@
 🐓	ayam jantan
 🐣	anak ayam penetasan
 🐤	anak ayam
-🐥	anak ayam menghadap hadapan
+🐥	anak ayam menghadap ke hadapan
 🐦	burung
 🐧	penguin
 🕊️	burung merpati
@@ -3035,7 +3035,7 @@
 🚱	air tidak boleh diminum
 🚷	tiada pejalan kaki
 📵	tiada telefon bimbit
-🔞	tiada seorang pun di bawah umur lapan belas tahun
+🔞	tiada seorang pun di bawah lapan belas tahun
 ☢️	radioaktif
 ☢	radioaktif
 ☣️	bahaya bio
@@ -3109,7 +3109,7 @@
 ♒	Aquarius
 ♓	Pisces
 ⛎	Ophiuchus
-🔀	kocok butang trek
+🔀	butang kocok trek
 🔁	butang ulang
 🔂	ulang butang tunggal
 ▶️	butang main
@@ -3185,7 +3185,7 @@
 ⁉️	tanda soal seru
 ⁉	tanda soal seru
 ❓	tanda soal
-❔	tanda soal putih
+❔	tanda tanya putih
 ❕	tanda seru putih
 ❗	tanda seru
 〰️	sengkang beralun
@@ -3220,7 +3220,7 @@
 8⃣	kekunci: 8
 9️⃣	kekunci: 9
 9⃣	kekunci: 9
-🔟	kekunci: 10
+🔟	cap kekunci: 10
 💯	seratus mata
 🔠	masukkan huruf besar latin
 🔡	masukkan huruf kecil latin
@@ -3257,7 +3257,7 @@
 🈷	Butang "jumlah bulanan" Jepun
 🈶	Butang "tidak percuma" Jepun
 🈯	Butang "terpelihara" Jepun
-🉐	Butang "tawar-tawar" Jepun
+🉐	Butang "tawar" Jepun
 🈹	Butang "diskaun" Jepun
 🈚	Butang "percuma" Jepun
 🈲	Butang "dilarang" Jepun
@@ -3282,7 +3282,7 @@
 ◽	segi empat sama putih sederhana kecil
 ◾	segi empat sama hitam sederhana kecil
 ⬛	persegi besar hitam
-⬜	segi empat sama besar berwarna putih
+⬜	persegi besar putih
 🔶	berlian oren besar
 🔷	berlian biru besar
 🔸	berlian oren kecil

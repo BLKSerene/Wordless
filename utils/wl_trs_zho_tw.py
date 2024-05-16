@@ -19,7 +19,7 @@
 import bs4
 import opencc
 
-import wl_trs_utils
+from utils import wl_trs_utils
 
 with open('trs/zho_cn.ts', 'r', encoding = 'utf_8') as f:
     soup = bs4.BeautifulSoup(f.read(), features = 'lxml')

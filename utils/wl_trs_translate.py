@@ -20,19 +20,16 @@ import re
 
 import bs4
 
-import wl_trs_utils
+from utils import wl_trs_utils
 
 # eng_us: [zho_cn]
 TRS_LANGS = {
     ' (Cyrillic script)': ['（西里尔文）'],
-    ' (Devanagari script)': ['（天城文）'],
     ' (Gurmukhi script)': ['（古木基文）'],
     ' (Latin script)': ['（拉丁文）'],
     ' (Meitei script)': ['（曼尼普尔文）'],
-    ' (RPA script)': ['（RPA 苗文）'],
 
     'Afrikaans': ['南非语'],
-    'Akan': ['阿坎语'],
     'Albanian': ['阿尔巴尼亚语'],
     'Amharic': ['阿姆哈拉语'],
     'Arabic': ['阿拉伯语'],
@@ -40,26 +37,19 @@ TRS_LANGS = {
     'Armenian (Western)': ['亚美尼亚语（西）'],
     'Assamese': ['阿萨姆语'],
     'Asturian': ['阿斯图里亚斯语'],
-    'Aymara': ['艾马拉语'],
     'Azerbaijani': ['阿塞拜疆语'],
-    'Bambara': ['班巴拉语'],
     'Basque': ['巴斯克语'],
     'Belarusian': ['白俄罗斯语'],
     'Bengali': ['孟加拉语'],
-    'Bhojpuri': ['比哈尔语'],
-    'Bosnian': ['波斯尼亚语'],
     'Bulgarian': ['保加利亚语'],
     'Burmese': ['缅甸语'],
     'Buryat (Russia)': ['布里亚特语（俄罗斯）'],
     'Catalan': ['加泰罗尼亚语'],
-    'Cebuano': ['宿务语'],
-    'Chewa': ['齐切瓦语'],
     'Chinese (Classical)': ['汉语（文言）'],
     'Chinese (Simplified)': ['汉语（简体）'],
     'Chinese (Traditional)': ['汉语（繁体）'],
     'Church Slavonic (Old)': ['教会斯拉夫语（古）'],
     'Coptic': ['科普特语'],
-    'Corsican': ['科西嘉语'],
 
     # In names of some language utils (eg. simplemma)
     'Serbo-Croatian': ['塞尔维亚-克罗地亚语'],
@@ -67,7 +57,6 @@ TRS_LANGS = {
 
     'Czech': ['捷克语'],
     'Danish': ['丹麦语'],
-    'Dogri': ['多格拉语'],
     'Dutch': ['荷兰语'],
     'English (Middle)': ['英语（中古）'],
     'English (United Kingdom)': ['英语（英国）'],
@@ -75,7 +64,6 @@ TRS_LANGS = {
     'Erzya': ['埃尔齐亚语'],
     'Esperanto': ['世界语'],
     'Estonian': ['爱沙尼亚语'],
-    'Ewe': ['埃维语'],
     'Faroese': ['法罗语'],
     'Filipino': ['菲律宾语'],
     'Finnish': ['芬兰语'],
@@ -83,7 +71,6 @@ TRS_LANGS = {
     'French (Old)': ['法语（古）'],
     'French': ['法语'],
 
-    'Frisian (West)': ['弗里斯兰语（西）'],
     'Galician': ['加里西亚语'],
     'Georgian': ['格鲁吉亚语'],
     'German (Austria)': ['德语（奥地利）'],
@@ -92,91 +79,64 @@ TRS_LANGS = {
     'Gothic': ['哥特语'],
     'Greek (Ancient)': ['希腊语（古）'],
     'Greek (Modern)': ['希腊语（现代）'],
-    'Guarani': ['瓜拉尼语'],
     'Gujarati': ['古吉拉特语'],
-    'Haitian Creole': ['海地克里奥尔语'],
-    'Hausa': ['豪萨语'],
-    'Hawaiian': ['夏威夷语'],
     'Hebrew (Ancient)': ['希伯来语（古）'],
     'Hebrew (Modern)': ['希伯来语（现代）'],
     'Hindi': ['印地语'],
-    'Hmong': ['川黔滇苗语'],
     'Hungarian': ['匈牙利语'],
     'Icelandic': ['冰岛语'],
-    'Igbo': ['伊博语'],
-    'Ilocano': ['伊洛卡诺语'],
     'Indonesian': ['印度尼西亚语'],
     'Irish': ['爱尔兰语'],
     'Italian': ['意大利语'],
     'Japanese': ['日语'],
-    'Javanese': ['爪哇语'],
     'Kannada': ['卡纳达语'],
     'Kazakh': ['哈萨克语'],
     'Khmer': ['柬埔寨语'],
-    'Kinyarwanda': ['卢旺达语'],
-    'Konkani (Goan)': ['孔卡尼语（果阿）'],
     'Korean': ['韩语'],
-    'Krio': ['塞拉利昂克里奥尔语'],
     'Kurdish (Kurmanji)': ['库尔德语（库尔曼吉语）'],
-    'Kurdish (Sorani)': ['库尔德语（索拉尼语）'],
     'Kyrgyz': ['吉尔吉斯语'],
     'Lao': ['老挝语'],
     'Latin': ['拉丁语'],
     'Latvian': ['拉脱维亚语'],
     'Ligurian': ['利古里亚语'],
-    'Lingala': ['林加拉语'],
     'Lithuanian': ['立陶宛语'],
     'Luganda': ['卢干达语'],
     'Luxembourgish': ['卢森堡语'],
     'Macedonian': ['马其顿语'],
-    'Maithili': ['迈蒂利语'],
-    'Malagasy': ['马达加斯加语'],
     'Malayalam': ['马拉雅拉姆语'],
     'Malay': ['马来语'],
-    'Maldivian': ['迪维希语'],
     'Maltese': ['马耳他语'],
     'Manx': ['马恩语'],
-    'Māori': ['毛利语'],
     'Marathi': ['马拉地语'],
     'Meitei': ['曼尼普尔语'],
-    'Mizo': ['米佐语'],
     'Mongolian': ['蒙古语'],
     'Nepali': ['尼泊尔语'],
     'Nigerian Pidgin': ['尼日利亚皮钦语'],
     'Norwegian (Bokmål)': ['挪威语（书面）'],
     'Norwegian (Nynorsk)': ['挪威语（新）'],
     'Odia': ['奥里亚语'],
-    'Oromo': ['奥罗莫语'],
-    'Pashto': ['普什图语'],
     'Persian': ['波斯语'],
     'Polish': ['波兰语'],
     'Pomak': ['波马克语'],
     'Portuguese (Brazil)': ['葡萄牙语（巴西）'],
     'Portuguese (Portugal)': ['葡萄牙语（葡萄牙）'],
     'Punjabi': ['旁遮普语'],
-    'Quechua': ['克丘亚语'],
     'Romanian': ['罗马尼亚语'],
 
     'Russian (Old)': ['俄语（古）'],
     'Russian': ['俄语'],
 
     'Sámi (Northern)': ['萨米语（北）'],
-    'Samoan': ['萨摩亚语'],
     'Sanskrit': ['梵语'],
     'Scottish Gaelic': ['苏格兰盖尔语'],
     'Serbian': ['塞尔维亚语'],
-    'Shona': ['绍纳语'],
     'Sindhi': ['信德语'],
     'Sinhala': ['僧伽罗语'],
     'Slovak': ['斯洛伐克语'],
     'Slovene': ['斯洛文尼亚语'],
-    'Somali': ['索马里语'],
     'Sorbian (Lower)': ['索布语（下）'],
     'Sorbian (Upper)': ['索布语（上）'],
-    'Sotho (Northern)': ['索托语（北）'],
-    'Sotho (Southern)': ['索托语（南）'],
     'Spanish': ['西班牙语'],
-    'Sundanese': ['巽他语'],
     'Swahili': ['斯瓦西里语'],
     'Swedish': ['瑞典语'],
     'Tagalog': ['他加禄语'],
@@ -188,19 +148,14 @@ TRS_LANGS = {
     'Thai': ['泰语'],
     'Tibetan': ['藏语'],
     'Tigrinya': ['提格雷尼亚语'],
-    'Tsonga': ['聪加语'],
     'Tswana': ['茨瓦纳语'],
     'Turkish': ['土耳其语'],
-    'Turkmen': ['土库曼语'],
     'Ukrainian': ['乌克兰语'],
     'Urdu': ['乌尔都语'],
     'Uyghur': ['维吾尔语'],
-    'Uzbek': ['乌兹别克语'],
     'Vietnamese': ['越南语'],
     'Welsh': ['威尔士语'],
     'Wolof': ['沃洛夫语'],
-    'Xhosa': ['科萨语'],
-    'Yiddish': ['意第绪语'],
     'Yoruba': ['约鲁巴语'],
     'Zulu': ['祖鲁语'],
 
@@ -223,6 +178,7 @@ TRS_LANGS = {
 
     'German': ['德语'],
     'Greek': ['希腊语'],
+    'Hebrew': ['希伯来语'],
     'Nordic languages': ['北欧诸语'],
     'Portuguese': ['葡萄牙语'],
 
@@ -357,99 +313,100 @@ TRS_MISC = {
     'ACKS.md': ['doc/trs/zho_cn/ACKS.md']
 }
 
-with open('trs/zho_cn.ts', 'r', encoding = 'utf_8') as f:
-    soup = bs4.BeautifulSoup(f.read(), features = 'lxml')
+if __name__ == '__main__':
+    with open('trs/zho_cn.ts', 'r', encoding = 'utf_8') as f:
+        soup = bs4.BeautifulSoup(f.read(), features = 'lxml')
 
-for element_context in soup.select('context'):
-    for element_message in element_context.select('message'):
-        tr_hit = False
-        unfinished = False
+    for element_context in soup.select('context'):
+        for element_message in element_context.select('message'):
+            tr_hit = False
+            unfinished = False
 
-        element_src = element_message.select_one('source')
-        element_tr = element_message.select_one('translation')
+            element_src = element_message.select_one('source')
+            element_tr = element_message.select_one('translation')
 
-        # Do not re-translate obsolete translations
-        if (
-            'type' not in element_tr.attrs
-            or ('type' in element_tr.attrs and element_tr['type'] != 'obsolete')
-        ):
-            tr = element_src.text
-            tr_raw = tr
+            # Do not re-translate obsolete translations
+            if (
+                'type' not in element_tr.attrs
+                or ('type' in element_tr.attrs and element_tr['type'] != 'obsolete')
+            ):
+                tr = element_src.text
+                tr_raw = tr
 
-            # Languages
-            for lang, trs in TRS_LANGS.items():
-                # Language names
-                if tr == lang:
-                    tr = trs[0]
-                # Encoding names
-                elif tr.startswith(f'{lang} ('):
-                    tr = tr.replace(f'{lang} (', f'{trs[0]} (', 1)
-                elif tr.startswith(f'{lang}/'):
-                    tr = tr.replace(f'{lang}/', f'{trs[0]}/', 1)
-                elif f'/{lang} (' in tr:
-                    tr = tr.replace(f'/{lang} (', f'/{trs[0]} (', 1)
-                # Names of language utils
-                elif f' - {lang} ' in tr:
-                    tr = tr.replace(f' - {lang} ', f' - {trs[0]} ', 1)
+                # Languages
+                for lang, trs in TRS_LANGS.items():
+                    # Language names
+                    if tr == lang:
+                        tr = trs[0]
+                    # Encoding names
+                    elif tr.startswith(f'{lang} ('):
+                        tr = tr.replace(f'{lang} (', f'{trs[0]} (', 1)
+                    elif tr.startswith(f'{lang}/'):
+                        tr = tr.replace(f'{lang}/', f'{trs[0]}/', 1)
+                    elif f'/{lang} (' in tr:
+                        tr = tr.replace(f'/{lang} (', f'/{trs[0]} (', 1)
+                    # Names of language utils
+                    elif f' - {lang} ' in tr:
+                        tr = tr.replace(f' - {lang} ', f' - {trs[0]} ', 1)
 
-            # Encodings
-            for encoding, trs in TRS_ENCODINGS.items():
-                if encoding in tr:
-                    tr = tr.replace(encoding, trs[0])
+                # Encodings
+                for encoding, trs in TRS_ENCODINGS.items():
+                    if encoding in tr:
+                        tr = tr.replace(encoding, trs[0])
 
-                    break
+                        break
 
-            # File types
-            for file_type, trs in TRS_FILE_TYPES.items():
-                if tr == file_type:
-                    tr = trs[0]
+                # File types
+                for file_type, trs in TRS_FILE_TYPES.items():
+                    if tr == file_type:
+                        tr = trs[0]
 
-                    break
+                        break
 
-            # NLP utils
-            for util, trs in TRS_NLP_UTILS.items():
-                # Only replace language util names after language names or at the end of text
-                if f' - {util}' in tr or tr.endswith(util):
-                    if f' - {util}' in tr:
-                        tr = tr.replace(f' - {util}', f' - {trs[0]}', 1)
-                    elif tr.endswith(util):
-                        tr = tr.replace(util, trs[0], 1)
+                # NLP utils
+                for util, trs in TRS_NLP_UTILS.items():
+                    # Only replace language util names after language names or at the end of text
+                    if f' - {util}' in tr or tr.endswith(util):
+                        if f' - {util}' in tr:
+                            tr = tr.replace(f' - {util}', f' - {trs[0]}', 1)
+                        elif tr.endswith(util):
+                            tr = tr.replace(util, trs[0], 1)
 
-                    break
+                        break
 
-            # Misc
-            for item, trs in TRS_MISC.items():
-                if tr == item:
-                    tr = trs[0]
+                # Misc
+                for item, trs in TRS_MISC.items():
+                    if tr == item:
+                        tr = trs[0]
 
-                    break
+                        break
 
-            # Exceptions
-            if any((text in tr for text in [])):
-                # Flag translation as unfinished to be reviewed manually
-                unfinished = True
+                # Exceptions
+                if any((text in tr for text in [])):
+                    # Flag translation as unfinished to be reviewed manually
+                    unfinished = True
 
-            if tr_raw != tr:
-                # Do not replace parentheses in file type filters
-                if element_src.text not in TRS_FILE_TYPES:
-                    # Parentheses
-                    tr = re.sub(r'\s*\(', r'（', tr)
-                    tr = re.sub(r'\)\s*', r'）', tr)
-                    # Remove whitespace between Chinese characters
-                    tr = re.sub(r'(?<=[\u4E00-\u9FFF（）])\s+(?=[\u4E00-\u9FFF（）])', '', tr)
+                if tr_raw != tr:
+                    # Do not replace parentheses in file type filters
+                    if element_src.text not in TRS_FILE_TYPES:
+                        # Parentheses
+                        tr = re.sub(r'\s*\(', r'（', tr)
+                        tr = re.sub(r'\)\s*', r'）', tr)
+                        # Remove whitespace between Chinese characters
+                        tr = re.sub(r'(?<=[\u4E00-\u9FFF（）])\s+(?=[\u4E00-\u9FFF（）])', '', tr)
 
-                element_tr.string = tr
+                    element_tr.string = tr
 
-                if unfinished:
-                    element_tr.attrs = {'type': 'unfinished'}
-                else:
-                    element_tr.attrs = {}
+                    if unfinished:
+                        element_tr.attrs = {'type': 'unfinished'}
+                    else:
+                        element_tr.attrs = {}
 
-                print(f'Auto-translated "{element_src.text}" into "{tr}".')
+                    print(f'Auto-translated "{element_src.text}" into "{tr}".')
 
-with open('trs/zho_cn.ts', 'w', encoding = 'utf_8') as f:
-    f.write(str(soup))
+    with open('trs/zho_cn.ts', 'w', encoding = 'utf_8') as f:
+        f.write(str(soup))
 
-# Release
-wl_trs_utils.del_obsolete_trans('trs/zho_cn.ts')
-wl_trs_utils.release_trs()
+    # Release
+    wl_trs_utils.del_obsolete_trans('trs/zho_cn.ts')
+    wl_trs_utils.release_trs()

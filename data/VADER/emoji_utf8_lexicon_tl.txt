@@ -1,14 +1,14 @@
 😀	nakangiting mukha
 😁	nagniningning na mukha na may nakangiting mga mata
 😂	mukha na may luha sa tuwa
-🤣	gumugulong-gulong sa sahig habang tumatawa
+🤣	gumulong-gulong sa sahig habang tumatawa
 😃	nakangiting mukha na may malalaking mata
 😄	ngiting mukha na may nakangiting mga mata
 😅	nakangiting mukha sa pawis
 😆	nakangiting nakapikit na mukha
 😉	kumindat na mukha
 😊	nakangiting mukha na may nakangiting mga mata
-😋	mukha na sarap sarap sa pagkain
+😋	mukha sarap sarap ng pagkain
 😎	nakangiting mukha na may salaming pang-araw
 😍	nakangiting mukha na may pusong mata
 😘	mukha humihip ng halik
@@ -75,10 +75,10 @@
 🤬	mukha na may mga simbolo sa bibig
 😷	mukha na may medikal na maskara
 🤒	mukha na may thermometer
-🤕	mukha na may benda sa ulo
+🤕	mukha na may bendahe sa ulo
 🤢	nasusuka na mukha
 🤮	pagsusuka sa mukha
-🤧	bumahing mukha
+🤧	bumabahing mukha
 😇	nakangiting mukha na may halo
 🤠	mukha ng cowboy hat
 🥳	mukha ng party
@@ -106,7 +106,7 @@
 😸	nakangiting mukha ng pusa na may nakangiting mga mata
 😹	mukha ng pusa na may luha sa tuwa
 😻	nakangiting mukha ng pusa na may pusong mata
-😼	mukha ng pusa na may mapait na ngiti
+😼	mukha ng pusa na may pilit na ngiti
 😽	humahalik sa mukha ng pusa
 🙀	pagod na mukha ng pusa
 😿	umiiyak na mukha ng pusa
@@ -125,7 +125,7 @@
 👶🏽	sanggol: katamtamang kulay ng balat
 👶🏾	sanggol: katamtamang dark na kulay ng balat
 👶🏿	baby: dark na kulay ng balat
-🧒	anak
+🧒	bata
 🧒🏻	bata: light na kulay ng balat
 🧒🏼	bata: katamtamang light na kulay ng balat
 🧒🏽	bata: katamtamang kulay ng balat
@@ -146,7 +146,7 @@
 🧑	nasa hustong gulang
 🧑🏻	matanda: light na kulay ng balat
 🧑🏼	nasa hustong gulang: katamtamang light na kulay ng balat
-🧑🏽	matanda: katamtamang kulay ng balat
+🧑🏽	nasa hustong gulang: katamtamang kulay ng balat
 🧑🏾	matanda: katamtamang dark na kulay ng balat
 🧑🏿	matanda: dark na kulay ng balat
 👨	lalaki
@@ -231,8 +231,8 @@
 👨‍⚖	hukom ng tao
 👨🏻‍⚖️	lalaking judge: light na kulay ng balat
 👨🏻‍⚖	lalaking judge: light na kulay ng balat
-👨🏼‍⚖️	lalaking judge: katamtamang light na kulay ng balat
-👨🏼‍⚖	lalaking judge: katamtamang light na kulay ng balat
+👨🏼‍⚖️	man judge: katamtamang light na kulay ng balat
+👨🏼‍⚖	man judge: katamtamang light na kulay ng balat
 👨🏽‍⚖️	lalaking judge: katamtamang kulay ng balat
 👨🏽‍⚖	lalaking judge: katamtamang kulay ng balat
 👨🏾‍⚖️	lalaking judge: katamtamang dark na kulay ng balat
@@ -250,7 +250,7 @@
 👩🏾‍⚖️	babaeng judge: katamtamang dark na kulay ng balat
 👩🏾‍⚖	babaeng judge: katamtamang dark na kulay ng balat
 👩🏿‍⚖️	babaeng judge: dark na kulay ng balat
-👩🏿‍⚖	babaeng judge: dark na kulay ng balat
+👩🏿‍⚖	babaeng judge: dark skin tone
 👨‍🌾	lalaking magsasaka
 👨🏻‍🌾	lalaking magsasaka: light na kulay ng balat
 👨🏼‍🌾	lalaking magsasaka: katamtamang light na kulay ng balat
@@ -272,9 +272,9 @@
 👩‍🍳	babaeng nagluluto
 👩🏻‍🍳	babaeng lutuin: light na kulay ng balat
 👩🏼‍🍳	babaeng nagluluto: katamtamang light na kulay ng balat
-👩🏽‍🍳	babaeng lutuin: katamtamang kulay ng balat
+👩🏽‍🍳	babaeng nagluluto: katamtamang kulay ng balat
 👩🏾‍🍳	babaeng nagluluto: katamtamang dark na kulay ng balat
-👩🏿‍🍳	babaeng lutuin: dark na kulay ng balat
+👩🏿‍🍳	babaeng nagluluto: dark na kulay ng balat
 👨‍🔧	lalaking mekaniko
 👨🏻‍🔧	lalaking mekaniko: light na kulay ng balat
 👨🏼‍🔧	lalaking mekaniko: katamtamang light na kulay ng balat
@@ -550,14 +550,14 @@
 👳🏽	taong may suot na turban: katamtamang kulay ng balat
 👳🏾	taong may suot na turban: katamtamang dark na kulay ng balat
 👳🏿	taong may suot na turban: dark na kulay ng balat
-👳‍♂️	lalaking may suot na turban
-👳‍♂	lalaking may suot na turban
+👳‍♂️	lalaking naka turban
+👳‍♂	lalaking naka turban
 👳🏻‍♂️	lalaking nakasuot ng turban: light na kulay ng balat
 👳🏻‍♂	lalaking nakasuot ng turban: light na kulay ng balat
 👳🏼‍♂️	lalaking may suot na turban: katamtamang light na kulay ng balat
-👳🏼‍♂	lalaking nakasuot ng turban: katamtamang light na kulay ng balat
-👳🏽‍♂️	lalaking nakasuot ng turban: katamtamang kulay ng balat
-👳🏽‍♂	lalaking nakasuot ng turban: katamtamang kulay ng balat
+👳🏼‍♂	lalaking may suot na turban: katamtamang light na kulay ng balat
+👳🏽‍♂️	lalaking may suot na turban: katamtamang kulay ng balat
+👳🏽‍♂	lalaking may suot na turban: katamtamang kulay ng balat
 👳🏾‍♂️	lalaking may suot na turban: katamtamang dark na kulay ng balat
 👳🏾‍♂	lalaking may suot na turban: katamtamang dark na kulay ng balat
 👳🏿‍♂️	lalaking may suot na turban: dark skin tone
@@ -575,16 +575,16 @@
 👳🏿‍♀️	babaeng may suot na turban: dark skin tone
 👳🏿‍♀	babaeng may suot na turban: dark skin tone
 👲	lalaking may intsik na cap
-👲🏻	lalaking may cap na Intsik: light na kulay ng balat
+👲🏻	lalaking may cap na Chinese: light na kulay ng balat
 👲🏼	lalaking may cap na Chinese: katamtamang light na kulay ng balat
-👲🏽	lalaking may cap na Intsik: katamtamang kulay ng balat
-👲🏾	lalaking may cap na Intsik: katamtamang dark na kulay ng balat
-👲🏿	lalaking may cap na Chinese: dark na kulay ng balat
+👲🏽	lalaking may intsik na cap: katamtamang kulay ng balat
+👲🏾	lalaking may Chinese na cap: katamtamang dark na kulay ng balat
+👲🏿	lalaking may intsik na cap: dark na kulay ng balat
 🧕	babaeng naka-headscarf
 🧕🏻	babaeng may headscarf: light na kulay ng balat
 🧕🏼	babaeng may headscarf: katamtamang light na kulay ng balat
-🧕🏽	babaeng may headscarf: katamtamang kulay ng balat
-🧕🏾	babaeng may headscarf: katamtamang dark na kulay ng balat
+🧕🏽	babaeng naka-headscarf: katamtamang kulay ng balat
+🧕🏾	babaeng naka-headscarf: katamtamang dark na kulay ng balat
 🧕🏿	babaeng may headscarf: dark na kulay ng balat
 🧔	taong balbas
 🧔🏻	may balbas na tao: light na kulay ng balat
@@ -698,7 +698,7 @@
 👼🏻	baby angel: light na kulay ng balat
 👼🏼	baby angel: katamtamang light na kulay ng balat
 👼🏽	baby angel: katamtamang kulay ng balat
-👼🏾	baby angel: katamtamang dark na kulay ng balat
+👼🏾	sanggol na anghel: katamtamang dark na kulay ng balat
 👼🏿	baby angel: dark na kulay ng balat
 🎅	Santa Claus
 🎅🏻	Santa Claus: light na kulay ng balat
@@ -803,11 +803,11 @@
 🧙🏿‍♂️	man salamangkero: dark skin tone
 🧙🏿‍♂	man salamangkero: dark skin tone
 🧚	diwata
-🧚🏻	diwata: light na kulay ng balat
+🧚🏻	fairy: light na kulay ng balat
 🧚🏼	engkanto: katamtamang light na kulay ng balat
 🧚🏽	diwata: katamtamang kulay ng balat
 🧚🏾	diwata: katamtamang dark na kulay ng balat
-🧚🏿	diwata: dark skin tone
+🧚🏿	fairy: dark na kulay ng balat
 🧚‍♀️	babaeng diwata
 🧚‍♀	babaeng diwata
 🧚🏻‍♀️	babaeng diwata: light na kulay ng balat
@@ -964,7 +964,7 @@
 🙍🏿‍♀	babaeng nakasimangot: dark skin tone
 🙎	taong nag pout
 🙎🏻	taong nagpout: light na kulay ng balat
-🙎🏼	taong nag-pout: katamtamang light na kulay ng balat
+🙎🏼	taong nagpout: katamtamang light na kulay ng balat
 🙎🏽	taong nagpout: katamtamang kulay ng balat
 🙎🏾	taong nagpout: katamtamang dark na kulay ng balat
 🙎🏿	taong nagpout: dark na kulay ng balat
@@ -978,8 +978,8 @@
 🙎🏽‍♂	lalaking naka-pout: katamtamang kulay ng balat
 🙎🏾‍♂️	lalaking naka-pout: katamtamang dark na kulay ng balat
 🙎🏾‍♂	lalaking naka-pout: katamtamang dark na kulay ng balat
-🙎🏿‍♂️	lalaking nag pout: dark na kulay ng balat
-🙎🏿‍♂	lalaking nag pout: dark na kulay ng balat
+🙎🏿‍♂️	lalaking nagpout: dark na kulay ng balat
+🙎🏿‍♂	lalaking nagpout: dark na kulay ng balat
 🙎‍♀️	babaeng nag pout
 🙎‍♀	babaeng nag pout
 🙎🏻‍♀️	babaeng nagpout: light na kulay ng balat
@@ -988,7 +988,7 @@
 🙎🏼‍♀	babaeng naka-pout: katamtamang light na kulay ng balat
 🙎🏽‍♀️	babaeng nag-pout: katamtamang kulay ng balat
 🙎🏽‍♀	babaeng nag-pout: katamtamang kulay ng balat
-🙎🏾‍♀️	babaeng naka-pout: katamtamang dark na kulay ng balat
+🙎🏾‍♀️	babaeng nag-pout: katamtamang dark na kulay ng balat
 🙎🏾‍♀	babaeng nag-pout: katamtamang dark na kulay ng balat
 🙎🏿‍♀️	babaeng nagpout: dark na kulay ng balat
 🙎🏿‍♀	babaeng nagpout: dark na kulay ng balat
@@ -1027,11 +1027,11 @@
 🙆🏼	taong kumukumpas na OK: katamtamang light na kulay ng balat
 🙆🏽	taong kumukumpas na OK: katamtamang kulay ng balat
 🙆🏾	taong kumukumpas na OK: katamtamang dark na kulay ng balat
-🙆🏿	taong kumukumpas na OK: dark na kulay ng balat
+🙆🏿	taong kumukumpas na OK: madilim na kulay ng balat
 🙆‍♂️	lalaking kumukumpas ng OK
 🙆‍♂	lalaking kumukumpas ng OK
-🙆🏻‍♂️	lalaking kumpas na OK: light na kulay ng balat
-🙆🏻‍♂	lalaking kumpas na OK: light na kulay ng balat
+🙆🏻‍♂️	lalaking kumukumpas na OK: light na kulay ng balat
+🙆🏻‍♂	lalaking kumukumpas na OK: light na kulay ng balat
 🙆🏼‍♂️	lalaking kumpas na OK: katamtamang light na kulay ng balat
 🙆🏼‍♂	lalaking kumpas na OK: katamtamang light na kulay ng balat
 🙆🏽‍♂️	lalaking kumukumpas na OK: katamtamang kulay ng balat
@@ -1054,7 +1054,7 @@
 🙆🏿‍♀	babaeng kumpas na OK: dark na kulay ng balat
 💁	taong nagtitip ng kamay
 💁🏻	taong nakatali ang kamay: light na kulay ng balat
-💁🏼	taong nakatali ang kamay: katamtamang light na kulay ng balat
+💁🏼	taong nakahawak sa kamay: katamtamang light na kulay ng balat
 💁🏽	taong nakatali ang kamay: katamtamang kulay ng balat
 💁🏾	taong nakatali ang kamay: katamtamang dark na kulay ng balat
 💁🏿	taong nakatali ang kamay: dark na kulay ng balat
@@ -1066,16 +1066,16 @@
 💁🏼‍♂	lalaking nakatikwas ang kamay: katamtamang light na kulay ng balat
 💁🏽‍♂️	lalaking nakatikwas ang kamay: katamtamang kulay ng balat
 💁🏽‍♂	lalaking nakatikwas ang kamay: katamtamang kulay ng balat
-💁🏾‍♂️	lalaking nakatali ang kamay: katamtamang dark na kulay ng balat
-💁🏾‍♂	lalaking nakatali ang kamay: katamtamang dark na kulay ng balat
+💁🏾‍♂️	lalaking nakatikwas ang kamay: katamtamang dark na kulay ng balat
+💁🏾‍♂	lalaking nakatikwas ang kamay: katamtamang dark na kulay ng balat
 💁🏿‍♂️	lalaking nakatikwas ang kamay: dark na kulay ng balat
 💁🏿‍♂	lalaking nakatikwas ang kamay: dark na kulay ng balat
 💁‍♀️	babaeng naka-tipping hand
 💁‍♀	babaeng naka-tipping hand
 💁🏻‍♀️	babaeng nakatali ang kamay: light na kulay ng balat
 💁🏻‍♀	babaeng nakatali ang kamay: light na kulay ng balat
-💁🏼‍♀️	babaeng nakatali ang kamay: katamtamang light na kulay ng balat
-💁🏼‍♀	babaeng nakatali ang kamay: katamtamang light na kulay ng balat
+💁🏼‍♀️	babaeng nakatikwas ang kamay: katamtamang light na kulay ng balat
+💁🏼‍♀	babaeng nakatikwas ang kamay: katamtamang light na kulay ng balat
 💁🏽‍♀️	babaeng nakatali ang kamay: katamtamang kulay ng balat
 💁🏽‍♀	babaeng nakatali ang kamay: katamtamang kulay ng balat
 💁🏾‍♀️	babaeng nakatali ang kamay: katamtamang dark na kulay ng balat
@@ -1110,8 +1110,8 @@
 🙋🏽‍♀	babaeng nakataas ang kamay: katamtamang kulay ng balat
 🙋🏾‍♀️	babaeng nakataas ang kamay: katamtamang dark na kulay ng balat
 🙋🏾‍♀	babaeng nakataas ang kamay: katamtamang dark na kulay ng balat
-🙋🏿‍♀️	babaeng nakataas ang kamay: dark na kulay ng balat
-🙋🏿‍♀	babaeng nakataas ang kamay: dark na kulay ng balat
+🙋🏿‍♀️	babaeng nagtaas ng kamay: dark na kulay ng balat
+🙋🏿‍♀	babaeng nagtaas ng kamay: dark na kulay ng balat
 🙇	taong nakayuko
 🙇🏻	taong nakayuko: light na kulay ng balat
 🙇🏼	taong nakayuko: katamtamang light na kulay ng balat
@@ -1190,7 +1190,7 @@
 🤷🏾‍♂	lalaking nagkikibit-balikat: katamtamang dark na kulay ng balat
 🤷🏿‍♂️	lalaking nagkikibit-balikat: dark na kulay ng balat
 🤷🏿‍♂	lalaking nagkikibit-balikat: dark na kulay ng balat
-🤷‍♀️	babaeng nagkibit-balikat
+🤷‍♀️	babae na nagkibit-balikat
 🤷‍♀	babaeng nagkibit-balikat
 🤷🏻‍♀️	babaeng nagkikibit-balikat: light na kulay ng balat
 🤷🏻‍♀	babaeng nagkikibit-balikat: light na kulay ng balat
@@ -1232,7 +1232,7 @@
 💆🏾‍♀	babaeng nagpapamasahe: katamtamang dark na kulay ng balat
 💆🏿‍♀️	babaeng nagpapamasahe: dark na kulay ng balat
 💆🏿‍♀	babaeng nagpapamasahe: dark na kulay ng balat
-💇	taong nagpapagupit
+💇	taong nagpapagupit ng buhok
 💇🏻	taong nagpapagupit: light na kulay ng balat
 💇🏼	taong nagpapagupit: katamtamang light na kulay ng balat
 💇🏽	taong nagpapagupit: katamtamang kulay ng balat
@@ -1240,16 +1240,16 @@
 💇🏿	taong nagpapagupit: madilim na kulay ng balat
 💇‍♂️	lalaking nagpapagupit
 💇‍♂	lalaking nagpapagupit
-💇🏻‍♂️	lalaking nagpapagupit: light na kulay ng balat
-💇🏻‍♂	lalaking nagpapagupit: light na kulay ng balat
-💇🏼‍♂️	lalaki na nagpapagupit: katamtamang light na kulay ng balat
-💇🏼‍♂	lalaki na nagpapagupit: katamtamang light na kulay ng balat
+💇🏻‍♂️	lalaki na nagpapagupit: light na kulay ng balat
+💇🏻‍♂	lalaki na nagpapagupit: light na kulay ng balat
+💇🏼‍♂️	lalaking nagpapagupit: katamtamang light na kulay ng balat
+💇🏼‍♂	lalaking nagpapagupit: katamtamang light na kulay ng balat
 💇🏽‍♂️	lalaki na nagpapagupit: katamtamang kulay ng balat
 💇🏽‍♂	lalaki na nagpapagupit: katamtamang kulay ng balat
 💇🏾‍♂️	lalaking nagpapagupit: katamtamang dark na kulay ng balat
 💇🏾‍♂	lalaking nagpapagupit: katamtamang dark na kulay ng balat
-💇🏿‍♂️	lalaking nagpapagupit: dark skin tone
-💇🏿‍♂	lalaking nagpapagupit: dark skin tone
+💇🏿‍♂️	lalaki na nagpapagupit: dark skin tone
+💇🏿‍♂	lalaki na nagpapagupit: dark skin tone
 💇‍♀️	babaeng nagpapagupit
 💇‍♀	babaeng nagpapagupit
 💇🏻‍♀️	babaeng nagpapagupit: light na kulay ng balat
@@ -1347,8 +1347,8 @@
 🧖🏿	tao sa umuusok na silid: madilim na kulay ng balat
 🧖‍♀️	babae sa umuusok na silid
 🧖‍♀	babae sa umuusok na silid
-🧖🏻‍♀️	babae sa umuusok na kwarto: light na kulay ng balat
-🧖🏻‍♀	babae sa umuusok na kwarto: light na kulay ng balat
+🧖🏻‍♀️	babae sa umuusok na silid: light na kulay ng balat
+🧖🏻‍♀	babae sa umuusok na silid: light na kulay ng balat
 🧖🏼‍♀️	babae sa umuusok na silid: katamtamang light na kulay ng balat
 🧖🏼‍♀	babae sa umuusok na silid: katamtamang light na kulay ng balat
 🧖🏽‍♀️	babae sa umuusok na silid: katamtamang kulay ng balat
@@ -1403,22 +1403,22 @@
 🧘🏻	taong nasa posisyong lotus: light na kulay ng balat
 🧘🏼	taong nasa lotus na posisyon: katamtamang light na kulay ng balat
 🧘🏽	taong nasa lotus na posisyon: katamtamang kulay ng balat
-🧘🏾	taong nasa posisyong lotus: katamtamang dark na kulay ng balat
+🧘🏾	taong nasa lotus na posisyon: katamtamang dark na kulay ng balat
 🧘🏿	taong nasa lotus position: dark na kulay ng balat
 🧘‍♀️	babaeng nasa lotus position
 🧘‍♀	babaeng nasa lotus position
-🧘🏻‍♀️	babae sa posisyong lotus: light na kulay ng balat
-🧘🏻‍♀	babae sa posisyong lotus: light na kulay ng balat
+🧘🏻‍♀️	babaeng nasa lotus na posisyon: light na kulay ng balat
+🧘🏻‍♀	babaeng nasa lotus na posisyon: light na kulay ng balat
 🧘🏼‍♀️	babae sa posisyong lotus: katamtamang light na kulay ng balat
 🧘🏼‍♀	babae sa posisyong lotus: katamtamang light na kulay ng balat
 🧘🏽‍♀️	babae sa posisyong lotus: katamtamang kulay ng balat
 🧘🏽‍♀	babae sa posisyong lotus: katamtamang kulay ng balat
 🧘🏾‍♀️	babae sa posisyong lotus: katamtamang dark na kulay ng balat
 🧘🏾‍♀	babae sa posisyong lotus: katamtamang dark na kulay ng balat
-🧘🏿‍♀️	babaeng nasa lotus position: dark na kulay ng balat
-🧘🏿‍♀	babaeng nasa lotus position: dark na kulay ng balat
-🧘‍♂️	lalaking nasa lotus position
-🧘‍♂	lalaking nasa lotus position
+🧘🏿‍♀️	babae sa posisyong lotus: dark na kulay ng balat
+🧘🏿‍♀	babae sa posisyong lotus: dark na kulay ng balat
+🧘‍♂️	lalaki sa posisyong lotus
+🧘‍♂	lalaki sa posisyong lotus
 🧘🏻‍♂️	lalaki sa posisyong lotus: light na kulay ng balat
 🧘🏻‍♂	lalaki sa posisyong lotus: light na kulay ng balat
 🧘🏼‍♂️	lalaki sa posisyong lotus: katamtamang light na kulay ng balat
@@ -1457,7 +1457,7 @@
 🏇🏻	karera ng kabayo: light na kulay ng balat
 🏇🏼	karera ng kabayo: katamtamang light na kulay ng balat
 🏇🏽	karera ng kabayo: katamtamang kulay ng balat
-🏇🏾	karera ng kabayo: katamtamang dark na kulay ng balat
+🏇🏾	karera ng kabayo: katamtamang madilim na kulay ng balat
 🏇🏿	karera ng kabayo: madilim na kulay ng balat
 ⛷️	skier
 ⛷	skier
@@ -1532,12 +1532,12 @@
 🏄🏾‍♀	babaeng nagsu-surf: katamtamang dark na kulay ng balat
 🏄🏿‍♀️	babaeng nagsu-surf: dark na kulay ng balat
 🏄🏿‍♀	babaeng nagsu-surf: dark na kulay ng balat
-🚣	taong naggaod ng bangka
+🚣	taong naggaod na bangka
 🚣🏻	taong sumasagwan ng bangka: light na kulay ng balat
 🚣🏼	taong sumasagwan ng bangka: katamtamang light na kulay ng balat
 🚣🏽	taong sumasagwan ng bangka: katamtamang kulay ng balat
 🚣🏾	taong sumasagwan ng bangka: katamtamang dark na kulay ng balat
-🚣🏿	taong sumasagwan ng bangka: dark na kulay ng balat
+🚣🏿	taong sumasagwan ng bangka: madilim na kulay ng balat
 🚣‍♂️	lalaking naggaod na bangka
 🚣‍♂	lalaking naggaod na bangka
 🚣🏻‍♂️	lalaking naggaod na bangka: light na kulay ng balat
@@ -1558,8 +1558,8 @@
 🚣🏼‍♀	babaeng naggaod na bangka: katamtamang light na kulay ng balat
 🚣🏽‍♀️	babaeng naggaod na bangka: katamtamang kulay ng balat
 🚣🏽‍♀	babaeng naggaod na bangka: katamtamang kulay ng balat
-🚣🏾‍♀️	babaeng naggaod na bangka: katamtamang dark na kulay ng balat
-🚣🏾‍♀	babaeng naggaod na bangka: katamtamang dark na kulay ng balat
+🚣🏾‍♀️	babaeng sumasagwan ng bangka: katamtamang dark na kulay ng balat
+🚣🏾‍♀	babaeng sumasagwan ng bangka: katamtamang dark na kulay ng balat
 🚣🏿‍♀️	babaeng naggaod na bangka: dark na kulay ng balat
 🚣🏿‍♀	babaeng naggaod na bangka: dark na kulay ng balat
 🏊	taong lumalangoy
@@ -1692,7 +1692,7 @@
 🚴🏾‍♀	babaeng nagbibisikleta: katamtamang dark na kulay ng balat
 🚴🏿‍♀️	babaeng nagbibisikleta: dark na kulay ng balat
 🚴🏿‍♀	babaeng nagbibisikleta: dark na kulay ng balat
-🚵	taong mountain biking
+🚵	taong nagbibisikleta sa bundok
 🚵🏻	taong mountain biking: light na kulay ng balat
 🚵🏼	taong nagbibisikleta sa bundok: katamtamang light na kulay ng balat
 🚵🏽	taong nagbibisikleta sa bundok: katamtamang kulay ng balat
@@ -1700,8 +1700,8 @@
 🚵🏿	taong mountain biking: dark na kulay ng balat
 🚵‍♂️	lalaking mountain bike
 🚵‍♂	lalaking mountain bike
-🚵🏻‍♂️	lalaking nagbibisikleta sa bundok: light na kulay ng balat
-🚵🏻‍♂	lalaking nagbibisikleta sa bundok: light na kulay ng balat
+🚵🏻‍♂️	lalaking mountain biking: light na kulay ng balat
+🚵🏻‍♂	lalaking mountain biking: light na kulay ng balat
 🚵🏼‍♂️	lalaking nagbibisikleta sa bundok: katamtamang light na kulay ng balat
 🚵🏼‍♂	lalaking nagbibisikleta sa bundok: katamtamang light na kulay ng balat
 🚵🏽‍♂️	lalaking nagbibisikleta sa bundok: katamtamang kulay ng balat
@@ -1718,8 +1718,8 @@
 🚵🏼‍♀	babaeng mountain biking: katamtamang light na kulay ng balat
 🚵🏽‍♀️	babaeng mountain bike: katamtamang kulay ng balat
 🚵🏽‍♀	babaeng mountain bike: katamtamang kulay ng balat
-🚵🏾‍♀️	babaeng mountain biking: katamtamang dark na kulay ng balat
-🚵🏾‍♀	babaeng mountain biking: katamtamang dark na kulay ng balat
+🚵🏾‍♀️	babaeng mountain bike: katamtamang dark na kulay ng balat
+🚵🏾‍♀	babaeng mountain bike: katamtamang dark na kulay ng balat
 🚵🏿‍♀️	babaeng mountain bike: dark na kulay ng balat
 🚵🏿‍♀	babaeng mountain bike: dark na kulay ng balat
 🏎️	Pangkarerang kotse
@@ -1732,12 +1732,12 @@
 🤸🏽	taong cartwheeling: katamtamang kulay ng balat
 🤸🏾	taong cartwheeling: katamtamang dark na kulay ng balat
 🤸🏿	taong cartwheeling: dark na kulay ng balat
-🤸‍♂️	lalaking nag-cartwheeling
-🤸‍♂	lalaking nag-cartwheeling
-🤸🏻‍♂️	man cartwheeling: light na kulay ng balat
-🤸🏻‍♂	man cartwheeling: light na kulay ng balat
-🤸🏼‍♂️	man cartwheeling: katamtamang light na kulay ng balat
-🤸🏼‍♂	man cartwheeling: katamtamang light na kulay ng balat
+🤸‍♂️	lalaki cartwheeling
+🤸‍♂	lalaki cartwheeling
+🤸🏻‍♂️	lalaking cartwheeling: light na kulay ng balat
+🤸🏻‍♂	lalaking cartwheeling: light na kulay ng balat
+🤸🏼‍♂️	lalaking cartwheeling: katamtamang light na kulay ng balat
+🤸🏼‍♂	lalaking cartwheeling: katamtamang light na kulay ng balat
 🤸🏽‍♂️	lalaking cartwheeling: katamtamang kulay ng balat
 🤸🏽‍♂	lalaking cartwheeling: katamtamang kulay ng balat
 🤸🏾‍♂️	lalaking cartwheeling: katamtamang dark na kulay ng balat
@@ -1745,7 +1745,7 @@
 🤸🏿‍♂️	lalaking cartwheeling: dark na kulay ng balat
 🤸🏿‍♂	lalaking cartwheeling: dark na kulay ng balat
 🤸‍♀️	babaeng nag-cartwheeling
-🤸‍♀	babaeng nag-cartwheeling
+🤸‍♀	babaeng cartwheeling
 🤸🏻‍♀️	babaeng cartwheeling: light na kulay ng balat
 🤸🏻‍♀	babaeng cartwheeling: light na kulay ng balat
 🤸🏼‍♀️	babaeng cartwheeling: katamtamang light na kulay ng balat
@@ -1936,7 +1936,7 @@
 ☝🏼	index na nakaturo pataas: katamtamang light na kulay ng balat
 ☝🏽	index na nakaturo pataas: katamtamang kulay ng balat
 ☝🏾	index na nakaturo pataas: katamtamang dark na kulay ng balat
-☝🏿	index pointing up: dark na kulay ng balat
+☝🏿	index na nakaturo pataas: dark na kulay ng balat
 👆	backhand index na nakaturo pataas
 👆🏻	backhand index na nakaturo pataas: light na kulay ng balat
 👆🏼	backhand index na nakaturo pataas: katamtamang light na kulay ng balat
@@ -1992,7 +1992,7 @@
 🖐🏼	kamay na naka-splay ang mga daliri: katamtamang light na kulay ng balat
 🖐🏽	kamay na naka-splay ang mga daliri: katamtamang kulay ng balat
 🖐🏾	kamay na naka-splay ang mga daliri: katamtamang dark na kulay ng balat
-🖐🏿	kamay na nakabukaka ang mga daliri: dark na kulay ng balat
+🖐🏿	kamay na nakabuka ang mga daliri: dark na kulay ng balat
 ✋	nakataas ang kamay
 ✋🏻	nakataas na kamay: light na kulay ng balat
 ✋🏼	nakataas na kamay: katamtamang light na kulay ng balat
@@ -2071,7 +2071,7 @@
 👏🏼	pumapalakpak: katamtamang light na kulay ng balat
 👏🏽	pumapalakpak: katamtamang kulay ng balat
 👏🏾	pumapalakpak: katamtamang dark na kulay ng balat
-👏🏿	pumapalakpak na mga kamay: dark na kulay ng balat
+👏🏿	pumapalakpak: dark na kulay ng balat
 👐	bukas ang mga kamay
 👐🏻	bukas na mga kamay: light na kulay ng balat
 👐🏼	bukas na mga kamay: katamtamang light na kulay ng balat
@@ -2085,11 +2085,11 @@
 🙌🏾	pagtataas ng mga kamay: katamtamang dark na kulay ng balat
 🙌🏿	pagtataas ng mga kamay: dark na kulay ng balat
 🤲	magkadikit ang palad
-🤲🏻	sabay taas ng palad: light na kulay ng balat
+🤲🏻	magkadikit ang palad: light na kulay ng balat
 🤲🏼	sabay taas ng palad: katamtamang light na kulay ng balat
 🤲🏽	sabay taas ng palad: katamtamang kulay ng balat
 🤲🏾	sabay taas ng palad: katamtamang dark na kulay ng balat
-🤲🏿	magkadikit ang palad: madilim na kulay ng balat
+🤲🏿	magkadikit na palad: madilim na kulay ng balat
 🙏	nakatiklop ang mga kamay
 🙏🏻	nakatiklop na mga kamay: light na kulay ng balat
 🙏🏼	nakatiklop na mga kamay: katamtamang light na kulay ng balat
@@ -2115,7 +2115,7 @@
 👃🏽	ilong: katamtamang kulay ng balat
 👃🏾	ilong: katamtamang dark na kulay ng balat
 👃🏿	ilong: madilim na kulay ng balat
-🦰	pula ang buhok
+🦰	pulang buhok
 🦱	kulot ang buhok
 🦲	kalbo
 🦳	maputi ang buhok
@@ -2199,12 +2199,12 @@
 👢	boot ng babae
 👑	korona
 👒	sumbrero ng babae
-🎩	pang-itaas na sumbrero
+🎩	pang-itaas na sombrero
 🎓	cap ng pagtatapos
 🧢	sisingilin na cap
 ⛑️	helmet ng rescue worker
 ⛑	helmet ng rescue worker
-📿	kuwintas ng panalangin
+📿	kuwintas ng dasal
 💄	lipstick
 💍	singsing
 💎	batong hiyas
@@ -2337,7 +2337,7 @@
 🍀	apat na dahon ng klouber
 🍁	dahon ng maple
 🍂	nalaglag na dahon
-🍃	mga dahon na lumilipad sa hangin
+🍃	dahon na lumilipad sa hangin
 🍇	ubas
 🍈	melon
 🍉	pakwan
@@ -2481,8 +2481,8 @@
 🧱	mga ladrilyo
 🏘️	mga bahay
 🏘	mga bahay
-🏚️	tiwangwang bahay
-🏚	tiwangwang bahay
+🏚️	tiwangwang na bahay
+🏚	tiwangwang na bahay
 🏠	bahay
 🏡	bahay na may hardin
 🏢	gusali ng opisina
@@ -2499,7 +2499,7 @@
 🏯	kastilyo ng Hapon
 🏰	kastilyo
 💒	kasal
-🗼	Tokyo tower
+🗼	tore ng Tokyo
 🗽	Statue of Liberty
 ⛪	simbahan
 🕌	mosque
@@ -2543,7 +2543,7 @@
 🚎	trolleybus
 🚐	minibus
 🚑	ambulansya
-🚒	makinang bumbero
+🚒	makina ng bumbero
 🚓	kotse ng pulis
 🚔	paparating na sasakyan ng pulis
 🚕	taxi
@@ -2601,8 +2601,8 @@
 🛎	bellhop bell
 🧳	bagahe
 ⌛	tapos na ang orasa
-⏳	hindi tapos ang orasa
-⌚	panoorin
+⏳	hindi tapos ang hourglass
+⌚	manood
 ⏰	alarm clock
 ⏱️	segundometro
 ⏱	segundometro
@@ -2623,29 +2623,29 @@
 🕔	alas-singko
 🕠	singko y medya
 🕕	alas-sais
-🕡	alas sais y medya
+🕡	sais-tatlumpu
 🕖	alas siyete
 🕢	pito y medya
 🕗	alas-otso
 🕣	alas otso y medya
 🕘	alas nuwebe
-🕤	siyam y medya
+🕤	nine-thirty
 🕙	alas diyes
 🕥	diyes tres
 🕚	alas onse
-🕦	labing-isang-tatlumpu
+🕦	labing-isang y medya
 🌑	bagong buwan
 🌒	waxing crescent moon
 🌓	unang quarter moon
 🌔	waxing gibbous moon
 🌕	kabilugan ng buwan
-🌖	lumulubog na gibbous moon
+🌖	lumulutang na gibbous moon
 🌗	huling quarter moon
 🌘	waning crescent moon
 🌙	gasuklay na buwan
 🌚	mukha ng bagong buwan
 🌛	mukha ng first quarter moon
-🌜	last quarter moon face
+🌜	mukha noong nakaraang quarter moon
 🌡️	thermometer
 🌡	thermometer
 ☀️	araw
@@ -2798,8 +2798,8 @@
 🎶	mga tala sa musika
 🎙️	mikropono sa studio
 🎙	mikropono sa studio
-🎚️	antas slider
-🎚	antas slider
+🎚️	level slider
+🎚	level slider
 🎛️	control knobs
 🎛	control knobs
 🎤	mikropono
@@ -2953,8 +2953,8 @@
 🔨	martilyo
 ⛏️	Pumili
 ⛏	Pumili
-⚒️	martilyo at pumitas
-⚒	martilyo at pumitas
+⚒️	martilyo at pumili
+⚒	martilyo at pumili
 🛠️	martilyo at wrench
 🛠	martilyo at wrench
 🗡️	punyal
@@ -3046,8 +3046,8 @@
 ↗	pataas-kanang arrow
 ➡️	kanang arrow
 ➡	kanang arrow
-↘️	pababa-kanang arrow
-↘	pababa-kanang arrow
+↘️	pababang-kanang arrow
+↘	pababang-kanang arrow
 ⬇️	pababang arrow
 ⬇	pababang arrow
 ↙️	pababa-kaliwang arrow
@@ -3060,8 +3060,8 @@
 ↕	pataas-pababang arrow
 ↔️	kaliwa-kanang arrow
 ↔	kaliwa-kanang arrow
-↩️	kanang arrow na nakakurba pakaliwa
-↩	kanang arrow na nakakurba pakaliwa
+↩️	kanang arrow na nakakurbada pakaliwa
+↩	kanang arrow na nakakurbada pakaliwa
 ↪️	kaliwang arrow curving pakanan
 ↪	kaliwang arrow curving pakanan
 ⤴️	kanang arrow na naka-curve pataas
@@ -3174,7 +3174,7 @@
 ➿	dobleng kulot na loop
 〽️	part alternation mark
 〽	part alternation mark
-✳️	walong-salitang asterisk
+✳️	walong magsalita na asterisk
 ✳	walong-salitang asterisk
 ✴️	walong-tulis na bituin
 ✴	walong-tulis na bituin
@@ -3237,7 +3237,7 @@
 🆓	LIBRENG pindutan
 ℹ️	impormasyon
 ℹ	impormasyon
-🆔	pindutan ng ID
+🆔	Button ng ID
 Ⓜ️	umikot si M
 Ⓜ	umikot si M
 🆕	BAGONG pindutan
@@ -3256,17 +3256,17 @@
 🈷️	Japanese na "buwanang halaga" na button
 🈷	Japanese na "buwanang halaga" na button
 🈶	Japanese na “not free of charge” na button
-🈯	Japanese “reserved” na buton
-🉐	Button na "bargain" ng Hapon
+🈯	Japanese na “reserved” na button
+🉐	Japanese na "bargain" na buton
 🈹	Button na "diskwento" ng Hapon
 🈚	Japanese na "walang bayad" na button
 🈲	Japanese na "ipinagbabawal" na buton
 🉑	Japanese na "katanggap-tanggap" na button
 🈸	Japanese na "application" na button
 🈴	Japanese na "passing grade" na button
-🈳	Japanese na "bakante" na buton
-㊗️	Japanese na "congratulations" na buton
-㊗	Japanese na "congratulations" na buton
+🈳	Button na "bakante" ng Hapon
+㊗️	Japanese na "congratulations" na button
+㊗	Japanese na "congratulations" na button
 ㊙️	Japanese "lihim" na pindutan
 ㊙	Japanese "lihim" na pindutan
 🈺	Japanese na “open for business” na button
@@ -3440,7 +3440,7 @@
 🇰🇿	Kazakhstan
 🇱🇦	Laos
 🇱🇧	Lebanon
-🇱🇨	San Lucia
+🇱🇨	St. Lucia
 🇱🇮	Liechtenstein
 🇱🇰	Sri Lanka
 🇱🇷	Liberia

@@ -28,7 +28,7 @@
 😶	cara sin boca
 🙄	cara con los ojos en blanco
 😏	cara sonriente
-😣	cara perseverante
+😣	rostro perseverante
 😥	cara triste pero aliviada
 😮	cara con la boca abierta
 🤐	cara con cremallera en la boca
@@ -498,8 +498,8 @@
 💂🏼‍♀	guardia mujer: tono de piel claro medio
 💂🏽‍♀️	guardia mujer: tono de piel medio
 💂🏽‍♀	guardia mujer: tono de piel medio
-💂🏾‍♀️	guardia mujer: tono de piel oscuro medio
-💂🏾‍♀	guardia mujer: tono de piel oscuro medio
+💂🏾‍♀️	mujer guardia: tono de piel oscuro medio
+💂🏾‍♀	mujer guardia: tono de piel oscuro medio
 💂🏿‍♀️	guardia mujer: tono de piel oscuro
 💂🏿‍♀	guardia mujer: tono de piel oscuro
 👷	Obrero
@@ -800,7 +800,7 @@
 🧙🏽‍♂	mago hombre: tono de piel medio
 🧙🏾‍♂️	mago hombre: tono de piel oscuro medio
 🧙🏾‍♂	mago hombre: tono de piel oscuro medio
-🧙🏿‍♂️	hombre mago: tono de piel oscuro
+🧙🏿‍♂️	mago hombre: tono de piel oscuro
 🧙🏿‍♂	hombre mago: tono de piel oscuro
 🧚	hada
 🧚🏻	hada: tono de piel claro
@@ -876,7 +876,7 @@
 🧜🏼‍♀	sirena: tono de piel claro medio
 🧜🏽‍♀️	sirena: tono de piel medio
 🧜🏽‍♀	sirena: tono de piel medio
-🧜🏾‍♀️	sirena: tono de piel oscuro medio
+🧜🏾‍♀️	sirena: tono de piel medio oscuro
 🧜🏾‍♀	sirena: tono de piel oscuro medio
 🧜🏿‍♀️	sirena: tono de piel oscuro
 🧜🏿‍♀	sirena: tono de piel oscuro
@@ -1018,11 +1018,11 @@
 🙅🏼‍♀	mujer haciendo un gesto NO: tono de piel claro medio
 🙅🏽‍♀️	mujer haciendo un gesto NO: tono de piel medio
 🙅🏽‍♀	mujer haciendo un gesto NO: tono de piel medio
-🙅🏾‍♀️	mujer haciendo un gesto de NO: tono de piel oscuro medio
+🙅🏾‍♀️	mujer haciendo un gesto NO: tono de piel oscuro medio
 🙅🏾‍♀	mujer haciendo un gesto NO: tono de piel oscuro medio
 🙅🏿‍♀️	mujer haciendo un gesto NO: tono de piel oscuro
 🙅🏿‍♀	mujer haciendo un gesto NO: tono de piel oscuro
-🙆	persona haciendo un gesto de ok
+🙆	persona haciendo un gesto de Aceptar
 🙆🏻	persona haciendo un gesto de aprobación: tono de piel claro
 🙆🏼	Persona que hace el gesto OK: tono de piel claro medio.
 🙆🏽	persona haciendo un gesto de aprobación: tono de piel medio
@@ -3170,7 +3170,7 @@
 ➕	signo más pesado
 ➖	signo menos pesado
 ➗	signo de división pesada
-➰	bucle rizado
+➰	lazo rizado
 ➿	bucle doble rizado
 〽️	marca de alternancia de piezas
 〽	marca de alternancia de piezas

@@ -1,20 +1,20 @@
-😀	tune facie
+😀	tune facies
 😁	renidenti vultu renidenti oculis
 😂	faciem lacrimis gaudio
 🤣	volvens in area ridens
 😃	tune facie magnis oculis
 😄	tune facie ridentibus oculis
 😅	tune facies cum sudore
-😆	tune squinting facies
+😆	tune facie renidens
 😉	nictu facies
-😊	Oculis renidet arridens
+😊	subridens oculis subridens
 😋	faciem sapidum cibum
 😎	subridens ocularia solaria
-😍	subridens cum corde, oculis
+😍	subridens facies cum corde, oculis
 😘	faciem flante osculum
 🥰	subridens in III cordibus
 😗	osculari faciem
-😙	osculans vultum subridens oculos
+😙	osculo vultus subridens oculos
 😚	osculatus faciem clausis oculis
 ☺️	blanditur
 ☺	blanditur
@@ -22,9 +22,9 @@
 🤗	amplectendo facies
 🤩	sidereus
 🤔	cogitandi faciem
-🤨	faciem attollitur supercilium
+🤨	faciem elevatum supercilium
 😐	neutrum facies
-😑	expressio facies
+😑	expressionless facies
 😶	faciem sine ore
 🙄	faciem volvens oculos
 😏	smirking facies
@@ -46,8 +46,8 @@
 😔	tristitia facies
 😕	confusa facies
 🙃	faciem-down
-🤑	pecunia oris facies
-😲	obstipuit facies
+🤑	pecunia-os faciem
+😲	obstupefactus
 ☹️	vultus torva
 ☹	vultus torva
 🙁	leviter fronte
@@ -70,7 +70,7 @@
 😳	Hos praecipue vultus
 🤪	zany facies
 😵	vertiginem faciem tuam
-😡	arriderent facies
+😡	arriderent facie
 😠	iratus faciem tuam
 🤬	facies cum symbolis in oris
 😷	facies cum medical larva
@@ -78,7 +78,7 @@
 🤕	facie ad caput fascia
 🤢	nausea facies
 🤮	faciem vomitus
-🤧	sternumentum facies
+🤧	sternutatio facies
 😇	blanditur cum aureola
 🤠	cowboy hat faciem
 🥳	comesationibus facies
@@ -107,7 +107,7 @@
 😹	cat facies cum lacrimis laetitiae
 😻	subridens cattus facies cum corde, oculis
 😼	cat facies cum sordent risu
-😽	osculans cattus faciem tuam
+😽	osculans cattus facies
 🙀	lassus cattus faciem
 😿	clamor cattus facies
 😾	arriderent cattus faciem
@@ -132,14 +132,14 @@
 🧒🏾	puer: cutis media-nigricans sono
 🧒🏿	puer: cutis sono tenebris
 👦	Puer
-👦🏻	puer: lux cutis sono
+👦🏻	puer, lux cutis sono
 👦🏼	puer: medium-levis cutis sono
 👦🏽	puer: media cutis sono
 👦🏾	puer: cutis media-nigricans sono
-👦🏿	puer: cutis sono tenebris
+👦🏿	Puer: cutis sono tenebris
 👧	puella
 👧🏻	puella, cutis sono lux
-👧🏼	puella: medium-lucis cutis sono
+👧🏼	puella: cutis sono medium-levis
 👧🏽	puella: media cutis sono
 👧🏾	puella: cutis media-nigricans sono
 👧🏿	puella: cutis sono tenebris
@@ -201,7 +201,7 @@
 👩🏽‍⚕	Mulier salutis adiutor: medium cutis sono
 👩🏾‍⚕️	Mulier salutis adiutor: cutis media-tenebras sono
 👩🏾‍⚕	Mulier salutis adiutor: cutis media-tenebras sono
-👩🏿‍⚕️	Mulier salutis adiutor: cutis tenebris sono
+👩🏿‍⚕️	Mulier salutis adiutor: cutis obscura sono
 👩🏿‍⚕	Mulier salutis adiutor: cutis obscura sono
 👨‍🎓	homo discipulus
 👨🏻‍🎓	homo discipulus: lux cutis sono
@@ -209,14 +209,14 @@
 👨🏽‍🎓	homo discipulus: medium cutis sono
 👨🏾‍🎓	homo discipulus: medium-nigrae cutis sono
 👨🏿‍🎓	homo discipulus: tenebris cutis sono
-👩‍🎓	femina discipulus
+👩‍🎓	mulier discipulus
 👩🏻‍🎓	Mulier discipulo: lux cutis sono
 👩🏼‍🎓	Mulier discipulus: medium-lucem cutis sono
-👩🏽‍🎓	femina discipulus: medium cutis sono
+👩🏽‍🎓	Mulier discipulus: medium cutis sono
 👩🏾‍🎓	femina discipulus: medium-nigrae cutis sono
-👩🏿‍🎓	Mulier discipulus: cutis sono tenebris
+👩🏿‍🎓	Mulier discipulo: tenebris cutis sono
 👨‍🏫	homo magister
-👨🏻‍🏫	homo doctorem: lux cutis sono
+👨🏻‍🏫	homo magister: lux cutis sono
 👨🏼‍🏫	homo magister: medium-lucem cutis sono
 👨🏽‍🏫	homo magister: medium cutis sono
 👨🏾‍🏫	homo magister: cutis media-tenebras sono
@@ -278,7 +278,7 @@
 👨‍🔧	homo mechanicus
 👨🏻‍🔧	homo mechanicus: lux cutis sono
 👨🏼‍🔧	homo mechanicus: medium-levis cutis sono
-👨🏽‍🔧	homo mechanicus: medium cutis sono
+👨🏽‍🔧	homo mechanicus: media cutis sono
 👨🏾‍🔧	homo mechanicus: cutis media-nigricans sono
 👨🏿‍🔧	homo mechanicus: tenebris cutis sono
 👩‍🔧	mulier mechanicus
@@ -304,7 +304,7 @@
 👨🏼‍💼	homo officium operatur: medium-levis cutis sono
 👨🏽‍💼	homo officium operantis: medium cutis sono
 👨🏾‍💼	homo officium operantis: medium-nigrae cutis sono
-👨🏿‍💼	homo officium operatur: tenebris cutis sono
+👨🏿‍💼	homo officium operantis: tenebris cutis sono
 👩‍💼	Mulier officium laborantis
 👩🏻‍💼	Mulier officium operatur: lux cutis sono
 👩🏼‍💼	femina officium operarium: medium-levis cutis sono
@@ -312,7 +312,7 @@
 👩🏾‍💼	mulier officium operariorum: medium-nigrae cutis sono
 👩🏿‍💼	Mulier officium operariorum: tenebris cutis sono
 👨‍🔬	homo physicus
-👨🏻‍🔬	homo physicus, cutis sono lux
+👨🏻‍🔬	homo physicus: cutis sono lux
 👨🏼‍🔬	homo physicus: cutis sono medium-levis
 👨🏽‍🔬	homo physicus: medium cutis sono
 👨🏾‍🔬	homo physicus: cutis media-tenebras sono
@@ -321,13 +321,13 @@
 👩🏻‍🔬	Mulier physicus: cutis sono lux
 👩🏼‍🔬	Mulier physicus: cutis sono medium-levis
 👩🏽‍🔬	Mulier physicus: medium cutis sono
-👩🏾‍🔬	Mulier physicus: cutis media-nigricans sono
-👩🏿‍🔬	Mulier physicus: cutis sono tenebris
+👩🏾‍🔬	Mulier physicus: cutis media-tenebras sono
+👩🏿‍🔬	Mulier physicus: tenebris cutis sono
 👨‍💻	homo technologist
 👨🏻‍💻	homo technologist: lux cutis sono
 👨🏼‍💻	homo technologist: medium-levis cutis sono
 👨🏽‍💻	homo technologist: medium cutis sono
-👨🏾‍💻	homo technologist: medium-obscurum cutis sono
+👨🏾‍💻	homo technologist: medium-nigrae cutis sono
 👨🏿‍💻	homo technologist: tenebris cutis sono
 👩‍💻	mulier technologist
 👩🏻‍💻	Mulier technologist: lux cutis sono
@@ -339,13 +339,13 @@
 👨🏻‍🎤	homo cantor: lux cutis sono
 👨🏼‍🎤	homo cantor: medium-levis cutis sono
 👨🏽‍🎤	homo cantor: medium cutis sono
-👨🏾‍🎤	homo cantor: cutis media-tenebras sono
+👨🏾‍🎤	homo cantor: cutis media-nigricans sono
 👨🏿‍🎤	homo cantor: tenebris cutis sono
 👩‍🎤	cantor mulier
 👩🏻‍🎤	Mulier cantor: lux cutis sono
 👩🏼‍🎤	Mulier cantor: medium-levis cutis sono
 👩🏽‍🎤	mulier cantor: medium cutis sono
-👩🏾‍🎤	femina cantor: medium-nigrae cutis sono
+👩🏾‍🎤	mulier cantor: medium-obscurum cutis sono
 👩🏿‍🎤	Mulier cantor: tenebris cutis sono
 👨‍🎨	homo artifex
 👨🏻‍🎨	homo artifex: lux cutis sono
@@ -355,7 +355,7 @@
 👨🏿‍🎨	homo artifex: tenebris cutis sono
 👩‍🎨	mulier artifex
 👩🏻‍🎨	Mulier artifex: lux cutis sono
-👩🏼‍🎨	mulier artifex: medium-lucem cutis sono
+👩🏼‍🎨	femina artifex: medium-levis cutis sono
 👩🏽‍🎨	mulier artifex: medium cutis sono
 👩🏾‍🎨	femina artifex: medium-obscurum cutis sono
 👩🏿‍🎨	Mulier artifex: tenebris cutis sono
@@ -411,18 +411,18 @@
 👮🏻	DENUNTIATOR: lux cutis sono
 👮🏼	DENUNTIATOR: medium-levis cutis sono
 👮🏽	DENUNTIATOR: medium cutis sono
-👮🏾	DENUNTIATOR: medium-obscura cutis sono
+👮🏾	DENUNTIATOR: medium-nigrica cutis sono
 👮🏿	DENUNTIATOR: tenebris cutis sono
 👮‍♂️	homo DENUNTIATOR
 👮‍♂	homo DENUNTIATOR
 👮🏻‍♂️	homo DENUNTIATOR: lux cutis sono
 👮🏻‍♂	homo DENUNTIATOR: lux cutis sono
-👮🏼‍♂️	homo DENUNTIATOR: medium-lucem cutis sono
-👮🏼‍♂	homo DENUNTIATOR: medium-lucem cutis sono
+👮🏼‍♂️	homo DENUNTIATOR: medium-levis cutis sono
+👮🏼‍♂	homo DENUNTIATOR: medium-levis cutis sono
 👮🏽‍♂️	homo DENUNTIATOR: medium cutis sono
 👮🏽‍♂	homo DENUNTIATOR: medium cutis sono
-👮🏾‍♂️	homo DENUNTIATOR: medium-nigrae cutis sono
-👮🏾‍♂	homo DENUNTIATOR: medium-nigrae cutis sono
+👮🏾‍♂️	homo DENUNTIATOR: medium tenebris cutis sono
+👮🏾‍♂	homo DENUNTIATOR: medium tenebris cutis sono
 👮🏿‍♂️	homo DENUNTIATOR: tenebris cutis sono
 👮🏿‍♂	homo DENUNTIATOR: tenebris cutis sono
 👮‍♀️	Mulier DENUNTIATOR
@@ -475,19 +475,19 @@
 💂	custodia
 💂🏻	custodia: lux cutis sono
 💂🏼	custodia: medium-levis cutis sono
-💂🏽	custodia: media cutis sono
+💂🏽	custodia: medium cutis sono
 💂🏾	custodia: cutis media-nigricans sono
 💂🏿	custodibus: cutis tenebris sono
 💂‍♂️	homo custodiet
 💂‍♂	homo custodiet
-💂🏻‍♂️	homo custodiat: lux cutis sono
-💂🏻‍♂	homo custodiat: lux cutis sono
-💂🏼‍♂️	homo custodiet: medium-lucem cutis sono
-💂🏼‍♂	homo custodiet: medium-lucem cutis sono
-💂🏽‍♂️	homo custodiet: medium cutis sono
-💂🏽‍♂	homo custodiet: medium cutis sono
-💂🏾‍♂️	homo custodiet: media-nigrica cutis sono
-💂🏾‍♂	homo custodiet: media-nigrica cutis sono
+💂🏻‍♂️	homo custodiet: lux cutis sono
+💂🏻‍♂	homo custodiet: lux cutis sono
+💂🏼‍♂️	homo custodiet: medium-levis cutis sono
+💂🏼‍♂	homo custodiet: medium-levis cutis sono
+💂🏽‍♂️	homo custodiat: medium cutis sono
+💂🏽‍♂	homo custodiat: medium cutis sono
+💂🏾‍♂️	homo custodiet: medium-nigrae cutis sono
+💂🏾‍♂	homo custodiet: medium-nigrae cutis sono
 💂🏿‍♂️	homo custodiet: tenebris cutis sono
 💂🏿‍♂	homo custodiet: tenebris cutis sono
 💂‍♀️	mulier custodia
@@ -542,7 +542,7 @@
 👸🏻	princeps: lux cutis sono
 👸🏼	princeps: medium-lucem cutis sono
 👸🏽	princeps: medium cutis sono
-👸🏾	princeps: medium-nigrica cutis sono
+👸🏾	princeps: media-nigrica cutis sono
 👸🏿	princeps: tenebris cutis sono
 👳	homo circumdatio mitra
 👳🏻	homo amictus mitra: lux cutis sono
@@ -566,8 +566,8 @@
 👳‍♀	mulier circumdatio mitra
 👳🏻‍♀️	Mulier amictus mitra: lux cutis sono
 👳🏻‍♀	Mulier amictus mitra: lux cutis sono
-👳🏼‍♀️	Mulier circumdatio mitra: medium-lucis cutis sono
-👳🏼‍♀	Mulier circumdatio mitra: medium-lucis cutis sono
+👳🏼‍♀️	Mulier amictus mitra: medium-levis cutis sono
+👳🏼‍♀	Mulier amictus mitra: medium-levis cutis sono
 👳🏽‍♀️	femina cidarim, media cutis sono
 👳🏽‍♀	femina cidarim, media cutis sono
 👳🏾‍♀️	Mulier circumdatio mitra: cutis media-tenebras sono
@@ -578,14 +578,14 @@
 👲🏻	homo cum Chinese cap: lux cutis sono
 👲🏼	homo cum Chinese cap: medium-levis cutis sono
 👲🏽	homo cum Chinese cap: medium cutis sono
-👲🏾	homo cum Chinese cap: medium-obscura cutis sono
+👲🏾	homo cum Chinese cap: medium-nigrae cutis sono
 👲🏿	homo Chinese cap: tenebris cutis sono
 🧕	Mulier cum headscarf
 🧕🏻	Mulier cum headscarf, lux cutis sono
 🧕🏼	Mulier cum headscarf, cutis sono medium-levis
 🧕🏽	Mulier cum headscarf, media cutis sono
 🧕🏾	Mulier cum headscarf, cutis media-tenebras sono
-🧕🏿	Mulier cum headscarf, tenebris cutis sono
+🧕🏿	Mulier cum headscarf, obscura cutis sono
 🧔	barbatus
 🧔🏻	barbatus homo: lux cutis sono
 🧔🏼	barbatus homo: medium-levis cutis sono
@@ -597,7 +597,7 @@
 👱🏼	flavi crine: medium-lucem cutis sono
 👱🏽	flava persona: media cutis sono
 👱🏾	flavi crine: medium-nigrae cutis sono
-👱🏿	flava persona: cutis tonus tenebris
+👱🏿	flavi crine persona: cutis tonus tenebris
 👱‍♂️	flavos
 👱‍♂	flavos
 👱🏻‍♂️	flavi sene, levi cute sono
@@ -612,8 +612,8 @@
 👱🏿‍♂	flavos: tenebris cutis sono
 👱‍♀️	flava mulier
 👱‍♀	flava mulier
-👱🏻‍♀️	flavi crine feminae, levi cute sono
-👱🏻‍♀	flavi crine feminae, levi cute sono
+👱🏻‍♀️	flavi crine femina levi cute sono
+👱🏻‍♀	flavi crine femina levi cute sono
 👱🏼‍♀️	flavos: medium-lucem cutis sono
 👱🏼‍♀	flavos: medium-lucem cutis sono
 👱🏽‍♀️	flava mulier: medium cutis sono
@@ -626,54 +626,54 @@
 👨🏻‍🦰	homo, rufus, levi cute sono
 👨🏼‍🦰	homo, rufus capillatus: cutis sono medium-levis
 👨🏽‍🦰	homo, rufus capillatus: mediae cutis sono
-👨🏾‍🦰	homo, rufus capillatus: cutis media-tenebrae sono
+👨🏾‍🦰	homo, rufus pilosus: cutis media-nigricans sono
 👨🏿‍🦰	homo, rufus canus: cutis obscura sono
 👩‍🦰	mulier, rufus
 👩🏻‍🦰	mulier, rufus, levi cute sono
 👩🏼‍🦰	femina, rufus canatus: cutis sono media-levis
 👩🏽‍🦰	femina, rufus canatus: mediae cutis sono
 👩🏾‍🦰	femina, rufus canatus: sono cutis media-nigricans
-👩🏿‍🦰	mulier, rufus, obscuro cutis sono
-👨‍🦱	vir, crispus
+👩🏿‍🦰	femina, rufus canatus: cutis obscura sono
+👨‍🦱	homo, crispus
 👨🏻‍🦱	homo, crispus, levis cutis sono
 👨🏼‍🦱	homo, crispus: medium-levis cutis sono
 👨🏽‍🦱	homo, crispus, medium cutis sono
-👨🏾‍🦱	homo, crispus, caeruleus;
+👨🏾‍🦱	homo, crispus, obscurus cutis sono
 👨🏿‍🦱	homo, crispus, obscure cutis sono
 👩‍🦱	mulier, crispus
 👩🏻‍🦱	mulier, crispus, levi cutis sono
 👩🏼‍🦱	femina, crispus, tonus cutis media-levis
-👩🏽‍🦱	femina, crispus, tonus cutis mediae
-👩🏾‍🦱	femina, crispus, tonus cutis media-nigricans
+👩🏽‍🦱	mulier, crispus, tonus cutis mediae
+👩🏾‍🦱	mulier, crispus, tonus cutis media-nigricans
 👩🏿‍🦱	femina, crispus, obscure cutis, sono
 👨‍🦲	homo, bald
 👨🏻‍🦲	homo, calvus: cutis levi sono
-👨🏼‍🦲	homo, calvus: cutis media levis sono
+👨🏼‍🦲	homo, calvus: cutis media-levis sono
 👨🏽‍🦲	homo, calvus: tonus cutis media
 👨🏾‍🦲	homo, calvus: cutis media-tenebrae sono
 👨🏿‍🦲	homo, calvus: tonus cutis obscura
 👩‍🦲	mulier, bald
-👩🏻‍🦲	femina, calva: tonus levis cutis
+👩🏻‍🦲	femina, calva: cutis levi sono
 👩🏼‍🦲	femina, calva: cutis media-levis sono
 👩🏽‍🦲	femina, calva: sono cutis media
 👩🏾‍🦲	femina, calva: cutis media-nigricans
 👩🏿‍🦲	femina, calva: tonus cutis obscura
 👨‍🦳	homo, cana
 👨🏻‍🦳	homo, cana: cutis levi sono
-👨🏼‍🦳	homo, albidus, cutis media-lucis sono
-👨🏽‍🦳	homo, cana- tus: mediae cutis sono
-👨🏾‍🦳	homo, cana capillatus: cutis media-tenebrae sono
-👨🏿‍🦳	homo, canosus: cutis obscura sono
+👨🏼‍🦳	homo, cano capite: cutis media-levis sono
+👨🏽‍🦳	homo, canosus: cutis media tono
+👨🏾‍🦳	vir, cana capillatus: cutis media-tenebrae sono
+👨🏿‍🦳	vir, cana: cutis tonus
 👩‍🦳	femina, cana
 👩🏻‍🦳	femina, cana cana: cutis levi sono
 👩🏼‍🦳	femina, cana cana: sono cutis media-levis
 👩🏽‍🦳	femina, cana cana: tonus cutis media
-👩🏾‍🦳	femina, cana capillata: sono cutis mediae-nigricans
-👩🏿‍🦳	femina, cana cana: tonus cutis fusca
+👩🏾‍🦳	femina, cana cana: cutis media-nigricans
+👩🏿‍🦳	femina, cana: tonus cutis obscure
 🤵	homo in tuxedo
 🤵🏻	homo in tuxedo: lux cutis sono
 🤵🏼	homo in tuxedo: cutis sono medium-levis
-🤵🏽	homo in tuxedo: medium cutis sono
+🤵🏽	homo in tuxedo: cutis media sono
 🤵🏾	homo in tuxedo: cutis media-tenebras sono
 🤵🏿	homo in tuxedo: cutis obscura sono
 👰	sponsa cum velo
@@ -686,7 +686,7 @@
 🤰🏻	praegnans: lux cutis sono
 🤰🏼	praegnans: medium-levis cutis sono
 🤰🏽	praegnans: media cutis sono
-🤰🏾	praegnans: media-nigrae cutis sono
+🤰🏾	praegnans: medium-nigrae cutis sono
 🤰🏿	praegnans: tenebris cutis sono
 🤱	pectus pascens
 🤱🏻	pectus pascens: lux cutis sono
@@ -705,13 +705,13 @@
 🎅🏼	Santa Claus: cutis sono media-levis
 🎅🏽	Santa Claus: medium cutis tonus
 🎅🏾	Santa Claus: cutis media-nigricans sono
-🎅🏿	Patrem natalem: cutis obscura sono
+🎅🏿	Patrem natalem: obscura cutis sono
 🤶	Dominae Claus
 🤶🏻	Dominae Claus: lux cutis sono
 🤶🏼	Domina Claus: cutis sono medium-levis
 🤶🏽	Domina Claus: sono cutis media
 🤶🏾	Domina Claus: cutis media-nigricans sono
-🤶🏿	Dominae Claus: tonus cutis obscura
+🤶🏿	Dominae Claus: cutis tonus tenebris
 🦸	vulputate
 🦸🏻	vulputate, lux cutis sono
 🦸🏼	vulputate, cutis sono medium-levis
@@ -724,8 +724,8 @@
 🦸🏻‍♀	Mulier vulputate, lux cutis sono
 🦸🏼‍♀️	Mulier vulputate, cutis sono medium-levis
 🦸🏼‍♀	Mulier vulputate, cutis sono medium-levis
-🦸🏽‍♀️	Mulier vulputate: medium cutis sono
-🦸🏽‍♀	Mulier vulputate: medium cutis sono
+🦸🏽‍♀️	Mulier vulputate, media cutis sono
+🦸🏽‍♀	Mulier vulputate, media cutis sono
 🦸🏾‍♀️	Mulier vulputate, cutis media-tenebras sono
 🦸🏾‍♀	Mulier vulputate, cutis media-tenebras sono
 🦸🏿‍♀️	Mulier vulputate, cutis tenebris sono
@@ -736,8 +736,8 @@
 🦸🏻‍♂	homo vulputate, lux cutis sono
 🦸🏼‍♂️	homo vulputate, cutis sono medium-levis
 🦸🏼‍♂	homo vulputate, cutis sono medium-levis
-🦸🏽‍♂️	homo vulputate, media cutis sono
-🦸🏽‍♂	homo vulputate, media cutis sono
+🦸🏽‍♂️	homo vulputate dolor: medium cutis sono
+🦸🏽‍♂	homo vulputate dolor: medium cutis sono
 🦸🏾‍♂️	homo vulputate dolor, cutis media-tenebras sono
 🦸🏾‍♂	homo vulputate dolor, cutis media-tenebras sono
 🦸🏿‍♂️	homo vulputate dolor, cutis obscura sono
@@ -752,8 +752,8 @@
 🦹‍♀	mulier supervillain
 🦹🏻‍♀️	Mulier supervillain: lux cutis sono
 🦹🏻‍♀	Mulier supervillain: lux cutis sono
-🦹🏼‍♀️	Mulier supervillain, cutis sono medium-levis
-🦹🏼‍♀	Mulier supervillain, cutis sono medium-levis
+🦹🏼‍♀️	Mulier supervillain: cutis sono medium-levis
+🦹🏼‍♀	Mulier supervillain: cutis sono medium-levis
 🦹🏽‍♀️	Mulier supervillain: medium cutis sono
 🦹🏽‍♀	Mulier supervillain: medium cutis sono
 🦹🏾‍♀️	Mulier supervillain: cutis media-tenebras sono
@@ -780,14 +780,14 @@
 🧙🏿	magus: tenebris cutis sono
 🧙‍♀️	mulier magus
 🧙‍♀	mulier magus
-🧙🏻‍♀️	Mulier magus lux cutis sono
-🧙🏻‍♀	Mulier magus lux cutis sono
-🧙🏼‍♀️	Mulier magus: cutis sono medium-levis
-🧙🏼‍♀	Mulier magus: cutis sono medium-levis
+🧙🏻‍♀️	Mulier magus: lux cutis sono
+🧙🏻‍♀	Mulier magus: lux cutis sono
+🧙🏼‍♀️	Mulier magus: medium-levis cutis sono
+🧙🏼‍♀	Mulier magus: medium-levis cutis sono
 🧙🏽‍♀️	Mulier magus: medium cutis sono
 🧙🏽‍♀	Mulier magus: medium cutis sono
-🧙🏾‍♀️	mulier magus: cutis media-nigricans sono
-🧙🏾‍♀	mulier magus: cutis media-nigricans sono
+🧙🏾‍♀️	femina magus: cutis media-nigricans sono
+🧙🏾‍♀	femina magus: cutis media-nigricans sono
 🧙🏿‍♀️	Mulier magus tenebris cutis sono
 🧙🏿‍♀	Mulier magus tenebris cutis sono
 🧙‍♂️	homo magus
@@ -828,10 +828,10 @@
 🧚🏼‍♂	homo mediocris: medium-levis cutis sono
 🧚🏽‍♂️	homo mediocris: medium cutis sono
 🧚🏽‍♂	homo mediocris: medium cutis sono
-🧚🏾‍♂️	homo mediocris: cutis media-tenebras sono
-🧚🏾‍♂	homo mediocris: cutis media-tenebras sono
-🧚🏿‍♂️	homo mediocris: cutis tenebris sono
-🧚🏿‍♂	homo mediocris: cutis tenebris sono
+🧚🏾‍♂️	homo mediocris: cutis media-nigricans sono
+🧚🏾‍♂	homo mediocris: cutis media-nigricans sono
+🧚🏿‍♂️	homo mediocris: tenebris cutis sono
+🧚🏿‍♂	homo mediocris: tenebris cutis sono
 🧛	vampire
 🧛🏻	vampire: lux cutis sono
 🧛🏼	vampire: medium-levis cutis sono
@@ -888,13 +888,13 @@
 🧜🏼‍♂	nerman: medium-lucem cutis sono
 🧜🏽‍♂️	nerman: medium cutis sono
 🧜🏽‍♂	nerman: medium cutis sono
-🧜🏾‍♂️	nerman: medium-obscurum cutis sono
-🧜🏾‍♂	nerman: medium-obscurum cutis sono
+🧜🏾‍♂️	nerman: cutis media-tenebras sono
+🧜🏾‍♂	nerman: cutis media-tenebras sono
 🧜🏿‍♂️	nerman: tenebris cutis sono
 🧜🏿‍♂	nerman: tenebris cutis sono
 🧝	dryadalis
 🧝🏻	dryadalis: lux cutis sono
-🧝🏼	dryadalis: medium-lucem cutis sono
+🧝🏼	dryadalis: medium-lucis cutis sono
 🧝🏽	dryadalis: medium cutis sono
 🧝🏾	dryadalis: medium tenebris cutis sono
 🧝🏿	dryadalis: tenebris cutis sono
@@ -937,7 +937,7 @@
 🙍🏼	homo fronte: medium-lucem cutis sono
 🙍🏽	homo fronte: medium cutis sono
 🙍🏾	homo fronte: medium-nigrae cutis sono
-🙍🏿	homo trucesque: tenebris cutis sono
+🙍🏿	homo torva: cutis sono tenebris
 🙍‍♂️	homo fronte
 🙍‍♂	homo fronte
 🙍🏻‍♂️	homo fronte: lux cutis sono
@@ -958,10 +958,10 @@
 🙍🏼‍♀	femina fronte: medium-levis cutis sono
 🙍🏽‍♀️	femina fronte: medium cutis sono
 🙍🏽‍♀	femina fronte: medium cutis sono
-🙍🏾‍♀️	femina fronte: medium-nigrae cutis sono
-🙍🏾‍♀	femina fronte: medium-nigrae cutis sono
-🙍🏿‍♀️	Mulier fronte: tenebris cutis sono
-🙍🏿‍♀	Mulier fronte: tenebris cutis sono
+🙍🏾‍♀️	femina fronte: medium-obscurum cutis sono
+🙍🏾‍♀	femina fronte: medium-obscurum cutis sono
+🙍🏿‍♀️	femina fronte: tenebris cutis sono
+🙍🏿‍♀	femina fronte: tenebris cutis sono
 🙎	homo arriderent
 🙎🏻	homo arriderent: lux cutis sono
 🙎🏼	homo arriderent: medium-levis cutis sono
@@ -1000,14 +1000,14 @@
 🙅🏿	homo gestu NO: tenebris cutis sono
 🙅‍♂️	homo gestum NO
 🙅‍♂	homo gestum NO
-🙅🏻‍♂️	homo gestu NO: lux cutis sono
-🙅🏻‍♂	homo gestu NO: lux cutis sono
+🙅🏻‍♂️	homo innuens NO: lux cutis sono
+🙅🏻‍♂	homo innuens NO: lux cutis sono
 🙅🏼‍♂️	homo innuens NO: medium-levis cutis sono
 🙅🏼‍♂	homo innuens NO: medium-levis cutis sono
 🙅🏽‍♂️	homo innuens NO: medium cutis sono
 🙅🏽‍♂	homo innuens NO: medium cutis sono
-🙅🏾‍♂️	homo innuens NO: medium-tenebras cutis sono
-🙅🏾‍♂	homo innuens NO: medium-tenebras cutis sono
+🙅🏾‍♂️	homo innuens NO: medium-nigrae cutis sono
+🙅🏾‍♂	homo innuens NO: medium-nigrae cutis sono
 🙅🏿‍♂️	homo innuens NO: tenebris cutis sono
 🙅🏿‍♂	homo innuens NO: tenebris cutis sono
 🙅‍♀️	Mulier gestu NO
@@ -1016,8 +1016,8 @@
 🙅🏻‍♀	Mulier gestu NO: lux cutis sono
 🙅🏼‍♀️	Mulier gestu NO: medium-levis cutis sono
 🙅🏼‍♀	Mulier gestu NO: medium-levis cutis sono
-🙅🏽‍♀️	Mulier gestu NO: medium cutis sono
-🙅🏽‍♀	Mulier gestu NO: medium cutis sono
+🙅🏽‍♀️	mulier gestu NO: medium cutis sono
+🙅🏽‍♀	mulier gestu NO: medium cutis sono
 🙅🏾‍♀️	mulier gestu NO: medium-nigrae cutis sono
 🙅🏾‍♀	mulier gestu NO: medium-nigrae cutis sono
 🙅🏿‍♀️	Mulier gestu NO: tenebris cutis sono
@@ -1027,7 +1027,7 @@
 🙆🏼	homo gestu OK: medium-levis cutis sono
 🙆🏽	homo gestu OK: medium cutis sono
 🙆🏾	homo gestu OK: medium-nigrae cutis sono
-🙆🏿	homo gestu OK: tenebris cutis sono
+🙆🏿	homo gestus OK: tenebris cutis sono
 🙆‍♂️	homo gestu OK
 🙆‍♂	homo gestu OK
 🙆🏻‍♂️	homo gestu OK: lux cutis sono
@@ -1036,7 +1036,7 @@
 🙆🏼‍♂	homo gestu OK: medium-lucem cutis sono
 🙆🏽‍♂️	homo gestu OK: medium cutis sono
 🙆🏽‍♂	homo gestu OK: medium cutis sono
-🙆🏾‍♂️	homo gestus OK: medium-nigrae cutis sono
+🙆🏾‍♂️	homo gestiens OK: medium-nigrae cutis sono
 🙆🏾‍♂	homo gestiens OK: medium-nigrae cutis sono
 🙆🏿‍♂️	homo gestu OK: tenebris cutis sono
 🙆🏿‍♂	homo gestu OK: tenebris cutis sono
@@ -1062,8 +1062,8 @@
 💁‍♂	homo tipping manus
 💁🏻‍♂️	homo tipping manu: lux cutis sono
 💁🏻‍♂	homo tipping manu: lux cutis sono
-💁🏼‍♂️	homo tipping manu: medium-levis cutis sono
-💁🏼‍♂	homo tipping manu: medium-levis cutis sono
+💁🏼‍♂️	homo tipping manus: medium-levis cutis sono
+💁🏼‍♂	homo tipping manus: medium-levis cutis sono
 💁🏽‍♂️	homo tipping manus: medium cutis sono
 💁🏽‍♂	homo tipping manus: medium cutis sono
 💁🏾‍♂️	homo tipping manus: cutis media-tenebras sono
@@ -1076,10 +1076,10 @@
 💁🏻‍♀	tipping mulier manus: cutis lux sono
 💁🏼‍♀️	tipping mulier manus: cutis sono medium-levis
 💁🏼‍♀	tipping mulier manus: cutis sono medium-levis
-💁🏽‍♀️	Mulier tipping manus: medium cutis sono
-💁🏽‍♀	Mulier tipping manus: medium cutis sono
-💁🏾‍♀️	mulier tipping manus: cutis media-tenebras sono
-💁🏾‍♀	mulier tipping manus: cutis media-tenebras sono
+💁🏽‍♀️	mulier tipping manus: medium cutis sono
+💁🏽‍♀	mulier tipping manus: medium cutis sono
+💁🏾‍♀️	tipping manus mulier: cutis media-tenebras sono
+💁🏾‍♀	tipping manus mulier: cutis media-tenebras sono
 💁🏿‍♀️	Mulier tipping manu: tenebris cutis sono
 💁🏿‍♀	Mulier tipping manu: tenebris cutis sono
 🙋	homo sublato manu
@@ -1116,7 +1116,7 @@
 🙇🏻	homo incurvatio, lux cutis sono
 🙇🏼	homo pronus: medium-lucis cutis sono
 🙇🏽	homo incurvus: medium cutis sono
-🙇🏾	homo incurvus: medium-obscurum cutis sono
+🙇🏾	homo incurvatus: medium-obscurum cutis sono
 🙇🏿	homo incurvavit se: tenebris cutis sono
 🙇‍♂️	homo incurvatus
 🙇‍♂	homo incurvatus
@@ -1126,14 +1126,14 @@
 🙇🏼‍♂	homo pronus: medium-levis cutis sono
 🙇🏽‍♂️	homo pronus: medium cutis sono
 🙇🏽‍♂	homo pronus: medium cutis sono
-🙇🏾‍♂️	homo pronus: medium-obscurum cutis sono
-🙇🏾‍♂	homo pronus: medium-obscurum cutis sono
+🙇🏾‍♂️	homo incurvatus: cutis media-tenebras sono
+🙇🏾‍♂	homo incurvatus: cutis media-tenebras sono
 🙇🏿‍♂️	homo incurvatus, tenebris cutis sono
 🙇🏿‍♂	homo incurvatus, tenebris cutis sono
 🙇‍♀️	femina incurvatio
 🙇‍♀	femina incurvatio
-🙇🏻‍♀️	Mulier incurvata: levi cutis sono
-🙇🏻‍♀	Mulier incurvata: levi cutis sono
+🙇🏻‍♀️	incurvatio femina, cutis sono lux
+🙇🏻‍♀	incurvatio femina, cutis sono lux
 🙇🏼‍♀️	incurvatus mulier: cutis sono medium-levis
 🙇🏼‍♀	incurvatus mulier: cutis sono medium-levis
 🙇🏽‍♀️	incurvatio femina: sono cutis media
@@ -1168,14 +1168,14 @@
 🤦🏼‍♀	Mulier facepalming: cutis sono medium-levis
 🤦🏽‍♀️	femina facepalming: medium cutis sono
 🤦🏽‍♀	femina facepalming: medium cutis sono
-🤦🏾‍♀️	femina facepalming: cutis media-tenebras sono
-🤦🏾‍♀	femina facepalming: cutis media-tenebras sono
+🤦🏾‍♀️	mulier facepalming: cutis media-tenebras sono
+🤦🏾‍♀	mulier facepalming: cutis media-tenebras sono
 🤦🏿‍♀️	Mulier facepalming: cutis obscura sono
 🤦🏿‍♀	Mulier facepalming: cutis obscura sono
 🤷	homo shrugging
 🤷🏻	homo shrugging: lux cutis sono
 🤷🏼	homo shrugging: cutis sono medium-levis
-🤷🏽	homo shrugging: media cutis sono
+🤷🏽	homo shrugging: medium cutis sono
 🤷🏾	homo shrugging: cutis media-tenebras sono
 🤷🏿	homo shrugging: cutis tenebris sono
 🤷‍♂️	homo shrugging
@@ -1236,7 +1236,7 @@
 💇🏻	homo questus TONSUS: lux cutis sono
 💇🏼	homo questus TONSUS: medium-levis cutis sono
 💇🏽	homo questus TONSUS: medium cutis sono
-💇🏾	homo questus TONSUS: medium-nigrae cutis sono
+💇🏾	homo questus TONSUS: cutis media-tenebras sono
 💇🏿	homo questus TONSUS: tenebris cutis sono
 💇‍♂️	homo questus TONSUS
 💇‍♂	homo questus TONSUS
@@ -1266,7 +1266,7 @@
 🚶🏻	homo ambulans: lux cutis sono
 🚶🏼	homo ambulans: medium-levis cutis sono
 🚶🏽	homo ambulans: medium cutis sono
-🚶🏾	homo ambulans: medium-nigrae cutis sono
+🚶🏾	homo ambulans: medium-nigrica cutis sono
 🚶🏿	homo ambulans: tenebris cutis sono
 🚶‍♂️	homo ambulans
 🚶‍♂	homo ambulans
@@ -1310,8 +1310,8 @@
 🏃🏾‍♂	homo currit: media-nigrae cutis sono
 🏃🏿‍♂️	homo currentem: tenebris cutis sono
 🏃🏿‍♂	homo currentem: tenebris cutis sono
-🏃‍♀️	Mulier cursus
-🏃‍♀	Mulier cursus
+🏃‍♀️	femina cursus
+🏃‍♀	femina cursus
 🏃🏻‍♀️	Mulier currens: lux cutis sono
 🏃🏻‍♀	Mulier currens: lux cutis sono
 🏃🏼‍♀️	Mulier currens: medium-levis cutis sono
@@ -1377,8 +1377,8 @@
 🧗🏿	homo scandere: cutis sono tenebris
 🧗‍♀️	femina scandere
 🧗‍♀	femina scandere
-🧗🏻‍♀️	Mulier scandens: lux cutis sono
-🧗🏻‍♀	Mulier scandens: lux cutis sono
+🧗🏻‍♀️	femina scandere: lux cutis sono
+🧗🏻‍♀	femina scandere: lux cutis sono
 🧗🏼‍♀️	femina scandere: medium-levis cutis sono
 🧗🏼‍♀	femina scandere: medium-levis cutis sono
 🧗🏽‍♀️	Mulier scandens: medium cutis sono
@@ -1392,11 +1392,11 @@
 🧗🏻‍♂️	homo scandens: lux cutis sono
 🧗🏻‍♂	homo scandens: lux cutis sono
 🧗🏼‍♂️	homo scandens: medium-lucem cutis sono
-🧗🏼‍♂	homo scandens: medium-lucem cutis sono
+🧗🏼‍♂	homo scandens: medium-levis cutis sono
 🧗🏽‍♂️	homo scandens: medium cutis sono
 🧗🏽‍♂	homo scandens: medium cutis sono
 🧗🏾‍♂️	homo scandens: medium-obscurum cutis sono
-🧗🏾‍♂	homo scandens: medium-obscurum cutis sono
+🧗🏾‍♂	homo scandens: medium-nigrae cutis sono
 🧗🏿‍♂️	homo scandere: cutis sono tenebris
 🧗🏿‍♂	homo scandere: cutis sono tenebris
 🧘	persona lotos positio
@@ -1421,8 +1421,8 @@
 🧘‍♂	in lotos positio
 🧘🏻‍♂️	in lotos loco levi cutis sono
 🧘🏻‍♂	in lotos loco levi cutis sono
-🧘🏼‍♂️	homo in lotos situ: medium-lucis cutis sono
-🧘🏼‍♂	homo in lotos situ: medium-lucis cutis sono
+🧘🏼‍♂️	homo in Loto positio: medium-levis cutis sono
+🧘🏼‍♂	homo in Loto positio: medium-levis cutis sono
 🧘🏽‍♂️	homo in lotos situ: medium cutis sono
 🧘🏽‍♂	homo in lotos situ: medium cutis sono
 🧘🏾‍♂️	homo in loto situ: medium-nigrae cutis sono
@@ -1488,14 +1488,14 @@
 🏌🏾‍♂	homo golfing: cutis media-tenebras sono
 🏌🏿‍♂️	homo golfing: tenebris cutis sono
 🏌🏿‍♂	homo golfing: tenebris cutis sono
-🏌️‍♀️	mulier golfing
-🏌‍♀️	mulier golfing
-🏌️‍♀	mulier golfing
-🏌‍♀	mulier golfing
+🏌️‍♀️	femina golfing
+🏌‍♀️	femina golfing
+🏌️‍♀	femina golfing
+🏌‍♀	femina golfing
 🏌🏻‍♀️	Mulier golfing: lux cutis sono
 🏌🏻‍♀	Mulier golfing: lux cutis sono
-🏌🏼‍♀️	Mulier golfing: cutis sono medium-levis
-🏌🏼‍♀	Mulier golfing: cutis sono medium-levis
+🏌🏼‍♀️	Mulier golfing: medium-levis cutis sono
+🏌🏼‍♀	Mulier golfing: medium-levis cutis sono
 🏌🏽‍♀️	Mulier golfing: medium cutis sono
 🏌🏽‍♀	Mulier golfing: medium cutis sono
 🏌🏾‍♀️	Mulier golfing: cutis media-tenebras sono
@@ -1528,20 +1528,20 @@
 🏄🏼‍♀	Mulier superficies: cutis sono medium-levis
 🏄🏽‍♀️	Mulier surfing: medium cutis sono
 🏄🏽‍♀	Mulier surfing: medium cutis sono
-🏄🏾‍♀️	Mulier superficies: cutis media-nigricans sono
-🏄🏾‍♀	Mulier superficies: cutis media-nigricans sono
+🏄🏾‍♀️	Mulier superficies: cutis media-tenebras sono
+🏄🏾‍♀	Mulier superficies: cutis media-tenebras sono
 🏄🏿‍♀️	Mulier superficies: cutis sono tenebris
 🏄🏿‍♀	Mulier superficies: cutis sono tenebris
 🚣	homo remigando naviculam
-🚣🏻	homo remigio naviculam: levi cute sono
+🚣🏻	homo remigio naviculam levem cutis sono
 🚣🏼	homo remigio naviculam: medium-levis cutis sono
 🚣🏽	homo rowing navicula: medium cutis sono
 🚣🏾	homo remigans naviculam: medium-obscurum cutis sono
 🚣🏿	homo remigio naviculam: cutis obscura sono
 🚣‍♂️	homo remigando naviculam
 🚣‍♂	homo remigando naviculam
-🚣🏻‍♂️	homo remigio naviculam: levi cutis sono
-🚣🏻‍♂	homo remigio naviculam: levi cutis sono
+🚣🏻‍♂️	homo remigio naviculam levem cutis sono
+🚣🏻‍♂	homo remigio naviculam levem cutis sono
 🚣🏼‍♂️	homo remigio naviculam: medium-levis cutis sono
 🚣🏼‍♂	homo remigio naviculam: medium-levis cutis sono
 🚣🏽‍♂️	homo remigans naviculam: medium cutis sono
@@ -1550,8 +1550,8 @@
 🚣🏾‍♂	homo remigans naviculam: cutis media-tenebras sono
 🚣🏿‍♂️	homo remigans naviculam: cutis obscura sono
 🚣🏿‍♂	homo remigans naviculam: cutis obscura sono
-🚣‍♀️	femina remigando naviculam
-🚣‍♀	femina remigando naviculam
+🚣‍♀️	Mulier remigando naviculam
+🚣‍♀	Mulier remigando naviculam
 🚣🏻‍♀️	Mulier remigio naviculam levem cutem sono
 🚣🏻‍♀	Mulier remigio naviculam levem cutem sono
 🚣🏼‍♀️	femina rowing boat: medium-levis cutis sono
@@ -1560,11 +1560,11 @@
 🚣🏽‍♀	femina rowing boat: medium cutis sono
 🚣🏾‍♀️	femina rowing boat: medium-tenebrae cutis sono
 🚣🏾‍♀	femina rowing boat: medium-tenebrae cutis sono
-🚣🏿‍♀️	femina remigando naviculam: cutis obscura sono
-🚣🏿‍♀	femina remigando naviculam: cutis obscura sono
+🚣🏿‍♀️	Mulier remigio naviculam: cutis obscura sono
+🚣🏿‍♀	Mulier remigio naviculam: cutis obscura sono
 🏊	homo swimming
 🏊🏻	homo swimming: lux cutis sono
-🏊🏼	homo natat: medium-levis cutis sono
+🏊🏼	homo swimming: medium-lucis cutis sono
 🏊🏽	homo natat: medium cutis sono
 🏊🏾	homo swimming
 🏊🏿	homo natat: tenebris cutis sono
@@ -1592,8 +1592,8 @@
 🏊🏾‍♀	femina swimming
 🏊🏿‍♀️	Mulier natat: tenebris cutis sono
 🏊🏿‍♀	Mulier natat: tenebris cutis sono
-⛹️	homo ROBUSTUS pila
-⛹	homo ROBUSTUS pila
+⛹️	homo GRAVIS pila
+⛹	homo GRAVIS pila
 ⛹🏻	homo GRAVIS pila: lux cutis sono
 ⛹🏼	homo GRAVIS pila: medium-lucem cutis sono
 ⛹🏽	homo GRAVIS pila: medium cutis sono
@@ -1609,8 +1609,8 @@
 ⛹🏼‍♂	homo bouncing pila: medium-lucem cutis sono
 ⛹🏽‍♂️	homo bouncing pila: medium cutis sono
 ⛹🏽‍♂	homo bouncing pila: medium cutis sono
-⛹🏾‍♂️	homo bouncing pila: medium-nigrae cutis sono
-⛹🏾‍♂	homo bouncing pila: medium-nigrae cutis sono
+⛹🏾‍♂️	homo bouncing pila: medium-obscurum cutis sono
+⛹🏾‍♂	homo bouncing pila: medium-obscurum cutis sono
 ⛹🏿‍♂️	homo bouncing pila: tenebris cutis sono
 ⛹🏿‍♂	homo bouncing pila: tenebris cutis sono
 ⛹️‍♀️	Mulier proiectione pila
@@ -1629,17 +1629,17 @@
 ⛹🏿‍♀	Mulier GRAVIS pila: tenebris cutis sono
 🏋️	homo elevans weights
 🏋	homo elevans weights
-🏋🏻	homo elevans pondera cutis sono lux
-🏋🏼	homo elevatio pondera: cutis sono medium-levis
+🏋🏻	homo elevatis pondera cutis sono lux
+🏋🏼	homo elevatio pondera: medium-levis cutis sono
 🏋🏽	homo elevatio pondera: medium cutis sono
 🏋🏾	homo elevatio pondera: medium-nigrae cutis sono
 🏋🏿	homo elevatis pondera tenebris cutis sono
-🏋️‍♂️	homo elevatis weights
-🏋‍♂️	homo elevatis weights
-🏋️‍♂	homo elevatis weights
-🏋‍♂	homo elevatis weights
-🏋🏻‍♂️	homo elevatis pondera cutis sono lux
-🏋🏻‍♂	homo elevatis pondera cutis sono lux
+🏋️‍♂️	ille elevatis weights
+🏋‍♂️	ille elevatis weights
+🏋️‍♂	ille elevatis weights
+🏋‍♂	ille elevatis weights
+🏋🏻‍♂️	elevatio pondera hominis: cutis lux sono
+🏋🏻‍♂	elevatio pondera hominis: cutis lux sono
 🏋🏼‍♂️	homo elevatis pondera cutis sono medium-levis
 🏋🏼‍♂	homo elevatis pondera cutis sono medium-levis
 🏋🏽‍♂️	homo elevatio pondera: medium cutis sono
@@ -1652,8 +1652,8 @@
 🏋‍♀️	Mulier elevatis weights
 🏋️‍♀	Mulier elevatis weights
 🏋‍♀	Mulier elevatis weights
-🏋🏻‍♀️	Mulier elevatis pondera levi cute sono
-🏋🏻‍♀	Mulier elevatis pondera levi cute sono
+🏋🏻‍♀️	Mulier elevatis pondera cutis sono lux
+🏋🏻‍♀	Mulier elevatis pondera cutis sono lux
 🏋🏼‍♀️	Mulier elevatis pondera cutis sono medium-levis
 🏋🏼‍♀	Mulier elevatis pondera cutis sono medium-levis
 🏋🏽‍♀️	Mulier elevatio pondera: medium cutis sono
@@ -1748,8 +1748,8 @@
 🤸‍♀	femina cartwheeling
 🤸🏻‍♀️	Mulier cartwheeling: lux cutis sono
 🤸🏻‍♀	Mulier cartwheeling: lux cutis sono
-🤸🏼‍♀️	femina cartwheeling: medium-levis cutis sono
-🤸🏼‍♀	femina cartwheeling: medium-levis cutis sono
+🤸🏼‍♀️	Mulier cartwheeling: medium-levis cutis sono
+🤸🏼‍♀	Mulier cartwheeling: medium-levis cutis sono
 🤸🏽‍♀️	femina cartwheeling: medium cutis sono
 🤸🏽‍♀	femina cartwheeling: medium cutis sono
 🤸🏾‍♀️	femina cartwheeling: medium-obscurum cutis sono
@@ -1785,8 +1785,8 @@
 🤽🏻‍♀	Polo mulier ludens aqua: cutis lux sono
 🤽🏼‍♀️	Polo mulier ludens aqua: cutis sono medium-levis
 🤽🏼‍♀	Polo mulier ludens aqua: cutis sono medium-levis
-🤽🏽‍♀️	Polo aqua ludens mulier: media cutis sono
-🤽🏽‍♀	Polo aqua ludens mulier: media cutis sono
+🤽🏽‍♀️	Polo aqua ludentem mulier: cutis media sono
+🤽🏽‍♀	Polo aqua ludentem mulier: cutis media sono
 🤽🏾‍♀️	Mulier ludens aqua polo: cutis media-tenebras sono
 🤽🏾‍♀	Mulier ludens aqua polo: cutis media-tenebras sono
 🤽🏿‍♀️	Mulier ludens aqua polo: cutis obscura sono
@@ -1817,8 +1817,8 @@
 🤾🏼‍♀	Mulier ludens pila: medium-levis cutis sono
 🤾🏽‍♀️	Mulier ludens pila: medium cutis sono
 🤾🏽‍♀	Mulier ludens pila: medium cutis sono
-🤾🏾‍♀️	Mulier ludens pila: medium-obscurum cutis sono
-🤾🏾‍♀	Mulier ludens pila: medium-obscurum cutis sono
+🤾🏾‍♀️	Mulier ludens pila: sono cutis medium-obscurum
+🤾🏾‍♀	Mulier ludens pila: sono cutis medium-obscurum
 🤾🏿‍♀️	Mulier ludens pila: tenebris cutis sono
 🤾🏿‍♀	Mulier ludens pila: tenebris cutis sono
 🤹	homo praestigiae
@@ -1903,8 +1903,8 @@
 💪	curvum biceps
 💪🏻	biceps flexae: lux cutis sono
 💪🏼	biceps curvum: cutis sono medium-levis
-💪🏽	biceps flexae: media cutis sono
-💪🏾	biceps curvus: cutis media-nigricans sono
+💪🏽	bicipitis: medium cutis sono
+💪🏾	biceps flexae: cutis media-nigricans sono
 💪🏿	biceps curvus: tenebris cutis sono
 🦵	leg
 🦵🏻	crus: lux cutis sono
@@ -1933,7 +1933,7 @@
 ☝️	index sursum
 ☝	index sursum
 ☝🏻	index sursum: lux cutis sono
-☝🏼	index sursum: medium-levis cutis sono
+☝🏼	index pointing up: medium-lucis cutis sono
 ☝🏽	index pointing up: medium cutis sono
 ☝🏾	index pointing up: medium-nigrae cutis sono
 ☝🏿	index sursum: tenebris cutis sono
@@ -1959,15 +1959,15 @@
 ✌	victoriam manus
 ✌🏻	victoriam manus: levi cutis sono
 ✌🏼	victoriam manus: medium-levis cutis sono
-✌🏽	victoria manus: medium cutis sono
-✌🏾	victoria manus: cutis media-nigricans sono
-✌🏿	victoriam manus: cutis obscura sono
+✌🏽	victoriam manus: medium cutis sono
+✌🏾	victoria manus: cutis media-tenebrae sono
+✌🏿	victoria manus: cutis obscura sono
 🤞	transgressus digitos
 🤞🏻	traiecit digitos: lux cutis sono
 🤞🏼	transgressus digitos: medium-lucem cutis sono
 🤞🏽	transgressus digitos: medium cutis sono
 🤞🏾	transgressus digitos: medium-obscura cutis sono
-🤞🏿	traiecit digitos: tenebris cutis sono
+🤞🏿	transgressus digitos: tenebris cutis sono
 🖖	Vulcanum salutant
 🖖🏻	vulcanus salutant: lux cutis sono
 🖖🏼	vulcanus salutant: cutis sono medium-levis
@@ -1982,14 +1982,14 @@
 🤘🏿	signum cornuum cutis tonus
 🤙	me manus
 🤙🏻	me manus: lux cutis sono
-🤙🏼	me manus: medium-lucem cutis sono
+🤙🏼	me manus: medium-levis cutis sono
 🤙🏽	me manus: medium cutis sono
-🤙🏾	me manus: cutis media-tenebras sono
-🤙🏿	me manus: cutis sono tenebris
+🤙🏾	voca me manus: cutis media-tenebras sono
+🤙🏿	me manus: cutis tenebris sono
 🖐️	manus digitis obliquata
 🖐	manus digitis obliquata
 🖐🏻	manus digitis obliquata: levi cutis sono
-🖐🏼	manus digitis obliquata: cutis sono medium-levis
+🖐🏼	manus digitis obliquata: sono cutis media-levis
 🖐🏽	manus digitis obliquata: sono cutis media
 🖐🏾	manus digitis obliquata: sono cutis media-nigricans
 🖐🏿	manus digitis obliquata: cutis obscura sono
@@ -2003,14 +2003,14 @@
 👌🏻	OK manus: lux cutis sono
 👌🏼	OK manus: medium-lucis cutis sono
 👌🏽	OK manus: medium cutis sono
-👌🏾	OK manus: cutis media-tenebras sono
+👌🏾	OK manus: cutis media-tenebrae sono
 👌🏿	Bene manus: cutis obscura sono
 👍	pollice
 👍🏻	pollices sursum: lux cutis sono
 👍🏼	pollices sursum: medium-levis cutis sono
 👍🏽	pollices sursum: medium cutis sono
 👍🏾	pollices sursum: medium-nigrae cutis sono
-👍🏿	pollices: tenebris cutis sono
+👍🏿	pollices sursum: tenebris cutis sono
 👎	pollices descendit
 👎🏻	pollices sunt: lux cutis sono
 👎🏼	pollices sunt: medium-levis cutis sono
@@ -2019,7 +2019,7 @@
 👎🏿	pollices sunt: tenebris cutis sono
 ✊	erexit pugnus
 ✊🏻	erexit pugnus: lux cutis sono
-✊🏼	erexit pugnus: medium-levis cutis sono
+✊🏼	erexit pugnus: cutis sono medium-levis
 ✊🏽	erexit pugnus: media cutis sono
 ✊🏾	erexit pugnus: cutis media-tenebras sono
 ✊🏿	erexit pugnus: cutis sono tenebris
@@ -2050,7 +2050,7 @@
 👋	iactans manus
 👋🏻	iactans manus: lux cutis sono
 👋🏼	iactans manus: cutis sono medium-levis
-👋🏽	manu iactans: medium cutis sono
+👋🏽	iactans manus: medium cutis sono
 👋🏾	iactans manus: cutis media-tenebras sono
 👋🏿	iactans manus: cutis obscura sono
 🤟	amores te gestum
@@ -2067,7 +2067,7 @@
 ✍🏾	scribebat manu: cutis media-nigricans sono
 ✍🏿	scribebat manu: tenebris cutis sono
 👏	plausus
-👏🏻	plausibus levibus cutis sono
+👏🏻	plausibus: levi cutis sono
 👏🏼	plausibus: medium-levis cutis sono
 👏🏽	plausus: media cutis sono
 👏🏾	plausus: cutis media-tenebrae sono
@@ -2085,7 +2085,7 @@
 🙌🏾	manus elevatio: cutis media-nigricans sono
 🙌🏿	sublatis manibus cutis tonus
 🤲	manus ascendit simul
-🤲🏻	palmae simul: cutis sono lux
+🤲🏻	palmae simul: lux cutis sono
 🤲🏼	manus ascendit simul: medium-levis cutis sono
 🤲🏽	manus ascendit simul: medium cutis sono
 🤲🏾	palmae in unum: cutis media-tenebras sono
@@ -2107,11 +2107,11 @@
 👂🏻	auris: lux cutis sono
 👂🏼	auris: medium-levis cutis sono
 👂🏽	auris: medium cutis sono
-👂🏾	auris: media-nigrica cutis sono
+👂🏾	auris: cutis media-nigricans sono
 👂🏿	auris: tenebris cutis sono
 👃	nasus
 👃🏻	nasum: lux cutis sono
-👃🏼	nasum: medium-lucem cutis sono
+👃🏼	nasus: cutis sono medium-levis
 👃🏽	nasus: medium cutis sono
 👃🏾	nasus: cutis media-nigricans sono
 👃🏿	nasum: cutis tenebris sono
@@ -2296,7 +2296,7 @@
 🦈	PISTRIS
 🐙	polypus
 🐚	cochleam
-🦀	cancer
+🦀	cancrorum
 🦞	locusta
 🦐	squilla
 🦑	lolligo
@@ -2312,7 +2312,7 @@
 🕸️	aranea telam
 🕸	aranea telam
 🦂	scorpius
-🦟	CULEX "
+🦟	CULEX
 🦠	microbe
 💐	bouquet
 🌸	cerasus flores
@@ -2331,7 +2331,7 @@
 🌴	palma
 🌵	cactus
 🌾	manipulum rice
-🌿	herbae
+🌿	herba
 ☘️	trifolium
 ☘	trifolium
 🍀	quattuor folium Trifolium
@@ -2346,7 +2346,7 @@
 🍌	Musa
 🍍	pineapple
 🥭	mango
-🍎	red malum
+🍎	rubrum malum
 🍏	viride malum
 🍐	pirum
 🍑	persici
@@ -2448,7 +2448,7 @@
 🥄	cochleari
 🔪	culina cultro
 🏺	amphorae
-🌍	globum ostendens Europa-Africae
+🌍	orbis ostendens Europa-Africae
 🌎	ostendens globe Americas
 🌏	ostendens globe Asia-Australia
 🌐	globus meridianorum
@@ -2470,8 +2470,8 @@
 🏜	desert
 🏝️	insula deserta
 🏝	insula deserta
-🏞️	nationalibus parcum
-🏞	nationalibus parcum
+🏞️	nationalis parcum
+🏞	nationalis parcum
 🏟️	stadium
 🏟	stadium
 🏛️	classical aedificium
@@ -2579,8 +2579,8 @@
 🛳	viatoribus navis
 ⛴️	porttitor
 ⛴	porttitor
-🛥️	motricium navi
-🛥	motricium navi
+🛥️	motricium navicula
+🛥	motricium navicula
 🚢	navis
 ✈️	scapha
 ✈	scapha
@@ -2601,13 +2601,13 @@
 🛎	bellhop bell
 🧳	sarcinas
 ⌛	clepsydris fieri
-⏳	clepsydris non feci
+⏳	clepsydris metiuntur
 ⌚	vigilate
 ⏰	terror horologium
 ⏱️	stopwatch
 ⏱	stopwatch
-⏲️	timer horologium
-⏲	timer horologium
+⏲️	timor horologium
+⏲	timor horologium
 🕰️	exstabat horologium
 🕰	exstabat horologium
 🕛	sexta
@@ -2645,7 +2645,7 @@
 🌙	Lunae
 🌚	novam lunam faciem
 🌛	prima quarta luna facies
-🌜	ultima quarta lunae faciem
+🌜	novissime quarta luna faciem
 🌡️	thermometrum
 🌡	thermometrum
 ☀️	solis
@@ -2661,7 +2661,7 @@
 ⛈️	nubes et fulgura et pluvia
 ⛈	nubes et fulgura et pluvia
 🌤️	sol post parvam nubem
-🌤	Sol post parvam nubem
+🌤	sol post parvam nubem
 🌥️	Sol post magnam nubem
 🌥	Sol post magnam nubem
 🌦️	sol post nubes pluviam
@@ -2702,7 +2702,7 @@
 🎆	pompa
 🎇	sparkler
 🧨	firecracker
-✨	micat
+✨	scintillat
 🎈	Balloon
 🎉	pars popper
 🎊	confetti pila
@@ -2725,8 +2725,8 @@
 🏆	tropaeum
 🏅	ludis numisma
 🥇	1st place numisma
-🥈	2nd place numisma
-🥉	3 locum numisma
+🥈	2nd loco numisma
+🥉	3 locus numisma
 ⚽	Morbi pila
 ⚾	baseball
 🥎	softball
@@ -2745,13 +2745,13 @@
 🏸	badminton
 🥊	caestu caestu
 🥋	militaris artes uniformis
-🥅	metam rete
+🥅	propositum rete
 ⛳	vexillum in foraminis
 ⛸️	Nullam glaciem
 ⛸	Nullam glaciem
 🎣	piscantur polus
 🎽	currit shirt
-🎿	skis
+🎿	nartae
 🛷	lupus
 🥌	calamistrum
 🎯	recta hit
@@ -2767,14 +2767,14 @@
 🧸	Teddy ursus
 ♠️	causa ligonem
 ♠	causa ligonem
-♥️	cor sectam
-♥	cor sectam
+♥️	cor causa
+♥	cor causa
 ♦️	adamas causa
 ♦	adamas causa
 ♣️	clava causa
 ♣	clava causa
-♟️	latrunculorum miles
-♟	latrunculorum miles
+♟️	LATRUNCULARIUS arrhabonem
+♟	LATRUNCULARIUS arrhabonem
 🃏	scurra
 🀄	mahjong red draconis
 🎴	flos ludens cards
@@ -2849,8 +2849,8 @@
 📼	videocassette
 🔍	magnificantes speculum iuvenci sinistram
 🔎	magnificantes speculum iuvenci ius
-🕯️	lucerna
-🕯	lucerna
+🕯️	candelabrum
+🕯	candelabrum
 💡	lux bulbus
 🔦	saccus dorsualis
 🏮	charta rubra lucerna
@@ -2865,7 +2865,7 @@
 📒	ledger
 📃	pagina Crispum
 📜	scroll
-📄	pagina adversus eum
+📄	page adversus sursum
 📰	diurna
 🗞️	involutus-sursum newspaper
 🗞	involutus-sursum newspaper
@@ -2874,7 +2874,7 @@
 🏷️	pittacium
 🏷	pittacium
 💰	pecunia sacculi
-💴	nummorum Iaponensium banknote
+💴	nummorum Iaponensium banknotes
 💵	pupa banknotes
 💶	Euro banknotes
 💷	libram banknote
@@ -3016,7 +3016,7 @@
 🚰	scatere aqua
 ♿	wheelchair symbolum
 🚹	locus hominum
-🚺	feminarum cubiculum
+🚺	feminarum camera
 🚻	restroom
 🚼	infantem symbolum
 🚾	aqua armarium
@@ -3097,7 +3097,7 @@
 🕎	menorah
 🔯	punctatum sex acuta stella
 ♈	Aries
-♉	Tauri
+♉	Taurus
 ♊	Gemini
 ♋	Cancer
 ♌	Leo
@@ -3142,8 +3142,8 @@
 📶	antennae vectes
 📳	vibrationis modus
 📴	mobile phone off
-♀️	signum femina
-♀	signum femina
+♀️	femina signum
+♀	femina signum
 ♂️	masculum signum
 ♂	masculum signum
 ⚕️	medicinae symbolum
@@ -3157,7 +3157,7 @@
 🔱	tridenti insigne
 📛	nomen insigne
 🔰	Iaponica symbolum inceptor
-⭕	gravibus magnum circulo
+⭕	magna circulus gravibus
 ✅	album grave reprehendo marcam
 ☑️	scrutinio archa cum reprehendo
 ☑	scrutinio archa cum reprehendo
@@ -3436,7 +3436,7 @@
 🇰🇵	Corea Septentrionalis
 🇰🇷	South Korea
 🇰🇼	Cuvaitum
-🇰🇾	Cayman insulae
+🇰🇾	Insulae Cayman
 🇰🇿	Kazakhstan
 🇱🇦	Laos
 🇱🇧	Libanus
@@ -3447,7 +3447,7 @@
 🇱🇸	Lesotho
 🇱🇹	Lithuania
 🇱🇺	Luxemburgum
-🇱🇻	Lettonia
+🇱🇻	Latvijas
 🇱🇾	Libyci
 🇲🇦	Mauritania
 🇲🇨	Monaco
@@ -3463,7 +3463,7 @@
 🇲🇴	Macau SAR China
 🇲🇵	Insulae Marianae septentrionales
 🇲🇶	Martinique
-🇲🇷	Mauretania
+🇲🇷	Mauritania
 🇲🇸	Montserrat
 🇲🇹	Malta
 🇲🇺	Mauritius
@@ -3521,7 +3521,7 @@
 🇸🇴	Somalia
 🇸🇷	Suriname
 🇸🇸	South Sudan
-🇸🇹	São Tomé & Principis
+🇸🇹	São Tomé & Principi
 🇸🇻	Salvatoria
 🇸🇽	Sint Maarten
 🇸🇾	Syriae
@@ -3554,7 +3554,7 @@
 🇻🇨	S. Vincentii & Grenadinen
 🇻🇪	Venetiola
 🇻🇬	Insulae Virgines Britanniae
-🇻🇮	US Virginum Insularum
+🇻🇮	US Virgin Insulae
 🇻🇳	Vietnamia
 🇻🇺	Vanuatu
 🇼🇫	Wallis & Futuna
