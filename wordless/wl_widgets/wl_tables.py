@@ -1038,7 +1038,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
     def add_para(self, doc):
         para = doc.add_paragraph()
-        para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY # pylint: disable=no-member
+        para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY
 
         self.style_para_spacing(para)
 

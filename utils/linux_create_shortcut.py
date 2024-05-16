@@ -19,9 +19,9 @@
 import os
 import subprocess
 
-import wl_utils
+from wordless.wl_utils import wl_misc
 
-wl_ver = wl_utils.get_wl_ver()
+wl_ver = wl_misc.get_wl_ver()
 
 path_wl = os.path.split(globals()['__file__'])[0]
 path_exec = os.path.join(os.path.split(path_wl)[0], 'Wordless')

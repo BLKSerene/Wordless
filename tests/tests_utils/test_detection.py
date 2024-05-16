@@ -17,7 +17,10 @@
 # ----------------------------------------------------------------------
 
 import os
+import re
 import shutil
+
+import lingua
 
 from tests import wl_test_init, wl_test_lang_examples
 from wordless.wl_utils import wl_conversion, wl_detection
@@ -279,6 +282,22 @@ def test_detection_encoding():
     finally:
         shutil.rmtree(test_file_dir)
 
+def test_lingua():
+    langs = {
+        re.search(r'^[^\(\)]+', lang.lower()).group().strip()
+        for lang in main.settings_global['langs']
+    }
+    langs_exceptions = {'bokmal', 'ganda', 'nynorsk', 'slovene'}
+    langs_extra = set()
+
+    for lang in lingua.Language.all():
+        if lang.name.lower() not in langs | langs_exceptions:
+            langs_extra.add(lang.name)
+
+    print(f"Extra languages: {', '.join(langs_extra)}\n")
+
+    assert langs_extra == {'BOSNIAN', 'MAORI', 'SHONA', 'SOMALI', 'SOTHO', 'TSONGA', 'XHOSA'}
+
 def test_detection_lang():
     test_file_dir = 'tests/tests_utils/_files_detection_lang'
 
@@ -287,7 +306,7 @@ def test_detection_lang():
     try:
         for lang in [
             'afr', 'sqi', 'ara', 'hye', 'aze',
-            'eus', 'bel', 'ben', 'bos', 'bul',
+            'eus', 'bel', 'ben', 'bul',
             'cat', 'zho_cn', 'zho_tw', 'hrv', 'ces',
             'dan', 'nld',
             'eng_us', 'epo', 'est',
@@ -298,16 +317,15 @@ def test_detection_lang():
             'jpn',
             'kor', 'kaz',
             'lat', 'lav', 'lit', 'lug',
-            'mkd', 'mri', 'mar', 'mon', 'msa',
+            'mkd', 'mar', 'mon', 'msa',
             'nno', # 'nob',
             'fas', 'pol', 'por_pt', 'pan_guru',
             'ron', 'rus',
-            'srp_cyrl', 'sna', 'slk', 'slv', 'som', 'sot', 'spa', 'swa', 'swe',
-            'tgl', 'tam', 'tel', 'tha', 'tso', 'tsn', 'tur',
+            'srp_cyrl', 'slk', 'slv', 'spa', 'swa', 'swe',
+            'tgl', 'tam', 'tel', 'tha', 'tsn', 'tur',
             'ukr', 'urd',
             'vie',
             'cym',
-            'xho',
             'yor',
             'zul'
         ]:
@@ -331,4 +349,6 @@ def test_detection_lang():
 
 if __name__ == '__main__':
     test_detection_encoding()
+
+    test_lingua()
     test_detection_lang()

@@ -475,7 +475,7 @@
 💂	penjaga
 💂🏻	penjaga: warna kulit cerah
 💂🏼	pelindung: warna kulit cerah-sedang
-💂🏽	penjaga: warna kulit sedang
+💂🏽	pelindung: warna kulit sedang
 💂🏾	pelindung: warna kulit gelap-sedang
 💂🏿	penjaga: warna kulit gelap
 💂‍♂️	pria penjaga
@@ -1152,8 +1152,8 @@
 🤦‍♂	pria menutup wajahnya
 🤦🏻‍♂️	pria bertepuk tangan: warna kulit cerah
 🤦🏻‍♂	pria bertepuk tangan: warna kulit cerah
-🤦🏼‍♂️	pria melakukan facepalming: warna kulit cerah-sedang
-🤦🏼‍♂	pria melakukan facepalming: warna kulit cerah-sedang
+🤦🏼‍♂️	pria melakukan gerakan facepalming: warna kulit cerah-sedang
+🤦🏼‍♂	pria melakukan gerakan facepalming: warna kulit cerah-sedang
 🤦🏽‍♂️	pria melakukan gerakan facepalming: warna kulit sedang
 🤦🏽‍♂	pria melakukan gerakan facepalming: warna kulit sedang
 🤦🏾‍♂️	pria melakukan gerakan facepalming: warna kulit gelap-sedang
@@ -1926,7 +1926,7 @@
 👈🏿	indeks backhand menunjuk ke kiri: warna kulit gelap
 👉	indeks backhand menunjuk ke kanan
 👉🏻	Indeks backhand menunjuk ke kanan: warna kulit cerah
-👉🏼	Indeks backhand menunjuk ke kanan: warna kulit cerah-sedang
+👉🏼	indeks backhand menunjuk ke kanan: warna kulit cerah-sedang
 👉🏽	Indeks backhand menunjuk ke kanan: warna kulit sedang
 👉🏾	Indeks backhand menunjuk ke kanan: warna kulit gelap-sedang
 👉🏿	Indeks backhand menunjuk ke kanan: warna kulit gelap
@@ -2511,8 +2511,8 @@
 ⛺	tenda
 🌁	berkabut
 🌃	malam dengan bintang
-🏙️	lanskap kota
-🏙	lanskap kota
+🏙️	pemandangan kota
+🏙	pemandangan kota
 🌄	matahari terbit di atas pegunungan
 🌅	matahari terbit
 🌆	pemandangan kota saat senja
@@ -2658,8 +2658,8 @@
 ☁️	awan
 ☁	awan
 ⛅	matahari di balik awan
-⛈️	awan disertai petir dan hujan
-⛈	awan disertai petir dan hujan
+⛈️	awan disertai kilat dan hujan
+⛈	awan disertai kilat dan hujan
 🌤️	matahari di balik awan kecil
 🌤	matahari di balik awan kecil
 🌥️	matahari di balik awan besar
@@ -3299,7 +3299,7 @@
 🔵	lingkaran biru
 🏁	bendera kotak-kotak
 🚩	bendera segitiga
-🎌	bendera bersilangan
+🎌	bendera bersilang
 🏴	bendera hitam
 🏳️	bendera putih
 🏳	bendera putih

@@ -103,7 +103,7 @@
 🤖	faccia da robot
 💩	mucchio di cacca
 😺	faccia di gatto sorridente
-😸	faccia di gatto sorridente con occhi sorridenti
+😸	faccia di gatto ghignante con occhi sorridenti
 😹	faccia di gatto con lacrime di gioia
 😻	faccia di gatto sorridente con gli occhi a cuore
 😼	faccia di gatto con un sorriso ironico
@@ -133,7 +133,7 @@
 🧒🏿	bambino: carnagione scura
 👦	ragazzo
 👦🏻	ragazzo: carnagione chiara
-👦🏼	ragazzo: carnagione abbastanza chiara
+👦🏼	ragazzo: carnagione medio-chiara
 👦🏽	ragazzo: carnagione olivastra
 👦🏾	ragazzo: carnagione medio-scura
 👦🏿	ragazzo: carnagione scura
@@ -201,14 +201,14 @@
 👩🏽‍⚕	operatrice sanitaria: carnagione olivastra
 👩🏾‍⚕️	operatrice sanitaria: carnagione medio-scura
 👩🏾‍⚕	operatrice sanitaria: carnagione medio-scura
-👩🏿‍⚕️	operatrice sanitaria: carnagione scura
-👩🏿‍⚕	operatrice sanitaria: carnagione scura
+👩🏿‍⚕️	operatrice sanitaria donna: carnagione scura
+👩🏿‍⚕	operatrice sanitaria donna: carnagione scura
 👨‍🎓	studente uomo
 👨🏻‍🎓	studente uomo: carnagione chiara
 👨🏼‍🎓	studente uomo: carnagione abbastanza chiara
 👨🏽‍🎓	studente uomo: carnagione olivastra
 👨🏾‍🎓	studente uomo: carnagione medio-scura
-👨🏿‍🎓	studente: carnagione scura
+👨🏿‍🎓	studente uomo: carnagione scura
 👩‍🎓	studentessa
 👩🏻‍🎓	studentessa: carnagione chiara
 👩🏼‍🎓	studentessa: carnagione abbastanza chiara
@@ -325,7 +325,7 @@
 👩🏿‍🔬	scienziata: carnagione scura
 👨‍💻	tecnologo uomo
 👨🏻‍💻	tecnologo uomo: carnagione chiara
-👨🏼‍💻	tecnologo uomo: carnagione abbastanza chiara
+👨🏼‍💻	tecnologo uomo: carnagione medio-chiara
 👨🏽‍💻	tecnologo uomo: carnagione media
 👨🏾‍💻	tecnologo uomo: carnagione medio-scura
 👨🏿‍💻	tecnologo uomo: carnagione scura
@@ -383,7 +383,7 @@
 👩🏾‍✈	pilota donna: carnagione abbastanza scura
 👩🏿‍✈️	pilota donna: carnagione scura
 👩🏿‍✈	pilota donna: carnagione scura
-👨‍🚀	uomo astronauta
+👨‍🚀	astronauta uomo
 👨🏻‍🚀	astronauta uomo: carnagione chiara
 👨🏼‍🚀	astronauta uomo: carnagione abbastanza chiara
 👨🏽‍🚀	astronauta uomo: carnagione olivastra
@@ -489,7 +489,7 @@
 💂🏾‍♂️	guardia uomo: carnagione medio-scura
 💂🏾‍♂	guardia uomo: carnagione medio-scura
 💂🏿‍♂️	guardia uomo: carnagione scura
-💂🏿‍♂	guardia uomo: carnagione scura
+💂🏿‍♂	uomo guardia: carnagione scura
 💂‍♀️	guardia donna
 💂‍♀	guardia donna
 💂🏻‍♀️	guardia donna: carnagione chiara
@@ -689,7 +689,7 @@
 🤰🏾	donna incinta: carnagione medio-scura
 🤰🏿	donna incinta: carnagione scura
 🤱	l'allattamento al seno
-🤱🏻	allattamento al seno: carnagione chiara
+🤱🏻	allattamento: carnagione chiara
 🤱🏼	allattamento: carnagione medio-chiara
 🤱🏽	allattamento al seno: tono della pelle medio
 🤱🏾	allattamento: carnagione medio-scura
@@ -699,7 +699,7 @@
 👼🏼	baby angel: carnagione abbastanza chiara
 👼🏽	baby angel: carnagione olivastra
 👼🏾	baby angel: carnagione medio-scura
-👼🏿	angelo bambino: carnagione scura
+👼🏿	baby angel: carnagione scura
 🎅	Babbo Natale
 🎅🏻	Babbo Natale: carnagione chiara
 🎅🏼	Babbo Natale: carnagione abbastanza chiara
@@ -754,8 +754,8 @@
 🦹🏻‍♀	supercriminale donna: carnagione chiara
 🦹🏼‍♀️	supercriminale donna: carnagione medio-chiara
 🦹🏼‍♀	supercriminale donna: carnagione medio-chiara
-🦹🏽‍♀️	supercriminale donna: carnagione olivastra
-🦹🏽‍♀	supercriminale donna: carnagione olivastra
+🦹🏽‍♀️	supercriminale donna: carnagione media
+🦹🏽‍♀	supercriminale donna: carnagione media
 🦹🏾‍♀️	supercriminale donna: carnagione medio-scura
 🦹🏾‍♀	supercriminale donna: carnagione medio-scura
 🦹🏿‍♀️	supercriminale donna: carnagione scura
@@ -784,8 +784,8 @@
 🧙🏻‍♀	donna maga: carnagione chiara
 🧙🏼‍♀️	donna maga: carnagione medio-chiara
 🧙🏼‍♀	donna maga: carnagione medio-chiara
-🧙🏽‍♀️	donna maga: carnagione olivastra
-🧙🏽‍♀	donna maga: carnagione olivastra
+🧙🏽‍♀️	donna maga: carnagione media
+🧙🏽‍♀	donna maga: carnagione media
 🧙🏾‍♀️	donna maga: carnagione medio-scura
 🧙🏾‍♀	donna maga: carnagione medio-scura
 🧙🏿‍♀️	donna maga: carnagione scura
@@ -838,12 +838,12 @@
 🧛🏽	vampiro: carnagione media
 🧛🏾	vampiro: carnagione medio-scura
 🧛🏿	vampiro: carnagione scura
-🧛‍♀️	donna vampiro
-🧛‍♀	donna vampiro
+🧛‍♀️	vampiro donna
+🧛‍♀	vampiro donna
 🧛🏻‍♀️	donna vampira: carnagione chiara
 🧛🏻‍♀	donna vampira: carnagione chiara
-🧛🏼‍♀️	donna vampira: carnagione abbastanza chiara
-🧛🏼‍♀	donna vampira: carnagione abbastanza chiara
+🧛🏼‍♀️	donna vampiro: carnagione abbastanza chiara
+🧛🏼‍♀	donna vampiro: carnagione abbastanza chiara
 🧛🏽‍♀️	vampiro donna: carnagione olivastra
 🧛🏽‍♀	vampiro donna: carnagione olivastra
 🧛🏾‍♀️	donna vampiro: carnagione medio-scura
@@ -874,8 +874,8 @@
 🧜🏻‍♀	sirena: carnagione chiara
 🧜🏼‍♀️	sirena: carnagione abbastanza chiara
 🧜🏼‍♀	sirena: carnagione abbastanza chiara
-🧜🏽‍♀️	sirena: carnagione olivastra
-🧜🏽‍♀	sirena: carnagione olivastra
+🧜🏽‍♀️	sirena: carnagione media
+🧜🏽‍♀	sirena: carnagione media
 🧜🏾‍♀️	sirena: carnagione medio-scura
 🧜🏾‍♀	sirena: carnagione medio-scura
 🧜🏿‍♀️	sirena: carnagione scura
@@ -900,8 +900,8 @@
 🧝🏿	elfo: carnagione scura
 🧝‍♀️	elfo donna
 🧝‍♀	elfo donna
-🧝🏻‍♀️	Elfa Donna: carnagione chiara
-🧝🏻‍♀	Elfa Donna: carnagione chiara
+🧝🏻‍♀️	elfa donna: carnagione chiara
+🧝🏻‍♀	elfa donna: carnagione chiara
 🧝🏼‍♀️	Elfa donna: carnagione abbastanza chiara
 🧝🏼‍♀	Elfa donna: carnagione abbastanza chiara
 🧝🏽‍♀️	Elfa donna: carnagione olivastra
@@ -1000,8 +1000,8 @@
 🙅🏿	persona che gesticola NO: carnagione scura
 🙅‍♂️	uomo che indica NO
 🙅‍♂	uomo che indica NO
-🙅🏻‍♂️	uomo che gesticola NO: carnagione chiara
-🙅🏻‍♂	uomo che gesticola NO: carnagione chiara
+🙅🏻‍♂️	uomo che fa segno di NO: carnagione chiara
+🙅🏻‍♂	uomo che fa segno di NO: carnagione chiara
 🙅🏼‍♂️	uomo che gesticola NO: carnagione abbastanza chiara
 🙅🏼‍♂	uomo che gesticola NO: carnagione abbastanza chiara
 🙅🏽‍♂️	uomo che gesticola NO: carnagione olivastra
@@ -1076,8 +1076,8 @@
 💁🏻‍♀	donna che inclina la mano: carnagione chiara
 💁🏼‍♀️	donna che inclina la mano: carnagione abbastanza chiara
 💁🏼‍♀	donna che inclina la mano: carnagione abbastanza chiara
-💁🏽‍♀️	donna con la mancia della mano: carnagione olivastra
-💁🏽‍♀	donna con la mancia della mano: carnagione olivastra
+💁🏽‍♀️	donna che inclina la mano: carnagione olivastra
+💁🏽‍♀	donna che inclina la mano: carnagione olivastra
 💁🏾‍♀️	donna che inclina la mano: carnagione abbastanza scura
 💁🏾‍♀	donna che inclina la mano: carnagione abbastanza scura
 💁🏿‍♀️	donna che inclina la mano: carnagione scura
@@ -1162,8 +1162,8 @@
 🤦🏿‍♂	uomo che fa facepalming: carnagione scura
 🤦‍♀️	donna che fa il facepalming
 🤦‍♀	donna che fa il facepalming
-🤦🏻‍♀️	donna che fa il facepalming: carnagione chiara
-🤦🏻‍♀	donna che fa il facepalming: carnagione chiara
+🤦🏻‍♀️	donna che fa facepalming: carnagione chiara
+🤦🏻‍♀	donna che fa facepalming: carnagione chiara
 🤦🏼‍♀️	facepalming donna: carnagione medio-chiara
 🤦🏼‍♀	facepalming donna: carnagione medio-chiara
 🤦🏽‍♀️	facepalming donna: carnagione media
@@ -1220,8 +1220,8 @@
 💆🏾‍♂	uomo che riceve un massaggio: carnagione abbastanza scura
 💆🏿‍♂️	uomo che riceve un massaggio: carnagione scura
 💆🏿‍♂	uomo che riceve un massaggio: carnagione scura
-💆‍♀️	donna che riceve il massaggio
-💆‍♀	donna che riceve il massaggio
+💆‍♀️	donna che riceve un massaggio
+💆‍♀	donna che riceve un massaggio
 💆🏻‍♀️	donna che riceve un massaggio: carnagione chiara
 💆🏻‍♀	donna che riceve un massaggio: carnagione chiara
 💆🏼‍♀️	donna che riceve un massaggio: carnagione abbastanza chiara
@@ -1264,7 +1264,7 @@
 💇🏿‍♀	donna che si taglia i capelli: carnagione scura
 🚶	persona che cammina
 🚶🏻	persona che cammina: carnagione chiara
-🚶🏼	persona che cammina: carnagione medio-chiara
+🚶🏼	persona che cammina: carnagione abbastanza chiara
 🚶🏽	persona che cammina: carnagione media
 🚶🏾	persona che cammina: carnagione medio-scura
 🚶🏿	persona che cammina: carnagione scura
@@ -1379,8 +1379,8 @@
 🧗‍♀	donna che si arrampica
 🧗🏻‍♀️	donna che arrampica: carnagione chiara
 🧗🏻‍♀	donna che arrampica: carnagione chiara
-🧗🏼‍♀️	donna arrampicata: carnagione abbastanza chiara
-🧗🏼‍♀	donna arrampicata: carnagione abbastanza chiara
+🧗🏼‍♀️	donna che arrampica: carnagione abbastanza chiara
+🧗🏼‍♀	donna che arrampica: carnagione abbastanza chiara
 🧗🏽‍♀️	donna che arrampica: carnagione olivastra
 🧗🏽‍♀	donna che arrampica: carnagione olivastra
 🧗🏾‍♀️	donna che arrampica: carnagione medio-scura
@@ -1716,8 +1716,8 @@
 🚵🏻‍♀	donna in mountain bike: carnagione chiara
 🚵🏼‍♀️	donna mountain bike: carnagione abbastanza chiara
 🚵🏼‍♀	donna mountain bike: carnagione abbastanza chiara
-🚵🏽‍♀️	donna in mountain bike: carnagione olivastra
-🚵🏽‍♀	donna in mountain bike: carnagione olivastra
+🚵🏽‍♀️	donna mountain bike: carnagione olivastra
+🚵🏽‍♀	donna mountain bike: carnagione olivastra
 🚵🏾‍♀️	donna mountain bike: carnagione medio-scura
 🚵🏾‍♀	donna mountain bike: carnagione medio-scura
 🚵🏿‍♀️	donna in mountain bike: carnagione scura
@@ -1989,7 +1989,7 @@
 🖐️	mano con le dita allargate
 🖐	mano con le dita allargate
 🖐🏻	mano con le dita allargate: carnagione chiara
-🖐🏼	mano con le dita allargate: carnagione medio-chiara
+🖐🏼	mano con dita divaricate: carnagione medio-chiara
 🖐🏽	mano con le dita allargate: carnagione media
 🖐🏾	mano con le dita divaricate: carnagione medio-scura
 🖐🏿	mano con le dita allargate: carnagione scura
@@ -3071,7 +3071,7 @@
 🔃	frecce verticali in senso orario
 🔄	pulsante frecce in senso antiorario
 🔙	Freccia INDIETRO
-🔚	freccia FINE
+🔚	Freccia FINE
 🔛	Freccia ON
 🔜	PRESTO freccia
 🔝	Freccia IN ALTO
@@ -3267,8 +3267,8 @@
 🈳	Pulsante giapponese "posto vacante".
 ㊗️	Pulsante giapponese "congratulazioni".
 ㊗	Pulsante giapponese "congratulazioni".
-㊙️	Pulsante “segreto” giapponese
-㊙	Pulsante “segreto” giapponese
+㊙️	Pulsante "segreto" giapponese
+㊙	Pulsante "segreto" giapponese
 🈺	Pulsante giapponese “open for business”.
 🈵	Pulsante giapponese "nessun posto vacante".
 ▪️	quadratino nero
@@ -3334,7 +3334,7 @@
 🇧🇮	Burundi
 🇧🇯	Benin
 🇧🇱	San Bartolomeo
-🇧🇲	Bermude
+🇧🇲	Bermuda
 🇧🇳	Brunei
 🇧🇴	Bolivia
 🇧🇶	Paesi Bassi caraibici

@@ -4,7 +4,7 @@
 🤣	li erdê gêr diken
 😃	rûyê ken bi çavên mezin
 😄	rûyê ken bi çavên bişirîn
-😅	rûyê bi teriyê ken
+😅	rûyê bi xwêdanê dike
 😆	rûçikê qijik
 😉	rûyê çavan
 😊	rûyê bişirîn bi çavên bişirîn
@@ -193,14 +193,14 @@
 👨🏿‍⚕	xebatkarê tenduristiyê yê mêr: rengê çermê tarî
 👩‍⚕️	xebatkara tenduristiyê ya jin
 👩‍⚕	xebatkara tenduristiyê ya jin
-👩🏻‍⚕️	xebatkara tenduristiyê ya jinê: rengê çermê sivik
-👩🏻‍⚕	xebatkara tenduristiyê ya jinê: rengê çermê sivik
+👩🏻‍⚕️	xebatkara tenduristiyê ya jin: rengê çermê sivik
+👩🏻‍⚕	xebatkara tenduristiyê ya jin: rengê çermê sivik
 👩🏼‍⚕️	xebatkara tenduristiyê ya jinê: rengê çermê navîn-ronahî
 👩🏼‍⚕	xebatkara tenduristiyê ya jinê: rengê çermê navîn-ronahî
 👩🏽‍⚕️	xebatkara tenduristiyê ya jinê: rengê çermê navîn
 👩🏽‍⚕	xebatkara tenduristiyê ya jinê: rengê çermê navîn
-👩🏾‍⚕️	xebatkara tenduristiyê ya jin: rengê çermê navîn-tarî
-👩🏾‍⚕	xebatkara tenduristiyê ya jin: rengê çermê navîn-tarî
+👩🏾‍⚕️	xebatkara tenduristiyê ya jinê: rengê çermê navîn-tarî
+👩🏾‍⚕	xebatkara tenduristiyê ya jinê: rengê çermê navîn-tarî
 👩🏿‍⚕️	xebatkara tenduristiyê ya jin: rengê çermê tarî
 👩🏿‍⚕	xebatkara tenduristiyê ya jin: rengê çermê tarî
 👨‍🎓	mêr xwendekar
@@ -210,9 +210,9 @@
 👨🏾‍🎓	mêr xwendekar: rengê çermê navîn-tarî
 👨🏿‍🎓	mêr xwendekar: rengê çermê tarî
 👩‍🎓	jin xwendekar
-👩🏻‍🎓	xwendekara jin: rengê çermê sivik
+👩🏻‍🎓	jin xwendekar: rengê çermê sivik
 👩🏼‍🎓	xwendekara jin: rengê çermê navîn-ronahî
-👩🏽‍🎓	xwendekara jin: rengê çermê navîn
+👩🏽‍🎓	jin xwendekar: rengê çermê navîn
 👩🏾‍🎓	xwendekara jin: rengê çermê navîn-tarî
 👩🏿‍🎓	xwendekara jin: rengê çermê tarî
 👨‍🏫	mêr mamoste
@@ -220,17 +220,17 @@
 👨🏼‍🏫	mamosteyê mêr: rengê çermê navîn-ronahî
 👨🏽‍🏫	mêr mamoste: rengê çermê navîn
 👨🏾‍🏫	mamosteyê mêr: rengê çermê navîn-tarî
-👨🏿‍🏫	mêr mamoste: rengê çermê tarî
-👩‍🏫	mamoste jin
+👨🏿‍🏫	mamosteyê mêr: rengê çermê tarî
+👩‍🏫	jin mamoste
 👩🏻‍🏫	mamosteyê jin: rengê çermê sivik
-👩🏼‍🏫	mamosteyê jin: rengê çermê navîn-ronahî
+👩🏼‍🏫	mamosteya jin: rengê çermê navîn-ronahî
 👩🏽‍🏫	mamosteyê jin: rengê çermê navîn
 👩🏾‍🏫	mamosteyê jin: rengê çermê navîn-tarî
 👩🏿‍🏫	mamosteyê jin: rengê çermê tarî
 👨‍⚖️	mêr hakim
 👨‍⚖	mêr hakim
 👨🏻‍⚖️	mêr dadger: rengê çermê sivik
-👨🏻‍⚖	mêr dadger: rengê çermê sivik
+👨🏻‍⚖	mêr hakim: rengê çermê sivik
 👨🏼‍⚖️	dadger mêr: rengê çermê navîn-ronahî
 👨🏼‍⚖	dadger mêr: rengê çermê navîn-ronahî
 👨🏽‍⚖️	mêr dadger: rengê çermê navîn
@@ -263,22 +263,22 @@
 👩🏽‍🌾	jina cotkar: rengê çermê navîn
 👩🏾‍🌾	jina cotkar: rengê çermê navîn-tarî
 👩🏿‍🌾	jina cotkar: rengê çermê tarî
-👨‍🍳	mêrik çêdike
+👨‍🍳	mirov çêdike
 👨🏻‍🍳	man cook: rengê çermê sivik
 👨🏼‍🍳	man cook: rengê çerm navîn-ronahî
 👨🏽‍🍳	man cook: rengê çerm navîn
 👨🏾‍🍳	man cook: rengê çerm navîn-tarî
 👨🏿‍🍳	man cook: rengê çermê tarî
-👩‍🍳	jin xwarinçêker
+👩‍🍳	jin xwarinê çêdike
 👩🏻‍🍳	jin cook: rengê çermê sivik
-👩🏼‍🍳	jin xwarinê: rengê çermê navîn-ronahî
+👩🏼‍🍳	jina xwarinê: rengê çermê navîn-ronahî
 👩🏽‍🍳	jin cook: rengê çerm navîn
 👩🏾‍🍳	jin xwarinê: rengê çermê navîn-tarî
 👩🏿‍🍳	jin cook: rengê çermê tarî
 👨‍🔧	mêr mekanîk
 👨🏻‍🔧	mêr mekanîka: rengê çermê sivik
 👨🏼‍🔧	mekanîka mêr: rengê çermê navîn-ronahî
-👨🏽‍🔧	mêr mekanîka: rengê çermê navîn
+👨🏽‍🔧	mekanîka mêr: rengê çermê navîn
 👨🏾‍🔧	mekanîka mêr: rengê çermê navîn-tarî
 👨🏿‍🔧	mêr mekanîka: rengê çermê tarî
 👩‍🔧	mekanîk jin
@@ -311,7 +311,7 @@
 👩🏽‍💼	karmendê ofîsê jin: rengê çermê navîn
 👩🏾‍💼	karmendê ofîsê jin: rengê çermê navîn-tarî
 👩🏿‍💼	karmendê ofîsê jin: rengê çermê tarî
-👨‍🔬	mirovê zanyar
+👨‍🔬	mirov zanyar
 👨🏻‍🔬	mêr zanyar: rengê çermê sivik
 👨🏼‍🔬	mêr zanyar: rengê çermê navîn-ronahî
 👨🏽‍🔬	mêr zanyar: rengê çermê navîn
@@ -329,7 +329,7 @@
 👨🏽‍💻	mêr teknolog: rengê çermê navîn
 👨🏾‍💻	mêr teknolog: rengê çermê navîn-tarî
 👨🏿‍💻	mirov teknolog: rengê çermê tarî
-👩‍💻	teknologê jin
+👩‍💻	jin teknolog
 👩🏻‍💻	teknologê jin: rengê çermê sivik
 👩🏼‍💻	teknologê jinê: rengê çermê navîn-ronahî
 👩🏽‍💻	teknologê jinê: rengê çermê navîn
@@ -338,8 +338,8 @@
 👨‍🎤	mêr stranbêj
 👨🏻‍🎤	stranbêj mêr: rengê çermê sivik
 👨🏼‍🎤	stranbêj mêr: rengê çermê navîn-ronahî
-👨🏽‍🎤	mêr stranbêj: rengê çerm navîn
-👨🏾‍🎤	mêr stranbêj: rengê çerm navîn-tarî
+👨🏽‍🎤	stranbêj mêr: rengê çermê navîn
+👨🏾‍🎤	stranbêj mêr: rengê çermê navîn-tarî
 👨🏿‍🎤	stranbêj mêr: rengê çermê tarî
 👩‍🎤	jina stranbêj
 👩🏻‍🎤	stranbêja jin: rengê çermê sivik
@@ -350,7 +350,7 @@
 👨‍🎨	mirov hunermend
 👨🏻‍🎨	mirov hunermend: rengê çermê sivik
 👨🏼‍🎨	hunermendê mêr: rengê çermê navîn-ronahî
-👨🏽‍🎨	mêr hunermend: rengê çerm navîn
+👨🏽‍🎨	mirov hunermend: rengê çermê navîn
 👨🏾‍🎨	mêr hunermend: rengê çerm navîn-tarî
 👨🏿‍🎨	mirov hunermend: rengê çermê tarî
 👩‍🎨	jin hunermend
@@ -361,16 +361,16 @@
 👩🏿‍🎨	hunermend jin: rengê çermê tarî
 👨‍✈️	mirov pîlot
 👨‍✈	mirov pîlot
-👨🏻‍✈️	mêr pîlot: rengê çermê sivik
-👨🏻‍✈	mêr pîlot: rengê çermê sivik
+👨🏻‍✈️	zilamê pîlot: rengê çermê sivik
+👨🏻‍✈	zilamê pîlot: rengê çermê sivik
 👨🏼‍✈️	zilamê pîlot: rengê çermê navîn-ronahî
 👨🏼‍✈	zilamê pîlot: rengê çermê navîn-ronahî
 👨🏽‍✈️	zilamê pîlot: rengê çermê navîn
 👨🏽‍✈	zilamê pîlot: rengê çermê navîn
 👨🏾‍✈️	pîlotê mêr: rengê çermê navîn-tarî
 👨🏾‍✈	pîlotê mêr: rengê çermê navîn-tarî
-👨🏿‍✈️	pîlotê mêr: rengê çermê tarî
-👨🏿‍✈	pîlotê mêr: rengê çermê tarî
+👨🏿‍✈️	zilamê pîlot: rengê çermê tarî
+👨🏿‍✈	zilamê pîlot: rengê çermê tarî
 👩‍✈️	pîlotê jin
 👩‍✈	pîlotê jin
 👩🏻‍✈️	pîlotê jin: rengê çermê sivik
@@ -401,7 +401,7 @@
 👨🏽‍🚒	mêr agirkuj: rengê çermê navîn
 👨🏾‍🚒	mêr agirkuj: rengê çermê navîn-tarî
 👨🏿‍🚒	mêr agirkuj: rengê çermê tarî
-👩‍🚒	jin agirkuj
+👩‍🚒	jinek agirkuj
 👩🏻‍🚒	jin agirkuj: rengê çermê sivik
 👩🏼‍🚒	jin agirkuj: rengê çermê navîn-ronahî
 👩🏽‍🚒	jin agirkuj: rengê çermê navîn
@@ -448,8 +448,8 @@
 🕵‍♂️	mêr detektor
 🕵️‍♂	mêr detektor
 🕵‍♂	mêr detektor
-🕵🏻‍♂️	mêr detective: rengê çermê sivik
-🕵🏻‍♂	mêr detective: rengê çermê sivik
+🕵🏻‍♂️	detektîf mêr: rengê çermê sivik
+🕵🏻‍♂	detektîf mêr: rengê çermê sivik
 🕵🏼‍♂️	detektîf mêr: rengê çermê navîn-ronahî
 🕵🏼‍♂	detektîf mêr: rengê çermê navîn-ronahî
 🕵🏽‍♂️	detektîf mêr: rengê çermê navîn
@@ -495,15 +495,15 @@
 💂🏻‍♀️	cerdevan jin: rengê çermê sivik
 💂🏻‍♀	cerdevan jin: rengê çermê sivik
 💂🏼‍♀️	parêzgerê jin: rengê çermê navîn-ronahî
-💂🏼‍♀	parêzgerê jin: rengê çermê navîn-ronahî
-💂🏽‍♀️	parêzvana jin: rengê çermê navîn
-💂🏽‍♀	parêzvana jin: rengê çermê navîn
+💂🏼‍♀	cerdevana jin: rengê çermê navîn-ronahî
+💂🏽‍♀️	parêzgerê jin: rengê çermê navîn
+💂🏽‍♀	parêzgerê jin: rengê çermê navîn
 💂🏾‍♀️	cerdevana jin: rengê çermê navîn-tarî
 💂🏾‍♀	cerdevana jin: rengê çermê navîn-tarî
-💂🏿‍♀️	cerdevana jin: rengê çermê tarî
-💂🏿‍♀	cerdevana jin: rengê çermê tarî
+💂🏿‍♀️	cerdevan jin: rengê çermê tarî
+💂🏿‍♀	cerdevan jin: rengê çermê tarî
 👷	karkerê avakirinê
-👷🏻	karkerê avakirinê: rengê çermê sivik
+👷🏻	karkerê avahîsaziyê: rengê çermê sivik
 👷🏼	karkerê avakirinê: rengê çermê navîn-ronahî
 👷🏽	karkerê avahîsaziyê: rengê çermê navîn
 👷🏾	karkerê avakirinê: rengê çermê navîn-tarî
@@ -524,12 +524,12 @@
 👷‍♀	jin karkerê înşaetê
 👷🏻‍♀️	jina xebatkarê avakirinê: rengê çermê sivik
 👷🏻‍♀	jina xebatkarê avakirinê: rengê çermê sivik
-👷🏼‍♀️	jina xebatkarê avahîsaziyê: rengê çermê navîn-ronahî
-👷🏼‍♀	jina xebatkarê avahîsaziyê: rengê çermê navîn-ronahî
+👷🏼‍♀️	jina karkerê înşaetê: rengê çermê navîn-ronahî
+👷🏼‍♀	jina karkerê înşaetê: rengê çermê navîn-ronahî
 👷🏽‍♀️	jina xebatkarê avakirinê: rengê çermê navîn
 👷🏽‍♀	jina xebatkarê avakirinê: rengê çermê navîn
-👷🏾‍♀️	jina karkerê înşaetê: rengê çermê navîn-tarî
-👷🏾‍♀	jina karkerê înşaetê: rengê çermê navîn-tarî
+👷🏾‍♀️	jina xebatkarê avahîsaziyê: rengê çermê navîn-tarî
+👷🏾‍♀	jina xebatkarê avahîsaziyê: rengê çermê navîn-tarî
 👷🏿‍♀️	jin karkerê avahîsaziyê: rengê çermê tarî
 👷🏿‍♀	jin karkerê avahîsaziyê: rengê çermê tarî
 🤴	prens
@@ -552,8 +552,8 @@
 👳🏿	kesê ku turban li xwe dike: rengê çermê tarî
 👳‍♂️	mirovê ku turban li xwe kiriye
 👳‍♂	mirovê ku turban li xwe kiriye
-👳🏻‍♂️	mêrê ku turban li xwe dike: rengê çermê sivik
-👳🏻‍♂	mêrê ku turban li xwe dike: rengê çermê sivik
+👳🏻‍♂️	zilamê ku turban li xwe dike: rengê çermê sivik
+👳🏻‍♂	zilamê ku turban li xwe dike: rengê çermê sivik
 👳🏼‍♂️	zilamê ku turban li xwe dike: rengê çermê navîn-ronahî
 👳🏼‍♂	zilamê ku turban li xwe dike: rengê çermê navîn-ronahî
 👳🏽‍♂️	zilamê ku turban li xwe dike: rengê çermê navîn
@@ -734,10 +734,10 @@
 🦸‍♂	mêr superhero
 🦸🏻‍♂️	mêr superhero: rengê çermê sivik
 🦸🏻‍♂	mêr superhero: rengê çermê sivik
-🦸🏼‍♂️	mêr superhero: rengê çermê navîn-ronahî
-🦸🏼‍♂	mêr superhero: rengê çermê navîn-ronahî
-🦸🏽‍♂️	mêr superhero: rengê çerm navîn
-🦸🏽‍♂	mêr superhero: rengê çerm navîn
+🦸🏼‍♂️	mêr superhero: rengê çerm navîn-ronahî
+🦸🏼‍♂	mêr superhero: rengê çerm navîn-ronahî
+🦸🏽‍♂️	mêr superhero: rengê çermê navîn
+🦸🏽‍♂	mêr superhero: rengê çermê navîn
 🦸🏾‍♂️	mêr superhero: rengê çerm navîn-tarî
 🦸🏾‍♂	mêr superhero: rengê çerm navîn-tarî
 🦸🏿‍♂️	mêr superhero: rengê çermê tarî
@@ -794,8 +794,8 @@
 🧙‍♂	mêr mage
 🧙🏻‍♂️	mêr mage: rengê çermê sivik
 🧙🏻‍♂	mêr mage: rengê çermê sivik
-🧙🏼‍♂️	mêr mage: rengê çermê navîn-ronahî
-🧙🏼‍♂	mêr mage: rengê çermê navîn-ronahî
+🧙🏼‍♂️	mêr mage: rengê çerm navîn-ronahî
+🧙🏼‍♂	mêr mage: rengê çerm navîn-ronahî
 🧙🏽‍♂️	mêr mage: rengê çermê navîn
 🧙🏽‍♂	mêr mage: rengê çermê navîn
 🧙🏾‍♂️	mêr mage: rengê çerm navîn-tarî
@@ -854,12 +854,12 @@
 🧛‍♂	mêr vampire
 🧛🏻‍♂️	man vampire: rengê çermê sivik
 🧛🏻‍♂	man vampire: rengê çermê sivik
-🧛🏼‍♂️	man vampire: rengê çermê navîn-ronahî
-🧛🏼‍♂	man vampire: rengê çermê navîn-ronahî
+🧛🏼‍♂️	mêr vampire: rengê çermê navîn-ronahî
+🧛🏼‍♂	mêr vampire: rengê çermê navîn-ronahî
 🧛🏽‍♂️	mêr vampire: rengê çermê navîn
 🧛🏽‍♂	mêr vampire: rengê çermê navîn
-🧛🏾‍♂️	man vampire: rengê çermê navîn-tarî
-🧛🏾‍♂	man vampire: rengê çermê navîn-tarî
+🧛🏾‍♂️	mêr vampire: rengê çermê navîn-tarî
+🧛🏾‍♂	mêr vampire: rengê çermê navîn-tarî
 🧛🏿‍♂️	mêr vampire: rengê çermê tarî
 🧛🏿‍♂	mêr vampire: rengê çermê tarî
 🧜	merperson
@@ -940,12 +940,12 @@
 🙍🏿	kesê ku diqelişe: rengê çermê tarî
 🙍‍♂️	mêrik rûkenî
 🙍‍♂	mêrik rûkenî
-🙍🏻‍♂️	mêrê rûkenî: rengê çermê sivik
-🙍🏻‍♂	mêrê rûkenî: rengê çermê sivik
-🙍🏼‍♂️	mêrik rûkenî: rengê çermê navîn-ronahî
-🙍🏼‍♂	mêrik rûkenî: rengê çermê navîn-ronahî
-🙍🏽‍♂️	mêrê rûkenî: rengê çermê navîn
-🙍🏽‍♂	mêrê rûkenî: rengê çermê navîn
+🙍🏻‍♂️	mêrik rûkenî: rengê çermê sivik
+🙍🏻‍♂	mêrik rûkenî: rengê çermê sivik
+🙍🏼‍♂️	mêrê rûkenî: rengê çermê navîn-ronahî
+🙍🏼‍♂	mêrê rûkenî: rengê çermê navîn-ronahî
+🙍🏽‍♂️	mêrik rûkenî: rengê çermê navîn
+🙍🏽‍♂	mêrik rûkenî: rengê çermê navîn
 🙍🏾‍♂️	mêrê rûkenî: rengê çermê navîn-tarî
 🙍🏾‍♂	mêrê rûkenî: rengê çermê navîn-tarî
 🙍🏿‍♂️	mêrik rûkenî: rengê çermê tarî
@@ -956,12 +956,12 @@
 🙍🏻‍♀	jinikê diqelişe: rengê çermê sivik
 🙍🏼‍♀️	jina rûkenî: rengê çermê navîn-ronahî
 🙍🏼‍♀	jina rûkenî: rengê çermê navîn-ronahî
-🙍🏽‍♀️	jinik diqelişe: rengê çermê navîn
-🙍🏽‍♀	jinik diqelişe: rengê çermê navîn
+🙍🏽‍♀️	jinikê diqelişe: rengê çermê navîn
+🙍🏽‍♀	jinikê diqelişe: rengê çermê navîn
 🙍🏾‍♀️	jina rûkenî: rengê çermê navîn-tarî
 🙍🏾‍♀	jina rûkenî: rengê çermê navîn-tarî
-🙍🏿‍♀️	jinik qermiçî: rengê çermê tarî
-🙍🏿‍♀	jinik qermiçî: rengê çermê tarî
+🙍🏿‍♀️	jinikê diqelişe: rengê çermê tarî
+🙍🏿‍♀	jinikê diqelişe: rengê çermê tarî
 🙎	kesê ku diqelişe
 🙎🏻	kesê pouting: rengê çermê sivik
 🙎🏼	kesê pouting: rengê çermê navîn-ronahî
@@ -978,10 +978,10 @@
 🙎🏽‍♂	mêrê pouting: rengê çermê navîn
 🙎🏾‍♂️	mêrê pouting: rengê çermê navîn-tarî
 🙎🏾‍♂	mêrê pouting: rengê çermê navîn-tarî
-🙎🏿‍♂️	mêrik pouting: rengê çermê tarî
-🙎🏿‍♂	mêrik pouting: rengê çermê tarî
-🙎‍♀️	jin diqelişe
-🙎‍♀	jin diqelişe
+🙎🏿‍♂️	mêrê pouting: rengê çermê tarî
+🙎🏿‍♂	mêrê pouting: rengê çermê tarî
+🙎‍♀️	jinikê diqelişe
+🙎‍♀	jinikê diqelişe
 🙎🏻‍♀️	jinikê pouting: rengê çermê sivik
 🙎🏻‍♀	jinikê pouting: rengê çermê sivik
 🙎🏼‍♀️	jinikê pouting: rengê çermê navîn-ronahî
@@ -999,7 +999,7 @@
 🙅🏾	kesê ku NA nîşan dide: rengê çermê navîn-tarî
 🙅🏿	kesê ku NA nîşan dide: rengê çermê tarî
 🙅‍♂️	mêrê ku nîşan dide NA
-🙅‍♂	zilamê ku nîşan dide NA
+🙅‍♂	mêrê ku nîşan dide NA
 🙅🏻‍♂️	zilamê ku NA nîşan dide: rengê çermê sivik
 🙅🏻‍♂	zilamê ku NA nîşan dide: rengê çermê sivik
 🙅🏼‍♂️	zilamê ku NA nîşan dide: rengê çermê navîn-ronahî
@@ -1118,22 +1118,22 @@
 🙇🏽	kesê ku çok dike: rengê çermê navîn
 🙇🏾	kesê ku çok dike: rengê çermê navîn-tarî
 🙇🏿	kesê ku çokan dide: rengê çermê tarî
-🙇‍♂️	mirov çok dike
-🙇‍♂	mirov çok dike
+🙇‍♂️	mirov çokan dide
+🙇‍♂	mirov çokan dide
 🙇🏻‍♂️	mêrik çok: rengê çermê sivik
 🙇🏻‍♂	mêrik çok: rengê çermê sivik
-🙇🏼‍♂️	mêrik xwar: rengê çermê navîn-ronahî
-🙇🏼‍♂	mêrik xwar: rengê çermê navîn-ronahî
-🙇🏽‍♂️	mêrik xwar: rengê çermê navîn
-🙇🏽‍♂	mêrik xwar: rengê çermê navîn
+🙇🏼‍♂️	zilamê ku çok dike: rengê çermê navîn-ronahî
+🙇🏼‍♂	zilamê ku çok dike: rengê çermê navîn-ronahî
+🙇🏽‍♂️	mêrik çok: rengê çermê navîn
+🙇🏽‍♂	mêrik çok: rengê çermê navîn
 🙇🏾‍♂️	mêrik xwar: rengê çermê navîn-tarî
 🙇🏾‍♂	mêrik xwar: rengê çermê navîn-tarî
 🙇🏿‍♂️	mêrik çok: rengê çermê tarî
 🙇🏿‍♂	mêrik çok: rengê çermê tarî
 🙇‍♀️	jin serî ditewîne
 🙇‍♀	jin serî ditewîne
-🙇🏻‍♀️	jinik berjêr: rengê çermê sivik
-🙇🏻‍♀	jinik berjêr: rengê çermê sivik
+🙇🏻‍♀️	jina berjêr: rengê çermê sivik
+🙇🏻‍♀	jina berjêr: rengê çermê sivik
 🙇🏼‍♀️	jina ku berjêr dike: rengê çermê navîn-ronahî
 🙇🏼‍♀	jina ku berjêr dike: rengê çermê navîn-ronahî
 🙇🏽‍♀️	jina ku berdide: rengê çermê navîn
@@ -1162,16 +1162,16 @@
 🤦🏿‍♂	man facepalming: rengê çermê tarî
 🤦‍♀️	jin rûpêl dike
 🤦‍♀	jin rûpêl dike
-🤦🏻‍♀️	jina rûyê palmiyê: rengê çermê sivik
-🤦🏻‍♀	jina rûyê palmiyê: rengê çermê sivik
-🤦🏼‍♀️	rûpêlkirina jinê: rengê çermê navîn-ronahî
+🤦🏻‍♀️	jina rûpêlkirî: rengê çermê sivik
+🤦🏻‍♀	jina rûpêlkirî: rengê çermê sivik
+🤦🏼‍♀️	rûyê jinikê: rengê çermê navîn-ronahî
 🤦🏼‍♀	rûpêlkirina jinê: rengê çermê navîn-ronahî
 🤦🏽‍♀️	rûyê jinikê: rengê çermê navîn
 🤦🏽‍♀	rûyê jinikê: rengê çermê navîn
 🤦🏾‍♀️	rûyê jinê: rengê çermê navîn-tarî
 🤦🏾‍♀	rûyê jinê: rengê çermê navîn-tarî
-🤦🏿‍♀️	jin rûpêl: rengê çermê tarî
-🤦🏿‍♀	jin rûpêl: rengê çermê tarî
+🤦🏿‍♀️	jina rûpêlkirî: rengê çermê tarî
+🤦🏿‍♀	jina rûpêlkirî: rengê çermê tarî
 🤷	kesê şuştinê
 🤷🏻	kesê şuştinê: rengê çermê sivik
 🤷🏼	kesê şuştinê: rengê çermê navîn-ronahî
@@ -1180,12 +1180,12 @@
 🤷🏿	kesê şuştinê: rengê çermê tarî
 🤷‍♂️	mêrik şuştin
 🤷‍♂	mêrik şuştin
-🤷🏻‍♂️	mêr şuştin: rengê çermê sivik
-🤷🏻‍♂	mêr şuştin: rengê çermê sivik
-🤷🏼‍♂️	mêrik şuştin: rengê çermê navîn-ronahî
-🤷🏼‍♂	mêrik şuştin: rengê çermê navîn-ronahî
-🤷🏽‍♂️	mêr şuştin: rengê çermê navîn
-🤷🏽‍♂	mêr şuştin: rengê çermê navîn
+🤷🏻‍♂️	mêrik şuştin: rengê çermê sivik
+🤷🏻‍♂	mêrik şuştin: rengê çermê sivik
+🤷🏼‍♂️	mêrê şuştinê: rengê çermê navîn-ronahî
+🤷🏼‍♂	mêrê şuştinê: rengê çermê navîn-ronahî
+🤷🏽‍♂️	mêrik şuştin: rengê çermê navîn
+🤷🏽‍♂	mêrik şuştin: rengê çermê navîn
 🤷🏾‍♂️	mêrik şuştin: rengê çermê navîn-tarî
 🤷🏾‍♂	mêrik şuştin: rengê çermê navîn-tarî
 🤷🏿‍♂️	mêr şuştin: rengê çermê tarî
@@ -1194,8 +1194,8 @@
 🤷‍♀	jin şanên xwe dihejîne
 🤷🏻‍♀️	jin şuştin: rengê çermê sivik
 🤷🏻‍♀	jin şuştin: rengê çermê sivik
-🤷🏼‍♀️	jin şuştinê: rengê çermê navîn-ronahî
-🤷🏼‍♀	jin şuştinê: rengê çermê navîn-ronahî
+🤷🏼‍♀️	jin şuştin: rengê çermê navîn-ronahî
+🤷🏼‍♀	jin şuştin: rengê çermê navîn-ronahî
 🤷🏽‍♀️	jin şûştin: rengê çermê navîn
 🤷🏽‍♀	jin şûştin: rengê çermê navîn
 🤷🏾‍♀️	jin şuştin: rengê çermê navîn-tarî
@@ -1212,28 +1212,28 @@
 💆‍♂	mirovê ku masajê digire
 💆🏻‍♂️	mirovê ku masajê digire: rengê çermê sivik
 💆🏻‍♂	mirovê ku masajê digire: rengê çermê sivik
-💆🏼‍♂️	zilamê ku masajê dike: rengê çermê navîn-ronahî
-💆🏼‍♂	zilamê ku masajê dike: rengê çermê navîn-ronahî
+💆🏼‍♂️	mirovê ku masajê dike: rengê çermê navîn-ronahî
+💆🏼‍♂	mirovê ku masajê dike: rengê çermê navîn-ronahî
 💆🏽‍♂️	mirovê ku masajê digire: rengê çermê navîn
 💆🏽‍♂	mirovê ku masajê digire: rengê çermê navîn
 💆🏾‍♂️	zilamê ku masajê dike: rengê çermê navîn-tarî
 💆🏾‍♂	zilamê ku masajê dike: rengê çermê navîn-tarî
-💆🏿‍♂️	mêr masajê dike: rengê çermê tarî
-💆🏿‍♂	mêr masajê dike: rengê çermê tarî
+💆🏿‍♂️	mirovê ku masajê digire: rengê çermê tarî
+💆🏿‍♂	mirovê ku masajê digire: rengê çermê tarî
 💆‍♀️	jin masajê digire
 💆‍♀	jin masajê digire
 💆🏻‍♀️	jina ku masajê digire: rengê çermê sivik
 💆🏻‍♀	jina ku masajê digire: rengê çermê sivik
 💆🏼‍♀️	jina ku masajê digire: rengê çermê navîn-ronahî
 💆🏼‍♀	jina ku masajê digire: rengê çermê navîn-ronahî
-💆🏽‍♀️	jina ku masaj dike: rengê çermê navîn
-💆🏽‍♀	jina ku masaj dike: rengê çermê navîn
-💆🏾‍♀️	jina ku masajê digire: rengê çermê navîn-tarî
-💆🏾‍♀	jina ku masajê digire: rengê çermê navîn-tarî
+💆🏽‍♀️	jina ku masajê digire: rengê çermê navîn
+💆🏽‍♀	jina ku masajê digire: rengê çermê navîn
+💆🏾‍♀️	jina ku masajê dike: rengê çermê navîn-tarî
+💆🏾‍♀	jina ku masajê dike: rengê çermê navîn-tarî
 💆🏿‍♀️	jina ku masaj dike: rengê çermê tarî
 💆🏿‍♀	jina ku masaj dike: rengê çermê tarî
 💇	mirovê ku porê xwe jê dike
-💇🏻	kesê ku porê lê dibire: rengê çermê sivik
+💇🏻	kesa ku porê xwe jê dike: rengê çermê sivik
 💇🏼	kesê ku porê xwe jê dike: rengê çermê navîn-ronahî
 💇🏽	kesê ku porê xwe jê dike: rengê çermê navîn
 💇🏾	kesê ku porê xwe jê dike: rengê çermê navîn-tarî
@@ -1250,12 +1250,12 @@
 💇🏾‍♂	zilamê ku porê xwe jê dike: rengê çermê navîn-tarî
 💇🏿‍♂️	mêr ku porê xwe jê dike: rengê çermê tarî
 💇🏿‍♂	mêr ku porê xwe jê dike: rengê çermê tarî
-💇‍♀️	jinikê porê xwe jê dike
-💇‍♀	jinikê porê xwe jê dike
-💇🏻‍♀️	jin ku porê xwe dibire: rengê çermê sivik
-💇🏻‍♀	jin ku porê xwe dibire: rengê çermê sivik
-💇🏼‍♀️	jina ku porê xwe jê dike: rengê çermê navîn-ronahî
-💇🏼‍♀	jina ku porê xwe jê dike: rengê çermê navîn-ronahî
+💇‍♀️	jinikê porê xwe dikute
+💇‍♀	jinikê porê xwe dikute
+💇🏻‍♀️	jina ku porê dibire: rengê çermê sivik
+💇🏻‍♀	jina ku porê dibire: rengê çermê sivik
+💇🏼‍♀️	jina ku porê dibire: rengê çermê navîn-ronahî
+💇🏼‍♀	jina ku porê dibire: rengê çermê navîn-ronahî
 💇🏽‍♀️	jina ku porê dibire: rengê çermê navîn
 💇🏽‍♀	jina ku porê dibire: rengê çermê navîn
 💇🏾‍♀️	jina ku porê xwe jê dike: rengê çermê navîn-tarî
@@ -1264,7 +1264,7 @@
 💇🏿‍♀	jin ku porê xwe jê dike: rengê çermê tarî
 🚶	kesê dimeşe
 🚶🏻	kesê dimeşe: rengê çermê sivik
-🚶🏼	kesê ku dimeşe: rengê çermê navîn-ronahî
+🚶🏼	kesê dimeşe: rengê çermê navîn-ronahî
 🚶🏽	kesê dimeşe: rengê çermê navîn
 🚶🏾	kesê dimeşe: rengê çermê navîn-tarî
 🚶🏿	kesê dimeşe: rengê çermê tarî
@@ -1293,7 +1293,7 @@
 🚶🏿‍♀️	jin dimeşe: rengê çermê tarî
 🚶🏿‍♀	jin dimeşe: rengê çermê tarî
 🏃	kesê direve
-🏃🏻	kesê direve: rengê çermê sivik
+🏃🏻	kesê diherike: rengê çermê sivik
 🏃🏼	kesê diherike: rengê çermê navîn-ronahî
 🏃🏽	kesê diherike: rengê çermê navîn
 🏃🏾	kesê diherike: rengê çermê navîn-tarî
@@ -1306,8 +1306,8 @@
 🏃🏼‍♂	mêr diherike: rengê çermê navîn-ronahî
 🏃🏽‍♂️	mêr diherike: rengê çermê navîn
 🏃🏽‍♂	mêr diherike: rengê çermê navîn
-🏃🏾‍♂️	mêr diherike: rengê çermê navîn-tarî
-🏃🏾‍♂	mêr diherike: rengê çermê navîn-tarî
+🏃🏾‍♂️	mêrik direve: rengê çermê navîn-tarî
+🏃🏾‍♂	mêrik direve: rengê çermê navîn-tarî
 🏃🏿‍♂️	mêr diherike: rengê çermê tarî
 🏃🏿‍♂	mêr diherike: rengê çermê tarî
 🏃‍♀️	jin direve
@@ -1357,8 +1357,8 @@
 🧖🏾‍♀	jina di jûreya hilmê de: rengê çermê navîn-tarî
 🧖🏿‍♀️	jin di jûreya hilmê de: rengê çermê tarî
 🧖🏿‍♀	jin di jûreya hilmê de: rengê çermê tarî
-🧖‍♂️	mêrik di jûreya hilmê de
-🧖‍♂	mêrik di jûreya hilmê de
+🧖‍♂️	mirovek di jûreya hilmê de
+🧖‍♂	mirovek di jûreya hilmê de
 🧖🏻‍♂️	mêrê li jûreya hilmê: rengê çermê sivik
 🧖🏻‍♂	mêrê li jûreya hilmê: rengê çermê sivik
 🧖🏼‍♂️	mêrê di jûreya hilmê de: rengê çermê navîn-ronahî
@@ -1472,7 +1472,7 @@
 🏌🏻	kesê golfê: rengê çermê sivik
 🏌🏼	kesê golf dike: rengê çermê navîn-ronahî
 🏌🏽	kesê golfê: rengê çermê navîn
-🏌🏾	kesê golf dike: rengê çermê navîn-tarî
+🏌🏾	kesê golfê: rengê çermê navîn-tarî
 🏌🏿	kesê golfê: rengê çermê tarî
 🏌️‍♂️	mirov golf dike
 🏌‍♂️	mirov golf dike
@@ -1492,10 +1492,10 @@
 🏌‍♀️	jin golf dike
 🏌️‍♀	jin golf dike
 🏌‍♀	jin golf dike
-🏌🏻‍♀️	golfing jin: rengê çermê sivik
-🏌🏻‍♀	golfing jin: rengê çermê sivik
-🏌🏼‍♀️	jina golf dike: rengê çermê navîn-ronahî
-🏌🏼‍♀	jina golf dike: rengê çermê navîn-ronahî
+🏌🏻‍♀️	jina golf dike: rengê çermê sivik
+🏌🏻‍♀	jina golf dike: rengê çermê sivik
+🏌🏼‍♀️	golfê jin: rengê çermê navîn-ronahî
+🏌🏼‍♀	golfê jin: rengê çermê navîn-ronahî
 🏌🏽‍♀️	golfê jin: rengê çermê navîn
 🏌🏽‍♀	golfê jin: rengê çermê navîn
 🏌🏾‍♀️	jina golf dike: rengê çermê navîn-tarî
@@ -1510,8 +1510,8 @@
 🏄🏿	kesê surf dike: rengê çermê tarî
 🏄‍♂️	mirov surf dike
 🏄‍♂	mirov surf dike
-🏄🏻‍♂️	mêr serf dike: rengê çermê sivik
-🏄🏻‍♂	mêr serf dike: rengê çermê sivik
+🏄🏻‍♂️	mêr surfing: rengê çermê sivik
+🏄🏻‍♂	mêr surfing: rengê çermê sivik
 🏄🏼‍♂️	mêr surfing: rengê çerm navîn-ronahî
 🏄🏼‍♂	mêr surfing: rengê çerm navîn-ronahî
 🏄🏽‍♂️	mêr surfing: rengê çerm navîn
@@ -1580,8 +1580,8 @@
 🏊🏾‍♂	mêr swimming: rengê çerm navîn-tarî
 🏊🏿‍♂️	mêr swimming: rengê çermê tarî
 🏊🏿‍♂	mêr swimming: rengê çermê tarî
-🏊‍♀️	jin avjeniyê dike
-🏊‍♀	jin avjeniyê dike
+🏊‍♀️	jina melevaniyê
+🏊‍♀	jina melevaniyê
 🏊🏻‍♀️	jin avjeniyê: rengê çermê sivik
 🏊🏻‍♀	jin avjeniyê: rengê çermê sivik
 🏊🏼‍♀️	jina avjeniyê: rengê çermê navîn-ronahî
@@ -1616,7 +1616,7 @@
 ⛹️‍♀️	jina gogê diavêje
 ⛹‍♀️	jina gogê diavêje
 ⛹️‍♀	jina gogê diavêje
-⛹‍♀	jina gogê diavêje
+⛹‍♀	jina ku topê dike
 ⛹🏻‍♀️	jina ku top dike: rengê çermê sivik
 ⛹🏻‍♀	jina ku top dike: rengê çermê sivik
 ⛹🏼‍♀️	jina ku top dike: rengê çermê navîn-ronahî
@@ -1645,7 +1645,7 @@
 🏋🏽‍♂️	zilamê ku giranan hildide: rengê çermê navîn
 🏋🏽‍♂	zilamê ku giranan hildide: rengê çermê navîn
 🏋🏾‍♂️	zilamê ku giranan hildide: rengê çermê navîn-tarî
-🏋🏾‍♂	mêrê ku giranan hildide: rengê çermê navîn-tarî
+🏋🏾‍♂	zilamê ku giranan hildide: rengê çermê navîn-tarî
 🏋🏿‍♂️	mirovê ku giranan hildide: rengê çermê tarî
 🏋🏿‍♂	mirovê ku giranan hildide: rengê çermê tarî
 🏋️‍♀️	jin giranî hildide
@@ -1684,8 +1684,8 @@
 🚴‍♀	jin biking
 🚴🏻‍♀️	jin bikî: rengê çermê sivik
 🚴🏻‍♀	jin bikî: rengê çermê sivik
-🚴🏼‍♀️	duçerxeya jinê: rengê çermê navîn-ronahî
-🚴🏼‍♀	duçerxeya jinê: rengê çermê navîn-ronahî
+🚴🏼‍♀️	jin bisiklêtê: rengê çermê navîn-ronahî
+🚴🏼‍♀	jin bisiklêtê: rengê çermê navîn-ronahî
 🚴🏽‍♀️	jin bikî: rengê çermê navîn
 🚴🏽‍♀	jin bikî: rengê çermê navîn
 🚴🏾‍♀️	jin bisiklêtê: rengê çermê navîn-tarî
@@ -1702,8 +1702,8 @@
 🚵‍♂	man mountain biking
 🚵🏻‍♂️	mêr bisiklêtê çiyayî: rengê çermê sivik
 🚵🏻‍♂	mêr bisiklêtê çiyayî: rengê çermê sivik
-🚵🏼‍♂️	mêr bisiklêta çiyayî: rengê çermê navîn-ronahî
-🚵🏼‍♂	mêr bisiklêta çiyayî: rengê çermê navîn-ronahî
+🚵🏼‍♂️	mêr bisiklêtê çiyayî: rengê çermê navîn-ronahî
+🚵🏼‍♂	mêr bisiklêtê çiyayî: rengê çermê navîn-ronahî
 🚵🏽‍♂️	mêr bisiklêtê çiyayî: rengê çermê navîn
 🚵🏽‍♂	mêr bisiklêtê çiyayî: rengê çermê navîn
 🚵🏾‍♂️	mêr bisiklêtê çiyayî: rengê çermê navîn-tarî
@@ -1714,9 +1714,9 @@
 🚵‍♀	jin bike çiya
 🚵🏻‍♀️	jin bisiklêtê çiyayî: rengê çermê sivik
 🚵🏻‍♀	jin bisiklêtê çiyayî: rengê çermê sivik
-🚵🏼‍♀️	jin bisiklêta çiyê: rengê çermê navîn-ronahî
-🚵🏼‍♀	jin bisiklêta çiyê: rengê çermê navîn-ronahî
-🚵🏽‍♀️	jin bisiklêta çiyê: rengê çermê navîn
+🚵🏼‍♀️	jin bisiklêtê çiyayî: rengê çermê navîn-ronahî
+🚵🏼‍♀	jin bisiklêtê çiyayî: rengê çermê navîn-ronahî
+🚵🏽‍♀️	jin bisiklêtê çiyayî: rengê çermê navîn
 🚵🏽‍♀	jin bisiklêtê çiyayî: rengê çermê navîn
 🚵🏾‍♀️	jin bisiklêta çiyê: rengê çermê navîn-tarî
 🚵🏾‍♀	jin bisiklêta çiyê: rengê çermê navîn-tarî
@@ -1794,7 +1794,7 @@
 🤾	kesê hentbolê dilîze
 🤾🏻	kesê ku hentbolê dilîze: rengê çermê sivik
 🤾🏼	kesê ku hentbolê dilîze: rengê çermê navîn-ronahî
-🤾🏽	kesê hentbolê dilîze: rengê çermê navîn
+🤾🏽	kesê ku hentbolê dilîze: rengê çermê navîn
 🤾🏾	kesê ku hentbolê dilîze: rengê çermê navîn-tarî
 🤾🏿	kesê ku hentbolê dilîze: rengê çermê tarî
 🤾‍♂️	zilamê ku destbolê dilîze
@@ -1830,11 +1830,11 @@
 🤹‍♂️	mirovê jûjgulî
 🤹‍♂	mirovê jûjgulî
 🤹🏻‍♂️	mêrê jûggling: rengê çermê sivik
-🤹🏻‍♂	mêrê jûggling: rengê çermê sivik
-🤹🏼‍♂️	zilamê ku dişoxilîne: rengê çermê navîn-ronahî
+🤹🏻‍♂	mêrê jûk: rengê çermê sivik
+🤹🏼‍♂️	mêrê jûggling: rengê çermê navîn-ronahî
 🤹🏼‍♂	zilamê ku dişoxilîne: rengê çermê navîn-ronahî
-🤹🏽‍♂️	mêrê juggling: rengê çermê navîn
-🤹🏽‍♂	mêrê juggling: rengê çermê navîn
+🤹🏽‍♂️	mêrê jûggling: rengê çermê navîn
+🤹🏽‍♂	mêrê jûggling: rengê çermê navîn
 🤹🏾‍♂️	mêrê jûggling: rengê çermê navîn-tarî
 🤹🏾‍♂	mêrê jûggling: rengê çermê navîn-tarî
 🤹🏿‍♂️	mêrê jûggling: rengê çermê tarî
@@ -1847,9 +1847,9 @@
 🤹🏼‍♀	jûggling jina: rengê çermê navîn-ronahî
 🤹🏽‍♀️	jûggling jin: rengê çermê navîn
 🤹🏽‍♀	jûggling jin: rengê çermê navîn
-🤹🏾‍♀️	jina ku dişoxilîne: rengê çermê navîn-tarî
-🤹🏾‍♀	jina ku dişoxilîne: rengê çermê navîn-tarî
-🤹🏿‍♀️	jûggling jin: rengê çermê tarî
+🤹🏾‍♀️	jûggling jina: rengê çermê navîn-tarî
+🤹🏾‍♀	jûggling jina: rengê çermê navîn-tarî
+🤹🏿‍♀️	jina dijûn: rengê çermê tarî
 🤹🏿‍♀	jûggling jin: rengê çermê tarî
 👫	mêr û jin destê hev girtine
 👬	du zilam destên hev girtine
@@ -1871,7 +1871,7 @@
 👪	malbat
 👨‍👩‍👦	malbat: mêr, jin, kur
 👨‍👩‍👧	malbat: mêr, jin, keç
-👨‍👩‍👧‍👦	malbat: mêr, jin, keç, xort
+👨‍👩‍👧‍👦	malbat: mêr, jin, keç, kur
 👨‍👩‍👦‍👦	malbat: mêr, jin, kur, kur
 👨‍👩‍👧‍👧	malbat: mêr, jin, keç, keç
 👨‍👨‍👦	malbat: mêr, mêr, kur
@@ -1892,7 +1892,7 @@
 👩‍👦	malbat: jin, kur
 👩‍👦‍👦	malbat: jin, xort, kur
 👩‍👧	malbat: jin, keç
-👩‍👧‍👦	malbat: jin, keç, xort
+👩‍👧‍👦	malbat: jin, keç, kur
 👩‍👧‍👧	malbat: jin, keç, keç
 🤳	selfie
 🤳🏻	selfie: rengê çermê sivik
@@ -1922,7 +1922,7 @@
 👈🏻	nîşana pişta çepê nîşan dide: rengê çermê sivik
 👈🏼	nîşana paşîn a çepê nîşan dide: rengê çermê navîn-ronahî
 👈🏽	nîşana pişta çepê: rengê çermê navîn
-👈🏾	nîşana paşîn a çepê nîşan dide: rengê çermê navîn-tarî
+👈🏾	nîşana paşverû ya çepê nîşan dide: rengê çermê navîn-tarî
 👈🏿	nîşana paşverû ya çepê: rengê çermê tarî
 👉	index paşperdeya rast nîşan dide
 👉🏻	nîşana paşîn rast nîşan dide: rengê çermê sivik
@@ -1930,7 +1930,7 @@
 👉🏽	nîşana paşîn rast nîşan dide: rengê çermê navîn
 👉🏾	nîşana paşîn rast nîşan dide: rengê çermê navîn-tarî
 👉🏿	nîşana piştê rast nîşan dide: rengê çermê tarî
-☝️	index nîşan dide
+☝️	index nîşankirin
 ☝	index nîşan dide
 ☝🏻	nîşana jor: rengê çermê sivik
 ☝🏼	nîşana jor: rengê çermê navîn-ronahî
@@ -1939,7 +1939,7 @@
 ☝🏿	nîşana jor: rengê çermê tarî
 👆	index paşperdeya nîşankirin up
 👆🏻	nîşana paşkêşê nîşan dide: rengê çermê sivik
-👆🏼	nîşana paşkêşê ku ber bi jor ve nîşan dide: rengê çermê navîn-ronahî
+👆🏼	nîşana paşîn nîşan dide: rengê çermê navîn-ronahî
 👆🏽	nîşana paşkêşê nîşan dide: rengê çermê navîn
 👆🏾	nîşana paşkêşê ku ber bi jor ve nîşan dide: rengê çermê navîn-tarî
 👆🏿	nîşana paşkêşê nîşan dide: rengê çermê tarî
@@ -1951,9 +1951,9 @@
 🖕🏿	tiliya navîn: rengê çermê tarî
 👇	index paşperdeya xwarê nîşan dide
 👇🏻	nîşana paşkêşê ku berjêr nîşan dide: rengê çermê sivik
-👇🏼	nîşana paşkêşê ku berjêr nîşan dide: rengê çermê navîn-ronahî
+👇🏼	nîşana pişta ku ber bi jêr ve nîşan dide: rengê çermê navîn-ronahî
 👇🏽	index paşperdeya ku berjêr nîşan dide: rengê çermê navîn
-👇🏾	nîşana pişta ku ber bi jêr ve nîşan dide: rengê çermê navîn-tarî
+👇🏾	nîşana paşkêşê ku berjêr nîşan dide: rengê çermê navîn-tarî
 👇🏿	nîşana paşverû ya jêrîn nîşan dide: rengê çermê tarî
 ✌️	destê serkeftinê
 ✌	destê serkeftinê
@@ -1980,7 +1980,7 @@
 🤘🏽	nîşana qijik: rengê çermê navîn
 🤘🏾	nîşana strûkan: rengê çermê navîn-tarî
 🤘🏿	nîşana qijik: rengê çermê tarî
-🤙	gazî min bike destê min
+🤙	gazî destê min bike
 🤙🏻	ji min re dibêjin dest: rengê çermê sivik
 🤙🏼	ji min re dibêjin destê: rengê çermê navîn-ronahî
 🤙🏽	ji min re dibêjin dest: rengê çermê navîn
@@ -2036,7 +2036,7 @@
 🤛🏾	kulma çepê: rengê çermê navîn-tarî
 🤛🏿	kulma çepê: rengê çermê tarî
 🤜	kulmek rast-rû
-🤜🏻	fîşa rast-rû: rengê çermê sivik
+🤜🏻	fîşa rastê: rengê çermê sivik
 🤜🏼	fîşa rastê: rengê çermê navîn-ronahî
 🤜🏽	fîşa rast-rû: rengê çermê navîn
 🤜🏾	fîşa rastê: rengê çermê navîn-tarî
@@ -2048,12 +2048,12 @@
 🤚🏾	pişta destan rakir: rengê çermê navîn-tarî
 🤚🏿	pişta destê rakir: rengê çermê tarî
 👋	destê dihejand
-👋🏻	destê hejandin: rengê çermê sivik
+👋🏻	destê dihejandin: rengê çermê sivik
 👋🏼	destê dihejînin: rengê çermê navîn-ronahî
 👋🏽	destê hejandin: rengê çermê navîn
 👋🏾	destê dihejînin: rengê çermê navîn-tarî
 👋🏿	destê hejandin: rengê çermê tarî
-🤟	nîşana hezkirin-te
+🤟	nîşana hez-te
 🤟🏻	nîşana hezkirina te: rengê çermê sivik
 🤟🏼	nîşana hezkirina te: rengê çermê navîn-ronahî
 🤟🏽	nîşana hezkirina te: rengê çermê navîn
@@ -2084,7 +2084,7 @@
 🙌🏽	bilindkirina destan: rengê çermê navîn
 🙌🏾	bilindkirina destan: rengê çermê navîn-tarî
 🙌🏿	bilindkirina destan: rengê çermê tarî
-🤲	kefa li hev
+🤲	kefa bi hev re
 🤲🏻	kefa li hev: rengê çermê sivik
 🤲🏼	kefa bi hev re: rengê çermê navîn-ronahî
 🤲🏽	kefa bi hev re: rengê çermê navîn
@@ -2095,7 +2095,7 @@
 🙏🏼	destên hevgirtî: rengê çermê navîn-ronahî
 🙏🏽	destên hevgirtî: rengê çermê navîn
 🙏🏾	destên hevgirtî: rengê çermê navîn-tarî
-🙏🏿	destên pêçandî: rengê çermê tarî
+🙏🏿	destên hevgirtî: rengê çermê tarî
 🤝	destcivandinî
 💅	nail polish
 💅🏻	nail polish: rengê çermê sivik
@@ -2172,7 +2172,7 @@
 🕶️	sunglasses
 🕶	sunglasses
 🥽	berçavk
-🥼	kirasê laboratorê
+🥼	kirasê laboratuarê
 👔	necktie
 👕	t-shirt
 👖	jeans
@@ -2389,7 +2389,7 @@
 🥙	nanê dagirtî
 🥚	hêk
 🍳	xwarinçêkirinê
-🥘	tepsiya xwarinê ya kêm
+🥘	tepsiya xwarinê ya hûr
 🍲	pot xwarinê
 🥣	tasek bi kevçî
 🥗	selete kesk
@@ -2438,8 +2438,8 @@
 🍹	vexwarina tropîkal
 🍺	kasa bîrayê
 🍻	kulmikên bîrayê
-🥂	qedehên qedeh
-🥃	cama tumbler
+🥂	qedehên clinking
+🥃	şûşeya tûmê
 🥤	kasa bi kaxiz
 🥢	darikê xwarinê
 🍽️	qalik û kêr bi plakaya
@@ -2450,14 +2450,14 @@
 🏺	amfora
 🌍	cîhana Ewropa-Afrîqa nîşan dide
 🌎	cîhana Amerîka nîşan dide
-🌏	dinya Asya-Australya nîşan dide
-🌐	cîhana bi merdîyan
+🌏	cîhana Asya-Awistralyayê nîşan dide
+🌐	cîhana bi merîdyan
 🗺️	nexşeya cîhanê
 🗺	nexşeya cîhanê
 🗾	nexşeya Japonya
 🧭	hêlrêker
 🏔️	çiyayê berfê
-🏔	çiyayê berfê
+🏔	çiyayê berfgirtî
 ⛰️	çîya
 ⛰	çîya
 🌋	çîyayê agirî
@@ -2479,8 +2479,8 @@
 🏗️	avakirina avahiya
 🏗	avakirina avahiya
 🧱	bricks
-🏘️	malan
-🏘	malan
+🏘️	malên
+🏘	malên
 🏚️	mala wêrankirî
 🏚	mala wêrankirî
 🏠	xanî
@@ -2499,7 +2499,7 @@
 🏯	keleha Japanese
 🏰	birc
 💒	dîlan
-🗼	Tokyo birca
+🗼	birca Tokyo
 🗽	Peykerê Azadiyê
 ⛪	dêr
 🕌	camî
@@ -2591,7 +2591,7 @@
 💺	rûniştek
 🚁	helîkopter
 🚟	rêhesinê rawestandî
-🚠	kabloya çiyayî
+🚠	kabloya çiyê
 🚡	tramwaya hewayî
 🛰️	satelayt
 🛰	satelayt
@@ -2623,7 +2623,7 @@
 🕔	saet pêncan
 🕠	pênc û sî
 🕕	saet şeş
-🕡	şeş û nîv
+🕡	şeş û sî
 🕖	saet heft
 🕢	heft û sî
 🕗	saet heştan
@@ -2666,8 +2666,8 @@
 🌥	roj li pişt ewrê mezin
 🌦️	roj li pişt ewrê baranê
 🌦	roj li pişt ewrê baranê
-🌧️	ewr bi baran
-🌧	ewr bi baran
+🌧️	ewrê bi baran
+🌧	ewrê bi baran
 🌨️	ewrê bi berfê
 🌨	ewrê bi berfê
 🌩️	ewrê bi birûskê
@@ -2704,12 +2704,12 @@
 🧨	firecracker
 ✨	sparkles
 🎈	balon
-🎉	popper partiyê
+🎉	partiya popper
 🎊	topa konfetî
 🎋	dara tanabata
 🎍	xemilandina çamê
 🎎	Kuçikên japonî
-🎏	carp streamer
+🎏	streamer carp
 🎐	dengê bayê
 🎑	merasîma dîtina heyvê
 🧧	zerfa sor
@@ -2725,7 +2725,7 @@
 🏆	bîrane
 🏅	madalyaya sporê
 🥇	madalyaya 1emîn
-🥈	madalyaya 2yemîn
+🥈	2yemîn madalya
 🥉	3yemîn madalyaya
 ⚽	gogê futbolê
 ⚾	baseball
@@ -2754,7 +2754,7 @@
 🎿	skis
 🛷	şematok
 🥌	kevirê kulîlk
-🎯	rasterast lêdan
+🎯	lêdana rasterast
 🎱	hewz 8 top
 🔮	topê krîstal
 🧿	nazar amulet
@@ -2776,8 +2776,8 @@
 ♟️	pûna satrancê
 ♟	pûna satrancê
 🃏	joker
-🀄	ejderha sor mahjong
-🎴	kartên playing flower
+🀄	mahjong ejderha sor
+🎴	kartên lîstina gulan
 🎭	hunerên performansê
 🖼️	wêneya çarçovekirî
 🖼	wêneya çarçovekirî
@@ -2785,7 +2785,7 @@
 🧵	dezî
 🧶	yarn
 🔇	peyvdarê bêdeng
-🔈	dengbêja nizm
+🔈	dengbêja kêm
 🔉	dengê navîn
 🔊	dengbêja bilind
 📢	loudspeaker
@@ -2897,8 +2897,8 @@
 📬	qutiya posteyê bi ala bilindkirî vekin
 📭	qutiya posteyê veke bi ala nizimkirî
 📮	nameqûtîk
-🗳️	sindoqa dengdanê bi deng
-🗳	sindoqa dengdanê bi deng
+🗳️	sindoqa dengdanê bi sindoqê
+🗳	sindoqa dengdanê bi sindoqê
 ✏️	nivîstoka qûrşûnî
 ✏	nivîstoka qûrşûnî
 ✒️	niçika reş
@@ -2918,7 +2918,7 @@
 🗂️	dabeşkerên index karta
 🗂	dabeşkerên index karta
 📅	salname
-📆	salnameya hêsirkirî
+📆	salnameya hêstirandî
 🗒️	notepad spiral
 🗒	notepad spiral
 🗓️	salnameya spiral
@@ -3146,7 +3146,7 @@
 ♀	nîşana jinê
 ♂️	nîşana mêran
 ♂	nîşana mêran
-⚕️	sembola bijîşkî
+⚕️	sembola tibbî
 ⚕	sembola bijîşkî
 ♾️	bêdawîtî
 ♾	bêdawîtî
@@ -3258,12 +3258,12 @@
 🈶	Bişkoka Japonî "ne belaş".
 🈯	Bişkojka Japonî "veqetandî".
 🉐	Bişkojka "bazirganiyê" ya Japonî
-🈹	Bişkojka japonî "dakêşandin".
-🈚	Bişkoka Japonî "belaş".
+🈹	Bişkojka "dakêşanê" ya japonî
+🈚	Bişkojka Japonî "belaş".
 🈲	Bişkojka "qedexe" ya japonî
 🉑	Bişkojka "qebûl" a japonî
 🈸	Bişkojka "serlêdanê" ya Japonî
-🈴	Bişkoka "derbasbûna pola" ya japonî
+🈴	Bişkojka "derbasbûna pola" ya japonî
 🈳	Bişkojka "valahiya" japonî
 ㊗️	Bişkojka "pîrozbûnê" ya japonî
 ㊗	Bişkojka "pîrozbûnê" ya japonî
@@ -3272,14 +3272,14 @@
 🈺	Bişkoka Japonî "ji bo karsaziyê vekirî".
 🈵	Bişkojka "bê vala" ya japonî
 ▪️	çargoşe biçûk reş
-▪	çargoşe biçûk reş
+▪	çargoşeya piçûk a reş
 ▫️	çargoşeya piçûk a spî
 ▫	çargoşeya piçûk a spî
 ◻️	çargoşe navîn spî
 ◻	çargoşe navîn spî
 ◼️	çargoşe navîn reş
 ◼	çargoşe navîn reş
-◽	çarçika navîn-biçûk spî
+◽	meydana spî navîn-biçûk
 ◾	çargoşe navîn-biçûk reş
 ⬛	çargoşe mezin reş
 ⬜	meydana mezin spî
@@ -3288,7 +3288,7 @@
 🔸	elmas porteqalî biçûk
 🔹	elmas şîn biçûk
 🔺	sêgoşeya sor nîşan da
-🔻	sêgoşeya sor xwarê
+🔻	sêgoşeya sor ber bi jêr ve
 💠	elmas bi xal
 🔘	bişkoka radyoyê
 🔲	bişkoka çargoşe reş
@@ -3297,7 +3297,7 @@
 ⚫	çembera reş
 🔴	çembera sor
 🔵	çembera şîn
-🏁	ala çarçekirî
+🏁	ala çarşkirî
 🚩	ala sêgoşe
 🎌	alên xaç kirin
 🏴	ala reş

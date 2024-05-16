@@ -22,7 +22,7 @@
 🤗	kallistav nägu
 🤩	tähte löönud
 🤔	mõtlev nägu
-🤨	nägu kergitatud kulmuga
+🤨	nägu tõstetud kulmuga
 😐	neutraalne nägu
 😑	ilmetu nägu
 😶	nägu ilma suuta
@@ -63,8 +63,8 @@
 😩	väsinud nägu
 🤯	plahvatav pea
 😬	grimasseeriv nägu
-😰	murelik nägu higiga
-😱	nägu karjudes hirmust
+😰	murelik higine nägu
+😱	nägu karjub hirmust
 🥵	kuum nägu
 🥶	külm nägu
 😳	punetav nägu
@@ -474,7 +474,7 @@
 🕵🏿‍♀	naisdetektiiv: tume nahatoon
 💂	valvur
 💂🏻	valvur: hele nahatoon
-💂🏼	valvur: keskmiselt hele nahatoon
+💂🏼	kaitse: keskmiselt hele nahatoon
 💂🏽	valvur: keskmine nahatoon
 💂🏾	valvur: keskmiselt tume nahatoon
 💂🏿	valvur: tume nahatoon
@@ -574,7 +574,7 @@
 👳🏾‍♀	turbanit kandev naine: keskmiselt tume nahatoon
 👳🏿‍♀️	turbanit kandev naine: tume nahatoon
 👳🏿‍♀	turbanit kandev naine: tume nahatoon
-👲	mees hiina mütsiga
+👲	Hiina mütsiga mees
 👲🏻	Hiina mütsiga mees: hele nahatoon
 👲🏼	Hiina mütsiga mees: keskmiselt hele nahatoon
 👲🏽	Hiina mütsiga mees: keskmine nahatoon
@@ -650,7 +650,7 @@
 👨🏻‍🦲	mees, kiilakas: hele nahatoon
 👨🏼‍🦲	mees, kiilakas: keskmiselt hele nahatoon
 👨🏽‍🦲	mees, kiilas: keskmine nahatoon
-👨🏾‍🦲	mees, kiilakas: keskmiselt tume nahatoon
+👨🏾‍🦲	mees, kiilas: keskmiselt tume nahatoon
 👨🏿‍🦲	mees, kiilakas: tume nahatoon
 👩‍🦲	naine, kiilakas
 👩🏻‍🦲	naine, kiilakas: hele nahatoon
@@ -663,13 +663,13 @@
 👨🏼‍🦳	mees, valgekarvaline: keskmiselt hele nahatoon
 👨🏽‍🦳	mees, valgekarvaline: keskmine nahatoon
 👨🏾‍🦳	mees, valgekarvaline: keskmiselt tume nahatoon
-👨🏿‍🦳	mees, valgekarvaline: tume nahatoon
+👨🏿‍🦳	mees, valge juustega: tume nahatoon
 👩‍🦳	naine, valge juustega
 👩🏻‍🦳	naine, valgete juustega: hele nahatoon
 👩🏼‍🦳	naine, valgete juustega: keskmiselt hele nahatoon
 👩🏽‍🦳	naine, valgete juustega: keskmine nahatoon
 👩🏾‍🦳	naine, valgete juustega: keskmiselt tume nahatoon
-👩🏿‍🦳	naine, valge juustega: tume nahatoon
+👩🏿‍🦳	naine, valgete juustega: tume nahatoon
 🤵	mees smokingis
 🤵🏻	mees smokingis: hele nahatoon
 🤵🏼	mees smokingis: keskmiselt hele nahatoon
@@ -706,7 +706,7 @@
 🎅🏽	Jõuluvana: keskmine nahatoon
 🎅🏾	Jõuluvana: keskmiselt tume nahatoon
 🎅🏿	Jõuluvana: tume nahatoon
-🤶	Proua Claus
+🤶	proua Claus
 🤶🏻	Proua Claus: hele nahatoon
 🤶🏼	Proua Claus: keskmiselt hele nahatoon
 🤶🏽	Proua Claus: keskmine nahatoon
@@ -948,8 +948,8 @@
 🙍🏽‍♂	mees kortsutab kulmu: keskmine nahatoon
 🙍🏾‍♂️	mees kortsutab kulmu: keskmiselt tume nahatoon
 🙍🏾‍♂	mees kortsutab kulmu: keskmiselt tume nahatoon
-🙍🏿‍♂️	mees kortsutab kulmu: tume nahatoon
-🙍🏿‍♂	mees kortsutab kulmu: tume nahatoon
+🙍🏿‍♂️	mees kulmu kortsutab: tume nahatoon
+🙍🏿‍♂	mees kulmu kortsutab: tume nahatoon
 🙍‍♀️	naine kulmu kortsutades
 🙍‍♀	naine kulmu kortsutades
 🙍🏻‍♀️	naine kortsutab kulmu: hele nahatoon
@@ -976,8 +976,8 @@
 🙎🏼‍♂	mees potsatab: keskmiselt hele nahatoon
 🙎🏽‍♂️	mees potsatab: keskmine nahatoon
 🙎🏽‍♂	mees potsatab: keskmine nahatoon
-🙎🏾‍♂️	mees potsatab: keskmiselt tume nahatoon
-🙎🏾‍♂	mees potsatab: keskmiselt tume nahatoon
+🙎🏾‍♂️	mees punnitab: keskmiselt tume nahatoon
+🙎🏾‍♂	mees punnitab: keskmiselt tume nahatoon
 🙎🏿‍♂️	mees potsatab: tume nahatoon
 🙎🏿‍♂	mees potsatab: tume nahatoon
 🙎‍♀️	naine potsatab
@@ -1084,10 +1084,10 @@
 💁🏿‍♀	naine kallutab kätt: tume nahatoon
 🙋	kätt tõstev inimene
 🙋🏻	isik tõstab kätt: hele nahatoon
-🙋🏼	kätt tõstev inimene: keskmiselt hele nahatoon
+🙋🏼	isik tõstab kätt: keskmiselt hele nahatoon
 🙋🏽	isik tõstab kätt: keskmine nahatoon
 🙋🏾	isik tõstab kätt: keskmiselt tume nahatoon
-🙋🏿	isik tõstab kätt: tume nahatoon
+🙋🏿	inimene tõstab kätt: tume nahatoon
 🙋‍♂️	mees tõstab kätt
 🙋‍♂	mees tõstab kätt
 🙋🏻‍♂️	mees tõstab kätt: hele nahatoon
@@ -1162,14 +1162,14 @@
 🤦🏿‍♂	mees facepalming: tume nahatoon
 🤦‍♀️	naise nägu palmine
 🤦‍♀	naise nägu palmine
-🤦🏻‍♀️	naise nägu palmine: hele nahatoon
-🤦🏻‍♀	naise nägu palmine: hele nahatoon
+🤦🏻‍♀️	naise nägu palming: hele nahatoon
+🤦🏻‍♀	naise nägu palming: hele nahatoon
 🤦🏼‍♀️	naise näopalmimine: keskmiselt hele nahatoon
 🤦🏼‍♀	naise näopalmimine: keskmiselt hele nahatoon
-🤦🏽‍♀️	naise näopalmimine: keskmine nahatoon
-🤦🏽‍♀	naise näopalmimine: keskmine nahatoon
-🤦🏾‍♀️	naise näopalsam: keskmiselt tume nahatoon
-🤦🏾‍♀	naise näopalsam: keskmiselt tume nahatoon
+🤦🏽‍♀️	naise nägu palmine: keskmine nahatoon
+🤦🏽‍♀	naise nägu palmine: keskmine nahatoon
+🤦🏾‍♀️	naise nägu palmine: keskmiselt tume nahatoon
+🤦🏾‍♀	naise nägu palmine: keskmiselt tume nahatoon
 🤦🏿‍♀️	naise nägu palmine: tume nahatoon
 🤦🏿‍♀	naise nägu palmine: tume nahatoon
 🤷	inimene kehitab õlgu
@@ -1240,14 +1240,14 @@
 💇🏿	juukseid lõikav inimene: tume nahatoon
 💇‍♂️	mees lõikab soengut
 💇‍♂	mees lõikab soengut
-💇🏻‍♂️	mees lõikab soengut: hele nahatoon
-💇🏻‍♂	mees lõikab soengut: hele nahatoon
+💇🏻‍♂️	mees lõikamas soengut: hele nahatoon
+💇🏻‍♂	mees lõikamas soengut: hele nahatoon
 💇🏼‍♂️	mees lõikab soengut: keskmiselt hele nahatoon
 💇🏼‍♂	mees lõikab soengut: keskmiselt hele nahatoon
 💇🏽‍♂️	mees lõikamas soengut: keskmine nahatoon
 💇🏽‍♂	mees lõikamas soengut: keskmine nahatoon
-💇🏾‍♂️	mees lõikab soengut: keskmiselt tume nahatoon
-💇🏾‍♂	mees lõikab soengut: keskmiselt tume nahatoon
+💇🏾‍♂️	mees lõikamas soengut: keskmiselt tume nahatoon
+💇🏾‍♂	mees lõikamas soengut: keskmiselt tume nahatoon
 💇🏿‍♂️	mees lõikab soengut: tume nahatoon
 💇🏿‍♂	mees lõikab soengut: tume nahatoon
 💇‍♀️	naine soengut lõikamas
@@ -1330,9 +1330,9 @@
 💃🏿	tantsiv naine: tume nahatoon
 🕺	mees tantsimas
 🕺🏻	tantsiv mees: hele nahatoon
-🕺🏼	mees tantsib: keskmiselt hele nahatoon
+🕺🏼	tantsiv mees: keskmiselt hele nahatoon
 🕺🏽	mees tantsib: keskmine nahatoon
-🕺🏾	mees tantsib: keskmiselt tume nahatoon
+🕺🏾	tantsiv mees: keskmiselt tume nahatoon
 🕺🏿	tantsiv mees: tume nahatoon
 👯	jänkukõrvadega inimesed
 👯‍♂️	jänkukõrvadega mehed
@@ -1397,11 +1397,11 @@
 🧗🏽‍♂	roniv mees: keskmine nahatoon
 🧗🏾‍♂️	roniv mees: keskmiselt tume nahatoon
 🧗🏾‍♂	roniv mees: keskmiselt tume nahatoon
-🧗🏿‍♂️	mees ronimas: tume nahatoon
-🧗🏿‍♂	mees ronimas: tume nahatoon
+🧗🏿‍♂️	roniv mees: tume nahatoon
+🧗🏿‍♂	roniv mees: tume nahatoon
 🧘	inimene lootoseasendis
 🧘🏻	inimene lootoseasendis: hele nahatoon
-🧘🏼	inimene lootoseasendis: keskmiselt hele nahatoon
+🧘🏼	lootoseasendis inimene: keskmiselt hele nahatoon
 🧘🏽	inimene lootoseasendis: keskmine nahatoon
 🧘🏾	inimene lootoseasendis: keskmiselt tume nahatoon
 🧘🏿	inimene lootoseasendis: tume nahatoon
@@ -1469,7 +1469,7 @@
 🏂🏿	lumelaudur: tume nahatoon
 🏌️	golfi mängiv inimene
 🏌	golfi mängiv inimene
-🏌🏻	golfi mängiv inimene: hele nahatoon
+🏌🏻	golfimängija: hele nahatoon
 🏌🏼	golfimängija: keskmiselt hele nahatoon
 🏌🏽	golfimängija: keskmine nahatoon
 🏌🏾	golfimängija: keskmiselt tume nahatoon
@@ -1487,7 +1487,7 @@
 🏌🏾‍♂️	mees golfi mängiv: keskmiselt tume nahatoon
 🏌🏾‍♂	mees golfi mängiv: keskmiselt tume nahatoon
 🏌🏿‍♂️	mees golfi mängiv: tume nahatoon
-🏌🏿‍♂	mees golfi mängiv: tume nahatoon
+🏌🏿‍♂	golfi mängiv mees: tume nahatoon
 🏌️‍♀️	naine golfi mängimas
 🏌‍♀️	naine golfi mängimas
 🏌️‍♀	naine golfi mängimas
@@ -1592,7 +1592,7 @@
 🏊🏾‍♀	naine ujumas: keskmiselt tume nahatoon
 🏊🏿‍♀️	naine ujumas: tume nahatoon
 🏊🏿‍♀	naine ujumas: tume nahatoon
-⛹️	inimene põrkab palli
+⛹️	põrkav pall
 ⛹	inimene põrkab palli
 ⛹🏻	põrkab pall: hele nahatoon
 ⛹🏼	põrkav pall: keskmiselt hele nahatoon
@@ -1613,10 +1613,10 @@
 ⛹🏾‍♂	meeste põrkepall: keskmiselt tume nahatoon
 ⛹🏿‍♂️	mees põrkab pall: tume nahatoon
 ⛹🏿‍♂	mees põrkab pall: tume nahatoon
-⛹️‍♀️	naine põrkab pall
-⛹‍♀️	naine põrkab pall
-⛹️‍♀	naine põrkab pall
-⛹‍♀	naine põrkab pall
+⛹️‍♀️	naine põrkava palli
+⛹‍♀️	naine põrkava palli
+⛹️‍♀	naine põrkava palli
+⛹‍♀	naine põrkava palli
 ⛹🏻‍♀️	naine põrkab pall: hele nahatoon
 ⛹🏻‍♀	naine põrkab pall: hele nahatoon
 ⛹🏼‍♀️	naine põrkab pall: keskmiselt hele nahatoon
@@ -1662,7 +1662,7 @@
 🏋🏾‍♀	raskusi tõstev naine: keskmiselt tume nahatoon
 🏋🏿‍♀️	raskusi tõstev naine: tume nahatoon
 🏋🏿‍♀	raskusi tõstev naine: tume nahatoon
-🚴	inimene jalgrattaga sõitmas
+🚴	inimene jalgrattaga
 🚴🏻	jalgrattasõit: hele nahatoon
 🚴🏼	jalgrattasõit: keskmiselt hele nahatoon
 🚴🏽	jalgrattasõit: keskmine nahatoon
@@ -1672,8 +1672,8 @@
 🚴‍♂	mees jalgrattaga
 🚴🏻‍♂️	mees jalgrattaga: hele nahatoon
 🚴🏻‍♂	mees jalgrattaga: hele nahatoon
-🚴🏼‍♂️	mees jalgrattaga: keskmiselt hele nahatoon
-🚴🏼‍♂	mees jalgrattaga: keskmiselt hele nahatoon
+🚴🏼‍♂️	mees jalgrattasõit: keskmiselt hele nahatoon
+🚴🏼‍♂	mees jalgrattasõit: keskmiselt hele nahatoon
 🚴🏽‍♂️	mees jalgrattasõit: keskmine nahatoon
 🚴🏽‍♂	mees jalgrattasõit: keskmine nahatoon
 🚴🏾‍♂️	mees jalgrattaga: keskmiselt tume nahatoon
@@ -1697,7 +1697,7 @@
 🚵🏼	inimene mägirattasõit: keskmiselt hele nahatoon
 🚵🏽	inimene mägirattasõit: keskmine nahatoon
 🚵🏾	inimene mägirattasõit: keskmiselt tume nahatoon
-🚵🏿	inimene mägirattasõit: tume nahatoon
+🚵🏿	inimene maastikurattaga sõitmine: tume nahatoon
 🚵‍♂️	mees mägirattasõit
 🚵‍♂	mees mägirattasõit
 🚵🏻‍♂️	mees mägirattasõit: hele nahatoon
@@ -1726,7 +1726,7 @@
 🏎	võidusõiduauto
 🏍️	mootorratas
 🏍	mootorratas
-🤸	inimene vankriga sõitmas
+🤸	isik käruga
 🤸🏻	isik käruga: hele nahatoon
 🤸🏼	isik käruga: keskmiselt hele nahatoon
 🤸🏽	isik käruga: keskmine nahatoon
@@ -1742,8 +1742,8 @@
 🤸🏽‍♂	mees käru: keskmine nahatoon
 🤸🏾‍♂️	mees käru: keskmiselt tume nahatoon
 🤸🏾‍♂	mees käru: keskmiselt tume nahatoon
-🤸🏿‍♂️	mees vankriga: tume nahatoon
-🤸🏿‍♂	mees vankriga: tume nahatoon
+🤸🏿‍♂️	mees käruga: tume nahatoon
+🤸🏿‍♂	mees käruga: tume nahatoon
 🤸‍♀️	naine käruga
 🤸‍♀	naine käruga
 🤸🏻‍♀️	naine käruga: hele nahatoon
@@ -1773,8 +1773,8 @@
 🤽🏻‍♂	veepalli mängiv mees: hele nahatoon
 🤽🏼‍♂️	veepalli mängiv mees: keskmiselt hele nahatoon
 🤽🏼‍♂	veepalli mängiv mees: keskmiselt hele nahatoon
-🤽🏽‍♂️	mees, kes mängib veepalli: keskmine nahatoon
-🤽🏽‍♂	mees, kes mängib veepalli: keskmine nahatoon
+🤽🏽‍♂️	mees mängib veepalli: keskmine nahatoon
+🤽🏽‍♂	mees mängib veepalli: keskmine nahatoon
 🤽🏾‍♂️	veepalli mängiv mees: keskmiselt tume nahatoon
 🤽🏾‍♂	veepalli mängiv mees: keskmiselt tume nahatoon
 🤽🏿‍♂️	veepalli mängiv mees: tume nahatoon
@@ -1789,8 +1789,8 @@
 🤽🏽‍♀	naine, kes mängib veepalli: keskmine nahatoon
 🤽🏾‍♀️	naine, kes mängib veepalli: keskmiselt tume nahatoon
 🤽🏾‍♀	naine, kes mängib veepalli: keskmiselt tume nahatoon
-🤽🏿‍♀️	naine, kes mängib veepalli: tume nahatoon
-🤽🏿‍♀	naine, kes mängib veepalli: tume nahatoon
+🤽🏿‍♀️	veepalli mängiv naine: tume nahatoon
+🤽🏿‍♀	veepalli mängiv naine: tume nahatoon
 🤾	käsipalli mängiv inimene
 🤾🏻	käsipalli mängiv inimene: hele nahatoon
 🤾🏼	käsipalli mängiv inimene: keskmiselt hele nahatoon
@@ -1839,7 +1839,7 @@
 🤹🏾‍♂	mees žongleerimine: keskmiselt tume nahatoon
 🤹🏿‍♂️	mees žongleerib: tume nahatoon
 🤹🏿‍♂	mees žongleerib: tume nahatoon
-🤹‍♀️	naine žongleerib
+🤹‍♀️	naine žongleerimas
 🤹‍♀	naine žongleerib
 🤹🏻‍♀️	naine žongleerib: hele nahatoon
 🤹🏻‍♀	naine žongleerib: hele nahatoon
@@ -1918,7 +1918,7 @@
 🦶🏽	jalg: keskmine nahatoon
 🦶🏾	jalg: keskmiselt tume nahatoon
 🦶🏿	jalg: tume nahatoon
-👈	tagakäe indeks osutab vasakule
+👈	tagakäe indeks, mis osutab vasakule
 👈🏻	tagakäe indeks osutab vasakule: hele nahatoon
 👈🏼	tagakäe indeks osutab vasakule: keskmiselt hele nahatoon
 👈🏽	tagakäe indeks osutab vasakule: keskmine nahatoon
@@ -2015,7 +2015,7 @@
 👎🏻	pöidlad alla: hele nahatoon
 👎🏼	pöidlad alla: keskmiselt hele nahatoon
 👎🏽	pöidlad allapoole: keskmine nahatoon
-👎🏾	pöidlad alla: keskmiselt tume nahatoon
+👎🏾	pöidlad allapoole: keskmiselt tume nahatoon
 👎🏿	pöidlad alla: tume nahatoon
 ✊	tõstetud rusikas
 ✊🏻	tõstetud rusikas: hele nahatoon
@@ -2063,7 +2063,7 @@
 ✍	kirjutav käsi
 ✍🏻	kirjutuskäsi: hele nahatoon
 ✍🏼	kirjutuskäsi: keskmiselt hele nahatoon
-✍🏽	kirjutav käsi: keskmine nahatoon
+✍🏽	kirjutuskäsi: keskmine nahatoon
 ✍🏾	kirjutamiskäsi: keskmiselt tume nahatoon
 ✍🏿	kirjutamiskäsi: tume nahatoon
 👏	plaksutavad käsi
@@ -2183,7 +2183,7 @@
 👗	kleit
 👘	kimono
 👙	bikiinid
-👚	naise riided
+👚	naiste riided
 👛	rahakott
 👜	käekott
 👝	sidurikott
@@ -2442,7 +2442,7 @@
 🥃	trumli klaas
 🥤	tass õlgedega
 🥢	söögipulgad
-🍽️	kahvel ja nuga koos plaadiga
+🍽️	kahvel ja nuga taldrikuga
 🍽	kahvel ja nuga koos plaadiga
 🍴	kahvel ja nuga
 🥄	lusikas
@@ -2637,7 +2637,7 @@
 🌑	uus kuu
 🌒	kasvav poolkuu
 🌓	esimene veerand kuu
-🌔	kasvav suur kuu
+🌔	kasvav tuhmkuu
 🌕	täiskuu
 🌖	kahanev gibbous moon
 🌗	viimane veerand kuu
@@ -2645,7 +2645,7 @@
 🌙	poolkuu
 🌚	noorkuu nägu
 🌛	esimene veerand kuu nägu
-🌜	viimase veerandi kuu nägu
+🌜	viimane veerand kuu nägu
 🌡️	termomeeter
 🌡	termomeeter
 ☀️	päike
@@ -2666,8 +2666,8 @@
 🌥	päike suure pilve taga
 🌦️	päike vihmapilve taga
 🌦	päike vihmapilve taga
-🌧️	pilv vihmaga
-🌧	pilv vihmaga
+🌧️	pilv koos vihmaga
+🌧	pilv koos vihmaga
 🌨️	pilv lumega
 🌨	pilv lumega
 🌩️	pilv välguga
@@ -2695,7 +2695,7 @@
 ☄️	komeet
 ☄	komeet
 🔥	tulekahju
-💧	tilk
+💧	piisk
 🌊	vee laine
 🎃	jack-o-latern
 🎄	jõulupuu
@@ -2724,7 +2724,7 @@
 🎖	sõjaline medal
 🏆	trofee
 🏅	spordimedal
-🥇	I koha medal
+🥇	1. koha medal
 🥈	2. koha medal
 🥉	3. koha medal
 ⚽	Jalgpall
@@ -2848,7 +2848,7 @@
 📹	videokaamera
 📼	videokassett
 🔍	suurendusklaas vasakule kallutatud
-🔎	suurendusklaas paremale kallutatud
+🔎	luup paremale kallutatud
 🕯️	küünal
 🕯	küünal
 💡	lambipirn
@@ -2881,7 +2881,7 @@
 💸	tiibadega raha
 💳	krediitkaart
 🧾	kviitung
-💹	diagramm kasvab jeeniga
+💹	graafik kasvab jeeniga
 💱	Valuutavahetus
 💲	raske dollari märk
 ✉️	ümbrik
@@ -2918,7 +2918,7 @@
 🗂️	kartoteegijagajad
 🗂	kartoteegijagajad
 📅	kalender
-📆	ärarebitav kalender
+📆	rebitav kalender
 🗒️	spiraalne märkmik
 🗒	spiraalne märkmik
 🗓️	spiraalkalender
@@ -3122,8 +3122,8 @@
 ◀️	tagurpidi nupp
 ◀	tagurpidi nupp
 ⏪	kiire tagasikäigu nupp
-⏮️	viimase raja nupp
-⏮	viimase raja nupp
+⏮️	viimase loo nupp
+⏮	viimase loo nupp
 🔼	ülespoole nuppu
 ⏫	kiirnupp
 🔽	allapoole nuppu
@@ -3231,7 +3231,7 @@
 🅰	Nupp (veregrupp)
 🆎	AB nupp (veregrupp)
 🅱️	B nupp (veregrupp)
-🅱	B nupp (veregrupp)
+🅱	B-nupp (veregrupp)
 🆑	CL nupp
 🆒	COOL nupp
 🆓	TASUTA nupp
@@ -3337,7 +3337,7 @@
 🇧🇲	Bermuda
 🇧🇳	Brunei
 🇧🇴	Boliivia
-🇧🇶	Kariibi mere Holland
+🇧🇶	Kariibi mere saar Holland
 🇧🇷	Brasiilia
 🇧🇸	Bahama
 🇧🇹	Bhutan

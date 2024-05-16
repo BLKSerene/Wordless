@@ -46,7 +46,7 @@
 😔	peinzend gezicht
 😕	verward gezicht
 🙃	ondersteboven gezicht
-🤑	geldmondig gezicht
+🤑	geld-mond gezicht
 😲	verbaasd gezicht
 ☹️	fronsend gezicht
 ☹	fronsend gezicht
@@ -75,7 +75,7 @@
 🤬	gezicht met symbolen op de mond
 😷	gezicht met medisch masker
 🤒	gezicht met thermometer
-🤕	gezicht met hoofdbandage
+🤕	gezicht met hoofdband
 🤢	misselijk gezicht
 🤮	gezicht braken
 🤧	niezend gezicht
@@ -165,7 +165,7 @@
 🧓🏻	oudere volwassene: lichte huidskleur
 🧓🏼	oudere volwassene: lichtgetinte huidskleur
 🧓🏽	oudere volwassene: medium huidskleur
-🧓🏾	oudere volwassene: mediumdonkere huidskleur
+🧓🏾	oudere volwassene: middeldonkere huidskleur
 🧓🏿	oudere volwassene: donkere huidskleur
 👴	oude man
 👴🏻	oude man: lichte huidskleur
@@ -187,8 +187,8 @@
 👨🏼‍⚕	gezondheidswerker man: lichtgetinte huidskleur
 👨🏽‍⚕️	gezondheidswerker man: getinte huidskleur
 👨🏽‍⚕	gezondheidswerker man: getinte huidskleur
-👨🏾‍⚕️	mannelijke gezondheidswerker: donkergetinte huidskleur
-👨🏾‍⚕	mannelijke gezondheidswerker: donkergetinte huidskleur
+👨🏾‍⚕️	gezondheidswerker man: donkergetinte huidskleur
+👨🏾‍⚕	gezondheidswerker man: donkergetinte huidskleur
 👨🏿‍⚕️	mannelijke gezondheidswerker: donkere huidskleur
 👨🏿‍⚕	mannelijke gezondheidswerker: donkere huidskleur
 👩‍⚕️	vrouwelijke gezondheidswerker
@@ -668,7 +668,7 @@
 👩🏻‍🦳	vrouw, witharig: lichte huidskleur
 👩🏼‍🦳	vrouw, witharig: lichtgetinte huidskleur
 👩🏽‍🦳	vrouw, witharig: getinte huidskleur
-👩🏾‍🦳	vrouw, witharig: donkergetinte huidskleur
+👩🏾‍🦳	vrouw, wit haar: donkergetinte huidskleur
 👩🏿‍🦳	vrouw, witharig: donkere huidskleur
 🤵	man in smoking
 🤵🏻	man in smoking: lichte huidskleur
@@ -695,9 +695,9 @@
 🤱🏾	borstvoeding: donkergetinte huidskleur
 🤱🏿	borstvoeding: donkere huidskleur
 👼	baby Engel
-👼🏻	babyengel: lichte huidskleur
+👼🏻	baby engel: lichte huidskleur
 👼🏼	baby engel: lichtgetinte huidskleur
-👼🏽	baby engel: getinte huidskleur
+👼🏽	baby engel: medium huidskleur
 👼🏾	babyengel: donkergetinte huidskleur
 👼🏿	babyengel: donkere huidskleur
 🎅	Kerstman
@@ -1055,7 +1055,7 @@
 💁	persoon die de hand geeft
 💁🏻	persoon die de hand kantelt: lichte huidskleur
 💁🏼	persoon die de hand kantelt: lichtgetinte huidskleur
-💁🏽	persoon die de hand kantelt: getinte huidskleur
+💁🏽	persoon met kantelende hand: getinte huidskleur
 💁🏾	persoon die de hand kantelt: donkergetinte huidskleur
 💁🏿	persoon die de hand kantelt: donkere huidskleur
 💁‍♂️	man kantelt de hand
@@ -1373,8 +1373,8 @@
 🧗🏻	persoon die klimt: lichte huidskleur
 🧗🏼	klimmer: lichtgetinte huidskleur
 🧗🏽	klimmer: getinte huidskleur
-🧗🏾	persoon die klimt: donkergetinte huidskleur
-🧗🏿	klimmende persoon: donkere huidskleur
+🧗🏾	klimmer: donkergetinte huidskleur
+🧗🏿	persoon die klimt: donkere huidskleur
 🧗‍♀️	vrouw klimmen
 🧗‍♀	vrouw klimmen
 🧗🏻‍♀️	vrouw klimmen: lichte huidskleur
@@ -1492,8 +1492,8 @@
 🏌‍♀️	vrouw golfen
 🏌️‍♀	vrouw golfen
 🏌‍♀	vrouw golfen
-🏌🏻‍♀️	vrouw die golft: lichte huidskleur
-🏌🏻‍♀	vrouw die golft: lichte huidskleur
+🏌🏻‍♀️	vrouw golfen: lichte huidskleur
+🏌🏻‍♀	vrouw golfen: lichte huidskleur
 🏌🏼‍♀️	vrouw die golft: lichtgetinte huidskleur
 🏌🏼‍♀	vrouw die golft: lichtgetinte huidskleur
 🏌🏽‍♀️	vrouw die golft: getinte huidskleur
@@ -1590,11 +1590,11 @@
 🏊🏽‍♀	vrouw zwemmen: getinte huidskleur
 🏊🏾‍♀️	vrouw die zwemt: donkergetinte huidskleur
 🏊🏾‍♀	vrouw die zwemt: donkergetinte huidskleur
-🏊🏿‍♀️	vrouw die zwemt: donkere huidskleur
-🏊🏿‍♀	vrouw die zwemt: donkere huidskleur
+🏊🏿‍♀️	vrouw zwemmend: donkere huidskleur
+🏊🏿‍♀	vrouw zwemmend: donkere huidskleur
 ⛹️	persoon stuiterende bal
 ⛹	persoon stuiterende bal
-⛹🏻	persoon stuiterende bal: lichte huidskleur
+⛹🏻	persoon stuiterbal: lichte huidskleur
 ⛹🏼	stuiterbal voor personen: lichtgetinte huidskleur
 ⛹🏽	persoon stuiterbal: getinte huidskleur
 ⛹🏾	stuiterbal persoon: donkergetinte huidskleur
@@ -1767,7 +1767,7 @@
 🤽🏽	persoon die waterpolo speelt: getinte huidskleur
 🤽🏾	persoon die waterpolo speelt: donkergetinte huidskleur
 🤽🏿	persoon die waterpolo speelt: donkere huidskleur
-🤽‍♂️	man die waterpolo speelt
+🤽‍♂️	man waterpolo spelen
 🤽‍♂	man die waterpolo speelt
 🤽🏻‍♂️	man die waterpolo speelt: lichte huidskleur
 🤽🏻‍♂	man die waterpolo speelt: lichte huidskleur
@@ -1833,8 +1833,8 @@
 🤹🏻‍♂	man jongleren: lichte huidskleur
 🤹🏼‍♂️	man die jongleert: lichtgetinte huidskleur
 🤹🏼‍♂	man die jongleert: lichtgetinte huidskleur
-🤹🏽‍♂️	man die jongleert: getinte huidskleur
-🤹🏽‍♂	man die jongleert: getinte huidskleur
+🤹🏽‍♂️	man jongleren: getinte huidskleur
+🤹🏽‍♂	man jongleren: getinte huidskleur
 🤹🏾‍♂️	man die jongleert: donkergetinte huidskleur
 🤹🏾‍♂	man die jongleert: donkergetinte huidskleur
 🤹🏿‍♂️	man jongleren: donkere huidskleur
@@ -1918,7 +1918,7 @@
 🦶🏽	voet: getinte huidskleur
 🦶🏾	voet: donkergetinte huidskleur
 🦶🏿	voet: donkere huidskleur
-👈	achterkant van de hand wijst naar links
+👈	backhand index wijst naar links
 👈🏻	achterhand naar links wijzende wijsvinger: lichte huidskleur
 👈🏼	achterhand naar links wijzende wijsvinger: lichtgetinte huidskleur
 👈🏽	achterhand naar links wijzende wijsvinger: getinte huidskleur
@@ -1942,7 +1942,7 @@
 👆🏼	achterhand naar boven wijzende wijsvinger: lichtgetinte huidskleur
 👆🏽	achterhand naar boven wijzende wijsvinger: getinte huidskleur
 👆🏾	achterhand naar boven wijzende wijsvinger: donkergetinte huidskleur
-👆🏿	achterhand naar boven wijzende wijsvinger: donkere huidskleur
+👆🏿	achterhand wijsvinger naar boven gericht: donkere huidskleur
 🖕	middelvinger
 🖕🏻	middelvinger: lichte huidskleur
 🖕🏼	middelvinger: lichtgetinte huidskleur
@@ -1969,11 +1969,11 @@
 🤞🏾	gekruiste vingers: donkergetinte huidskleur
 🤞🏿	gekruiste vingers: donkere huidskleur
 🖖	Vulcan groet
-🖖🏻	Vulcan groet: lichte huidskleur
-🖖🏼	vulcan salute: lichtgetinte huidskleur
+🖖🏻	vulcan groet: lichte huidskleur
+🖖🏼	vulcan saluut: lichtgetinte huidskleur
 🖖🏽	Vulcan groet: getinte huidskleur
 🖖🏾	vulcan saluut: donkergetinte huidskleur
-🖖🏿	Vulcan groet: donkere huidskleur
+🖖🏿	vulcan groet: donkere huidskleur
 🤘	teken van de hoorns
 🤘🏻	teken van de hoorns: lichte huidskleur
 🤘🏼	teken van de hoorns: lichtgetinte huidskleur
@@ -1984,7 +1984,7 @@
 🤙🏻	bel me hand: lichte huidskleur
 🤙🏼	bel me hand: lichtgetinte huidskleur
 🤙🏽	bel me hand: getinte huidskleur
-🤙🏾	bel me met de hand: donkergetinte huidskleur
+🤙🏾	bel me hand: donkergetinte huidskleur
 🤙🏿	bel me hand: donkere huidskleur
 🖐️	hand met gespreide vingers
 🖐	hand met gespreide vingers
@@ -2894,7 +2894,7 @@
 📦	pakket
 📫	gesloten brievenbus met opgeheven vlag
 📪	gesloten brievenbus met neergelaten vlag
-📬	Open brievenbus met opgeheven vlag
+📬	open brievenbus met opgeheven vlag
 📭	Open brievenbus met neergelaten vlag
 📮	brievenbus
 🗳️	stembus met stembiljet
@@ -3054,8 +3054,8 @@
 ↙	pijl-omlaag
 ⬅️	linker pijl
 ⬅	linker pijl
-↖️	pijl-links omhoog
-↖	pijl-links omhoog
+↖️	pijl-omhoog
+↖	pijl-omhoog
 ↕️	pijl omhoog-omlaag
 ↕	pijl omhoog-omlaag
 ↔️	pijl-links-rechts
@@ -3172,8 +3172,8 @@
 ➗	zwaar divisieteken
 ➰	gekrulde lus
 ➿	dubbele gekrulde lus
-〽️	merkteken voor onderdeelafwisseling
-〽	merkteken voor onderdeelafwisseling
+〽️	markering voor onderdeelafwisseling
+〽	markering voor onderdeelafwisseling
 ✳️	achtspaaks sterretje
 ✳	achtspaaks sterretje
 ✴️	achtpuntige ster
