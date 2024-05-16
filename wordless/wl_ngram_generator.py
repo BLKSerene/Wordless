@@ -658,9 +658,9 @@ class Wl_Table_Ngram_Generator(wl_tables.Wl_Table_Data_Filter_Search):
                     self.set_item_num(i, 0, -1)
 
                     # N-gram
-                    self.model().setItem(i, 1, wl_tables.Wl_Table_Item(' '.join(ngram)))
-
-                    self.model().item(i, 1).text_raw = ngram
+                    self.model().setItem(i, 1, wl_tables.Wl_Table_Item(' '.join(wl_texts.to_display_texts(ngram))))
+                    self.model().item(i, 1).tokens_search = ngram
+                    self.model().item(i, 1).tokens_filter = ngram
 
                     # Frequency
                     for j, freq in enumerate(freq_files):
@@ -719,11 +719,6 @@ class Wl_Table_Ngram_Generator(wl_tables.Wl_Table_Data_Filter_Search):
                 settings = self.main.settings_custom['ngram_generator']
 
                 if settings['fig_settings']['use_data'] == self.tr('Frequency'):
-                    ngrams_freq_files = {
-                        ' '.join(ngram): freqs
-                        for ngram, freqs in ngrams_freq_files.items()
-                    }
-
                     wl_figs_freqs.wl_fig_freqs(
                         self.main, ngrams_freq_files,
                         tab = 'ngram_generator'
@@ -734,11 +729,6 @@ class Wl_Table_Ngram_Generator(wl_tables.Wl_Table_Data_Filter_Search):
 
                     col_text_dispersion = self.main.settings_global['measures_dispersion'][measure_dispersion]['col_text']
                     col_text_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][measure_adjusted_freq]['col_text']
-
-                    ngrams_stats_files = {
-                        ' '.join(ngram): stats
-                        for ngram, stats in ngrams_stats_files.items()
-                    }
 
                     if settings['fig_settings']['use_data'] == col_text_dispersion:
                         ngrams_stat_files = {
@@ -791,9 +781,8 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
             for file in files:
                 ngrams_is = []
 
-                text = copy.deepcopy(file['text'])
                 text = wl_token_processing.wl_process_tokens(
-                    self.main, text,
+                    self.main, file['text'],
                     token_settings = settings['token_settings']
                 )
                 tokens = text.get_tokens_flat()
@@ -821,7 +810,6 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                 search_terms = wl_matching.match_search_terms_ngrams(
                     self.main, tokens,
                     lang = text.lang,
-                    tagged = text.tagged,
                     token_settings = settings['token_settings'],
                     search_settings = settings['search_settings']
                 )
@@ -832,7 +820,6 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                 ) = wl_matching.match_search_terms_context(
                     self.main, tokens,
                     lang = text.lang,
-                    tagged = text.tagged,
                     token_settings = settings['token_settings'],
                     context_settings = settings['context_settings']
                 )
@@ -876,19 +863,12 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
 
             # Total
             if len(files) > 1:
-                text_total = wl_texts.Wl_Text_Blank()
-                text_total.tokens_multilevel = [
-                    copy.deepcopy(para)
-                    for text in texts
-                    for para in text.tokens_multilevel
-                ]
+                texts.append(wl_texts.Wl_Text_Total(texts))
 
                 self.ngrams_freq_files.append(sum([
                     collections.Counter(ngrams_freq_file)
                     for ngrams_freq_file in self.ngrams_freq_files
                 ], collections.Counter()))
-
-                texts.append(text_total)
 
             # Dispersion & Adjusted Frequency
             measure_dispersion = settings['generation_settings']['measure_dispersion']

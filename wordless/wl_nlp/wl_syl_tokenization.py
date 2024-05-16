@@ -20,58 +20,70 @@ import re
 
 import pythainlp
 
-from wordless.wl_checks import wl_checks_tokens
-from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_word_tokenization
+from wordless.wl_nlp import wl_nlp_utils, wl_texts, wl_word_tokenization
 
-def wl_syl_tokenize(main, inputs, lang, syl_tokenizer = 'default', tagged = False):
-    if inputs and lang in main.settings_global['syl_tokenizers']:
-        syls_tokens = []
-
-        if syl_tokenizer == 'default':
-            syl_tokenizer = main.settings_custom['syl_tokenization']['syl_tokenizer_settings'][lang]
-
-        wl_nlp_utils.init_syl_tokenizers(
-            main,
-            lang = lang,
-            syl_tokenizer = syl_tokenizer
-        )
-
-        section_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks']
-
-        if isinstance(inputs, str):
-            for line in inputs.splitlines():
-                syls_tokens.extend(wl_syl_tokenize_text(main, line, lang, syl_tokenizer, tagged))
-        else:
-            texts = wl_nlp_utils.to_sections_unequal(inputs, section_size = section_size * 50)
-
-            for tokens in texts:
-                syls_tokens.extend(wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer, tagged))
+def wl_syl_tokenize(main, inputs, lang, syl_tokenizer = 'default', force = False):
+    if (
+        not isinstance(inputs, str)
+        and inputs
+        and list(inputs)[0].syls is not None
+        and not force
+    ):
+        return inputs
     else:
-        if isinstance(inputs, str):
-            syls_tokens = [[token] for token in wl_word_tokenization.wl_word_tokenize_flat(main, inputs, lang = lang)]
+        if inputs and lang in main.settings_global['syl_tokenizers']:
+            syls_tokens = []
+
+            if syl_tokenizer == 'default':
+                syl_tokenizer = main.settings_custom['syl_tokenization']['syl_tokenizer_settings'][lang]
+
+            wl_nlp_utils.init_syl_tokenizers(
+                main,
+                lang = lang,
+                syl_tokenizer = syl_tokenizer
+            )
+
+            if isinstance(inputs, str):
+                tokens = wl_word_tokenization.wl_word_tokenize_flat(main, inputs, lang = lang)
+                texts = wl_texts.to_token_texts(tokens)
+            else:
+                texts, token_properties = wl_texts.split_texts_properties(inputs)
+
+            section_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks']
+            texts_sections = wl_nlp_utils.to_sections_unequal(texts, section_size = section_size * 50)
+
+            for texts_section in texts_sections:
+                syls_tokens.extend(wl_syl_tokenize_tokens(main, texts_section, lang, syl_tokenizer))
+
+            # Remove empty syllables and whitespace around syllables
+            syls_tokens = [
+                tuple(wl_texts.clean_texts(syls))
+                for syls in syls_tokens
+                if any(syls)
+            ]
+
+            if isinstance(inputs, str):
+                wl_texts.set_token_properties(tokens, 'syls', syls_tokens)
+
+                return tokens
+            else:
+                tokens = wl_texts.combine_texts_properties(texts, token_properties)
+                wl_texts.set_token_properties(tokens, 'syls', syls_tokens)
+
+                wl_texts.update_token_properties(inputs, tokens)
+
+                return inputs
+        # Do not set syllable properties if syllable tokenization is not supported
         else:
-            syls_tokens = [[token] for token in inputs]
+            if isinstance(inputs, str):
+                tokens = wl_word_tokenization.wl_word_tokenize_flat(main, inputs, lang = lang)
 
-    # Remove empty syllables and whitespace around syllables
-    syls_tokens = [
-        [syl_clean for syl in syls if (syl_clean := syl.strip())]
-        for syls in syls_tokens
-        if any(syls)
-    ]
+                return tokens
+            else:
+                return inputs
 
-    return syls_tokens
-
-def wl_syl_tokenize_text(main, text, lang, syl_tokenizer, tagged):
-    tokens = wl_word_tokenization.wl_word_tokenize_flat(main, text, lang = lang)
-
-    return wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer, tagged)
-
-def wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer, tagged):
+def wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer):
     syls_tokens = []
-
-    # Separate tokens and tags
-    if tagged:
-        tokens, tags = wl_matching.split_tokens_tags(main, tokens)
 
     for token in tokens:
         # NLTK
@@ -95,24 +107,5 @@ def wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer, tagged):
         # Thai
         elif syl_tokenizer == 'pythainlp_tha':
             syls_tokens.append(pythainlp.subword_tokenize(token, engine = 'dict'))
-
-    # Put back tokens and tags
-    if tagged:
-        for syls, tag in zip(syls_tokens, tags):
-            syls[-1] += tag
-
-    return syls_tokens
-
-# Excluding punctuation marks
-def wl_syl_tokenize_tokens_no_punc(main, tokens, lang, syl_tokenizer = 'default', tagged = False):
-    syls_tokens = wl_syl_tokenize(main, tokens, lang, syl_tokenizer, tagged)
-
-    for i, syls in reversed(list(enumerate(syls_tokens))):
-        if len(syls) == 1:
-            # Separate token and tag
-            syl, _ = wl_matching.split_tokens_tags(main, [syls[0]])
-
-            if wl_checks_tokens.is_punc(syl[0]):
-                del syls_tokens[i]
 
     return syls_tokens

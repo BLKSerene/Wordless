@@ -94,8 +94,7 @@ def hdd(main, tokens):
     ttrs = numpy.empty(len(list(tokens_freqs)))
 
     # Short texts
-    if num_tokens < sample_size:
-        sample_size = num_tokens
+    sample_size = min(sample_size, num_tokens)
 
     for i, freq in enumerate(tokens_freqs.values()):
         ttrs[i] = scipy.stats.hypergeom.pmf(k = 0, M = num_tokens, n = freq, N = sample_size)

@@ -22,7 +22,7 @@ from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import QGroupBox, QLabel, QPushButton, QTextEdit
 
-from wordless.wl_nlp import wl_lemmatization, wl_nlp_utils, wl_word_detokenization
+from wordless.wl_nlp import wl_lemmatization, wl_nlp_utils, wl_texts, wl_word_detokenization
 from wordless.wl_settings import wl_settings
 from wordless.wl_utils import wl_conversion, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_item_delegates, wl_layouts, wl_tables
@@ -220,11 +220,12 @@ class Wl_Worker_Preview_Lemmatizer(wl_threading.Wl_Worker_No_Progress):
 
         for line in preview_samples.split('\n'):
             if (line := line.strip()):
-                lemmas = wl_lemmatization.wl_lemmatize(
+                tokens = wl_lemmatization.wl_lemmatize(
                     self.main, line,
                     lang = preview_lang,
                     lemmatizer = self.lemmatizer
                 )
+                lemmas = wl_texts.get_token_properties(tokens, 'lemma')
                 text = wl_word_detokenization.wl_word_detokenize(
                     self.main, lemmas,
                     lang = preview_lang

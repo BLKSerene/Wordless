@@ -22,7 +22,7 @@ from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import QGroupBox, QLabel, QPushButton, QTextEdit
 
-from wordless.wl_nlp import wl_nlp_utils, wl_syl_tokenization, wl_word_detokenization
+from wordless.wl_nlp import wl_nlp_utils, wl_syl_tokenization, wl_texts, wl_word_detokenization
 from wordless.wl_settings import wl_settings
 from wordless.wl_utils import wl_conversion, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_item_delegates, wl_layouts, wl_tables
@@ -220,17 +220,18 @@ class Wl_Worker_Preview_Syl_Tokenizer(wl_threading.Wl_Worker_No_Progress):
 
         for line in preview_samples.split('\n'):
             if (line := line.strip()):
-                syls = wl_syl_tokenization.wl_syl_tokenize(
+                tokens = wl_syl_tokenization.wl_syl_tokenize(
                     self.main, line,
                     lang = preview_lang,
                     syl_tokenizer = self.syl_tokenizer
                 )
+                syls_tokens = wl_texts.get_token_properties(tokens, 'syls')
 
                 if preview_lang == 'tha':
-                    text = ' '.join(['-'.join(syl) for syl in syls])
+                    text = ' '.join(['-'.join(syls) for syls in syls_tokens])
                 else:
                     text = wl_word_detokenization.wl_word_detokenize(
-                        self.main, ['-'.join(syl) for syl in syls],
+                        self.main, ['-'.join(syls) for syls in syls_tokens],
                         lang = preview_lang
                     )
 

@@ -30,7 +30,7 @@ from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
 from wordless.wl_measures import wl_measure_utils
-from wordless.wl_nlp import wl_syl_tokenization, wl_texts, wl_token_processing
+from wordless.wl_nlp import wl_texts, wl_token_processing
 from wordless.wl_utils import wl_conversion, wl_misc, wl_sorting, wl_threading
 from wordless.wl_widgets import wl_layouts, wl_tables, wl_widgets
 
@@ -364,7 +364,7 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
 
             wl_threading.Wl_Thread(worker_wordlist_generator_table).start_worker()
 
-    def update_gui_table(self, err_msg, tokens_freq_files, tokens_stats_files, tokens_syllabification):
+    def update_gui_table(self, err_msg, tokens_freq_files, tokens_stats_files, syls_tokens):
         if wl_checks_work_area.check_results(self.main, err_msg, tokens_freq_files):
             try:
                 self.settings = copy.deepcopy(self.main.settings_custom)
@@ -453,12 +453,20 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
                     self.set_item_num(i, 0, -1)
 
                     # Token
-                    self.model().setItem(i, 1, wl_tables.Wl_Table_Item(token))
+                    self.model().setItem(i, 1, wl_tables.Wl_Table_Item(token.display_text()))
+                    self.model().item(i, 1).tokens_filter = [token]
 
                     # Syllabification
                     if settings['generation_settings']['syllabification']:
-                        if len(tokens_syllabification[token]) == 1:
-                            token_syllabified = list(tokens_syllabification[token].values())[0]
+                        # Use tags only
+                        if settings['token_settings']['use_tags']:
+                            self.set_item_err(
+                                i, 2,
+                                _tr('wl_wordlist_generator', 'N/A'),
+                                alignment_hor = 'left'
+                            )
+                        elif len(syls_tokens[token]) == 1:
+                            token_syllabified = list(syls_tokens[token].values())[0]
 
                             if token_syllabified == _tr('wl_wordlist_generator', 'No language support'):
                                 self.set_item_err(i, 2, token_syllabified, alignment_hor = 'left')
@@ -468,9 +476,9 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
                         else:
                             token_syllabified_forms = []
 
-                            for lang, syllabified_form in tokens_syllabification[token].items():
+                            for lang, syllabified_form in syls_tokens[token].items():
                                 lang_text = wl_conversion.to_lang_text(self.main, lang)
-                                token_syllabified_forms.append(f'{syllabified_form} [{lang_text}]')
+                                token_syllabified_forms.append(f"{syllabified_form} [{lang_text}]")
 
                             tokens_syllabified = ', '.join(token_syllabified_forms)
 
@@ -526,7 +534,7 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
 
             wl_threading.Wl_Thread(self.worker_wordlist_generator_fig).start_worker()
 
-    def update_gui_fig(self, err_msg, tokens_freq_files, tokens_stats_files, tokens_syllabification): # pylint: disable=unused-argument
+    def update_gui_fig(self, err_msg, tokens_freq_files, tokens_stats_files, syls_tokens): # pylint: disable=unused-argument
         if wl_checks_work_area.check_results(self.main, err_msg, tokens_freq_files):
             try:
                 settings = self.main.settings_custom['wordlist_generator']
@@ -576,7 +584,7 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
         self.err_msg = ''
         self.tokens_freq_files = []
         self.tokens_stats_files = []
-        self.tokens_syllabification = {}
+        self.syls_tokens = {}
 
     def run(self):
         try:
@@ -586,47 +594,35 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
             files = list(self.main.wl_file_area.get_selected_files())
 
             for file in files:
-                text = copy.deepcopy(file['text'])
-                text = wl_token_processing.wl_process_tokens(
-                    self.main, text,
-                    token_settings = settings['token_settings']
+                text = wl_token_processing.wl_process_tokens_wordlist_generator(
+                    self.main, file['text'],
+                    token_settings = settings['token_settings'],
+                    generation_settings = settings['generation_settings']
                 )
-
-                # Remove empty tokens
-                tokens_flat = text.get_tokens_flat()
-                tokens = [token for token in tokens_flat if token]
+                tokens = text.get_tokens_flat()
 
                 # Frequency
                 self.tokens_freq_files.append(collections.Counter(tokens))
 
                 # Syllabification
                 for token in set(tokens):
-                    if token not in self.tokens_syllabification:
-                        self.tokens_syllabification[token] = {}
+                    if token not in self.syls_tokens:
+                        self.syls_tokens[token] = {}
 
-                    if text.lang not in self.tokens_syllabification[token]:
-                        if text.lang in self.main.settings_global['syl_tokenizers']:
-                            syls_tokens = wl_syl_tokenization.wl_syl_tokenize(self.main, [token], text.lang, tagged = text.tagged)
-
-                            self.tokens_syllabification[token][text.lang] = '-'.join(syls_tokens[0])
+                    if text.lang not in self.syls_tokens[token]:
+                        if token.syls:
+                            self.syls_tokens[token][text.lang] = '-'.join(token.syls)
                         else:
-                            self.tokens_syllabification[token][text.lang] = _tr('wl_wordlist_generator', 'No language support')
+                            self.syls_tokens[token][text.lang] = _tr('wl_wordlist_generator', 'No language support')
 
                 texts.append(text)
 
             # Total
             if len(files) > 1:
-                text_total = wl_texts.Wl_Text_Blank()
-                text_total.tokens_multilevel = [
-                    copy.deepcopy(para)
-                    for text in texts
-                    for para in text.tokens_multilevel
-                ]
+                texts.append(wl_texts.Wl_Text_Total(texts))
 
                 # Frequency
                 self.tokens_freq_files.append(sum(self.tokens_freq_files, collections.Counter()))
-
-                texts.append(text_total)
 
             # Dispersion & Adjusted Frequency
             measure_dispersion = settings['generation_settings']['measure_dispersion']
@@ -700,7 +696,7 @@ class Wl_Worker_Wordlist_Generator_Table(Wl_Worker_Wordlist_Generator):
             self.err_msg,
             wl_misc.merge_dicts(self.tokens_freq_files),
             wl_misc.merge_dicts(self.tokens_stats_files),
-            self.tokens_syllabification
+            self.syls_tokens
         )
 
 class Wl_Worker_Wordlist_Generator_Fig(Wl_Worker_Wordlist_Generator):
@@ -712,5 +708,5 @@ class Wl_Worker_Wordlist_Generator_Fig(Wl_Worker_Wordlist_Generator):
             self.err_msg,
             wl_misc.merge_dicts(self.tokens_freq_files),
             wl_misc.merge_dicts(self.tokens_stats_files),
-            self.tokens_syllabification
+            self.syls_tokens
         )

@@ -78,6 +78,7 @@ class Check_Settings_Global:
         self.invalid_lang_utils = False
         self.lang_default_missing = False
         self.lang_default_extra = False
+        self.invalid_default_lang_util = False
 
     def check_missing_extra_langs(self, langs_supported, langs_global, msg):
         for lang_code in langs_supported:

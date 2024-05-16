@@ -505,9 +505,12 @@ class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
         self.dialog.table.row_filters = []
 
         for i in range(self.dialog.table.model().rowCount()):
-            filter_len_token_ngram = (
-                len_token_ngram_min <= len(self.dialog.table.model().item(i, col_token_ngram).text()) <= len_token_ngram_max
-            )
+            # Calculate length of token texts only when filtering tagged tokens and when filtering tags
+            len_token_ngram = sum((
+                len(str(token))
+                for token in self.dialog.table.model().item(i, col_token_ngram).tokens_filter
+            ))
+            filter_len_token_ngram = len_token_ngram_min <= len_token_ngram <= len_token_ngram_max
 
             if self.dialog.tab == 'wordlist_generator':
                 filter_num_syls = False
@@ -1012,9 +1015,12 @@ class Wl_Worker_Results_Filter_Collocation_Extractor(wl_threading.Wl_Worker):
         self.dialog.table.row_filters = []
 
         for i in range(self.dialog.table.model().rowCount()):
-            filter_len_node = (
-                len_node_min <= len(self.dialog.table.model().item(i, col_node).text()) <= len_node_max
-            )
+            # Calculate length of token texts only when filtering tagged tokens and when filtering tags
+            len_node = sum((
+                len(str(token))
+                for token in self.dialog.table.model().item(i, col_node).tokens_filter
+            ))
+            filter_len_node = len_node_min <= len_node <= len_node_max
 
             filter_freq = (
                 freq_min <= self.dialog.table.model().item(i, col_freq).val <= freq_max

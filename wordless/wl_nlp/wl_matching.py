@@ -22,7 +22,7 @@ import re
 
 from PyQt5.QtCore import QCoreApplication
 
-from wordless.wl_nlp import wl_lemmatization
+from wordless.wl_nlp import wl_lemmatization, wl_texts
 
 _tr = QCoreApplication.translate
 
@@ -108,14 +108,6 @@ def get_re_tags_with_tokens(main, tag_type):
 
     return '|'.join(tags_embedded + tags_non_embedded)
 
-def split_tokens_tags(main, tokens):
-    re_tags = get_re_tags(main, tag_type = 'body')
-
-    tags = [''.join(re.findall(re_tags, token)) for token in tokens]
-    tokens = [re.sub(re_tags, '', token) for token in tokens]
-
-    return tokens, tags
-
 # Search Terms
 def check_search_terms(search_settings, search_enabled):
     search_terms = set()
@@ -153,21 +145,25 @@ def check_search_settings(token_settings, search_settings):
 
 def match_tokens(
     main, search_terms, tokens,
-    lang, tagged, settings
+    lang, settings
 ):
+    search_terms = wl_texts.display_texts_to_tokens(main, search_terms, lang)
     search_results = set()
 
-    # Process tokens to search
-    tokens_search = tokens.copy()
-    re_tags = get_re_tags(main, tag_type = 'body')
+    # Save lemmas
+    if tokens:
+        if settings['match_inflected_forms']:
+            for i, token in enumerate(wl_lemmatization.wl_lemmatize(main, tokens, lang)):
+                tokens[i] = token
 
-    if settings['match_without_tags'] and tagged:
-        tokens_search = [re.sub(re_tags, '', token) for token in tokens]
+    # Process tokens
+    tokens_search = copy.deepcopy(tokens)
+
+    if settings['match_without_tags']:
+        wl_texts.set_token_properties(tokens_search, 'tag', '')
     elif settings['match_tags']:
-        if tagged:
-            tokens_search = [''.join(re.findall(re_tags, token)) for token in tokens]
-        else:
-            tokens_search = []
+        wl_texts.set_token_texts(tokens_search, wl_texts.get_token_properties(tokens_search, 'tag'))
+        wl_texts.set_token_properties(tokens_search, 'tag', '')
 
     # Match tokens
     if tokens_search:
@@ -175,20 +171,23 @@ def match_tokens(
         re_flags = 0 if settings['match_case'] else re.IGNORECASE
 
         if settings['use_regex']:
-            search_terms_regex = search_terms.copy()
+            search_terms_regex = [search_term.display_text() for search_term in search_terms]
         # Prevent special characters from being treated as regex
         else:
-            search_terms_regex = [re.escape(search_term) for search_term in search_terms]
+            search_terms_regex = [re.escape(search_term.display_text()) for search_term in search_terms]
 
         for search_term in search_terms_regex:
             for token, token_search in zip(tokens, tokens_search):
-                if re_match(search_term, token_search, flags = re_flags):
+                if re_match(search_term, token_search.display_text(), flags = re_flags):
                     search_results.add(token)
 
         # Match inflected forms of search terms and search results
         if settings['match_inflected_forms']:
-            lemmas_search = wl_lemmatization.wl_lemmatize(main, tokens_search, lang, tagged = tagged)
-            lemmas_matched = wl_lemmatization.wl_lemmatize(main, {*search_terms, *search_results}, lang, tagged = tagged)
+            lemmas_search = wl_texts.get_token_properties(tokens_search, 'lemma')
+            lemmas_matched = wl_texts.get_token_properties(
+                wl_lemmatization.wl_lemmatize(main, {*search_terms, *search_results}, lang),
+                'lemma'
+            )
 
             for lemma_matched in set(lemmas_matched):
                 # Always match literal strings
@@ -202,7 +201,7 @@ def match_tokens(
 
 def match_ngrams(
     main, search_terms, tokens,
-    lang, tagged, settings
+    lang, settings
 ):
     search_results = set()
 
@@ -211,49 +210,50 @@ def match_ngrams(
         for search_term in search_terms
         for search_term_token in search_term.split()
     })
+    search_term_tokens = wl_texts.display_texts_to_tokens(main, search_term_tokens, lang)
 
     tokens_matched = {search_term_token: set() for search_term_token in search_term_tokens}
 
-    # Process tokens to search
-    tokens_search = tokens.copy()
+    # Save lemmas
+    if tokens:
+        if settings['match_inflected_forms']:
+            for i, token in enumerate(wl_lemmatization.wl_lemmatize(main, tokens, lang)):
+                tokens[i] = token
 
-    if (settings['match_without_tags'] or settings['match_tags']) and tagged:
-        tokens_search_tokens, tokens_search_tags = split_tokens_tags(main, tokens_search)
+    # Process tokens
+    tokens_search = copy.deepcopy(tokens)
 
-    if settings['match_without_tags'] and tagged:
-        tokens_search = tokens_search_tokens
+    if settings['match_without_tags']:
+        wl_texts.set_token_properties(tokens_search, 'tag', '')
     elif settings['match_tags']:
-        if tagged:
-            tokens_search = tokens_search_tags
-        else:
-            tokens_search = []
+        wl_texts.set_token_texts(tokens_search, wl_texts.get_token_properties(tokens_search, 'tag'))
+        wl_texts.set_token_properties(tokens_search, 'tag', '')
 
     # Match n-grams
     if tokens_search:
         re_match = re.fullmatch if settings['match_whole_words'] else re.search
         re_flags = 0 if settings['match_case'] else re.IGNORECASE
 
-        if settings['use_regex']:
-            search_term_tokens_regex = search_term_tokens.copy()
-        # Prevent special characters from being treated as regex
-        else:
-            search_term_tokens_regex = [re.escape(token) for token in search_term_tokens]
+        for search_term_token in search_term_tokens:
+            if settings['use_regex']:
+                search_term_token_regex = search_term_token.display_text()
+            # Prevent special characters from being treated as regex
+            else:
+                search_term_token_regex = re.escape(search_term_token.display_text())
 
-        for search_term_token in search_term_tokens_regex:
             for token, token_search in zip(tokens, tokens_search):
-                if re_match(search_term_token, token_search, flags = re_flags):
-                    # Unescape escaped special characters
-                    if not settings['use_regex']:
-                        search_term_token = re.sub(r'\\(.)', r'\1', search_term_token)
-
+                if re_match(search_term_token_regex, token_search.display_text(), flags = re_flags):
                     tokens_matched[search_term_token].add(token)
 
         if settings['match_inflected_forms']:
-            lemmas_search = wl_lemmatization.wl_lemmatize(main, tokens_search, lang, tagged = tagged)
+            lemmas_search = wl_texts.get_token_properties(tokens_search, 'lemma')
 
             # Search for inflected forms of tokens in search results first
             for search_term_token, search_term_tokens_matched in copy.deepcopy(tokens_matched).items():
-                lemmas_matched = wl_lemmatization.wl_lemmatize(main, search_term_tokens_matched, lang, tagged = tagged)
+                lemmas_matched = wl_texts.get_token_properties(
+                    wl_lemmatization.wl_lemmatize(main, search_term_tokens_matched, lang),
+                    'lemma'
+                )
 
                 for token_matched, lemma_matched in zip(search_term_tokens_matched, lemmas_matched):
                     # Always match literal strings
@@ -263,7 +263,10 @@ def match_ngrams(
                         if re_match(lemma_matched, lemma_search, flags = re_flags):
                             tokens_matched[search_term_token].add(token)
 
-            lemmas_matched = wl_lemmatization.wl_lemmatize(main, search_term_tokens, lang, tagged = tagged)
+            lemmas_matched = wl_texts.get_token_properties(
+                wl_lemmatization.wl_lemmatize(main, search_term_tokens, lang),
+                'lemma'
+            )
 
             # Search for inflected forms of tokens in search terms
             for token_matched, lemma_matched in zip(search_term_tokens, lemmas_matched):
@@ -277,7 +280,7 @@ def match_ngrams(
     for search_term in search_terms:
         search_term_tokens_matched = []
 
-        for search_term_token in search_term.split():
+        for search_term_token in wl_texts.display_texts_to_tokens(main, search_term.split(), lang):
             search_term_tokens_matched.append(tokens_matched[search_term_token])
 
         for item in itertools.product(*search_term_tokens_matched):
@@ -287,40 +290,28 @@ def match_ngrams(
 
 def match_search_terms_tokens(
     main, tokens,
-    lang, tagged,
-    token_settings, search_settings
+    lang, token_settings, search_settings
 ):
     search_terms = check_search_terms(search_settings, search_enabled = True)
-
-    # Assign part-of-speech tags
-    if token_settings['assign_pos_tags']:
-        tagged = True
 
     if search_terms:
         search_terms = match_tokens(
             main, search_terms, tokens,
-            lang, tagged,
-            check_search_settings(token_settings, search_settings)
+            lang, check_search_settings(token_settings, search_settings)
         )
 
     return search_terms
 
 def match_search_terms_ngrams(
     main, tokens,
-    lang, tagged,
-    token_settings, search_settings
+    lang, token_settings, search_settings
 ):
     search_terms = check_search_terms(search_settings, search_enabled = True)
-
-    # Assign part-of-speech tags
-    if token_settings['assign_pos_tags']:
-        tagged = True
 
     if search_terms:
         search_terms = match_ngrams(
             main, search_terms, tokens,
-            lang, tagged,
-            check_search_settings(token_settings, search_settings)
+            lang, check_search_settings(token_settings, search_settings)
         )
 
     return search_terms
@@ -328,15 +319,10 @@ def match_search_terms_ngrams(
 # Context
 def match_search_terms_context(
     main, tokens,
-    lang, tagged,
-    token_settings, context_settings
+    lang, token_settings, context_settings
 ):
     search_terms_incl = set()
     search_terms_excl = set()
-
-    # Assign part-of-speech tags
-    if token_settings['assign_pos_tags']:
-        tagged = True
 
     # Inclusion
     search_terms = check_search_terms(
@@ -347,8 +333,7 @@ def match_search_terms_context(
     if search_terms:
         search_terms_incl = match_ngrams(
             main, search_terms, tokens,
-            lang, tagged,
-            check_search_settings(token_settings, context_settings['incl'])
+            lang, check_search_settings(token_settings, context_settings['incl'])
         )
 
     # Exclusion
@@ -360,8 +345,7 @@ def match_search_terms_context(
     if search_terms:
         search_terms_excl = match_ngrams(
             main, search_terms, tokens,
-            lang, tagged,
-            check_search_settings(token_settings, context_settings['excl'])
+            lang, check_search_settings(token_settings, context_settings['excl'])
         )
 
     return search_terms_incl, search_terms_excl

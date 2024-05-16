@@ -42,7 +42,7 @@ def test_dependency_parser():
             case _:
                 wl_test_init.select_test_files(main, no_files = [i + 1])
 
-        global main_global # pylint: disable=global-statement
+        global main_global
         main_global = main
 
         print(f"Files: {' | '.join(wl_test_init.get_test_file_names(main))}")

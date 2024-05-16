@@ -247,14 +247,14 @@ class Wl_Worker_Preview_Pos_Tagger(wl_threading.Wl_Worker_No_Progress):
 
         for line in preview_samples.split('\n'):
             if (line := line.strip()):
-                tokens_tagged = wl_pos_tagging.wl_pos_tag(
+                tokens = wl_pos_tagging.wl_pos_tag(
                     self.main, line,
                     lang = preview_lang,
                     pos_tagger = self.pos_tagger,
                     tagset = self.tagset
                 )
 
-                preview_results.append(' '.join([f'{token}_{tag}' for token, tag in tokens_tagged]))
+                preview_results.append(' '.join([f'{str(token)}{token.tag}' for token in tokens]))
             else:
                 preview_results.append('')
 
