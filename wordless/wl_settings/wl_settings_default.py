@@ -1473,7 +1473,7 @@ def init_settings_default(main):
                 'spa': 'pyphen_spa',
                 'swe': 'pyphen_swe',
                 'tel': 'pyphen_tel',
-                'tha': 'pythainlp_tha',
+                'tha': 'pythainlp_han_solo',
                 'ukr': 'pyphen_ukr',
                 'zul': 'pyphen_zul'
             },
