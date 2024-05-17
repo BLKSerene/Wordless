@@ -21,6 +21,7 @@
 ## [3.5.0](https://github.com/BLKSerene/Wordless/releases/tag/3.5.0) - ??/??/2024
 ### 🎉 New Features
 - Settings: Add Settings - Stop Word Lists - Stop Word List Settings - Case-sensitive
+- Settings: Add Settings - Tables - Dependency Parser
 - Utils: Add Stanza's Sindhi part-of-speech tagger
 - Utils: Add VADER's sentiment analyzers
 - Work Area: Add Profiler - Lexical Diversity - Brunét's Index / Honoré's statistic
@@ -29,6 +30,7 @@
 - Settings: Settings - Part-of-speeach Tagging - Tagsets - Mapping Settings - Allow editing of tagset mapping of spaCy's Catalan, Danish, French, Greek (Modern), Macedonian, Norwegian (Bokmål), Portuguese, Russian, Spanish, and Ukrainian part-of-speech taggers
 - Settings: Settings - Part-of-speeach Tagging - Tagsets - Mapping Settings - Allow editing of tagset mapping of Stanza's Armenian (Eastern), Armenian (Western), Basque, Buryat (Russia), Danish, French, Greek (Modern), Hebrew (Modern), Hungarian, Ligurian, Manx, Marathi, Nigerian Pidgin, Pomak, Portuguese, Russian, Sanskrit, Sindhi, Sorbian (Upper), and Telugu part-of-speech taggers
 - Utils: Update custom stop word lists
+- Work Area: Dependency Parser - Sentence - Highlight heads and dependents
 
 ### 📌 Bugfixes
 - Utils: Fix downloading of Stanza models

@@ -111,6 +111,7 @@ def get_langs_stanza(main, util_type):
 
     return langs_stanza
 
+@wl_misc.log_timing
 def check_models(main, langs, lang_utils = None):
     def update_gui_stanza(main, err_msg):
         nonlocal models_ok
