@@ -2143,8 +2143,16 @@ def init_settings_default(main):
 
             # Settings - Tables - Parallel Concordancer
             'parallel_concordancer': {
-                'color_settings': {
+                'highlight_color_settings': {
                     'search_term_color': '#FF0000' # Red
+                }
+            },
+
+            # Settings - Tables - Dependency Parser
+            'dependency_parser': {
+                'highlight_color_settings': {
+                    'head_color': '#FF0000', # Red
+                    'dependent_color': '#3F864C', # Green
                 }
             }
         },

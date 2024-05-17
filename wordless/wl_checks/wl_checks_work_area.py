@@ -63,6 +63,9 @@ def wl_status_bar_msg_success_generate_table(main):
 def wl_status_bar_msg_success_generate_fig(main):
     main.statusBar().showMessage(_tr('wl_checks_work_area', 'Figure generated successfully.'))
 
+def wl_status_bar_msg_success_exp_table(main):
+    main.statusBar().showMessage(_tr('wl_checks_work_area', 'Table exported successfully.'))
+
 def wl_status_bar_msg_success_no_results(main):
     main.statusBar().showMessage(_tr('wl_checks_work_area', 'No results to display.'))
 
@@ -71,6 +74,9 @@ def wl_status_bar_msg_err_download_model(main):
 
 def wl_status_bar_msg_err_fatal(main):
     main.statusBar().showMessage(_tr('wl_checks_work_area', 'A fatal error has just occurred!'))
+
+def wl_status_bar_msg_file_access_denied(main):
+    main.statusBar().showMessage(_tr('wl_checks_work_area', 'File access denied!'))
 
 def check_search_terms(main, search_settings, show_warning = True):
     if (
@@ -94,7 +100,7 @@ NLP_UTILS = {
     'dependency_parsers': _tr('wl_checks_work_area', 'Dependency parsing')
 }
 
-def check_nlp_support(main, nlp_utils, files = None, ref = False, test = False):
+def check_nlp_support(main, nlp_utils, files = None, ref = False):
     support_ok = True
     nlp_utils_no_support = []
 
@@ -147,11 +153,7 @@ def check_nlp_support(main, nlp_utils, files = None, ref = False, test = False):
             )
 
         dialog_err_files.table_err_files.enable_updates()
-
-        if test:
-            dialog_err_files.open()
-        else:
-            dialog_err_files.exec_()
+        dialog_err_files.open()
 
         wl_status_bar_msg_lang_support_unavailable(main)
 
@@ -159,17 +161,13 @@ def check_nlp_support(main, nlp_utils, files = None, ref = False, test = False):
 
     return support_ok
 
-def check_results(main, err_msg, results, test = False):
+def check_results(main, err_msg, results):
     results_ok = True
 
     if err_msg:
         results_ok = False
 
-        if test:
-            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
-        else:
-            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).exec_()
-
+        wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
         wl_status_bar_msg_err_fatal(main)
     elif not any(results):
         results_ok = False
@@ -179,7 +177,7 @@ def check_results(main, err_msg, results, test = False):
 
     return results_ok
 
-def check_results_download_model(main, err_msg, model_name = '', test = False):
+def check_results_download_model(main, err_msg, model_name = ''):
     results_ok = True
 
     try:
@@ -195,35 +193,50 @@ def check_results_download_model(main, err_msg, model_name = '', test = False):
             err_msg = traceback.format_exc()
 
     if err_msg:
-        if test:
-            wl_dialogs_errs.Wl_Dialog_Err_Download_Model(main, err_msg).open()
-        else:
-            wl_dialogs_errs.Wl_Dialog_Err_Download_Model(main, err_msg).exec_()
-
+        wl_dialogs_errs.Wl_Dialog_Err_Download_Model(main, err_msg).open()
         wl_status_bar_msg_err_download_model(main)
 
         results_ok = False
 
     return results_ok
 
-def check_err_table(main, err_msg, test = False):
+def check_err_table(main, err_msg):
     if err_msg:
-        if test:
-            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
-        else:
-            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).exec_()
-
+        wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
         wl_status_bar_msg_err_fatal(main)
     else:
         wl_status_bar_msg_success_generate_table(main)
 
-def check_err_fig(main, err_msg, test = False):
+def check_err_fig(main, err_msg):
     if err_msg:
-        if test:
-            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
-        else:
-            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).exec_()
+        wl_status_bar_msg_err_fatal(main)
 
+        wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
         wl_status_bar_msg_err_fatal(main)
     else:
         wl_status_bar_msg_success_generate_fig(main)
+
+def check_err_exp_table(main, err_msg, file_path):
+    if err_msg:
+        if err_msg == 'permission_err':
+            wl_msg_boxes.Wl_Msg_Box_Info(
+                main,
+                title = _tr('wl_checks_work_area', 'File Access Denied'),
+                text = _tr('wl_checks_work_area', '''
+                    <div>Access to "{}" is denied, please specify another location or close the file and try again.</div>
+                ''').format(file_path)
+            ).open()
+        else:
+            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
+
+        wl_status_bar_msg_file_access_denied(main)
+    else:
+        wl_msg_boxes.Wl_Msg_Box_Info(
+            main,
+            title = _tr('wl_checks_work_area', 'Export Completed'),
+            text = _tr('wl_checks_work_area', '''
+                <div>The table has been successfully exported to "{}".</div>
+            ''').format(file_path)
+        ).open()
+
+        wl_status_bar_msg_success_exp_table(main)

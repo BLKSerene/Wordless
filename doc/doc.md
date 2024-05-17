@@ -61,17 +61,17 @@ The main window of *Wordless* is divided into several sections:
 - **1.4 Status Bar**<br>
   The *Status Bar* resides at the bottom of the main window.
 
-  You can show/hide the *Status Bar* by checking/unchecking **Menu → Preferences → Show Status Bar**
+  You can show/hide the *Status Bar* by checking/unchecking **Menu Bar → Preferences → Show Status Bar**
 
-You can modify the global scaling factor and font settings of the user interface via **Menu → Preferences → General → User Interface Settings**.
+You can modify the global scaling factor and font settings of the user interface via **Menu Bar → Preferences → General → User Interface Settings**.
 
 <span id="doc-2"></span>
 ## [2 File Area](#doc)
-In most cases, the first thing to do in *Wordless* is open and select your files to be processed via **Menu → File → Open Files/Folder**.
+In most cases, the first thing to do in *Wordless* is open and select your files to be processed via **Menu Bar → File → Open Files/Folder**.
 
 Files are loaded, cached and selected automatically after being added to the *File Table*. **Only selected files will be processed by *Wordless***. You can drag and drop files around the *File Table* to change their orders, which would be reflected in the results.
 
-By default, *Wordless* tries to detect the encoding and language settings of all files for you, you should double check and make sure that the settings of each and every file are correct. If you prefer changing file settings manually, you could uncheck **Auto-detect encodings** and/or **Auto-detect languages** in the *Open Files* dialog. The default file settings could be modified via **Menu → Preferences → Settings → Files → Default Settings**.
+By default, *Wordless* tries to detect the encoding and language settings of all files for you, you should double check and make sure that the settings of each and every file are correct. If you prefer changing file settings manually, you could uncheck **Auto-detect encodings** and/or **Auto-detect languages** in the *Open Files* dialog. The default file settings could be modified via **Menu Bar → Preferences → Settings → Files → Default Settings**.
 
 - **2.1 Open Files**<br>
   Add one single file or multiple files to the *File Table*.
@@ -126,7 +126,7 @@ All statistics are grouped into 5 tables for better readability: Readability, Co
     The percentage of the number of paragraphs in each file out of the total number of paragraphs in all files.
 
   - **3.1.2.3 Count of Sentences**<br>
-    The number of sentences in each file. *Wordless* automatically applies the built-in sentence tokenizer according to the language of each file to calculate the number of sentences in each file. You can modify sentence tokenizer settings via **Menu → Preferences → Settings → Sentence Tokenization → Sentence Tokenizer Settings**.
+    The number of sentences in each file. *Wordless* automatically applies the built-in sentence tokenizer according to the language of each file to calculate the number of sentences in each file. You can modify sentence tokenizer settings via **Menu Bar → Preferences → Settings → Sentence Tokenization → Sentence Tokenizer Settings**.
 
   - **3.1.2.4 Count of Sentences %**<br>
     The percentage of the number of sentences in each file out of the total number of sentences in all files.
@@ -138,7 +138,7 @@ All statistics are grouped into 5 tables for better readability: Readability, Co
     The percentage of the number of sentence segments in each file out of the total number of sentence segments in all files.
 
   - **3.1.2.7 Count of Tokens**<br>
-    The number of tokens in each file. *Wordless* automatically applies the built-in word tokenizer according to the language of each file to calculate the number of tokens in each file. You can modify word tokenizer settings via **Menu → Preferences → Settings → Word Tokenization → Word Tokenizer Settings**.
+    The number of tokens in each file. *Wordless* automatically applies the built-in word tokenizer according to the language of each file to calculate the number of tokens in each file. You can modify word tokenizer settings via **Menu Bar → Preferences → Settings → Word Tokenization → Word Tokenizer Settings**.
 
     You can specify what should be counted as a "token" via **Token Settings** in the *Settings Area*
 
@@ -152,7 +152,7 @@ All statistics are grouped into 5 tables for better readability: Readability, Co
     The percentage of the number of token types in each file out of the total number of token types in all files.
 
   - **3.1.2.11 Count of Syllables**<br>
-    The number of syllables in each files. *Wordless* automatically applies the built-in syllable tokenizer according to the language of each file to calculate the number of syllable in each file. You can modify syllable tokenizer settings via **Menu → Preferences → Settings → Syllable Tokenization → Syllable Tokenizer Settings**.
+    The number of syllables in each files. *Wordless* automatically applies the built-in syllable tokenizer according to the language of each file to calculate the number of syllable in each file. You can modify syllable tokenizer settings via **Menu Bar → Preferences → Settings → Syllable Tokenization → Syllable Tokenizer Settings**.
 
   - **3.1.2.12 Count of Syllables %**<br>
     The percentage of the number of syllables in each file out of the total number of syllable in all files.
@@ -322,7 +322,7 @@ All statistics are grouped into 5 tables for better readability: Readability, Co
 ### [3.2 Concordancer](#doc)
 In *Concordancer*, you can search for tokens in different files and generate concordance lines. You can adjust settings for data generation via **Generation Settings**.
 
-After the concordance lines are generated and displayed in the table, you can sort the results by clicking **Sort Results** or search in results by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
+After the concordance lines are generated and displayed in the table, you can sort the results by clicking **Sort Results** or search in results by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*. Highlight colors for sorting can be modified via **Menu Bar → Preferences → Settings → Tables → Concordancer → Sorting**.
 
 You can generate concordance plots for all search terms. You can modify the settings for the generated figure via **Figure Settings**.
 
@@ -384,7 +384,9 @@ After the parallel concordance lines are generated and displayed in the table, y
 - **3.3.3 Parallel Units**<br>
   The parallel unit (paragraph) where the search term is found in each file.
 
-<span id="doc-3-5"></span>
+  Highlight colors for search terms can be modified via **Menu Bar → Preferences → Settings → Tables → Parallel Concordancer → Highlight Color Settings**.
+
+<span id="doc-3-4"></span>
 ### [3.4 Dependency Parser](#doc)
 > [!NOTE]
 > Added in *Wordless* 3.0.0
@@ -410,6 +412,8 @@ You can select lines in the *Results Area* and then click *Generate Figure* to s
 - **3.4.5 Sentence**<br>
   The sentence where the dependency structure is found.
 
+  Highlight colors for the head and the dependent can be modified via **Menu Bar → Preferences → Settings → Tables → Dependency Parser → Highlight Color Settings**.
+
 - **3.4.6 Sentence No.**<br>
   The position of the sentence where the dependency structure is found.
 
@@ -431,7 +435,7 @@ You can further filter the results as you see fit by clicking **Filter Results**
 You can generate line charts or word clouds for wordlists using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
 
 - **3.5.1 Rank**<br>
-  The rank of the token sorted by its frequency in the first file in descending order (by default). You can sort the results again by clicking the column headers. You can use continuous numbering after tied ranks (eg. 1/1/1/2/2/3 instead of 1/1/1/4/4/6) by checking **Menu → Preferences → Settings → Tables → Rank Settings → Continue numbering after ties**.
+  The rank of the token sorted by its frequency in the first file in descending order (by default). You can sort the results again by clicking the column headers. You can use continuous numbering after tied ranks (eg. 1/1/1/2/2/3 instead of 1/1/1/4/4/6) by checking **Menu Bar → Preferences → Settings → Tables → Rank Settings → Continue numbering after ties**.
 
 - **3.5.2 Token**<br>
   You can specify what should be counted as a "token" via **Token Settings**.
@@ -470,7 +474,7 @@ You can generate line charts or word clouds for n-grams using any statistics. Yo
 You can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
 
 - **3.6.1 Rank**<br>
-  The rank of the n-gram sorted by its frequency in the first file in descending order (by default). You can sort the results again by clicking the column headers. You can use continuous numbering after tied ranks (eg. 1/1/1/2/2/3 instead of 1/1/1/4/4/6) by checking **Menu → Preferences → Settings → Tables → Rank Settings → Continue numbering after ties**.
+  The rank of the n-gram sorted by its frequency in the first file in descending order (by default). You can sort the results again by clicking the column headers. You can use continuous numbering after tied ranks (eg. 1/1/1/2/2/3 instead of 1/1/1/4/4/6) by checking **Menu Bar → Preferences → Settings → Tables → Rank Settings → Continue numbering after ties**.
 
 - **3.6.2 N-gram**<br>
   You can specify what should be counted as a "n-gram" via **Token Settings**.
@@ -502,7 +506,7 @@ You can generate line charts, word clouds, and network graphs for patterns of co
 You can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
 
 - **3.7.1 Rank**<br>
-  The rank of the collocating token sorted by the p-value of the significance test conducted on the node and the collocating token in the first file in ascending order (by default). You can sort the results again by clicking the column headers. You can use continuous numbering after tied ranks (eg. 1/1/1/2/2/3 instead of 1/1/1/4/4/6) by checking **Menu → Preferences → Settings → Tables → Rank Settings → Continue numbering after ties**.
+  The rank of the collocating token sorted by the p-value of the significance test conducted on the node and the collocating token in the first file in ascending order (by default). You can sort the results again by clicking the column headers. You can use continuous numbering after tied ranks (eg. 1/1/1/2/2/3 instead of 1/1/1/4/4/6) by checking **Menu Bar → Preferences → Settings → Tables → Rank Settings → Continue numbering after ties**.
 
 - **3.7.2 Node**<br>
   The search term. You can specify what should be counted as a "token" via **Token Settings**.
@@ -550,7 +554,7 @@ You can generate line charts or word clouds for patterns of colligation using an
 You can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
 
 - **3.8.1 Rank**<br>
-  The rank of the collocating part of speech sorted by the p-value of the significance test conducted on the node and the collocating part of speech in the first file in ascending order (by default). You can sort the results again by clicking the column headers. You can use continuous numbering after tied ranks (eg. 1/1/1/2/2/3 instead of 1/1/1/4/4/6) by checking **Menu → Preferences → Settings → Tables → Rank Settings → Continue numbering after ties**.
+  The rank of the collocating part of speech sorted by the p-value of the significance test conducted on the node and the collocating part of speech in the first file in ascending order (by default). You can sort the results again by clicking the column headers. You can use continuous numbering after tied ranks (eg. 1/1/1/2/2/3 instead of 1/1/1/4/4/6) by checking **Menu Bar → Preferences → Settings → Tables → Rank Settings → Continue numbering after ties**.
 
 - **3.8.2 Node**<br>
   The search term. You can specify what should be counted as a "token" via **Token Settings**.
@@ -596,7 +600,7 @@ You can generate line charts or word clouds for keywords using any statistics. Y
 You can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
 
 - **3.9.1 Rank**<br>
-  The rank of the keyword sorted by the p-value of the significance test conducted on the keyword in the first file in ascending order (by default). You can sort the results again by clicking the column headers. You can use continuous numbering after tied ranks (eg. 1/1/1/2/2/3 instead of 1/1/1/4/4/6) by checking **Menu → Preferences → Settings → Tables → Rank Settings → Continue numbering after ties**.
+  The rank of the keyword sorted by the p-value of the significance test conducted on the keyword in the first file in ascending order (by default). You can sort the results again by clicking the column headers. You can use continuous numbering after tied ranks (eg. 1/1/1/2/2/3 instead of 1/1/1/4/4/6) by checking **Menu Bar → Preferences → Settings → Tables → Rank Settings → Continue numbering after ties**.
 
 - **3.9.2 Keyword**<br>
   The candidates of potential keywords. You can specify what should be counted as a "token" via **Token Settings**.
@@ -778,7 +782,7 @@ Word documents¹²³        |\*.docx
 XML files¹               |\*.xml
 
 > [!IMPORTANT]
-> 1. Non-TXT files will be automatically converted to TXT files when being imported into *Wordless*. You can check the converted files under folder **imports** at the installation location of *Wordless* on your computer (as for macOS users, right click **Wordless.app**, select **Show Package Contents** and navigate to **Contents/MacOS/imports/**). You can change this location via **Menu → Preferences → Settings → General → Import → Temporary Files → Default path**.
+> 1. Non-TXT files will be automatically converted to TXT files when being imported into *Wordless*. You can check the converted files under folder **imports** at the installation location of *Wordless* on your computer (as for macOS users, right click **Wordless.app**, select **Show Package Contents** and navigate to **Contents/MacOS/imports/**). You can change this location via **Menu Bar → Preferences → Settings → General → Import → Temporary Files → Default path**.
 > 1. It is **not recommended to directly import non-text files into *Wordless***, as accuracy of text extraction could not be guaranteed and unintended data loss might occur, for which reason users are encouraged to **convert their files using specialized tools and make discreet decisions** on which part of your data should be kept, transformed, and discarded.
 > 1. The legacy Microsoft 97-03 Word documents (\*.doc) and Microsoft 97-03 Excel Workbooks (\*.xls) are not supported.
 > 1. *Wordless* could only extract text from **text-searchable PDF files** and is not capable of automatically converting scanned PDF files into text-searchable ones.
@@ -1119,7 +1123,7 @@ Measure of Readability|Formula|Supported Languages
 <span id="ref-rd"></span>Al-Heeti's Readability Prediction Formula¹<br>([Al-Heeti, 1984, pp. 102, 104, 106](#ref-al-heeti-1984))|![Formula](/doc/measures/readability/rd.svg)|**Arabic**
 <span id="ref-aari"></span>Automated Arabic Readability Index<br>([Al-Tamimi et al., 2013](#ref-al-tamimi-et-al-2013))|![Formula](/doc/measures/readability/aari.svg)|**Arabic**
 <span id="ref-ari"></span>Automated Readability Index¹<br>([Smith & Senter, 1967, p. 8](#ref-smith-senter-1967)<br>Navy: [Kincaid et al., 1975, p. 14](#ref-kincaid-et-al-1975))|![Formula](/doc/measures/readability/ari.svg)|All languages
-<span id="ref-bormuths-cloze-mean-gp"></span>Bormuth's Cloze Mean & Grade Placement<br>([Bormuth, 1969, pp. 152, 160](#ref-bormuth-1969))|![Formula](/doc/measures/readability/bormuths_cloze_mean_gp.svg)<br>where **C** is the cloze criterion score, whose value could be changed via **Menu → Preferences → Settings → Measures → Readability → Bormuth's Grade Placement - Cloze criterion score**|**English**
+<span id="ref-bormuths-cloze-mean-gp"></span>Bormuth's Cloze Mean & Grade Placement<br>([Bormuth, 1969, pp. 152, 160](#ref-bormuth-1969))|![Formula](/doc/measures/readability/bormuths_cloze_mean_gp.svg)<br>where **C** is the cloze criterion score, whose value could be changed via **Menu Bar → Preferences → Settings → Measures → Readability → Bormuth's Grade Placement → Cloze criterion score**|**English**
 <span id="ref-coleman-liau-index"></span>Coleman-Liau Index<br>([Coleman & Liau, 1975](#ref-coleman-liau-1975))|![Formula](/doc/measures/readability/coleman_liau_index.svg)|All languages
 <span id="ref-colemans-readability-formula"></span>Coleman's Readability Formula¹<br>([Liau et al., 1976](#ref-liau-et-al-1976))|![Formula](/doc/measures/readability/colemans_readability_formula.svg)|All languages²³
 <span id="ref-x-c50"></span>Dale-Chall Readability Formula¹<br>([Dale & Chall, 1948a](#ref-dale-chall-1948a); [Dale & Chall, 1948b](#ref-dale-chall-1948b)<br>Powers-Sumner-Kearl: [Powers et al., 1958](#ref-powers-et-al-1958)<br>New: [Chall & Dale, 1995](#ref-chall-dale-1995))|![Formula](/doc/measures/readability/x_c50.svg)|**English**
@@ -1156,7 +1160,7 @@ Measure of Readability|Formula|Supported Languages
 <span id="ref-wheeler-smiths-readability-formula"></span>Wheeler & Smith's Readability Formula<br>([Wheeler & Smith, 1954](#ref-wheeler-smith-1954))|![Formula](/doc/measures/readability/wheeler_smiths_readability_formula.svg)<br>where **NumUnits** is the number of sentence segments ending in periods, question marks, exclamation marks, colons, semicolons, and dashes.|All languages²
 
 > [!NOTE]
-> 1. Variants available and can be selected via **Menu - Preferences - Settings - Measures - Readability**
+> 1. Variants available and can be selected via **Menu Bar → Preferences → Settings → Measures → Readability**
 > 1. Requires **built-in syllable tokenization support**
 > 1. Requires **built-in part-of-speech tagging support**
 
@@ -1248,12 +1252,12 @@ Measure of Lexical Diversity|Formula
 <span id="ref-cttr"></span>Corrected TTR<br>([Carroll, 1964](#ref-carroll-1964))|![Formula](/doc/measures/lexical_diversity/cttr.svg)
 <span id="ref-fishers-index-of-diversity"></span>Fisher's Index of Diversity<br>([Fisher et al., 1943](#ref-fisher-et-al-1943))|![Formula](/doc/measures/lexical_diversity/fishers_index_of_diversity.svg)<br>where W₋₁ is the -1 branch of the [Lambert W function](https://en.wikipedia.org/wiki/Lambert_W_function)
 <span id="ref-herdans-vm"></span>Herdan's Vₘ<br>([Herdan, 1955](#ref-herdan-1955))|![Formula](/doc/measures/lexical_diversity/herdans_vm.svg)
-<span id="ref-hdd"></span>HD-D<br>([McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see reference.<br>The sample size could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → HD-D → Sample size**.
+<span id="ref-hdd"></span>HD-D<br>([McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see reference.<br>The sample size could be modified via **Menu Bar → Preferences → Settings → Measures → Type-token Ratio → HD-D → Sample size**.
 <span id="ref-honores-stat"></span>Honoré's statistic<br>([Honoré, 1979](#ref-honore-1979))|![Formula](/doc/measures/lexical_diversity/honores_stat.svg)
 <span id="ref-logttr"></span>LogTTR¹<br>(Herdan: [Herdan, 1960, p. 28](#ref-herdan-1960)<br>Somers: [Somers, 1966](#ref-somers-1966)<br>Rubet: [Dugast, 1979](#ref-dugast-1979)<br>Maas: [Maas, 1972](#ref-maas-1972)<br>Dugast: [Dugast, 1978](#ref-dugast-1978); [Dugast, 1979](#ref-dugast-1979))|![Formula](/doc/measures/lexical_diversity/logttr.svg)
-<span id="ref-msttr"></span>Mean Segmental TTR<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/lexical_diversity/msttr.svg)<br>where **n** is the number of equal-sized segment, the length of which could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Mean Segmental TTR → Number of tokens in each segment**, **NumTypesSegᵢ** is the number of token types in the **i**-th segment, and **NumTokensSegᵢ** is the number of tokens in the **i**-th segment.
-<span id="ref-mtld"></span>Measure of Textual Lexical Diversity<br>([McCarthy, 2005, pp. 95–96, 99–100](#ref-mccarthy-2005); [McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see references.<br>The factor size could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Measure of Textual Lexical Diversity → Factor size**.
-<span id="ref-mattr"></span>Moving-average TTR<br>([Covington & McFall, 2010](#ref-covington-mcfall-2010))|![Formula](/doc/measures/lexical_diversity/mattr.svg)<br>where **w** is the window size which could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Moving-average TTR → Window size**, **NumTypesWindowₚ** is the number of token types within the moving window starting at position **p**, and **NumTokensWindowₚ** is the number of tokens within the moving window starting at position **p**.
+<span id="ref-msttr"></span>Mean Segmental TTR<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/lexical_diversity/msttr.svg)<br>where **n** is the number of equal-sized segment, the length of which could be modified via **Menu Bar → Preferences → Settings → Measures → Type-token Ratio → Mean Segmental TTR → Number of tokens in each segment**, **NumTypesSegᵢ** is the number of token types in the **i**-th segment, and **NumTokensSegᵢ** is the number of tokens in the **i**-th segment.
+<span id="ref-mtld"></span>Measure of Textual Lexical Diversity<br>([McCarthy, 2005, pp. 95–96, 99–100](#ref-mccarthy-2005); [McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see references.<br>The factor size could be modified via **Menu Bar → Preferences → Settings → Measures → Type-token Ratio → Measure of Textual Lexical Diversity → Factor size**.
+<span id="ref-mattr"></span>Moving-average TTR<br>([Covington & McFall, 2010](#ref-covington-mcfall-2010))|![Formula](/doc/measures/lexical_diversity/mattr.svg)<br>where **w** is the window size which could be modified via **Menu Bar → Preferences → Settings → Measures → Type-token Ratio → Moving-average TTR → Window size**, **NumTypesWindowₚ** is the number of token types within the moving window starting at position **p**, and **NumTokensWindowₚ** is the number of tokens within the moving window starting at position **p**.
 <span id="ref-popescu-macutek-altmanns-b1-b2-b3-b4-b5"></span>Popescu-Mačutek-Altmann's B₁/B₂/B₃/B₄/B₅<br>([Popescu et al., 2008](#ref-popescu-et-al-2008))|![Formula](/doc/measures/lexical_diversity/popescu_macutek_altmanns_b1_b2_b3_b4_b5.svg)
 <span id="ref-popescus-r1"></span>Popescu's R₁<br>([Popescu, 2009, pp. 18, 30, 33](#ref-popescu-2009))|For detailed calculation procedures, see reference.
 <span id="ref-popescus-r2"></span>Popescu's R₂<br>([Popescu, 2009, pp. 35–36, 38](#ref-popescu-2009))|For detailed calculation procedures, see reference.
@@ -1269,12 +1273,12 @@ Measure of Lexical Diversity|Formula
 <span id="ref-yules-index-of-diversity"></span>Yule's Index of Diversity<br>([Williams, 1970, p. 100](#ref-williams-1970))|![Formula](/doc/measures/lexical_diversity/yules_index_of_diversity.svg)
 
 > [!NOTE]
-> 1. Variants available and can be selected via **Menu - Preferences - Settings - Measures - Lexical Diversity**
+> 1. Variants available and can be selected via **Menu Bar → Preferences → Settings → Measures → Lexical Diversity**
 
 <span id="doc-4-4-3"></span>
 #### [4.4.3 Measures of Dispersion and Adjusted Frequency](#doc)
 
-For parts-based measures, each file is divided into **n** (whose value you could modify via **Menu → Preferences → Settings → Measures → Dispersion / Adjusted Frequency → General Settings → Divide each file into subsections**) sub-sections and the frequency of the word in each part is counted and denoted by **F₁**, **F₂**, **F₃**, ..., **Fₙ** respectively. The total frequency of the word in each file is denoted by **F** and the mean value of the frequencies over all sub-sections is denoted by **F̅**.
+For parts-based measures, each file is divided into **n** (whose value you could modify via **Menu Bar → Preferences → Settings → Measures → Dispersion / Adjusted Frequency → General Settings → Divide each file into subsections**) sub-sections and the frequency of the word in each part is counted and denoted by **F₁**, **F₂**, **F₃**, ..., **Fₙ** respectively. The total frequency of the word in each file is denoted by **F** and the mean value of the frequencies over all sub-sections is denoted by **F̅**.
 
 For distance-based measures, the distance between each pair of subsequent occurrences of the word is calculated and denoted by **d₁**, **d₂**, **d₃**, ..., **d<sub>F</sub>** respectively. The total number of tokens in each file is denoted by **N**.
 
@@ -1343,7 +1347,7 @@ Measure of Dispersion (Parts-based)|Measure of Adjusted Frequency (Parts-based)|
 -----------------------------------|-------------------------------------------|-------
 <span id="ref-carrolls-d2"></span>Carroll's D₂<br>([Carroll, 1970](#ref-carroll-1970))|<span id="ref-carrolls-um"></span>Carroll's Uₘ<br>([Carroll, 1970](#ref-carroll-1970))|![Formula](/doc/measures/dispersion_adjusted_frequency/carrolls_um.svg)
 &nbsp;|<span id="ref-engwalls-fm"></span>Engwall's FM<br>([Engwall, 1974](#ref-engwall-1974))|![Formula](/doc/measures/dispersion_adjusted_frequency/engwalls_fm.svg)<br>where **R** is the number of sub-sections in which the word appears at least once.
-<span id="ref-griess-dp"></span>Gries's DP<br>([Gries, 2008](#ref-gries-2008); [Lijffijt & Gries, 2012](#ref-lijffijt-gries-2012))||![Formula](/doc/measures/dispersion_adjusted_frequency/griess_dp.svg)<br><br>* Normalization is applied by default, which behavior you could change via **Menu → Preferences → Settings → Measures → Dispersion → Gries's DP → Apply normalization**.
+<span id="ref-griess-dp"></span>Gries's DP<br>([Gries, 2008](#ref-gries-2008); [Lijffijt & Gries, 2012](#ref-lijffijt-gries-2012))||![Formula](/doc/measures/dispersion_adjusted_frequency/griess_dp.svg)<br><br>* Normalization is applied by default, which behavior you could change via **Menu Bar → Preferences → Settings → Measures → Dispersion → Gries's DP → Apply normalization**.
 <span id="ref-juillands-d"></span>Juilland's D<br>([Juilland & Chang-Rodrigues, 1964](#ref-juilland-chang-rodrigues-1964))|<span id="ref-juillands-u"></span>Juilland's U<br>([Juilland & Chang-Rodrigues, 1964](#ref-juilland-chang-rodrigues-1964))|![Formula](/doc/measures/dispersion_adjusted_frequency/juillands_u.svg)
 &nbsp;|<span id="ref-kromers-ur"></span>Kromer's U<sub>R</sub><br>([Kromer, 2003](#ref-kromer-2003))|![Formula](/doc/measures/dispersion_adjusted_frequency/kromers_ur.svg)<br>where **ψ** is the [digamma function](https://en.wikipedia.org/wiki/Digamma_function), and **C** is the [Euler–Mascheroni constant](https://en.wikipedia.org/wiki/Euler%E2%80%93Mascheroni_constant).
 <span id="ref-lynes-d3"></span>Lyne's D₃<br>([Lyne, 1985](#ref-lyne-1985))||![Formula](/doc/measures/dispersion_adjusted_frequency/lynes_d3.svg)
@@ -1509,7 +1513,7 @@ Measure of Effect Size|Formula
 <span id="ref-dices-coeff"></span>Dice's Coefficient<br>([Smadja et al., 1996](#ref-smadja-et-al-1996))|![Formula](/doc/measures/effect_size/dices_coeff.svg)
 <span id="ref-diff-coeff"></span>Difference Coefficient<br>([Hofland & Johanson, 1982](#ref-hofland-johanson-1982); [Gabrielatos, 2018](#ref-gabrielatos-2018))|![Formula](/doc/measures/effect_size/diff_coeff.svg)
 <span id="ref-jaccard-index"></span>Jaccard Index<br>([Dunning, 1998](#ref-dunning-1998))|![Formula](/doc/measures/effect_size/jaccard_index.svg)
-<span id="ref-kilgarriffs-ratio"></span>Kilgarriff's Ratio<br>([Kilgarriff, 2009](#ref-kilgarriff-2009))|![Formula](/doc/measures/effect_size/kilgarriffs_ratio.svg)<br>where **α** is the smoothing parameter, whose value could be changed via **Menu → Preferences → Settings → Measures → Effect Size → Kilgarriff's Ratio → Smoothing Parameter**.
+<span id="ref-kilgarriffs-ratio"></span>Kilgarriff's Ratio<br>([Kilgarriff, 2009](#ref-kilgarriff-2009))|![Formula](/doc/measures/effect_size/kilgarriffs_ratio.svg)<br>where **α** is the smoothing parameter, whose value could be changed via **Menu Bar → Preferences → Settings → Measures → Effect Size → Kilgarriff's Ratio → Smoothing Parameter**.
 <span id="ref-log-ratio"></span>Log Ratio<br>([Hardie, 2014](#ref-hardie-2014))|![Formula](/doc/measures/effect_size/log_ratio.svg)
 <span id="ref-lfmd"></span>Log-Frequency Biased MD<br>([Thanopoulos et al., 2002](#ref-thanopoulos-et-al-2002))|![Formula](/doc/measures/effect_size/lfmd.svg)
 <span id="ref-log-dice"></span>logDice<br>([Rychlý, 2008](#ref-rychly-2008))|![Formula](/doc/measures/effect_size/log_dice.svg)

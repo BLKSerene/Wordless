@@ -518,6 +518,16 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
                     no_para, len_paras = concordance_line[7]
                     file_name = concordance_line[8]
 
+                    # Left
+                    self.setIndexWidget(
+                        self.model().index(i, 0),
+                        wl_labels.Wl_Label_Html(' '.join(left_tokens_raw), self.main)
+                    )
+                    self.indexWidget(self.model().index(i, 0)).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+
+                    self.indexWidget(self.model().index(i, 0)).tokens_raw = left_tokens_raw
+                    self.indexWidget(self.model().index(i, 0)).tokens_search = left_tokens_search
+
                     # Node
                     label_node = wl_labels.Wl_Label_Html(
                         f'''
@@ -529,22 +539,10 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
                     )
 
                     self.setIndexWidget(self.model().index(i, 1), label_node)
-
                     self.indexWidget(self.model().index(i, 1)).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
                     self.indexWidget(self.model().index(i, 1)).tokens_raw = node_tokens_raw
                     self.indexWidget(self.model().index(i, 1)).tokens_search = node_tokens_search
-
-                    # Left
-                    self.setIndexWidget(
-                        self.model().index(i, 0),
-                        wl_labels.Wl_Label_Html(' '.join(left_tokens_raw), self.main)
-                    )
-
-                    self.indexWidget(self.model().index(i, 0)).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
-
-                    self.indexWidget(self.model().index(i, 0)).tokens_raw = left_tokens_raw
-                    self.indexWidget(self.model().index(i, 0)).tokens_search = left_tokens_search
 
                     # Right
                     self.setIndexWidget(

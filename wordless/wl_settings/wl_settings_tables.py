@@ -177,19 +177,19 @@ class Wl_Settings_Tables_Parallel_Concordancer(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['tables']['parallel_concordancer']
 
         # Color Settings
-        self.group_box_color_settings = QGroupBox(self.tr('Color Settings'), self)
+        self.group_box_highlight_color_settings = QGroupBox(self.tr('Highlight Color Settings'), self)
 
         self.label_search_term_color = QLabel(self.tr('Search term color:'), self)
         self.button_search_term_color = wl_buttons.wl_button_color(self)
 
-        self.group_box_color_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_color_settings.layout().addWidget(self.label_search_term_color, 0, 0)
-        self.group_box_color_settings.layout().addWidget(self.button_search_term_color, 0, 1)
+        self.group_box_highlight_color_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_highlight_color_settings.layout().addWidget(self.label_search_term_color, 0, 0)
+        self.group_box_highlight_color_settings.layout().addWidget(self.button_search_term_color, 0, 1)
 
-        self.group_box_color_settings.layout().setColumnStretch(2, 1)
+        self.group_box_highlight_color_settings.layout().setColumnStretch(2, 1)
 
         self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addWidget(self.group_box_color_settings, 0, 0)
+        self.layout().addWidget(self.group_box_highlight_color_settings, 0, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(1, 1)
@@ -201,10 +201,57 @@ class Wl_Settings_Tables_Parallel_Concordancer(wl_settings.Wl_Settings_Node):
             settings = copy.deepcopy(self.settings_custom)
 
         # Color Settings
-        self.button_search_term_color.set_color(settings['color_settings']['search_term_color'])
+        self.button_search_term_color.set_color(settings['highlight_color_settings']['search_term_color'])
 
     def apply_settings(self):
         # Color Settings
-        self.settings_custom['color_settings']['search_term_color'] = self.button_search_term_color.get_color()
+        self.settings_custom['highlight_color_settings']['search_term_color'] = self.button_search_term_color.get_color()
+
+        return True
+
+# Settings - Dependency Parser
+class Wl_Settings_Tables_Dependency_Parser(wl_settings.Wl_Settings_Node):
+    def __init__(self, main):
+        super().__init__(main)
+
+        self.settings_default = self.main.settings_default['tables']['dependency_parser']
+        self.settings_custom = self.main.settings_custom['tables']['dependency_parser']
+
+        # Color Settings
+        self.group_box_highlight_color_settings = QGroupBox(self.tr('Highlight Color Settings'), self)
+
+        self.label_head_color = QLabel(self.tr('Head color:'), self)
+        self.button_head_color = wl_buttons.wl_button_color(self)
+        self.label_dependent_color = QLabel(self.tr('Dependent color:'), self)
+        self.button_dependent_color = wl_buttons.wl_button_color(self)
+
+        self.group_box_highlight_color_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_highlight_color_settings.layout().addWidget(self.label_head_color, 0, 0)
+        self.group_box_highlight_color_settings.layout().addWidget(self.button_head_color, 0, 1)
+        self.group_box_highlight_color_settings.layout().addWidget(self.label_dependent_color, 1, 0)
+        self.group_box_highlight_color_settings.layout().addWidget(self.button_dependent_color, 1, 1)
+
+        self.group_box_highlight_color_settings.layout().setColumnStretch(2, 1)
+
+        self.setLayout(wl_layouts.Wl_Layout())
+        self.layout().addWidget(self.group_box_highlight_color_settings, 0, 0)
+
+        self.layout().setContentsMargins(6, 4, 6, 4)
+        self.layout().setRowStretch(1, 1)
+
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = copy.deepcopy(self.settings_default)
+        else:
+            settings = copy.deepcopy(self.settings_custom)
+
+        # Color Settings
+        self.button_head_color.set_color(settings['highlight_color_settings']['head_color'])
+        self.button_dependent_color.set_color(settings['highlight_color_settings']['dependent_color'])
+
+    def apply_settings(self):
+        # Color Settings
+        self.settings_custom['highlight_color_settings']['head_color'] = self.button_head_color.get_color()
+        self.settings_custom['highlight_color_settings']['dependent_color'] = self.button_dependent_color.get_color()
 
         return True
