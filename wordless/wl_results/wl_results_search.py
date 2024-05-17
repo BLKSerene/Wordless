@@ -372,7 +372,7 @@ class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
             ]
 
             for col in cols_to_search:
-                # Concordancer - Left, Node, Right & Parallel Concordancer - Parallel Unit
+                # Concordancer - Left, Node, Right / Parallel Concordancer - Parallel Unit / Dependency Parser - Sentence
                 if table.indexWidget(table.model().index(0, col)):
                     for row in rows_to_search:
                         results[(row, col)] = table.indexWidget(table.model().index(row, col)).tokens_search

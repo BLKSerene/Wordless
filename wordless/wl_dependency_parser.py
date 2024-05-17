@@ -29,9 +29,9 @@ from PyQt5.QtWidgets import QGroupBox
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
-from wordless.wl_nlp import wl_dependency_parsing, wl_matching, wl_texts, wl_token_processing
+from wordless.wl_nlp import wl_dependency_parsing, wl_matching, wl_token_processing
 from wordless.wl_utils import wl_misc, wl_threading
-from wordless.wl_widgets import wl_layouts, wl_tables, wl_widgets
+from wordless.wl_widgets import wl_labels, wl_layouts, wl_tables, wl_widgets
 
 _tr = QCoreApplication.translate
 
@@ -390,18 +390,26 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
                     self.model().setItem(i, 0, wl_tables.Wl_Table_Item(head))
                     # Dependent
                     self.model().setItem(i, 1, wl_tables.Wl_Table_Item(dependent))
+
                     # Dependency Relation
                     self.model().setItem(i, 2, wl_tables.Wl_Table_Item(dependency_relation))
+
                     # Dependency Distance
                     self.set_item_num(i, 3, dependency_len)
                     self.set_item_num(i, 4, numpy.abs(dependency_len))
+
                     # Sentence
-                    self.model().setItem(i, 5, wl_tables.Wl_Table_Item(' '.join(sentence_tokens_raw)))
-                    self.model().item(i, 5).tokens_raw = sentence_tokens_raw
-                    self.model().item(i, 5).tokens_search = sentence_tokens_search
+                    self.setIndexWidget(
+                        self.model().index(i, 5),
+                        wl_labels.Wl_Label_Html(' '.join(sentence_tokens_raw), self.main)
+                    )
+                    self.indexWidget(self.model().index(i, 5)).tokens_raw = sentence_tokens_raw
+                    self.indexWidget(self.model().index(i, 5)).tokens_search = sentence_tokens_search
+
                     # Sentence No.
                     self.set_item_num(i, 6, no_sentence)
                     self.set_item_num(i, 7, no_sentence, len_sentences)
+
                     # File
                     self.model().setItem(i, 8, wl_tables.Wl_Table_Item(file))
 
@@ -495,6 +503,9 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                 len_sentences = len(offsets_sentences)
                 i_token = 0
 
+                head_color = self.main.settings_custom['tables']['dependency_parser']['highlight_color_settings']['head_color']
+                dependent_color = self.main.settings_custom['tables']['dependency_parser']['highlight_color_settings']['dependent_color']
+
                 for para in text.tokens_multilevel:
                     for sentence in para:
                         sentence = list(wl_misc.flatten_list(sentence))
@@ -523,7 +534,24 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                                     no_sentence = bisect.bisect(offsets_sentences, j)
 
                                     # Sentence
-                                    sentence_tokens_raw = wl_texts.to_display_texts(sentence)
+                                    sentence_tokens_raw = []
+
+                                    for sentence_token in sentence:
+                                        if sentence_token == head:
+                                            sentence_tokens_raw.append(f'''
+                                                <span style="color: {head_color}; font-weight: bold;">
+                                                    {sentence_token.display_text()}
+                                                </span>
+                                            ''')
+                                        elif sentence_token == token:
+                                            sentence_tokens_raw.append(f'''
+                                                <span style="color: {dependent_color}; font-weight: bold;">
+                                                    {sentence_token.display_text()}
+                                                </span>
+                                            ''')
+                                        else:
+                                            sentence_tokens_raw.append(sentence_token.display_text())
+
                                     # Remove empty tokens for searching in results
                                     sentence_tokens_search = [token for token in sentence if token]
 

@@ -39,7 +39,14 @@ def test_wl_settings_tables_parallel_concordancer():
     settings_tables_parallel_concordancer.load_settings(defaults = True)
     settings_tables_parallel_concordancer.apply_settings()
 
+def test_wl_settings_tables_dependency_parser():
+    settings_tables_dependency_parser = wl_settings_tables.Wl_Settings_Tables_Dependency_Parser(main)
+    settings_tables_dependency_parser.load_settings()
+    settings_tables_dependency_parser.load_settings(defaults = True)
+    settings_tables_dependency_parser.apply_settings()
+
 if __name__ == '__main__':
     test_wl_settings_tables()
     test_wl_settings_tables_concordancer()
     test_wl_settings_tables_parallel_concordancer()
+    test_wl_settings_tables_dependency_parser()
