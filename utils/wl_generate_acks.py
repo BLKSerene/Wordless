@@ -53,7 +53,7 @@ ACKS = [
     ['pypdf', 'https://github.com/py-pdf/pypdf', '3.16.2', 'Mathieu Fenniak, Ashish Kulkarni, Steve Witham, Martin Thoma', 'BSD-3-Clause', 'https://github.com/py-pdf/pypdf/blob/main/LICENSE'],
     ['Pyphen', 'https://pyphen.org/', '0.14.0', 'Guillaume Ayoub', 'GPL-2.0-or-later/LGPL-2.1-or-later/MPL-1.1', 'https://github.com/Kozea/Pyphen/blob/master/LICENSE'],
     ['PyQt', 'https://riverbankcomputing.com/software/pyqt/', '5.15.10', 'Riverbank Computing', 'Commercial-License/GPL-3.0-only', 'https://www.riverbankcomputing.com/static/Docs/PyQt5/introduction.html#license'],
-    ['PyThaiNLP', 'https://github.com/PyThaiNLP/pythainlp', '4.0.2', 'Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)', 'Apache-2.0', 'https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE'],
+    ['PyThaiNLP', 'https://github.com/PyThaiNLP/pythainlp', '5.0.3', 'Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)', 'Apache-2.0', 'https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE'],
     ['python-docx', 'https://github.com/python-openxml/python-docx', '1.1.0', 'Steve Canny', 'MIT', 'https://github.com/python-openxml/python-docx/blob/master/LICENSE'],
     ['python-mecab-ko', 'https://github.com/jonghwanhyeon/python-mecab-ko', '1.3.3', 'Jonghwan Hyeon', 'BSD-3-Clause', 'https://github.com/jonghwanhyeon/python-mecab-ko/blob/main/LICENSE'],
     ['Requests', 'https://github.com/psf/requests', '2.31.0', 'Kenneth Reitz', 'Apache-2.0', 'https://github.com/psf/requests/blob/main/LICENSE'],

@@ -105,7 +105,9 @@ def wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer):
             else:
                 syls_tokens.append([token])
         # Thai
-        elif syl_tokenizer == 'pythainlp_tha':
-            syls_tokens.append(pythainlp.subword_tokenize(token, engine = 'dict'))
+        elif syl_tokenizer == 'pythainlp_han_solo':
+            syls_tokens.append(pythainlp.tokenize.syllable_tokenize(token, engine = 'han_solo'))
+        elif syl_tokenizer == 'pythainlp_syl_dict':
+            syls_tokens.append(pythainlp.tokenize.syllable_tokenize(token, engine = 'dict'))
 
     return syls_tokens

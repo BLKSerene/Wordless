@@ -25,7 +25,7 @@ laonlp == 1.1.3
 lingua-language-detector == 2.0.2
 nltk == 3.8.1
 pyphen == 0.14.0
-pythainlp == 4.0.2
+pythainlp == 5.0.3
 sacremoses == 0.1.1
 simplemma == 0.9.1
 stanza == 1.7.0
@@ -64,7 +64,6 @@ pytest
 python-docx
 requests
 scipy
-tzdata; sys_platform == 'win32' # Required by PyThaiNLP on Windows
 wordcloud
 
 # For PyTorch on Linux using CPU
