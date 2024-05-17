@@ -765,7 +765,8 @@ SETTINGS_GLOBAL = {
             _tr('wl_settings_global', 'Pyphen - Ukrainian syllable tokenizer'): 'pyphen_ukr',
             _tr('wl_settings_global', 'Pyphen - Zulu syllable tokenizer'): 'pyphen_zul',
 
-            _tr('wl_settings_global', 'PyThaiNLP - Thai syllable tokenizer'): 'pythainlp_tha'
+            _tr('wl_settings_global', 'PyThaiNLP - Han-solo'): 'pythainlp_han_solo',
+            _tr('wl_settings_global', 'PyThaiNLP - Syllable dictionary'): 'pythainlp_syl_dict'
         },
 
         'pos_taggers': {
@@ -2519,7 +2520,8 @@ SETTINGS_GLOBAL = {
 
         'tha': [
             'pyphen_tha',
-            'pythainlp_tha'
+            'pythainlp_han_solo',
+            'pythainlp_syl_dict'
         ],
 
         'ukr': ['pyphen_ukr'],

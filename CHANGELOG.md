@@ -22,6 +22,7 @@
 ### 🎉 New Features
 - Settings: Add Settings - Stop Word Lists - Stop Word List Settings - Case-sensitive
 - Settings: Add Settings - Tables - Dependency Parser
+- Utils: Add PyThaiNLP's Han-solo
 - Utils: Add Stanza's Sindhi part-of-speech tagger
 - Utils: Add VADER's sentiment analyzers
 - Work Area: Add Profiler - Lexical Diversity - Brunét's Index / Honoré's statistic
@@ -50,6 +51,7 @@
 - Dependencies: Upgrade Lingua to 2.0.2
 - Dependencies: Upgrade pymorphy3 to 2.0.1
 - Dependencies: Upgrade PyQt to 5.15.10
+- Dependencies: Upgrade PyThaiNLP to 5.0.3
 - Dependencies: Upgrade python-docx to 1.1.0
 - Dependencies: Upgrade Sacremoses to 0.1.1
 - Dependencies: Upgrade spaCy to 3.7.2
