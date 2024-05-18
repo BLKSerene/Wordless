@@ -1435,6 +1435,7 @@ def init_settings_default(main):
             'syl_tokenizer_settings': {
                 'afr': 'pyphen_afr',
                 'sqi': 'pyphen_sqi',
+                'eus': 'pyphen_eus',
                 'bel': 'pyphen_bel',
                 'bul': 'pyphen_bul',
                 'cat': 'pyphen_cat',
