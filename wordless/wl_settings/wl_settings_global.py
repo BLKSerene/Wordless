@@ -723,6 +723,7 @@ SETTINGS_GLOBAL = {
 
             _tr('wl_settings_global', 'Pyphen - Afrikaans syllable tokenizer'): 'pyphen_afr',
             _tr('wl_settings_global', 'Pyphen - Albanian syllable tokenizer'): 'pyphen_sqi',
+            _tr('wl_settings_global', 'Pyphen - Basque syllable tokenizer'): 'pyphen_eus',
             _tr('wl_settings_global', 'Pyphen - Belarusian syllable tokenizer'): 'pyphen_bel',
             _tr('wl_settings_global', 'Pyphen - Bulgarian syllable tokenizer'): 'pyphen_bul',
             _tr('wl_settings_global', 'Pyphen - Catalan syllable tokenizer'): 'pyphen_cat',
@@ -2468,6 +2469,7 @@ SETTINGS_GLOBAL = {
     'syl_tokenizers': {
         'afr': ['pyphen_afr'],
         'sqi': ['pyphen_sqi'],
+        'eus': ['pyphen_eus'],
         'bel': ['pyphen_bel'],
         'bul': ['pyphen_bul'],
         'cat': ['pyphen_cat'],
