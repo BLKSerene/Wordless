@@ -290,11 +290,11 @@ def test_lingua():
     langs_exceptions = {'bokmal', 'ganda', 'nynorsk', 'slovene'}
     langs_extra = set()
 
-    for lang in lingua.Language.all():
+    for lang in lingua.Language.all(): # pylint: disable=no-member
         if lang.name.lower() not in langs | langs_exceptions:
             langs_extra.add(lang.name)
 
-    print(f"Extra languages: {', '.join(langs_extra)}\n")
+    print(f"\nExtra languages: {', '.join(langs_extra)}\n")
 
     assert langs_extra == {'BOSNIAN', 'MAORI', 'SHONA', 'SOMALI', 'SOTHO', 'TSONGA', 'XHOSA'}
 

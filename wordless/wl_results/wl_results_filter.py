@@ -19,7 +19,7 @@
 import copy
 import math
 
-from PyQt5.QtCore import QCoreApplication, Qt
+from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtWidgets import QLabel, QPushButton
 
 from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc
@@ -160,7 +160,7 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
         ) = wl_widgets.wl_widgets_filter(
             self,
             filter_min = 1,
-            filter_max = 100
+            filter_max = 1000
         )
 
         if self.tab == 'wordlist_generator':
@@ -175,7 +175,7 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
             ) = wl_widgets.wl_widgets_filter(
                 self,
                 filter_min = 1,
-                filter_max = 100
+                filter_max = 1000
             )
 
         self.label_freq = QLabel(self.tr('Frequency:'), self)
@@ -567,11 +567,6 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
 
         self.Worker_Filter_Results = Wl_Worker_Results_Filter_Collocation_Extractor
 
-        if tab in ['collocation_extractor', 'colligation_extractor']:
-            self.type_node = 'collocate'
-        elif tab == 'keyword_extractor':
-            self.type_node = 'keyword'
-
         settings = self.table.settings[self.tab]
 
         test_statistical_significance = settings['generation_settings']['test_statistical_significance']
@@ -586,10 +581,20 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
         self.has_bayes_factor = measure_bayes_factor != 'none'
         self.has_effect_size = measure_effect_size != 'none'
 
-        if self.type_node == 'collocate':
-            self.label_len_node = QLabel(self.tr('Collocate length:'), self)
-        elif self.type_node == 'keyword':
-            self.label_len_node = QLabel(self.tr('Keyword length:'), self)
+        match tab:
+            case 'collocation_extractor':
+                self.type_node = 'node'
+                self.type_collocation = 'collocation'
+                self.label_len_node = QLabel(self.tr('Node length:'), self)
+                self.label_len_collocation = QLabel(self.tr('Collocation length:'), self)
+            case 'colligation_extractor':
+                self.type_node = 'node'
+                self.type_collocation = 'colligation'
+                self.label_len_node = QLabel(self.tr('Node length:'), self)
+                self.label_len_collocation = QLabel(self.tr('Colligation length:'), self)
+            case 'keyword_extractor':
+                self.type_node = 'keyword'
+                self.label_len_node = QLabel(self.tr('Keyword length:'), self)
 
         (
             self.label_len_node_min,
@@ -601,8 +606,36 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
         ) = wl_widgets.wl_widgets_filter(
             self,
             filter_min = 1,
-            filter_max = 100
+            filter_max = 1000
         )
+
+        if self.type_node == 'node':
+            self.label_len_collocate = QLabel(self.tr('Collocate length:'), self)
+            (
+                self.label_len_collocate_min,
+                self.spin_box_len_collocate_min,
+                self.checkbox_len_collocate_min_no_limit,
+                self.label_len_collocate_max,
+                self.spin_box_len_collocate_max,
+                self.checkbox_len_collocate_max_no_limit
+            ) = wl_widgets.wl_widgets_filter(
+                self,
+                filter_min = 1,
+                filter_max = 1000
+            )
+
+            (
+                self.label_len_collocation_min,
+                self.spin_box_len_collocation_min,
+                self.checkbox_len_collocation_min_no_limit,
+                self.label_len_collocation_max,
+                self.spin_box_len_collocation_max,
+                self.checkbox_len_collocation_max_no_limit
+            ) = wl_widgets.wl_widgets_filter(
+                self,
+                filter_min = 2,
+                filter_max = 2000
+            )
 
         self.label_freq = QLabel(self.tr('Frequency:'), self)
         (
@@ -619,7 +652,7 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
         )
 
         # Frequency position
-        if self.type_node == 'collocate':
+        if self.type_node == 'node':
             self.combo_box_freq_position = wl_boxes.Wl_Combo_Box(self)
 
             for i in range(
@@ -696,7 +729,17 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
         self.spin_box_len_node_max.valueChanged.connect(self.filters_changed)
         self.checkbox_len_node_max_no_limit.stateChanged.connect(self.filters_changed)
 
-        if self.type_node == 'collocate':
+        if self.type_node == 'node':
+            self.spin_box_len_collocate_min.valueChanged.connect(self.filters_changed)
+            self.checkbox_len_collocate_min_no_limit.stateChanged.connect(self.filters_changed)
+            self.spin_box_len_collocate_max.valueChanged.connect(self.filters_changed)
+            self.checkbox_len_collocate_max_no_limit.stateChanged.connect(self.filters_changed)
+
+            self.spin_box_len_collocation_min.valueChanged.connect(self.filters_changed)
+            self.checkbox_len_collocation_min_no_limit.stateChanged.connect(self.filters_changed)
+            self.spin_box_len_collocation_max.valueChanged.connect(self.filters_changed)
+            self.checkbox_len_collocation_max_no_limit.stateChanged.connect(self.filters_changed)
+
             self.combo_box_freq_position.currentTextChanged.connect(self.filters_changed)
 
         self.spin_box_freq_min.valueChanged.connect(self.filters_changed)
@@ -736,17 +779,29 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
         # Close the dialog when data in the table are re-generated
         self.table.button_generate_table.clicked.connect(self.close)
 
-        widgets_filter = [
-            [
-                self.label_len_node,
-                self.label_len_node_min, self.spin_box_len_node_min, self.checkbox_len_node_min_no_limit,
-                self.label_len_node_max, self.spin_box_len_node_max, self.checkbox_len_node_max_no_limit
-            ], [
-                self.label_freq,
-                self.label_freq_min, self.spin_box_freq_min, self.checkbox_freq_min_no_limit,
-                self.label_freq_max, self.spin_box_freq_max, self.checkbox_freq_max_no_limit
-            ]
-        ]
+        widgets_filter = [[
+            self.label_len_node,
+            self.label_len_node_min, self.spin_box_len_node_min, self.checkbox_len_node_min_no_limit,
+            self.label_len_node_max, self.spin_box_len_node_max, self.checkbox_len_node_max_no_limit
+        ]]
+
+        if self.type_node == 'node':
+            widgets_filter.append([
+                self.label_len_collocate,
+                self.label_len_collocate_min, self.spin_box_len_collocate_min, self.checkbox_len_collocate_min_no_limit,
+                self.label_len_collocate_max, self.spin_box_len_collocate_max, self.checkbox_len_collocate_max_no_limit
+            ])
+            widgets_filter.append([
+                self.label_len_collocation,
+                self.label_len_collocation_min, self.spin_box_len_collocation_min, self.checkbox_len_collocation_min_no_limit,
+                self.label_len_collocation_max, self.spin_box_len_collocation_max, self.checkbox_len_collocation_max_no_limit
+            ])
+
+        widgets_filter.append([
+            self.label_freq,
+            self.label_freq_min, self.spin_box_freq_min, self.checkbox_freq_min_no_limit,
+            self.label_freq_max, self.spin_box_freq_max, self.checkbox_freq_max_no_limit
+        ])
 
         if self.has_test_stat:
             widgets_filter.append([
@@ -784,14 +839,11 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
 
         add_widgets_filter(self, widgets_filter = widgets_filter, layout = self.layout_filters)
 
-        if self.type_node == 'collocate':
+        if self.type_node == 'node':
             self.layout_filters.removeWidget(self.label_freq)
 
-            layout_freq_position = wl_layouts.Wl_Layout()
-            layout_freq_position.addWidget(self.label_freq, 0, 0)
-            layout_freq_position.addWidget(self.combo_box_freq_position, 0, 1, Qt.AlignRight)
-
-            self.layout_filters.addLayout(layout_freq_position, 3, 0, 1, 3)
+            self.layout_filters.addWidget(self.label_freq, 9, 0, 1, 2)
+            self.layout_filters.addWidget(self.combo_box_freq_position, 9, 2)
 
         self.load_settings()
 
@@ -808,7 +860,17 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
         self.spin_box_len_node_max.setValue(settings[f'len_{self.type_node}_max'])
         self.checkbox_len_node_max_no_limit.setChecked(settings[f'len_{self.type_node}_max_no_limit'])
 
-        if self.type_node == 'collocate':
+        if self.type_node == 'node':
+            self.spin_box_len_collocate_min.setValue(settings['len_collocate_min'])
+            self.checkbox_len_collocate_min_no_limit.setChecked(settings['len_collocate_min_no_limit'])
+            self.spin_box_len_collocate_max.setValue(settings['len_collocate_max'])
+            self.checkbox_len_collocate_max_no_limit.setChecked(settings['len_collocate_max_no_limit'])
+
+            self.spin_box_len_collocation_min.setValue(settings[f'len_{self.type_collocation}_min'])
+            self.checkbox_len_collocation_min_no_limit.setChecked(settings[f'len_{self.type_collocation}_min_no_limit'])
+            self.spin_box_len_collocation_max.setValue(settings[f'len_{self.type_collocation}_max'])
+            self.checkbox_len_collocation_max_no_limit.setChecked(settings[f'len_{self.type_collocation}_max_no_limit'])
+
             self.combo_box_freq_position.setCurrentText(settings['freq_position'])
 
         self.spin_box_freq_min.setValue(settings['freq_min'])
@@ -851,7 +913,17 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
         self.settings[f'len_{self.type_node}_max'] = self.spin_box_len_node_max.value()
         self.settings[f'len_{self.type_node}_max_no_limit'] = self.checkbox_len_node_max_no_limit.isChecked()
 
-        if self.type_node == 'collocate':
+        if self.type_node == 'node':
+            self.settings['len_collocate_min'] = self.spin_box_len_collocate_min.value()
+            self.settings['len_collocate_min_no_limit'] = self.checkbox_len_collocate_min_no_limit.isChecked()
+            self.settings['len_collocate_max'] = self.spin_box_len_collocate_max.value()
+            self.settings['len_collocate_max_no_limit'] = self.checkbox_len_collocate_max_no_limit.isChecked()
+
+            self.settings[f'len_{self.type_collocation}_min'] = self.spin_box_len_collocation_min.value()
+            self.settings[f'len_{self.type_collocation}_min_no_limit'] = self.checkbox_len_collocation_min_no_limit.isChecked()
+            self.settings[f'len_{self.type_collocation}_max'] = self.spin_box_len_collocation_max.value()
+            self.settings[f'len_{self.type_collocation}_max_no_limit'] = self.checkbox_len_collocation_max_no_limit.isChecked()
+
             self.settings['freq_position'] = self.combo_box_freq_position.currentText()
 
         self.settings['freq_min'] = self.spin_box_freq_min.value()
@@ -896,8 +968,9 @@ class Wl_Worker_Results_Filter_Collocation_Extractor(wl_threading.Wl_Worker):
         col_text_test_stat = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['col_text']
         col_text_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['col_text']
 
-        if self.dialog.type_node == 'collocate':
-            col_node = self.dialog.table.find_header_hor(self.tr('Collocate'))
+        if self.dialog.type_node == 'node':
+            col_node = self.dialog.table.find_header_hor(self.tr('Node'))
+            col_collocate = self.dialog.table.find_header_hor(self.tr('Collocate'))
 
             if self.dialog.settings['freq_position'] == self.tr('Total'):
                 col_freq = self.dialog.table.find_header_hor(
@@ -910,8 +983,8 @@ class Wl_Worker_Results_Filter_Collocation_Extractor(wl_threading.Wl_Worker):
         else:
             col_node = self.dialog.table.find_header_hor(self.tr('Keyword'))
             col_freq = self.dialog.table.find_header_hor(
-                    self.tr('[{}]\nFrequency').format(self.dialog.settings['file_to_filter'])
-                )
+                self.tr('[{}]\nFrequency').format(self.dialog.settings['file_to_filter'])
+            )
 
         if self.dialog.has_test_stat:
             col_test_stat = self.dialog.table.find_header_hor(
@@ -945,6 +1018,29 @@ class Wl_Worker_Results_Filter_Collocation_Extractor(wl_threading.Wl_Worker):
             if self.dialog.settings[f'len_{self.dialog.type_node}_max_no_limit']
             else self.dialog.settings[f'len_{self.dialog.type_node}_max']
         )
+
+        if self.dialog.type_node == 'node':
+            len_collocate_min = (
+                float('-inf')
+                if self.dialog.settings['len_collocate_min_no_limit']
+                else self.dialog.settings['len_collocate_min']
+            )
+            len_collocate_max = (
+                float('inf')
+                if self.dialog.settings['len_collocate_max_no_limit']
+                else self.dialog.settings['len_collocate_max']
+            )
+
+            len_collocation_min = (
+                float('-inf')
+                if self.dialog.settings[f'len_{self.dialog.type_collocation}_min_no_limit']
+                else self.dialog.settings[f'len_{self.dialog.type_collocation}_min']
+            )
+            len_collocation_max = (
+                float('inf')
+                if self.dialog.settings[f'len_{self.dialog.type_collocation}_max_no_limit']
+                else self.dialog.settings[f'len_{self.dialog.type_collocation}_max']
+            )
 
         freq_min = (
             float('-inf')
@@ -1015,61 +1111,54 @@ class Wl_Worker_Results_Filter_Collocation_Extractor(wl_threading.Wl_Worker):
         self.dialog.table.row_filters = []
 
         for i in range(self.dialog.table.model().rowCount()):
+            filters = []
+
             # Calculate length of token texts only when filtering tagged tokens and when filtering tags
             len_node = sum((
                 len(str(token))
                 for token in self.dialog.table.model().item(i, col_node).tokens_filter
             ))
-            filter_len_node = len_node_min <= len_node <= len_node_max
 
-            filter_freq = (
+            filters.append(len_node_min <= len_node <= len_node_max)
+
+            if self.dialog.type_node == 'node':
+                len_collocate = sum((
+                    len(str(token))
+                    for token in self.dialog.table.model().item(i, col_collocate).tokens_filter
+                ))
+
+                filters.append(len_collocate_min <= len_collocate <= len_collocate_max)
+                filters.append(len_collocation_min <= len_node + len_collocate <= len_collocation_max)
+
+            filters.append(
                 freq_min <= self.dialog.table.model().item(i, col_freq).val <= freq_max
             )
 
             if self.dialog.has_test_stat:
-                filter_test_stat = (
+                filters.append(
                     test_stat_min <= self.dialog.table.model().item(i, col_test_stat).val <= test_stat_max
                 )
-            else:
-                filter_test_stat = True
 
             if self.dialog.has_p_val:
-                filter_p_val = (
+                filters.append(
                     p_val_min <= self.dialog.table.model().item(i, col_p_value).val <= p_val_max
                 )
-            else:
-                filter_p_val = True
 
             if self.dialog.has_bayes_factor:
-                filter_bayes_factor = (
+                filters.append(
                     bayes_factor_min <= self.dialog.table.model().item(i, col_bayes_factor).val <= bayes_factor_max
                 )
-            else:
-                filter_bayes_factor = True
 
             if self.dialog.has_effect_size:
-                filter_effect_size = (
+                filters.append(
                     effect_size_min <= self.dialog.table.model().item(i, col_effect_size).val <= effect_size_max
                 )
-            else:
-                filter_effect_size = True
 
-            filter_num_files_found = (
+            filters.append(
                 num_files_found_min <= self.dialog.table.model().item(i, col_num_files_found).val <= num_files_found_max
             )
 
-            if (
-                filter_len_node
-                and filter_freq
-                and filter_test_stat
-                and filter_p_val
-                and filter_bayes_factor
-                and filter_effect_size
-                and filter_num_files_found
-            ):
-                self.dialog.table.row_filters.append(True)
-            else:
-                self.dialog.table.row_filters.append(False)
+            self.dialog.table.row_filters.append(all(filters))
 
         self.progress_updated.emit(self.tr('Updating table...'))
         self.worker_done.emit()

@@ -783,10 +783,20 @@ def init_settings_default(main):
             'filter_results': {
                 'file_to_filter': _tr('wl_settings_default', 'Total'),
 
+                'len_node_min': 1,
+                'len_node_min_no_limit': True,
+                'len_node_max': 20,
+                'len_node_max_no_limit': True,
+
                 'len_collocate_min': 1,
                 'len_collocate_min_no_limit': True,
                 'len_collocate_max': 20,
                 'len_collocate_max_no_limit': True,
+
+                'len_collocation_min': 1,
+                'len_collocation_min_no_limit': True,
+                'len_collocation_max': 20,
+                'len_collocation_max_no_limit': True,
 
                 'freq_position': _tr('wl_settings_default', 'Total'),
                 'freq_min': 0,
@@ -847,8 +857,6 @@ def init_settings_default(main):
                 'apply_lemmatization': False,
                 'filter_stop_words': False,
 
-                # Always assign POS tags
-                'assign_pos_tags': True,
                 'ignore_tags': False,
                 'use_tags': False
             },
@@ -941,10 +949,20 @@ def init_settings_default(main):
             'filter_results': {
                 'file_to_filter': _tr('wl_settings_default', 'Total'),
 
+                'len_node_min': 1,
+                'len_node_min_no_limit': True,
+                'len_node_max': 20,
+                'len_node_max_no_limit': True,
+
                 'len_collocate_min': 1,
                 'len_collocate_min_no_limit': True,
                 'len_collocate_max': 20,
                 'len_collocate_max_no_limit': True,
+
+                'len_colligation_min': 1,
+                'len_colligation_min_no_limit': True,
+                'len_colligation_max': 20,
+                'len_colligation_max_no_limit': True,
 
                 'freq_position': _tr('wl_settings_default', 'Total'),
                 'freq_min': 0,

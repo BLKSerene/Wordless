@@ -37,6 +37,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.tab = tab
         self.tables = [table]
         self.settings = self.main.settings_custom[self.tab]['search_results']
+        self.last_search_settings = []
         self.items_found = []
 
         self.main.wl_work_area.currentChanged.connect(self.reject)
@@ -86,7 +87,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.button_find_next.clicked.connect(lambda: self.find_next()) # pylint: disable=unnecessary-lambda
         self.button_find_prev.clicked.connect(lambda: self.find_prev()) # pylint: disable=unnecessary-lambda
         self.button_find_all.clicked.connect(lambda: self.find_all()) # pylint: disable=unnecessary-lambda
-        self.button_clr_hightlights.clicked.connect(self.clr_highlights)
+        self.button_clr_hightlights.clicked.connect(lambda: self.clr_highlights()) # pylint: disable=unnecessary-lambda
 
         self.button_close.clicked.connect(self.reject)
 
@@ -123,8 +124,8 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.layout().addWidget(wl_layouts.Wl_Separator(self), 9, 0, 1, 4)
         self.layout().addLayout(layout_buttons_bottom, 10, 0, 1, 4)
 
-        for table in self.tables: # pylint: disable=redefined-argument-from-local
-            table.model().itemChanged.connect(self.table_item_changed)
+        for table_to_search in self.tables:
+            table_to_search.model().itemChanged.connect(self.table_item_changed)
 
         self.load_settings()
 
@@ -240,9 +241,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
             selected_rows = []
 
             for table in self.tables:
-                table.hide()
-                table.blockSignals(True)
-                table.setUpdatesEnabled(False)
+                table.disable_updates()
 
             for table in self.tables:
                 if table.get_selected_rows():
@@ -277,24 +276,24 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
                 self.tables[-1].selectRow(self.items_found[-1][1])
 
             for table in self.tables:
-                table.blockSignals(False)
-                table.setUpdatesEnabled(True)
-                table.show()
+                table.enable_updates()
 
     @wl_misc.log_timing
     def find_all(self):
-        self.clr_highlights()
+        # Search only when there are no search history or search settings have been changed
+        if not self.items_found or self.last_search_settings != copy.deepcopy(self.settings):
+            self.clr_highlights()
 
-        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Searching in results...'))
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Searching in results...'))
 
-        worker_results_search = Wl_Worker_Results_Search(
-            self.main,
-            dialog_progress = dialog_progress,
-            update_gui = self.update_gui,
-            dialog = self
-        )
+            worker_results_search = Wl_Worker_Results_Search(
+                self.main,
+                dialog_progress = dialog_progress,
+                update_gui = self.update_gui,
+                dialog = self
+            )
 
-        wl_threading.Wl_Thread(worker_results_search).start_worker()
+            wl_threading.Wl_Thread(worker_results_search).start_worker()
 
     def update_gui(self):
         if self.items_found:
@@ -324,11 +323,15 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
 
             self.button_clr_hightlights.setEnabled(False)
 
+        # Save search settings
+        self.last_search_settings = copy.deepcopy(self.settings)
+
         len_items_found = len(self.items_found)
         msg_item = self.tr('item') if len_items_found == 1 else self.tr('items')
 
         self.main.statusBar().showMessage(self.tr('Found {} {}.').format(len_items_found, msg_item))
 
+    @wl_misc.log_timing
     def clr_highlights(self):
         if self.items_found:
             for table in self.tables:
@@ -345,10 +348,15 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
             for table in self.tables:
                 table.enable_updates()
 
-            self.items_found.clear()
+            self.clr_history()
+
             self.main.statusBar().showMessage(self.tr('Highlights cleared.'))
 
         self.button_clr_hightlights.setEnabled(False)
+
+    def clr_history(self):
+        self.last_search_settings.clear()
+        self.items_found.clear()
 
     def load(self):
         self.show()

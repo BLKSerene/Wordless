@@ -153,7 +153,7 @@ def update_gui_file_types(err_msg, new_files):
         file_text = new_files[0]['text']
 
         tokens = file_text.to_token_texts()
-        tags = file_text.get_token_properties('tag')
+        tags = file_text.get_token_properties('tag', flat = True)
 
         print(tokens)
 
@@ -192,7 +192,7 @@ def update_gui_file_types(err_msg, new_files):
         file_text_tgt = new_files[1]['text']
 
         tokens_src = file_text_src.to_token_texts()
-        tags_src = file_text_src.get_token_properties('tag')
+        tags_src = file_text_src.get_token_properties('tag', flat = True)
 
         # Source files
         print(file_text_src.lang)
@@ -204,7 +204,7 @@ def update_gui_file_types(err_msg, new_files):
 
         # Target files
         tokens_tgt = file_text_tgt.to_token_texts()
-        tags_tgt = file_text_tgt.get_token_properties('tag')
+        tags_tgt = file_text_tgt.get_token_properties('tag', flat = True)
 
         print(file_text_tgt.lang)
         print(tokens_tgt)
@@ -226,7 +226,7 @@ def update_gui_tags(err_msg, new_files):
     file_text = new_files[0]['text']
 
     tokens = file_text.to_token_texts()
-    tags = file_text.get_token_properties('tag')
+    tags = file_text.get_token_properties('tag', flat = True)
 
     print(tokens)
     print(tags)
