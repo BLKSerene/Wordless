@@ -1252,7 +1252,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                         for sentence_seg in sentence
                     ]
 
-                    syls_tokens = text.get_token_properties('syls')
+                    syls_tokens = text.get_token_properties('syls', flat = True)
 
                     # Remove punctuation marks
                     for i, syls in enumerate(syls_tokens):

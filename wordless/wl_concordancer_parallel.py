@@ -408,9 +408,10 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                                 parallel_unit_no = bisect.bisect(offsets_paras, j)
 
                                 if parallel_unit_no not in parallel_units:
+                                    # Save all nodes if multiple nodes are found in the same parallel unit
                                     parallel_units[parallel_unit_no] = [[] for _ in range(len_files)]
 
-                                parallel_units[parallel_unit_no][i] = ngram
+                                parallel_units[parallel_unit_no][i].append(ngram)
                 # Search for additions & deletions
                 else:
                     for j, para in enumerate(text.tokens_multilevel):
@@ -428,22 +429,37 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                 len_parallel_units = len(offsets_paras)
 
                 for parallel_unit_no, parallel_unit_nodes in parallel_units.items():
-                    node = parallel_unit_nodes[i]
+                    nodes = parallel_unit_nodes[i]
 
                     if parallel_unit_no <= len_parallel_units:
-                        parallel_unit_tokens_raw = list(wl_misc.flatten_list(text.tokens_multilevel[parallel_unit_no - 1]))
-                        parallel_unit_tokens_raw = wl_nlp_utils.escape_tokens(wl_texts.to_display_texts(parallel_unit_tokens_raw))
-                        # Search in Results
-                        parallel_unit_tokens_search = list(wl_misc.flatten_list(text.tokens_multilevel[parallel_unit_no - 1]))
+                        parallel_unit = list(wl_misc.flatten_list(text.tokens_multilevel[parallel_unit_no - 1]))
 
-                        # Highlight node if found
-                        if node:
-                            len_node = len(node)
+                        if settings['token_settings']['punc_marks']:
+                            parallel_unit_tokens_search = copy.deepcopy(parallel_unit)
+                        # Convert trailing punctuation marks, if any, to separate tokens for searching
+                        else:
+                            parallel_unit_tokens_search = []
 
-                            for j, ngram in enumerate(wl_nlp_utils.ngrams(parallel_unit_tokens_search, len_node)):
-                                if ngram == tuple(node):
-                                    parallel_unit_tokens_raw[j] = f'<span style="color: {node_color}; font-weight: bold;">{parallel_unit_tokens_raw[j]}'
-                                    parallel_unit_tokens_raw[j + len_node - 1] += '</span>'
+                            for token in copy.deepcopy(parallel_unit):
+                                parallel_unit_tokens_search.append(token)
+
+                                if token.punc_mark:
+                                    parallel_unit_tokens_search.append(wl_texts.Wl_Token(token.punc_mark, lang = token.lang))
+
+                        parallel_unit_tokens_raw = wl_nlp_utils.escape_tokens(wl_texts.to_display_texts(
+                            parallel_unit,
+                            punc_mark = True
+                        ))
+
+                        # Highlight nodes if found
+                        if nodes:
+                            for node in nodes:
+                                len_node = len(node)
+
+                                for j, ngram in enumerate(wl_nlp_utils.ngrams(parallel_unit, len_node)):
+                                    if ngram == tuple(node):
+                                        parallel_unit_tokens_raw[j] = f'<span style="color: {node_color}; font-weight: bold;">{parallel_unit_tokens_raw[j]}'
+                                        parallel_unit_tokens_raw[j + len_node - 1] += '</span>'
                     else:
                         parallel_unit_tokens_raw = []
                         parallel_unit_tokens_search = []

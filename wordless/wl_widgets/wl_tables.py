@@ -40,6 +40,8 @@ from wordless.wl_widgets import wl_buttons
 
 _tr = QCoreApplication.translate
 
+# pylint: disable=unnecessary-lambda
+
 class Wl_Table(QTableView):
     def __init__(
         self, parent,
@@ -513,16 +515,16 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
             if '*.csv' in self.file_type:
                 encoding = self.main.settings_custom['general']['exp']['tables']['default_encoding']
 
-                # Concordancer
-                if self.table.tab == 'concordancer':
-                    with open(self.file_path, 'w', encoding = encoding, newline = '') as f:
-                        csv_writer = csv.writer(f)
+                with open(self.file_path, 'w', encoding = encoding, newline = '') as f:
+                    csv_writer = csv.writer(f)
 
+                    if self.table.header_orientation == 'hor':
                         # Horizontal headers
-                        csv_writer.writerow([
-                            self.table.model().horizontalHeaderItem(col).text().strip()
+                        headers_hor = [
+                            self.table.model().horizontalHeaderItem(col).text()
                             for col in cols
-                        ])
+                        ]
+                        csv_writer.writerow(self.clean_text_csv(headers_hor))
 
                         # Cells
                         for i, row in enumerate(self.rows_to_exp):
@@ -537,77 +539,28 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                                 row_to_exp.append(cell_text)
 
-                            csv_writer.writerow(row_to_exp)
+                            csv_writer.writerow(self.clean_text_csv(row_to_exp))
 
                             self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
-                # Parallel Concordancer
-                elif self.table.tab == 'concordancer_parallel':
-                    with open(self.file_path, 'w', encoding = encoding, newline = '') as f:
-                        csv_writer = csv.writer(f)
-
-                        # Horizontal Headers
-                        csv_writer.writerow([
-                            self.table.model().horizontalHeaderItem(col).text().strip()
+                    # Profiler
+                    else:
+                        # Horizontal headers
+                        headers_hor = [
+                            self.table.model().horizontalHeaderItem(col).text()
                             for col in cols
-                        ])
+                        ]
+                        csv_writer.writerow([''] + self.clean_text_csv(headers_hor))
 
-                        # Cells
+                        # Vertical headers and cells
                         for i, row in enumerate(self.rows_to_exp):
-                            row_to_exp = []
+                            row_to_exp = [self.table.model().verticalHeaderItem(row).text()]
 
                             for col in cols:
-                                if self.table.model().item(row, col):
-                                    cell_text = self.table.model().item(row, col).text()
-                                else:
-                                    cell_text = self.table.indexWidget(self.table.model().index(row, col)).text()
-                                    cell_text = wl_nlp_utils.html_to_text(cell_text)
+                                row_to_exp.append(self.table.model().item(row, col).text())
 
-                                row_to_exp.append(cell_text)
-
-                            csv_writer.writerow(row_to_exp)
+                            csv_writer.writerow(self.clean_text_csv(row_to_exp))
 
                             self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
-                else:
-                    with open(self.file_path, 'w', encoding = encoding, newline = '') as f:
-                        csv_writer = csv.writer(f)
-
-                        if self.table.header_orientation == 'hor':
-                            # Horizontal headers
-                            csv_writer.writerow([
-                                self.table.model().horizontalHeaderItem(col).text().strip()
-                                for col in cols
-                            ])
-
-                            # Cells
-                            for i, row in enumerate(self.rows_to_exp):
-                                row_to_exp = []
-
-                                for col in cols:
-                                    row_to_exp.append(self.table.model().item(row, col).text().strip())
-
-                                csv_writer.writerow(row_to_exp)
-
-                                self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
-                        else:
-                            # Horizontal headers
-                            csv_writer.writerow(
-                                ['']
-                                + [
-                                    self.table.model().horizontalHeaderItem(col).text().strip()
-                                    for col in cols
-                                ]
-                            )
-
-                            # Vertical headers & cells
-                            for i, row in enumerate(self.rows_to_exp):
-                                row_to_exp = [self.table.model().verticalHeaderItem(row).text().strip()]
-
-                                for col in cols:
-                                    row_to_exp.append(self.table.model().item(row, col).text().strip())
-
-                                csv_writer.writerow(row_to_exp)
-
-                                self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
             # Excel workbooks
             elif '*.xlsx' in self.file_type:
                 workbook = openpyxl.Workbook()
@@ -735,7 +688,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                         para_text = []
 
                         for col in range(3):
-                            para_text.append(self.table.indexWidget(self.table.model().index(row, col)).text())
+                            para_text.append(self.table.indexWidget(self.table.model().index(row, col)).text().strip())
 
                         # Zapping
                         if settings_concordancer['zapping']:
@@ -764,13 +717,14 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                 # Parallel Concordancer
                 elif self.table.tab == 'concordancer_parallel':
                     for i, row in enumerate(self.rows_to_exp):
+                        if i > 0:
+                            self.add_para(doc)
+
                         for col in range(2, self.table.model().columnCount()):
-                            para_text = self.table.indexWidget(self.table.model().index(row, col)).text()
+                            para_text = self.table.indexWidget(self.table.model().index(row, col)).text().strip()
 
                             para = self.add_para(doc)
                             self.style_para_rich_text(para, para_text, self.table.indexWidget(self.table.model().index(row, col)))
-
-                        self.add_para(doc)
 
                         self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
 
@@ -788,6 +742,15 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
             err_msg = traceback.format_exc()
 
         self.worker_done.emit(err_msg, self.file_path)
+
+    # Clean text before writing to CSV files
+    def clean_text_csv(self, items):
+        for i, item in enumerate(items):
+            items[i] = item.replace('\n', ' ')
+            items[i] = re.sub(r'\s+', ' ', items[i])
+            items[i] = items[i].strip()
+
+        return items
 
     # Remove invalid XML characters
     def remove_invalid_xml_chars(self, text):
@@ -1081,9 +1044,9 @@ class Wl_Table_Add_Ins_Del_Clr(Wl_Table):
         self.button_del = QPushButton(_tr('wl_tables', 'Remove'), self)
         self.button_clr = QPushButton(_tr('wl_tables', 'Clear'), self)
 
-        self.button_add.clicked.connect(lambda: self.add_row()) # pylint: disable=unnecessary-lambda
-        self.button_ins.clicked.connect(lambda: self.ins_row()) # pylint: disable=unnecessary-lambda
-        self.button_del.clicked.connect(lambda: self.del_row()) # pylint: disable=unnecessary-lambda
+        self.button_add.clicked.connect(lambda: self.add_row())
+        self.button_ins.clicked.connect(lambda: self.ins_row())
+        self.button_del.clicked.connect(lambda: self.del_row())
         self.button_clr.clicked.connect(lambda: self.clr_table(0))
 
     def item_changed(self):
@@ -1181,10 +1144,10 @@ class Wl_Table_Data(Wl_Table):
         if not generate_fig:
             self.button_generate_fig.hide()
 
-        self.button_generate_table.clicked.connect(lambda: self.generate_table()) # pylint: disable=unnecessary-lambda
-        self.button_generate_fig.clicked.connect(lambda: self.generate_fig()) # pylint: disable=unnecessary-lambda
-        self.button_exp_selected_cells.clicked.connect(self.exp_selected_cells)
-        self.button_exp_all_cells.clicked.connect(lambda: self.exp_all_cells()) # pylint: disable=unnecessary-lambda
+        self.button_generate_table.clicked.connect(lambda: self.generate_table())
+        self.button_generate_fig.clicked.connect(lambda: self.generate_fig())
+        self.button_exp_selected_cells.clicked.connect(lambda: self.exp_selected_cells())
+        self.button_exp_all_cells.clicked.connect(lambda: self.exp_all_cells())
         self.button_clr_table.clicked.connect(lambda: self.clr_table(confirm = True))
 
         self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
@@ -1871,6 +1834,7 @@ class Wl_Table_Data_Search(Wl_Table_Data):
 
         self.button_results_search.setMinimumWidth(140)
 
+        self.button_generate_table.clicked.connect(self.dialog_results_search.clr_history)
         self.button_results_search.clicked.connect(self.dialog_results_search.load)
 
         self.results_changed()
@@ -1924,6 +1888,7 @@ class Wl_Table_Data_Sort_Search(Wl_Table_Data):
         self.button_results_search.setMinimumWidth(140)
         self.button_results_sort.setMinimumWidth(140)
 
+        self.button_generate_table.clicked.connect(self.dialog_results_search.clr_history)
         self.button_results_search.clicked.connect(self.dialog_results_search.load)
         self.button_results_sort.clicked.connect(self.dialog_results_sort.show)
 
@@ -1976,6 +1941,7 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
         self.button_results_filter.setMinimumWidth(140)
         self.button_results_search.setMinimumWidth(140)
 
+        self.button_generate_table.clicked.connect(self.dialog_results_search.clr_history)
         self.button_results_filter.clicked.connect(self.results_filter_clicked)
         self.button_results_search.clicked.connect(self.dialog_results_search.load)
 

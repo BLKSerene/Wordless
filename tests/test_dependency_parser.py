@@ -62,7 +62,7 @@ def update_gui(err_msg, results):
 
     for (
         head, dependent, dependency_relation, dependency_len,
-        sentence_display, sentence_search,
+        sentence_tokens_raw, sentence_tokens_fig, sentence_tokens_search,
         no_sentence, len_sentences, file
     ) in results:
         # Head
@@ -75,8 +75,9 @@ def update_gui(err_msg, results):
         assert isinstance(dependency_len, int)
 
         # Sentence
-        assert all(sentence_display)
-        assert all(sentence_search)
+        assert all(sentence_tokens_raw)
+        assert all(sentence_tokens_fig)
+        assert all(sentence_tokens_search)
 
         # Sentence No.
         assert no_sentence >= 1

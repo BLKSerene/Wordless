@@ -693,7 +693,7 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
             tokens_ref = []
 
             for file_ref in files_ref:
-                text = wl_token_processing.wl_process_tokens(
+                text = wl_token_processing.wl_process_tokens_ngram_generator(
                     self.main, file_ref['text'],
                     token_settings = settings['token_settings']
                 )
@@ -709,7 +709,7 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
 
             # Frequency (Observed files)
             for file_observed in files_observed:
-                text = wl_token_processing.wl_process_tokens(
+                text = wl_token_processing.wl_process_tokens_ngram_generator(
                     self.main, file_observed['text'],
                     token_settings = settings['token_settings']
                 )
