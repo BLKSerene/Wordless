@@ -909,7 +909,7 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                 colligations_freqs_file = {}
                 colligations_freqs_file_all = {}
 
-                text = wl_token_processing.wl_process_tokens(
+                text = wl_token_processing.wl_process_tokens_colligation_extractor(
                     self.main, file['text'],
                     token_settings = settings['token_settings']
                 )
@@ -976,23 +976,21 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                         tags_left = []
                         tags_right = []
 
-                        tags = wl_texts.to_tokens(wl_texts.get_token_properties(tokens, 'tag'), lang = file['lang'])
-
                         if window_left < 0 < window_right:
                             # Limit Searching
                             if settings_limit_searching == _tr('wl_colligation_extractor', 'None'):
-                                tags_left = tags[max(0, i + window_left) : i]
-                                tags_right = tags[i + ngram_size : i + ngram_size + window_right]
+                                tags_left = text.tags[max(0, i + window_left) : i]
+                                tags_right = text.tags[i + ngram_size : i + ngram_size + window_right]
                             else:
                                 # Span positions (Left)
                                 for position in range(max(0, i + window_left), i):
                                     if i_unit_start <= position <= i_unit_end:
-                                        tags_left.append(tags[position])
+                                        tags_left.append(text.tags[position])
 
                                 # Span positions (Right)
                                 for position in range(i + ngram_size, i + ngram_size + window_right):
                                     if i_unit_start <= position <= i_unit_end:
-                                        tags_right.append(tags[position])
+                                        tags_right.append(text.tags[position])
 
                             for j, collocate in enumerate(reversed(tags_left)):
                                 if wl_matching.check_context(
@@ -1024,12 +1022,12 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                         elif window_left < 0 and window_right < 0:
                             # Limit Searching
                             if settings_limit_searching == _tr('wl_colligation_extractor', 'None'):
-                                tags_left = tags[max(0, i + window_left) : max(0, i + window_right + 1)]
+                                tags_left = text.tags[max(0, i + window_left) : max(0, i + window_right + 1)]
                             else:
                                 # Span positions (Left)
                                 for position in range(max(0, i + window_left), max(0, i + window_right + 1)):
                                     if i_unit_start <= position <= i_unit_end:
-                                        tags_left.append(tags[position])
+                                        tags_left.append(text.tags[position])
 
                             for j, collocate in enumerate(reversed(tags_left)):
                                 if wl_matching.check_context(
@@ -1047,12 +1045,12 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                         elif window_left > 0 and window_right > 0:
                             # Limit Searching
                             if settings_limit_searching == _tr('wl_colligation_extractor', 'None'):
-                                tags_right = tags[i + ngram_size + window_left - 1 : i + ngram_size + window_right]
+                                tags_right = text.tags[i + ngram_size + window_left - 1 : i + ngram_size + window_right]
                             else:
                                 # Span positions (Right)
                                 for position in range(i + ngram_size + window_left - 1, i + ngram_size + window_right):
                                     if i_unit_start <= position <= i_unit_end:
-                                        tags_right.append(tags[position])
+                                        tags_right.append(text.tags[position])
 
                             for j, collocate in enumerate(tags_right):
                                 if wl_matching.check_context(

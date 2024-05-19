@@ -25,6 +25,66 @@ from wordless.wl_nlp import (
 )
 from wordless.wl_utils import wl_misc
 
+# Assign part-of-speech tags
+def text_pos_tag(main, text, settings):
+    if settings['assign_pos_tags'] and not text.tagged:
+        tokens = wl_pos_tagging.wl_pos_tag(
+            main,
+            inputs = text.get_tokens_flat(),
+            lang = text.lang
+        )
+
+        text.update_token_properties(tokens)
+
+# Syllable tokenization
+def text_syl_tokenize(main, text):
+    tokens = wl_syl_tokenization.wl_syl_tokenize(
+        main,
+        inputs = text.get_tokens_flat(),
+        lang = text.lang,
+    )
+
+    text.update_token_properties(tokens)
+
+# Ignore tags
+def text_ignore_tags(text, settings):
+    if settings['ignore_tags']:
+        text.set_token_properties('tag', None)
+
+# Use tags only
+def text_use_tags_only(text, settings):
+    if settings['use_tags']:
+        # Calculate head references
+        if text.has_token_properties('head'):
+            head_refs = []
+
+            for i_para, para in enumerate(text.tokens_multilevel):
+                for i_sentence, sentence in enumerate(para):
+                    for sentence_seg in sentence:
+                        for token in sentence_seg:
+                            head = token.head
+
+                            for i_sentence_seg, sentence_seg in enumerate(sentence):
+                                for i_token, token in enumerate(sentence_seg):
+                                    if head is token:
+                                        head_refs.append((i_para, i_sentence, i_sentence_seg, i_token))
+
+        text.set_token_texts(text.get_token_properties('tag', flat = True))
+        text.set_token_properties('tag', None)
+
+        # Update head references
+        if text.has_token_properties('head'):
+            i_token = 0
+
+            for para in text.tokens_multilevel:
+                for sentence in para:
+                    for sentence_seg in sentence:
+                        for token in sentence_seg:
+                            refs = head_refs[i_token]
+                            token.head = text.tokens_multilevel[refs[0]][refs[1]][refs[2]][refs[3]]
+
+                            i_token += 1
+
 def wl_process_tokens(main, text, token_settings):
     settings = copy.deepcopy(token_settings)
 
@@ -33,20 +93,10 @@ def wl_process_tokens(main, text, token_settings):
         settings['all_uppercase'] = False
         settings['title_case'] = False
 
-    if settings['ignore_tags']:
-        settings['use_tags'] = False
-    elif settings['use_tags']:
+    if settings['use_tags']:
         settings['apply_lemmatization'] = False
-        settings['ignore_tags'] = False
 
-    # Assign part-of-speech tags
-    if settings['assign_pos_tags'] and not text.tagged:
-        tokens = wl_pos_tagging.wl_pos_tag(
-            main,
-            inputs = text.get_tokens_flat(),
-            lang = text.lang
-        )
-        text.update_token_properties(tokens)
+    text_pos_tag(main, text, token_settings)
 
     # Apply lemmatization
     if settings['apply_lemmatization']:
@@ -153,16 +203,17 @@ def wl_process_tokens(main, text, token_settings):
 
     # Replace tokens with their lemmas
     if settings['apply_lemmatization']:
-        text_modified.set_token_texts(text_modified.get_token_properties('lemma'))
+        text_modified.set_token_texts(text_modified.get_token_properties('lemma', flat = True))
 
-    # Ignore tags
-    if settings['ignore_tags']:
-        text_modified.set_token_properties('tag', '')
+    text_modified.update_num_tokens()
 
-    # Use tags only
-    if settings['use_tags']:
-        text_modified.set_token_texts(text_modified.get_token_properties('tag'))
-        text_modified.set_token_properties('tag', '')
+    return text_modified
+
+def wl_process_tokens_ngram_generator(main, text, token_settings):
+    text_modified = wl_process_tokens(main, text, token_settings)
+
+    text_ignore_tags(text_modified, token_settings)
+    text_use_tags_only(text_modified, token_settings)
 
     text_modified.update_num_tokens()
 
@@ -206,15 +257,9 @@ def wl_process_tokens_profiler(main, text, token_settings):
     # Punctuation marks must be preserved for some readability measures (e.g. Wheeler & Smith's Readability Formula)
     text.tokens_multilevel_with_puncs = copy.deepcopy(text.tokens_multilevel)
 
-    # Syllable tokenization
-    tokens = wl_syl_tokenization.wl_syl_tokenize(
-        main,
-        inputs = text.get_tokens_flat(),
-        lang = text.lang,
-    )
-    text.update_token_properties(tokens)
+    text_syl_tokenize(main, text)
 
-    text_modified = wl_process_tokens(main, text, token_settings)
+    text_modified = wl_process_tokens_ngram_generator(main, text, token_settings)
     text_modified.tokens_multilevel = remove_empty_tokens_multilevel(text_modified.tokens_multilevel)
     text_modified.update_num_tokens()
 
@@ -223,14 +268,7 @@ def wl_process_tokens_profiler(main, text, token_settings):
 def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_lines = False):
     settings = copy.deepcopy(token_settings)
 
-    # Assign part-of-speech tags
-    if settings['assign_pos_tags'] and not text.tagged:
-        tokens = wl_pos_tagging.wl_pos_tag(
-            main,
-            inputs = text.get_tokens_flat(),
-            lang = text.lang
-        )
-        text.update_token_properties(tokens)
+    text_pos_tag(main, text, token_settings)
 
     text_modified = copy.deepcopy(text)
 
@@ -272,14 +310,8 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
     if not preserve_blank_lines:
         text_modified.tokens_multilevel = remove_empty_tokens_multilevel(text_modified.tokens_multilevel, empty_tokens = False)
 
-    # Ignore tags
-    if settings['ignore_tags']:
-        text_modified.set_token_properties('tag', '')
-
-    # Use tags only
-    if settings['use_tags']:
-        text_modified.set_token_texts(text_modified.get_token_properties('tag'))
-        text_modified.set_token_properties('tag', '')
+    text_ignore_tags(text_modified, token_settings)
+    text_use_tags_only(text_modified, token_settings)
 
     text_modified.update_num_tokens()
 
@@ -302,17 +334,32 @@ def wl_process_tokens_dependency_parser(main, text, token_settings):
     return wl_process_tokens_concordancer(main, text, token_settings)
 
 def wl_process_tokens_wordlist_generator(main, text, token_settings, generation_settings):
-    # Syllable tokenization
+    # Syllabification
     if generation_settings['syllabification']:
-        tokens = wl_syl_tokenization.wl_syl_tokenize(
-            main,
-            inputs = text.get_tokens_flat(),
-            lang = text.lang,
-        )
-        text.update_token_properties(tokens)
+        text_syl_tokenize(main, text)
 
-    text_modified = wl_process_tokens(main, text, token_settings)
+    text_modified = wl_process_tokens_ngram_generator(main, text, token_settings)
     text_modified.tokens_multilevel = remove_empty_tokens_multilevel(text_modified.tokens_multilevel)
+    text_modified.update_num_tokens()
+
+    return text_modified
+
+def wl_process_tokens_colligation_extractor(main, text, token_settings):
+    # Do not modify custom settings, as adding new options would clear user's custom settings
+    settings = copy.deepcopy(token_settings)
+    # Always assign part-of-speech tags
+    settings['assign_pos_tags'] = True
+
+    text_modified = wl_process_tokens(main, text, settings)
+
+    text_modified.tags = wl_texts.to_tokens(
+        text_modified.get_token_properties('tag', flat = True),
+        lang = text.lang
+    )
+
+    text_ignore_tags(text_modified, token_settings)
+    text_use_tags_only(text_modified, token_settings)
+
     text_modified.update_num_tokens()
 
     return text_modified

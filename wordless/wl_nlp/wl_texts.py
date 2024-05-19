@@ -58,8 +58,11 @@ class Wl_Token(str):
     def __eq__(self, other):
         return self.display_text() == other.display_text()
 
-    def display_text(self):
-        return str(self) + (self.punc_mark or '') + (self.tag or '')
+    def display_text(self, punc_mark = False):
+        if punc_mark:
+            return str(self) + (self.punc_mark or '') + (self.tag or '')
+        else:
+            return str(self) + (self.tag or '')
 
     def update_properties(self, token):
         self.lang = token.lang
@@ -134,8 +137,8 @@ def combine_texts_properties(texts, token_properties):
 def to_token_texts(tokens):
     return [str(token) for token in tokens]
 
-def to_display_texts(tokens):
-    return [token.display_text() for token in tokens]
+def to_display_texts(tokens, punc_mark = False):
+    return [token.display_text(punc_mark = punc_mark) for token in tokens]
 
 def set_token_text(token, text):
     _, token_properties = split_texts_properties([token])
@@ -148,11 +151,18 @@ def set_token_texts(tokens, texts):
     for i, token in enumerate(combine_texts_properties(texts, token_properties)):
         tokens[i] = token
 
+def has_token_properties(tokens, name):
+    for token in tokens:
+        if getattr(token, name) is not None:
+            return True
+
+    return False
+
 def get_token_properties(tokens, name):
     return [getattr(token, name) for token in tokens]
 
 def set_token_properties(tokens, name, vals):
-    if isinstance(vals, str):
+    if isinstance(vals, str) or vals is None:
         vals = [vals] * len(tokens)
 
     for token, val in zip(tokens, vals):
@@ -398,39 +408,45 @@ class Wl_Text:
         return list(wl_misc.flatten_list(self.tokens_multilevel))
 
     def set_tokens(self, tokens):
-        i_start_token = 0
+        i_token = 0
 
         for para in self.tokens_multilevel:
             for sentence in para:
                 for sentence_seg in sentence:
                     for i, _ in enumerate(sentence_seg):
-                        sentence_seg[i] = tokens[i_start_token + i]
+                        sentence_seg[i] = tokens[i_token]
 
-                    i_start_token += len(sentence_seg)
+                        i_token += 1
 
-    def to_token_texts(self):
-        return [
-            [
+    def to_token_texts(self, flat = False):
+        if flat:
+            return to_token_texts(self.get_tokens_flat())
+        else:
+            return [
                 [
-                    [str(token) for token in sentence_seg]
-                    for sentence_seg in sentence
+                    [
+                        [str(token) for token in sentence_seg]
+                        for sentence_seg in sentence
+                    ]
+                    for sentence in para
                 ]
-                for sentence in para
+                for para in self.tokens_multilevel
             ]
-            for para in self.tokens_multilevel
-        ]
 
-    def to_display_texts(self):
-        return [
-            [
+    def to_display_texts(self, punc_mark = False, flat = False):
+        if flat:
+            return to_display_texts(self.get_tokens_flat())
+        else:
+            return [
                 [
-                    [token.display_text() for token in sentence_seg]
-                    for sentence_seg in sentence
+                    [
+                        [token.display_text(punc_mark = punc_mark) for token in sentence_seg]
+                        for sentence_seg in sentence
+                    ]
+                    for sentence in para
                 ]
-                for sentence in para
+                for para in self.tokens_multilevel
             ]
-            for para in self.tokens_multilevel
-        ]
 
     def set_token_texts(self, texts):
         tokens = self.get_tokens_flat()
@@ -440,11 +456,26 @@ class Wl_Text:
 
         self.set_tokens(tokens)
 
-    def get_token_properties(self, name):
-        return [getattr(token, name) for token in self.get_tokens_flat()]
+    def has_token_properties(self, name):
+        return has_token_properties(self.get_tokens_flat(), name)
+
+    def get_token_properties(self, name, flat = False):
+        if flat:
+            return get_token_properties(self.get_tokens_flat(), name)
+        else:
+            return [
+                [
+                    [
+                        [getattr(token, name) for token in sentence_seg]
+                        for sentence_seg in sentence
+                    ]
+                    for sentence in para
+                ]
+                for para in self.tokens_multilevel
+            ]
 
     def set_token_properties(self, name, vals):
-        if isinstance(vals, str):
+        if isinstance(vals, str) or vals is None:
             vals = [vals] * self.num_tokens
 
         i_val = 0
@@ -458,15 +489,15 @@ class Wl_Text:
                         i_val += 1
 
     def update_token_properties(self, tokens):
-        i_start_token = 0
+        i_token = 0
 
         for para in self.tokens_multilevel:
             for sentence in para:
                 for sentence_seg in sentence:
-                    for i, token in enumerate(sentence_seg):
-                        token.update_properties(tokens[i_start_token + i])
+                    for token in sentence_seg:
+                        token.update_properties(tokens[i_token])
 
-                    i_start_token += len(sentence_seg)
+                        i_token += 1
 
     def get_offsets(self):
         offsets_paras = []
@@ -566,11 +597,7 @@ class Wl_Text_Ref(Wl_Text):
                         ]
 
         # Remove empty tokens and whitespace around tokens
-        self.tokens_multilevel[0][0][0] = [
-            token_clean
-            for token in self.tokens_multilevel[0][0][0]
-            if (token_clean := token.strip())
-        ]
+        self.tokens_multilevel[0][0][0] = clean_texts(self.tokens_multilevel[0][0][0])
         self.tokens_multilevel[0][0][0] = to_tokens(self.tokens_multilevel[0][0][0], self.lang)
 
         self.num_tokens = len(self.get_tokens_flat())

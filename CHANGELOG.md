@@ -26,6 +26,7 @@
 - Utils: Add PyThaiNLP's Han-solo
 - Utils: Add Stanza's Sindhi part-of-speech tagger
 - Utils: Add VADER's sentiment analyzers
+- Work Area: Add Collocation/Colligation Extractor - Filter results / 
 - Work Area: Add Profiler - Lexical Diversity - Brunét's Index / Honoré's statistic
 
 ### ✨ Improvements
@@ -40,7 +41,7 @@
 
 ### ❌ Removals
 - Menu: Remove Settings - Measures - Statistical Significance - Welch's t-test
-- Work Area: Remove Collocation Extractor / Colligation Extractor / Keyword Extractor - Generation Settings - Test of Statistical Significance - Welch's t-test
+- Work Area: Remove Collocation/Colligation/Keyword Extractor - Generation Settings - Test of Statistical Significance - Welch's t-test
 - Utils: Remove Dostoevsky's Russian sentiment analyzer
 
 ### ⏫ Dependency Changes

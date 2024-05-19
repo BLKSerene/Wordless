@@ -404,10 +404,7 @@ def wl_dependency_parse_fig_tokens(
 ):
     htmls = []
 
-    if inputs and isinstance(list(inputs)[0], wl_texts.Wl_Token):
-        inputs, token_properties = wl_texts.split_texts_properties(inputs)
-    else:
-        token_properties = []
+    inputs, token_properties = wl_texts.split_texts_properties(inputs)
 
     options = {
         'fine_grained': show_fine_grained_pos_tags,
@@ -437,11 +434,12 @@ def wl_dependency_parse_fig_tokens(
             if show_in_separate_tab:
                 for doc in nlp.pipe(docs):
                     for sentence in doc.sents:
-                        displacy_dict = spacy.displacy.parse_deps(sentence.as_doc(), options = options)
+                        displacy_dict = spacy.displacy.parse_deps(sentence, options = options)
 
                         if token_properties:
                             for token, word in zip(sentence, displacy_dict['words']):
-                                word['text'] += token_properties[i_tag_start + token.i]
+                                properties = token_properties[i_tag_start + token.i]
+                                word['text'] += (properties['punc_mark'] or '') + (properties['tag'] or '')
 
                         htmls.append(spacy.displacy.render(
                             displacy_dict,
@@ -458,12 +456,12 @@ def wl_dependency_parse_fig_tokens(
 
                 for doc in nlp.pipe(docs):
                     for sentence in doc.sents:
-                        displacy_dict = spacy.displacy.parse_deps(sentence.as_doc(), options = options)
+                        displacy_dict = spacy.displacy.parse_deps(sentence, options = options)
 
                         if token_properties:
                             for token, word in zip(sentence, displacy_dict['words']):
                                 properties = token_properties[i_tag_start + token.i]
-                                word['text'] += (properties['punc_mark'] or '') + (properties['tag'])
+                                word['text'] += (properties['punc_mark'] or '') + (properties['tag'] or '')
 
                         sentences.append(displacy_dict)
 

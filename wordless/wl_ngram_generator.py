@@ -781,7 +781,7 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
             for file in files:
                 ngrams_is = []
 
-                text = wl_token_processing.wl_process_tokens(
+                text = wl_token_processing.wl_process_tokens_ngram_generator(
                     self.main, file['text'],
                     token_settings = settings['token_settings']
                 )

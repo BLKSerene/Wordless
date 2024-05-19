@@ -51,6 +51,7 @@ def detect_encoding(main, file_path):
 
     return encoding
 
+# pylint: disable=no-member
 lingua_detector = lingua.LanguageDetectorBuilder.from_all_languages_without(
     lingua.Language.BOSNIAN,
     lingua.Language.MAORI,

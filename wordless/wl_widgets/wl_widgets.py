@@ -338,10 +338,18 @@ def wl_widgets_token_settings(parent):
             checkbox_all_uppercase.setEnabled(False)
             checkbox_title_case.setEnabled(False)
 
+    def assign_pos_tags_changed():
+        if checkbox_assign_pos_tags.isChecked():
+            checkbox_ignore_tags.setEnabled(False)
+        else:
+            checkbox_ignore_tags.setEnabled(not checkbox_use_tags.isChecked())
+
     def ignore_tags_changed():
         if checkbox_ignore_tags.isChecked():
+            checkbox_assign_pos_tags.setEnabled(False)
             checkbox_use_tags.setEnabled(False)
         else:
+            checkbox_assign_pos_tags.setEnabled(True)
             checkbox_use_tags.setEnabled(True)
 
     def use_tags_changed():
@@ -350,7 +358,7 @@ def wl_widgets_token_settings(parent):
             checkbox_ignore_tags.setEnabled(False)
         else:
             checkbox_apply_lemmatization.setEnabled(True)
-            checkbox_ignore_tags.setEnabled(True)
+            checkbox_ignore_tags.setEnabled(not checkbox_assign_pos_tags.isChecked())
 
     checkbox_words = QCheckBox(_tr('wl_widgets', 'Words'), parent)
     checkbox_all_lowercase = QCheckBox(_tr('wl_widgets', 'All lowercase'), parent)
@@ -368,6 +376,7 @@ def wl_widgets_token_settings(parent):
     checkbox_use_tags = QCheckBox(_tr('wl_widgets', 'Use tags only'), parent)
 
     checkbox_words.stateChanged.connect(words_changed)
+    checkbox_assign_pos_tags.stateChanged.connect(assign_pos_tags_changed)
     checkbox_ignore_tags.stateChanged.connect(ignore_tags_changed)
     checkbox_use_tags.stateChanged.connect(use_tags_changed)
 
@@ -393,17 +402,25 @@ def wl_widgets_token_settings(parent):
     )
 
 def wl_widgets_token_settings_concordancer(parent):
+    def assign_pos_tags_changed():
+        if checkbox_assign_pos_tags.isChecked():
+            checkbox_ignore_tags.setEnabled(False)
+        else:
+            checkbox_ignore_tags.setEnabled(not checkbox_use_tags.isChecked())
+
     def ignore_tags_changed():
         if checkbox_ignore_tags.isChecked():
+            checkbox_assign_pos_tags.setEnabled(False)
             checkbox_use_tags.setEnabled(False)
         else:
+            checkbox_assign_pos_tags.setEnabled(True)
             checkbox_use_tags.setEnabled(True)
 
     def use_tags_changed():
         if checkbox_use_tags.isChecked():
             checkbox_ignore_tags.setEnabled(False)
         else:
-            checkbox_ignore_tags.setEnabled(True)
+            checkbox_ignore_tags.setEnabled(not checkbox_assign_pos_tags.isChecked())
 
     checkbox_punc_marks = QCheckBox(_tr('wl_widgets', 'Punctuation marks'), parent)
 
@@ -411,6 +428,7 @@ def wl_widgets_token_settings_concordancer(parent):
     checkbox_ignore_tags = QCheckBox(_tr('wl_widgets', 'Ignore tags'), parent)
     checkbox_use_tags = QCheckBox(_tr('wl_widgets', 'Use tags only'), parent)
 
+    checkbox_assign_pos_tags.stateChanged.connect(assign_pos_tags_changed)
     checkbox_ignore_tags.stateChanged.connect(ignore_tags_changed)
     checkbox_use_tags.stateChanged.connect(use_tags_changed)
 
@@ -421,37 +439,6 @@ def wl_widgets_token_settings_concordancer(parent):
         checkbox_punc_marks,
 
         checkbox_assign_pos_tags,
-        checkbox_ignore_tags,
-        checkbox_use_tags
-    )
-
-def wl_widgets_token_settings_concordancer1(parent):
-    def ignore_tags_changed():
-        if checkbox_ignore_tags.isChecked():
-            checkbox_use_tags.setEnabled(False)
-        else:
-            checkbox_use_tags.setEnabled(True)
-
-    def use_tags_changed():
-        if checkbox_use_tags.isChecked():
-            checkbox_ignore_tags.setEnabled(False)
-        else:
-            checkbox_ignore_tags.setEnabled(True)
-
-    checkbox_punc_marks = QCheckBox(_tr('wl_widgets', 'Punctuation marks'), parent)
-
-    checkbox_ignore_tags = QCheckBox(_tr('wl_widgets', 'Ignore tags'), parent)
-    checkbox_use_tags = QCheckBox(_tr('wl_widgets', 'Use tags only'), parent)
-
-    checkbox_ignore_tags.stateChanged.connect(ignore_tags_changed)
-    checkbox_use_tags.stateChanged.connect(use_tags_changed)
-
-    ignore_tags_changed()
-    use_tags_changed()
-
-    return (
-        checkbox_punc_marks,
-
         checkbox_ignore_tags,
         checkbox_use_tags
     )
@@ -496,10 +483,7 @@ def wl_widgets_search_settings(parent, tab):
             match_tags_changed()
 
     def match_without_tags_changed():
-        if checkbox_match_without_tags.isChecked():
-            checkbox_match_tags.setEnabled(False)
-        else:
-            checkbox_match_tags.setEnabled(True)
+        checkbox_match_tags.setEnabled(not checkbox_match_without_tags.isChecked())
 
     def match_tags_changed():
         if checkbox_match_tags.isChecked():

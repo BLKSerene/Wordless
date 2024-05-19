@@ -727,9 +727,10 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                             no_sentence = bisect.bisect(offsets_sentences, i)
                             no_para = bisect.bisect(offsets_paras, i)
 
-                            # Search in Results (Node)
-                            node_tokens_search = list(ngram)
-                            node_tokens_raw = wl_nlp_utils.escape_tokens(wl_texts.to_display_texts(ngram))
+                            node_tokens_raw = wl_nlp_utils.escape_tokens(wl_texts.to_display_texts(
+                                ngram,
+                                punc_mark = True
+                            ))
 
                             # Width Unit
                             if settings['generation_settings']['width_unit'] == self.tr('Character'):
@@ -811,16 +812,46 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                 left_tokens_raw = tokens[offset_start:i]
                                 right_tokens_raw = tokens[i + len_search_term : offset_end]
 
-                            # Search in results (Left & Right)
-                            left_tokens_search = copy.deepcopy(left_tokens_raw)
-                            right_tokens_search = copy.deepcopy(right_tokens_raw)
+                            if settings['token_settings']['punc_marks']:
+                                node_tokens_search = list(ngram)
 
-                            # Remove empty tokens for searching in results
-                            left_tokens_search = [token for token in left_tokens_search if token]
-                            right_tokens_search = [token for token in right_tokens_search if token]
+                                # Remove empty tokens for searching in results
+                                left_tokens_search = [token for token in copy.deepcopy(left_tokens_raw) if token]
+                                right_tokens_search = [token for token in copy.deepcopy(right_tokens_raw) if token]
+                            # Convert trailing punctuation marks, if any, to separate tokens for searching
+                            else:
+                                node_tokens_search = []
+                                left_tokens_search = []
+                                right_tokens_search = []
 
-                            left_tokens_raw = wl_nlp_utils.escape_tokens(wl_texts.to_display_texts(left_tokens_raw))
-                            right_tokens_raw = wl_nlp_utils.escape_tokens(wl_texts.to_display_texts(right_tokens_raw))
+                                for token in list(ngram):
+                                    node_tokens_search.append(token)
+
+                                    if token.punc_mark:
+                                        node_tokens_search.append(wl_texts.Wl_Token(token.punc_mark, lang = token.lang))
+
+                                for token in copy.deepcopy(left_tokens_raw):
+                                    if token:
+                                        left_tokens_search.append(token)
+
+                                        if token.punc_mark:
+                                            left_tokens_search.append(wl_texts.Wl_Token(token.punc_mark, lang = token.lang))
+
+                                for token in copy.deepcopy(right_tokens_raw):
+                                    if token:
+                                        right_tokens_search.append(token)
+
+                                        if token.punc_mark:
+                                            right_tokens_search.append(wl_texts.Wl_Token(token.punc_mark, lang = token.lang))
+
+                            left_tokens_raw = wl_nlp_utils.escape_tokens(wl_texts.to_display_texts(
+                                left_tokens_raw,
+                                punc_mark = True
+                            ))
+                            right_tokens_raw = wl_nlp_utils.escape_tokens(wl_texts.to_display_texts(
+                                right_tokens_raw,
+                                punc_mark = True
+                            ))
 
                             # Left
                             concordance_line.append([left_tokens_raw, left_tokens_search])
