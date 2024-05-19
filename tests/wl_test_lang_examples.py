@@ -389,7 +389,6 @@ SENTENCE_QPM = TEXT_QPM[0]
 SENTENCE_POR_BR = SENTENCE_POR_PT = TEXT_POR_BR[0]
 SENTENCE_RON = TEXT_RON[0]
 SENTENCE_PAN_GURU = 'ਪੰਜਾਬੀ ਭਾਸ਼ਾ (ਸ਼ਾਹਮੁਖੀ: ‎پنجابی, ਪੰਜਾਬੀ) ਪੰਜਾਬ ਦੀ ਭਾਸ਼ਾ ਹੈ, ਜਿਸ ਨੂੰ ਪੰਜਾਬ ਖੇਤਰ ਦੇ ਵਸਨੀਕ ਜਾਂ ਸੰਬੰਧਿਤ ਲੋਕ ਬੋਲਦੇ ਹਨ।[18]'
-SENTENCE_QUE = 'Qhichwa simi icha Runasimi ñisqaqa Urin Apya Yalapi rimasqan rimaymi.'
 SENTENCE_RUS = TEXT_RUS[0]
 SENTENCE_ORV = TEXT_ORV[0]
 SENTENCE_SME = TEXT_SME[0]

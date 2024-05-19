@@ -481,7 +481,6 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                 concordance_lines[i] = concordance_line
         except Exception:
             err_msg = traceback.format_exc()
-            print(err_msg)
 
         self.progress_updated.emit(self.tr('Rendering table...'))
         self.worker_done.emit(err_msg, concordance_lines)

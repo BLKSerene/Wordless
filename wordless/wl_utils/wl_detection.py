@@ -33,10 +33,14 @@ def detect_encoding(main, file_path):
                 else:
                     break
 
-    results = charset_normalizer.from_bytes(text)
+    result = charset_normalizer.from_bytes(text).best()
 
-    if results:
-        encoding = results.best().encoding
+    if result is not None:
+        encoding = result.encoding
+
+        if encoding == 'utf_8' and result.bom:
+            encoding = 'utf_8_sig'
+    # Fall back to UTF-8 without BOM if there are no results
     else:
         encoding = 'utf_8'
 
@@ -45,7 +49,7 @@ def detect_encoding(main, file_path):
         try:
             with open(file_path, 'r', encoding = encoding) as f:
                 f.read()
-        # Fall back to UTF-8 if fail
+        # Fall back to UTF-8 without BOM if not decodable
         except UnicodeDecodeError:
             encoding = 'utf_8'
 
@@ -67,28 +71,30 @@ def detect_lang_text(main, text):
 
     lang = lingua_detector.detect_language_of(text)
 
-    if lang.name == 'CHINESE':
-        converter = opencc.OpenCC('t2s')
-
-        if converter.convert(text) == text:
-            lang_code = 'zho_cn'
-        else:
-            lang_code = 'zho_tw'
-    elif lang.name == 'ENGLISH':
-        lang_code = 'eng_us'
-    elif lang.name == 'GERMAN':
-        lang_code = 'deu_de'
-    elif lang.name == 'PUNJABI':
-        lang_code = 'pan_guru'
-    elif lang.name == 'PORTUGUESE':
-        lang_code = 'por_pt'
-    elif lang.name == 'SERBIAN':
-        lang_code = 'srp_cyrl'
     # No results
-    elif lang is None:
+    if lang is None:
         lang_code = 'other'
     else:
-        lang_code = lang.iso_code_639_3.name.lower()
+        match lang.name:
+            case 'CHINESE':
+                converter = opencc.OpenCC('t2s')
+
+                if converter.convert(text) == text:
+                    lang_code = 'zho_cn'
+                else:
+                    lang_code = 'zho_tw'
+            case 'ENGLISH':
+                lang_code = 'eng_us'
+            case 'GERMAN':
+                lang_code = 'deu_de'
+            case 'PUNJABI':
+                lang_code = 'pan_guru'
+            case 'PORTUGUESE':
+                lang_code = 'por_pt'
+            case 'SERBIAN':
+                lang_code = 'srp_cyrl'
+            case _:
+                lang_code = lang.iso_code_639_3.name.lower()
 
     return lang_code
 
