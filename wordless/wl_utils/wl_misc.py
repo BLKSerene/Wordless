@@ -34,17 +34,6 @@ from wordless.wl_utils import wl_paths
 
 _tr = QCoreApplication.translate
 
-def change_file_owner_to_user(file_path):
-    # pylint: disable=no-member
-    _, is_macos, is_linux = check_os()
-
-    # Available on Unix only
-    if (is_macos or is_linux) and os.getuid() == 0:
-        uid = int(os.environ.get('SUDO_UID'))
-        gid = int(os.environ.get('SUDO_GID'))
-
-        os.chown(file_path, uid, gid)
-
 def check_os():
     is_windows = False
     is_macos = False
@@ -60,6 +49,26 @@ def check_os():
 
     return is_windows, is_macos, is_linux
 
+def get_linux_distro():
+    try:
+        os_release = platform.freedesktop_os_release()
+    # Default to Ubuntu if undetermined
+    except OSError:
+        os_release = {'ID': 'ubuntu'}
+
+    return os_release['ID']
+
+def change_file_owner_to_user(file_path):
+    # pylint: disable=no-member
+    _, is_macos, is_linux = check_os()
+
+    # Available on Unix only
+    if (is_macos or is_linux) and os.getuid() == 0:
+        uid = int(os.environ.get('SUDO_UID'))
+        gid = int(os.environ.get('SUDO_GID'))
+
+        os.chown(file_path, uid, gid)
+
 def find_wl_main(widget):
     if 'main' in widget.__dict__:
         main = widget.main
@@ -71,23 +80,6 @@ def find_wl_main(widget):
 
     return main
 
-def flatten_list(list_to_flatten):
-    for item in list_to_flatten:
-        if isinstance(item, collections.abc.Iterable) and not isinstance(item, (str, bytes)):
-            yield from flatten_list(item)
-        else:
-            yield item
-
-def get_linux_distro():
-    try:
-        os_release = platform.freedesktop_os_release()
-    # Default to Ubuntu if undetermined
-    except OSError:
-        os_release = {'ID': 'ubuntu'}
-
-    return os_release['ID']
-
-
 def get_wl_ver():
     with open(wl_paths.get_path_file('VERSION'), 'r', encoding = 'utf_8') as f:
         for line in f:
@@ -97,6 +89,57 @@ def get_wl_ver():
                 break
 
     return packaging.version.Version(wl_ver)
+
+REQUESTS_TIMEOUT = 10
+
+def wl_get_proxies(main):
+    proxy_settings = main.settings_custom['general']['proxy_settings']
+
+    if proxy_settings['use_proxy']:
+        if proxy_settings['username']:
+            proxy_username = urllib.parse.quote(proxy_settings['username'])
+            proxy_password = urllib.parse.quote(proxy_settings['password'])
+
+            proxy = f"http://{proxy_username}:{proxy_password}@{proxy_settings['address']}:{proxy_settings['port']}"
+        else:
+            proxy = f"http://{proxy_settings['address']}:{proxy_settings['port']}"
+
+        proxies = {'http': proxy, 'https': proxy}
+    else:
+        proxies = None
+
+    return proxies
+
+def wl_download(main, url):
+    err_msg = ''
+
+    try:
+        r = requests.get(url, timeout = REQUESTS_TIMEOUT, proxies = wl_get_proxies(main))
+
+        if r.status_code != 200:
+            err_msg = traceback.format_exc()
+    except requests.RequestException:
+        r = None
+        err_msg = traceback.format_exc()
+
+    return r, err_msg
+
+def wl_download_file_size(main, url):
+    file_size = 0
+
+    try:
+        r = requests.get(url, timeout = REQUESTS_TIMEOUT, stream = True, proxies = wl_get_proxies(main))
+
+        if r.status_code == 200:
+            file_size = int(r.headers['content-length'])
+
+        # See: https://requests.readthedocs.io/en/latest/user/advanced/#body-content-workflow
+        r.close()
+    except requests.RequestException:
+        pass
+
+    # In megabytes
+    return file_size / 1024 / 1024
 
 def log_timing(func):
     def wrapper(widget, *args, **kwargs):
@@ -127,6 +170,13 @@ def log_timing(func):
         return return_val
 
     return wrapper
+
+def flatten_list(list_to_flatten):
+    for item in list_to_flatten:
+        if isinstance(item, collections.abc.Iterable) and not isinstance(item, (str, bytes)):
+            yield from flatten_list(item)
+        else:
+            yield item
 
 def merge_dicts(dicts_to_merge):
     dict_merged = {}
@@ -162,8 +212,8 @@ def normalize_nums(nums, normalized_min, normalized_max, reverse = False):
     nums_min = min(nums)
     nums_max = max(nums)
 
-    if nums_max - nums_min == 0:
-        nums_normalized = [normalized_min] * len(nums)
+    if nums_min == nums_max:
+        nums_normalized = [(normalized_max - normalized_min) / 2] * len(nums)
     else:
         if reverse:
             nums_normalized = [
@@ -177,54 +227,3 @@ def normalize_nums(nums, normalized_min, normalized_max, reverse = False):
             ]
 
     return nums_normalized
-
-REQUESTS_TIMEOUT = 10
-
-def wl_get_proxies(main):
-    proxy_settings = main.settings_custom['general']['proxy_settings']
-
-    if proxy_settings['use_proxy']:
-        if proxy_settings['username']:
-            proxy_username = urllib.parse.quote(proxy_settings['username'])
-            proxy_password = urllib.parse.quote(proxy_settings['password'])
-
-            proxy = f"http://{proxy_username}:{proxy_password}@{proxy_settings['address']}:{proxy_settings['port']}"
-        else:
-            proxy = f"http://{proxy_settings['address']}:{proxy_settings['port']}"
-
-        proxies = {'http': proxy, 'https': proxy}
-    else:
-        proxies = None
-
-    return proxies
-
-def wl_download(main, url):
-    err_msg = ''
-
-    try:
-        r = requests.get(url, timeout = REQUESTS_TIMEOUT, proxies = wl_get_proxies(main))
-
-        if r.status_code != 200:
-            err_msg = 'A network error occurred!'
-    except requests.RequestException:
-        r = None
-        err_msg = traceback.format_exc()
-
-    return r, err_msg
-
-def wl_download_file_size(main, url):
-    file_size = 0
-
-    try:
-        r = requests.get(url, timeout = REQUESTS_TIMEOUT, stream = True, proxies = wl_get_proxies(main))
-
-        if r.status_code == 200:
-            file_size = int(r.headers['content-length'])
-
-        # See: https://requests.readthedocs.io/en/latest/user/advanced/#body-content-workflow
-        r.close()
-    except requests.RequestException:
-        pass
-
-    # In megabytes
-    return file_size / 1024 / 1024

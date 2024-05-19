@@ -27,6 +27,8 @@ def test_wl_dialog():
     wl_dialog.set_fixed_height()
     wl_dialog.move_to_center()
 
+    wl_dialog = wl_dialogs.Wl_Dialog(main, title = 'test', resizable = True)
+
 def test_wl_dialog_frameless():
     wl_dialogs.Wl_Dialog_Frameless(main).open()
 
@@ -38,6 +40,9 @@ def test_wl_dialog_info_copy():
     wl_dialog_info_copy.open()
     wl_dialog_info_copy.copy()
     wl_dialog_info_copy.get_info()
+    wl_dialog_info_copy.set_info('test')
+
+    wl_dialog_info_copy = wl_dialogs.Wl_Dialog_Info_Copy(main, title = 'test', is_plain_text = True)
     wl_dialog_info_copy.set_info('test')
 
 def test_wl_dialog_settings():

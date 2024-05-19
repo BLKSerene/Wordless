@@ -25,6 +25,7 @@
 - Utils: Add Pyphen's Basque syllable tokenizer
 - Utils: Add PyThaiNLP's Han-solo
 - Utils: Add Stanza's Sindhi part-of-speech tagger
+- Utils: Add encoding detection - UTF-8 with BOM 
 - Utils: Add VADER's sentiment analyzers
 - Work Area: Add Collocation/Colligation Extractor - Filter results / 
 - Work Area: Add Profiler - Lexical Diversity - Brunét's Index / Honoré's statistic

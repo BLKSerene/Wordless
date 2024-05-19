@@ -24,7 +24,7 @@ from utils import wl_trs_translate
 def wl_test_supported_langs(main):
     langs_supported = [
         (lang_name, lang_code_639_3)
-        for lang_name, (lang_code_639_3, _, _) in main.settings_global['langs'].items()
+        for lang_name, (lang_code_639_3, _) in main.settings_global['langs'].items()
     ]
 
     # Translations
@@ -126,10 +126,7 @@ def wl_test_supported_encodings(main):
         len_max_encodings = max((len(encoding) for encoding in encodings))
 
         for lang, encoding in zip(langs, encodings):
-            if encoding in ['UTF-8 with BOM', 'UTF-8 带签名']:
-                print(f'{lang:{len_max_langs}}|{encoding:{len_max_encodings}}|✖️')
-            else:
-                print(f'{lang:{len_max_langs}}|{encoding:{len_max_encodings}}|✔')
+            print(f'{lang:{len_max_langs}}|{encoding:{len_max_encodings}}|✔')
 
         print()
 

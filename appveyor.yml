@@ -49,11 +49,11 @@ for:
       only:
         - APPVEYOR_BUILD_WORKER_IMAGE: "Visual Studio 2019"
 
+    # Install dependencies
     install:
       - cmd: set PATH=%PYTHON%;%PYTHON%/Scripts;%PATH%
       - python -m pip install --upgrade pip setuptools
       - pip install --requirement requirements/requirements_tests.txt
-      # Download models and data files
       - python utils/wl_downloader_ci.py
 
     # Run tests
@@ -74,12 +74,11 @@ for:
       only:
         - APPVEYOR_BUILD_WORKER_IMAGE: "macos-catalina"
 
+    # Install dependencies
     install:
       - cmd: set PATH=%PYTHON%;%PYTHON%/Scripts;%PATH%
-      # Install dependencies
       - python -m pip install --upgrade pip setuptools
       - pip install --requirement requirements/requirements_tests.txt
-      # Download models and data files
       - python utils/wl_downloader_ci.py
 
     # Run tests
@@ -100,12 +99,11 @@ for:
       only:
         - APPVEYOR_BUILD_WORKER_IMAGE: "Ubuntu1804"
 
+    # Install dependencies
     install:
       - cmd: set PATH=%PYTHON%;%PYTHON%/Scripts;%PATH%
-      # Install dependencies
       - python -m pip install --upgrade pip setuptools
       - pip install --requirement requirements/requirements_tests.txt
-      # Download models and data files
       - python utils/wl_downloader_ci.py
 
     # Run tests

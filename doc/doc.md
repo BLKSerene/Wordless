@@ -793,7 +793,7 @@ XML files¹               |\*.xml
 Language               |File Encoding          |Auto-detection
 -----------------------|-----------------------|:------------:
 All languages          |UTF-8 without BOM      |✔
-All languages          |UTF-8 with BOM         |✖️
+All languages          |UTF-8 with BOM         |✔
 All languages          |UTF-16 with BOM        |✔
 All languages          |UTF-16BE without BOM   |✔
 All languages          |UTF-16LE without BOM   |✔

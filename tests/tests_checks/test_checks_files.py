@@ -31,7 +31,7 @@ main.settings_custom['file_area']['files_open'] = [
 ]
 
 FILE_PATHS_UNSUPPORTED = [
-    get_normalized_file_path('unsupported_file_type.unsupported')
+    get_normalized_file_path('unsupported.unsupported')
 ]
 FILE_PATHS_EMPTY = [
     get_normalized_file_path('empty_txt.txt'),
@@ -44,12 +44,12 @@ FILE_PATHS_DUP = [
 ]
 
 def test_check_file_paths_unsupported():
-    _, files_unsupported = wl_checks_files.check_file_paths_unsupported(main, FILE_PATHS_UNSUPPORTED)
+    _, files_unsupported = wl_checks_files.check_file_paths_unsupported(main, ['supported.txt'] + FILE_PATHS_UNSUPPORTED)
 
     assert files_unsupported == FILE_PATHS_UNSUPPORTED
 
 def test_check_file_paths_empty():
-    _, files_empty = wl_checks_files.check_file_paths_empty(main, FILE_PATHS_EMPTY)
+    _, files_empty = wl_checks_files.check_file_paths_empty(main, [FILE_PATHS_DUP[0]] + FILE_PATHS_EMPTY)
 
     assert files_empty == FILE_PATHS_EMPTY
 
@@ -60,6 +60,7 @@ def test_check_file_paths_duplicate():
 
 def test_check_err_file_area():
     assert wl_checks_files.check_err_file_area(main, '')
+    assert not wl_checks_files.check_err_file_area(main, 'test')
 
 if __name__ == '__main__':
     test_check_file_paths_unsupported()

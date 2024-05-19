@@ -20,6 +20,8 @@ from PyQt5.QtCore import QCoreApplication
 
 _tr = QCoreApplication.translate
 
+# pylint: disable=broad-exception-raised
+
 # Languages
 def normalize_lang_code(lang_code):
     return lang_code.replace('-', '_').lower()
@@ -30,45 +32,42 @@ def to_lang_code(main, lang_text):
 def to_lang_codes(main, lang_texts):
     return (main.settings_global['langs'][lang_text][0] for lang_text in lang_texts)
 
-def _to_lang_text(main, lang_code):
+def to_lang_text(main, lang_code):
     lang_code = normalize_lang_code(lang_code)
 
-    for lang_text, (lang_code_639_3, _, _) in main.settings_global['langs'].items():
+    for lang_text, (lang_code_639_3, _) in main.settings_global['langs'].items():
         if lang_code_639_3 == lang_code:
             return lang_text
 
-    return ''
-
-def to_lang_text(main, lang_code):
-    return _to_lang_text(main, lang_code)
+    raise Exception('Failed to convert the language code to text!')
 
 def to_lang_texts(main, lang_codes):
-    return (_to_lang_text(main, lang_code) for lang_code in lang_codes)
+    return (to_lang_text(main, lang_code) for lang_code in lang_codes)
 
 def to_iso_639_3(main, lang_code):
     lang_code = normalize_lang_code(lang_code)
 
-    for lang_code_639_3, lang_code_639_1, _ in main.settings_global['langs'].values():
+    for lang_code_639_3, lang_code_639_1 in main.settings_global['langs'].values():
         if lang_code_639_1 == lang_code:
             return lang_code_639_3
 
     # ISO 639-1 codes without country codes
-    for lang_code_639_3, lang_code_639_1, _ in main.settings_global['langs'].values():
+    for lang_code_639_3, lang_code_639_1 in main.settings_global['langs'].values():
         if lang_code_639_1.startswith(f'{lang_code}_'):
             return lang_code_639_3
 
-    return ''
+    raise Exception('Failed to convert the ISO 639-1 language code to ISO 639-3 code!')
 
 def to_iso_639_1(main, lang_code, no_suffix = False):
     lang_code = normalize_lang_code(lang_code)
 
     # Fuzzy matching without code suffixes
     if '_' in lang_code:
-        for lang_code_639_3, lang_code_639_1, _ in main.settings_global['langs'].values():
+        for lang_code_639_3, lang_code_639_1 in main.settings_global['langs'].values():
             if lang_code_639_3 == lang_code:
                 lang_code_converted = lang_code_639_1
     else:
-        for lang_code_639_3, lang_code_639_1, _ in main.settings_global['langs'].values():
+        for lang_code_639_3, lang_code_639_1 in main.settings_global['langs'].values():
             if remove_lang_code_suffixes(main, lang_code_639_3) == remove_lang_code_suffixes(main, lang_code):
                 lang_code_converted = lang_code_639_1
 
@@ -85,15 +84,6 @@ def remove_lang_code_suffixes(main, lang_code): # pylint: disable=unused-argumen
     else:
         return lang_code
 
-def get_lang_family(main, lang_code):
-    lang_code = normalize_lang_code(lang_code)
-
-    for lang_code_639_3, _, lang_family in main.settings_global['langs'].values():
-        if lang_code_639_3 == lang_code:
-            return lang_family
-
-    return ''
-
 # Encodings
 def to_encoding_code(main, encoding_text):
     return main.settings_global['encodings'][encoding_text]
@@ -103,7 +93,7 @@ def to_encoding_text(main, encoding_code):
         if encoding_code == code:
             return text
 
-    return ''
+    raise Exception('Failed to convert the encoding code to text!')
 
 # Yes/No
 def to_yes_no_code(yes_no_text):
@@ -111,13 +101,13 @@ def to_yes_no_code(yes_no_text):
         return True
     elif yes_no_text == _tr('wl_conversion', 'No'):
         return False
-    else:
-        return None
+
+    raise Exception('Failed to convert the Yes/No text to code!')
 
 def to_yes_no_text(yes_no_code):
     if yes_no_code is True:
         return _tr('wl_conversion', 'Yes')
     elif yes_no_code is False:
         return _tr('wl_conversion', 'No')
-    else:
-        return None
+
+    raise Exception('Failed to convert the Yes/No code to text!')

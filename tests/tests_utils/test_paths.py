@@ -17,8 +17,9 @@
 # ----------------------------------------------------------------------
 
 import os
+import sys
 
-from wordless.wl_utils import wl_paths
+from wordless.wl_utils import wl_paths, wl_misc
 
 def test_get_normalized_path():
     assert wl_paths.get_normalized_path('.') != '.'
@@ -36,6 +37,19 @@ def test_get_path_file():
     assert wl_paths.get_path_file('')
     assert wl_paths.get_path_file('a', 'b', 'c').endswith(os.path.sep.join(['a', 'b', 'c']))
     assert wl_paths.get_path_file('a', '..', 'b').endswith('b')
+
+    sys._MEIPASS = 'test'
+
+    assert wl_paths.get_path_file('a', internal = True).endswith(os.path.sep.join(['test', 'a']))
+    assert wl_paths.get_path_file('a', internal = False).endswith('a')
+
+    check_os_orig = wl_misc.check_os
+    wl_misc.check_os = lambda: (False, True, False)
+
+    assert wl_paths.get_path_file('a', internal = False).endswith(os.path.sep.join(['MacOS', 'a']))
+
+    wl_misc.check_os = check_os_orig
+    del sys._MEIPASS
 
 def test_get_path_data():
     assert wl_paths.get_path_data('a').endswith(os.path.sep.join(['data', 'a']))
