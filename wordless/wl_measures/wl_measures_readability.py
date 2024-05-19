@@ -90,13 +90,13 @@ def get_num_words_ltrs(words, len_min = 1, len_max = None):
         return len([
             True
             for word in words
-            if  len_min <= len([char for char in word if char.isalpha()]) <= len_max
+            if len_min <= len([char for char in word if char.isalpha()]) <= len_max
         ])
     else:
         return len([
             True
             for word in words
-            if  len([char for char in word if char.isalpha()]) >= len_min
+            if len([char for char in word if char.isalpha()]) >= len_min
         ])
 
 def get_num_words_syls(syls_words, len_min = 1, len_max = None):

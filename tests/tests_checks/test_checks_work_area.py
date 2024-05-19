@@ -82,21 +82,31 @@ def test_check_search_terms():
 
 def test_check_nlp_support():
     file_eng_us = {'selected': True, 'name': 'test', 'lang': 'eng_us', 'tagged': False}
-    file_xxx = {'selected': True, 'name': 'test', 'lang': 'xxx', 'tagged': False}
+    file_other = {'selected': True, 'name': 'test', 'lang': 'other', 'tagged': False}
 
     assert wl_checks_work_area.check_nlp_support(
         main,
         nlp_utils = ['pos_taggers'],
         files = [file_eng_us]
     )
+    assert wl_checks_work_area.check_nlp_support(
+        main,
+        nlp_utils = ['lemmatizers'],
+        files = [file_eng_us]
+    )
     assert not wl_checks_work_area.check_nlp_support(
         main,
         nlp_utils = ['pos_taggers'],
-        files = [file_xxx]
+        files = [file_other]
+    )
+    assert not wl_checks_work_area.check_nlp_support(
+        main,
+        nlp_utils = ['lemmatizers'],
+        files = [file_other]
     )
 
     main.settings_custom['file_area']['files_open'] = [file_eng_us]
-    main.settings_custom['file_area']['files_open_ref'] = [file_xxx]
+    main.settings_custom['file_area']['files_open_ref'] = [file_other]
 
     assert wl_checks_work_area.check_nlp_support(main, nlp_utils = ['pos_taggers'])
     assert not wl_checks_work_area.check_nlp_support(main, nlp_utils = ['pos_taggers'], ref = True)
@@ -104,10 +114,12 @@ def test_check_nlp_support():
 def test_check_results():
     assert wl_checks_work_area.check_results(main, '', 'test')
     assert not wl_checks_work_area.check_results(main, 'test', '')
+    assert not wl_checks_work_area.check_results(main, '', '')
 
 def test_check_results_download_model():
-    wl_checks_work_area.check_results_download_model(main, '', 'test')
-    wl_checks_work_area.check_results_download_model(main, 'test', '')
+    assert wl_checks_work_area.check_results_download_model(main, '', 'test')
+    assert not wl_checks_work_area.check_results_download_model(main, 'test', '')
+    assert not wl_checks_work_area.check_results_download_model(main, '', 'module_not_found')
 
 def test_check_err_table():
     wl_checks_work_area.check_err_table(main, '')

@@ -52,6 +52,8 @@ def test_to_measure_text():
         for measure_text, measure_code in measures.items():
             assert wl_measure_utils.to_measure_text(main, measure_type, measure_code) == measure_text
 
+    assert wl_measure_utils.to_measure_text(main, list(main.settings_global['mapping_measures'])[0], 'test') is None
+
 def test_to_freqs_sections_1_sample():
     assert wl_measure_utils.to_freqs_sections_1_sample(
         ITEMS_TO_SEARCH, ITEMS,

@@ -45,6 +45,10 @@ def test_check_dir():
 
 def test_check_new_name():
     assert wl_checks_misc.check_new_name('new_name', ['new_name', 'new_name (2)', 'new_name (4)']) == 'new_name (3)'
+    assert wl_checks_misc.check_new_name(
+        'new_name', ['new_name', 'new_name (2)', 'new_name (4)'],
+        separator = '/'
+    ) == 'new_name/2'
 
 def test_check_new_path():
     if os.path.exists('temp'):

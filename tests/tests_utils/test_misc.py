@@ -25,14 +25,6 @@ from wordless.wl_utils import wl_misc
 
 main = wl_test_init.Wl_Test_Main()
 
-def test_change_file_owner_to_user():
-    with open('test', 'wb'):
-        pass
-
-    wl_misc.change_file_owner_to_user('test')
-
-    os.remove('test')
-
 def test_check_os():
     is_windows, is_macos, is_linux = wl_misc.check_os()
 
@@ -43,22 +35,39 @@ def test_check_os():
     elif platform.system() == 'Linux':
         assert not is_windows and not is_macos and is_linux
 
-def test_flatten_list():
-    assert list(wl_misc.flatten_list([1, 2, [3, 4, [5, 6]]])) == [1, 2, 3, 4, 5, 6]
-
 def test_get_linux_distro():
     assert wl_misc.get_linux_distro() == 'ubuntu'
+
+def test_change_file_owner_to_user():
+    with open('test', 'wb'):
+        pass
+
+    wl_misc.change_file_owner_to_user('test')
+
+    os.remove('test')
 
 def test_get_wl_ver():
     assert re.search(r'^[0-9]+\.[0-9]+\.[0-9]$', str(wl_misc.get_wl_ver()))
 
-def test_merge_dicts():
-    assert wl_misc.merge_dicts([{1: 10}, {1: 20, 2: 30}]) == {1: [10, 20], 2: [0, 30]}
-    assert wl_misc.merge_dicts([{1: [10, 20]}, {1: [30, 40], 2: [50, 60]}]) == {1: [[10, 20], [30, 40]], 2: [[0, 0], [50, 60]]}
+def test_wl_get_proxies():
+    proxy_settings = main.settings_custom['general']['proxy_settings']
 
-def test_normalize_nums():
-    assert wl_misc.normalize_nums([1, 2, 3, 4, 5], 0, 100) == [0, 25, 50, 75, 100]
-    assert wl_misc.normalize_nums([1, 2, 3, 4, 5], 0, 100, reverse = True) == [100, 75, 50, 25, 0]
+    proxy_settings['use_proxy'] = False
+    assert wl_misc.wl_get_proxies(main) is None
+
+    proxy_settings['use_proxy'] = True
+    proxy_settings['username'] = 'username'
+    proxy_settings['password'] = 'password'
+    proxy_settings['address'] = 'address'
+    proxy_settings['port'] = 'port'
+
+    assert wl_misc.wl_get_proxies(main) == {'http': 'http://username:password@address:port', 'https': 'http://username:password@address:port'}
+
+    proxy_settings['username'] = ''
+    assert wl_misc.wl_get_proxies(main) == {'http': 'http://address:port', 'https': 'http://address:port'}
+
+    # Clear proxies settings
+    proxy_settings['use_proxy'] = False
 
 URL_VER = 'https://raw.githubusercontent.com/BLKSerene/Wordless/main/VERSION'
 
@@ -68,18 +77,43 @@ def test_wl_download():
     assert r
     assert not err_msg
 
-def test_wl_download_file_size():
-    file_size = wl_misc.wl_download_file_size(main, URL_VER)
+    r, err_msg = wl_misc.wl_download(main, 'https://httpstat.us/404')
 
-    assert file_size
+    assert r.status_code == 404
+    assert err_msg
+
+    r, err_msg = wl_misc.wl_download(main, 'test')
+
+    assert r is None
+    assert err_msg
+
+def test_wl_download_file_size():
+    assert wl_misc.wl_download_file_size(main, URL_VER)
+    assert wl_misc.wl_download_file_size(main, 'test') == 0
+
+def test_flatten_list():
+    assert list(wl_misc.flatten_list([1, 2, [3, 4, [5, 6]]])) == [1, 2, 3, 4, 5, 6]
+
+def test_merge_dicts():
+    assert wl_misc.merge_dicts([{1: 10}, {1: 20, 2: 30}]) == {1: [10, 20], 2: [0, 30]}
+    assert wl_misc.merge_dicts([{1: [10, 20]}, {1: [30, 40], 2: [50, 60]}]) == {1: [[10, 20], [30, 40]], 2: [[0, 0], [50, 60]]}
+
+def test_normalize_nums():
+    assert wl_misc.normalize_nums([1, 2, 3, 4, 5], 0, 100) == [0, 25, 50, 75, 100]
+    assert wl_misc.normalize_nums([1, 2, 3, 4, 5], 0, 100, reverse = True) == [100, 75, 50, 25, 0]
+    assert wl_misc.normalize_nums([1, 1, 1, 1, 1], 0, 100) == [50] * 5
+    assert wl_misc.normalize_nums([1, 2, 3, 4, 5], 0, 0) == [0] * 5
 
 if __name__ == '__main__':
-    test_change_file_owner_to_user()
     test_check_os()
-    test_flatten_list()
     test_get_linux_distro()
+    test_change_file_owner_to_user()
+
     test_get_wl_ver()
-    test_merge_dicts()
-    test_normalize_nums()
+    test_wl_get_proxies()
     test_wl_download()
     test_wl_download_file_size()
+
+    test_flatten_list()
+    test_merge_dicts()
+    test_normalize_nums()

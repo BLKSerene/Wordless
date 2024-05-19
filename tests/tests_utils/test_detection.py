@@ -36,12 +36,18 @@ def check_encodings_detected(test_file_dir, encodings, text):
         with open(file_path, 'w', encoding = encoding, errors = 'replace') as f:
             f.write(text)
 
+        main.settings_custom['files']['auto_detection_settings']['num_lines_no_limit'] = True
+        encoding_detected_no_limit = wl_detection.detect_encoding(main, file_path)
+
+        main.settings_custom['files']['auto_detection_settings']['num_lines_no_limit'] = False
         encoding_detected = wl_detection.detect_encoding(main, file_path)
+
         # Check whether the detected code could be successfully converted to text
         encoding_detected_text = wl_conversion.to_encoding_text(main, encoding_detected)
 
         print(f'{encoding} detected as {encoding_detected} / {encoding_detected_text}')
 
+        assert encoding_detected == encoding_detected_no_limit
         assert encoding_detected_text
 
         encodings_detected.append(encoding_detected)
@@ -53,13 +59,18 @@ def test_detection_encoding():
 
     os.makedirs(test_file_dir, exist_ok = True)
 
+    with open(f'{test_file_dir}/test.exe', 'wb') as f:
+        f.write(b'\xFF\x00\x00')
+
+    assert wl_detection.detect_encoding(main, f'{test_file_dir}/test.exe') == 'utf_8'
+
     try:
         # All languages
         # Charset Normalizer does not return "utf_8_sig"
         # Reference: https://github.com/Ousret/charset_normalizer/pull/38
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = ['utf_8', 'utf_16', 'utf_16_be', 'utf_16_le', 'utf_32', 'utf_32_be', 'utf_32_le'], # 'utf_8_sig', 'utf_7'
+            encodings = ['utf_8', 'utf_8_sig', 'utf_16', 'utf_16_be', 'utf_16_le', 'utf_32', 'utf_32_be', 'utf_32_le'], # 'utf_7'
             text = wl_test_lang_examples.ENCODING_FRA
         )
         # Arabic
@@ -302,6 +313,14 @@ def test_detection_lang():
     test_file_dir = 'tests/tests_utils/_files_detection_lang'
 
     os.makedirs(test_file_dir, exist_ok = True)
+
+    file = {'path': f'{test_file_dir}/detect_lang_file_fallback.txt', 'encoding': 'ascii'}
+
+    with open(file['path'], 'w', encoding = 'gb2312') as f:
+        f.write('测试')
+
+    assert wl_detection.detect_lang_file(main, file) == main.settings_custom['files']['default_settings']['lang']
+    assert wl_detection.detect_lang_text(main, '\x00') == 'other'
 
     try:
         for lang in [

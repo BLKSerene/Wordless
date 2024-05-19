@@ -40,7 +40,6 @@ jobs:
           path: $(PIP_CACHE_DIR)
         displayName: Cache pip packages
 
-      # Install dependencies
       - script: |
           pip install --upgrade pip setuptools
           pip install --requirement requirements/requirements_tests.txt
@@ -48,7 +47,6 @@ jobs:
           python utils/wl_downloader_ci.py
         displayName: 'Install dependencies'
 
-      # Run tests
       - script: |
           pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
           pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
@@ -80,7 +78,6 @@ jobs:
           path: $(PIP_CACHE_DIR)
         displayName: Cache pip packages
 
-      # Install dependencies
       - script: |
           pip3 install --upgrade pip setuptools
           pip3 install --requirement requirements/requirements_tests.txt
@@ -88,7 +85,6 @@ jobs:
           python3 utils/wl_downloader_ci.py
         displayName: 'Install dependencies'
 
-      # Run tests
       - script: |
           pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
           pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
@@ -120,7 +116,6 @@ jobs:
           path: $(PIP_CACHE_DIR)
         displayName: Cache pip packages
 
-      # Install dependencies
       - script: |
           pip3.10 install --upgrade pip setuptools
           pip3.10 install --requirement requirements/requirements_tests.txt
@@ -128,7 +123,6 @@ jobs:
           python3.10 utils/wl_downloader_ci.py
         displayName: 'Install dependencies'
 
-      # Run tests
       - script: |
           # Fix PyQt
           export QT_QPA_PLATFORM=offscreen

@@ -50,6 +50,11 @@ def test_get_freqs_expected():
         numpy.array([4.2, 2, 0])
     ))
 
+def test_get_alt():
+    assert wl_measures_statistical_significance.get_alt('Two-tailed') == 'two-sided'
+    assert wl_measures_statistical_significance.get_alt('Left-tailed') == 'less'
+    assert wl_measures_statistical_significance.get_alt('Right-tailed') == 'greater'
+
 # References: Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference (pp. 188-200). The South–Central Regional SAS Users' Group. (p. 10)
 def test_fishers_exact_test():
     settings['fishers_exact_test']['direction'] = 'Two-tailed'
@@ -107,6 +112,18 @@ def test_log_likelihood_ratio_test():
     )
     numpy.testing.assert_array_equal(numpy.round(gs, 2), numpy.array([167.23] * 2))
 
+    main.settings_custom['measures']['statistical_significance']['log_likelihood_ratio_test']['apply_correction'] = False
+    gs, p_vals = wl_measures_statistical_significance.log_likelihood_ratio_test(
+        main,
+        numpy.array([1, 0]),
+        numpy.array([1, 0]),
+        numpy.array([1, 0]),
+        numpy.array([1, 0])
+    )
+    numpy.testing.assert_array_equal(gs, numpy.array([0, 0]))
+    numpy.testing.assert_array_equal(p_vals, numpy.array([1, 1]))
+
+    main.settings_custom['measures']['statistical_significance']['log_likelihood_ratio_test']['apply_correction'] = True
     gs, p_vals = wl_measures_statistical_significance.log_likelihood_ratio_test(
         main,
         numpy.array([1, 0]),
@@ -127,6 +144,27 @@ def test_mann_whitney_u_test():
 
     numpy.testing.assert_array_equal(5 * (5 + 1) / 2 + u1s, numpy.array([31] * 2))
 
+    main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['direction'] = 'Two-tailed'
+    numpy.testing.assert_array_equal(
+        wl_measures_statistical_significance.mann_whitney_u_test(
+            main,
+            numpy.array([[0] * 5] * 2),
+            numpy.array([[0] * 5] * 2)
+        ),
+        (numpy.array([12.5] * 2), numpy.array([1] * 2))
+    )
+
+    main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['direction'] = 'Left-tailed'
+    numpy.testing.assert_array_equal(
+        wl_measures_statistical_significance.mann_whitney_u_test(
+            main,
+            numpy.array([[0] * 5] * 2),
+            numpy.array([[0] * 5] * 2)
+        ),
+        (numpy.array([12.5] * 2), numpy.array([1] * 2))
+    )
+
+    main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['direction'] = 'Right-tailed'
     numpy.testing.assert_array_equal(
         wl_measures_statistical_significance.mann_whitney_u_test(
             main,
@@ -182,6 +220,7 @@ def test_students_t_test_1_sample():
     )
     numpy.testing.assert_array_equal(numpy.round(t_stats, 6), numpy.array([0.999932] * 2))
 
+    main.settings_custom['measures']['statistical_significance']['students_t_test_1_sample']['direction'] = 'Two-tailed'
     t_stats, p_vals = wl_measures_statistical_significance.students_t_test_1_sample(
         main,
         numpy.array([0, 0]),
@@ -192,10 +231,27 @@ def test_students_t_test_1_sample():
     numpy.testing.assert_array_equal(t_stats, numpy.array([0, 0]))
     numpy.testing.assert_array_equal(p_vals, numpy.array([1, 1]))
 
-def test__students_t_test_2_sample_alt():
-    assert wl_measures_statistical_significance._students_t_test_2_sample_alt('Two-tailed') == 'two-sided'
-    assert wl_measures_statistical_significance._students_t_test_2_sample_alt('Left-tailed') == 'less'
-    assert wl_measures_statistical_significance._students_t_test_2_sample_alt('Right-tailed') == 'greater'
+    main.settings_custom['measures']['statistical_significance']['students_t_test_1_sample']['direction'] = 'Left-tailed'
+    t_stats, p_vals = wl_measures_statistical_significance.students_t_test_1_sample(
+        main,
+        numpy.array([0, 0]),
+        numpy.array([1, 1]),
+        numpy.array([1, 1]),
+        numpy.array([2, 1])
+    )
+    numpy.testing.assert_array_equal(t_stats, numpy.array([0, 0]))
+    numpy.testing.assert_array_equal(p_vals, numpy.array([0.5, 0.5]))
+
+    main.settings_custom['measures']['statistical_significance']['students_t_test_1_sample']['direction'] = 'Right-tailed'
+    t_stats, p_vals = wl_measures_statistical_significance.students_t_test_1_sample(
+        main,
+        numpy.array([0, 0]),
+        numpy.array([1, 1]),
+        numpy.array([1, 1]),
+        numpy.array([2, 1])
+    )
+    numpy.testing.assert_array_equal(t_stats, numpy.array([0, 0]))
+    numpy.testing.assert_array_equal(p_vals, numpy.array([0.5, 0.5]))
 
 def test_students_t_test_2_sample():
     t_stats, p_vals = wl_measures_statistical_significance.students_t_test_2_sample(
@@ -211,6 +267,14 @@ def test__z_score_p_val():
     numpy.testing.assert_array_equal(
         wl_measures_statistical_significance._z_score_p_val(numpy.array([0] * 2), 'Two-tailed'),
         numpy.array([1] * 2)
+    )
+    numpy.testing.assert_array_equal(
+        wl_measures_statistical_significance._z_score_p_val(numpy.array([0] * 2), 'Left-tailed'),
+        numpy.array([0] * 2)
+    )
+    numpy.testing.assert_array_equal(
+        wl_measures_statistical_significance._z_score_p_val(numpy.array([0] * 2), 'Right-tailed'),
+        numpy.array([0] * 2)
     )
 
 def test_z_score():
@@ -241,14 +305,13 @@ def test_z_score_berry_rogghe():
 if __name__ == '__main__':
     test_get_freqs_marginal()
     test_get_freqs_expected()
+    test_get_alt()
 
     test_fishers_exact_test()
     test_log_likelihood_ratio_test()
     test_mann_whitney_u_test()
     test_pearsons_chi_squared_test()
     test_students_t_test_1_sample()
-
-    test__students_t_test_2_sample_alt()
     test_students_t_test_2_sample()
 
     test__z_score_p_val()
