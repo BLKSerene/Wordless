@@ -37,6 +37,8 @@ if sys.stdout is None:
 if sys.stderr is None:
     sys.stderr = open(os.devnull, 'w') # pylint: disable=unspecified-encoding, consider-using-with
 
+# pylint: disable=wrong-import-position
+
 import botok
 import matplotlib
 import nltk

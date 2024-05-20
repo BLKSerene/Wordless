@@ -44,7 +44,7 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
         )
 
         # Avoid circular imports
-        from wordless.wl_settings import (
+        from wordless.wl_settings import ( # pylint: disable=import-outside-toplevel
             wl_settings_general,
             wl_settings_files,
             wl_settings_sentence_tokenization,

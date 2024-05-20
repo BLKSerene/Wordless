@@ -1068,38 +1068,38 @@ def nws(main, text):
     return nws
 
 # Estimate number of syllables in Arabic texts by counting short, long, and stress syllables
-# Reference: https://github.com/textstat/textstat/blob/9bf37414407bcaaa45c498478ee383c8738e5d0c/textstat/textstat.py#L569
-def _get_num_syls_ara(text):
-    short_count = 0
-    long_count = 0
+# References:
+#     https://github.com/drelhaj/OsmanReadability/blob/master/src/org/project/osman/process/Syllables.java
+#     https://github.com/textstat/textstat/blob/9bf37414407bcaaa45c498478ee383c8738e5d0c/textstat/textstat.py#L569
+def _get_num_syls_ara(word):
+    count_short = 0
+    count_long = 0
 
-    # tashkeel: fatha | damma | kasra
-    tashkeel = [r'\u064E', r'\u064F', r'\u0650']
-    char_list = list(re.sub(r"[^\w\s\']", '', text))
+    # Tashkeel: fatha, damma, kasra
+    tashkeel = ['\u064E', '\u064F', '\u0650']
 
-    for t in tashkeel:
-        for i, c in enumerate(char_list):
-            if c != t:
-                continue
+    for i, char in enumerate(word):
+        if char not in tashkeel:
+            continue
 
-            # Only if a character is a tashkeel, has a successor and is followed by an alef, waw or yaaA
-            if (
-                i + 1 < len(char_list)
-                and char_list[i + 1] in ['\u0627', '\u0648', '\u064a']
-            ):
-                long_count += 1
+        # Only if a character is a tashkeel, has a successor, and is followed by an alef, waw, or yeh
+        if i + 1 < len(word):
+            if word[i + 1] in ['\u0627', '\u0648', '\u064A']:
+                count_long += 1
             else:
-                short_count += 1
+                count_short += 1
+        else:
+            count_short += 1
 
-    # stress syllables: tanween fatih | tanween damm | tanween kasr | shadda
-    stress_pattern = re.compile(r'[\u064B\u064C\u064D\u0651]')
-    stress_count = len(stress_pattern.findall(text))
+    # Stress syllables: tanween fatha, tanween damma, tanween kasra, shadda
+    count_stress = len(re.findall(r'[\u064B\u064C\u064D\u0651]', word))
 
-    if short_count == 0:
-        text = re.sub(r'[\u0627\u0649\?\.\!\,\s*]', '', text)
-        short_count = len(text) - 2
+    if count_short == 0:
+        word = re.sub(r'[\u0627\u0649\?\.\!\,\s]', '', word)
+        count_short = max(0, len(word) - 2)
 
-    return short_count + 2 * (long_count + stress_count)
+    # Reference: https://github.com/drelhaj/OsmanReadability/blob/405b927ef3fde200fa08efe12ec2f39b8716e4be/src/org/project/osman/process/OsmanReadability.java#L259
+    return count_short + 2 * (count_long + count_stress)
 
 # OSMAN
 # Reference: El-Haj, M., & Rayson, P. (2016). OSMAN: A novel Arabic readability metric. In N. Calzolari, K. Choukri, T. Declerck, S. Goggi, M. Grobelnik, B. Maegaard, J. Mariani, H. Mazo, A. Moreno, J. Odijk, & S. Piperidis (Eds.), Proceedings of the Tenth International Conference on Language Resources and Evaluation (LREC 2016) (pp. 250–255). European Language Resources Association. http://www.lrec-conf.org/proceedings/lrec2016/index.html
@@ -1120,9 +1120,13 @@ def osman(main, text):
             for word, num_syls in zip(text.words_flat, nums_syls_tokens):
                 if (
                     num_syls > 4
+                    # Faseeh letters
+                    # Reference: https://github.com/drelhaj/OsmanReadability/blob/405b927ef3fde200fa08efe12ec2f39b8716e4be/src/org/project/osman/process/OsmanReadability.java#L264
                     and (
-                        any((letter in word for letter in ['ء', 'ئ', 'ؤ', 'ذ', 'ظ']))
-                        or any((word.endswith(letters) for letters in ['وا', 'ون']))
+                        # Hamza (ء), yeh with hamza above (ئ), waw with hamza above (ؤ), zah (ظ), thal (ذ)
+                        any((char in word for char in ['\u0621', '\u0626', '\u0624', '\u0638', '\u0630']))
+                        # Waw noon (ون), waw alef (وا)
+                        or word.endswith(('\u0648\u0646', '\u0648\u0627'))
                     )
                 ):
                     h += 1

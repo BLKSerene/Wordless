@@ -26,7 +26,7 @@ import re
 import traceback
 
 import numpy
-from PyQt5.QtCore import QCoreApplication, Qt
+from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
 from PyQt5.QtWidgets import QLabel, QGroupBox
 
 from wordless.wl_checks import wl_checks_work_area
@@ -878,7 +878,7 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                 wl_checks_work_area.check_err_fig(self.main, err_msg)
 
 class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
-    worker_done = wl_threading.wl_pyqt_signal(str, dict, dict)
+    worker_done = pyqtSignal(str, dict, dict)
 
     def __init__(self, main, dialog_progress, update_gui):
         super().__init__(main, dialog_progress, update_gui)

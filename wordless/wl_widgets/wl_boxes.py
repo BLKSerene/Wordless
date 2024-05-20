@@ -347,6 +347,12 @@ def wl_spin_boxes_min_max_sync(parent, val_min = 1, val_max = 100, double = Fals
         spin_box_max
     ) = wl_spin_boxes_min_max(parent, val_min, val_max, double)
 
+    spin_box_min.valueChanged.disconnect()
+    spin_box_max.valueChanged.disconnect()
+
+    spin_box_min.valueChanged.connect(min_changed)
+    spin_box_max.valueChanged.connect(max_changed)
+
     checkbox_sync.stateChanged.connect(sync_changed)
 
     min_changed()
