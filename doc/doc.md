@@ -37,8 +37,8 @@
   - [4.2 Supported File Types](#doc-4-2)
   - [4.3 Supported File Encodings](#doc-4-3)
   - [4.4 Supported Measures](#doc-4-4)
-    - [4.4.1 Measures of Readability](#doc-4-4-1)
-    - [4.4.2 Measures of Lexical Diversity](#doc-4-4-2)
+    - [4.4.1 Readability Formulas](#doc-4-4-1)
+    - [4.4.2 Indicators of Lexical Diversity](#doc-4-4-2)
     - [4.4.3 Measures of Dispersion and Adjusted Frequency](#doc-4-4-3)
     - [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, and Measures of Effect Size](#doc-4-4-4)
 - [5 References](#doc-5)
@@ -116,7 +116,7 @@ In *Profiler*, you can check and compare general linguistic features of differen
 All statistics are grouped into 5 tables for better readability: Readability, Counts, Lexical Diversity, Lengths, Length Breakdown.
 
 - **3.1.1 Readability**<br>
-  Readability statistics of each file calculated according to the different readability tests used. See section [4.4.1 Measures of Readability](#doc-4-4-1) for more details.
+  Readability statistics of each file calculated according to the different readability tests used. See section [4.4.1 Readability Formulas](#doc-4-4-1) for more details.
 
 - **3.1.2 Counts**<br>
   - **3.1.2.1 Count of Paragraphs**<br>
@@ -164,7 +164,7 @@ All statistics are grouped into 5 tables for better readability: Readability, Co
     The percentage of the number of characters in each file out of the total number of characters in all files.
 
 - **3.1.3 Lexical Diversity**<br>
-  Statistics of lexical diversity which reflect the the extend to which the vocabulary used in each file varies. See section [4.4.2 Measures of Lexical Diversity](#doc-4-4-2) for more details.
+  Statistics of lexical diversity which reflect the the extend to which the vocabulary used in each file varies. See section [4.4.2 Indicators of Lexical Diversity](#doc-4-4-2) for more details.
 
 - **3.1.4 Lengths**<br>
   - **3.1.4.1 Paragraph Length in Sentences / Sentence Segments / Tokens (Mean)**<br>
@@ -322,7 +322,7 @@ All statistics are grouped into 5 tables for better readability: Readability, Co
 ### [3.2 Concordancer](#doc)
 In *Concordancer*, you can search for tokens in different files and generate concordance lines. You can adjust settings for data generation via **Generation Settings**.
 
-After the concordance lines are generated and displayed in the table, you can sort the results by clicking **Sort Results** or search in results by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*. Highlight colors for sorting can be modified via **Menu Bar → Preferences → Settings → Tables → Concordancer → Sorting**.
+After the concordance lines are generated and displayed in the table, you can sort the results by clicking **Sort Results** or search in *Data Table* for parts that might be of interest to you by clicking **Search in results**. Highlight colors for sorting can be modified via **Menu Bar → Preferences → Settings → Tables → Concordancer → Sorting**.
 
 You can generate concordance plots for all search terms. You can modify the settings for the generated figure via **Figure Settings**.
 
@@ -373,7 +373,7 @@ You can generate concordance plots for all search terms. You can modify the sett
 
 In *Parallel Concordancer*, you can search for tokens in parallel corpora and generate parallel concordance lines. You may leave **Search Settings → Search Term** blank so as to search for instances of additions and deletions.
 
-After the parallel concordance lines are generated and displayed in the table, you can search in results by clicking **Search in Results** which resides at the right corner of the *Results Area*.
+You can search in *Data Table* for parts that might be of interest to you by clicking **Search in results**.
 
 - **3.3.1 Parallel Unit No.**<br>
   The position of the alignment unit (paragraph) where the the search term is found.
@@ -393,7 +393,7 @@ After the parallel concordance lines are generated and displayed in the table, y
 
 In *Dependency Parser*, you can search for all dependency relations associated with different tokens and calculate their dependency lengths (distances).
 
-You can search in the results for the part that might be of interest to you by clicking **Search in Results** which resides at the right corner of the *Results Area*.
+You can search in *Data Table* for parts that might be of interest to you by clicking **Search in results**.
 
 You can select lines in the *Results Area* and then click *Generate Figure* to show dependency graphs for all selected sentences. You can modify the settings for the generated figure via **Figure Settings** and decide how the figures should be displayed.
 
@@ -430,7 +430,7 @@ You can select lines in the *Results Area* and then click *Generate Figure* to s
 
 In *Wordlist Generator*, you can generate wordlists for different files and calculate the raw frequency, relative frequency, dispersion and adjusted frequency for each token. You can disable the calculation of dispersion and/or adjusted frequency by setting **Generation Settings → Measures of Dispersion / Measure of Adjusted Frequency** to **None**.
 
-You can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
+You can filter the results by clicking **Filter results** or search in *Data Table* for parts that might be of interest to you by clicking **Search in results**.
 
 You can generate line charts or word clouds for wordlists using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
 
@@ -469,9 +469,9 @@ You can generate line charts or word clouds for wordlists using any statistics. 
 
 In *N-gram Generator*, you can search for n-grams (consecutive tokens) or skip-grams (non-consecutive tokens) in different files, count and compute the raw frequency and relative frequency of each n-gram/skip-gram, and calculate the dispersion and adjusted frequency for each n-gram/skip-gram using different measures. You can adjust the settings for the generated results via **Generation Settings**.  You can disable the calculation of dispersion and/or adjusted frequency by setting **Generation Settings → Measures of Dispersion / Measure of Adjusted Frequency** to **None**. To allow skip-grams in the results, check **Generation Settings → Allow skipped tokens** and modify the settings. You can also set constraints on the position of search terms in all n-grams via **Search Settings → Search Term Position**.
 
-You can generate line charts or word clouds for n-grams using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
+You can filter the results by clicking **Filter results** or search in *Data Table* for parts that might be of interest to you by clicking **Search in results**.
 
-You can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
+You can generate line charts or word clouds for n-grams using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
 
 - **3.6.1 Rank**<br>
   The rank of the n-gram sorted by its frequency in the first file in descending order (by default). You can sort the results again by clicking the column headers. You can use continuous numbering after tied ranks (eg. 1/1/1/2/2/3 instead of 1/1/1/4/4/6) by checking **Menu Bar → Preferences → Settings → Tables → Rank Settings → Continue numbering after ties**.
@@ -501,9 +501,9 @@ You can further filter the results as you see fit by clicking **Filter Results**
 
 In *Collocation Extractor*, you can search for patterns of collocation (tokens that co-occur more often than would be expected by chance) within a given collocational window (from 5 words to the left to 5 words to the right by default), conduct different tests of statistical significance on each pair of collocates and calculate the Bayes factor and effect size for each pair using different measures. You can adjust the settings for the generated results via **Generation Settings**. You can disable the calculation of statistical significance and/or Bayes factor and/or effect size by setting **Generation Settings → Test of Statistical Significance / Measures of Bayes Factor / Measure of Effect Size** to **None**.
 
-You can generate line charts, word clouds, and network graphs for patterns of collocation using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
+You can filter the results by clicking **Filter results** or search in *Data Table* for parts that might be of interest to you by clicking **Search in results**.
 
-You can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
+You can generate line charts, word clouds, and network graphs for patterns of collocation using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
 
 - **3.7.1 Rank**<br>
   The rank of the collocating token sorted by the p-value of the significance test conducted on the node and the collocating token in the first file in ascending order (by default). You can sort the results again by clicking the column headers. You can use continuous numbering after tied ranks (eg. 1/1/1/2/2/3 instead of 1/1/1/4/4/6) by checking **Menu Bar → Preferences → Settings → Tables → Rank Settings → Continue numbering after ties**.
@@ -549,9 +549,9 @@ In *Colligation Extractor*, you can search for patterns of colligation (parts of
 
 *Wordless* will automatically apply its built-in part-of-speech tagger on every file that are not part-of-speech-tagged already according to the language of each file. If part-of-speech tagging is not supported for the given languages, the user should provide a file that has already been part-of-speech-tagged and make sure that the correct **Text Type** has been set on each file.
 
-You can generate line charts or word clouds for patterns of colligation using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
+You can filter the results by clicking **Filter results** or search in *Data Table* for parts that might be of interest to you by clicking **Search in results**.
 
-You can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
+You can generate line charts or word clouds for patterns of colligation using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
 
 - **3.8.1 Rank**<br>
   The rank of the collocating part of speech sorted by the p-value of the significance test conducted on the node and the collocating part of speech in the first file in ascending order (by default). You can sort the results again by clicking the column headers. You can use continuous numbering after tied ranks (eg. 1/1/1/2/2/3 instead of 1/1/1/4/4/6) by checking **Menu Bar → Preferences → Settings → Tables → Rank Settings → Continue numbering after ties**.
@@ -595,21 +595,21 @@ You can further filter the results as you see fit by clicking **Filter Results**
 
 In *Keyword Extractor*, you can search for candidates of potential keywords (tokens that have far more or far less frequency in the observed file than in the reference file) in different files given a reference corpus, conduct different tests of statistical significance on each keyword and calculate the Bayes factor and effect size for each keyword using different measures. You can adjust the settings for the generated data via **Generation Settings**. You can disable the calculation of statistical significance and/or Bayes factor and/or effect size by setting **Generation Settings → Test of Statistical Significance / Measures of Bayes Factor / Measure of Effect Size** to **None**.
 
-You can generate line charts or word clouds for keywords using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
+You can filter the results by clicking **Filter results** or search in *Data Table* for parts that might be of interest to you by clicking **Search in results**.
 
-You can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
+You can generate line charts or word clouds for keywords using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
 
 - **3.9.1 Rank**<br>
   The rank of the keyword sorted by the p-value of the significance test conducted on the keyword in the first file in ascending order (by default). You can sort the results again by clicking the column headers. You can use continuous numbering after tied ranks (eg. 1/1/1/2/2/3 instead of 1/1/1/4/4/6) by checking **Menu Bar → Preferences → Settings → Tables → Rank Settings → Continue numbering after ties**.
 
 - **3.9.2 Keyword**<br>
-  The candidates of potential keywords. You can specify what should be counted as a "token" via **Token Settings**.
+  The potential keyword. You can specify what should be counted as a "token" via **Token Settings**.
 
 - **3.9.3 Frequency (in Reference File)**<br>
-  The number of co-occurrences of the keywords in the reference file.
+  The number of occurrences of the keyword in the reference file.
 
 - **3.9.4 Frequency (in Observed Files)**<br>
-  The number of co-occurrences of the keywords in each observed file.
+  The number of occurrences of the keyword in each observed file.
 
 - **3.9.5 Test Statistic**<br>
   The test statistic of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
@@ -900,7 +900,7 @@ Vietnamese             |CP1258                 |✔
 ### [4.4 Supported Measures](#doc)
 
 <span id="doc-4-4-1"></span>
-#### [4.4.1 Measures of Readability](#doc)
+#### [4.4.1 Readability Formulas](#doc)
 The readability of a text depends on several variables including the average sentence length, average word length in characters, average word length in syllables, number of monosyllabic words, number of polysyllabic words, number of difficult words, etc.
 
 It should be noted that some readability measures are **language-specific**, or applicable only to texts in languages for which *Wordless* have **built-in syllable tokenization support** (check [4.4.1](#doc-4-1) for reference), while others can be applied to texts in all languages.
@@ -909,12 +909,9 @@ The following variables would be used in formulas:<br>
 **NumSentences**: Number of sentences<br>
 **NumWords**: Number of words<br>
 **NumWords1Syl**: Number of monosyllabic words<br>
-**NumWords2+Syls**: Number of words with 2 or more syllables<br>
-**NumWords3+Syls**: Number of words with 3 or more syllables<br>
-**NumWords5+Syls**: Number of words with 5 or more syllables<br>
-**NumWords6+Ltrs**: Number of words with 6 or more letters<br>
-**NumWords7+Ltrs**: Number of words with 7 or more letters<br>
-**NumWords3-Ltrs**: Number of words with 3 or less letters<br>
+**NumWordsn+Syls**: Number of words with n or more syllables<br>
+**NumWordsn+Ltrs**: Number of words with n or more letters<br>
+**NumWordsn-Ltrs**: Number of words with n or less letters<br>
 **NumConjs**: Number of conjunctions<br>
 **NumPreps**: Number of prepositions<br>
 **NumProns**: Number of pronouns<br>
@@ -1118,8 +1115,8 @@ Wheeler & Smith's Readability Formula:
     \text{Wheeler-Smith} = \frac{\text{NumWords}}{\text{NumUnits}} \times \frac{\text{NumWords2+Syls}}{\text{NumWords}} \times 10
 -->
 
-Measure of Readability|Formula|Supported Languages
-----------------------|-------|:-----------------:
+Readability Formula|Formula|Supported Languages
+-------------------|-------|:-----------------:
 <span id="ref-rd"></span>Al-Heeti's Readability Prediction Formula¹<br>([Al-Heeti, 1984, pp. 102, 104, 106](#ref-al-heeti-1984))|![Formula](/doc/measures/readability/rd.svg)|**Arabic**
 <span id="ref-aari"></span>Automated Arabic Readability Index<br>([Al-Tamimi et al., 2013](#ref-al-tamimi-et-al-2013))|![Formula](/doc/measures/readability/aari.svg)|**Arabic**
 <span id="ref-ari"></span>Automated Readability Index¹<br>([Smith & Senter, 1967, p. 8](#ref-smith-senter-1967)<br>Navy: [Kincaid et al., 1975, p. 14](#ref-kincaid-et-al-1975))|![Formula](/doc/measures/readability/ari.svg)|All languages
@@ -1150,7 +1147,7 @@ Measure of Readability|Formula|Supported Languages
 <span id="ref-eflaw"></span>McAlpine EFLAW Readability Score<br>([Nirmaldasan, 2009](#ref-nirmaldasan-2009))|![Formula](/doc/measures/readability/eflaw.svg)|**English**
 <span id="ref-nwl"></span>neue Wiener Literaturformeln¹<br>([Bamberger & Vanecek, 1984, p. 82](#ref-bamberger-vanecek-1984))|![Formula](/doc/measures/readability/nwl.svg)|**German**²
 <span id="ref-nws"></span>neue Wiener Sachtextformel¹<br>([Bamberger & Vanecek, 1984, pp. 83–84](#ref-bamberger-vanecek-1984))|![Formula](/doc/measures/readability/nws.svg)|**German**²
-<span id="ref-osman"></span>OSMAN<br>([El-Haj & Rayson, 2016](#ref-elhaj-rayson-2016))|![Formula](/doc/measures/readability/osman.svg)<br>where **NumFaseehWords** is the number of words with 5 or more syllable which contains ء/ئ/ؤ/ذ/ظ or ends with وا/ون.<br><br>* The number of syllables in each word is estimated by adding up the number of short syllables and twice the number of long and stress syllables in each word.|**Arabic**
+<span id="ref-osman"></span>OSMAN<br>([El-Haj & Rayson, 2016](#ref-elhaj-rayson-2016))|![Formula](/doc/measures/readability/osman.svg)<br>where **NumFaseehWords** is the number of words which have 5 or more syllables and contain ء/ئ/ؤ/ذ/ظ or end with وا/ون.<br><br>* The number of syllables in each word is estimated by adding up the number of short syllables and twice the number of long and stress syllables in each word.|**Arabic**
 <span id="ref-rix"></span>Rix<br>([Anderson, 1983](#ref-anderson-1983))|![Formula](/doc/measures/readability/rix.svg)|All languages
 <span id="ref-smog-grade"></span>SMOG Grade<br>([McLaughlin, 1969](#ref-mclaughlin-1969)<br>German: [Bamberger & Vanecek, 1984, p.78](#ref-bamberger-vanecek-1984))|![Formula](/doc/measures/readability/smog_grade.svg)<br><br>* A sample would be constructed using **the first 10 sentences, the last 10 sentences, and the 10 sentences at the middle of the text**, so the text should be **at least 30 sentences long**.|All languages²
 <span id="ref-spache-grade-level"></span>Spache Grade Level¹<br>([Spache, 1953](#ref-spache-1953)<br>Revised: [Spache, 1974](#ref-spache-1974))|![Formula](/doc/measures/readability/spache_grade_level.svg)<br><br>* **Three samples each of 100 words** would be taken randomly from the text and the results would be averaged out, so the text should be **at least 100 words long**.|All languages
@@ -1165,7 +1162,7 @@ Measure of Readability|Formula|Supported Languages
 > 1. Requires **built-in part-of-speech tagging support**
 
 <span id="doc-4-4-2"></span>
-#### [4.4.2 Measures of Lexical Diversity](#doc)
+#### [4.4.2 Indicators of Lexical Diversity](#doc)
 Lexical diversity is the measurement of the extent to which the vocabulary used in the text varies.
 
 The following variables would be used in formulas:<br>
@@ -1246,18 +1243,18 @@ Yule's Index of Diversity:
     \text{Index of Diversity} = \frac{\text{NumTokens}^2}{\sum_{f = 1}^{\text{f}_\text{max}}(\text{NumTypes}_f \times f^2) - \text{NumTokens}}
 -->
 
-Measure of Lexical Diversity|Formula
----------------------------|-------
+Indicator of Lexical Diversity|Formula
+------------------------------|-------
 <span id="ref-brunets-index"></span>Brunét's Index<br>([Brunét, 1978](#ref-brunet-1978))|![Formula](/doc/measures/lexical_diversity/brunets_index.svg)
 <span id="ref-cttr"></span>Corrected TTR<br>([Carroll, 1964](#ref-carroll-1964))|![Formula](/doc/measures/lexical_diversity/cttr.svg)
 <span id="ref-fishers-index-of-diversity"></span>Fisher's Index of Diversity<br>([Fisher et al., 1943](#ref-fisher-et-al-1943))|![Formula](/doc/measures/lexical_diversity/fishers_index_of_diversity.svg)<br>where W₋₁ is the -1 branch of the [Lambert W function](https://en.wikipedia.org/wiki/Lambert_W_function)
 <span id="ref-herdans-vm"></span>Herdan's Vₘ<br>([Herdan, 1955](#ref-herdan-1955))|![Formula](/doc/measures/lexical_diversity/herdans_vm.svg)
-<span id="ref-hdd"></span>HD-D<br>([McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see reference.<br>The sample size could be modified via **Menu Bar → Preferences → Settings → Measures → Type-token Ratio → HD-D → Sample size**.
+<span id="ref-hdd"></span>HD-D<br>([McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see reference.<br>The sample size could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Diversity → HD-D → Sample size**.
 <span id="ref-honores-stat"></span>Honoré's statistic<br>([Honoré, 1979](#ref-honore-1979))|![Formula](/doc/measures/lexical_diversity/honores_stat.svg)
 <span id="ref-logttr"></span>LogTTR¹<br>(Herdan: [Herdan, 1960, p. 28](#ref-herdan-1960)<br>Somers: [Somers, 1966](#ref-somers-1966)<br>Rubet: [Dugast, 1979](#ref-dugast-1979)<br>Maas: [Maas, 1972](#ref-maas-1972)<br>Dugast: [Dugast, 1978](#ref-dugast-1978); [Dugast, 1979](#ref-dugast-1979))|![Formula](/doc/measures/lexical_diversity/logttr.svg)
-<span id="ref-msttr"></span>Mean Segmental TTR<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/lexical_diversity/msttr.svg)<br>where **n** is the number of equal-sized segment, the length of which could be modified via **Menu Bar → Preferences → Settings → Measures → Type-token Ratio → Mean Segmental TTR → Number of tokens in each segment**, **NumTypesSegᵢ** is the number of token types in the **i**-th segment, and **NumTokensSegᵢ** is the number of tokens in the **i**-th segment.
-<span id="ref-mtld"></span>Measure of Textual Lexical Diversity<br>([McCarthy, 2005, pp. 95–96, 99–100](#ref-mccarthy-2005); [McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see references.<br>The factor size could be modified via **Menu Bar → Preferences → Settings → Measures → Type-token Ratio → Measure of Textual Lexical Diversity → Factor size**.
-<span id="ref-mattr"></span>Moving-average TTR<br>([Covington & McFall, 2010](#ref-covington-mcfall-2010))|![Formula](/doc/measures/lexical_diversity/mattr.svg)<br>where **w** is the window size which could be modified via **Menu Bar → Preferences → Settings → Measures → Type-token Ratio → Moving-average TTR → Window size**, **NumTypesWindowₚ** is the number of token types within the moving window starting at position **p**, and **NumTokensWindowₚ** is the number of tokens within the moving window starting at position **p**.
+<span id="ref-msttr"></span>Mean Segmental TTR<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/lexical_diversity/msttr.svg)<br>where **n** is the number of equal-sized segment, the length of which could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Diversity → Mean Segmental TTR → Number of tokens in each segment**, **NumTypesSegᵢ** is the number of token types in the **i**-th segment, and **NumTokensSegᵢ** is the number of tokens in the **i**-th segment.
+<span id="ref-mtld"></span>Measure of Textual Lexical Diversity<br>([McCarthy, 2005, pp. 95–96, 99–100](#ref-mccarthy-2005); [McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see references.<br>The factor size could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Diversity → Measure of Textual Lexical Diversity → Factor size**.
+<span id="ref-mattr"></span>Moving-average TTR<br>([Covington & McFall, 2010](#ref-covington-mcfall-2010))|![Formula](/doc/measures/lexical_diversity/mattr.svg)<br>where **w** is the window size which could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Diversity → Moving-average TTR → Window size**, **NumTypesWindowₚ** is the number of token types within the moving window starting at position **p**, and **NumTokensWindowₚ** is the number of tokens within the moving window starting at position **p**.
 <span id="ref-popescu-macutek-altmanns-b1-b2-b3-b4-b5"></span>Popescu-Mačutek-Altmann's B₁/B₂/B₃/B₄/B₅<br>([Popescu et al., 2008](#ref-popescu-et-al-2008))|![Formula](/doc/measures/lexical_diversity/popescu_macutek_altmanns_b1_b2_b3_b4_b5.svg)
 <span id="ref-popescus-r1"></span>Popescu's R₁<br>([Popescu, 2009, pp. 18, 30, 33](#ref-popescu-2009))|For detailed calculation procedures, see reference.
 <span id="ref-popescus-r2"></span>Popescu's R₂<br>([Popescu, 2009, pp. 35–36, 38](#ref-popescu-2009))|For detailed calculation procedures, see reference.

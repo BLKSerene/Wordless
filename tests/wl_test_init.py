@@ -24,12 +24,13 @@ import re
 import sys
 
 from PyQt5.QtCore import QObject
-from PyQt5.QtWidgets import QApplication, QMainWindow, QStatusBar
+from PyQt5.QtGui import QStandardItemModel
+from PyQt5.QtWidgets import QApplication, QMainWindow, QStatusBar, QTableView
 
 from tests import wl_test_file_area
 from wordless import wl_file_area
 from wordless.wl_checks import wl_checks_misc
-from wordless.wl_settings import wl_settings_default, wl_settings_global
+from wordless.wl_settings import wl_settings, wl_settings_default, wl_settings_global
 from wordless.wl_utils import wl_misc
 
 SEARCH_TERMS = ['take']
@@ -83,6 +84,8 @@ class Wl_Test_Main(QMainWindow):
         self.wl_file_area.file_type = 'observed'
         self.wl_file_area.settings_suffix = ''
 
+        self.wl_file_area.table_files = Wl_Test_Table(self)
+
         self.wl_file_area.get_files = lambda: wl_file_area.Wrapper_File_Area.get_files(self.wl_file_area)
         self.wl_file_area.get_file_names = lambda: wl_file_area.Wrapper_File_Area.get_file_names(self.wl_file_area)
         self.wl_file_area.get_selected_files = lambda: wl_file_area.Wrapper_File_Area.get_selected_files(self.wl_file_area)
@@ -99,6 +102,9 @@ class Wl_Test_Main(QMainWindow):
         self.wl_file_area_ref.get_file_names = lambda: wl_file_area.Wrapper_File_Area.get_file_names(self.wl_file_area_ref)
         self.wl_file_area_ref.get_selected_files = lambda: wl_file_area.Wrapper_File_Area.get_selected_files(self.wl_file_area_ref)
         self.wl_file_area_ref.get_selected_file_names = lambda: wl_file_area.Wrapper_File_Area.get_selected_file_names(self.wl_file_area_ref)
+
+        # Settings
+        self.wl_settings = wl_settings.Wl_Settings(self)
 
     def height(self):
         return 1080
@@ -214,6 +220,16 @@ class Wl_Exception_Tests_Lang_Skipped(Exception):
 class Wl_Exception_Tests_Lang_Util_Skipped(Exception):
     def __init__(self, lang_util):
         super().__init__(f'Tests for language utility "{lang_util}" is skipped!')
+
+class Wl_Test_Table(QTableView):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.setModel(QStandardItemModel())
+        self.settings = wl_settings_default.init_settings_default(self)
+
+def wl_test_index(row, col):
+    return QStandardItemModel().createIndex(row, col)
 
 # Select files randomly
 def select_test_files(main, no_files, ref = False):

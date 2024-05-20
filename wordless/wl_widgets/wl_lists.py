@@ -19,7 +19,7 @@
 import os
 import re
 
-from PyQt5.QtCore import QCoreApplication, QItemSelection, QItemSelectionModel, QModelIndex, QStringListModel
+from PyQt5.QtCore import QCoreApplication, QItemSelection, QModelIndex, QStringListModel
 from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import (
     QAbstractItemDelegate, QAbstractItemView, QFileDialog, QLineEdit, QListView,
@@ -28,7 +28,6 @@ from PyQt5.QtWidgets import (
 
 from wordless.wl_checks import wl_checks_files, wl_checks_misc
 from wordless.wl_dialogs import wl_dialogs_errs, wl_msg_boxes
-from wordless.wl_widgets import wl_boxes, wl_item_delegates
 from wordless.wl_utils import wl_detection, wl_misc
 
 _tr = QCoreApplication.translate
@@ -415,94 +414,5 @@ class Wl_List_Stop_Words(Wl_List_Add_Ins_Del_Clr_Imp_Exp):
         self.model().dataChanged.connect(self.data_changed_default)
         self.selectionModel().selectionChanged.connect(self.selection_changed)
         self.selectionModel().selectionChanged.connect(self.selection_changed_default)
-
-        self.model().dataChanged.emit(QModelIndex(), QModelIndex())
-
-class Wl_List_Files(Wl_List_Add_Ins_Del_Clr):
-    def __init__(self, parent):
-        super().__init__(parent)
-
-        self.setItemDelegate(wl_item_delegates.Wl_Item_Delegate_Combo_Box_Custom(self, wl_boxes.Wl_Combo_Box_File))
-
-        self.main.wl_file_area.table_files.model().itemChanged.connect(self.wl_files_changed_buttons)
-        self.main.wl_file_area.table_files.model().itemChanged.connect(self.wl_files_changed_items)
-
-    def selection_changed(self):
-        super().selection_changed()
-
-        self.wl_files_changed_buttons()
-
-    def wl_files_changed_buttons(self):
-        if self.model().rowCount() >= len(list(self.main.wl_file_area.get_selected_files())):
-            self.button_add.setEnabled(False)
-            self.button_ins.setEnabled(False)
-        else:
-            self.button_add.setEnabled(True)
-
-            if self.selectionModel().selectedIndexes():
-                self.button_ins.setEnabled(True)
-
-    def wl_files_changed_items(self):
-        data = self.model().stringList()
-        rows_selected = [index.row() for index in self.selectionModel().selectedIndexes()]
-        file_names_old = self.main.wl_file_area.file_names_old
-        file_names_selected = list(self.main.wl_file_area.get_selected_file_names())
-
-        # Files renamed or reordered
-        if len(file_names_selected) == len(file_names_old):
-            # Files renamed
-            if len([
-                True
-                for file_name_selected, file_name_old in zip(file_names_selected, file_names_old)
-                if file_name_selected != file_name_old
-            ]) == 1:
-                for file_name_selected, file_name_old in zip(file_names_selected, file_names_old):
-                    if file_name_selected != file_name_old and file_name_old in data:
-                        data[data.index(file_name_old)] = file_name_selected
-
-                        break
-        # Files added or removed
-        else:
-            for i, item in reversed(list(enumerate(data))):
-                if item not in file_names_selected:
-                    # Adjust current selection
-                    for j, row in reversed(list(enumerate(rows_selected))):
-                        if row == i:
-                            del rows_selected[j]
-                        elif row > i:
-                            rows_selected[j] -= 1
-
-                    del data[i]
-                    del self.items_old[i]
-
-        self.model().setStringList(data)
-
-        for row in rows_selected:
-            self.selectionModel().select(self.model().index(row), QItemSelectionModel.Select)
-
-        self.model().dataChanged.emit(QModelIndex(), QModelIndex())
-
-    def _add_item(self, text = '', row = None):
-        data = self.model().stringList()
-
-        if text:
-            item_text = text
-        else:
-            file_names = set(data)
-
-            for file_name in self.main.wl_file_area.get_selected_file_names():
-                if file_name not in file_names:
-                    item_text = file_name
-
-                    break
-
-        if row is None:
-            data.append(item_text)
-            self.items_old.append(item_text)
-        else:
-            data.insert(row, item_text)
-            self.items_old.insert(row, item_text)
-
-        self.model().setStringList(data)
 
         self.model().dataChanged.emit(QModelIndex(), QModelIndex())

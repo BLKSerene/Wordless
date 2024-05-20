@@ -46,6 +46,20 @@ def test_change_file_owner_to_user():
 
     os.remove('test')
 
+def test_find_wl_main():
+    class Widget:
+        def parent(self):
+            return main
+
+    widget = Widget()
+    widget.main = 'test'
+
+    assert wl_misc.find_wl_main(widget) == 'test'
+
+    del widget.main
+
+    assert wl_misc.find_wl_main(widget) == main
+
 def test_get_wl_ver():
     assert re.search(r'^[0-9]+\.[0-9]+\.[0-9]$', str(wl_misc.get_wl_ver()))
 
@@ -77,7 +91,7 @@ def test_wl_download():
     assert r
     assert not err_msg
 
-    r, err_msg = wl_misc.wl_download(main, 'https://httpstat.us/404')
+    r, err_msg = wl_misc.wl_download(main, 'https://raw.githubusercontent.com/BLKSerene/Wordless/main/test')
 
     assert r.status_code == 404
     assert err_msg
@@ -109,6 +123,7 @@ if __name__ == '__main__':
     test_get_linux_distro()
     test_change_file_owner_to_user()
 
+    test_find_wl_main()
     test_get_wl_ver()
     test_wl_get_proxies()
     test_wl_download()

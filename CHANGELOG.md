@@ -35,6 +35,7 @@
 - Settings: Settings - Part-of-speeach Tagging - Tagsets - Mapping Settings - Allow editing of tagset mapping of Stanza's Armenian (Eastern), Armenian (Western), Basque, Buryat (Russia), Danish, French, Greek (Modern), Hebrew (Modern), Hungarian, Ligurian, Manx, Marathi, Nigerian Pidgin, Pomak, Portuguese, Russian, Sanskrit, Sindhi, Sorbian (Upper), and Telugu part-of-speech taggers
 - Utils: Update custom stop word lists
 - Work Area: Dependency Parser - Sentence - Highlight heads and dependents
+- Work Area: Update Profiler - Readability - OSMAN
 
 ### 📌 Bugfixes
 - Utils: Fix downloading of Stanza models

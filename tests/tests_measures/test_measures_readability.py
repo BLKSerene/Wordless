@@ -58,6 +58,7 @@ test_text_eng_150 = Wl_Test_Text(TOKENS_MULTILEVEL_150)
 
 test_text_ara_0 = Wl_Test_Text(TOKENS_MULTILEVEL_0, lang = 'ara')
 test_text_ara_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'ara')
+test_text_ara_faseeh = Wl_Test_Text([[[['\u064B\u064B\u0621']]]], lang = 'ara')
 
 test_text_deu_0 = Wl_Test_Text(TOKENS_MULTILEVEL_0, lang = 'deu_de')
 test_text_deu_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'deu_de')
@@ -685,18 +686,28 @@ def test_nws():
     assert nws_deu_12_3 == 0.2963 * ms + 0.1905 * sl - 1.1144
     assert nws_eng_12 == 'no_support'
 
+def test__get_num_syls_ara():
+    assert wl_measures_readability._get_num_syls_ara('') == 0
+    assert wl_measures_readability._get_num_syls_ara('\u064E\u0627') == 2
+    assert wl_measures_readability._get_num_syls_ara('\u064Ea') == 1
+    assert wl_measures_readability._get_num_syls_ara('\u064E') == 1
+    assert wl_measures_readability._get_num_syls_ara('\u064B') == 2
+
 def test_osman():
     osman_ara_0 = wl_measures_readability.osman(main, test_text_ara_0)
     osman_ara_12 = wl_measures_readability.osman(main, test_text_ara_12)
+    osman_ara_faseeh = wl_measures_readability.osman(main, test_text_ara_faseeh)
     osman_eng_12 = wl_measures_readability.osman(main, test_text_eng_12)
 
     print('OSMAN:')
     print(f'\tara/0: {osman_ara_0}')
     print(f'\tara/12: {osman_ara_12}')
+    print(f'\tara/faseeh: {osman_ara_faseeh}')
     print(f'\teng/12: {osman_eng_12}')
 
     assert osman_ara_0 == 'text_too_short'
-    assert osman_ara_12 == 200.791 - 1.015 * (12 / 3) - 24.181 * ((3 + 23 + 3 + 0) / 12)
+    assert osman_ara_12 == 200.791 - 1.015 * (12 / 3) - 24.181 * ((3 + 26 + 3 + 0) / 12)
+    assert osman_ara_faseeh == 200.791 - 1.015 * (1 / 1) - 24.181 * ((0 + 5 + 1 + 1) / 1)
     assert osman_eng_12 == 'no_support'
 
 def test_rix():
@@ -857,6 +868,7 @@ if __name__ == '__main__':
     test_eflaw()
     test_nwl()
     test_nws()
+    test__get_num_syls_ara()
     test_osman()
     test_rix()
     test_smog_grade()

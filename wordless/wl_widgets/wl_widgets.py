@@ -732,7 +732,7 @@ def wl_widgets_table_settings_span_position(parent, tables):
     )
 
 # Figure Settings
-class Wl_Combo_Box_File_Figure_Settings(wl_boxes.Wl_Combo_Box_File):
+class Wl_Combo_Box_File_Fig_Settings(wl_boxes.Wl_Combo_Box_File):
     def wl_files_changed(self):
         if self.count() == 1:
             file_old = ''
@@ -770,9 +770,9 @@ def wl_widgets_fig_settings(parent, tab):
                 checkbox_use_cumulative.setEnabled(False)
 
     def measures_changed_wordlist_generator():
-        settings_global = parent.main.settings_global
-        settings_default = parent.main.settings_default[tab]
-        settings_custom = parent.main.settings_custom[tab]
+        settings_global = main.settings_global
+        settings_default = main.settings_default[tab]
+        settings_custom = main.settings_custom[tab]
 
         use_data_old = settings_custom['fig_settings']['use_data']
 
@@ -797,9 +797,9 @@ def wl_widgets_fig_settings(parent, tab):
             combo_box_use_data.setCurrentText(settings_default['fig_settings']['use_data'])
 
     def measures_changed_collocation_extractor():
-        settings_global = parent.main.settings_global
-        settings_default = parent.main.settings_default[tab]
-        settings_custom = parent.main.settings_custom[tab]
+        settings_global = main.settings_global
+        settings_default = main.settings_default[tab]
+        settings_custom = main.settings_custom[tab]
 
         use_data_old = settings_custom['fig_settings']['use_data']
 
@@ -839,9 +839,9 @@ def wl_widgets_fig_settings(parent, tab):
             combo_box_use_data.setCurrentText(settings_default['fig_settings']['use_data'])
 
     def measures_changed_keyword_extractor():
-        settings_global = parent.main.settings_global
-        settings_default = parent.main.settings_default[tab]
-        settings_custom = parent.main.settings_custom[tab]
+        settings_global = main.settings_global
+        settings_default = main.settings_default[tab]
+        settings_custom = main.settings_custom[tab]
 
         use_data_old = settings_custom['fig_settings']['use_data']
 
@@ -874,10 +874,12 @@ def wl_widgets_fig_settings(parent, tab):
         else:
             combo_box_use_data.setCurrentText(settings_default['fig_settings']['use_data'])
 
+    main = wl_misc.find_wl_main(parent)
+
     label_graph_type = QLabel(_tr('wl_widgets', 'Graph type:'), parent)
     combo_box_graph_type = wl_boxes.Wl_Combo_Box(parent)
     label_sort_by_file = QLabel(_tr('wl_widgets', 'Sort by file:'), parent)
-    combo_box_sort_by_file = Wl_Combo_Box_File_Figure_Settings(parent)
+    combo_box_sort_by_file = Wl_Combo_Box_File_Fig_Settings(parent)
     label_use_data = QLabel(_tr('wl_widgets', 'Use data:'), parent)
     combo_box_use_data = wl_boxes.Wl_Combo_Box(parent)
     checkbox_use_pct = QCheckBox(_tr('wl_widgets', 'Use percentage data'), parent)
@@ -893,12 +895,13 @@ def wl_widgets_fig_settings(parent, tab):
         combo_box_graph_type.addItem(_tr('wl_widgets', 'Network graph'))
 
     if tab in ['wordlist_generator', 'ngram_generator', 'collocation_extractor', 'colligation_extractor', 'keyword_extractor']:
-        if tab in ['wordlist_generator', 'ngram_generator']:
-            combo_box_use_data.measures_changed = measures_changed_wordlist_generator
-        elif tab in ['collocation_extractor', 'colligation_extractor']:
-            combo_box_use_data.measures_changed = measures_changed_collocation_extractor
-        elif tab == 'keyword_extractor':
-            combo_box_use_data.measures_changed = measures_changed_keyword_extractor
+        match tab:
+            case 'wordlist_generator' | 'ngram_generator':
+                combo_box_use_data.measures_changed = measures_changed_wordlist_generator
+            case 'collocation_extractor' | 'colligation_extractor':
+                combo_box_use_data.measures_changed = measures_changed_collocation_extractor
+            case 'keyword_extractor':
+                combo_box_use_data.measures_changed = measures_changed_keyword_extractor
 
         combo_box_use_data.measures_changed()
 
