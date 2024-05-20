@@ -32,9 +32,6 @@ disable=
     # C0301, C0302
     line-too-long,
     too-many-lines,
-    # C0413, C0415
-    wrong-import-position,
-    import-outside-toplevel,
 
     # R0401
     cyclic-import,

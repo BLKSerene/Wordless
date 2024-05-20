@@ -1802,7 +1802,7 @@ class Wl_Table_Data(Wl_Table):
         return confirmed
 
 # Avoid circular imports
-from wordless.wl_results import wl_results_filter, wl_results_search, wl_results_sort
+from wordless.wl_results import wl_results_filter, wl_results_search, wl_results_sort # pylint: disable=wrong-import-position
 
 class Wl_Table_Data_Search(Wl_Table_Data):
     def __init__(

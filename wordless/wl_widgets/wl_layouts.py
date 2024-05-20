@@ -145,7 +145,7 @@ class Wl_Separator(QFrame):
 
         if orientation == 'hor':
             self.setFrameShape(QFrame.HLine)
-        else:
+        elif orientation == 'vert':
             self.setFrameShape(QFrame.VLine)
 
         self.setStyleSheet('color: #D0D0D0;')

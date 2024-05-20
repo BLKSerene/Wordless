@@ -18,17 +18,13 @@
 
 import os
 
-from PyQt5.QtCore import QCoreApplication, Qt
+from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtGui import QBrush, QColor, QPainter
-from PyQt5.QtWidgets import (
-    QCheckBox, QColorDialog, QFileDialog, QLabel, QPushButton,
-    QSizePolicy
-)
+from PyQt5.QtWidgets import QCheckBox, QColorDialog, QFileDialog, QPushButton
 
 from wordless.wl_checks import wl_checks_misc
 from wordless.wl_dialogs import wl_msg_boxes
 from wordless.wl_utils import wl_misc, wl_paths
-from wordless.wl_widgets import wl_layouts
 
 _tr = QCoreApplication.translate
 
@@ -37,36 +33,6 @@ class Wl_Button(QPushButton):
         super().__init__(text, parent)
 
         self.main = wl_misc.find_wl_main(parent)
-
-# Reference: https://stackoverflow.com/a/62893567
-class Wl_Button_Html(Wl_Button):
-    def __init__(self, text, parent = None):
-        super().__init__('', parent)
-
-        self._label = QLabel(text, self)
-
-        self._label.setTextFormat(Qt.RichText)
-        self._label.setAttribute(Qt.WA_TransparentForMouseEvents)
-        self._label.setSizePolicy(
-            QSizePolicy.Expanding,
-            QSizePolicy.Expanding,
-        )
-
-        self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addWidget(self._label)
-
-        self.layout().setContentsMargins(0, 0, 0, 0)
-
-    def setText(self, text):
-        self._label.setText(text)
-
-        self.updateGeometry()
-
-    def sizeHint(self):
-        size = super().sizeHint()
-        size.setWidth(self._label.sizeHint().width())
-
-        return size
 
 class Wl_Button_Browse(Wl_Button):
     def __init__(self, parent, line_edit, caption, filters, initial_filter = -1):

@@ -101,7 +101,7 @@ class Wl_Dialog_Frameless(Wl_Dialog):
 class Wl_Dialog_Info(Wl_Dialog):
     def __init__(self, main, title, width = 0, height = 0, resizable = False, no_buttons = False):
         # Avoid circular imports
-        from wordless.wl_widgets import wl_layouts
+        from wordless.wl_widgets import wl_layouts # pylint: disable=import-outside-toplevel
 
         super().__init__(main, title, width, height, resizable)
 
