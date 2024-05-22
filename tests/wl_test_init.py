@@ -24,14 +24,18 @@ import re
 import sys
 
 from PyQt5.QtCore import QObject
-from PyQt5.QtGui import QStandardItemModel
-from PyQt5.QtWidgets import QApplication, QMainWindow, QStatusBar, QTableView
+from PyQt5.QtGui import QStandardItemModel, QStandardItem
+from PyQt5.QtWidgets import (
+    QApplication, QLabel, QMainWindow, QPushButton, QStatusBar,
+    QTableView, QTabWidget
+)
 
 from tests import wl_test_file_area
 from wordless import wl_file_area
 from wordless.wl_checks import wl_checks_misc
 from wordless.wl_settings import wl_settings, wl_settings_default, wl_settings_global
 from wordless.wl_utils import wl_misc
+from wordless.wl_widgets import wl_tables
 
 SEARCH_TERMS = ['take']
 
@@ -78,7 +82,10 @@ class Wl_Test_Main(QMainWindow):
         # Status bar
         self.status_bar = QStatusBar()
 
-        # Files
+        # Work area
+        self.wl_work_area = QTabWidget()
+
+        # File area
         self.wl_file_area = QObject()
         self.wl_file_area.main = self
         self.wl_file_area.file_type = 'observed'
@@ -222,11 +229,28 @@ class Wl_Exception_Tests_Lang_Util_Skipped(Exception):
         super().__init__(f'Tests for language utility "{lang_util}" is skipped!')
 
 class Wl_Test_Table(QTableView):
-    def __init__(self, parent):
+    def __init__(self, parent, tab = ''):
         super().__init__(parent)
 
-        self.setModel(QStandardItemModel())
+        self.tab = tab
+        self.header_orientation = 'hor'
         self.settings = wl_settings_default.init_settings_default(self)
+
+        self.setModel(QStandardItemModel())
+
+        self.button_generate_table = QPushButton(self)
+
+        self.disable_updates = lambda: wl_tables.Wl_Table.disable_updates(self)
+        self.enable_updates = lambda emit_signals: wl_tables.Wl_Table.enable_updates(self, emit_signals)
+        self.is_empty = lambda: wl_tables.Wl_Table.is_empty(self)
+
+    def set_item(self, row, col, text):
+        self.model().setItem(row, col, QStandardItem(text))
+
+    def set_label(self, row, col, text):
+        self.set_item(row, col, QStandardItem())
+        self.setIndexWidget(self.model().index(row, col), QLabel(text))
+        self.indexWidget(self.model().index(row, col)).tokens_raw = [text]
 
 def wl_test_index(row, col):
     return QStandardItemModel().createIndex(row, col)

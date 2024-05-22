@@ -40,7 +40,7 @@ class Wrapper_Concordancer_Parallel(wl_layouts.Wl_Wrapper):
         self.table_concordancer_parallel = Wl_Table_Concordancer_Parallel(self)
 
         layout_results = wl_layouts.Wl_Layout()
-        layout_results.addWidget(self.table_concordancer_parallel.label_number_results, 0, 0)
+        layout_results.addWidget(self.table_concordancer_parallel.label_num_results, 0, 0)
         layout_results.addWidget(self.table_concordancer_parallel.button_results_search, 0, 4)
 
         layout_results.setColumnStretch(1, 1)
@@ -256,7 +256,7 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data_Search):
             generate_fig = False
         )
 
-    @wl_misc.log_timing
+    @wl_misc.log_time
     def generate_table(self):
         if wl_checks_work_area.check_search_terms(
             self.main,

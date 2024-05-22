@@ -393,7 +393,7 @@ You can search in *Data Table* for parts that might be of interest to you by cli
 
 In *Dependency Parser*, you can search for all dependency relations associated with different tokens and calculate their dependency lengths (distances).
 
-You can search in *Data Table* for parts that might be of interest to you by clicking **Search in results**.
+You can filter the results by clicking **Filter results** or search in *Data Table* for parts that might be of interest to you by clicking **Search in results**.
 
 You can select lines in the *Results Area* and then click *Generate Figure* to show dependency graphs for all selected sentences. You can modify the settings for the generated figure via **Figure Settings** and decide how the figures should be displayed.
 

@@ -69,6 +69,7 @@ def update_gui(err_msg, results):
         assert head
         # Dependent
         assert dependent
+
         # Dependency Relation
         assert dependency_relation
         # Dependency Length

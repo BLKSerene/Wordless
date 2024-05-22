@@ -102,22 +102,12 @@ def test_wl_spin_box_no_limit():
     wl_boxes.wl_spin_box_no_limit(main, double = False)
 
 def test_wl_spin_boxes_min_max():
-    spin_box_min, spin_box_max = wl_boxes.wl_spin_boxes_min_max(main, double = True)
+    _, spin_box_min, _, spin_box_max = wl_boxes.wl_spin_boxes_min_max(main, double = True)
 
     spin_box_min.setValue(100)
     spin_box_max.setValue(1)
 
     wl_boxes.wl_spin_boxes_min_max(main, double = False)
-
-def test_wl_spin_boxes_min_max_no_limit():
-    _, checkbox_min_no_limit, _, checkbox_max_no_limit = wl_boxes.wl_spin_boxes_min_max_no_limit(main, double = True)
-
-    checkbox_min_no_limit.setChecked(True)
-    checkbox_min_no_limit.setChecked(False)
-    checkbox_max_no_limit.setChecked(True)
-    checkbox_max_no_limit.setChecked(False)
-
-    wl_boxes.wl_spin_boxes_min_max_no_limit(main, double = False)
 
 def test_wl_spin_boxes_min_max_sync():
     checkbox_sync, _, spin_box_min, _, spin_box_max = wl_boxes.wl_spin_boxes_min_max_sync(main, double = True)
@@ -136,6 +126,20 @@ def test_wl_spin_boxes_min_max_sync_window():
     spin_box_right.setValue(100)
 
     wl_boxes.wl_spin_boxes_min_max_sync_window(main)
+
+def test_wl_spin_boxes_min_max_no_limit():
+    (
+        _,
+        _, _, checkbox_min_no_limit,
+        _, _, checkbox_max_no_limit
+    ) = wl_boxes.wl_spin_boxes_min_max_no_limit(main, double = True, sync = True)
+
+    checkbox_min_no_limit.setChecked(True)
+    checkbox_min_no_limit.setChecked(False)
+    checkbox_max_no_limit.setChecked(True)
+    checkbox_max_no_limit.setChecked(False)
+
+    wl_boxes.wl_spin_boxes_min_max_no_limit(main, double = False, sync = False)
 
 if __name__ == '__main__':
     test_wl_combo_box()
@@ -159,6 +163,6 @@ if __name__ == '__main__':
 
     test_wl_spin_box_no_limit()
     test_wl_spin_boxes_min_max()
-    test_wl_spin_boxes_min_max_no_limit()
     test_wl_spin_boxes_min_max_sync()
     test_wl_spin_boxes_min_max_sync_window()
+    test_wl_spin_boxes_min_max_no_limit()

@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Results - Sort
+# Wordless: Results - Sort results
 # Copyright (C) 2018-2024  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -33,8 +33,9 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
     def __init__(self, main, table):
         super().__init__(main, _tr('Wl_Dialog_Results_Sort_Concordancer', 'Sort Results'))
 
+        self.tab = table.tab
         self.table = table
-        self.settings = self.main.settings_custom[self.table.tab]['sort_results']
+        self.settings = self.main.settings_custom[self.tab]['sort_results']
 
         self.main.wl_work_area.currentChanged.connect(self.reject)
 
@@ -44,7 +45,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
         self.button_sort = QPushButton(self.tr('Sort'), self)
         self.button_close = QPushButton(self.tr('Close'), self)
 
-        if self.table.tab == 'concordancer':
+        if self.tab == 'concordancer':
             self.button_sort.clicked.connect(lambda: self.sort_results()) # pylint: disable=unnecessary-lambda
 
         self.button_close.clicked.connect(self.reject)
@@ -69,11 +70,11 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
         self.layout().addLayout(layout_table_sort, 0, 0)
         self.layout().addLayout(layout_buttons, 1, 0)
 
-    # To be called by "Restore defaults"
+    # To be called by Restore defaults
     def load_settings(self, defaults = False):
         self.table_sort.load_settings(defaults = defaults)
 
-    @wl_misc.log_timing
+    @wl_misc.log_time
     def sort_results(self):
         if not self.table.is_empty():
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Sorting results...'))
@@ -88,7 +89,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
             thread_results_sort_concordancer = wl_threading.Wl_Thread(worker_results_sort_concordancer)
             thread_results_sort_concordancer.start_worker()
 
-        self.main.statusBar().showMessage(self.tr('The results in the table has been successfully sorted.'))
+        self.main.statusBar().showMessage(self.tr('The results in the data table has been successfully sorted.'))
 
     def update_gui(self, results):
         # Create new labels
@@ -231,6 +232,7 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
             col_edit = 0
         )
 
+        self.tab = table.tab
         self.table = table
 
         self.cols_to_sort_default = [
@@ -293,7 +295,7 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         else:
             sorting_rules = []
 
-        self.main.settings_custom[self.table.tab]['sort_results']['sorting_rules'] = sorting_rules
+        self.main.settings_custom[self.tab]['sort_results']['sorting_rules'] = sorting_rules
 
         if self.model().rowCount() < len(self.cols_to_sort):
             self.button_add.setEnabled(True)
@@ -318,23 +320,10 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         if not self.table.is_empty():
             self.cols_to_sort = self.cols_to_sort_default.copy()
 
-            if self.table.tab == 'concordancer':
-                if self.table.settings['concordancer']['generation_settings']['width_unit'] == self.tr('Token'):
-                    width_left = self.table.settings['concordancer']['generation_settings']['width_left_token']
-                    width_right = self.table.settings['concordancer']['generation_settings']['width_right_token']
-                else:
-                    width_left = max((
-                        len(self.table.indexWidget(self.table.model().index(row, 0)).tokens_raw)
-                        for row in range(self.table.model().rowCount())
-                    ))
-                    width_right = max((
-                        len(self.table.indexWidget(self.table.model().index(row, 2)).tokens_raw)
-                        for row in range(self.table.model().rowCount())
-                    ))
-
-                self.cols_to_sort.extend([self.tr('R') + str(i + 1) for i in range(width_right)])
-                self.cols_to_sort.extend([self.tr('L') + str(i + 1) for i in range(width_left)])
-            elif self.table.tab == 'concordancer_parallel':
+            if self.table.settings['concordancer']['generation_settings']['width_unit'] == self.tr('Token'):
+                width_left = self.table.settings['concordancer']['generation_settings']['width_left_token']
+                width_right = self.table.settings['concordancer']['generation_settings']['width_right_token']
+            else:
                 width_left = max((
                     len(self.table.indexWidget(self.table.model().index(row, 0)).tokens_raw)
                     for row in range(self.table.model().rowCount())
@@ -344,8 +333,8 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                     for row in range(self.table.model().rowCount())
                 ))
 
-                self.cols_to_sort.extend([self.tr('R') + str(i + 1) for i in range(width_right)])
-                self.cols_to_sort.extend([self.tr('L') + str(i + 1) for i in range(width_left)])
+            self.cols_to_sort.extend([self.tr('R') + str(i + 1) for i in range(width_right)])
+            self.cols_to_sort.extend([self.tr('L') + str(i + 1) for i in range(width_left)])
 
         self.setItemDelegateForColumn(0, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
             parent = self,
@@ -353,17 +342,13 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         ))
 
         # Check sorting settings
+        sorting_rules_old = copy.deepcopy(self.main.settings_custom[self.tab]['sort_results']['sorting_rules'])
+
         self.clr_table(0)
-        self.disable_updates()
 
-        for sorting_col, sorting_order in self.main.settings_custom[self.table.tab]['sort_results']['sorting_rules']:
+        for sorting_col, sorting_order in sorting_rules_old:
             if sorting_col in self.cols_to_sort:
-                self.add_row()
-
-                self.model().item(self.model().rowCount() - 1, 0).setText(sorting_col)
-                self.model().item(self.model().rowCount() - 1, 1).setText(sorting_order)
-
-        self.enable_updates()
+                self._add_row(texts = [sorting_col, sorting_order])
 
         if self.model().rowCount() == 0:
             self.load_settings(defaults = True)
@@ -463,9 +448,9 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default[self.table.tab]['sort_results'])
+            settings = copy.deepcopy(self.main.settings_default[self.tab]['sort_results'])
         else:
-            settings = copy.deepcopy(self.main.settings_custom[self.table.tab]['sort_results'])
+            settings = copy.deepcopy(self.main.settings_custom[self.tab]['sort_results'])
 
         self.clr_table(0)
 

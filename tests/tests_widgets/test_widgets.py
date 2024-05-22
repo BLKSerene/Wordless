@@ -205,19 +205,6 @@ def test_wl_widgets_fig_settings_dependency_parsing():
     checkbox_show_pos_tags.setChecked(True)
     checkbox_show_pos_tags.setChecked(False)
 
-def test_wl_widgets_filter():
-    wl_widgets.wl_widgets_filter(main, 1, 100)
-
-def test_wl_widgets_filter_measures():
-    wl_widgets.wl_widgets_filter_measures(main)
-
-    main.wl_settings.wl_settings_changed.emit()
-
-def test_wl_widgets_filter_p_val():
-    wl_widgets.wl_widgets_filter_p_val(main)
-
-    main.wl_settings.wl_settings_changed.emit()
-
 def test_wl_widgets_num_sub_sections():
     wl_widgets.wl_widgets_num_sub_sections(main)
 
@@ -245,10 +232,6 @@ if __name__ == '__main__':
     test_wl_combo_box_file_fig_settings()
     test_wl_widgets_fig_settings()
     test_wl_widgets_fig_settings_dependency_parsing()
-
-    test_wl_widgets_filter()
-    test_wl_widgets_filter_measures()
-    test_wl_widgets_filter_p_val()
 
     test_wl_widgets_num_sub_sections()
     test_wl_widgets_use_data_freq()

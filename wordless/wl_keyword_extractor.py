@@ -32,7 +32,7 @@ from wordless.wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
 from wordless.wl_measures import wl_measure_utils
 from wordless.wl_nlp import wl_texts, wl_token_processing
 from wordless.wl_utils import wl_misc, wl_sorting, wl_threading
-from wordless.wl_widgets import wl_layouts, wl_tables, wl_widgets
+from wordless.wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_widgets
 
 _tr = QCoreApplication.translate
 
@@ -44,7 +44,7 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
         self.table_keyword_extractor = Wl_Table_Keyword_Extractor(self)
 
         layout_results = wl_layouts.Wl_Layout()
-        layout_results.addWidget(self.table_keyword_extractor.label_number_results, 0, 0)
+        layout_results.addWidget(self.table_keyword_extractor.label_num_results, 0, 0)
         layout_results.addWidget(self.table_keyword_extractor.button_results_filter, 0, 2)
         layout_results.addWidget(self.table_keyword_extractor.button_results_search, 0, 3)
 
@@ -174,16 +174,17 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
 
         self.label_rank = QLabel(self.tr('Rank:'), self)
         (
+            self.checkbox_rank_sync,
             self.label_rank_min,
             self.spin_box_rank_min,
             self.checkbox_rank_min_no_limit,
             self.label_rank_max,
             self.spin_box_rank_max,
             self.checkbox_rank_max_no_limit
-        ) = wl_widgets.wl_widgets_filter(
+        ) = wl_boxes.wl_spin_boxes_min_max_no_limit(
             self,
-            filter_min = 1,
-            filter_max = 100000
+            val_min = 1,
+            val_max = 100000
         )
 
         self.combo_box_graph_type.currentTextChanged.connect(self.fig_settings_changed)
@@ -214,7 +215,8 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
 
         self.group_box_fig_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 3, 0, 1, 3)
 
-        self.group_box_fig_settings.layout().addWidget(self.label_rank, 4, 0, 1, 3)
+        self.group_box_fig_settings.layout().addWidget(self.label_rank, 4, 0, 1, 2)
+        self.group_box_fig_settings.layout().addWidget(self.checkbox_rank_sync, 4, 2)
         self.group_box_fig_settings.layout().addWidget(self.label_rank_min, 5, 0)
         self.group_box_fig_settings.layout().addWidget(self.spin_box_rank_min, 5, 1)
         self.group_box_fig_settings.layout().addWidget(self.checkbox_rank_min_no_limit, 5, 2)
@@ -385,7 +387,7 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
     def wl_status_bar_msg_missing_files_ref(self):
         self.main.statusBar().showMessage(self.tr('Missing reference files!'))
 
-    @wl_misc.log_timing
+    @wl_misc.log_time
     def generate_table(self):
         files_observed = list(self.main.wl_file_area.get_selected_files())
         files_ref = list(self.main.wl_file_area_ref.get_selected_files())
@@ -588,7 +590,7 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
             finally:
                 wl_checks_work_area.check_err_table(self.main, err_msg)
 
-    @wl_misc.log_timing
+    @wl_misc.log_time
     def generate_fig(self):
         files_observed = list(self.main.wl_file_area.get_selected_files())
         files_ref = list(self.main.wl_file_area_ref.get_selected_files())
