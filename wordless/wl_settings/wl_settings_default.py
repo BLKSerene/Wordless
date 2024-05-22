@@ -423,6 +423,34 @@ def init_settings_default(main):
                 'show_in_separate_tab': False
             },
 
+            'filter_results': {
+                'file_to_filter': _tr('wl_settings_default', 'Total'),
+
+                'len_head_sync': False,
+                'len_head_min': 1,
+                'len_head_min_no_limit': True,
+                'len_head_max': 20,
+                'len_head_max_no_limit': True,
+
+                'len_dependent_sync': False,
+                'len_dependent_min': 1,
+                'len_dependent_min_no_limit': True,
+                'len_dependent_max': 20,
+                'len_dependent_max_no_limit': True,
+
+                'dependency_len_sync': False,
+                'dependency_len_min': -10,
+                'dependency_len_min_no_limit': True,
+                'dependency_len_max': 10,
+                'dependency_len_max_no_limit': True,
+
+                'dependency_len_abs_sync': False,
+                'dependency_len_abs_min': 0,
+                'dependency_len_abs_min_no_limit': True,
+                'dependency_len_abs_max': 10,
+                'dependency_len_abs_max_no_limit': True,
+            },
+
             'search_results': {
                 'multi_search_mode': False,
                 'search_term': '',
@@ -474,6 +502,7 @@ def init_settings_default(main):
                 'use_pct': False,
                 'use_cumulative': False,
 
+                'rank_sync': False,
                 'rank_min': 1,
                 'rank_min_no_limit': True,
                 'rank_max': 50,
@@ -483,31 +512,37 @@ def init_settings_default(main):
             'filter_results': {
                 'file_to_filter': _tr('wl_settings_default', 'Total'),
 
+                'len_token_sync': False,
                 'len_token_min': 1,
                 'len_token_min_no_limit': True,
                 'len_token_max': 20,
                 'len_token_max_no_limit': True,
 
+                'num_syls_sync': False,
                 'num_syls_min': 1,
                 'num_syls_min_no_limit': True,
                 'num_syls_max': 20,
                 'num_syls_max_no_limit': True,
 
+                'freq_sync': False,
                 'freq_min': 0,
                 'freq_min_no_limit': True,
                 'freq_max': 1000,
                 'freq_max_no_limit': True,
 
+                'dispersion_sync': False,
                 'dispersion_min': -100,
                 'dispersion_min_no_limit': True,
                 'dispersion_max': 100,
                 'dispersion_max_no_limit': True,
 
+                'adjusted_freq_sync': False,
                 'adjusted_freq_min': 0,
                 'adjusted_freq_min_no_limit': True,
                 'adjusted_freq_max': 1000,
                 'adjusted_freq_max_no_limit': True,
 
+                'num_files_found_sync': False,
                 'num_files_found_min': 1,
                 'num_files_found_min_no_limit': True,
                 'num_files_found_max': 100,
@@ -558,6 +593,7 @@ def init_settings_default(main):
                 'match_without_tags': False,
                 'match_tags': False,
 
+                'search_term_position_sync': False,
                 'search_term_position_min': 1,
                 'search_term_position_min_no_limit': True,
                 'search_term_position_max': 2,
@@ -628,6 +664,7 @@ def init_settings_default(main):
                 'use_pct': False,
                 'use_cumulative': False,
 
+                'rank_sync': False,
                 'rank_min': 1,
                 'rank_min_no_limit': True,
                 'rank_max': 50,
@@ -637,26 +674,31 @@ def init_settings_default(main):
             'filter_results': {
                 'file_to_filter': _tr('wl_settings_default', 'Total'),
 
+                'len_ngram_sync': False,
                 'len_ngram_min': 1,
                 'len_ngram_min_no_limit': True,
                 'len_ngram_max': 20,
                 'len_ngram_max_no_limit': True,
 
+                'freq_sync': False,
                 'freq_min': 0,
                 'freq_min_no_limit': True,
                 'freq_max': 1000,
                 'freq_max_no_limit': True,
 
+                'dispersion_sync': False,
                 'dispersion_min': -100,
                 'dispersion_min_no_limit': True,
                 'dispersion_max': 100,
                 'dispersion_max_no_limit': True,
 
+                'adjusted_freq_sync': False,
                 'adjusted_freq_min': 0,
                 'adjusted_freq_min_no_limit': True,
                 'adjusted_freq_max': 1000,
                 'adjusted_freq_max_no_limit': True,
 
+                'num_files_found_sync': False,
                 'num_files_found_min': 1,
                 'num_files_found_min_no_limit': True,
                 'num_files_found_max': 100,
@@ -774,6 +816,7 @@ def init_settings_default(main):
                 'use_pct': False,
                 'use_cumulative': False,
 
+                'rank_sync': False,
                 'rank_min': 1,
                 'rank_min_no_limit': True,
                 'rank_max': 50,
@@ -783,47 +826,56 @@ def init_settings_default(main):
             'filter_results': {
                 'file_to_filter': _tr('wl_settings_default', 'Total'),
 
+                'len_node_sync': False,
                 'len_node_min': 1,
                 'len_node_min_no_limit': True,
                 'len_node_max': 20,
                 'len_node_max_no_limit': True,
 
+                'len_collocate_sync': False,
                 'len_collocate_min': 1,
                 'len_collocate_min_no_limit': True,
                 'len_collocate_max': 20,
                 'len_collocate_max_no_limit': True,
 
+                'len_collocation_sync': False,
                 'len_collocation_min': 1,
                 'len_collocation_min_no_limit': True,
                 'len_collocation_max': 20,
                 'len_collocation_max_no_limit': True,
 
                 'freq_position': _tr('wl_settings_default', 'Total'),
+                'freq_sync': False,
                 'freq_min': 0,
                 'freq_min_no_limit': True,
                 'freq_max': 1000,
                 'freq_max_no_limit': True,
 
+                'test_stat_sync': False,
                 'test_stat_min': -100,
                 'test_stat_min_no_limit': True,
                 'test_stat_max': 100,
                 'test_stat_max_no_limit': True,
 
+                'p_val_sync': False,
                 'p_val_min': 0,
                 'p_val_min_no_limit': True,
                 'p_val_max': 0.05,
                 'p_val_max_no_limit': True,
 
+                'bayes_factor_sync': False,
                 'bayes_factor_min': -100,
                 'bayes_factor_min_no_limit': True,
                 'bayes_factor_max': 100,
                 'bayes_factor_max_no_limit': True,
 
+                'effect_size_sync': False,
                 'effect_size_min': -100,
                 'effect_size_min_no_limit': True,
                 'effect_size_max': 100,
                 'effect_size_max_no_limit': True,
 
+                'num_files_found_sync': False,
                 'num_files_found_min': 1,
                 'num_files_found_min_no_limit': True,
                 'num_files_found_max': 100,
@@ -940,6 +992,7 @@ def init_settings_default(main):
                 'use_pct': False,
                 'use_cumulative': False,
 
+                'rank_sync': False,
                 'rank_min': 1,
                 'rank_min_no_limit': True,
                 'rank_max': 50,
@@ -949,47 +1002,56 @@ def init_settings_default(main):
             'filter_results': {
                 'file_to_filter': _tr('wl_settings_default', 'Total'),
 
+                'len_node_sync': False,
                 'len_node_min': 1,
                 'len_node_min_no_limit': True,
                 'len_node_max': 20,
                 'len_node_max_no_limit': True,
 
+                'len_collocate_sync': False,
                 'len_collocate_min': 1,
                 'len_collocate_min_no_limit': True,
                 'len_collocate_max': 20,
                 'len_collocate_max_no_limit': True,
 
+                'len_colligation_sync': False,
                 'len_colligation_min': 1,
                 'len_colligation_min_no_limit': True,
                 'len_colligation_max': 20,
                 'len_colligation_max_no_limit': True,
 
                 'freq_position': _tr('wl_settings_default', 'Total'),
+                'freq_sync': False,
                 'freq_min': 0,
                 'freq_min_no_limit': True,
                 'freq_max': 1000,
                 'freq_max_no_limit': True,
 
+                'test_stat_sync': False,
                 'test_stat_min': -100,
                 'test_stat_min_no_limit': True,
                 'test_stat_max': 100,
                 'test_stat_max_no_limit': True,
 
+                'p_val_sync': False,
                 'p_val_min': 0,
                 'p_val_min_no_limit': True,
                 'p_val_max': 0.05,
                 'p_val_max_no_limit': True,
 
+                'bayes_factor_sync': False,
                 'bayes_factor_min': -100,
                 'bayes_factor_min_no_limit': True,
                 'bayes_factor_max': 100,
                 'bayes_factor_max_no_limit': True,
 
+                'effect_size_sync': False,
                 'effect_size_min': -100,
                 'effect_size_min_no_limit': True,
                 'effect_size_max': 100,
                 'effect_size_max_no_limit': True,
 
+                'num_files_found_sync': False,
                 'num_files_found_min': 1,
                 'num_files_found_min_no_limit': True,
                 'num_files_found_max': 100,
@@ -1047,6 +1109,7 @@ def init_settings_default(main):
                 'use_pct': False,
                 'use_cumulative': False,
 
+                'rank_sync': False,
                 'rank_min': 1,
                 'rank_min_no_limit': True,
                 'rank_max': 50,
@@ -1056,36 +1119,43 @@ def init_settings_default(main):
             'filter_results': {
                 'file_to_filter': _tr('wl_settings_default', 'Total'),
 
+                'len_keyword_sync': False,
                 'len_keyword_min': 1,
                 'len_keyword_min_no_limit': True,
                 'len_keyword_max': 20,
                 'len_keyword_max_no_limit': True,
 
+                'freq_sync': False,
                 'freq_min': 0,
                 'freq_min_no_limit': True,
                 'freq_max': 1000,
                 'freq_max_no_limit': True,
 
+                'test_stat_sync': False,
                 'test_stat_min': -100,
                 'test_stat_min_no_limit': True,
                 'test_stat_max': 100,
                 'test_stat_max_no_limit': True,
 
+                'p_val_sync': False,
                 'p_val_min': 0,
                 'p_val_min_no_limit': True,
                 'p_val_max': 0.05,
                 'p_val_max_no_limit': True,
 
+                'bayes_factor_sync': False,
                 'bayes_factor_min': -100,
                 'bayes_factor_min_no_limit': True,
                 'bayes_factor_max': 100,
                 'bayes_factor_max_no_limit': True,
 
+                'effect_size_sync': False,
                 'effect_size_min': -100,
                 'effect_size_min_no_limit': True,
                 'effect_size_max': 100,
                 'effect_size_max_no_limit': True,
 
+                'num_files_found_sync': False,
                 'num_files_found_min': 1,
                 'num_files_found_min_no_limit': True,
                 'num_files_found_max': 100,

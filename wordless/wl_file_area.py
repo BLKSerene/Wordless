@@ -371,7 +371,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
 
         return None
 
-    @wl_misc.log_timing
+    @wl_misc.log_time
     def _open_files(self, files_to_open):
         if wl_nlp_utils.check_models(
             self.main,

@@ -267,7 +267,7 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         else:
             self.button_generate_all_tables.setEnabled(False)
 
-    @wl_misc.log_timing
+    @wl_misc.log_time
     def generate_all_tables(self):
         if self.main.settings_custom['profiler']['token_settings']['assign_pos_tags']:
             nlp_support = wl_checks_work_area.check_nlp_support(self.main, nlp_utils = ['pos_taggers'])
@@ -334,7 +334,7 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
         if super().clr_table(num_headers = 0, confirm = confirm):
             self.ins_header_hor(0, self.tr('Total'))
 
-    @wl_misc.log_timing
+    @wl_misc.log_time
     def generate_table(self):
         if self.main.settings_custom['profiler']['token_settings']['assign_pos_tags']:
             nlp_support = wl_checks_work_area.check_nlp_support(self.main, nlp_utils = ['pos_taggers'])

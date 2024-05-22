@@ -42,8 +42,9 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
         self.table_dependency_parser = Wl_Table_Dependency_Parser(self)
 
         layout_results = wl_layouts.Wl_Layout()
-        layout_results.addWidget(self.table_dependency_parser.label_number_results, 0, 0)
-        layout_results.addWidget(self.table_dependency_parser.button_results_search, 0, 2)
+        layout_results.addWidget(self.table_dependency_parser.label_num_results, 0, 0)
+        layout_results.addWidget(self.table_dependency_parser.button_results_filter, 0, 2)
+        layout_results.addWidget(self.table_dependency_parser.button_results_search, 0, 3)
 
         layout_results.setColumnStretch(1, 1)
 
@@ -303,7 +304,7 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
         settings['compact_mode'] = self.checkbox_compact_mode.isChecked()
         settings['show_in_separate_tab'] = self.checkbox_show_in_separate_tab.isChecked()
 
-class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
+class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Filter_Search):
     def __init__(self, parent):
         super().__init__(
             parent,
@@ -345,7 +346,7 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
         else:
             self.button_generate_table.setEnabled(False)
 
-    @wl_misc.log_timing
+    @wl_misc.log_time
     def generate_table(self):
         if wl_checks_work_area.check_search_terms(
             self.main,
@@ -387,9 +388,12 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
                     no_sentence, len_sentences, file
                 ) in enumerate(results):
                     # Head
-                    self.model().setItem(i, 0, wl_tables.Wl_Table_Item(head))
+                    self.model().setItem(i, 0, wl_tables.Wl_Table_Item(head.display_text()))
+                    self.model().item(i, 0).tokens_filter = [head]
+
                     # Dependent
-                    self.model().setItem(i, 1, wl_tables.Wl_Table_Item(dependent))
+                    self.model().setItem(i, 1, wl_tables.Wl_Table_Item(dependent.display_text()))
+                    self.model().item(i, 1).tokens_filter = [dependent]
 
                     # Dependency Relation
                     self.model().setItem(i, 2, wl_tables.Wl_Table_Item(dependency_relation))
@@ -422,7 +426,7 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
             finally:
                 wl_checks_work_area.check_err_table(self.main, err_msg)
 
-    @wl_misc.log_timing
+    @wl_misc.log_time
     def generate_fig(self):
         err_msg = ''
 
@@ -578,9 +582,9 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                                                 sentence_tokens_search.append(wl_texts.Wl_Token(sentence_token.punc_mark, lang = sentence_token.lang))
 
                                     # Head
-                                    results[-1].append(head.display_text())
+                                    results[-1].append(head)
                                     # Dependent
-                                    results[-1].append(token.display_text())
+                                    results[-1].append(token)
                                     # Dependency Relation
                                     results[-1].append(dependency_relation)
                                     # Dependency Length
