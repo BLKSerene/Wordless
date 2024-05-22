@@ -420,11 +420,11 @@ class Wl_Table(QTableView):
         self.model().itemChanged.emit(QStandardItem())
 
     # Export visible rows only
-    @wl_misc.log_timing
+    @wl_misc.log_time
     def exp_selected_cells(self):
-        self.exp_all_cells(rows_to_exp = self.get_selected_rows(visible_only = True))
+        return self.exp_all_cells(rows_to_exp = self.get_selected_rows(visible_only = True))
 
-    @wl_misc.log_timing
+    @wl_misc.log_time
     def exp_all_cells(self, rows_to_exp = None):
         caption = _tr('wl_tables', 'Export Table')
         default_dir = self.main.settings_custom['general']['exp']['tables']['default_path']
@@ -486,6 +486,11 @@ class Wl_Table(QTableView):
 
             thread_exp_table = wl_threading.Wl_Thread(worker_exp_table)
             thread_exp_table.start_worker()
+
+            return ''
+        # Do not log time if the export dialog is closed
+        else:
+            return 'skip_logging_time'
 
     def update_gui_exp(self, err_msg, file_path):
         if not err_msg:
@@ -1824,18 +1829,14 @@ class Wl_Table_Data_Search(Wl_Table_Data):
 
         self.model().itemChanged.connect(self.results_changed)
 
-        self.label_number_results = QLabel()
+        self.label_num_results = QLabel()
         self.button_results_search = wl_buttons.Wl_Button(_tr('wl_tables', 'Search in results'), self)
-        self.dialog_results_search = wl_results_search.Wl_Dialog_Results_Search(
-            self.main,
-            tab = self.tab,
-            table = self
-        )
+        self.dialog_results_search = wl_results_search.Wl_Dialog_Results_Search(self.main, table = self)
 
         self.button_results_search.setMinimumWidth(140)
 
         self.button_generate_table.clicked.connect(self.dialog_results_search.clr_history)
-        self.button_results_search.clicked.connect(self.dialog_results_search.load)
+        self.button_results_search.clicked.connect(self.dialog_results_search.show)
 
         self.results_changed()
 
@@ -1843,11 +1844,11 @@ class Wl_Table_Data_Search(Wl_Table_Data):
         rows_visible = len([i for i in range(self.model().rowCount()) if not self.isRowHidden(i)])
 
         if not self.is_empty() and rows_visible:
-            self.label_number_results.setText(_tr('wl_tables', 'Number of results: ') + str(rows_visible))
+            self.label_num_results.setText(_tr('wl_tables', 'Number of results: ') + str(rows_visible))
 
             self.button_results_search.setEnabled(True)
         else:
-            self.label_number_results.setText(_tr('wl_tables', 'Number of results: 0'))
+            self.label_num_results.setText(_tr('wl_tables', 'Number of results: 0'))
 
             self.button_results_search.setEnabled(False)
 
@@ -1871,26 +1872,19 @@ class Wl_Table_Data_Sort_Search(Wl_Table_Data):
 
         self.model().itemChanged.connect(self.results_changed)
 
-        self.label_number_results = QLabel()
-        self.button_results_search = wl_buttons.Wl_Button(_tr('wl_tables', 'Search in results'), self)
+        self.label_num_results = QLabel()
         self.button_results_sort = wl_buttons.Wl_Button(_tr('wl_tables', 'Sort results'), self)
+        self.button_results_search = wl_buttons.Wl_Button(_tr('wl_tables', 'Search in results'), self)
 
-        self.dialog_results_search = wl_results_search.Wl_Dialog_Results_Search(
-            self.main,
-            tab = self.tab,
-            table = self
-        )
-        self.dialog_results_sort = wl_results_sort.Wl_Dialog_Results_Sort_Concordancer(
-            self.main,
-            table = self
-        )
+        self.dialog_results_sort = wl_results_sort.Wl_Dialog_Results_Sort_Concordancer(self.main, table = self)
+        self.dialog_results_search = wl_results_search.Wl_Dialog_Results_Search(self.main, table = self)
 
-        self.button_results_search.setMinimumWidth(140)
         self.button_results_sort.setMinimumWidth(140)
+        self.button_results_search.setMinimumWidth(140)
 
         self.button_generate_table.clicked.connect(self.dialog_results_search.clr_history)
-        self.button_results_search.clicked.connect(self.dialog_results_search.load)
         self.button_results_sort.clicked.connect(self.dialog_results_sort.show)
+        self.button_results_search.clicked.connect(self.dialog_results_search.show)
 
         self.results_changed()
 
@@ -1898,12 +1892,12 @@ class Wl_Table_Data_Sort_Search(Wl_Table_Data):
         rows_visible = len([i for i in range(self.model().rowCount()) if not self.isRowHidden(i)])
 
         if not self.is_empty() and rows_visible:
-            self.label_number_results.setText(_tr('wl_tables', 'Number of results: ') + str(rows_visible))
+            self.label_num_results.setText(_tr('wl_tables', 'Number of results: ') + str(rows_visible))
 
             self.button_results_sort.setEnabled(True)
             self.button_results_search.setEnabled(True)
         else:
-            self.label_number_results.setText(_tr('wl_tables', 'Number of results: 0'))
+            self.label_num_results.setText(_tr('wl_tables', 'Number of results: 0'))
 
             self.button_results_sort.setEnabled(False)
             self.button_results_search.setEnabled(False)
@@ -1928,22 +1922,18 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
 
         self.model().itemChanged.connect(self.results_changed)
 
-        self.label_number_results = QLabel()
+        self.label_num_results = QLabel()
         self.button_results_filter = wl_buttons.Wl_Button(_tr('wl_tables', 'Filter results'), self)
         self.button_results_search = wl_buttons.Wl_Button(_tr('wl_tables', 'Search in results'), self)
 
-        self.dialog_results_search = wl_results_search.Wl_Dialog_Results_Search(
-            self.main,
-            tab = self.tab,
-            table = self
-        )
+        self.dialog_results_search = wl_results_search.Wl_Dialog_Results_Search(self.main, table = self)
 
         self.button_results_filter.setMinimumWidth(140)
         self.button_results_search.setMinimumWidth(140)
 
         self.button_generate_table.clicked.connect(self.dialog_results_search.clr_history)
         self.button_results_filter.clicked.connect(self.results_filter_clicked)
-        self.button_results_search.clicked.connect(self.dialog_results_search.load)
+        self.button_results_search.clicked.connect(self.dialog_results_search.show)
 
         self.results_changed()
 
@@ -1951,11 +1941,11 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
         rows_visible = len([i for i in range(self.model().rowCount()) if not self.isRowHidden(i)])
 
         if not self.is_empty():
-            self.label_number_results.setText(_tr('wl_tables', 'Number of results: ') + str(rows_visible))
+            self.label_num_results.setText(_tr('wl_tables', 'Number of results: ') + str(rows_visible))
 
             self.button_results_filter.setEnabled(True)
         else:
-            self.label_number_results.setText(_tr('wl_tables', 'Number of results: 0'))
+            self.label_num_results.setText(_tr('wl_tables', 'Number of results: 0'))
 
             self.button_results_filter.setEnabled(False)
 
@@ -1965,9 +1955,21 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
             self.button_results_search.setEnabled(False)
 
     def results_filter_clicked(self):
-        if self.tab in ['wordlist_generator', 'ngram_generator']:
-            wl_dialog_results_filter = wl_results_filter.Wl_Dialog_Results_Filter_Wordlist_Generator(self.main, tab = self.tab, table = self)
-        elif self.tab in ['collocation_extractor', 'colligation_extractor', 'keyword_extractor']:
-            wl_dialog_results_filter = wl_results_filter.Wl_Dialog_Results_Filter_Collocation_Extractor(self.main, tab = self.tab, table = self)
+        match self.tab:
+            case 'dependency_parser':
+                wl_dialog_results_filter = wl_results_filter.Wl_Dialog_Results_Filter_Dependency_Parser(
+                    self.main,
+                    table = self
+                )
+            case 'wordlist_generator' | 'ngram_generator':
+                wl_dialog_results_filter = wl_results_filter.Wl_Dialog_Results_Filter_Wordlist_Generator(
+                    self.main,
+                    table = self
+                )
+            case 'collocation_extractor' | 'colligation_extractor' | 'keyword_extractor':
+                wl_dialog_results_filter = wl_results_filter.Wl_Dialog_Results_Filter_Collocation_Extractor(
+                    self.main,
+                    table = self
+                )
 
         wl_dialog_results_filter.show()

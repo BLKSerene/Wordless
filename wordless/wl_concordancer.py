@@ -44,7 +44,7 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         self.table_concordancer = Wl_Table_Concordancer(self)
 
         layout_results = wl_layouts.Wl_Layout()
-        layout_results.addWidget(self.table_concordancer.label_number_results, 0, 0)
+        layout_results.addWidget(self.table_concordancer.label_num_results, 0, 0)
         layout_results.addWidget(self.table_concordancer.button_results_sort, 0, 2)
         layout_results.addWidget(self.table_concordancer.button_results_search, 0, 3)
 
@@ -474,7 +474,7 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
             ]
         )
 
-    @wl_misc.log_timing
+    @wl_misc.log_time
     def generate_table(self):
         if wl_checks_work_area.check_search_terms(
             self.main,
@@ -584,7 +584,7 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
             finally:
                 wl_checks_work_area.check_err_table(self.main, err_msg)
 
-    @wl_misc.log_timing
+    @wl_misc.log_time
     def generate_fig(self):
         if wl_checks_work_area.check_search_terms(
             self.main,

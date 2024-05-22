@@ -267,7 +267,12 @@ def wl_spin_box_no_limit(parent, val_min = 1, val_max = 100, double = False):
 
     return spin_box_val, checkbox_no_limit
 
-def wl_spin_boxes_min_max(parent, val_min = 1, val_max = 100, double = False):
+def wl_spin_boxes_min_max(
+    parent,
+    label_min = _tr('wl_boxes', 'From'), label_max = _tr('wl_boxes', 'to'),
+    val_min = 1, val_max = 100,
+    double = False
+):
     def min_changed():
         if spin_box_min.value() > spin_box_max.value():
             spin_box_max.setValue(spin_box_min.value())
@@ -275,6 +280,9 @@ def wl_spin_boxes_min_max(parent, val_min = 1, val_max = 100, double = False):
     def max_changed():
         if spin_box_min.value() > spin_box_max.value():
             spin_box_min.setValue(spin_box_max.value())
+
+    label_min = QLabel(label_min, parent)
+    label_max = QLabel(label_max, parent)
 
     if double:
         spin_box_min = Wl_Double_Spin_Box(parent)
@@ -292,41 +300,17 @@ def wl_spin_boxes_min_max(parent, val_min = 1, val_max = 100, double = False):
     min_changed()
     max_changed()
 
-    return spin_box_min, spin_box_max
-
-def wl_spin_boxes_min_max_no_limit(parent, val_min = 1, val_max = 100, double = False):
-    def no_limit_min_changed():
-        if checkbox_min_no_limit.isChecked():
-            spin_box_min.setEnabled(False)
-        else:
-            spin_box_min.setEnabled(True)
-
-    def no_limit_max_changed():
-        if checkbox_max_no_limit.isChecked():
-            spin_box_max.setEnabled(False)
-        else:
-            spin_box_max.setEnabled(True)
-
-    (
-        spin_box_min,
-        spin_box_max
-    ) = wl_spin_boxes_min_max(parent, val_min, val_max, double)
-
-    checkbox_min_no_limit = QCheckBox(_tr('wl_boxes', 'No limit'), parent)
-    checkbox_max_no_limit = QCheckBox(_tr('wl_boxes', 'No limit'), parent)
-
-    checkbox_min_no_limit.stateChanged.connect(no_limit_min_changed)
-    checkbox_max_no_limit.stateChanged.connect(no_limit_max_changed)
-
-    no_limit_min_changed()
-    no_limit_max_changed()
-
     return (
-        spin_box_min, checkbox_min_no_limit,
-        spin_box_max, checkbox_max_no_limit
+        label_min, spin_box_min,
+        label_max, spin_box_max
     )
 
-def wl_spin_boxes_min_max_sync(parent, val_min = 1, val_max = 100, double = False):
+def wl_spin_boxes_min_max_sync(
+    parent,
+    label_min = _tr('wl_boxes', 'From'), label_max = _tr('wl_boxes', 'to'),
+    val_min = 1, val_max = 100,
+    double = False
+):
     def sync_changed():
         if checkbox_sync.isChecked():
             spin_box_min.setValue(spin_box_max.value())
@@ -340,12 +324,11 @@ def wl_spin_boxes_min_max_sync(parent, val_min = 1, val_max = 100, double = Fals
             spin_box_min.setValue(spin_box_max.value())
 
     checkbox_sync = QCheckBox(_tr('wl_boxes', 'Sync'), parent)
-    label_min = QLabel(_tr('wl_boxes', 'From'), parent)
-    label_max = QLabel(_tr('wl_boxes', 'to'), parent)
+
     (
-        spin_box_min,
-        spin_box_max
-    ) = wl_spin_boxes_min_max(parent, val_min, val_max, double)
+        label_min, spin_box_min,
+        label_max, spin_box_max
+    ) = wl_spin_boxes_min_max(parent, label_min, label_max, val_min, val_max, double)
 
     spin_box_min.valueChanged.disconnect()
     spin_box_max.valueChanged.disconnect()
@@ -431,3 +414,51 @@ def wl_spin_boxes_min_max_sync_window(parent):
         label_left, spin_box_left,
         label_right, spin_box_right
     )
+
+def wl_spin_boxes_min_max_no_limit(
+    parent,
+    label_min = _tr('wl_boxes', 'From'), label_max = _tr('wl_boxes', 'to'),
+    val_min = 1, val_max = 100,
+    double = False, sync = True
+):
+    def no_limit_min_changed():
+        if checkbox_min_no_limit.isChecked():
+            spin_box_min.setEnabled(False)
+        else:
+            spin_box_min.setEnabled(True)
+
+    def no_limit_max_changed():
+        if checkbox_max_no_limit.isChecked():
+            spin_box_max.setEnabled(False)
+        else:
+            spin_box_max.setEnabled(True)
+
+    (
+        checkbox_sync,
+        label_min, spin_box_min,
+        label_max, spin_box_max
+    ) = wl_spin_boxes_min_max_sync(parent, label_min, label_max, val_min, val_max, double)
+
+    checkbox_min_no_limit = QCheckBox(_tr('wl_boxes', 'No limit'), parent)
+    checkbox_max_no_limit = QCheckBox(_tr('wl_boxes', 'No limit'), parent)
+
+    checkbox_min_no_limit.stateChanged.connect(no_limit_min_changed)
+    checkbox_max_no_limit.stateChanged.connect(no_limit_max_changed)
+
+    if not sync:
+        checkbox_sync.setChecked(False)
+
+    no_limit_min_changed()
+    no_limit_max_changed()
+
+    if sync:
+        return (
+            checkbox_sync,
+            label_min, spin_box_min, checkbox_min_no_limit,
+            label_max, spin_box_max, checkbox_max_no_limit
+        )
+    else:
+        return (
+            label_min, spin_box_min, checkbox_min_no_limit,
+            label_max, spin_box_max, checkbox_max_no_limit
+        )

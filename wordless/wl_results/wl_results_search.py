@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Results - Search
+# Wordless: Results - Search in results
 # Copyright (C) 2018-2024  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -31,10 +31,12 @@ from wordless.wl_widgets import wl_buttons, wl_layouts, wl_widgets
 _tr = QCoreApplication.translate
 
 class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
-    def __init__(self, main, tab, table):
+    def __init__(self, main, table):
+        # pylint: disable=unnecessary-lambda
+
         super().__init__(main, _tr('Wl_Dialog_Results_Search', 'Search in Results'))
 
-        self.tab = tab
+        self.tab = table.tab
         self.tables = [table]
         self.settings = self.main.settings_custom[self.tab]['search_results']
         self.last_search_settings = []
@@ -84,10 +86,10 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.checkbox_match_without_tags.stateChanged.connect(self.search_settings_changed)
         self.checkbox_match_tags.stateChanged.connect(self.search_settings_changed)
 
-        self.button_find_next.clicked.connect(lambda: self.find_next()) # pylint: disable=unnecessary-lambda
-        self.button_find_prev.clicked.connect(lambda: self.find_prev()) # pylint: disable=unnecessary-lambda
-        self.button_find_all.clicked.connect(lambda: self.find_all()) # pylint: disable=unnecessary-lambda
-        self.button_clr_hightlights.clicked.connect(lambda: self.clr_highlights()) # pylint: disable=unnecessary-lambda
+        self.button_find_next.clicked.connect(lambda: self.find_next())
+        self.button_find_prev.clicked.connect(lambda: self.find_prev())
+        self.button_find_all.clicked.connect(lambda: self.find_all())
+        self.button_clr_hightlights.clicked.connect(lambda: self.clr_highlights())
 
         self.button_close.clicked.connect(self.reject)
 
@@ -179,16 +181,12 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
             self.button_find_prev.setEnabled(False)
             self.button_find_all.setEnabled(False)
 
-        if 'size_multi' in self.__dict__:
-            if self.settings['multi_search_mode']:
-                self.setFixedSize(self.size_multi)
-            else:
-                self.setFixedSize(self.size_normal)
-
     def table_item_changed(self):
-        self.checkbox_match_tags.token_settings_changed(token_settings = self.tables[0].settings[self.tab]['token_settings'])
+        self.checkbox_match_tags.token_settings_changed(
+            token_settings = self.tables[0].settings[self.tab]['token_settings']
+        )
 
-    @wl_misc.log_timing
+    @wl_misc.log_time
     def find_next(self):
         self.find_all()
 
@@ -233,7 +231,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
             for table in self.tables:
                 table.enable_updates()
 
-    @wl_misc.log_timing
+    @wl_misc.log_time
     def find_prev(self):
         self.find_all()
 
@@ -278,7 +276,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
             for table in self.tables:
                 table.enable_updates()
 
-    @wl_misc.log_timing
+    @wl_misc.log_time
     def find_all(self):
         # Search only when there are no search history or search settings have been changed
         if not self.items_found or self.last_search_settings != copy.deepcopy(self.settings):
@@ -331,7 +329,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
 
         self.main.statusBar().showMessage(self.tr('Found {} {}.').format(len_items_found, msg_item))
 
-    @wl_misc.log_timing
+    @wl_misc.log_time
     def clr_highlights(self):
         if self.items_found:
             for table in self.tables:
@@ -357,9 +355,6 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
     def clr_history(self):
         self.last_search_settings.clear()
         self.items_found.clear()
-
-    def load(self):
-        self.show()
 
 class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
     def run(self):

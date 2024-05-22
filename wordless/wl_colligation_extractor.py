@@ -46,7 +46,7 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
         self.table_colligation_extractor = Wl_Table_Colligation_Extractor(self)
 
         layout_results = wl_layouts.Wl_Layout()
-        layout_results.addWidget(self.table_colligation_extractor.label_number_results, 0, 0)
+        layout_results.addWidget(self.table_colligation_extractor.label_num_results, 0, 0)
         layout_results.addWidget(self.table_colligation_extractor.button_results_filter, 0, 2)
         layout_results.addWidget(self.table_colligation_extractor.button_results_search, 0, 3)
 
@@ -290,16 +290,17 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
 
         self.label_rank = QLabel(self.tr('Rank:'), self)
         (
+            self.checkbox_rank_sync,
             self.label_rank_min,
             self.spin_box_rank_min,
             self.checkbox_rank_min_no_limit,
             self.label_rank_max,
             self.spin_box_rank_max,
             self.checkbox_rank_max_no_limit
-        ) = wl_widgets.wl_widgets_filter(
+        ) = wl_boxes.wl_spin_boxes_min_max_no_limit(
             self,
-            filter_min = 1,
-            filter_max = 100000
+            val_min = 1,
+            val_max = 100000
         )
 
         self.combo_box_graph_type.currentTextChanged.connect(self.fig_settings_changed)
@@ -330,7 +331,8 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
 
         self.group_box_fig_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 3, 0, 1, 3)
 
-        self.group_box_fig_settings.layout().addWidget(self.label_rank, 4, 0, 1, 3)
+        self.group_box_fig_settings.layout().addWidget(self.label_rank, 4, 0, 1, 2)
+        self.group_box_fig_settings.layout().addWidget(self.checkbox_rank_sync, 4, 2)
         self.group_box_fig_settings.layout().addWidget(self.label_rank_min, 5, 0)
         self.group_box_fig_settings.layout().addWidget(self.spin_box_rank_min, 5, 1)
         self.group_box_fig_settings.layout().addWidget(self.checkbox_rank_min_no_limit, 5, 2)
@@ -538,7 +540,7 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
 
         self.wrapper = parent
 
-    @wl_misc.log_timing
+    @wl_misc.log_time
     def generate_table(self):
         if (
             wl_checks_work_area.check_search_terms(
@@ -782,7 +784,7 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
             finally:
                 wl_checks_work_area.check_err_table(self.main, err_msg)
 
-    @wl_misc.log_timing
+    @wl_misc.log_time
     def generate_fig(self):
         if (
             wl_checks_work_area.check_search_terms(

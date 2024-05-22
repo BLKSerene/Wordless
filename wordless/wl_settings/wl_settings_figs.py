@@ -158,12 +158,16 @@ class Wl_Settings_Figs_Word_Clouds(wl_settings.Wl_Settings_Node):
         )
 
         self.label_font_size = QLabel(self.tr('Font size:'), self)
-        self.label_font_size_min = QLabel(self.tr('Minimum'), self)
-        self.label_font_size_max = QLabel(self.tr('Maximum'), self)
+
         (
-            self.spin_box_font_size_min,
-            self.spin_box_font_size_max
-        ) = wl_boxes.wl_spin_boxes_min_max(self, val_min = 1, val_max = desktop_widget.height())
+            self.label_font_size_min, self.spin_box_font_size_min,
+            self.label_font_size_max, self.spin_box_font_size_max
+        ) = wl_boxes.wl_spin_boxes_min_max(
+            self,
+            label_min = self.tr('Minimum'), label_max = self.tr('Maximum'),
+            val_min = 1, val_max = desktop_widget.height()
+        )
+
         self.label_relative_scaling = QLabel(self.tr('Relative scaling:'), self)
         self.double_spin_box_relative_scaling = wl_boxes.Wl_Double_Spin_Box(self)
 
@@ -485,12 +489,17 @@ class Wl_Settings_Figs_Network_Graphs(wl_settings.Wl_Settings_Node):
         self.label_connection_style = QLabel(self.tr('Connection style:'), self)
         self.combo_box_connection_style = wl_boxes.Wl_Combo_Box_Enums(self, enums = MATPLOTLIB_CONNECTION_STYLES)
         self.label_edge_width = QLabel(self.tr('Edge width:'), self)
-        self.label_edge_width_min = QLabel(self.tr('Minimum'), self)
-        self.label_edge_width_max = QLabel(self.tr('Maximum'), self)
+
         (
-            self.double_spin_box_edge_width_min,
-            self.double_spin_box_edge_width_max
-        ) = wl_boxes.wl_spin_boxes_min_max(self, val_min = 0.1, val_max = 10, double = True)
+            self.label_edge_width_min, self.double_spin_box_edge_width_min,
+            self.label_edge_width_max, self.double_spin_box_edge_width_max
+        ) = wl_boxes.wl_spin_boxes_min_max(
+            self,
+            label_min = self.tr('Minimum'), label_max = self.tr('Maximum'),
+            val_min = 0.1, val_max = 10,
+            double = True
+        )
+
         self.label_edge_style = QLabel(self.tr('Edge style:'), self)
         self.combo_box_edge_style = wl_boxes.Wl_Combo_Box_Enums(self, enums = MATPLOTLIB_LINE_STYLES)
         self.label_edge_color = QLabel(self.tr('Edge color:'), self)

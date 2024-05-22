@@ -27,7 +27,9 @@
 - Utils: Add Stanza's Sindhi part-of-speech tagger
 - Utils: Add encoding detection - UTF-8 with BOM 
 - Utils: Add VADER's sentiment analyzers
-- Work Area: Add Collocation/Colligation Extractor - Filter results / 
+- Work Area: Add Colligation Extractor - Filter results - Node/Colligation length
+- Work Area: Add Collocation Extractor - Filter results - Node/Collocation length
+- Work Area: Add Dependency Parser - Filter results
 - Work Area: Add Profiler - Lexical Diversity - Brunét's Index / Honoré's statistic
 
 ### ✨ Improvements

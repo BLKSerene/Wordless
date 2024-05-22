@@ -44,7 +44,7 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
         self.table_ngram_generator = Wl_Table_Ngram_Generator(self)
 
         layout_results = wl_layouts.Wl_Layout()
-        layout_results.addWidget(self.table_ngram_generator.label_number_results, 0, 0)
+        layout_results.addWidget(self.table_ngram_generator.label_num_results, 0, 0)
         layout_results.addWidget(self.table_ngram_generator.button_results_filter, 0, 2)
         layout_results.addWidget(self.table_ngram_generator.button_results_search, 0, 3)
 
@@ -138,16 +138,17 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
 
         self.label_search_term_position = QLabel(self.tr('Search term position:'), self)
         (
+            self.checkbox_search_term_position_sync,
             self.label_search_term_position_min,
             self.spin_box_search_term_position_min,
             self.checkbox_search_term_position_min_no_limit,
             self.label_search_term_position_max,
             self.spin_box_search_term_position_max,
             self.checkbox_search_term_position_max_no_limit
-        ) = wl_widgets.wl_widgets_filter(
+        ) = wl_boxes.wl_spin_boxes_min_max_no_limit(
             self,
-            filter_min = 1,
-            filter_max = 100
+            val_min = 1,
+            val_max = 100
         )
 
         (
@@ -176,7 +177,8 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
         self.checkbox_search_term_position_max_no_limit.stateChanged.connect(self.search_settings_changed)
 
         layout_search_term_position = wl_layouts.Wl_Layout()
-        layout_search_term_position.addWidget(self.label_search_term_position, 0, 0, 1, 3)
+        layout_search_term_position.addWidget(self.label_search_term_position, 0, 0, 1, 2)
+        layout_search_term_position.addWidget(self.checkbox_search_term_position_sync, 0, 2)
         layout_search_term_position.addWidget(self.label_search_term_position_min, 1, 0)
         layout_search_term_position.addWidget(self.spin_box_search_term_position_min, 1, 1)
         layout_search_term_position.addWidget(self.checkbox_search_term_position_min_no_limit, 1, 2)
@@ -307,16 +309,17 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
 
         self.label_rank = QLabel(self.tr('Rank:'), self)
         (
+            self.checkbox_rank_sync,
             self.label_rank_min,
             self.spin_box_rank_min,
             self.checkbox_rank_min_no_limit,
             self.label_rank_max,
             self.spin_box_rank_max,
             self.checkbox_rank_max_no_limit
-        ) = wl_widgets.wl_widgets_filter(
+        ) = wl_boxes.wl_spin_boxes_min_max_no_limit(
             self,
-            filter_min = 1,
-            filter_max = 100000
+            val_min = 1,
+            val_max = 100000
         )
 
         self.combo_box_graph_type.currentTextChanged.connect(self.fig_settings_changed)
@@ -347,7 +350,8 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
 
         self.group_box_fig_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 1, 0, 1, 3)
 
-        self.group_box_fig_settings.layout().addWidget(self.label_rank, 2, 0, 1, 3)
+        self.group_box_fig_settings.layout().addWidget(self.label_rank, 2, 0, 1, 2)
+        self.group_box_fig_settings.layout().addWidget(self.checkbox_rank_sync, 2, 2)
         self.group_box_fig_settings.layout().addWidget(self.label_rank_min, 3, 0)
         self.group_box_fig_settings.layout().addWidget(self.spin_box_rank_min, 3, 1)
         self.group_box_fig_settings.layout().addWidget(self.checkbox_rank_min_no_limit, 3, 2)
@@ -555,7 +559,7 @@ class Wl_Table_Ngram_Generator(wl_tables.Wl_Table_Data_Filter_Search):
             enable_sorting = True
         )
 
-    @wl_misc.log_timing
+    @wl_misc.log_time
     def generate_table(self):
         if wl_checks_work_area.check_search_terms(
             self.main,
@@ -693,7 +697,7 @@ class Wl_Table_Ngram_Generator(wl_tables.Wl_Table_Data_Filter_Search):
             finally:
                 wl_checks_work_area.check_err_table(self.main, err_msg)
 
-    @wl_misc.log_timing
+    @wl_misc.log_time
     def generate_fig(self):
         if wl_checks_work_area.check_search_terms(
             self.main,
