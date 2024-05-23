@@ -122,26 +122,32 @@ def check_search_terms(search_settings, search_enabled):
     return search_terms
 
 def check_search_settings(token_settings, search_settings):
-    search_settings = copy.deepcopy(search_settings)
+    settings = copy.deepcopy(search_settings)
 
     # Search Settings
-    if search_settings['match_without_tags']:
-        search_settings['match_tags'] = False
-    elif search_settings['match_tags']:
-        search_settings['match_without_tags'] = False
+    if settings['match_without_tags']:
+        settings['match_tags'] = False
+    elif settings['match_tags']:
+        settings['match_without_tags'] = False
 
         if not token_settings['ignore_tags'] and not token_settings['use_tags']:
-            search_settings['match_inflected_forms'] = False
+            settings['match_inflected_forms'] = False
+
+    # Match dependency relations
+    if 'match_dependency_relations' in settings and settings['match_dependency_relations']:
+        settings['match_inflected_forms'] = False
+        settings['match_without_tags'] = False
+        settings['match_tags'] = False
 
     # Token Settings
     if token_settings['ignore_tags'] or token_settings['use_tags']:
-        search_settings['match_without_tags'] = False
-        search_settings['match_tags'] = False
+        settings['match_without_tags'] = False
+        settings['match_tags'] = False
 
         if token_settings['use_tags']:
-            search_settings['match_inflected_forms'] = False
+            settings['match_inflected_forms'] = False
 
-    return search_settings
+    return settings
 
 def match_tokens(
     main, search_terms, tokens,
@@ -149,12 +155,6 @@ def match_tokens(
 ):
     search_terms = wl_texts.display_texts_to_tokens(main, search_terms, lang)
     search_results = set()
-
-    # Save lemmas
-    if tokens:
-        if settings['match_inflected_forms']:
-            for i, token in enumerate(wl_lemmatization.wl_lemmatize(main, tokens, lang)):
-                tokens[i] = token
 
     # Process tokens
     tokens_search = copy.deepcopy(tokens)
@@ -176,26 +176,38 @@ def match_tokens(
         else:
             search_terms_regex = [re.escape(search_term.display_text()) for search_term in search_terms]
 
-        for search_term in search_terms_regex:
-            for token, token_search in zip(tokens, tokens_search):
-                if re_match(search_term, token_search.display_text(), flags = re_flags):
-                    search_results.add(token)
-
-        # Match inflected forms of search terms and search results
-        if settings['match_inflected_forms']:
-            lemmas_search = wl_texts.get_token_properties(tokens_search, 'lemma')
-            lemmas_matched = wl_texts.get_token_properties(
-                wl_lemmatization.wl_lemmatize(main, {*search_terms, *search_results}, lang),
-                'lemma'
+        # Match dependency relations
+        if settings['match_dependency_relations']:
+            dependency_relations = wl_texts.to_tokens(
+                wl_texts.get_token_properties(tokens_search, 'dependency_relation'),
+                lang = lang
             )
 
-            for lemma_matched in set(lemmas_matched):
-                # Always match literal strings
-                lemma_matched = re.escape(lemma_matched)
-
-                for token, lemma_search in set(zip(tokens, lemmas_search)):
-                    if re_match(lemma_matched, lemma_search, flags = re_flags):
+            for search_term in search_terms_regex:
+                for dependency_relation in dependency_relations:
+                    if re_match(search_term, dependency_relation.display_text(), flags = re_flags):
+                        search_results.add(dependency_relation)
+        else:
+            for search_term in search_terms_regex:
+                for token, token_search in zip(tokens, tokens_search):
+                    if re_match(search_term, token_search.display_text(), flags = re_flags):
                         search_results.add(token)
+
+            # Match inflected forms of search terms and search results
+            if settings['match_inflected_forms']:
+                lemmas_search = wl_texts.get_token_properties(tokens_search, 'lemma')
+                lemmas_matched = wl_texts.get_token_properties(
+                    wl_lemmatization.wl_lemmatize(main, {*search_terms, *search_results}, lang),
+                    'lemma'
+                )
+
+                for lemma_matched in set(lemmas_matched):
+                    # Always match literal strings
+                    lemma_matched = re.escape(lemma_matched)
+
+                    for token, lemma_search in set(zip(tokens, lemmas_search)):
+                        if re_match(lemma_matched, lemma_search, flags = re_flags):
+                            search_results.add(token)
 
     return search_results
 
@@ -213,12 +225,6 @@ def match_ngrams(
     search_term_tokens = wl_texts.display_texts_to_tokens(main, search_term_tokens, lang)
 
     tokens_matched = {search_term_token: set() for search_term_token in search_term_tokens}
-
-    # Save lemmas
-    if tokens:
-        if settings['match_inflected_forms']:
-            for i, token in enumerate(wl_lemmatization.wl_lemmatize(main, tokens, lang)):
-                tokens[i] = token
 
     # Process tokens
     tokens_search = copy.deepcopy(tokens)

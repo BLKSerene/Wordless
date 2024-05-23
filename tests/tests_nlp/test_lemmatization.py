@@ -325,6 +325,37 @@ def wl_test_lemmatize_models(lang, lemmatizer, test_sentence, tokens, results, l
 
     assert lemmas_lemmatized == lemmas_orig
 
+def test_lemmatize_misc():
+    # Unsupported languages
+    wl_lemmatization.wl_lemmatize(
+        main,
+        inputs = 'test',
+        lang = 'other'
+    )
+
+    wl_lemmatization.wl_lemmatize(
+        main,
+        inputs = [wl_texts.Wl_Token('test', lang = 'other')],
+        lang = 'other'
+    )
+
+    # NLTK - WordNet lemmatizer
+    wl_lemmatization.wl_lemmatize(
+        main,
+        inputs = 'happy John happily take a',
+        lang = 'eng_us',
+        lemmatizer = 'nltk_wordnet'
+    )
+
+    wl_lemmatization.wl_lemmatize(
+        main,
+        inputs = wl_texts.to_tokens(['happy', 'John', 'happily', 'take', 'a'], lang = 'eng_us'),
+        lang = 'eng_us',
+        lemmatizer = 'nltk_wordnet'
+    )
+
 if __name__ == '__main__':
     for lang, lemmatizer in test_lemmatizers_local:
         test_lemmatize(lang, lemmatizer)
+
+    test_lemmatize_misc()

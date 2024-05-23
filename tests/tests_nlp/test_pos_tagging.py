@@ -144,14 +144,16 @@ def wl_test_pos_tag_models(lang, pos_tagger, test_sentence, tokens, results, res
         main,
         inputs = tokens,
         lang = lang,
-        pos_tagger = pos_tagger
+        pos_tagger = pos_tagger,
+        force = True
     )
     tokens_tokenized_universal = wl_pos_tagging.wl_pos_tag(
         main,
         inputs = tokens,
         lang = lang,
         pos_tagger = pos_tagger,
-        tagset = 'universal'
+        tagset = 'universal',
+        force = True
     )
 
     tokens_tags_tokenized = [(str(token), token.tag) for token in tokens_tokenized]
@@ -199,6 +201,20 @@ def wl_test_pos_tag_models(lang, pos_tagger, test_sentence, tokens, results, res
 
     assert tags_tagged == tags_orig
 
+def test_pos_tag_misc():
+    # Default tagset with universal tagset conversion
+    main.settings_custom['pos_tagging']['pos_tagger_settings']['to_universal_pos_tags'] = True
+
+    wl_pos_tagging.wl_pos_tag(
+        main,
+        inputs = getattr(wl_test_lang_examples, 'SENTENCE_ENG_US'),
+        lang = 'eng_us'
+    )
+
+    main.settings_custom['pos_tagging']['pos_tagger_settings']['to_universal_pos_tags'] = False
+
 if __name__ == '__main__':
     for lang, pos_tagger in test_pos_taggers_local:
         test_pos_tag(lang, pos_tagger)
+
+    test_pos_tag_misc()

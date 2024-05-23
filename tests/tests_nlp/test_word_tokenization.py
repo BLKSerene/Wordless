@@ -339,14 +339,16 @@ def test_word_tokenize(lang, word_tokenizer):
 
 def test_char_tokenizers():
     for lang, char_tokenizer in zip(
-        ('zho_cn', 'jpn'),
-        ('wordless_zho_char', 'wordless_jpn_kanji')
+        ('zho_cn', 'zho_tw', 'jpn'),
+        ('wordless_zho_char', 'wordless_zho_char', 'wordless_jpn_kanji')
     ):
         match lang:
             case 'zho_cn':
-                sentence = '英国全称是United Kingdom of Great Britain，由四个部分组成：England、Scotland、Wales和Northern Ireland'
+                sentence = wl_test_lang_examples.SENTENCE_ZHO_CN_CHAR_TOKENIZER + 'test'
+            case 'zho_tw':
+                sentence = wl_test_lang_examples.SENTENCE_ZHO_TW_CHAR_TOKENIZER + 'test'
             case 'jpn':
-                sentence = '''The meaning of "天気がいいから、散歩しましょう。" is: The weather is good so let's take a walk.'''
+                sentence = wl_test_lang_examples.SENTENCE_JPN_KANJI_TOKENIZER + '\nあ阿、a阿、sあ、あs。\nあ\na'
 
         tokens = wl_word_tokenization.wl_word_tokenize_flat(
             main,
@@ -361,9 +363,11 @@ def test_char_tokenizers():
 
         match lang:
             case 'zho_cn':
-                assert tokens == ['英', '国', '全', '称', '是', 'United', 'Kingdom', 'of', 'Great', 'Britain', '，', '由', '四', '个', '部', '分', '组', '成', '：', 'England', '、', 'Scotland', '、', 'Wales', '和', 'Northern', 'Ireland']
+                assert tokens == ['英', '国', '的', '全', '称', '是', 'United', 'Kingdom', 'of', 'Great', 'Britain', '，', '由', '四', '个', '部', '分', '组', '成', '：', 'England', '、', 'Scotland', '、', 'Wales', '和', 'Northern', 'Ireland', '。', 'test']
+            case 'zho_tw':
+                assert tokens == ['英', '國', '的', '全', '稱', '是', 'United', 'Kingdom', 'of', 'Great', 'Britain', '，', '由', '四', '個', '部', '分', '組', '成', '：', 'England', '、', 'Scotland', '、', 'Wales', '和', 'Northern', 'Ireland', '。', 'test']
             case 'jpn':
-                assert tokens == ['The', 'meaning', 'of', '``', '天', '気', 'が', 'いい', 'から', '、', '散', '歩', 'し', 'ましょう', '。', '``', 'is', ':', 'The', 'weather', 'is', 'good', 'so', 'let', "'s", 'take', 'a', 'walk', '.']
+                assert tokens == ['The', 'sentence', '``', '天', '気', 'が', 'いい', 'から', '、', '散', '歩', 'し', 'ましょう', '。', '``', 'means', ':', 'The', 'weather', 'is', 'good', 'so', 'let', "'s", 'take', 'a', 'walk', '.', 'あ', '阿', '、', 'a', '阿', '、', 's', 'あ', '、', 'あ', 's', '。', 'あ', 'a']
 
 if __name__ == '__main__':
     for lang, word_tokenizer in test_word_tokenizers_local:

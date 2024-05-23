@@ -88,6 +88,15 @@ def wl_test_sentiment_analyze_models(lang, sentiment_analyzer, test_sentence, to
 
     assert sentiment_scores_tagged == sentiment_scores_tokenized
 
+def test_sentiment_analyze_misc():
+    assert not wl_sentiment_analysis.wl_sentiment_analyze(
+        main,
+        inputs = '',
+        lang = 'eng_us'
+    )
+
 if __name__ == '__main__':
     for lang, sentiment_analyzer in test_sentiment_analyzers:
         test_sentiment_analyze(lang, sentiment_analyzer)
+
+    test_sentiment_analyze_misc()

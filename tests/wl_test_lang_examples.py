@@ -426,6 +426,11 @@ SENTENCE_YOR = 'Èdè Yorùbá Ni èdè tí ó ṣàkójọ pọ̀ gbogbo kú o�
 SENTENCE_ZUL = 'Zulu /ˈzuːluː/, noma isiZulu wulimi lwabantu base Ningizimu neAfrika abayingxenye yamaNguni.'
 SENTENCE_OTHER = SENTENCE_ENG_US
 
+SENTENCE_ZHO_CN_CHAR_TOKENIZER = '英国的全称是United Kingdom of Great Britain，由四个部分组成：England、Scotland、Wales和Northern Ireland。'
+SENTENCE_ZHO_TW_CHAR_TOKENIZER = '英國的全稱是United Kingdom of Great Britain，由四個部分組成：England、Scotland、Wales和Northern Ireland。'
+SENTENCE_JPN_KANJI_TOKENIZER = '''The sentence "天気がいいから、散歩しましょう。" means: The weather is good so let's take a walk.'''
+SENTENCE_BOD_WORD_DETOKENIZER = 'Test this Tibetan string: དུང་དང་འོ་མར་འགྲན་པའི་ལྷག་བསམ་མཐུ། །དམན་ཡང་དཀར་པོའི་བྱས་འབྲས་ཅུང་ཟད་ཅིག །བློ་དང་འདུན་པ་བཟང་བའི་རང་རིགས་ཀུན། །རྒྱལ་ཁའི་འཕྲིན་བཟང་ལས་དོན་འགྲུབ་ཕྱིར་འབད།།. Does detokenization work as expected?'
+
 TOKENS_LONG = [str(i) for i in range(101) for j in range(10)]
 
 def check_lang_examples(main):

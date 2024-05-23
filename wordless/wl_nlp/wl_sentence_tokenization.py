@@ -28,7 +28,7 @@ import pythainlp
 import underthesea
 
 from wordless.wl_nlp import wl_nlp_utils, wl_texts
-from wordless.wl_utils import wl_conversion, wl_misc
+from wordless.wl_utils import wl_conversion
 
 LANG_TEXTS_NLTK = {
     'ces': 'czech',
@@ -311,11 +311,5 @@ def wl_sentence_seg_tokenize_tokens(main, tokens, terminators = SENTENCE_SEG_TER
 
     for sentence_seg in re.findall(fr'.+?[{terminators}]+{REPLACEMENT_CHAR}|.+?$', text.strip()):
         sentence_segs.append(wl_texts.clean_texts(sentence_seg.split(REPLACEMENT_CHAR)))
-
-    # If lengths do not match (only possible in edge cases), return all tokens as 1 sentence segment
-    if list(wl_misc.flatten_list(sentence_segs)) != tokens:
-        sentence_segs = [tokens]
-
-        print('[Warning] Lengths do not match!')
 
     return sentence_segs

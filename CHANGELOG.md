@@ -30,6 +30,7 @@
 - Work Area: Add Colligation Extractor - Filter results - Node/Colligation length
 - Work Area: Add Collocation Extractor - Filter results - Node/Collocation length
 - Work Area: Add Dependency Parser - Filter results
+- Work Area: Add Dependency Parser - Search Settings - Match dependency relations
 - Work Area: Add Profiler - Lexical Diversity - Brunét's Index / Honoré's statistic
 
 ### ✨ Improvements
