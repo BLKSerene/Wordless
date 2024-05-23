@@ -910,7 +910,8 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
 
                 text = wl_token_processing.wl_process_tokens_ngram_generator(
                     self.main, file['text'],
-                    token_settings = settings['token_settings']
+                    token_settings = settings['token_settings'],
+                    search_settings = settings['search_settings']
                 )
 
                 tokens = text.get_tokens_flat()
@@ -934,7 +935,7 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                     self.main, tokens,
                     lang = text.lang,
                     token_settings = settings['token_settings'],
-                    context_settings = settings['context_settings']
+                    context_settings = settings['search_settings']['context_settings']
                 )
 
                 if search_terms:
@@ -994,7 +995,7 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                             for j, collocate in enumerate(reversed(tokens_left)):
                                 if wl_matching.check_context(
                                     i, tokens,
-                                    context_settings = settings['context_settings'],
+                                    context_settings = settings['search_settings']['context_settings'],
                                     search_terms_incl = search_terms_incl,
                                     search_terms_excl = search_terms_excl
                                 ):
@@ -1008,7 +1009,7 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                             for j, collocate in enumerate(tokens_right):
                                 if wl_matching.check_context(
                                     i, tokens,
-                                    context_settings = settings['context_settings'],
+                                    context_settings = settings['search_settings']['context_settings'],
                                     search_terms_incl = search_terms_incl,
                                     search_terms_excl = search_terms_excl
                                 ):
@@ -1031,7 +1032,7 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                             for j, collocate in enumerate(reversed(tokens_left)):
                                 if wl_matching.check_context(
                                     i, tokens,
-                                    context_settings = settings['context_settings'],
+                                    context_settings = settings['search_settings']['context_settings'],
                                     search_terms_incl = search_terms_incl,
                                     search_terms_excl = search_terms_excl
                                 ):
@@ -1054,7 +1055,7 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                             for j, collocate in enumerate(tokens_right):
                                 if wl_matching.check_context(
                                     i, tokens,
-                                    context_settings = settings['context_settings'],
+                                    context_settings = settings['search_settings']['context_settings'],
                                     search_terms_incl = search_terms_incl,
                                     search_terms_excl = search_terms_excl
                                 ):

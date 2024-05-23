@@ -669,7 +669,8 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
 
                 text = wl_token_processing.wl_process_tokens_concordancer(
                     self.main, file['text'],
-                    token_settings = settings['token_settings']
+                    token_settings = settings['token_settings'],
+                    search_settings = settings['search_settings']
                 )
 
                 tokens = text.get_tokens_flat()
@@ -693,7 +694,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                     self.main, tokens,
                     lang = text.lang,
                     token_settings = settings['token_settings'],
-                    context_settings = settings['context_settings']
+                    context_settings = settings['search_settings']['context_settings']
                 )
 
                 if search_terms:
@@ -715,7 +716,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                             ngram in search_terms
                             and wl_matching.check_context(
                                 i, tokens,
-                                context_settings = settings['context_settings'],
+                                context_settings = settings['search_settings']['context_settings'],
                                 search_terms_incl = search_terms_incl,
                                 search_terms_excl = search_terms_excl
                             )
@@ -919,7 +920,8 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
             for file in files:
                 text = wl_token_processing.wl_process_tokens_concordancer(
                     self.main, file['text'],
-                    token_settings = settings['token_settings']
+                    token_settings = settings['token_settings'],
+                    search_settings = settings['search_settings']
                 )
 
                 search_terms_file = wl_matching.match_search_terms_ngrams(

@@ -104,9 +104,18 @@ def wl_word_detokenize(main, tokens, lang):
                     text_temp.clear()
 
                 # See: https://w3c.github.io/tlreq/#whitespace
-                if token[0] == '།' and text and text[-1] in ['།', 'ཀ', 'ག']:
+                if (
+                    token[0] == '།'
+                    and text
+                    and text[-1] in ['།', 'ཀ', 'ག']
+                ):
                     text += ' ' + token
-                elif token[0] != '།' and text and text[-1] in ['།', '༎'] and text[-3] not in ['།', 'ཀ', 'ག']:
+                elif (
+                    token[0] != '།'
+                    and text
+                    and text[-1] in ['།', '༎']
+                    and (len(text) < 3 or text[-3] not in ['།', 'ཀ', 'ག'])
+                ):
                     text += ' ' + token
                 else:
                     text += token

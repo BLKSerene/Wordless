@@ -19,7 +19,7 @@
 import re
 
 from tests import wl_test_init
-from wordless.wl_nlp import wl_matching, wl_texts
+from wordless.wl_nlp import wl_lemmatization, wl_matching, wl_texts
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
@@ -140,7 +140,8 @@ def init_search_settings(
     multi_search_mode = False, search_term = '', search_terms = None,
     match_case = False, match_whole_words = False, match_inflected_forms = False,
     use_regex = False,
-    match_without_tags = False, match_tags = False
+    match_without_tags = False, match_tags = False,
+    match_dependency_relations = False
 ):
     search_terms = search_terms or []
 
@@ -154,7 +155,9 @@ def init_search_settings(
         'match_inflected_forms': match_inflected_forms,
         'use_regex': use_regex,
         'match_without_tags': match_without_tags,
-        'match_tags': match_tags
+        'match_tags': match_tags,
+
+        'match_dependency_relations': match_dependency_relations
     }
 
 def test_check_search_terms():
@@ -177,21 +180,24 @@ def test_check_search_settings():
     SEARCH_SETTINGS_3 = init_search_settings(match_inflected_forms = True)
     SEARCH_SETTINGS_4 = init_search_settings(match_without_tags = True)
     SEARCH_SETTINGS_5 = init_search_settings(match_tags = True)
-    SEARCH_SETTINGS_6 = init_search_settings()
+    SEARCH_SETTINGS_6 = init_search_settings(match_dependency_relations = True)
+    SEARCH_SETTINGS_7 = init_search_settings()
 
     assert wl_matching.check_search_settings(TOKEN_SETTINGS_1, SEARCH_SETTINGS_1) == SEARCH_SETTINGS_3
     assert wl_matching.check_search_settings(TOKEN_SETTINGS_1, SEARCH_SETTINGS_2) == SEARCH_SETTINGS_3
     assert wl_matching.check_search_settings(TOKEN_SETTINGS_1, SEARCH_SETTINGS_3) == SEARCH_SETTINGS_3
-    assert wl_matching.check_search_settings(TOKEN_SETTINGS_1, SEARCH_SETTINGS_4) == SEARCH_SETTINGS_6
-    assert wl_matching.check_search_settings(TOKEN_SETTINGS_1, SEARCH_SETTINGS_5) == SEARCH_SETTINGS_6
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_1, SEARCH_SETTINGS_4) == SEARCH_SETTINGS_7
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_1, SEARCH_SETTINGS_5) == SEARCH_SETTINGS_7
     assert wl_matching.check_search_settings(TOKEN_SETTINGS_1, SEARCH_SETTINGS_6) == SEARCH_SETTINGS_6
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_1, SEARCH_SETTINGS_7) == SEARCH_SETTINGS_7
 
-    assert wl_matching.check_search_settings(TOKEN_SETTINGS_2, SEARCH_SETTINGS_1) == SEARCH_SETTINGS_6
-    assert wl_matching.check_search_settings(TOKEN_SETTINGS_2, SEARCH_SETTINGS_2) == SEARCH_SETTINGS_6
-    assert wl_matching.check_search_settings(TOKEN_SETTINGS_2, SEARCH_SETTINGS_3) == SEARCH_SETTINGS_6
-    assert wl_matching.check_search_settings(TOKEN_SETTINGS_2, SEARCH_SETTINGS_4) == SEARCH_SETTINGS_6
-    assert wl_matching.check_search_settings(TOKEN_SETTINGS_2, SEARCH_SETTINGS_5) == SEARCH_SETTINGS_6
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_2, SEARCH_SETTINGS_1) == SEARCH_SETTINGS_7
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_2, SEARCH_SETTINGS_2) == SEARCH_SETTINGS_7
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_2, SEARCH_SETTINGS_3) == SEARCH_SETTINGS_7
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_2, SEARCH_SETTINGS_4) == SEARCH_SETTINGS_7
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_2, SEARCH_SETTINGS_5) == SEARCH_SETTINGS_7
     assert wl_matching.check_search_settings(TOKEN_SETTINGS_2, SEARCH_SETTINGS_6) == SEARCH_SETTINGS_6
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_2, SEARCH_SETTINGS_7) == SEARCH_SETTINGS_7
 
     assert wl_matching.check_search_settings(TOKEN_SETTINGS_3, SEARCH_SETTINGS_1) == SEARCH_SETTINGS_1
     assert wl_matching.check_search_settings(TOKEN_SETTINGS_3, SEARCH_SETTINGS_2) == SEARCH_SETTINGS_5
@@ -199,6 +205,7 @@ def test_check_search_settings():
     assert wl_matching.check_search_settings(TOKEN_SETTINGS_3, SEARCH_SETTINGS_4) == SEARCH_SETTINGS_4
     assert wl_matching.check_search_settings(TOKEN_SETTINGS_3, SEARCH_SETTINGS_5) == SEARCH_SETTINGS_5
     assert wl_matching.check_search_settings(TOKEN_SETTINGS_3, SEARCH_SETTINGS_6) == SEARCH_SETTINGS_6
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_3, SEARCH_SETTINGS_7) == SEARCH_SETTINGS_7
 
 def compare_tokens_matched(tokens_matched, tokens_expected):
     tokens_matched = [token.display_text() for token in tokens_matched]
@@ -256,10 +263,12 @@ def test_match_tokens():
         settings = init_search_settings(match_whole_words = True)
     ), ['take'])
 
+    tokens = wl_texts.to_tokens(['take', 'takes', 'took', 'taken', 'taking', 'test'], lang = 'eng_us')
+    tokens = wl_lemmatization.wl_lemmatize(main, tokens, lang = 'eng_us')
     compare_tokens_matched(wl_matching.match_tokens(
         main,
         search_terms = ['takes'],
-        tokens = wl_texts.to_tokens(['take', 'takes', 'took', 'taken', 'taking', 'test'], lang = 'eng_us'),
+        tokens = tokens,
         lang = 'eng_us',
         settings = init_search_settings(match_inflected_forms = True)
     ), ['take', 'takes', 'took', 'taken'])
@@ -296,6 +305,18 @@ def test_match_tokens():
         settings = init_search_settings(match_whole_words = True, match_tags = True)
     ), ['takes_NN', 'took_NN'])
 
+    compare_tokens_matched(wl_matching.match_tokens(
+        main,
+        search_terms = ['aux'],
+        tokens = wl_texts.to_tokens(
+            ['take', 'takes', 'took', 'taken', 'test_NN'],
+            lang = 'eng_us',
+            dependency_relations = ['ROOT', 'nsubj', 'advmod', 'aux', 'auxpass']
+        ),
+        lang = 'eng_us',
+        settings = init_search_settings(match_dependency_relations = True)
+    ), ['aux', 'auxpass'])
+
 def test_match_ngrams():
     compare_ngrams_matched(wl_matching.match_ngrams(
         main,
@@ -325,10 +346,12 @@ def test_match_ngrams():
         settings = init_search_settings(match_whole_words = True)
     ), [('take', 'walk')])
 
+    tokens = wl_texts.to_tokens(['take', 'takes', 'walk', 'walked', 'test'], lang = 'eng_us')
+    tokens = wl_lemmatization.wl_lemmatize(main, tokens, lang = 'eng_us')
     compare_ngrams_matched(wl_matching.match_ngrams(
         main,
-        search_terms = ['took walks'],
-        tokens = wl_texts.to_tokens(['take', 'takes', 'walk', 'walked', 'test'], lang = 'eng_us'),
+        search_terms = ['take walk'],
+        tokens = tokens,
         lang = 'eng_us',
         settings = init_search_settings(match_inflected_forms = True)
     ), [('take', 'walk'), ('take', 'walked'), ('takes', 'walk'), ('takes', 'walked')])
@@ -456,8 +479,8 @@ def test_check_context():
         i = 0,
         tokens = ['test'] * 5 + ['take', 'walk'],
         context_settings = init_context_settings(incl = False, excl = False),
-        search_terms_incl = set(),
-        search_terms_excl = set()
+        search_terms_incl = {},
+        search_terms_excl = {}
     )
     assert wl_matching.check_context(
         i = 0,
@@ -471,30 +494,44 @@ def test_check_context():
         i = 0,
         tokens = ['test'] * 5 + ['take', 'walk'],
         context_settings = init_context_settings(incl = True, incl_search_term = 'test'),
-        search_terms_incl = {('take', 'walk')},
-        search_terms_excl = set()
+        search_terms_incl = {('take', 'walk'), ('test', 'test')},
+        search_terms_excl = {}
     )
     assert not wl_matching.check_context(
         i = 0,
         tokens = ['test'] * 5 + ['take', 'walk'],
         context_settings = init_context_settings(incl = True, incl_search_term = 'test'),
         search_terms_incl = {('take', 'test')},
-        search_terms_excl = set()
+        search_terms_excl = {}
+    )
+    assert not wl_matching.check_context(
+        i = 0,
+        tokens = ['test'] * 5 + ['take', 'walk'],
+        context_settings = init_context_settings(incl = True, incl_search_term = 'test'),
+        search_terms_incl = {},
+        search_terms_excl = {}
     )
 
     assert wl_matching.check_context(
         i = 0,
         tokens = ['test'] * 5 + ['take', 'walk'],
         context_settings = init_context_settings(excl = True, excl_search_term = 'test'),
-        search_terms_incl = set(),
+        search_terms_incl = {},
         search_terms_excl = {('take', 'test')}
     )
     assert not wl_matching.check_context(
         i = 0,
         tokens = ['test'] * 5 + ['take', 'walk'],
         context_settings = init_context_settings(excl = True, excl_search_term = 'test'),
-        search_terms_incl = set(),
-        search_terms_excl = {('take', 'walk')}
+        search_terms_incl = {},
+        search_terms_excl = {('take', 'walk'), ('test', 'test')}
+    )
+    assert wl_matching.check_context(
+        i = 0,
+        tokens = ['test'] * 5 + ['take', 'walk'],
+        context_settings = init_context_settings(excl = True, excl_search_term = 'test'),
+        search_terms_incl = {},
+        search_terms_excl = {}
     )
 
     assert wl_matching.check_context(
@@ -516,6 +553,16 @@ def test_check_context():
         ),
         search_terms_incl = {('take', 'walk')},
         search_terms_excl = {('take', 'walk')}
+    )
+    assert not wl_matching.check_context(
+        i = 0,
+        tokens = ['test'] * 5 + ['take', 'walk'],
+        context_settings = init_context_settings(
+            incl = True, incl_search_term = 'test',
+            excl = True, excl_search_term = 'test'
+        ),
+        search_terms_incl = {},
+        search_terms_excl = {}
     )
 
 if __name__ == '__main__':

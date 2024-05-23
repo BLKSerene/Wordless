@@ -38,14 +38,14 @@ def wl_sentiment_analyze(main, inputs, lang, sentiment_analyzer = 'default'):
     if sentiment_analyzer == 'default':
         sentiment_analyzer = main.settings_custom['sentiment_analysis']['sentiment_analyzer_settings'][lang]
 
-    wl_nlp_utils.init_sentiment_analyzers(
-        main,
-        lang = lang,
-        sentiment_analyzer = sentiment_analyzer,
-        tokenized = not isinstance(inputs[0], str)
-    )
-
     if inputs:
+        wl_nlp_utils.init_sentiment_analyzers(
+            main,
+            lang = lang,
+            sentiment_analyzer = sentiment_analyzer,
+            tokenized = not isinstance(inputs[0], str)
+        )
+
         if isinstance(inputs[0], str):
             sentiment_scores = wl_sentiment_analyze_text(main, inputs, lang, sentiment_analyzer)
         else:
@@ -54,11 +54,6 @@ def wl_sentiment_analyze(main, inputs, lang, sentiment_analyzer = 'default'):
         sentiment_scores = []
 
     return sentiment_scores
-
-# A fake word tokenizer that just splits text by whitespace
-class Dostoevsky_Tokenizer:
-    def split(self, text, lemmatize = False):
-        return [(token.strip(), None) for token in text.split()]
 
 def wl_sentiment_analyze_text(main, inputs, lang, sentiment_analyzer):
     sentiment_scores = []

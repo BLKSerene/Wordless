@@ -354,6 +354,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                 text = wl_token_processing.wl_process_tokens_concordancer(
                     self.main, file['text'],
                     token_settings = settings['token_settings'],
+                    search_settings = settings['search_settings'],
                     preserve_blank_lines = True
                 )
 
@@ -384,7 +385,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                         self.main, tokens,
                         lang = text.lang,
                         token_settings = settings['token_settings'],
-                        context_settings = settings['context_settings']
+                        context_settings = settings['search_settings']['context_settings']
                     )
 
                     if search_terms:
@@ -400,7 +401,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                                 ngram in search_terms
                                 and wl_matching.check_context(
                                     j, tokens,
-                                    context_settings = settings['context_settings'],
+                                    context_settings = settings['search_settings']['context_settings'],
                                     search_terms_incl = search_terms_incl,
                                     search_terms_excl = search_terms_excl
                                 )
