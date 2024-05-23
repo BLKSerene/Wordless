@@ -179,13 +179,6 @@ def clean_texts(texts):
         if (text_clean := text.strip())
     ]
 
-def clean_tokens(tokens):
-    texts_clean = clean_texts(tokens)
-
-    set_token_texts(tokens, texts_clean)
-
-    return tokens
-
 # Texts
 class Wl_Text:
     def __init__(self, main, file):

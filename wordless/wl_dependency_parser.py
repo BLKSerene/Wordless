@@ -25,7 +25,7 @@ import traceback
 import numpy
 
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
-from PyQt5.QtWidgets import QGroupBox
+from PyQt5.QtWidgets import QCheckBox, QGroupBox
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
@@ -104,6 +104,7 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
             self,
             tab = 'dependency_parser'
         )
+        self.checkbox_match_dependency_relations = QCheckBox(self.tr('Match dependency relations'), self)
 
         (
             self.label_context_settings,
@@ -125,6 +126,7 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
 
         self.checkbox_match_without_tags.stateChanged.connect(self.search_settings_changed)
         self.checkbox_match_tags.stateChanged.connect(self.search_settings_changed)
+        self.checkbox_match_dependency_relations.stateChanged.connect(self.search_settings_changed)
 
         layout_context_settings = wl_layouts.Wl_Layout()
         layout_context_settings.addWidget(self.label_context_settings, 0, 0)
@@ -144,10 +146,11 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
         self.group_box_search_settings.layout().addWidget(self.checkbox_use_regex, 6, 0, 1, 2)
         self.group_box_search_settings.layout().addWidget(self.checkbox_match_without_tags, 7, 0, 1, 2)
         self.group_box_search_settings.layout().addWidget(self.checkbox_match_tags, 8, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_match_dependency_relations, 9, 0, 1, 2)
 
-        self.group_box_search_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 9, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 10, 0, 1, 2)
 
-        self.group_box_search_settings.layout().addLayout(layout_context_settings, 10, 0, 1, 2)
+        self.group_box_search_settings.layout().addLayout(layout_context_settings, 11, 0, 1, 2)
 
         # Table Settings
         self.group_box_table_settings = QGroupBox(self.tr('Table Settings'), self)
@@ -233,6 +236,7 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
         self.checkbox_use_regex.setChecked(settings['search_settings']['use_regex'])
         self.checkbox_match_without_tags.setChecked(settings['search_settings']['match_without_tags'])
         self.checkbox_match_tags.setChecked(settings['search_settings']['match_tags'])
+        self.checkbox_match_dependency_relations.setChecked(settings['search_settings']['match_dependency_relations'])
 
         # Context Settings
         if defaults:
@@ -284,6 +288,15 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
         settings['use_regex'] = self.checkbox_use_regex.isChecked()
         settings['match_without_tags'] = self.checkbox_match_without_tags.isChecked()
         settings['match_tags'] = self.checkbox_match_tags.isChecked()
+        settings['match_dependency_relations'] = self.checkbox_match_dependency_relations.isChecked()
+
+        # Match dependency relations
+        if settings['match_dependency_relations']:
+            self.checkbox_match_inflected_forms.setEnabled(False)
+            self.checkbox_match_without_tags.setEnabled(False)
+            self.checkbox_match_tags.setEnabled(False)
+        else:
+            self.checkbox_match_tags.token_settings_changed()
 
     def table_settings_changed(self):
         settings = self.main.settings_custom['dependency_parser']['table_settings']
@@ -482,7 +495,8 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
             for file in self.main.wl_file_area.get_selected_files():
                 text = wl_token_processing.wl_process_tokens_dependency_parser(
                     self.main, file['text'],
-                    token_settings = settings['token_settings']
+                    token_settings = settings['token_settings'],
+                    search_settings = settings['search_settings']
                 )
 
                 tokens = text.get_tokens_flat()
@@ -502,7 +516,7 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                     self.main, tokens,
                     lang = text.lang,
                     token_settings = settings['token_settings'],
-                    context_settings = settings['context_settings']
+                    context_settings = settings['search_settings']['context_settings']
                 )
 
                 len_sentences = len(offsets_sentences)
@@ -515,86 +529,100 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                     for sentence in para:
                         sentence = list(wl_misc.flatten_list(sentence))
 
-                        if any((token in search_terms for token in sentence)):
-                            dependencies = [
-                                (token, token.head, token.dependency_relation)
-                                for token in sentence
-                            ]
+                        dependencies = [
+                            (token, token.head, token.dependency_relation)
+                            for token in sentence
+                        ]
 
-                            for i, (token, head, dependency_relation) in enumerate(dependencies):
-                                j = i_token + i
+                        for i, (token, head, dependency_relation) in enumerate(dependencies):
+                            j = i_token + i
 
-                                if (
-                                    (token in search_terms or head in search_terms)
+                            if (
+                                (
+                                    (
+                                        not settings['search_settings']['match_dependency_relations']
+                                        and (token in search_terms or head in search_terms)
+                                    ) or (
+                                        settings['search_settings']['match_dependency_relations']
+                                        and dependency_relation in wl_texts.to_display_texts(search_terms)
+                                    )
+                                ) and (
+                                    # Ignore cases where heads are punctuation marks
+                                    token.head is not None
                                     and wl_matching.check_context(
                                         j, tokens,
-                                        context_settings = settings['context_settings'],
+                                        context_settings = settings['search_settings']['context_settings'],
                                         search_terms_incl = search_terms_incl,
                                         search_terms_excl = search_terms_excl
                                     )
-                                ):
-                                    results.append([])
+                                )
+                            ):
+                                results.append([])
 
-                                    # Sentence No.
-                                    no_sentence = bisect.bisect(offsets_sentences, j)
+                                # Sentence No.
+                                no_sentence = bisect.bisect(offsets_sentences, j)
 
-                                    # Sentence
-                                    sentence_tokens_raw = []
-                                    sentence_tokens_fig = []
-                                    # Calculate dependency length based on modified tokens
-                                    i_head = -1
-                                    i_dependent = -1
+                                # Sentence
+                                sentence_tokens_raw = []
+                                sentence_tokens_fig = []
+                                # Calculate dependency length based on modified tokens
+                                i_head = -1
+                                i_dependent = -1
 
-                                    # Highlight heads and dependents
-                                    for i, sentence_token in enumerate(sentence):
-                                        if sentence_token is head:
-                                            sentence_tokens_raw.append(f'''
-                                                <span style="color: {head_color}; font-weight: bold;">
-                                                    {sentence_token.display_text(punc_mark = True)}
-                                                </span>
-                                            ''')
+                                # Highlight heads and dependents
+                                for i, sentence_token in enumerate(sentence):
+                                    if sentence_token is head:
+                                        sentence_tokens_raw.append(f'''
+                                            <span style="color: {head_color}; font-weight: bold;">
+                                                {sentence_token.display_text(punc_mark = True)}
+                                            </span>
+                                        ''')
 
-                                            i_head = i
-                                        elif sentence_token is token:
-                                            sentence_tokens_raw.append(f'''
-                                                <span style="color: {dependent_color}; font-weight: bold;">
-                                                    {sentence_token.display_text(punc_mark = True)}
-                                                </span>
-                                            ''')
+                                        i_head = i
 
+                                        # Roots are both the head and the dependent
+                                        if sentence_token is token:
                                             i_dependent = i
-                                        else:
-                                            sentence_tokens_raw.append(sentence_token.display_text(punc_mark = True))
+                                    elif sentence_token is token:
+                                        sentence_tokens_raw.append(f'''
+                                            <span style="color: {dependent_color}; font-weight: bold;">
+                                                {sentence_token.display_text(punc_mark = True)}
+                                            </span>
+                                        ''')
 
-                                        sentence_tokens_fig.append(copy.deepcopy(sentence_token))
-
-                                    if settings['token_settings']['punc_marks']:
-                                        # Remove empty tokens for searching in results
-                                        sentence_tokens_search = [token for token in copy.deepcopy(sentence) if token]
-                                    # Convert trailing punctuation marks, if any, to separate tokens for searching
+                                        i_dependent = i
                                     else:
-                                        sentence_tokens_search = []
+                                        sentence_tokens_raw.append(sentence_token.display_text(punc_mark = True))
 
-                                        for sentence_token in copy.deepcopy(sentence):
-                                            sentence_tokens_search.append(sentence_token)
+                                    sentence_tokens_fig.append(copy.deepcopy(sentence_token))
 
-                                            if sentence_token.punc_mark:
-                                                sentence_tokens_search.append(wl_texts.Wl_Token(sentence_token.punc_mark, lang = sentence_token.lang))
+                                if settings['token_settings']['punc_marks']:
+                                    # Remove empty tokens for searching in results
+                                    sentence_tokens_search = [token for token in copy.deepcopy(sentence) if token]
+                                # Convert trailing punctuation marks, if any, to separate tokens for searching
+                                else:
+                                    sentence_tokens_search = []
 
-                                    # Head
-                                    results[-1].append(head)
-                                    # Dependent
-                                    results[-1].append(token)
-                                    # Dependency Relation
-                                    results[-1].append(dependency_relation)
-                                    # Dependency Length
-                                    results[-1].append(i_head - i_dependent)
-                                    # Sentence
-                                    results[-1].extend([sentence_tokens_raw, sentence_tokens_fig, sentence_tokens_search])
-                                    # Sentence No.
-                                    results[-1].extend([no_sentence, len_sentences])
-                                    # File
-                                    results[-1].append(file['name'])
+                                    for sentence_token in copy.deepcopy(sentence):
+                                        sentence_tokens_search.append(sentence_token)
+
+                                        if sentence_token.punc_mark:
+                                            sentence_tokens_search.append(wl_texts.Wl_Token(sentence_token.punc_mark, lang = sentence_token.lang))
+
+                                # Head
+                                results[-1].append(head)
+                                # Dependent
+                                results[-1].append(token)
+                                # Dependency Relation
+                                results[-1].append(dependency_relation)
+                                # Dependency Length
+                                results[-1].append(i_head - i_dependent)
+                                # Sentence
+                                results[-1].extend([sentence_tokens_raw, sentence_tokens_fig, sentence_tokens_search])
+                                # Sentence No.
+                                results[-1].extend([no_sentence, len_sentences])
+                                # File
+                                results[-1].append(file['name'])
 
                         i_token += len(sentence)
         except Exception:

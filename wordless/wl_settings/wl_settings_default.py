@@ -175,46 +175,46 @@ def init_settings_default(main):
                 'match_inflected_forms': False,
                 'use_regex': False,
                 'match_without_tags': False,
-                'match_tags': False
-            },
+                'match_tags': False,
 
-            'context_settings': {
-                'incl': {
-                    'incl': False,
+                'context_settings': {
+                    'incl': {
+                        'incl': False,
 
-                    'multi_search_mode': False,
-                    'search_term': '',
-                    'search_terms': [],
+                        'multi_search_mode': False,
+                        'search_term': '',
+                        'search_terms': [],
 
-                    'match_case': False,
-                    'match_whole_words': False,
-                    'match_inflected_forms': False,
-                    'use_regex': False,
-                    'match_without_tags': False,
-                    'match_tags': False,
+                        'match_case': False,
+                        'match_whole_words': False,
+                        'match_inflected_forms': False,
+                        'use_regex': False,
+                        'match_without_tags': False,
+                        'match_tags': False,
 
-                    'context_window_sync': False,
-                    'context_window_left': -5,
-                    'context_window_right': 5
-                },
+                        'context_window_sync': False,
+                        'context_window_left': -5,
+                        'context_window_right': 5
+                    },
 
-                'excl': {
-                    'excl': False,
+                    'excl': {
+                        'excl': False,
 
-                    'multi_search_mode': False,
-                    'search_term': '',
-                    'search_terms': [],
+                        'multi_search_mode': False,
+                        'search_term': '',
+                        'search_terms': [],
 
-                    'match_case': False,
-                    'match_whole_words': False,
-                    'match_inflected_forms': False,
-                    'use_regex': False,
-                    'match_without_tags': False,
-                    'match_tags': False,
+                        'match_case': False,
+                        'match_whole_words': False,
+                        'match_inflected_forms': False,
+                        'use_regex': False,
+                        'match_without_tags': False,
+                        'match_tags': False,
 
-                    'context_window_sync': False,
-                    'context_window_left': -5,
-                    'context_window_right': 5
+                        'context_window_sync': False,
+                        'context_window_left': -5,
+                        'context_window_right': 5
+                    }
                 }
             },
 
@@ -288,46 +288,46 @@ def init_settings_default(main):
                 'match_inflected_forms': False,
                 'use_regex': False,
                 'match_without_tags': False,
-                'match_tags': False
-            },
+                'match_tags': False,
 
-            'context_settings': {
-                'incl': {
-                    'incl': False,
+                'context_settings': {
+                    'incl': {
+                        'incl': False,
 
-                    'multi_search_mode': False,
-                    'search_term': '',
-                    'search_terms': [],
+                        'multi_search_mode': False,
+                        'search_term': '',
+                        'search_terms': [],
 
-                    'match_case': False,
-                    'match_whole_words': False,
-                    'match_inflected_forms': False,
-                    'use_regex': False,
-                    'match_without_tags': False,
-                    'match_tags': False,
+                        'match_case': False,
+                        'match_whole_words': False,
+                        'match_inflected_forms': False,
+                        'use_regex': False,
+                        'match_without_tags': False,
+                        'match_tags': False,
 
-                    'context_window_sync': False,
-                    'context_window_left': -5,
-                    'context_window_right': 5
-                },
+                        'context_window_sync': False,
+                        'context_window_left': -5,
+                        'context_window_right': 5
+                    },
 
-                'excl': {
-                    'excl': False,
+                    'excl': {
+                        'excl': False,
 
-                    'multi_search_mode': False,
-                    'search_term': '',
-                    'search_terms': [],
+                        'multi_search_mode': False,
+                        'search_term': '',
+                        'search_terms': [],
 
-                    'match_case': False,
-                    'match_whole_words': False,
-                    'match_inflected_forms': False,
-                    'use_regex': False,
-                    'match_without_tags': False,
-                    'match_tags': False,
+                        'match_case': False,
+                        'match_whole_words': False,
+                        'match_inflected_forms': False,
+                        'use_regex': False,
+                        'match_without_tags': False,
+                        'match_tags': False,
 
-                    'context_window_sync': False,
-                    'context_window_left': -5,
-                    'context_window_right': 5
+                        'context_window_sync': False,
+                        'context_window_left': -5,
+                        'context_window_right': 5
+                    }
                 }
             },
 
@@ -368,46 +368,47 @@ def init_settings_default(main):
                 'match_inflected_forms': False,
                 'use_regex': False,
                 'match_without_tags': False,
-                'match_tags': False
-            },
+                'match_tags': False,
+                'match_dependency_relations': False,
 
-            'context_settings': {
-                'incl': {
-                    'incl': False,
+                'context_settings': {
+                    'incl': {
+                        'incl': False,
 
-                    'multi_search_mode': False,
-                    'search_term': '',
-                    'search_terms': [],
+                        'multi_search_mode': False,
+                        'search_term': '',
+                        'search_terms': [],
 
-                    'match_case': False,
-                    'match_whole_words': False,
-                    'match_inflected_forms': False,
-                    'use_regex': False,
-                    'match_without_tags': False,
-                    'match_tags': False,
+                        'match_case': False,
+                        'match_whole_words': False,
+                        'match_inflected_forms': False,
+                        'use_regex': False,
+                        'match_without_tags': False,
+                        'match_tags': False,
 
-                    'context_window_sync': False,
-                    'context_window_left': -5,
-                    'context_window_right': 5
-                },
+                        'context_window_sync': False,
+                        'context_window_left': -5,
+                        'context_window_right': 5
+                    },
 
-                'excl': {
-                    'excl': False,
+                    'excl': {
+                        'excl': False,
 
-                    'multi_search_mode': False,
-                    'search_term': '',
-                    'search_terms': [],
+                        'multi_search_mode': False,
+                        'search_term': '',
+                        'search_terms': [],
 
-                    'match_case': False,
-                    'match_whole_words': False,
-                    'match_inflected_forms': False,
-                    'use_regex': False,
-                    'match_without_tags': False,
-                    'match_tags': False,
+                        'match_case': False,
+                        'match_whole_words': False,
+                        'match_inflected_forms': False,
+                        'use_regex': False,
+                        'match_without_tags': False,
+                        'match_tags': False,
 
-                    'context_window_sync': False,
-                    'context_window_left': -5,
-                    'context_window_right': 5
+                        'context_window_sync': False,
+                        'context_window_left': -5,
+                        'context_window_right': 5
+                    }
                 }
             },
 
@@ -597,46 +598,46 @@ def init_settings_default(main):
                 'search_term_position_min': 1,
                 'search_term_position_min_no_limit': True,
                 'search_term_position_max': 2,
-                'search_term_position_max_no_limit': True
-            },
+                'search_term_position_max_no_limit': True,
 
-            'context_settings': {
-                'incl': {
-                    'incl': False,
+                'context_settings': {
+                    'incl': {
+                        'incl': False,
 
-                    'multi_search_mode': False,
-                    'search_term': '',
-                    'search_terms': [],
+                        'multi_search_mode': False,
+                        'search_term': '',
+                        'search_terms': [],
 
-                    'match_case': False,
-                    'match_whole_words': False,
-                    'match_inflected_forms': False,
-                    'use_regex': False,
-                    'match_without_tags': False,
-                    'match_tags': False,
+                        'match_case': False,
+                        'match_whole_words': False,
+                        'match_inflected_forms': False,
+                        'use_regex': False,
+                        'match_without_tags': False,
+                        'match_tags': False,
 
-                    'context_window_sync': False,
-                    'context_window_left': -5,
-                    'context_window_right': 5
-                },
+                        'context_window_sync': False,
+                        'context_window_left': -5,
+                        'context_window_right': 5
+                    },
 
-                'excl': {
-                    'excl': False,
+                    'excl': {
+                        'excl': False,
 
-                    'multi_search_mode': False,
-                    'search_term': '',
-                    'search_terms': [],
+                        'multi_search_mode': False,
+                        'search_term': '',
+                        'search_terms': [],
 
-                    'match_case': False,
-                    'match_whole_words': False,
-                    'match_inflected_forms': False,
-                    'use_regex': False,
-                    'match_without_tags': False,
-                    'match_tags': False,
+                        'match_case': False,
+                        'match_whole_words': False,
+                        'match_inflected_forms': False,
+                        'use_regex': False,
+                        'match_without_tags': False,
+                        'match_tags': False,
 
-                    'context_window_sync': False,
-                    'context_window_left': -5,
-                    'context_window_right': 5
+                        'context_window_sync': False,
+                        'context_window_left': -5,
+                        'context_window_right': 5
+                    }
                 }
             },
 
@@ -747,46 +748,46 @@ def init_settings_default(main):
                 'match_inflected_forms': False,
                 'use_regex': False,
                 'match_without_tags': False,
-                'match_tags': False
-            },
+                'match_tags': False,
 
-            'context_settings': {
-                'incl': {
-                    'incl': False,
+                'context_settings': {
+                    'incl': {
+                        'incl': False,
 
-                    'multi_search_mode': False,
-                    'search_term': '',
-                    'search_terms': [],
+                        'multi_search_mode': False,
+                        'search_term': '',
+                        'search_terms': [],
 
-                    'match_case': False,
-                    'match_whole_words': False,
-                    'match_inflected_forms': False,
-                    'use_regex': False,
-                    'match_without_tags': False,
-                    'match_tags': False,
+                        'match_case': False,
+                        'match_whole_words': False,
+                        'match_inflected_forms': False,
+                        'use_regex': False,
+                        'match_without_tags': False,
+                        'match_tags': False,
 
-                    'context_window_sync': False,
-                    'context_window_left': -5,
-                    'context_window_right': 5
-                },
+                        'context_window_sync': False,
+                        'context_window_left': -5,
+                        'context_window_right': 5
+                    },
 
-                'excl': {
-                    'excl': False,
+                    'excl': {
+                        'excl': False,
 
-                    'multi_search_mode': False,
-                    'search_term': '',
-                    'search_terms': [],
+                        'multi_search_mode': False,
+                        'search_term': '',
+                        'search_terms': [],
 
-                    'match_case': False,
-                    'match_whole_words': False,
-                    'match_inflected_forms': False,
-                    'use_regex': False,
-                    'match_without_tags': False,
-                    'match_tags': False,
+                        'match_case': False,
+                        'match_whole_words': False,
+                        'match_inflected_forms': False,
+                        'use_regex': False,
+                        'match_without_tags': False,
+                        'match_tags': False,
 
-                    'context_window_sync': False,
-                    'context_window_left': -5,
-                    'context_window_right': 5
+                        'context_window_sync': False,
+                        'context_window_left': -5,
+                        'context_window_right': 5
+                    }
                 }
             },
 
@@ -923,46 +924,46 @@ def init_settings_default(main):
                 'match_inflected_forms': False,
                 'use_regex': False,
                 'match_without_tags': False,
-                'match_tags': False
-            },
+                'match_tags': False,
 
-            'context_settings': {
-                'incl': {
-                    'incl': False,
+                'context_settings': {
+                    'incl': {
+                        'incl': False,
 
-                    'multi_search_mode': False,
-                    'search_term': '',
-                    'search_terms': [],
+                        'multi_search_mode': False,
+                        'search_term': '',
+                        'search_terms': [],
 
-                    'match_case': False,
-                    'match_inflected_forms': False,
-                    'match_whole_words': False,
-                    'use_regex': False,
-                    'match_without_tags': False,
-                    'match_tags': False,
+                        'match_case': False,
+                        'match_inflected_forms': False,
+                        'match_whole_words': False,
+                        'use_regex': False,
+                        'match_without_tags': False,
+                        'match_tags': False,
 
-                    'context_window_sync': False,
-                    'context_window_left': -5,
-                    'context_window_right': 5
-                },
+                        'context_window_sync': False,
+                        'context_window_left': -5,
+                        'context_window_right': 5
+                    },
 
-                'excl': {
-                    'excl': False,
+                    'excl': {
+                        'excl': False,
 
-                    'multi_search_mode': False,
-                    'search_term': '',
-                    'search_terms': [],
+                        'multi_search_mode': False,
+                        'search_term': '',
+                        'search_terms': [],
 
-                    'match_case': False,
-                    'match_inflected_forms': False,
-                    'match_whole_words': False,
-                    'use_regex': False,
-                    'match_without_tags': False,
-                    'match_tags': False,
+                        'match_case': False,
+                        'match_inflected_forms': False,
+                        'match_whole_words': False,
+                        'use_regex': False,
+                        'match_without_tags': False,
+                        'match_tags': False,
 
-                    'context_window_sync': False,
-                    'context_window_left': -5,
-                    'context_window_right': 5
+                        'context_window_sync': False,
+                        'context_window_left': -5,
+                        'context_window_right': 5
+                    }
                 }
             },
 

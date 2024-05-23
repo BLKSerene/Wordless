@@ -121,6 +121,14 @@ def wl_test_dependency_parse_models(lang, dependency_parser, test_sentence, toke
 
     assert [str(token.head) for token in tokens_parsed] == heads_orig
 
+def test__get_pipelines_disabled():
+    wl_dependency_parsing._get_pipelines_disabled(show_pos_tags = True, show_lemmas = True)
+    wl_dependency_parsing._get_pipelines_disabled(show_pos_tags = True, show_lemmas = False)
+    wl_dependency_parsing._get_pipelines_disabled(show_pos_tags = False, show_lemmas = True)
+    wl_dependency_parsing._get_pipelines_disabled(show_pos_tags = False, show_lemmas = False)
+
 if __name__ == '__main__':
     for lang, dependency_parser in test_dependency_parsers:
         test_dependency_parse(lang, dependency_parser)
+
+    test__get_pipelines_disabled()

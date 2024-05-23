@@ -39,12 +39,14 @@ test_langs_local = ['zho_cn', 'zho_tw', 'eng_us', 'jpn', 'tha', 'bod', 'other']
 @pytest.mark.parametrize('lang', test_langs)
 def test_word_detokenize(lang):
     match lang:
-        case 'zho_cn' | 'zho_tw':
-            text = '英国全称是United Kingdom of Great Britain，由四个部分组成：England、Scotland、Wales和Northern Ireland'
+        case 'zho_cn':
+            text = wl_test_lang_examples.SENTENCE_ZHO_CN_CHAR_TOKENIZER + 'test'
+        case 'zho_tw':
+            text = wl_test_lang_examples.SENTENCE_ZHO_TW_CHAR_TOKENIZER + 'test'
         case 'jpn':
-            text = '''The meaning of "天気がいいから、散歩しましょう。" is: The weather is good so let's take a walk.'''
+            text = wl_test_lang_examples.SENTENCE_JPN_KANJI_TOKENIZER
         case 'bod':
-            text = 'Test this Tibetan string: དུང་དང་འོ་མར་འགྲན་པའི་ལྷག་བསམ་མཐུ། །དམན་ཡང་དཀར་པོའི་བྱས་འབྲས་ཅུང་ཟད་ཅིག །བློ་དང་འདུན་པ་བཟང་བའི་རང་རིགས་ཀུན། །རྒྱལ་ཁའི་འཕྲིན་བཟང་ལས་དོན་འགྲུབ་ཕྱིར་འབད།།. Does detokenization work as expected?'
+            text = wl_test_lang_examples.SENTENCE_BOD_WORD_DETOKENIZER + '\nད།ད a'
         case _:
             text = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
 
@@ -53,6 +55,7 @@ def test_word_detokenize(lang):
         text = text,
         lang = lang
     )
+    print(tokens)
     text = wl_word_detokenization.wl_word_detokenize(
         main,
         tokens = tokens,
@@ -63,16 +66,18 @@ def test_word_detokenize(lang):
     print(f'{text}\n')
 
     match lang:
-        case 'zho_cn' | 'zho_tw':
-            assert text == '英国全称是United Kingdom of Great Britain，由四个部分组成：England、Scotland、Wales和Northern Ireland'
+        case 'zho_cn':
+            assert text == '英国的全称是United Kingdom of Great Britain，由四个部分组成：England、Scotland、Wales和Northern Ireland。test'
+        case 'zho_tw':
+            assert text == '英國的全稱是United Kingdom of Great Britain，由四個部分組成：England、Scotland、Wales和Northern Ireland。test'
         case 'eng_us' | 'other':
             assert text == 'English is a West Germanic language in the Indo-European language family.'
         case 'jpn':
-            assert text == '''The meaning of "天気がいいから、散歩しましょう。"is: The weather is good so let 's take a walk.'''
+            assert text == '''The sentence "天気がいいから、散歩しましょう。"means: The weather is good so let 's take a walk.'''
         case 'tha':
             assert text == 'ภาษาไทยหรือภาษาไทยกลางเป็นภาษาในกลุ่มภาษาไทซึ่งเป็นกลุ่มย่อยของตระกูลภาษาขร้า - ไทและเป็นภาษาราชการและภาษาประจำชาติของประเทศไทย [3][4]'
         case 'bod':
-            assert text == 'Test this Tibetan string: དུང་དང་འོ་མར་འགྲན་པའི་ལྷག་བསམ་མཐུ། །དམན་ཡང་དཀར་པོའི་བྱས་འབྲས་ཅུང་ཟད་ཅིག །བློ་དང་འདུན་པ་བཟང་བའི་རང་རིགས་ཀུན། །རྒྱལ་ཁའི་འཕྲིན་བཟང་ལས་དོན་འགྲུབ་ཕྱིར་འབད།།'
+            assert text == 'Test this Tibetan string: དུང་དང་འོ་མར་འགྲན་པའི་ལྷག་བསམ་མཐུ། །དམན་ཡང་དཀར་པོའི་བྱས་འབྲས་ཅུང་ཟད་ཅིག །བློ་དང་འདུན་པ་བཟང་བའི་རང་རིགས་ཀུན། །རྒྱལ་ཁའི་འཕྲིན་བཟང་ལས་དོན་འགྲུབ་ཕྱིར་འབད།། ད། དa'
         case _:
             raise wl_test_init.Wl_Exception_Tests_Lang_Skipped(lang)
 

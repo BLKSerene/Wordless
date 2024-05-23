@@ -207,6 +207,22 @@ def test_syl_tokenize(lang, syl_tokenizer):
     if tests_lang_util_skipped:
         raise wl_test_init.Wl_Exception_Tests_Lang_Util_Skipped(syl_tokenizer)
 
+def test_syl_tokenize_misc():
+    # Unsupported languages
+    wl_syl_tokenization.wl_syl_tokenize(
+        main,
+        inputs = 'test',
+        lang = 'other'
+    )
+
+    wl_syl_tokenization.wl_syl_tokenize(
+        main,
+        inputs = [wl_texts.Wl_Token('test', lang = 'other')],
+        lang = 'other'
+    )
+
 if __name__ == '__main__':
     for lang, syl_tokenizer in test_syl_tokenizers:
         test_syl_tokenize(lang, syl_tokenizer)
+
+    test_syl_tokenize_misc()

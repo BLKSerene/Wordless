@@ -48,6 +48,8 @@ def test_to_lang_util_text():
 
             assert lang_util_text == TO_LANG_UTIL_TEXT[util_code]
 
+    assert wl_nlp_utils.to_lang_util_text(main, list(settings_lang_utils)[0], 'test') is None
+
 def test_to_lang_util_texts():
     for util_type, utils in settings_lang_utils.items():
         TO_LANG_UTIL_TEXT = {
@@ -68,7 +70,19 @@ def test_get_langs_stanza():
     assert wl_nlp_utils.get_langs_stanza(main, 'sentiment_analyzers')
 
 def test_check_models():
-    assert wl_nlp_utils.check_models(main, langs = ['eng_us', 'eng_gb'])
+    assert wl_nlp_utils.check_models(main, langs = ['eng_us', 'test'])
+    assert wl_nlp_utils.check_models(
+        main,
+        langs = ['eng_us', 'test'],
+        lang_utils = [[
+            'default_sentence_tokenizer',
+            'default_word_tokenizer',
+            'default_pos_tagger',
+            'default_lemmatizer',
+            'default_dependency_parser',
+            'default_sentiment_analyzer'
+        ] for _ in range(2)]
+    )
 
 def test_init_model_spacy():
     wl_nlp_utils.init_model_spacy(main, lang = 'eng_us')
@@ -171,25 +185,27 @@ def test_init_sentiment_analyzers():
     wl_nlp_utils.init_sentiment_analyzers(main, 'eng_us', 'stanza_eng', tokenized = True)
 
 def test_align_tokens():
-    assert wl_nlp_utils.align_tokens(['do', "n't"], ['do', "n't"], ['tag1', 'tag2']) == ['tag1', 'tag2']
-    assert wl_nlp_utils.align_tokens(["don't"], ['do', "n't"], ['tag1', 'tag2']) == ['tag1']
-    assert wl_nlp_utils.align_tokens(['do', "n't"], ["don't"], ['tag1']) == ['tag1', 'tag1']
-    assert wl_nlp_utils.align_tokens(['do', "n't"], ['don', "'t"], ['tag1', 'tag2']) == ['tag1', 'tag2']
+    assert wl_nlp_utils.align_tokens(['a', 'b'], ['a', 'b'], ['1', '2']) == ['1', '2']
+    assert wl_nlp_utils.align_tokens(['ab'], ['a', 'b'], ['1', '2']) == ['1']
+    assert wl_nlp_utils.align_tokens(['a', 'b'], ['ab'], ['1']) == ['1', '1']
+    assert wl_nlp_utils.align_tokens(['ab', 'c', 'd'], ['a', 'bc', 'd'], ['1', '2', '3']) == ['1', '2', '3']
+    assert wl_nlp_utils.align_tokens(['abc', 'd'], ['a', 'b', 'c', 'd'], ['1', '2', '3', '4']) == ['1', '4']
+    assert wl_nlp_utils.align_tokens(['a', 'b', 'c', 'd'], ['abc', 'd'], ['1', '2']) == ['1', '1', '1', '2']
 
-    assert wl_nlp_utils.align_tokens(['测试', '一下'], ['测试', '一下'], ['tag1', 'tag2']) == ['tag1', 'tag2']
-    assert wl_nlp_utils.align_tokens(['测试一下'], ['测试', '一下'], ['tag1', 'tag2']) == ['tag1']
-    assert wl_nlp_utils.align_tokens(['测试', '一下'], ['测试一下'], ['tag1']) == ['tag1', 'tag1']
-    assert wl_nlp_utils.align_tokens(['测试', '一下'], ['测', '试一下'], ['tag1', 'tag2']) == ['tag1', 'tag2']
+    assert wl_nlp_utils.align_tokens(['a'], ['ab'], ['1']) == ['1']
+    assert wl_nlp_utils.align_tokens(['ab'], ['a', 'bc'], ['1', '2']) == ['1']
+    assert wl_nlp_utils.align_tokens(['a', 'bc'], ['ab'], ['1']) == ['1', '1']
 
-    assert wl_nlp_utils.align_tokens(['do', "n't"], ['do', "n't"], ['lemma1', 'lemma2'], prefer_raw = True) == ['lemma1', 'lemma2']
-    assert wl_nlp_utils.align_tokens(["don't"], ['do', "n't"], ['lemma1', 'lemma2'], prefer_raw = True) == ["don't"]
-    assert wl_nlp_utils.align_tokens(['do', "n't"], ["don't"], ['lemma1'], prefer_raw = True) == ['do', "n't"]
-    assert wl_nlp_utils.align_tokens(['do', "n't"], ['don', "'t"], ['lemma1', 'lemma2'], prefer_raw = True) == ['do', "n't"]
+    assert wl_nlp_utils.align_tokens(['a', 'b'], ['a', 'b'], ['1', '2'], prefer_raw = True) == ['1', '2']
+    assert wl_nlp_utils.align_tokens(['ab'], ['a', 'b'], ['1', '2'], prefer_raw = True) == ['ab']
+    assert wl_nlp_utils.align_tokens(['a', 'b'], ['ab'], ['1'], prefer_raw = True) == ['a', 'b']
+    assert wl_nlp_utils.align_tokens(['ab', 'c', 'd'], ['a', 'bc', 'd'], ['1', '2', '3'], prefer_raw = True) == ['ab', 'c', '3']
+    assert wl_nlp_utils.align_tokens(['abc', 'd'], ['a', 'b', 'c', 'd'], ['1', '2', '3', '4'], prefer_raw = True) == ['abc', '4']
+    assert wl_nlp_utils.align_tokens(['a', 'b', 'c', 'd'], ['abc', 'd'], ['1', '2'], prefer_raw = True) == ['a', 'b', 'c', '2']
 
-    assert wl_nlp_utils.align_tokens(['测试', '一下'], ['测试', '一下'], ['lemma1', 'lemma2'], prefer_raw = True) == ['lemma1', 'lemma2']
-    assert wl_nlp_utils.align_tokens(['测试一下'], ['测试', '一下'], ['lemma1', 'lemma2'], prefer_raw = True) == ['测试一下']
-    assert wl_nlp_utils.align_tokens(['测试', '一下'], ['测试一下'], ['lemma1'], prefer_raw = True) == ['测试', '一下']
-    assert wl_nlp_utils.align_tokens(['测试', '一下'], ['测', '试一下'], ['lemma1', 'lemma2'], prefer_raw = True) == ['测试', '一下']
+    assert wl_nlp_utils.align_tokens(['a'], ['ab'], ['1'], prefer_raw = True) == ['a']
+    assert wl_nlp_utils.align_tokens(['ab'], ['a', 'bc'], ['1', '2'], prefer_raw = True) == ['ab']
+    assert wl_nlp_utils.align_tokens(['a', 'bc'], ['ab'], ['1'], prefer_raw = True) == ['a', 'bc']
 
 def test_to_sections():
     tokens = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]

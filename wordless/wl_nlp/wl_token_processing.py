@@ -36,6 +36,33 @@ def text_pos_tag(main, text, settings):
 
         text.update_token_properties(tokens)
 
+# Apply lemmatization / Match inflected forms
+def text_lemmatize(main, text, token_settings, search_settings = None):
+    search_settings = search_settings or {
+        'match_inflected_forms': False,
+        'context_settings': {'incl': {'incl': False}, 'excl': {'excl': False}}
+    }
+
+    if (
+        token_settings.get('apply_lemmatization', False)
+        or search_settings['match_inflected_forms']
+        or (
+            search_settings['context_settings']['incl']['incl']
+            and search_settings['context_settings']['incl']['match_inflected_forms']
+        )
+        or (
+            search_settings['context_settings']['excl']['excl']
+            and search_settings['context_settings']['excl']['match_inflected_forms']
+        )
+    ):
+        tokens = wl_lemmatization.wl_lemmatize(
+            main,
+            inputs = text.get_tokens_flat(),
+            lang = text.lang
+        )
+
+        text.update_token_properties(tokens)
+
 # Syllable tokenization
 def text_syl_tokenize(main, text):
     tokens = wl_syl_tokenization.wl_syl_tokenize(
@@ -85,7 +112,7 @@ def text_use_tags_only(text, settings):
 
                             i_token += 1
 
-def wl_process_tokens(main, text, token_settings):
+def wl_process_tokens(main, text, token_settings, search_settings = None):
     settings = copy.deepcopy(token_settings)
 
     if not settings['words']:
@@ -97,15 +124,7 @@ def wl_process_tokens(main, text, token_settings):
         settings['apply_lemmatization'] = False
 
     text_pos_tag(main, text, token_settings)
-
-    # Apply lemmatization
-    if settings['apply_lemmatization']:
-        tokens = wl_lemmatization.wl_lemmatize(
-            main,
-            inputs = text.get_tokens_flat(),
-            lang = text.lang
-        )
-        text.update_token_properties(tokens)
+    text_lemmatize(main, text, token_settings, search_settings)
 
     text_modified = copy.deepcopy(text)
 
@@ -209,8 +228,8 @@ def wl_process_tokens(main, text, token_settings):
 
     return text_modified
 
-def wl_process_tokens_ngram_generator(main, text, token_settings):
-    text_modified = wl_process_tokens(main, text, token_settings)
+def wl_process_tokens_ngram_generator(main, text, token_settings, search_settings = None):
+    text_modified = wl_process_tokens(main, text, token_settings, search_settings)
 
     text_ignore_tags(text_modified, token_settings)
     text_use_tags_only(text_modified, token_settings)
@@ -265,10 +284,11 @@ def wl_process_tokens_profiler(main, text, token_settings):
 
     return text_modified
 
-def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_lines = False):
+def wl_process_tokens_concordancer(main, text, token_settings, search_settings, preserve_blank_lines = False):
     settings = copy.deepcopy(token_settings)
 
     text_pos_tag(main, text, token_settings)
+    text_lemmatize(main, text, token_settings, search_settings)
 
     text_modified = copy.deepcopy(text)
 
@@ -305,6 +325,14 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
                 for i, sentence_seg in enumerate(sentence):
                     sentence[i] = [token for token in sentence_seg if not wl_checks_tokens.is_punc(token)]
 
+        # Also remove punctuation marks in heads
+        for para in text_modified.tokens_multilevel:
+            for sentence in para:
+                for sentence_seg in sentence:
+                    for token in sentence_seg:
+                        if wl_checks_tokens.is_punc(token.head):
+                            token.head = None
+
         text_modified.set_tokens(tokens_flat_punc_marks)
 
     if not preserve_blank_lines:
@@ -317,7 +345,7 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
 
     return text_modified
 
-def wl_process_tokens_dependency_parser(main, text, token_settings):
+def wl_process_tokens_dependency_parser(main, text, token_settings, search_settings):
     # Dependency parsing
     tokens_modified = []
 
@@ -331,7 +359,7 @@ def wl_process_tokens_dependency_parser(main, text, token_settings):
 
     text.update_token_properties(tokens_modified)
 
-    return wl_process_tokens_concordancer(main, text, token_settings)
+    return wl_process_tokens_concordancer(main, text, token_settings, search_settings)
 
 def wl_process_tokens_wordlist_generator(main, text, token_settings, generation_settings):
     # Syllabification
@@ -344,13 +372,13 @@ def wl_process_tokens_wordlist_generator(main, text, token_settings, generation_
 
     return text_modified
 
-def wl_process_tokens_colligation_extractor(main, text, token_settings):
+def wl_process_tokens_colligation_extractor(main, text, token_settings, search_settings):
     # Do not modify custom settings, as adding new options would clear user's custom settings
     settings = copy.deepcopy(token_settings)
     # Always assign part-of-speech tags
     settings['assign_pos_tags'] = True
 
-    text_modified = wl_process_tokens(main, text, settings)
+    text_modified = wl_process_tokens(main, text, settings, search_settings)
 
     text_modified.tags = wl_texts.to_tokens(
         text_modified.get_token_properties('tag', flat = True),

@@ -36,8 +36,8 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog_Settings):
         super().__init__(main, title = _tr('wl_widgets', 'Context Settings'))
 
         self.tab = tab
-        self.settings_custom = self.main.settings_custom[self.tab]['context_settings']
-        self.settings_default = self.main.settings_custom[self.tab]['context_settings']
+        self.settings_custom = self.main.settings_custom[self.tab]['search_settings']['context_settings']
+        self.settings_default = self.main.settings_custom[self.tab]['search_settings']['context_settings']
 
         # Inclusion
         self.incl_group_box = QGroupBox(self.tr('Inclusion'), self)
