@@ -42,7 +42,7 @@
 18|[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)|5.0.3|Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)|[Apache-2.0](https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE)
 19|[python-docx](https://github.com/python-openxml/python-docx)|1.1.0|Steve Canny|[MIT](https://github.com/python-openxml/python-docx/blob/master/LICENSE)
 20|[python-mecab-ko](https://github.com/jonghwanhyeon/python-mecab-ko)|1.3.3|Jonghwan Hyeon|[BSD-3-Clause](https://github.com/jonghwanhyeon/python-mecab-ko/blob/main/LICENSE)
-21|[Requests](https://github.com/psf/requests)|2.31.0|Kenneth Reitz|[Apache-2.0](https://github.com/psf/requests/blob/main/LICENSE)
+21|[Requests](https://github.com/psf/requests)|2.32.2|Kenneth Reitz|[Apache-2.0](https://github.com/psf/requests/blob/main/LICENSE)
 22|[Sacremoses](https://github.com/hplt-project/sacremoses)|0.1.1|Liling Tan, Jelmer van der Linde|[MIT](https://github.com/hplt-project/sacremoses/blob/master/LICENSE)
 23|[SciPy](https://scipy.org/scipylib/)|1.11.3|SciPy 开发人员|[BSD-3-Clause](https://github.com/scipy/scipy/blob/main/LICENSE.txt)
 24|[simplemma](https://github.com/adbar/simplemma)|0.9.1|Adrien Barbaresi|[MIT](https://github.com/adbar/simplemma/blob/main/LICENSE)
