@@ -53,6 +53,7 @@
 - Dependencies: Add VADER
 - Dependencies: Remove Dostoevsky
 - Dependencies: Remove jieba
+- Dependencies: Upgrade Beautiful Soup to 4.12.3
 - Dependencies: Upgrade Charset Normalizer to 3.3.2
 - Dependencies: Upgrade LaoNLP to 1.1.3
 - Dependencies: Upgrade Lingua to 2.0.2
