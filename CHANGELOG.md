@@ -61,7 +61,7 @@
 - Dependencies: Upgrade Pyphen to 0.15.0
 - Dependencies: Upgrade PyQt to 5.15.10
 - Dependencies: Upgrade PyThaiNLP to 5.0.3
-- Dependencies: Upgrade python-docx to 1.1.0
+- Dependencies: Upgrade python-docx to 1.1.2
 - Dependencies: Upgrade Requests to 2.32.2
 - Dependencies: Upgrade Sacremoses to 0.1.1
 - Dependencies: Upgrade spaCy to 3.7.2

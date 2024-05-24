@@ -40,7 +40,7 @@ As Wordless stands on the shoulders of giants, I hereby extend my sincere gratit
 16|[Pyphen](https://pyphen.org/)|0.15.0|Guillaume Ayoub|[GPL-2.0-or-later/LGPL-2.1-or-later/MPL-1.1](https://github.com/Kozea/Pyphen/blob/master/LICENSE)
 17|[PyQt](https://riverbankcomputing.com/software/pyqt/)|5.15.10|Riverbank Computing|[Commercial-License/GPL-3.0-only](https://www.riverbankcomputing.com/static/Docs/PyQt5/introduction.html#license)
 18|[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)|5.0.3|Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)|[Apache-2.0](https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE)
-19|[python-docx](https://github.com/python-openxml/python-docx)|1.1.0|Steve Canny|[MIT](https://github.com/python-openxml/python-docx/blob/master/LICENSE)
+19|[python-docx](https://github.com/python-openxml/python-docx)|1.1.2|Steve Canny|[MIT](https://github.com/python-openxml/python-docx/blob/master/LICENSE)
 20|[python-mecab-ko](https://github.com/jonghwanhyeon/python-mecab-ko)|1.3.3|Jonghwan Hyeon|[BSD-3-Clause](https://github.com/jonghwanhyeon/python-mecab-ko/blob/main/LICENSE)
 21|[Requests](https://github.com/psf/requests)|2.32.2|Kenneth Reitz|[Apache-2.0](https://github.com/psf/requests/blob/main/LICENSE)
 22|[Sacremoses](https://github.com/hplt-project/sacremoses)|0.1.1|Liling Tan, Jelmer van der Linde|[MIT](https://github.com/hplt-project/sacremoses/blob/master/LICENSE)
