@@ -770,22 +770,21 @@ Other languages          |⭕️ |⭕️ |✖️|✖️|✖️|✖️|✖️|✖
 <span id="doc-4-2"></span>
 ### [4.2 Supported File Types](#doc)
 
-File Type                |File Extensions
--------------------------|---------------
-CSV files¹               |\*.csv
-Excel workbooks¹²³       |\*.xlsx
-HTML pages¹²             |\*.htm, \*.html
-PDF files¹²⁴             |\*.pdf
-Text files               |\*.txt
-Translation memory files¹|\*.tmx
-Word documents¹²³        |\*.docx
-XML files¹               |\*.xml
+File Type                |File Extensions|Remarks
+-------------------------|---------------|-------
+CSV files¹               |\*.csv         |
+Excel workbooks¹²        |\*.xlsx        |Legacy Microsoft 97-03 Excel Workbooks (\*.xls) are not supported.
+HTML pages¹²             |\*.htm, \*.html|
+Lyrics File¹             |\*.lrc         |[Simple LRC](https://en.wikipedia.org/wiki/LRC_(file_format)#Core_format) and [enhanced LRC](https://en.wikipedia.org/wiki/LRC_(file_format)#A2_extension_(Enhanced_LRC_format)) format are supported.
+PDF files¹²              |\*.pdf         |Text could only be extracted from **text-searchable PDF files**. There is no support for automatically converting scanned PDF files into text-searchable ones.
+Text files               |\*.txt         |
+Translation memory files¹|\*.tmx         |
+Word documents¹²         |\*.docx        |Legacy Microsoft 97-03 Word documents (\*.doc) are not supported.
+XML files¹               |\*.xml         |
 
 > [!IMPORTANT]
 > 1. Non-TXT files will be automatically converted to TXT files when being imported into *Wordless*. You can check the converted files under folder **imports** at the installation location of *Wordless* on your computer (as for macOS users, right click **Wordless.app**, select **Show Package Contents** and navigate to **Contents/MacOS/imports/**). You can change this location via **Menu Bar → Preferences → Settings → General → Import → Temporary Files → Default path**.
 > 1. It is **not recommended to directly import non-text files into *Wordless***, as accuracy of text extraction could not be guaranteed and unintended data loss might occur, for which reason users are encouraged to **convert their files using specialized tools and make discreet decisions** on which part of your data should be kept, transformed, and discarded.
-> 1. The legacy Microsoft 97-03 Word documents (\*.doc) and Microsoft 97-03 Excel Workbooks (\*.xls) are not supported.
-> 1. *Wordless* could only extract text from **text-searchable PDF files** and is not capable of automatically converting scanned PDF files into text-searchable ones.
 
 <span id="doc-4-3"></span>
 ### [4.3 Supported File Encodings](#doc)
