@@ -20,6 +20,7 @@
 
 ## [3.5.0](https://github.com/BLKSerene/Wordless/releases/tag/3.5.0) - ??/??/2024
 ### 🎉 New Features
+- File Area: Add support for .lrc files
 - Settings: Add Settings - Stop Word Lists - Stop Word List Settings - Case-sensitive
 - Settings: Add Settings - Tables - Dependency Parser
 - Utils: Add Pyphen's Basque syllable tokenizer

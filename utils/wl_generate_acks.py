@@ -85,7 +85,7 @@ ACKS = [
         '3.1.2', 'Eric Gazoni, Charlie Clark',
         'MIT', 'https://foss.heptapod.net/openpyxl/openpyxl/-/blob/branch/3.1/LICENCE.rst'
     ], [
-        'PyInstaller', 'http://www.pyinstaller.org/',
+        'PyInstaller', 'https://pyinstaller.org/',
         '6.0', 'Hartmut Goebel, Jasper Harrison, Bryan A. Jones,<br>Brénainn Woodsend, Rok Mandeljc',
         'Bootloader-exception', 'https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt'
     ], [

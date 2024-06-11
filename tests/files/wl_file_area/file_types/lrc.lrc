@@ -1,0 +1,35 @@
+[ar:Lyrics artist]
+
+[al:Album where the song is from]
+
+[ti:Lyrics (song) title]
+
+[au:Creator of the Songtext]
+[length:How long the song is]
+[by:Creator of the LRC file]
+
+[offset:+/- Overall timestamp adjustment in milliseconds, + shifts time up, - shifts down]
+
+[re:The player or editor that created the LRC file]
+
+[ve:version of program]
+
+[00:00.00]
+[00:01.11]Lyrics line 1
+[99:99.99][00:02:22][99:99.99]Lyrics line 2 (with invalid time tags)
+[00:04.44][00:06.66]Repeating lyrics line 4 & 6
+ [00:03.33] [00:05.55] Repeating lyrics line 3 & 5 (with whitespace) 
+[00:07.00] 
+[00:07.777]Lyrics line 7 (3-digit after seconds)
+[00:08:88]Lyrics line 8 (colon separator after seconds)
+[00:09.99][Lyrics in square brackets at the beginning] Lyrics line 9 [with lyrics in square brackets at the end]
+[00:10.10] <10:10.10> Lyrics <10:10.11> line 10 <10:10.12> (with word time tags)
+[00:11.11] <With lyrics in angle brackets at the beginning> Lyrics <10:11.11> line 11 <with lyrics in angle brackets at the end)
+[99:59.99]
+
+[1:1.1]Invalid time tag 1
+[200:200.200]Invalid time tag 2
+[33:99.33]Invalid time tag 3
+[mm:ss.xx]Invalid time tag 4
+
+Invalid lyrics line without time tags

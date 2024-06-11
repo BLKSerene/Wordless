@@ -827,12 +827,59 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                                 lines.append('\t'.join(row))
 
                         new_file['text'] = '\n'.join(lines)
+                    # Excel workbooks
+                    elif file_ext == '.xlsx':
+                        lines = []
+                        workbook = openpyxl.load_workbook(file_path, data_only = True)
+
+                        for worksheet_name in workbook.sheetnames:
+                            worksheet = workbook[worksheet_name]
+
+                            for row in worksheet.rows:
+                                cells = [
+                                    (cell.value if cell.value is not None else '')
+                                    for cell in row
+                                ]
+
+                                lines.append('\t'.join(cells))
+
+                        new_file['text'] = '\n'.join(lines)
                     # HTML pages
                     elif file_ext in ['.htm', '.html']:
                         with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace') as f:
                             soup = bs4.BeautifulSoup(f.read(), 'lxml')
 
                         new_file['text'] = soup.get_text()
+                    # Lyrics files
+                    elif file_ext == '.lrc':
+                        lyrics = {}
+                        RE_TIME_TAGS = r'[0-9]{2}:[0-5][0-9][\.:][0-9]{2,3}'
+
+                        with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace') as f:
+                            for line in f:
+                                time_tags = []
+
+                                line = line.strip()
+
+                                # Extract time tags at the beginning of the line
+                                while (re_time_tag := re.search(r'^\[[^\]]+?\]', line)):
+                                    time_tags.append(re_time_tag.group())
+
+                                    line = line[len(time_tags[-1]):].strip()
+
+                                # Strip word time tags
+                                line = re.sub(fr'\<{RE_TIME_TAGS}\>', r'', line)
+                                line = re.sub(r'\s{2,}', r' ', line).strip()
+
+                                for time_tag in time_tags:
+                                    if re.search(fr'^\[{RE_TIME_TAGS}\]$', time_tag):
+                                        lyrics[time_tag] = line
+
+                        new_file['text'] = '\n'.join((lyrics_line for _, lyrics_line in sorted(lyrics.items()))) + '\n'
+                    # PDF files
+                    elif file_ext == '.pdf':
+                        reader = pypdf.PdfReader(file_path)
+                        new_file['text'] = '\n'.join([page.extract_text() for page in reader.pages])
                     # Word documents
                     # Reference: https://github.com/python-openxml/python-docx/issues/40#issuecomment-1793226714
                     elif file_ext == '.docx':
@@ -852,27 +899,6 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                                     lines.append('\t'.join(cells))
 
                         new_file['text'] = '\n'.join(lines)
-                    # Excel workbooks
-                    elif file_ext == '.xlsx':
-                        lines = []
-                        workbook = openpyxl.load_workbook(file_path, data_only = True)
-
-                        for worksheet_name in workbook.sheetnames:
-                            worksheet = workbook[worksheet_name]
-
-                            for row in worksheet.rows:
-                                cells = [
-                                    (cell.value if cell.value is not None else '')
-                                    for cell in row
-                                ]
-
-                                lines.append('\t'.join(cells))
-
-                        new_file['text'] = '\n'.join(lines)
-                    # PDF files
-                    elif file_ext == '.pdf':
-                        reader = pypdf.PdfReader(file_path)
-                        new_file['text'] = '\n'.join([page.extract_text() for page in reader.pages])
 
                     if self.main.settings_custom['file_area']['dialog_open_files']['auto_detect_langs']:
                         new_file['lang'] = wl_detection.detect_lang_text(self.main, new_file['text'])
