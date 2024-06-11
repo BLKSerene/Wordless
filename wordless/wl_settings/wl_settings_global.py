@@ -304,6 +304,7 @@ SETTINGS_GLOBAL = {
             _tr('wl_settings_global', 'CSV files (*.csv)'),
             _tr('wl_settings_global', 'Excel workbooks (*.xlsx)'),
             _tr('wl_settings_global', 'HTML pages (*.htm; *.html)'),
+            _tr('wl_settings_global', 'Lyrics files (*.lrc)'),
             _tr('wl_settings_global', 'PDF files (*.pdf)'),
             _tr('wl_settings_global', 'Text files (*.txt)'),
             _tr('wl_settings_global', 'Translation memory files (*.tmx)'),

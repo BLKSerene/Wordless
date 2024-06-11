@@ -162,10 +162,13 @@ def update_gui_file_types(err_msg, new_files):
             assert tokens == [[], [], [[['3-2', '3-3']]], [], [], [[['6-2', '6-3']]], [], []]
         # Excel workbooks
         elif file_name == 'xlsx.txt':
-            assert tokens == [[], [[['B2', '&', 'C2', 'D2']]], [[['B3', '&', 'B4', 'C3', 'D3']]], [[['C4', 'D4']]], [[['B5', 'C5', 'D5']]], [], [], [[['B2', '&', 'C2', 'D2']]], [[['B3', '&', 'B4', 'C3', 'D3']]], [[['C4', 'D4']]], [[['B5', 'C5', 'D5']]]]
+            assert tokens == [[], [[['B2', '&', 'C2', 'D2']]], [[['B3', '&', 'B4', 'C3', 'D3']]], [[['C4', 'D4']]], [[['B5', 'C5', 'D5']]]]
         # HTML pages
         elif file_name == 'html.txt':
             assert tokens == [[], [], [[['This', 'is', 'a', 'title']]], [], [], [[['Hello', 'world', '!']]], [], []]
+        # Lyrics files
+        elif file_name == 'lrc.txt':
+            assert tokens == [[], [[['Lyrics', 'line', '1']]], [[['Lyrics', 'line', '2', '(', 'with', 'invalid', 'time', 'tags', ')']]], [[['Repeating', 'lyrics', 'line', '3', '&', '5', '(', 'with', 'whitespace', ')']]], [[['Repeating', 'lyrics', 'line', '4', '&', '6']]], [[['Repeating', 'lyrics', 'line', '3', '&', '5', '(', 'with', 'whitespace', ')']]], [[['Repeating', 'lyrics', 'line', '4', '&', '6']]], [], [[['Lyrics', 'line', '7', '(', '3-digit', 'after', 'seconds', ')']]], [[['Lyrics', 'line', '8', '(', 'colon', 'separator', 'after', 'seconds', ')']]], [[['Lyrics', 'line', '9', '[', 'with', 'lyrics', 'in', 'square', 'brackets', 'at', 'the', 'end', ']']]], [[['Lyrics', 'line', '10', '(', 'with', 'word', 'time', 'tags', ')']]], [[['<', 'With', 'lyrics', 'in', 'angle', 'brackets', 'at', 'the', 'beginning', '>', 'Lyrics', 'line', '11', '<', 'with', 'lyrics', 'in', 'angle', 'brackets', 'at', 'the', 'end', ')']]], []]
         # PDF files
         elif file_name == 'pdf.txt':
             assert tokens == [[[['Lorem', 'ipsum', 'dolor', 'sit', 'amet', ','], ['consetetur', 'sadipscing', 'elitr', ','], ['sed', 'diam', 'nonumy', 'eirmod']]], [[['tempor', 'invidunt', 'ut', 'labore', 'et', 'dolore', 'magna', 'aliquyam', 'erat', ','], ['sed', 'diam', 'voluptua', '.']], [['At', 'vero']]], [[['eos', 'et', 'accusam', 'et', 'justo', 'duo', 'dolores', 'et', 'ea', 'rebum', '.']], [['Stet', 'clita', 'kasd', 'gubergren', ','], ['no', 'sea', 'taki-']]], [[['mata', 'sanctus', 'est', 'Lorem', 'ipsum', 'dolor', 'sit', 'amet', '.']], [['Lorem', 'ipsum', 'dolor', 'sit', 'amet', ','], ['consetetur']]], [[['sadipscing', 'elitr', ','], ['sed', 'diam', 'nonumy', 'eirmod', 'tempor', 'invidunt', 'ut', 'labore', 'et', 'dolore', 'magna']]], [[['aliquyam', 'erat', ','], ['sed', 'diam', 'voluptua', '.']], [['At', 'vero', 'eos', 'et', 'accusam', 'et', 'justo', 'duo', 'dolores', 'et', 'ea']]], [[['rebum', '.']], [['Stet', 'clita', 'kasd', 'gubergren', ','], ['no', 'sea', 'takimata', 'sanctus', 'est', 'Lorem', 'ipsum', 'dolor', 'sit']]], [[['amet', '.']]], [[['1']]]]
