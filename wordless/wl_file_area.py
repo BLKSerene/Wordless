@@ -837,7 +837,7 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
 
                             for row in worksheet.rows:
                                 cells = [
-                                    (cell.value if cell.value is not None else '')
+                                    (str(cell.value) if cell.value is not None else '')
                                     for cell in row
                                 ]
 
