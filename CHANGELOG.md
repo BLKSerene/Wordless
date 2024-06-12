@@ -42,6 +42,7 @@
 - Work Area: Update Profiler - Readability - OSMAN
 
 ### 📌 Bugfixes
+- File Area: Fix support for .xlsx files
 - Utils: Fix downloading of Stanza models
 - Work Area: Fix Dependency Parser - analysis of files whose first token is a punctuation mark
 

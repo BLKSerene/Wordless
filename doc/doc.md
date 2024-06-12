@@ -775,7 +775,7 @@ File Type                |File Extensions|Remarks
 CSV files¹               |\*.csv         |
 Excel workbooks¹²        |\*.xlsx        |Legacy Microsoft 97-03 Excel Workbooks (\*.xls) are not supported.
 HTML pages¹²             |\*.htm, \*.html|
-Lyrics File¹             |\*.lrc         |[Simple LRC](https://en.wikipedia.org/wiki/LRC_(file_format)#Core_format) and [enhanced LRC](https://en.wikipedia.org/wiki/LRC_(file_format)#A2_extension_(Enhanced_LRC_format)) format are supported.
+Lyrics File¹             |\*.lrc         |[Simple LRC](https://en.wikipedia.org/wiki/LRC_(file_format)#Core_format) and [enhanced LRC](https://en.wikipedia.org/wiki/LRC_(file_format)#A2_extension_(Enhanced_LRC_format)) formats are supported.
 PDF files¹²              |\*.pdf         |Text could only be extracted from **text-searchable PDF files**. There is no support for automatically converting scanned PDF files into text-searchable ones.
 Text files               |\*.txt         |
 Translation memory files¹|\*.tmx         |
