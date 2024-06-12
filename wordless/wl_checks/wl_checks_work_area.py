@@ -200,20 +200,21 @@ def check_results_download_model(main, err_msg, model_name = ''):
 
     return results_ok
 
-def check_err_table(main, err_msg):
+def check_err(main, err_msg):
     if err_msg:
         wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
         wl_status_bar_msg_err_fatal(main)
-    else:
+
+def check_err_table(main, err_msg):
+    check_err(main, err_msg)
+
+    if not err_msg:
         wl_status_bar_msg_success_generate_table(main)
 
 def check_err_fig(main, err_msg):
-    if err_msg:
-        wl_status_bar_msg_err_fatal(main)
+    check_err(main, err_msg)
 
-        wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
-        wl_status_bar_msg_err_fatal(main)
-    else:
+    if not err_msg:
         wl_status_bar_msg_success_generate_fig(main)
 
 def check_err_exp_table(main, err_msg, file_path):
