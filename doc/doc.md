@@ -770,17 +770,18 @@ Other languages          |⭕️ |⭕️ |✖️|✖️|✖️|✖️|✖️|✖
 <span id="doc-4-2"></span>
 ### [4.2 Supported File Types](#doc)
 
-File Type                |File Extensions|Remarks
--------------------------|---------------|-------
-CSV files¹               |\*.csv         |
-Excel workbooks¹²        |\*.xlsx        |Legacy Microsoft 97-03 Excel Workbooks (\*.xls) are not supported.
-HTML pages¹²             |\*.htm, \*.html|
-Lyrics File¹             |\*.lrc         |[Simple LRC](https://en.wikipedia.org/wiki/LRC_(file_format)#Core_format) and [enhanced LRC](https://en.wikipedia.org/wiki/LRC_(file_format)#A2_extension_(Enhanced_LRC_format)) formats are supported.
-PDF files¹²              |\*.pdf         |Text could only be extracted from **text-searchable PDF files**. There is no support for automatically converting scanned PDF files into text-searchable ones.
-Text files               |\*.txt         |
-Translation memory files¹|\*.tmx         |
-Word documents¹²         |\*.docx        |Legacy Microsoft 97-03 Word documents (\*.doc) are not supported.
-XML files¹               |\*.xml         |
+File Type                 |File Extensions|Remarks
+--------------------------|---------------|-------
+CSV files¹                |\*.csv         |
+Excel workbooks¹²         |\*.xlsx        |Legacy Microsoft 97-2003 Excel Workbooks (\*.xls) are not supported.
+HTML pages¹²              |\*.htm, \*.html|
+Lyrics File¹              |\*.lrc         |[Simple LRC](https://en.wikipedia.org/wiki/LRC_(file_format)#Core_format) and [enhanced LRC](https://en.wikipedia.org/wiki/LRC_(file_format)#A2_extension_(Enhanced_LRC_format)) formats are supported.
+PDF files¹²               |\*.pdf         |Text could only be extracted from **text-searchable PDF files**. There is no support for automatically converting scanned PDF files into text-searchable ones.
+PowerPoint presentations¹²|\*.pptx        |Legacy Microsoft 97-2003 PowerPoint presentations (\*.ppt) are not supported.
+Text files                |\*.txt         |
+Translation memory files¹ |\*.tmx         |
+Word documents¹²          |\*.docx        |Legacy Microsoft 97-2003 Word documents (\*.doc) are not supported.
+XML files¹                |\*.xml         |
 
 > [!IMPORTANT]
 > 1. Non-TXT files will be automatically converted to TXT files when being imported into *Wordless*. You can check the converted files under folder **imports** at the installation location of *Wordless* on your computer (as for macOS users, right click **Wordless.app**, select **Show Package Contents** and navigate to **Contents/MacOS/imports/**). You can change this location via **Menu Bar → Preferences → Settings → General → Import → Temporary Files → Default path**.

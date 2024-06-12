@@ -58,6 +58,7 @@ pyinstaller
 pypdf
 pyqt5
 python-docx
+python-pptx
 requests
 scipy
 wordcloud

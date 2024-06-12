@@ -64,6 +64,7 @@ pypdf
 pyqt5
 pytest
 python-docx
+python-pptx
 requests
 scipy
 wordcloud
