@@ -17,6 +17,7 @@
 # ----------------------------------------------------------------------
 
 import os
+import traceback
 
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
 from PyQt5.QtGui import QStandardItem, QStandardItemModel
@@ -25,7 +26,7 @@ from PyQt5.QtWidgets import (
     QStackedWidget, QTreeView, QWidget
 )
 
-from wordless.wl_checks import wl_checks_misc
+from wordless.wl_checks import wl_checks_misc, wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs, wl_msg_boxes
 from wordless.wl_widgets import wl_buttons, wl_layouts
 
@@ -305,24 +306,27 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
             return False
 
     def load(self, node = None):
-        self.load_settings()
+        try:
+            self.load_settings()
 
-        self.tree_settings.clearSelection()
+            self.tree_settings.clearSelection()
 
-        if node:
-            self.tree_settings.setCurrentIndex(self.tree_settings.model().findItems(node, Qt.MatchRecursive)[0].index())
-        else:
-            self.tree_settings.setCurrentIndex(self.tree_settings.model().findItems(self.main.settings_custom['settings']['node_cur'], Qt.MatchRecursive)[0].index())
+            if node:
+                self.tree_settings.setCurrentIndex(self.tree_settings.model().findItems(node, Qt.MatchRecursive)[0].index())
+            else:
+                self.tree_settings.setCurrentIndex(self.tree_settings.model().findItems(self.main.settings_custom['settings']['node_cur'], Qt.MatchRecursive)[0].index())
 
-        # Expand current node
-        node_cur = self.tree_settings.model().itemFromIndex(self.tree_settings.selectionModel().currentIndex())
+            # Expand current node
+            node_cur = self.tree_settings.model().itemFromIndex(self.tree_settings.selectionModel().currentIndex())
 
-        self.tree_settings.setExpanded(node_cur.index(), True)
+            self.tree_settings.setExpanded(node_cur.index(), True)
 
-        if node_cur.parent():
-            self.tree_settings.setExpanded(node_cur.parent().index(), True)
+            if node_cur.parent():
+                self.tree_settings.setExpanded(node_cur.parent().index(), True)
 
-        self.exec_()
+            self.exec_()
+        except Exception: # pylint: disable=broad-exception-caught
+            wl_checks_work_area.check_err(self.main, traceback.format_exc())
 
 class Wl_Settings_Node(QWidget):
     def __init__(self, main):
