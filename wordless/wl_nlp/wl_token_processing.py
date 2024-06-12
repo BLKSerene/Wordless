@@ -320,10 +320,22 @@ def wl_process_tokens_concordancer(main, text, token_settings, search_settings, 
                 tokens_flat_punc_marks.append(token)
 
         # Remove punctuation marks to match length
-        for para in text_modified.tokens_multilevel:
-            for sentence in para:
-                for i, sentence_seg in enumerate(sentence):
-                    sentence[i] = [token for token in sentence_seg if not wl_checks_tokens.is_punc(token)]
+        for i, para in enumerate(text_modified.tokens_multilevel):
+            for j, sentence in enumerate(para):
+                for k, sentence_seg in enumerate(sentence):
+                    if i == 0 and j == 0 and k == 0:
+                        tokens = []
+
+                        for l, token in enumerate(sentence_seg):
+                            # Do not remove the first token and set it to an empty token instead if it is a punctuation mark
+                            if l == 0 and wl_checks_tokens.is_punc(token):
+                                tokens.append(wl_texts.set_token_text(token, ''))
+                            elif not wl_checks_tokens.is_punc(token):
+                                tokens.append(token)
+
+                        sentence[k] = tokens
+                    else:
+                        sentence[k] = [token for token in sentence_seg if not wl_checks_tokens.is_punc(token)]
 
         # Also remove punctuation marks in heads
         for para in text_modified.tokens_multilevel:
