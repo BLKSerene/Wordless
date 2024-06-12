@@ -298,14 +298,12 @@ def test_lingua():
         re.search(r'^[^\(\)]+', lang.lower()).group().strip()
         for lang in main.settings_global['langs']
     }
-    langs_exceptions = {'bokmal', 'ganda', 'nynorsk', 'slovene'}
+    langs_exceptions = {'bokmal', 'ganda', 'nynorsk'}
     langs_extra = set()
 
     for lang in lingua.Language.all(): # pylint: disable=no-member
         if lang.name.lower() not in langs | langs_exceptions:
             langs_extra.add(lang.name)
-
-    print(f"\nExtra languages: {', '.join(langs_extra)}\n")
 
     assert langs_extra == {'BOSNIAN', 'MAORI', 'SHONA', 'SOMALI', 'SOTHO', 'TSONGA', 'XHOSA'}
 
