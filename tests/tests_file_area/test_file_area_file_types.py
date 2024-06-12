@@ -162,7 +162,7 @@ def update_gui_file_types(err_msg, new_files):
             assert tokens == [[], [], [[['3-2', '3-3']]], [], [], [[['6-2', '6-3']]], [], []]
         # Excel workbooks
         elif file_name == 'xlsx.txt':
-            assert tokens == [[], [[['B2', '&', 'C2', 'D2']]], [[['B3', '&', 'B4', 'C3', 'D3']]], [[['C4', 'D4']]], [[['B5', 'C5', 'D5']]]]
+            assert tokens == [[], [[['B2', '&', 'C2', 'D2']]], [[['B3', '&', 'B4', 'C3', 'D3']]], [[['C4', 'D4']]], [[['5', 'B5', 'C5', 'D5']]]]
         # HTML pages
         elif file_name == 'html.txt':
             assert tokens == [[], [], [[['This', 'is', 'a', 'title']]], [], [], [[['Hello', 'world', '!']]], [], []]
