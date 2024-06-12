@@ -93,22 +93,26 @@ class Wl_Table(QTableView):
         # Remove dotted gray border around selected cells
         self.setFocusPolicy(Qt.NoFocus)
 
+        self.default_foreground = '#292929'
+        self.default_background = '#FFF'
+        stylesheet_items = f'''
+            QTableView::item:hover {{
+                background-color: #E5E5E5;
+                color: {self.default_foreground};
+            }}
+            QTableView::item:selected {{
+                background-color: #E5E5E5;
+                color: {self.default_foreground};
+            }}
+
+            QHeaderView::section {{
+                color: {self.default_background};
+                font-weight: bold;
+            }}
+        '''
+
         if self.header_orientation == 'hor':
-            self.setStyleSheet('''
-                QTableView::item:hover {
-                    background-color: #C7C7C7;
-                    color: #000;
-                }
-                QTableView::item:selected {
-                    background-color: #C7C7C7;
-                    color: #000;
-                }
-
-                QHeaderView::section {
-                    color: #FFF;
-                    font-weight: bold;
-                }
-
+            self.setStyleSheet(stylesheet_items + '''
                 QHeaderView::section:horizontal {
                     background-color: #5C88C5;
                 }
@@ -116,37 +120,21 @@ class Wl_Table(QTableView):
                     background-color: #3265B2;
                 }
                 QHeaderView::section:horizontal:pressed {
-                    background-color: #3265B2;
+                    background-color: #264E8C;
                 }
 
                 QHeaderView::section:vertical {
-                    background-color: #737373;
+                    background-color: #888;
                 }
                 QHeaderView::section:vertical:hover {
-                    background-color: #606060;
+                    background-color: #777;
                 }
                 QHeaderView::section:vertical:pressed {
-                    background-color: #606060;
+                    background-color: #666;
                 }
             ''')
         elif self.header_orientation == 'vert':
-            self.setStyleSheet('''
-                QTableView::item {
-                    color: #000;
-                }
-                QTableView::item:hover {
-                    background-color: #EEE;
-                }
-                QTableView::item:selected {
-                    background-color: #EEE;
-                    color: #000;
-                }
-
-                QHeaderView::section {
-                    color: #FFF;
-                    font-weight: bold;
-                }
-
+            self.setStyleSheet(stylesheet_items + '''
                 QHeaderView::section:horizontal {
                     background-color: #888;
                 }
