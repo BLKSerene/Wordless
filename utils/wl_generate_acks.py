@@ -117,6 +117,10 @@ ACKS = [
         '1.3.3', 'Jonghwan Hyeon',
         'BSD-3-Clause', 'https://github.com/jonghwanhyeon/python-mecab-ko/blob/main/LICENSE'
     ], [
+        'python-pptx', 'https://github.com/scanny/python-pptx',
+        '0.6.23', 'Steve Canny',
+        'MIT', 'https://github.com/scanny/python-pptx/blob/master/LICENSE'
+    ], [
         'Requests', 'https://github.com/psf/requests',
         '2.32.2', 'Kenneth Reitz',
         'Apache-2.0', 'https://github.com/psf/requests/blob/main/LICENSE'

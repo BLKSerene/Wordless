@@ -27,6 +27,7 @@ import traceback
 import bs4
 import docx
 import openpyxl
+import pptx
 import pypdf
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, QItemSelection, QRect, Qt
 from PyQt5.QtGui import QStandardItem
@@ -812,93 +813,104 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
 
                 # Cleanse contents before language detection
                 if file_ext != '.tmx':
-                    if file_ext in ['.txt', '.xml']:
-                        with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace') as f:
-                            new_file['text'] = f.read()
-                    # CSV files
-                    elif file_ext == '.csv':
-                        lines = []
+                    match file_ext:
+                        case '.txt' | '.xml':
+                            with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace') as f:
+                                new_file['text'] = f.read()
+                        # CSV files
+                        case '.csv':
+                            lines = []
 
-                        with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace', newline = '') as f:
-                            # Remove NULL bytes to avoid error
-                            csv_reader = csv.reader([line.replace('\0', '') for line in f])
+                            with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace', newline = '') as f:
+                                # Remove NULL bytes to avoid error
+                                csv_reader = csv.reader([line.replace('\0', '') for line in f])
 
-                            for row in csv_reader:
-                                lines.append('\t'.join(row))
+                                for row in csv_reader:
+                                    lines.append('\t'.join(row))
 
-                        new_file['text'] = '\n'.join(lines)
-                    # Excel workbooks
-                    elif file_ext == '.xlsx':
-                        lines = []
-                        workbook = openpyxl.load_workbook(file_path, data_only = True)
+                            new_file['text'] = '\n'.join(lines)
+                        # Excel workbooks
+                        case '.xlsx':
+                            lines = []
+                            workbook = openpyxl.load_workbook(file_path, data_only = True)
 
-                        for worksheet_name in workbook.sheetnames:
-                            worksheet = workbook[worksheet_name]
+                            for worksheet_name in workbook.sheetnames:
+                                worksheet = workbook[worksheet_name]
 
-                            for row in worksheet.rows:
-                                cells = [
-                                    (str(cell.value) if cell.value is not None else '')
-                                    for cell in row
-                                ]
-
-                                lines.append('\t'.join(cells))
-
-                        new_file['text'] = '\n'.join(lines)
-                    # HTML pages
-                    elif file_ext in ['.htm', '.html']:
-                        with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace') as f:
-                            soup = bs4.BeautifulSoup(f.read(), 'lxml')
-
-                        new_file['text'] = soup.get_text()
-                    # Lyrics files
-                    elif file_ext == '.lrc':
-                        lyrics = {}
-                        RE_TIME_TAGS = r'[0-9]{2}:[0-5][0-9][\.:][0-9]{2,3}'
-
-                        with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace') as f:
-                            for line in f:
-                                time_tags = []
-
-                                line = line.strip()
-
-                                # Extract time tags at the beginning of the line
-                                while (re_time_tag := re.search(r'^\[[^\]]+?\]', line)):
-                                    time_tags.append(re_time_tag.group())
-
-                                    line = line[len(time_tags[-1]):].strip()
-
-                                # Strip word time tags
-                                line = re.sub(fr'\<{RE_TIME_TAGS}\>', r'', line)
-                                line = re.sub(r'\s{2,}', r' ', line).strip()
-
-                                for time_tag in time_tags:
-                                    if re.search(fr'^\[{RE_TIME_TAGS}\]$', time_tag):
-                                        lyrics[time_tag] = line
-
-                        new_file['text'] = '\n'.join((lyrics_line for _, lyrics_line in sorted(lyrics.items()))) + '\n'
-                    # PDF files
-                    elif file_ext == '.pdf':
-                        reader = pypdf.PdfReader(file_path)
-                        new_file['text'] = '\n'.join([page.extract_text() for page in reader.pages])
-                    # Word documents
-                    # Reference: https://github.com/python-openxml/python-docx/issues/40#issuecomment-1793226714
-                    elif file_ext == '.docx':
-                        lines = []
-                        doc = docx.Document(file_path)
-
-                        for item in doc.iter_inner_content():
-                            if isinstance(item, docx.text.paragraph.Paragraph):
-                                lines.append(item.text)
-                            elif isinstance(item, docx.table.Table):
-                                for row in self.iter_visual_cells(item):
+                                for row in worksheet.rows:
                                     cells = [
-                                        ' '.join([cell_item.text for cell_item in self.iter_block_items(cell)])
+                                        # Numbers need to be converted to strings
+                                        (str(cell.value) if cell.value is not None else '')
                                         for cell in row
                                     ]
 
                                     lines.append('\t'.join(cells))
 
-                        new_file['text'] = '\n'.join(lines)
+                            new_file['text'] = '\n'.join(lines)
+                        # HTML pages
+                        case '.htm' | '.html':
+                            with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace') as f:
+                                soup = bs4.BeautifulSoup(f.read(), 'lxml')
+
+                            new_file['text'] = soup.get_text()
+                        # Lyrics files
+                        case '.lrc':
+                            lyrics = {}
+                            RE_TIME_TAGS = r'[0-9]{2}:[0-5][0-9][\.:][0-9]{2,3}'
+
+                            with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace') as f:
+                                for line in f:
+                                    time_tags = []
+
+                                    line = line.strip()
+
+                                    # Extract time tags at the beginning of the line
+                                    while (re_time_tag := re.search(r'^\[[^\]]+?\]', line)):
+                                        time_tags.append(re_time_tag.group())
+
+                                        line = line[len(time_tags[-1]):].strip()
+
+                                    # Strip word time tags
+                                    line = re.sub(fr'\<{RE_TIME_TAGS}\>', r'', line)
+                                    line = re.sub(r'\s{2,}', r' ', line).strip()
+
+                                    for time_tag in time_tags:
+                                        if re.search(fr'^\[{RE_TIME_TAGS}\]$', time_tag):
+                                            lyrics[time_tag] = line
+
+                            new_file['text'] = '\n'.join((lyrics_line for _, lyrics_line in sorted(lyrics.items()))) + '\n'
+                        # PDF files
+                        case '.pdf':
+                            reader = pypdf.PdfReader(file_path)
+                            new_file['text'] = '\n'.join([page.extract_text() for page in reader.pages])
+                        # Powerpoint presentations
+                        case '.pptx':
+                            texts = []
+                            prs = pptx.Presentation(file_path)
+
+                            for slide in prs.slides:
+                                texts.extend(self.iter_slide_shapes(slide.shapes))
+
+                            new_file['text'] = '\n'.join(texts)
+                        # Word documents
+                        # Reference: https://github.com/python-openxml/python-docx/issues/40#issuecomment-1793226714
+                        case '.docx':
+                            lines = []
+                            doc = docx.Document(file_path)
+
+                            for item in doc.iter_inner_content():
+                                if isinstance(item, docx.text.paragraph.Paragraph):
+                                    lines.append(item.text)
+                                elif isinstance(item, docx.table.Table):
+                                    for row in self.iter_visual_cells(item):
+                                        cells = [
+                                            ' '.join([cell_item.text for cell_item in self.iter_block_items(cell)])
+                                            for cell in row
+                                        ]
+
+                                        lines.append('\t'.join(cells))
+
+                            new_file['text'] = '\n'.join(lines)
 
                     if self.main.settings_custom['file_area']['dialog_open_files']['auto_detect_langs']:
                         new_file['lang'] = wl_detection.detect_lang_text(self.main, new_file['text'])
@@ -984,6 +996,19 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                     prior_tcs.add(cell._tc)
 
         return visual_cells
+
+    # Reference: https://stackoverflow.com/questions/51701626/how-to-extract-text-from-a-text-shape-within-a-group-shape-in-powerpoint-using
+    def iter_slide_shapes(self, shapes):
+        texts = []
+
+        for shape in shapes:
+            if shape.shape_type == pptx.enum.shapes.MSO_SHAPE_TYPE.GROUP: # pylint: disable=no-member
+                self.iter_slide_shapes(shape)
+
+            if shape.has_text_frame:
+                texts.append(shape.text)
+
+        return texts
 
 class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(str, list)
