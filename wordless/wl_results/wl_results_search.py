@@ -302,7 +302,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
                 if table.indexWidget(table.model().index(row, col)):
                     table.indexWidget(table.model().index(row, col)).setStyleSheet('border: 1px solid #E53E3A;')
                 else:
-                    table.model().item(row, col).setForeground(QBrush(QColor('#FFFFFF')))
+                    table.model().item(row, col).setForeground(QBrush(QColor('#FFF')))
                     table.model().item(row, col).setBackground(QBrush(QColor('#E53E3A')))
 
             for table in self.tables:
@@ -340,8 +340,8 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
                     table.indexWidget(table.model().index(row, col)).setStyleSheet('border: 0')
                 # Skip if the found item no longer exist (eg. the table has been re-generated)
                 elif table.model().item(row, col):
-                    table.model().item(row, col).setForeground(QBrush(QColor('#292929')))
-                    table.model().item(row, col).setBackground(QBrush(QColor('#FFF')))
+                    table.model().item(row, col).setForeground(QBrush(QColor(table.default_foreground)))
+                    table.model().item(row, col).setBackground(QBrush(QColor(table.default_background)))
 
             for table in self.tables:
                 table.enable_updates()

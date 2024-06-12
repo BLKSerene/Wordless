@@ -45,9 +45,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
         self.button_sort = QPushButton(self.tr('Sort'), self)
         self.button_close = QPushButton(self.tr('Close'), self)
 
-        if self.tab == 'concordancer':
-            self.button_sort.clicked.connect(lambda: self.sort_results()) # pylint: disable=unnecessary-lambda
-
+        self.button_sort.clicked.connect(lambda: self.sort_results()) # pylint: disable=unnecessary-lambda
         self.button_close.clicked.connect(self.reject)
 
         layout_table_sort = wl_layouts.Wl_Layout()
@@ -69,6 +67,8 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addLayout(layout_table_sort, 0, 0)
         self.layout().addLayout(layout_buttons, 1, 0)
+
+        self.load_settings()
 
     # To be called by Restore defaults
     def load_settings(self, defaults = False):
@@ -146,7 +146,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
             color_settings['lvl_6']
         ]
 
-        for i, (
+        for row, (
             left, node, right, sentiment,
             no_token, no_token_pct,
             no_sentence_seg, no_sentence_seg_pct,
@@ -191,33 +191,36 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
 
                     i_highlight_color_right += 1
 
-            self.table.indexWidget(self.table.model().index(i, 0)).setText(' '.join(text_left))
-            self.table.indexWidget(self.table.model().index(i, 1)).setText(node_text)
-            self.table.indexWidget(self.table.model().index(i, 2)).setText(' '.join(text_right))
+            self.table.indexWidget(self.table.model().index(row, 0)).setText(' '.join(text_left))
+            self.table.indexWidget(self.table.model().index(row, 1)).setText(node_text)
+            self.table.indexWidget(self.table.model().index(row, 2)).setText(' '.join(text_right))
 
-            self.table.indexWidget(self.table.model().index(i, 0)).tokens_raw = [token for token in left.tokens_raw if token]
-            self.table.indexWidget(self.table.model().index(i, 1)).tokens_raw = node.tokens_raw
-            self.table.indexWidget(self.table.model().index(i, 2)).tokens_raw = [token for token in right.tokens_raw if token]
+            self.table.indexWidget(self.table.model().index(row, 0)).tokens_raw = [token for token in left.tokens_raw if token]
+            self.table.indexWidget(self.table.model().index(row, 1)).tokens_raw = node.tokens_raw
+            self.table.indexWidget(self.table.model().index(row, 2)).tokens_raw = [token for token in right.tokens_raw if token]
 
-            self.table.indexWidget(self.table.model().index(i, 0)).tokens_search = left.tokens_search
-            self.table.indexWidget(self.table.model().index(i, 1)).tokens_search = node.tokens_search
-            self.table.indexWidget(self.table.model().index(i, 2)).tokens_search = right.tokens_search
+            self.table.indexWidget(self.table.model().index(row, 0)).tokens_search = left.tokens_search
+            self.table.indexWidget(self.table.model().index(row, 1)).tokens_search = node.tokens_search
+            self.table.indexWidget(self.table.model().index(row, 2)).tokens_search = right.tokens_search
 
             if isinstance(sentiment, float):
-                self.table.set_item_num(i, 3, sentiment)
+                self.table.set_item_num(row, 3, sentiment)
             # No language support
             else:
-                self.table.set_item_err(i, 3, text = sentiment, alignment_hor = 'right')
+                self.table.set_item_err(row, 3, text = sentiment, alignment_hor = 'right')
 
-            self.table.set_item_num_val(i, 4, no_token)
-            self.table.set_item_num_val(i, 5, no_token_pct)
-            self.table.set_item_num_val(i, 6, no_sentence_seg)
-            self.table.set_item_num_val(i, 7, no_sentence_seg_pct)
-            self.table.set_item_num_val(i, 8, no_sentence)
-            self.table.set_item_num_val(i, 9, no_sentence_pct)
-            self.table.set_item_num_val(i, 10, no_para)
-            self.table.set_item_num_val(i, 11, no_para_pct)
-            self.table.model().item(i, 12).setText(file)
+            self.table.set_item_num_val(row, 4, no_token)
+            self.table.set_item_num_val(row, 5, no_token_pct)
+            self.table.set_item_num_val(row, 6, no_sentence_seg)
+            self.table.set_item_num_val(row, 7, no_sentence_seg_pct)
+            self.table.set_item_num_val(row, 8, no_sentence)
+            self.table.set_item_num_val(row, 9, no_sentence_pct)
+            self.table.set_item_num_val(row, 10, no_para)
+            self.table.set_item_num_val(row, 11, no_para_pct)
+            self.table.model().item(row, 12).setText(file)
+
+            # Clear highlights
+            self.table.dialog_results_search.clr_highlights()
 
         self.table.enable_updates(emit_signals = False)
 
@@ -336,24 +339,24 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
             self.cols_to_sort.extend([self.tr('R') + str(i + 1) for i in range(width_right)])
             self.cols_to_sort.extend([self.tr('L') + str(i + 1) for i in range(width_left)])
 
-        self.setItemDelegateForColumn(0, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
-            parent = self,
-            items = self.cols_to_sort
-        ))
+            self.setItemDelegateForColumn(0, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
+                parent = self,
+                items = self.cols_to_sort
+            ))
 
-        # Check sorting settings
-        sorting_rules_old = copy.deepcopy(self.main.settings_custom[self.tab]['sort_results']['sorting_rules'])
+            # Check sorting settings
+            sorting_rules_old = copy.deepcopy(self.main.settings_custom[self.tab]['sort_results']['sorting_rules'])
 
-        self.clr_table(0)
+            self.clr_table(0)
 
-        for sorting_col, sorting_order in sorting_rules_old:
-            if sorting_col in self.cols_to_sort:
-                self._add_row(texts = [sorting_col, sorting_order])
+            for sorting_col, sorting_order in sorting_rules_old:
+                if sorting_col in self.cols_to_sort:
+                    self._add_row(texts = [sorting_col, sorting_order])
 
-        if self.model().rowCount() == 0:
-            self.load_settings(defaults = True)
+            if self.model().rowCount() == 0:
+                self.load_settings(defaults = True)
 
-        self.clearSelection()
+            self.clearSelection()
 
     def max_left(self):
         if self.tr('L1') in self.cols_to_sort:
@@ -466,26 +469,26 @@ class Wl_Worker_Results_Sort_Concordancer(wl_threading.Wl_Worker):
         max_left = self.dialog.table_sort.max_left()
         max_right = self.dialog.table_sort.max_right()
 
-        for i in range(self.dialog.table.model().rowCount()):
-            left_old = self.dialog.table.indexWidget(self.dialog.table.model().index(i, 0))
-            node_old = self.dialog.table.indexWidget(self.dialog.table.model().index(i, 1))
-            right_old = self.dialog.table.indexWidget(self.dialog.table.model().index(i, 2))
+        for row in range(self.dialog.table.model().rowCount()):
+            left_old = self.dialog.table.indexWidget(self.dialog.table.model().index(row, 0))
+            node_old = self.dialog.table.indexWidget(self.dialog.table.model().index(row, 1))
+            right_old = self.dialog.table.indexWidget(self.dialog.table.model().index(row, 2))
 
             if len(left_old.tokens_raw) < max_left:
                 left_old.tokens_raw = [''] * (max_left - len(left_old.tokens_raw)) + left_old.tokens_raw
             if len(right_old.tokens_raw) < max_right:
                 right_old.tokens_raw.extend([''] * (max_right - len(right_old.tokens_raw)))
 
-            sentiment = self.dialog.table.model().item(i, 3).read_data()
-            no_token = self.dialog.table.model().item(i, 4).val
-            no_token_pct = self.dialog.table.model().item(i, 5).val
-            no_sentence_seg = self.dialog.table.model().item(i, 6).val
-            no_sentence_seg_pct = self.dialog.table.model().item(i, 7).val
-            no_sentence = self.dialog.table.model().item(i, 8).val
-            no_sentence_pct = self.dialog.table.model().item(i, 9).val
-            no_para = self.dialog.table.model().item(i, 10).val
-            no_para_pct = self.dialog.table.model().item(i, 11).val
-            file = self.dialog.table.model().item(i, 12).text()
+            sentiment = self.dialog.table.model().item(row, 3).read_data()
+            no_token = self.dialog.table.model().item(row, 4).val
+            no_token_pct = self.dialog.table.model().item(row, 5).val
+            no_sentence_seg = self.dialog.table.model().item(row, 6).val
+            no_sentence_seg_pct = self.dialog.table.model().item(row, 7).val
+            no_sentence = self.dialog.table.model().item(row, 8).val
+            no_sentence_pct = self.dialog.table.model().item(row, 9).val
+            no_para = self.dialog.table.model().item(row, 10).val
+            no_para_pct = self.dialog.table.model().item(row, 11).val
+            file = self.dialog.table.model().item(row, 12).text()
 
             results.append([
                 left_old, node_old, right_old, sentiment,
