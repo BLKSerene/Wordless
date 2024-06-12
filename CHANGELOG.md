@@ -45,6 +45,7 @@
 ### 📌 Bugfixes
 - File Area: Fix support for .xlsx files
 - Utils: Fix downloading of Stanza models
+- Utils: Fix language detection
 - Work Area: Fix Dependency Parser - analysis of files whose first token is a punctuation mark
 
 ### ❌ Removals
