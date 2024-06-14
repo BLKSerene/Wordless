@@ -891,7 +891,6 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
 
     def run(self):
         try:
-            texts = []
             colligations_freqs_files_all = []
 
             settings = self.main.settings_custom['colligation_extractor']
@@ -1091,14 +1090,10 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                 # Frequency (All)
                 colligations_freqs_files_all.append(colligations_freqs_file_all)
 
-                texts.append(text)
-
             # Total
             if len(files) > 1:
                 colligations_freqs_total = {}
                 colligations_freqs_total_all = {}
-
-                texts.append(wl_texts.Wl_Text_Blank())
 
                 # Frequency
                 for colligations_freqs_file in self.colligations_freqs_files:
@@ -1132,8 +1127,7 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
             # Used for z-score (Berry-Rogghe)
             span = (abs(window_left) + abs(window_right)) / 2
 
-            for text, colligations_freqs_file, colligations_freqs_file_all in zip(
-                texts,
+            for colligations_freqs_file, colligations_freqs_file_all in zip(
                 self.colligations_freqs_files,
                 colligations_freqs_files_all
             ):

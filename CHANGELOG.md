@@ -33,7 +33,7 @@
 - Work Area: Add Collocation Extractor - Filter results - Node/Collocation length
 - Work Area: Add Dependency Parser - Filter results
 - Work Area: Add Dependency Parser - Search Settings - Match dependency relations
-- Work Area: Add Profiler - Lexical Diversity - Brunét's Index / Honoré's statistic
+- Work Area: Add Profiler - Lexical Density/Diversity - Brunét's Index / Honoré's statistic / Lexical Density
 
 ### ✨ Improvements
 - Settings: Settings - Part-of-speeach Tagging - Tagsets - Mapping Settings - Allow editing of tagset mapping of spaCy's Catalan, Danish, French, Greek (Modern), Macedonian, Norwegian (Bokmål), Portuguese, Russian, Spanish, and Ukrainian part-of-speech taggers

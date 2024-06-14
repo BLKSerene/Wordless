@@ -52,6 +52,6 @@ tagset_mapping = [
     ['FIX', 'PART', '前置词', ''],
     ['NEG', 'PART', '否定词', ''],
 
-    ['INT', 'INT', '语气词', ''],
+    ['INT', 'INTJ', '语气词', ''],
     ['PUNCT', 'PUNCT', '标点符号', '']
 ]

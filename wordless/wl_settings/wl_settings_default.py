@@ -22,6 +22,7 @@ import networkx
 from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtWidgets import QDesktopWidget
 
+from wordless.wl_nlp import wl_pos_tagging
 from wordless.wl_settings import wl_settings_global
 from wordless.wl_tagsets import (
     wl_tagset_cat_universal,
@@ -2310,8 +2311,8 @@ def init_settings_default(main):
                 }
             },
 
-            # Settings - Measures - Lexical Diversity
-            'lexical_diversity': {
+            # Settings - Measures - Lexical Density/Diversity
+            'lexical_density_diversity': {
                 'hdd': {
                     'sample_size': 42
                 },
@@ -2509,6 +2510,12 @@ def init_settings_default(main):
     }
 
     # Tagsets
+    for mappings in settings_default['pos_tagging']['tagsets']['mapping_settings'].values():
+        for mapping in mappings.values():
+            if len(mapping[0]) == 4:
+                for i, (_, universal_pos_tag, _, _) in enumerate(mapping):
+                    mapping[i].insert(2, wl_pos_tagging.to_content_function(universal_pos_tag))
+
     settings_default['pos_tagging']['tagsets']['preview_settings']['preview_pos_tagger'] = settings_default['pos_tagging']['pos_tagger_settings']['pos_taggers'].copy()
 
     # Custom stop word lists

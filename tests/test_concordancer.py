@@ -16,6 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import glob
+
 from tests import wl_test_init
 from wordless import wl_concordancer
 from wordless.wl_dialogs import wl_dialogs_misc
@@ -30,7 +32,7 @@ def test_concordancer():
     settings['search_settings']['multi_search_mode'] = True
     settings['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
 
-    for i in range(4):
+    for i in range(2 + len(glob.glob('tests/files/file_area/misc/*.txt'))):
         match i:
             # Single file
             case 0:

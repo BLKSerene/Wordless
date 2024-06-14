@@ -28,11 +28,11 @@ def test_wl_settings_measures_readability():
     settings_measures_readability.load_settings(defaults = True)
     settings_measures_readability.apply_settings()
 
-def test_wl_settings_measures_lexical_diversity():
-    settings_measures_lexical_diversity = wl_settings_measures.Wl_Settings_Measures_Lexical_Diversity(main)
-    settings_measures_lexical_diversity.load_settings()
-    settings_measures_lexical_diversity.load_settings(defaults = True)
-    settings_measures_lexical_diversity.apply_settings()
+def test_wl_settings_measures_lexical_density_diversity():
+    settings_measures_lexical_density_diversity = wl_settings_measures.Wl_Settings_Measures_Lexical_Density_Diversity(main)
+    settings_measures_lexical_density_diversity.load_settings()
+    settings_measures_lexical_density_diversity.load_settings(defaults = True)
+    settings_measures_lexical_density_diversity.apply_settings()
 
 def test_wl_settings_measures_dispersion():
     settings_measures_dispersion = wl_settings_measures.Wl_Settings_Measures_Dispersion(main)
@@ -66,7 +66,7 @@ def test_wl_settings_measures_effect_size():
 
 if __name__ == '__main__':
     test_wl_settings_measures_readability()
-    test_wl_settings_measures_lexical_diversity()
+    test_wl_settings_measures_lexical_density_diversity()
     test_wl_settings_measures_dispersion()
     test_wl_settings_measures_adjusted_freq()
     test_wl_settings_measures_statistical_significance()

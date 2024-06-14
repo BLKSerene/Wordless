@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Tests - Measures - Lexical diversity
+# Wordless: Tests - Measures - Lexical density/diversity
 # Copyright (C) 2018-2024  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -20,10 +20,10 @@ import numpy
 import scipy
 
 from tests import wl_test_init
-from wordless.wl_measures import wl_measures_lexical_diversity
+from wordless.wl_measures import wl_measures_lexical_density_diversity
 
 main = wl_test_init.Wl_Test_Main()
-settings = main.settings_custom['measures']['lexical_diversity']
+settings = main.settings_custom['measures']['lexical_density_diversity']
 
 TOKENS_10 = ['This', 'is', 'a', 'sentence', '.'] * 2
 TOKENS_100 = ['This', 'is', 'a', 'sentence', '.'] * 20
@@ -33,49 +33,63 @@ TOKENS_1000 = ['This', 'is', 'a', 'sentence', '.'] * 200
 # Reference: Popescu, I.-I. (2009). Word frequency studies (p. 26). Mouton de Gruyter.
 TOKENS_225 = [1] * 11 + [2, 3] * 9 + [4] * 7 + [5, 6] * 6 + [7, 8] * 5 + list(range(9, 16)) * 4 + list(range(16, 22)) * 3 + list(range(22, 40)) * 2 + list(range(40, 125))
 
+def get_test_text(tokens):
+    return wl_test_init.Wl_Test_Text(main, [[[tokens]]])
+
+text_tokens_10 = get_test_text(TOKENS_10)
+text_tokens_100 = get_test_text(TOKENS_100)
+text_tokens_101 = get_test_text(TOKENS_101)
+text_tokens_1000 = get_test_text(TOKENS_1000)
+text_tokens_225 = get_test_text(TOKENS_225)
+
 def test_brunets_index():
-    w = wl_measures_lexical_diversity.brunets_index(main, TOKENS_100)
+    w = wl_measures_lexical_density_diversity.brunets_index(main, text_tokens_100)
 
     assert w == numpy.power(100, numpy.power(5, -0.165))
 
 def test_cttr():
-    cttr = wl_measures_lexical_diversity.cttr(main, TOKENS_100)
+    cttr = wl_measures_lexical_density_diversity.cttr(main, text_tokens_100)
 
     assert cttr == 5 / (2 * 100) ** 0.5
 
 # Reference: Fisher, R. A., Steven, A. C., & Williams, C. B. (1943). The relation between the number of species and the number of individuals in a random sample of an animal population. Journal of Animal Ecology, 12(1), 56. https://doi.org/10.2307/1411
 def test_fishers_index_of_diversity():
     tokens = [str(i) for i in range(240)] + ['0'] * (15609 - 240)
-    alpha = wl_measures_lexical_diversity.fishers_index_of_diversity(main, tokens)
+    alpha = wl_measures_lexical_density_diversity.fishers_index_of_diversity(main, get_test_text(tokens))
 
     assert round(alpha, 3) == 40.247
 
 def test_herdans_vm():
-    vm = wl_measures_lexical_diversity.herdans_vm(main, TOKENS_100)
+    vm = wl_measures_lexical_density_diversity.herdans_vm(main, text_tokens_100)
 
     assert vm == (5 * 20 ** 2) / (100 ** 2) - 1 / 5
 
 def test_hdd():
-    hdd_100 = wl_measures_lexical_diversity.hdd(main, TOKENS_100)
+    hdd_100 = wl_measures_lexical_density_diversity.hdd(main, text_tokens_100)
 
     assert hdd_100 == (1 - scipy.stats.hypergeom.pmf(k = 0, M = 100, n = 20, N = 42)) * (1 / 42) * 5
 
 def test_honores_stat():
-    r = wl_measures_lexical_diversity.honores_stat(main, TOKENS_100)
+    r = wl_measures_lexical_density_diversity.honores_stat(main, text_tokens_100)
 
     assert r == 100 * numpy.log(100 / (1 - 0 / 5))
 
+def test_lexical_density():
+    lexical_density = wl_measures_lexical_density_diversity.lexical_density(main, text_tokens_100)
+
+    assert lexical_density == 20 / 100
+
 def test_logttr():
     settings['logttr']['variant'] = 'Herdan'
-    logttr_herdan = wl_measures_lexical_diversity.logttr(main, TOKENS_100)
+    logttr_herdan = wl_measures_lexical_density_diversity.logttr(main, text_tokens_100)
     settings['logttr']['variant'] = 'Somers'
-    logttr_somers = wl_measures_lexical_diversity.logttr(main, TOKENS_100)
+    logttr_somers = wl_measures_lexical_density_diversity.logttr(main, text_tokens_100)
     settings['logttr']['variant'] = 'Rubet'
-    logttr_rubet = wl_measures_lexical_diversity.logttr(main, TOKENS_100)
+    logttr_rubet = wl_measures_lexical_density_diversity.logttr(main, text_tokens_100)
     settings['logttr']['variant'] = 'Maas'
-    logttr_maas = wl_measures_lexical_diversity.logttr(main, TOKENS_100)
+    logttr_maas = wl_measures_lexical_density_diversity.logttr(main, text_tokens_100)
     settings['logttr']['variant'] = 'Dugast'
-    logttr_dugast = wl_measures_lexical_diversity.logttr(main, TOKENS_100)
+    logttr_dugast = wl_measures_lexical_density_diversity.logttr(main, text_tokens_100)
 
     num_types = 5
     num_tokens = 100
@@ -87,28 +101,28 @@ def test_logttr():
     assert logttr_dugast == (numpy.log(num_tokens) ** 2) / (numpy.log(num_tokens) - numpy.log(num_types))
 
 def test_msttr():
-    msttr_100 = wl_measures_lexical_diversity.msttr(main, TOKENS_101)
+    msttr_100 = wl_measures_lexical_density_diversity.msttr(main, text_tokens_101)
     settings['msttr']['num_tokens_in_each_seg'] = 1000
-    msttr_1000 = wl_measures_lexical_diversity.msttr(main, TOKENS_101)
+    msttr_1000 = wl_measures_lexical_density_diversity.msttr(main, text_tokens_101)
 
     assert msttr_100 == 5 / 100
     assert msttr_1000 == 0
 
 def test_mtld():
-    mtld_100 = wl_measures_lexical_diversity.mtld(main, TOKENS_100)
+    mtld_100 = wl_measures_lexical_density_diversity.mtld(main, text_tokens_100)
 
     assert mtld_100 == 100 / (14 + 0 / 0.28)
 
 def test_mattr():
-    mattr_100 = wl_measures_lexical_diversity.mattr(main, TOKENS_100)
-    mattr_1000 = wl_measures_lexical_diversity.mattr(main, TOKENS_1000)
+    mattr_100 = wl_measures_lexical_density_diversity.mattr(main, text_tokens_100)
+    mattr_1000 = wl_measures_lexical_density_diversity.mattr(main, text_tokens_1000)
 
-    assert mattr_100 == wl_measures_lexical_diversity.ttr(main, TOKENS_100)
+    assert mattr_100 == wl_measures_lexical_density_diversity.ttr(main, text_tokens_100)
     assert mattr_1000 == 5 / 500
 
 # Reference: Popescu I.-I., Mačutek, J, & Altmann, G. (2008). Word frequency and arc length. Glottometrics, 17, 21, 33.
 def test_popescu_macutek_altmanns_b1_b2_b3_b4_b5():
-    b1, b2, b3, b4, b5 = wl_measures_lexical_diversity.popescu_macutek_altmanns_b1_b2_b3_b4_b5(main, TOKENS_225)
+    b1, b2, b3, b4, b5 = wl_measures_lexical_density_diversity.popescu_macutek_altmanns_b1_b2_b3_b4_b5(main, text_tokens_225)
 
     assert round(b1, 3) == 0.969
     assert round(b2, 3) == 0.527
@@ -118,79 +132,79 @@ def test_popescu_macutek_altmanns_b1_b2_b3_b4_b5():
 
 # Reference: Popescu, I.-I. (2009). Word frequency studies (p. 30). Mouton de Gruyter.
 def test_popescus_r1():
-    r1 = wl_measures_lexical_diversity.popescus_r1(main, TOKENS_225)
+    r1 = wl_measures_lexical_density_diversity.popescus_r1(main, text_tokens_225)
 
     assert round(r1, 4) == 0.8667
 
 # Reference: Popescu, I.-I. (2009). Word frequency studies (p. 39). Mouton de Gruyter.
 def test_popescus_r2():
-    r2 = wl_measures_lexical_diversity.popescus_r2(main, TOKENS_225)
+    r2 = wl_measures_lexical_density_diversity.popescus_r2(main, text_tokens_225)
 
     assert round(r2, 3) == 0.871
 
 # Reference: Popescu, I.-I. (2009). Word frequency studies (p. 51). Mouton de Gruyter.
 def test_popescus_r3():
-    r3 = wl_measures_lexical_diversity.popescus_r3(main, TOKENS_225)
+    r3 = wl_measures_lexical_density_diversity.popescus_r3(main, text_tokens_225)
 
     assert round(r3, 4) == 0.3778
 
 # Reference: Popescu, I.-I. (2009). Word frequency studies (p. 59). Mouton de Gruyter.
 def test_popescus_r4():
-    r4 = wl_measures_lexical_diversity.popescus_r4(main, TOKENS_225)
+    r4 = wl_measures_lexical_density_diversity.popescus_r4(main, text_tokens_225)
 
     assert round(r4, 4) == 0.6344
 
 # Reference: Popescu, I.-I. (2009). Word frequency studies (pp. 170, 172). Mouton de Gruyter.
 def test_repeat_rate():
     settings['repeat_rate']['use_data'] = 'Rank-frequency distribution'
-    rr_distribution = wl_measures_lexical_diversity.repeat_rate(main, TOKENS_225)
+    rr_distribution = wl_measures_lexical_density_diversity.repeat_rate(main, text_tokens_225)
     settings['repeat_rate']['use_data'] = 'Frequency spectrum'
-    rr_spectrum = wl_measures_lexical_diversity.repeat_rate(main, TOKENS_225)
+    rr_spectrum = wl_measures_lexical_density_diversity.repeat_rate(main, text_tokens_225)
 
     assert round(rr_distribution, 4) == 0.0153
     assert round(rr_spectrum, 4) == 0.4974
 
 def test_rttr():
-    rttr = wl_measures_lexical_diversity.rttr(main, TOKENS_100)
+    rttr = wl_measures_lexical_density_diversity.rttr(main, text_tokens_100)
 
     assert rttr == 5 / 100 ** 0.5
 
 # Reference: Popescu, I.-I. (2009). Word frequency studies (pp. 176, 178). Mouton de Gruyter.
 def test_shannon_entropy():
     settings['shannon_entropy']['use_data'] = 'Rank-frequency distribution'
-    h_distribution = wl_measures_lexical_diversity.shannon_entropy(main, TOKENS_225)
+    h_distribution = wl_measures_lexical_density_diversity.shannon_entropy(main, text_tokens_225)
     settings['shannon_entropy']['use_data'] = 'Frequency spectrum'
-    h_spectrum = wl_measures_lexical_diversity.shannon_entropy(main, TOKENS_225)
+    h_spectrum = wl_measures_lexical_density_diversity.shannon_entropy(main, text_tokens_225)
 
     assert round(h_distribution, 4) == 6.5270
     assert round(h_spectrum, 4) == 1.6234
 
 def test_simpsons_l():
-    l = wl_measures_lexical_diversity.simpsons_l(main, TOKENS_100)
+    l = wl_measures_lexical_density_diversity.simpsons_l(main, text_tokens_100)
 
     assert l == (5 * 20 ** 2 - 100) / (100 * (100 - 1))
 
 def test_ttr():
-    ttr = wl_measures_lexical_diversity.ttr(main, TOKENS_100)
+    ttr = wl_measures_lexical_density_diversity.ttr(main, text_tokens_100)
 
     assert ttr == 5 / 100
 
 def test_vocdd():
-    vocdd_10 = wl_measures_lexical_diversity.vocdd(main, TOKENS_10)
-    vocdd_100 = wl_measures_lexical_diversity.vocdd(main, TOKENS_100)
-    vocdd_1000 = wl_measures_lexical_diversity.vocdd(main, TOKENS_1000)
+    vocdd_10 = wl_measures_lexical_density_diversity.vocdd(main, text_tokens_10)
+    vocdd_100 = wl_measures_lexical_density_diversity.vocdd(main, text_tokens_100)
+    vocdd_1000 = wl_measures_lexical_density_diversity.vocdd(main, text_tokens_1000)
 
     assert vocdd_10 > 0
     assert vocdd_100 > 0
     assert vocdd_1000 > 0
 
 def test_yules_characteristic_k():
-    k = wl_measures_lexical_diversity.yules_characteristic_k(main, TOKENS_100)
+    k = wl_measures_lexical_density_diversity.yules_characteristic_k(main, text_tokens_100)
 
     assert k == 10000 * ((5 * 20 ** 2 - 100) / (100 ** 2))
 
 def test_yules_index_of_diversity():
-    index_of_diversity = wl_measures_lexical_diversity.yules_index_of_diversity(main, TOKENS_100)
+    index_of_diversity = wl_measures_lexical_density_diversity.yules_index_of_diversity(main, text_tokens_100)
 
     assert index_of_diversity == (100 ** 2) / (5 * 20 ** 2 - 100)
 
@@ -201,6 +215,7 @@ if __name__ == '__main__':
     test_herdans_vm()
     test_hdd()
     test_honores_stat()
+    test_lexical_density()
     test_logttr()
     test_msttr()
     test_mtld()

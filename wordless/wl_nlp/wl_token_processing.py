@@ -28,13 +28,11 @@ from wordless.wl_utils import wl_misc
 # Assign part-of-speech tags
 def text_pos_tag(main, text, settings):
     if settings['assign_pos_tags'] and not text.tagged:
-        tokens = wl_pos_tagging.wl_pos_tag(
+        wl_pos_tagging.wl_pos_tag(
             main,
             inputs = text.get_tokens_flat(),
             lang = text.lang
         )
-
-        text.update_token_properties(tokens)
 
 # Apply lemmatization / Match inflected forms
 def text_lemmatize(main, text, token_settings, search_settings = None):
@@ -55,23 +53,19 @@ def text_lemmatize(main, text, token_settings, search_settings = None):
             and search_settings['context_settings']['excl']['match_inflected_forms']
         )
     ):
-        tokens = wl_lemmatization.wl_lemmatize(
+        wl_lemmatization.wl_lemmatize(
             main,
             inputs = text.get_tokens_flat(),
             lang = text.lang
         )
 
-        text.update_token_properties(tokens)
-
 # Syllable tokenization
 def text_syl_tokenize(main, text):
-    tokens = wl_syl_tokenization.wl_syl_tokenize(
+    wl_syl_tokenization.wl_syl_tokenize(
         main,
         inputs = text.get_tokens_flat(),
         lang = text.lang,
     )
-
-    text.update_token_properties(tokens)
 
 # Ignore tags
 def text_ignore_tags(text, settings):
@@ -133,7 +127,7 @@ def wl_process_tokens(main, text, token_settings, search_settings = None):
 
     # Remove tags temporarily if text is untagged and users do not choose to assign POS tags on the fly
     if not settings['assign_pos_tags'] and not text.tagged:
-        text_modified.set_token_properties('tag', '')
+        text_modified.set_token_properties('tag', None)
 
     # Punctuation marks
     if not settings['punc_marks']:
@@ -272,11 +266,24 @@ def remove_empty_tokens_multilevel(tokens_multilevel, empty_tokens = True):
 
     return tokens_multilevel
 
-def wl_process_tokens_profiler(main, text, token_settings):
+def wl_process_tokens_profiler(main, text, token_settings, profiler_tab):
     # Punctuation marks must be preserved for some readability measures (e.g. Wheeler & Smith's Readability Formula)
     text.tokens_multilevel_with_puncs = copy.deepcopy(text.tokens_multilevel)
 
     text_syl_tokenize(main, text)
+
+    if profiler_tab in ['readability', 'all']:
+        if text.lang in main.settings_global['pos_taggers']:
+            wl_pos_tagging.wl_pos_tag_universal(main, text.get_tokens_flat(), lang = text.lang, tagged = text.tagged)
+
+        # Polish variant of Gunning Fog Index
+        if text.lang == 'pol':
+            wl_lemmatization.wl_lemmatize(main, text.get_tokens_flat(), lang = text.lang)
+
+    if profiler_tab in ['lexical_density_diversity', 'all']:
+        # Lexical density
+        if text.lang in main.settings_global['pos_taggers']:
+            wl_pos_tagging.wl_pos_tag_universal(main, text.get_tokens_flat(), lang = text.lang, tagged = text.tagged)
 
     text_modified = wl_process_tokens_ngram_generator(main, text, token_settings)
     text_modified.tokens_multilevel = remove_empty_tokens_multilevel(text_modified.tokens_multilevel)
@@ -285,19 +292,17 @@ def wl_process_tokens_profiler(main, text, token_settings):
     return text_modified
 
 def wl_process_tokens_concordancer(main, text, token_settings, search_settings, preserve_blank_lines = False):
-    settings = copy.deepcopy(token_settings)
-
     text_pos_tag(main, text, token_settings)
     text_lemmatize(main, text, token_settings, search_settings)
 
     text_modified = copy.deepcopy(text)
 
     # Remove tags temporarily if text is untagged and users do not choose to assign POS tags on the fly
-    if not settings['assign_pos_tags'] and not text.tagged:
+    if not token_settings['assign_pos_tags'] and not text.tagged:
         text_modified.set_token_properties('tag', '')
 
     # Punctuation marks
-    if not settings['punc_marks']:
+    if not token_settings['punc_marks']:
         tokens_flat_punc_marks = []
 
         for i, token in enumerate(text_modified.get_tokens_flat()):
@@ -358,18 +363,14 @@ def wl_process_tokens_concordancer(main, text, token_settings, search_settings, 
     return text_modified
 
 def wl_process_tokens_dependency_parser(main, text, token_settings, search_settings):
-    # Dependency parsing
-    tokens_modified = []
-
+    # Do not modify original sentence tokenization during dependency parsing
     for para in text.tokens_multilevel:
         for sentence in para:
-            tokens_modified.extend(wl_dependency_parsing.wl_dependency_parse(
+            wl_dependency_parsing.wl_dependency_parse(
                 main,
                 inputs = list(wl_misc.flatten_list(sentence)),
                 lang = text.lang,
-            ))
-
-    text.update_token_properties(tokens_modified)
+            )
 
     return wl_process_tokens_concordancer(main, text, token_settings, search_settings)
 

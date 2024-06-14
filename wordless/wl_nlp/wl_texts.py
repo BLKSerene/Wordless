@@ -38,7 +38,7 @@ class Wl_Token(str):
     def __init__(
         self, text, lang = 'eng_us',
         syls = None,
-        tag = None,
+        tag = None, tag_universal = None, content_function = None,
         lemma = None,
         head = None, dependency_relation = None, dependency_len = None,
         punc_mark = None
@@ -46,6 +46,8 @@ class Wl_Token(str):
         self.lang = lang
         self.syls = syls
         self.tag = tag
+        self.tag_universal = tag_universal
+        self.content_function = content_function
         self.lemma = lemma
         self.head = head
         self.dependency_relation = dependency_relation
@@ -60,14 +62,16 @@ class Wl_Token(str):
 
     def display_text(self, punc_mark = False):
         if punc_mark:
-            return str(self) + (self.punc_mark or '') + (self.tag or '')
+            return f"{self}{(self.punc_mark or '')}{self.tag or ''}"
         else:
-            return str(self) + (self.tag or '')
+            return f"{self}{self.tag or ''}"
 
     def update_properties(self, token):
         self.lang = token.lang
         self.syls = token.syls
         self.tag = token.tag
+        self.tag_universal = token.tag_universal
+        self.content_function = token.content_function
         self.lemma = token.lemma
         self.head = token.head
         self.dependency_relation = token.dependency_relation
@@ -77,7 +81,7 @@ class Wl_Token(str):
 def to_tokens(
     texts, lang = 'eng_us',
     syls_tokens = None,
-    tags = None,
+    tags = None, tags_universal = None, content_functions = None,
     lemmas = None,
     heads = None, dependency_relations = None, dependency_lens = None,
     punc_marks = None
@@ -86,6 +90,8 @@ def to_tokens(
 
     syls_tokens = syls_tokens or [None] * num_tokens
     tags = tags or [None] * num_tokens
+    tags_universal = tags_universal or [None] * num_tokens
+    content_functions = content_functions or [None] * num_tokens
     lemmas = lemmas or [None] * num_tokens
     heads = heads or [None] * num_tokens
     dependency_relations = dependency_relations or [None] * num_tokens
@@ -96,7 +102,7 @@ def to_tokens(
         Wl_Token(
             text, lang = lang,
             syls = syls_tokens[i],
-            tag = tags[i],
+            tag = tags[i], tag_universal = tags_universal[i], content_function = content_functions[i],
             lemma = lemmas[i],
             head = heads[i], dependency_relation = dependency_relations[i], dependency_len = dependency_lens[i],
             punc_mark = punc_marks[i]
@@ -122,6 +128,8 @@ def split_texts_properties(tokens):
             'lang': token.lang,
             'syls': token.syls,
             'tag': token.tag,
+            'tag_universal': token.tag_universal,
+            'content_function': token.content_function,
             'lemma': token.lemma,
             'head': token.head,
             'dependency_relation': token.dependency_relation,
@@ -248,8 +256,11 @@ class Wl_Text:
                         for sentence in wl_sentence_tokenization.wl_sentence_split(self.main, para):
                             self.tokens_multilevel[-1].append([])
 
-                            for sentence_seg in wl_sentence_tokenization.wl_sentence_seg_split(self.main, sentence):
-                                self.tokens_multilevel[-1][-1].append(sentence_seg.split())
+                            for sentence_seg in wl_sentence_tokenization.wl_sentence_seg_tokenize_tokens(
+                                self.main,
+                                sentence.split()
+                            ):
+                                self.tokens_multilevel[-1][-1].append(sentence_seg)
             # Tokenized & Tagged
             elif self.tokenized and self.tagged:
                 for i, para in enumerate(text.splitlines()):
@@ -262,8 +273,11 @@ class Wl_Text:
                         for sentence in wl_sentence_tokenization.wl_sentence_split(self.main, text_no_tags):
                             self.tokens_multilevel[-1].append([])
 
-                            for sentence_seg in wl_sentence_tokenization.wl_sentence_seg_split(self.main, sentence):
-                                self.tokens_multilevel[-1][-1].append(sentence_seg.split())
+                            for sentence_seg in wl_sentence_tokenization.wl_sentence_seg_tokenize_tokens(
+                                self.main,
+                                sentence.split()
+                            ):
+                                self.tokens_multilevel[-1][-1].append(sentence_seg)
 
                         # Check if the first token in the text is a tag
                         if i == 0 and re.match(re_tags_start, para):
@@ -276,16 +290,16 @@ class Wl_Text:
                             tags_tokens.append([])
 
                         # Extract tags
-                        tag_end = 0
+                        tag_last_end = 0
 
                         for tag in re.finditer(re_tags, para):
-                            tags_tokens = self.add_tags_splitting(para[tag_end:tag.start()], tags_tokens)
+                            tags_tokens = self.add_tags_splitting(para[tag_last_end:tag.start()], tags_tokens)
                             tags_tokens[-1].append(tag.group())
 
-                            tag_end = tag.end()
+                            tag_last_end = tag.end()
 
                         # The last part of the text
-                        if (para := para[tag_end:]):
+                        if (para := para[tag_last_end:]):
                             tags_tokens = self.add_tags_splitting(para, tags_tokens)
 
             # Add empty tags for untagged files
@@ -369,8 +383,8 @@ class Wl_Text:
 
                     i_tag += len_sentence_seg
 
-        # Record number of tokens
-        self.num_tokens = len(self.get_tokens_flat())
+        # Record number of tokens and types
+        self.update_num_tokens()
 
         # Remove Wl_Main object from the text since it cannot be pickled
         del self.main
@@ -396,6 +410,7 @@ class Wl_Text:
 
     def update_num_tokens(self):
         self.num_tokens = len(self.get_tokens_flat())
+        self.num_types = len(set(self.get_tokens_flat()))
 
     def get_tokens_flat(self):
         return list(wl_misc.flatten_list(self.tokens_multilevel))
@@ -598,10 +613,6 @@ class Wl_Text_Ref(Wl_Text):
         # Remove Wl_Main object from the text since it cannot be pickled
         del self.main
 
-class Wl_Text_Blank(Wl_Text):
-    def __init__(self): # pylint: disable=super-init-not-called
-        pass
-
 class Wl_Text_Total(Wl_Text):
     def __init__(self, texts): # pylint: disable=super-init-not-called
         # Set language for the combined text only if all texts are in the same language
@@ -609,6 +620,8 @@ class Wl_Text_Total(Wl_Text):
             self.lang = texts[0].lang
         else:
             self.lang = 'other'
+
+        self.tagged = any((text.tagged for text in texts))
 
         self.tokens_multilevel = [
             copy.deepcopy(para)

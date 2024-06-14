@@ -42,7 +42,7 @@ def test_wl_settings_pos_tagging_tagsets():
 
     settings_pos_tagging_tagsets.preview_lang_changed()
     settings_pos_tagging_tagsets.preview_pos_tagger_changed()
-    settings_pos_tagging_tagsets.update_gui(['test', 'test', 'test', 'test'])
+    settings_pos_tagging_tagsets.update_gui([['test', 'test', 'test', 'test', 'test']])
     main.settings_custom['pos_tagging']['tagsets']['preview_settings']['preview_pos_tagger']['eng_us'] = 'nltk_perceptron_eng'
     settings_pos_tagging_tagsets.reset_currently_shown_table()
 

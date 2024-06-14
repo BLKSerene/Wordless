@@ -24,5 +24,10 @@ main = wl_test_init.Wl_Test_Main()
 def test_settings_default():
     assert wl_settings_default.init_settings_default(main)
 
+    # Check for invalid conversion of universal POS tags into content/function words
+    for mappings in main.settings_default['pos_tagging']['tagsets']['mapping_settings'].values():
+        for mapping in mappings.values():
+            assert all(len(pos_mapping) == 5 for pos_mapping in mapping)
+
 if __name__ == '__main__':
     test_settings_default()
