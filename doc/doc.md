@@ -38,7 +38,7 @@
   - [4.3 Supported File Encodings](#doc-4-3)
   - [4.4 Supported Measures](#doc-4-4)
     - [4.4.1 Readability Formulas](#doc-4-4-1)
-    - [4.4.2 Indicators of Lexical Diversity](#doc-4-4-2)
+    - [4.4.2 Indicators of Lexical Density/Diversity](#doc-4-4-2)
     - [4.4.3 Measures of Dispersion and Adjusted Frequency](#doc-4-4-3)
     - [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, and Measures of Effect Size](#doc-4-4-4)
 - [5 References](#doc-5)
@@ -113,7 +113,7 @@ By default, *Wordless* tries to detect the encoding and language settings of all
 
 In *Profiler*, you can check and compare general linguistic features of different files.
 
-All statistics are grouped into 5 tables for better readability: Readability, Counts, Lexical Diversity, Lengths, Length Breakdown.
+All statistics are grouped into 5 tables for better readability: Readability, Counts, Lexical Density/Diversity, Lengths, Length Breakdown.
 
 - **3.1.1 Readability**<br>
   Readability statistics of each file calculated according to the different readability tests used. See section [4.4.1 Readability Formulas](#doc-4-4-1) for more details.
@@ -163,8 +163,8 @@ All statistics are grouped into 5 tables for better readability: Readability, Co
   - **3.1.2.14 Count of Characters %**<br>
     The percentage of the number of characters in each file out of the total number of characters in all files.
 
-- **3.1.3 Lexical Diversity**<br>
-  Statistics of lexical diversity which reflect the the extend to which the vocabulary used in each file varies. See section [4.4.2 Indicators of Lexical Diversity](#doc-4-4-2) for more details.
+- **3.1.3 Lexical Density/Diversity**<br>
+  Statistics of lexical density/diversity which reflect the the extend to which the vocabulary used in each file varies. See section [4.4.2 Indicators of Lexical Density/Diversity](#doc-4-4-2) for more details.
 
 - **3.1.4 Lengths**<br>
   - **3.1.4.1 Paragraph Length in Sentences / Sentence Segments / Tokens (Mean)**<br>
@@ -908,10 +908,10 @@ It should be noted that some readability measures are **language-specific**, or 
 The following variables would be used in formulas:<br>
 **NumSentences**: Number of sentences<br>
 **NumWords**: Number of words<br>
-**NumWords1Syl**: Number of monosyllabic words<br>
-**NumWordsn+Syls**: Number of words with n or more syllables<br>
-**NumWordsn+Ltrs**: Number of words with n or more letters<br>
-**NumWordsn-Ltrs**: Number of words with n or less letters<br>
+**NumWordsSyl₁**: Number of monosyllabic words<br>
+**NumWordsSylsₙ₊**: Number of words with n or more syllables<br>
+**NumWordsLtrsₙ₊**: Number of words with n or more letters<br>
+**NumWordsLtrsₙ₋**: Number of words with n or fewer letters<br>
 **NumConjs**: Number of conjunctions<br>
 **NumPreps**: Number of prepositions<br>
 **NumProns**: Number of pronouns<br>
@@ -959,10 +959,10 @@ Coleman-Liau Index:
 
 Coleman's Readability Formula:
     \begin{align*}
-        \text{Cloze \; %}_1 &= 1.29 \times \left(\frac{\text{NumWords1Syl}}{\text{NumWords}} \times 100\right) - 38.45 \\
-        \text{Cloze \; %}_2 &= 1.16 \times \left(\frac{\text{NumWords1Syl}}{\text{NumWords}} \times 100\right) + 1.48 \times \left(\frac{\text{NumSentences}}{\text{NumWords}} \times 100\right) - 37.95 \\
-        \text{Cloze \; %}_3 &= 1.07 \times \left(\frac{\text{NumWords1Syl}}{\text{NumWords}} \times 100\right) + 1.18 \times \left(\frac{\text{NumSentences}}{\text{NumWords}} \times 100\right) + 0.76 \times \left(\frac{\text{NumProns}}{\text{NumWords}} \times 100\right) - 34.02 \\
-        \text{Cloze \; %}_4 &= 1.04 \times \left(\frac{\text{NumWords1Syl}}{\text{NumWords}} \times 100\right) + 1.06 \times \left(\frac{\text{NumSentences}}{\text{NumWords}} \times 100\right) + 0.56 \times \left(\frac{\text{NumProns}}{\text{NumWords}} \times 100\right) - 0.36 \times \left(\frac{\text{NumPreps}}{\text{NumWords}} \times 100\right) - 26.01
+        \text{Cloze \; %}_1 &= 1.29 \times \left(\frac{\text{NumWordsSyl}_1}{\text{NumWords}} \times 100\right) - 38.45 \\
+        \text{Cloze \; %}_2 &= 1.16 \times \left(\frac{\text{NumWordsSyl}_1}{\text{NumWords}} \times 100\right) + 1.48 \times \left(\frac{\text{NumSentences}}{\text{NumWords}} \times 100\right) - 37.95 \\
+        \text{Cloze \; %}_3 &= 1.07 \times \left(\frac{\text{NumWordsSyl}_1}{\text{NumWords}} \times 100\right) + 1.18 \times \left(\frac{\text{NumSentences}}{\text{NumWords}} \times 100\right) + 0.76 \times \left(\frac{\text{NumProns}}{\text{NumWords}} \times 100\right) - 34.02 \\
+        \text{Cloze \; %}_4 &= 1.04 \times \left(\frac{\text{NumWordsSyl}_1}{\text{NumWords}} \times 100\right) + 1.06 \times \left(\frac{\text{NumSentences}}{\text{NumWords}} \times 100\right) + 0.56 \times \left(\frac{\text{NumProns}}{\text{NumWords}} \times 100\right) - 0.36 \times \left(\frac{\text{NumPreps}}{\text{NumWords}} \times 100\right) - 26.01
     \end{align*}
 
 Dale-Chall Readability Formula:
@@ -1014,12 +1014,12 @@ Flesch Reading Ease:
 
 Flesch Reading Ease (Farr-Jenkins-Paterson):
     \begin{align*}
-        \text{RE} &= 1.599 \times \left(\frac{\text{NumWords1Syl}}{\text{NumWords}} \times 100\right) - 1.015 \times \frac{\text{NumWords}}{\text{NumSentences}} - 31.517 \\
-        \text{RE}_\text{Farr-Jenkins-Paterson} &= 8.4335 - 0.0648 \times \left(\frac{\text{NumWords1Syl}}{\text{NumWords}} \times 100\right) + 0.0923 \times \frac{\text{NumWords}}{\text{NumSentences}}
+        \text{RE} &= 1.599 \times \left(\frac{\text{NumWordsSyl}_1}{\text{NumWords}} \times 100\right) - 1.015 \times \frac{\text{NumWords}}{\text{NumSentences}} - 31.517 \\
+        \text{RE}_\text{Farr-Jenkins-Paterson} &= 8.4335 - 0.0648 \times \left(\frac{\text{NumWordsSyl}_1}{\text{NumWords}} \times 100\right) + 0.0923 \times \frac{\text{NumWords}}{\text{NumSentences}}
     \end{align*}
 
 FORCAST Grade Level:
-    \text{RGL} = 20.43 - 0.11 \times \text{NumWords1Syl}
+    \text{RGL} = 20.43 - 0.11 \times \text{NumWordsSyl}_1
 
 Fórmula de comprensibilidad de Gutiérrez de Polini:
     \text{CP} = 95.2 - 9.7 \times \frac{\text{NumCharsAlpha}}{\text{NumWords}} - 0.35 \times \frac{\text{NumWords}}{\text{NumSentences}}
@@ -1037,7 +1037,7 @@ Gunning Fog Index:
     \begin{align*}
         \text{Fog Index} &= 0.4 \times \left(\frac{\text{NumWords}}{\text{NumSentences}} + \frac{\text{NumHardWords}}{\text{NumWords}} \times 100\right) \\
         \text{Fog Index}_\text{Powers-Sumner-Kearl} &= 3.0680 + 0.0877 \times \frac{\text{NumWords}}{\text{NumSentences}} + 0.0984 \times \left(\frac{\text{NumHardWords}}{\text{NumWords}} \times 100\right) \\
-        \text{Fog Index}_\text{Navy} &= \frac{\frac{\text{NumWords} + 2 \times \text{NumWords3+Syls}}{\text{NumSentences}} - 3}{2} \\
+        \text{Fog Index}_\text{Navy} &= \frac{\frac{\text{NumWords} + 2 \times \text{NumWordsSyls}_{3+}}{\text{NumSentences}} - 3}{2} \\
         \text{Fog Index}_\text{Polish} &= \frac{\sqrt{\left(\frac{\text{NumWords}}{\text{NumSentences}}\right)^2 + \left(\frac{\text{NumHardWords}}{\text{NumWords}} \times 100\right)^2}}{2}
     \end{align*}
 
@@ -1045,10 +1045,10 @@ Legibilidad µ:
     \mu = \frac{\text{NumWords}}{\text{NumWords} - 1} \times \frac{\text{LenWordsAvg}}{\text{LenWordsVar}} \times 100
 
 Lensear Write:
-    \text{Score} = \text{NumWords1Syl} + 3 \times \text{NumSentences}
+    \text{Score} = \text{NumWordsSyl}_1 + 3 \times \text{NumSentences}
 
 Lix:
-    \text{Lix} = \frac{\text{NumWords}}{\text{NumSentences}} + 100 \times \frac{\text{NumWords7+Ltrs}}{\text{NumWords}}
+    \text{Lix} = \frac{\text{NumWords}}{\text{NumSentences}} + 100 \times \frac{\text{NumWordsLtrs}_{7+}}{\text{NumWords}}
 
 Lorge Readability Index:
     \begin{align*}
@@ -1060,13 +1060,13 @@ Luong-Nguyen-Dinh's Readability Formula:
     {\text{Readability} = 0.004 \times \frac{\text{NumCharsAlnum}}{\text{NumSentences}} + 0.1905 \times \frac{\text{NumCharsAlnum}}{\text{NumWords}} + 2.7147 \times \frac{\text{NumSylsLuongNguyenDinh}_\text{1000}}{\text{NumSyls}} - 0.7295}
 
 McAlpine EFLAW Readability Score:
-    \text{EFLAW} = \frac{\text{NumWords} + \text{NumWords3-Ltrs}}{\text{NumSentences}}
+    \text{EFLAW} = \frac{\text{NumWords} + \text{NumWordsLtrs}_{3-}}{\text{NumSentences}}
 
 neue Wiener Literaturformeln:
     \begin{align*}
         \text{sW} &= \frac{\text{NumWordTypesBambergerVanecek}}{\text{NumWordTypes}} \times 100 \\
-        \text{S/100} &= \frac{\text{NumSentences}}{\text{NumWords}} \times 100 \qquad \text{MS} = \frac{\text{NumWords3+Syls}}{\text{NumWords}} \times 100 \\
-        \text{SL} &= \frac{\text{NumWords}}{\text{NumSentences}} \qquad \qquad \; \; \; \text{IW} = \frac{\text{NumWords7+Ltrs}}{\text{NumWords}} \times 100 \\
+        \text{S/100} &= \frac{\text{NumSentences}}{\text{NumWords}} \times 100 \qquad \text{MS} = \frac{\text{NumWordsSyls}_{3+}}{\text{NumWords}} \times 100 \\
+        \text{SL} &= \frac{\text{NumWords}}{\text{NumSentences}} \qquad \qquad \; \; \; \text{IW} = \frac{\text{NumWordsLtrs}_{7+}}{\text{NumWords}} \times 100 \\
         \text{nWL}_1 &= 0.2032 \times \text{sW} - 0.1715 \times \text{S/100} + 0.1594 \times \text{MS} - 0.0746 \times \text{SL} - 0.145 \\
         \text{nWL}_2 &= 0.2081 \times \text{sW} - 0.207 \times \text{S/100} + 0.1772 \times \text{MS} + 0.7498 \\
         \text{nWL}_3 &= 0.2373 \times \text{MS} + 0.2433 \times \text{SL} + 0.1508 \times \text{IW} - 3.9203
@@ -1074,23 +1074,23 @@ neue Wiener Literaturformeln:
 
 neue Wiener Sachtextformel:
     \begin{align*}
-        \text{MS} &= \frac{\text{NumWords3+Syls}}{\text{NumWords}} \times 100 \qquad \text{SL} = \frac{\text{NumWords}}{\text{NumSentences}} \\
-        \text{IW} &= \frac{\text{NumWords7+Ltrs}}{\text{NumWords}} \times 100 \qquad \text{ES} = \frac{\text{NumWords1Syl}}{\text{NumWords}} \times 100 \\
+        \text{MS} &= \frac{\text{NumWordsSyls}_{3+}}{\text{NumWords}} \times 100 \qquad \text{SL} = \frac{\text{NumWords}}{\text{NumSentences}} \\
+        \text{IW} &= \frac{\text{NumWordsLtrs}_{7+}}{\text{NumWords}} \times 100 \qquad \text{ES} = \frac{\text{NumWordsSyl}_1}{\text{NumWords}} \times 100 \\
         \text{nWS}_1 &= 0.1935 \times \text{MS} + 0.1672 \times \text{SL} + 0.1297 \times \text{IW} - 0.0327 \times \text{ES} - 0.875 \\
         \text{nWS}_2 &= 0.2007 \times \text{MS} + 0.1682 \times \text{SL} + 0.1373 \times \text{IW} - 2.779 \\
         \text{nWS}_3 &= 0.2963 \times \text{MS} + 0.1905 \times \text{SL} - 1.1144
     \end{align*}
 
 OSMAN:
-    \text{OSMAN} = 200.791 - 1.015 \times \frac{\text{NumWords}}{\text{NumSentences}} - 24.181 \times \frac{\text{NumWords6+Ltrs} + \text{NumSyls} + \text{NumWords5+Syls} + \text{NumFaseehWords}}{\text{NumWords}}
+    \text{OSMAN} = 200.791 - 1.015 \times \frac{\text{NumWords}}{\text{NumSentences}} - 24.181 \times \frac{\text{NumWordsLtrs}_{6+} + \text{NumSyls} + \text{NumWordsSyls}_{5+} + \text{NumFaseehWords}}{\text{NumWords}}
 
 Rix:
-    \text{Rix} = \frac{\text{NumWords7+Ltrs}}{\text{NumSentences}}
+    \text{Rix} = \frac{\text{NumWordsLtrs}_{7+}}{\text{NumSentences}}
 
 SMOG Grade:
     \begin{align*}
-        \text{g} &= 3.1291 + 1.043 \times \sqrt{\text{NumWords3+Syls}} \\
-        \text{g}_\text{German} &= \sqrt{\frac{\text{NumWords3+Syl}}{\text{NumSentences}} \times 30} - 2
+        \text{g} &= 3.1291 + 1.043 \times \sqrt{\text{NumWordsSyls}_{3+}} \\
+        \text{g}_\text{German} &= \sqrt{\frac{\text{NumWordsSyl}_{3+}}{\text{NumSentences}} \times 30} - 2
     \end{align*}
 
 Spache Grade Level:
@@ -1112,7 +1112,7 @@ Tuldava's Text Difficulty:
     \text{TD} = \frac{\text{NumSyls}}{\text{NumWords}} \times \ln \frac{\text{NumWords}}{\text{NumSentences}}
 
 Wheeler & Smith's Readability Formula:
-    \text{Wheeler-Smith} = \frac{\text{NumWords}}{\text{NumUnits}} \times \frac{\text{NumWords2+Syls}}{\text{NumWords}} \times 10
+    \text{Wheeler-Smith} = \frac{\text{NumWords}}{\text{NumUnits}} \times \frac{\text{NumWordsSyls}_{2+}}{\text{NumWords}} \times 10
 -->
 
 Readability Formula|Formula|Supported Languages
@@ -1162,8 +1162,8 @@ Readability Formula|Formula|Supported Languages
 > 1. Requires **built-in part-of-speech tagging support**
 
 <span id="doc-4-4-2"></span>
-#### [4.4.2 Indicators of Lexical Diversity](#doc)
-Lexical diversity is the measurement of the extent to which the vocabulary used in the text varies.
+#### [4.4.2 Indicators of Lexical Density/Diversity](#doc)
+Lexical density/diversity is the measurement of the extent to which the vocabulary used in the text varies.
 
 The following variables would be used in formulas:<br>
 **fᵢ**: Frequency of the i-th token type ranked descendingly by frequencies<br>
@@ -1185,8 +1185,11 @@ Fisher's Index of Diversity:
 Herdan's Vₘ:
     \text{V}_\text{m} = \frac{\sum_{f = 1}^{\text{f}_\text{max}}(\text{NumTypes}_f \times f^2)}{\text{NumTokens}^2} - \frac{1}{\text{NumTypes}}
 
-Honoré's statistic:
+Honoré's Statistic:
     \text{R} = 100 \times \ln\frac{\text{NumTokens}}{1 - \frac{\text{NumTypes}_1}{\text{NumTypes}}
+
+Lexical Density:
+    \text{Lexical Density} = \frac{\text{NumContentWords}}{\text{NumTokens}}
 
 LogTTR:
     \begin{align*}
@@ -1243,34 +1246,35 @@ Yule's Index of Diversity:
     \text{Index of Diversity} = \frac{\text{NumTokens}^2}{\sum_{f = 1}^{\text{f}_\text{max}}(\text{NumTypes}_f \times f^2) - \text{NumTokens}}
 -->
 
-Indicator of Lexical Diversity|Formula
-------------------------------|-------
-<span id="ref-brunets-index"></span>Brunét's Index<br>([Brunét, 1978](#ref-brunet-1978))|![Formula](/doc/measures/lexical_diversity/brunets_index.svg)
-<span id="ref-cttr"></span>Corrected TTR<br>([Carroll, 1964](#ref-carroll-1964))|![Formula](/doc/measures/lexical_diversity/cttr.svg)
-<span id="ref-fishers-index-of-diversity"></span>Fisher's Index of Diversity<br>([Fisher et al., 1943](#ref-fisher-et-al-1943))|![Formula](/doc/measures/lexical_diversity/fishers_index_of_diversity.svg)<br>where W₋₁ is the -1 branch of the [Lambert W function](https://en.wikipedia.org/wiki/Lambert_W_function)
-<span id="ref-herdans-vm"></span>Herdan's Vₘ<br>([Herdan, 1955](#ref-herdan-1955))|![Formula](/doc/measures/lexical_diversity/herdans_vm.svg)
-<span id="ref-hdd"></span>HD-D<br>([McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see reference.<br>The sample size could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Diversity → HD-D → Sample size**.
-<span id="ref-honores-stat"></span>Honoré's statistic<br>([Honoré, 1979](#ref-honore-1979))|![Formula](/doc/measures/lexical_diversity/honores_stat.svg)
-<span id="ref-logttr"></span>LogTTR¹<br>(Herdan: [Herdan, 1960, p. 28](#ref-herdan-1960)<br>Somers: [Somers, 1966](#ref-somers-1966)<br>Rubet: [Dugast, 1979](#ref-dugast-1979)<br>Maas: [Maas, 1972](#ref-maas-1972)<br>Dugast: [Dugast, 1978](#ref-dugast-1978); [Dugast, 1979](#ref-dugast-1979))|![Formula](/doc/measures/lexical_diversity/logttr.svg)
-<span id="ref-msttr"></span>Mean Segmental TTR<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/lexical_diversity/msttr.svg)<br>where **n** is the number of equal-sized segment, the length of which could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Diversity → Mean Segmental TTR → Number of tokens in each segment**, **NumTypesSegᵢ** is the number of token types in the **i**-th segment, and **NumTokensSegᵢ** is the number of tokens in the **i**-th segment.
-<span id="ref-mtld"></span>Measure of Textual Lexical Diversity<br>([McCarthy, 2005, pp. 95–96, 99–100](#ref-mccarthy-2005); [McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see references.<br>The factor size could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Diversity → Measure of Textual Lexical Diversity → Factor size**.
-<span id="ref-mattr"></span>Moving-average TTR<br>([Covington & McFall, 2010](#ref-covington-mcfall-2010))|![Formula](/doc/measures/lexical_diversity/mattr.svg)<br>where **w** is the window size which could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Diversity → Moving-average TTR → Window size**, **NumTypesWindowₚ** is the number of token types within the moving window starting at position **p**, and **NumTokensWindowₚ** is the number of tokens within the moving window starting at position **p**.
-<span id="ref-popescu-macutek-altmanns-b1-b2-b3-b4-b5"></span>Popescu-Mačutek-Altmann's B₁/B₂/B₃/B₄/B₅<br>([Popescu et al., 2008](#ref-popescu-et-al-2008))|![Formula](/doc/measures/lexical_diversity/popescu_macutek_altmanns_b1_b2_b3_b4_b5.svg)
+Indicator of Lexical Density/Diversity|Formula
+--------------------------------------|-------
+<span id="ref-brunets-index"></span>Brunét's Index<br>([Brunét, 1978](#ref-brunet-1978))|![Formula](/doc/measures/lexical_density_diversity/brunets_index.svg)
+<span id="ref-cttr"></span>Corrected TTR<br>([Carroll, 1964](#ref-carroll-1964))|![Formula](/doc/measures/lexical_density_diversity/cttr.svg)
+<span id="ref-fishers-index-of-diversity"></span>Fisher's Index of Diversity<br>([Fisher et al., 1943](#ref-fisher-et-al-1943))|![Formula](/doc/measures/lexical_density_diversity/fishers_index_of_diversity.svg)<br>where W₋₁ is the -1 branch of the [Lambert W function](https://en.wikipedia.org/wiki/Lambert_W_function)
+<span id="ref-herdans-vm"></span>Herdan's Vₘ<br>([Herdan, 1955](#ref-herdan-1955))|![Formula](/doc/measures/lexical_density_diversity/herdans_vm.svg)
+<span id="ref-hdd"></span>HD-D<br>([McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see reference.<br>The sample size could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Density/Diversity → HD-D → Sample size**.
+<span id="ref-honores-stat"></span>Honoré's Statistic<br>([Honoré, 1979](#ref-honore-1979))|![Formula](/doc/measures/lexical_density_diversity/honores_stat.svg)
+<span id="ref-lexical-density"></span>Lexical Density<br>([Ure, 1971](#ref-ure-1971))|![Formula](/doc/measures/lexical_density_diversity/lexical_density.svg)<br>where **NumContentWords** is the number of content words. By default, all tokens whose universal part-of-speech tags assigned by built-in part-of-speech taggers are ADJ (adjectives), ADV (adverbs), INTJ (interjections), NOUN (nouns), PROPN (proper nouns), NUM (numerals), VERB (verbs), SYM (symbols), or X (others) are categorized as content words. For some built-in part-of-speech taggers, this behavior could be changed via **Menu Bar → Preferences → Settings → Part-of-speech Tagging → Tagsets → Mapping Settings → Content/Function Words**.
+<span id="ref-logttr"></span>LogTTR¹<br>(Herdan: [Herdan, 1960, p. 28](#ref-herdan-1960)<br>Somers: [Somers, 1966](#ref-somers-1966)<br>Rubet: [Dugast, 1979](#ref-dugast-1979)<br>Maas: [Maas, 1972](#ref-maas-1972)<br>Dugast: [Dugast, 1978](#ref-dugast-1978); [Dugast, 1979](#ref-dugast-1979))|![Formula](/doc/measures/lexical_density_diversity/logttr.svg)
+<span id="ref-msttr"></span>Mean Segmental TTR<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/lexical_density_diversity/msttr.svg)<br>where **n** is the number of equal-sized segment, the length of which could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Density/Diversity → Mean Segmental TTR → Number of tokens in each segment**, **NumTypesSegᵢ** is the number of token types in the **i**-th segment, and **NumTokensSegᵢ** is the number of tokens in the **i**-th segment.
+<span id="ref-mtld"></span>Measure of Textual Lexical Diversity<br>([McCarthy, 2005, pp. 95–96, 99–100](#ref-mccarthy-2005); [McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see references.<br>The factor size could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Density/Diversity → Measure of Textual Lexical Diversity → Factor size**.
+<span id="ref-mattr"></span>Moving-average TTR<br>([Covington & McFall, 2010](#ref-covington-mcfall-2010))|![Formula](/doc/measures/lexical_density_diversity/mattr.svg)<br>where **w** is the window size which could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Density/Diversity → Moving-average TTR → Window size**, **NumTypesWindowₚ** is the number of token types within the moving window starting at position **p**, and **NumTokensWindowₚ** is the number of tokens within the moving window starting at position **p**.
+<span id="ref-popescu-macutek-altmanns-b1-b2-b3-b4-b5"></span>Popescu-Mačutek-Altmann's B₁/B₂/B₃/B₄/B₅<br>([Popescu et al., 2008](#ref-popescu-et-al-2008))|![Formula](/doc/measures/lexical_density_diversity/popescu_macutek_altmanns_b1_b2_b3_b4_b5.svg)
 <span id="ref-popescus-r1"></span>Popescu's R₁<br>([Popescu, 2009, pp. 18, 30, 33](#ref-popescu-2009))|For detailed calculation procedures, see reference.
 <span id="ref-popescus-r2"></span>Popescu's R₂<br>([Popescu, 2009, pp. 35–36, 38](#ref-popescu-2009))|For detailed calculation procedures, see reference.
 <span id="ref-popescus-r3"></span>Popescu's R₃<br>([Popescu, 2009, pp. 48–49, 53](#ref-popescu-2009))|For detailed calculation procedures, see reference.
 <span id="ref-popescus-r4"></span>Popescu's R₄<br>([Popescu, 2009, p. 57](#ref-popescu-2009))|For detailed calculation procedures, see reference.
-<span id="ref-repeat-rate"></span>Repeat Rate¹<br>([Popescu, 2009, p. 166](#ref-popescu-2009))|![Formula](/doc/measures/lexical_diversity/repeat_rate.svg)
-<span id="ref-rttr"></span>Root TTR<br>([Guiraud, 1954](#ref-guiraud-1954))|![Formula](/doc/measures/lexical_diversity/rttr.svg)
-<span id="ref-shannon-entropy"></span>Shannon Entropy¹<br>([Popescu, 2009, p. 173](#ref-popescu-2009))|![Formula](/doc/measures/lexical_diversity/shannon_entropy.svg)
-<span id="ref-simpsons-l"></span>Simpson's l<br>([Simpson, 1949](#ref-simpson-1949))|![Formula](/doc/measures/lexical_diversity/simpsons_l.svg)
-<span id="ref-ttr"></span>Type-token Ratio<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/lexical_diversity/ttr.svg)
+<span id="ref-repeat-rate"></span>Repeat Rate¹<br>([Popescu, 2009, p. 166](#ref-popescu-2009))|![Formula](/doc/measures/lexical_density_diversity/repeat_rate.svg)
+<span id="ref-rttr"></span>Root TTR<br>([Guiraud, 1954](#ref-guiraud-1954))|![Formula](/doc/measures/lexical_density_diversity/rttr.svg)
+<span id="ref-shannon-entropy"></span>Shannon Entropy¹<br>([Popescu, 2009, p. 173](#ref-popescu-2009))|![Formula](/doc/measures/lexical_density_diversity/shannon_entropy.svg)
+<span id="ref-simpsons-l"></span>Simpson's l<br>([Simpson, 1949](#ref-simpson-1949))|![Formula](/doc/measures/lexical_density_diversity/simpsons_l.svg)
+<span id="ref-ttr"></span>Type-token Ratio<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/lexical_density_diversity/ttr.svg)
 <span id="ref-vocdd"></span>vocd-D<br>([Malvern et al., 2004, pp. 51, 56–57](#ref-malvern-et-al-2004))|For detailed calculation procedures, see reference.
-<span id="ref-yules-characteristic-k"></span>Yule's Characteristic K<br>([Yule, 1944, pp. 52–53](#ref-yule-1944))|![Formula](/doc/measures/lexical_diversity/yules_characteristic_k.svg)
-<span id="ref-yules-index-of-diversity"></span>Yule's Index of Diversity<br>([Williams, 1970, p. 100](#ref-williams-1970))|![Formula](/doc/measures/lexical_diversity/yules_index_of_diversity.svg)
+<span id="ref-yules-characteristic-k"></span>Yule's Characteristic K<br>([Yule, 1944, pp. 52–53](#ref-yule-1944))|![Formula](/doc/measures/lexical_density_diversity/yules_characteristic_k.svg)
+<span id="ref-yules-index-of-diversity"></span>Yule's Index of Diversity<br>([Williams, 1970, p. 100](#ref-williams-1970))|![Formula](/doc/measures/lexical_density_diversity/yules_index_of_diversity.svg)
 
 > [!NOTE]
-> 1. Variants available and can be selected via **Menu Bar → Preferences → Settings → Measures → Lexical Diversity**
+> 1. Variants available and can be selected via **Menu Bar → Preferences → Settings → Measures → Lexical Density/Diversity**
 
 <span id="doc-4-4-3"></span>
 #### [4.4.3 Measures of Dispersion and Adjusted Frequency](#doc)
@@ -1741,6 +1745,8 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 1. [**^**](#ref-trankle-bailers-readability-formula) Tränkle, U., & Bailer, H. (1984). *Kreuzvalidierung und Neuberechnung von Lesbarkeitsformeln für die Deutsche Sprache* [Cross-validation and recalculation of the readability formulas for the German language]. Zeitschrift für Entwicklungspsychologie und Pädagogische Psychologie, *16*(3), 231–244.
 <span id="ref-tuldava-1975"></span>
 1. [**^**](#ref-td) Tuldava, J. (1975). Ob izmerenii trudnosti tekstov [On measuring the complexity of the text]. *Uchenye zapiski Tartuskogo universiteta. Trudy po metodike prepodavaniya inostrannykh yazykov*, *345*, 102–120.
+<span id="ref-ure-1971"></span>
+1. [**^**](#ref-lexical-density) Ure, J. (1971). Lexical density and register differentiation. In G. E. Perren & J. L. M. Trim (Eds.), *Applications of Linguistics* (pp. 443–452). Cambridge University Press.
 <span id="ref-wheeler-smith-1954"></span>
 1. [**^**](#ref-wheeler-smiths-readability-formula) Wheeler, L. R., & Smith, E. H. (1954). A practical readability formula for the classroom teacher in the primary grades. *Elementary English*, *31*(7), 397–399.
 <span id="ref-williams-1970"></span>

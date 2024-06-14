@@ -888,7 +888,6 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
 
     def run(self):
         try:
-            texts = []
             collocations_freqs_files_all = []
 
             settings = self.main.settings_custom['collocation_extractor']
@@ -1088,12 +1087,8 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                 # Frequency (All)
                 collocations_freqs_files_all.append(collocations_freqs_file_all)
 
-                texts.append(text)
-
             # Total
             if len(files) > 1:
-                texts.append(wl_texts.Wl_Text_Blank())
-
                 collocations_freqs_total = {}
                 collocations_freqs_total_all = {}
 
@@ -1129,8 +1124,7 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
             # Used for z-score (Berry-Rogghe)
             span = (abs(window_left) + abs(window_right)) / 2
 
-            for text, collocations_freqs_file, collocations_freqs_file_all in zip(
-                texts,
+            for collocations_freqs_file, collocations_freqs_file_all in zip(
                 self.collocations_freqs_files,
                 collocations_freqs_files_all
             ):

@@ -94,7 +94,7 @@ def test_lemmatize(lang, lemmatizer):
         case 'eng_gb' | 'eng_us':
             match lemmatizer:
                 case 'nltk_wordnet':
-                    results = ['English', 'be', 'a', 'West', 'Germanic', 'language', 'in', 'the', 'Indo-European', 'language', 'family', '.']
+                    results = ['English', 'be', 'a', 'West', 'Germanic', 'language', 'in', 'the', 'Indo', '-', 'European', 'language', 'family', '.']
                 case 'simplemma_eng':
                     results = ['English', 'be', 'a', 'west', 'germanic', 'language', 'in', 'the', 'Indo-European', 'language', 'family', '.']
                 case _:

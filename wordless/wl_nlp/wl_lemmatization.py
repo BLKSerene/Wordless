@@ -132,15 +132,13 @@ def wl_lemmatize_text(main, inputs, lang, lemmatizer):
             elif lemmatizer == 'nltk_wordnet':
                 word_net_lemmatizer = nltk.WordNetLemmatizer()
 
-                for token in wl_pos_tagging.wl_pos_tag(
+                for token in wl_pos_tagging.wl_pos_tag_universal(
                     main, line,
-                    lang = 'eng_us',
-                    pos_tagger = 'nltk_perceptron_eng',
-                    tagset = 'universal'
+                    lang = 'eng_us'
                 ):
                     tokens.append(str(token))
 
-                    match token.tag[1:]:
+                    match token.tag_universal:
                         case 'ADJ':
                             lemmas.append(word_net_lemmatizer.lemmatize(str(token), pos = nltk.corpus.wordnet.ADJ))
                         case 'NOUN' | 'PROPN':
@@ -255,13 +253,12 @@ def wl_lemmatize_tokens(main, inputs, lang, lemmatizer):
             elif lemmatizer == 'nltk_wordnet':
                 word_net_lemmatizer = nltk.WordNetLemmatizer()
 
-                for token in wl_pos_tagging.wl_pos_tag(
-                    main, wl_texts.to_tokens(tokens, lang = lang),
-                    lang = 'eng_us',
-                    pos_tagger = 'nltk_perceptron_eng',
-                    tagset = 'universal'
+                for token in wl_pos_tagging.wl_pos_tag_universal(
+                    main,
+                    inputs = wl_texts.to_tokens(tokens, lang = 'eng_us'),
+                    lang = 'eng_us'
                 ):
-                    match token.tag[1:]:
+                    match token.tag_universal:
                         case 'ADJ':
                             lemmas.append(word_net_lemmatizer.lemmatize(str(token), pos = nltk.corpus.wordnet.ADJ))
                         case 'NOUN' | 'PROPN':

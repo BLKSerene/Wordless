@@ -42,6 +42,11 @@ for lang, pos_taggers in main.settings_global['pos_taggers'].items():
             test_pos_taggers.append((lang, pos_tagger))
             test_pos_taggers_local.append((lang, pos_tagger))
 
+def test_to_content_function():
+    assert wl_pos_tagging.to_content_function('ADJ') == 'Content words'
+    assert wl_pos_tagging.to_content_function('ADP') == 'Function words'
+    assert wl_pos_tagging.to_content_function('None') is None
+
 @pytest.mark.parametrize('lang, pos_tagger', test_pos_taggers)
 def test_pos_tag(lang, pos_tagger):
     tests_lang_util_skipped = False
@@ -214,6 +219,8 @@ def test_pos_tag_misc():
     main.settings_custom['pos_tagging']['pos_tagger_settings']['to_universal_pos_tags'] = False
 
 if __name__ == '__main__':
+    test_to_content_function()
+
     for lang, pos_tagger in test_pos_taggers_local:
         test_pos_tag(lang, pos_tagger)
 

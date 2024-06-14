@@ -33,11 +33,13 @@ from PyQt5.QtWidgets import (
 from tests import wl_test_file_area
 from wordless import wl_file_area
 from wordless.wl_checks import wl_checks_misc
+from wordless.wl_nlp import wl_texts
 from wordless.wl_settings import wl_settings, wl_settings_default, wl_settings_global
 from wordless.wl_utils import wl_misc
 from wordless.wl_widgets import wl_tables
 
-SEARCH_TERMS = ['take']
+# English, Amharic
+SEARCH_TERMS = ['take', 'አማርኛ']
 
 # An instance of QApplication must be created before any instance of QWidget
 wl_app = QApplication(sys.argv)
@@ -220,14 +222,6 @@ class Wl_Test_Main(QMainWindow):
 
                         break
 
-class Wl_Exception_Tests_Lang_Skipped(Exception):
-    def __init__(self, lang):
-        super().__init__(f'Tests for language "{lang}" is skipped!')
-
-class Wl_Exception_Tests_Lang_Util_Skipped(Exception):
-    def __init__(self, lang_util):
-        super().__init__(f'Tests for language utility "{lang_util}" is skipped!')
-
 class Wl_Test_Table(QTableView):
     def __init__(self, parent, tab = ''):
         super().__init__(parent)
@@ -251,6 +245,38 @@ class Wl_Test_Table(QTableView):
         self.set_item(row, col, QStandardItem())
         self.setIndexWidget(self.model().index(row, col), QLabel(text))
         self.indexWidget(self.model().index(row, col)).tokens_raw = [text]
+
+class Wl_Test_Text:
+    def __init__(self, main, tokens_multilevel, lang = 'eng_us', tagged = False):
+        self.main = main
+        self.lang = lang
+        self.tagged = tagged
+
+        self.tokens_multilevel = []
+
+        for para in tokens_multilevel:
+            self.tokens_multilevel.append([])
+
+            for sentence in para:
+                self.tokens_multilevel[-1].append([])
+
+                for sentence_seg in sentence:
+                    self.tokens_multilevel[-1][-1].append(wl_texts.to_tokens(sentence_seg, lang = lang))
+
+        self.tokens_multilevel_with_puncs = copy.deepcopy(tokens_multilevel)
+
+        self.get_tokens_flat = lambda: wl_texts.Wl_Text.get_tokens_flat(self)
+        self.update_num_tokens = lambda: wl_texts.Wl_Text.update_num_tokens(self)
+
+        self.update_num_tokens()
+
+class Wl_Exception_Tests_Lang_Skipped(Exception):
+    def __init__(self, lang):
+        super().__init__(f'Tests for language "{lang}" is skipped!')
+
+class Wl_Exception_Tests_Lang_Util_Skipped(Exception):
+    def __init__(self, lang_util):
+        super().__init__(f'Tests for language utility "{lang_util}" is skipped!')
 
 def wl_test_index(row, col):
     return QStandardItemModel().createIndex(row, col)

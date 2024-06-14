@@ -17,6 +17,7 @@
 # ----------------------------------------------------------------------
 
 import bisect
+import copy
 import math
 import random
 import re
@@ -42,11 +43,11 @@ def get_nums(main, text):
                 text.words_multilevel[-1].append([])
 
                 for sentence_seg in sentence:
-                    text.words_multilevel[-1][-1].append(wl_texts.to_tokens([
+                    text.words_multilevel[-1][-1].append(copy.deepcopy([
                         token
                         for token in sentence_seg
                         if wl_checks_tokens.is_word_alphanumeric(token)
-                    ], lang = text.lang))
+                    ]))
 
         text.sentences = [
             list(wl_misc.flatten_list(sentence))
@@ -63,9 +64,8 @@ def get_nums(main, text):
 
     # Number of syllables
     if 'num_syls' not in text.__dict__ and text.lang in main.settings_global['syl_tokenizers']:
-        text.words_flat = wl_syl_tokenization.wl_syl_tokenize(main, text.words_flat, lang = text.lang)
-        text.syls_words = wl_texts.get_token_properties(text.words_flat, 'syls')
-        text.num_syls = sum((len(syls) for syls in text.syls_words))
+        wl_syl_tokenization.wl_syl_tokenize(main, text.words_flat, lang = text.lang)
+        text.num_syls = sum((len(word.syls) for word in text.words_flat))
 
     # Number of characters
     if 'num_chars_all' not in text.__dict__:
@@ -99,34 +99,31 @@ def get_num_words_ltrs(words, len_min = 1, len_max = None):
             if len([char for char in word if char.isalpha()]) >= len_min
         ])
 
-def get_num_words_syls(syls_words, len_min = 1, len_max = None):
+def get_num_words_syls(words, len_min = 1, len_max = None):
     if len_max:
         return sum((
             1
-            for syls in syls_words
-            if len_min <= len(syls) <= len_max
+            for word in words
+            if len_min <= len(word.syls) <= len_max
         ))
     else:
         return sum((
             1
-            for syls in syls_words
-            if len(syls) >= len_min
+            for word in words
+            if len(word.syls) >= len_min
         ))
 
-def get_num_words_pos_tags(main, words, lang, pos_tag):
-    words = wl_pos_tagging.wl_pos_tag(main, words, lang = lang, tagset = 'universal', force = True)
+def pos_tag_words(main, text):
+    text.words_flat = wl_pos_tagging.wl_pos_tag_universal(main, text.words_flat, lang = text.lang, tagged = text.tagged)
 
-    return sum((1 for word in words if pos_tag in word.tag))
+def get_num_words_pos_tag(words, pos_tag):
+    return sum((1 for word in words if pos_tag in word.tag_universal.split('/')))
 
-def get_nums_words_pos_tags(main, words, lang, pos_tags):
-    nums = []
-
-    words = wl_pos_tagging.wl_pos_tag(main, words, lang = lang, tagset = 'universal', force = True)
-
-    for pos_tag in pos_tags:
-        nums.append(sum((1 for word in words if pos_tag in word.tag)))
-
-    return nums
+def get_nums_words_pos_tags(words, pos_tags):
+    return [
+        get_num_words_pos_tag(words, pos_tag)
+        for pos_tag in pos_tags
+    ]
 
 def get_num_words_outside_list(words, wordlist, use_word_types = False):
     words_inside_wordlist = set()
@@ -189,6 +186,7 @@ def rd(main, text):
             variant = main.settings_custom['measures']['readability']['rd']['variant']
 
             if variant == _tr('wl_measures_readability', 'Policy one'):
+
                 rd = (
                     4.41434307 * (text.num_chars_alpha / text.num_words)
                     - 13.46873475
@@ -310,40 +308,52 @@ def coleman_liau_index(main, text):
 # Coleman's Readability Formula
 # Reference: Liau, T. L., Bassin, C. B., Martin, C. J., & Coleman, E. B. (1976). Modification of the Coleman readability formulas. Journal of Reading Behavior, 8(4), 381–386. https://journals.sagepub.com/doi/pdf/10.1080/10862967609547193
 def colemans_readability_formula(main, text):
-    if text.lang in main.settings_global['syl_tokenizers'] and text.lang in main.settings_global['pos_taggers']:
+    variant = main.settings_custom['measures']['readability']['colemans_readability_formula']['variant']
+
+    if (
+        text.lang in main.settings_global['syl_tokenizers']
+        and (
+            variant in ['1', '2']
+            or (variant in ['3', '4'] and text.lang in main.settings_global['pos_taggers'])
+        )
+    ):
         text = get_nums(main, text)
 
         if text.num_words:
-            variant = main.settings_custom['measures']['readability']['colemans_readability_formula']['variant']
-            num_words_1_syl = get_num_words_syls(text.syls_words, len_min = 1, len_max = 1)
+            num_words_1_syl = get_num_words_syls(text.words_flat, len_min = 1, len_max = 1)
 
-            if variant == '1':
-                cloze_pct = (
-                    1.29 * (num_words_1_syl / text.num_words * 100)
-                    - 38.45
-                )
-            elif variant == '2':
-                cloze_pct = (
-                    1.16 * (num_words_1_syl / text.num_words * 100)
-                    + 1.48 * (text.num_sentences / text.num_words * 100)
-                    - 37.95
-                )
-            elif variant in ['3', '4']:
-                num_prons, num_preps = get_nums_words_pos_tags( # pylint: disable=unbalanced-tuple-unpacking
-                    main,
-                    words = text.words_flat,
-                    lang = text.lang,
-                    pos_tags = ['PRON', 'ADP']
-                )
+            match variant:
+                case '1':
+                    cloze_pct = (
+                        1.29 * (num_words_1_syl / text.num_words * 100)
+                        - 38.45
+                    )
+                case '2':
+                    cloze_pct = (
+                        1.16 * (num_words_1_syl / text.num_words * 100)
+                        + 1.48 * (text.num_sentences / text.num_words * 100)
+                        - 37.95
+                    )
+                case '3':
+                    pos_tag_words(main, text)
+                    num_prons = get_num_words_pos_tag(
+                        words = text.words_flat,
+                        pos_tag = 'PRON'
+                    )
 
-                if variant == '3':
                     cloze_pct = (
                         1.07 * (num_words_1_syl / text.num_words * 100)
                         + 1.18 * (text.num_sentences / text.num_words * 100)
                         + 0.76 * (num_prons / text.num_words * 100)
                         - 34.02
                     )
-                elif variant == '4':
+                case '4':
+                    pos_tag_words(main, text)
+                    num_prons, num_preps = get_nums_words_pos_tags(
+                        words = text.words_flat,
+                        pos_tags = ['PRON', 'ADP']
+                    )
+
                     cloze_pct = (
                         1.04 * (num_words_1_syl / text.num_words * 100)
                         + 1.06 * (text.num_sentences / text.num_words * 100)
@@ -650,7 +660,7 @@ def re_farr_jenkins_paterson(main, text):
         text = get_nums(main, text)
 
         if text.num_words and text.num_sentences:
-            num_words_1_syl = get_num_words_syls(text.syls_words, len_min = 1, len_max = 1)
+            num_words_1_syl = get_num_words_syls(text.words_flat, len_min = 1, len_max = 1)
 
             if main.settings_custom['measures']['readability']['re_farr_jenkins_paterson']['use_powers_sumner_kearl_variant']:
                 re = (
@@ -679,7 +689,7 @@ def rgl(main, text):
 
         if text.num_words >= 150:
             sample_start = random.randint(0, text.num_words - 150)
-            sample = text.syls_words[sample_start : sample_start + 150]
+            sample = text.words_flat[sample_start : sample_start + 150]
 
             num_words_1_syl = get_num_words_syls(sample, len_min = 1, len_max = 1)
             rgl = 20.43 - 0.11 * num_words_1_syl
@@ -789,21 +799,14 @@ def fog_index(main, text):
                     _tr('wl_measures_readability', 'Original'),
                     'Powers-Sumner-Kearl'
                 ]:
-                    words_tagged = wl_pos_tagging.wl_pos_tag(
-                        main, text.words_flat,
-                        lang = text.lang,
-                        tagset = 'universal',
-                        force = True
-                    )
+                    pos_tag_words(main, text)
 
-                    for syls, word in zip(text.syls_words, words_tagged):
-                        tag = word.tag
-
+                    for word in text.words_flat:
                         if (
-                            'PROPN' not in tag
+                            'PROPN' not in word.tag_universal.split('/')
                             and (
-                                (len(syls) == 3 and not word.endswith('ed') and not word.endswith('es'))
-                                or len(syls) > 3
+                                (len(word.syls) == 3 and not word.endswith('ed') and not word.endswith('es'))
+                                or len(word.syls) > 3
                             )
                         ):
                             num_hard_words += 1
@@ -820,19 +823,24 @@ def fog_index(main, text):
                             + 0.0984 * (num_hard_words / text.num_words * 100)
                         )
                 elif variant_eng == _tr('wl_measures_readability', 'Navy'):
-                    num_words_3_plus_syls = get_num_words_syls(text.syls_words, len_min = 3)
+                    num_words_3_plus_syls = get_num_words_syls(text.words_flat, len_min = 3)
 
                     fog_index = (
                         ((text.num_words + 2 * num_words_3_plus_syls) / text.num_sentences - 3)
                         / 2
                     )
             elif text.lang == 'pol':
-                words_tagged = wl_pos_tagging.wl_pos_tag(main, text.words_flat, lang = 'pol', tagset = 'universal')
-                lemmas = wl_lemmatization.wl_lemmatize(main, text.words_flat, lang = 'pol')
-                syls_words = wl_syl_tokenization.wl_syl_tokenize(main, lemmas, lang = 'pol')
+                pos_tag_words(main, text)
+                # Count number of syllables of word lemmas instead of original words
+                wl_lemmatization.wl_lemmatize(main, text.words_flat, lang = 'pol')
+                lemmas_syls = wl_syl_tokenization.wl_syl_tokenize(
+                    main,
+                    wl_texts.to_tokens(wl_texts.get_token_properties(text.words_flat, 'lemma'), lang = 'pol'),
+                    lang = 'pol'
+                )
 
-                for syls, (word, tag) in zip(syls_words, words_tagged):
-                    if len(syls) > 4 and 'PROPN' not in tag:
+                for word, syls in zip(text.words_flat, lemmas_syls):
+                    if len(syls) > 4 and 'PROPN' not in word.tag_universal.split('/'):
                         num_hard_words += 1
 
                 fog_index = (
@@ -940,10 +948,9 @@ def lorge_readability_index(main, text):
         text = get_nums(main, text)
 
         if text.num_sentences and text.num_words:
-            num_preps = get_num_words_pos_tags(
-                main,
+            pos_tag_words(main, text)
+            num_preps = get_num_words_pos_tag(
                 words = text.words_flat,
-                lang = text.lang,
                 pos_tag = 'ADP'
             )
             num_hard_words = get_num_words_outside_list(
@@ -1023,7 +1030,7 @@ def nwl(main, text):
 
             sw = get_num_words_outside_list(text.words_flat, wordlist = 'bamberger_vanecek', use_word_types = True) / text.num_word_types * 100
             s_100 = text.num_sentences / text.num_words * 100
-            ms = get_num_words_syls(text.syls_words, len_min = 3) / text.num_words * 100
+            ms = get_num_words_syls(text.words_flat, len_min = 3) / text.num_words * 100
             sl = text.num_words / text.num_sentences
             iw = get_num_words_ltrs(text.words_flat, len_min = 7) / text.num_words * 100
 
@@ -1049,10 +1056,10 @@ def nws(main, text):
         if text.num_words and text.num_sentences:
             variant = main.settings_custom['measures']['readability']['nws']['variant']
 
-            ms = get_num_words_syls(text.syls_words, len_min = 3) / text.num_words * 100
+            ms = get_num_words_syls(text.words_flat, len_min = 3) / text.num_words * 100
             sl = text.num_words / text.num_sentences
             iw = get_num_words_ltrs(text.words_flat, len_min = 7) / text.num_words * 100
-            es = get_num_words_syls(text.syls_words, len_min = 1, len_max = 1) / text.num_words * 100
+            es = get_num_words_syls(text.words_flat, len_min = 1, len_max = 1) / text.num_words * 100
 
             if variant == '1':
                 nws = 0.1935 * ms + 0.1672 * sl + 0.1297 * iw - 0.0327 * es - 0.875
@@ -1178,12 +1185,9 @@ def smog_grade(main, text):
             num_words_3_plus_syls = 0
 
             for sentence in sample:
-                syls_words = wl_texts.get_token_properties(
-                    wl_syl_tokenization.wl_syl_tokenize(main, sentence, lang = text.lang),
-                    'syls'
-                )
+                sentence = wl_syl_tokenization.wl_syl_tokenize(main, sentence, lang = text.lang)
 
-                num_words_3_plus_syls += get_num_words_syls(syls_words, len_min = 3)
+                num_words_3_plus_syls += get_num_words_syls(sentence, len_min = 3)
 
             if text.lang.startswith('deu_'):
                 g = numpy.sqrt(num_words_3_plus_syls / text.num_sentences * 30) - 2
@@ -1252,12 +1256,12 @@ def strain_index(main, text):
             num_syls = 0
 
             for sentence in text.sentences[:3]:
-                syls_words = wl_texts.get_token_properties(
+                words_syls = wl_texts.get_token_properties(
                     wl_syl_tokenization.wl_syl_tokenize(main, sentence, lang = text.lang),
                     'syls'
                 )
 
-                num_syls += sum((len(syls) for syls in syls_words))
+                num_syls += sum((len(syls) for syls in words_syls))
 
             strain_index = num_syls / 10
         else:
@@ -1276,17 +1280,17 @@ def trankle_bailers_readability_formula(main, text):
         text = get_nums(main, text)
 
         if text.num_words >= 100:
+            pos_tag_words(main, text)
+
             sample_start = random.randint(0, text.num_words - 100)
             sample = text.words_flat[sample_start : sample_start + 100]
 
             num_chars_alnum = sum((1 for token in sample for char in token if char.isalnum()))
             num_sentences = get_num_sentences_sample(text, sample, sample_start)
 
-            num_preps, num_conjs = get_nums_words_pos_tags( # pylint: disable=unbalanced-tuple-unpacking
-                main,
+            num_preps, num_cconjs, num_sconjs = get_nums_words_pos_tags( # pylint: disable=unbalanced-tuple-unpacking
                 words = sample,
-                lang = text.lang,
-                pos_tags = ['ADP', 'CONJ']
+                pos_tags = ['ADP', 'CCONJ', 'SCONJ']
             )
 
             variant = main.settings_custom['measures']['readability']['trankle_bailers_readability_formula']['variant']
@@ -1303,7 +1307,7 @@ def trankle_bailers_readability_formula(main, text):
                     234.1063
                     - numpy.log(num_chars_alnum / 100 + 1) * 96.11069
                     - num_preps * 2.05444
-                    - num_conjs * 1.02805
+                    - (num_cconjs + num_sconjs) * 1.02805
                 )
         else:
             trankle_bailers = 'text_too_short'
@@ -1373,12 +1377,12 @@ def wheeler_smiths_readability_formula(main, text):
         text = get_nums(main, text)
 
         if text.num_words:
-            num_units = len(wl_sentence_tokenization.wl_sentence_seg_split(
+            num_units = len(wl_sentence_tokenization.wl_sentence_seg_tokenize_tokens(
                 main,
-                text = ' '.join(wl_misc.flatten_list(text.tokens_multilevel_with_puncs)),
+                tokens = wl_misc.flatten_list(text.tokens_multilevel_with_puncs),
                 terminators = UNIT_TERMINATORS
             ))
-            num_words_2_syls = get_num_words_syls(text.syls_words, len_min = 2)
+            num_words_2_syls = get_num_words_syls(text.words_flat, len_min = 2)
 
             wheeler_smith = (
                 (text.num_words / num_units)

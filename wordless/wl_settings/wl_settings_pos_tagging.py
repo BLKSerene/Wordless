@@ -305,6 +305,7 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
             headers = [
                 self.tr('Part-of-speech Tag'),
                 self.tr('Universal Part-of-speech Tag'),
+                self.tr('Content/Function Words'),
                 self.tr('Description'),
                 self.tr('Examples')
             ],
@@ -339,8 +340,15 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
             ],
             editable = True
         ))
-        self.table_mappings.setItemDelegateForColumn(2, wl_item_delegates.Wl_Item_Delegate(self.table_mappings, QPlainTextEdit))
+        self.table_mappings.setItemDelegateForColumn(2, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
+            parent = self.table_mappings,
+            items = [
+                'Content words',
+                'Function words'
+            ]
+        ))
         self.table_mappings.setItemDelegateForColumn(3, wl_item_delegates.Wl_Item_Delegate(self.table_mappings, QPlainTextEdit))
+        self.table_mappings.setItemDelegateForColumn(4, wl_item_delegates.Wl_Item_Delegate(self.table_mappings, QPlainTextEdit))
 
         self.button_tagsets_reset.setMinimumWidth(100)
         self.button_tagsets_reset_all.setMinimumWidth(100)
@@ -446,11 +454,12 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
 
         self.table_mappings.disable_updates()
 
-        for i, (tag, tag_universal, description, examples) in enumerate(mappings):
+        for i, (tag, tag_universal, content_function_words, description, examples) in enumerate(mappings):
             self.table_mappings.model().setItem(i, 0, QStandardItem(tag))
             self.table_mappings.model().setItem(i, 1, QStandardItem(tag_universal))
-            self.table_mappings.model().setItem(i, 2, QStandardItem(description))
-            self.table_mappings.model().setItem(i, 3, QStandardItem(examples))
+            self.table_mappings.model().setItem(i, 2, QStandardItem(content_function_words))
+            self.table_mappings.model().setItem(i, 3, QStandardItem(description))
+            self.table_mappings.model().setItem(i, 4, QStandardItem(examples))
 
         self.table_mappings.enable_updates()
 

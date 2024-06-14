@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import glob
 import random
 
 from tests import wl_test_init
@@ -32,7 +33,7 @@ def test_wordlist_generator():
     measures_dispersion = list(main.settings_global['measures_dispersion'].keys())
     measures_adjusted_freq = list(main.settings_global['measures_adjusted_freq'].keys())
 
-    for i in range(4):
+    for i in range(2 + len(glob.glob('tests/files/file_area/misc/*.txt'))):
         match i:
             # Single file
             case 0:

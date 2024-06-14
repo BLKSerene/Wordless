@@ -48,6 +48,8 @@ def test_split_texts_properties():
         'lang': 'eng_us',
         'syls': None,
         'tag': '_NN',
+        'tag_universal': None,
+        'content_function': None,
         'lemma': None,
         'head': None,
         'dependency_relation': None,
@@ -97,20 +99,17 @@ def test_update_token_properties():
 def test_clean_texts():
     assert wl_texts.clean_texts([' test ', ' ']) == ['test']
 
-def test_wl_text_blank():
-    wl_texts.Wl_Text_Blank()
-
 def test_wl_text_total():
-    text_1 = wl_texts.Wl_Text_Blank()
-    text_1.lang = 'eng_us'
-    text_1.tokens_multilevel = []
-    text_1.tokens_multilevel_with_puncs = []
+    text_1 = wl_test_init.Wl_Test_Text(main, tokens_multilevel = [], lang = 'eng_us', tagged = False)
+    text_2 = wl_test_init.Wl_Test_Text(main, tokens_multilevel = [], lang = 'eng_gb', tagged = True)
 
-    text_2 = copy.deepcopy(text_1)
-    text_2.lang = 'other'
+    text_total_1 = wl_texts.Wl_Text_Total(texts = [text_1, text_1])
+    text_total_2 = wl_texts.Wl_Text_Total(texts = [text_1, text_2])
 
-    wl_texts.Wl_Text_Total(texts = [text_1, text_1])
-    wl_texts.Wl_Text_Total(texts = [text_1, text_2])
+    assert text_total_1.lang == 'eng_us'
+    assert not text_total_1.tagged
+    assert text_total_2.lang == 'other'
+    assert text_total_2.tagged
 
 if __name__ == '__main__':
     test_wl_token()
@@ -128,5 +127,4 @@ if __name__ == '__main__':
     test_update_token_properties()
     test_clean_texts()
 
-    test_wl_text_blank()
     test_wl_text_total()
