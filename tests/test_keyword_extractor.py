@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import glob
 import random
 
 from tests import wl_test_init
@@ -39,7 +40,7 @@ def test_keyword_extractor():
     ]
     measures_effect_size = list(main.settings_global['measures_effect_size'].keys())
 
-    for i in range(6):
+    for i in range(4 + len(glob.glob('tests/files/file_area/misc/*.txt'))):
         match i:
             # Single observed file & single reference file
             case 0:

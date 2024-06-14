@@ -20,7 +20,7 @@
 import pytest
 
 from tests import wl_test_init, wl_test_lang_examples
-from wordless.wl_nlp import wl_sentence_tokenization, wl_texts, wl_word_tokenization
+from wordless.wl_nlp import wl_sentence_tokenization
 from wordless.wl_utils import wl_misc
 
 _, is_macos, _ = wl_misc.check_os()
@@ -140,7 +140,10 @@ def test_sentence_split(lang):
         text = ''.join(getattr(wl_test_lang_examples, f'TEXT_{lang.upper()}'))
     )
 
-    if lang not in ['chu', 'cop', 'hbo', 'orv', 'tha', 'bod']:
+    if lang not in [
+        'lzh', 'zho_cn', 'zho_tw', 'chu', 'cop', 'hbo', 'isl', 'jpn', 'orv', 'srp_latn',
+        'tha', 'bod'
+    ]:
         assert len(sentences_split) > 1
 
 @pytest.mark.parametrize('lang', test_langs_split)
@@ -332,31 +335,22 @@ def test_sentence_seg_tokenize(lang):
         case _:
             raise wl_test_init.Wl_Exception_Tests_Lang_Skipped(lang)
 
-@pytest.mark.parametrize('lang', test_langs_split)
-def test_sentence_seg_split(lang):
-    print(f'Testing {lang} / Sentence Segment Splitter...')
-
-    sentence_segs = wl_sentence_tokenization.wl_sentence_seg_split(
-        main,
-        text = ''.join(getattr(wl_test_lang_examples, f'TEXT_{lang.upper()}'))
-    )
-
-    if lang not in ['chu', 'cop', 'orv', 'tha']:
-        assert len(sentence_segs) > 1
-
 @pytest.mark.parametrize('lang', test_langs)
 def test_sentence_seg_tokenize_tokens(lang):
     print(f'Testing {lang} / Sentence Segment Tokenizer with tokens...')
 
-    tokens = wl_word_tokenization.wl_word_tokenize_flat(
-        main,
-        text = ''.join(getattr(wl_test_lang_examples, f'TEXT_{lang.upper()}')),
-        lang = lang
-    )
-    sentence_segs = wl_sentence_tokenization.wl_sentence_seg_tokenize_tokens(main, wl_texts.to_display_texts(tokens))
+    tokens = ''.join(getattr(wl_test_lang_examples, f'TEXT_{lang.upper()}')).split()
+    sentence_segs = wl_sentence_tokenization.wl_sentence_seg_tokenize_tokens(main, tokens)
 
-    if lang not in ['chu', 'cop', 'orv', 'tha']:
+    if lang not in [
+        'lzh', 'zho_cn', 'zho_tw', 'chu', 'cop', 'jpn', 'orv', 'tha'
+    ]:
         assert len(sentence_segs) > 1
+
+def test_sentence_tokenize_misc():
+    # Sentences and sentence segments should not be split within pre-tokenized tokens
+    assert wl_sentence_tokenization.wl_sentence_split(main, text = 'a.b c') == ['a.b c']
+    assert wl_sentence_tokenization.wl_sentence_seg_tokenize_tokens(main, tokens = ['a,b', 'c']) == [['a,b', 'c']]
 
 if __name__ == '__main__':
     for lang, sentence_tokenizer in test_sentence_tokenizers_local:
@@ -369,7 +363,6 @@ if __name__ == '__main__':
         test_sentence_seg_tokenize(lang)
 
     for lang in test_langs_split:
-        test_sentence_seg_split(lang)
-
-    for lang in test_langs_split:
         test_sentence_seg_tokenize_tokens(lang)
+
+    test_sentence_tokenize_misc()

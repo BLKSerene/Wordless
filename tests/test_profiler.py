@@ -17,7 +17,7 @@
 # ----------------------------------------------------------------------
 
 import collections
-import re
+import glob
 
 import numpy
 import scipy
@@ -27,12 +27,10 @@ from wordless import wl_profiler
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_utils import wl_misc
 
-main_global = None
-
 def test_profiler():
     main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
-    for i in range(4):
+    for i in range(2 + len(glob.glob('tests/files/file_area/misc/*.txt'))):
         match i:
             # Single file
             case 0:
@@ -43,9 +41,6 @@ def test_profiler():
             # Miscellaneous
             case _:
                 wl_test_init.select_test_files(main, no_files = [i + 1])
-
-        global main_global
-        main_global = main
 
         print(f"Files: {' | '.join(wl_test_init.get_test_file_names(main))}")
 
@@ -67,8 +62,6 @@ def update_gui(err_msg, texts_stats_files):
     count_tokens_lens_syls = []
     count_tokens_lens_chars = []
 
-    files = main_global.settings_custom['file_area']['files_open']
-
     for i, stats in enumerate(texts_stats_files):
         stats_readability = stats[0]
         len_paras_sentences = numpy.array(stats[1])
@@ -76,35 +69,37 @@ def update_gui(err_msg, texts_stats_files):
         len_paras_tokens = numpy.array(stats[3])
         len_sentences = numpy.array(stats[4])
         len_sentence_segs = numpy.array(stats[5])
-        len_tokens_syls = numpy.array(stats[6])
+        len_tokens_syls = numpy.array(stats[6]) if stats[6] is not None else None
         len_tokens_chars = numpy.array(stats[7])
-        len_types_syls = numpy.array(stats[8])
+        len_types_syls = numpy.array(stats[8]) if stats[8] is not None else None
         len_types_chars = numpy.array(stats[9])
-        len_syls = numpy.array(stats[10])
-        stats_lexical_diversity = stats[11]
+        len_syls = numpy.array(stats[10]) if stats[10] is not None else None
+        stats_lexical_density_diversity = stats[11]
 
         count_paras = len(len_paras_sentences)
         count_sentences = len(len_sentences)
         count_sentence_segs = len(len_sentence_segs)
         count_tokens = len(len_tokens_chars)
         count_types = len(len_types_chars)
-        count_syls = len(len_syls)
+        count_syls = len(len_syls) if len_syls is not None else None
         count_chars = numpy.sum(len_tokens_chars)
 
         count_sentences_lens.append(collections.Counter(len_sentences))
         count_sentence_segs_lens.append(collections.Counter(len_sentence_segs))
-        count_tokens_lens_syls.append(collections.Counter(len_tokens_syls))
+        count_tokens_lens_syls.append(
+            collections.Counter(len_tokens_syls) if len_tokens_syls is not None else None
+        )
         count_tokens_lens_chars.append(collections.Counter(len_tokens_chars))
 
         assert len(stats_readability) == 39
 
-        for i, readability in enumerate(stats_readability):
+        for stat in stats_readability:
             assert (
                 (
-                    type(readability) in [int, float, numpy.float64]
-                    and not numpy.isnan(readability)
+                    type(stat) in [int, float, numpy.float64]
+                    and not numpy.isnan(stat)
                 )
-                or readability in ['text_too_short', 'no_support']
+                or stat in ['text_too_short', 'no_support']
             )
 
         # Counts
@@ -113,8 +108,10 @@ def update_gui(err_msg, texts_stats_files):
         assert count_sentence_segs
         assert count_tokens
         assert count_types
-        assert count_syls
         assert count_chars
+
+        if count_syls is not None:
+            assert count_syls
 
         # Lengths
         assert len_paras_sentences.size
@@ -122,26 +119,24 @@ def update_gui(err_msg, texts_stats_files):
         assert len_paras_tokens.size
         assert len_sentences.size
         assert len_sentence_segs.size
-        assert len_tokens_syls.size
         assert len_tokens_chars.size
-        assert len_types_syls.size
         assert len_types_chars.size
-        assert len_syls.size
 
-        if i < len(files):
-            lang = re.search(r'(?<=\[)[a-z_]+(?=\])', files[i]['name']).group()
-
-            if lang not in main_global.settings_global['syl_tokenizers']:
-                assert all((len_syls == 1 for len_syls in len_tokens_syls))
-                assert all((len_syls == 1 for len_syls in len_types_syls))
+        if len_syls is not None:
+            assert len_tokens_syls.size
+            assert len_types_syls.size
+            assert len_syls.size
 
         # Lexical Diversity
-        assert len(stats_lexical_diversity) == 27
+        assert len(stats_lexical_density_diversity) == 28
 
-        for i, lexical_diversity in enumerate(stats_lexical_diversity):
+        for stat in stats_lexical_density_diversity:
             assert (
-                not numpy.isnan(lexical_diversity)
-                and type(lexical_diversity) in [int, float, numpy.float64]
+                (
+                    type(stat) in [int, float, numpy.float64]
+                    and not numpy.isnan(stat)
+                )
+                or stat == 'no_support'
             )
 
         # Mean
@@ -150,8 +145,10 @@ def update_gui(err_msg, texts_stats_files):
         assert numpy.mean(len_paras_tokens) == count_tokens / count_paras
         assert numpy.mean(len_sentences) == count_tokens / count_sentences
         assert numpy.mean(len_sentence_segs) == count_tokens / count_sentence_segs
-        assert numpy.mean(len_tokens_syls) == count_syls / count_tokens
         assert numpy.mean(len_tokens_chars) == count_chars / count_tokens
+
+        if count_syls is not None:
+            assert numpy.mean(len_tokens_syls) == count_syls / count_tokens
 
         # Range and interquartile range
         for lens in [
@@ -163,8 +160,9 @@ def update_gui(err_msg, texts_stats_files):
             len_tokens_syls,
             len_tokens_chars
         ]:
-            assert numpy.ptp(lens) == max(lens) - min(lens)
-            assert scipy.stats.iqr(lens) == numpy.percentile(lens, 75) - numpy.percentile(lens, 25)
+            if lens is not None:
+                assert numpy.ptp(lens) == max(lens) - min(lens)
+                assert scipy.stats.iqr(lens) == numpy.percentile(lens, 75) - numpy.percentile(lens, 25)
 
     # Count of n-token-long Sentences
     if any(count_sentences_lens):
@@ -201,7 +199,7 @@ def update_gui(err_msg, texts_stats_files):
         assert 0 not in count_sentence_segs_lens
 
     # Count of n-syllable-long Tokens
-    if any(count_tokens_lens_syls):
+    if len_tokens_syls is not None:
         count_tokens_lens_files = wl_misc.merge_dicts(count_tokens_lens_syls)
         count_tokens_lens_syls = sorted(count_tokens_lens_files.keys())
 

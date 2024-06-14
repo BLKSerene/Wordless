@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import glob
 import random
 
 from tests import wl_test_init
@@ -42,7 +43,7 @@ def test_colligation_extractor():
     ]
     measures_effect_size = list(main.settings_global['measures_effect_size'].keys())
 
-    for i in range(4):
+    for i in range(2 + len(glob.glob('tests/files/file_area/misc/*.txt'))):
         match i:
             # Single file
             case 0:
@@ -52,7 +53,11 @@ def test_colligation_extractor():
                 wl_test_init.select_test_files(main, no_files = [1, 2])
             # Miscellaneous
             case _:
-                wl_test_init.select_test_files(main, no_files = [i + 1])
+                # Excluding files without POS tagging support
+                if main.settings_custom['file_area']['files_open'][i + 1]['lang'] == 'eng_us':
+                    wl_test_init.select_test_files(main, no_files = [i + 1])
+                else:
+                    continue
 
         settings['generation_settings']['test_statistical_significance'] = random.choice(tests_statistical_significance)
         settings['generation_settings']['measure_bayes_factor'] = random.choice(measures_bayes_factor)

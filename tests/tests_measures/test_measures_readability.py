@@ -16,22 +16,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import copy
 import math
 
 import numpy
 
 from tests import wl_test_init
 from wordless.wl_measures import wl_measures_readability
-
-class Wl_Test_Text():
-    def __init__(self, tokens_multilevel, lang = 'eng_us'):
-        super().__init__()
-
-        self.main = main
-        self.lang = lang
-        self.tokens_multilevel = tokens_multilevel
-        self.tokens_multilevel_with_puncs = copy.deepcopy(tokens_multilevel)
 
 main = wl_test_init.Wl_Test_Main()
 settings = main.settings_custom['measures']['readability']
@@ -40,54 +30,56 @@ TOKENS_MULTILEVEL_0 = []
 TOKENS_MULTILEVEL_12 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]], [[['This', 'is', 'a', 'sen-tence0', '.']]]]
 TOKENS_MULTILEVEL_12_PREP = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]], [[['From', 'beginning', 'to', 'end', '.']]]]
 TOKENS_MULTILEVEL_12_PROPN = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]], [[['Louisiana', 'readability', 'boxes', 'created', '.']]]]
+TOKENS_MULTILEVEL_12_HYPHEN = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]], [[['This', 'is', 'a-', 'sen-tence0', '.']]]]
 TOKENS_MULTILEVEL_100 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 12 + [[[['This', 'is', 'a', 'sen-tence0', '.']]]]
 TOKENS_MULTILEVEL_100_PREP = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 12 + [[[['I', 'am', 'behind', 'you', '.']]]]
 TOKENS_MULTILEVEL_100_CONJ = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 12 + [[[['Go', 'ahead', 'and', 'turn', '.']]]]
 TOKENS_MULTILEVEL_120 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'metropolis', '.']]]] * 15
 TOKENS_MULTILEVEL_150 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 18 + [[[['This', 'is', 'a', 'sen-tence0', 'for', 'testing', '.']]]]
 
-test_text_eng_0 = Wl_Test_Text(TOKENS_MULTILEVEL_0)
-test_text_eng_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12)
-test_text_eng_12_prep = Wl_Test_Text(TOKENS_MULTILEVEL_12_PREP)
-test_text_eng_12_propn = Wl_Test_Text(TOKENS_MULTILEVEL_12_PROPN)
-test_text_eng_100 = Wl_Test_Text(TOKENS_MULTILEVEL_100)
-test_text_eng_100_prep = Wl_Test_Text(TOKENS_MULTILEVEL_100_PREP)
-test_text_eng_100_conj = Wl_Test_Text(TOKENS_MULTILEVEL_100_CONJ)
-test_text_eng_120 = Wl_Test_Text(TOKENS_MULTILEVEL_120)
-test_text_eng_150 = Wl_Test_Text(TOKENS_MULTILEVEL_150)
+test_text_eng_0 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_0)
+test_text_eng_12 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12)
+test_text_eng_12_prep = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12_PREP)
+test_text_eng_12_propn = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12_PROPN)
+test_text_eng_12_hyphen = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12_HYPHEN)
+test_text_eng_100 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_100)
+test_text_eng_100_prep = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_100_PREP)
+test_text_eng_100_conj = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_100_CONJ)
+test_text_eng_120 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_120)
+test_text_eng_150 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_150)
 
-test_text_ara_0 = Wl_Test_Text(TOKENS_MULTILEVEL_0, lang = 'ara')
-test_text_ara_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'ara')
-test_text_ara_faseeh = Wl_Test_Text([[[['\u064B\u064B\u0621']]]], lang = 'ara')
+test_text_ara_0 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_0, lang = 'ara')
+test_text_ara_12 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12, lang = 'ara')
+test_text_ara_faseeh = wl_test_init.Wl_Test_Text(main, [[[['\u064B\u064B\u0621']]]], lang = 'ara')
 
-test_text_deu_0 = Wl_Test_Text(TOKENS_MULTILEVEL_0, lang = 'deu_de')
-test_text_deu_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'deu_de')
-test_text_deu_120 = Wl_Test_Text(TOKENS_MULTILEVEL_120, lang = 'deu_de')
+test_text_deu_0 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_0, lang = 'deu_de')
+test_text_deu_12 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12, lang = 'deu_de')
+test_text_deu_120 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_120, lang = 'deu_de')
 
-test_text_ita_0 = Wl_Test_Text(TOKENS_MULTILEVEL_0, lang = 'ita')
-test_text_ita_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'ita')
+test_text_ita_0 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_0, lang = 'ita')
+test_text_ita_12 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12, lang = 'ita')
 
-test_text_spa_0 = Wl_Test_Text(TOKENS_MULTILEVEL_0, lang = 'spa')
-test_text_spa_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'spa')
-test_text_spa_100 = Wl_Test_Text(TOKENS_MULTILEVEL_100, lang = 'spa')
-test_text_spa_120 = Wl_Test_Text(TOKENS_MULTILEVEL_120, lang = 'spa')
-test_text_spa_150 = Wl_Test_Text(TOKENS_MULTILEVEL_150, lang = 'spa')
+test_text_spa_0 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_0, lang = 'spa')
+test_text_spa_12 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12, lang = 'spa')
+test_text_spa_100 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_100, lang = 'spa')
+test_text_spa_120 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_120, lang = 'spa')
+test_text_spa_150 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_150, lang = 'spa')
 
-test_text_tha_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'tha')
-test_text_tha_100 = Wl_Test_Text(TOKENS_MULTILEVEL_100, lang = 'tha')
+test_text_tha_12 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12, lang = 'tha')
+test_text_tha_100 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_100, lang = 'tha')
 
-test_text_vie_0 = Wl_Test_Text(TOKENS_MULTILEVEL_0, lang = 'vie')
-test_text_vie_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'vie')
+test_text_vie_0 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_0, lang = 'vie')
+test_text_vie_12 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12, lang = 'vie')
 
-test_text_afr_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'afr')
-test_text_nld_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'nld')
-test_text_fra_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'fra')
-test_text_pol_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'pol')
-test_text_rus_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'rus')
-test_text_ukr_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'ukr')
+test_text_afr_12 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12, lang = 'afr')
+test_text_nld_12 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12, lang = 'nld')
+test_text_fra_12 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12, lang = 'fra')
+test_text_pol_12 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12, lang = 'pol')
+test_text_rus_12 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12, lang = 'rus')
+test_text_ukr_12 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12, lang = 'ukr')
 
-test_text_other_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'other')
-test_text_other_100 = Wl_Test_Text(TOKENS_MULTILEVEL_100, lang = 'other')
+test_text_other_12 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12, lang = 'other')
+test_text_other_100 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_100, lang = 'other')
 
 def test_rd():
     rd_ara_0 = wl_measures_readability.rd(main, test_text_ara_0)
@@ -821,7 +813,7 @@ def test_td():
 
 def test_wheeler_smiths_readability_formula():
     wheeler_smith_eng_0 = wl_measures_readability.wheeler_smiths_readability_formula(main, test_text_eng_0)
-    wheeler_smith_eng_12 = wl_measures_readability.wheeler_smiths_readability_formula(main, test_text_eng_12)
+    wheeler_smith_eng_12 = wl_measures_readability.wheeler_smiths_readability_formula(main, test_text_eng_12_hyphen)
     wheeler_smith_spa_12 = wl_measures_readability.wheeler_smiths_readability_formula(main, test_text_spa_12)
     wheeler_smith_other_12 = wl_measures_readability.wheeler_smiths_readability_formula(main, test_text_other_12)
 
