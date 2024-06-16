@@ -92,7 +92,7 @@ Release|Remarks
 > 
 > **Note 3:** While opening corpora in languages other than English in *Wordless*, extra model files might need to be downloaded from the internet. If you encounter a **Network Error** dialog while downloading the model, chances are that it's a literal network error, so you just need to check your internet connections following the instructions in the error message and try downloading the model once more.
 > 
-> Users in China, where connections to Github and Hugging Face Hub are unstable, are recommended to use a proxy and set properly the settings in **Menu - Preferences - Settings - General - Proxy Settings**. Alternatively, Chinese users can choose to manually download model files from [Baidu Netdisk](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2Fmodels&parentPath=%2F). The steps of installing models are as follows:
+> Users in China, where connections to Github and Hugging Face Hub are unstable, are recommended to use a proxy and set properly the settings in **Menu Bar → Preferences → Settings → General → Proxy Settings**. Alternatively, Chinese users can choose to manually download model files from [Baidu Netdisk](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2Fmodels&parentPath=%2F). The steps of installing models are as follows:
 > 
 > 1. Check the error message displayed in the **Network Error** dialog. If **stanza** is found in the error message, you need a *Stanza* model, otherwise you need a *spaCy* model.
 > 2. Download model files for the language of your corpus from the above link and **extract all files**.

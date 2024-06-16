@@ -29,8 +29,6 @@ pythainlp == 5.0.3
 sacremoses == 0.1.1
 simplemma == 0.9.1
 stanza == 1.7.0
-# Underthesea is incompatible with scikit-learn >= 1.5
-scikit-learn == 1.4.2
 underthesea == 6.8.0
 vaderSentiment == 3.3.2
 
@@ -57,7 +55,8 @@ beautifulsoup4
 lxml
 matplotlib
 networkx
-numpy
+## spaCy is incompatible with NumPy 2.0
+numpy == 1.26.4
 opencc-python-reimplemented
 openpyxl
 pypdf
@@ -66,6 +65,8 @@ pytest
 python-docx
 python-pptx
 requests
+# Underthesea is incompatible with scikit-learn 1.5
+scikit-learn == 1.4.2
 scipy
 wordcloud
 
