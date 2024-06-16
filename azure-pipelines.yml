@@ -63,7 +63,7 @@ jobs:
   - job: "macOS"
 
     pool:
-      vmImage: macOS-11
+      vmImage: macOS-12
 
     steps:
       - task: UsePythonVersion@0
