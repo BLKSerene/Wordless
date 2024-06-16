@@ -323,21 +323,22 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         if not self.table.is_empty():
             self.cols_to_sort = self.cols_to_sort_default.copy()
 
-            if self.table.settings['concordancer']['generation_settings']['width_unit'] == self.tr('Token'):
-                width_left = self.table.settings['concordancer']['generation_settings']['width_left_token']
-                width_right = self.table.settings['concordancer']['generation_settings']['width_right_token']
+            if self.table.settings['concordancer']['generation_settings']['context_len_unit'] == self.tr('Token'):
+                context_len_left = self.table.settings['concordancer']['generation_settings']['context_len_left_token']
+                context_len_right = self.table.settings['concordancer']['generation_settings']['context_len_right_token']
             else:
-                width_left = max((
+                context_len_left = max((
                     len(self.table.indexWidget(self.table.model().index(row, 0)).tokens_raw)
                     for row in range(self.table.model().rowCount())
                 ))
-                width_right = max((
+                context_len_right = max((
                     len(self.table.indexWidget(self.table.model().index(row, 2)).tokens_raw)
                     for row in range(self.table.model().rowCount())
                 ))
 
-            self.cols_to_sort.extend([self.tr('R') + str(i + 1) for i in range(width_right)])
-            self.cols_to_sort.extend([self.tr('L') + str(i + 1) for i in range(width_left)])
+            # List right context before left context
+            self.cols_to_sort.extend([self.tr('R') + str(i + 1) for i in range(context_len_right)])
+            self.cols_to_sort.extend([self.tr('L') + str(i + 1) for i in range(context_len_left)])
 
             self.setItemDelegateForColumn(0, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
                 parent = self,

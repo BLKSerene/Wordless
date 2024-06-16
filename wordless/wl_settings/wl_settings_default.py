@@ -220,17 +220,17 @@ def init_settings_default(main):
             },
 
             'generation_settings': {
-                'width_left_char': 50,
-                'width_left_token': 10,
-                'width_left_sentence_seg': 0,
-                'width_left_sentence': 0,
-                'width_left_para': 0,
-                'width_right_char': 50,
-                'width_right_token': 10,
-                'width_right_sentence_seg': 0,
-                'width_right_sentence': 0,
-                'width_right_para': 0,
-                'width_unit': _tr('wl_settings_default', 'Token')
+                'context_len_left_char': 50,
+                'context_len_left_token': 10,
+                'context_len_left_sentence_seg': 0,
+                'context_len_left_sentence': 0,
+                'context_len_left_para': 0,
+                'context_len_right_char': 50,
+                'context_len_right_token': 10,
+                'context_len_right_sentence_seg': 0,
+                'context_len_right_sentence': 0,
+                'context_len_right_para': 0,
+                'context_len_unit': _tr('wl_settings_default', 'Token')
             },
 
             'table_settings': {

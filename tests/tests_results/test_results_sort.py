@@ -70,9 +70,9 @@ def test_table_results_sort_concordancer():
     table.set_label(0, 2, 'test')
 
     main.settings_custom['concordancer']['sort_results']['sorting_rules'] = [['Node', 'Ascending']]
-    table.settings['concordancer']['generation_settings']['width_unit'] = 'Token'
+    table.settings['concordancer']['generation_settings']['context_len_unit'] = 'Token'
     table_results_sort_concordancer.table_item_changed()
-    table.settings['concordancer']['generation_settings']['width_unit'] = 'Sentence'
+    table.settings['concordancer']['generation_settings']['context_len_unit'] = 'Sentence'
     table_results_sort_concordancer.table_item_changed()
 
     table_results_sort_concordancer.cols_to_sort = []
