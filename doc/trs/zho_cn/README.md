@@ -65,11 +65,11 @@
 
 <br>
 
-Wordless 是一款拥有多语种支持的语料库集成工具，其可用于语言学、文学及翻译研究，由当时就读于上海外国语大学口译研究专业的硕士研究生叶磊设计并开发。
+Wordless 是一款拥有多语种支持的语料库集成工具，可用于语言学、文学及翻译研究，由当时就读于上海外国语大学口译研究专业的硕士研究生叶磊设计并开发。
 
 ## 下载
 
-Wordless 最新版（**3.4.0**）支持 **Windows 7/8/8.1/10/11**、**macOS 10.11 或更高版本**及 **Ubuntu 18.04 或更高版本**，**均仅支持**64位操作系统**。英特尔和 Apple 芯片的苹果电脑均有支持。
+Wordless 最新版（**3.4.0**）支持 **Windows 7/8/8.1/10/11**、**macOS 10.11 或更高版本**及 **Ubuntu 18.04 或更高版本**，均仅支持**64位操作系统**。英特尔和 Apple 芯片的苹果电脑均有支持。
 
 如需完整的更新日志，请参阅 [CHANGELOG.md](/CHANGELOG.md)（待翻译）。
 
@@ -82,21 +82,21 @@ Wordless 最新版（**3.4.0**）支持 **Windows 7/8/8.1/10/11**、**macOS 10.1
 [百度网盘](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2FWordless%203.4.0)|中国用户若 Github 连接不稳定可尝试该下载链接（**提取码：wdls**）
 
 > [!IMPORTANT]
-> **备注 1**：Wordless 的路径中**不建议包含任何非 ASCII 字符，如汉字和带变音记号的字母等**。
+> **备注 1：**Wordless 的路径中**不建议包含任何非 ASCII 字符，如汉字和带变音记号的字母等**。
 > 
-> **备注 2**：苹果电脑用户如遇提示 **“Wordless”已损坏，无法打开**，请打开**终端**（启动台 → 其他）后运行：
+> **备注 2：**苹果电脑用户如遇提示 **“Wordless”已损坏，无法打开**，请打开**终端**（启动台 → 其他）后运行：
 > 
 > <code>xattr -rc /Applications/Wordless.app</code><br>
 > 
 > 请注意将 **/Applications/Wordless.app** 替换为 Wordless 在电脑上的实际存放路径（可直接拖拽 **Wordless.app** 文件至**终端**中）。然后，**再次运行 Wordless**（若程序可成功运行，终端中提示的警告可忽略）。
 > 
-> **备注 3:** 在 *Wordless* 中打开除英语外语种的语料库时，可能需要从网上下载额外的模型文件。如果出现**网络错误**对话框，那么大概率是字面意义上的网络错误，所以只需要按照错误信息中的指示检查网络连接，然后再次尝试下载模型即可。
+> **备注 3：**在 *Wordless* 中打开除英语外语种的语料库时，可能需要从网上下载额外的模型文件。如果出现**网络错误**对话框，那么大概率是字面意义上的网络错误，所以只需要按照错误信息中的指示检查网络连接，然后再次尝试下载模型即可。
 > 
-> 中国国内和 Github 以及 Hugging Face Hub 的连接不稳定，因此建议用户使用代理并在**菜单 - 偏好 - 设置 - 全局 - 代理设置**中进行设置。或者也可以手动从[百度网盘](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2Fmodels&parentPath=%2F)下载模型文件。模型的安装步骤如下：
+> 中国国内和 Github 以及 Hugging Face Hub 的连接不稳定，因此建议用户使用代理并在**菜单栏 → 偏好 → 设置 → 全局 → 代理设置**处进行设置。或者也可以手动从[百度网盘](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2Fmodels&parentPath=%2F)下载模型文件。模型的安装步骤如下：
 > 
 > 1. 查看**网络错误**对话框中的错误信息。如果错误信息中能找到 **stanza** 的字样，那么你需要的是 *Stanza* 模型，否则你需要的是 *spaCy* 模型。
 > 2. 从上方链接中下载你的语料库语种所对应的模型文件然后**将所有文件解压出来**。
-> 3. Windows 以及 Linux 用户需将 *spaCy* 模型置于 **Wordless/libs** 目录下，将 *Stanza* 模型置于 **Wordless/libs/stanza_resources** 目录下。 苹果系统用户需右键单击 **Wordless.app** 图标，选择 **显示套件内容（Show Package Contents）**，然后将 *spaCy* 模型置于 **Contents/Frameworks** 目录下，将 *Stanza* 模型置于 **Contents/Frameworks/stanza_resources**目录下。
+> 3. Windows 以及 Linux 用户需将 *spaCy* 模型置于 **Wordless/libs** 目录下，将 *Stanza* 模型置于 **Wordless/libs/stanza_resources** 目录下。 苹果系统用户需右键单击 **Wordless.app** 图标，选择**显示套件内容**，然后将 *spaCy* 模型置于 **Contents/Frameworks** 目录下，将 *Stanza* 模型置于 **Contents/Frameworks/stanza_resources** 目录下。
 > 4. 如果你的语料库有多个语种或者 *spaCy* 和 *Stanza* 模型都需要，那么重复步骤 1 ~ 3 直至**网络错误**的对话框不再出现为止。
 > 5. 再次尝试在 *Wordless* 中打开你的语料库，此时应该会跳过模型下载过程。
 > 
