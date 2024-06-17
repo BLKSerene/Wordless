@@ -2468,8 +2468,9 @@ def init_settings_default(main):
             'network_graphs': {
                 'node_settings': {
                     'node_shape': 'o',
-                    'node_size': 800,
-                    'node_color': '#5C88C5',
+                    'node_size': 100,
+                    # The color of horizontal headers in tables (#5C88C5) with 80% opacity
+                    'node_color': '#7DA0D1',
                     'node_opacity': 1.0
                 },
 
@@ -2483,17 +2484,18 @@ def init_settings_default(main):
 
                 'edge_settings': {
                     'connection_style': 'arc3',
-                    'edge_width_min': .1,
+                    'edge_width_min': 0.5,
                     'edge_width_max': 3,
                     'edge_style': 'solid',
-                    'edge_color': '#000000',
+                    # The color of horizontal headers in tables (#5C88C5) with 50% opacity
+                    'edge_color': '#ADC3E2',
                     'edge_opacity': 1.0,
                     'arrow_style': '-|>',
                     'arrow_size': 10
                 },
 
                 'edge_label_settings': {
-                    'label_position': .5,
+                    'label_position': 0.5,
                     'rotate_labels': True,
                     'label_font': DEFAULT_FONT_FAMILY,
                     'label_font_size': DEFAULT_FONT_SIZE,

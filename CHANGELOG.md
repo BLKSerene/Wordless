@@ -20,8 +20,8 @@
 
 ## [3.5.0](https://github.com/BLKSerene/Wordless/releases/tag/3.5.0) - ??/??/2024
 ### 🎉 New Features
-- File Area: Add support for .lrc files
-- File Area: Add support for .pptx files
+- File Area: Add support for .lrc and .pptx files
+- Measures: Add lexical density/diversity - Brunét's Index / Honoré's statistic / Lexical Density
 - Settings: Add Settings - Stop Word Lists - Stop Word List Settings - Case-sensitive
 - Settings: Add Settings - Tables - Dependency Parser
 - Utils: Add Pyphen's Basque syllable tokenizer
@@ -36,11 +36,11 @@
 - Work Area: Add Profiler - Lexical Density/Diversity - Brunét's Index / Honoré's statistic / Lexical Density
 
 ### ✨ Improvements
+- Measures: Update readability - OSMAN
 - Settings: Settings - Part-of-speeach Tagging - Tagsets - Mapping Settings - Allow editing of tagset mapping of spaCy's Catalan, Danish, French, Greek (Modern), Macedonian, Norwegian (Bokmål), Portuguese, Russian, Spanish, and Ukrainian part-of-speech taggers
 - Settings: Settings - Part-of-speeach Tagging - Tagsets - Mapping Settings - Allow editing of tagset mapping of Stanza's Armenian (Eastern), Armenian (Western), Basque, Buryat (Russia), Danish, French, Greek (Modern), Hebrew (Modern), Hungarian, Ligurian, Manx, Marathi, Nigerian Pidgin, Pomak, Portuguese, Russian, Sanskrit, Sindhi, Sorbian (Upper), and Telugu part-of-speech taggers
 - Utils: Update custom stop word lists
 - Work Area: Dependency Parser - Sentence - Highlight heads and dependents
-- Work Area: Update Profiler - Readability - OSMAN
 
 ### 📌 Bugfixes
 - File Area: Fix support for .xlsx files
@@ -49,9 +49,10 @@
 - Work Area: Fix Dependency Parser - analysis of files whose first token is a punctuation mark
 
 ### ❌ Removals
-- Menu: Remove Settings - Measures - Statistical Significance - Welch's t-test
-- Work Area: Remove Collocation/Colligation/Keyword Extractor - Generation Settings - Test of Statistical Significance - Welch's t-test
+- Measures: Remove statistical significance - Welch's t-test
+- Settings: Remove Settings - Measures - Statistical Significance - Welch's t-test
 - Utils: Remove Dostoevsky's Russian sentiment analyzer
+- Work Area: Remove Collocation/Colligation/Keyword Extractor - Generation Settings - Test of Statistical Significance - Welch's t-test
 
 ### ⏫ Dependency Changes
 - Dependencies: Add VADER
@@ -76,18 +77,19 @@
 
 ## [3.4.0](https://github.com/BLKSerene/Wordless/releases/tag/3.4.0) - 09/30/2023
 ### 🎉 New Features
+- Measures: Add lexical diversity - Corrected TTR / Fisher's Index of Diversity / Herdan's Vₘ / HD-D / LogTTR / Measure of Textual Lexical Diversity / Moving-average TTR / Popescu-Mačutek-Altmann's B₁ / Popescu-Mačutek-Altmann's B₂ / Popescu-Mačutek-Altmann's B₃ / Popescu-Mačutek-Altmann's B₄ / Popescu-Mačutek-Altmann's B₅ / Popescu's R₁ / Popescu's R₂ / Popescu's R₃ / Popescu's R₄ / Repeat Rate / Root TTR / Shannon Entropy / Simpleson's l / vocd-D / Yule's Characteristic K / Yule's Index of Diversity
 - Settings: Add Settings - Measures - Lexical Diversity
 - Utils: Add LaoNLP's Lao sentence tokenizer, word tokenizer, part-of-speech taggers, and stop word list
 - Utils: Add Stanza's sentence tokenizers, word tokenizers, part-of-speech taggers, lemmatizers, dependency parsers, and sentiment analyzers
 - Work Area: Add Profiler - Lexical Diversity - Corrected TTR / Fisher's Index of Diversity / Herdan's Vₘ / HD-D / LogTTR / Measure of Textual Lexical Diversity / Moving-average TTR / Popescu-Mačutek-Altmann's B₁ / Popescu-Mačutek-Altmann's B₂ / Popescu-Mačutek-Altmann's B₃ / Popescu-Mačutek-Altmann's B₄ / Popescu-Mačutek-Altmann's B₅ / Popescu's R₁ / Popescu's R₂ / Popescu's R₃ / Popescu's R₄ / Repeat Rate / Root TTR / Shannon Entropy / Simpleson's l / vocd-D / Yule's Characteristic K / Yule's Index of Diversity
 
 ### ✨ Improvements
-- Utils: Speed up tests of statistical significance, measures of Bayes factor, and measures of effect size
+- Measures: Speed up statistical significance / Bayes factor / effect size
+- Measures: Update lexical diversity - Mean Segmental TTR
 - Utils: Update NLTK's word tokenizers
 - Utils: Update spaCy's sentencizer
 - Utils: Update Wordless's Chinese character tokenizer and Japanese kanji tokenizer
 - Utils: Update Wordless's Chinese, Japanese, and Tibetan word detokenizer
-- Work Area: Update Profiler - Lexical Diversity - Mean Segmental TTR
 
 ### ❌ Removals
 - Settings: Remove Settings - Tables - Profiler
@@ -109,6 +111,7 @@
 
 ## [3.3.0](https://github.com/BLKSerene/Wordless/releases/tag/3.3.0) - 08/18/2023
 ### 🎉 New Features
+- Measures: Add readability - Al-Heeti's Readability Prediction Formula / Bormuth's Cloze Mean / Bormuth's Grade Placement / Coleman's Readability Formula / Danielson-Bryan's Readability Formula / Dawood's Readability Formula / Degrees of Reading Power / Dickes-Steiwer Handformel / Easy Listening Formula / Fucks's Stilcharakteristik / Lorge Readability Index / Luong-Nguyen-Dinh's Readability Formula / neue Wiener Literaturformeln / Strain Index / Tränkle & Bailer's Readability Formula / Tuldava's Text Difficulty / Wheeler & Smith's Readability Formula
 - Settings: Add Settings - Measures - Readability - Al-Heeti's Readability Prediction Formula / Automated Readability Index / Bormuth's Grade Placement / Coleman's Readability Formula / Dale-Chall Readability Formula / Danielson-Bryan's Readability Formula / Flesch Reading Ease / Flesch Reading Ease (Farr-Jenkins-Paterson) / Gunning Fog Index / Lorge Readability Index / neue Wiener Literaturformeln / Spache Grade Level / Tränkle & Bailer's Readability Formula
 - Settings: Add Settings - Sentiment Analysis
 - Utils: Add Dostoevsky's Russian sentiment analyzer
@@ -120,14 +123,15 @@
 - Work Area: Add Profiler - Readability - Al-Heeti's Readability Prediction Formula / Bormuth's Cloze Mean / Bormuth's Grade Placement / Coleman's Readability Formula / Danielson-Bryan's Readability Formula / Dawood's Readability Formula / Degrees of Reading Power / Dickes-Steiwer Handformel / Easy Listening Formula / Fucks's Stilcharakteristik / Lorge Readability Index / Luong-Nguyen-Dinh's Readability Formula / neue Wiener Literaturformeln / Strain Index / Tränkle & Bailer's Readability Formula / Tuldava's Text Difficulty / Wheeler & Smith's Readability Formula
 
 ### ✨ Improvements
+- Measures: Update readability - Automated Readability Index / Dale-Chall Readability Formula / Flesch Reading Ease / Flesch Reading Ease (Farr-Jenkins-Paterson) / Gunning Fog Index / neue Wiener Sachtextformel / SMOG Grade / Spache Grade Level
 - Utils: Update spaCy's sentence recognizers, word tokenizers, part-of-speech taggers, lemmatizers, and dependency parsers
 - Utils: Update Wordless's sentence and sentence segment splitters
-- Work Area: Update Profiler - Readability - Automated Readability Index / Dale-Chall Readability Formula / Flesch Reading Ease / Flesch Reading Ease (Farr-Jenkins-Paterson) / Gunning Fog Index / neue Wiener Sachtextformel / SMOG Grade / Spache Grade Level
 
 ### 📌 Bugfixes
 - Work Area: Fix Concordancer - Generation Settings - Width unit - Character
 
 ### ❌ Removals
+- Measures: Remove Fernández Huerta's Readability Score / Szigriszt's Perspicuity Index
 - Utils: Remove PyThaiNLP's perceptron part-of-speech tagger (LST20)
 - Utils: Remove TextBlob's English sentiment analyzer
 - Work Area: Remove Profiler - Fernández Huerta's Readability Score / Szigriszt's Perspicuity Index
@@ -185,6 +189,7 @@
 
 ## [3.1.0](https://github.com/BLKSerene/Wordless/releases/tag/3.1.0) - 02/11/2023
 ### 🎉 New Features
+- Measures: Add dispersion / adjusted frequency - Average Logarithmic Distance / Average Reduced Frequency / Average Waiting Time
 - Settings: Add global settings - encodings - Thai (TIS-620)
 - Settings: Add Settings - Figures - Network Graphs - Edge Label Settings - Label position / Rotate labels to lie parallel to edges / Label font weight / Label font color / Label opacity
 - Settings: Add Settings - Figures - Network Graphs - Edge Settings - Connection style / Edge width / Edge style / Edge opacity / Arrow style / Arrow size
@@ -204,8 +209,10 @@
 - File Area: Add checkbox in table header to select/deselect all files
 - File Area: Disallow empty file names
 - File Area: Remove underscores in tokenized Vietnamese files
-- Work Area: Update Concordancer / Parallel Concordancer - Export selected/all cells - Excel workbooks
+- Measures: Update dispersion - Gries's DP
 - Utils: Speed up n-gram/skip-gram generation
+- Visualization: Update word clouds and network graphs
+- Work Area: Update Concordancer / Parallel Concordancer - Export selected/all cells - Excel workbooks
 
 ### 📌 Bugfixes
 - Settings: Fix global settings - encodings
@@ -216,6 +223,7 @@
 - Work Area: Fix Work Area - Table Settings - Show percentage data / Show breakdown by span position / Show breakdown by file
 
 ### ❌ Removals
+- Measures: Remove dispersion - Gries's DPnorm
 - Settings: Remove Settings - Figures - Word Clouds - Font - GNU FreeFont
 - Work Area: Remove Wordlist/N-gram Generator - Generation Settings - Measure of Dispersion - Gries's DPnorm
 
@@ -242,6 +250,7 @@
 
 ## [3.0.0](https://github.com/BLKSerene/Wordless/releases/tag/3.0.0) - 11/21/2022
 ### 🎉 New Features
+- Measures: Add readability - Automated Arabic Readability Index / Fernández Huerta's Readability Score / Fórmula de comprensibilidad de Gutiérrez de Polini / Fórmula de Crawford / Gulpease Index / Legibilidad µ / Lix / McAlpine EFLAW Readability Score / OSMAN / Rix / Szigriszt's Perspicuity Index / Wiener Sachtextformel
 - Settings: Add Settings - Dependency Parsing
 - Settings: Add Settings - Measures - Readability
 - Utils: Add NLTK's Basque, Bengali, Catalan, Chinese (Simplified), Chinese (Traditional), and Hebrew (Modern) stop word lists
@@ -250,6 +259,7 @@
 - Utils: Add simplemma's lemmatizers
 - Utils: Add spaCy's Ganda and Latin word tokenizers
 - Utils: Add stopword's stop word lists
+- Visualization: Add dependency graphs
 - Work Area: Add Dependency Parser
 - Work Area: Add Profiler - Automated Arabic Readability Index / Fernández Huerta's Readability Score / Fórmula de comprensibilidad de Gutiérrez de Polini / Fórmula de Crawford / Gulpease Index / Legibilidad µ / Lix / McAlpine EFLAW Readability Score / OSMAN / Rix / Szigriszt's Perspicuity Index / Wiener Sachtextformel
 
@@ -290,11 +300,12 @@
 ### 🎉 New Features
 - File Area: Add Observed Files / Reference Files
 - File Area: Add support for .pdf files
+- Measures: Add statistical significance - Welch's t-test
 - Settings: Add Settings - Figures - Word Clouds - Font Path
 - Settings: Add Settings - General - User Interface Settings - Interface Scaling
 - Settings: Add Settings - Measures - Bayes Factor
 - Settings: Add Settings - Measures - Statistical Significance - Log-likelihood Ratio Test / Welch's t-test / z-score (Berry-Rogghe)
-- Settings: Add Settings - Measures - Statistical Significance - Student's t-test (1-sample) / Student's t-test (2-sample) / Welch's t-test - Direction
+- Settings: Add Settings - Measures - Statistical Significance - Student's t-test (1-sample) / Student's t-test (2-sample) - Direction
 - Settings: Add Settings - Tables - Profiler
 - Utils: Add NLTK's legality syllable tokenizer and sonority sequencing syllable tokenizer
 - Utils: Add NLTK's regular-expression tokenizer
@@ -312,15 +323,18 @@
 - Work Area: Add Concordancer - Sentence Segment No.
 - Work Area: Add Profiler - Count of Sentence Segments / Paragraph Length in Sentence Segments / Sentence Segment Length in Tokens / Count of n-length Sentence Segments
 - Work Area: Add Profiler - Paragraph/Sentence/Token/Type/Syllable Length (Interquartile Range)
-- Work Area: Add Wordlist/N-gram Generator - Generation Settings - Measure of Dispersion / Adjusted Frequency - None
+- Work Area: Add Wordlist/N-gram Generator - Generation Settings - Measure of Dispersion / Measure of Adjusted Frequency - None
 - Work Area: Add Work Area - Search Settings - Context Settings - Save
 
 ### ✨ Improvements
+- Measures: Update adjusted frequency / Bayes factor
+- Measures: Update statistical significance - Log-likelihood Ratio Test / Student's t-test (1-sample) / Student's t-test (2-sample) / z-score (Berry-Rogghe)
+- Measures: Update type-token ratio - Type-token Ratio (Standardized)
 - Settings: Allow resizing of Settings dialog box
 - Settings: Update Settings - Files - Tags - Header Tag Settings
 - Utils: Update language detection
+- Visualization: Update word clouds
 - Work Area: Allow one-to-many parallel concordancing in Parallel Concordancer
-- Work Area: Update Profiler - Type-token Ratio (Standardized)
 
 ### 📌 Bugfixes
 - File Area: Fix support for .tmx files
@@ -382,7 +396,6 @@
 - File Area: Remove temporary files when closing files
 - File Area: Show original file paths instead of modified ones
 - Utils: Update CLTK's Norse (Old) stop word list
-- Work Area: Update Work Area - Figure Settings - Sort by File
 
 ### ❌ Removals
 - File Area: Remove Open File(s) / Open Folder / Reload Selected / Reload All / Close Selected / Close All
@@ -415,6 +428,7 @@
 
 ## [2.1.0](https://github.com/BLKSerene/Wordless/releases/tag/2.1.0) - 10/14/2021
 ### 🎉 New Features
+- Measures: Add readability - Automated Readability Index / Coleman-Liau Index / Dale-Chall Readability Score / Devereaux Readability Index / Flesch Reading Ease / Flesch Reading Ease (Simplified) / Flesch-Kincaid Grade Level / FORCAST Grade Level / Gunning Fog Index / SMOG Grade / Spache Grade Level / Write Score
 - Settings: Add Settings - Files - Miscellaneous - Read files in chunks of lines
 - Settings: Add Settings - Files - Tags - Header Tag Settings / Body Tag Settings / XML Tag Settings - Insert/Clear
 - Settings: Add Settings - Stop Word Lists - Preview - Insert
@@ -459,8 +473,7 @@
 ### 🎉 New Features
 - Settings: Add Settings - Files - Default Settings - Tokenized/Tagged
 - Utils: Add CLTK's Akkadian, Arabic (Standard), Coptic, English (Middle), English (Old), French (Old), German (Middle High), Greek (Ancient), Hindi, Latin, Marathi (Old), Norse (Old), Punjabi, and Sanskrit stop word lists
-- Utils: Add PyThaiNLP's NERCut
-- Utils: Add PyThaiNLP's perceptron tagger (LST20)
+- Utils: Add PyThaiNLP's NERCut and perceptron tagger (LST20)
 - Utils: Add spaCy's Amharic, Kyrgyz, Macedonian, Sanskrit, Tigrinya, and Tswana word tokenizers
 - Utils: Add spaCy's Amharic, Korean, Kyrgyz, Macedonian, Sanskrit, Tigrinya, and Tswana stop word lists
 - Utils: Add spaCy's Bengali, Croatian, Czech, Hungarian, Indonesian, Luxembourgish, Persian, Serbian (Cyrillic), Swedish, Tagalog, Turkish, and Urdu lemmatizers
@@ -507,6 +520,7 @@
 
 ## [1.5.0](https://github.com/BLKSerene/Wordless/releases/tag/1.5.0) - 01/15/2021
 ### 🎉 New Features
+- Measures: Add test of statistical significance - Berry-Rogghe’s z-score
 - Utils: Add AttaCut's Thai word tokenizer
 - Utils: Add pkuseg's Chinese word tokenizer
 - Utils: Add TextBlob's English sentiment analyzer
@@ -658,6 +672,7 @@
 - Utils: Add NLTK's Slovenian and Tajik stop word lists
 - Utils: Add spaCy's Marathi word tokenizer and stop word list
 - Utils: Add spaCy's Serbian word tokenizer and stop word list
+- Visualization: Add network graphs
 - Work Area: Add Collocation/Colligation - Figure Settings - Graph Type - Network Graph
 - Work Area: Add Concordancer - Clause No.
 - Work Area: Add Concordancer - Generation Settings - Width Unit - Sentence/Clause
@@ -668,6 +683,7 @@
 - Utils: Update pybo's Tibetan tokenizers, part-of-speech tagger, and lemmatizer
 - Utils: Update PyThaiNLP's Thai stop word list
 - Utils: Update Sacremoses's tokenizers and detokenizer
+- Visualization: Update line charts and word clouds
 
 ### 📌 Bugfixes
 - Settings: Fix Settings - Stop Words - Preview - Count of Stop Words
