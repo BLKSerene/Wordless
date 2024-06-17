@@ -134,7 +134,7 @@ ACKS = [
         'BSD-3-Clause', 'https://github.com/scipy/scipy/blob/main/LICENSE.txt'
     ], [
         'simplemma', 'https://github.com/adbar/simplemma',
-        '0.9.1', 'Adrien Barbaresi',
+        '1.0.0', 'Adrien Barbaresi',
         'MIT', 'https://github.com/adbar/simplemma/blob/main/LICENSE'
     ], [
         'spaCy', 'https://spacy.io/',
