@@ -16,7 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import glob
 import os
 import pkgutil
 import re
@@ -184,8 +183,7 @@ class Check_Settings_Global:
         langs_simplemma_supported = []
         langs_simplemma_lemmatizers = []
 
-        for file in glob.glob(os.path.join(os.path.split(simplemma.__file__)[0], 'data/*.plzma')):
-            lang = os.path.splitext(os.path.split(file)[1])[0]
+        for lang in simplemma.strategies.dictionaries.dictionary_factory.SUPPORTED_LANGUAGES:
 
             if lang == 'hbs':
                 langs_simplemma_supported.extend(['hr', 'sr_latn'])
