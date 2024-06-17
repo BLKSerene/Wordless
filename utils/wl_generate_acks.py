@@ -54,7 +54,7 @@ ACKS = [
         'Apache-2.0', 'https://github.com/VietHoang1512/khmer-nltk/blob/main/LICENSE'
     ], [
         'LaoNLP', 'https://github.com/wannaphong/LaoNLP',
-        '1.1.3', 'Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)',
+        '1.2.0', 'Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)',
         'Apache-2.0', 'https://github.com/wannaphong/LaoNLP/blob/master/LICENSE'
     ], [
         'Lingua', 'https://github.com/pemistahl/lingua-py',
