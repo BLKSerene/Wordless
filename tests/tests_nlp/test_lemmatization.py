@@ -102,7 +102,7 @@ def test_lemmatize(lang, lemmatizer):
         case 'est':
             results = ['Eesti', 'keel', 'olema', 'kaks', 'suurem', 'murd', '(', 'põhi', 'ja', 'lõuna', ')', ',', 'mõni', 'käsitlus', 'eristama', 'ka', 'kirderannik', 'murre', 'eraldi', 'murderühmana', '.']
         case 'fin':
-            results = ['Suomi', 'kieli', 'eli', 'suomi', 'olla', 'uralilainen', 'kieli', 'itämerensuomalainen', 'ryhmä', 'kuuluva', 'kieli', ',', 'jota', 'puhua', 'pääosa', 'Suomalainen', '.']
+            results = ['Suomi', 'kieli', 'eli', 'suomi', 'olla', 'uralilainen', 'kieli', 'itämerensuomalainen', 'ryhmä', 'kuuluva', 'kieli', ',', 'jota', 'puhua', 'pääosa', 'suomalainen', '.']
         case 'fra':
             results = ['le', 'français', 'être', 'un', 'langue', 'indo-européen', 'de', 'le', 'famille', 'un', 'langue', 'roman', 'dont', 'le', 'locuteurs', 'être', 'appelé', 'francophone', '.']
         case 'glg':
