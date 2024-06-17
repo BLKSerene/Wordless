@@ -199,11 +199,11 @@ def generate_network_graph(main, data_file_items, fig_settings):
     graph = networkx.MultiDiGraph()
     graph.add_edges_from(data_file_items)
 
-    layout = settings['advanced_settings']['layout'](graph)
+    pos = settings['advanced_settings']['layout'](graph)
 
     networkx.draw_networkx_nodes(
         graph,
-        pos = layout,
+        pos = pos,
         node_shape = settings['node_settings']['node_shape'],
         node_size = settings['node_settings']['node_size'],
         node_color = settings['node_settings']['node_color'],
@@ -212,7 +212,7 @@ def generate_network_graph(main, data_file_items, fig_settings):
 
     networkx.draw_networkx_labels(
         graph,
-        pos = layout,
+        pos = {node: (x, y + 0.05) for node, (x, y) in pos.items()},
         font_family = settings['node_label_settings']['label_font'],
         font_size = settings['node_label_settings']['label_font_size'],
         font_weight = settings['node_label_settings']['label_font_weight'],
@@ -234,7 +234,7 @@ def generate_network_graph(main, data_file_items, fig_settings):
 
     networkx.draw_networkx_edges(
         graph,
-        pos = layout,
+        pos = pos,
         edgelist = data_file_items,
         width = wl_misc.normalize_nums(
             data_file_items.values(),
@@ -255,7 +255,7 @@ def generate_network_graph(main, data_file_items, fig_settings):
 
     networkx.draw_networkx_edge_labels(
         graph,
-        pos = layout,
+        pos = pos,
         edge_labels = data_file_items,
         label_pos = settings['edge_label_settings']['label_position'],
         rotate = settings['edge_label_settings']['rotate_labels'],
