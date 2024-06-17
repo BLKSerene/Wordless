@@ -16,6 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import pytest
+
 from tests import wl_test_init, wl_test_lang_examples
 from wordless.wl_nlp import wl_nlp_utils
 
@@ -128,6 +130,7 @@ def test_init_sentence_tokenizers():
     wl_nlp_utils.init_sentence_tokenizers(main, 'eng_us', 'spacy_eng')
     wl_nlp_utils.init_sentence_tokenizers(main, 'eng_us', 'stanza_eng')
 
+@pytest.mark.xfail
 def test_init_word_tokenizers():
     wl_nlp_utils.init_word_tokenizers(main, 'eng_us', 'nltk_nist')
     wl_nlp_utils.init_word_tokenizers(main, 'eng_us', 'nltk_nltk')

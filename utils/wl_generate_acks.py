@@ -66,7 +66,7 @@ ACKS = [
         'Matplotlib', 'https://matplotlib.org/stable/users/project/license.html'
     ], [
         'NetworkX', 'https://networkx.org/',
-        '3.1', 'NetworkX Developers, Aric Hagberg, Dan Schult,<br>Pieter Swart',
+        '3.3', 'NetworkX Developers, Aric Hagberg, Dan Schult,<br>Pieter Swart',
         'BSD-3-Clause', 'https://github.com/networkx/networkx/blob/main/LICENSE.txt'
     ], [
         'NLTK', 'https://www.nltk.org/',
