@@ -47,7 +47,7 @@
 23|[Sacremoses](https://github.com/hplt-project/sacremoses)|0.1.1|Liling Tan, Jelmer van der Linde|[MIT](https://github.com/hplt-project/sacremoses/blob/master/LICENSE)
 24|[SciPy](https://scipy.org/scipylib/)|1.11.3|SciPy 开发人员|[BSD-3-Clause](https://github.com/scipy/scipy/blob/main/LICENSE.txt)
 25|[simplemma](https://github.com/adbar/simplemma)|1.0.0|Adrien Barbaresi|[MIT](https://github.com/adbar/simplemma/blob/main/LICENSE)
-26|[spaCy](https://spacy.io/)|3.7.2|Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann|[MIT](https://github.com/explosion/spaCy/blob/master/LICENSE)
+26|[spaCy](https://spacy.io/)|3.7.5|Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann|[MIT](https://github.com/explosion/spaCy/blob/master/LICENSE)
 27|[spacy-pkuseg](https://github.com/explosion/spacy-pkuseg)|0.0.33|罗睿轩, 许晶晶, 任宣丞, 张艺, 张之远, 位冰镇, 孙栩<br>Adriane Boyd, Ines Montani|[MIT](https://github.com/explosion/spacy-pkuseg/blob/master/LICENSE)
 28|[Stanza](https://github.com/stanfordnlp/stanza)|1.7.0|齐鹏, 张宇浩, 张钰晖,<br>Jason Bolton, Tim Dozat, John Bauer|[Apache-2.0](https://github.com/stanfordnlp/stanza/blob/main/LICENSE)
 29|[SudachiPy](https://github.com/WorksApplications/sudachi.rs)|0.6.8|Works Applications Co., Ltd.|[Apache-2.0](https://github.com/WorksApplications/sudachi.rs/blob/develop/LICENSE)

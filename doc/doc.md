@@ -638,7 +638,7 @@ You can generate line charts or word clouds for keywords using any statistics. Y
 ### [4.1 Supported Languages](#doc)
 
 Language|Sentence Token-ization|Word Token-ization|Syllable Token-ization|Part-of-speech Tagging|Lemma-tization|Stop Word List|Depen-dency Parsing|Senti-ment Analysis
-:--------------------------------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
+:-----------------------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
 Afrikaans                |✔|✔|✔|✔|✔|✖️|✔|✔
 Albanian                 |⭕️ |✔|✔|✖️|✔|✖️|✖️|✔
 Amharic                  |⭕️ |✔|✖️|✖️|✖️|✖️|✖️|✔
@@ -648,7 +648,7 @@ Armenian (Western)       |✔|✔|✖️|✔|✔|✖️|✔|✔
 Assamese                 |⭕️ |✔|✖️|✖️|✖️|✖️|✖️|✔
 Asturian                 |⭕️ |⭕️ |✖️|✖️|✔|✖️|✖️|✖️
 Azerbaijani              |⭕️ |✔|✖️|✖️|✖️|✔|✖️|✔
-Basque                   |✔|✔|✖️|✔|✔|✔|✔|✔
+Basque                   |✔|✔|✔|✔|✔|✔|✔|✔
 Belarusian               |✔|✔|✔|✔|✔|✖️|✔|✔
 Bengali                  |⭕️ |✔|✖️|✖️|✔|✔|✖️|✔
 Bulgarian                |✔|✔|✔|✔|✔|✖️|✔|✔

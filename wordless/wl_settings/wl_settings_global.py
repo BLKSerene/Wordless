@@ -573,6 +573,7 @@ SETTINGS_GLOBAL = {
             _tr('wl_settings_global', 'spaCy - Dutch word tokenizer'): 'spacy_nld',
             _tr('wl_settings_global', 'spaCy - English word tokenizer'): 'spacy_eng',
             _tr('wl_settings_global', 'spaCy - Estonian word tokenizer'): 'spacy_est',
+            _tr('wl_settings_global', 'spaCy - Faroese word tokenizer'): 'spacy_fao',
             _tr('wl_settings_global', 'spaCy - Finnish word tokenizer'): 'spacy_fin',
             _tr('wl_settings_global', 'spaCy - French word tokenizer'): 'spacy_fra',
             _tr('wl_settings_global', 'spaCy - German word tokenizer'): 'spacy_deu',
@@ -602,6 +603,7 @@ SETTINGS_GLOBAL = {
             _tr('wl_settings_global', 'spaCy - Marathi word tokenizer'): 'spacy_mar',
             _tr('wl_settings_global', 'spaCy - Nepali word tokenizer'): 'spacy_nep',
             _tr('wl_settings_global', 'spaCy - Norwegian (Bokmål) word tokenizer'): 'spacy_nob',
+            _tr('wl_settings_global', 'spaCy - Norwegian (Nynorsk) word tokenizer'): 'spacy_nno',
             _tr('wl_settings_global', 'spaCy - Persian word tokenizer'): 'spacy_fas',
             _tr('wl_settings_global', 'spaCy - Polish word tokenizer'): 'spacy_pol',
             _tr('wl_settings_global', 'spaCy - Portuguese word tokenizer'): 'spacy_por',
@@ -1977,6 +1979,7 @@ SETTINGS_GLOBAL = {
 
         'fao': [
             'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+            'spacy_fao',
             'stanza_fao'
         ],
 
@@ -2227,6 +2230,7 @@ SETTINGS_GLOBAL = {
         ],
         'nno': [
             'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+            'spacy_nno',
             'stanza_nno'
         ],
 

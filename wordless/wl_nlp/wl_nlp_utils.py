@@ -328,11 +328,6 @@ LANGS_SPACY_LEMMATIZERS = [
 ]
 
 def init_model_spacy(main, lang, sentencizer_only = False):
-    if lang == 'nno':
-        lang = 'nob'
-    else:
-        lang = wl_conversion.remove_lang_code_suffixes(main, lang)
-
     sentencizer_config = {'punct_chars': list(wl_sentence_tokenization.SENTENCE_TERMINATORS)}
 
     # Sentencizer
@@ -341,6 +336,8 @@ def init_model_spacy(main, lang, sentencizer_only = False):
             main.__dict__['spacy_nlp_sentencizer'] = spacy.blank('en')
             main.__dict__['spacy_nlp_sentencizer'].add_pipe('sentencizer', config = sentencizer_config)
     else:
+        lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+
         if f'spacy_nlp_{lang}' not in main.__dict__:
             # Languages with models
             if lang in LANGS_SPACY:
