@@ -24,10 +24,11 @@
 - Measures: Add lexical density/diversity - Brunét's Index / Honoré's statistic / Lexical Density
 - Settings: Add Settings - Stop Word Lists - Stop Word List Settings - Case-sensitive
 - Settings: Add Settings - Tables - Dependency Parser
+- Utils: Add encoding detection - UTF-8 with BOM
 - Utils: Add Pyphen's Basque syllable tokenizer
 - Utils: Add PyThaiNLP's Han-solo
+- Utils: Add spaCy's Faroese and Norwegian (Nynorsk) word tokenizers
 - Utils: Add Stanza's Sindhi part-of-speech tagger
-- Utils: Add encoding detection - UTF-8 with BOM 
 - Utils: Add VADER's sentiment analyzers
 - Work Area: Add Colligation Extractor - Filter results - Node/Colligation length
 - Work Area: Add Collocation Extractor - Filter results - Node/Collocation length
@@ -71,7 +72,7 @@
 - Dependencies: Upgrade Requests to 2.32.2
 - Dependencies: Upgrade Sacremoses to 0.1.1
 - Dependencies: Upgrade simplemma to 1.0.0
-- Dependencies: Upgrade spaCy to 3.7.2
+- Dependencies: Upgrade spaCy to 3.7.5
 - Dependencies: Upgrade spacy-pkuseg to 0.0.33
 - Dependencies: Upgrade Stanza to 1.7.0
 - Dependencies: Upgrade SudachiPy to 0.6.8

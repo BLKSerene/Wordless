@@ -145,6 +145,8 @@ def test_word_tokenize(lang, word_tokenizer):
                 tests_lang_util_skipped = True
         case 'est':
             assert tokens == ['Eesti', 'keelel', 'on', 'kaks', 'suuremat', 'murderühma', '(', 'põhjaeesti', 'ja', 'lõunaeesti', ')', ',', 'mõnes', 'käsitluses', 'eristatakse', 'ka', 'kirderanniku', 'murdeid', 'eraldi', 'murderühmana', '.']
+        case 'fao':
+            assert tokens == ['Føroyskt', 'er', 'høvuðsmálið', 'í', 'Føroyum', '.']
         case 'fin':
             assert tokens == ['Suomen', 'kieli', 'eli', 'suomi', 'on', 'uralilaisten', 'kielten', 'itämerensuomalaiseen', 'ryhmään', 'kuuluva', 'kieli', ',', 'jota', 'puhuvat', 'pääosin', 'suomalaiset', '.']
         case 'fra':
@@ -247,6 +249,8 @@ def test_word_tokenize(lang, word_tokenizer):
             assert tokens == ['नेपाली', 'भाषा', '(', 'अन्तर्राष्ट्रिय', 'ध्वन्यात्मक', 'वर्णमाला', '[', 'neˈpali', 'bʱaʂa', ']', ')', 'नेपालको', 'सम्पर्क', 'भाषा', 'तथा', 'भारत', ',', 'भुटान', 'र', 'म्यानमारको', 'केही', 'भागमा', 'मातृभाषाको', 'रूपमा', 'बोलिने', 'भाषा', 'हो', '।']
         case 'nob':
             assert tokens == ['Bokmål', 'er', 'en', 'varietet', 'av', 'norsk', 'skriftspråk', '.']
+        case 'nno':
+            assert tokens == ['Nynorsk', ',', 'før', '1929', 'offisielt', 'kalla', 'landsmål', ',', 'er', 'sidan', 'jamstillingsvedtaket', 'av', '12.', 'mai', '1885', 'ei', 'av', 'dei', 'to', 'offisielle', 'målformene', 'av', 'norsk', ';', 'den', 'andre', 'forma', 'er', 'bokmål', '.']
         case 'ori':
             assert tokens == ['ଓଡ଼ିଆ', '(', 'ଇଂରାଜୀ', 'ଭାଷାରେ', 'Odia', '/', 'əˈdiːə', '/', 'or', 'Oriya', '/', 'ɒˈriːə', '/', ',', ')', 'ଏକ', 'ଭାରତୀୟ', 'ଭାଷା', 'ଯାହା', 'ଏକ', 'ଇଣ୍ଡୋ-ଇଉରୋପୀୟ', 'ଭାଷାଗୋଷ୍ଠୀ', 'ଅନ୍ତର୍ଗତ', 'ଇଣ୍ଡୋ-ଆର୍ଯ୍ୟ', 'ଭାଷା', '।']
         case 'fas':

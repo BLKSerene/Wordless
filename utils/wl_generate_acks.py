@@ -138,7 +138,7 @@ ACKS = [
         'MIT', 'https://github.com/adbar/simplemma/blob/main/LICENSE'
     ], [
         'spaCy', 'https://spacy.io/',
-        '3.7.2', "Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann",
+        '3.7.5', "Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann",
         'MIT', 'https://github.com/explosion/spaCy/blob/master/LICENSE'
     ], [
         'spacy-pkuseg', 'https://github.com/explosion/spacy-pkuseg',
