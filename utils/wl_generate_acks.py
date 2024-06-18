@@ -106,7 +106,7 @@ ACKS = [
         'Commercial-License/GPL-3.0-only', 'https://www.riverbankcomputing.com/static/Docs/PyQt5/introduction.html#license'
     ], [
         'PyThaiNLP', 'https://github.com/PyThaiNLP/pythainlp',
-        '5.0.3', 'Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)',
+        '5.0.4', 'Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)',
         'Apache-2.0', 'https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE'
     ], [
         'python-docx', 'https://github.com/python-openxml/python-docx',
