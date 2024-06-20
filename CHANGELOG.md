@@ -22,6 +22,7 @@
 ### 🎉 New Features
 - File Area: Add support for .lrc and .pptx files
 - Measures: Add lexical density/diversity - Brunét's Index / Honoré's statistic / Lexical Density
+- Settings: Add Settings - Files - Miscellaneous Settings - Display warning when opening non-text files
 - Settings: Add Settings - Stop Word Lists - Stop Word List Settings - Case-sensitive
 - Settings: Add Settings - Tables - Dependency Parser
 - Utils: Add encoding detection - UTF-8 with BOM
@@ -37,6 +38,7 @@
 - Work Area: Add Profiler - Lexical Density/Diversity - Brunét's Index / Honoré's statistic / Lexical Density
 
 ### ✨ Improvements
+- File Area: Display warning when opening non-text files
 - Measures: Update readability - OSMAN
 - Settings: Settings - Part-of-speeach Tagging - Tagsets - Mapping Settings - Allow editing of tagset mapping of spaCy's Catalan, Danish, French, Greek (Modern), Macedonian, Norwegian (Bokmål), Portuguese, Russian, Spanish, and Ukrainian part-of-speech taggers
 - Settings: Settings - Part-of-speeach Tagging - Tagsets - Mapping Settings - Allow editing of tagset mapping of Stanza's Armenian (Eastern), Armenian (Western), Basque, Buryat (Russia), Danish, French, Greek (Modern), Hebrew (Modern), Hungarian, Ligurian, Manx, Marathi, Nigerian Pidgin, Pomak, Portuguese, Russian, Sanskrit, Sindhi, Sorbian (Upper), and Telugu part-of-speech taggers

@@ -34,7 +34,7 @@ def test_wl_dialog_confirm_exit():
     wl_dialog_confirm_exit = wl_main.Wl_Dialog_Confirm_Exit(main)
     wl_dialog_confirm_exit.open()
     wl_dialog_confirm_exit.load_settings()
-    wl_dialog_confirm_exit.confirm_on_exit_changed()
+    wl_dialog_confirm_exit.always_confirm_on_exit_changed()
 
 def test_wl_dialog_need_help():
     wl_dialog_need_help = wl_main.Wl_Dialog_Need_Help(main)

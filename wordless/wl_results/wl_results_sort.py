@@ -21,17 +21,33 @@ import re
 
 from PyQt5.QtCore import pyqtSignal, QCoreApplication
 from PyQt5.QtGui import QStandardItem
-from PyQt5.QtWidgets import QAbstractItemDelegate, QComboBox, QMessageBox, QPushButton
+from PyQt5.QtWidgets import (
+    QAbstractItemDelegate,
+    QComboBox,
+    QMessageBox,
+    QPushButton
+)
 
 from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc
 from wordless.wl_utils import wl_misc, wl_threading
-from wordless.wl_widgets import wl_buttons, wl_item_delegates, wl_labels, wl_layouts, wl_tables
+from wordless.wl_widgets import (
+    wl_buttons,
+    wl_item_delegates,
+    wl_labels,
+    wl_layouts,
+    wl_tables
+)
 
 _tr = QCoreApplication.translate
 
 class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
     def __init__(self, main, table):
-        super().__init__(main, _tr('Wl_Dialog_Results_Sort_Concordancer', 'Sort Results'))
+        super().__init__(
+            main,
+            title = _tr('Wl_Dialog_Results_Sort_Concordancer', 'Sort Results'),
+            width = 550,
+            height = 300
+        )
 
         self.tab = table.tab
         self.table = table
@@ -39,7 +55,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
 
         self.main.wl_work_area.currentChanged.connect(self.reject)
 
-        self.table_sort = Wl_Table_Results_Sort_Conordancer(self, table = self.table)
+        self.table_sort = Table_Results_Sort_Conordancer(self, table = self.table)
 
         self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
         self.button_sort = QPushButton(self.tr('Sort'), self)
@@ -49,13 +65,14 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
         self.button_close.clicked.connect(self.reject)
 
         layout_table_sort = wl_layouts.Wl_Layout()
-        layout_table_sort.addWidget(self.table_sort, 0, 0, 5, 1)
+        layout_table_sort.addWidget(self.table_sort, 0, 0, 4, 1)
         layout_table_sort.addWidget(self.table_sort.button_add, 0, 1)
         layout_table_sort.addWidget(self.table_sort.button_ins, 1, 1)
         layout_table_sort.addWidget(self.table_sort.button_del, 2, 1)
         layout_table_sort.addWidget(self.table_sort.button_clr, 3, 1)
 
-        layout_table_sort.setRowStretch(4, 1)
+        layout_table_sort.setRowStretch(0, 1)
+        layout_table_sort.setColumnStretch(0, 1)
 
         layout_buttons = wl_layouts.Wl_Layout()
         layout_buttons.addWidget(self.button_restore_defaults, 0, 0)
@@ -67,6 +84,8 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addLayout(layout_table_sort, 0, 0)
         self.layout().addLayout(layout_buttons, 1, 0)
+
+        self.layout().setRowStretch(0, 1)
 
         self.load_settings()
 
@@ -224,13 +243,13 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
 
         self.table.enable_updates(emit_signals = False)
 
-class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
+class Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
     def __init__(self, parent, table):
         super().__init__(
             parent = parent,
             headers = [
-                _tr('Wl_Table_Results_Sort_Conordancer', 'Column'),
-                _tr('Wl_Table_Results_Sort_Conordancer', 'Order')
+                _tr('Table_Results_Sort_Conordancer', 'Column'),
+                _tr('Table_Results_Sort_Conordancer', 'Order')
             ],
             col_edit = 0
         )
@@ -246,8 +265,6 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         ]
 
         self.cols_to_sort = self.cols_to_sort_default.copy()
-
-        self.setFixedSize(400, 200)
 
         self.setItemDelegateForColumn(1, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
             parent = self,

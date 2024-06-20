@@ -58,27 +58,23 @@ class Wl_Label_Html_Centered(Wl_Label_Html):
         self.setAlignment(Qt.AlignCenter)
 
 class Wl_Label_Dialog(Wl_Label_Html):
-    def __init__(self, text, parent):
+    def __init__(self, text, parent, word_wrap = True):
         main = wl_misc.find_wl_main(parent)
 
         super().__init__(
             f'''
                 {main.settings_global['styles']['style_dialog']}
-                <body>
-                    {text}
-                </body>
+                <body align="justify">{text}</body>
             ''',
             parent
         )
 
-        self.setWordWrap(True)
+        self.setWordWrap(word_wrap)
 
     def set_text(self, text):
         super().setText(f'''
             {self.main.settings_global['styles']['style_dialog']}
-            <body>
-                {text}
-            </body>
+            <body align="justify">{text}</body>
         ''')
 
 class Wl_Label_Dialog_No_Wrap(Wl_Label_Dialog):

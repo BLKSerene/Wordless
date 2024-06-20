@@ -43,11 +43,31 @@ import botok
 import matplotlib
 import nltk
 import packaging.version
-from PyQt5.QtCore import pyqtSignal, QCoreApplication, QObject, Qt, QTranslator
-from PyQt5.QtGui import QFont, QIcon, QKeySequence, QPixmap, QStandardItem
+from PyQt5.QtCore import (
+    pyqtSignal,
+    QCoreApplication,
+    QObject,
+    Qt,
+    QTranslator
+)
+from PyQt5.QtGui import (
+    QFont,
+    QIcon,
+    QKeySequence,
+    QPixmap,
+    QStandardItem
+)
 from PyQt5.QtWidgets import (
-    QActionGroup, QApplication, QCheckBox, QDialog, QLabel,
-    QMainWindow, QPushButton, QSplashScreen, QTabWidget, QWidget
+    QActionGroup,
+    QApplication,
+    QCheckBox,
+    QDialog,
+    QLabel,
+    QMainWindow,
+    QPushButton,
+    QSplashScreen,
+    QTabWidget,
+    QWidget
 )
 import pythainlp
 import spacy_pkuseg
@@ -72,7 +92,13 @@ from wordless.wl_checks import wl_checks_misc
 from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc, wl_msg_boxes
 from wordless.wl_settings import wl_settings, wl_settings_default, wl_settings_global
 from wordless.wl_utils import wl_misc, wl_paths, wl_threading
-from wordless.wl_widgets import wl_boxes, wl_editors, wl_labels, wl_layouts, wl_tables
+from wordless.wl_widgets import (
+    wl_boxes,
+    wl_editors,
+    wl_labels,
+    wl_layouts,
+    wl_tables
+)
 
 # Modify paths of data files when frozen
 if getattr(sys, '_MEIPASS', False):
@@ -151,43 +177,40 @@ class Wl_Dialog_Confirm_Exit(wl_dialogs.Wl_Dialog_Info):
 
         self.label_confirm_exit = wl_labels.Wl_Label_Dialog(
             self.tr('''
-                <div>
-                    Are you sure you want to exit Wordless?
-                </div>
-                <div style="font-weight: bold;">
-                    Note: All unsaved data and figures will be lost.
-                </div>
+                <div>Are you sure you want to exit Wordless?</div>
+                <br>
+                <div><b>Note: All unsaved data and figures will be lost.</b></div>
             '''),
             self
         )
 
-        self.checkbox_confirm_on_exit = QCheckBox(self.tr('Always confirm on exit'), self)
+        self.checkbox_always_confirm_on_exit = QCheckBox(self.tr('Always confirm on exit'), self)
         self.button_exit = QPushButton(self.tr('Exit'), self)
         self.button_cancel = QPushButton(self.tr('Cancel'), self)
 
-        self.checkbox_confirm_on_exit.stateChanged.connect(self.confirm_on_exit_changed)
+        self.checkbox_always_confirm_on_exit.stateChanged.connect(self.always_confirm_on_exit_changed)
         self.button_exit.clicked.connect(self.accept)
         self.button_cancel.clicked.connect(self.reject)
 
-        self.wrapper_info.layout().addWidget(self.label_confirm_exit, 0, 0)
+        self.layout_info.addWidget(self.label_confirm_exit, 0, 0)
 
-        self.wrapper_buttons.layout().addWidget(self.checkbox_confirm_on_exit, 0, 0)
-        self.wrapper_buttons.layout().addWidget(self.button_exit, 0, 2)
-        self.wrapper_buttons.layout().addWidget(self.button_cancel, 0, 3)
+        self.layout_buttons.addWidget(self.checkbox_always_confirm_on_exit, 0, 0)
+        self.layout_buttons.addWidget(self.button_exit, 0, 2)
+        self.layout_buttons.addWidget(self.button_cancel, 0, 3)
 
-        self.wrapper_buttons.layout().setColumnStretch(1, 1)
+        self.layout_buttons.setColumnStretch(1, 1)
 
         self.load_settings()
 
     def load_settings(self):
         settings = copy.deepcopy(self.main.settings_custom['general']['misc_settings'])
 
-        self.checkbox_confirm_on_exit.setChecked(settings['confirm_on_exit'])
+        self.checkbox_always_confirm_on_exit.setChecked(settings['always_confirm_on_exit'])
 
-    def confirm_on_exit_changed(self):
+    def always_confirm_on_exit_changed(self):
         settings = self.main.settings_custom['general']['misc_settings']
 
-        settings['confirm_on_exit'] = self.checkbox_confirm_on_exit.isChecked()
+        settings['always_confirm_on_exit'] = self.checkbox_always_confirm_on_exit.isChecked()
 
 class Wl_Main(QMainWindow):
     def __init__(self, loading_window):
@@ -273,7 +296,7 @@ class Wl_Main(QMainWindow):
                     widget.setAttribute(Qt.WA_LayoutUsesWidgetRect)
 
     def closeEvent(self, event):
-        if self.settings_custom['general']['misc_settings']['confirm_on_exit']:
+        if self.settings_custom['general']['misc_settings']['always_confirm_on_exit']:
             result = Wl_Dialog_Confirm_Exit(self).exec_()
 
             if result == QDialog.Accepted:
@@ -295,9 +318,7 @@ class Wl_Main(QMainWindow):
         # File
         self.action_file_open_files = self.menu_file.addAction(self.tr('&Open Files...'))
         self.action_file_open_files.setShortcut(QKeySequence('Ctrl+O'))
-        self.action_file_open_files.setStatusTip(self.tr('Open files'))
-        self.action_file_open_dir = self.menu_file.addAction(self.tr('Open &Folder...'))
-        self.action_file_open_dir.setStatusTip(self.tr('Open all files in the folder'))
+        self.action_file_open_files.setStatusTip(self.tr('Open file(s)'))
         self.action_file_reopen = self.menu_file.addAction(self.tr('&Reopen Closed Files'))
         self.action_file_reopen.setStatusTip(self.tr('Reopen closed files'))
 
@@ -634,14 +655,13 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
             main,
             title = _tr('Wl_Dialog_Need_Help', 'Need Help?'),
             width = 600,
-            height = 550
+            height = 600,
+            icon = False
         )
 
         self.label_need_help = wl_labels.Wl_Label_Dialog(
             self.tr('''
-                <div>
-                    If you have any questions, find software bugs, need to provide feedback, or want to submit feature requests, you may seek support from the open-source community or contact me directly via any of the support channels listed below.
-                </div>
+                <div>If you have any questions, find software bugs, need to provide feedback, or want to submit feature requests, you may seek support from the open-source community or contact me directly via any of the support channels listed below.</div>
             '''),
             self
         )
@@ -665,9 +685,12 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
         )
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(0, 1),
-            wl_labels.Wl_Label_Html(self.tr(
-                f'<a href="https://github.com/BLKSerene/Wordless/blob/{self.main.ver}/doc/doc.md">Stable Version</a> | <a href="https://github.com/BLKSerene/Wordless/blob/main/doc/doc.md">Development Version</a>'
-            ), self)
+            wl_labels.Wl_Label_Html(
+                self.tr(
+                    f'<a href="https://github.com/BLKSerene/Wordless/blob/{self.main.ver}/doc/doc.md">Stable Version</a> | <a href="https://github.com/BLKSerene/Wordless/blob/main/doc/doc.md">Development Version</a>'
+                ),
+                self
+            )
         )
 
         self.table_need_help.setIndexWidget(
@@ -676,9 +699,12 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
         )
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(1, 1),
-            wl_labels.Wl_Label_Html(self.tr(
-                '<a href="https://www.youtube.com/@BLKSerene">YouTube</a> | <a href="https://space.bilibili.com/34963752/video">bilibili</a>'
-            ), self)
+            wl_labels.Wl_Label_Html(
+                self.tr(
+                    '<a href="https://www.youtube.com/@BLKSerene">YouTube</a> | <a href="https://space.bilibili.com/34963752/video">bilibili</a>'
+                ),
+                self
+            )
         )
 
         self.table_need_help.setIndexWidget(
@@ -687,9 +713,10 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
         )
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(2, 1),
-            wl_labels.Wl_Label_Html(self.tr(
-                '<a href="https://github.com/BLKSerene/Wordless/issues">Gihub Issues</a>'
-            ), self)
+            wl_labels.Wl_Label_Html(
+                '<a href="https://github.com/BLKSerene/Wordless/issues">GitHub Issues</a>',
+                self
+            )
         )
 
         self.table_need_help.setIndexWidget(
@@ -698,9 +725,10 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
         )
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(3, 1),
-            wl_labels.Wl_Label_Html(self.tr(
-                '<a href="https://github.com/BLKSerene/Wordless/discussions">Gihub Discussions</a>'
-            ), self)
+            wl_labels.Wl_Label_Html(
+                '<a href="https://github.com/BLKSerene/Wordless/discussions">GitHub Discussions</a>',
+                self
+            )
         )
 
         self.table_need_help.setIndexWidget(
@@ -714,9 +742,12 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
 
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(5, 0),
-            wl_labels.Wl_Label_Html(self.tr(
-                '<a href="https://www.wechat.com/en/">WeChat</a> official account'
-            ), self)
+            wl_labels.Wl_Label_Html(
+                self.tr(
+                    '<a href="https://www.wechat.com/en/">WeChat</a> official account'
+                ),
+                self
+            )
         )
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(5, 1),
@@ -728,24 +759,20 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
 
         self.table_need_help.enable_updates()
 
-        self.wrapper_info.layout().addWidget(self.label_need_help, 0, 0)
-        self.wrapper_info.layout().addWidget(self.table_need_help, 1, 0)
+        self.layout_info.addWidget(self.label_need_help, 0, 0)
+        self.layout_info.addWidget(self.table_need_help, 1, 0)
 
 class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info_Copy):
     def __init__(self, main):
         super().__init__(
             main,
             title = _tr('Wl_Dialog_Citing', 'Citing'),
-            width = 500,
-            height = 300,
-            resizable = True
+            width = 500
         )
 
         self.label_citing = wl_labels.Wl_Label_Dialog(
             self.tr('''
-                <div>
-                    If you are going to publish a work that uses Wordless, please cite as follows.
-                </div>
+                <div>If you are going to publish a work that uses Wordless, please cite as follows.</div>
             '''),
             self
         )
@@ -760,12 +787,13 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info_Copy):
 
         self.combo_box_select_citation_sys.currentTextChanged.connect(self.select_citation_sys_changed)
 
-        self.wrapper_info.layout().addWidget(self.label_citing, 0, 0, 1, 2)
-        self.wrapper_info.layout().addWidget(self.label_select_citation_sys, 1, 0)
-        self.wrapper_info.layout().addWidget(self.combo_box_select_citation_sys, 1, 1)
-        self.wrapper_info.layout().addWidget(self.text_edit_info, 2, 0, 1, 2)
+        self.layout_info.addWidget(self.label_citing, 0, 0, 1, 2)
+        self.layout_info.addWidget(self.label_select_citation_sys, 1, 0)
+        self.layout_info.addWidget(self.combo_box_select_citation_sys, 1, 1)
+        self.layout_info.addWidget(self.text_edit_info, 2, 0, 1, 2)
 
-        self.wrapper_info.layout().setColumnStretch(1, 1)
+        self.layout_info.setRowStretch(2, 1)
+        self.layout_info.setColumnStretch(1, 1)
 
         self.load_settings()
 
@@ -795,14 +823,13 @@ class Wl_Dialog_Donating(wl_dialogs.Wl_Dialog_Info):
         super().__init__(
             main,
             title = _tr('Wl_Dialog_Donating', 'Donating'),
-            width = 450
+            width = 450,
+            icon = False
         )
 
         self.label_donating = wl_labels.Wl_Label_Dialog(
             self.tr('''
-                <div>
-                    If you would like to support the development of Wordless, you may donate via <a href="https://www.paypal.com/">PayPal</a>, <a href="https://global.alipay.com/">Alipay</a>, or <a href="https://pay.weixin.qq.com/index.php/public/wechatpay_en">WeChat Pay</a>.
-                </div>
+                <div>If you would like to support the development of Wordless, you may donate via <a href="https://www.paypal.com/">PayPal</a>, <a href="https://global.alipay.com/">Alipay</a>, or <a href="https://pay.weixin.qq.com/index.php/public/wechatpay_en">WeChat Pay</a>.</div>
             '''),
             self
         )
@@ -824,9 +851,11 @@ class Wl_Dialog_Donating(wl_dialogs.Wl_Dialog_Info):
 
         layout_donating_via.setColumnStretch(2, 1)
 
-        self.wrapper_info.layout().addWidget(self.label_donating, 0, 0)
-        self.wrapper_info.layout().addLayout(layout_donating_via, 1, 0)
-        self.wrapper_info.layout().addWidget(self.label_donating_via_img, 2, 0, Qt.AlignHCenter | Qt.AlignVCenter)
+        self.layout_info.addWidget(self.label_donating, 0, 0)
+        self.layout_info.addLayout(layout_donating_via, 1, 0)
+        self.layout_info.addWidget(self.label_donating_via_img, 2, 0, Qt.AlignHCenter | Qt.AlignVCenter)
+
+        self.layout_info.setRowStretch(2, 1)
 
         self.load_settings()
 
@@ -856,11 +885,7 @@ class Wl_Dialog_Donating(wl_dialogs.Wl_Dialog_Info):
             )
 
         self.label_donating_via_img.adjustSize()
-        self.wrapper_info.adjustSize()
-        self.adjustSize()
-
-        if is_windows or is_linux:
-            self.move_to_center()
+        self.adjust_size()
 
 class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
@@ -869,7 +894,7 @@ class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
             title = _tr('Wl_Dialog_Acks', 'Acknowledgments'),
             width = 700,
             height = 600,
-            resizable = True
+            icon = False
         )
 
         # Load acknowledgments
@@ -889,9 +914,7 @@ class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
 
         self.label_acks = wl_labels.Wl_Label_Dialog(
             self.tr('''
-                <div>
-                    As Wordless stands on the shoulders of giants, I hereby extend my sincere gratitude to the following open-source projects without which this project would not have been possible:
-                </div>
+                <div>As Wordless stands on the shoulders of giants, I hereby extend my sincere gratitude to the following open-source projects without which this project would not have been possible:</div>
             '''),
             self
         )
@@ -916,8 +939,8 @@ class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
 
         self.table_acks.enable_updates()
 
-        self.wrapper_info.layout().addWidget(self.label_acks, 0, 0)
-        self.wrapper_info.layout().addWidget(self.table_acks, 1, 0)
+        self.layout_info.addWidget(self.label_acks, 0, 0)
+        self.layout_info.addWidget(self.table_acks, 1, 0)
 
 class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main, on_startup = False):
@@ -925,14 +948,15 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
             main,
             title = _tr('Wl_Dialog_Check_Updates', 'Check for Updates'),
             width = 550,
-            no_buttons = True
+            no_buttons = True,
+            icon = False
         )
 
         self.on_startup = on_startup
 
-        self.label_checking_status = wl_labels.Wl_Label_Dialog('', self)
-        self.label_cur_ver = wl_labels.Wl_Label_Dialog(self.tr('Current version: ') + str(self.main.ver), self)
-        self.label_latest_ver = wl_labels.Wl_Label_Dialog('', self)
+        self.label_checking_status = wl_labels.Wl_Label_Dialog('<div></div>', self)
+        self.label_cur_ver = wl_labels.Wl_Label_Dialog(self.tr('<div>Current version: </div>') + str(self.main.ver), self)
+        self.label_latest_ver = wl_labels.Wl_Label_Dialog('<div></div>', self)
 
         self.checkbox_check_updates_on_startup = QCheckBox(self.tr('Check for updates on startup'), self)
         self.button_try_again = QPushButton(self.tr('Try again'), self)
@@ -941,15 +965,15 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
         self.checkbox_check_updates_on_startup.stateChanged.connect(self.check_updates_on_startup_changed)
         self.button_try_again.clicked.connect(self.check_updates)
 
-        self.wrapper_info.layout().addWidget(self.label_checking_status, 0, 0, 2, 1)
-        self.wrapper_info.layout().addWidget(self.label_cur_ver, 2, 0)
-        self.wrapper_info.layout().addWidget(self.label_latest_ver, 3, 0)
+        self.layout_info.addWidget(self.label_checking_status, 0, 0, 2, 1)
+        self.layout_info.addWidget(self.label_cur_ver, 2, 0)
+        self.layout_info.addWidget(self.label_latest_ver, 3, 0)
 
-        self.wrapper_buttons.layout().addWidget(self.checkbox_check_updates_on_startup, 0, 0)
-        self.wrapper_buttons.layout().addWidget(self.button_try_again, 0, 2)
-        self.wrapper_buttons.layout().addWidget(self.button_cancel, 0, 3)
+        self.layout_buttons.addWidget(self.checkbox_check_updates_on_startup, 0, 0)
+        self.layout_buttons.addWidget(self.button_try_again, 0, 2)
+        self.layout_buttons.addWidget(self.button_cancel, 0, 3)
 
-        self.wrapper_buttons.layout().setColumnStretch(1, 1)
+        self.layout_buttons.setColumnStretch(1, 1)
 
         #self.set_fixed_height()
         self.load_settings()
@@ -983,12 +1007,8 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
             self.button_try_again.hide()
 
         if status == 'checking':
-            self.label_checking_status.set_text(self.tr('''
-                <div>
-                    Checking for updates...
-                </div>
-            '''))
-            self.label_latest_ver.set_text(self.tr('Latest version: Checking...'))
+            self.label_checking_status.set_text(self.tr('<div>Checking for updates...</div>'))
+            self.label_latest_ver.set_text(self.tr('<div>Latest version: Checking...</div>'))
 
             self.button_cancel.setText(self.tr('Cancel'))
             self.button_cancel.disconnect()
@@ -997,25 +1017,19 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
             if status in ['updates_available', 'no_updates']:
                 if status == 'updates_available':
                     self.label_checking_status.set_text(self.tr('''
-                        <div>
-                            Wordless {} is out, click <a href="https://github.com/BLKSerene/Wordless#download"><b>HERE</b></a> to download the latest version of Wordless.
-                        </div>
+                        <div>Wordless {} is out, click <a href="https://github.com/BLKSerene/Wordless#download"><b>HERE</b></a> to download the latest version of Wordless.</div>
                     ''').format(ver_new))
-                    self.label_latest_ver.set_text(self.tr('Latest version: ') + ver_new)
+                    self.label_latest_ver.set_text(self.tr('<div>Latest version: </div>') + ver_new)
                 elif status == 'no_updates':
                     self.label_checking_status.set_text(self.tr('''
-                        <div>
-                            Hooray, you are using the latest version of Wordless!
-                        </div>
+                        <div>Hooray, you are using the latest version of Wordless!</div>
                     '''))
-                    self.label_latest_ver.set_text(self.tr('Latest version: ') + str(self.main.ver))
+                    self.label_latest_ver.set_text(self.tr('<div>Latest version: </div>') + str(self.main.ver))
             elif status == 'network_err':
                 self.label_checking_status.set_text(self.tr('''
-                    <div>
-                        A network error has occurred, please check your network settings and try again or <a href="https://github.com/BLKSerene/Wordless/releases">check for updates manually</a>.
-                    </div>
+                    <div>A network error has occurred, please check your network settings and try again or <a href="https://github.com/BLKSerene/Wordless/releases">check for updates manually</a>.</div>
                 '''))
-                self.label_latest_ver.set_text(self.tr('Latest version: Network error'))
+                self.label_latest_ver.set_text(self.tr('<div>Latest version: Network error</div>'))
 
             self.button_cancel.setText(self.tr('OK'))
             self.button_cancel.disconnect()
@@ -1081,7 +1095,8 @@ class Wl_Dialog_Changelog(wl_dialogs.Wl_Dialog_Info):
             main,
             title = _tr('Wl_Dialog_Changelog', 'Changelog'),
             width = 600,
-            height = 600
+            height = 600,
+            icon = False
         )
 
         changelog = []
@@ -1116,44 +1131,37 @@ class Wl_Dialog_Changelog(wl_dialogs.Wl_Dialog_Info):
         font_size_custom = main.settings_custom['general']['ui_settings']['font_size']
 
         changelog_text = f'''
-            <head>
-                <style>
-                    * {{
-                        outline: none;
-                        margin: 0;
-                        border: 0;
-                        padding: 0;
+            <head><style>
+                * {{
+                    margin: 0;
+                    line-height: 120%;
+                }}
 
-                        text-align: justify;
-                    }}
+                ul {{
+                    margin-bottom: 10px;
+                }}
 
-                    ul {{
-                        line-height: 120%;
-                        margin-bottom: 10px;
-                    }}
+                li {{
+                    margin-left: -30px;
+                }}
 
-                    li {{
-                        margin-left: -30px;
-                    }}
+                .changelog {{
+                    margin-bottom: 5px;
+                }}
 
-                    .changelog {{
-                        margin-bottom: 5px;
-                    }}
+                .changelog-header {{
+                    margin-bottom: 3px;
+                    font-size: {font_size_custom}pt;
+                    font-weight: bold;
+                }}
 
-                    .changelog-header {{
-                        margin-bottom: 3px;
-                        font-size: {font_size_custom}pt;
-                        font-weight: bold;
-                    }}
-
-                    .changelog-section-header {{
-                        margin-bottom: 5px;
-                        font-size: {font_size_custom}pt;
-                        font-weight: bold;
-                    }}
-                </style>
-            </head>
-            <body>
+                .changelog-section-header {{
+                    margin-bottom: 5px;
+                    font-size: {font_size_custom}pt;
+                    font-weight: bold;
+                }}
+            </style></head>
+            <body align="justify">
         '''
 
         for release in changelog:
@@ -1191,45 +1199,53 @@ class Wl_Dialog_Changelog(wl_dialogs.Wl_Dialog_Info):
         text_edit_changelog = wl_editors.Wl_Text_Browser(self)
         text_edit_changelog.setHtml(changelog_text)
 
-        self.wrapper_info.layout().addWidget(text_edit_changelog, 0, 0)
+        self.layout_info.addWidget(text_edit_changelog, 0, 0)
 
 class Wl_Dialog_About(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
-        super().__init__(main, title = _tr('Wl_Dialog_About', 'About Wordless'))
+        super().__init__(
+            main,
+            title = _tr('Wl_Dialog_About', 'About Wordless'),
+            icon = False
+        )
 
         img_wl_icon = QPixmap(wl_paths.get_path_img('wl_icon_about.png'))
 
         label_about_icon = QLabel('', self)
         label_about_icon.setPixmap(img_wl_icon)
 
-        label_about_title = wl_labels.Wl_Label_Dialog_No_Wrap(self.tr('''
-            <div style="text-align: center;">
-                <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wordless</h2>
-                <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Version {}</div>
-            </div>
-        ''').format(main.ver), self)
+        label_about_title = wl_labels.Wl_Label_Dialog_No_Wrap(
+            self.tr('''
+                <div align="center">
+                    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wordless</h2>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Version {}</div>
+                </div>
+            ''').format(main.ver),
+            self
+        )
 
-        label_about_info = wl_labels.Wl_Label_Dialog_No_Wrap(self.tr('''
-            <div style="text-align: center;">
-                An Integrated Corpus Tool with Multilingual Support<br>
-                for the Study of Language, Literature, and Translation
-            </div>
+        label_about_info = wl_labels.Wl_Label_Dialog_No_Wrap(
+            self.tr('''
+                <div align="center">
+                    An Integrated Corpus Tool with Multilingual Support<br>
+                    for the Study of Language, Literature, and Translation
+                </div>
+                <hr>
+                <div align="center">
+                    Copyright (C) 2018-2023&nbsp;&nbsp;Ye Lei (叶磊)<br>
+                    Licensed Under GNU GPLv3<br>
+                    All Other Rights Reserved
+                </div>
+            '''),
+            self
+        )
 
-            <hr>
+        self.layout_info.addWidget(label_about_icon, 0, 0, Qt.AlignHCenter)
+        self.layout_info.addWidget(label_about_title, 0, 0, 1, 2)
+        self.layout_info.addWidget(label_about_info, 1, 0, 1, 2)
 
-            <div style="text-align: center;">
-                Copyright (C) 2018-2023&nbsp;&nbsp;Ye Lei (叶磊)<br>
-                Licensed Under GNU GPLv3<br>
-                All Other Rights Reserved
-            </div>
-        '''), self)
-
-        self.wrapper_info.layout().addWidget(label_about_icon, 0, 0, Qt.AlignHCenter)
-        self.wrapper_info.layout().addWidget(label_about_title, 0, 0, 1, 2)
-        self.wrapper_info.layout().addWidget(label_about_info, 1, 0, 1, 2)
-
-        self.wrapper_info.layout().setColumnStretch(0, 9)
-        self.wrapper_info.layout().setColumnStretch(1, 5)
+        self.layout_info.setColumnStretch(0, 9)
+        self.layout_info.setColumnStretch(1, 5)
 
 if __name__ == '__main__':
     # Environment variables for QT should be set before QApplication is created

@@ -29,18 +29,48 @@ import docx
 import openpyxl
 import pptx
 import pypdf
-from PyQt5.QtCore import pyqtSignal, QCoreApplication, QItemSelection, QRect, Qt
+from PyQt5.QtCore import (
+    pyqtSignal,
+    QCoreApplication,
+    QItemSelection,
+    QRect,
+    Qt
+)
 from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import (
-    QAbstractItemDelegate, QCheckBox, QFileDialog, QHeaderView, QLineEdit,
-    QPushButton, QStyle, QStyleOptionButton
+    QAbstractItemDelegate,
+    QCheckBox,
+    QFileDialog,
+    QHeaderView,
+    QLineEdit,
+    QPushButton,
+    QStyle,
+    QStyleOptionButton
 )
 
 from wordless.wl_checks import wl_checks_files, wl_checks_misc
-from wordless.wl_dialogs import wl_dialogs, wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
+from wordless.wl_dialogs import (
+    wl_dialogs,
+    wl_dialogs_errs,
+    wl_dialogs_misc,
+    wl_msg_boxes
+)
 from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_texts
-from wordless.wl_utils import wl_conversion, wl_detection, wl_misc, wl_paths, wl_threading
-from wordless.wl_widgets import wl_boxes, wl_buttons, wl_item_delegates, wl_layouts, wl_tables
+from wordless.wl_utils import (
+    wl_conversion,
+    wl_detection,
+    wl_misc,
+    wl_paths,
+    wl_threading
+)
+from wordless.wl_widgets import (
+    wl_boxes,
+    wl_buttons,
+    wl_item_delegates,
+    wl_labels,
+    wl_layouts,
+    wl_tables
+)
 
 _tr = QCoreApplication.translate
 
@@ -208,7 +238,6 @@ class Wl_Table_Files(wl_tables.Wl_Table):
 
         # Menu
         self.main.action_file_open_files.triggered.connect(lambda: self.check_file_area(self.open_files))
-        self.main.action_file_open_dir.triggered.connect(lambda: self.check_file_area(self.open_dir))
         self.main.action_file_reopen.triggered.connect(lambda: self.check_file_area(self.reopen))
 
         self.main.action_file_select_all.triggered.connect(lambda: self.check_file_area(self.horizontalHeader().select_all))
@@ -401,21 +430,13 @@ class Wl_Table_Files(wl_tables.Wl_Table):
             self.main.statusBar().showMessage(self.tr('{} {} has been successfully opened.').format(len_files_opened, msg_file))
 
     def open_files(self):
-        self.dialog_open_files = Dialog_Open_Files(self.main)
+        self.dialog_open_files = Wl_Dialog_Open_Files(self.main)
         self.dialog_open_files.open()
-
-        self.dialog_open_files.table_files.button_add_files.click()
-
-    def open_dir(self):
-        self.dialog_open_files = Dialog_Open_Files(self.main)
-        self.dialog_open_files.open()
-
-        self.dialog_open_files.table_files.button_add_folder.click()
 
     def reopen(self):
         files = self.main.settings_custom['file_area'][f'files_closed{self.settings_suffix}'].pop()
 
-        dialog_open_files = Dialog_Open_Files(self.main)
+        dialog_open_files = Wl_Dialog_Open_Files(self.main)
         dialog_open_files._add_files(list(dict.fromkeys([file['path_original'] for file in files])))
 
         self._open_files(files_to_open = dialog_open_files.table_files.files_to_open)
@@ -440,14 +461,13 @@ class Wl_Table_Files(wl_tables.Wl_Table):
     def close_all(self):
         self._close_files(list(range(len(self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}']))))
 
-class Dialog_Open_Files(wl_dialogs.Wl_Dialog):
+class Wl_Dialog_Open_Files(wl_dialogs.Wl_Dialog):
     def __init__(self, main):
         super().__init__(
             main,
-            title = _tr('Dialog_Open_Files', 'Open Files'),
+            title = _tr('Wl_Dialog_Open_Files', 'Open Files'),
             width = 800,
-            height = 320,
-            resizable = True
+            height = 320
         )
 
         self.table_files = Table_Open_Files(self)
@@ -572,13 +592,26 @@ class Dialog_Open_Files(wl_dialogs.Wl_Dialog):
             ]
         )
 
-        wl_threading.Wl_Thread(Wl_Worker_Add_Files(
-            self.main,
-            dialog_progress = dialog_progress,
-            update_gui = self.update_gui,
-            file_paths = file_paths,
-            table = self.table_files
-        )).start_worker()
+        # Display warning when opening non-text files
+        if (
+            any((
+                os.path.splitext(file_path)[1].lower() not in ['.csv', '.lrc', '.txt', '.tmx', '.xml']
+                for file_path in file_paths
+            ))
+            and self.main.settings_custom['files']['misc_settings']['display_warning_when_opening_nontext_files']
+        ):
+            non_text_files_ok = Wl_Dialog_Opening_Nontext_Files(self.main).exec_()
+        else:
+            non_text_files_ok = True
+
+        if non_text_files_ok:
+            wl_threading.Wl_Thread(Wl_Worker_Add_Files(
+                self.main,
+                dialog_progress = dialog_progress,
+                update_gui = self.update_gui,
+                file_paths = file_paths,
+                table = self.table_files
+            )).start_worker()
 
     def update_gui(self, err_msg, new_files):
         if wl_checks_files.check_err_file_area(self.main, err_msg):
@@ -747,6 +780,52 @@ class Table_Open_Files(wl_tables.Wl_Table_Add_Ins_Del_Clr):
             self.enable_updates()
         else:
             self.clr_table()
+
+class Wl_Dialog_Opening_Nontext_Files(wl_dialogs.Wl_Dialog_Info):
+    def __init__(self, main):
+        super().__init__(
+            main,
+            title = _tr('Wl_Dialog_Opening_Nontext_Files', 'Opening Non-text Files'),
+            width = 550,
+            no_buttons = True
+        )
+
+        self.label_opening_non_text_files = wl_labels.Wl_Label_Dialog(
+            self.tr('''
+                <div>It is <b>not recommended to directly import non-text files into <i>Wordless</i></b> and the support for doing so is provided only for convenience, since accuracy of text extraction could never be guaranteed and unintended data loss might occur, for which reason users are encouraged to <b>convert their files using specialized tools and make their own choices</b> on which part of the data should be kept or discarded.</div>
+                <br>
+                <div>Do you want to proceed to open non-text files anyway?</div>
+            '''),
+            self
+        )
+
+        self.checkbox_dont_show_this_again = QCheckBox(self.tr('Do not show this again'), self)
+        self.button_proceed = QPushButton(self.tr('Proceed'), self)
+        self.button_abort = QPushButton(self.tr('Abort'), self)
+
+        self.checkbox_dont_show_this_again.stateChanged.connect(self.dont_show_this_again_changed)
+        self.button_proceed.clicked.connect(self.accept)
+        self.button_abort.clicked.connect(self.reject)
+
+        self.layout_info.addWidget(self.label_opening_non_text_files, 0, 0)
+
+        self.layout_buttons.addWidget(self.checkbox_dont_show_this_again, 0, 0)
+        self.layout_buttons.addWidget(self.button_proceed, 0, 2)
+        self.layout_buttons.addWidget(self.button_abort, 0, 3)
+
+        self.layout_buttons.setColumnStretch(1, 1)
+
+        self.load_settings()
+
+    def load_settings(self):
+        settings = copy.deepcopy(self.main.settings_custom['files']['misc_settings'])
+
+        self.checkbox_dont_show_this_again.setChecked(settings['display_warning_when_opening_nontext_files'])
+
+    def dont_show_this_again_changed(self):
+        settings = self.main.settings_custom['files']['misc_settings']
+
+        settings['display_warning_when_opening_nontext_files'] = self.checkbox_dont_show_this_again.isChecked()
 
 class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(str, list)

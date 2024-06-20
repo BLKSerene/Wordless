@@ -21,8 +21,13 @@ import os
 
 from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import (
-    QCheckBox, QDialog, QFileDialog, QGroupBox, QLabel,
-    QLineEdit, QPushButton
+    QCheckBox,
+    QDialog,
+    QFileDialog,
+    QGroupBox,
+    QLabel,
+    QLineEdit,
+    QPushButton
 )
 
 from wordless.wl_dialogs import wl_dialogs_misc
@@ -104,10 +109,10 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
         # Miscellaneous Settings
         self.group_box_misc_settings = QGroupBox(self.tr('Miscellaneous Settings'), self)
 
-        self.checkbox_confirm_on_exit = QCheckBox(self.tr('Always confirm on exit'), self)
+        self.checkbox_always_confirm_on_exit = QCheckBox(self.tr('Always confirm on exit'), self)
 
         self.group_box_misc_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_misc_settings.layout().addWidget(self.checkbox_confirm_on_exit, 0, 0)
+        self.group_box_misc_settings.layout().addWidget(self.checkbox_always_confirm_on_exit, 0, 0)
 
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_ui_settings, 0, 0)
@@ -152,7 +157,7 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
         self.checkbox_check_updates_on_startup.setChecked(settings['update_settings']['check_updates_on_startup'])
 
         # Miscellaneous Settings
-        self.checkbox_confirm_on_exit.setChecked(settings['misc_settings']['confirm_on_exit'])
+        self.checkbox_always_confirm_on_exit.setChecked(settings['misc_settings']['always_confirm_on_exit'])
 
         self.proxy_settings_changed()
 
@@ -195,7 +200,7 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
             self.settings_custom['update_settings']['check_updates_on_startup'] = self.checkbox_check_updates_on_startup.isChecked()
 
             # Miscellaneous Settings
-            self.settings_custom['misc_settings']['confirm_on_exit'] = self.checkbox_confirm_on_exit.isChecked()
+            self.settings_custom['misc_settings']['always_confirm_on_exit'] = self.checkbox_always_confirm_on_exit.isChecked()
 
             if result == 'restart':
                 self.main.restart()

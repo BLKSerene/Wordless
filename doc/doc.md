@@ -22,26 +22,25 @@
 ## Table of Contents
 - [1 Main Window](#doc-1)
 - [2 File Area](#doc-2)
-- [3 Work Area](#doc-3)
-  - [3.1 Profiler](#doc-3-1)
-  - [3.2 Concordancer](#doc-3-2)
-  - [3.3 Parallel Concordancer](#doc-3-3)
-  - [3.4 Dependency Parser](#doc-3-4)
-  - [3.5 Wordlist Generator](#doc-3-5)
-  - [3.6 N-gram Generator](#doc-3-6)
-  - [3.7 Collocation Extractor](#doc-3-7)
-  - [3.8 Colligation Extractor](#doc-3-8)
-  - [3.9 Keyword Extractor](#doc-3-9)
-- [4 Appendixes](#doc-4)
-  - [4.1 Supported Languages](#doc-4-1)
-  - [4.2 Supported File Types](#doc-4-2)
-  - [4.3 Supported File Encodings](#doc-4-3)
-  - [4.4 Supported Measures](#doc-4-4)
-    - [4.4.1 Readability Formulas](#doc-4-4-1)
-    - [4.4.2 Indicators of Lexical Density/Diversity](#doc-4-4-2)
-    - [4.4.3 Measures of Dispersion and Adjusted Frequency](#doc-4-4-3)
-    - [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, and Measures of Effect Size](#doc-4-4-4)
-- [5 References](#doc-5)
+- [3 Profiler](#doc-3)
+- [4 Concordancer](#doc-4)
+- [5 Parallel Concordancer](#doc-5)
+- [6 Dependency Parser](#doc-6)
+- [7 Wordlist Generator](#doc-7)
+- [8 N-gram Generator](#doc-8)
+- [9 Collocation Extractor](#doc-9)
+- [10 Colligation Extractor](#doc-10)
+- [11 Keyword Extractor](#doc-11)
+- [12 Appendixes](#doc-12)
+  - [12.1 Supported Languages](#doc-12-1)
+  - [12.2 Supported File Types](#doc-12-2)
+  - [12.3 Supported File Encodings](#doc-12-3)
+  - [12.4 Supported Measures](#doc-12-4)
+    - [12.4.1 Readability Formulas](#doc-12-4-1)
+    - [12.4.2 Indicators of Lexical Density/Diversity](#doc-12-4-2)
+    - [12.4.3 Measures of Dispersion and Adjusted Frequency](#doc-12-4-3)
+    - [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, and Measures of Effect Size](#doc-12-4-4)
+- [13 References](#doc-13)
 
 <span id="doc-1"></span>
 ## [1 Main Window](#doc)
@@ -71,43 +70,60 @@ In most cases, the first thing to do in *Wordless* is open and select your files
 
 Files are loaded, cached and selected automatically after being added to the *File Table*. **Only selected files will be processed by *Wordless***. You can drag and drop files around the *File Table* to change their orders, which would be reflected in the results.
 
-By default, *Wordless* tries to detect the encoding and language settings of all files for you, you should double check and make sure that the settings of each and every file are correct. If you prefer changing file settings manually, you could uncheck **Auto-detect encodings** and/or **Auto-detect languages** in the *Open Files* dialog. The default file settings could be modified via **Menu Bar → Preferences → Settings → Files → Default Settings**.
+By default, *Wordless* would try to detect the encoding and language settings of all files for you, you should double check and make sure that the settings of each and every file are correct. If you prefer changing file settings manually, you could uncheck ***Open Files* dialog → Auto-detect encodings** and/or ***Open Files* dialog → Auto-detect languages**. The default file settings could be modified via **Menu Bar → Preferences → Settings → Files → Default Settings**. Additionally, you need to change ***Open Files* dialog → Tokenized** and ***Open Files* dialog → Tagged** options of each files according to whether or not the file has been tokenized or tagged. 
 
-- **2.1 Open Files**<br>
-  Add one single file or multiple files to the *File Table*.
+- **2.1 Menu Bar → File**<br>
+  - **2.1.1 Open Files**<br>
+    Open the *Open Files* dialog to add file(s) to the *File Table*.
 
-  \* You can use the **Ctrl** key (**Command** key on macOS) and/or the **Shift** key to select multiple files.
+  - **2.1.2 Reopen Closed Files**<br>
+    Add file(s) that are closed the last time back to the *File Table*.
 
-- **2.2 Open Folder**<br>
-  Add all files in the folder to the *File Table*.
+    \* The history of all closed files will be erased upon exit of *Wordless*.
 
-  By default, all files in the chosen folder and the sub-folders of the chosen folder (and sub-folders of sub-folders, and so on) are added to the *File Table*. If you do not want to add files in sub-folders to the *File Table*, you could uncheck **Include files in sub-folders** in the *Open Files* dialog.
+  - **2.1.3 Select All**<br>
+    Select all files in the *File Table*.
 
-- **2.3 Reopen Closed Files**<br>
-  Add file(s) that are closed the last time back to the *File Table*.
+  - **2.1.4 Deselect All**<br>
+    Deselect all files in the *File Table*.
 
-  \* The history of all closed files will be erased upon exit of *Wordless*.
+  - **2.1.5 Invert Selection**<br>
+    Select files that are not currently selected and deselect files that are currently selected in the *File Table*.
 
-- **2.4 Select All**<br>
-  Select all files in the *File Table*.
+  - **2.1.6 Close Selected**<br>
+    Remove files that are currently selected from the *File Table*.
 
-- **2.5 Deselect All**<br>
-  Deselect all files in the *File Table*.
+  - **2.1.7 Close All**<br>
+    Remove all files from the *File Table*.
 
-- **2.6 Invert Selection**<br>
-  Select files that are not currently selected and deselect files that are currently selected in the *File Table*.
+- **2.2 *Open Files* dialog**<br>
+  - **2.2.1 Add files**<br>
+    Add one single file or multiple files into the table.
 
-- **2.7 Close Selected**<br>
-  Remove files that are currently selected from the *File Table*.
+    \* You can use the **Ctrl** key (**Command** key on macOS) and/or the **Shift** key to select multiple files.
 
-- **2.8 Close All**<br>
-  Remove all files from the *File Table*.
+  - **2.2.2 Add folder**<br>
+    Add all files in the folder into the table.
+
+    By default, all files in the chosen folder and the subfolders of the chosen folder (and subfolders of subfolders, and so on) are added to the table. If you do not want to add files in subfolders to the table, you could uncheck **Include files in subfolders**.
+
+  - **2.2.3 Remove files**<br>
+    Remove the selected files from the table.
+
+  - **2.2.4 Clear table**<br>
+    Remove all files from the table.
+
+  - **2.2.5 Auto-detect encodings**<br>
+    Auto-detect the encodings of all files when they are added into the table. If the detection results are incorrect, you can manually modify encoding settings in the table.
+
+  - **2.2.6 Auto-detect languages**<br>
+    Auto-detect the languages of all files when they are added into the table. If the detection results are incorrect, you can manually modify language settings in the table.
+
+  - **2.2.7 Include files in subfolders**<br>
+    When adding a folder to the table, recursively add all files in the chosen folder and subfolders of the chosen folder (and subfolders of subfolders, and so on) into the table
 
 <span id="doc-3"></span>
-## [3 Work Area](#doc)
-
-<span id="doc-3-1"></span>
-### [3.1 Profiler](#doc)
+### [3 Profiler](#doc)
 > [!NOTE]
 > Renamed from **Overview** to **Profiler** in *Wordless* 2.2.0
 
@@ -116,7 +132,7 @@ In *Profiler*, you can check and compare general linguistic features of differen
 All statistics are grouped into 5 tables for better readability: Readability, Counts, Lexical Density/Diversity, Lengths, Length Breakdown.
 
 - **3.1.1 Readability**<br>
-  Readability statistics of each file calculated according to the different readability tests used. See section [4.4.1 Readability Formulas](#doc-4-4-1) for more details.
+  Readability statistics of each file calculated according to the different readability tests used. See section [12.4.1 Readability Formulas](#doc-12-4-1) for more details.
 
 - **3.1.2 Counts**<br>
   - **3.1.2.1 Count of Paragraphs**<br>
@@ -164,7 +180,7 @@ All statistics are grouped into 5 tables for better readability: Readability, Co
     The percentage of the number of characters in each file out of the total number of characters in all files.
 
 - **3.1.3 Lexical Density/Diversity**<br>
-  Statistics of lexical density/diversity which reflect the the extend to which the vocabulary used in each file varies. See section [4.4.2 Indicators of Lexical Density/Diversity](#doc-4-4-2) for more details.
+  Statistics of lexical density/diversity which reflect the the extend to which the vocabulary used in each file varies. See section [12.4.2 Indicators of Lexical Density/Diversity](#doc-12-4-2) for more details.
 
 - **3.1.4 Lengths**<br>
   - **3.1.4.1 Paragraph Length in Sentences / Sentence Segments / Tokens (Mean)**<br>
@@ -318,55 +334,55 @@ All statistics are grouped into 5 tables for better readability: Readability, Co
   - **3.1.5.6 Count of n-character-long Tokens %**<br>
     The percentage of the number of n-character-long tokens in each file out of the total number of n-character-long tokens in all files, where n = 1, 2, 3, etc.
 
-<span id="doc-3-2"></span>
-### [3.2 Concordancer](#doc)
+<span id="doc-4"></span>
+### [4 Concordancer](#doc)
 In *Concordancer*, you can search for tokens in different files and generate concordance lines. You can adjust settings for data generation via **Generation Settings**.
 
 After the concordance lines are generated and displayed in the table, you can sort the results by clicking **Sort Results** or search in *Data Table* for parts that might be of interest to you by clicking **Search in results**. Highlight colors for sorting can be modified via **Menu Bar → Preferences → Settings → Tables → Concordancer → Sorting**.
 
 You can generate concordance plots for all search terms. You can modify the settings for the generated figure via **Figure Settings**.
 
-- **3.2.1 Left**<br>
+- **4.1 Left**<br>
   The context before each search term, which displays 10 tokens left to the **Node** by default. You can change this behavior via **Generation Settings**.
 
-- **3.2.2 Node**<br>
+- **4.2 Node**<br>
   The search term(s) specified in **Search Settings → Search Term**.
 
-- **3.2.3 Right**<br>
+- **4.3 Right**<br>
   The context after each search term, which displays 10 tokens right to the **Node** by default. You can change this behavior via **Generation Settings**.
 
-- **3.2.4 Sentiment**<br>
+- **4.4 Sentiment**<br>
   The sentiment of the **Node** combined with its context (**Left** and **Right**).
 
-- **3.2.5 Token No.**<br>
+- **4.5 Token No.**<br>
   The position of the first token of **Node** in each file.
 
-- **3.2.6 Token No. %**<br>
+- **4.6 Token No. %**<br>
   The percentage of the position of the first token of **Node** in each file.
 
-- **3.2.7 Sentence Segment No.**<br>
+- **4.7 Sentence Segment No.**<br>
   The position of the sentence segment where the **Node** is found in each file.
 
-- **3.2.8 Sentence Segment No. %**<br>
+- **4.8 Sentence Segment No. %**<br>
   The percentage of the position of the sentence segment where the **Node** is found in each file.
 
-- **3.2.9 Sentence No.**<br>
+- **4.9 Sentence No.**<br>
   The position of the sentence where the **Node** is found in each file.
 
-- **3.2.10 Sentence No. %**<br>
+- **4.10 Sentence No. %**<br>
   The percentage of the position of the sentence where the **Node** is found in each file.
 
-- **3.2.11 Paragraph No.**<br>
+- **4.11 Paragraph No.**<br>
   The position of the paragraph where the **Node** is found in each file.
 
-- **3.2.12 Paragraph No. %**<br>
+- **4.12 Paragraph No. %**<br>
   The percentage of the position of the paragraph where the **Node** is found in each file.
 
-- **3.2.13 File**<br>
+- **4.13 File**<br>
   The name of the file where the **Node** is found.
 
-<span id="doc-3-3"></span>
-### [3.3 Parallel Concordancer](#doc)
+<span id="doc-5"></span>
+### [5 Parallel Concordancer](#doc)
 > [!NOTE]
 > 1. Added in *Wordless* 2.0.0
 > 1. Renamed from **Concordancer (Parallel Mode)** to **Parallel Concordancer** in *Wordless* 2.2.0
@@ -375,19 +391,19 @@ In *Parallel Concordancer*, you can search for tokens in parallel corpora and ge
 
 You can search in *Data Table* for parts that might be of interest to you by clicking **Search in results**.
 
-- **3.3.1 Parallel Unit No.**<br>
+- **5.1 Parallel Unit No.**<br>
   The position of the alignment unit (paragraph) where the the search term is found.
 
-- **3.3.2 Parallel Unit No. %**<br>
+- **5.2 Parallel Unit No. %**<br>
   The percentage of the position of the alignment unit (paragraph) where the the search term is found.
 
-- **3.3.3 Parallel Units**<br>
+- **5.3 Parallel Units**<br>
   The parallel unit (paragraph) where the search term is found in each file.
 
   Highlight colors for search terms can be modified via **Menu Bar → Preferences → Settings → Tables → Parallel Concordancer → Highlight Color Settings**.
 
-<span id="doc-3-4"></span>
-### [3.4 Dependency Parser](#doc)
+<span id="doc-6"></span>
+### [6 Dependency Parser](#doc)
 > [!NOTE]
 > Added in *Wordless* 3.0.0
 
@@ -397,34 +413,34 @@ You can filter the results by clicking **Filter results** or search in *Data Tab
 
 You can select lines in the *Results Area* and then click *Generate Figure* to show dependency graphs for all selected sentences. You can modify the settings for the generated figure via **Figure Settings** and decide how the figures should be displayed.
 
-- **3.4.1 Head**<br>
+- **6.1 Head**<br>
   The token functioning as the head in the dependency structure.
 
-- **3.4.2 Dependent**<br>
+- **6.2 Dependent**<br>
   The token functioning as the dependent in the dependency structure.
 
-- **3.4.3 Dependency Length**<br>
+- **6.3 Dependency Length**<br>
   The dependency length (distance) between the head and dependent in the dependency structure. The dependency length is positive when the head follows the dependent and would be negative if the head precedes the dependent.
 
-- **3.4.4 Dependency Length (Absolute)**<br>
+- **6.4 Dependency Length (Absolute)**<br>
   The absolute value of the dependency length (distance) between the head and dependent in the dependency structure. The absolute dependency length is always positive.
 
-- **3.4.5 Sentence**<br>
+- **6.5 Sentence**<br>
   The sentence where the dependency structure is found.
 
   Highlight colors for the head and the dependent can be modified via **Menu Bar → Preferences → Settings → Tables → Dependency Parser → Highlight Color Settings**.
 
-- **3.4.6 Sentence No.**<br>
+- **6.6 Sentence No.**<br>
   The position of the sentence where the dependency structure is found.
 
-- **3.4.7 Sentence No. %**<br>
+- **6.7 Sentence No. %**<br>
   The percentage of the position of the sentence where the dependency structure is found.
 
-- **3.4.8 File**<br>
+- **6.8 File**<br>
   The name of the file where the dependency structure is found.
 
-<span id="doc-3-5"></span>
-### [3.5 Wordlist Generator](#doc)
+<span id="doc-7"></span>
+### [7 Wordlist Generator](#doc)
 > [!NOTE]
 > Renamed from **Wordlist** to **Wordlist Generator** in *Wordless* 2.2.0
 
@@ -434,36 +450,36 @@ You can filter the results by clicking **Filter results** or search in *Data Tab
 
 You can generate line charts or word clouds for wordlists using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
 
-- **3.5.1 Rank**<br>
+- **7.1 Rank**<br>
   The rank of the token sorted by its frequency in the first file in descending order (by default). You can sort the results again by clicking the column headers. You can use continuous numbering after tied ranks (eg. 1/1/1/2/2/3 instead of 1/1/1/4/4/6) by checking **Menu Bar → Preferences → Settings → Tables → Rank Settings → Continue numbering after ties**.
 
-- **3.5.2 Token**<br>
+- **7.2 Token**<br>
   You can specify what should be counted as a "token" via **Token Settings**.
 
-- **3.5.3 Syllabification**<br>
+- **7.3 Syllabification**<br>
   The syllabified form of each token.
 
   If the token happens to exist in the vocabulary of multiple languages, all syllabified forms with their applicable languages will be listed.
 
-  If there is no syllable tokenization support for the language where the token is found, "No language support" is displayed instead. To check which languages have syllable tokenization support, please refer to section [4.1 Supported Languages](#doc-4-1).
+  If there is no syllable tokenization support for the language where the token is found, "No language support" is displayed instead. To check which languages have syllable tokenization support, please refer to section [12.1 Supported Languages](#doc-12-1).
 
-- **3.5.4 Frequency**<br>
+- **7.4 Frequency**<br>
   The number of occurrences of the token in each file.
 
-- **3.5.5 Dispersion**<br>
-  The dispersion of the token in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See section [4.4.3 Measures of Dispersion & Adjusted Frequency](#doc-4-4-3) for more details.
+- **7.5 Dispersion**<br>
+  The dispersion of the token in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See section [12.4.3 Measures of Dispersion & Adjusted Frequency](#doc-12-4-3) for more details.
 
-- **3.5.6 Adjusted Frequency**<br>
-  The adjusted frequency of the token in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See section [4.4.3 Measures of Dispersion & Adjusted Frequency](#doc-4-4-3) for more details.
+- **7.6 Adjusted Frequency**<br>
+  The adjusted frequency of the token in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See section [12.4.3 Measures of Dispersion & Adjusted Frequency](#doc-12-4-3) for more details.
 
-- **3.5.7 Number of Files Found**<br>
+- **7.7 Number of Files Found**<br>
   The number of files in which the token appears at least once.
 
-- **3.5.8 Number of Files Found %**<br>
+- **7.8 Number of Files Found %**<br>
   The percentage of the number of files in which the token appears at least once out of the total number of files that are cureently selected.
 
-<span id="doc-3-6"></span>
-### [3.6 N-gram Generator](#doc)
+<span id="doc-8"></span>
+### [8 N-gram Generator](#doc)
 > [!NOTE]
 > Renamed from **N-gram** to **N-gram Generator** in *Wordless* 2.2.0
 
@@ -473,29 +489,29 @@ You can filter the results by clicking **Filter results** or search in *Data Tab
 
 You can generate line charts or word clouds for n-grams using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
 
-- **3.6.1 Rank**<br>
+- **8.1 Rank**<br>
   The rank of the n-gram sorted by its frequency in the first file in descending order (by default). You can sort the results again by clicking the column headers. You can use continuous numbering after tied ranks (eg. 1/1/1/2/2/3 instead of 1/1/1/4/4/6) by checking **Menu Bar → Preferences → Settings → Tables → Rank Settings → Continue numbering after ties**.
 
-- **3.6.2 N-gram**<br>
+- **8.2 N-gram**<br>
   You can specify what should be counted as a "n-gram" via **Token Settings**.
 
-- **3.6.3 Frequency**<br>
+- **8.3 Frequency**<br>
   The number of occurrences of the n-gram in each file.
 
-- **3.6.4 Dispersion**<br>
-  The dispersion of the n-gram in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See section [4.4.3 Measures of Dispersion & Adjusted Frequency](#doc-4-4-3) for more details.
+- **8.4 Dispersion**<br>
+  The dispersion of the n-gram in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See section [12.4.3 Measures of Dispersion & Adjusted Frequency](#doc-12-4-3) for more details.
 
-- **3.6.5 Adjusted Frequency**<br>
-  The adjusted frequency of the n-gram in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See section [4.4.3 Measures of Dispersion & Adjusted Frequency](#doc-4-4-3) for more details.
+- **8.5 Adjusted Frequency**<br>
+  The adjusted frequency of the n-gram in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See section [12.4.3 Measures of Dispersion & Adjusted Frequency](#doc-12-4-3) for more details.
 
-- **3.6.6 Number of Files Found**<br>
+- **8.6 Number of Files Found**<br>
   The number of files in which the n-gram appears at least once.
 
-- **3.6.7 Number of Files Found %**<br>
+- **8.7 Number of Files Found %**<br>
   The percentage of the number of files in which the n-gram appears at least once out of the total number of files that are currently selected.
 
-<span id="doc-3-7"></span>
-### [3.7 Collocation Extractor](#doc)
+<span id="doc-9"></span>
+### [9 Collocation Extractor](#doc)
 > [!NOTE]
 > Renamed from **Collocation** to **Collocation Extractor** in *Wordless* 2.2.0
 
@@ -505,43 +521,43 @@ You can filter the results by clicking **Filter results** or search in *Data Tab
 
 You can generate line charts, word clouds, and network graphs for patterns of collocation using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
 
-- **3.7.1 Rank**<br>
+- **9.1 Rank**<br>
   The rank of the collocating token sorted by the p-value of the significance test conducted on the node and the collocating token in the first file in ascending order (by default). You can sort the results again by clicking the column headers. You can use continuous numbering after tied ranks (eg. 1/1/1/2/2/3 instead of 1/1/1/4/4/6) by checking **Menu Bar → Preferences → Settings → Tables → Rank Settings → Continue numbering after ties**.
 
-- **3.7.2 Node**<br>
+- **9.2 Node**<br>
   The search term. You can specify what should be counted as a "token" via **Token Settings**.
 
-- **3.7.3 Collocate**<br>
+- **9.3 Collocate**<br>
   The collocating token. You can specify what should be counted as a "token" via **Token Settings**.
 
-- **3.7.4 Ln, ..., L3, L2, L1, R1, R2, R3, ..., Rn**<br>
+- **9.4 Ln, ..., L3, L2, L1, R1, R2, R3, ..., Rn**<br>
   The number of co-occurrences of the node and the collocating token with the collocating token at the given position in each file.
 
-- **3.7.5 Frequency**<br>
+- **9.5 Frequency**<br>
   The total number of co-occurrences of the node and the collocating token with the collocating token at all possible positions in each file.
 
-- **3.7.6 Test Statistic**<br>
-  The test statistic of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
+- **9.6 Test Statistic**<br>
+  The test statistic of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.
 
   Please note that test statistic is not available for some tests of statistical significance.
 
-- **3.7.7 p-value**<br>
-  The p-value of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
+- **9.7 p-value**<br>
+  The p-value of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.
 
-- **3.7.8 Bayes Factor**<br>
-  The Bayes factor the node and the collocating token in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
+- **9.8 Bayes Factor**<br>
+  The Bayes factor the node and the collocating token in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.
 
-- **3.7.9 Effect Size**<br>
-  The effect size of the node and the collocating token in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
+- **9.9 Effect Size**<br>
+  The effect size of the node and the collocating token in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.
 
-- **3.7.10 Number of Files Found**<br>
+- **9.10 Number of Files Found**<br>
   The number of files in which the node and the collocating token co-occur at least once.
 
-- **3.7.11 Number of Files Found %**<br>
+- **9.11 Number of Files Found %**<br>
   The percentage of the number of files in which the node and the collocating token co-occur at least once out of the total number of files that are currently selected.
 
-<span id="doc-3-8"></span>
-### [3.8 Colligation Extractor](#doc)
+<span id="doc-10"></span>
+### [10 Colligation Extractor](#doc)
 > [!NOTE]
 > Renamed from **Colligation** to **Colligation Extractor** in *Wordless* 2.2.0
 
@@ -553,43 +569,43 @@ You can filter the results by clicking **Filter results** or search in *Data Tab
 
 You can generate line charts or word clouds for patterns of colligation using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
 
-- **3.8.1 Rank**<br>
+- **10.1 Rank**<br>
   The rank of the collocating part of speech sorted by the p-value of the significance test conducted on the node and the collocating part of speech in the first file in ascending order (by default). You can sort the results again by clicking the column headers. You can use continuous numbering after tied ranks (eg. 1/1/1/2/2/3 instead of 1/1/1/4/4/6) by checking **Menu Bar → Preferences → Settings → Tables → Rank Settings → Continue numbering after ties**.
 
-- **3.8.2 Node**<br>
+- **10.2 Node**<br>
   The search term. You can specify what should be counted as a "token" via **Token Settings**.
 
-- **3.8.3 Collocate**<br>
+- **10.3 Collocate**<br>
   The collocating part of speech. You can specify what should be counted as a "token" via **Token Settings**.
 
-- **3.8.4 Ln, ..., L3, L2, L1, R1, R2, R3, ..., Rn**<br>
+- **10.4 Ln, ..., L3, L2, L1, R1, R2, R3, ..., Rn**<br>
   The number of co-occurrences of the node and the collocating part of speech with the collocating part of speech at the given position in each file.
 
-- **3.8.5 Frequency**<br>
+- **10.5 Frequency**<br>
   The total number of co-occurrences of the node and the collocating part of speech with the collocating part of speech at all possible positions in each file.
 
-- **3.8.6 Test Statistic**<br>
-  The test statistic of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
+- **10.6 Test Statistic**<br>
+  The test statistic of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.
 
   Please note that test statistic is not available for some tests of statistical significance.
 
-- **3.8.7 p-value**<br>
-  The p-value of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
+- **10.7 p-value**<br>
+  The p-value of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.
 
-- **3.8.8 Bayes Factor**<br>
-  The Bayes factor of the node and the collocating part of speech in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
+- **10.8 Bayes Factor**<br>
+  The Bayes factor of the node and the collocating part of speech in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.
   
-- **3.8.9 Effect Size**<br>
-  The effect size of the node and the collocating part of speech in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
+- **10.9 Effect Size**<br>
+  The effect size of the node and the collocating part of speech in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.
 
-- **3.8.10 Number of Files Found**<br>
+- **10.10 Number of Files Found**<br>
   The number of files in which the node and the collocating part of speech co-occur at least once.
 
-- **3.8.11 Number of Files Found %**<br>
+- **10.11 Number of Files Found %**<br>
   The percentage of the number of files in which the node and the collocating part of speech co-occur at least once out of the total number of file that are currently selected.
 
-<span id="doc-3-9"></span>
-### [3.9 Keyword Extractor](#doc)
+<span id="doc-11"></span>
+### [11 Keyword Extractor](#doc)
 > [!NOTE]
 > Renamed from **Keyword** to **Keyword Extractor** in *Wordless* 2.2
 
@@ -599,43 +615,43 @@ You can filter the results by clicking **Filter results** or search in *Data Tab
 
 You can generate line charts or word clouds for keywords using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
 
-- **3.9.1 Rank**<br>
+- **11.1 Rank**<br>
   The rank of the keyword sorted by the p-value of the significance test conducted on the keyword in the first file in ascending order (by default). You can sort the results again by clicking the column headers. You can use continuous numbering after tied ranks (eg. 1/1/1/2/2/3 instead of 1/1/1/4/4/6) by checking **Menu Bar → Preferences → Settings → Tables → Rank Settings → Continue numbering after ties**.
 
-- **3.9.2 Keyword**<br>
+- **11.2 Keyword**<br>
   The potential keyword. You can specify what should be counted as a "token" via **Token Settings**.
 
-- **3.9.3 Frequency (in Reference File)**<br>
+- **11.3 Frequency (in Reference File)**<br>
   The number of occurrences of the keyword in the reference file.
 
-- **3.9.4 Frequency (in Observed Files)**<br>
+- **11.4 Frequency (in Observed Files)**<br>
   The number of occurrences of the keyword in each observed file.
 
-- **3.9.5 Test Statistic**<br>
-  The test statistic of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
+- **11.5 Test Statistic**<br>
+  The test statistic of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.
 
   Please note that test statistic is not available for some tests of statistical significance.
 
-- **3.9.6 p-value**<br>
-  The p-value of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
+- **11.6 p-value**<br>
+  The p-value of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.
 
-- **3.9.7 Bayes Factor**<br>
-  The Bayes factor of the keyword in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
+- **11.7 Bayes Factor**<br>
+  The Bayes factor of the keyword in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.
 
-- **3.9.8 Effect Size**<br>
-  The effect size of on the keyword in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
+- **11.8 Effect Size**<br>
+  The effect size of on the keyword in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.
 
-- **3.9.9 Number of Files Found**<br>
+- **11.9 Number of Files Found**<br>
   The number of files in which the keyword appears at least once.
 
-- **3.9.10 Number of Files Found %**<br>
+- **11.10 Number of Files Found %**<br>
   The percentage of the number of files in which the keyword appears at least once out of the total number of files that are currently selected.
 
-<span id="doc-4"></span>
-## [4 Appendixes](#doc)
+<span id="doc-12"></span>
+## [12 Appendixes](#doc)
 
-<span id="doc-4-1"></span>
-### [4.1 Supported Languages](#doc)
+<span id="doc-12-1"></span>
+### [12.1 Supported Languages](#doc)
 
 Language|Sentence Token-ization|Word Token-ization|Syllable Token-ization|Part-of-speech Tagging|Lemma-tization|Stop Word List|Depen-dency Parsing|Senti-ment Analysis
 :-----------------------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
@@ -767,8 +783,8 @@ Other languages          |⭕️ |⭕️ |✖️|✖️|✖️|✖️|✖️|✖
 > ⭕️: Supported but falls back to the default English (United States) tokenizer<br>
 > ✖️: Not supported
 
-<span id="doc-4-2"></span>
-### [4.2 Supported File Types](#doc)
+<span id="doc-12-2"></span>
+### [12.2 Supported File Types](#doc)
 
 File Type                 |File Extensions|Remarks
 --------------------------|---------------|-------
@@ -785,10 +801,10 @@ XML files¹                |\*.xml         |
 
 > [!IMPORTANT]
 > 1. Non-TXT files will be automatically converted to TXT files when being imported into *Wordless*. You can check the converted files under folder **imports** at the installation location of *Wordless* on your computer (as for macOS users, right click **Wordless.app**, select **Show Package Contents** and navigate to **Contents/MacOS/imports/**). You can change this location via **Menu Bar → Preferences → Settings → General → Import → Temporary Files → Default path**.
-> 1. It is **not recommended to directly import non-text files into *Wordless***, as accuracy of text extraction could not be guaranteed and unintended data loss might occur, for which reason users are encouraged to **convert their files using specialized tools and make discreet decisions** on which part of your data should be kept, transformed, and discarded.
+> 1. It is **not recommended to directly import non-text files into *Wordless*** and the support for doing so is provided only for convenience, since accuracy of text extraction could never be guaranteed and unintended data loss might occur, for which reason users are encouraged to **convert their files using specialized tools and make their own choices** on which part of the data should be kept or discarded.
 
-<span id="doc-4-3"></span>
-### [4.3 Supported File Encodings](#doc)
+<span id="doc-12-3"></span>
+### [12.3 Supported File Encodings](#doc)
 
 Language               |File Encoding          |Auto-detection
 -----------------------|-----------------------|:------------:
@@ -896,14 +912,14 @@ Ukrainian              |KOI8-U                 |✔
 Urdu                   |CP1006                 |✔
 Vietnamese             |CP1258                 |✔
 
-<span id="doc-4-4"></span>
-### [4.4 Supported Measures](#doc)
+<span id="doc-12-4"></span>
+### [12.4 Supported Measures](#doc)
 
-<span id="doc-4-4-1"></span>
-#### [4.4.1 Readability Formulas](#doc)
+<span id="doc-12-4-1"></span>
+#### [12.4.1 Readability Formulas](#doc)
 The readability of a text depends on several variables including the average sentence length, average word length in characters, average word length in syllables, number of monosyllabic words, number of polysyllabic words, number of difficult words, etc.
 
-It should be noted that some readability measures are **language-specific**, or applicable only to texts in languages for which *Wordless* have **built-in syllable tokenization support** (check [4.4.1](#doc-4-1) for reference), while others can be applied to texts in all languages.
+It should be noted that some readability measures are **language-specific**, or applicable only to texts in languages for which *Wordless* have **built-in syllable tokenization support** (check [12.1](#doc-12-1) for reference), while others can be applied to texts in all languages.
 
 The following variables would be used in formulas:<br>
 **NumSentences**: Number of sentences<br>
@@ -1161,8 +1177,8 @@ Readability Formula|Formula|Supported Languages
 > 1. Requires **built-in syllable tokenization support**
 > 1. Requires **built-in part-of-speech tagging support**
 
-<span id="doc-4-4-2"></span>
-#### [4.4.2 Indicators of Lexical Density/Diversity](#doc)
+<span id="doc-12-4-2"></span>
+#### [12.4.2 Indicators of Lexical Density/Diversity](#doc)
 Lexical density/diversity is the measurement of the extent to which the vocabulary used in the text varies.
 
 The following variables would be used in formulas:<br>
@@ -1276,8 +1292,8 @@ Indicator of Lexical Density/Diversity|Formula
 > [!NOTE]
 > 1. Variants available and can be selected via **Menu Bar → Preferences → Settings → Measures → Lexical Density/Diversity**
 
-<span id="doc-4-4-3"></span>
-#### [4.4.3 Measures of Dispersion and Adjusted Frequency](#doc)
+<span id="doc-12-4-3"></span>
+#### [12.4.3 Measures of Dispersion and Adjusted Frequency](#doc)
 
 For parts-based measures, each file is divided into **n** (whose value you could modify via **Menu Bar → Preferences → Settings → Measures → Dispersion / Adjusted Frequency → General Settings → Divide each file into subsections**) sub-sections and the frequency of the word in each part is counted and denoted by **F₁**, **F₂**, **F₃**, ..., **Fₙ** respectively. The total frequency of the word in each file is denoted by **F** and the mean value of the frequencies over all sub-sections is denoted by **F̅**.
 
@@ -1361,8 +1377,8 @@ Measure of Dispersion (Distance-based)|Measure of Adjusted Frequency (Distance-b
 <span id="ref-arf"></span>Average Reduced Frequency<br>([Savický & Hlaváčová, 2002](#ref-savicky-hlavacova-2002))|<span id="ref-farf"></span>Average Reduced Frequency<br>([Savický & Hlaváčová, 2002](#ref-savicky-hlavacova-2002))|![Formula](/doc/measures/dispersion_adjusted_frequency/arf.svg)
 <span id="ref-awt"></span>Average Waiting Time<br>([Savický & Hlaváčová, 2002](#ref-savicky-hlavacova-2002))|<span id="ref-fawt"></span>Average Waiting Time<br>([Savický & Hlaváčová, 2002](#ref-savicky-hlavacova-2002))|![Formula](/doc/measures/dispersion_adjusted_frequency/awt.svg)
 
-<span id="doc-4-4-4"></span>
-#### [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, and Measures of Effect Size](#doc)
+<span id="doc-12-4-4"></span>
+#### [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, and Measures of Effect Size](#doc)
 
 In order to calculate the statistical significance, Bayes factor, and effect size (except **Mann-Whitney U Test**, **Student's t-test (2-sample)**, and **Welch's t-test**) for two words in the same file (collocates) or for one specific word in two different files (keywords), two contingency tables must be constructed first, one for observed values, the other for expected values.
 
@@ -1528,8 +1544,8 @@ Measure of Effect Size|Formula
 <span id="ref-poisson-collocation-measure"></span>Poisson Collocation Measure<br>([Quasthoff & Wolff, 2002](#ref-quasthoff-wolff-2002))|![Formula](/doc/measures/effect_size/poisson_collocation_measure.svg)
 <span id="ref-squared-phi-coeff"></span>Squared Phi Coefficient<br>([Church & Gale, 1991](#ref-church-gale-1991))|![Formula](/doc/measures/effect_size/squared_phi_coeff.svg)
 
-<span id="doc-5"></span>
-## [5 References](#doc)
+<span id="doc-13"></span>
+## [13 References](#doc)
 <span id="ref-al-heeti-1984"></span>
 1. [**^**](#ref-rd) Al-Heeti, K. N. (1984). *Judgment analysis technique applied to readability prediction of Arabic reading material* [Doctoral dissertation, University of Northern Colorado]. ProQuest Dissertations and Theses Global.
 <span id="ref-al-tamimi-et-al-2013"></span>

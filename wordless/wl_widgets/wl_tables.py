@@ -25,15 +25,25 @@ import traceback
 import bs4
 import docx
 import openpyxl
-from PyQt5.QtCore import pyqtSignal, QCoreApplication, QItemSelection, Qt
+from PyQt5.QtCore import (
+    pyqtSignal,
+    QCoreApplication,
+    QItemSelection,
+    Qt
+)
 from PyQt5.QtGui import QFont, QStandardItem, QStandardItemModel
 from PyQt5.QtWidgets import (
-    QAbstractItemView, QApplication, QDialog, QFileDialog, QHeaderView,
-    QLabel, QPushButton, QTableView
+    QAbstractItemView,
+    QApplication,
+    QFileDialog,
+    QHeaderView,
+    QLabel,
+    QPushButton,
+    QTableView
 )
 
 from wordless.wl_checks import wl_checks_misc, wl_checks_work_area
-from wordless.wl_dialogs import wl_dialogs_misc
+from wordless.wl_dialogs import wl_dialogs_misc, wl_msg_boxes
 from wordless.wl_nlp import wl_nlp_utils
 from wordless.wl_utils import wl_misc, wl_paths, wl_threading
 from wordless.wl_widgets import wl_buttons
@@ -95,6 +105,7 @@ class Wl_Table(QTableView):
 
         self.default_foreground = '#292929'
         self.default_background = '#FFF'
+
         stylesheet_items = f'''
             QTableView::item:hover {{
                 background-color: #E5E5E5;
@@ -1736,11 +1747,15 @@ class Wl_Table_Data(Wl_Table):
         # Ask for confirmation if results have not been exported
         if confirm:
             if not self.is_empty() and not self.results_saved:
-                dialog_clr_table = wl_dialogs_misc.Wl_Dialog_Clr_Table(self.main)
-                result = dialog_clr_table.exec_()
-
-                if result == QDialog.Rejected:
-                    confirmed = False
+                confirmed = wl_msg_boxes.wl_msg_box_question(
+                    self.main,
+                    title = self.tr('Clear Table'),
+                    text = self.tr('''
+                        <div>
+                            The results in the table have yet been exported. Do you really want to clear the table?
+                        </div>
+                    ''')
+                )
 
         if confirmed:
             self.model().clear()

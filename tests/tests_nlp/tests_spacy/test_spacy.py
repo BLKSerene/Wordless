@@ -18,7 +18,12 @@
 
 from tests import wl_test_init, wl_test_lang_examples
 from tests.tests_nlp import test_dependency_parsing, test_lemmatization, test_pos_tagging
-from wordless.wl_nlp import wl_nlp_utils, wl_sentence_tokenization, wl_texts, wl_word_tokenization
+from wordless.wl_nlp import (
+    wl_nlp_utils,
+    wl_sentence_tokenization,
+    wl_texts,
+    wl_word_tokenization
+)
 from wordless.wl_utils import wl_conversion
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'spacy')

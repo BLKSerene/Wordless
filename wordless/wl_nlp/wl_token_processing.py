@@ -20,8 +20,13 @@ import copy
 
 from wordless.wl_checks import wl_checks_tokens
 from wordless.wl_nlp import (
-    wl_dependency_parsing, wl_lemmatization, wl_pos_tagging, wl_stop_word_lists, wl_syl_tokenization,
-    wl_texts, wl_word_detokenization
+    wl_dependency_parsing,
+    wl_lemmatization,
+    wl_pos_tagging,
+    wl_stop_word_lists,
+    wl_syl_tokenization,
+    wl_texts,
+    wl_word_detokenization
 )
 from wordless.wl_utils import wl_misc
 

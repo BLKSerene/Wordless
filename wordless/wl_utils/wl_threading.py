@@ -18,7 +18,12 @@
 
 import time
 
-from PyQt5.QtCore import pyqtSignal, QObject, Qt, QThread
+from PyQt5.QtCore import (
+    pyqtSignal,
+    QObject,
+    Qt,
+    QThread
+)
 
 # Workers
 class Wl_Worker(QObject):

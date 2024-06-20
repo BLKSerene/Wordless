@@ -74,7 +74,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
         self.button_close = QPushButton(self.tr('Close'), self)
 
-        self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
+        self.checkbox_multi_search_mode.stateChanged.connect(self.multi_search_mode_changed)
         self.line_edit_search_term.textChanged.connect(self.search_settings_changed)
         self.line_edit_search_term.returnPressed.connect(self.button_find_next.click)
         self.list_search_terms.model().dataChanged.connect(self.search_settings_changed)
@@ -126,6 +126,8 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.layout().addWidget(wl_layouts.Wl_Separator(self), 9, 0, 1, 4)
         self.layout().addLayout(layout_buttons_bottom, 10, 0, 1, 4)
 
+        self.layout().setColumnStretch(0, 1)
+
         for table_to_search in self.tables:
             table_to_search.model().itemChanged.connect(self.table_item_changed)
 
@@ -165,9 +167,6 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.settings['match_without_tags'] = self.checkbox_match_without_tags.isChecked()
         self.settings['match_tags'] = self.checkbox_match_tags.isChecked()
 
-        # Multi-search mode
-        self.adjustSize()
-
         if wl_checks_work_area.check_search_terms(
             self.main,
             search_settings = self.settings,
@@ -180,6 +179,11 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
             self.button_find_next.setEnabled(False)
             self.button_find_prev.setEnabled(False)
             self.button_find_all.setEnabled(False)
+
+    def multi_search_mode_changed(self):
+        self.adjust_size()
+
+        self.search_settings_changed()
 
     def table_item_changed(self):
         self.checkbox_match_tags.token_settings_changed(

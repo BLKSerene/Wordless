@@ -26,14 +26,32 @@ import matplotlib
 import matplotlib.pyplot
 import numpy
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
-from PyQt5.QtWidgets import QCheckBox, QLabel, QLineEdit, QGroupBox, QStackedWidget
+from PyQt5.QtWidgets import (
+    QCheckBox,
+    QLabel,
+    QLineEdit,
+    QGroupBox,
+    QStackedWidget
+)
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_figs import wl_figs
-from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_texts, wl_token_processing, wl_sentiment_analysis
+from wordless.wl_nlp import (
+    wl_matching,
+    wl_nlp_utils,
+    wl_texts,
+    wl_token_processing,
+    wl_sentiment_analysis
+)
 from wordless.wl_utils import wl_misc, wl_threading
-from wordless.wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_tables, wl_widgets
+from wordless.wl_widgets import (
+    wl_boxes,
+    wl_labels,
+    wl_layouts,
+    wl_tables,
+    wl_widgets
+)
 
 _tr = QCoreApplication.translate
 

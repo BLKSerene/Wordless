@@ -20,12 +20,27 @@ import copy
 
 from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtGui import QStandardItem
-from PyQt5.QtWidgets import QGroupBox, QLabel, QPushButton, QTextEdit
+from PyQt5.QtWidgets import (
+    QGroupBox,
+    QLabel,
+    QPushButton,
+    QTextEdit
+)
 
-from wordless.wl_nlp import wl_nlp_utils, wl_syl_tokenization, wl_texts, wl_word_detokenization
+from wordless.wl_nlp import (
+    wl_nlp_utils,
+    wl_syl_tokenization,
+    wl_texts,
+    wl_word_detokenization
+)
 from wordless.wl_settings import wl_settings
 from wordless.wl_utils import wl_conversion, wl_threading
-from wordless.wl_widgets import wl_boxes, wl_item_delegates, wl_layouts, wl_tables
+from wordless.wl_widgets import (
+    wl_boxes,
+    wl_item_delegates,
+    wl_layouts,
+    wl_tables
+)
 
 class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
     def __init__(self, main):

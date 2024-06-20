@@ -26,7 +26,13 @@ from wordless.wl_dialogs import wl_dialogs
 from wordless.wl_nlp import wl_dependency_parsing, wl_nlp_utils
 from wordless.wl_settings import wl_settings
 from wordless.wl_utils import wl_conversion, wl_threading
-from wordless.wl_widgets import wl_boxes, wl_item_delegates, wl_layouts, wl_tables, wl_widgets
+from wordless.wl_widgets import (
+    wl_boxes,
+    wl_item_delegates,
+    wl_layouts,
+    wl_tables,
+    wl_widgets
+)
 
 class Wl_Settings_Dependency_Parsing(wl_settings.Wl_Settings_Node):
     def __init__(self, main):

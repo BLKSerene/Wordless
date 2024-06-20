@@ -20,20 +20,29 @@ import copy
 
 from PyQt5.QtCore import QCoreApplication, Qt
 from PyQt5.QtWidgets import (
-    QCheckBox, QGroupBox, QLabel, QLineEdit, QPushButton,
+    QCheckBox,
+    QGroupBox,
+    QLabel,
+    QLineEdit,
+    QPushButton,
     QWidget
 )
 
 from wordless.wl_dialogs import wl_dialogs
 from wordless.wl_measures import wl_measure_utils
 from wordless.wl_utils import wl_misc
-from wordless.wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_lists
+from wordless.wl_widgets import (
+    wl_boxes,
+    wl_labels,
+    wl_layouts,
+    wl_lists
+)
 
 _tr = QCoreApplication.translate
 
 class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog_Settings):
     def __init__(self, main, tab):
-        super().__init__(main, title = _tr('wl_widgets', 'Context Settings'))
+        super().__init__(main, title = _tr('Wl_Dialog_Context_Settings', 'Context Settings'))
 
         self.tab = tab
         self.settings_custom = self.main.settings_custom[self.tab]['search_settings']['context_settings']
@@ -511,7 +520,7 @@ def wl_widgets_search_settings(parent, tab):
     wrapper_search_terms = QWidget(parent)
 
     wrapper_search_terms.setLayout(wl_layouts.Wl_Layout())
-    wrapper_search_terms.layout().addWidget(list_search_terms, 0, 0, 6, 1)
+    wrapper_search_terms.layout().addWidget(list_search_terms, 0, 0, 7, 1)
     wrapper_search_terms.layout().addWidget(list_search_terms.button_add, 0, 1)
     wrapper_search_terms.layout().addWidget(list_search_terms.button_ins, 1, 1)
     wrapper_search_terms.layout().addWidget(list_search_terms.button_del, 2, 1)
@@ -519,6 +528,7 @@ def wl_widgets_search_settings(parent, tab):
     wrapper_search_terms.layout().addWidget(list_search_terms.button_imp, 4, 1)
     wrapper_search_terms.layout().addWidget(list_search_terms.button_exp, 5, 1)
 
+    wrapper_search_terms.layout().setRowStretch(6, 1)
     wrapper_search_terms.layout().setContentsMargins(0, 0, 0, 0)
 
     stacked_widget_search_term = wl_layouts.Wl_Stacked_Widget_Resizable(parent)

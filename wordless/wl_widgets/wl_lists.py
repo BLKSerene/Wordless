@@ -19,10 +19,19 @@
 import os
 import re
 
-from PyQt5.QtCore import QCoreApplication, QItemSelection, QModelIndex, QStringListModel
+from PyQt5.QtCore import (
+    QCoreApplication,
+    QItemSelection,
+    QModelIndex,
+    QStringListModel
+)
 from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import (
-    QAbstractItemDelegate, QAbstractItemView, QFileDialog, QLineEdit, QListView,
+    QAbstractItemDelegate,
+    QAbstractItemView,
+    QFileDialog,
+    QLineEdit,
+    QListView,
     QPushButton
 )
 

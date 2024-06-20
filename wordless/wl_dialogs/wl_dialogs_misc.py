@@ -20,7 +20,7 @@ import datetime
 import time
 
 from PyQt5.QtCore import QCoreApplication, Qt, QTimer
-from PyQt5.QtWidgets import QLabel, QPushButton
+from PyQt5.QtWidgets import QPushButton
 
 from wordless.wl_dialogs import wl_dialogs
 from wordless.wl_widgets import wl_labels, wl_layouts
@@ -35,9 +35,13 @@ class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
 
         self.timer_time_elapsed = QTimer(self)
 
-        self.label_progress = QLabel(text, self)
-        self.label_time_elapsed = QLabel(_tr('Wl_Dialog_Progress', 'Elapsed time: 0:00:00'), self)
-        self.label_processing = wl_labels.Wl_Label_Dialog(_tr('Wl_Dialog_Progress', 'Please wait. It may take a few seconds to several minutes for the operation to be completed.'), self)
+        self.label_progress = wl_labels.Wl_Label_Dialog(text, self, word_wrap = False)
+        self.label_time_elapsed = wl_labels.Wl_Label_Dialog(self.tr('<div>Elapsed time: 0:00:00</div>'), self, word_wrap = False)
+        self.label_processing = wl_labels.Wl_Label_Dialog(self.tr('''
+                <div>Please wait. It may take a few seconds to several minutes for the operation to be completed.</div>
+            '''),
+            self
+        )
 
         self.timer_time_elapsed.timeout.connect(self.update_elapsed_time)
         self.timer_time_elapsed.start(1000)
@@ -47,68 +51,23 @@ class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
         self.layout().addWidget(self.label_time_elapsed, 0, 1, Qt.AlignRight)
         self.layout().addWidget(self.label_processing, 1, 0, 1, 2)
 
-        self.layout().setContentsMargins(20, 10, 20, 10)
+        self.layout().setContentsMargins(20, 20, 20, 20)
 
     def update_elapsed_time(self):
-        self.label_time_elapsed.setText(
-            _tr('Wl_Dialog_Progress', 'Elapsed time: ')
-            + str(datetime.timedelta(seconds = round(time.time() - self.time_start)))
-        )
+        elapsed_time = datetime.timedelta(seconds = round(time.time() - self.time_start))
+
+        self.label_time_elapsed.set_text(self.tr('<div>Elapsed time: {}</div>').format(elapsed_time))
 
     def update_progress(self, text):
-        self.label_progress.setText(text)
+        self.label_progress.set_text(text)
 
 class Wl_Dialog_Progress_Process_Data(Wl_Dialog_Progress):
     def __init__(self, main):
-        super().__init__(main, text = _tr('Wl_Dialog_Progress_Process_Data', 'Processing data...'))
+        super().__init__(main, text = _tr('wl_dialogs_misc', 'Processing data...'))
 
 class Wl_Dialog_Progress_Download_Model(Wl_Dialog_Progress):
     def __init__(self, main):
-        super().__init__(main, text = _tr('Wl_Dialog_Progress_Process_Data', 'Downloading model...'))
-
-class Wl_Dialog_Clr_Table(wl_dialogs.Wl_Dialog_Info):
-    def __init__(self, main):
-        super().__init__(
-            main,
-            title = _tr('WL_Dialog_Clear_Table', 'Clear Table'),
-            width = 450,
-            no_buttons = True
-        )
-
-        self.label_confirm_clr = wl_labels.Wl_Label_Dialog(
-            self.tr('''
-                <div>
-                    The results in the table have yet been exported. Do you really want to clear the table?
-                </div>
-            '''),
-            self
-        )
-
-        self.button_yes = QPushButton(self.tr('Yes'), self)
-        self.button_no = QPushButton(self.tr('No'), self)
-
-        self.button_yes.clicked.connect(self.accept)
-        self.button_no.clicked.connect(self.reject)
-
-        self.wrapper_info.layout().addWidget(self.label_confirm_clr, 0, 0)
-
-        self.wrapper_buttons.layout().addWidget(self.button_yes, 0, 1)
-        self.wrapper_buttons.layout().addWidget(self.button_no, 0, 2)
-
-        self.wrapper_buttons.layout().setColumnStretch(0, 1)
-
-        self.set_fixed_height()
-
-class Wl_Dialog_Clr_All_Tables(Wl_Dialog_Clr_Table):
-    def __init__(self, main):
-        super().__init__(main)
-
-        self.setWindowTitle(self.tr('Clear All Tables'))
-        self.label_confirm_clr.setText(self.tr('''
-            <div>
-                The results in some of the tables have yet been exported. Do you really want to clear all tables?
-            </div>
-        '''))
+        super().__init__(main, text = _tr('wl_dialogs_misc', 'Downloading model...'))
 
 class Wl_Dialog_Restart_Required(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
@@ -124,10 +83,8 @@ class Wl_Dialog_Restart_Required(wl_dialogs.Wl_Dialog_Info):
                 <div>
                     Restart is required for the settings to take effect. Do you want to restart Wordless now?
                 </div>
-
-                <div style="font-weight: bold;">
-                    Note: All unsaved data and figures will be lost.
-                </div>
+                <br>
+                <div><b>Note: All unsaved data and figures will be lost.</b></div>
             '''),
             self
         )
@@ -138,11 +95,9 @@ class Wl_Dialog_Restart_Required(wl_dialogs.Wl_Dialog_Info):
         self.button_restart.clicked.connect(self.accept)
         self.button_cancel.clicked.connect(self.reject)
 
-        self.wrapper_info.layout().addWidget(self.label_restart_exit, 0, 0)
+        self.layout_info.addWidget(self.label_restart_exit, 0, 0)
 
-        self.wrapper_buttons.layout().addWidget(self.button_restart, 0, 1)
-        self.wrapper_buttons.layout().addWidget(self.button_cancel, 0, 2)
+        self.layout_buttons.addWidget(self.button_restart, 0, 1)
+        self.layout_buttons.addWidget(self.button_cancel, 0, 2)
 
-        self.wrapper_buttons.layout().setColumnStretch(0, 1)
-
-        self.set_fixed_height()
+        self.layout_buttons.setColumnStretch(0, 1)

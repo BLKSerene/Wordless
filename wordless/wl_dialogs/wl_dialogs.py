@@ -18,18 +18,29 @@
 
 from PyQt5.QtCore import QCoreApplication, Qt
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QDialog, QPlainTextEdit, QPushButton, QTextEdit, QWidget
+from PyQt5.QtWidgets import (
+    QApplication,
+    QDialog,
+    QPlainTextEdit,
+    QPushButton,
+    QTextEdit,
+    QWidget
+)
 
-from wordless.wl_utils import wl_paths
+from wordless.wl_dialogs import wl_msg_boxes
+from wordless.wl_utils import wl_paths, wl_misc
 from wordless.wl_widgets import wl_buttons
 
 _tr = QCoreApplication.translate
 
+is_windows, is_macos, is_linux = wl_misc.check_os()
+
 class Wl_Dialog(QDialog):
-    def __init__(self, main, title, width = 0, height = 0, resizable = False):
+    def __init__(self, main, title, width = 0, height = 0, resizable = True):
         super().__init__(main)
 
         self.main = main
+        self.fixed_width = width
 
         # Dialog size
         if resizable:
@@ -61,6 +72,7 @@ class Wl_Dialog(QDialog):
                 color: #FFF;
                 font-weight: bold;
             }
+
             QHeaderView::section:horizontal {
                 background-color: #5C88C5;
             }
@@ -68,17 +80,25 @@ class Wl_Dialog(QDialog):
                 background-color: #3265B2;
             }
             QHeaderView::section:horizontal:pressed {
-                background-color: #3265B2;
+                background-color: #264E8C;
             }
         ''')
 
-    def set_fixed_height(self):
-        self.setFixedHeight(self.heightForWidth(self.width()))
+    def adjust_size(self):
+        self.adjustSize()
+
+        if self.fixed_width:
+            self.resize(self.fixed_width, self.heightForWidth(self.fixed_width))
+        else:
+            self.resize(self.width(), self.heightForWidth(self.width()))
+
+        if is_windows or is_linux:
+            self.move_to_center()
 
     def move_to_center(self):
         self.move(
-            int((self.main.width() - self.width()) / 2),
-            int((self.main.height() - self.height()) / 2)
+            int((QApplication.primaryScreen().size().width() - self.width()) / 2),
+            int((QApplication.primaryScreen().size().height() - self.height()) / 2)
         )
 
 class Wl_Dialog_Frameless(Wl_Dialog):
@@ -99,7 +119,7 @@ class Wl_Dialog_Frameless(Wl_Dialog):
         ''')
 
 class Wl_Dialog_Info(Wl_Dialog):
-    def __init__(self, main, title, width = 0, height = 0, resizable = False, no_buttons = False):
+    def __init__(self, main, title, width = 0, height = 0, resizable = True, icon = True, no_buttons = False):
         # Avoid circular imports
         from wordless.wl_widgets import wl_layouts # pylint: disable=import-outside-toplevel
 
@@ -115,13 +135,25 @@ class Wl_Dialog_Info(Wl_Dialog):
             }
         ''')
 
-        self.wrapper_info.setLayout(wl_layouts.Wl_Layout())
-        self.wrapper_info.layout().setContentsMargins(20, 10, 20, 10)
+        if icon:
+            self.layout_info = wl_layouts.Wl_Layout()
+            self.wrapper_info.setLayout(wl_layouts.Wl_Layout())
+            self.wrapper_info.layout().addWidget(wl_msg_boxes.get_msg_box_icon('information'), 0, 0, Qt.AlignTop)
+            self.wrapper_info.layout().addLayout(self.layout_info, 0, 1)
+
+            self.wrapper_info.layout().setHorizontalSpacing(20)
+            self.wrapper_info.layout().setColumnStretch(1, 1)
+        else:
+            self.layout_info = wl_layouts.Wl_Layout()
+            self.wrapper_info.setLayout(self.layout_info)
+
+        self.wrapper_info.layout().setContentsMargins(15, 15, 15, 15)
 
         self.wrapper_buttons = QWidget(self)
 
-        self.wrapper_buttons.setLayout(wl_layouts.Wl_Layout())
-        self.wrapper_buttons.layout().setContentsMargins(11, 0, 11, 11)
+        self.layout_buttons = wl_layouts.Wl_Layout()
+        self.wrapper_buttons.setLayout(self.layout_buttons)
+        self.wrapper_buttons.layout().setContentsMargins(13, 1, 13, 13)
 
         if not no_buttons:
             self.button_ok = QPushButton(_tr('Wl_Dialog_Settings', 'OK'), self)
@@ -137,11 +169,22 @@ class Wl_Dialog_Info(Wl_Dialog):
         self.layout().setRowStretch(0, 1)
         self.layout().setContentsMargins(0, 0, 0, 0)
 
+    def adjust_size(self):
+        self.wrapper_info.adjustSize()
+        self.wrapper_buttons.adjustSize()
+
+        super().adjust_size()
+
 class Wl_Dialog_Info_Copy(Wl_Dialog_Info):
-    def __init__(self, main, title, width = 0, height = 0, resizable = False, is_plain_text = False):
+    def __init__(
+        self, main,
+        title,
+        width = 0, height = 0,
+        resizable = True, is_plain_text = False
+    ):
         super().__init__(
             main, title, width, height, resizable,
-            no_buttons = True
+            no_buttons = True, icon = False
         )
 
         self.is_plain_text = is_plain_text
@@ -182,8 +225,8 @@ class Wl_Dialog_Info_Copy(Wl_Dialog_Info):
             self.text_edit_info.setHtml(text)
 
 class Wl_Dialog_Settings(Wl_Dialog_Info):
-    def __init__(self, main, title, width = 0, height = 0):
-        super().__init__(main, title, width, height, no_buttons = True)
+    def __init__(self, main, title, width = 0, height = 0, resizable = True):
+        super().__init__(main, title, width, height, resizable, no_buttons = True, icon = False)
 
         # Alias
         self.wrapper_settings = self.wrapper_info

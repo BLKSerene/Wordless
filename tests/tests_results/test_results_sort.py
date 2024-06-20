@@ -24,7 +24,7 @@ from wordless.wl_results import wl_results_sort
 main = wl_test_init.Wl_Test_Main()
 table = wl_test_init.Wl_Test_Table(main, tab = 'concordancer')
 
-def test_dialog_results_sort_concordancer():
+def test_wl_dialog_results_sort_concordancer():
     dialog_results_sort_concordancer = wl_results_sort.Wl_Dialog_Results_Sort_Concordancer(
         main,
         table = table
@@ -45,7 +45,7 @@ def test_dialog_results_sort_concordancer():
     dialog_results_sort_concordancer.update_gui([])
 
 def test_table_results_sort_concordancer():
-    table_results_sort_concordancer = wl_results_sort.Wl_Table_Results_Sort_Conordancer(
+    table_results_sort_concordancer = wl_results_sort.Table_Results_Sort_Conordancer(
         main,
         table = table
     )
@@ -96,5 +96,5 @@ def test_table_results_sort_concordancer():
     table_results_sort_concordancer.load_settings(defaults = False)
 
 if __name__ == '__main__':
-    test_dialog_results_sort_concordancer()
+    test_wl_dialog_results_sort_concordancer()
     test_table_results_sort_concordancer()

@@ -26,8 +26,13 @@ import sys
 from PyQt5.QtCore import QObject
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import (
-    QApplication, QLabel, QMainWindow, QPushButton, QStatusBar,
-    QTableView, QTabWidget
+    QApplication,
+    QLabel,
+    QMainWindow,
+    QPushButton,
+    QStatusBar,
+    QTableView,
+    QTabWidget
 )
 
 from tests import wl_test_file_area

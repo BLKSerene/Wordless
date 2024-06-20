@@ -21,14 +21,27 @@ import re
 
 from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtGui import QStandardItem
-from PyQt5.QtWidgets import QAbstractItemDelegate, QGroupBox, QLabel, QLineEdit, QPushButton
+from PyQt5.QtWidgets import (
+    QAbstractItemDelegate,
+    QCheckBox,
+    QGroupBox,
+    QLabel,
+    QLineEdit,
+    QPushButton
+)
 
 from wordless.wl_checks import wl_checks_misc
 from wordless.wl_dialogs import wl_msg_boxes
 from wordless.wl_nlp import wl_matching
 from wordless.wl_settings import wl_settings
 from wordless.wl_utils import wl_conversion
-from wordless.wl_widgets import wl_boxes, wl_item_delegates, wl_labels, wl_layouts, wl_tables
+from wordless.wl_widgets import (
+    wl_boxes,
+    wl_item_delegates,
+    wl_labels,
+    wl_layouts,
+    wl_tables
+)
 
 _tr = QCoreApplication.translate
 
@@ -85,6 +98,7 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
         # Miscellaneous Settings
         self.group_box_misc_settings = QGroupBox(self.tr('Miscellaneous Settings'), self)
 
+        self.checkbox_display_warning_when_opening_nontext_files = QCheckBox(self.tr('Display warning when opening non-text files'), self)
         self.label_read_files_in_chunks = QLabel(self.tr('Read files in chunks of'), self)
         self.spin_box_read_files_in_chunks = wl_boxes.Wl_Spin_Box(self)
         self.label_read_files_in_chunks_lines = QLabel(self.tr('lines'), self)
@@ -92,9 +106,10 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
         self.spin_box_read_files_in_chunks.setRange(1, 10000)
 
         self.group_box_misc_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_misc_settings.layout().addWidget(self.label_read_files_in_chunks, 0, 0)
-        self.group_box_misc_settings.layout().addWidget(self.spin_box_read_files_in_chunks, 0, 1)
-        self.group_box_misc_settings.layout().addWidget(self.label_read_files_in_chunks_lines, 0, 2)
+        self.group_box_misc_settings.layout().addWidget(self.checkbox_display_warning_when_opening_nontext_files, 0, 0, 1, 3)
+        self.group_box_misc_settings.layout().addWidget(self.label_read_files_in_chunks, 1, 0)
+        self.group_box_misc_settings.layout().addWidget(self.spin_box_read_files_in_chunks, 1, 1)
+        self.group_box_misc_settings.layout().addWidget(self.label_read_files_in_chunks_lines, 1, 2)
 
         self.group_box_misc_settings.layout().setColumnStretch(3, 1)
 
@@ -123,6 +138,7 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
         self.checkbox_num_lines_no_limit.setChecked(settings['auto_detection_settings']['num_lines_no_limit'])
 
         # Miscellaneous Settings
+        self.checkbox_display_warning_when_opening_nontext_files.setChecked(settings['misc_settings']['display_warning_when_opening_nontext_files'])
         self.spin_box_read_files_in_chunks.setValue(settings['misc_settings']['read_files_in_chunks'])
 
     def apply_settings(self):
@@ -137,6 +153,7 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
         self.settings_custom['auto_detection_settings']['num_lines_no_limit'] = self.checkbox_num_lines_no_limit.isChecked()
 
         # Miscellaneous Settings
+        self.settings_custom['misc_settings']['display_warning_when_opening_nontext_files'] = self.checkbox_display_warning_when_opening_nontext_files.isChecked()
         self.settings_custom['misc_settings']['read_files_in_chunks'] = self.spin_box_read_files_in_chunks.value()
 
         return True

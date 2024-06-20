@@ -1203,7 +1203,7 @@ def init_settings_default(main):
             },
 
             'misc_settings': {
-                'confirm_on_exit': True
+                'always_confirm_on_exit': True
             },
 
             # Settings - General - Import
@@ -1264,6 +1264,7 @@ def init_settings_default(main):
             },
 
             'misc_settings': {
+                'display_warning_when_opening_nontext_files': True,
                 'read_files_in_chunks': 10
             },
 

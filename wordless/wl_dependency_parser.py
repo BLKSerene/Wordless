@@ -29,9 +29,19 @@ from PyQt5.QtWidgets import QCheckBox, QGroupBox
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
-from wordless.wl_nlp import wl_dependency_parsing, wl_matching, wl_texts, wl_token_processing
+from wordless.wl_nlp import (
+    wl_dependency_parsing,
+    wl_matching,
+    wl_texts,
+    wl_token_processing
+)
 from wordless.wl_utils import wl_misc, wl_threading
-from wordless.wl_widgets import wl_labels, wl_layouts, wl_tables, wl_widgets
+from wordless.wl_widgets import (
+    wl_labels,
+    wl_layouts,
+    wl_tables,
+    wl_widgets
+)
 
 _tr = QCoreApplication.translate
 

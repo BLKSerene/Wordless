@@ -20,8 +20,15 @@ import platform
 
 from PyQt5.QtGui import QPainter, QPalette
 from PyQt5.QtWidgets import (
-    QFrame, QGridLayout, QScrollArea, QSizePolicy, QSplitter,
-    QStackedWidget, QStyle, QStyleOption, QWidget
+    QFrame,
+    QGridLayout,
+    QScrollArea,
+    QSizePolicy,
+    QSplitter,
+    QStackedWidget,
+    QStyle,
+    QStyleOption,
+    QWidget
 )
 
 from wordless.wl_utils import wl_misc

@@ -24,7 +24,13 @@ from PyQt5.QtWidgets import QCheckBox, QGroupBox, QLabel
 from wordless.wl_nlp import wl_nlp_utils, wl_stop_word_lists
 from wordless.wl_settings import wl_settings
 from wordless.wl_utils import wl_conversion
-from wordless.wl_widgets import wl_boxes, wl_item_delegates, wl_layouts, wl_lists, wl_tables
+from wordless.wl_widgets import (
+    wl_boxes,
+    wl_item_delegates,
+    wl_layouts,
+    wl_lists,
+    wl_tables
+)
 
 class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
     def __init__(self, main):

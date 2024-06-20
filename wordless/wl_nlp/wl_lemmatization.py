@@ -21,7 +21,12 @@ from PyQt5.QtCore import QCoreApplication
 import simplemma
 import spacy
 
-from wordless.wl_nlp import wl_nlp_utils, wl_pos_tagging, wl_texts, wl_word_tokenization
+from wordless.wl_nlp import (
+    wl_nlp_utils,
+    wl_pos_tagging,
+    wl_texts,
+    wl_word_tokenization
+)
 from wordless.wl_utils import wl_conversion
 
 _tr = QCoreApplication.translate

@@ -20,7 +20,12 @@ import os
 
 from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtGui import QBrush, QColor, QPainter
-from PyQt5.QtWidgets import QCheckBox, QColorDialog, QFileDialog, QPushButton
+from PyQt5.QtWidgets import (
+    QCheckBox,
+    QColorDialog,
+    QFileDialog,
+    QPushButton
+)
 
 from wordless.wl_checks import wl_checks_misc
 from wordless.wl_dialogs import wl_msg_boxes
