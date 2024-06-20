@@ -3892,37 +3892,12 @@ SETTINGS_GLOBAL = {
 
     'styles': {
         'style_dialog': '''
-            <head>
-                <style>
-                    * {
-                        outline: none;
-                        margin: 0;
-                        border: 0;
-                        padding: 0;
-
-                        line-height: 120%;
-                        text-align: justify;
-                    }
-
-                    div {
-                        margin-bottom: 3px;
-                    }
-                    div:last-child {
-                        margin-bottom: 0;
-                    }
-
-                    ul {
-                        margin-bottom: 3px;
-                    }
-                    ul:last-child {
-                        margin-bottom: 0;
-                    }
-
-                    li {
-                        margin-left: -30px;
-                    }
-                </style>
-            </head>
+            <head><style>
+                * {
+                    margin: 0;
+                    line-height: 120%;
+                }
+            </style></head>
         '''
     }
 }

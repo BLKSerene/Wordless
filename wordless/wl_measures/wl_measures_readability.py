@@ -26,7 +26,13 @@ import numpy
 from PyQt5.QtCore import QCoreApplication
 
 from wordless.wl_checks import wl_checks_tokens
-from wordless.wl_nlp import wl_lemmatization, wl_pos_tagging, wl_sentence_tokenization, wl_syl_tokenization, wl_texts
+from wordless.wl_nlp import (
+    wl_lemmatization,
+    wl_pos_tagging,
+    wl_sentence_tokenization,
+    wl_syl_tokenization,
+    wl_texts
+)
 from wordless.wl_utils import wl_misc, wl_paths
 
 _tr = QCoreApplication.translate

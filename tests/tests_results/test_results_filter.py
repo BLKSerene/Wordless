@@ -64,7 +64,7 @@ def test_add_layouts_filters():
 def test_get_filter_min_max():
     wl_results_filter.get_filter_min_max(settings = settings, filter_name = 'test')
 
-def test_dialog_results_filter():
+def test_wl_dialog_results_filter():
     dialog_results_filter = wl_results_filter.Wl_Dialog_Results_Filter(
         main,
         table = wl_test_init.Wl_Test_Table(main, tab = 'dependency_parser')
@@ -89,7 +89,7 @@ def test_dialog_results_filter():
     dialog_results_filter.file_to_filter_changed()
     dialog_results_filter.show()
 
-def test_dialog_results_filter_dependency_parser():
+def test_wl_dialog_results_filter_dependency_parser():
     dialog_results_filter_dependency_parser = wl_results_filter.Wl_Dialog_Results_Filter_Dependency_Parser(
         main,
         table = wl_test_init.Wl_Test_Table(main, tab = 'dependency_parser')
@@ -98,7 +98,7 @@ def test_dialog_results_filter_dependency_parser():
     dialog_results_filter_dependency_parser.load_settings(defaults = True)
     dialog_results_filter_dependency_parser.load_settings(defaults = False)
 
-def test_dialog_results_filter_wordlist_generator():
+def test_wl_dialog_results_filter_wordlist_generator():
     dialog_results_filter_wordlist_generator = wl_results_filter.Wl_Dialog_Results_Filter_Wordlist_Generator(
         main,
         table = wl_test_init.Wl_Test_Table(main, tab = 'wordlist_generator')
@@ -111,7 +111,7 @@ def test_dialog_results_filter_wordlist_generator():
         table = wl_test_init.Wl_Test_Table(main, tab = 'ngram_generator')
     )
 
-def test_dialog_results_filter_collocation_extractor():
+def test_wl_dialog_results_filter_collocation_extractor():
     dialog_results_filter_collocation_extractor = wl_results_filter.Wl_Dialog_Results_Filter_Collocation_Extractor(
         main,
         table = wl_test_init.Wl_Test_Table(main, tab = 'collocation_extractor')
@@ -135,7 +135,7 @@ if __name__ == '__main__':
     test_add_layouts_filters()
     test_get_filter_min_max()
 
-    test_dialog_results_filter()
-    test_dialog_results_filter_dependency_parser()
-    test_dialog_results_filter_wordlist_generator()
-    test_dialog_results_filter_collocation_extractor()
+    test_wl_dialog_results_filter()
+    test_wl_dialog_results_filter_dependency_parser()
+    test_wl_dialog_results_filter_wordlist_generator()
+    test_wl_dialog_results_filter_collocation_extractor()

@@ -21,7 +21,7 @@ from wordless.wl_results import wl_results_search
 
 main = wl_test_init.Wl_Test_Main()
 
-def test_dialog_results_search():
+def test_wl_dialog_results_search():
     table = wl_test_init.Wl_Test_Table(main, tab = 'dependency_parser')
     table.settings['file_area']['files_open'] = [{'selected': True, 'lang': 'test'}]
 
@@ -48,4 +48,4 @@ def test_dialog_results_search():
     dialog_results_search.clr_history()
 
 if __name__ == '__main__':
-    test_dialog_results_search()
+    test_wl_dialog_results_search()

@@ -16,10 +16,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from PyQt5.QtCore import QCoreApplication
-from PyQt5.QtWidgets import QMessageBox
-
-_tr = QCoreApplication.translate
+from PyQt5.QtWidgets import (
+    QApplication,
+    QLabel,
+    QMessageBox,
+    QStyle
+)
 
 class Wl_Msg_Box(QMessageBox):
     def __init__(self, main, icon, title, text):
@@ -28,7 +30,7 @@ class Wl_Msg_Box(QMessageBox):
             title,
             f'''
                 {main.settings_global['styles']['style_dialog']}
-                <body>
+                <body align="justify">
                     {text}
                 </body>
             ''',
@@ -64,12 +66,29 @@ def wl_msg_box_question(main, title, text, default_to_yes = False):
         title,
         f'''
             {main.settings_global['styles']['style_dialog']}
-            <body>
-                {text}
-            </body>
+            <body align="justify">{text}</body>
         ''',
         buttons = QMessageBox.Yes | QMessageBox.No,
         defaultButton = default_button
     )
 
     return bool(reply == QMessageBox.Yes)
+
+def get_msg_box_icon(icon_type = 'information'):
+    style = QApplication.style()
+    size = style.pixelMetric(QStyle.PM_MessageBoxIconSize, None, None)
+
+    match icon_type:
+        case 'information':
+            icon = style.standardIcon(QStyle.SP_MessageBoxInformation, None, None)
+        case 'warning':
+            icon = style.standardIcon(QStyle.SP_MessageBoxWarning, None, None)
+        case 'critical':
+            icon = style.standardIcon(QStyle.SP_MessageBoxCritical, None, None)
+        case 'question':
+            icon = style.standardIcon(QStyle.SP_MessageBoxQuestion, None, None)
+
+    label = QLabel('')
+    label.setPixmap(icon.pixmap(size, size))
+
+    return label

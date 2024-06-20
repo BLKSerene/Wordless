@@ -18,7 +18,11 @@
 
 from PyQt5.QtCore import QCoreApplication, Qt
 from PyQt5.QtWidgets import (
-    QCheckBox, QComboBox, QDoubleSpinBox, QFontComboBox, QLabel,
+    QCheckBox,
+    QComboBox,
+    QDoubleSpinBox,
+    QFontComboBox,
+    QLabel,
     QSpinBox
 )
 

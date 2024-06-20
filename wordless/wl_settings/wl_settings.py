@@ -22,8 +22,13 @@ import traceback
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
 from PyQt5.QtGui import QStandardItem, QStandardItemModel
 from PyQt5.QtWidgets import (
-    QAbstractItemView, QHeaderView, QMessageBox, QPushButton,
-    QStackedWidget, QTreeView, QWidget
+    QAbstractItemView,
+    QHeaderView,
+    QMessageBox,
+    QPushButton,
+    QStackedWidget,
+    QTreeView,
+    QWidget
 )
 
 from wordless.wl_checks import wl_checks_misc, wl_checks_work_area
@@ -40,8 +45,7 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
             main,
             title = _tr('Wl_Settings', 'Settings'),
             width = 1024,
-            height = 768,
-            resizable = True
+            height = 768
         )
 
         # Avoid circular imports

@@ -24,7 +24,7 @@ main = wl_test_init.Wl_Test_Main()
 def test_wl_dialog():
     wl_dialog = wl_dialogs.Wl_Dialog(main, title = 'test')
     wl_dialog.open()
-    wl_dialog.set_fixed_height()
+    wl_dialog.adjust_size()
     wl_dialog.move_to_center()
 
     wl_dialog = wl_dialogs.Wl_Dialog(main, title = 'test', resizable = True)

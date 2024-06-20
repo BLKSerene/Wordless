@@ -45,7 +45,12 @@ import sudachipy
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_nlp import wl_sentence_tokenization
-from wordless.wl_utils import wl_conversion, wl_misc, wl_paths, wl_threading
+from wordless.wl_utils import (
+    wl_conversion,
+    wl_misc,
+    wl_paths,
+    wl_threading
+)
 
 LANGS_WITHOUT_SPACES = ['mya', 'zho_cn', 'zho_tw', 'khm', 'lao', 'jpn', 'tha', 'bod']
 

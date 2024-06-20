@@ -21,15 +21,26 @@ import copy
 from PyQt5.QtCore import pyqtSignal, Qt
 from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import (
-    QCheckBox, QGroupBox, QLabel, QPlainTextEdit, QPushButton,
-    QStackedWidget, QTextEdit
+    QCheckBox,
+    QGroupBox,
+    QLabel,
+    QPlainTextEdit,
+    QPushButton,
+    QStackedWidget,
+    QTextEdit
 )
 
 from wordless.wl_dialogs import wl_dialogs_misc, wl_msg_boxes
 from wordless.wl_nlp import wl_nlp_utils, wl_pos_tagging
 from wordless.wl_settings import wl_settings
 from wordless.wl_utils import wl_conversion, wl_threading
-from wordless.wl_widgets import wl_boxes, wl_item_delegates, wl_labels, wl_layouts, wl_tables
+from wordless.wl_widgets import (
+    wl_boxes,
+    wl_item_delegates,
+    wl_labels,
+    wl_layouts,
+    wl_tables
+)
 
 # Part-of-speech Tagging
 class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):

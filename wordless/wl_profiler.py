@@ -25,10 +25,15 @@ import traceback
 import numpy
 import scipy
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
-from PyQt5.QtWidgets import QDialog, QGroupBox, QPushButton, QStackedWidget, QTabWidget
+from PyQt5.QtWidgets import (
+    QGroupBox,
+    QPushButton,
+    QStackedWidget,
+    QTabWidget
+)
 
 from wordless.wl_checks import wl_checks_tokens, wl_checks_work_area
-from wordless.wl_dialogs import wl_dialogs_misc
+from wordless.wl_dialogs import wl_dialogs_misc, wl_msg_boxes
 from wordless.wl_measures import wl_measures_lexical_density_diversity, wl_measures_misc, wl_measures_readability
 from wordless.wl_nlp import wl_texts, wl_token_processing
 from wordless.wl_utils import wl_misc, wl_threading
@@ -301,10 +306,15 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
 
         # Ask for confirmation if results have not been exported
         if needs_confirm:
-            dialog_clr_table = wl_dialogs_misc.Wl_Dialog_Clr_All_Tables(self.main)
-            result = dialog_clr_table.exec_()
-
-            confirmed = bool(result == QDialog.Accepted)
+            confirmed = wl_msg_boxes.wl_msg_box_question(
+                self.main,
+                title = self.tr('Clear All Tables'),
+                text = self.tr('''
+                    <div>
+                        The results in some of the tables have yet been exported. Do you really want to clear all tables?
+                    </div>
+                ''')
+            )
 
         if confirmed:
             for table in self.tables:

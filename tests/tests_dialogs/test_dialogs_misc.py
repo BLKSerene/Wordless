@@ -33,12 +33,6 @@ def test_wl_dialog_progress_process_data():
 def test_wl_dialog_progress_download_model():
     wl_dialogs_misc.Wl_Dialog_Progress_Download_Model(main).open()
 
-def test_wl_dialog_clr_table():
-    wl_dialogs_misc.Wl_Dialog_Clr_Table(main).open()
-
-def test_wl_dialog_clr_all_tables():
-    wl_dialogs_misc.Wl_Dialog_Clr_All_Tables(main).open()
-
 def test_wl_dialog_restart_required():
     wl_dialogs_misc.Wl_Dialog_Restart_Required(main).open()
 
@@ -46,6 +40,4 @@ if __name__ == '__main__':
     test_wl_dialog_progress()
     test_wl_dialog_progress_process_data()
     test_wl_dialog_progress_download_model()
-    test_wl_dialog_clr_table()
-    test_wl_dialog_clr_all_tables()
     test_wl_dialog_restart_required()

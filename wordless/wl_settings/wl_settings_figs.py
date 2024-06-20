@@ -25,7 +25,13 @@ import matplotlib.pyplot
 import networkx
 from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtGui import QFont, QPixmap
-from PyQt5.QtWidgets import QCheckBox, QDesktopWidget, QGroupBox, QLabel, QLineEdit
+from PyQt5.QtWidgets import (
+    QCheckBox,
+    QDesktopWidget,
+    QGroupBox,
+    QLabel,
+    QLineEdit
+)
 
 from wordless.wl_settings import wl_settings
 from wordless.wl_utils import wl_paths

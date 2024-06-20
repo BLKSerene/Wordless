@@ -30,9 +30,19 @@ from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
 from wordless.wl_measures import wl_measure_utils
-from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_texts, wl_token_processing
+from wordless.wl_nlp import (
+    wl_matching,
+    wl_nlp_utils,
+    wl_texts,
+    wl_token_processing
+)
 from wordless.wl_utils import wl_misc, wl_sorting, wl_threading
-from wordless.wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_widgets
+from wordless.wl_widgets import (
+    wl_boxes,
+    wl_layouts,
+    wl_tables,
+    wl_widgets
+)
 
 _tr = QCoreApplication.translate
 
