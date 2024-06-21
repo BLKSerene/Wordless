@@ -69,8 +69,8 @@ jobs:
   # macOS
   macOS:
     macos:
-      xcode: 14.1.0
-    resource_class: macos.x86.medium.gen2
+      xcode: 14.2.0
+    resource_class: macos.m1.medium.gen1
 
     steps:
       - checkout
@@ -115,7 +115,7 @@ jobs:
   # Linux
   Linux:
     machine:
-      image: ubuntu-2004:2022.10.1
+      image: ubuntu-2004:2023.07.1
     resource_class: medium
 
     steps:
@@ -130,10 +130,10 @@ jobs:
 
       - run:
           command: |
-            pip3.10 install --upgrade pip setuptools
-            pip3.10 install --requirement requirements/requirements_tests.txt
+            pip3.11 install --upgrade pip setuptools
+            pip3.11 install --requirement requirements/requirements_tests.txt
             # Download models and data files
-            python3.10 utils/wl_downloader_ci.py
+            python3.11 utils/wl_downloader_ci.py
           name: Install dependencies
 
       # Run tests
@@ -144,15 +144,15 @@ jobs:
             export QT_QPA_PLATFORM=offscreen
 
             # Use "python -m pytest" instead to fix "pytest: command not found"
-            python3.10 -m pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
-            python3.10 -m pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
+            python3.11 -m pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
+            python3.11 -m pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
 
-            python3.10 -m pytest tests/tests_nlp/test_word_tokenization.py
-            python3.10 -m pytest tests/tests_nlp/test_pos_tagging.py
-            python3.10 -m pytest tests/tests_nlp/test_lemmatization.py
+            python3.11 -m pytest tests/tests_nlp/test_word_tokenization.py
+            python3.11 -m pytest tests/tests_nlp/test_pos_tagging.py
+            python3.11 -m pytest tests/tests_nlp/test_lemmatization.py
 
-            python3.10 -m pytest tests/tests_nlp/ --ignore=tests/tests_nlp/tests_spacy --ignore=tests/tests_nlp/tests_stanza --ignore=tests/tests_nlp/test_word_tokenization.py --ignore=tests/tests_nlp/test_pos_tagging.py --ignore=tests/tests_nlp/test_lemmatization.py
-            python3.10 -m pytest --ignore=tests/tests_nlp --ignore=tests/tests_settings
+            python3.11 -m pytest tests/tests_nlp/ --ignore=tests/tests_nlp/tests_spacy --ignore=tests/tests_nlp/tests_stanza --ignore=tests/tests_nlp/test_word_tokenization.py --ignore=tests/tests_nlp/test_pos_tagging.py --ignore=tests/tests_nlp/test_lemmatization.py
+            python3.11 -m pytest --ignore=tests/tests_nlp --ignore=tests/tests_settings
           name: Run tests
 
       # Save cache
@@ -165,7 +165,7 @@ jobs:
   # Docker
   Docker:
     docker:
-      - image: cimg/python:3.10
+      - image: cimg/python:3.11
     resource_class: large
 
     steps:
