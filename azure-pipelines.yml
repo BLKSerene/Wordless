@@ -29,7 +29,7 @@ jobs:
     steps:
       - task: UsePythonVersion@0
         inputs:
-          versionSpec: '3.10'
+          versionSpec: '3.11'
           architecture: 'x64'
 
       - task: Cache@2
@@ -68,7 +68,7 @@ jobs:
     steps:
       - task: UsePythonVersion@0
         inputs:
-          versionSpec: '3.10'
+          versionSpec: '3.11'
 
       - task: Cache@2
         inputs:
@@ -106,7 +106,7 @@ jobs:
     steps:
       - task: UsePythonVersion@0
         inputs:
-          versionSpec: '3.10'
+          versionSpec: '3.11'
 
       - task: Cache@2
         inputs:
@@ -117,10 +117,10 @@ jobs:
         displayName: Cache pip packages
 
       - script: |
-          pip3.10 install --upgrade pip setuptools
-          pip3.10 install --requirement requirements/requirements_tests.txt
+          pip3.11 install --upgrade pip setuptools
+          pip3.11 install --requirement requirements/requirements_tests.txt
           # Download models and data files
-          python3.10 utils/wl_downloader_ci.py
+          python3.11 utils/wl_downloader_ci.py
         displayName: 'Install dependencies'
 
       - script: |
