@@ -220,6 +220,7 @@ class Wl_Main(QMainWindow):
         self.threads_check_updates = []
         # Version number
         self.ver = wl_misc.get_wl_ver()
+        self.copyright_year = '2024'
         # Email
         self.email = 'blkserene@gmail.com'
         self.email_html = '<a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a>'
@@ -811,11 +812,11 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info_Copy):
 
         if settings['select_citation_sys'].startswith('APA'):
             self.set_info(
-                f'Ye, L. (2023). <i>Wordless</i> (Version {self.main.ver}) [Computer software]. Github. https://github.com/BLKSerene/Wordless'
+                f'Ye, L. ({self.main.copyright_year}). <i>Wordless</i> (Version {self.main.ver}) [Computer software]. Github. https://github.com/BLKSerene/Wordless'
             )
         elif settings['select_citation_sys'].startswith('MLA'):
             self.set_info(
-                f'Ye Lei. <i>Wordless</i>, version {self.main.ver}, 2023. <i>Github</i>, https://github.com/BLKSerene/Wordless.'
+                f'Ye Lei. <i>Wordless</i>, version {self.main.ver}, {self.main.copyright_year}. <i>Github</i>, https://github.com/BLKSerene/Wordless.'
             )
 
 class Wl_Dialog_Donating(wl_dialogs.Wl_Dialog_Info):
@@ -1232,11 +1233,11 @@ class Wl_Dialog_About(wl_dialogs.Wl_Dialog_Info):
                 </div>
                 <hr>
                 <div align="center">
-                    Copyright (C) 2018-2023&nbsp;&nbsp;Ye Lei (叶磊)<br>
+                    Copyright (C) 2018-{}&nbsp;&nbsp;Ye Lei (叶磊)<br>
                     Licensed Under GNU GPLv3<br>
                     All Other Rights Reserved
                 </div>
-            '''),
+            ''').format(self.main.copyright_year),
             self
         )
 

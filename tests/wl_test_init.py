@@ -57,6 +57,7 @@ class Wl_Test_Main(QMainWindow):
 
         self.threads_check_updates = []
         self.ver = wl_misc.get_wl_ver()
+        self.copyright_year = '2000'
         self.email = 'blkserene@gmail.com'
         self.email_html = '<a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a>'
 
