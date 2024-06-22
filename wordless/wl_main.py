@@ -66,7 +66,6 @@ from PyQt5.QtWidgets import (
     QMainWindow,
     QPushButton,
     QSplashScreen,
-    QTabWidget,
     QWidget
 )
 import pythainlp
@@ -493,7 +492,8 @@ class Wl_Main(QMainWindow):
         Wl_Dialog_About(self).open()
 
     def init_central_widget(self):
-        self.tabs_file_area = QTabWidget(self)
+        self.tabs_file_area = wl_layouts.Wl_Tab_Widget(self)
+
         self.wl_file_area = wl_file_area.Wrapper_File_Area(self)
         self.wl_file_area_ref = wl_file_area.Wrapper_File_Area(self, file_type = 'ref')
 
@@ -528,7 +528,7 @@ class Wl_Main(QMainWindow):
         self.setCentralWidget(self.splitter_central_widget)
 
     def init_work_area(self):
-        self.wl_work_area = QTabWidget(self)
+        self.wl_work_area = wl_layouts.Wl_Tab_Widget(self)
 
         self.wl_work_area.addTab(
             wl_profiler.Wrapper_Profiler(self),

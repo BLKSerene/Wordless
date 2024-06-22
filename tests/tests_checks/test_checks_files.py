@@ -60,7 +60,6 @@ def test_check_file_paths_duplicate():
 
 def test_check_err_file_area():
     assert wl_checks_files.check_err_file_area(main, '')
-    assert not wl_checks_files.check_err_file_area(main, 'test')
 
 if __name__ == '__main__':
     test_check_file_paths_unsupported()

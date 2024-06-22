@@ -23,7 +23,7 @@ import zipfile
 
 import requests
 
-PYINSTALLER_VER = '6.0.0'
+PYINSTALLER_VER = '6.8.0'
 
 # Fetch codes
 print(f'Downloading PyInstaller {PYINSTALLER_VER}... ', end = '')
@@ -80,8 +80,8 @@ with open('PyInstaller/utils/osx.py', 'r+', encoding = 'utf_8') as f:
 
     # Skip install_name_tool
     codes = codes.replace(
-        'cmd_args = ["install_name_tool", *install_name_tool_args, filename]\n    p = subprocess.run(cmd_args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)\n    if p.returncode:',
-        'cmd_args = ["install_name_tool", *install_name_tool_args, filename]\n    p = subprocess.run(cmd_args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)\n    if p.returncode and False:'
+        '''cmd_args = ["install_name_tool", *install_name_tool_args, filename]\n    p = subprocess.run(cmd_args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, encoding='utf-8')\n    if p.returncode:''',
+        '''cmd_args = ["install_name_tool", *install_name_tool_args, filename]\n    p = subprocess.run(cmd_args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, encoding='utf-8')\n    if p.returncode and False:'''
     )
 
     f.seek(0)
