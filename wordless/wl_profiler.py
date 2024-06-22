@@ -28,8 +28,7 @@ from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
 from PyQt5.QtWidgets import (
     QGroupBox,
     QPushButton,
-    QStackedWidget,
-    QTabWidget
+    QStackedWidget
 )
 
 from wordless.wl_checks import wl_checks_tokens, wl_checks_work_area
@@ -78,7 +77,7 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         self.button_generate_all_tables.clicked.connect(lambda: self.generate_all_tables()) # pylint: disable=unnecessary-lambda
         self.button_clr_all_tables.clicked.connect(self.clr_all_tables)
 
-        self.tabs_profiler = QTabWidget(self)
+        self.tabs_profiler = wl_layouts.Wl_Tab_Widget(self)
         self.tabs_profiler.addTab(self.table_profiler_readability, self.tr('Readability'))
         self.tabs_profiler.addTab(self.table_profiler_counts, self.tr('Counts'))
         self.tabs_profiler.addTab(self.table_profiler_lexical_density_diversity, self.tr('Lexical Density/Diversity'))

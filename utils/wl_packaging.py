@@ -39,7 +39,7 @@ if is_windows:
 elif is_macos:
     subprocess.run(['python3', '-m', 'PyInstaller', '-y', '--clean', 'utils/wl_packaging.spec'], check = True)
 elif is_linux:
-    subprocess.run(['python3.10', '-m', 'PyInstaller', '-y', '--clean', 'utils/wl_packaging.spec'], check = True)
+    subprocess.run(['python3.11', '-m', 'PyInstaller', '-y', '--clean', 'utils/wl_packaging.spec'], check = True)
 
 # Create folders
 if is_windows or is_linux:
@@ -56,7 +56,7 @@ if is_linux:
     os.remove('dist/Wordless/libs/libstdc++.so.6')
 
     # Generate .desktop file
-    subprocess.run(['python3.10', '-m', 'PyInstaller', '-y', '--clean', 'linux_create_shortcut.py', '--contents-directory', 'libs'], check = True)
+    subprocess.run(['python3.11', '-m', 'PyInstaller', '-y', '--clean', 'utils/linux_create_shortcut.py', '--contents-directory', 'libs'], check = True)
     shutil.copyfile('dist/linux_create_shortcut/linux_create_shortcut', 'dist/Wordless/Wordless - Create Shortcut')
     subprocess.run(['chmod', '+x', 'dist/Wordless/Wordless - Create Shortcut'], check = True)
 

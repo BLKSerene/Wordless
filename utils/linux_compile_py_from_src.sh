@@ -28,7 +28,7 @@ sudo apt-get -y build-dep python3
 sudo apt-get -y install build-essential gdb lcov pkg-config libbz2-dev libffi-dev libgdbm-dev libgdbm-compat-dev liblzma-dev libncurses5-dev libreadline6-dev libsqlite3-dev libssl-dev lzma lzma-dev tk-dev uuid-dev zlib1g-dev
 
 # Compile Python from source
-PY_VER=3.10.13
+PY_VER=3.11.9
 PY_PACKAGE="Python-$PY_VER.tgz"
 PY_FOLDER="Python-$PY_VER"
 
@@ -51,10 +51,9 @@ cd ..
 sudo ldconfig
 
 # Install 3rd-party libraries
-python3.10 -m pip install --upgrade pip setuptools
-pip3.10 install -r requirements_dev.txt
-pip3.10 install -r requirements_no_deps.txt --no-deps
-pip3.10 cache purge
+python3.11 -m pip install --upgrade pip setuptools
+pip3.11 install -r requirements_dev.txt
+pip3.11 cache purge
 
 # Fix libxcb-xinerama.so
 sudo apt-get install libxcb-xinerama0

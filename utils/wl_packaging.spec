@@ -78,7 +78,7 @@ datas.extend([
     ('../doc/trs/zho_cn/ACKS.md', 'doc/trs/zho_cn'),
     ('../doc/trs/zho_tw/ACKS.md', 'doc/trs/zho_tw'),
     ('../CHANGELOG.md', '.'),
-    ('../LICENSE.txt', '.'),
+    ('../LICENSE', '.'),
     ('../VERSION', '.')
 ])
 
@@ -93,14 +93,14 @@ hiddenimports = [
 ]
 
 # When using uk_core_news_trf the first time after downloading the model using pip, pymorphy3's logging function would be overwritten by pip's and assertion would be raised during logging, so disable logging temporarily and restore logging after packaging completes
-with open(pymorphy3.opencorpora_dict.wrapper.__file__, 'r+', encoding = 'utf_8') as f:
+with open(pymorphy3.opencorpora_dict.wrapper.__file__, 'r', encoding = 'utf_8') as f:
     pymorphy3_opencorpora_dict_wrapper = f.read()
     pymorphy3_opencorpora_dict_wrapper = pymorphy3_opencorpora_dict_wrapper.replace(
         'logger.info("format: %(format_version)s, revision: %(source_revision)s, updated: %(compiled_at)s", self._data.meta)',
         '# logger.info("format: %(format_version)s, revision: %(source_revision)s, updated: %(compiled_at)s", self._data.meta)'
     )
 
-    f.seek(0)
+with open(pymorphy3.opencorpora_dict.wrapper.__file__, 'w', encoding = 'utf_8') as f:
     f.write(pymorphy3_opencorpora_dict_wrapper)
 
 # Icons
@@ -161,7 +161,7 @@ coll = COLLECT(
 # Bundle application on macOS
 # Reference: https://pyinstaller.org/en/stable/spec-files.html#spec-file-options-for-a-macos-bundle
 if is_macos:
-    wl_ver = wl_misc.get_wl_ver()
+    wl_ver = str(wl_misc.get_wl_ver())
 
     app = BUNDLE(
         coll,
@@ -190,12 +190,12 @@ if is_macos:
     )
 
 # Restore logging in pymorphy3
-with open(pymorphy3.opencorpora_dict.wrapper.__file__, 'r+', encoding = 'utf_8') as f:
+with open(pymorphy3.opencorpora_dict.wrapper.__file__, 'r', encoding = 'utf_8') as f:
     pymorphy3_opencorpora_dict_wrapper = f.read()
     pymorphy3_opencorpora_dict_wrapper = pymorphy3_opencorpora_dict_wrapper.replace(
         '# logger.info("format: %(format_version)s, revision: %(source_revision)s, updated: %(compiled_at)s", self._data.meta)',
         'logger.info("format: %(format_version)s, revision: %(source_revision)s, updated: %(compiled_at)s", self._data.meta)'
     )
 
-    f.seek(0)
+with open(pymorphy3.opencorpora_dict.wrapper.__file__, 'w', encoding = 'utf_8') as f:
     f.write(pymorphy3_opencorpora_dict_wrapper)

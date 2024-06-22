@@ -28,11 +28,14 @@ from PyQt5.QtWidgets import (
     QStackedWidget,
     QStyle,
     QStyleOption,
+    QTabWidget,
     QWidget
 )
 
 from wordless.wl_utils import wl_misc
 from wordless.wl_widgets import wl_buttons
+
+is_windows, is_macos, is_linux = wl_misc.check_os()
 
 class Wl_Layout(QGridLayout):
     def __init__(self):
@@ -102,6 +105,21 @@ class Wl_Wrapper_File_Area(Wl_Wrapper):
         super().__init__(parent)
 
         self.scroll_area_settings.hide()
+
+class Wl_Tab_Widget(QTabWidget):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        # Fix invisible white text color in selected tabs on newer macOSes
+        if is_macos:
+            self.setStyleSheet('''
+                QTabBar::tab:selected {
+                    border: 1px solid #D9D9D9;
+                    padding: 0 5px;
+                    background-color: #469AFC;
+                    color: #FFF;
+                }
+            ''')
 
 class Wl_Splitter(QSplitter):
     def __init__(self, orientation, parent):
