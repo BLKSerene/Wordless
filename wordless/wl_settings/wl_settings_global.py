@@ -35,6 +35,7 @@ SETTINGS_GLOBAL = {
         _tr('wl_settings_global', 'Albanian'): ['sqi', 'sq'],
         _tr('wl_settings_global', 'Amharic'): ['amh', 'am'],
         _tr('wl_settings_global', 'Arabic'): ['ara', 'ar'],
+        _tr('wl_settings_global', 'Armenian (Classical)'): ['xcl', 'xcl'],
         _tr('wl_settings_global', 'Armenian (Eastern)'): ['hye', 'hy'],
         _tr('wl_settings_global', 'Armenian (Western)'): ['hyw', 'hyw'],
         _tr('wl_settings_global', 'Assamese'): ['asm', 'as'],
@@ -57,6 +58,7 @@ SETTINGS_GLOBAL = {
         _tr('wl_settings_global', 'Danish'): ['dan', 'da'],
         _tr('wl_settings_global', 'Dutch'): ['nld', 'nl'],
         _tr('wl_settings_global', 'English (Middle)'): ['enm', 'enm'],
+        _tr('wl_settings_global', 'English (Old)'): ['ang', 'ang'],
         _tr('wl_settings_global', 'English (United Kingdom)'): ['eng_gb', 'en_gb'],
         _tr('wl_settings_global', 'English (United States)'): ['eng_us', 'en_us'],
         _tr('wl_settings_global', 'Erzya'): ['myv', 'myv'],
@@ -451,6 +453,7 @@ SETTINGS_GLOBAL = {
 
             _tr('wl_settings_global', 'Stanza - Afrikaans sentence tokenizer'): 'stanza_afr',
             _tr('wl_settings_global', 'Stanza - Arabic sentence tokenizer'): 'stanza_ara',
+            _tr('wl_settings_global', 'Stanza - Armenian (Classical) sentence tokenizer'): 'stanza_xcl',
             _tr('wl_settings_global', 'Stanza - Armenian (Eastern) sentence tokenizer'): 'stanza_hye',
             _tr('wl_settings_global', 'Stanza - Armenian (Western) sentence tokenizer'): 'stanza_hyw',
             _tr('wl_settings_global', 'Stanza - Basque sentence tokenizer'): 'stanza_eus',
@@ -469,6 +472,7 @@ SETTINGS_GLOBAL = {
             _tr('wl_settings_global', 'Stanza - Danish sentence tokenizer'): 'stanza_dan',
             _tr('wl_settings_global', 'Stanza - Dutch sentence tokenizer'): 'stanza_nld',
             _tr('wl_settings_global', 'Stanza - English sentence tokenizer'): 'stanza_eng',
+            _tr('wl_settings_global', 'Stanza - English (Old) sentence tokenizer'): 'stanza_ang',
             _tr('wl_settings_global', 'Stanza - Erzya sentence tokenizer'): 'stanza_myv',
             _tr('wl_settings_global', 'Stanza - Estonian sentence tokenizer'): 'stanza_est',
             _tr('wl_settings_global', 'Stanza - Faroese sentence tokenizer'): 'stanza_fao',
@@ -631,6 +635,7 @@ SETTINGS_GLOBAL = {
 
             _tr('wl_settings_global', 'Stanza - Afrikaans word tokenizer'): 'stanza_afr',
             _tr('wl_settings_global', 'Stanza - Arabic word tokenizer'): 'stanza_ara',
+            _tr('wl_settings_global', 'Stanza - Armenian (Classical) word tokenizer'): 'stanza_xcl',
             _tr('wl_settings_global', 'Stanza - Armenian (Eastern) word tokenizer'): 'stanza_hye',
             _tr('wl_settings_global', 'Stanza - Armenian (Western) word tokenizer'): 'stanza_hyw',
             _tr('wl_settings_global', 'Stanza - Basque word tokenizer'): 'stanza_eus',
@@ -649,6 +654,7 @@ SETTINGS_GLOBAL = {
             _tr('wl_settings_global', 'Stanza - Danish word tokenizer'): 'stanza_dan',
             _tr('wl_settings_global', 'Stanza - Dutch word tokenizer'): 'stanza_nld',
             _tr('wl_settings_global', 'Stanza - English word tokenizer'): 'stanza_eng',
+            _tr('wl_settings_global', 'Stanza - English (Old) word tokenizer'): 'stanza_ang',
             _tr('wl_settings_global', 'Stanza - Erzya word tokenizer'): 'stanza_myv',
             _tr('wl_settings_global', 'Stanza - Estonian word tokenizer'): 'stanza_est',
             _tr('wl_settings_global', 'Stanza - Faroese word tokenizer'): 'stanza_fao',
@@ -818,6 +824,7 @@ SETTINGS_GLOBAL = {
 
             _tr('wl_settings_global', 'Stanza - Afrikaans part-of-speech tagger'): 'stanza_afr',
             _tr('wl_settings_global', 'Stanza - Arabic part-of-speech tagger'): 'stanza_ara',
+            _tr('wl_settings_global', 'Stanza - Armenian (Classical) part-of-speech tagger'): 'stanza_xcl',
             _tr('wl_settings_global', 'Stanza - Armenian (Eastern) part-of-speech tagger'): 'stanza_hye',
             _tr('wl_settings_global', 'Stanza - Armenian (Western) part-of-speech tagger'): 'stanza_hyw',
             _tr('wl_settings_global', 'Stanza - Basque part-of-speech tagger'): 'stanza_eus',
@@ -835,6 +842,7 @@ SETTINGS_GLOBAL = {
             _tr('wl_settings_global', 'Stanza - Danish part-of-speech tagger'): 'stanza_dan',
             _tr('wl_settings_global', 'Stanza - Dutch part-of-speech tagger'): 'stanza_nld',
             _tr('wl_settings_global', 'Stanza - English part-of-speech tagger'): 'stanza_eng',
+            _tr('wl_settings_global', 'Stanza - English (Old) part-of-speech tagger'): 'stanza_ang',
             _tr('wl_settings_global', 'Stanza - Erzya part-of-speech tagger'): 'stanza_myv',
             _tr('wl_settings_global', 'Stanza - Estonian part-of-speech tagger'): 'stanza_est',
             _tr('wl_settings_global', 'Stanza - Faroese part-of-speech tagger'): 'stanza_fao',
@@ -993,6 +1001,7 @@ SETTINGS_GLOBAL = {
 
             _tr('wl_settings_global', 'Stanza - Afrikaans lemmatizer'): 'stanza_afr',
             _tr('wl_settings_global', 'Stanza - Arabic lemmatizer'): 'stanza_ara',
+            _tr('wl_settings_global', 'Stanza - Armenian (Classical) lemmatizer'): 'stanza_xcl',
             _tr('wl_settings_global', 'Stanza - Armenian (Eastern) lemmatizer'): 'stanza_hye',
             _tr('wl_settings_global', 'Stanza - Armenian (Western) lemmatizer'): 'stanza_hyw',
             _tr('wl_settings_global', 'Stanza - Basque lemmatizer'): 'stanza_eus',
@@ -1010,6 +1019,7 @@ SETTINGS_GLOBAL = {
             _tr('wl_settings_global', 'Stanza - Danish lemmatizer'): 'stanza_dan',
             _tr('wl_settings_global', 'Stanza - Dutch lemmatizer'): 'stanza_nld',
             _tr('wl_settings_global', 'Stanza - English lemmatizer'): 'stanza_eng',
+            _tr('wl_settings_global', 'Stanza - English (Old) lemmatizer'): 'stanza_ang',
             _tr('wl_settings_global', 'Stanza - Erzya lemmatizer'): 'stanza_myv',
             _tr('wl_settings_global', 'Stanza - Estonian lemmatizer'): 'stanza_est',
             _tr('wl_settings_global', 'Stanza - Finnish lemmatizer'): 'stanza_fin',
@@ -1135,6 +1145,7 @@ SETTINGS_GLOBAL = {
 
             _tr('wl_settings_global', 'Stanza - Afrikaans dependency parser'): 'stanza_afr',
             _tr('wl_settings_global', 'Stanza - Arabic dependency parser'): 'stanza_ara',
+            _tr('wl_settings_global', 'Stanza - Armenian (Classical) dependency parser'): 'stanza_xcl',
             _tr('wl_settings_global', 'Stanza - Armenian (Eastern) dependency parser'): 'stanza_hye',
             _tr('wl_settings_global', 'Stanza - Armenian (Western) dependency parser'): 'stanza_hyw',
             _tr('wl_settings_global', 'Stanza - Basque dependency parser'): 'stanza_eus',
@@ -1152,6 +1163,7 @@ SETTINGS_GLOBAL = {
             _tr('wl_settings_global', 'Stanza - Danish dependency parser'): 'stanza_dan',
             _tr('wl_settings_global', 'Stanza - Dutch dependency parser'): 'stanza_nld',
             _tr('wl_settings_global', 'Stanza - English dependency parser'): 'stanza_eng',
+            _tr('wl_settings_global', 'Stanza - English (Old) dependency parser'): 'stanza_ang',
             _tr('wl_settings_global', 'Stanza - Erzya dependency parser'): 'stanza_myv',
             _tr('wl_settings_global', 'Stanza - Estonian dependency parser'): 'stanza_est',
             _tr('wl_settings_global', 'Stanza - Faroese dependency parser'): 'stanza_fao',
@@ -1329,6 +1341,10 @@ SETTINGS_GLOBAL = {
             'stanza_ara'
         ],
 
+        'xcl': [
+            'spacy_sentencizer',
+            'stanza_xcl'
+        ],
         'hye': [
             'spacy_sentencizer',
             'stanza_hye'
@@ -1422,6 +1438,10 @@ SETTINGS_GLOBAL = {
             'stanza_nld'
         ],
 
+        'ang': [
+            'spacy_sentencizer',
+            'stanza_ang'
+        ],
         'eng_gb': [
             'nltk_punkt_eng',
             'spacy_dependency_parser_eng',
@@ -1845,6 +1865,10 @@ SETTINGS_GLOBAL = {
             'stanza_ara'
         ],
 
+        'xcl': [
+            'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+            'stanza_xcl'
+        ],
         'hye': [
             'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
             'spacy_hye',
@@ -1952,6 +1976,10 @@ SETTINGS_GLOBAL = {
             'stanza_nld'
         ],
 
+        'ang': [
+            'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+            'stanza_ang'
+        ],
         'eng_gb': [
             'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
             'sacremoses_moses',
@@ -2539,6 +2567,7 @@ SETTINGS_GLOBAL = {
     'pos_taggers': {
         'afr': ['stanza_afr'],
         'ara': ['stanza_ara'],
+        'xcl': ['stanza_xcl'],
         'hye': ['stanza_hye'],
         'hyw': ['stanza_hyw'],
         'eus': ['stanza_eus'],
@@ -2581,6 +2610,7 @@ SETTINGS_GLOBAL = {
             'stanza_nld'
         ],
 
+        'ang': ['stanza_ang'],
         'eng_gb': [
             'nltk_perceptron_eng',
             'spacy_eng',
@@ -2778,6 +2808,7 @@ SETTINGS_GLOBAL = {
         'sqi': ['simplemma_sqi'],
         'ara': ['stanza_ara'],
 
+        'xcl': ['stanza_xcl'],
         'hye': [
             'simplemma_hye',
             'stanza_hye'
@@ -2833,6 +2864,7 @@ SETTINGS_GLOBAL = {
         ],
 
         'enm': ['simplemma_enm'],
+        'ang': ['stanza_ang'],
         'eng_gb': [
             'nltk_wordnet',
             'simplemma_eng',
@@ -3165,6 +3197,7 @@ SETTINGS_GLOBAL = {
     'dependency_parsers': {
         'afr': ['stanza_afr'],
         'ara': ['stanza_ara'],
+        'xcl': ['stanza_xcl'],
         'hye': ['stanza_hye'],
         'hyw': ['stanza_hyw'],
         'eus': ['stanza_eus'],
@@ -3207,6 +3240,7 @@ SETTINGS_GLOBAL = {
             'stanza_nld'
         ],
 
+        'ang': ['stanza_ang'],
         'eng_gb': [
             'spacy_eng',
             'stanza_eng'

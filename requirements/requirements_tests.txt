@@ -28,7 +28,7 @@ pyphen == 0.15.0
 pythainlp == 5.0.4
 sacremoses == 0.1.1
 simplemma == 1.0.0
-stanza == 1.7.0
+stanza == 1.8.2
 underthesea == 6.8.4
 vaderSentiment == 3.3.2
 

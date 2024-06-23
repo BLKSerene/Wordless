@@ -92,7 +92,7 @@ def wl_test_sentence_tokenize(lang, results):
     print(f'{sentences}\n')
 
     # The count of sentences should be more than 1
-    if lang in ['fro', 'kaz', 'pcm', 'qpm']:
+    if lang in ['ara', 'fro', 'kaz', 'pcm', 'qpm']:
         assert len(sentences) == 1
     else:
         assert len(sentences) > 1
@@ -135,8 +135,9 @@ def wl_test_lemmatize(lang, test_sentence, tokens, results):
     test_lemmatization.wl_test_lemmatize_models(
         lang, lemmatizer, test_sentence, tokens, results,
         lang_exceptions = [
-            'bul', 'chu', 'cop', 'est', 'got', 'grc', 'ell', 'hin', 'isl', 'lij',
-            'lit', 'glv', 'pcm', 'pol', 'orv', 'sme', 'san', 'tur', 'cym'
+            'xcl', 'bul', 'chu', 'cop', 'ang', 'est', 'got', 'grc', 'ell', 'hin',
+            'isl', 'lij', 'lit', 'glv', 'pcm', 'pol', 'orv', 'sme', 'san', 'tur',
+            'cym'
         ]
     )
 

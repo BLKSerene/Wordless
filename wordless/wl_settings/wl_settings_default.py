@@ -50,7 +50,8 @@ from wordless.wl_tagsets import (
     wl_tagset_tha_orchid,
     wl_tagset_bod_botok,
     wl_tagset_ukr_universal,
-    wl_tagset_vie_underthesea
+    wl_tagset_vie_underthesea,
+    wl_tagset_xcl_universal
 )
 from wordless.wl_utils import wl_misc, wl_paths
 
@@ -1294,6 +1295,7 @@ def init_settings_default(main):
             'sentence_tokenizer_settings': {
                 'afr': 'stanza_afr',
                 'ara': 'stanza_ara',
+                'xcl': 'stanza_xcl',
                 'hye': 'stanza_hye',
                 'hyw': 'stanza_hyw',
                 'eus': 'stanza_eus',
@@ -1311,6 +1313,7 @@ def init_settings_default(main):
                 'ces': 'stanza_ces',
                 'dan': 'spacy_dependency_parser_dan',
                 'nld': 'spacy_dependency_parser_nld',
+                'ang': 'stanza_ang',
                 'eng_gb': 'spacy_dependency_parser_eng',
                 'eng_us': 'spacy_dependency_parser_eng',
                 'myv': 'stanza_myv',
@@ -1400,6 +1403,7 @@ def init_settings_default(main):
                 'sqi': 'spacy_sqi',
                 'amh': 'spacy_amh',
                 'ara': 'stanza_ara',
+                'xcl': 'stanza_xcl',
                 'hye': 'stanza_hye',
                 'hyw': 'stanza_hyw',
                 'asm': 'sacremoses_moses',
@@ -1420,6 +1424,7 @@ def init_settings_default(main):
                 'ces': 'stanza_ces',
                 'dan': 'spacy_dan',
                 'nld': 'spacy_nld',
+                'ang': 'stanza_ang',
                 'eng_gb': 'spacy_eng',
                 'eng_us': 'spacy_eng',
                 'myv': 'stanza_myv',
@@ -1583,6 +1588,7 @@ def init_settings_default(main):
                 'pos_taggers': {
                     'afr': 'stanza_afr',
                     'ara': 'stanza_ara',
+                    'xcl': 'stanza_xcl',
                     'hye': 'stanza_hye',
                     'hyw': 'stanza_hyw',
                     'eus': 'stanza_eus',
@@ -1599,6 +1605,7 @@ def init_settings_default(main):
                     'ces': 'stanza_ces',
                     'dan': 'spacy_dan',
                     'nld': 'spacy_nld',
+                    'ang': 'stanza_ang',
                     'eng_gb': 'spacy_eng',
                     'eng_us': 'spacy_eng',
                     'myv': 'stanza_myv',
@@ -1688,8 +1695,11 @@ def init_settings_default(main):
                 },
 
                 'mapping_settings': {
+                    'xcl': {
+                        'stanza_xcl': copy.deepcopy(wl_tagset_xcl_universal.tagset_mapping)
+                    },
                     'hye': {
-                        'stanza_hye': copy.deepcopy(wl_tagset_hye_universal.tagset_mapping)                    
+                        'stanza_hye': copy.deepcopy(wl_tagset_hye_universal.tagset_mapping)
                     },
                     'hyw': {
                         'stanza_hyw': copy.deepcopy(wl_tagset_hye_universal.tagset_mapping)
@@ -1846,6 +1856,7 @@ def init_settings_default(main):
                 'afr': 'stanza_afr',
                 'sqi': 'simplemma_sqi',
                 'ara': 'stanza_ara',
+                'xcl': 'stanza_xcl',
                 'hye': 'stanza_hye',
                 'hyw': 'stanza_hyw',
                 'ast': 'simplemma_ast',
@@ -1865,6 +1876,7 @@ def init_settings_default(main):
                 'dan': 'spacy_dan',
                 'nld': 'spacy_nld',
                 'enm': 'simplemma_enm',
+                'ang': 'stanza_ang',
                 'eng_gb': 'spacy_eng',
                 'eng_us': 'spacy_eng',
                 'myv': 'stanza_myv',
@@ -2000,6 +2012,7 @@ def init_settings_default(main):
             'dependency_parser_settings': {
                 'afr': 'stanza_afr',
                 'ara': 'stanza_ara',
+                'xcl': 'stanza_xcl',
                 'hye': 'stanza_hye',
                 'hyw': 'stanza_hyw',
                 'eus': 'stanza_eus',
@@ -2016,6 +2029,7 @@ def init_settings_default(main):
                 'ces': 'stanza_ces',
                 'dan': 'spacy_dan',
                 'nld': 'spacy_nld',
+                'ang': 'stanza_ang',
                 'eng_gb': 'spacy_eng',
                 'eng_us': 'spacy_eng',
                 'myv': 'stanza_myv',

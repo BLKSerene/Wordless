@@ -74,7 +74,7 @@ def test_lemmatize(lang, lemmatizer):
         case 'bul':
             results = ['бъ̀лгарският', 'езѝк', 'съм', 'индоевропейски', 'език', 'от', 'група', 'на', 'южнославянскит', 'език', ',', 'като', 'образувам', 'негова', 'източен', 'подгрупа', '.']
         case 'cat':
-            results = ['ell', 'català', '(', 'denominació', 'oficial', 'a', 'Catalunya', ',', 'a', 'el', 'illa', 'balear', ',', 'a', 'Andorra', ',', 'a', 'el', 'ciutat', 'de', "l'Alguer", 'i', 'tradicional', 'a', 'Catalunya', 'del', 'nord', ')', 'o', 'valencià', '(', 'denominació', 'oficial', 'al', 'pair', 'valencià', 'i', 'tradicional', 'al', 'Carxe', ')', 'ser', 'un', 'llengua', 'romànic', 'parlar', 'a', 'Catalunya', ',', 'ell', 'pair', 'valencià', '(', 'treure', "d'algunes", 'comarca', 'i', 'localitat', 'de', "l'interior", ')', ',', 'el', 'illa', 'balear', '(', 'on', 'també', 'rebre', 'ell', 'nòmer', 'de', 'mallorquí', ',', 'menorquí', ',', 'eivissenc', 'o', 'formenterer', 'segon', "l'illa", ')', ',', 'Andorra', ',', 'el', 'franjar', 'de', 'pondre', '(', 'a', "l'Aragó", ')', ',', 'el', 'ciutat', 'de', "l'Alguer", '(', 'a', "l'illa", 'de', 'Sardenya', ')', ',', 'el', 'Catalunya', 'del', 'nord', ',', '[', '8', ']', 'ell', 'Carxe', '(', 'un', 'petit', 'territori', 'de', 'Múrcia', 'habitar', 'per', 'poblador', 'valencià', ')', ',', '[', '9', ']', '[', '10', ']', 'i', 'en', 'comunitat', 'arreu', 'del', 'món', '(', 'entrar', 'el', 'qual', 'destacar', 'el', 'de', "l'Argentina", ',', 'amb', '200.000', 'parlant', ')', '.', '[', '11', ']']
+            results = ['ell', 'català', 'tenir', 'cinc', 'gran', 'dialecte', '(', 'valencià', ',', 'nord-occidental', ',', 'central', ',', 'balear', 'i', 'rossellonès', ')', 'que', 'juntament', 'amb', "l'alguerès", ',', 'ell', 'dividir', 'fi', 'a', 'vint-i-un', 'varietat', 'i', "s'agrupen", 'en', 'dosar', 'gran', 'bloc', ':', 'ell', 'català', 'occidental', 'i', 'ell', 'català', 'oriental', '.']
         case 'hrv':
             results = ['hrvatski', 'jezik', '(', 'ISO', '639-3', ':', 'hrv', ')', 'skupni', 'ju', 'naziv', 'за', 'nacionalni', 'standardni', 'jezik', 'Hrvat', ',', 'ti', 'за', 'skup', 'narječje', 'i', 'govora', 'kojima', 'govoriti', 'ili', 'biti', 'nekada', 'govoriti', 'Hrvat', '.']
         case 'ces':
@@ -240,7 +240,7 @@ def test_lemmatize(lang, lemmatizer):
                 case _:
                     tests_lang_util_skipped = True
         case 'urd':
-            results = ['اُردُو[8', ']', 'برصغیر', 'کم', 'معیاری', 'زبان', 'میں', 'سے', 'ایک', 'ہونا', '۔']
+            results = ['1837ء', 'میں', '،', 'اردو', 'برطانوی', 'ایسٹ', 'انڈیا', 'کمپنی', 'کم', 'سرکاری', 'زبان', 'بننا', 'جانا', '،', 'کمپنی', 'کم', 'دور', 'میں', 'پورا', 'شمالی', 'ہندوستان', 'میں', 'فارسی', 'کم', 'جگہ', 'لینا', 'جانا', '۔']
         case 'cym':
             results = ['yn', 'cyfrifiad', 'yr', 'tu', '(', '2011', ')', ',', 'darganfod', 'bodio', '19', '%', '(', '562,000', ')', 'prpers', 'preswylwr', 'cymru', '(', 'tair', 'blwydd', 'a', 'trosodd', ')', 'bod', 'gallu', 'siarad', 'cymraeg', '.']
         case _:
