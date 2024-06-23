@@ -154,7 +154,7 @@ ACKS = [
         'Apache-2.0', 'https://github.com/WorksApplications/sudachi.rs/blob/develop/LICENSE'
     ], [
         'Underthesea', 'https://undertheseanlp.com/',
-        '6.8.0', 'Vu Anh',
+        '6.8.4', 'Vu Anh',
         'GPL-3.0-or-later', 'https://github.com/undertheseanlp/underthesea/blob/main/LICENSE'
     ], [
         'VADER', 'https://github.com/cjhutto/vaderSentiment',
