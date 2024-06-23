@@ -266,8 +266,12 @@ class Check_Settings_Global:
             for line in f:
                 if line.startswith('stanza'):
                     ver_stanza = line.split('==')[1].strip()
+                    # Replace minor version number with 0
+                    ver_stanza = re.sub(r'\.[0-9]$', '.0', ver_stanza)
 
-        r = requests.get(f'https://raw.githubusercontent.com/stanfordnlp/stanza-resources/main/resources_{ver_stanza}.json', timeout = 5)
+                    break
+
+        r = requests.get(f'https://raw.githubusercontent.com/stanfordnlp/stanza-resources/main/resources_{ver_stanza}.json', timeout = 10)
 
         for lang, lang_resources in r.json().items():
             if lang != 'multilingual' and 'default_processors' in lang_resources:

@@ -78,7 +78,7 @@ def test_word_tokenize(lang, word_tokenizer):
     # The count of tokens should be more than the length of tokens split by space, except Vietnamese
     if lang == 'vie' and word_tokenizer == 'underthesea_vie':
         assert len(tokens) < len(sentence.split())
-    elif lang != 'mal':
+    elif lang not in ['ara', 'mal']:
         assert len(tokens) > len(sentence.split())
 
     tests_lang_util_skipped = False
@@ -91,7 +91,7 @@ def test_word_tokenize(lang, word_tokenizer):
         case 'amh':
             assert tokens == ['አማርኛ[1', ']', '፡', 'የኢትዮጵያ', '፡', 'መደበኛ', '፡', 'ቋንቋ', '፡', 'ነው', '።']
         case 'ara':
-            assert tokens == ['ٱللُّغَةُ', 'ٱلْعَرَبِيَّة', 'هي', 'أكثر', 'اللغات', 'السامية', 'تحدثًا', '،', 'وإحدى', 'أكثر', 'اللغات', 'انتشاراً', 'في', 'العالم', '،', 'يتحدثها', 'أكثر', 'من', '467', 'مليون', 'نسمة.(1', ')']
+            assert tokens == ['تحتوي', 'اللغة', 'العربية', '28', 'حرفاً', 'مكتوباً.']
         case 'hye':
             assert tokens == ['Հայոց', 'լեզվով', 'ստեղծվել', 'է', 'մեծ', 'գրականություն։', 'Գրաբարով', 'է', 'ավանդված', 'հայ', 'հին', 'պատմագրությունը', ',', 'գիտափիլիսոփայական', ',', 'մաթեմատիկական', ',', 'բժշկագիտական', ',', 'աստվածաբանական-դավանաբանական', 'գրականությունը։']
         case 'asm':
@@ -111,7 +111,7 @@ def test_word_tokenize(lang, word_tokenizer):
         case 'bul':
             assert tokens == ['Бъ̀лгарският', 'езѝк', 'е', 'индоевропейски', 'език', 'от', 'групата', 'на', 'южнославянските', 'езици', ',', 'като', 'образува', 'неговата', 'източна', 'подгрупа', '.']
         case 'cat':
-            assert tokens == ['El', 'català', '(', 'denominació', 'oficial', 'a', 'Catalunya', ',', 'a', 'les', 'Illes', 'Balears', ',', 'a', 'Andorra', ',', 'a', 'la', 'ciutat', 'de', 'l', "'", 'Alguer', 'i', 'tradicional', 'a', 'Catalunya', 'del', 'Nord', ')', 'o', 'valencià', '(', 'denominació', 'oficial', 'al', 'País', 'Valencià', 'i', 'tradicional', 'al', 'Carxe', ')', 'és', 'una', 'llengua', 'romànica', 'parlada', 'a', 'Catalunya', ',', 'el', 'País', 'Valencià', '(', 'tret', 'd', "'", 'algunes', 'comarques', 'i', 'localitats', 'de', 'l', "'", 'interior', ')', ',', 'les', 'Illes', 'Balears', '(', 'on', 'també', 'rep', 'el', 'nom', 'de', 'mallorquí', ',', 'menorquí', ',', 'eivissenc', 'o', 'formenterer', 'segons', 'l', "'", 'illa', ')', ',', 'Andorra', ',', 'la', 'Franja', 'de', 'Ponent', '(', 'a', 'l', "'", 'Aragó', ')', ',', 'la', 'ciutat', 'de', 'l', "'", 'Alguer', '(', 'a', 'l', "'", 'illa', 'de', 'Sardenya', ')', ',', 'la', 'Catalunya', 'del', 'Nord', ',', '[', '8', ']', 'el', 'Carxe', '(', 'un', 'petit', 'territori', 'de', 'Múrcia', 'habitat', 'per', 'pobladors', 'valencians', ')', ',', '[', '9', ']', '[', '10', ']', 'i', 'en', 'comunitats', 'arreu', 'del', 'món', '(', 'entre', 'les', 'quals', 'destaca', 'la', 'de', 'l', "'", 'Argentina', ',', 'amb', '200.000', 'parlants', ')', '.', '[', '11', ']']
+            assert tokens == ['El', 'català', 'té', 'cinc', 'grans', 'dialectes', '(', 'valencià', ',', 'nord-occidental', ',', 'central', ',', 'balear', 'i', 'rossellonès', ')', 'que', 'juntament', 'amb', 'l', "'", 'alguerès', ',', 'es', 'divideixen', 'fins', 'a', 'vint-i-una', 'varietats', 'i', 's', "'", 'agrupen', 'en', 'dos', 'grans', 'blocs', ':', 'el', 'català', 'occidental', 'i', 'el', 'català', 'oriental', '.']
         case 'zho_cn':
             match word_tokenizer:
                 case 'pkuseg_zho':
@@ -230,9 +230,9 @@ def test_word_tokenize(lang, word_tokenizer):
         case 'mal':
             match word_tokenizer:
                 case 'sacremoses_moses':
-                    assert tokens == ['ഇന്ത്യയിൽ', 'കേരള', 'സംസ്ഥാനത്തിലും', 'കേന്ദ്രഭരണപ്രദേശങ്ങളായ', 'ലക്ഷദ്വീപിലും', 'പോണ്ടിച്ചേരിയുടെ', 'ഭാഗമായ', 'മാഹിയിലും', 'തമിഴ്നാട്ടിലെ', 'കന്യാകുമാരി', 'ജില്ലയിലും', 'നീലഗിരി', 'ജില്ലയിലെ', 'ഗൂഡല്ലൂർ', 'താലൂക്കിലും', 'സംസാരിക്കപ്പെടുന്ന', 'ഭാഷയാണ്', 'മലയാളം', '.']
+                    assert tokens == ['ദ്രാവിഡഭാഷാ', 'കുടുംബത്തിൽ', 'ഉൾപ്പെടുന്ന', 'മലയാളത്തിന്', 'ഇതര', 'ഭാരതീയ', 'ഭാഷകളായ', 'സംസ്കൃതം', ',', 'തമിഴ്', 'എന്നീ', 'ഉദാത്തഭാഷകളുമായി', 'പ്രകടമായ', 'ബന്ധമുണ്ട്', '[', '8', ']', '.']
                 case 'spacy_mal':
-                    assert tokens == ['ഇന്ത്യയിൽ', 'കേരള', 'സംസ്ഥാനത്തിലും', 'കേന്ദ്രഭരണപ്രദേശങ്ങളായ', 'ലക്ഷദ്വീപിലും', 'പോണ്ടിച്ചേരിയുടെ', 'ഭാഗമായ', 'മാഹിയിലും', 'തമിഴ്നാട്ടിലെ', 'കന്യാകുമാരി', 'ജില്ലയിലും', 'നീലഗിരി', 'ജില്ലയിലെ', 'ഗൂഡല്ലൂർ', 'താലൂക്കിലും', 'സംസാരിക്കപ്പെടുന്ന', 'ഭാഷയാണ്', 'മലയാളം.']
+                    assert tokens == ['ദ്രാവിഡഭാഷാ', 'കുടുംബത്തിൽ', 'ഉൾപ്പെടുന്ന', 'മലയാളത്തിന്', 'ഇതര', 'ഭാരതീയ', 'ഭാഷകളായ', 'സംസ്കൃതം', ',', 'തമിഴ്', 'എന്നീ', 'ഉദാത്തഭാഷകളുമായി', 'പ്രകടമായ', 'ബന്ധമുണ്ട്[8', ']', '.']
                 case _:
                     tests_lang_util_skipped = True
         case 'mar':
@@ -324,7 +324,7 @@ def test_word_tokenize(lang, word_tokenizer):
         case 'ukr':
             assert tokens == ['Украї́нська', 'мо́ва', '(', 'МФА', ':', '[', 'ukrɑ̽ˈjɪnʲsʲkɑ̽', 'ˈmɔwɑ̽', ']', ',', 'історичні', 'назви', '—', 'ру́ська', ',', 'руси́нська[10][11][12', ']', '[', '*', '1', ']', ')', '—', 'національна', 'мова', 'українців', '.']
         case 'urd':
-            assert tokens == ['اُردُو[8', ']', 'برصغیر', 'کی', 'معیاری', 'زبانوں', 'میں', 'سے', 'ایک', 'ہے', '۔']
+            assert tokens == ['1837ء', 'میں', '،', 'اردو', 'برطانوی', 'ایسٹ', 'انڈیا', 'کمپنی', 'کی', 'سرکاری', 'زبان', 'بن', 'گئی', '،', 'کمپنی', 'کے', 'دور', 'میں', 'پورے', 'شمالی', 'ہندوستان', 'میں', 'فارسی', 'کی', 'جگہ', 'لی', 'گئی', '۔']
         case 'vie':
             match word_tokenizer:
                 case 'nltk_tok_tok':

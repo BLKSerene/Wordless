@@ -39,7 +39,7 @@ def to_lang_text(main, lang_code):
         if lang_code_639_3 == lang_code:
             return lang_text
 
-    raise Exception('Failed to convert the language code to text!')
+    raise Exception(f'Failed to convert language code {lang_code} to text!')
 
 def to_lang_texts(main, lang_codes):
     return (to_lang_text(main, lang_code) for lang_code in lang_codes)
@@ -56,7 +56,7 @@ def to_iso_639_3(main, lang_code):
         if lang_code_639_1.startswith(f'{lang_code}_'):
             return lang_code_639_3
 
-    raise Exception('Failed to convert the ISO 639-1 language code to ISO 639-3 code!')
+    raise Exception(f'Failed to convert ISO 639-1 code "{lang_code}" to ISO 639-3 code!')
 
 def to_iso_639_1(main, lang_code, no_suffix = False):
     lang_code = normalize_lang_code(lang_code)
@@ -93,7 +93,7 @@ def to_encoding_text(main, encoding_code):
         if encoding_code == code:
             return text
 
-    raise Exception('Failed to convert the encoding code to text!')
+    raise Exception(f'Failed to convert encoding code {encoding_code} to text!')
 
 # Yes/No
 def to_yes_no_code(yes_no_text):

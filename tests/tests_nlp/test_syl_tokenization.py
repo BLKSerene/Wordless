@@ -32,11 +32,12 @@ for lang, syl_tokenizers in main.settings_global['syl_tokenizers'].items():
 @pytest.mark.parametrize('lang, syl_tokenizer', test_syl_tokenizers)
 def test_syl_tokenize(lang, syl_tokenizer):
     tests_lang_util_skipped = False
+    test_sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
 
     # Untokenized
     tokens_untokenized = wl_syl_tokenization.wl_syl_tokenize(
         main,
-        inputs = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}'),
+        inputs = test_sentence,
         lang = lang,
         syl_tokenizer = syl_tokenizer
     )
@@ -45,7 +46,7 @@ def test_syl_tokenize(lang, syl_tokenizer):
     # Tokenized
     tokens = wl_word_tokenization.wl_word_tokenize_flat(
         main,
-        text = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}'),
+        text = test_sentence,
         lang = lang
     )
     tokens_tokenized = wl_syl_tokenization.wl_syl_tokenize(
@@ -118,7 +119,7 @@ def test_syl_tokenize(lang, syl_tokenizer):
         case 'bul':
             assert syls_tokens == [('Бъ', '̀л', 'гар', 'с', 'ки', 'ят'), ('ез', 'ѝк'), ('е',), ('ин', 'до', 'ев', 'ро', 'пейс', 'ки'), ('език',), ('от',), ('гру', 'па', 'та'), ('на',), ('юж', 'нос', 'ла', 'вян', 'с', 'ки', 'те'), ('ези', 'ци'), (',',), ('ка', 'то'), ('об', 'ра', 'зу', 'ва'), ('не', 'го', 'ва', 'та'), ('из', 'точ', 'на'), ('под', 'г', 'ру', 'па'), ('.',)]
         case 'cat':
-            assert syls_tokens == [('El',), ('ca', 'ta', 'là'), ('(',), ('de', 'no', 'mi', 'na', 'ció'), ('ofi', 'ci', 'al'), ('a',), ('Ca', 'ta', 'lu', 'nya'), (',',), ('a',), ('les',), ('Illes',), ('Ba', 'le', 'ars'), (',',), ('a',), ('An', 'dor', 'ra'), (',',), ('a',), ('la',), ('ciu', 'tat'), ('de',), ("l'", 'Al', 'guer'), ('i',), ('tra', 'di', 'ci', 'o', 'nal'), ('a',), ('Ca', 'ta', 'lu', 'nya'), ('del',), ('Nord',), (')',), ('o',), ('va', 'len', 'cià'), ('(',), ('de', 'no', 'mi', 'na', 'ció'), ('ofi', 'ci', 'al'), ('al',), ('Pa', 'ís'), ('Va', 'len', 'cià'), ('i',), ('tra', 'di', 'ci', 'o', 'nal'), ('al',), ('Car', 'xe'), (')',), ('és',), ('una',), ('llen', 'gua'), ('ro', 'mà', 'ni', 'ca'), ('par', 'la', 'da'), ('a',), ('Ca', 'ta', 'lu', 'nya'), (',',), ('el',), ('Pa', 'ís'), ('Va', 'len', 'cià'), ('(',), ('tret',), ("d'", 'al', 'gu', 'nes'), ('co', 'mar', 'ques'), ('i',), ('lo', 'ca', 'li', 'tats'), ('de',), ("l'", 'in', 'te', 'ri', 'or'), (')',), (',',), ('les',), ('Illes',), ('Ba', 'le', 'ars'), ('(',), ('on',), ('tam', 'bé'), ('rep',), ('el',), ('nom',), ('de',), ('ma', 'llor', 'quí'), (',',), ('me', 'nor', 'quí'), (',',), ('ei', 'vis', 'senc'), ('o',), ('for', 'men', 'te', 'rer'), ('se', 'gons'), ("l'", 'i', 'lla'), (')',), (',',), ('An', 'dor', 'ra'), (',',), ('la',), ('Fran', 'ja'), ('de',), ('Po', 'nent'), ('(',), ('a',), ("l'", 'A', 'ra', 'gó'), (')',), (',',), ('la',), ('ciu', 'tat'), ('de',), ("l'", 'Al', 'guer'), ('(',), ('a',), ("l'", 'i', 'lla'), ('de',), ('Sar', 'de', 'nya'), (')',), (',',), ('la',), ('Ca', 'ta', 'lu', 'nya'), ('del',), ('Nord',), (',',), ('[',), ('8',), (']',), ('el',), ('Car', 'xe'), ('(',), ('un',), ('pe', 'tit'), ('ter', 'ri', 'to', 'ri'), ('de',), ('Múr', 'cia'), ('ha', 'bi', 'tat'), ('per',), ('po', 'bla', 'dors'), ('va', 'len', 'ci', 'ans'), (')',), (',',), ('[',), ('9',), (']',), ('[',), ('10',), (']',), ('i',), ('en',), ('co', 'mu', 'ni', 'tats'), ('ar', 'reu'), ('del',), ('món',), ('(',), ('en', 'tre'), ('les',), ('quals',), ('des', 'ta', 'ca'), ('la',), ('de',), ("l'", 'Ar', 'gen', 'ti', 'na'), (',',), ('amb',), ('200.000',), ('par', 'lants'), (')',), ('.',), ('[',), ('11',), (']',)]
+            assert syls_tokens == [('El',), ('ca', 'ta', 'là'), ('té',), ('cinc',), ('grans',), ('di', 'a', 'lec', 'tes'), ('(',), ('va', 'len', 'cià'), (',',), ('nord', 'oc', 'ci', 'den', 'tal'), (',',), ('cen', 'tral'), (',',), ('ba', 'le', 'ar'), ('i',), ('ros', 'se', 'llo', 'nès'), (')',), ('que',), ('jun', 'ta', 'ment'), ('amb',), ("l'", 'al', 'gue', 'rès'), (',',), ('es',), ('di', 'vi', 'dei', 'xen'), ('fins',), ('a',), ('vint', 'i', 'u', 'na'), ('va', 'ri', 'e', 'tats'), ('i',), ("s'", 'a', 'gru', 'pen'), ('en',), ('dos',), ('grans',), ('blocs',), (':',), ('el',), ('ca', 'ta', 'là'), ('oc', 'ci', 'den', 'tal'), ('i',), ('el',), ('ca', 'ta', 'là'), ('ori', 'en', 'tal'), ('.',)]
         case 'hrv':
             assert syls_tokens == [('Hr', 'vat', 'ski'), ('je', 'zik'), ('(',), ('ISO',), ('639', '3'), (':',), ('hrv',), (')',), ('skup', 'ni'), ('je',), ('na', 'ziv'), ('za',), ('na', 'ci', 'onal', 'ni'), ('stan', 'dard', 'ni'), ('je', 'zik'), ('Hr', 'va', 'ta'), (',',), ('te',), ('za',), ('skup',), ('na', 'rje', 'čja'), ('i',), ('go', 'vo', 'ra'), ('ko', 'ji', 'ma'), ('go', 'vo', 're'), ('ili',), ('su',), ('ne', 'ka', 'da'), ('go', 'vo', 'ri', 'li'), ('Hr', 'va', 'ti'), ('.',)]
         case 'ces':
