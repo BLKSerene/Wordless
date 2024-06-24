@@ -41,6 +41,8 @@ pymorphy3-dicts-uk
 spacy
 spacy-lookups-data
 spacy-pkuseg
+# Required by French model
+sentencepiece
 
 ## SudachiPy
 sudachipy
