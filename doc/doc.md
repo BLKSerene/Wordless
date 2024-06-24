@@ -1384,16 +1384,16 @@ In order to calculate the statistical significance, Bayes factor, and effect siz
 
 As for collocates (in *Collocation Extractor* and *Colligation Extractor*):
 
-Observed Values|*Word 1*|Not *Word 1*|Row Total
---------------:|:------:|:----------:|:-------:
-*Word 2*       |O₁₁     |O₁₂         |O₁ₓ
-Not *Word 2*   |O₂₁     |O₂₂         |O₂ₓ
-Column Total   |Oₓ₁     |Oₓ₂         |Oₓₓ
+Observed Values|*Word 1*           |Not *Word 1*       |Row Total
+--------------:|:-----------------:|:-----------------:|:---------------------------------:
+*Word 2*       |O₁₁                |O₁₂                |O₁ₓ = *O₁₁* + *O₁₂*
+Not *Word 2*   |O₂₁                |O₂₂                |O₂ₓ = *O₂₁* + *O₂₂*
+Column Total   |Oₓ₁ = *O₁₁* + *O₂₁*|Oₓ₂ = *O₁₂* + *O₂₂*|Oₓₓ = *O₁₁* + *O₁₂* + *O₂₁* + *O₂₂*
 
-Expected Values|*Word 1*|Not *Word 1*
---------------:|:------:|:----------:
-*Word 2*       |E₁₁     |E₁₂
-Not *Word 2*   |E₂₁     |E₂₂
+Expected Values|*Word 1*             |Not *Word 1*
+--------------:|:-------------------:|:-------------------:
+*Word 2*       |![E₁₁](/doc/e_11.svg)|![E₁₂](/doc/e_12.svg)
+Not *Word 2*   |![E₂₁](/doc/e_21.svg)|![E₂₂](/doc/e_22.svg)
 
 O₁₁: Number of occurrences of *Word 1* followed by *Word 2*.<br>
 O₁₂: Number of occurrences of *Word 1* followed by any word except *Word 2*.<br>
@@ -1402,16 +1402,16 @@ O₂₂: Number of occurrences of any word except *Word 1* followed by any word 
 
 As for keywords (in *Keyword Extractor*):
 
-Observed Values|Observed File|Reference File|Row Total
---------------:|:-----------:|:------------:|:-------:
-*Word w*       |O₁₁          |O₁₂           |O₁ₓ
-*Not Word w*   |O₂₁          |O₂₂           |O₂ₓ
-Column Total   |Oₓ₁          |Oₓ₂           |Oₓₓ
+Observed Values|Observed File      |Reference File     |Row Total
+--------------:|:-----------------:|:-----------------:|:---------------------------------:
+*Word w*       |O₁₁                |O₁₂                |O₁ₓ = *O₁₁* + *O₁₂*
+*Not Word w*   |O₂₁                |O₂₂                |O₂ₓ = *O₂₁* + *O₂₂*
+Column Total   |Oₓ₁ = *O₁₁* + *O₂₁*|Oₓ₂ = *O₁₂* + *O₂₂*|Oₓₓ = *O₁₁* + *O₁₂* + *O₂₁* + *O₂₂*
 
-Expected Values|Observed File|Reference File
---------------:|:-----------:|:------------:
-*Word w*       |E₁₁          |E₁₂
-*Not Word w*   |E₂₁          |E₂₂
+Expected Values|Observed File        |Reference File
+--------------:|:-------------------:|:-------------------:
+*Word w*       |![E₁₁](/doc/e_11.svg)|![E₁₂](/doc/e_12.svg)
+*Not Word w*   |![E₂₁](/doc/e_21.svg)|![E₂₂](/doc/e_22.svg)
 
 O₁₁: Number of occurrences of *Word w* in the observed file.<br>
 O₁₂: Number of occurrences of *Word w* in the reference file.<br>
@@ -1555,7 +1555,7 @@ Measure of Effect Size|Formula
 <span id="ref-anderson-1983"></span>
 1. [**^**](#ref-rix) Anderson, J. (1983). Lix and Rix: Variations on a little-known readability index. *Journal of Reading*, *26*(6), 490–496.
 <span id="ref-bamberger-vanecek-1984"></span>
-1. [**^**](#ref-num-word-types-bamberger-vanecek)[**^**](#ref-nwl)[**^**](#ref-nws)[**^**](#ref-smog-grade) Bamberger, R., & Vanecek, E. (1984). *Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache*. Jugend und Volk.
+1. [**^**](#ref-num-word-types-bamberger-vanecek) [**^**](#ref-nwl) [**^**](#ref-nws) [**^**](#ref-smog-grade) Bamberger, R., & Vanecek, E. (1984). *Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache*. Jugend und Volk.
 <span id="ref-berry-rogghe-1973"></span>
 1. [**^**](#ref-z-score-berry-rogghes) Berry-Rogghe, G. L. M. (1973). The computation of collocations and their relevance in lexical studies. In A. J. Aiken, R. W. Bailey, & N. Hamilton-Smith (Eds.), *The computer and literary studies* (pp. 103–112). Edinburgh University Press.
 <span id="ref-bormuth-1969"></span>
@@ -1569,7 +1569,7 @@ Measure of Effect Size|Formula
 <span id="ref-carroll-1964"></span>
 1. [**^**](#ref-cttr) Carroll, J. B. (1964). *Language and thought*. Prentice-Hall.
 <span id="ref-carroll-1970"></span>
-1. [**^**](#ref-carrolls-d2)[**^**](#ref-carrolls-um) Carroll, J. B. (1970). An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index. *Computer Studies in the Humanities and Verbal Behaviour*, *3*(2), 61–65. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x
+1. [**^**](#ref-carrolls-d2) [**^**](#ref-carrolls-um) Carroll, J. B. (1970). An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index. *Computer Studies in the Humanities and Verbal Behaviour*, *3*(2), 61–65. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x
 <span id="ref-caylor-sticht-1973"></span>
 1. [**^**](#ref-rgl) Caylor, J. S., & Sticht, T. G. (1973). *Development of a simple readability index for job reading material*. Human Resource Research Organization. https://ia902703.us.archive.org/31/items/ERIC_ED076707/ERIC_ED076707.pdf
 <span id="ref-chall-dale-1995"></span>
@@ -1593,11 +1593,11 @@ Measure of Effect Size|Formula
 <span id="ref-daille-1995"></span>
 1. [**^**](#ref-im3) Daille, B. (1995). Combined approach for terminology extraction: Lexical statistics and linguistic filtering. *UCREL technical papers* (Vol. 5). Lancaster University.
 <span id="ref-dale-1931"></span>
-1. [**^**](#ref-num-words-dale-769)[**^**](#ref-num-word-types-dale-769) Dale, E. (1931). A comparison of two word lists. *Educational Research Bulletin*, *10*(18), 484–489.
+1. [**^**](#ref-num-words-dale-769) [**^**](#ref-num-word-types-dale-769) Dale, E. (1931). A comparison of two word lists. *Educational Research Bulletin*, *10*(18), 484–489.
 <span id="ref-dale-chall-1948a"></span>
 1. [**^**](#ref-x-c50) Dale, E., & Chall, J. S. (1948a). A formula for predicting readability. *Educational Research Bulletin*, *27*(1), 11–20, 28.
 <span id="ref-dale-chall-1948b"></span>
-1. [**^**](#ref-num-words-dale-3000)[**^**](#ref-x-c50) Dale, E., & Chall, J. S. (1948b). A formula for predicting readability: Instructions. *Educational Research Bulletin*, *27*(2), 37–54.
+1. [**^**](#ref-num-words-dale-3000) [**^**](#ref-x-c50) Dale, E., & Chall, J. S. (1948b). A formula for predicting readability: Instructions. *Educational Research Bulletin*, *27*(2), 37–54.
 <span id="ref-danielson-bryan-1963"></span>
 1. [**^**](#ref-danielson-bryans-readability-formula) Danielson, W. A., & Bryan, S. D. (1963). Computer automation of two readability formulas. *Journalism Quarterly*, *40*(2), 201–206. https://doi.org/10.1177/107769906304000207
 <span id="ref-dawood-1977"></span>
@@ -1613,11 +1613,11 @@ Measure of Effect Size|Formula
 <span id="ref-dugast-1978"></span>
 1. [**^**](#ref-logttr) Dugast, D. (1978). Sur quoi se fonde la notion d’étendue théoretique du vocabulaire?. *Le Français Moderne*, *46*, 25–32.
 <span id="ref-dugast-1979"></span>
-1. [**^**](#ref-logttr)[**^**](#ref-logttr) Dugast, D. (1979). *Vocabulaire et stylistique: I théâtre et dialogue, travaux de linguistique quantitative*. Slatkine.
+1. [**^**](#ref-logttr) [**^**](#ref-logttr) Dugast, D. (1979). *Vocabulaire et stylistique: I théâtre et dialogue, travaux de linguistique quantitative*. Slatkine.
 <span id="ref-dunning-1993"></span>
 1. [**^**](#ref-log-likehood-ratio-test) Dunning, T. E. (1993). Accurate methods for the statistics of surprise and coincidence. *Computational Linguistics*, *19*(1), 61–74.
 <span id="ref-dunning-1998"></span>
-1. [**^**](#ref-jaccard-index)[**^**](#ref-mi) Dunning, T. E. (1998). *Finding structure in text, genome and other symbolic sequences* [Doctoral dissertation, University of Sheffield]. arXiv. arxiv.org/pdf/1207.1847.pdf
+1. [**^**](#ref-jaccard-index) [**^**](#ref-mi) Dunning, T. E. (1998). *Finding structure in text, genome and other symbolic sequences* [Doctoral dissertation, University of Sheffield]. arXiv. arxiv.org/pdf/1207.1847.pdf
 <span id="ref-elhaj-rayson-2016"></span>
 1. [**^**](#ref-osman) El-Haj, M., & Rayson, P. (2016). OSMAN: A novel Arabic readability metric. In N. Calzolari, K. Choukri, T. Declerck, S. Goggi, M. Grobelnik, B. Maegaard, J. Mariani, H. Mazo, A. Moreno, J. Odijk, & S. Piperidis (Eds.), *Proceedings of the Tenth International Conference on Language Resources and Evaluation (LREC 2016)* (pp. 250–255). European Language Resources Association. http://www.lrec-conf.org/proceedings/lrec2016/index.html
 <span id="ref-engwall-1974"></span>
@@ -1655,14 +1655,14 @@ Measure of Effect Size|Formula
 <span id="ref-herdan-1960"></span>
 1. [**^**](#ref-logttr) Herdan, G. (1960). *Type-token mathematics: A textbook of mathematical linguistics*. Mouton.
 <span id="ref-hofland-johanson-1982"></span>
-1. [**^**](#ref-pearsons-chi-squared-test)[**^**](#ref-diff-coeff) Hofland, K., & Johanson, S. (1982). *Word frequencies in British and American English*. Norwegian Computing Centre for the Humanities.
+1. [**^**](#ref-pearsons-chi-squared-test) [**^**](#ref-diff-coeff) Hofland, K., & Johanson, S. (1982). *Word frequencies in British and American English*. Norwegian Computing Centre for the Humanities.
 <span id="ref-honore-1979"></span>
 1. [**^**](#ref-honores-stat) Honoré, A. (1979). Some simple measures of richness of vocabulary. *Association of Literary and
 Linguistic Computing Bulletin*, *7*(2), 172–177.
 <span id="ref-johnson-1944"></span>
-1. [**^**](#ref-msttr)[**^**](#ref-ttr) Johnson, W. (1944). Studies in language behavior: I. a program of research. *Psychological Monographs*, *56*(2), 1–15. https://doi.org/10.1037/h0093508
+1. [**^**](#ref-msttr) [**^**](#ref-ttr) Johnson, W. (1944). Studies in language behavior: I. a program of research. *Psychological Monographs*, *56*(2), 1–15. https://doi.org/10.1037/h0093508
 <span id="ref-juilland-chang-rodrigues-1964"></span>
-1. [**^**](#ref-juillands-d)[**^**](#ref-juillands-u) Juilland, A., & Chang-Rodriguez, E. (1964). *Frequency dictionary of Spanish words*. Mouton.
+1. [**^**](#ref-juillands-d) [**^**](#ref-juillands-u) Juilland, A., & Chang-Rodriguez, E. (1964). *Frequency dictionary of Spanish words*. Mouton.
 <span id="ref-kandel-moles-1958"></span>
 1. [**^**](#ref-re) Kandel, L., & Moles A. (1958). Application de l’indice de flesch la langue francaise [applying flesch index to french language]. *The Journal of Educational Research*, *21*, 283–287.
 <span id="ref-kilgarriff-2001"></span>
@@ -1672,7 +1672,7 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 <span id="ref-kilgarriff-tugwell-2002"></span>
 1. [**^**](#ref-mi-log-f) Kilgarriff, A., & Tugwell, D. (2002). WASP-bench: An MT lexicographers' workstation supporting state-of-the-art lexical disambiguation. In *Proceedings of the 8th Machine Translation Summit* (pp. 187–190). European Association for Machine Translation.
 <span id="ref-kincaid-et-al-1975"></span>
-1. [**^**](#ref-ari)[**^**](#ref-gl)[**^**](#ref-fog-index) Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). *Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel* (Report No. RBR 8-75). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
+1. [**^**](#ref-ari) [**^**](#ref-gl) [**^**](#ref-fog-index) Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). *Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel* (Report No. RBR 8-75). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
 <span id="ref-kromer-2003"></span>
 1. [**^**](#ref-kromers-ur) Kromer, V. (2003). A usage measure based on psychophysical relations. *Journal of Quantitative Linguistics*, *10*(2), 177–186. https://doi.org/10.1076/jqul.10.2.177.16718
 <span id="ref-lexical-computing-ltd-2015"></span>
@@ -1688,7 +1688,7 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 <span id="ref-lucisano-emanuela-piemontese-1988"></span>
 1. [**^**](#ref-gulpease-index) Lucisano, P., & Emanuela Piemontese, M. (1988). GULPEASE: A formula for the prediction of the difficulty of texts in Italian. *Scuola e Città*, *39*(3), 110–124.
 <span id="ref-luong-et-al-2018"></span>
-1. [**^**](#ref-num-syls-luong-nguyen-dinh-1000)[**^**](#ref-luong-nguyen-dinhs-readability-formula) Luong, A.-V., Nguyen, D., & Dinh, D. (2018). A new formula for Vietnamese text readability assessment. *2018 10th International Conference on Knowledge and Systems Engineering (KSE)* (pp. 198–202). IEEE. https://doi.org/10.1109/KSE.2018.8573379
+1. [**^**](#ref-num-syls-luong-nguyen-dinh-1000) [**^**](#ref-luong-nguyen-dinhs-readability-formula) Luong, A.-V., Nguyen, D., & Dinh, D. (2018). A new formula for Vietnamese text readability assessment. *2018 10th International Conference on Knowledge and Systems Engineering (KSE)* (pp. 198–202). IEEE. https://doi.org/10.1109/KSE.2018.8573379
 <span id="ref-lyne-1985"></span>
 1. [**^**](#ref-lynes-d3) Lyne, A. A. (1985). Dispersion. In *The vocabulary of French business correspondence: Word frequencies, collocations, and problems of lexicometric method* (pp. 101–124). Slatkine/Champion.
 <span id="ref-malvern-et-al-2004"></span>
@@ -1698,7 +1698,7 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 <span id="ref-mccarthy-2005"></span>
 1. [**^**](#ref-mtld) McCarthy, P. M. (2005). *An assessment of the range and usefulness of lexical diversity measures and the potential of the measure of textual, lexical diversity (MTLD)* [Doctoral dissertation, The University of Memphis]. ProQuest Dissertations and Theses Global.
 <span id="ref-mccarthy-jarvis-2010"></span>
-1. [**^**](#ref-hdd)[**^**](#ref-mtld) McCarthy, P. M., & Jarvis, S. (2010). MTLD, vocd-D, and HD-D: A validation study of sophisticated approaches to lexical diversity assessment. *Behavior Research Methods*, *42*(2), 381–392. https://doi.org/10.3758/BRM.42.2.381
+1. [**^**](#ref-hdd) [**^**](#ref-mtld) McCarthy, P. M., & Jarvis, S. (2010). MTLD, vocd-D, and HD-D: A validation study of sophisticated approaches to lexical diversity assessment. *Behavior Research Methods*, *42*(2), 381–392. https://doi.org/10.3758/BRM.42.2.381
 <span id="ref-mclaughlin-1969"></span>
 1. [**^**](#ref-smog-grade) McLaughlin, G. H. (1969). SMOG grading: A new readability formula. *Journal of Reading*, *12*(8), 639–646.
 <span id="ref-munoz-baquedano-2006"></span>
@@ -1726,17 +1726,17 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 <span id="ref-popescu-et-al-2008"></span>
 1. [**^**](#ref-popescu-macutek-altmanns-b1-b2-b3-b4-b5) Popescu I.-I., Mačutek, J, & Altmann, G. (2008). Word frequency and arc length. *Glottometrics*, *17*, 18–42.
 <span id="ref-popescu-2009"></span>
-1. [**^**](#ref-popescus-r1)[**^**](#ref-popescus-r2)[**^**](#ref-popescus-r3)[**^**](#ref-popescus-r4)[**^**](#ref-repeat-rate)[**^**](#ref-shannon-entropy) Popescu, I.-I. (2009). *Word frequency studies*. Mouton de Gruyter.
+1. [**^**](#ref-popescus-r1) [**^**](#ref-popescus-r2) [**^**](#ref-popescus-r3) [**^**](#ref-popescus-r4) [**^**](#ref-repeat-rate) [**^**](#ref-shannon-entropy) Popescu, I.-I. (2009). *Word frequency studies*. Mouton de Gruyter.
 <span id="ref-powers-et-al-1958"></span>
-1. [**^**](#ref-x-c50)[**^**](#ref-re)[**^**](#ref-re-farr-jenkins-paterson)[**^**](#ref-fog-index) Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. *Journal of Educational Psychology*, *49*(2), 99–105. https://doi.org/10.1037/h0043254
+1. [**^**](#ref-x-c50) [**^**](#ref-re) [**^**](#ref-re-farr-jenkins-paterson) [**^**](#ref-fog-index) Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. *Journal of Educational Psychology*, *49*(2), 99–105. https://doi.org/10.1037/h0043254
 <span id="ref-quasthoff-wolff-2002"></span>
 1. [**^**](#ref-poisson-collocation-measure) Quasthoff, U., & Wolff, C. (2002). The poisson collocation measure and its applications. *Proceedings of 2nd International Workshop on Computational Approaches to Collocations*. IEEE.
 <span id="ref-rosengren-1971"></span>
-1. [**^**](#ref-rosengrens-s)[**^**](#ref-rosengrens-kf) Rosengren, I. (1971). The quantitative concept of language and its relation to the structure of frequency dictionaries. *Études de linguistique appliquée*, *1*, 103–127.
+1. [**^**](#ref-rosengrens-s) [**^**](#ref-rosengrens-kf) Rosengren, I. (1971). The quantitative concept of language and its relation to the structure of frequency dictionaries. *Études de linguistique appliquée*, *1*, 103–127.
 <span id="ref-rychly-2008"></span>
 1. [**^**](#ref-log-dice) Rychlý, P. (2008). A lexicographyer-friendly association score. In P. Sojka & A. Horák (Eds.), *Proceedings of Second Workshop on Recent Advances in Slavonic Natural Languages Processing*. Masaryk University
 <span id="ref-savicky-hlavacova-2002"></span>
-1. [**^**](#ref-ald)[**^**](#ref-fald)[**^**](#ref-arf)[**^**](#ref-farf)[**^**](#ref-awt)[**^**](#ref-fawt) Savický, P., & Hlaváčová, J. (2002). Measures of word commonness. *Journal of Quantitative Linguistics*, *9*(3), 215–231. https://doi.org/10.1076/jqul.9.3.215.14124
+1. [**^**](#ref-ald) [**^**](#ref-fald) [**^**](#ref-arf) [**^**](#ref-farf) [**^**](#ref-awt) [**^**](#ref-fawt) Savický, P., & Hlaváčová, J. (2002). Measures of word commonness. *Journal of Quantitative Linguistics*, *9*(3), 215–231. https://doi.org/10.1076/jqul.9.3.215.14124
 <span id="ref-simpson-1949"></span>
 1. [**^**](#ref-simpsons-l) Simpson, E. H. (1949). Measurement of diversity. *Nature*, *163*, p. 688. https://doi.org/10.1038/163688a0
 <span id="ref-smadja-et-al-1996"></span>
@@ -1752,11 +1752,11 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 <span id="ref-spache-1953"></span>
 1. [**^**](#ref-spache-grade-level) Spache, G. (1953). A new readability formula for primary-grade reading materials. *Elementary School Journal*, *53*(7), 410–413. https://doi.org/10.1086/458513
 <span id="ref-spache-1974"></span>
-1. [**^**](#ref-num-words-spache)[**^**](#ref-spache-grade-level) Spache, G. (1974). *Good reading for poor readers* (Rev. 9th ed.). Garrard.
+1. [**^**](#ref-num-words-spache) [**^**](#ref-spache-grade-level) Spache, G. (1974). *Good reading for poor readers* (Rev. 9th ed.). Garrard.
 <span id="ref-szigrisze-pazos-1993"></span>
 1. [**^**](#ref-re) Szigriszt Pazos, F. (1993). *Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad* [Doctoral dissertation, Complutense University of Madrid]. Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y
 <span id="ref-thanopoulos-et-al-2002"></span>
-1. [**^**](#ref-lfmd)[**^**](#ref-md) Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation* (pp. 620–625). European Language Resources Association.
+1. [**^**](#ref-lfmd) [**^**](#ref-md) Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation* (pp. 620–625). European Language Resources Association.
 <span id="ref-trankle-bailer-1984"></span>
 1. [**^**](#ref-trankle-bailers-readability-formula) Tränkle, U., & Bailer, H. (1984). *Kreuzvalidierung und Neuberechnung von Lesbarkeitsformeln für die Deutsche Sprache* [Cross-validation and recalculation of the readability formulas for the German language]. Zeitschrift für Entwicklungspsychologie und Pädagogische Psychologie, *16*(3), 231–244.
 <span id="ref-tuldava-1975"></span>
@@ -1768,7 +1768,7 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 <span id="ref-williams-1970"></span>
 1. [**^**](#ref-yules-index-of-diversity) Williams, C. B. (1970). *Style and vocabulary: Numerical studies*. Griffin.
 <span id="ref-wilson-2013"></span>
-1. [**^**](#ref-log-likehood-ratio-test)[**^**](#ref-students-t-test-2-sample) Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger & A. Koll-Stobbe (Eds.), *New Approaches to the Study of Linguistic Variability* (pp. 3–11). Peter Lang.
+1. [**^**](#ref-log-likehood-ratio-test) [**^**](#ref-students-t-test-2-sample) Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger & A. Koll-Stobbe (Eds.), *New Approaches to the Study of Linguistic Variability* (pp. 3–11). Peter Lang.
 <span id="ref-yule-1944"></span>
 1. [**^**](#ref-yules-characteristic-k) Yule, G. U. (1944). *The statistical study of literary vocabulary*. Cambridge University Press.
 <span id="ref-zhang-2004"></span>
