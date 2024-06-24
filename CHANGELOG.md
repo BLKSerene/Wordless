@@ -77,6 +77,7 @@
 - Dependencies: Upgrade PyQt to 5.15.10
 - Dependencies: Upgrade PyThaiNLP to 5.0.4
 - Dependencies: Upgrade python-docx to 1.1.2
+- Dependencies: Upgrade python-mecab-ko to 1.3.5
 - Dependencies: Upgrade Requests to 2.32.3
 - Dependencies: Upgrade Sacremoses to 0.1.1
 - Dependencies: Upgrade SciPy to 1.13.1

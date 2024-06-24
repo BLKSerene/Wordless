@@ -33,7 +33,7 @@ underthesea == 6.8.4
 vaderSentiment == 3.3.2
 
 ## python-mecab-ko
-python-mecab-ko == 1.3.3
+python-mecab-ko == 1.3.5
 python-mecab-ko-dic == 2.1.1.post2
 
 ## pymorphy3
