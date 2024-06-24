@@ -164,7 +164,19 @@ def test_md():
 def test_me():
     assert_zeros(wl_measures_effect_size.me)
 
+# Reference: Dunning, T. E. (1998). Finding structure in text, genome and other symbolic sequences [Doctoral dissertation, University of Sheffield]. arXiv. arxiv.org/pdf/1207.1847.pdf (p. 51)
 def test_mi():
+    numpy.testing.assert_array_equal(
+        numpy.round(wl_measures_effect_size.mi(
+            main,
+            numpy.array([2] * 2, dtype = float),
+            numpy.array([0] * 2, dtype = float),
+            numpy.array([0] * 2, dtype = float),
+            numpy.array([7, 997], dtype = float)
+        ), 3),
+        numpy.array([0.764, 0.021])
+    )
+
     assert_zeros(wl_measures_effect_size.mi)
 
 # Reference: Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. Corpus Linguistics and Linguistic Theory, 15(1), pp. 133–167. https://doi.org/10.1515/cllt-2015-0030 (p. 154)

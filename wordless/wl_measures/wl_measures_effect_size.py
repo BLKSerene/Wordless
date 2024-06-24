@@ -147,7 +147,7 @@ def md(main, o11s, o12s, o21s, o22s):
 
     return wl_measure_utils.numpy_log2(wl_measure_utils.numpy_divide(o11s ** 2, e11s))
 
-# Mutual Extation
+# Mutual Expectation
 # Reference: Dias, G., Guilloré, S., & Pereira Lopes, J. G. (1999). Language independent automatic acquisition of rigid multiword units from unrestricted text corpora. In A. Condamines, C. Fabre, & M. Péry-Woodley (Eds.), TALN'99: 6ème Conférence Annuelle Sur le Traitement Automatique des Langues Naturelles (pp. 333–339). TALN.
 def me(main, o11s, o12s, o21s, o22s):
     o1xs, _, ox1s, _ = wl_measures_statistical_significance.get_freqs_marginal(o11s, o12s, o21s, o22s)
