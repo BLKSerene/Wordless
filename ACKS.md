@@ -43,7 +43,7 @@ As Wordless stands on the shoulders of giants, I hereby extend my sincere gratit
 19|[python-docx](https://github.com/python-openxml/python-docx)|1.1.2|Steve Canny|[MIT](https://github.com/python-openxml/python-docx/blob/master/LICENSE)
 20|[python-mecab-ko](https://github.com/jonghwanhyeon/python-mecab-ko)|1.3.3|Jonghwan Hyeon|[BSD-3-Clause](https://github.com/jonghwanhyeon/python-mecab-ko/blob/main/LICENSE)
 21|[python-pptx](https://github.com/scanny/python-pptx)|0.6.23|Steve Canny|[MIT](https://github.com/scanny/python-pptx/blob/master/LICENSE)
-22|[Requests](https://github.com/psf/requests)|2.32.2|Kenneth Reitz|[Apache-2.0](https://github.com/psf/requests/blob/main/LICENSE)
+22|[Requests](https://github.com/psf/requests)|2.32.3|Kenneth Reitz|[Apache-2.0](https://github.com/psf/requests/blob/main/LICENSE)
 23|[Sacremoses](https://github.com/hplt-project/sacremoses)|0.1.1|Liling Tan, Jelmer van der Linde|[MIT](https://github.com/hplt-project/sacremoses/blob/master/LICENSE)
 24|[SciPy](https://scipy.org/scipylib/)|1.13.1|SciPy Developers|[BSD-3-Clause](https://github.com/scipy/scipy/blob/main/LICENSE.txt)
 25|[simplemma](https://github.com/adbar/simplemma)|1.0.0|Adrien Barbaresi|[MIT](https://github.com/adbar/simplemma/blob/main/LICENSE)
