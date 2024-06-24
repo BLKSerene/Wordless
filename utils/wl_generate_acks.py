@@ -74,7 +74,7 @@ ACKS = [
         'Apache-2.0', 'https://github.com/nltk/nltk/blob/develop/LICENSE.txt'
     ], [
         'NumPy', 'https://www.numpy.org/',
-        '1.26.0', 'NumPy Developers',
+        '1.26.4', 'NumPy Developers',
         'BSD-3-Clause', 'https://github.com/numpy/numpy/blob/main/LICENSE.txt'
     ], [
         'opencc-python', 'https://github.com/yichen0831/opencc-python',
