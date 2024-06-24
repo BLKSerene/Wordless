@@ -114,7 +114,7 @@ ACKS = [
         'MIT', 'https://github.com/python-openxml/python-docx/blob/master/LICENSE'
     ], [
         'python-mecab-ko', 'https://github.com/jonghwanhyeon/python-mecab-ko',
-        '1.3.3', 'Jonghwan Hyeon',
+        '1.3.5', 'Jonghwan Hyeon',
         'BSD-3-Clause', 'https://github.com/jonghwanhyeon/python-mecab-ko/blob/main/LICENSE'
     ], [
         'python-pptx', 'https://github.com/scanny/python-pptx',
