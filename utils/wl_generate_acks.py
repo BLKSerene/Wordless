@@ -62,7 +62,7 @@ ACKS = [
         'Apache-2.0', 'https://github.com/pemistahl/lingua-py/blob/main/LICENSE.txt'
     ], [
         'Matplotlib', 'https://matplotlib.org/',
-        '3.8.0', 'Matplotlib Development Team',
+        '3.9.0', 'Matplotlib Development Team',
         'Matplotlib', 'https://matplotlib.org/stable/users/project/license.html'
     ], [
         'NetworkX', 'https://networkx.org/',
