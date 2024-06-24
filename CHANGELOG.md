@@ -78,6 +78,7 @@
 - Dependencies: Upgrade python-docx to 1.1.2
 - Dependencies: Upgrade Requests to 2.32.2
 - Dependencies: Upgrade Sacremoses to 0.1.1
+- Dependencies: Upgrade SciPy to 1.13.1
 - Dependencies: Upgrade simplemma to 1.0.0
 - Dependencies: Upgrade spaCy to 3.7.5
 - Dependencies: Upgrade spacy-pkuseg to 0.0.33

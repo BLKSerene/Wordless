@@ -45,7 +45,7 @@ As Wordless stands on the shoulders of giants, I hereby extend my sincere gratit
 21|[python-pptx](https://github.com/scanny/python-pptx)|0.6.23|Steve Canny|[MIT](https://github.com/scanny/python-pptx/blob/master/LICENSE)
 22|[Requests](https://github.com/psf/requests)|2.32.2|Kenneth Reitz|[Apache-2.0](https://github.com/psf/requests/blob/main/LICENSE)
 23|[Sacremoses](https://github.com/hplt-project/sacremoses)|0.1.1|Liling Tan, Jelmer van der Linde|[MIT](https://github.com/hplt-project/sacremoses/blob/master/LICENSE)
-24|[SciPy](https://scipy.org/scipylib/)|1.11.3|SciPy Developers|[BSD-3-Clause](https://github.com/scipy/scipy/blob/main/LICENSE.txt)
+24|[SciPy](https://scipy.org/scipylib/)|1.13.1|SciPy Developers|[BSD-3-Clause](https://github.com/scipy/scipy/blob/main/LICENSE.txt)
 25|[simplemma](https://github.com/adbar/simplemma)|1.0.0|Adrien Barbaresi|[MIT](https://github.com/adbar/simplemma/blob/main/LICENSE)
 26|[spaCy](https://spacy.io/)|3.7.5|Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann|[MIT](https://github.com/explosion/spaCy/blob/master/LICENSE)
 27|[spacy-pkuseg](https://github.com/explosion/spacy-pkuseg)|0.0.33|Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶),<br>Xuancheng Ren (任宣丞), Yi Zhang (张艺),<br>Zhiyuan Zhang (张之远), Bingzhen Wei (位冰镇),<br>Xu Sun (孙栩)<br>Adriane Boyd, Ines Montani|[MIT](https://github.com/explosion/spacy-pkuseg/blob/master/LICENSE)
