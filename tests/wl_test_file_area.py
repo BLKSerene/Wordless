@@ -37,6 +37,12 @@ def wl_test_file_area(main):
     def open_file(err_msg, files_to_open):
         assert not err_msg
 
+        if files_to_open[-1]['name'] == '[amh] No language support':
+            files_to_open[-1]['lang'] = files_to_open[-1]['lang'] = 'amh'
+
+        if files_to_open[-1]['name'] == '[eng_gb] Tagged':
+            files_to_open[-1]['tagged'] = files_to_open[-1]['tagged'] = True
+
         wl_file_area.Wl_Worker_Open_Files(
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = ''),
@@ -47,6 +53,12 @@ def wl_test_file_area(main):
 
     def open_file_ref(err_msg, files_to_open):
         assert not err_msg
+
+        if files_to_open[-1]['name'] == '[amh] No language support':
+            files_to_open[-1]['lang'] = files_to_open[-1]['lang'] = 'amh'
+
+        if files_to_open[-1]['name'] == '[eng_gb] Tagged':
+            files_to_open[-1]['tagged'] = files_to_open[-1]['tagged'] = True
 
         wl_file_area.Wl_Worker_Open_Files(
             main,
@@ -124,18 +136,16 @@ def wl_test_file_area(main):
             assert new_file['encoding'] == 'ascii'
 
         if new_file['name'] == '[amh] No language support':
-            assert new_file['lang'] == 'other'
+            assert new_file['lang'] == 'amh'
         else:
             assert new_file['lang'] == 'eng_us'
 
         assert not new_file['tokenized']
-        assert not new_file['tagged']
-
-        if new_file['name'] == '[amh] No language support':
-            new_file['lang'] = new_file['text'].lang = 'amh'
 
         if new_file['name'] == '[eng_gb] Tagged':
-            new_file['tagged'] = new_file['text'].tagged = True
+            assert new_file['tagged']
+        else:
+            assert not new_file['tagged']
 
         print(f'done! (In {round(time.time() - time_start, 2)} seconds)')
 

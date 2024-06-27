@@ -28,7 +28,6 @@ def test_wl_settings_syl_tokenization():
     settings_syl_tokenization.apply_settings()
 
     settings_syl_tokenization.preview_changed()
-    settings_syl_tokenization.preview_results_changed()
     settings_syl_tokenization.update_gui('test')
     settings_syl_tokenization.update_gui_err()
 

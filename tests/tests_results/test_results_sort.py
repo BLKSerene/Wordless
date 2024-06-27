@@ -36,7 +36,7 @@ def test_wl_dialog_results_sort_concordancer():
     main.settings_custom['concordancer']['sort_results']['sorting_rules'] = [
         ['Node', 'Ascending'],
         ['Sentiment', 'Ascending'],
-        ['Token no.', 'Ascending'],
+        ['Token No.', 'Ascending'],
         ['File', 'Ascending'],
         ['R1', 'Ascending'],
         ['L1', 'Ascending']
@@ -45,7 +45,7 @@ def test_wl_dialog_results_sort_concordancer():
     dialog_results_sort_concordancer.update_gui([])
 
 def test_table_results_sort_concordancer():
-    table_results_sort_concordancer = wl_results_sort.Table_Results_Sort_Conordancer(
+    table_results_sort_concordancer = wl_results_sort.Wl_Table_Results_Sort_Conordancer(
         main,
         table = table
     )

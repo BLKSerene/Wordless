@@ -366,45 +366,45 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
 class Wl_Table_Profiler_Readability(Wl_Table_Profiler):
     def __init__(self, parent):
         HEADERS_READABILITY = [
-            _tr('wl_profiler', "Al-Heeti's Readability Prediction Formula"),
-            _tr('wl_profiler', 'Automated Arabic Readability Index'),
-            _tr('wl_profiler', 'Automated Readability Index'),
-            _tr('wl_profiler', "Bormuth's Cloze Mean"),
-            _tr('wl_profiler', "Bormuth's Grade Placement"),
-            _tr('wl_profiler', 'Coleman-Liau Index'),
-            _tr('wl_profiler', "Coleman's Readability Formula"),
-            _tr('wl_profiler', 'Dale-Chall Readability Formula'),
-            _tr('wl_profiler', "Danielson-Bryan's Readability Formula"),
-            _tr('wl_profiler', "Dawood's Readability Formula"),
-            _tr('wl_profiler', 'Degrees of Reading Power'),
-            _tr('wl_profiler', 'Devereaux Readability Index'),
-            _tr('wl_profiler', 'Dickes-Steiwer Handformel'),
-            _tr('wl_profiler', 'Easy Listening Formula'),
-            _tr('wl_profiler', 'Flesch-Kincaid Grade Level'),
-            _tr('wl_profiler', 'Flesch Reading Ease'),
-            _tr('wl_profiler', 'Flesch Reading Ease (Farr-Jenkins-Paterson)'),
-            _tr('wl_profiler', 'FORCAST Grade Level'),
-            _tr('wl_profiler', 'Fórmula de Comprensibilidad de Gutiérrez de Polini'),
-            _tr('wl_profiler', 'Fórmula de Crawford'),
-            _tr('wl_profiler', "Fucks's Stilcharakteristik"),
-            _tr('wl_profiler', 'Gulpease Index'),
-            _tr('wl_profiler', 'Gunning Fog Index'),
-            _tr('wl_profiler', 'Legibilidad μ'),
-            _tr('wl_profiler', 'Lensear Write'),
-            _tr('wl_profiler', 'Lix'),
-            _tr('wl_profiler', 'Lorge Readability Index'),
-            _tr('wl_profiler', "Luong-Nguyen-Dinh's Readability Formula"),
-            _tr('wl_profiler', 'McAlpine EFLAW Readability Score'),
-            _tr('wl_profiler', 'neue Wiener Literaturformeln'),
-            _tr('wl_profiler', 'neue Wiener Sachtextformel'),
-            _tr('wl_profiler', 'OSMAN'),
-            _tr('wl_profiler', 'Rix'),
-            _tr('wl_profiler', 'SMOG Grade'),
-            _tr('wl_profiler', 'Spache Grade Level'),
-            _tr('wl_profiler', 'Strain Index'),
-            _tr('wl_profiler', "Tränkle & Bailer's Readability Formula"),
-            _tr('wl_profiler', "Tuldava's Text Difficulty"),
-            _tr('wl_profiler', "Wheeler & Smith's Readability Formula")
+            _tr('Wl_Table_Profiler_Readability', "Al-Heeti's Readability Prediction Formula"),
+            _tr('Wl_Table_Profiler_Readability', 'Automated Arabic Readability Index'),
+            _tr('Wl_Table_Profiler_Readability', 'Automated Readability Index'),
+            _tr('Wl_Table_Profiler_Readability', "Bormuth's Cloze Mean"),
+            _tr('Wl_Table_Profiler_Readability', "Bormuth's Grade Placement"),
+            _tr('Wl_Table_Profiler_Readability', 'Coleman-Liau Index'),
+            _tr('Wl_Table_Profiler_Readability', "Coleman's Readability Formula"),
+            _tr('Wl_Table_Profiler_Readability', 'Dale-Chall Readability Formula'),
+            _tr('Wl_Table_Profiler_Readability', "Danielson-Bryan's Readability Formula"),
+            _tr('Wl_Table_Profiler_Readability', "Dawood's Readability Formula"),
+            _tr('Wl_Table_Profiler_Readability', 'Degrees of Reading Power'),
+            _tr('Wl_Table_Profiler_Readability', 'Devereaux Readability Index'),
+            _tr('Wl_Table_Profiler_Readability', 'Dickes-Steiwer Handformel'),
+            _tr('Wl_Table_Profiler_Readability', 'Easy Listening Formula'),
+            _tr('Wl_Table_Profiler_Readability', 'Flesch-Kincaid Grade Level'),
+            _tr('Wl_Table_Profiler_Readability', 'Flesch Reading Ease'),
+            _tr('Wl_Table_Profiler_Readability', 'Flesch Reading Ease (Farr-Jenkins-Paterson)'),
+            _tr('Wl_Table_Profiler_Readability', 'FORCAST Grade Level'),
+            _tr('Wl_Table_Profiler_Readability', 'Fórmula de Comprensibilidad de Gutiérrez de Polini'),
+            _tr('Wl_Table_Profiler_Readability', 'Fórmula de Crawford'),
+            _tr('Wl_Table_Profiler_Readability', "Fucks's Stilcharakteristik"),
+            _tr('Wl_Table_Profiler_Readability', 'Gulpease Index'),
+            _tr('Wl_Table_Profiler_Readability', 'Gunning Fog Index'),
+            _tr('Wl_Table_Profiler_Readability', 'Legibilidad μ'),
+            _tr('Wl_Table_Profiler_Readability', 'Lensear Write'),
+            _tr('Wl_Table_Profiler_Readability', 'Lix'),
+            _tr('Wl_Table_Profiler_Readability', 'Lorge Readability Index'),
+            _tr('Wl_Table_Profiler_Readability', "Luong-Nguyen-Dinh's Readability Formula"),
+            _tr('Wl_Table_Profiler_Readability', 'McAlpine EFLAW Readability Score'),
+            _tr('Wl_Table_Profiler_Readability', 'neue Wiener Literaturformeln'),
+            _tr('Wl_Table_Profiler_Readability', 'neue Wiener Sachtextformel'),
+            _tr('Wl_Table_Profiler_Readability', 'OSMAN'),
+            _tr('Wl_Table_Profiler_Readability', 'Rix'),
+            _tr('Wl_Table_Profiler_Readability', 'SMOG Grade'),
+            _tr('Wl_Table_Profiler_Readability', 'Spache Grade Level'),
+            _tr('Wl_Table_Profiler_Readability', 'Strain Index'),
+            _tr('Wl_Table_Profiler_Readability', "Tränkle & Bailer's Readability Formula"),
+            _tr('Wl_Table_Profiler_Readability', "Tuldava's Text Difficulty"),
+            _tr('Wl_Table_Profiler_Readability', "Wheeler & Smith's Readability Formula")
         ]
 
         super().__init__(
@@ -458,20 +458,20 @@ class Wl_Table_Profiler_Readability(Wl_Table_Profiler):
 class Wl_Table_Profiler_Counts(Wl_Table_Profiler):
     def __init__(self, parent):
         HEADERS_COUNTS = [
-            _tr('wl_profiler', 'Count of Paragraphs'),
-            _tr('wl_profiler', 'Count of Paragraphs %'),
-            _tr('wl_profiler', 'Count of Sentences'),
-            _tr('wl_profiler', 'Count of Sentences %'),
-            _tr('wl_profiler', 'Count of Sentence Segments'),
-            _tr('wl_profiler', 'Count of Sentence Segments %'),
-            _tr('wl_profiler', 'Count of Tokens'),
-            _tr('wl_profiler', 'Count of Tokens %'),
-            _tr('wl_profiler', 'Count of Types'),
-            _tr('wl_profiler', 'Count of Types %'),
-            _tr('wl_profiler', 'Count of Syllables'),
-            _tr('wl_profiler', 'Count of Syllables %'),
-            _tr('wl_profiler', 'Count of Characters'),
-            _tr('wl_profiler', 'Count of Characters %')
+            _tr('Wl_Table_Profiler_Counts', 'Count of Paragraphs'),
+            _tr('Wl_Table_Profiler_Counts', 'Count of Paragraphs %'),
+            _tr('Wl_Table_Profiler_Counts', 'Count of Sentences'),
+            _tr('Wl_Table_Profiler_Counts', 'Count of Sentences %'),
+            _tr('Wl_Table_Profiler_Counts', 'Count of Sentence Segments'),
+            _tr('Wl_Table_Profiler_Counts', 'Count of Sentence Segments %'),
+            _tr('Wl_Table_Profiler_Counts', 'Count of Tokens'),
+            _tr('Wl_Table_Profiler_Counts', 'Count of Tokens %'),
+            _tr('Wl_Table_Profiler_Counts', 'Count of Types'),
+            _tr('Wl_Table_Profiler_Counts', 'Count of Types %'),
+            _tr('Wl_Table_Profiler_Counts', 'Count of Syllables'),
+            _tr('Wl_Table_Profiler_Counts', 'Count of Syllables %'),
+            _tr('Wl_Table_Profiler_Counts', 'Count of Characters'),
+            _tr('Wl_Table_Profiler_Counts', 'Count of Characters %')
         ]
 
         super().__init__(
@@ -582,34 +582,34 @@ class Wl_Table_Profiler_Counts(Wl_Table_Profiler):
 class Wl_Table_Profiler_Lexical_Density_Diversity(Wl_Table_Profiler):
     def __init__(self, parent):
         HEADERS_LEXICAL_DENSITY_DIVERSITY = [
-            _tr('wl_profiler', "Brunét's Index"),
-            _tr('wl_profiler', 'Corrected TTR'),
-            _tr('wl_profiler', "Fisher's Index of Diversity"),
-            _tr('wl_profiler', "Herdan's Vₘ"),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', "Brunét's Index"),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', 'Corrected TTR'),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', "Fisher's Index of Diversity"),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', "Herdan's Vₘ"),
             'HD-D',
-            _tr('wl_profiler', "Honoré's Statistic"),
-            _tr('wl_profiler', 'Lexical Density'),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', "Honoré's Statistic"),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', 'Lexical Density'),
             'LogTTR',
-            _tr('wl_profiler', 'Mean Segmental TTR'),
-            _tr('wl_profiler', 'Measure of Textual Lexical Diversity'),
-            _tr('wl_profiler', 'Moving-average TTR'),
-            _tr('wl_profiler', "Popescu-Mačutek-Altmann's B₁"),
-            _tr('wl_profiler', "Popescu-Mačutek-Altmann's B₂"),
-            _tr('wl_profiler', "Popescu-Mačutek-Altmann's B₃"),
-            _tr('wl_profiler', "Popescu-Mačutek-Altmann's B₄"),
-            _tr('wl_profiler', "Popescu-Mačutek-Altmann's B₅"),
-            _tr('wl_profiler', "Popescu's R₁"),
-            _tr('wl_profiler', "Popescu's R₂"),
-            _tr('wl_profiler', "Popescu's R₃"),
-            _tr('wl_profiler', "Popescu's R₄"),
-            _tr('wl_profiler', 'Repeat Rate'),
-            _tr('wl_profiler', 'Root TTR'),
-            _tr('wl_profiler', 'Shannon Entropy'),
-            _tr('wl_profiler', "Simpson's l"),
-            _tr('wl_profiler', 'Type-token Ratio'),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', 'Mean Segmental TTR'),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', 'Measure of Textual Lexical Diversity'),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', 'Moving-average TTR'),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', "Popescu-Mačutek-Altmann's B₁"),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', "Popescu-Mačutek-Altmann's B₂"),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', "Popescu-Mačutek-Altmann's B₃"),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', "Popescu-Mačutek-Altmann's B₄"),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', "Popescu-Mačutek-Altmann's B₅"),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', "Popescu's R₁"),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', "Popescu's R₂"),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', "Popescu's R₃"),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', "Popescu's R₄"),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', 'Repeat Rate'),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', 'Root TTR'),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', 'Shannon Entropy'),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', "Simpson's l"),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', 'Type-token Ratio'),
             'vocd-D',
-            _tr('wl_profiler', "Yule's Characteristic K"),
-            _tr('wl_profiler', "Yule's Index of Diversity")
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', "Yule's Characteristic K"),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', "Yule's Index of Diversity")
         ]
 
         super().__init__(
@@ -662,143 +662,143 @@ class Wl_Table_Profiler_Lexical_Density_Diversity(Wl_Table_Profiler):
 class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
     def __init__(self, parent):
         HEADERS_LEN_PARAS_SENTENCES = [
-            _tr('wl_profiler', 'Paragraph Length in Sentences (Mean)'),
-            _tr('wl_profiler', 'Paragraph Length in Sentences (Standard Deviation)'),
-            _tr('wl_profiler', 'Paragraph Length in Sentences (Variance)'),
-            _tr('wl_profiler', 'Paragraph Length in Sentences (Minimum)'),
-            _tr('wl_profiler', 'Paragraph Length in Sentences (25th Percentile)'),
-            _tr('wl_profiler', 'Paragraph Length in Sentences (Median)'),
-            _tr('wl_profiler', 'Paragraph Length in Sentences (75th Percentile)'),
-            _tr('wl_profiler', 'Paragraph Length in Sentences (Maximum)'),
-            _tr('wl_profiler', 'Paragraph Length in Sentences (Range)'),
-            _tr('wl_profiler', 'Paragraph Length in Sentences (Interquartile Range)'),
-            _tr('wl_profiler', 'Paragraph Length in Sentences (Modes)')
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentences (Mean)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentences (Standard Deviation)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentences (Variance)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentences (Minimum)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentences (25th Percentile)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentences (Median)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentences (75th Percentile)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentences (Maximum)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentences (Range)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentences (Interquartile Range)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentences (Modes)')
         ]
 
         HEADERS_LEN_PARAS_SENTENCE_SEGS = [
-            _tr('wl_profiler', 'Paragraph Length in Sentence Segments (Mean)'),
-            _tr('wl_profiler', 'Paragraph Length in Sentence Segments (Standard Deviation)'),
-            _tr('wl_profiler', 'Paragraph Length in Sentence Segments (Variance)'),
-            _tr('wl_profiler', 'Paragraph Length in Sentence Segments (Minimum)'),
-            _tr('wl_profiler', 'Paragraph Length in Sentence Segments (25th Percentile)'),
-            _tr('wl_profiler', 'Paragraph Length in Sentence Segments (Median)'),
-            _tr('wl_profiler', 'Paragraph Length in Sentence Segments (75th Percentile)'),
-            _tr('wl_profiler', 'Paragraph Length in Sentence Segments (Maximum)'),
-            _tr('wl_profiler', 'Paragraph Length in Sentence Segments (Range)'),
-            _tr('wl_profiler', 'Paragraph Length in Sentence Segments (Interquartile Range)'),
-            _tr('wl_profiler', 'Paragraph Length in Sentence Segments (Modes)')
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentence Segments (Mean)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentence Segments (Standard Deviation)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentence Segments (Variance)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentence Segments (Minimum)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentence Segments (25th Percentile)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentence Segments (Median)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentence Segments (75th Percentile)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentence Segments (Maximum)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentence Segments (Range)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentence Segments (Interquartile Range)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentence Segments (Modes)')
         ]
 
         HEADERS_LEN_PARAS_TOKENS = [
-            _tr('wl_profiler', 'Paragraph Length in Tokens (Mean)'),
-            _tr('wl_profiler', 'Paragraph Length in Tokens (Standard Deviation)'),
-            _tr('wl_profiler', 'Paragraph Length in Tokens (Variance)'),
-            _tr('wl_profiler', 'Paragraph Length in Tokens (Minimum)'),
-            _tr('wl_profiler', 'Paragraph Length in Tokens (25th Percentile)'),
-            _tr('wl_profiler', 'Paragraph Length in Tokens (Median)'),
-            _tr('wl_profiler', 'Paragraph Length in Tokens (75th Percentile)'),
-            _tr('wl_profiler', 'Paragraph Length in Tokens (Maximum)'),
-            _tr('wl_profiler', 'Paragraph Length in Tokens (Range)'),
-            _tr('wl_profiler', 'Paragraph Length in Tokens (Interquartile Range)'),
-            _tr('wl_profiler', 'Paragraph Length in Tokens (Modes)')
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Tokens (Mean)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Tokens (Standard Deviation)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Tokens (Variance)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Tokens (Minimum)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Tokens (25th Percentile)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Tokens (Median)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Tokens (75th Percentile)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Tokens (Maximum)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Tokens (Range)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Tokens (Interquartile Range)'),
+            _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Tokens (Modes)')
         ]
 
         HEADERS_LEN_SENTENCES_TOKENS = [
-            _tr('wl_profiler', 'Sentence Length in Tokens (Mean)'),
-            _tr('wl_profiler', 'Sentence Length in Tokens (Standard Deviation)'),
-            _tr('wl_profiler', 'Sentence Length in Tokens (Variance)'),
-            _tr('wl_profiler', 'Sentence Length in Tokens (Minimum)'),
-            _tr('wl_profiler', 'Sentence Length in Tokens (25th Percentile)'),
-            _tr('wl_profiler', 'Sentence Length in Tokens (Median)'),
-            _tr('wl_profiler', 'Sentence Length in Tokens (75th Percentile)'),
-            _tr('wl_profiler', 'Sentence Length in Tokens (Maximum)'),
-            _tr('wl_profiler', 'Sentence Length in Tokens (Range)'),
-            _tr('wl_profiler', 'Sentence Length in Tokens (Interquartile Range)'),
-            _tr('wl_profiler', 'Sentence Length in Tokens (Modes)')
+            _tr('Wl_Table_Profiler_Lens', 'Sentence Length in Tokens (Mean)'),
+            _tr('Wl_Table_Profiler_Lens', 'Sentence Length in Tokens (Standard Deviation)'),
+            _tr('Wl_Table_Profiler_Lens', 'Sentence Length in Tokens (Variance)'),
+            _tr('Wl_Table_Profiler_Lens', 'Sentence Length in Tokens (Minimum)'),
+            _tr('Wl_Table_Profiler_Lens', 'Sentence Length in Tokens (25th Percentile)'),
+            _tr('Wl_Table_Profiler_Lens', 'Sentence Length in Tokens (Median)'),
+            _tr('Wl_Table_Profiler_Lens', 'Sentence Length in Tokens (75th Percentile)'),
+            _tr('Wl_Table_Profiler_Lens', 'Sentence Length in Tokens (Maximum)'),
+            _tr('Wl_Table_Profiler_Lens', 'Sentence Length in Tokens (Range)'),
+            _tr('Wl_Table_Profiler_Lens', 'Sentence Length in Tokens (Interquartile Range)'),
+            _tr('Wl_Table_Profiler_Lens', 'Sentence Length in Tokens (Modes)')
         ]
 
         HEADERS_LEN_SENTENCE_SEGS_TOKENS = [
-            _tr('wl_profiler', 'Sentence Segment Length in Tokens (Mean)'),
-            _tr('wl_profiler', 'Sentence Segment Length in Tokens (Standard Deviation)'),
-            _tr('wl_profiler', 'Sentence Segment Length in Tokens (Variance)'),
-            _tr('wl_profiler', 'Sentence Segment Length in Tokens (Minimum)'),
-            _tr('wl_profiler', 'Sentence Segment Length in Tokens (25th Percentile)'),
-            _tr('wl_profiler', 'Sentence Segment Length in Tokens (Median)'),
-            _tr('wl_profiler', 'Sentence Segment Length in Tokens (75th Percentile)'),
-            _tr('wl_profiler', 'Sentence Segment Length in Tokens (Maximum)'),
-            _tr('wl_profiler', 'Sentence Segment Length in Tokens (Range)'),
-            _tr('wl_profiler', 'Sentence Segment Length in Tokens (Interquartile Range)'),
-            _tr('wl_profiler', 'Sentence Segment Length in Tokens (Modes)')
+            _tr('Wl_Table_Profiler_Lens', 'Sentence Segment Length in Tokens (Mean)'),
+            _tr('Wl_Table_Profiler_Lens', 'Sentence Segment Length in Tokens (Standard Deviation)'),
+            _tr('Wl_Table_Profiler_Lens', 'Sentence Segment Length in Tokens (Variance)'),
+            _tr('Wl_Table_Profiler_Lens', 'Sentence Segment Length in Tokens (Minimum)'),
+            _tr('Wl_Table_Profiler_Lens', 'Sentence Segment Length in Tokens (25th Percentile)'),
+            _tr('Wl_Table_Profiler_Lens', 'Sentence Segment Length in Tokens (Median)'),
+            _tr('Wl_Table_Profiler_Lens', 'Sentence Segment Length in Tokens (75th Percentile)'),
+            _tr('Wl_Table_Profiler_Lens', 'Sentence Segment Length in Tokens (Maximum)'),
+            _tr('Wl_Table_Profiler_Lens', 'Sentence Segment Length in Tokens (Range)'),
+            _tr('Wl_Table_Profiler_Lens', 'Sentence Segment Length in Tokens (Interquartile Range)'),
+            _tr('Wl_Table_Profiler_Lens', 'Sentence Segment Length in Tokens (Modes)')
         ]
 
         HEADERS_LEN_TOKENS_SYLS = [
-            _tr('wl_profiler', 'Token Length in Syllables (Mean)'),
-            _tr('wl_profiler', 'Token Length in Syllables (Standard Deviation)'),
-            _tr('wl_profiler', 'Token Length in Syllables (Variance)'),
-            _tr('wl_profiler', 'Token Length in Syllables (Minimum)'),
-            _tr('wl_profiler', 'Token Length in Syllables (25th Percentile)'),
-            _tr('wl_profiler', 'Token Length in Syllables (Median)'),
-            _tr('wl_profiler', 'Token Length in Syllables (75th Percentile)'),
-            _tr('wl_profiler', 'Token Length in Syllables (Maximum)'),
-            _tr('wl_profiler', 'Token Length in Syllables (Range)'),
-            _tr('wl_profiler', 'Token Length in Syllables (Interquartile Range)'),
-            _tr('wl_profiler', 'Token Length in Syllables (Modes)')
+            _tr('Wl_Table_Profiler_Lens', 'Token Length in Syllables (Mean)'),
+            _tr('Wl_Table_Profiler_Lens', 'Token Length in Syllables (Standard Deviation)'),
+            _tr('Wl_Table_Profiler_Lens', 'Token Length in Syllables (Variance)'),
+            _tr('Wl_Table_Profiler_Lens', 'Token Length in Syllables (Minimum)'),
+            _tr('Wl_Table_Profiler_Lens', 'Token Length in Syllables (25th Percentile)'),
+            _tr('Wl_Table_Profiler_Lens', 'Token Length in Syllables (Median)'),
+            _tr('Wl_Table_Profiler_Lens', 'Token Length in Syllables (75th Percentile)'),
+            _tr('Wl_Table_Profiler_Lens', 'Token Length in Syllables (Maximum)'),
+            _tr('Wl_Table_Profiler_Lens', 'Token Length in Syllables (Range)'),
+            _tr('Wl_Table_Profiler_Lens', 'Token Length in Syllables (Interquartile Range)'),
+            _tr('Wl_Table_Profiler_Lens', 'Token Length in Syllables (Modes)')
         ]
 
         HEADERS_LEN_TOKENS_CHARS = [
-            _tr('wl_profiler', 'Token Length in Characters (Mean)'),
-            _tr('wl_profiler', 'Token Length in Characters (Standard Deviation)'),
-            _tr('wl_profiler', 'Token Length in Characters (Variance)'),
-            _tr('wl_profiler', 'Token Length in Characters (Minimum)'),
-            _tr('wl_profiler', 'Token Length in Characters (25th Percentile)'),
-            _tr('wl_profiler', 'Token Length in Characters (Median)'),
-            _tr('wl_profiler', 'Token Length in Characters (75th Percentile)'),
-            _tr('wl_profiler', 'Token Length in Characters (Maximum)'),
-            _tr('wl_profiler', 'Token Length in Characters (Range)'),
-            _tr('wl_profiler', 'Token Length in Characters (Interquartile Range)'),
-            _tr('wl_profiler', 'Token Length in Characters (Modes)')
+            _tr('Wl_Table_Profiler_Lens', 'Token Length in Characters (Mean)'),
+            _tr('Wl_Table_Profiler_Lens', 'Token Length in Characters (Standard Deviation)'),
+            _tr('Wl_Table_Profiler_Lens', 'Token Length in Characters (Variance)'),
+            _tr('Wl_Table_Profiler_Lens', 'Token Length in Characters (Minimum)'),
+            _tr('Wl_Table_Profiler_Lens', 'Token Length in Characters (25th Percentile)'),
+            _tr('Wl_Table_Profiler_Lens', 'Token Length in Characters (Median)'),
+            _tr('Wl_Table_Profiler_Lens', 'Token Length in Characters (75th Percentile)'),
+            _tr('Wl_Table_Profiler_Lens', 'Token Length in Characters (Maximum)'),
+            _tr('Wl_Table_Profiler_Lens', 'Token Length in Characters (Range)'),
+            _tr('Wl_Table_Profiler_Lens', 'Token Length in Characters (Interquartile Range)'),
+            _tr('Wl_Table_Profiler_Lens', 'Token Length in Characters (Modes)')
         ]
 
         HEADERS_LEN_TYPES_SYLS = [
-            _tr('wl_profiler', 'Type Length in Syllables (Mean)'),
-            _tr('wl_profiler', 'Type Length in Syllables (Standard Deviation)'),
-            _tr('wl_profiler', 'Type Length in Syllables (Variance)'),
-            _tr('wl_profiler', 'Type Length in Syllables (Minimum)'),
-            _tr('wl_profiler', 'Type Length in Syllables (25th Percentile)'),
-            _tr('wl_profiler', 'Type Length in Syllables (Median)'),
-            _tr('wl_profiler', 'Type Length in Syllables (75th Percentile)'),
-            _tr('wl_profiler', 'Type Length in Syllables (Maximum)'),
-            _tr('wl_profiler', 'Type Length in Syllables (Range)'),
-            _tr('wl_profiler', 'Type Length in Syllables (Interquartile Range)'),
-            _tr('wl_profiler', 'Type Length in Syllables (Modes)')
+            _tr('Wl_Table_Profiler_Lens', 'Type Length in Syllables (Mean)'),
+            _tr('Wl_Table_Profiler_Lens', 'Type Length in Syllables (Standard Deviation)'),
+            _tr('Wl_Table_Profiler_Lens', 'Type Length in Syllables (Variance)'),
+            _tr('Wl_Table_Profiler_Lens', 'Type Length in Syllables (Minimum)'),
+            _tr('Wl_Table_Profiler_Lens', 'Type Length in Syllables (25th Percentile)'),
+            _tr('Wl_Table_Profiler_Lens', 'Type Length in Syllables (Median)'),
+            _tr('Wl_Table_Profiler_Lens', 'Type Length in Syllables (75th Percentile)'),
+            _tr('Wl_Table_Profiler_Lens', 'Type Length in Syllables (Maximum)'),
+            _tr('Wl_Table_Profiler_Lens', 'Type Length in Syllables (Range)'),
+            _tr('Wl_Table_Profiler_Lens', 'Type Length in Syllables (Interquartile Range)'),
+            _tr('Wl_Table_Profiler_Lens', 'Type Length in Syllables (Modes)')
         ]
 
         HEADERS_LEN_TYPES_CHARS = [
-            _tr('wl_profiler', 'Type Length in Characters (Mean)'),
-            _tr('wl_profiler', 'Type Length in Characters (Standard Deviation)'),
-            _tr('wl_profiler', 'Type Length in Characters (Variance)'),
-            _tr('wl_profiler', 'Type Length in Characters (Minimum)'),
-            _tr('wl_profiler', 'Type Length in Characters (25th Percentile)'),
-            _tr('wl_profiler', 'Type Length in Characters (Median)'),
-            _tr('wl_profiler', 'Type Length in Characters (75th Percentile)'),
-            _tr('wl_profiler', 'Type Length in Characters (Maximum)'),
-            _tr('wl_profiler', 'Type Length in Characters (Range)'),
-            _tr('wl_profiler', 'Type Length in Characters (Interquartile Range)'),
-            _tr('wl_profiler', 'Type Length in Characters (Modes)')
+            _tr('Wl_Table_Profiler_Lens', 'Type Length in Characters (Mean)'),
+            _tr('Wl_Table_Profiler_Lens', 'Type Length in Characters (Standard Deviation)'),
+            _tr('Wl_Table_Profiler_Lens', 'Type Length in Characters (Variance)'),
+            _tr('Wl_Table_Profiler_Lens', 'Type Length in Characters (Minimum)'),
+            _tr('Wl_Table_Profiler_Lens', 'Type Length in Characters (25th Percentile)'),
+            _tr('Wl_Table_Profiler_Lens', 'Type Length in Characters (Median)'),
+            _tr('Wl_Table_Profiler_Lens', 'Type Length in Characters (75th Percentile)'),
+            _tr('Wl_Table_Profiler_Lens', 'Type Length in Characters (Maximum)'),
+            _tr('Wl_Table_Profiler_Lens', 'Type Length in Characters (Range)'),
+            _tr('Wl_Table_Profiler_Lens', 'Type Length in Characters (Interquartile Range)'),
+            _tr('Wl_Table_Profiler_Lens', 'Type Length in Characters (Modes)')
         ]
 
         HEADERS_LEN_SYLS_CHARS = [
-            _tr('wl_profiler', 'Syllable Length in Characters (Mean)'),
-            _tr('wl_profiler', 'Syllable Length in Characters (Standard Deviation)'),
-            _tr('wl_profiler', 'Syllable Length in Characters (Variance)'),
-            _tr('wl_profiler', 'Syllable Length in Characters (Minimum)'),
-            _tr('wl_profiler', 'Syllable Length in Characters (25th Percentile)'),
-            _tr('wl_profiler', 'Syllable Length in Characters (Median)'),
-            _tr('wl_profiler', 'Syllable Length in Characters (75th Percentile)'),
-            _tr('wl_profiler', 'Syllable Length in Characters (Maximum)'),
-            _tr('wl_profiler', 'Syllable Length in Characters (Range)'),
-            _tr('wl_profiler', 'Syllable Length in Characters (Interquartile Range)'),
-            _tr('wl_profiler', 'Syllable Length in Characters (Modes)')
+            _tr('Wl_Table_Profiler_Lens', 'Syllable Length in Characters (Mean)'),
+            _tr('Wl_Table_Profiler_Lens', 'Syllable Length in Characters (Standard Deviation)'),
+            _tr('Wl_Table_Profiler_Lens', 'Syllable Length in Characters (Variance)'),
+            _tr('Wl_Table_Profiler_Lens', 'Syllable Length in Characters (Minimum)'),
+            _tr('Wl_Table_Profiler_Lens', 'Syllable Length in Characters (25th Percentile)'),
+            _tr('Wl_Table_Profiler_Lens', 'Syllable Length in Characters (Median)'),
+            _tr('Wl_Table_Profiler_Lens', 'Syllable Length in Characters (75th Percentile)'),
+            _tr('Wl_Table_Profiler_Lens', 'Syllable Length in Characters (Maximum)'),
+            _tr('Wl_Table_Profiler_Lens', 'Syllable Length in Characters (Range)'),
+            _tr('Wl_Table_Profiler_Lens', 'Syllable Length in Characters (Interquartile Range)'),
+            _tr('Wl_Table_Profiler_Lens', 'Syllable Length in Characters (Modes)')
         ]
 
         HEADERS_LENS = [
@@ -964,7 +964,7 @@ class Wl_Table_Profiler_Len_Breakdown(Wl_Table_Profiler):
                 # Insert columns
                 files = list(self.main.wl_file_area.get_selected_files())
 
-                for i, file in enumerate(files):
+                for file in files:
                     self.ins_header_hor(
                         self.find_header_hor(self.tr('Total')), file['name'],
                         is_breakdown_file = True
@@ -972,7 +972,7 @@ class Wl_Table_Profiler_Len_Breakdown(Wl_Table_Profiler):
 
                 self.disable_updates()
 
-                for i, stats in enumerate(text_stats_files):
+                for stats in text_stats_files:
                     len_sentences = numpy.array(stats[4])
                     len_sentence_segs = numpy.array(stats[5])
                     len_tokens_syls = numpy.array(stats[6]) if stats[6] is not None else None
@@ -996,30 +996,30 @@ class Wl_Table_Profiler_Len_Breakdown(Wl_Table_Profiler):
 
                     # Append vertical headers
                     for count_sentences_len in count_sentences_lens:
-                        self.add_header_vert(
-                            self.tr('Count of {}-token-long Sentences').format(count_sentences_len),
-                            is_int = True, is_cum = True
-                        )
-                        self.add_header_vert(
-                            self.tr('Count of {}-token-long Sentences %').format(count_sentences_len),
-                            is_pct = True, is_cum = True
-                        )
-
-                    for i, count_sentences_len in enumerate(reversed(count_sentences_lens)):
-                        counts = count_sentences_lens_files[count_sentences_len]
-
-                        for j, count in enumerate(counts):
-                            self.set_item_num(
-                                row = self.model().rowCount() - 2 - i * 2,
-                                col = j,
-                                val = count
+                        if count_sentences_len:
+                            self.add_header_vert(
+                                self.tr('Count of {}-token-long Sentences').format(count_sentences_len),
+                                is_int = True, is_cum = True
                             )
-                            self.set_item_num(
-                                row = self.model().rowCount() - 1 - i * 2,
-                                col = j,
-                                val = count,
-                                total = count_sentences_lens_total[count_sentences_len]
+                            self.add_header_vert(
+                                self.tr('Count of {}-token-long Sentences %').format(count_sentences_len),
+                                is_pct = True, is_cum = True
                             )
+
+                            counts = count_sentences_lens_files[count_sentences_len]
+
+                            for j, count in enumerate(counts):
+                                self.set_item_num(
+                                    row = self.model().rowCount() - 2,
+                                    col = j,
+                                    val = count
+                                )
+                                self.set_item_num(
+                                    row = self.model().rowCount() - 1,
+                                    col = j,
+                                    val = count,
+                                    total = count_sentences_lens_total[count_sentences_len]
+                                )
 
                 # Count of n-token-long Sentence Segments
                 if any(count_sentence_segs_lens):
@@ -1032,30 +1032,30 @@ class Wl_Table_Profiler_Len_Breakdown(Wl_Table_Profiler):
 
                     # Append vertical headers
                     for count_sentence_segs_len in count_sentence_segs_lens:
-                        self.add_header_vert(
-                            self.tr('Count of {}-token-long Sentence Segment').format(count_sentence_segs_len),
-                            is_int = True, is_cum = True
-                        )
-                        self.add_header_vert(
-                            self.tr('Count of {}-token-long Sentence Segment %').format(count_sentence_segs_len),
-                            is_pct = True, is_cum = True
-                        )
-
-                    for i, count_sentence_segs_len in enumerate(reversed(count_sentence_segs_lens)):
-                        counts = count_sentence_segs_lens_files[count_sentence_segs_len]
-
-                        for j, count in enumerate(counts):
-                            self.set_item_num(
-                                row = self.model().rowCount() - 2 - i * 2,
-                                col = j,
-                                val = count
+                        if count_sentence_segs_len:
+                            self.add_header_vert(
+                                self.tr('Count of {}-token-long Sentence Segment').format(count_sentence_segs_len),
+                                is_int = True, is_cum = True
                             )
-                            self.set_item_num(
-                                row = self.model().rowCount() - 1 - i * 2,
-                                col = j,
-                                val = count,
-                                total = count_sentence_segs_lens_total[count_sentence_segs_len]
+                            self.add_header_vert(
+                                self.tr('Count of {}-token-long Sentence Segment %').format(count_sentence_segs_len),
+                                is_pct = True, is_cum = True
                             )
+
+                            counts = count_sentence_segs_lens_files[count_sentence_segs_len]
+
+                            for j, count in enumerate(counts):
+                                self.set_item_num(
+                                    row = self.model().rowCount() - 2,
+                                    col = j,
+                                    val = count
+                                )
+                                self.set_item_num(
+                                    row = self.model().rowCount() - 1,
+                                    col = j,
+                                    val = count,
+                                    total = count_sentence_segs_lens_total[count_sentence_segs_len]
+                                )
 
                 # Count of n-syllable-long Tokens
                 if len_tokens_syls is not None:
@@ -1077,17 +1077,16 @@ class Wl_Table_Profiler_Len_Breakdown(Wl_Table_Profiler):
                             is_pct = True, is_cum = True
                         )
 
-                    for i, count_tokens_len in enumerate(reversed(count_tokens_lens_syls)):
                         counts = count_tokens_lens_files[count_tokens_len]
 
                         for j, count in enumerate(counts):
                             self.set_item_num(
-                                row = self.model().rowCount() - 2 - i * 2,
+                                row = self.model().rowCount() - 2,
                                 col = j,
                                 val = count
                             )
                             self.set_item_num(
-                                row = self.model().rowCount() - 1 - i * 2,
+                                row = self.model().rowCount() - 1,
                                 col = j,
                                 val = count,
                                 total = count_tokens_lens_total[count_tokens_len]
@@ -1113,17 +1112,16 @@ class Wl_Table_Profiler_Len_Breakdown(Wl_Table_Profiler):
                             is_pct = True, is_cum = True
                         )
 
-                    for i, count_tokens_len in enumerate(reversed(count_tokens_lens_chars)):
                         counts = count_tokens_lens_files[count_tokens_len]
 
                         for j, count in enumerate(counts):
                             self.set_item_num(
-                                row = self.model().rowCount() - 2 - i * 2,
+                                row = self.model().rowCount() - 2,
                                 col = j,
                                 val = count
                             )
                             self.set_item_num(
-                                row = self.model().rowCount() - 1 - i * 2,
+                                row = self.model().rowCount() - 1,
                                 col = j,
                                 val = count,
                                 total = count_tokens_lens_total[count_tokens_len]

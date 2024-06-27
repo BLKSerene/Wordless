@@ -38,8 +38,8 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.combo_box_rd_variant = wl_boxes.Wl_Combo_Box(self)
 
         self.combo_box_rd_variant.addItems([
-            self.tr('Policy one'),
-            self.tr('Policy two')
+            self.tr('Policy One'),
+            self.tr('Policy Two')
         ])
 
         self.group_box_rd.setLayout(wl_layouts.Wl_Layout())
@@ -362,7 +362,7 @@ class Wl_Settings_Measures_Lexical_Density_Diversity(wl_settings.Wl_Settings_Nod
         self.settings_custom = self.main.settings_custom['measures']['lexical_density_diversity']
 
         # HD-D
-        self.group_box_hdd = QGroupBox(self.tr('HD-D'), self)
+        self.group_box_hdd = QGroupBox('HD-D', self)
 
         self.label_sample_size = QLabel(self.tr('Sample size:'), self)
         self.spin_box_sample_size = wl_boxes.Wl_Spin_Box(self)

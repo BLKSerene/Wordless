@@ -80,36 +80,32 @@ def text_ignore_tags(text, settings):
 # Use tags only
 def text_use_tags_only(text, settings):
     if settings['use_tags']:
-        # Calculate head references
-        if text.has_token_properties('head'):
-            head_refs = []
-
-            for i_para, para in enumerate(text.tokens_multilevel):
-                for i_sentence, sentence in enumerate(para):
-                    for sentence_seg in sentence:
-                        for token in sentence_seg:
-                            head = token.head
-
-                            for i_sentence_seg, sentence_seg in enumerate(sentence):
-                                for i_token, token in enumerate(sentence_seg):
-                                    if head is token:
-                                        head_refs.append((i_para, i_sentence, i_sentence_seg, i_token))
-
         text.set_token_texts(text.get_token_properties('tag', flat = True))
         text.set_token_properties('tag', None)
 
-        # Update head references
-        if text.has_token_properties('head'):
-            i_token = 0
+# Filter stop words after token texts have been converted to lowercase, replaced by lemmas, or replaced by tags
+def text_filter_stop_words(main, text, settings):
+    if settings['filter_stop_words']:
+        stop_words = wl_stop_word_lists.wl_get_stop_word_list(main, lang = text.lang)
+
+        if main.settings_custom['stop_word_lists']['stop_word_list_settings']['case_sensitive']:
+            for para in text.tokens_multilevel:
+                for sentence in para:
+                    for sentence_seg in sentence:
+                        for i, token in enumerate(sentence_seg):
+                            # Convert to strings to ignore tags and punctuation marks, if any, when checking for stop words
+                            if str(token) in stop_words:
+                                sentence_seg[i] = wl_texts.Wl_Token('')
+        else:
+            stop_words = {token.lower() for token in stop_words}
 
             for para in text.tokens_multilevel:
                 for sentence in para:
                     for sentence_seg in sentence:
-                        for token in sentence_seg:
-                            refs = head_refs[i_token]
-                            token.head = text.tokens_multilevel[refs[0]][refs[1]][refs[2]][refs[3]]
-
-                            i_token += 1
+                        for i, token in enumerate(sentence_seg):
+                            # Convert to strings to ignore tags and punctuation marks, if any, when checking for stop words
+                            if token.lower() in stop_words:
+                                sentence_seg[i] = wl_texts.Wl_Token('')
 
 def wl_process_tokens(main, text, token_settings, search_settings = None):
     settings = copy.deepcopy(token_settings)
@@ -149,11 +145,19 @@ def wl_process_tokens(main, text, token_settings, search_settings = None):
     if settings['treat_as_all_lowercase']:
         text_modified.set_token_texts([token.lower() for token in text_modified.get_tokens_flat()])
 
+        # Also convert tags, lemmas, and syllables, if any, to lowercase
         for para in text_modified.tokens_multilevel:
             for sentence in para:
                 for sentence_seg in sentence:
                     for token in sentence_seg:
-                        token.tag = token.tag.lower()
+                        if token.tag is not None:
+                            token.tag = token.tag.lower()
+
+                        if token.lemma is not None:
+                            token.lemma = token.lemma.lower()
+
+                        if token.syls is not None:
+                            token.syls = [syl.lower() for syl in token.syls]
 
     # Words
     if settings['words']:
@@ -164,7 +168,7 @@ def wl_process_tokens(main, text, token_settings, search_settings = None):
                     for sentence_seg in sentence:
                         for i, token in enumerate(sentence_seg):
                             if token.islower():
-                                sentence_seg[i] = ''
+                                sentence_seg[i] = wl_texts.Wl_Token('')
         # Uppercase
         if not settings['all_uppercase']:
             for para in text_modified.tokens_multilevel:
@@ -172,7 +176,7 @@ def wl_process_tokens(main, text, token_settings, search_settings = None):
                     for sentence_seg in sentence:
                         for i, token in enumerate(sentence_seg):
                             if token.isupper():
-                                sentence_seg[i] = ''
+                                sentence_seg[i] = wl_texts.Wl_Token('')
         # Title Case
         if not settings['title_case']:
             for para in text_modified.tokens_multilevel:
@@ -180,14 +184,14 @@ def wl_process_tokens(main, text, token_settings, search_settings = None):
                     for sentence_seg in sentence:
                         for i, token in enumerate(sentence_seg):
                             if token.istitle():
-                                sentence_seg[i] = ''
+                                sentence_seg[i] = wl_texts.Wl_Token('')
     else:
         for para in text_modified.tokens_multilevel:
             for sentence in para:
                 for sentence_seg in sentence:
                     for i, token in enumerate(sentence_seg):
                         if wl_checks_tokens.is_word_alphabetic(token):
-                            sentence_seg[i] = ''
+                            sentence_seg[i] = wl_texts.Wl_Token('')
 
     # Numerals
     if not settings['nums']:
@@ -196,32 +200,22 @@ def wl_process_tokens(main, text, token_settings, search_settings = None):
                 for sentence_seg in sentence:
                     for i, token in enumerate(sentence_seg):
                         if wl_checks_tokens.is_num(token):
-                            sentence_seg[i] = ''
+                            sentence_seg[i] = wl_texts.Wl_Token('')
 
-    # Filter stop words
-    if settings['filter_stop_words']:
-        stop_words = wl_stop_word_lists.wl_get_stop_word_list(main, lang = text_modified.lang)
-
-        if main.settings_custom['stop_word_lists']['stop_word_list_settings']['case_sensitive']:
-            for para in text_modified.tokens_multilevel:
-                for sentence in para:
-                    for sentence_seg in sentence:
-                        for i, token in enumerate(sentence_seg):
-                            if token in stop_words:
-                                sentence_seg[i] = ''
-        else:
-            stop_words = {token.lower() for token in stop_words}
-
-            for para in text_modified.tokens_multilevel:
-                for sentence in para:
-                    for sentence_seg in sentence:
-                        for i, token in enumerate(sentence_seg):
-                            if token.lower() in stop_words:
-                                sentence_seg[i] = ''
-
-    # Replace tokens with their lemmas
+    # Replace token texts with lemmas
     if settings['apply_lemmatization']:
         text_modified.set_token_texts(text_modified.get_token_properties('lemma', flat = True))
+
+        # Re-apply syllable tokenization to lemmas if syllables have been assigned
+        if text_modified.has_token_properties('syls'):
+            tokens = wl_syl_tokenization.wl_syl_tokenize(
+                main,
+                inputs = wl_texts.to_tokens(text_modified.get_token_properties('lemma', flat = True), lang = text_modified.lang),
+                lang = text_modified.lang,
+                force = True
+            )
+
+            text_modified.set_token_properties('syls', wl_texts.get_token_properties(tokens, 'syls'))
 
     text_modified.update_num_tokens()
 
@@ -232,10 +226,25 @@ def wl_process_tokens_ngram_generator(main, text, token_settings, search_setting
 
     text_ignore_tags(text_modified, token_settings)
     text_use_tags_only(text_modified, token_settings)
+    text_filter_stop_words(main, text_modified, token_settings)
 
     text_modified.update_num_tokens()
 
     return text_modified
+
+def remove_empty_tokens(tokens_multilevel):
+    tokens_multilevel = [
+        [
+            [
+                [token for token in sentence_seg if token]
+                for sentence_seg in sentence
+            ]
+            for sentence in para
+        ]
+        for para in tokens_multilevel
+    ]
+
+    return tokens_multilevel
 
 def remove_empty_tokens_multilevel(tokens_multilevel, empty_tokens = True):
     # Remove empty tokens
@@ -291,12 +300,12 @@ def wl_process_tokens_profiler(main, text, token_settings, profiler_tab):
             wl_pos_tagging.wl_pos_tag_universal(main, text.get_tokens_flat(), lang = text.lang, tagged = text.tagged)
 
     text_modified = wl_process_tokens_ngram_generator(main, text, token_settings)
-    text_modified.tokens_multilevel = remove_empty_tokens_multilevel(text_modified.tokens_multilevel)
+    text_modified.tokens_multilevel = remove_empty_tokens(text_modified.tokens_multilevel)
     text_modified.update_num_tokens()
 
     return text_modified
 
-def wl_process_tokens_concordancer(main, text, token_settings, search_settings, preserve_blank_lines = False):
+def wl_process_tokens_concordancer(main, text, token_settings, search_settings):
     text_pos_tag(main, text, token_settings)
     text_lemmatize(main, text, token_settings, search_settings)
 
@@ -357,9 +366,6 @@ def wl_process_tokens_concordancer(main, text, token_settings, search_settings, 
 
         text_modified.set_tokens(tokens_flat_punc_marks)
 
-    if not preserve_blank_lines:
-        text_modified.tokens_multilevel = remove_empty_tokens_multilevel(text_modified.tokens_multilevel, empty_tokens = False)
-
     text_ignore_tags(text_modified, token_settings)
     text_use_tags_only(text_modified, token_settings)
 
@@ -405,6 +411,7 @@ def wl_process_tokens_colligation_extractor(main, text, token_settings, search_s
 
     text_ignore_tags(text_modified, token_settings)
     text_use_tags_only(text_modified, token_settings)
+    text_filter_stop_words(main, text_modified, token_settings)
 
     text_modified.update_num_tokens()
 

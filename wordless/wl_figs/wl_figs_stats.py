@@ -41,7 +41,7 @@ def wl_fig_stats(main, stat_files_items, tab):
         }
     # Collocations / Colligations
     else:
-        if fig_settings['graph_type'] == _tr('wl_figs_freqs', 'Network graph'):
+        if fig_settings['graph_type'] == _tr('wl_figs_stats', 'Network graph'):
             stat_files_items = {
                 (' '.join(wl_texts.to_display_texts(node)), collocate.display_text()): stat_files
                 for (node, collocate), stat_files in stat_files_items.items()

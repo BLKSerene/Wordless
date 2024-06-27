@@ -27,7 +27,6 @@ import vaderSentiment.vaderSentiment
 
 from tests import wl_test_init
 from wordless.wl_nlp import wl_nlp_utils, wl_word_tokenization
-from wordless.wl_settings import wl_settings_global
 from wordless.wl_utils import wl_conversion
 
 def google_translate(words, lang_src, lang_tgt, chunk_size = 1000):
@@ -86,7 +85,7 @@ with open(f'{vader_dir}/emoji_utf8_lexicon.txt', 'r', encoding = 'utf_8') as f:
 
 os.makedirs('data/VADER', exist_ok = True)
 
-for lang, utils in wl_settings_global.SETTINGS_GLOBAL['sentiment_analyzers'].items():
+for lang, utils in main.settings_global['sentiment_analyzers'].items():
     for util in utils:
         if (
             not lang.startswith('eng_')

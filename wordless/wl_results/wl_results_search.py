@@ -153,7 +153,6 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.checkbox_match_tags.setChecked(settings['match_tags'])
 
         self.search_settings_changed()
-        self.clr_highlights()
 
     def search_settings_changed(self):
         self.settings['multi_search_mode'] = self.checkbox_multi_search_mode.isChecked()

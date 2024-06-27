@@ -24,10 +24,10 @@ from utils import wl_trs_utils
 
 # eng_us: [zho_cn]
 TRS_LANGS = {
-    ' (Cyrillic script)': ['（西里尔文）'],
-    ' (Gurmukhi script)': ['（古木基文）'],
-    ' (Latin script)': ['（拉丁文）'],
-    ' (Meitei script)': ['（曼尼普尔文）'],
+    ' (Cyrillic script)': [' (西里尔文)'],
+    ' (Gurmukhi script)': [' (古木基文)'],
+    ' (Latin script)': [' (拉丁文)'],
+    ' (Meitei script)': [' (曼尼普尔文)'],
 
     'Afrikaans': ['南非语'],
     'Albanian': ['阿尔巴尼亚语'],
@@ -233,6 +233,7 @@ TRS_NLP_UTILS = {
     'Legality syllable tokenizer': ['合法性分音节器'],
     'Sonority sequencing syllable tokenizer': ['响度顺序分音节器'],
     'syllable tokenizer': ['分音节器'],
+    'Syllable dictionary': ['音节词典'],
 
     'word tokenizer (split mode A)': ['分词器（切分模式 A）'],
     'word tokenizer (split mode B)': ['分词器（切分模式 B）'],
@@ -249,6 +250,7 @@ TRS_NLP_UTILS = {
     'perceptron part-of-speech tagger': ['感知机词性标注器'],
     'part-of-speech tagger': ['词性标注器'],
     'Morphological analyzer': ['形态分析器'],
+    'Yunshan Cup 2020': ['2020 云山杯'],
 
     'lemmatizer': ['词形还原器'],
 
@@ -340,14 +342,15 @@ if __name__ == '__main__':
                     # Language names
                     if tr == lang:
                         tr = trs[0]
-                    # Encoding names
-                    elif tr.startswith(f'{lang} ('):
+                    elif f'{lang} (' in tr:
                         tr = tr.replace(f'{lang} (', f'{trs[0]} (', 1)
+                    # Script names
+                    elif 'script)' in lang and lang in tr:
+                        tr = tr.replace(lang, trs[0])
+                    # Encoding names
                     elif tr.startswith(f'{lang}/'):
                         tr = tr.replace(f'{lang}/', f'{trs[0]}/', 1)
-                    elif f'/{lang} (' in tr:
-                        tr = tr.replace(f'/{lang} (', f'/{trs[0]} (', 1)
-                    # Names of language utils
+                    # Language utility names
                     elif f' - {lang} ' in tr:
                         tr = tr.replace(f' - {lang} ', f' - {trs[0]} ', 1)
 
@@ -367,7 +370,7 @@ if __name__ == '__main__':
 
                 # NLP utils
                 for util, trs in TRS_NLP_UTILS.items():
-                    # Only replace language util names after language names or at the end of text
+                    # Only replace language utility names after language names or at the end of text
                     if f' - {util}' in tr or tr.endswith(util):
                         if f' - {util}' in tr:
                             tr = tr.replace(f' - {util}', f' - {trs[0]}', 1)

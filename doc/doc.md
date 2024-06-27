@@ -946,8 +946,8 @@ The following variables would be used in formulas:<br>
 <!--
 Al-Heeti's Readability Prediction Formula:
     \begin{align*}
-        \text{RD}_\text{Policy one} &= 4.41434307 \times \frac{\text{NumCharsAlpha}}{\text{NumWords}} - 13.46873475 \\
-        \text{RD}_\text{Policy two} &= 0.97569509 \times \frac{\text{NumCharsAlpha}}{\text{NumWords}} + 0.37237998 \times \frac{\text{NumWords}}{\text{NumSentences}} - 0.90451827 \times \frac{\text{NumWords}}{\text{NumWordTypes}} - 1.06000414
+        \text{RD}_\text{Policy One} &= 4.41434307 \times \frac{\text{NumCharsAlpha}}{\text{NumWords}} - 13.46873475 \\
+        \text{RD}_\text{Policy Two} &= 0.97569509 \times \frac{\text{NumCharsAlpha}}{\text{NumWords}} + 0.37237998 \times \frac{\text{NumWords}}{\text{NumSentences}} - 0.90451827 \times \frac{\text{NumWords}}{\text{NumWordTypes}} - 1.06000414
     \end{align*}
 
 Automated Arabic Readability Index:

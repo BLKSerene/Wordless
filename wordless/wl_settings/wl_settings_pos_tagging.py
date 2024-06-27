@@ -354,8 +354,8 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
         self.table_mappings.setItemDelegateForColumn(2, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
             parent = self.table_mappings,
             items = [
-                'Content words',
-                'Function words'
+                self.tr('Content words'),
+                self.tr('Function words')
             ]
         ))
         self.table_mappings.setItemDelegateForColumn(3, wl_item_delegates.Wl_Item_Delegate(self.table_mappings, QPlainTextEdit))
@@ -504,6 +504,7 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
             title = self.tr('Reset Mappings'),
             text = self.tr('''
                 <div>Do you want to reset all mappings to their default settings?</div>
+                <br>
                 <div><b>Note: This will only affect the mapping settings in the currently shown table.</b></div>
             ''')
         ):
@@ -515,6 +516,7 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
             title = self.tr('Reset All Mappings'),
             text = self.tr('''
                 <div>Do you want to reset all mappings to their default settings?</div>
+                <br>
                 <div><b>Warning: This will affect the mapping settings in all tables!</b></div>
             ''')
         ):

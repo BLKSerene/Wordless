@@ -41,6 +41,7 @@ from wordless.wl_utils import wl_detection, wl_misc
 
 _tr = QCoreApplication.translate
 
+# self.tr() does not work in inherited classes
 class Wl_List_Add_Ins_Del_Clr(QListView):
     def __init__(
         self, parent,

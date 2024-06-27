@@ -61,7 +61,8 @@ class Wl_Test_Main(QMainWindow):
         self.email = 'blkserene@gmail.com'
         self.email_html = '<a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a>'
 
-        # Default settings
+        # Global and default settings
+        self.settings_global = wl_settings_global.init_settings_global()
         self.settings_default = wl_settings_default.init_settings_default(self)
 
         # Custom settings
@@ -75,9 +76,6 @@ class Wl_Test_Main(QMainWindow):
                 self.settings_custom = copy.deepcopy(self.settings_default)
         else:
             self.settings_custom = copy.deepcopy(self.settings_default)
-
-        # Global settings
-        self.settings_global = wl_settings_global.SETTINGS_GLOBAL
 
         match switch_lang_utils:
             case 'fast':
@@ -234,6 +232,8 @@ class Wl_Test_Table(QTableView):
 
         self.tab = tab
         self.header_orientation = 'hor'
+
+        self.settings_global = wl_settings_global.init_settings_global()
         self.settings = wl_settings_default.init_settings_default(self)
 
         self.setModel(QStandardItemModel())

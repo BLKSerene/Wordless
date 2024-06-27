@@ -364,8 +364,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                 text = wl_token_processing.wl_process_tokens_concordancer(
                     self.main, file['text'],
                     token_settings = settings['token_settings'],
-                    search_settings = settings['search_settings'],
-                    preserve_blank_lines = True
+                    search_settings = settings['search_settings']
                 )
 
                 offsets_paras_files.append(text.get_offsets()[0])

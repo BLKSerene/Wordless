@@ -27,6 +27,7 @@ from wordless.wl_widgets import wl_labels, wl_layouts
 
 _tr = QCoreApplication.translate
 
+# self.tr() does not work in inherited classes
 class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
     def __init__(self, main, text):
         super().__init__(main, width = 500)
@@ -36,8 +37,8 @@ class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
         self.timer_time_elapsed = QTimer(self)
 
         self.label_progress = wl_labels.Wl_Label_Dialog(text, self, word_wrap = False)
-        self.label_time_elapsed = wl_labels.Wl_Label_Dialog(self.tr('<div>Elapsed time: 0:00:00</div>'), self, word_wrap = False)
-        self.label_processing = wl_labels.Wl_Label_Dialog(self.tr('''
+        self.label_time_elapsed = wl_labels.Wl_Label_Dialog(_tr('Wl_Dialog_Progress', '<div>Elapsed time: 0:00:00</div>'), self, word_wrap = False)
+        self.label_processing = wl_labels.Wl_Label_Dialog(_tr('Wl_Dialog_Progress', '''
                 <div>Please wait. It may take a few seconds to several minutes for the operation to be completed.</div>
             '''),
             self
@@ -56,7 +57,7 @@ class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
     def update_elapsed_time(self):
         elapsed_time = datetime.timedelta(seconds = round(time.time() - self.time_start))
 
-        self.label_time_elapsed.set_text(self.tr('<div>Elapsed time: {}</div>').format(elapsed_time))
+        self.label_time_elapsed.set_text(_tr('Wl_Dialog_Progress', '<div>Elapsed time: {}</div>').format(elapsed_time))
 
     def update_progress(self, text):
         self.label_progress.set_text(text)

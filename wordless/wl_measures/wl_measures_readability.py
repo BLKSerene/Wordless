@@ -191,13 +191,13 @@ def rd(main, text):
         if text.num_words and text.num_sentences and text.num_word_types:
             variant = main.settings_custom['measures']['readability']['rd']['variant']
 
-            if variant == _tr('wl_measures_readability', 'Policy one'):
+            if variant == _tr('wl_measures_readability', 'Policy One'):
 
                 rd = (
                     4.41434307 * (text.num_chars_alpha / text.num_words)
                     - 13.46873475
                 )
-            elif variant == _tr('wl_measures_readability', 'Policy two'):
+            elif variant == _tr('wl_measures_readability', 'Policy Two'):
                 rd = (
                     0.97569509 * (text.num_chars_alpha / text.num_words)
                     + 0.37237998 * (text.num_words / text.num_sentences)

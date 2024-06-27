@@ -231,7 +231,8 @@ class Wl_Main(QMainWindow):
 
         self.loading_window.show_message(self.tr('Loading settings...'))
 
-        # Default settings
+        # Global and default settings
+        self.settings_global = wl_settings_global.init_settings_global()
         self.settings_default = wl_settings_default.init_settings_default(self)
 
         # Custom settings
@@ -249,9 +250,6 @@ class Wl_Main(QMainWindow):
         if os.path.exists(file_settings_display_lang):
             with open(file_settings_display_lang, 'rb') as f:
                 self.settings_custom['menu']['prefs']['display_lang'] = pickle.load(f)
-
-        # Global settings
-        self.settings_global = wl_settings_global.SETTINGS_GLOBAL
 
         self.loading_window.show_message(self.tr('Initializing main window...'))
 

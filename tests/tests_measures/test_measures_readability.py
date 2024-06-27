@@ -83,9 +83,9 @@ test_text_other_100 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_100, lan
 
 def test_rd():
     rd_ara_0 = wl_measures_readability.rd(main, test_text_ara_0)
-    settings['rd']['variant'] = 'Policy one'
+    settings['rd']['variant'] = 'Policy One'
     rd_ara_12_policy_1 = wl_measures_readability.rd(main, test_text_ara_12)
-    settings['rd']['variant'] = 'Policy two'
+    settings['rd']['variant'] = 'Policy Two'
     rd_ara_12_policy_2 = wl_measures_readability.rd(main, test_text_ara_12)
     rd_eng_12 = wl_measures_readability.rd(main, test_text_eng_12)
 

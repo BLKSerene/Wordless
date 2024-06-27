@@ -118,6 +118,7 @@ class Wl_Dialog_Frameless(Wl_Dialog):
             }
         ''')
 
+# self.tr() does not work in inherited classes
 class Wl_Dialog_Info(Wl_Dialog):
     def __init__(self, main, title, width = 0, height = 0, resizable = True, icon = True, no_buttons = False):
         # Avoid circular imports
@@ -156,7 +157,7 @@ class Wl_Dialog_Info(Wl_Dialog):
         self.wrapper_buttons.layout().setContentsMargins(13, 1, 13, 13)
 
         if not no_buttons:
-            self.button_ok = QPushButton(_tr('Wl_Dialog_Settings', 'OK'), self)
+            self.button_ok = QPushButton(_tr('wl_dialogs', 'OK'), self)
 
             self.button_ok.clicked.connect(self.accept)
 
@@ -194,8 +195,8 @@ class Wl_Dialog_Info_Copy(Wl_Dialog_Info):
         else:
             self.text_edit_info = QTextEdit(self)
 
-        self.button_copy = QPushButton(_tr('Wl_Dialog_Settings', 'Copy'), self)
-        self.button_close = QPushButton(_tr('Wl_Dialog_Settings', 'Close'), self)
+        self.button_copy = QPushButton(_tr('wl_dialogs', 'Copy'), self)
+        self.button_close = QPushButton(_tr('wl_dialogs', 'Close'), self)
 
         self.text_edit_info.setReadOnly(True)
 
@@ -232,8 +233,9 @@ class Wl_Dialog_Settings(Wl_Dialog_Info):
         self.wrapper_settings = self.wrapper_info
 
         self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
-        self.button_save = QPushButton(_tr('Wl_Dialog_Settings', 'Save'), self)
-        self.button_cancel = QPushButton(_tr('Wl_Dialog_Settings', 'Cancel'), self)
+
+        self.button_save = QPushButton(_tr('wl_dialogs', 'Save'), self)
+        self.button_cancel = QPushButton(_tr('wl_dialogs', 'Cancel'), self)
 
         self.button_save.clicked.connect(self.save_settings)
         self.button_save.clicked.connect(self.accept)

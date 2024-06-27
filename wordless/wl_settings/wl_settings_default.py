@@ -23,7 +23,6 @@ from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtWidgets import QDesktopWidget
 
 from wordless.wl_nlp import wl_pos_tagging
-from wordless.wl_settings import wl_settings_global
 from wordless.wl_tagsets import (
     wl_tagset_cat_universal,
     wl_tagset_dan_universal,
@@ -2268,7 +2267,7 @@ def init_settings_default(main):
             # Settings - Measures - Readability
             'readability': {
                 'rd': {
-                    'variant': _tr('wl_settings_default', 'Policy one')
+                    'variant': _tr('wl_settings_default', 'Policy One')
                 },
 
                 'ari': {
@@ -2536,7 +2535,7 @@ def init_settings_default(main):
     settings_default['pos_tagging']['tagsets']['preview_settings']['preview_pos_tagger'] = settings_default['pos_tagging']['pos_tagger_settings']['pos_taggers'].copy()
 
     # Custom stop word lists
-    for lang in wl_settings_global.SETTINGS_GLOBAL['langs'].values():
+    for lang in main.settings_global['langs'].values():
         lang_code = lang[0]
 
         if lang_code not in settings_default['stop_word_lists']['stop_word_list_settings']['stop_word_lists']:

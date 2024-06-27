@@ -28,7 +28,6 @@ def test_wl_settings_sentence_tokenization():
     settings_sentence_tokenization.apply_settings()
 
     settings_sentence_tokenization.preview_changed()
-    settings_sentence_tokenization.preview_results_changed()
     settings_sentence_tokenization.update_gui('test')
     settings_sentence_tokenization.update_gui_err()
 
