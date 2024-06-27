@@ -72,7 +72,7 @@
 - Dependencies: Upgrade NumPy to 1.26.4
 - Dependencies: Upgrade openpyxl to 3.1.4
 - Dependencies: Upgrade PyInstaller to 6.8.0
-- Dependencies: Upgrade pymorphy3 to 2.0.1
+- Dependencies: Upgrade pymorphy3 to 2.0.2
 - Dependencies: Upgrade Pyphen to 0.15.0
 - Dependencies: Upgrade PyQt to 5.15.10
 - Dependencies: Upgrade PyThaiNLP to 5.0.4
