@@ -474,13 +474,13 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
                         if settings['token_settings']['use_tags']:
                             self.set_item_err(
                                 i, 2,
-                                _tr('wl_wordlist_generator', 'N/A'),
+                                self.tr('N/A'),
                                 alignment_hor = 'left'
                             )
                         elif len(syls_tokens[token]) == 1:
                             token_syllabified = list(syls_tokens[token].values())[0]
 
-                            if token_syllabified == _tr('wl_wordlist_generator', 'No language support'):
+                            if token_syllabified == self.tr('No language support'):
                                 self.set_item_err(i, 2, token_syllabified, alignment_hor = 'left')
                             else:
                                 self.model().setItem(i, 2, wl_tables.Wl_Table_Item(token_syllabified))
@@ -494,7 +494,7 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
 
                             tokens_syllabified = ', '.join(token_syllabified_forms)
 
-                            if _tr('wl_wordlist_generator', 'No language support') in tokens_syllabified:
+                            if self.tr('No language support') in tokens_syllabified:
                                 self.set_item_err(i, 2, tokens_syllabified, alignment_hor = 'left')
                             else:
                                 self.model().setItem(i, 2, wl_tables.Wl_Table_Item(tokens_syllabified))
@@ -587,6 +587,7 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
             finally:
                 wl_checks_work_area.check_err_fig(self.main, err_msg)
 
+# self.tr() does not work in inherited classes
 class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(str, dict, dict, dict)
 
@@ -625,7 +626,7 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
                         if token.syls:
                             self.syls_tokens[token][text.lang] = '-'.join(token.syls)
                         else:
-                            self.syls_tokens[token][text.lang] = _tr('wl_wordlist_generator', 'No language support')
+                            self.syls_tokens[token][text.lang] = _tr('Wl_Worker_Wordlist_Generator', 'No language support')
 
                 texts.append(text)
 

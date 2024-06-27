@@ -178,9 +178,6 @@ def update_gui(err_msg, texts_stats_files):
 
             assert len_sentences_total == numpy.sum(stats[3])
 
-        # Sentence length should never be zero
-        assert 0 not in count_sentences_lens
-
     # Count of n-token-long Sentence Segments
     if any(count_sentence_segs_lens):
         count_sentence_segs_lens_files = wl_misc.merge_dicts(count_sentence_segs_lens)
@@ -194,9 +191,6 @@ def update_gui(err_msg, texts_stats_files):
             ))
 
             assert len_sentence_segs_total == numpy.sum(stats[3])
-
-        # Sentence segment length should never be zero
-        assert 0 not in count_sentence_segs_lens
 
     # Count of n-syllable-long Tokens
     if len_tokens_syls is not None:

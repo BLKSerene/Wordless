@@ -120,7 +120,11 @@ def lexical_density(main, text):
     if text.lang in main.settings_global['pos_taggers']:
         wl_pos_tagging.wl_pos_tag_universal(main, text.get_tokens_flat(), lang = text.lang, tagged = text.tagged)
 
-        num_content_words = sum((1 for token in text.get_tokens_flat() if token.content_function == _tr('wl_measures_lexical_density_diversity', 'Content words')))
+        num_content_words = sum((
+            1
+            for token in text.get_tokens_flat()
+            if token.content_function == _tr('wl_measures_lexical_density_diversity', 'Content words')
+        ))
         num_tokens = text.num_tokens
 
         lexical_density = num_content_words / num_tokens if num_tokens else 0

@@ -55,7 +55,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
 
         self.main.wl_work_area.currentChanged.connect(self.reject)
 
-        self.table_sort = Table_Results_Sort_Conordancer(self, table = self.table)
+        self.table_sort = Wl_Table_Results_Sort_Conordancer(self, table = self.table)
 
         self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
         self.button_sort = QPushButton(self.tr('Sort'), self)
@@ -141,7 +141,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
             # Sort first by type (strings after floats), then sort numerically or alphabetically
             elif sorting_col == self.tr('Sentiment'):
                 results.sort(key = lambda item: (str(type(item[3])), item[3]), reverse = reverse)
-            elif sorting_col == self.tr('Token no.'):
+            elif sorting_col == self.tr('Token No.'):
                 results.sort(key = lambda item: item[4], reverse = reverse)
             elif sorting_col == self.tr('File'):
                 results.sort(key = lambda item: item[12], reverse = reverse)
@@ -243,13 +243,13 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
 
         self.table.enable_updates(emit_signals = False)
 
-class Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
+class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
     def __init__(self, parent, table):
         super().__init__(
             parent = parent,
             headers = [
-                _tr('Table_Results_Sort_Conordancer', 'Column'),
-                _tr('Table_Results_Sort_Conordancer', 'Order')
+                _tr('Wl_Table_Results_Sort_Conordancer', 'Column'),
+                _tr('Wl_Table_Results_Sort_Conordancer', 'Order')
             ],
             col_edit = 0
         )
@@ -260,7 +260,7 @@ class Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         self.cols_to_sort_default = [
             self.tr('Node'),
             self.tr('Sentiment'),
-            self.tr('Token no.'),
+            self.tr('Token No.'),
             self.tr('File')
         ]
 
@@ -354,8 +354,8 @@ class Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                 ))
 
             # List right context before left context
-            self.cols_to_sort.extend([self.tr('R') + str(i + 1) for i in range(context_len_right)])
-            self.cols_to_sort.extend([self.tr('L') + str(i + 1) for i in range(context_len_left)])
+            self.cols_to_sort.extend([self.tr('R{}').format(i + 1) for i in range(context_len_right)])
+            self.cols_to_sort.extend([self.tr('L{}').format(i + 1) for i in range(context_len_left)])
 
             self.setItemDelegateForColumn(0, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
                 parent = self,
@@ -429,9 +429,9 @@ class Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
             item_sorting_col.setText(sorting_col)
         else:
             if cols_left and max(cols_left) < max_left:
-                item_sorting_col.setText(self.tr('L') + str(cols_left[-1] + 1))
+                item_sorting_col.setText(self.tr('L{}').format(cols_left[-1] + 1))
             elif cols_right and max(cols_right) < max_right:
-                item_sorting_col.setText(self.tr('R') + str(cols_right[-1] + 1))
+                item_sorting_col.setText(self.tr('R{}').format(cols_right[-1] + 1))
             elif cols_right and max(cols_right) == max_right and not cols_left:
                 item_sorting_col.setText(self.tr('L1'))
             else:

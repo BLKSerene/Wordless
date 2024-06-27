@@ -158,9 +158,10 @@ def get_filter_min_max(settings, filter_name):
 
     return filter_min, filter_max
 
+# self.tr() does not work in inherited classes
 class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
     def __init__(self, main, table):
-        super().__init__(main, _tr('wl_results_filter', 'Filter Results'))
+        super().__init__(main, _tr('Wl_Dialog_Results_Filter', 'Filter Results'))
 
         self.tab = table.tab
         self.table = table
@@ -169,12 +170,12 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
 
         self.main.wl_work_area.currentChanged.connect(self.close)
 
-        self.label_file_to_filter = QLabel(_tr('wl_results_filter', 'File to filter:'), self)
+        self.label_file_to_filter = QLabel(_tr('Wl_Dialog_Results_Filter', 'File to filter:'), self)
         self.combo_box_file_to_filter = wl_boxes.Wl_Combo_Box_File_To_Filter(self, self.table)
-        self.button_filter = QPushButton(_tr('wl_results_filter', 'Filter'), self)
+        self.button_filter = QPushButton(_tr('Wl_Dialog_Results_Filter', 'Filter'), self)
 
         self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
-        self.button_close = QPushButton(_tr('wl_results_filter', 'Close'), self)
+        self.button_close = QPushButton(_tr('Wl_Dialog_Results_Filter', 'Close'), self)
 
         self.combo_box_file_to_filter.currentTextChanged.connect(self.file_to_filter_changed)
         self.button_filter.clicked.connect(lambda checked: self.filter_results())
@@ -221,7 +222,7 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
             self.main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(
                 self.main,
-                text = _tr('wl_results_filter', 'Filtering results...')
+                text = _tr('Wl_Dialog_Results_Filter', 'Filtering results...')
             ),
             update_gui = self.update_gui,
             dialog = self
@@ -231,7 +232,7 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
     def update_gui(self):
         self.table.filter_table()
 
-        self.main.statusBar().showMessage(_tr('wl_results_filter', 'The results in the data table has been successfully filtered.'))
+        self.main.statusBar().showMessage(_tr('Wl_Dialog_Results_Filter', 'The results in the data table has been successfully filtered.'))
 
     def show(self):
         super().show()
@@ -325,7 +326,7 @@ class Wl_Worker_Results_Filter_Dependency_Parser(wl_threading.Wl_Worker):
         )
         dependency_len_min, dependency_len_max = get_filter_min_max(
             settings = self.dialog.settings,
-            filter_name = 'dependency_len_max'
+            filter_name = 'dependency_len'
         )
         dependency_len_abs_min, dependency_len_abs_max = get_filter_min_max(
             settings = self.dialog.settings,
@@ -640,9 +641,9 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
                 settings['generation_settings']['window_right'] + 1
             ):
                 if i < 0:
-                    self.combo_box_freq_position.addItem(self.tr('L') + str(-i))
+                    self.combo_box_freq_position.addItem(self.tr('L{}').format(-i))
                 elif i > 0:
-                    self.combo_box_freq_position.addItem(self.tr('R') + str(i))
+                    self.combo_box_freq_position.addItem(self.tr('R{}').format(i))
 
             self.combo_box_freq_position.addItem(self.tr('Total'))
 

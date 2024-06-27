@@ -29,7 +29,6 @@ def test_wl_settings_pos_tagging():
     settings_pos_tagging.apply_settings()
 
     settings_pos_tagging.preview_changed()
-    settings_pos_tagging.preview_results_changed()
     settings_pos_tagging.update_gui('test')
     settings_pos_tagging.update_gui_err()
 

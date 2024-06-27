@@ -26,6 +26,13 @@ main = wl_test_init.Wl_Test_Main()
 wl_token = wl_texts.Wl_Token('test', tag = '_NN')
 wl_tokens = [wl_texts.Wl_Token('test', tag = '_NN')]
 
+def test_check_text():
+    assert wl_texts.check_text('test') == 'test'
+    assert wl_texts.check_text(None) == ''
+
+def test_check_texts():
+    assert wl_texts.check_texts(['test', None]) == ['test', '']
+
 def test_wl_token():
     wl_token = wl_texts.Wl_Token('test')
     hash(wl_token)
@@ -35,7 +42,7 @@ def test_wl_token():
     wl_token.update_properties(wl_token)
 
 def test_to_tokens():
-    assert wl_texts.to_tokens(['test_NN']) == wl_tokens
+    assert wl_texts.to_display_texts(wl_texts.to_tokens(['test', None], tags = ['_NN', None])) == ['test_NN', '']
 
 def test_display_texts_to_tokens():
     assert wl_texts.display_texts_to_tokens(main, ['test_NN'])[0].display_text() == 'test_NN'
@@ -68,12 +75,17 @@ def test_to_display_texts():
 
 def test_set_token_text():
     assert wl_texts.set_token_text(wl_token, 'tests').display_text() == 'tests_NN'
+    assert wl_texts.set_token_text(wl_token, None).display_text() == '_NN'
 
 def test_set_token_texts():
     wl_tokens_copy = copy.deepcopy(wl_tokens)
-    wl_texts.set_token_texts(wl_tokens_copy, ['test1'])
 
+    wl_texts.set_token_texts(wl_tokens_copy, ['test1'])
     assert wl_texts.to_display_texts(wl_tokens_copy) == ['test1_NN']
+
+    # If the token property is None, the token text should be set to empty
+    wl_texts.set_token_texts(wl_tokens_copy, [None])
+    assert wl_texts.to_display_texts(wl_tokens_copy) == ['_NN']
 
 def test_has_token_properties():
     assert wl_texts.has_token_properties(wl_tokens, 'tag')
@@ -112,6 +124,9 @@ def test_wl_text_total():
     assert text_total_2.tagged
 
 if __name__ == '__main__':
+    test_check_text()
+    test_check_texts()
+
     test_wl_token()
     test_to_tokens()
     test_display_texts_to_tokens()

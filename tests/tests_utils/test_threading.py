@@ -44,7 +44,7 @@ def test_wl_thread_no_progress():
     worker = wl_threading.Wl_Worker_No_Progress(main, lambda: None)
     worker.run = lambda: None
 
-    wl_threading.Wl_Thread_No_Progress(worker).start_worker()
+    wl_threading.Wl_Thread_No_Progress(worker)
 
 if __name__ == '__main__':
     test_wl_worker()

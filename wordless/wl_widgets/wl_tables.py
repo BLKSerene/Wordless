@@ -52,6 +52,7 @@ _tr = QCoreApplication.translate
 
 # pylint: disable=unnecessary-lambda
 
+# self.tr() does not work in inherited classes
 class Wl_Table(QTableView):
     def __init__(
         self, parent,
@@ -1139,11 +1140,11 @@ class Wl_Table_Data(Wl_Table):
         self.model().itemChanged.connect(self.item_changed)
         self.selectionModel().selectionChanged.connect(self.selection_changed)
 
-        self.button_generate_table = QPushButton(_tr('Wl_Table_Data', 'Generate table'), self)
-        self.button_generate_fig = QPushButton(_tr('Wl_Table_Data', 'Generate figure'), self)
-        self.button_exp_selected_cells = QPushButton(_tr('Wl_Table_Data', 'Export selected cells...'), self)
-        self.button_exp_all_cells = QPushButton(_tr('Wl_Table_Data', 'Export all cells...'), self)
-        self.button_clr_table = QPushButton(_tr('Wl_Table_Data', 'Clear table'), self)
+        self.button_generate_table = QPushButton(_tr('wl_tables', 'Generate table'), self)
+        self.button_generate_fig = QPushButton(_tr('wl_tables', 'Generate figure'), self)
+        self.button_exp_selected_cells = QPushButton(_tr('wl_tables', 'Export selected cells...'), self)
+        self.button_exp_all_cells = QPushButton(_tr('wl_tables', 'Export all cells...'), self)
+        self.button_clr_table = QPushButton(_tr('wl_tables', 'Clear table'), self)
 
         if not generate_fig:
             self.button_generate_fig.hide()
@@ -1183,7 +1184,7 @@ class Wl_Table_Data(Wl_Table):
 
     def sorting_changed(self):
         if not self.is_empty():
-            if self.tr('Rank') in self.get_header_labels_hor():
+            if _tr('wl_tables', 'Rank') in self.get_header_labels_hor():
                 self.update_ranks()
 
             if self.table_settings['show_cum_data']:
@@ -1462,7 +1463,7 @@ class Wl_Table_Data(Wl_Table):
         sort_section = self.horizontalHeader().sortIndicatorSection()
         sort_order = self.horizontalHeader().sortIndicatorOrder()
 
-        col_rank = self.find_header_hor(self.tr('Rank'))
+        col_rank = self.find_header_hor(_tr('wl_tables', 'Rank'))
 
         self.sortByColumn(sort_section, sort_order)
 
@@ -1729,7 +1730,7 @@ class Wl_Table_Data(Wl_Table):
 
         self.enable_updates()
 
-        if self.tr('Rank') in self.get_header_labels_hor():
+        if _tr('wl_tables', 'Rank') in self.get_header_labels_hor():
             self.update_ranks()
 
         if self.table_settings['show_cum_data']:
@@ -1749,8 +1750,8 @@ class Wl_Table_Data(Wl_Table):
             if not self.is_empty() and not self.results_saved:
                 confirmed = wl_msg_boxes.wl_msg_box_question(
                     self.main,
-                    title = self.tr('Clear Table'),
-                    text = self.tr('''
+                    title = _tr('wl_tables', 'Clear Table'),
+                    text = _tr('wl_tables', '''
                         <div>
                             The results in the table have yet been exported. Do you really want to clear the table?
                         </div>

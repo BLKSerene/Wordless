@@ -57,7 +57,7 @@ def get_re_tags(main, tag_type):
     tags_non_embedded = []
 
     for type_, _, opening_tag, _ in main.settings_custom['files']['tags'][f'{tag_type}_tag_settings']:
-        if type_ == _tr('get_re_tags', 'Embedded'):
+        if type_ == _tr('wl_matching', 'Embedded'):
             tag_start, tag_name = split_tag_embedded(opening_tag)
             tag_start = re.escape(tag_start)
 
@@ -66,7 +66,7 @@ def get_re_tags(main, tag_type):
                 tags_embedded.append(fr'{tag_start}\S*(?=\s|$)')
             else:
                 tags_embedded.append(fr'{tag_start}{re.escape(tag_name)}(?=\s|$)')
-        elif type_ == _tr('get_re_tags', 'Non-embedded'):
+        elif type_ == _tr('wl_matching', 'Non-embedded'):
             tag_start, tag_name, tag_end = split_tag_non_embedded(opening_tag)
             tag_start = re.escape(tag_start)
             tag_end = re.escape(tag_end)
@@ -84,7 +84,7 @@ def get_re_tags_with_tokens(main, tag_type):
     tags_non_embedded = []
 
     for type_, _, opening_tag, closing_tag in main.settings_custom['files']['tags'][f'{tag_type}_tag_settings']:
-        if type_ == _tr('get_re_tags_with_tokens', 'Embedded'):
+        if type_ == _tr('wl_matching', 'Embedded'):
             tag_start, tag_name = split_tag_embedded(opening_tag)
             tag_start = re.escape(tag_start)
 
@@ -93,7 +93,7 @@ def get_re_tags_with_tokens(main, tag_type):
                 tags_embedded.append(fr'\S*{tag_start}\S*(?=\s|$)')
             else:
                 tags_embedded.append(fr'\S*{tag_start}{re.escape(tag_name)}(?=\s|$)')
-        elif type_ == _tr('get_re_tags_with_tokens', 'Non-embedded'):
+        elif type_ == _tr('wl_matching', 'Non-embedded'):
             tag_start, tag_name, tag_end = split_tag_non_embedded(opening_tag)
             tag_start = re.escape(tag_start)
             tag_end = re.escape(tag_end)

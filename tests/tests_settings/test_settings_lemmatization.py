@@ -28,7 +28,6 @@ def test_wl_settings_lemmatization():
     settings_lemmatization.apply_settings()
 
     settings_lemmatization.preview_changed()
-    settings_lemmatization.preview_results_changed()
     settings_lemmatization.update_gui('test')
     settings_lemmatization.update_gui_err()
 

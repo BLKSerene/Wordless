@@ -117,7 +117,7 @@ def wl_sentiment_analyze_text(main, inputs, lang, sentiment_analyzer):
     # Vietnamese
     elif sentiment_analyzer == 'underthesea_vie':
         for sentence in inputs:
-            sentiment = underthesea.sentiment(sentence)
+            sentiment = underthesea.sentiment(sentence) # pylint: disable=no-member
 
             if sentiment == 'positive':
                 sentiment_scores.append(1)

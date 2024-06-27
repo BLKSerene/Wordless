@@ -106,4 +106,3 @@ class Wl_Thread_No_Progress(Wl_Thread):
         self.start()
 
         self.quit()
-        self.wait()

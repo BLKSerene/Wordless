@@ -824,7 +824,7 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                 col_text_test_stat = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['col_text']
                 col_text_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['col_text']
 
-                if re.search(_tr('Wl_Table_Colligation_Extractor', r'^[LR][0-9]+$'), settings['fig_settings']['use_data']):
+                if re.search(self.tr(r'^[LR][0-9]+$'), settings['fig_settings']['use_data']):
                     span_positions = (
                         list(range(settings['generation_settings']['window_left'], 0))
                         + list(range(1, settings['generation_settings']['window_right'] + 1))
@@ -889,6 +889,7 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
             finally:
                 wl_checks_work_area.check_err_fig(self.main, err_msg)
 
+# self.tr() does not work in inherited classes
 class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(str, dict, dict)
 
@@ -968,14 +969,14 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
 
                     for i, ngram in enumerate(wl_nlp_utils.ngrams(tokens, ngram_size)):
                         # Limit Searching
-                        if settings_limit_searching != _tr('wl_colligation_extractor', 'None'):
-                            if settings_limit_searching == _tr('wl_colligation_extractor', 'Within sentence segments'):
+                        if settings_limit_searching != _tr('Wl_Worker_Colligation_Extractor', 'None'):
+                            if settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'Within sentence segments'):
                                 offsets_unit = offsets_sentence_segs
                                 len_unit = len_sentence_segs
-                            elif settings_limit_searching == _tr('wl_colligation_extractor', 'Within sentences'):
+                            elif settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'Within sentences'):
                                 offsets_unit = offsets_sentences
                                 len_unit = len_sentences
-                            elif settings_limit_searching == _tr('wl_colligation_extractor', 'Within paragraphs'):
+                            elif settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'Within paragraphs'):
                                 offsets_unit = offsets_paras
                                 len_unit = len_paras
 
@@ -990,7 +991,7 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
 
                         if window_left < 0 < window_right:
                             # Limit Searching
-                            if settings_limit_searching == _tr('wl_colligation_extractor', 'None'):
+                            if settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'None'):
                                 tags_left = text.tags[max(0, i + window_left) : i]
                                 tags_right = text.tags[i + ngram_size : i + ngram_size + window_right]
                             else:
@@ -1033,7 +1034,7 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                                 colligations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
                         elif window_left < 0 and window_right < 0:
                             # Limit Searching
-                            if settings_limit_searching == _tr('wl_colligation_extractor', 'None'):
+                            if settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'None'):
                                 tags_left = text.tags[max(0, i + window_left) : max(0, i + window_right + 1)]
                             else:
                                 # Span positions (Left)
@@ -1056,7 +1057,7 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                                 colligations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
                         elif window_left > 0 and window_right > 0:
                             # Limit Searching
-                            if settings_limit_searching == _tr('wl_colligation_extractor', 'None'):
+                            if settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'None'):
                                 tags_right = text.tags[i + ngram_size + window_left - 1 : i + ngram_size + window_right]
                             else:
                                 # Span positions (Right)

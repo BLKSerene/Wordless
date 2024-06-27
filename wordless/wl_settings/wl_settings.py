@@ -286,6 +286,7 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
             title = self.tr('Reset All Settings'),
             text = self.tr('''
                 <div>Do you want to reset all settings to their defaults?</div>
+                <br>
                 <div><b>Warning: This will affect settings on all pages!</b></div>
             ''')
         ):
@@ -332,6 +333,7 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
         except Exception: # pylint: disable=broad-exception-caught
             wl_checks_work_area.check_err(self.main, traceback.format_exc())
 
+# self.tr() does not work in inherited classes
 class Wl_Settings_Node(QWidget):
     def __init__(self, main):
         super().__init__()
@@ -341,8 +343,8 @@ class Wl_Settings_Node(QWidget):
     def wl_msg_box_path_empty(self):
         wl_msg_boxes.Wl_Msg_Box_Warning(
             self.main,
-            title = _tr('wl_settings', 'Empty Path'),
-            text = _tr('wl_settings', '''
+            title = _tr('Wl_Settings_Node', 'Empty Path'),
+            text = _tr('Wl_Settings_Node', '''
                 <div>The path should not be left empty!</div>
             '''),
         ).open()
@@ -350,8 +352,8 @@ class Wl_Settings_Node(QWidget):
     def wl_msg_box_path_not_found(self, path):
         wl_msg_boxes.Wl_Msg_Box_Warning(
             self.main,
-            title = _tr('wl_settings', 'Path not Found'),
-            text = _tr('wl_settings', '''
+            title = _tr('Wl_Settings_Node', 'Path not Found'),
+            text = _tr('Wl_Settings_Node', '''
                 <div>The specified path "{}" could not be found!</div>
                 <div>Please check your settings and try again.</div>
             ''').format(path),
@@ -360,8 +362,8 @@ class Wl_Settings_Node(QWidget):
     def wl_msg_box_path_is_dir(self, path):
         wl_msg_boxes.Wl_Msg_Box_Warning(
             self.main,
-            title = _tr('wl_settings', 'Invalid File Path'),
-            text = _tr('wl_settings', '''
+            title = _tr('Wl_Settings_Node', 'Invalid File Path'),
+            text = _tr('Wl_Settings_Node', '''
                 <div>The specified path "{}" should be a file, not a directory!</div>
                 <div>Please check your settings and try again.</div>
             ''').format(path),
@@ -370,8 +372,8 @@ class Wl_Settings_Node(QWidget):
     def wl_msg_box_path_not_dir(self, path):
         wl_msg_boxes.Wl_Msg_Box_Warning(
             self.main,
-            title = _tr('wl_settings', 'Invalid Directory Path'),
-            text = _tr('wl_settings', '''
+            title = _tr('Wl_Settings_Node', 'Invalid Directory Path'),
+            text = _tr('Wl_Settings_Node', '''
                 <div>The specified path "{}" should be a directory, not a file!</div>
                 <div>Please check your settings and try again.</div>
             ''').format(path),
@@ -433,8 +435,8 @@ class Wl_Settings_Node(QWidget):
             if not os.path.exists(path):
                 reply = QMessageBox.question(
                     self.main,
-                    _tr('wl_settings', 'Path Not Exist'),
-                    _tr('wl_settings', '''
+                    _tr('Wl_Settings_Node', 'Path Not Exist'),
+                    _tr('Wl_Settings_Node', '''
                         {}
                         <body>
                             <div>The specified path "{}" does not exist.</div>

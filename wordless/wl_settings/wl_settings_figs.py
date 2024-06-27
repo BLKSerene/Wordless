@@ -83,7 +83,7 @@ MATPLOTLIB_ARROW_STYLES = {
 }
 NETWORKX_LAYOUTS = {
     _tr('wl_settings_figs', 'Circular'): networkx.circular_layout,
-    _tr('wl_settings_figs', 'Kamada-Kawai'): networkx.kamada_kawai_layout,
+    'Kamada-Kawai': networkx.kamada_kawai_layout,
     _tr('wl_settings_figs', 'Planar'): networkx.planar_layout,
     _tr('wl_settings_figs', 'Random'): networkx.random_layout,
     _tr('wl_settings_figs', 'Shell'): networkx.shell_layout,

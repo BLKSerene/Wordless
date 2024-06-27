@@ -82,7 +82,7 @@ class Wl_Button_Color(Wl_Button):
         painter.drawRect(5, 5, 17, 17)
 
     def pick_color(self):
-        color_picked = QColorDialog.getColor(QColor(self.get_color()), self.main, _tr('wl_buttons', 'Pick Color'))
+        color_picked = QColorDialog.getColor(QColor(self.get_color()), self.main, self.tr('Pick Color'))
 
         if color_picked.isValid():
             self.set_color(color_picked.name().upper())
@@ -115,7 +115,7 @@ def wl_button_color(parent, allow_transparent = False):
 
 class Wl_Button_Restore_Defaults(Wl_Button):
     def __init__(self, parent, load_settings):
-        super().__init__(_tr('wl_buttons', 'Restore defaults'), parent)
+        super().__init__(_tr('Wl_Button_Restore_Defaults', 'Restore defaults'), parent)
 
         self.parent = parent
         self.load_settings = load_settings

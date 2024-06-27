@@ -30,6 +30,12 @@ _tr = QCoreApplication.translate
 
 RE_VIE_TOKENIZED = re.compile(r'(?<!^)_(?!$)')
 
+def check_text(text):
+    return (text if text is not None else '')
+
+def check_texts(texts):
+    return [check_text(text) for text in texts]
+
 # Tokens
 class Wl_Token(str):
     def __new__(cls, text, **kwargs):
@@ -88,6 +94,7 @@ def to_tokens(
 ):
     num_tokens = len(texts)
 
+    texts = check_texts(texts)
     syls_tokens = syls_tokens or [None] * num_tokens
     tags = tags or [None] * num_tokens
     tags_universal = tags_universal or [None] * num_tokens
@@ -149,12 +156,15 @@ def to_display_texts(tokens, punc_mark = False):
     return [token.display_text(punc_mark = punc_mark) for token in tokens]
 
 def set_token_text(token, text):
-    _, token_properties = split_texts_properties([token])
+    tokens = [token]
 
-    return combine_texts_properties([text], token_properties)[0]
+    set_token_texts(tokens, [text])
+
+    return tokens[0]
 
 def set_token_texts(tokens, texts):
     _, token_properties = split_texts_properties(tokens)
+    texts = check_texts(texts)
 
     for i, token in enumerate(combine_texts_properties(texts, token_properties)):
         tokens[i] = token
@@ -457,12 +467,51 @@ class Wl_Text:
             ]
 
     def set_token_texts(self, texts):
-        tokens = self.get_tokens_flat()
+        # Calculate head references
+        if self.has_token_properties('head'):
+            head_refs = []
 
-        _, token_properties = split_texts_properties(tokens)
-        tokens = combine_texts_properties(texts, token_properties)
+            for i_para, para in enumerate(self.tokens_multilevel):
+                for i_sentence, sentence in enumerate(para):
+                    for sentence_seg in sentence:
+                        for token in sentence_seg:
+                            head = token.head
+                            head_ref = None
+
+                            for i_sentence_seg, sentence_seg in enumerate(sentence):
+                                for i_token, token in enumerate(sentence_seg):
+                                    if head is token:
+                                        head_ref = (i_para, i_sentence, i_sentence_seg, i_token)
+
+                                        break
+
+                                if head_ref:
+                                    break
+
+                            if head_ref:
+                                head_refs.append(head_ref)
+                            else:
+                                head_refs.append(None)
+
+        tokens = self.get_tokens_flat()
+        set_token_texts(tokens, texts)
 
         self.set_tokens(tokens)
+
+        # Update head references
+        if self.has_token_properties('head'):
+            i_token = 0
+
+            for para in self.tokens_multilevel:
+                for sentence in para:
+                    for sentence_seg in sentence:
+                        for token in sentence_seg:
+                            refs = head_refs[i_token]
+
+                            if refs is not None:
+                                token.head = self.tokens_multilevel[refs[0]][refs[1]][refs[2]][refs[3]]
+
+                                i_token += 1
 
     def has_token_properties(self, name):
         return has_token_properties(self.get_tokens_flat(), name)

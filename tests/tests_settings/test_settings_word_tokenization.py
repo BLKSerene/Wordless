@@ -28,7 +28,6 @@ def test_wl_settings_word_tokenization():
     settings_word_tokenization.apply_settings()
 
     settings_word_tokenization.preview_changed()
-    settings_word_tokenization.preview_results_changed()
     settings_word_tokenization.update_gui('test')
     settings_word_tokenization.update_gui_err()
 

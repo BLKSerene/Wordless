@@ -22,7 +22,12 @@ import opencc
 from utils import wl_trs_utils
 
 with open('trs/zho_cn.ts', 'r', encoding = 'utf_8') as f:
-    soup = bs4.BeautifulSoup(f.read(), features = 'lxml')
+    trs_zho_cn = f.read()
+    soup = bs4.BeautifulSoup(trs_zho_cn, features = 'lxml')
+
+# Convert Unix line endings to Windows ones
+with open('trs/zho_cn.ts', 'w', encoding = 'utf_8') as f:
+    f.write(trs_zho_cn)
 
 cc = opencc.OpenCC('s2twp')
 

@@ -28,7 +28,6 @@ def test_wl_settings_sentiment_analysis():
     settings_sentiment_analysis.apply_settings()
 
     settings_sentiment_analysis.preview_changed()
-    settings_sentiment_analysis.preview_results_changed()
     settings_sentiment_analysis.update_gui('test')
     settings_sentiment_analysis.update_gui_err()
 
