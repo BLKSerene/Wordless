@@ -81,7 +81,7 @@
 - Dependencies: Upgrade python-mecab-ko to 1.3.5
 - Dependencies: Upgrade Requests to 2.32.3
 - Dependencies: Upgrade Sacremoses to 0.1.1
-- Dependencies: Upgrade SciPy to 1.13.1
+- Dependencies: Upgrade SciPy to 1.14.0
 - Dependencies: Upgrade simplemma to 1.0.0
 - Dependencies: Upgrade spaCy to 3.7.5
 - Dependencies: Upgrade spacy-pkuseg to 0.0.33
