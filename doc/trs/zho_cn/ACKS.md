@@ -36,7 +36,7 @@
 12|[openpyxl](https://foss.heptapod.net/openpyxl/openpyxl)|3.1.4|Eric Gazoni, Charlie Clark|[MIT](https://foss.heptapod.net/openpyxl/openpyxl/-/blob/branch/3.1/LICENCE.rst)
 13|[PyInstaller](https://pyinstaller.org/)|6.8.0|Hartmut Goebel, Jasper Harrison, Bryan A. Jones,<br>Brénainn Woodsend, Rok Mandeljc|[Bootloader-exception](https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt)
 14|[pymorphy3](https://github.com/no-plagiarism/pymorphy3)|2.0.2|Mikhail Korobov, Danylo Halaiko|[MIT](https://github.com/no-plagiarism/pymorphy3/blob/master/LICENSE.txt)
-15|[pypdf](https://github.com/py-pdf/pypdf)|3.16.2|Mathieu Fenniak, Ashish Kulkarni, Steve Witham, Martin Thoma|[BSD-3-Clause](https://github.com/py-pdf/pypdf/blob/main/LICENSE)
+15|[pypdf](https://github.com/py-pdf/pypdf)|4.2.0|Mathieu Fenniak, Ashish Kulkarni, Steve Witham, Martin Thoma|[BSD-3-Clause](https://github.com/py-pdf/pypdf/blob/main/LICENSE)
 16|[Pyphen](https://pyphen.org/)|0.15.0|Guillaume Ayoub|[GPL-2.0-or-later/LGPL-2.1-or-later/MPL-1.1](https://github.com/Kozea/Pyphen/blob/master/LICENSE)
 17|[PyQt](https://riverbankcomputing.com/software/pyqt/)|5.15.10|Riverbank Computing|[Commercial-License/GPL-3.0-only](https://www.riverbankcomputing.com/static/Docs/PyQt5/introduction.html#license)
 18|[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)|5.0.4|Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)|[Apache-2.0](https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE)

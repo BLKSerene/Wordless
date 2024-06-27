@@ -94,7 +94,7 @@ ACKS = [
         'MIT', 'https://github.com/no-plagiarism/pymorphy3/blob/master/LICENSE.txt'
     ], [
         'pypdf', 'https://github.com/py-pdf/pypdf',
-        '3.16.2', 'Mathieu Fenniak, Ashish Kulkarni, Steve Witham, Martin Thoma',
+        '4.2.0', 'Mathieu Fenniak, Ashish Kulkarni, Steve Witham, Martin Thoma',
         'BSD-3-Clause', 'https://github.com/py-pdf/pypdf/blob/main/LICENSE'
     ], [
         'Pyphen', 'https://pyphen.org/',
