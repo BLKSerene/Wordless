@@ -16,19 +16,14 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import os
 import pathlib
 import re
 import subprocess
 
 files = []
 
-for file in pathlib.Path('../wordless').rglob('*.py'):
-    if all((
-        os.path.sep + folder + os.path.sep not in str(file)
-        for folder in ['.github', 'data', 'doc', 'exports', 'imgs', 'imports', 'misc', 'tests', 'trs', 'utils']
-    )):
-        files.append(str(file))
+for file in pathlib.Path('wordless').rglob('*.py'):
+    files.append(str(file))
 
 # Use "_tr" as a shortcut of QCoreApplication.translate
 subprocess.run(['pylupdate5' ,'-verbose' ,'-translate-function', '_tr', *files, '-ts', 'trs/zho_cn.ts'], check = True)

@@ -62,14 +62,14 @@
 😨	prestrašen obraz
 😩	utrujen obraz
 🤯	eksplozivna glava
-😬	grimasiran obraz
+😬	namrčen obraz
 😰	zaskrbljen obraz s potenjem
 😱	obraz, ki kriči od strahu
 🥵	vroč obraz
 🥶	hladen obraz
 😳	zardel obraz
 🤪	nor obraz
-😵	vrtoglav obraz
+😵	vrtoglavi obraz
 😡	nasrčen obraz
 😠	jezen obraz
 🤬	obraz s simboli na ustih
@@ -110,10 +110,10 @@
 😽	poljubljanje mačjega obraza
 🙀	utrujen mačji obraz
 😿	jokajoči mačji obraz
-😾	namrščeni mačji obraz
+😾	našobljen mačji obraz
 🙈	nevidna opica
 🙉	sliši-ne-zla opica
-🙊	ne govori zlobna opica
+🙊	ne govori zlobno opica
 🏻	svetel ten kože
 🏼	srednje svetel ten kože
 🏽	srednji ten kože
@@ -206,7 +206,7 @@
 👨‍🎓	moški študent
 👨🏻‍🎓	moški študent: svetel ten kože
 👨🏼‍🎓	moški študent: srednje svetel ten kože
-👨🏽‍🎓	študent: srednji ten kože
+👨🏽‍🎓	moški študent: srednji ten kože
 👨🏾‍🎓	moški študent: srednje temen ten kože
 👨🏿‍🎓	moški študent: temen ten kože
 👩‍🎓	študentka
@@ -305,7 +305,7 @@
 👨🏽‍💼	pisarniški delavec: srednji ten kože
 👨🏾‍💼	pisarniški delavec: srednje temen ten kože
 👨🏿‍💼	pisarniški delavec: temen ten kože
-👩‍💼	ženska pisarniška delavka
+👩‍💼	pisarniška delavka
 👩🏻‍💼	pisarniški delavec: svetel ten kože
 👩🏼‍💼	pisarniški delavec: srednje svetel ten kože
 👩🏽‍💼	pisarniški delavec: srednji ten kože
@@ -353,7 +353,7 @@
 👨🏽‍🎨	moški umetnik: srednji ten kože
 👨🏾‍🎨	moški umetnik: srednje temen ten kože
 👨🏿‍🎨	moški umetnik: temen ten kože
-👩‍🎨	ženska umetnica
+👩‍🎨	umetnica
 👩🏻‍🎨	umetnica: svetel ten kože
 👩🏼‍🎨	umetnica: srednje svetel ten kože
 👩🏽‍🎨	umetnica: srednji ten kože
@@ -374,7 +374,7 @@
 👩‍✈️	pilotka
 👩‍✈	pilotka
 👩🏻‍✈️	pilotka: svetel ten kože
-👩🏻‍✈	pilotka: svetel ten kože
+👩🏻‍✈	ženska pilot: svetel ten kože
 👩🏼‍✈️	pilotka: srednje svetel ten kože
 👩🏼‍✈	pilotka: srednje svetel ten kože
 👩🏽‍✈️	pilotka: srednji ten kože
@@ -600,16 +600,16 @@
 👱🏿	svetlolasa oseba: temen ten kože
 👱‍♂️	svetlolasi moški
 👱‍♂	svetlolasi moški
-👱🏻‍♂️	blond moški: svetel ten kože
-👱🏻‍♂	blond moški: svetel ten kože
+👱🏻‍♂️	svetlolas moški: svetel ten kože
+👱🏻‍♂	svetlolas moški: svetel ten kože
 👱🏼‍♂️	blond moški: srednje svetel ten kože
 👱🏼‍♂	blond moški: srednje svetel ten kože
 👱🏽‍♂️	blond moški: srednji ten kože
 👱🏽‍♂	blond moški: srednji ten kože
 👱🏾‍♂️	blond moški: srednje temen ten kože
 👱🏾‍♂	blond moški: srednje temen ten kože
-👱🏿‍♂️	blond moški: temen ten kože
-👱🏿‍♂	blond moški: temen ten kože
+👱🏿‍♂️	svetlolas moški: temen ten kože
+👱🏿‍♂	svetlolas moški: temen ten kože
 👱‍♀️	svetlolasa ženska
 👱‍♀	svetlolasa ženska
 👱🏻‍♀️	svetlolasa ženska: svetel ten kože
@@ -644,8 +644,8 @@
 👩🏻‍🦱	ženska, kodrasta: svetel ten kože
 👩🏼‍🦱	ženska, kodrasta: srednje svetel ten kože
 👩🏽‍🦱	ženska, kodrasta: srednji ten kože
-👩🏾‍🦱	ženska, kodrasti: srednje temen ten kože
-👩🏿‍🦱	ženska, kodrasti: temen ten kože
+👩🏾‍🦱	ženska, kodrasta: srednje temen ten kože
+👩🏿‍🦱	ženska, kodrasta: temen ten kože
 👨‍🦲	moški, plešast
 👨🏻‍🦲	moški, plešast: svetel ten kože
 👨🏼‍🦲	moški, plešast: srednje svetel ten kože
@@ -713,10 +713,10 @@
 🤶🏾	Gospa Claus: srednje temen ten kože
 🤶🏿	Gospa Claus: temen ten kože
 🦸	superjunak
-🦸🏻	superheroj: svetel ten kože
+🦸🏻	superjunak: svetel ten kože
 🦸🏼	superjunak: srednje svetel ten kože
 🦸🏽	superjunak: srednji ten kože
-🦸🏾	superheroj: srednje temen ten kože
+🦸🏾	superjunak: srednje temen ten kože
 🦸🏿	superjunak: temen ten kože
 🦸‍♀️	ženska superjunakinja
 🦸‍♀	ženska superjunakinja
@@ -733,7 +733,7 @@
 🦸‍♂️	moški superjunak
 🦸‍♂	moški superjunak
 🦸🏻‍♂️	moški superjunak: svetel ten kože
-🦸🏻‍♂	moški superjunak: svetel ten kože
+🦸🏻‍♂	moški superheroj: svetel ten kože
 🦸🏼‍♂️	moški superjunak: srednje svetel ten kože
 🦸🏼‍♂	moški superjunak: srednje svetel ten kože
 🦸🏽‍♂️	moški superjunak: srednji ten kože
@@ -741,7 +741,7 @@
 🦸🏾‍♂️	moški superjunak: srednje temen ten kože
 🦸🏾‍♂	moški superjunak: srednje temen ten kože
 🦸🏿‍♂️	moški superjunak: temen ten kože
-🦸🏿‍♂	moški superheroj: temen ten kože
+🦸🏿‍♂	moški superjunak: temen ten kože
 🦹	superzlobnež
 🦹🏻	superzlobnež: svetel ten kože
 🦹🏼	superzlobnež: srednje svetel ten kože
@@ -826,7 +826,7 @@
 🧚🏻‍♂	moški vila: svetel ten kože
 🧚🏼‍♂️	moški vila: srednje svetel ten kože
 🧚🏼‍♂	moški vila: srednje svetel ten kože
-🧚🏽‍♂️	človek vila: srednji ten kože
+🧚🏽‍♂️	moški vila: srednji ten kože
 🧚🏽‍♂	človek vila: srednji ten kože
 🧚🏾‍♂️	moški vila: srednje temen ten kože
 🧚🏾‍♂	moški vila: srednje temen ten kože
@@ -956,8 +956,8 @@
 🙍🏻‍♀	ženska, ki se namršči: svetel ten kože
 🙍🏼‍♀️	namrščena ženska: srednje svetel ten kože
 🙍🏼‍♀	namrščena ženska: srednje svetel ten kože
-🙍🏽‍♀️	namrščena ženska: srednji ten kože
-🙍🏽‍♀	namrščena ženska: srednji ten kože
+🙍🏽‍♀️	ženska, ki se namršči: srednji ten kože
+🙍🏽‍♀	ženska, ki se namršči: srednji ten kože
 🙍🏾‍♀️	namrščena ženska: srednje temen ten kože
 🙍🏾‍♀	namrščena ženska: srednje temen ten kože
 🙍🏿‍♀️	ženska, ki se namršči: temen ten kože
@@ -1028,7 +1028,7 @@
 🙆🏽	oseba, ki kaže OK: srednji ten kože
 🙆🏾	oseba, ki kaže OK: srednje temen ten kože
 🙆🏿	oseba, ki kaže OK: temen ten kože
-🙆‍♂️	moški, ki kaže OK
+🙆‍♂️	moški, ki gestikulira OK
 🙆‍♂	moški, ki gestikulira OK
 🙆🏻‍♂️	moški, ki kaže OK: svetel ten kože
 🙆🏻‍♂	moški, ki kaže OK: svetel ten kože
@@ -1552,7 +1552,7 @@
 🚣🏿‍♂	moški na veslanju: temen ten kože
 🚣‍♀️	ženski veslaški čoln
 🚣‍♀	ženski veslaški čoln
-🚣🏻‍♀️	ženska na veslanju: svetel ten kože
+🚣🏻‍♀️	ženska na čolnu na vesla: svetel ten kože
 🚣🏻‍♀	ženska na veslanju: svetel ten kože
 🚣🏼‍♀️	ženska na veslanju: srednje svetel ten kože
 🚣🏼‍♀	ženska na veslanju: srednje svetel ten kože
@@ -1930,7 +1930,7 @@
 👉🏽	hrbtni kazalec kaže desno: srednji ten kože
 👉🏾	hrbtni kazalec kaže desno: srednje temen ten kože
 👉🏿	hrbtni kazalec kaže desno: temen ten kože
-☝️	indeks, ki kaže navzgor
+☝️	kazalo, ki kaže navzgor
 ☝	indeks, ki kaže navzgor
 ☝🏻	kazalo navzgor: svetel ten kože
 ☝🏼	kazalo navzgor: srednje svetel ten kože
@@ -2191,7 +2191,7 @@
 🛍	nakupovalne vrečke
 🎒	šolski nahrbtnik
 👞	moški čevelj
-👟	tekaški copat
+👟	tekaški čevelj
 🥾	pohodniški čevelj
 🥿	ženski ravni čevelj
 👠	čevelj z visoko peto
@@ -2302,7 +2302,7 @@
 🦑	lignji
 🐌	polž
 🦋	metulj
-🐛	napaka
+🐛	hrošč
 🐜	Mravlja
 🐝	čebela
 🐞	gospa hrošč
@@ -2337,7 +2337,7 @@
 🍀	štiriperesna deteljica
 🍁	javorjev list
 🍂	padlo listje
-🍃	list plapola v vetru
+🍃	listje plapola v vetru
 🍇	grozdje
 🍈	melona
 🍉	lubenica
@@ -2359,7 +2359,7 @@
 🍆	jajčevec
 🥔	krompir
 🥕	korenček
-🌽	koruzni klas
+🌽	klas koruze
 🌶️	pekoča paprika
 🌶	pekoča paprika
 🥒	kumare
@@ -2737,7 +2737,7 @@
 🎾	tenis
 🥏	leteči disk
 🎳	keglanje
-🏏	igra kriket
+🏏	igra kriketa
 🏑	hokej
 🏒	hokej na ledu
 🥍	lacrosse
@@ -2993,7 +2993,7 @@
 🛏	postelja
 🛋️	kavč in svetilka
 🛋	kavč in svetilka
-🚽	stranišče
+🚽	WC
 🚿	tuš
 🛁	kopalna kad
 🧴	steklenica losjona
@@ -3065,7 +3065,7 @@
 ↪️	puščica levo, ki se ukrivlja desno
 ↪	puščica levo, ki se ukrivlja desno
 ⤴️	puščica desno, ki se ukrivi navzgor
-⤴	puščica desno, ki se ukrivlja navzgor
+⤴	puščica desno, ki se ukrivi navzgor
 ⤵️	puščica desno, ukrivljena navzdol
 ⤵	puščica desno, ukrivljena navzdol
 🔃	navpične puščice v smeri urinega kazalca
@@ -3196,8 +3196,8 @@
 ®	registriran
 ™️	blagovna znamka
 ™	blagovna znamka
-#️⃣	tipka: #
-#⃣	tipka: #
+#️⃣	tipkovnica: #
+#⃣	tipkovnica: #
 *️⃣	tipka: *
 *⃣	tipka: *
 0️⃣	tipka: 0
@@ -3206,8 +3206,8 @@
 1⃣	tipkovnica: 1
 2️⃣	tipkovnica: 2
 2⃣	tipkovnica: 2
-3️⃣	tipka: 3
-3⃣	tipka: 3
+3️⃣	tipkovnica: 3
+3⃣	tipkovnica: 3
 4️⃣	tipka: 4
 4⃣	tipka: 4
 5️⃣	tipka: 5
@@ -3263,7 +3263,7 @@
 🈲	Japonski gumb "prepovedano".
 🉑	Japonski gumb "sprejemljivo".
 🈸	Japonski gumb "aplikacija".
-🈴	Japonski gumb »uspešna ocena«.
+🈴	Japonski gumb "uspešna ocena".
 🈳	Japonski gumb za prosto delovno mesto
 ㊗️	Japonski gumb "čestitke".
 ㊗	Japonski gumb "čestitke".

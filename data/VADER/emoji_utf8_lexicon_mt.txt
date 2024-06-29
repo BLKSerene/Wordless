@@ -77,7 +77,7 @@
 🤒	wiċċ bit-termometru
 🤕	wiċċ bil-faxxa tar-ras
 🤢	wiċċ dardir
-🤮	rimettar tal-wiċċ
+🤮	rimettar fil-wiċċ
 🤧	wiċċ għatis
 😇	wiċċ jitbissem b'halo
 🤠	wiċċ cowboy hat
@@ -120,13 +120,13 @@
 🏾	ton tal-ġilda skur medju
 🏿	ton tal-ġilda skur
 👶	tarbija
-👶🏻	tarbija: ġilda ħafifa
+👶🏻	tarbija: ton tal-ġilda ħafif
 👶🏼	tarbija: ton tal-ġilda medju-dawl
 👶🏽	tarbija: ton medju tal-ġilda
 👶🏾	tarbija: ton tal-ġilda skur medju
 👶🏿	tarbija: ton tal-ġilda skur
 🧒	tifel
-🧒🏻	tifel: ġilda ħafifa
+🧒🏻	tifel: ton tal-ġilda ċar
 🧒🏼	tifel: ton tal-ġilda medju-dawl
 🧒🏽	tifel: ton medju tal-ġilda
 🧒🏾	tifel: ton tal-ġilda skur medju
@@ -261,7 +261,7 @@
 👩🏻‍🌾	mara bidwi: ġilda ħafifa
 👩🏼‍🌾	bidwi mara: ton tal-ġilda medju-dawl
 👩🏽‍🌾	mara bidwi: ton medju tal-ġilda
-👩🏾‍🌾	bidwi mara: ton tal-ġilda skur medju
+👩🏾‍🌾	mara bidwi: ton tal-ġilda skur medju
 👩🏿‍🌾	mara bidwi: ton tal-ġilda skur
 👨‍🍳	bniedem kok
 👨🏻‍🍳	bniedem kok: ton tal-ġilda ħafif
@@ -292,10 +292,10 @@
 👨🏼‍🏭	ħaddiem tal-fabbrika tal-bniedem: ton tal-ġilda medju-dawl
 👨🏽‍🏭	ħaddiem tal-fabbrika tal-bniedem: ton medju tal-ġilda
 👨🏾‍🏭	ħaddiem tal-fabbrika tal-bniedem: ton tal-ġilda skur medju
-👨🏿‍🏭	ħaddiem tal-fabbrika tal-bniedem: ton tal-ġilda skur
+👨🏿‍🏭	ħaddiem tal-fabbrika tal-bniedem: ton tal-ġilda skura
 👩‍🏭	ħaddiema mara fil-fabbrika
 👩🏻‍🏭	mara ħaddiema tal-fabbrika: ton tal-ġilda ħafif
-👩🏼‍🏭	ħaddiema mara tal-fabbrika: ton tal-ġilda medju-dawl
+👩🏼‍🏭	mara ħaddiema tal-fabbrika: ton tal-ġilda medju-dawl
 👩🏽‍🏭	mara ħaddiema tal-fabbrika: ton medju tal-ġilda
 👩🏾‍🏭	mara ħaddiema tal-fabbrika: ton tal-ġilda skur medju
 👩🏿‍🏭	mara ħaddiema tal-fabbrika: ton tal-ġilda skur
@@ -318,7 +318,7 @@
 👨🏾‍🔬	xjenzat raġel: ton tal-ġilda skur medju
 👨🏿‍🔬	xjenzat raġel: ton tal-ġilda skur
 👩‍🔬	xjenzat mara
-👩🏻‍🔬	xjenzat mara: ton tal-ġilda ċar
+👩🏻‍🔬	xjenzat mara: ġilda ħafifa
 👩🏼‍🔬	xjenzat mara: ton tal-ġilda medju-dawl
 👩🏽‍🔬	xjenzat mara: ton medju tal-ġilda
 👩🏾‍🔬	xjenzat mara: ton tal-ġilda skur medju
@@ -355,7 +355,7 @@
 👨🏿‍🎨	artist raġel: ton tal-ġilda skura
 👩‍🎨	artista mara
 👩🏻‍🎨	artista mara: ton tal-ġilda ċar
-👩🏼‍🎨	artista mara: ton tal-ġilda medju-dawl
+👩🏼‍🎨	artista mara: ton tal-ġilda ħafif medju
 👩🏽‍🎨	artista mara: ton medju tal-ġilda
 👩🏾‍🎨	artista mara: ton tal-ġilda skur medju
 👩🏿‍🎨	artista mara: ton tal-ġilda skur
@@ -382,7 +382,7 @@
 👩🏾‍✈️	pilota mara: ton tal-ġilda skur medju
 👩🏾‍✈	pilota mara: ton tal-ġilda skur medju
 👩🏿‍✈️	pilota mara: ton tal-ġilda skur
-👩🏿‍✈	pilota mara: ton tal-ġilda skura
+👩🏿‍✈	pilota mara: ton tal-ġilda skur
 👨‍🚀	astronawta bniedem
 👨🏻‍🚀	astronawta raġel: ton tal-ġilda ċar
 👨🏼‍🚀	astronawta raġel: ton tal-ġilda medju-dawl
@@ -405,7 +405,7 @@
 👩🏻‍🚒	tifi tan-nar mara: ġilda ħafifa
 👩🏼‍🚒	mara tan-nar: ton tal-ġilda medju-dawl
 👩🏽‍🚒	mara tan-nar: ton medju tal-ġilda
-👩🏾‍🚒	tifi tan-nar mara: ton tal-ġilda skur medju
+👩🏾‍🚒	mara tan-nar: ton tal-ġilda skur medju
 👩🏿‍🚒	mara tan-nar: ton tal-ġilda skur
 👮	Pulizija
 👮🏻	uffiċjal tal-pulizija: ton tal-ġilda ċar
@@ -423,12 +423,12 @@
 👮🏽‍♂	uffiċjal tal-pulizija raġel: ton medju tal-ġilda
 👮🏾‍♂️	uffiċjal tal-pulizija raġel: ton tal-ġilda skur medju
 👮🏾‍♂	uffiċjal tal-pulizija raġel: ton tal-ġilda skur medju
-👮🏿‍♂️	uffiċjal tal-pulizija raġel: ton tal-ġilda skur
+👮🏿‍♂️	uffiċjal tal-pulizija raġel: ton tal-ġilda skura
 👮🏿‍♂	uffiċjal tal-pulizija raġel: ton tal-ġilda skura
 👮‍♀️	uffiċjal tal-pulizija mara
 👮‍♀	uffiċjal tal-pulizija mara
 👮🏻‍♀️	uffiċjal tal-pulizija mara: ġilda ċara
-👮🏻‍♀	uffiċjal tal-pulizija mara: ġilda ċara
+👮🏻‍♀	uffiċjal tal-pulizija mara: ton tal-ġilda ċar
 👮🏼‍♀️	uffiċjal tal-pulizija mara: ton tal-ġilda medju-dawl
 👮🏼‍♀	uffiċjal tal-pulizija mara: ton tal-ġilda medju-dawl
 👮🏽‍♀️	uffiċjal tal-pulizija mara: ton medju tal-ġilda
@@ -509,7 +509,7 @@
 👷🏾	ħaddiem tal-kostruzzjoni: ton tal-ġilda skur medju
 👷🏿	ħaddiem tal-kostruzzjoni: ton tal-ġilda skur
 👷‍♂️	bniedem ħaddiem tal-kostruzzjoni
-👷‍♂	ħaddiem tal-kostruzzjoni raġel
+👷‍♂	bniedem ħaddiem tal-kostruzzjoni
 👷🏻‍♂️	ħaddiem tal-kostruzzjoni raġel: ton tal-ġilda ħafif
 👷🏻‍♂	ħaddiem tal-kostruzzjoni raġel: ton tal-ġilda ħafif
 👷🏼‍♂️	ħaddiem tal-kostruzzjoni raġel: ton tal-ġilda medju-dawl
@@ -543,7 +543,7 @@
 👸🏼	Princess: ton tal-ġilda medju-dawl
 👸🏽	Princess: ton medju tal-ġilda
 👸🏾	Princess: ton tal-ġilda skur medju
-👸🏿	Princess: ton tal-ġilda skura
+👸🏿	Princess: ton tal-ġilda skur
 👳	persuna liebes it-turban
 👳🏻	persuna liebes turban: ton tal-ġilda ċar
 👳🏼	persuna liebes turban: ton tal-ġilda medju-dawl
@@ -582,16 +582,16 @@
 👲🏿	raġel b'għatu Ċiniż: ton tal-ġilda skur
 🧕	mara b’xalpa
 🧕🏻	mara b'xalpa: ton tal-ġilda ċar
-🧕🏼	mara b'xalpa tar-ras: ton tal-ġilda medju-dawl
+🧕🏼	mara b'xalpa: ton tal-ġilda medju-dawl
 🧕🏽	mara bir-ras: ton medju tal-ġilda
 🧕🏾	mara b'xalpa: ton tal-ġilda skur medju
 🧕🏿	mara b'xalpa: ton tal-ġilda skura
 🧔	persuna bid-daqna
 🧔🏻	persuna b'daqna: ton tal-ġilda ħafif
-🧔🏼	persuna bid-daqna: ton tal-ġilda medju-dawl
+🧔🏼	persuna b'daqna: ton tal-ġilda medju-dawl
 🧔🏽	persuna b'daqna: ton medju tal-ġilda
 🧔🏾	persuna b'daqna: ton tal-ġilda skur medju
-🧔🏿	persuna b'daqna: ton tal-ġilda skura
+🧔🏿	persuna b'daqna: ton tal-ġilda skur
 👱	persuna b'xagħar blond
 👱🏻	persuna b'xagħar blond: ton tal-ġilda ċar
 👱🏼	persuna b'xagħar blond: ton tal-ġilda medju-dawl
@@ -627,13 +627,13 @@
 👨🏼‍🦰	raġel, xagħar aħmar: ton tal-ġilda medju-dawl
 👨🏽‍🦰	raġel, xagħar aħmar: ton medju tal-ġilda
 👨🏾‍🦰	raġel, xagħar aħmar: ton tal-ġilda skur medju
-👨🏿‍🦰	raġel, xagħar aħmar: ton tal-ġilda skur
+👨🏿‍🦰	raġel, xagħri aħmar: ton tal-ġilda skur
 👩‍🦰	mara, xagħar aħmar
 👩🏻‍🦰	mara, xagħar aħmar: ton tal-ġilda ċar
 👩🏼‍🦰	mara, xagħar aħmar: ton tal-ġilda medju-dawl
 👩🏽‍🦰	mara, xagħar aħmar: ton medju tal-ġilda
 👩🏾‍🦰	mara, xagħar aħmar: ton tal-ġilda skur medju
-👩🏿‍🦰	mara, xagħar aħmar: ġilda skura
+👩🏿‍🦰	mara, xagħar aħmar: ton tal-ġilda skur
 👨‍🦱	raġel, kaboċċi
 👨🏻‍🦱	raġel, kaboċċi: ġilda ħafifa
 👨🏼‍🦱	raġel, kaboċċi: ton tal-ġilda medju-dawl
@@ -651,7 +651,7 @@
 👨🏼‍🦲	raġel, qargħi: ton tal-ġilda medju-dawl
 👨🏽‍🦲	raġel, qargħi: ton medju tal-ġilda
 👨🏾‍🦲	raġel, qargħi: ton tal-ġilda skur medju
-👨🏿‍🦲	raġel, qargħi: ton tal-ġilda skura
+👨🏿‍🦲	raġel, qargħi: ġilda skura
 👩‍🦲	mara, qargħi
 👩🏻‍🦲	mara, qargħi: ġilda ħafifa
 👩🏼‍🦲	mara, qargħi: ton tal-ġilda medju-dawl
@@ -724,7 +724,7 @@
 🦸🏻‍♀	superhero mara: ton tal-ġilda ċar
 🦸🏼‍♀️	superhero mara: ton tal-ġilda medju-dawl
 🦸🏼‍♀	superhero mara: ton tal-ġilda medju-dawl
-🦸🏽‍♀️	mara supereroj: ton medju tal-ġilda
+🦸🏽‍♀️	superhero mara: ton medju tal-ġilda
 🦸🏽‍♀	mara supereroj: ton medju tal-ġilda
 🦸🏾‍♀️	superhero mara: ton tal-ġilda skur medju
 🦸🏾‍♀	superhero mara: ton tal-ġilda skur medju
@@ -759,7 +759,7 @@
 🦹🏾‍♀️	supervillain mara: ton tal-ġilda skur medju
 🦹🏾‍♀	supervillain mara: ton tal-ġilda skur medju
 🦹🏿‍♀️	supervillain mara: ton tal-ġilda skur
-🦹🏿‍♀	mara supervillain: ton tal-ġilda skur
+🦹🏿‍♀	supervillain mara: ton tal-ġilda skur
 🦹‍♂️	bniedem supervillain
 🦹‍♂	bniedem supervillain
 🦹🏻‍♂️	man supervillain: ton tal-ġilda ħafif
@@ -788,7 +788,7 @@
 🧙🏽‍♀	mara mara: ton medju tal-ġilda
 🧙🏾‍♀️	mara mara: ton tal-ġilda skur medju
 🧙🏾‍♀	mara mara: ton tal-ġilda skur medju
-🧙🏿‍♀️	mara mara: ton tal-ġilda skura
+🧙🏿‍♀️	mara maġ: ton tal-ġilda skur
 🧙🏿‍♀	mara mara: ton tal-ġilda skura
 🧙‍♂️	bniedem maġ
 🧙‍♂	bniedem maġ
@@ -818,7 +818,7 @@
 🧚🏽‍♀	fairy mara: ton medju tal-ġilda
 🧚🏾‍♀️	fairy mara: ton tal-ġilda skur medju
 🧚🏾‍♀	fairy mara: ton tal-ġilda skur medju
-🧚🏿‍♀️	fairy mara: ton tal-ġilda skura
+🧚🏿‍♀️	fairy mara: ton tal-ġilda skur
 🧚🏿‍♀	fairy mara: ton tal-ġilda skura
 🧚‍♂️	bniedem fairy
 🧚‍♂	bniedem fairy
@@ -848,7 +848,7 @@
 🧛🏽‍♀	vampire mara: ton medju tal-ġilda
 🧛🏾‍♀️	mara vampire: ton tal-ġilda skur medju
 🧛🏾‍♀	mara vampire: ton tal-ġilda skur medju
-🧛🏿‍♀️	mara vampire: ġilda skura
+🧛🏿‍♀️	vampire mara: ton tal-ġilda skur
 🧛🏿‍♀	vampire mara: ton tal-ġilda skur
 🧛‍♂️	bniedem vampire
 🧛‍♂	bniedem vampire
@@ -897,7 +897,7 @@
 🧝🏼	elf: ton tal-ġilda medju-dawl
 🧝🏽	elf: ton medju tal-ġilda
 🧝🏾	elf: ton tal-ġilda skur medju
-🧝🏿	elf: ton tal-ġilda skura
+🧝🏿	elf: ton tal-ġilda skur
 🧝‍♀️	mara elf
 🧝‍♀	mara elf
 🧝🏻‍♀️	mara elf: ton tal-ġilda ċar
@@ -908,8 +908,8 @@
 🧝🏽‍♀	mara elf: ton medju tal-ġilda
 🧝🏾‍♀️	mara elf: ton tal-ġilda skur medju
 🧝🏾‍♀	mara elf: ton tal-ġilda skur medju
-🧝🏿‍♀️	mara elf: ton tal-ġilda skur
-🧝🏿‍♀	mara elf: ton tal-ġilda skur
+🧝🏿‍♀️	mara elf: ton tal-ġilda skura
+🧝🏿‍♀	mara elf: ton tal-ġilda skura
 🧝‍♂️	bniedem elf
 🧝‍♂	bniedem elf
 🧝🏻‍♂️	man elf: ton tal-ġilda ċar
@@ -979,15 +979,15 @@
 🙎🏾‍♂️	bniedem pouting: ton tal-ġilda skur medju
 🙎🏾‍♂	bniedem pouting: ton tal-ġilda skur medju
 🙎🏿‍♂️	man pouting: ton tal-ġilda skur
-🙎🏿‍♂	man pouting: ton tal-ġilda skur
+🙎🏿‍♂	man pouting: ton tal-ġilda skura
 🙎‍♀️	mara tfajjar
 🙎‍♀	mara tfajjar
 🙎🏻‍♀️	mara tfaċċat: ton tal-ġilda ċar
 🙎🏻‍♀	mara tfaċċat: ton tal-ġilda ċar
 🙎🏼‍♀️	mara tfaċċat: ton tal-ġilda medju-dawl
 🙎🏼‍♀	mara tfaċċat: ton tal-ġilda medju-dawl
-🙎🏽‍♀️	mara tfajjar: ton medju tal-ġilda
-🙎🏽‍♀	mara tfajjar: ton medju tal-ġilda
+🙎🏽‍♀️	mara tfaċċat: ton medju tal-ġilda
+🙎🏽‍♀	mara tfaċċat: ton medju tal-ġilda
 🙎🏾‍♀️	mara pouting: ton tal-ġilda skur medju
 🙎🏾‍♀	mara pouting: ton tal-ġilda skur medju
 🙎🏿‍♀️	mara tfajjar: ton tal-ġilda skur
@@ -1000,8 +1000,8 @@
 🙅🏿	persuna li tagħmel ġesti LE: ton tal-ġilda skura
 🙅‍♂️	raġel iġġestixxi LE
 🙅‍♂	raġel iġġestixxi LE
-🙅🏻‍♂️	bniedem li jagħmel ġesti LE: ġilda ħafifa
-🙅🏻‍♂	bniedem li jagħmel ġesti LE: ġilda ħafifa
+🙅🏻‍♂️	raġel li jagħmel ġesti LE: ġilda ħafifa
+🙅🏻‍♂	raġel li jagħmel ġesti LE: ġilda ħafifa
 🙅🏼‍♂️	raġel li jagħmel ġesti LE: ton tal-ġilda medju-dawl
 🙅🏼‍♂	raġel li jagħmel ġesti LE: ton tal-ġilda medju-dawl
 🙅🏽‍♂️	raġel li jagħmel ġesti LE: ton medju tal-ġilda
@@ -1023,11 +1023,11 @@
 🙅🏿‍♀️	mara li tagħmel ġesti LE: ton tal-ġilda skura
 🙅🏿‍♀	mara li tagħmel ġesti LE: ton tal-ġilda skura
 🙆	persuna tagħmel ġest OK
-🙆🏻	persuna li tagħmel il-ġest OK: ġilda ħafifa
+🙆🏻	persuna li tagħmel il-ġest OK: ton tal-ġilda ċar
 🙆🏼	persuna li tagħmel il-ġest OK: ton tal-ġilda medju-dawl
 🙆🏽	persuna li tagħmel il-ġest OK: ton medju tal-ġilda
 🙆🏾	persuna li tagħmel il-ġest OK: ton tal-ġilda skur medju
-🙆🏿	persuna li tagħmel il-ġest OK: ton tal-ġilda skura
+🙆🏿	persuna li tagħmel ġesti OK: ton tal-ġilda skur
 🙆‍♂️	raġel iġġestixxi OK
 🙆‍♂	raġel iġġestixxi OK
 🙆🏻‍♂️	raġel li jagħmel ġesti OK: ġilda ħafifa
@@ -1054,25 +1054,25 @@
 🙆🏿‍♀	mara tiġġestixxi OK: ton tal-ġilda skur
 💁	persuna taqleb l-idejn
 💁🏻	persuna li taqbad l-idejn: ton tal-ġilda ħafif
-💁🏼	persuna li tgħaddi l-idejn: ton tal-ġilda medju-dawl
-💁🏽	persuna li tgħaddi l-idejn: ton medju tal-ġilda
+💁🏼	il-persuna li tgħaddi l-idejn: ton tal-ġilda medju-dawl
+💁🏽	persuna li taqbad l-idejn: ton medju tal-ġilda
 💁🏾	persuna li tgħaddi l-idejn: ton tal-ġilda skur medju
 💁🏿	persuna li taqbad l-idejn: ton tal-ġilda skur
 💁‍♂️	bniedem li jxaqleb l-idejn
 💁‍♂	bniedem li jxaqleb l-idejn
 💁🏻‍♂️	bniedem li jinbidel bl-idejn: ton tal-ġilda ħafif
 💁🏻‍♂	bniedem li jinbidel bl-idejn: ton tal-ġilda ħafif
-💁🏼‍♂️	idejn taqlib il-bniedem: ton tal-ġilda medju-dawl
+💁🏼‍♂️	bniedem li tipping hand: ton tal-ġilda medju-dawl
 💁🏼‍♂	idejn taqlib il-bniedem: ton tal-ġilda medju-dawl
 💁🏽‍♂️	bniedem li jinqaleb bl-idejn: ton medju tal-ġilda
 💁🏽‍♂	bniedem li jinqaleb bl-idejn: ton medju tal-ġilda
 💁🏾‍♂️	bniedem li tipping hand: ton tal-ġilda skur medju
-💁🏾‍♂	bniedem li tipping hand: ton tal-ġilda skur medju
+💁🏾‍♂	bniedem li tbatti l-idejn: ton tal-ġilda skur medju
 💁🏿‍♂️	bniedem li tipping hand: ton tal-ġilda skur
 💁🏿‍♂	bniedem li tipping hand: ton tal-ġilda skur
 💁‍♀️	idejn il-mara taqleb
 💁‍♀	idejn il-mara taqleb
-💁🏻‍♀️	l-idejn tal-mara li tgħaddi: ton tal-ġilda ċar
+💁🏻‍♀️	l-idejn tat-twaddib tal-mara: ton ħafif tal-ġilda
 💁🏻‍♀	l-idejn tal-mara li tgħaddi: ton tal-ġilda ċar
 💁🏼‍♀️	l-idejn tat-twaddib tal-mara: ton tal-ġilda medju-dawl
 💁🏼‍♀	l-idejn tat-twaddib tal-mara: ton tal-ġilda medju-dawl
@@ -1081,7 +1081,7 @@
 💁🏾‍♀️	idejn li tbatti mara: ton tal-ġilda skur medju
 💁🏾‍♀	idejn li tbatti mara: ton tal-ġilda skur medju
 💁🏿‍♀️	idejn li tbatti mara: ton tal-ġilda skur
-💁🏿‍♀	l-idejn tal-mara li taqbad: ton tal-ġilda skur
+💁🏿‍♀	idejn li tbatti mara: ton tal-ġilda skur
 🙋	persuna tgħolli l-idejn
 🙋🏻	persuna tgħolli l-idejn: ġilda ħafifa
 🙋🏼	persuna tgħolli l-idejn: ton tal-ġilda medju-dawl
@@ -1113,7 +1113,7 @@
 🙋🏿‍♀️	mara tgħolli l-idejn: ton tal-ġilda skura
 🙋🏿‍♀	mara tgħolli l-idejn: ton tal-ġilda skura
 🙇	persuna titbaxxa
-🙇🏻	persuna titbaxxa: ton tal-ġilda ċar
+🙇🏻	persuna tmil: ton tal-ġilda ċar
 🙇🏼	persuna tmil: ton tal-ġilda medju-dawl
 🙇🏽	persuna tmil: ton medju tal-ġilda
 🙇🏾	persuna tmil: ton tal-ġilda skur medju
@@ -1246,14 +1246,14 @@
 💇🏼‍♂	bniedem li jqatta 'xagħar: ton tal-ġilda medju-dawl
 💇🏽‍♂️	bniedem li jqaxxar ix-xagħar: ton medju tal-ġilda
 💇🏽‍♂	bniedem li jqaxxar ix-xagħar: ton medju tal-ġilda
-💇🏾‍♂️	bniedem li jqatta 'xagħar: ton tal-ġilda skur medju
-💇🏾‍♂	bniedem li jqatta 'xagħar: ton tal-ġilda skur medju
-💇🏿‍♂️	bniedem li jqaxxar ix-xagħar: ton tal-ġilda skur
-💇🏿‍♂	bniedem li jqaxxar ix-xagħar: ton tal-ġilda skur
+💇🏾‍♂️	bniedem li jqaxxar ix-xagħar: ton tal-ġilda skur medju
+💇🏾‍♂	bniedem li jqaxxar ix-xagħar: ton tal-ġilda skur medju
+💇🏿‍♂️	raġel jkollna haircut: ton tal-ġilda skur
+💇🏿‍♂	raġel jkollna haircut: ton tal-ġilda skur
 💇‍♀️	mara jkollna haircut
 💇‍♀	mara jkollna haircut
-💇🏻‍♀️	mara li tieħu haircut: ġilda ħafifa
-💇🏻‍♀	mara li tieħu haircut: ġilda ħafifa
+💇🏻‍♀️	mara li tieħu haircut: ton tal-ġilda ċar
+💇🏻‍♀	mara li tieħu haircut: ton tal-ġilda ċar
 💇🏼‍♀️	mara li tieħu haircut: ton tal-ġilda medju-dawl
 💇🏼‍♀	mara li tieħu haircut: ton tal-ġilda medju-dawl
 💇🏽‍♀️	mara li tieħu haircut: ton medju tal-ġilda
@@ -1296,7 +1296,7 @@
 🏃🏻	persuna li qed taħdem: ġilda ħafifa
 🏃🏼	persuna li qed taħdem: ton tal-ġilda ħafif medju
 🏃🏽	persuna tiġri: ton medju tal-ġilda
-🏃🏾	persuna li qed taħdem: ton tal-ġilda skur medju
+🏃🏾	persuna tiġri: ton tal-ġilda skur medju
 🏃🏿	persuna tiġri: ton tal-ġilda skur
 🏃‍♂️	bniedem ji;ri
 🏃‍♂	bniedem ji;ri
@@ -1308,12 +1308,12 @@
 🏃🏽‍♂	raġel jiġri: ton medju tal-ġilda
 🏃🏾‍♂️	raġel jiġri: ton tal-ġilda skur medju
 🏃🏾‍♂	raġel jiġri: ton tal-ġilda skur medju
-🏃🏿‍♂️	raġel jiġri: ton tal-ġilda skura
-🏃🏿‍♂	raġel jiġri: ton tal-ġilda skura
+🏃🏿‍♂️	raġel jiġri: ġilda skura
+🏃🏿‍♂	raġel jiġri: ġilda skura
 🏃‍♀️	mara tiġri
 🏃‍♀	mara tiġri
-🏃🏻‍♀️	mara tiġri: ton tal-ġilda ċar
-🏃🏻‍♀	mara tiġri: ton tal-ġilda ċar
+🏃🏻‍♀️	mara tiġri: ġilda ħafifa
+🏃🏻‍♀	mara tiġri: ġilda ħafifa
 🏃🏼‍♀️	mara tiġri: ton tal-ġilda medju-dawl
 🏃🏼‍♀	mara tiġri: ton tal-ġilda medju-dawl
 🏃🏽‍♀️	mara tiġri: ton medju tal-ġilda
@@ -1353,16 +1353,16 @@
 🧖🏼‍♀	mara f'kamra steamy: ton tal-ġilda medju-dawl
 🧖🏽‍♀️	mara f'kamra steamy: ton medju tal-ġilda
 🧖🏽‍♀	mara f'kamra steamy: ton medju tal-ġilda
-🧖🏾‍♀️	mara f'kamra steamy: ton tal-ġilda skur medju
-🧖🏾‍♀	mara f'kamra steamy: ton tal-ġilda skur medju
+🧖🏾‍♀️	mara fil-kamra steamy: ton tal-ġilda skur medju
+🧖🏾‍♀	mara fil-kamra steamy: ton tal-ġilda skur medju
 🧖🏿‍♀️	mara fil-kamra steamy: ton tal-ġilda skura
 🧖🏿‍♀	mara fil-kamra steamy: ton tal-ġilda skura
 🧖‍♂️	raġel fil-kamra steamy
 🧖‍♂	raġel fil-kamra steamy
-🧖🏻‍♂️	raġel fil-kamra steamy: ton tal-ġilda ħafif
-🧖🏻‍♂	raġel fil-kamra steamy: ton tal-ġilda ħafif
-🧖🏼‍♂️	raġel fil-kamra steamy: ton tal-ġilda medju-dawl
-🧖🏼‍♂	raġel fil-kamra steamy: ton tal-ġilda medju-dawl
+🧖🏻‍♂️	bniedem fil-kamra steamy: ton tal-ġilda ħafif
+🧖🏻‍♂	bniedem fil-kamra steamy: ton tal-ġilda ħafif
+🧖🏼‍♂️	bniedem fil-kamra steamy: ton tal-ġilda medju-dawl
+🧖🏼‍♂	bniedem fil-kamra steamy: ton tal-ġilda medju-dawl
 🧖🏽‍♂️	raġel f'kamra steamy: ton medju tal-ġilda
 🧖🏽‍♂	raġel f'kamra steamy: ton medju tal-ġilda
 🧖🏾‍♂️	raġel fil-kamra steamy: ton tal-ġilda skur medju
@@ -1427,10 +1427,10 @@
 🧘🏽‍♂	bniedem fil-pożizzjoni tal-lotus: ton medju tal-ġilda
 🧘🏾‍♂️	bniedem fil-pożizzjoni tal-lotus: ton tal-ġilda skur medju
 🧘🏾‍♂	bniedem fil-pożizzjoni tal-lotus: ton tal-ġilda skur medju
-🧘🏿‍♂️	bniedem fil-pożizzjoni tal-lotus: ton tal-ġilda skur
+🧘🏿‍♂️	bniedem fil-pożizzjoni tal-lotus: ton tal-ġilda skura
 🧘🏿‍♂	bniedem fil-pożizzjoni tal-lotus: ton tal-ġilda skur
 🛀	persuna tieħu l-banju
-🛀🏻	persuna li tieħu l-banju: ġilda ħafifa
+🛀🏻	persuna tieħu l-banju: ġilda ħafifa
 🛀🏼	persuna tieħu l-banju: ton tal-ġilda medju-dawl
 🛀🏽	persuna tieħu l-banju: ton medju tal-ġilda
 🛀🏾	persuna tieħu l-banju: ton tal-ġilda skur medju
@@ -1443,7 +1443,7 @@
 🛌🏿	persuna fis-sodda: ton tal-ġilda skur
 🕴️	bniedem fil-libsa jgħix
 🕴	bniedem fil-libsa jgħix
-🕴🏻	bniedem fil-libsa levitating: ġilda ħafifa
+🕴🏻	bniedem fil-libsa levitating: ton tal-ġilda ċar
 🕴🏼	bniedem fil-libsa levitating: ton tal-ġilda medju-dawl
 🕴🏽	raġel fil-libsa li jlevita: ton medju tal-ġilda
 🕴🏾	bniedem fil-libsa levitating: ton tal-ġilda skur medju
@@ -1533,7 +1533,7 @@
 🏄🏿‍♀️	mara tisserfja: ton tal-ġilda skur
 🏄🏿‍♀	mara tisserfja: ton tal-ġilda skur
 🚣	persuna dgħajsa tal-qdif
-🚣🏻	dgħajsa tal-qdif tal-persuna: ton ħafif tal-ġilda
+🚣🏻	dgħajsa tal-qdif tal-persuna: ton tal-ġilda ħafif
 🚣🏼	dgħajsa tal-qdif tal-persuna: ton tal-ġilda medju-dawl
 🚣🏽	dgħajsa tal-qdif tal-persuna: ton medju tal-ġilda
 🚣🏾	dgħajsa tal-qdif tal-persuna: ton tal-ġilda skur medju
@@ -1548,7 +1548,7 @@
 🚣🏽‍♂	dgħajsa tal-qdif tal-bniedem: ton medju tal-ġilda
 🚣🏾‍♂️	dgħajsa tal-qdif tal-bniedem: ton tal-ġilda skur medju
 🚣🏾‍♂	dgħajsa tal-qdif tal-bniedem: ton tal-ġilda skur medju
-🚣🏿‍♂️	dgħajsa tal-qdif tal-bniedem: ton tal-ġilda skura
+🚣🏿‍♂️	dgħajsa tal-qdif tal-bniedem: ton tal-ġilda skur
 🚣🏿‍♂	dgħajsa tal-qdif tal-bniedem: ton tal-ġilda skura
 🚣‍♀️	dgħajsa tal-qdif mara
 🚣‍♀	dgħajsa tal-qdif mara
@@ -1567,7 +1567,7 @@
 🏊🏼	għawm tal-persuna: ton tal-ġilda ħafif medju
 🏊🏽	għawm tal-persuna: ton medju tal-ġilda
 🏊🏾	għawm tal-persuna: ton tal-ġilda skur medju
-🏊🏿	għawm tal-persuna: ton tal-ġilda skur
+🏊🏿	persuna għawm: ton tal-ġilda skur
 🏊‍♂️	bniedem għawm
 🏊‍♂	bniedem għawm
 🏊🏻‍♂️	għawm tar-raġel: ton tal-ġilda ċar
@@ -1585,7 +1585,7 @@
 🏊🏻‍♀️	għawm mara: ton tal-ġilda ċar
 🏊🏻‍♀	għawm mara: ton tal-ġilda ċar
 🏊🏼‍♀️	għawm mara: ton tal-ġilda medju-dawl
-🏊🏼‍♀	għawm mara: ton tal-ġilda medju-dawl
+🏊🏼‍♀	għawm tal-mara: ton tal-ġilda ħafif medju
 🏊🏽‍♀️	għawm mara: ton medju tal-ġilda
 🏊🏽‍♀	għawm mara: ton medju tal-ġilda
 🏊🏾‍♀️	għawm mara: ton tal-ġilda skur medju
@@ -1607,8 +1607,8 @@
 ⛹🏻‍♂	bniedem bouncing ball: ton tal-ġilda ħafif
 ⛹🏼‍♂️	bniedem bouncing ball: ton tal-ġilda medju-dawl
 ⛹🏼‍♂	bniedem bouncing ball: ton tal-ġilda medju-dawl
-⛹🏽‍♂️	bniedem bouncing ball: ton medju tal-ġilda
-⛹🏽‍♂	bniedem bouncing ball: ton medju tal-ġilda
+⛹🏽‍♂️	man bouncing ball: ton medju tal-ġilda
+⛹🏽‍♂	man bouncing ball: ton medju tal-ġilda
 ⛹🏾‍♂️	man bouncing ball: ton tal-ġilda skur medju
 ⛹🏾‍♂	man bouncing ball: ton tal-ġilda skur medju
 ⛹🏿‍♂️	bniedem bouncing ball: ton tal-ġilda skura
@@ -1617,8 +1617,8 @@
 ⛹‍♀️	mara li tirbotta l-ballun
 ⛹️‍♀	mara li tirbotta l-ballun
 ⛹‍♀	mara li tirbotta l-ballun
-⛹🏻‍♀️	mara li tirbotta l-ballun: ton tal-ġilda ħafif
-⛹🏻‍♀	mara li tirbotta l-ballun: ton tal-ġilda ħafif
+⛹🏻‍♀️	mara li tirbotta ballun: ton tal-ġilda ħafif
+⛹🏻‍♀	mara li tirbotta ballun: ton tal-ġilda ħafif
 ⛹🏼‍♀️	mara bouncing ball: ton tal-ġilda medju-dawl
 ⛹🏼‍♀	mara bouncing ball: ton tal-ġilda medju-dawl
 ⛹🏽‍♀️	mara bouncing ball: ton medju tal-ġilda
@@ -1649,7 +1649,7 @@
 🏋🏿‍♂️	bniedem li jerfa' piżijiet: ton tal-ġilda skura
 🏋🏿‍♂	bniedem li jerfa' piżijiet: ton tal-ġilda skura
 🏋️‍♀️	mara tgħolli l-piżijiet
-🏋‍♀️	mara tgħolli l-piżijiet
+🏋‍♀️	mara rfigħ piżijiet
 🏋️‍♀	mara tgħolli l-piżijiet
 🏋‍♀	mara rfigħ piżijiet
 🏋🏻‍♀️	piżijiet tal-irfigħ tal-mara: ton tal-ġilda ħafif
@@ -1674,11 +1674,11 @@
 🚴🏻‍♂	ċikliżmu raġel: ton tal-ġilda ħafif
 🚴🏼‍♂️	ċikliżmu tal-bniedem: ton tal-ġilda medju-dawl
 🚴🏼‍♂	ċikliżmu tal-bniedem: ton tal-ġilda medju-dawl
-🚴🏽‍♂️	ċikliżmu raġel: ton medju tal-ġilda
-🚴🏽‍♂	ċikliżmu raġel: ton medju tal-ġilda
+🚴🏽‍♂️	ċikliżmu tal-bniedem: ton medju tal-ġilda
+🚴🏽‍♂	ċikliżmu tal-bniedem: ton medju tal-ġilda
 🚴🏾‍♂️	ċikliżmu tal-bniedem: ton tal-ġilda skur medju
 🚴🏾‍♂	ċikliżmu tal-bniedem: ton tal-ġilda skur medju
-🚴🏿‍♂️	ċikliżmu raġel: ton tal-ġilda skur
+🚴🏿‍♂️	ċikliżmu raġel: ton tal-ġilda skura
 🚴🏿‍♂	ċikliżmu raġel: ton tal-ġilda skur
 🚴‍♀️	mara ċikliżmu
 🚴‍♀	mara ċikliżmu
@@ -1690,8 +1690,8 @@
 🚴🏽‍♀	ċikliżmu mara: ton medju tal-ġilda
 🚴🏾‍♀️	ċikliżmu mara: ton tal-ġilda skur medju
 🚴🏾‍♀	ċikliżmu mara: ton tal-ġilda skur medju
-🚴🏿‍♀️	mara ċikliżmu: ton tal-ġilda skur
-🚴🏿‍♀	mara ċikliżmu: ton tal-ġilda skur
+🚴🏿‍♀️	ċikliżmu mara: ton tal-ġilda skur
+🚴🏿‍♀	ċikliżmu mara: ton tal-ġilda skur
 🚵	persuna ċikliżmu fil-muntanji
 🚵🏻	persuna ċikliżmu fil-muntanji: ton tal-ġilda ħafif
 🚵🏼	persuna ċikliżmu fil-muntanji: ton tal-ġilda medju-dawl
@@ -1760,7 +1760,7 @@
 🤼‍♂️	irġiel lotta
 🤼‍♂	irġiel lotta
 🤼‍♀️	nisa wrestling
-🤼‍♀	nisa wrestling
+🤼‍♀	nisa lotta
 🤽	persuna li tilgħab il-waterpolo
 🤽🏻	persuna li tilgħab il-waterpolo: ġilda ħafifa
 🤽🏼	persuna li tilgħab il-waterpolo: ton tal-ġilda medju-dawl
@@ -1777,8 +1777,8 @@
 🤽🏽‍♂	raġel jilgħab il-waterpolo: ton medju tal-ġilda
 🤽🏾‍♂️	raġel jilgħab il-waterpolo: ton tal-ġilda skur medju
 🤽🏾‍♂	raġel jilgħab il-waterpolo: ton tal-ġilda skur medju
-🤽🏿‍♂️	raġel li jilgħab il-waterpolo: ġilda skura
-🤽🏿‍♂	raġel li jilgħab il-waterpolo: ġilda skura
+🤽🏿‍♂️	raġel jilgħab il-waterpolo: ġilda skura
+🤽🏿‍♂	raġel jilgħab il-waterpolo: ġilda skura
 🤽‍♀️	mara tilgħab il-waterpolo
 🤽‍♀	mara tilgħab il-waterpolo
 🤽🏻‍♀️	mara li tilgħab il-waterpolo: ġilda ħafifa
@@ -1789,7 +1789,7 @@
 🤽🏽‍♀	mara li tilgħab il-waterpolo: ton medju tal-ġilda
 🤽🏾‍♀️	mara li tilgħab il-waterpolo: ton tal-ġilda skur medju
 🤽🏾‍♀	mara li tilgħab il-waterpolo: ton tal-ġilda skur medju
-🤽🏿‍♀️	mara li tilgħab il-waterpolo: ġilda skura
+🤽🏿‍♀️	mara tilgħab il-waterpolo: ġilda skura
 🤽🏿‍♀	mara li tilgħab il-waterpolo: ġilda skura
 🤾	persuna li tilgħab il-handball
 🤾🏻	persuna li tilgħab il-handball: ġilda ħafifa
@@ -1799,8 +1799,8 @@
 🤾🏿	persuna li tilgħab il-handball: ton tal-ġilda skura
 🤾‍♂️	raġel jilgħab il-handball
 🤾‍♂	raġel jilgħab il-handball
-🤾🏻‍♂️	bniedem li jilgħab il-handball: ġilda ħafifa
-🤾🏻‍♂	bniedem li jilgħab il-handball: ġilda ħafifa
+🤾🏻‍♂️	raġel li jilgħab il-handball: ġilda ħafifa
+🤾🏻‍♂	raġel li jilgħab il-handball: ġilda ħafifa
 🤾🏼‍♂️	raġel li jilgħab il-handball: ton tal-ġilda medju-dawl
 🤾🏼‍♂	raġel li jilgħab il-handball: ton tal-ġilda medju-dawl
 🤾🏽‍♂️	raġel li jilgħab il-handball: ton medju tal-ġilda
@@ -1822,7 +1822,7 @@
 🤾🏿‍♀️	mara li tilgħab il-handball: ġilda skura
 🤾🏿‍♀	mara li tilgħab il-handball: ġilda skura
 🤹	persuna juggling
-🤹🏻	Juggling persuna: ton tal-ġilda ċar
+🤹🏻	Juggling tal-persuna: ton tal-ġilda ċar
 🤹🏼	Juggling persuna: ton tal-ġilda medju-dawl
 🤹🏽	persuna juggling: ton medju tal-ġilda
 🤹🏾	persuna juggling: ton tal-ġilda skur medju
@@ -1942,7 +1942,7 @@
 👆🏼	indiċi backhand li tipponta 'l fuq: ton tal-ġilda medju-dawl
 👆🏽	indiċi backhand li tipponta 'l fuq: ton medju tal-ġilda
 👆🏾	indiċi backhand li tipponta 'l fuq: ton tal-ġilda skur medju
-👆🏿	indiċi backhand li tipponta 'l fuq: ton tal-ġilda skura
+👆🏿	indiċi tad-dahar li jipponta 'l fuq: ton tal-ġilda skura
 🖕	saba tan-nofs
 🖕🏻	saba tan-nofs: ton tal-ġilda ħafif
 🖕🏼	saba tan-nofs: ton tal-ġilda medju-dawl
@@ -1961,12 +1961,12 @@
 ✌🏼	idejn rebħa: ton tal-ġilda medju-dawl
 ✌🏽	idejn rebħa: ton medju tal-ġilda
 ✌🏾	idejn rebħa: ton tal-ġilda skur medju
-✌🏿	idejn rebħa: ton tal-ġilda skura
+✌🏿	idejn rebħa: ton tal-ġilda skur
 🤞	swaba qasmu
 🤞🏻	swaba qasmu: ton tal-ġilda ċar
 🤞🏼	swaba qasmu: ton tal-ġilda medju-dawl
 🤞🏽	swaba qasmu: ton medju tal-ġilda
-🤞🏾	swaba qasmu: ton tal-ġilda skur medju
+🤞🏾	swaba mqassma: ton tal-ġilda skur medju
 🤞🏿	swaba qasmu: ton tal-ġilda skur
 🖖	salut vulkan
 🖖🏻	salut vulkan: ton ħafif tal-ġilda
@@ -1996,8 +1996,8 @@
 ✋	idejn mgħollija
 ✋🏻	idejn mgħollija: ton tal-ġilda ħafif
 ✋🏼	idejn mgħollija: ton tal-ġilda medju-dawl
-✋🏽	naħa mgħollija: ton medju tal-ġilda
-✋🏾	naħa mgħollija: ton tal-ġilda skur medju
+✋🏽	idejn mgħollija: ton medju tal-ġilda
+✋🏾	idejn mgħollija: ton tal-ġilda skur medju
 ✋🏿	idejn mgħollija: ton tal-ġilda skura
 👌	idejn OK
 👌🏻	idejn OK: ton tal-ġilda ħafif
@@ -2012,7 +2012,7 @@
 👍🏾	thumbs up: ton tal-ġilda skur medju
 👍🏿	thumbs up: ton tal-ġilda skur
 👎	thumbs isfel
-👎🏻	Riżultat pożittiv 'l isfel: ton tal-ġilda ħafif
+👎🏻	thumbs isfel: ton tal-ġilda ħafif
 👎🏼	thumbs isfel: ton tal-ġilda medju-dawl
 👎🏽	thumbs isfel: ton medju tal-ġilda
 👎🏾	thumbs isfel: ton tal-ġilda skur medju
@@ -2036,14 +2036,14 @@
 🤛🏾	fist li jħares lejn ix-xellug: ton tal-ġilda skur medju
 🤛🏿	fist li jħares lejn ix-xellug: ton tal-ġilda skur
 🤜	fist iħares lejn il-lemin
-🤜🏻	fist li jħares lejn il-lemin: ton tal-ġilda ċar
+🤜🏻	fist li jħares lejn il-lemin: ġilda ħafifa
 🤜🏼	fist li jħares lejn il-lemin: ton tal-ġilda medju-dawl
 🤜🏽	fist li jħares lejn il-lemin: ton medju tal-ġilda
 🤜🏾	fist li jħares lejn il-lemin: ton tal-ġilda skur medju
 🤜🏿	fist li jħares lejn il-lemin: ton tal-ġilda skur
 🤚	mgħollija dahar tal-id
 🤚🏻	dahar tal-id mgħollija: ton tal-ġilda ċar
-🤚🏼	dahar tal-id mgħollija: ton tal-ġilda medju-dawl
+🤚🏼	dahar tal-idejn mgħolli: ton tal-ġilda medju-dawl
 🤚🏽	dahar tal-id mgħollija: ton medju tal-ġilda
 🤚🏾	dahar tal-id mgħollija: ton tal-ġilda skur medju
 🤚🏿	dahar tal-id mgħollija: ton tal-ġilda skur
@@ -2062,7 +2062,7 @@
 ✍️	kitba bl-idejn
 ✍	kitba bl-idejn
 ✍🏻	idejn tal-kitba: ton tal-ġilda ħafif
-✍🏼	idejn tal-kitba: ton tal-ġilda medju-dawl
+✍🏼	idejn bil-miktub: ton tal-ġilda medju-dawl
 ✍🏽	idejn bil-miktub: ton medju tal-ġilda
 ✍🏾	idejn tal-kitba: ton tal-ġilda skur medju
 ✍🏿	idejn bil-miktub: ton tal-ġilda skura
@@ -2267,7 +2267,7 @@
 🐓	serduk
 🐣	flieles tat-tfaqqis
 🐤	flieles tat-trabi
-🐥	flieles tat-trabi li jħares quddiem
+🐥	flieles tat-trabi ta’ quddiem
 🐦	għasfur
 🐧	pingwin
 🕊️	ħamiema
@@ -2304,7 +2304,7 @@
 🦋	farfett
 🐛	bug
 🐜	ant
-🐝	tan-naħal
+🐝	naħal
 🐞	ħanfusa mara
 🦗	cricket
 🕷️	brimba
@@ -2329,7 +2329,7 @@
 🌲	siġra Evergreen
 🌳	siġra tal-weraq
 🌴	siġra tal-palm
-🌵	kaktus
+🌵	Kaktus
 🌾	sheaf tar-ross
 🌿	ħwawar
 ☘️	shamrock
@@ -2337,7 +2337,7 @@
 🍀	silla b'erba' weraq
 🍁	werqa tal-aġġru
 🍂	werqa waqgħet
-🍃	werqa tħawwad fir-riħ
+🍃	weraq fluttering fir-riħ
 🍇	għeneb
 🍈	bettieħa
 🍉	dulliegħa
@@ -2610,7 +2610,7 @@
 ⏲	arloġġ tat-tajmer
 🕰️	arloġġ tal-mantelpiece
 🕰	arloġġ tal-mantelpiece
-🕛	tnax-il siegħa
+🕛	tnax
 🕧	tnax u nofs
 🕐	is-siegħa
 🕜	is-siegħa u nofs
@@ -2645,7 +2645,7 @@
 🌙	qamar qamar
 🌚	wiċċ qamar ġdid
 🌛	wiċċ ewwel kwart qamar
-🌜	aħħar kwart qamar wiċċ
+🌜	wiċċ l-aħħar kwart qamar
 🌡️	termometru
 🌡	termometru
 ☀️	xemx
@@ -2894,8 +2894,8 @@
 📦	pakkett
 📫	kaxxa postali magħluqa bil-bandiera mgħollija
 📪	kaxxa postali magħluqa bil-bandiera mniżżla
-📬	kaxxa tal-posta miftuħa bil-bandiera mgħollija
-📭	kaxxa postali miftuħa bil-bandiera mniżżla
+📬	kaxxa postali miftuħa bil-bandiera mgħollija
+📭	kaxxa tal-posta miftuħa bil-bandiera mnaqqsa
 📮	kaxxa postali
 🗳️	kaxxa tal-vot bil-vot
 🗳	kaxxa tal-vot bil-vot
@@ -3263,7 +3263,7 @@
 🈲	Buttuna Ġappuniża "projbita".
 🉑	Buttuna Ġappuniża "aċċettabbli".
 🈸	Buttuna "applikazzjoni" Ġappuniża
-🈴	Buttuna Ġappuniża ta’ “grad li jgħaddi”.
+🈴	Buttuna Ġappuniża ta' "grad li jgħaddi".
 🈳	Buttuna Ġappuniża ta’ “post battal”.
 ㊗️	Buttuna Ġappuniża "prosit".
 ㊗	Buttuna Ġappuniża "prosit".
@@ -3310,7 +3310,7 @@
 🇦🇨	Gżira Ascension
 🇦🇩	Andorra
 🇦🇪	Emirati Għarab Magħquda
-🇦🇫	Afganistan
+🇦🇫	l-Afganistan
 🇦🇬	Antigwa u Barbuda
 🇦🇮	Anguilla
 🇦🇱	Albanija
@@ -3401,7 +3401,7 @@
 🇬🇵	Guadeloupe
 🇬🇶	Ginea Ekwatorjali
 🇬🇷	il-Greċja
-🇬🇸	Ġeorġja t'Isfel u Gżejjer Sandwich tan-Nofsinhar
+🇬🇸	Ġeorġja t'Isfel u Gżejjer Sandwich t'Isfel
 🇬🇹	Gwatemala
 🇬🇺	Gwam
 🇬🇼	Ginea Bissaw
@@ -3439,7 +3439,7 @@
 🇰🇾	Gżejjer Kajman
 🇰🇿	Każakstan
 🇱🇦	Laos
-🇱🇧	Il-Libanu
+🇱🇧	il-Libanu
 🇱🇨	Santa Luċija
 🇱🇮	Liechtenstein
 🇱🇰	Sri Lanka
@@ -3477,7 +3477,7 @@
 🇳🇪	Niġer
 🇳🇫	Gżira Norfolk
 🇳🇬	Niġerja
-🇳🇮	in-Nikaragwa
+🇳🇮	Nikaragwa
 🇳🇱	l-Olanda
 🇳🇴	Norveġja
 🇳🇵	Nepal

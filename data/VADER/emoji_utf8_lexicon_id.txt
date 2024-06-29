@@ -114,7 +114,7 @@
 🙈	monyet yang tidak terlihat jahat
 🙉	monyet yang tidak bisa mendengar yang jahat
 🙊	monyet yang tidak berbicara jahat
-🏻	warna kulit cerah
+🏻	warna kulit terang
 🏼	warna kulit cerah sedang
 🏽	warna kulit sedang
 🏾	warna kulit sedang-gelap
@@ -475,7 +475,7 @@
 💂	penjaga
 💂🏻	penjaga: warna kulit cerah
 💂🏼	pelindung: warna kulit cerah-sedang
-💂🏽	pelindung: warna kulit sedang
+💂🏽	penjaga: warna kulit sedang
 💂🏾	pelindung: warna kulit gelap-sedang
 💂🏿	penjaga: warna kulit gelap
 💂‍♂️	pria penjaga
@@ -1417,8 +1417,8 @@
 🧘🏾‍♀	Wanita dalam posisi teratai: warna kulit gelap-sedang
 🧘🏿‍♀️	Wanita dalam posisi teratai: warna kulit gelap
 🧘🏿‍♀	Wanita dalam posisi teratai: warna kulit gelap
-🧘‍♂️	pria dalam posisi lotus
-🧘‍♂	pria dalam posisi lotus
+🧘‍♂️	pria dalam posisi teratai
+🧘‍♂	pria dalam posisi teratai
 🧘🏻‍♂️	pria dalam posisi teratai: warna kulit cerah
 🧘🏻‍♂	pria dalam posisi teratai: warna kulit cerah
 🧘🏼‍♂️	pria dalam posisi teratai: warna kulit cerah-sedang
@@ -1926,7 +1926,7 @@
 👈🏿	indeks backhand menunjuk ke kiri: warna kulit gelap
 👉	indeks backhand menunjuk ke kanan
 👉🏻	Indeks backhand menunjuk ke kanan: warna kulit cerah
-👉🏼	indeks backhand menunjuk ke kanan: warna kulit cerah-sedang
+👉🏼	Indeks backhand menunjuk ke kanan: warna kulit cerah-sedang
 👉🏽	Indeks backhand menunjuk ke kanan: warna kulit sedang
 👉🏾	Indeks backhand menunjuk ke kanan: warna kulit gelap-sedang
 👉🏿	Indeks backhand menunjuk ke kanan: warna kulit gelap
@@ -2149,7 +2149,7 @@
 🖤	hati hitam
 💝	hati dengan pita
 💞	hati yang berputar
-💟	dekorasi hati
+💟	hiasan hati
 ❣️	seru hati yang berat
 ❣	seru hati yang berat
 💌	surat cinta
@@ -2511,8 +2511,8 @@
 ⛺	tenda
 🌁	berkabut
 🌃	malam dengan bintang
-🏙️	pemandangan kota
-🏙	pemandangan kota
+🏙️	lanskap kota
+🏙	lanskap kota
 🌄	matahari terbit di atas pegunungan
 🌅	matahari terbit
 🌆	pemandangan kota saat senja
@@ -3299,7 +3299,7 @@
 🔵	lingkaran biru
 🏁	bendera kotak-kotak
 🚩	bendera segitiga
-🎌	bendera bersilang
+🎌	bendera bersilangan
 🏴	bendera hitam
 🏳️	bendera putih
 🏳	bendera putih
@@ -3511,7 +3511,7 @@
 🇸🇩	Sudan
 🇸🇪	Swedia
 🇸🇬	Singapura
-🇸🇭	St.Helena
+🇸🇭	St
 🇸🇮	Slovenia
 🇸🇯	Svalbard dan Jan Mayen
 🇸🇰	Slowakia

@@ -25,6 +25,7 @@ import re
 import shutil
 import sys
 import traceback
+import zipfile
 
 import botok
 import bs4
@@ -32,7 +33,6 @@ import mecab
 import nltk
 import nltk.tokenize.nist
 import packaging.version
-import pip
 import pymorphy3
 import pyphen
 from PyQt5.QtCore import pyqtSignal
@@ -218,6 +218,9 @@ def check_models(main, langs, lang_utils = None):
 
             wl_threading.Wl_Thread(worker_download_model).start_worker()
 
+    if models_ok:
+        wl_checks_work_area.wl_status_bar_msg_success_download_model(main)
+
     return models_ok
 
 class Wl_Worker_Download_Model_Spacy(wl_threading.Wl_Worker):
@@ -244,9 +247,8 @@ class Wl_Worker_Download_Model_Spacy(wl_threading.Wl_Worker):
 
             if not err_msg:
                 model_ver = r.json()['spacy'][model_ver][self.model_name][0]
-                filename = f'{self.model_name}-{model_ver}/{self.model_name}-{model_ver}{spacy.cli._util.WHEEL_SUFFIX}'
-
-                model_url = f'{spacy.about.__download_url__}/{filename}'
+                model_file = f'{self.model_name}-{model_ver}{spacy.cli._util.WHEEL_SUFFIX}'
+                model_url = f'{spacy.about.__download_url__}/{self.model_name}-{model_ver}/{model_file}'
 
                 # Get model size
                 file_size = wl_misc.wl_download_file_size(self.main, model_url)
@@ -257,12 +259,24 @@ class Wl_Worker_Download_Model_Spacy(wl_threading.Wl_Worker):
                     self.progress_updated.emit(self.tr('Downloading model...'))
 
                 if getattr(sys, '_MEIPASS', False):
-                    pip.main(['install', '--target', wl_paths.get_path_file(''), '--no-deps', model_url])
-                else:
-                    pip.main(['install', model_url])
+                    r, err_msg = wl_misc.wl_download(self.main, model_url)
 
-                # Clear cache
-                pip.main(['cache', 'purge'])
+                    if not err_msg:
+                        with open(model_file, 'wb') as f:
+                            f.write(r.content)
+
+                        with zipfile.ZipFile(model_file) as f:
+                            f.extractall(wl_paths.get_path_file(''))
+
+                        # Clear cache
+                        os.remove(model_file)
+                else:
+                    import pip # pylint: disable=import-outside-toplevel
+
+                    pip.main(['install', '--no-deps', model_url])
+
+                    # Clear cache
+                    pip.main(['cache', 'purge'])
             else:
                 self.err_msg = err_msg
         except Exception: # pylint: disable=broad-exception-caught
@@ -926,8 +940,8 @@ def skipgrams(tokens, ngram_size, num_skipped_tokens):
                     yield head + skip_tail
 
 # HTML
-def escape_text(text):
-    return html.escape(text).strip()
+def escape_token(token):
+    return html.escape(token).strip()
 
 def escape_tokens(tokens):
     return [html.escape(token).strip() for token in tokens]

@@ -30,7 +30,7 @@
 😏	oju smirking
 😣	ojú oníforítì
 😥	ìbànújẹ́ ṣùgbọ́n ojú ìtura
-😮	oju pẹlu ìmọ ẹnu
+😮	oju pẹlu ẹnu-ìmọ
 🤐	idalẹnu-ẹnu oju
 😯	oju ti o parẹ
 😪	oju orun
@@ -39,8 +39,8 @@
 😌	ojú tí ó tutù
 😛	oju pẹlu ahọn
 😜	oju mimi pẹlu ahọn
-😝	oju squinting pẹlu ahọn
-🤤	ojú tí ń jóná
+😝	ojú tí ń fi ahọ́n
+🤤	oju ti n gbin
 😒	oju unamused
 😓	downcast oju pẹlu lagun
 😔	pensive oju
@@ -56,15 +56,15 @@
 😟	oju aibalẹ
 😤	oju pẹlu nya lati imu
 😢	oju ekun
-😭	oju igbe pariwo
+😭	ti npariwo igbe oju
 😦	ojú tí ń fò ní ẹnu
-😧	oju ti o ni ibanujẹ
+😧	ojú tí ó ní ìdààmú
 😨	oju iberu
 😩	ojú àárẹ̀
 🤯	exploding ori
 😬	ojú tí ń kùn ún
 😰	aniyan oju pẹlu lagun
-😱	oju ti nkigbe ni iberu
+😱	oju ikigbe ni iberu
 🥵	oju gbona
 🥶	oju tutu
 😳	oju fọ
@@ -111,9 +111,9 @@
 🙀	oju ologbo ti o rẹwẹsi
 😿	oju ologbo ekun
 😾	pouting o nran oju
-🙈	wo-ko-buru ọbọ
+🙈	wo-ko-buburu ọbọ
 🙉	gbo-ko-buru obo
-🙊	soro-ko-buru obo
+🙊	sọrọ-ko si-buburu ọbọ
 🏻	ina ara ohun orin
 🏼	alabọde-ina awọ ohun orin
 🏽	alabọde ara ohun orin
@@ -163,7 +163,7 @@
 👩🏿	obinrin: dudu ara ohun orin
 🧓	agbalagba agbalagba
 🧓🏻	agbalagba agbalagba: ina ara ohun orin
-🧓🏼	agbalagba agbalagba: alabọde-ina ohun orin awọ
+🧓🏼	agbalagba agbalagba: alabọde-ina ara ohun orin
 🧓🏽	agbalagba agbalagba: alabọde ara ohun orin
 🧓🏾	agbalagba agbalagba: alabọde-dudu ohun orin awọ
 🧓🏿	agbalagba agbalagba: dudu ara ohun orin
@@ -171,7 +171,7 @@
 👴🏻	atijọ eniyan: ina ara ohun orin
 👴🏼	atijọ eniyan: alabọde-ina ara ohun orin
 👴🏽	atijọ eniyan: alabọde ara ohun orin
-👴🏾	atijọ eniyan: alabọde-dudu ohun orin awọ
+👴🏾	atijọ eniyan: alabọde-dudu awọ ohun orin
 👴🏿	atijọ eniyan: dudu ara ohun orin
 👵	arugbo obinrin
 👵🏻	atijọ obirin: ina ara ohun orin
@@ -187,10 +187,10 @@
 👨🏼‍⚕	Osise ilera ọkunrin: alabọde-ina ara ohun orin
 👨🏽‍⚕️	eniyan ilera osise: alabọde ara ohun orin
 👨🏽‍⚕	eniyan ilera osise: alabọde ara ohun orin
-👨🏾‍⚕️	eniyan ilera osise: alabọde-dudu awọ orin
-👨🏾‍⚕	eniyan ilera osise: alabọde-dudu awọ orin
-👨🏿‍⚕️	eniyan ilera osise: dudu ara ohun orin
-👨🏿‍⚕	eniyan ilera osise: dudu ara ohun orin
+👨🏾‍⚕️	osise ilera ọkunrin: alabọde-dudu awọ orin
+👨🏾‍⚕	osise ilera ọkunrin: alabọde-dudu awọ orin
+👨🏿‍⚕️	Osise ilera ọkunrin: dudu ara ohun orin
+👨🏿‍⚕	Osise ilera ọkunrin: dudu ara ohun orin
 👩‍⚕️	osise ilera obinrin
 👩‍⚕	osise ilera obinrin
 👩🏻‍⚕️	obinrin ilera osise: ina ara ohun orin
@@ -250,7 +250,7 @@
 👩🏾‍⚖️	obinrin onidajọ: alabọde-dudu ara ohun orin
 👩🏾‍⚖	obinrin onidajọ: alabọde-dudu ara ohun orin
 👩🏿‍⚖️	obinrin adajo: dudu ara ohun orin
-👩🏿‍⚖	obinrin adajo: dudu ara ohun orin
+👩🏿‍⚖	obinrin onidajọ: dudu ara ohun orin
 👨‍🌾	okunrin agbe
 👨🏻‍🌾	ọkunrin agbe: ina ara ohun orin
 👨🏼‍🌾	ọkunrin agbe: alabọde-ina ara ohun orin
@@ -308,20 +308,20 @@
 👩‍💼	obinrin ọfiisi Osise
 👩🏻‍💼	obinrin ọfiisi Osise: ina ara ohun orin
 👩🏼‍💼	osise ọfiisi obinrin: alabọde-ina ara ohun orin
-👩🏽‍💼	obinrin ọfiisi Osise: alabọde ara ohun orin
+👩🏽‍💼	Osise ọfiisi obinrin: alabọde ara ohun orin
 👩🏾‍💼	Osise ọfiisi obinrin: alabọde-dudu ohun orin awọ
 👩🏿‍💼	Osise ọfiisi obinrin: dudu ara ohun orin
 👨‍🔬	onimọ ijinle sayensi ọkunrin
 👨🏻‍🔬	okunrin omowe: ina ara ohun orin
-👨🏼‍🔬	okunrin omowe: alabọde-ina ara ohun orin
+👨🏼‍🔬	onimo ijinle sayensi ọkunrin: alabọde-ina ara ohun orin
 👨🏽‍🔬	ọkunrin Onimọn: alabọde ara ohun orin
 👨🏾‍🔬	onimọ ijinle sayensi ọkunrin: alabọde-dudu awọ ohun orin
-👨🏿‍🔬	onimọ ijinle sayensi ọkunrin: dudu ara ohun orin
+👨🏿‍🔬	okunrin omowe: dudu ara ohun orin
 👩‍🔬	onimọ ijinle sayensi obinrin
-👩🏻‍🔬	obinrin onimọ ijinle sayensi: ina ara ohun orin
+👩🏻‍🔬	onimọ ijinle sayensi obinrin: ina ara ohun orin
 👩🏼‍🔬	obinrin onimọ ijinle sayensi: alabọde-ina ara ohun orin
-👩🏽‍🔬	obinrin sayensi: alabọde ara ohun orin
-👩🏾‍🔬	obinrin onimọ ijinle sayensi: alabọde-dudu ohun orin awọ
+👩🏽‍🔬	onimọ ijinle sayensi obinrin: alabọde ara ohun orin
+👩🏾‍🔬	obinrin onimọ ijinle sayensi: alabọde-dudu awọ orin
 👩🏿‍🔬	onimọ ijinle sayensi obinrin: dudu ara ohun orin
 👨‍💻	ọkunrin technologist
 👨🏻‍💻	ọkunrin technologist: ina ara ohun orin
@@ -379,8 +379,8 @@
 👩🏼‍✈	obinrin awaoko: alabọde-ina ara ohun orin
 👩🏽‍✈️	obinrin awaoko: alabọde ara ohun orin
 👩🏽‍✈	obinrin awaoko: alabọde ara ohun orin
-👩🏾‍✈️	obinrin awaoko: alabọde-dudu awọ ohun orin
-👩🏾‍✈	obinrin awaoko: alabọde-dudu awọ ohun orin
+👩🏾‍✈️	obinrin awaoko: alabọde-dudu awọ orin
+👩🏾‍✈	obinrin awaoko: alabọde-dudu awọ orin
 👩🏿‍✈️	obinrin awaoko: dudu ara ohun orin
 👩🏿‍✈	obinrin awaoko: dudu ara ohun orin
 👨‍🚀	ọkunrin astronaut
@@ -455,7 +455,7 @@
 🕵🏽‍♂️	ọkunrin Otelemuye: alabọde ara ohun orin
 🕵🏽‍♂	ọkunrin Otelemuye: alabọde ara ohun orin
 🕵🏾‍♂️	ọkunrin Otelemuye: alabọde-dudu ara ohun orin
-🕵🏾‍♂	ọkunrin Otelemuye: alabọde-dudu ara ohun orin
+🕵🏾‍♂	ọkunrin Otelemuye: alabọde-dudu awọ ohun orin
 🕵🏿‍♂️	ọkunrin Otelemuye: dudu ara ohun orin
 🕵🏿‍♂	ọkunrin Otelemuye: dudu ara ohun orin
 🕵️‍♀️	obinrin Otelemuye
@@ -517,7 +517,7 @@
 👷🏽‍♂️	ọkunrin ikole Osise: alabọde ara ohun orin
 👷🏽‍♂	ọkunrin ikole Osise: alabọde ara ohun orin
 👷🏾‍♂️	ọkunrin ikole Osise: alabọde-dudu awọ ohun orin
-👷🏾‍♂	ọkunrin ikole Osise: alabọde-dudu awọ ohun orin
+👷🏾‍♂	ọkunrin ikole Osise: alabọde-dudu ara ohun orin
 👷🏿‍♂️	ọkunrin ikole Osise: dudu ara ohun orin
 👷🏿‍♂	ọkunrin ikole Osise: dudu ara ohun orin
 👷‍♀️	obinrin ikole Osise
@@ -630,7 +630,7 @@
 👨🏿‍🦰	ọkunrin, pupa oniru: dudu ara ohun orin
 👩‍🦰	obinrin, pupa irun
 👩🏻‍🦰	obinrin, pupa oniru: ina ara ohun orin
-👩🏼‍🦰	obinrin, pupa irun: alabọde-ina ara ohun orin
+👩🏼‍🦰	obinrin, pupa oniru: alabọde-ina ara ohun orin
 👩🏽‍🦰	obinrin, pupa oniru: alabọde ara ohun orin
 👩🏾‍🦰	obinrin, pupa oniru: alabọde-dudu awọ orin
 👩🏿‍🦰	obinrin, pupa oniru: dudu ara ohun orin
@@ -893,7 +893,7 @@
 🧜🏿‍♂️	merman: dudu ara ohun orin
 🧜🏿‍♂	merman: dudu ara ohun orin
 🧝	elf
-🧝🏻	elf: ina ara ohun orin
+🧝🏻	Elf: ina ara ohun orin
 🧝🏼	elf: alabọde-ina ohun orin awọ
 🧝🏽	elf: alabọde ara ohun orin
 🧝🏾	elf: alabọde-dudu ohun orin awọ
@@ -1018,8 +1018,8 @@
 🙅🏼‍♀	obinrin gesturing KO: alabọde-ina ara ohun orin
 🙅🏽‍♀️	obinrin gesturing KO: alabọde ara ohun orin
 🙅🏽‍♀	obinrin gesturing KO: alabọde ara ohun orin
-🙅🏾‍♀️	obinrin gesturing KO: alabọde-dudu awọ orin
-🙅🏾‍♀	obinrin gesturing KO: alabọde-dudu awọ orin
+🙅🏾‍♀️	obinrin gesturing KO: alabọde-dudu awọ ohun orin
+🙅🏾‍♀	obinrin gesturing KO: alabọde-dudu awọ ohun orin
 🙅🏿‍♀️	obinrin gesturing KO: dudu skin tone
 🙅🏿‍♀	obinrin gesturing KO: dudu skin tone
 🙆	eniyan gesturing O dara
@@ -1198,8 +1198,8 @@
 🤷🏼‍♀	obinrin shrugging: alabọde-ina ara ohun orin
 🤷🏽‍♀️	obinrin shrugging: alabọde ara ohun orin
 🤷🏽‍♀	obinrin shrugging: alabọde ara ohun orin
-🤷🏾‍♀️	obinrin shrugging: alabọde-dudu awọ orin
-🤷🏾‍♀	obinrin shrugging: alabọde-dudu awọ orin
+🤷🏾‍♀️	obinrin shrugging: alabọde-dudu awọ ohun orin
+🤷🏾‍♀	obinrin shrugging: alabọde-dudu awọ ohun orin
 🤷🏿‍♀️	obinrin shrugging: dudu ara ohun orin
 🤷🏿‍♀	obinrin shrugging: dudu ara ohun orin
 💆	eniyan nini ifọwọra
@@ -1288,7 +1288,7 @@
 🚶🏼‍♀	obinrin rin: alabọde-ina ara ohun orin
 🚶🏽‍♀️	obinrin rin: alabọde ara ohun orin
 🚶🏽‍♀	obinrin rin: alabọde ara ohun orin
-🚶🏾‍♀️	obinrin rin: alabọde-dudu awọ ohun orin
+🚶🏾‍♀️	obinrin rin: alabọde-dudu awọ orin
 🚶🏾‍♀	obinrin rin: alabọde-dudu awọ orin
 🚶🏿‍♀️	obinrin rin: dudu ara ohun orin
 🚶🏿‍♀	obinrin rin: dudu ara ohun orin
@@ -1383,7 +1383,7 @@
 🧗🏼‍♀	obinrin gígun: alabọde-ina ara ohun orin
 🧗🏽‍♀️	obinrin gígun: alabọde ara ohun orin
 🧗🏽‍♀	obinrin gígun: alabọde ara ohun orin
-🧗🏾‍♀️	obinrin gígun: alabọde-dudu awọ ohun orin
+🧗🏾‍♀️	obinrin gígun: alabọde-dudu awọ orin
 🧗🏾‍♀	obinrin gígun: alabọde-dudu awọ ohun orin
 🧗🏿‍♀️	obinrin gígun: dudu ara ohun orin
 🧗🏿‍♀	obinrin gígun: dudu ara ohun orin
@@ -1535,15 +1535,15 @@
 🚣	eniyan ti n wakọ ọkọ
 🚣🏻	eniyan rising ọkọ: ina ara ohun orin
 🚣🏼	eniyan wiwu ọkọ: alabọde-ina ara ohun orin
-🚣🏽	eniyan rising ọkọ: alabọde ara ohun orin
+🚣🏽	eniyan wiwu ọkọ: alabọde ara ohun orin
 🚣🏾	eniyan wiwu ọkọ: alabọde-dudu awọ orin
 🚣🏿	eniyan wiwu ọkọ: dudu ara ohun orin
 🚣‍♂️	oko oju omi okunrin
 🚣‍♂	oko oju omi okunrin
 🚣🏻‍♂️	ọkunrin riing ọkọ: ina ara ohun orin
 🚣🏻‍♂	ọkunrin riing ọkọ: ina ara ohun orin
-🚣🏼‍♂️	ọkunrin riing ọkọ: alabọde-ina ara ohun orin
-🚣🏼‍♂	ọkunrin riing ọkọ: alabọde-ina ara ohun orin
+🚣🏼‍♂️	ọkunrin wiwu ọkọ: alabọde-ina ara ohun orin
+🚣🏼‍♂	ọkunrin wiwu ọkọ: alabọde-ina ara ohun orin
 🚣🏽‍♂️	ọkunrin wiwu ọkọ: alabọde ara ohun orin
 🚣🏽‍♂	ọkunrin wiwu ọkọ: alabọde ara ohun orin
 🚣🏾‍♂️	ọkunrin wiwu ọkọ: alabọde-dudu awọ orin
@@ -1566,7 +1566,7 @@
 🏊🏻	eniyan odo: ina ara ohun orin
 🏊🏼	eniyan odo: alabọde-ina ara ohun orin
 🏊🏽	eniyan odo: alabọde ara ohun orin
-🏊🏾	eniyan odo: alabọde-dudu ohun orin awọ
+🏊🏾	eniyan odo: alabọde-dudu awọ orin
 🏊🏿	eniyan odo: dudu ara ohun orin
 🏊‍♂️	ọkunrin odo
 🏊‍♂	ọkunrin odo
@@ -1676,7 +1676,7 @@
 🚴🏼‍♂	ọkunrin keke: alabọde-ina ara ohun orin
 🚴🏽‍♂️	ọkunrin keke: alabọde ara ohun orin
 🚴🏽‍♂	ọkunrin keke: alabọde ara ohun orin
-🚴🏾‍♂️	ọkunrin keke: alabọde-dudu awọ ohun orin
+🚴🏾‍♂️	ọkunrin keke: alabọde-dudu ara ohun orin
 🚴🏾‍♂	ọkunrin keke: alabọde-dudu awọ ohun orin
 🚴🏿‍♂️	ọkunrin keke: dudu ara ohun orin
 🚴🏿‍♂	ọkunrin keke: dudu ara ohun orin
@@ -1684,19 +1684,19 @@
 🚴‍♀	keke obirin
 🚴🏻‍♀️	obinrin keke: ina ara ohun orin
 🚴🏻‍♀	obinrin keke: ina ara ohun orin
-🚴🏼‍♀️	keke obirin: alabọde-ina ara ohun orin
-🚴🏼‍♀	keke obirin: alabọde-ina ara ohun orin
-🚴🏽‍♀️	keke obirin: alabọde ara ohun orin
-🚴🏽‍♀	keke obirin: alabọde ara ohun orin
+🚴🏼‍♀️	obinrin keke: alabọde-ina ara ohun orin
+🚴🏼‍♀	obinrin keke: alabọde-ina ara ohun orin
+🚴🏽‍♀️	obinrin keke: alabọde ara ohun orin
+🚴🏽‍♀	obinrin keke: alabọde ara ohun orin
 🚴🏾‍♀️	keke obirin: alabọde-dudu awọ orin
-🚴🏾‍♀	keke obirin: alabọde-dudu awọ ohun orin
-🚴🏿‍♀️	obinrin keke: dudu ara ohun orin
-🚴🏿‍♀	obinrin keke: dudu ara ohun orin
+🚴🏾‍♀	keke obirin: alabọde-dudu awọ orin
+🚴🏿‍♀️	keke obirin: dudu ara ohun orin
+🚴🏿‍♀	keke obirin: dudu ara ohun orin
 🚵	eniyan oke gigun keke
 🚵🏻	eniyan oke gigun keke: ina ara ohun orin
 🚵🏼	eniyan oke gigun keke: alabọde-ina ara ohun orin
 🚵🏽	eniyan oke gigun keke: alabọde ara ohun orin
-🚵🏾	eniyan oke gigun keke: alabọde-dudu ara ohun orin
+🚵🏾	eniyan oke gigun keke: alabọde-dudu awọ orin
 🚵🏿	eniyan oke gigun keke: dudu ara ohun orin
 🚵‍♂️	ọkunrin oke gigun keke
 🚵‍♂	ọkunrin oke gigun keke
@@ -1714,7 +1714,7 @@
 🚵‍♀	obinrin oke gigun keke
 🚵🏻‍♀️	obinrin oke keke: ina ara ohun orin
 🚵🏻‍♀	obinrin oke keke: ina ara ohun orin
-🚵🏼‍♀️	obinrin oke gigun keke: alabọde-ina ara ohun orin
+🚵🏼‍♀️	obinrin oke keke: alabọde-ina ara ohun orin
 🚵🏼‍♀	obinrin oke gigun keke: alabọde-ina ara ohun orin
 🚵🏽‍♀️	obinrin oke keke: alabọde ara ohun orin
 🚵🏽‍♀	obinrin oke keke: alabọde ara ohun orin
@@ -1978,7 +1978,7 @@
 🤘🏻	ami ti awọn iwo: ina ara ohun orin
 🤘🏼	ami ti awọn iwo: alabọde-ina awọ ohun orin
 🤘🏽	ami ti awọn iwo: alabọde ara ohun orin
-🤘🏾	ami ti awọn iwo: ohun orin awọ-alabọde-dudu
+🤘🏾	ami ti awọn iwo: alabọde-dudu awọ ohun orin
 🤘🏿	ami ti awọn iwo: dudu awọ ohun orin
 🤙	pe mi ni ọwọ
 🤙🏻	pe mi ọwọ: ina ara ohun orin
@@ -2024,7 +2024,7 @@
 ✊🏾	dide ikunku: alabọde-dudu ohun orin awọ
 ✊🏿	dide ikunku: dudu ara ohun orin
 👊	ikunku ti nbo
-👊🏻	ikunku ti nbo: ina ara ohun orin
+👊🏻	ikunku ti nwọle: ina ara ohun orin
 👊🏼	ikunku ti n bọ: alabọde-ina ohun orin awọ
 👊🏽	ti nbo ikunku: alabọde ara ohun orin
 👊🏾	ikunku ti nwọle: alabọde-dudu ohun orin awọ
@@ -2063,9 +2063,9 @@
 ✍	ọwọ kikọ
 ✍🏻	ọwọ kikọ: ina ara ohun orin
 ✍🏼	kikọ ọwọ: alabọde-ina ara ohun orin
-✍🏽	kikọ ọwọ: alabọde ara ohun orin
+✍🏽	ọwọ kikọ: alabọde ara ohun orin
 ✍🏾	ọwọ kikọ: alabọde-dudu awọ ohun orin
-✍🏿	kikọ ọwọ: dudu ara ohun orin
+✍🏿	ọwọ kikọ: dudu ara ohun orin
 👏	pàtẹ́wọ́
 👏🏻	clapping ọwọ: ina ara ohun orin
 👏🏼	clapping ọwọ: alabọde-ina ara ohun orin
@@ -2102,7 +2102,7 @@
 💅🏼	àlàfo pólándì: alabọde-ina ara ohun orin
 💅🏽	àlàfo pólándì: alabọde ara ohun orin
 💅🏾	àlàfo àlàfo: alabọde-dudu awọ ohun orin
-💅🏿	àlàfo àlàfo: dudu ara ohun orin
+💅🏿	àlàfo pólándì: dudu ara ohun orin
 👂	eti
 👂🏻	eti: ina ara ohun orin
 👂🏼	eti: alabọde-ina ara ohun orin
@@ -2163,8 +2163,8 @@
 💬	alafẹfẹ ọrọ
 🗨️	osi ọrọ nkuta
 🗨	osi ọrọ nkuta
-🗯️	ọtun ibinu o ti nkuta
-🗯	ọtun ibinu o ti nkuta
+🗯️	ọtun ibinu nkuta
+🗯	ọtun ibinu nkuta
 💭	alafẹfẹ ero
 🕳️	iho
 🕳	iho
@@ -2183,7 +2183,7 @@
 👗	imura
 👘	kimono
 👙	bikini
-👚	aṣọ obinrin
+👚	aṣọ obirin
 👛	apamọwọ
 👜	apamowo
 👝	idimu apo
@@ -2287,7 +2287,7 @@
 🐉	dragoni
 🦕	sauropod
 🦖	T-Rex
-🐳	spouting ẹja
+🐳	spouting whale
 🐋	whale
 🐬	ẹja ẹja
 🐟	ẹja
@@ -2433,7 +2433,7 @@
 🍵	teacup lai mu
 🍶	nitori
 🍾	igo pẹlu yiyo Koki
-🍷	waini gilasi
+🍷	gilasi waini
 🍸	amulumala gilasi
 🍹	Tropical mimu
 🍺	ọti ago
@@ -2784,7 +2784,7 @@
 🎨	paleti olorin
 🧵	okùn
 🧶	owu
-🔇	dákẹjẹẹ agbọrọsọ
+🔇	dakẹjẹẹ agbọrọsọ
 🔈	agbohunsoke kekere iwọn didun
 🔉	agbọrọsọ alabọde iwọn didun
 🔊	agbohunsoke ga iwọn didun
@@ -2965,14 +2965,14 @@
 🏹	teriba ati ofa
 🛡️	apata
 🛡	apata
-🔧	ìparun
+🔧	wlanki
 🔩	nut ati ẹdun
 ⚙️	jia
 ⚙	jia
 🗜️	dimole
 🗜	dimole
 ⚖️	iwọntunwọnsi iwọn
-⚖	iwọntunwọnsi iwọn
+⚖	iwọntunwọnsi
 🔗	ọna asopọ
 ⛓️	awọn ẹwọn
 ⛓	awọn ẹwọn
@@ -3000,7 +3000,7 @@
 🧷	pin ailewu
 🧹	ìgbálẹ
 🧺	agbọn
-🧻	eerun iwe
+🧻	eerun ti iwe
 🧼	ọṣẹ
 🧽	kanrinkan
 🧯	ina extinguisher
@@ -3238,8 +3238,8 @@
 ℹ️	alaye
 ℹ	alaye
 🆔	Bọtini ID
-Ⓜ️	yika M
-Ⓜ	yika M
+Ⓜ️	yipo M
+Ⓜ	yipo M
 🆕	Bọtini TITUN
 🆖	NG bọtini
 🅾️	O bọtini (iru ẹjẹ)
@@ -3322,7 +3322,7 @@
 🇦🇹	Austria
 🇦🇺	Australia
 🇦🇼	Aruba
-🇦🇽	Awọn erekusu land
+🇦🇽	Awọn erekusu Åland
 🇦🇿	Azerbaijan
 🇧🇦	Bosnia & Herzegovina
 🇧🇧	Barbados

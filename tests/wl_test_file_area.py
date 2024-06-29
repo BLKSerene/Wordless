@@ -38,10 +38,14 @@ def wl_test_file_area(main):
         assert not err_msg
 
         if files_to_open[-1]['name'] == '[amh] No language support':
-            files_to_open[-1]['lang'] = files_to_open[-1]['lang'] = 'amh'
+            files_to_open[-1]['lang'] = 'amh'
 
         if files_to_open[-1]['name'] == '[eng_gb] Tagged':
-            files_to_open[-1]['tagged'] = files_to_open[-1]['tagged'] = True
+            files_to_open[-1]['tokenized'] = True
+            files_to_open[-1]['tagged'] = True
+
+        if files_to_open[-1]['name'] == '[eng_us] Tags at start of text':
+            files_to_open[-1]['tagged'] = True
 
         wl_file_area.Wl_Worker_Open_Files(
             main,
@@ -53,12 +57,6 @@ def wl_test_file_area(main):
 
     def open_file_ref(err_msg, files_to_open):
         assert not err_msg
-
-        if files_to_open[-1]['name'] == '[amh] No language support':
-            files_to_open[-1]['lang'] = files_to_open[-1]['lang'] = 'amh'
-
-        if files_to_open[-1]['name'] == '[eng_gb] Tagged':
-            files_to_open[-1]['tagged'] = files_to_open[-1]['tagged'] = True
 
         wl_file_area.Wl_Worker_Open_Files(
             main,
@@ -140,9 +138,12 @@ def wl_test_file_area(main):
         else:
             assert new_file['lang'] == 'eng_us'
 
-        assert not new_file['tokenized']
-
         if new_file['name'] == '[eng_gb] Tagged':
+            assert new_file['tokenized']
+        else:
+            assert not new_file['tokenized']
+
+        if new_file['name'] in ['[eng_gb] Tagged', '[eng_us] Tags at start of text']:
             assert new_file['tagged']
         else:
             assert not new_file['tagged']

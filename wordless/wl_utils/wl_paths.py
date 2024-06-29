@@ -34,11 +34,11 @@ def get_normalized_dir(path):
 
 def get_path_file(*paths, internal = True):
     if getattr(sys, '_MEIPASS', False):
-        is_windows, is_macos, is_linux = wl_misc.check_os()
-
         if internal:
             path = os.path.join(sys._MEIPASS, *paths)
         else:
+            is_windows, is_macos, is_linux = wl_misc.check_os()
+
             if is_windows or is_linux:
                 path = os.path.join(sys._MEIPASS, '..', *paths)
             elif is_macos:

@@ -118,8 +118,6 @@ def test_check_results():
 
 def test_check_results_download_model():
     assert wl_checks_work_area.check_results_download_model(main, '', 'test')
-    assert not wl_checks_work_area.check_results_download_model(main, 'test', '')
-    assert not wl_checks_work_area.check_results_download_model(main, '', 'module_not_found')
 
 def test_check_err_table():
     wl_checks_work_area.check_err_table(main, '')

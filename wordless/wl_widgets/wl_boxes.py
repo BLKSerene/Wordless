@@ -271,9 +271,10 @@ def wl_spin_box_no_limit(parent, val_min = 1, val_max = 100, double = False):
 
     return spin_box_val, checkbox_no_limit
 
+# Defer evaluation of default values of functions until QTranslator is initialized
 def wl_spin_boxes_min_max(
     parent,
-    label_min = _tr('wl_boxes', 'From'), label_max = _tr('wl_boxes', 'to'),
+    label_min = None, label_max = None,
     val_min = 1, val_max = 100,
     double = False
 ):
@@ -284,6 +285,9 @@ def wl_spin_boxes_min_max(
     def max_changed():
         if spin_box_min.value() > spin_box_max.value():
             spin_box_min.setValue(spin_box_max.value())
+
+    label_min = label_min or _tr('wl_boxes', 'From')
+    label_max = label_max or _tr('wl_boxes', 'to')
 
     label_min = QLabel(label_min, parent)
     label_max = QLabel(label_max, parent)
@@ -311,7 +315,7 @@ def wl_spin_boxes_min_max(
 
 def wl_spin_boxes_min_max_sync(
     parent,
-    label_min = _tr('wl_boxes', 'From'), label_max = _tr('wl_boxes', 'to'),
+    label_min = None, label_max = None,
     val_min = 1, val_max = 100,
     double = False
 ):
@@ -326,6 +330,9 @@ def wl_spin_boxes_min_max_sync(
     def max_changed():
         if checkbox_sync.isChecked() or spin_box_min.value() > spin_box_max.value():
             spin_box_min.setValue(spin_box_max.value())
+
+    label_min = label_min or _tr('wl_boxes', 'From')
+    label_max = label_max or _tr('wl_boxes', 'to')
 
     checkbox_sync = QCheckBox(_tr('wl_boxes', 'Sync'), parent)
 
@@ -421,7 +428,7 @@ def wl_spin_boxes_min_max_sync_window(parent):
 
 def wl_spin_boxes_min_max_no_limit(
     parent,
-    label_min = _tr('wl_boxes', 'From'), label_max = _tr('wl_boxes', 'to'),
+    label_min = None, label_max = None,
     val_min = 1, val_max = 100,
     double = False, sync = True
 ):
@@ -436,6 +443,9 @@ def wl_spin_boxes_min_max_no_limit(
             spin_box_max.setEnabled(False)
         else:
             spin_box_max.setEnabled(True)
+
+    label_min = label_min or _tr('wl_boxes', 'From')
+    label_max = label_max or _tr('wl_boxes', 'to')
 
     (
         checkbox_sync,

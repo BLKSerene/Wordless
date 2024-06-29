@@ -101,7 +101,7 @@
 👽	geimvera
 👾	framandi skrímsli
 🤖	vélmenni andlit
-💩	hrúgur af kúk
+💩	haugur af kúk
 😺	brosandi kattarandlit
 😸	brosandi kattarandlit með brosandi augu
 😹	kattarandlit með gleðitárum
@@ -229,8 +229,8 @@
 👩🏿‍🏫	kvenkennari: dökkur húðlitur
 👨‍⚖️	maður dómari
 👨‍⚖	maður dómari
-👨🏻‍⚖️	karlmaður dómari: ljós húðlitur
-👨🏻‍⚖	karlmaður dómari: ljós húðlitur
+👨🏻‍⚖️	maður dómari: ljós húðlitur
+👨🏻‍⚖	maður dómari: ljós húðlitur
 👨🏼‍⚖️	karlmaður dómari: meðalljós húðlitur
 👨🏼‍⚖	karlmaður dómari: meðalljós húðlitur
 👨🏽‍⚖️	karlmaður dómari: meðalhúðlitur
@@ -279,11 +279,11 @@
 👨🏻‍🔧	vélvirki: ljós húðlitur
 👨🏼‍🔧	karlmaður vélvirki: meðalljós húðlitur
 👨🏽‍🔧	karlmaður vélvirki: meðalhúðlitur
-👨🏾‍🔧	karlmaður vélvirki: meðaldökkur húðlitur
+👨🏾‍🔧	vélvirki: meðaldökkur húðlitur
 👨🏿‍🔧	vélvirki: dökkur húðlitur
 👩‍🔧	kvenkyns vélvirki
 👩🏻‍🔧	kona vélvirki: ljós húðlitur
-👩🏼‍🔧	vélvirki kona: meðalljós húðlitur
+👩🏼‍🔧	kona vélvirki: meðalljós húðlitur
 👩🏽‍🔧	kona vélvirki: meðalhúðlitur
 👩🏾‍🔧	kona vélvirki: meðaldökkur húðlitur
 👩🏿‍🔧	kona vélvirki: dökkur húðlitur
@@ -293,7 +293,7 @@
 👨🏽‍🏭	karlmaður í verksmiðju: meðalhúðlitur
 👨🏾‍🏭	karlmaður í verksmiðju: meðaldökkur húðlitur
 👨🏿‍🏭	karlmaður í verksmiðju: dökkur húðlitur
-👩‍🏭	kvenkyns verksmiðjuverkakona
+👩‍🏭	kvenkyns verksmiðjustarfsmaður
 👩🏻‍🏭	kvenkyns verksmiðjustarfsmaður: ljós húðlitur
 👩🏼‍🏭	kvenkyns verksmiðjustarfsmaður: meðalljós húðlitur
 👩🏽‍🏭	kvenkyns verksmiðjustarfsmaður: meðalhúðlitur
@@ -404,9 +404,9 @@
 👩‍🚒	kvenkyns slökkviliðsmaður
 👩🏻‍🚒	slökkviliðskona: ljós húðlitur
 👩🏼‍🚒	kvenkyns slökkviliðsmaður: meðalljós húðlitur
-👩🏽‍🚒	kvenkyns slökkviliðsmaður: meðalhúðlitur
-👩🏾‍🚒	kvenkyns slökkviliðsmaður: meðaldökkur húðlitur
-👩🏿‍🚒	slökkviliðskona: dökkur húðlitur
+👩🏽‍🚒	slökkviliðskona: meðalhúðlitur
+👩🏾‍🚒	slökkviliðskona: meðaldökkur húðlitur
+👩🏿‍🚒	kona slökkviliðsmaður: dökkur húðlitur
 👮	Lögreglumaður
 👮🏻	lögreglumaður: ljós húðlitur
 👮🏼	lögreglumaður: meðalljós húðlitur
@@ -427,8 +427,8 @@
 👮🏿‍♂	karlmaður lögreglumaður: dökkur húðlitur
 👮‍♀️	kvenkyns lögregluþjónn
 👮‍♀	kvenkyns lögregluþjónn
-👮🏻‍♀️	kvenkyns lögreglumaður: ljós húðlitur
-👮🏻‍♀	kvenkyns lögreglumaður: ljós húðlitur
+👮🏻‍♀️	lögreglukona: ljós húðlitur
+👮🏻‍♀	lögreglukona: ljós húðlitur
 👮🏼‍♀️	kvenkyns lögreglumaður: meðalljós húðlitur
 👮🏼‍♀	kvenkyns lögreglumaður: meðalljós húðlitur
 👮🏽‍♀️	kvenkyns lögreglumaður: meðalhúðlitur
@@ -437,7 +437,7 @@
 👮🏾‍♀	kvenkyns lögreglumaður: meðaldökkur húðlitur
 👮🏿‍♀️	kvenkyns lögreglumaður: dökkur húðlitur
 👮🏿‍♀	kvenkyns lögreglumaður: dökkur húðlitur
-🕵️	einkaspæjara
+🕵️	rannsóknarlögreglumaður
 🕵	einkaspæjara
 🕵🏻	einkaspæjari: ljós húðlitur
 🕵🏼	einkaspæjari: meðalljós húðlitur
@@ -446,12 +446,12 @@
 🕵🏿	einkaspæjari: dökkur húðlitur
 🕵️‍♂️	karlmaður leynilögreglumaður
 🕵‍♂️	karlmaður leynilögreglumaður
-🕵️‍♂	maður einkaspæjara
-🕵‍♂	maður einkaspæjara
+🕵️‍♂	karlmaður leynilögreglumaður
+🕵‍♂	karlmaður leynilögreglumaður
 🕵🏻‍♂️	Man spæjari: ljós húðlitur
 🕵🏻‍♂	Man spæjari: ljós húðlitur
 🕵🏼‍♂️	karlkyns einkaspæjari: meðalljós húðlitur
-🕵🏼‍♂	Man spæjari: meðalljós húðlitur
+🕵🏼‍♂	karlkyns einkaspæjari: meðalljós húðlitur
 🕵🏽‍♂️	karlkyns einkaspæjari: meðalhúðlitur
 🕵🏽‍♂	karlkyns einkaspæjari: meðalhúðlitur
 🕵🏾‍♂️	karlkyns einkaspæjari: meðaldökkur húðlitur
@@ -513,7 +513,7 @@
 👷🏻‍♂️	maður byggingarstarfsmaður: ljós húðlitur
 👷🏻‍♂	maður byggingarstarfsmaður: ljós húðlitur
 👷🏼‍♂️	karlmaður í byggingarvinnu: meðalljós húðlitur
-👷🏼‍♂	karlmaður byggingaverkamaður: meðalljós húðlitur
+👷🏼‍♂	karlmaður í byggingarvinnu: meðalljós húðlitur
 👷🏽‍♂️	karlmaður byggingaverkamaður: meðalhúðlitur
 👷🏽‍♂	karlmaður byggingaverkamaður: meðalhúðlitur
 👷🏾‍♂️	karlmaður í byggingarvinnu: meðaldökkur húðlitur
@@ -522,7 +522,7 @@
 👷🏿‍♂	maður byggingarstarfsmaður: dökkur húðlitur
 👷‍♀️	kvenkyns byggingarverkakona
 👷‍♀	kvenkyns byggingarverkakona
-👷🏻‍♀️	kvenverkakona: ljós húðlitur
+👷🏻‍♀️	kvenmaður í byggingarvinnu: ljós húðlitur
 👷🏻‍♀	kvenmaður í byggingarvinnu: ljós húðlitur
 👷🏼‍♀️	kvenverkakona: meðalljós húðlitur
 👷🏼‍♀	kvenverkakona: meðalljós húðlitur
@@ -530,7 +530,7 @@
 👷🏽‍♀	kvenmaður í byggingarvinnu: meðalhúðlitur
 👷🏾‍♀️	kvenmaður í byggingarvinnu: meðaldökkur húðlitur
 👷🏾‍♀	kvenmaður í byggingarvinnu: meðaldökkur húðlitur
-👷🏿‍♀️	kvenmaður í byggingarvinnu: dökkur húðlitur
+👷🏿‍♀️	byggingaverkakona: dökkur húðlitur
 👷🏿‍♀	kvenmaður í byggingarvinnu: dökkur húðlitur
 🤴	prinsinn
 🤴🏻	prins: ljós húðlitur
@@ -623,7 +623,7 @@
 👱🏿‍♀️	ljóshærð kona: dökkur húðlitur
 👱🏿‍♀	ljóshærð kona: dökkur húðlitur
 👨‍🦰	maður, rauðhærður
-👨🏻‍🦰	karl, rauðhærður: ljós húðlitur
+👨🏻‍🦰	maður, rauðhærður: ljós húðlitur
 👨🏼‍🦰	karlmaður, rauðhærður: meðalljós húðlitur
 👨🏽‍🦰	karlmaður, rauðhærður: meðalhúðlitur
 👨🏾‍🦰	karlmaður, rauðhærður: meðaldökkur húðlitur
@@ -636,7 +636,7 @@
 👩🏿‍🦰	kona, rauðhærð: dökkur húðlitur
 👨‍🦱	maður, krullhærður
 👨🏻‍🦱	karl, hrokkið hár: ljós húðlitur
-👨🏼‍🦱	karlmaður, hrokkið hár: meðalljós húðlitur
+👨🏼‍🦱	karl, hrokkið hár: meðalljós húðlitur
 👨🏽‍🦱	karlmaður, hrokkið hár: meðalhúðlitur
 👨🏾‍🦱	karl, hrokkið hár: meðaldökkur húðlitur
 👨🏿‍🦱	maður, hrokkið hár: dökkur húðlitur
@@ -661,7 +661,7 @@
 👨‍🦳	maður, hvíthærður
 👨🏻‍🦳	karl, hvíthærður: ljós húðlitur
 👨🏼‍🦳	karl, hvíthærður: meðalljós húðlitur
-👨🏽‍🦳	karlmaður, hvíthærður: meðalhúðlitur
+👨🏽‍🦳	karl, hvíthærður: meðalhúðlitur
 👨🏾‍🦳	karlmaður, hvíthærður: meðaldökkur húðlitur
 👨🏿‍🦳	karl, hvíthærður: dökkur húðlitur
 👩‍🦳	kona, hvíthærð
@@ -695,7 +695,7 @@
 🤱🏾	Brjóstagjöf: meðaldökkur húðlitur
 🤱🏿	Brjóstagjöf: dökkur húðlitur
 👼	elskan engill
-👼🏻	elskan engill: ljós húðlitur
+👼🏻	Baby angel: ljós húðlitur
 👼🏼	Baby angel: meðalljós húðlitur
 👼🏽	Baby angel: meðalhúðlitur
 👼🏾	Baby angel: meðaldökkur húðlitur
@@ -734,7 +734,7 @@
 🦸‍♂	maður ofurhetja
 🦸🏻‍♂️	maður ofurhetja: ljós húðlitur
 🦸🏻‍♂	maður ofurhetja: ljós húðlitur
-🦸🏼‍♂️	ofurhetja karlmanns: meðalljós húðlitur
+🦸🏼‍♂️	ofurhetja karlmaður: meðalljós húðlitur
 🦸🏼‍♂	ofurhetja karlmanns: meðalljós húðlitur
 🦸🏽‍♂️	karlmaður ofurhetja: meðalhúðlitur
 🦸🏽‍♂	karlmaður ofurhetja: meðalhúðlitur
@@ -767,7 +767,7 @@
 🦹🏼‍♂️	ofurillmenni: meðalljós húðlitur
 🦹🏼‍♂	ofurillmenni: meðalljós húðlitur
 🦹🏽‍♂️	ofurillmenni: meðalhúðlitur
-🦹🏽‍♂	ofurillmenni: meðalhúðlitur
+🦹🏽‍♂	maður ofurillmenni: meðalhúðlitur
 🦹🏾‍♂️	ofurillmenni: meðaldökkur húðlitur
 🦹🏾‍♂	ofurillmenni: meðaldökkur húðlitur
 🦹🏿‍♂️	maður ofurillmenni: dökkur húðlitur
@@ -828,7 +828,7 @@
 🧚🏼‍♂	man fairy: meðalljós húðlitur
 🧚🏽‍♂️	man fairy: meðalhúðlitur
 🧚🏽‍♂	man fairy: meðalhúðlitur
-🧚🏾‍♂️	karlævintýri: meðaldökkur húðlitur
+🧚🏾‍♂️	man fairy: meðaldökkur húðlitur
 🧚🏾‍♂	karlævintýri: meðaldökkur húðlitur
 🧚🏿‍♂️	man fairy: dökkur húðlitur
 🧚🏿‍♂	man fairy: dökkur húðlitur
@@ -934,10 +934,10 @@
 🧟‍♂	maður uppvakningur
 🙍	manneskja kinkaði kolli
 🙍🏻	manneskja sem kinkar kolli: ljós húðlitur
-🙍🏼	manneskja grettir: meðalljós húðlitur
+🙍🏼	manneskja sem kinkar kolli: meðalljós húðlitur
 🙍🏽	manneskja sem kinkar kolli: meðalhúðlitur
-🙍🏾	manneskja sem kinkar kolli: meðaldökkur húðlitur
-🙍🏿	manneskja sem kinkar kolli: dökkur húðlitur
+🙍🏾	manneskja grettir: meðaldökkur húðlitur
+🙍🏿	manneskja: dökkur húðlitur
 🙍‍♂️	maður kinkar kolli
 🙍‍♂	maður kinkar kolli
 🙍🏻‍♂️	maður kinkaði kolli: ljós húðlitur
@@ -1007,7 +1007,7 @@
 🙅🏽‍♂️	maður bendir á NEI: meðalhúðlitur
 🙅🏽‍♂	maður bendir á NEI: meðalhúðlitur
 🙅🏾‍♂️	maður bendir NEI: meðaldökkur húðlitur
-🙅🏾‍♂	maður bendir á NEI: meðaldökkur húðlitur
+🙅🏾‍♂	maður bendir NEI: meðaldökkur húðlitur
 🙅🏿‍♂️	maður bendir á NEI: dökkur húðlitur
 🙅🏿‍♂	maður bendir á NEI: dökkur húðlitur
 🙅‍♀️	kona bendir NEI
@@ -1034,8 +1034,8 @@
 🙆🏻‍♂	maður bendir á OK: ljós húðlitur
 🙆🏼‍♂️	maður bendir á allt í lagi: meðalljós húðlitur
 🙆🏼‍♂	maður bendir á allt í lagi: meðalljós húðlitur
-🙆🏽‍♂️	maður bendir á OK: meðalhúðlitur
-🙆🏽‍♂	maður bendir á OK: meðalhúðlitur
+🙆🏽‍♂️	maður bendir á allt í lagi: meðalhúðlitur
+🙆🏽‍♂	maður bendir á allt í lagi: meðalhúðlitur
 🙆🏾‍♂️	maður bendir á allt í lagi: meðaldökkur húðlitur
 🙆🏾‍♂	maður bendir á allt í lagi: meðaldökkur húðlitur
 🙆🏿‍♂️	maður bendir á OK: dökkur húðlitur
@@ -1160,23 +1160,23 @@
 🤦🏾‍♂	manslit: meðaldökkur húðlitur
 🤦🏿‍♂️	manslit: dökkur húðlitur
 🤦🏿‍♂	manslit: dökkur húðlitur
-🤦‍♀️	kona andlitsálma
-🤦‍♀	kona andlitsálma
+🤦‍♀️	kona andlitspalmandi
+🤦‍♀	kona andlitspalmandi
 🤦🏻‍♀️	kona andlitspalming: ljós húðlitur
-🤦🏻‍♀	kona andlitspalming: ljós húðlitur
+🤦🏻‍♀	kona andlitshúð: ljós húðlitur
 🤦🏼‍♀️	kona andlitshúð: meðalljós húðlitur
 🤦🏼‍♀	kona andlitshúð: meðalljós húðlitur
 🤦🏽‍♀️	kona andlitshúð: meðalhúðlitur
-🤦🏽‍♀	kona andlitslófa: meðalhúðlitur
-🤦🏾‍♀️	kona andlitslófa: meðaldökkur húðlitur
-🤦🏾‍♀	kona andlitslófa: meðaldökkur húðlitur
+🤦🏽‍♀	kona andlitshúð: meðalhúðlitur
+🤦🏾‍♀️	kona andlitshúð: meðaldökkur húðlitur
+🤦🏾‍♀	kona andlitshúð: meðaldökkur húðlitur
 🤦🏿‍♀️	kona andlitshúð: dökkur húðlitur
 🤦🏿‍♀	kona andlitshúð: dökkur húðlitur
 🤷	manneskja yppir öxlum
 🤷🏻	manneskja yppir öxlum: ljós húðlitur
 🤷🏼	manneskja yppir öxlum: meðalljós húðlitur
 🤷🏽	manneskja yppir öxlum: meðalhúðlitur
-🤷🏾	einstaklingur yppir öxlum: meðaldökkur húðlitur
+🤷🏾	manneskja yppir öxlum: meðaldökkur húðlitur
 🤷🏿	manneskja yppir öxlum: dökkur húðlitur
 🤷‍♂️	maður yppir öxlum
 🤷‍♂	maður yppir öxlum
@@ -1296,7 +1296,7 @@
 🏃🏻	maður á hlaupum: ljós húðlitur
 🏃🏼	maður á hlaupum: meðalljós húðlitur
 🏃🏽	maður á hlaupum: meðalhúðlitur
-🏃🏾	hlaupandi: meðaldökkur húðlitur
+🏃🏾	maður á hlaupum: meðaldökkur húðlitur
 🏃🏿	maður á hlaupum: dökkur húðlitur
 🏃‍♂️	maður hlaupandi
 🏃‍♂	maður hlaupandi
@@ -1305,7 +1305,7 @@
 🏃🏼‍♂️	maður á hlaupum: meðalljós húðlitur
 🏃🏼‍♂	maður á hlaupum: meðalljós húðlitur
 🏃🏽‍♂️	maður á hlaupum: meðalhúðlitur
-🏃🏽‍♂	maður á hlaupum: meðalhúðlitur
+🏃🏽‍♂	maður í gangi: meðalhúðlitur
 🏃🏾‍♂️	maður á hlaupum: meðaldökkur húðlitur
 🏃🏾‍♂	maður á hlaupum: meðaldökkur húðlitur
 🏃🏿‍♂️	maður á hlaupum: dökkur húðlitur
@@ -1544,8 +1544,8 @@
 🚣🏻‍♂	maður árabátur: ljós húðlitur
 🚣🏼‍♂️	árabátur: meðalljós húðlitur
 🚣🏼‍♂	árabátur: meðalljós húðlitur
-🚣🏽‍♂️	árabátur: meðalhúðlitur
-🚣🏽‍♂	árabátur: meðalhúðlitur
+🚣🏽‍♂️	árabátur karlmanns: meðalhúðlitur
+🚣🏽‍♂	árabátur karlmanns: meðalhúðlitur
 🚣🏾‍♂️	árabátur: meðaldökkur húðlitur
 🚣🏾‍♂	árabátur: meðaldökkur húðlitur
 🚣🏿‍♂️	maður árabátur: dökkur húðlitur
@@ -1654,7 +1654,7 @@
 🏋‍♀	kona að lyfta lóðum
 🏋🏻‍♀️	kona að lyfta lóðum: ljós húðlitur
 🏋🏻‍♀	kona að lyfta lóðum: ljós húðlitur
-🏋🏼‍♀️	kona sem lyftir lóðum: meðalljós húðlitur
+🏋🏼‍♀️	kona lyftir lóðum: meðalljós húðlitur
 🏋🏼‍♀	kona lyftir lóðum: meðalljós húðlitur
 🏋🏽‍♀️	kona lyftir lóðum: meðalhúðlitur
 🏋🏽‍♀	kona lyftir lóðum: meðalhúðlitur
@@ -1692,7 +1692,7 @@
 🚴🏾‍♀	kona á hjóli: meðaldökkur húðlitur
 🚴🏿‍♀️	kona á hjóli: dökkur húðlitur
 🚴🏿‍♀	kona á hjóli: dökkur húðlitur
-🚵	maður á fjallahjólreiðum
+🚵	einstaklingur á fjallahjólum
 🚵🏻	einstaklingur á fjallahjólum: ljós húðlitur
 🚵🏼	fjallahjólreiðar: meðalljós húðlitur
 🚵🏽	fjallahjólreiðar: meðalhúðlitur
@@ -1713,14 +1713,14 @@
 🚵‍♀️	kona á fjallahjólum
 🚵‍♀	kona á fjallahjólum
 🚵🏻‍♀️	kona á fjallahjólum: ljós húðlitur
-🚵🏻‍♀	kona fjallahjóla: ljós húðlitur
+🚵🏻‍♀	kona á fjallahjólum: ljós húðlitur
 🚵🏼‍♀️	kona á fjallahjólum: meðalljós húðlitur
 🚵🏼‍♀	kona á fjallahjólum: meðalljós húðlitur
 🚵🏽‍♀️	kona á fjallahjólum: meðalhúðlitur
 🚵🏽‍♀	kona á fjallahjólum: meðalhúðlitur
 🚵🏾‍♀️	kona á fjallahjólum: meðaldökkur húðlitur
 🚵🏾‍♀	kona á fjallahjólum: meðaldökkur húðlitur
-🚵🏿‍♀️	kona fjallahjóla: dökkur húðlitur
+🚵🏿‍♀️	kona á fjallahjólum: dökkur húðlitur
 🚵🏿‍♀	kona fjallahjóla: dökkur húðlitur
 🏎️	kappakstursbíll
 🏎	kappakstursbíll
@@ -1736,7 +1736,7 @@
 🤸‍♂	maður á kerru
 🤸🏻‍♂️	karlmaður á kerru: ljós húðlitur
 🤸🏻‍♂	karlmaður á kerru: ljós húðlitur
-🤸🏼‍♂️	karlmaður á hjólum: meðalljós húðlitur
+🤸🏼‍♂️	karlmaður á kerru: meðalljós húðlitur
 🤸🏼‍♂	karlmaður á hjólum: meðalljós húðlitur
 🤸🏽‍♂️	karlmaður á kerru: meðalhúðlitur
 🤸🏽‍♂	karlmaður á kerru: meðalhúðlitur
@@ -1762,10 +1762,10 @@
 🤼‍♀️	konur í glímu
 🤼‍♀	konur í glímu
 🤽	einstaklingur að spila vatnspóló
-🤽🏻	einstaklingur sem spilar vatnspóló: ljós húðlitur
-🤽🏼	einstaklingur í vatnapóló: meðalljós húðlitur
-🤽🏽	einstaklingur sem spilar vatnspóló: meðalhúðlitur
-🤽🏾	einstaklingur sem spilar vatnspóló: meðaldökkur húðlitur
+🤽🏻	einstaklingur í vatnapóló: ljós húðlitur
+🤽🏼	einstaklingur sem spilar vatnapóló: meðalljós húðlitur
+🤽🏽	einstaklingur í vatnapóló: meðalhúðlitur
+🤽🏾	einstaklingur í vatnapóló: meðaldökkur húðlitur
 🤽🏿	einstaklingur í vatnapóló: dökkur húðlitur
 🤽‍♂️	maður í vatnapóló
 🤽‍♂	maður í vatnapóló
@@ -1796,7 +1796,7 @@
 🤾🏼	einstaklingur í handbolta: meðalljós húðlitur
 🤾🏽	einstaklingur í handbolta: meðalhúðlitur
 🤾🏾	einstaklingur í handbolta: meðaldökkur húðlitur
-🤾🏿	manneskja í handbolta: dökkur húðlitur
+🤾🏿	einstaklingur í handbolta: dökkur húðlitur
 🤾‍♂️	maður í handbolta
 🤾‍♂	maður í handbolta
 🤾🏻‍♂️	maður í handbolta: ljós húðlitur
@@ -1874,7 +1874,7 @@
 👨‍👩‍👧‍👦	fjölskylda: karl, kona, stelpa, strákur
 👨‍👩‍👦‍👦	fjölskylda: karl, kona, strákur, strákur
 👨‍👩‍👧‍👧	fjölskylda: karl, kona, stúlka, stúlka
-👨‍👨‍👦	fjölskylda: maður, maður, strákur
+👨‍👨‍👦	fjölskylda: karl, karl, drengur
 👨‍👨‍👧	fjölskylda: karl, karl, stúlka
 👨‍👨‍👧‍👦	fjölskylda: karl, karl, stelpa, drengur
 👨‍👨‍👦‍👦	fjölskylda: maður, maður, strákur, strákur
@@ -1904,12 +1904,12 @@
 💪🏻	sveigður biceps: ljós húðlitur
 💪🏼	sveigðir biceps: meðalljós húðlitur
 💪🏽	sveigðir biceps: meðalhúðlitur
-💪🏾	sveigðir biceps: meðaldökkur húðlitur
+💪🏾	sveigður biceps: meðaldökkur húðlitur
 💪🏿	sveigður biceps: dökkur húðlitur
 🦵	fótur
 🦵🏻	fótur: ljós húðlitur
 🦵🏼	fótleggur: meðalljós húðlitur
-🦵🏽	fótleggur: meðalhúðlitur
+🦵🏽	fótur: meðalhúðlitur
 🦵🏾	fótleggur: meðaldökkur húðlitur
 🦵🏿	fótleggur: dökkur húðlitur
 🦶	fótur
@@ -1953,7 +1953,7 @@
 👇🏻	bakhandarvísir sem vísar niður: ljós húðlitur
 👇🏼	bakhandarvísir sem vísar niður: meðalljós húðlitur
 👇🏽	bakhandarvísir sem vísar niður: meðalhúðlitur
-👇🏾	bakhandarvísir sem vísar niður: meðaldökkur húðlitur
+👇🏾	bakhandvísir sem vísar niður: meðaldökkur húðlitur
 👇🏿	bakhandarvísir sem vísar niður: dökkur húðlitur
 ✌️	sigur hönd
 ✌	sigur hönd
@@ -2017,7 +2017,7 @@
 👎🏽	þumall niður: meðalhúðlitur
 👎🏾	þumall niður: meðaldökkur húðlitur
 👎🏿	þumall niður: dökkur húðlitur
-✊	lyfti hnefa
+✊	lyfti hnefanum
 ✊🏻	upphækkaður hnefi: ljós húðlitur
 ✊🏼	upphækkaður hnefi: meðalljós húðlitur
 ✊🏽	upphækkaður hnefi: meðalhúðlitur
@@ -2054,7 +2054,7 @@
 👋🏾	veifandi hendi: meðaldökkur húðlitur
 👋🏿	veifandi hendi: dökkur húðlitur
 🤟	elska þig bending
-🤟🏻	elska þig bending: ljós húðlitur
+🤟🏻	elska-þig bending: ljós húðlitur
 🤟🏼	elska-þig bending: meðalljós húðlitur
 🤟🏽	elska-þig bending: meðalhúðlitur
 🤟🏾	elska-þig bending: meðaldökkur húðlitur
@@ -2087,9 +2087,9 @@
 🤲	lófana upp saman
 🤲🏻	lófarnir upp saman: ljós húðlitur
 🤲🏼	lófarnir saman: meðalljós húðlitur
-🤲🏽	lófarnir upp saman: meðalhúðlitur
-🤲🏾	lófarnir saman: meðaldökkur húðlitur
-🤲🏿	lófarnir saman: dökkur húðlitur
+🤲🏽	lófana upp saman: meðalhúðlitur
+🤲🏾	lófarnir upp saman: meðaldökkur húðlitur
+🤲🏿	lófarnir upp saman: dökkur húðlitur
 🙏	krosslagðar hendur
 🙏🏻	krosslagðar hendur: ljós húðlitur
 🙏🏼	krosslagðar hendur: meðalljós húðlitur
@@ -2187,8 +2187,8 @@
 👛	veski
 👜	handtaska
 👝	kúplingspoka
-🛍️	innkaupapokar
-🛍	innkaupapokar
+🛍️	innkaupapoka
+🛍	innkaupapoka
 🎒	skólabakpoki
 👞	manns skór
 👟	hlaupaskór
@@ -2229,7 +2229,7 @@
 🦓	sebrahest
 🦌	dádýr
 🐮	kúa andlit
-🐂	uxi
+🐂	uxa
 🐃	vatnsbuffaló
 🐄	kú
 🐷	svínandlit
@@ -2261,7 +2261,7 @@
 🐼	panda andlit
 🦘	kengúra
 🦡	greflingur
-🐾	loppaprentanir
+🐾	lappaprentun
 🦃	kalkúnn
 🐔	kjúklingur
 🐓	hani
@@ -2425,7 +2425,7 @@
 🍫	súkkulaðistykki
 🍬	nammi
 🍭	sleikjó
-🍮	rjómakrem
+🍮	vanilósa
 🍯	hunangspottur
 🍼	barnaflaska
 🥛	glas af mjólk
@@ -2613,13 +2613,13 @@
 🕛	klukkan tólf
 🕧	hálftólf
 🕐	klukkan eitt
-🕜	hálftíu
+🕜	hálf hálfníu
 🕑	klukkan tvö
 🕝	hálf hálfníu
 🕒	klukkan þrjú
 🕞	hálf þrjú
 🕓	klukkan fjögur
-🕟	hálf fimm
+🕟	hálf fjögur
 🕔	klukkan fimm
 🕠	Fimm þrjátíu
 🕕	klukkan sex
@@ -2881,7 +2881,7 @@
 💸	peningar með vængi
 💳	kreditkort
 🧾	kvittun
-💹	mynd hækkar með jeni
+💹	graf hækkar með jeni
 💱	gjaldeyrisskipti
 💲	þungt dollaramerki
 ✉️	umslagi
@@ -2950,11 +2950,11 @@
 🔑	lykill
 🗝️	gamall lykill
 🗝	gamall lykill
-🔨	hamar
+🔨	hamri
 ⛏️	velja
 ⛏	velja
-⚒️	hamra og tína
-⚒	hamra og tína
+⚒️	hamra og velja
+⚒	hamra og velja
 🛠️	hamar og skiptilykil
 🛠	hamar og skiptilykil
 🗡️	rýtingur
@@ -3279,7 +3279,7 @@
 ◻	hvítur miðlungs ferningur
 ◼️	svartur miðlungs ferningur
 ◼	svartur miðlungs ferningur
-◽	hvítur meðal-lítill ferningur
+◽	hvítur meðallítill ferningur
 ◾	svartur miðlungs-lítill ferningur
 ⬛	svartur stór ferningur
 ⬜	hvítur stór ferningur
@@ -3338,7 +3338,7 @@
 🇧🇳	Brúnei
 🇧🇴	Bólivía
 🇧🇶	Karíbahafið Holland
-🇧🇷	Brasilíu
+🇧🇷	Brasilía
 🇧🇸	Bahamaeyjar
 🇧🇹	Bútan
 🇧🇻	Bouvet Island
@@ -3352,7 +3352,7 @@
 🇨🇬	Kongó - Brazzaville
 🇨🇭	Sviss
 🇨🇮	Fílabeinsströndin
-🇨🇰	Cook-eyjar
+🇨🇰	Cook eyjar
 🇨🇱	Chile
 🇨🇲	Kamerún
 🇨🇳	Kína
@@ -3397,7 +3397,7 @@
 🇬🇮	Gíbraltar
 🇬🇱	Grænland
 🇬🇲	Gambía
-🇬🇳	Gíneu
+🇬🇳	Gínea
 🇬🇵	Gvadelúpeyjar
 🇬🇶	Miðbaugs-Gínea
 🇬🇷	Grikkland

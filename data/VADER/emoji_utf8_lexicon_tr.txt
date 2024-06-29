@@ -104,9 +104,9 @@
 💩	kaka yığını
 😺	sırıtan kedi yüzü
 😸	gülümseyen gözlerle sırıtan kedi yüzü
-😹	sevinç gözyaşları döken kedi yüzü
+😹	sevinç gözyaşları döken kedi suratı
 😻	kalp gözlü gülümseyen kedi yüzü
-😼	alaycı bir gülümsemeyle kedi surat
+😼	alaycı bir gülümsemeyle kedi yüzü
 😽	kedi yüzünü öpmek
 🙀	yorgun kedi suratı
 😿	ağlayan kedi suratı
@@ -1243,7 +1243,7 @@
 💇🏻‍♂️	saçını kestiren erkek: açık cilt tonu
 💇🏻‍♂	saçını kestiren erkek: açık cilt tonu
 💇🏼‍♂️	saçını kestiren adam: orta açık cilt tonu
-💇🏼‍♂	saçını kestiren erkek: orta açık cilt tonu
+💇🏼‍♂	saçını kestiren adam: orta açık cilt tonu
 💇🏽‍♂️	saçını kestiren adam: orta cilt tonu
 💇🏽‍♂	saçını kestiren adam: orta cilt tonu
 💇🏾‍♂️	saçını kestiren erkek: orta koyu cilt tonu
@@ -1441,8 +1441,8 @@
 🛌🏽	yataktaki kişi: orta cilt tonu
 🛌🏾	yataktaki kişi: orta koyu cilt tonu
 🛌🏿	yataktaki kişi: koyu cilt tonu
-🕴️	takım elbiseli adam havaya uçuyor
-🕴	takım elbiseli adam havaya uçuyor
+🕴️	havaya uçan takım elbiseli adam
+🕴	havaya uçan takım elbiseli adam
 🕴🏻	havalanan takım elbiseli adam: açık cilt tonu
 🕴🏼	havalanan takım elbiseli adam: orta açık cilt tonu
 🕴🏽	havalanan takım elbiseli adam: orta cilt tonu
@@ -1570,16 +1570,16 @@
 🏊🏿	yüzen kişi: koyu cilt tonu
 🏊‍♂️	yüzen adam
 🏊‍♂	yüzen adam
-🏊🏻‍♂️	yüzen erkek: açık cilt tonu
+🏊🏻‍♂️	yüzen adam: açık cilt tonu
 🏊🏻‍♂	yüzen erkek: açık cilt tonu
-🏊🏼‍♂️	yüzen adam: orta açık cilt tonu
-🏊🏼‍♂	yüzen adam: orta açık cilt tonu
+🏊🏼‍♂️	yüzen erkek: orta açık cilt tonu
+🏊🏼‍♂	yüzen erkek: orta açık cilt tonu
 🏊🏽‍♂️	yüzen erkek: orta cilt tonu
-🏊🏽‍♂	yüzen erkek: orta cilt tonu
+🏊🏽‍♂	yüzen adam: orta cilt tonu
 🏊🏾‍♂️	yüzen adam: orta koyu cilt tonu
 🏊🏾‍♂	yüzen adam: orta koyu cilt tonu
-🏊🏿‍♂️	yüzen erkek: koyu cilt tonu
-🏊🏿‍♂	yüzen erkek: koyu cilt tonu
+🏊🏿‍♂️	yüzen adam: koyu cilt tonu
+🏊🏿‍♂	yüzen adam: koyu cilt tonu
 🏊‍♀️	yüzen kadın
 🏊‍♀	yüzen kadın
 🏊🏻‍♀️	yüzen kadın: açık cilt tonu
@@ -1712,8 +1712,8 @@
 🚵🏿‍♂	dağ bisikleti süren erkek: koyu cilt tonu
 🚵‍♀️	kadın dağ bisikleti
 🚵‍♀	kadın dağ bisikleti
-🚵🏻‍♀️	dağ bisikleti süren kadın: açık cilt tonu
-🚵🏻‍♀	dağ bisikleti süren kadın: açık cilt tonu
+🚵🏻‍♀️	dağ bisikletine binen kadın: açık cilt tonu
+🚵🏻‍♀	dağ bisikletine binen kadın: açık cilt tonu
 🚵🏼‍♀️	dağ bisikletine binen kadın: orta açık cilt tonu
 🚵🏼‍♀	dağ bisikletine binen kadın: orta açık cilt tonu
 🚵🏽‍♀️	dağ bisikletine binen kadın: orta cilt tonu
@@ -1837,8 +1837,8 @@
 🤹🏽‍♂	hokkabazlık yapan adam: orta cilt tonu
 🤹🏾‍♂️	hokkabazlık yapan adam: orta koyu cilt tonu
 🤹🏾‍♂	hokkabazlık yapan adam: orta koyu cilt tonu
-🤹🏿‍♂️	hokkabazlık yapan adam: koyu cilt tonu
-🤹🏿‍♂	hokkabazlık yapan adam: koyu cilt tonu
+🤹🏿‍♂️	hokkabazlık yapan erkek: koyu cilt tonu
+🤹🏿‍♂	hokkabazlık yapan erkek: koyu cilt tonu
 🤹‍♀️	hokkabazlık yapan kadın
 🤹‍♀	hokkabazlık yapan kadın
 🤹🏻‍♀️	hokkabazlık yapan kadın: açık cilt tonu
@@ -2083,7 +2083,7 @@
 🙌🏼	Elleri kaldırmak: orta açık cilt tonu
 🙌🏽	elleri kaldırmak: orta cilt tonu
 🙌🏾	elleri kaldırmak: orta koyu cilt tonu
-🙌🏿	elleri kaldırmak: koyu cilt tonu
+🙌🏿	ellerini kaldırmak: koyu cilt tonu
 🤲	avuç içi bir arada
 🤲🏻	avuç içi bir arada: açık cilt tonu
 🤲🏼	avuçlar bitişik: orta açık cilt tonu
@@ -2115,7 +2115,7 @@
 👃🏽	burun: orta cilt tonu
 👃🏾	burun: orta koyu cilt tonu
 👃🏿	burun: koyu cilt tonu
-🦰	kızıl saçlı
+🦰	Kızıl saçlı
 🦱	kıvırcık saçlı
 🦲	kel
 🦳	beyaz saçlı
@@ -2374,7 +2374,7 @@
 🥨	Çubuk kraker
 🥯	simit
 🥞	krep
-🧀	peynir kama
+🧀	peynir dilimi
 🍖	kemikli et
 🍗	kümes hayvanı bacağı
 🥩	et kesimi
@@ -2385,7 +2385,7 @@
 🌭	sosisli sandviç
 🥪	sandviç
 🌮	tako
-🌯	burrito
+🌯	börek
 🥙	doldurulmuş gözleme
 🥚	Yumurta
 🍳	yemek pişirmek
@@ -2420,7 +2420,7 @@
 🍪	kurabiye
 🎂	doğumgünü pastası
 🍰	kurabiye
-🧁	çörek
+🧁	kek
 🥧	turta
 🍫	çikolata
 🍬	Şeker
@@ -2460,7 +2460,7 @@
 🏔	Karla kaplı dağ
 ⛰️	dağ
 ⛰	dağ
-🌋	yanardağ
+🌋	volkan
 🗻	Fuji Dağı
 🏕️	kamp yapmak
 🏕	kamp yapmak
@@ -2591,7 +2591,7 @@
 💺	koltuk
 🚁	helikopter
 🚟	asma demiryolu
-🚠	dağ teleferiği
+🚠	Dağ teleferiği
 🚡	hava tramvayı
 🛰️	uydu
 🛰	uydu
@@ -2894,8 +2894,8 @@
 📦	paket
 📫	bayrağı kaldırılmış kapalı posta kutusu
 📪	bayrağı indirilmiş kapalı posta kutusu
-📬	bayrağı kaldırılmış posta kutusunu aç
-📭	indirilmiş bayrakla posta kutusunu aç
+📬	yükseltilmiş bayrakla posta kutusunu aç
+📭	bayrağı indirilmiş posta kutusunu aç
 📮	posta kutusu
 🗳️	oy pusulası ile oy sandığı
 🗳	oy pusulası ile oy sandığı
@@ -3270,7 +3270,7 @@
 ㊙️	Japonca "gizli" düğmesi
 ㊙	Japonca "gizli" düğmesi
 🈺	Japonca "iş için açık" düğmesi
-🈵	Japonca “boş yer yok” butonu
+🈵	Japonca "boş yer yok" butonu
 ▪️	siyah küçük kare
 ▪	siyah küçük kare
 ▫️	beyaz küçük kare

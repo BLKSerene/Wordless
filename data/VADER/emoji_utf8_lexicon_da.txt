@@ -47,7 +47,7 @@
 😕	forvirret ansigt
 🙃	ansigtet på hovedet
 🤑	penge-mund ansigt
-😲	forbavset ansigt
+😲	forbløffet ansigt
 ☹️	rynkende ansigt
 ☹	rynkende ansigt
 🙁	let rynkende ansigt
@@ -96,7 +96,7 @@
 👺	nisse
 💀	kranium
 ☠️	kranie og korsben
-☠	kranie og krydsben
+☠	kranie og korsben
 👻	spøgelse
 👽	fremmed
 👾	fremmed monster
@@ -151,7 +151,7 @@
 🧑🏿	voksen: mørk hudfarve
 👨	mand
 👨🏻	mand: lys hudfarve
-👨🏼	mand: medium-lys hudfarve
+👨🏼	mand: medium lys hudfarve
 👨🏽	mand: medium hudfarve
 👨🏾	mand: medium-mørk hudfarve
 👨🏿	mand: mørk hudfarve
@@ -163,7 +163,7 @@
 👩🏿	kvinde: mørk hudfarve
 🧓	ældre voksen
 🧓🏻	ældre voksen: lys hudfarve
-🧓🏼	ældre voksen: medium lys hudfarve
+🧓🏼	ældre voksen: medium-lys hudfarve
 🧓🏽	ældre voksen: medium hudfarve
 🧓🏾	ældre voksen: medium-mørk hudfarve
 🧓🏿	ældre voksen: mørk hudfarve
@@ -279,7 +279,7 @@
 👨🏻‍🔧	mand mekaniker: lys hudfarve
 👨🏼‍🔧	mand mekaniker: medium-lys hudfarve
 👨🏽‍🔧	mand mekaniker: medium hudfarve
-👨🏾‍🔧	mand mekaniker: medium-mørk hudfarve
+👨🏾‍🔧	mandemekaniker: medium-mørk hudfarve
 👨🏿‍🔧	mand mekaniker: mørk hudfarve
 👩‍🔧	kvindelig mekaniker
 👩🏻‍🔧	kvinde mekaniker: lys hudfarve
@@ -363,8 +363,8 @@
 👨‍✈	mand pilot
 👨🏻‍✈️	mand pilot: lys hudfarve
 👨🏻‍✈	mand pilot: lys hudfarve
-👨🏼‍✈️	mand pilot: medium-lys hudfarve
-👨🏼‍✈	mand pilot: medium-lys hudfarve
+👨🏼‍✈️	mand pilot: medium lys hudfarve
+👨🏼‍✈	mand pilot: medium lys hudfarve
 👨🏽‍✈️	mand pilot: medium hudfarve
 👨🏽‍✈	mand pilot: medium hudfarve
 👨🏾‍✈️	mand pilot: medium-mørk hudfarve
@@ -480,7 +480,7 @@
 💂🏿	guard: mørk hudfarve
 💂‍♂️	mand vagt
 💂‍♂	mand vagt
-💂🏻‍♂️	man guard: lys hudfarve
+💂🏻‍♂️	mand guard: lys hudfarve
 💂🏻‍♂	mand guard: lys hudfarve
 💂🏼‍♂️	man guard: medium-lys hudfarve
 💂🏼‍♂	man guard: medium-lys hudfarve
@@ -684,7 +684,7 @@
 👰🏿	brud med slør: mørk hudfarve
 🤰	gravid kvinde
 🤰🏻	gravid kvinde: lys hudfarve
-🤰🏼	gravid kvinde: medium-lys hudfarve
+🤰🏼	gravid kvinde: medium lys hudfarve
 🤰🏽	gravid kvinde: medium hudfarve
 🤰🏾	gravid kvinde: medium-mørk hudfarve
 🤰🏿	gravid kvinde: mørk hudfarve
@@ -768,8 +768,8 @@
 🦹🏼‍♂	man superskurk: medium lys hudfarve
 🦹🏽‍♂️	mand superskurk: medium hudfarve
 🦹🏽‍♂	mand superskurk: medium hudfarve
-🦹🏾‍♂️	mands superskurk: medium-mørk hudfarve
-🦹🏾‍♂	mands superskurk: medium-mørk hudfarve
+🦹🏾‍♂️	mand superskurk: medium-mørk hudfarve
+🦹🏾‍♂	mand superskurk: medium-mørk hudfarve
 🦹🏿‍♂️	mand superskurk: mørk hudfarve
 🦹🏿‍♂	mand superskurk: mørk hudfarve
 🧙	mage
@@ -842,7 +842,7 @@
 🧛‍♀	kvinde vampyr
 🧛🏻‍♀️	kvinde vampyr: lys hudfarve
 🧛🏻‍♀	kvinde vampyr: lys hudfarve
-🧛🏼‍♀️	kvinde vampyr: medium-lys hudfarve
+🧛🏼‍♀️	kvinde vampyr: medium lys hudfarve
 🧛🏼‍♀	kvinde vampyr: medium lys hudfarve
 🧛🏽‍♀️	kvinde vampyr: medium hudfarve
 🧛🏽‍♀	kvinde vampyr: medium hudfarve
@@ -894,7 +894,7 @@
 🧜🏿‍♂	havmand: mørk hudfarve
 🧝	nisse
 🧝🏻	nisse: lys hudfarve
-🧝🏼	elver: medium-lys hudfarve
+🧝🏼	nisse: medium-lys hudfarve
 🧝🏽	nisse: medium hudfarve
 🧝🏾	nisse: medium-mørk hudfarve
 🧝🏿	nisse: mørk hudfarve
@@ -914,8 +914,8 @@
 🧝‍♂	mand alf
 🧝🏻‍♂️	mand alf: lys hudfarve
 🧝🏻‍♂	mand alf: lys hudfarve
-🧝🏼‍♂️	mandelver: medium-lys hudfarve
-🧝🏼‍♂	mandelver: medium-lys hudfarve
+🧝🏼‍♂️	mand alf: medium-lys hudfarve
+🧝🏼‍♂	mand alf: medium-lys hudfarve
 🧝🏽‍♂️	mand alf: medium hudfarve
 🧝🏽‍♂	mand alf: medium hudfarve
 🧝🏾‍♂️	mand alf: medium-mørk hudfarve
@@ -966,7 +966,7 @@
 🙎🏻	person, der buldrer: lys hudfarve
 🙎🏼	person, der buldrer: medium-lys hudfarve
 🙎🏽	person, der buldrer: medium hudfarve
-🙎🏾	person, der buldrer: medium-mørk hudfarve
+🙎🏾	person, der pøser: medium-mørk hudfarve
 🙎🏿	person, der buldrer: mørk hudfarve
 🙎‍♂️	mand, der buldrer
 🙎‍♂	mand, der buldrer
@@ -1028,12 +1028,12 @@
 🙆🏽	person, der gestikulerer OK: medium hudfarve
 🙆🏾	person, der gestikulerer OK: medium-mørk hudfarve
 🙆🏿	person, der gestikulerer OK: mørk hudfarve
-🙆‍♂️	mand, der gestikulerer OK
+🙆‍♂️	mand gestikulerer OK
 🙆‍♂	mand gestikulerer OK
 🙆🏻‍♂️	mand, der gestikulerer OK: lys hudfarve
 🙆🏻‍♂	mand, der gestikulerer OK: lys hudfarve
 🙆🏼‍♂️	mand, der gestikulerer OK: medium-lys hudfarve
-🙆🏼‍♂	mand, der gestikulerer OK: medium-lys hudfarve
+🙆🏼‍♂	mand, der gestikulerer OK: mellemlys hudfarve
 🙆🏽‍♂️	mand, der gestikulerer OK: medium hudfarve
 🙆🏽‍♂	mand, der gestikulerer OK: medium hudfarve
 🙆🏾‍♂️	mand, der gestikulerer OK: medium-mørk hudfarve
@@ -1105,7 +1105,7 @@
 🙋🏻‍♀️	kvinde rækker hånden op: lys hudfarve
 🙋🏻‍♀	kvinde rækker hånden op: lys hudfarve
 🙋🏼‍♀️	kvinde rækker hånden op: medium-lys hudfarve
-🙋🏼‍♀	kvinde rækker hånden op: medium-lys hudfarve
+🙋🏼‍♀	kvinde rækker hånden op: mellemlys hudfarve
 🙋🏽‍♀️	kvinde rækker hånden op: medium hudfarve
 🙋🏽‍♀	kvinde rækker hånden op: medium hudfarve
 🙋🏾‍♀️	kvinde rækker hånden op: medium-mørk hudfarve
@@ -1204,7 +1204,7 @@
 🤷🏿‍♀	kvinde trækker på skuldrene: mørk hudfarve
 💆	person får massage
 💆🏻	person får massage: lys hudfarve
-💆🏼	person, der får massage: medium-lys hudfarve
+💆🏼	person får massage: medium-lys hudfarve
 💆🏽	person får massage: medium hudtone
 💆🏾	person får massage: medium-mørk hudfarve
 💆🏿	person får massage: mørk hudfarve
@@ -1437,7 +1437,7 @@
 🛀🏿	person i bad: mørk hudfarve
 🛌	person i sengen
 🛌🏻	person i sengen: lys hudfarve
-🛌🏼	person i sengen: medium lys hudfarve
+🛌🏼	person i sengen: medium-lys hudfarve
 🛌🏽	person i sengen: medium hudfarve
 🛌🏾	person i sengen: medium-mørk hudfarve
 🛌🏿	person i sengen: mørk hudfarve
@@ -1496,7 +1496,7 @@
 🏌🏻‍♀	kvinde golf: lys hudfarve
 🏌🏼‍♀️	kvinde golf: medium-lys hudfarve
 🏌🏼‍♀	kvinde golf: medium-lys hudfarve
-🏌🏽‍♀️	kvinde golf: medium hudfarve
+🏌🏽‍♀️	kvinde, der spiller golf: medium hudfarve
 🏌🏽‍♀	kvinde golf: medium hudfarve
 🏌🏾‍♀️	kvinde, der spiller golf: medium-mørk hudfarve
 🏌🏾‍♀	kvinde, der spiller golf: medium-mørk hudfarve
@@ -1534,7 +1534,7 @@
 🏄🏿‍♀	kvinde surfer: mørk hudfarve
 🚣	person robåd
 🚣🏻	person robåd: lys hudfarve
-🚣🏼	person robåd: medium-lys hudfarve
+🚣🏼	person robåd: medium lys hudfarve
 🚣🏽	person robåd: medium hudfarve
 🚣🏾	person robåd: medium-mørk hudfarve
 🚣🏿	person robåd: mørk hudfarve
@@ -1542,8 +1542,8 @@
 🚣‍♂	mand robåd
 🚣🏻‍♂️	mand robåd: lys hudfarve
 🚣🏻‍♂	mand robåd: lys hudfarve
-🚣🏼‍♂️	mand robåd: medium-lys hudfarve
-🚣🏼‍♂	mand robåd: medium-lys hudfarve
+🚣🏼‍♂️	mand robåd: medium lys hudfarve
+🚣🏼‍♂	mand robåd: medium lys hudfarve
 🚣🏽‍♂️	mand robåd: medium hudfarve
 🚣🏽‍♂	mand robåd: medium hudfarve
 🚣🏾‍♂️	mand robåd: medium-mørk hudfarve
@@ -1554,8 +1554,8 @@
 🚣‍♀	kvinde robåd
 🚣🏻‍♀️	kvinde robåd: lys hudfarve
 🚣🏻‍♀	kvinde robåd: lys hudfarve
-🚣🏼‍♀️	kvinde robåd: medium-lys hudfarve
-🚣🏼‍♀	kvinde robåd: medium-lys hudfarve
+🚣🏼‍♀️	kvinde robåd: medium lys hudfarve
+🚣🏼‍♀	kvinde robåd: medium lys hudfarve
 🚣🏽‍♀️	kvinde robåd: medium hudfarve
 🚣🏽‍♀	kvinde robåd: medium hudfarve
 🚣🏾‍♀️	kvinde robåd: medium-mørk hudfarve
@@ -1656,7 +1656,7 @@
 🏋🏻‍♀	kvinde løfte vægte: lys hudfarve
 🏋🏼‍♀️	kvinde, der løfter vægte: medium-lys hudfarve
 🏋🏼‍♀	kvinde, der løfter vægte: medium-lys hudfarve
-🏋🏽‍♀️	kvinde løfter vægte: medium hudfarve
+🏋🏽‍♀️	kvinde løfte vægte: medium hudfarve
 🏋🏽‍♀	kvinde løfter vægte: medium hudfarve
 🏋🏾‍♀️	kvinde, der løfter vægte: medium-mørk hudfarve
 🏋🏾‍♀	kvinde, der løfter vægte: medium-mørk hudfarve
@@ -1670,8 +1670,8 @@
 🚴🏿	person, der cykler: mørk hudfarve
 🚴‍♂️	mand på cykel
 🚴‍♂	mand på cykel
-🚴🏻‍♂️	mand på cykel: lys hudfarve
-🚴🏻‍♂	mand på cykel: lys hudfarve
+🚴🏻‍♂️	mand, der cykler: lys hudfarve
+🚴🏻‍♂	mand, der cykler: lys hudfarve
 🚴🏼‍♂️	man cykler: medium-lys hudfarve
 🚴🏼‍♂	man cykler: medium-lys hudfarve
 🚴🏽‍♂️	man cykler: medium hudfarve
@@ -1698,8 +1698,8 @@
 🚵🏽	person mountainbike: medium hudfarve
 🚵🏾	person mountainbike: medium-mørk hudfarve
 🚵🏿	person mountainbike: mørk hudfarve
-🚵‍♂️	mand mountainbike
-🚵‍♂	mand mountainbike
+🚵‍♂️	mand på mountainbike
+🚵‍♂	mand på mountainbike
 🚵🏻‍♂️	mand mountainbike: lys hudfarve
 🚵🏻‍♂	mand mountainbike: lys hudfarve
 🚵🏼‍♂️	mand mountainbike: medium-lys hudfarve
@@ -1764,7 +1764,7 @@
 🤽	person, der spiller vandpolo
 🤽🏻	person, der spiller vandpolo: lys hudfarve
 🤽🏼	person, der spiller vandpolo: medium-lys hudfarve
-🤽🏽	person, der spiller vandpolo: medium hudfarve
+🤽🏽	person, der spiller vandpolo: medium hudtone
 🤽🏾	person, der spiller vandpolo: medium-mørk hudfarve
 🤽🏿	person, der spiller vandpolo: mørk hudfarve
 🤽‍♂️	mand spiller vandpolo
@@ -1797,14 +1797,14 @@
 🤾🏽	person, der spiller håndbold: medium hudfarve
 🤾🏾	person, der spiller håndbold: medium-mørk hudfarve
 🤾🏿	person, der spiller håndbold: mørk hudfarve
-🤾‍♂️	mand, der spiller håndbold
-🤾‍♂	mand, der spiller håndbold
+🤾‍♂️	mand spiller håndbold
+🤾‍♂	mand spiller håndbold
 🤾🏻‍♂️	mand, der spiller håndbold: lys hudfarve
 🤾🏻‍♂	mand, der spiller håndbold: lys hudfarve
 🤾🏼‍♂️	mand, der spiller håndbold: medium-lys hudfarve
 🤾🏼‍♂	mand, der spiller håndbold: medium-lys hudfarve
-🤾🏽‍♂️	mand spiller håndbold: medium hudfarve
-🤾🏽‍♂	mand spiller håndbold: medium hudfarve
+🤾🏽‍♂️	mand, der spiller håndbold: medium hudfarve
+🤾🏽‍♂	mand, der spiller håndbold: medium hudfarve
 🤾🏾‍♂️	mand, der spiller håndbold: medium-mørk hudfarve
 🤾🏾‍♂	mand, der spiller håndbold: medium-mørk hudfarve
 🤾🏿‍♂️	mand spiller håndbold: mørk hudfarve
@@ -1829,8 +1829,8 @@
 🤹🏿	person jonglering: mørk hudfarve
 🤹‍♂️	mand jonglerer
 🤹‍♂	mand jonglerer
-🤹🏻‍♂️	man jonglerer: lys hudfarve
-🤹🏻‍♂	man jonglerer: lys hudfarve
+🤹🏻‍♂️	mand jonglerer: lys hudfarve
+🤹🏻‍♂	mand jonglerer: lys hudfarve
 🤹🏼‍♂️	man jonglerer: medium-lys hudfarve
 🤹🏼‍♂	man jonglerer: medium-lys hudfarve
 🤹🏽‍♂️	man jonglerer: medium hudfarve
@@ -1897,7 +1897,7 @@
 🤳	selfie
 🤳🏻	selfie: lys hudfarve
 🤳🏼	selfie: medium lys hudfarve
-🤳🏽	selfie: medium hudfarve
+🤳🏽	selfie: medium hudtone
 🤳🏾	selfie: medium-mørk hudfarve
 🤳🏿	selfie: mørk hudfarve
 💪	bøjede biceps
@@ -1965,7 +1965,7 @@
 🤞	krydsede fingre
 🤞🏻	krydsede fingre: lys hudfarve
 🤞🏼	krydsede fingre: medium-lys hudfarve
-🤞🏽	krydsede fingre: medium hudfarve
+🤞🏽	krydsede fingre: medium hudtone
 🤞🏾	krydsede fingre: medium-mørk hudfarve
 🤞🏿	krydsede fingre: mørk hudfarve
 🖖	vulkan hilsen
@@ -2007,9 +2007,9 @@
 👌🏿	OK hånd: mørk hudfarve
 👍	tommel op
 👍🏻	tommelfinger op: lys hudfarve
-👍🏼	thumbs up: medium-lys hudfarve
+👍🏼	tommelfingeren op: medium-lys hudfarve
 👍🏽	tommelfinger op: medium hudfarve
-👍🏾	thumbs up: medium-mørk hudfarve
+👍🏾	tommelfinger op: medium-mørk hudfarve
 👍🏿	tommelfingeren op: mørk hudfarve
 👎	tommelfingeren nedad
 👎🏻	tommelfingeren nedad: lys hudfarve
@@ -2025,7 +2025,7 @@
 ✊🏿	hævet knytnæve: mørk hudfarve
 👊	modkørende knytnæve
 👊🏻	modkørende knytnæve: lys hudfarve
-👊🏼	modkørende knytnæve: medium lys hudfarve
+👊🏼	modkørende knytnæve: medium-lys hudfarve
 👊🏽	modkørende knytnæve: medium hudtone
 👊🏾	modkørende knytnæve: medium-mørk hudfarve
 👊🏿	modkørende knytnæve: mørk hudfarve
@@ -2400,7 +2400,7 @@
 🍘	riskiks
 🍙	riskugle
 🍚	Kogte ris
-🍛	karryris
+🍛	karry ris
 🍜	dampende skål
 🍝	spaghetti
 🍠	ristet sød kartoffel
@@ -3042,8 +3042,8 @@
 ☣	biologisk farlige
 ⬆️	pil op
 ⬆	pil op
-↗️	pil op-højre
-↗	pil op-højre
+↗️	pil op til højre
+↗	pil op til højre
 ➡️	højre pil
 ➡	højre pil
 ↘️	pil ned til højre
@@ -3062,8 +3062,8 @@
 ↔	venstre-højre pil
 ↩️	højre pil buede til venstre
 ↩	højre pil buede til venstre
-↪️	venstre pil buede til højre
-↪	venstre pil buede til højre
+↪️	venstre pil, der buer til højre
+↪	venstre pil, der buer til højre
 ⤴️	højre pil buede op
 ⤴	højre pil buede op
 ⤵️	højre pil buer ned
@@ -3119,12 +3119,12 @@
 ⏭	knap til næste spor
 ⏯️	afspil eller pause-knap
 ⏯	afspil eller pause-knap
-◀️	tilbage-knap
+◀️	omvendt knap
 ◀	tilbage-knap
 ⏪	hurtig tilbage-knap
 ⏮️	sidste spor-knap
 ⏮	sidste spor-knap
-🔼	opad knap
+🔼	opad-knap
 ⏫	hurtig op knap
 🔽	nedadgående knap
 ⏬	hurtig ned-knap
@@ -3218,7 +3218,7 @@
 7⃣	tastatur: 7
 8️⃣	tastatur: 8
 8⃣	tastatur: 8
-9️⃣	tastatur: 9
+9️⃣	tastetryk: 9
 9⃣	tastatur: 9
 🔟	tastatur: 10
 💯	hundrede point
@@ -3251,13 +3251,13 @@
 🆙	OP-knap
 🆚	VS knap
 🈁	Japansk "her"-knap
-🈂️	Japansk "servicegebyr"-knap
-🈂	Japansk "servicegebyr"-knap
+🈂️	Japansk "servicegebyr" knap
+🈂	Japansk "servicegebyr" knap
 🈷️	Japansk knap "månedligt beløb".
 🈷	Japansk knap "månedligt beløb".
 🈶	Japansk "ikke gratis" knap
 🈯	Japansk "reserveret" knap
-🉐	Japansk "gain"-knap
+🉐	Japansk "gain" knap
 🈹	Japansk "rabat" knap
 🈚	Japansk "gratis" knap
 🈲	Japansk "forbudt" knap
@@ -3269,7 +3269,7 @@
 ㊗	Japansk "tillykke" knap
 ㊙️	Japansk "hemmelig" knap
 ㊙	Japansk "hemmelig" knap
-🈺	Japansk "åben for erhvervslivet"-knap
+🈺	Japansk "åben for forretninger"-knap
 🈵	Japansk knap "ingen ledig stilling".
 ▪️	sort lille firkant
 ▪	sort lille firkant
@@ -3418,7 +3418,7 @@
 🇮🇱	Israel
 🇮🇲	Isle of Man
 🇮🇳	Indien
-🇮🇴	Britisk territorium i Det Indiske Ocean
+🇮🇴	Britisk territorium i det Indiske Ocean
 🇮🇶	Irak
 🇮🇷	Iran
 🇮🇸	Island

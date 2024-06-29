@@ -26,7 +26,7 @@
 😐	aghaidh neodrach
 😑	aghaidh gun chiall
 😶	aghaidh gun bheul
-🙄	aodann le sùilean donn
+🙄	aodann le suilean cas
 😏	aodann gàire
 😣	aghaidh a' leantuinn
 😥	aghaidh brònach ach faochadh
@@ -76,13 +76,13 @@
 😷	aghaidh le masg meidigeach
 🤒	aghaidh le teirmiméadar
 🤕	aghaidh le bann-cinn
-🤢	aodann suarach
+🤢	aodann suairce
 🤮	cuir a-mach aghaidh
 🤧	sreothartaich aodann
 😇	aodann gàire ri halo
 🤠	aodann cowboy hat
 🥳	aghaidh pàrtaidh
-🥴	aodann suairce
+🥴	aodann gòrach
 🥺	aghaidh a' tagradh
 🤥	aodann na laighe
 🤫	aodann suairce
@@ -106,14 +106,14 @@
 😸	aodann cat le gàire le sùilean gàire
 😹	aghaidh cat le deòir aoibhneis
 😻	aodann cat gàire le sùilean cridhe
-😼	aodann cat le gàire meallta
+😼	aodann cat le gàire geur
 😽	aodann cat pòg
 🙀	aodann cait sgìth
 😿	aodann cat a’ caoineadh
 😾	a' cur aghaidh air cat
-🙈	muncaidh see-no-olc
-🙉	moncaidh cluinn-na-h-olc
-🙊	bruidhinn-no-olc muncaidh
+🙈	muncaidh faic-na-h-olc
+🙉	moncaidh èisdeachd-ne
+🙊	moncaidh labhairt-no-uilc
 🏻	tòna soilleir a’ chraicinn
 🏼	tòna meadhanach soilleir a’ chraicinn
 🏽	tòna meadhanach a’ chraicinn
@@ -162,7 +162,7 @@
 👩🏾	Ciall: boireannach: tòna meadhanach doilleir a’ chraicinn
 👩🏿	boireannach: tòna doilleir a’ chraicinn
 🧓	inbheach nas sine
-🧓🏻	seann aois: tòna soilleir a’ chraicinn
+🧓🏻	inbheach: tòna soilleir a’ chraicinn
 🧓🏼	Ciall: inbheach: tòna meadhanach soilleir a’ chraicinn
 🧓🏽	Ciall: inbheach nas sine: tòna meadhanach doilleir a’ chraicinn
 🧓🏾	Ciall: inbheach nas sine: tòna meadhanach doilleir a’ chraicinn
@@ -284,7 +284,7 @@
 👩‍🔧	meacanaig boireannach
 👩🏻‍🔧	Ciall: meacanaig boireann: tòna soilleir a’ chraicinn
 👩🏼‍🔧	Ciall: meacanaig boireann: tòna meadhanach soilleir a’ chraicinn
-👩🏽‍🔧	Ciall: meacanaig boireann: tòna meadhanach a’ chraicinn
+👩🏽‍🔧	Ciall: meacanaig boireann: tòna meadhanach doilleir a’ chraicinn
 👩🏾‍🔧	Ciall: meacanaig boireann: tòna meadhanach doilleir a’ chraicinn
 👩🏿‍🔧	meacanaig boireann: tòna dorcha a’ chraicinn
 👨‍🏭	fear-obrach factaraidh
@@ -344,7 +344,7 @@
 👩‍🎤	seinneadair boireann
 👩🏻‍🎤	Ciall: seinneadair boireann: tòna soilleir a’ chraicinn
 👩🏼‍🎤	Ciall: seinneadair boireann: tòna meadhanach soilleir a’ chraicinn
-👩🏽‍🎤	Ciall: seinneadair boireann: tòna meadhanach doilleir a’ chraicinn
+👩🏽‍🎤	Ciall: seinneadair boireann: tòna meadhanach a’ chraicinn
 👩🏾‍🎤	Ciall: seinneadair boireann: tòna meadhanach doilleir a’ chraicinn
 👩🏿‍🎤	seinneadair boireann: tòna dorcha a’ chraicinn
 👨‍🎨	fear-ealain
@@ -367,8 +367,8 @@
 👨🏼‍✈	Pìleat fireann: tòna meadhanach soilleir a’ chraicinn
 👨🏽‍✈️	pìleat fireann: tòna meadhanach a’ chraicinn
 👨🏽‍✈	pìleat fireann: tòna meadhanach a’ chraicinn
-👨🏾‍✈️	pìleat fireann: tòna meadhanach doilleir a’ chraicinn
-👨🏾‍✈	pìleat fireann: tòna meadhanach doilleir a’ chraicinn
+👨🏾‍✈️	Pìleat fireann: tòna meadhanach doilleir a’ chraicinn
+👨🏾‍✈	Pìleat fireann: tòna meadhanach doilleir a’ chraicinn
 👨🏿‍✈️	pìleat fireann: tòna dorcha a’ chraicinn
 👨🏿‍✈	pìleat fireann: tòna dorcha a’ chraicinn
 👩‍✈️	pìleat boireannach
@@ -392,11 +392,11 @@
 👩‍🚀	speuradair boireannach
 👩🏻‍🚀	Ciall: speuradair boireann: tòna soilleir a’ chraicinn
 👩🏼‍🚀	Ciall: speuradair boireann: tòna meadhanach soilleir a’ chraicinn
-👩🏽‍🚀	Ciall: speuradair boireann: tòna meadhanach doilleir a’ chraicinn
+👩🏽‍🚀	Ciall: speuradair boireann: tòna meadhanach a’ chraicinn
 👩🏾‍🚀	Ciall: speuradair boireann: tòna meadhanach doilleir a’ chraicinn
 👩🏿‍🚀	speuradair boireann: tòna doilleir a’ chraicinn
 👨‍🚒	fear-smàlaidh
-👨🏻‍🚒	Fear-smàlaidh: tòna soilleir a’ chraicinn
+👨🏻‍🚒	fear-smàlaidh: tòna soilleir a’ chraicinn
 👨🏼‍🚒	Ciall: neach-smàlaidh: tòna meadhanach soilleir a’ chraicinn
 👨🏽‍🚒	Ciall: neach-smàlaidh fireann: tòna meadhanach doilleir a’ chraicinn
 👨🏾‍🚒	Ciall: neach-smàlaidh fireann: tòna meadhanach doilleir a’ chraicinn
@@ -482,8 +482,8 @@
 💂‍♂	fear-gleidhidh
 💂🏻‍♂️	Geàrd fireann: tòna soilleir a’ chraicinn
 💂🏻‍♂	Geàrd fireann: tòna soilleir a’ chraicinn
-💂🏼‍♂️	Faclan-cinn: tòna meadhanach soilleir a’ chraicinn
-💂🏼‍♂	Faclan-cinn: tòna meadhanach soilleir a’ chraicinn
+💂🏼‍♂️	Faclan-luirg: geàrd fireann: tòna meadhanach soilleir a’ chraicinn
+💂🏼‍♂	Faclan-luirg: geàrd fireann: tòna meadhanach soilleir a’ chraicinn
 💂🏽‍♂️	Geàrd fireann: tòna meadhanach a’ chraicinn
 💂🏽‍♂	Geàrd fireann: tòna meadhanach a’ chraicinn
 💂🏾‍♂️	Faclan-cinn: tòna meadhanach doilleir a’ chraicinn
@@ -510,8 +510,8 @@
 👷🏿	neach-togail: tòna craiceann dorcha
 👷‍♂️	fear-obrach togail
 👷‍♂	fear-obrach togail
-👷🏻‍♂️	fear-togail: tòna soilleir a’ chraicinn
-👷🏻‍♂	fear-togail: tòna soilleir a’ chraicinn
+👷🏻‍♂️	Neach-togail fireann: tòna soilleir a’ chraicinn
+👷🏻‍♂	Neach-togail fireann: tòna soilleir a’ chraicinn
 👷🏼‍♂️	Ciall: neach-togail fireann: tòna meadhanach soilleir a’ chraicinn
 👷🏼‍♂	Ciall: neach-togail fireann: tòna meadhanach soilleir a’ chraicinn
 👷🏽‍♂️	Ciall: neach-togail fireann: tòna meadhanach doilleir a’ chraicinn
@@ -522,7 +522,7 @@
 👷🏿‍♂	fear-obrach togail: tòna dorcha a’ chraicinn
 👷‍♀️	boireannach neach-obrach togail
 👷‍♀	boireannach neach-obrach togail
-👷🏻‍♀️	Ciall: neach-togail boireann: tòna soilleir a’ chraicinn
+👷🏻‍♀️	obraiche-togail boireann: tòna soilleir a’ chraicinn
 👷🏻‍♀	obraiche-togail boireann: tòna soilleir a’ chraicinn
 👷🏼‍♀️	Ciall: neach-togail boireann: tòna meadhanach soilleir a’ chraicinn
 👷🏼‍♀	Ciall: neach-togail boireann: tòna meadhanach soilleir a’ chraicinn
@@ -600,8 +600,8 @@
 👱🏿	duine fionn: dark skin tòna
 👱‍♂️	fear fionn
 👱‍♂	fear fionn
-👱🏻‍♂️	fear fionn: tòna soilleir a’ chraicinn
-👱🏻‍♂	fear fionn: tòna soilleir a’ chraicinn
+👱🏻‍♂️	duine fionn: tòna soilleir a’ chraicinn
+👱🏻‍♂	duine fionn: tòna soilleir a’ chraicinn
 👱🏼‍♂️	Ciall: duine le falt bàn: tòna meadhanach soilleir a’ chraicinn
 👱🏼‍♂	Ciall: duine le falt bàn: tòna meadhanach soilleir a’ chraicinn
 👱🏽‍♂️	Ciall: duine le falt bàn: tòna meadhanach doilleir a’ chraicinn
@@ -918,7 +918,7 @@
 🧝🏼‍♂	Faclan-cinn: tòna meadhanach soilleir a’ chraicinn
 🧝🏽‍♂️	Elf: tòna meadhanach a’ chraicinn
 🧝🏽‍♂	Elf: tòna meadhanach a’ chraicinn
-🧝🏾‍♂️	elf: tòna meadhanach a’ chraicinn
+🧝🏾‍♂️	elf: tòna meadhanach doilleir a’ chraicinn
 🧝🏾‍♂	elf: tòna meadhanach a’ chraicinn
 🧝🏿‍♂️	fear elf: tòna dorcha a’ chraicinn
 🧝🏿‍♂	fear elf: tòna dorcha a’ chraicinn
@@ -944,8 +944,8 @@
 🙍🏻‍♂	Ciall: tòna soilleir a’ chraicinn
 🙍🏼‍♂️	Ciall: duine le drèin: tòna meadhanach soilleir a’ chraicinn
 🙍🏼‍♂	Ciall: duine le drèin: tòna meadhanach soilleir a’ chraicinn
-🙍🏽‍♂️	Ciall: duine a’ druiteadh: tòna meadhanach doilleir a’ chraicinn
-🙍🏽‍♂	Ciall: duine a’ druiteadh: tòna meadhanach doilleir a’ chraicinn
+🙍🏽‍♂️	Ciall: duine le drèin: tòna meadhanach a’ chraicinn
+🙍🏽‍♂	Ciall: duine le drèin: tòna meadhanach a’ chraicinn
 🙍🏾‍♂️	Ciall: duine a’ druiteadh: tòna meadhanach doilleir a’ chraicinn
 🙍🏾‍♂	Ciall: duine a’ druiteadh: tòna meadhanach doilleir a’ chraicinn
 🙍🏿‍♂️	fear ag èigheach: tòna dorcha a’ chraicinn
@@ -1080,7 +1080,7 @@
 💁🏽‍♀	Ciall: boireannach ri caisreabhachd: tòna meadhanach a’ chraicinn
 💁🏾‍♀️	Ciall: boireannach ri caisreabhachd: tòna meadhanach doilleir a’ chraicinn
 💁🏾‍♀	Ciall: boireannach ri caisreabhachd: tòna meadhanach doilleir a’ chraicinn
-💁🏿‍♀️	làmh a’ smèideadh: tòna doilleir a’ chraicinn
+💁🏿‍♀️	làmh a’ sreap: tòna doilleir a’ chraicinn
 💁🏿‍♀	làmh a’ smèideadh: tòna doilleir a’ chraicinn
 🙋	neach a' togail lamh
 🙋🏻	neach a’ togail a làmh: tòna soilleir a’ chraicinn
@@ -1175,7 +1175,7 @@
 🤷	duine a' slugadh
 🤷🏻	Ciall: neach a’ diùltadh rud: tòna soilleir a’ chraicinn
 🤷🏼	Ciall: neach a’ diùltadh rud: tòna meadhanach soilleir a’ chraicinn
-🤷🏽	Ciall: neach a’ diùltadh rud: tòna meadhanach doilleir a’ chraicinn
+🤷🏽	Ciall: duine a’ druiteadh: tòna meadhanach doilleir a’ chraicinn
 🤷🏾	Ciall: neach a’ diùltadh rud: tòna meadhanach doilleir a’ chraicinn
 🤷🏿	neach a’ crathadh: tòna dorcha a’ chraicinn
 🤷‍♂️	fear a' slugadh
@@ -1198,8 +1198,8 @@
 🤷🏼‍♀	Ciall: boireannach ag aontachadh ri rud: tòna meadhanach soilleir a’ chraicinn
 🤷🏽‍♀️	Ciall: boireannach a’ cromadh: tòna meadhanach doilleir a’ chraicinn
 🤷🏽‍♀	Ciall: boireannach a’ cromadh: tòna meadhanach doilleir a’ chraicinn
-🤷🏾‍♀️	Ciall: boireannach a’ cromadh: tòna meadhanach doilleir a’ chraicinn
-🤷🏾‍♀	Ciall: boireannach a’ cromadh: tòna meadhanach doilleir a’ chraicinn
+🤷🏾‍♀️	Ciall: boireannach ag aontachadh ri rud: tòna meadhanach doilleir a’ chraicinn
+🤷🏾‍♀	Ciall: boireannach ag aontachadh ri rud: tòna meadhanach doilleir a’ chraicinn
 🤷🏿‍♀️	boireannach a’ crathadh: tòna dorcha a’ chraicinn
 🤷🏿‍♀	boireannach a’ crathadh: tòna dorcha a’ chraicinn
 💆	neach a' faighinn massage
@@ -1207,7 +1207,7 @@
 💆🏼	Ciall: neach a’ faighinn massage: tòna meadhanach soilleir a’ chraicinn
 💆🏽	Ciall: neach a’ faighinn massage: tòna meadhanach doilleir a’ chraicinn
 💆🏾	Ciall: neach a’ faighinn massage: tòna meadhanach doilleir a’ chraicinn
-💆🏿	neach a’ faighinn massage: tòna dorcha a’ chraicinn
+💆🏿	neach a’ faighinn massage: tòna craiceann dorcha
 💆‍♂️	duine a' faighinn massage
 💆‍♂	duine a' faighinn massage
 💆🏻‍♂️	duine a’ faighinn massage: tòna soilleir a’ chraicinn
@@ -1280,8 +1280,8 @@
 🚶🏾‍♂	Ciall: duine a’ coiseachd: tòna meadhanach doilleir a’ chraicinn
 🚶🏿‍♂️	fear a’ coiseachd: tòna dorcha a’ chraicinn
 🚶🏿‍♂	fear a’ coiseachd: tòna dorcha a’ chraicinn
-🚶‍♀️	boireannach a' coiseachd
-🚶‍♀	boireannach a' coiseachd
+🚶‍♀️	boireannach a’ coiseachd
+🚶‍♀	boireannach a’ coiseachd
 🚶🏻‍♀️	boireannach a’ coiseachd: tòna soilleir a’ chraicinn
 🚶🏻‍♀	boireannach a’ coiseachd: tòna soilleir a’ chraicinn
 🚶🏼‍♀️	Ciall: boireannach a’ coiseachd: tòna meadhanach soilleir a’ chraicinn
@@ -1526,8 +1526,8 @@
 🏄🏻‍♀	Ciall: boireannach a’ surfadh: tòna soilleir a’ chraicinn
 🏄🏼‍♀️	Ciall: boireannach a’ surfadh: tòna meadhanach soilleir a’ chraicinn
 🏄🏼‍♀	Ciall: boireannach a’ surfadh: tòna meadhanach soilleir a’ chraicinn
-🏄🏽‍♀️	Ciall: boireannach a’ surfadh: tòna meadhanach doilleir a’ chraicinn
-🏄🏽‍♀	Ciall: boireannach a’ surfadh: tòna meadhanach doilleir a’ chraicinn
+🏄🏽‍♀️	Ciall: boireannach a’ surfadh: tòna meadhanach a’ chraicinn
+🏄🏽‍♀	Ciall: boireannach a’ surfadh: tòna meadhanach a’ chraicinn
 🏄🏾‍♀️	Ciall: boireannach a’ surfadh: tòna meadhanach doilleir a’ chraicinn
 🏄🏾‍♀	Ciall: boireannach a’ surfadh: tòna meadhanach doilleir a’ chraicinn
 🏄🏿‍♀️	boireannach a’ surfadh: tòna dorcha a’ chraicinn
@@ -1720,8 +1720,8 @@
 🚵🏽‍♀	Ciall: boireannach ri rothaireachd beinne: tòna meadhanach a’ chraicinn
 🚵🏾‍♀️	Ciall: boireannach ri rothaireachd beinne: tòna meadhanach doilleir a’ chraicinn
 🚵🏾‍♀	Ciall: boireannach ri rothaireachd beinne: tòna meadhanach doilleir a’ chraicinn
-🚵🏿‍♀️	boireannach a’ rothaireachd beinne: tòna dorcha a’ chraicinn
-🚵🏿‍♀	boireannach a’ rothaireachd beinne: tòna dorcha a’ chraicinn
+🚵🏿‍♀️	boireannach ri rothaireachd beinne: tòna dorcha a’ chraicinn
+🚵🏿‍♀	boireannach ri rothaireachd beinne: tòna dorcha a’ chraicinn
 🏎️	càr rèisidh
 🏎	càr rèisidh
 🏍️	motair-baidhsagal
@@ -1762,9 +1762,9 @@
 🤼‍♀️	boireannaich a' carachd
 🤼‍♀	boireannaich a' carachd
 🤽	neach a' cluich polo uisge
-🤽🏻	Neach a’ cluich polo uisge: tòna soilleir a’ chraicinn
+🤽🏻	Duine a’ cluich polo uisge: tòna soilleir a’ chraicinn
 🤽🏼	Ciall: neach a’ cluich polo-uisge: tòna meadhanach soilleir a’ chraicinn
-🤽🏽	Ciall: duine a’ cluich polo-uisge: tòna meadhanach doilleir a’ chraicinn
+🤽🏽	Ciall: neach a’ cluich polo-uisge: tòna meadhanach doilleir a’ chraicinn
 🤽🏾	Ciall: neach a’ cluich polo-uisge: tòna meadhanach doilleir a’ chraicinn
 🤽🏿	neach a’ cluich polo uisge: tòna craiceann dorcha
 🤽‍♂️	duine a’ cluich polo uisge
@@ -1803,7 +1803,7 @@
 🤾🏻‍♂	duine a’ cluich ball-làimhe: tòna soilleir a’ chraicinn
 🤾🏼‍♂️	Ciall: duine a’ cluich ball-làimhe: tòna meadhanach soilleir a’ chraicinn
 🤾🏼‍♂	Ciall: duine a’ cluich ball-làimhe: tòna meadhanach soilleir a’ chraicinn
-🤾🏽‍♂️	Ciall: duine a’ cluich ball-làimhe: tòna meadhanach doilleir a’ chraicinn
+🤾🏽‍♂️	Ciall: duine a’ cluich ball-làimhe: tòna meadhanach a’ chraicinn
 🤾🏽‍♂	Ciall: duine a’ cluich ball-làimhe: tòna meadhanach a’ chraicinn
 🤾🏾‍♂️	Ciall: duine a’ cluich ball-làimhe: tòna meadhanach doilleir a’ chraicinn
 🤾🏾‍♂	Ciall: duine a’ cluich ball-làimhe: tòna meadhanach doilleir a’ chraicinn
@@ -1846,7 +1846,7 @@
 🤹🏼‍♀️	Ciall: boireannach ri goilf: tòna meadhanach soilleir a’ chraicinn
 🤹🏼‍♀	Ciall: boireannach ri goilf: tòna meadhanach soilleir a’ chraicinn
 🤹🏽‍♀️	Ciall: boireannach a’ bocadh bàla: tòna meadhanach a’ chraicinn
-🤹🏽‍♀	Ciall: boireannach ri goilf: tòna meadhanach doilleir a’ chraicinn
+🤹🏽‍♀	Ciall: boireannach a’ bocadh bàla: tòna meadhanach a’ chraicinn
 🤹🏾‍♀️	Ciall: boireannach a’ bocadh bàla: tòna meadhanach doilleir a’ chraicinn
 🤹🏾‍♀	Ciall: boireannach a’ bocadh bàla: tòna meadhanach doilleir a’ chraicinn
 🤹🏿‍♀️	boireannach a’ suirghe: tòna doilleir a’ chraicinn
@@ -1937,7 +1937,7 @@
 ☝🏽	Ciall: tòna meadhanach a’ chraicinn
 ☝🏾	Ciall: tòna meadhanach doilleir a’ chraicinn
 ☝🏿	a’ nochdadh: tòna doilleir a’ chraicinn
-👆	clàr-amais cùl-làimhe a 'nochdadh
+👆	clàr-amais cùl-taic a’ nochdadh
 👆🏻	clàr-amais cùl a’ comharrachadh: tòna soilleir a’ chraicinn
 👆🏼	Ciall: druim na làimhe, colgag a’ tomhadh suas: tòna meadhanach soilleir a’ chraicinn
 👆🏽	Ciall: druim na làimhe, colgag a’ tomhadh suas: tòna meadhanach doilleir a’ chraicinn
@@ -2026,7 +2026,7 @@
 👊	dòrn ri thighinn
 👊🏻	dòrn a’ tighinn thugad: tòna soilleir a’ chraicinn
 👊🏼	Ciall: dòrn a’ tighinn thugad: tòna meadhanach soilleir a’ chraicinn
-👊🏽	dòrn a’ tighinn thugad: tòna meadhanach a’ chraicinn
+👊🏽	dòrn a’ tighinn thugad: tòna meadhanach doilleir a’ chraicinn
 👊🏾	Ciall: dòrn a’ tighinn thugad: tòna meadhanach doilleir a’ chraicinn
 👊🏿	dòrn a’ tighinn a-steach: tòna dorcha a’ chraicinn
 🤛	dòrn air an taobh chlì
@@ -2057,8 +2057,8 @@
 🤟🏻	gluasad-a-steach gaol: tòna soilleir a’ chraicinn
 🤟🏼	Ciall: gluasad a tha gaol agam ort: tòna meadhanach soilleir a’ chraicinn
 🤟🏽	gluasad-a-steach gaol: tòna meadhanach a’ chraicinn
-🤟🏾	Faclan-cinn: gluasad-a-steach gaol: tòna meadhanach doilleir a’ chraicinn
-🤟🏿	gluasad gaol-leat: tòna dorcha a’ chraicinn
+🤟🏾	Faclan-cinn: tòna meadhanach soilleir a’ chraicinn
+🤟🏿	gluasad gaol-thu: tòna dorcha a’ chraicinn
 ✍️	làmh-sgrìobhaidh
 ✍	làmh-sgrìobhaidh
 ✍🏻	làmh sgrìobhaidh: tòna soilleir a’ chraicinn
@@ -2219,7 +2219,7 @@
 🦝	raccoon
 🐱	aodann cait
 🐈	cat
-🦁	aodann leòmhann
+🦁	aghaidh leòmhann
 🐯	aghaidh tìgear
 🐅	tìgear
 🐆	leopard
@@ -2421,7 +2421,7 @@
 🎂	cèic co-latha-breith
 🍰	shortcake
 🧁	cupcake
-🥧	pìos
+🥧	pie
 🍫	bàr teòclaid
 🍬	candy
 🍭	lollipop
@@ -2529,7 +2529,7 @@
 🚂	locomotaibh
 🚃	càr rèile
 🚄	trèana aig astar luath
-🚅	trèana urchair
+🚅	trèana bullet
 🚆	trèana
 🚇	metro
 🚈	rèile aotrom
@@ -2537,7 +2537,7 @@
 🚊	tram
 🚝	monorail
 🚞	rathad-iarainn beinne
-🚋	càr tram
+🚋	càr trama
 🚌	bus
 🚍	bus a' tighinn
 🚎	trol-bhus
@@ -2592,7 +2592,7 @@
 🚁	heileacoptair
 🚟	rèile crochaidh
 🚠	càball beinne
-🚡	tram adhair
+🚡	slighe-trama adhair
 🛰️	saideal
 🛰	saideal
 🚀	rocaid
@@ -2611,7 +2611,7 @@
 🕰️	cloc mantelpiece
 🕰	cloc mantelpiece
 🕛	dà uair dheug
-🕧	dhà-dheug
+🕧	dà-fhichead
 🕐	aon uair
 🕜	aon tri-fichead
 🕑	dà uair
@@ -2671,7 +2671,7 @@
 🌨️	neul le sneachd
 🌨	neul le sneachd
 🌩️	neul le dealanaich
-🌩	neul le dealanaich
+🌩	neul le dealanach
 🌪️	iomghaoth
 🌪	iomghaoth
 🌫️	ceo
@@ -2710,7 +2710,7 @@
 🎍	sgeadachadh giuthais
 🎎	liudhagan Iapanach
 🎏	streapadair carp
-🎐	clach-gaoithe
+🎐	clisgeadh gaoithe
 🎑	cuirm sealladh na gealaich
 🧧	cèis dhearg
 🎀	ribean
@@ -2726,7 +2726,7 @@
 🏅	bonn spòrs
 🥇	Bonn 1d àite
 🥈	Bonn 2na àite
-🥉	Bonn 3mh àite
+🥉	Bonn an treas àite
 ⚽	ball-coise
 ⚾	ball-basgaid
 🥎	ball bog
@@ -3063,7 +3063,7 @@
 ↩️	saighead dheas a' lùbadh dhan taobh chlì
 ↩	saighead dheas a' lùbadh dhan taobh chlì
 ↪️	saighead chlì a' lùbadh deas
-↪	saighead chlì a' lùbadh deas
+↪	saighead chlì a’ lùbadh deas
 ⤴️	saighead dheas a' lùbadh suas
 ⤴	saighead dheas a' lùbadh suas
 ⤵️	saighead dheas a' lùbadh sìos
@@ -3103,7 +3103,7 @@
 ♌	Leo
 ♍	Mhaighdean
 ♎	Libra
-♏	Sgorp
+♏	Scorpio
 ♐	Sagittarius
 ♑	Gabhar
 ♒	Aquarius
@@ -3282,7 +3282,7 @@
 ◽	geal meadhanach-beag ceàrnagach
 ◾	ceàrnag meadhanach-beag dubh
 ⬛	ceàrnag mhòr dhubh
-⬜	geal ceàrnagach mòr
+⬜	ceàrnag mhòr gheal
 🔶	daoimean mòr orains
 🔷	daoimean mòr gorm
 🔸	daoimean beag orains

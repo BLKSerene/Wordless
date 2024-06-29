@@ -33,7 +33,8 @@ from wordless.wl_nlp import (
     wl_dependency_parsing,
     wl_matching,
     wl_texts,
-    wl_token_processing
+    wl_token_processing,
+    wl_nlp_utils
 )
 from wordless.wl_utils import wl_misc, wl_threading
 from wordless.wl_widgets import (
@@ -584,7 +585,7 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                                     if sentence_token is head:
                                         sentence_tokens_raw.append(f'''
                                             <span style="color: {head_color}; font-weight: bold;">
-                                                {sentence_token.display_text(punc_mark = True)}
+                                                {wl_nlp_utils.escape_token(sentence_token.display_text(punc_mark = True))}
                                             </span>
                                         ''')
 
@@ -596,13 +597,15 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                                     elif sentence_token is token:
                                         sentence_tokens_raw.append(f'''
                                             <span style="color: {dependent_color}; font-weight: bold;">
-                                                {sentence_token.display_text(punc_mark = True)}
+                                                {wl_nlp_utils.escape_token(sentence_token.display_text(punc_mark = True))}
                                             </span>
                                         ''')
 
                                         i_dependent = i
                                     else:
-                                        sentence_tokens_raw.append(sentence_token.display_text(punc_mark = True))
+                                        sentence_tokens_raw.append(
+                                            wl_nlp_utils.escape_token(sentence_token.display_text(punc_mark = True))
+                                        )
 
                                     sentence_tokens_fig.append(copy.deepcopy(sentence_token))
 
@@ -617,7 +620,10 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                                         sentence_tokens_search.append(sentence_token)
 
                                         if sentence_token.punc_mark:
-                                            sentence_tokens_search.append(wl_texts.Wl_Token(sentence_token.punc_mark, lang = sentence_token.lang))
+                                            sentence_tokens_search.append(wl_texts.Wl_Token(
+                                                sentence_token.punc_mark,
+                                                lang = sentence_token.lang
+                                            ))
 
                                 # Head
                                 results[-1].append(head)

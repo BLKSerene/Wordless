@@ -67,7 +67,7 @@
 😱	kasvot huutavat pelosta
 🥵	kuumat kasvot
 🥶	kylmät kasvot
-😳	punoitetut kasvot
+😳	punaiset kasvot
 🤪	hullu kasvot
 😵	huimaavat kasvot
 😡	pörssivä naama
@@ -99,7 +99,7 @@
 ☠	kallo ja sääriluut
 👻	aave
 👽	ulkomaalainen
-👾	muukalainen hirviö
+👾	ulkomaalainen hirviö
 🤖	robotin kasvot
 💩	kakkakasa
 😺	virnistävä kissannaama
@@ -339,13 +339,13 @@
 👨🏻‍🎤	mieslaulaja: vaalea iho
 👨🏼‍🎤	mieslaulaja: keskivaalea ihonsävy
 👨🏽‍🎤	mieslaulaja: keskisävyinen iho
-👨🏾‍🎤	mieslaulaja: keskitumman ihon sävy
+👨🏾‍🎤	mieslaulaja: keskitumma ihonväri
 👨🏿‍🎤	mieslaulaja: tumma iho
 👩‍🎤	naislaulaja
 👩🏻‍🎤	naislaulaja: vaalea iho
-👩🏼‍🎤	naislaulaja: keskivaalea ihonsävy
+👩🏼‍🎤	naislaulaja: keskivaalea iho
 👩🏽‍🎤	naislaulaja: keskisävyinen iho
-👩🏾‍🎤	naislaulaja: keskitumman ihon sävy
+👩🏾‍🎤	naislaulaja: keskitumma ihonväri
 👩🏿‍🎤	naislaulaja: tumma iho
 👨‍🎨	mies taiteilija
 👨🏻‍🎨	miestaiteilija: vaalea iho
@@ -367,8 +367,8 @@
 👨🏼‍✈	miespilotti: keskivaalea ihonsävy
 👨🏽‍✈️	miespilotti: keskisävyinen iho
 👨🏽‍✈	miespilotti: keskisävyinen iho
-👨🏾‍✈️	miespilotti: keskitumma ihonväri
-👨🏾‍✈	miespilotti: keskitumma ihonväri
+👨🏾‍✈️	miespilotti: keskitumman ihon sävy
+👨🏾‍✈	miespilotti: keskitumman ihon sävy
 👨🏿‍✈️	miespilotti: tumma iho
 👨🏿‍✈	miespilotti: tumma iho
 👩‍✈️	naislentäjä
@@ -384,7 +384,7 @@
 👩🏿‍✈️	nainen lentäjä: tumma iho
 👩🏿‍✈	nainen lentäjä: tumma iho
 👨‍🚀	mies astronautti
-👨🏻‍🚀	mies astronautti: vaalea iho
+👨🏻‍🚀	miesastronautti: vaalea iho
 👨🏼‍🚀	miesastronautti: keskivaalea iho
 👨🏽‍🚀	miesastronautti: keskisävyinen iho
 👨🏾‍🚀	miesastronautti: keskitumma ihonväri
@@ -436,7 +436,7 @@
 👮🏾‍♀️	naispoliisi: keskitumma iho
 👮🏾‍♀	naispoliisi: keskitumma iho
 👮🏿‍♀️	nainen poliisi: tumma iho
-👮🏿‍♀	naispoliisi: tumma iho
+👮🏿‍♀	nainen poliisi: tumma iho
 🕵️	etsivä
 🕵	etsivä
 🕵🏻	etsivä: vaalea iho
@@ -482,8 +482,8 @@
 💂‍♂	mies vartija
 💂🏻‍♂️	miesvartija: vaalea iho
 💂🏻‍♂	miesvartija: vaalea iho
-💂🏼‍♂️	miesvartija: keskivaalea iho
-💂🏼‍♂	miesvartija: keskivaalea iho
+💂🏼‍♂️	miesvartija: keskivaalea ihonsävy
+💂🏼‍♂	miesvartija: keskivaalea ihonsävy
 💂🏽‍♂️	miesvartija: keskisävyinen iho
 💂🏽‍♂	miesvartija: keskisävyinen iho
 💂🏾‍♂️	miesvartija: keskitumma iho
@@ -546,7 +546,7 @@
 👸🏿	prinsessa: tumma iho
 👳	turbaani pukeutunut henkilö
 👳🏻	turbaania käyttävä henkilö: vaalea iho
-👳🏼	turbaania käyttävä henkilö: keskivaalea iho
+👳🏼	turbaania käyttävä henkilö: keskivaalea ihonväri
 👳🏽	turbaania käyttävä henkilö: keskisävyinen iho
 👳🏾	turbaania käyttävä henkilö: keskitumma iho
 👳🏿	turbaania käyttävä henkilö: tumma iho
@@ -570,7 +570,7 @@
 👳🏼‍♀	turbaani pukeutunut nainen: keskivaalea iho
 👳🏽‍♀️	turbaani pukeutunut nainen: keskisävyinen iho
 👳🏽‍♀	turbaani pukeutunut nainen: keskisävyinen iho
-👳🏾‍♀️	nainen, jolla on yllään turbaani: keskitumma iho
+👳🏾‍♀️	turbaani pukeutunut nainen: keskitumma iho
 👳🏾‍♀	turbaani pukeutunut nainen: keskitumma iho
 👳🏿‍♀️	turbaani pukeutunut nainen: tumma iho
 👳🏿‍♀	turbaani pukeutunut nainen: tumma iho
@@ -680,7 +680,7 @@
 👰🏻	morsian hunnulla: vaalea ihonsävy
 👰🏼	morsian hunnulla: keskivaalea ihonsävy
 👰🏽	morsian hunnulla: keskisävyinen iho
-👰🏾	morsian hunnulla: keskitumma ihonväri
+👰🏾	morsian hunnulla: keskitumma iho
 👰🏿	morsian hunnulla: tumma iho
 🤰	raskaana oleva nainen
 🤰🏻	raskaana oleva nainen: vaalea iho
@@ -722,12 +722,12 @@
 🦸‍♀	nainen supersankari
 🦸🏻‍♀️	nainen supersankari: vaalea ihonsävy
 🦸🏻‍♀	nainen supersankari: vaalea ihonsävy
-🦸🏼‍♀️	nainen supersankari: keskivaalea ihonväri
-🦸🏼‍♀	nainen supersankari: keskivaalea ihonväri
+🦸🏼‍♀️	nainen supersankari: keskivaalea ihonsävy
+🦸🏼‍♀	nainen supersankari: keskivaalea ihonsävy
 🦸🏽‍♀️	nainen supersankari: keskisävyinen iho
 🦸🏽‍♀	nainen supersankari: keskisävyinen iho
-🦸🏾‍♀️	nainen supersankari: keskitumma ihonväri
-🦸🏾‍♀	nainen supersankari: keskitumma ihonväri
+🦸🏾‍♀️	nainen supersankari: keskitumman ihon sävy
+🦸🏾‍♀	nainen supersankari: keskitumman ihon sävy
 🦸🏿‍♀️	nainen supersankari: tumma iho
 🦸🏿‍♀	nainen supersankari: tumma iho
 🦸‍♂️	mies supersankari
@@ -738,8 +738,8 @@
 🦸🏼‍♂	mies supersankari: keskivaalea ihonsävy
 🦸🏽‍♂️	mies supersankari: keskisävyinen iho
 🦸🏽‍♂	mies supersankari: keskisävyinen iho
-🦸🏾‍♂️	mies supersankari: keskitumma ihonsävy
-🦸🏾‍♂	mies supersankari: keskitumma ihonsävy
+🦸🏾‍♂️	mies supersankari: keskitumma ihonväri
+🦸🏾‍♂	mies supersankari: keskitumma ihonväri
 🦸🏿‍♂️	mies supersankari: tumma iho
 🦸🏿‍♂	mies supersankari: tumma iho
 🦹	superroisto
@@ -782,7 +782,7 @@
 🧙‍♀	nainen taikuri
 🧙🏻‍♀️	nainen taikuri: vaalea iho
 🧙🏻‍♀	nainen taikuri: vaalea iho
-🧙🏼‍♀️	nainen taikuri: keskivaalea iho
+🧙🏼‍♀️	nainen taikuri: keskivaalea ihonväri
 🧙🏼‍♀	nainen taikuri: keskivaalea iho
 🧙🏽‍♀️	nainen taikuri: keskisävyinen iho
 🧙🏽‍♀	nainen taikuri: keskisävyinen iho
@@ -829,7 +829,7 @@
 🧚🏽‍♂️	mieskeiju: keskisävyinen iho
 🧚🏽‍♂	mieskeiju: keskisävyinen iho
 🧚🏾‍♂️	mieskeiju: keskitumma ihonväri
-🧚🏾‍♂	mieskeiju: keskitumma ihonväri
+🧚🏾‍♂	mieskeiju: keskitumman ihon sävy
 🧚🏿‍♂️	mieskeiju: tumma iho
 🧚🏿‍♂	mieskeiju: tumma iho
 🧛	vampyyri
@@ -841,13 +841,13 @@
 🧛‍♀️	nainen vampyyri
 🧛‍♀	nainen vampyyri
 🧛🏻‍♀️	nainen vampyyri: vaalea iho
-🧛🏻‍♀	nainen vampyyri: vaalea iho
+🧛🏻‍♀	nainen vampyyri: vaalea ihonsävy
 🧛🏼‍♀️	nainen vampyyri: keskivaalea ihonsävy
-🧛🏼‍♀	nainen vampyyri: keskivaalea ihonväri
+🧛🏼‍♀	nainen vampyyri: keskivaalea ihonsävy
 🧛🏽‍♀️	nainen vampyyri: keskisävyinen iho
 🧛🏽‍♀	nainen vampyyri: keskisävyinen iho
-🧛🏾‍♀️	nainen vampyyri: keskitumma ihonväri
-🧛🏾‍♀	nainen vampyyri: keskitumma ihonväri
+🧛🏾‍♀️	nainen vampyyri: keskitumman ihon sävy
+🧛🏾‍♀	nainen vampyyri: keskitumman ihon sävy
 🧛🏿‍♀️	nainen vampyyri: tumma iho
 🧛🏿‍♀	nainen vampyyri: tumma iho
 🧛‍♂️	mies vampyyri
@@ -880,8 +880,8 @@
 🧜🏾‍♀	merenneito: keskitumma ihonväri
 🧜🏿‍♀️	merenneito: tumma iho
 🧜🏿‍♀	merenneito: tumma iho
-🧜‍♂️	merenmies
-🧜‍♂	merenmies
+🧜‍♂️	Merman
+🧜‍♂	Merman
 🧜🏻‍♂️	Merman: vaalea ihonsävy
 🧜🏻‍♂	Merman: vaalea ihonsävy
 🧜🏼‍♂️	Merman: keskivaalea ihonsävy
@@ -914,8 +914,8 @@
 🧝‍♂	mies tonttu
 🧝🏻‍♂️	miestonttu: vaalea iho
 🧝🏻‍♂	miestonttu: vaalea iho
-🧝🏼‍♂️	miestonttu: keskivaalea iho
-🧝🏼‍♂	miestonttu: keskivaalea iho
+🧝🏼‍♂️	miestonttu: keskivaalea ihonväri
+🧝🏼‍♂	miestonttu: keskivaalea ihonväri
 🧝🏽‍♂️	miestonttu: keskisävyinen iho
 🧝🏽‍♂	miestonttu: keskisävyinen iho
 🧝🏾‍♂️	miestonttu: keskitumma ihonväri
@@ -966,32 +966,32 @@
 🙎🏻	turskuttava henkilö: vaalea iho
 🙎🏼	turskuttava henkilö: keskivaalea iho
 🙎🏽	turskuttava henkilö: keskisävyinen iho
-🙎🏾	turskuttava henkilö: keskitumman ihon sävy
+🙎🏾	turskuttava henkilö: keskitumma iho
 🙎🏿	turskuttava henkilö: tumma iho
 🙎‍♂️	mies pöyhkeilee
-🙎‍♂	mies pöyhkeilee
+🙎‍♂	mies töksähtää
 🙎🏻‍♂️	mies turvottaa: vaalea iho
 🙎🏻‍♂	mies turvottaa: vaalea iho
-🙎🏼‍♂️	mies turvottaa: keskivaalea iho
-🙎🏼‍♂	mies turvottaa: keskivaalea iho
-🙎🏽‍♂️	miestärystely: keskisävyinen iho
-🙎🏽‍♂	miestärystely: keskisävyinen iho
+🙎🏼‍♂️	mies turskelee: keskivaalea iho
+🙎🏼‍♂	mies turskelee: keskivaalea iho
+🙎🏽‍♂️	mies turvottaa: keskisävyinen iho
+🙎🏽‍♂	mies turvottaa: keskisävyinen iho
 🙎🏾‍♂️	mies turvottaa: keskitumma iho
 🙎🏾‍♂	mies turvottaa: keskitumma iho
 🙎🏿‍♂️	mies turvottaa: tumma iho
 🙎🏿‍♂	mies turvottaa: tumma iho
 🙎‍♀️	nainen pöyhkeilee
 🙎‍♀	nainen pöyhkeilee
-🙎🏻‍♀️	nainen turskuttaa: vaalea iho
-🙎🏻‍♀	nainen turskuttaa: vaalea iho
-🙎🏼‍♀️	nainen turhailee: keskivaalea iho
-🙎🏼‍♀	nainen turhailee: keskivaalea iho
+🙎🏻‍♀️	nainen turhailee: vaalea iho
+🙎🏻‍♀	nainen turhailee: vaalea iho
+🙎🏼‍♀️	nainen turvottaa: keskivaalea iho
+🙎🏼‍♀	nainen turvottaa: keskivaalea iho
 🙎🏽‍♀️	nainen turhailee: keskisävyinen iho
 🙎🏽‍♀	nainen turhailee: keskisävyinen iho
 🙎🏾‍♀️	nainen turhailee: keskitumma iho
 🙎🏾‍♀	nainen turhailee: keskitumma iho
 🙎🏿‍♀️	nainen turhailee: tumma iho
-🙎🏿‍♀	nainen turhailee: tumma iho
+🙎🏿‍♀	nainen pöyhkeilee: tumma iho
 🙅	henkilö elehtii EI
 🙅🏻	EI: vaalea iho
 🙅🏼	henkilö elehtii EI: keskivaalea ihonväri
@@ -1006,20 +1006,20 @@
 🙅🏼‍♂	mies elehtii EI: keskivaalea ihonväri
 🙅🏽‍♂️	mies elehtii EI: keskisävyinen iho
 🙅🏽‍♂	mies elehtii EI: keskisävyinen iho
-🙅🏾‍♂️	mies elehtii EI: keskitumma iho
-🙅🏾‍♂	mies elehtii EI: keskitumma iho
+🙅🏾‍♂️	mies elehtii EI: keskitumma ihonväri
+🙅🏾‍♂	mies elehtii EI: keskitumma ihonväri
 🙅🏿‍♂️	mies elehtii EI: tumma iho
 🙅🏿‍♂	mies elehtii EI: tumma iho
 🙅‍♀️	nainen elehtii EI
 🙅‍♀	nainen elehtii EI
 🙅🏻‍♀️	nainen elehtii EI: vaalea iho
 🙅🏻‍♀	nainen elehtii EI: vaalea iho
-🙅🏼‍♀️	nainen elehtii EI: keskivaalea ihonsävy
+🙅🏼‍♀️	nainen elehtii EI: keskivaalea ihonväri
 🙅🏼‍♀	nainen elehtii EI: keskivaalea ihonsävy
 🙅🏽‍♀️	nainen elehtii EI: keskisävyinen iho
 🙅🏽‍♀	nainen elehtii EI: keskisävyinen iho
-🙅🏾‍♀️	nainen elehtii EI: keskitumma ihonväri
-🙅🏾‍♀	nainen elehtii EI: keskitumma ihonväri
+🙅🏾‍♀️	nainen elehtii EI: keskitumman ihon sävy
+🙅🏾‍♀	nainen elehtii EI: keskitumman ihon sävy
 🙅🏿‍♀️	nainen elehtii EI: tumma iho
 🙅🏿‍♀	nainen elehtii EI: tumma iho
 🙆	henkilö elehtii OK
@@ -1048,8 +1048,8 @@
 🙆🏼‍♀	nainen elehtii OK: keskivaalea iho
 🙆🏽‍♀️	nainen elehtii OK: keskisävyinen iho
 🙆🏽‍♀	nainen elehtii OK: keskisävyinen iho
-🙆🏾‍♀️	nainen elehtii OK: keskitumma iho
-🙆🏾‍♀	nainen elehtii OK: keskitumma iho
+🙆🏾‍♀️	nainen elehtii OK: keskitumma ihonväri
+🙆🏾‍♀	nainen elehtii OK: keskitumma ihonväri
 🙆🏿‍♀️	nainen elehtii OK: tumma iho
 🙆🏿‍♀	nainen elehtii OK: tumma iho
 💁	kättä kallistava henkilö
@@ -1084,7 +1084,7 @@
 💁🏿‍♀	nainen kallistaa kättä: tumma iho
 🙋	kättä nostava henkilö
 🙋🏻	kättä nostava henkilö: vaalea iho
-🙋🏼	kättä nostava henkilö: keskivaalea iho
+🙋🏼	kättä nostava henkilö: keskivaalea ihonväri
 🙋🏽	kättä nostava henkilö: keskisävyinen iho
 🙋🏾	kättä nostava henkilö: keskitumma iho
 🙋🏿	kättä nostava henkilö: tumma iho
@@ -1113,11 +1113,11 @@
 🙋🏿‍♀️	nainen nostaa kättä: tumma iho
 🙋🏿‍♀	nainen nostaa kättä: tumma iho
 🙇	henkilö kumartaa
-🙇🏻	henkilö kumartaa: vaalea iho
+🙇🏻	henkilö kumartuu: vaalea iho
 🙇🏼	kumartava henkilö: keskivaalea iho
-🙇🏽	henkilö kumartuu: keskisävyinen iho
+🙇🏽	kumartava henkilö: keskisävyinen iho
 🙇🏾	henkilö kumartuu: keskitumma iho
-🙇🏿	henkilö kumartuu: tumma iho
+🙇🏿	henkilö kumartaa: tumma iho
 🙇‍♂️	mies kumartaa
 🙇‍♂	mies kumartaa
 🙇🏻‍♂️	mies kumartuu: vaalea iho
@@ -1164,11 +1164,11 @@
 🤦‍♀	nainen facepalming
 🤦🏻‍♀️	nainen facepalming: vaalea ihonväri
 🤦🏻‍♀	nainen facepalming: vaalea ihonväri
-🤦🏼‍♀️	nainen facepalming: keskivaalea ihonväri
-🤦🏼‍♀	nainen facepalming: keskivaalea ihonväri
-🤦🏽‍♀️	nainen facepalming: keskisävyinen iho
+🤦🏼‍♀️	naisen kasvojen palaaminen: keskivaalea iho
+🤦🏼‍♀	naisen kasvojen palaaminen: keskivaalea iho
+🤦🏽‍♀️	naisen kasvojen palaaminen: keskisävyinen iho
 🤦🏽‍♀	naisen kasvojen palaaminen: keskisävyinen iho
-🤦🏾‍♀️	nainen facepalming: keskitumman ihon sävy
+🤦🏾‍♀️	naisen kasvojen palaaminen: keskitumman ihon sävy
 🤦🏾‍♀	naisen kasvojen palaaminen: keskitumman ihon sävy
 🤦🏿‍♀️	nainen facepalming: tumma iho
 🤦🏿‍♀	nainen facepalming: tumma iho
@@ -1233,7 +1233,7 @@
 💆🏿‍♀️	nainen hieronnassa: tumma iho
 💆🏿‍♀	nainen hieronnassa: tumma iho
 💇	henkilö leikkauksessa
-💇🏻	hiuksia leikattava henkilö: vaalea iho
+💇🏻	hiustenleikkaus: vaalea iho
 💇🏼	hiuksia leikattava henkilö: keskivaalea iho
 💇🏽	hiuksia leikattava henkilö: keskisävyinen iho
 💇🏾	hiuksia leikattava henkilö: keskitumma ihonväri
@@ -1286,8 +1286,8 @@
 🚶🏻‍♀	nainen kävelemässä: vaalea iho
 🚶🏼‍♀️	nainen kävelemässä: keskivaalea iho
 🚶🏼‍♀	nainen kävelemässä: keskivaalea iho
-🚶🏽‍♀️	nainen kävelemässä: keskisävyinen iho
-🚶🏽‍♀	nainen kävelemässä: keskisävyinen iho
+🚶🏽‍♀️	nainen kävelevä: keskisävyinen iho
+🚶🏽‍♀	nainen kävelevä: keskisävyinen iho
 🚶🏾‍♀️	kävelevä nainen: keskitumma iho
 🚶🏾‍♀	kävelevä nainen: keskitumma iho
 🚶🏿‍♀️	nainen kävelemässä: tumma iho
@@ -1324,13 +1324,13 @@
 🏃🏿‍♀	juokseva nainen: tumma iho
 💃	nainen tanssimassa
 💃🏻	nainen tanssii: vaalea iho
-💃🏼	tanssiva nainen: keskivaalea iho
+💃🏼	nainen tanssii: keskivaalea ihonväri
 💃🏽	nainen tanssii: keskisävyinen iho
 💃🏾	nainen tanssii: keskitumma iho
 💃🏿	nainen tanssii: tumma iho
 🕺	mies tanssimassa
 🕺🏻	mies tanssii: vaalea iho
-🕺🏼	mies tanssii: keskivaalea iho
+🕺🏼	mies tanssii: keskivaalea ihonväri
 🕺🏽	mies tanssii: keskisävyinen iho
 🕺🏾	mies tanssii: keskitumma iho
 🕺🏿	mies tanssii: tumma iho
@@ -1503,21 +1503,21 @@
 🏌🏿‍♀️	nainen golfaamassa: tumma iho
 🏌🏿‍♀	nainen golfaamassa: tumma iho
 🏄	surffaava henkilö
-🏄🏻	surffaava henkilö: vaalea ihonväri
+🏄🏻	surffaava henkilö: vaalea ihonsävy
 🏄🏼	surffaava henkilö: keskivaalea ihonväri
 🏄🏽	surffaava henkilö: keskisävyinen iho
 🏄🏾	surffaava henkilö: keskitumman ihon sävy
 🏄🏿	surffaava henkilö: tumma iho
 🏄‍♂️	mies surffaamassa
 🏄‍♂	mies surffaamassa
-🏄🏻‍♂️	surffaava mies: vaalea iho
-🏄🏻‍♂	surffaava mies: vaalea iho
+🏄🏻‍♂️	surffaava mies: vaalea ihonsävy
+🏄🏻‍♂	surffaava mies: vaalea ihonsävy
 🏄🏼‍♂️	mies surffaa: keskivaalea ihonväri
 🏄🏼‍♂	mies surffaa: keskivaalea ihonväri
 🏄🏽‍♂️	surffaava mies: keskisävyinen iho
 🏄🏽‍♂	surffaava mies: keskisävyinen iho
-🏄🏾‍♂️	surffaava mies: keskitumman ihon sävy
-🏄🏾‍♂	surffaava mies: keskitumman ihon sävy
+🏄🏾‍♂️	mies surffaa: keskitumman ihon sävy
+🏄🏾‍♂	mies surffaa: keskitumman ihon sävy
 🏄🏿‍♂️	surffaava mies: tumma iho
 🏄🏿‍♂	surffaava mies: tumma iho
 🏄‍♀️	nainen surffaamassa
@@ -1564,14 +1564,14 @@
 🚣🏿‍♀	nainen soutuvene: tumma iho
 🏊	henkilö uimassa
 🏊🏻	henkilö ui: vaalea iho
-🏊🏼	henkilö ui: keskivaalea iho
+🏊🏼	henkilö ui: keskivaalea ihonväri
 🏊🏽	henkilö ui: keskisävyinen iho
-🏊🏾	henkilö ui: keskitumman ihon sävy
+🏊🏾	henkilö ui: keskitumma iho
 🏊🏿	henkilö ui: tumma iho
 🏊‍♂️	mies uimassa
 🏊‍♂	mies uimassa
 🏊🏻‍♂️	mies uimassa: vaalea iho
-🏊🏻‍♂	mies ui: vaalea iho
+🏊🏻‍♂	mies uimassa: vaalea iho
 🏊🏼‍♂️	mies ui: keskivaalea iho
 🏊🏼‍♂	mies ui: keskivaalea iho
 🏊🏽‍♂️	mies ui: keskisävyinen iho
@@ -1582,12 +1582,12 @@
 🏊🏿‍♂	mies uimassa: tumma iho
 🏊‍♀️	nainen uimassa
 🏊‍♀	nainen uimassa
-🏊🏻‍♀️	nainen uimassa: vaalea iho
+🏊🏻‍♀️	nainen ui: vaalea iho
 🏊🏻‍♀	nainen uimassa: vaalea iho
 🏊🏼‍♀️	nainen uimassa: keskivaalea iho
 🏊🏼‍♀	nainen uimassa: keskivaalea iho
 🏊🏽‍♀️	nainen ui: keskisävyinen iho
-🏊🏽‍♀	nainen ui: keskisävyinen iho
+🏊🏽‍♀	nainen uimassa: keskisävyinen iho
 🏊🏾‍♀️	nainen uimassa: keskitumma iho
 🏊🏾‍♀	nainen uimassa: keskitumma iho
 🏊🏿‍♀️	nainen ui: tumma iho
@@ -1597,8 +1597,8 @@
 ⛹🏻	henkilön pomppiva pallo: vaalea ihonväri
 ⛹🏼	henkilön pomppiva pallo: keskivaalea ihonväri
 ⛹🏽	henkilön pomppiva pallo: keskisävyinen iho
-⛹🏾	henkilön pomppiva pallo: keskitumman ihon sävy
-⛹🏿	henkilö pomppii pallo: tumma iho
+⛹🏾	henkilön pomppiva pallo: keskitumma iho
+⛹🏿	henkilön pomppiva pallo: tumma iho
 ⛹️‍♂️	mies pomppii palloa
 ⛹‍♂️	mies pomppii palloa
 ⛹️‍♂	mies pomppii palloa
@@ -1623,8 +1623,8 @@
 ⛹🏼‍♀	nainen pomppiva pallo: keskivaalea ihonväri
 ⛹🏽‍♀️	nainen pomppiva pallo: keskisävyinen iho
 ⛹🏽‍♀	nainen pomppiva pallo: keskisävyinen iho
-⛹🏾‍♀️	nainen pomppiva pallo: keskitumman ihon sävy
-⛹🏾‍♀	nainen pomppiva pallo: keskitumman ihon sävy
+⛹🏾‍♀️	nainen pomppiva pallo: keskitumma iho
+⛹🏾‍♀	nainen pomppiva pallo: keskitumma iho
 ⛹🏿‍♀️	nainen pomppiva pallo: tumma iho
 ⛹🏿‍♀	nainen pomppiva pallo: tumma iho
 🏋️	painoja nostava henkilö
@@ -1694,12 +1694,12 @@
 🚴🏿‍♀	pyöräilevä nainen: tumma iho
 🚵	henkilö maastopyöräilyyn
 🚵🏻	henkilö maastopyöräily: vaalea iho
-🚵🏼	henkilö maastopyöräily: keskivaalea ihonväri
+🚵🏼	henkilö maastopyöräily: keskivaalea iho
 🚵🏽	henkilö maastopyöräily: keskisävyinen iho
-🚵🏾	henkilö maastopyöräily: keskitumma ihonväri
+🚵🏾	henkilö maastopyöräily: keskitumman ihon sävy
 🚵🏿	henkilö maastopyöräily: tumma iho
-🚵‍♂️	mies maastopyöräilyä
-🚵‍♂	mies maastopyöräilyä
+🚵‍♂️	mies maastopyöräilyyn
+🚵‍♂	mies maastopyöräilyyn
 🚵🏻‍♂️	mies maastopyöräily: vaalea iho
 🚵🏻‍♂	mies maastopyöräily: vaalea iho
 🚵🏼‍♂️	mies maastopyöräily: keskivaalea iho
@@ -1707,15 +1707,15 @@
 🚵🏽‍♂️	mies maastopyöräily: keskisävyinen iho
 🚵🏽‍♂	mies maastopyöräily: keskisävyinen iho
 🚵🏾‍♂️	mies maastopyöräily: keskitumma iho
-🚵🏾‍♂	mies maastopyöräily: keskitumma iho
+🚵🏾‍♂	mies maastopyöräily: keskitumman ihon sävy
 🚵🏿‍♂️	mies maastopyöräily: tumma iho
 🚵🏿‍♂	mies maastopyöräily: tumma iho
 🚵‍♀️	nainen maastopyörällä
 🚵‍♀	nainen maastopyörällä
 🚵🏻‍♀️	maastopyöräilynainen: vaalea iho
 🚵🏻‍♀	maastopyöräilynainen: vaalea iho
-🚵🏼‍♀️	nainen maastopyöräilyssä: keskivaalea iho
-🚵🏼‍♀	nainen maastopyöräilyssä: keskivaalea iho
+🚵🏼‍♀️	maastopyöräilyn nainen: keskivaalea iho
+🚵🏼‍♀	maastopyöräilyn nainen: keskivaalea iho
 🚵🏽‍♀️	nainen maastopyöräilyssä: keskisävyinen iho
 🚵🏽‍♀	nainen maastopyöräilyssä: keskisävyinen iho
 🚵🏾‍♀️	maastopyöräilyn nainen: keskitumma iho
@@ -1780,7 +1780,7 @@
 🤽🏿‍♂️	mies, joka pelaa vesipalloa: tumma iho
 🤽🏿‍♂	mies, joka pelaa vesipalloa: tumma iho
 🤽‍♀️	nainen pelaa vesipalloa
-🤽‍♀	nainen pelaamassa vesipalloa
+🤽‍♀	nainen pelaa vesipalloa
 🤽🏻‍♀️	vesipalloa pelaava nainen: vaalea iho
 🤽🏻‍♀	vesipalloa pelaava nainen: vaalea iho
 🤽🏼‍♀️	vesipalloa pelaava nainen: keskivaalea iho
@@ -1819,10 +1819,10 @@
 🤾🏽‍♀	käsipalloa pelaava nainen: keskisävyinen iho
 🤾🏾‍♀️	käsipalloa pelaava nainen: keskitumma iho
 🤾🏾‍♀	käsipalloa pelaava nainen: keskitumma iho
-🤾🏿‍♀️	nainen, joka pelaa käsipalloa: tumma iho
-🤾🏿‍♀	nainen, joka pelaa käsipalloa: tumma iho
+🤾🏿‍♀️	käsipalloa pelaava nainen: tumma iho
+🤾🏿‍♀	käsipalloa pelaava nainen: tumma iho
 🤹	henkilö jongleeraa
-🤹🏻	henkilö jongleeraa: vaalea iho
+🤹🏻	henkilö jongleeraa: vaalea ihonväri
 🤹🏼	henkilö jongleeraa: keskivaalea ihonväri
 🤹🏽	henkilö jongleeraa: keskisävyinen iho
 🤹🏾	henkilö jongleeraa: keskitumman ihon sävy
@@ -1831,8 +1831,8 @@
 🤹‍♂	mies jongleeraa
 🤹🏻‍♂️	mies jongleeraa: vaalea iho
 🤹🏻‍♂	mies jongleeraa: vaalea iho
-🤹🏼‍♂️	mies jongleeraa: keskivaalea iho
-🤹🏼‍♂	mies jongleeraa: keskivaalea iho
+🤹🏼‍♂️	mies jongleeraa: keskivaalea ihonväri
+🤹🏼‍♂	mies jongleeraa: keskivaalea ihonväri
 🤹🏽‍♂️	mies jongleeraa: keskisävyinen iho
 🤹🏽‍♂	mies jongleeraa: keskisävyinen iho
 🤹🏾‍♂️	mies jongleeraa: keskitumman ihon sävy
@@ -1901,7 +1901,7 @@
 🤳🏾	selfie: keskitumma ihonväri
 🤳🏿	selfie: tumma iho
 💪	taipuneet hauislihakset
-💪🏻	taipuneet hauislihakset: vaalea ihonväri
+💪🏻	taipuneet hauislihakset: vaalea iho
 💪🏼	taipuneet hauislihakset: keskivaalea ihonväri
 💪🏽	taipuneet hauislihakset: keskisävyinen iho
 💪🏾	taipuneet hauislihakset: keskitumma iho
@@ -1952,7 +1952,7 @@
 👇	käden indeksi osoittaa alaspäin
 👇🏻	alaspäin osoittava takakäden indeksi: vaalea ihonväri
 👇🏼	alaspäin osoittava takakäden indeksi: keskivaalea ihonväri
-👇🏽	alaspäin osoittava käden indeksi: keskisävyinen iho
+👇🏽	alaspäin osoittava selkäranka: keskisävyinen iho
 👇🏾	alaspäin osoittava takakäden indeksi: keskitumma ihonväri
 👇🏿	alaspäin osoittava takakäden indeksi: tumma ihonväri
 ✌️	voiton käsi
@@ -1982,15 +1982,15 @@
 🤘🏿	sarvien merkki: tumma ihonväri
 🤙	kutsu minua käteen
 🤙🏻	soita minulle: vaalea iho
-🤙🏼	soita minulle kädelle: keskivaalea ihonsävy
+🤙🏼	soita minulle: keskivaalea ihonväri
 🤙🏽	soita minulle kädelle: keskisävyinen iho
 🤙🏾	soita minulle kädelle: keskitumma ihonväri
 🤙🏿	soita minulle: tumma iho
 🖐️	käsi sormet räjäytettyinä
 🖐	käsi sormet räjäytettyinä
-🖐🏻	käsi, jossa sormet räjäytetään: vaalea iho
+🖐🏻	käsi, jossa sormet räjäytettyinä: vaalea iho
 🖐🏼	käsi, jossa sormet räjäytyssä: keskivaalea iho
-🖐🏽	käsi, jossa sormet räjähtävät: keskisävyinen iho
+🖐🏽	käsi, jossa sormet räjäytettyinä: keskisävyinen iho
 🖐🏾	käsi, jossa sormet räjäytyssä: keskitumma iho
 🖐🏿	käsi, jossa sormet räjähtävät: tumma iho
 ✋	kohotettu käsi
@@ -2033,7 +2033,7 @@
 🤛🏻	vasen nyrkki: vaalea ihonsävy
 🤛🏼	vasen nyrkki: keskivaalea iho
 🤛🏽	vasen nyrkki: keskisävyinen iho
-🤛🏾	vasen nyrkki: keskitumma iho
+🤛🏾	vasen nyrkki: keskitumma ihonväri
 🤛🏿	vasen nyrkki: tumma iho
 🤜	oikeaan päin oleva nyrkki
 🤜🏻	oikealle päin oleva nyrkki: vaalea iho
@@ -2051,7 +2051,7 @@
 👋🏻	heiluttava käsi: vaalea iho
 👋🏼	heiluttava käsi: keskivaalea ihonväri
 👋🏽	heiluttava käsi: keskisävyinen iho
-👋🏾	heiluttava käsi: keskitumman ihon sävy
+👋🏾	heiluttava käsi: keskitumma iho
 👋🏿	heiluttava käsi: tumma iho
 🤟	rakkaus-ele
 🤟🏻	rakkaus-ele: vaalea ihonsävy
@@ -2070,13 +2070,13 @@
 👏🏻	käsien taputus: vaalea iho
 👏🏼	käsien taputus: keskivaalea iho
 👏🏽	käsien taputus: keskisävyinen iho
-👏🏾	käsien taputus: keskitumman ihon sävy
+👏🏾	käsien taputus: keskitumma iho
 👏🏿	käsien taputus: tumma iho
 👐	avoimet kädet
 👐🏻	avoimet kädet: vaalea iho
 👐🏼	avoimet kädet: keskivaalea iho
 👐🏽	avoimet kädet: keskisävyinen iho
-👐🏾	avoimet kädet: keskitumma iho
+👐🏾	avoimet kädet: keskitumman ihon sävy
 👐🏿	avoimet kädet: tumma iho
 🙌	käsien nostamista
 🙌🏻	käsien nostaminen: vaalea iho
@@ -2107,7 +2107,7 @@
 👂🏻	korva: vaalea iho
 👂🏼	korva: keskivaalea ihonsävy
 👂🏽	korva: keskisävyinen iho
-👂🏾	korva: keskitumman ihon sävy
+👂🏾	korva: keskitumma ihonväri
 👂🏿	korva: tumma iho
 👃	nenä
 👃🏻	nenä: vaalea iho
@@ -2637,7 +2637,7 @@
 🌑	uusi kuu
 🌒	kasvava puolikuu
 🌓	ensimmäisen neljänneksen kuu
-🌔	kasvava kuu
+🌔	kasvava hirveä kuu
 🌕	täysikuu
 🌖	pienenevä kuu
 🌗	viimeinen neljänneskuu
@@ -2759,8 +2759,8 @@
 🔮	kristallipallo
 🧿	nazar amuletti
 🎮	videopeli
-🕹️	ohjaussauvaa
-🕹	ohjaussauvaa
+🕹️	joystick
+🕹	joystick
 🎰	peliautomaatti
 🎲	peli kuolee
 🧩	palapeli
@@ -2772,7 +2772,7 @@
 ♦️	timanttipuku
 ♦	timanttipuku
 ♣️	klubipuku
-♣	klubi puku
+♣	klubipuku
 ♟️	shakin sotilas
 ♟	shakin sotilas
 🃏	jokeri
@@ -2790,10 +2790,10 @@
 🔊	kaiuttimen korkea äänenvoimakkuus
 📢	kaiutin
 📣	megafoni
-📯	postitorvi
+📯	postin torvi
 🔔	kello
 🔕	kelloa kauttaviivalla
-🎼	nuotit
+🎼	musiikkipartituuri
 🎵	nuotti
 🎶	nuotit
 🎙️	studio mikrofoni
@@ -3035,7 +3035,7 @@
 🚱	juomakelvotonta vettä
 🚷	ei jalankulkijoita
 📵	ei matkapuhelimia
-🔞	ei kukaan alle kahdeksantoista
+🔞	kukaan alle kahdeksantoista
 ☢️	radioaktiivinen
 ☢	radioaktiivinen
 ☣️	biologinen vaara
@@ -3157,7 +3157,7 @@
 🔱	kolmikantainen tunnus
 📛	nimikyltti
 🔰	Japanilainen symboli aloittelijalle
-⭕	raskas iso ympyrä
+⭕	raskas suuri ympyrä
 ✅	valkoinen raskas valintamerkki
 ☑️	vaalilaatikko sekillä
 ☑	vaalilaatikko sekillä
@@ -3210,8 +3210,8 @@
 3⃣	näppäinkansi: 3
 4️⃣	näppäinsuojus: 4
 4⃣	näppäinsuojus: 4
-5️⃣	näppäinkansi: 5
-5⃣	näppäinkansi: 5
+5️⃣	näppäinsuojus: 5
+5⃣	näppäinsuojus: 5
 6️⃣	näppäinsuojus: 6
 6⃣	näppäinsuojus: 6
 7️⃣	näppäinkansi: 7
@@ -3220,7 +3220,7 @@
 8⃣	näppäinsuojus: 8
 9️⃣	näppäinkansi: 9
 9⃣	näppäinkansi: 9
-🔟	näppäinkansi: 10
+🔟	näppäinsuojus: 10
 💯	sata pistettä
 🔠	syötä latinalaiset isot kirjaimet
 🔡	syötä latinalaiset pienet kirjaimet
@@ -3270,7 +3270,7 @@
 ㊙️	Japanilainen "salainen"-painike
 ㊙	Japanilainen "salainen"-painike
 🈺	Japanilainen "avoin yrityksille" -painike
-🈵	Japanilainen "ei vapaita paikkoja" -painike
+🈵	Japanilainen "ei vapaita" -painike
 ▪️	musta pieni neliö
 ▪	musta pieni neliö
 ▫️	valkoinen pieni neliö

@@ -659,6 +659,7 @@ Afrikaans                |✔|✔|✔|✔|✔|✖️|✔|✔
 Albanian                 |⭕️ |✔|✔|✖️|✔|✖️|✖️|✔
 Amharic                  |⭕️ |✔|✖️|✖️|✖️|✖️|✖️|✔
 Arabic                   |✔|✔|✖️|✔|✔|✔|✔|✔
+Armenian (Classical)     |✔|✔|✖️|✔|✔|✖️|✔|✖️
 Armenian (Eastern)       |✔|✔|✖️|✔|✔|✖️|✔|✔
 Armenian (Western)       |✔|✔|✖️|✔|✔|✖️|✔|✔
 Assamese                 |⭕️ |✔|✖️|✖️|✖️|✖️|✖️|✔
@@ -681,6 +682,7 @@ Czech                    |✔|✔|✔|✔|✔|✖️|✔|✔
 Danish                   |✔|✔|✔|✔|✔|✔|✔|✔
 Dutch                    |✔|✔|✔|✔|✔|✔|✔|✔
 English (Middle)         |⭕️ |⭕️ |✖️|✖️|✔|✖️|✖️|✖️
+English (Old)            |✔|✔|✖️|✔|✔|✖️|✔|✖️
 English (United Kingdom) |✔|✔|✔|✔|✔|✔|✔|✔
 English (United States)  |✔|✔|✔|✔|✔|✔|✔|✔
 Erzya                    |✔|✔|✖️|✔|✔|✖️|✔|✖️

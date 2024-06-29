@@ -28,7 +28,7 @@
 😶	cara sin boca
 🙄	cara con los ojos en blanco
 😏	cara sonriente
-😣	rostro perseverante
+😣	cara perseverante
 😥	cara triste pero aliviada
 😮	cara con la boca abierta
 🤐	cara con cremallera en la boca
@@ -800,7 +800,7 @@
 🧙🏽‍♂	mago hombre: tono de piel medio
 🧙🏾‍♂️	mago hombre: tono de piel oscuro medio
 🧙🏾‍♂	mago hombre: tono de piel oscuro medio
-🧙🏿‍♂️	mago hombre: tono de piel oscuro
+🧙🏿‍♂️	hombre mago: tono de piel oscuro
 🧙🏿‍♂	hombre mago: tono de piel oscuro
 🧚	hada
 🧚🏻	hada: tono de piel claro
@@ -877,7 +877,7 @@
 🧜🏽‍♀️	sirena: tono de piel medio
 🧜🏽‍♀	sirena: tono de piel medio
 🧜🏾‍♀️	sirena: tono de piel medio oscuro
-🧜🏾‍♀	sirena: tono de piel oscuro medio
+🧜🏾‍♀	sirena: tono de piel medio oscuro
 🧜🏿‍♀️	sirena: tono de piel oscuro
 🧜🏿‍♀	sirena: tono de piel oscuro
 🧜‍♂️	tritón
@@ -2161,8 +2161,8 @@
 💨	huyendo
 💫	mareado
 💬	globo de diálogo
-🗨️	bocadillo de diálogo izquierdo
-🗨	bocadillo de diálogo izquierdo
+🗨️	bocadillo izquierdo
+🗨	bocadillo izquierdo
 🗯️	burbuja de ira derecha
 🗯	burbuja de ira derecha
 💭	globo de pensamiento
@@ -3170,7 +3170,7 @@
 ➕	signo más pesado
 ➖	signo menos pesado
 ➗	signo de división pesada
-➰	lazo rizado
+➰	bucle rizado
 ➿	bucle doble rizado
 〽️	marca de alternancia de piezas
 〽	marca de alternancia de piezas
@@ -3369,7 +3369,7 @@
 🇩🇬	Diego García
 🇩🇯	Yibuti
 🇩🇰	Dinamarca
-🇩🇲	república dominicana
+🇩🇲	Dominica
 🇩🇴	República Dominicana
 🇩🇿	Argelia
 🇪🇦	Ceuta y Melilla

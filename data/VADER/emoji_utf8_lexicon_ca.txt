@@ -2,7 +2,7 @@
 😁	cara radiant amb ulls somrients
 😂	cara amb llàgrimes d'alegria
 🤣	petant-se de riure
-😃	cara somrient amb ulls grans
+😃	cara somrient amb grans ulls
 😄	cara somrient amb ulls somrients
 😅	cara somrient de suor
 😆	cara somrient entrebidada
@@ -52,13 +52,13 @@
 ☹	cara arrugada
 🙁	cara lleugerament arrugada
 😖	cara confusa
-😞	cara decepcionada
+😞	cara decebuda
 😟	cara preocupada
 😤	cara amb vapor del nas
 😢	cara plorant
 😭	cara plorant fort
 😦	cara arrugada amb la boca oberta
-😧	cara d'angoixa
+😧	cara angoixada
 😨	cara de por
 😩	cara cansada
 🤯	el cap esclatant
@@ -129,7 +129,7 @@
 🧒🏻	nen: pell clara
 🧒🏼	nen: pell mitjana-clara
 🧒🏽	nen: pell mitjana
-🧒🏾	nen: pell mitjana-fosca
+🧒🏾	nen: pell fosca mitjana
 🧒🏿	nen: pell fosca
 👦	noi
 👦🏻	noi: pell clara
@@ -187,8 +187,8 @@
 👨🏼‍⚕	personal sanitari: pell mitjana-clara
 👨🏽‍⚕️	personal sanitari: pell mitjana
 👨🏽‍⚕	personal sanitari: pell mitjana
-👨🏾‍⚕️	personal sanitari: pell mitjana-fosca
-👨🏾‍⚕	personal sanitari: pell mitjana-fosca
+👨🏾‍⚕️	home sanitari: pell fosca mitjana
+👨🏾‍⚕	home sanitari: pell fosca mitjana
 👨🏿‍⚕️	personal sanitari: pell fosca
 👨🏿‍⚕	personal sanitari: pell fosca
 👩‍⚕️	dona treballadora de salut
@@ -199,8 +199,8 @@
 👩🏼‍⚕	treballadora sanitària: pell mitjana-clara
 👩🏽‍⚕️	treballadora sanitària: pell mitjana
 👩🏽‍⚕	treballadora sanitària: pell mitjana
-👩🏾‍⚕️	dona treballadora de la salut: pell fosca mitjana
-👩🏾‍⚕	dona treballadora de la salut: pell fosca mitjana
+👩🏾‍⚕️	treballadora sanitària: pell mitjana-fosca
+👩🏾‍⚕	treballadora sanitària: pell mitjana-fosca
 👩🏿‍⚕️	dona treballadora de la salut: pell fosca
 👩🏿‍⚕	dona treballadora de la salut: pell fosca
 👨‍🎓	home estudiant
@@ -261,7 +261,7 @@
 👩🏻‍🌾	agricultora: pell clara
 👩🏼‍🌾	agricultora: pell mitjana-clara
 👩🏽‍🌾	agricultora: pell mitjana
-👩🏾‍🌾	agricultora: pell mitjana-fosca
+👩🏾‍🌾	agricultora: pell fosca mitjana
 👩🏿‍🌾	dona agricultora: pell fosca
 👨‍🍳	home cuiner
 👨🏻‍🍳	home cuiner: pell clara
@@ -283,9 +283,9 @@
 👨🏿‍🔧	mecànic home: pell fosca
 👩‍🔧	dona mecànica
 👩🏻‍🔧	dona mecànica: pell clara
-👩🏼‍🔧	mecànica dona: pell mitjana-clara
+👩🏼‍🔧	dona mecànica: pell mitjana-clara
 👩🏽‍🔧	dona mecànica: pell mitjana
-👩🏾‍🔧	dona mecànica: pell fosca mitjana
+👩🏾‍🔧	dona mecànica: pell mitjana-fosca
 👩🏿‍🔧	dona mecànica: pell fosca
 👨‍🏭	home treballador de la fàbrica
 👨🏻‍🏭	home treballador de fàbrica: pell clara
@@ -295,7 +295,7 @@
 👨🏿‍🏭	home treballador de fàbrica: pell fosca
 👩‍🏭	dona treballadora de fàbrica
 👩🏻‍🏭	dona treballadora de fàbrica: pell clara
-👩🏼‍🏭	treballadora de fàbrica: pell mitjana-clara
+👩🏼‍🏭	dona treballadora de fàbrica: pell mitjana-clara
 👩🏽‍🏭	dona treballadora de fàbrica: pell mitjana
 👩🏾‍🏭	dona treballadora de fàbrica: pell mitjana-fosca
 👩🏿‍🏭	dona treballadora de fàbrica: pell fosca
@@ -349,9 +349,9 @@
 👩🏿‍🎤	dona cantant: pell fosca
 👨‍🎨	home artista
 👨🏻‍🎨	home artista: pell clara
-👨🏼‍🎨	home artista: pell mitjana-clara
+👨🏼‍🎨	artista home: pell mitjana-clara
 👨🏽‍🎨	artista home: pell mitjana
-👨🏾‍🎨	artista home: pell mitjana-fosca
+👨🏾‍🎨	home artista: pell fosca mitjana
 👨🏿‍🎨	home artista: pell fosca
 👩‍🎨	dona artista
 👩🏻‍🎨	dona artista: pell clara
@@ -387,7 +387,7 @@
 👨🏻‍🚀	home astronauta: pell clara
 👨🏼‍🚀	home astronauta: pell mitjana-clara
 👨🏽‍🚀	home astronauta: pell mitjana
-👨🏾‍🚀	home astronauta: pell mitjana-fosca
+👨🏾‍🚀	home astronauta: pell fosca mitjana
 👨🏿‍🚀	home astronauta: pell fosca
 👩‍🚀	dona astronauta
 👩🏻‍🚀	dona astronauta: pell clara
@@ -410,8 +410,8 @@
 👮	policia
 👮🏻	agent de policia: pell clara
 👮🏼	policia: pell mitjana-clara
-👮🏽	agent de policia: pell mitjana
-👮🏾	policia: pell mig fosca
+👮🏽	policia: pell mitjana
+👮🏾	agent de policia: pell mitjana-fosca
 👮🏿	agent de policia: pell fosca
 👮‍♂️	home agent de policia
 👮‍♂	home agent de policia
@@ -476,7 +476,7 @@
 💂🏻	guarda: pell clara
 💂🏼	protector: pell mitjana-clara
 💂🏽	guarda: pell mitjana
-💂🏾	protector: to de pell mig fosc
+💂🏾	protector: pell mitjana-fosca
 💂🏿	guarda: pell fosca
 💂‍♂️	guarda home
 💂‍♂	guarda home
@@ -486,8 +486,8 @@
 💂🏼‍♂	guàrdia d'home: pell mitjana-clara
 💂🏽‍♂️	guàrdia d'home: pell mitjana
 💂🏽‍♂	guàrdia d'home: pell mitjana
-💂🏾‍♂️	guàrdia d'home: pell mig fosca
-💂🏾‍♂	guàrdia d'home: pell mig fosca
+💂🏾‍♂️	guàrdia d'home: pell mitjana-fosca
+💂🏾‍♂	guàrdia d'home: pell mitjana-fosca
 💂🏿‍♂️	guarda home: pell fosca
 💂🏿‍♂	guarda home: pell fosca
 💂‍♀️	dona guarda
@@ -516,8 +516,8 @@
 👷🏼‍♂	home treballador de la construcció: pell mitjana-clara
 👷🏽‍♂️	home treballador de la construcció: pell mitjana
 👷🏽‍♂	home treballador de la construcció: pell mitjana
-👷🏾‍♂️	home treballador de la construcció: pell fosca mitjana
-👷🏾‍♂	home treballador de la construcció: pell fosca mitjana
+👷🏾‍♂️	home treballador de la construcció: pell mitjana-fosca
+👷🏾‍♂	home treballador de la construcció: pell mitjana-fosca
 👷🏿‍♂️	home treballador de la construcció: pell fosca
 👷🏿‍♂	home treballador de la construcció: pell fosca
 👷‍♀️	dona treballadora de la construcció
@@ -571,7 +571,7 @@
 👳🏽‍♀️	dona amb turbant: pell mitjana
 👳🏽‍♀	dona amb turbant: pell mitjana
 👳🏾‍♀️	dona amb turbant: pell fosca mitjana
-👳🏾‍♀	dona amb turbant: pell fosca mitjana
+👳🏾‍♀	dona amb turbant: pell mitjana-fosca
 👳🏿‍♀️	dona amb turbant: pell fosca
 👳🏿‍♀	dona amb turbant: pell fosca
 👲	home amb gorra xinesa
@@ -598,7 +598,7 @@
 👱🏽	persona de cabell ros: pell mitjana
 👱🏾	persona de cabell ros: pell fosca mitjana
 👱🏿	persona de cabell ros: pell fosca
-👱‍♂️	home de cabell ros
+👱‍♂️	home de cabells ros
 👱‍♂	home de cabells ros
 👱🏻‍♂️	home de cabell ros: pell clara
 👱🏻‍♂	home de cabell ros: pell clara
@@ -638,7 +638,7 @@
 👨🏻‍🦱	home, cabell arrissat: pell clara
 👨🏼‍🦱	home, cabell arrissat: pell mitjana-clara
 👨🏽‍🦱	home, cabell arrissat: pell mitjana
-👨🏾‍🦱	home, cabell arrissat: pell fosca mitjana
+👨🏾‍🦱	home, cabell arrissat: pell mig fosca
 👨🏿‍🦱	home, cabell arrissat: pell fosca
 👩‍🦱	dona, cabell arrissat
 👩🏻‍🦱	dona, cabell arrissat: pell clara
@@ -738,16 +738,16 @@
 🦸🏼‍♂	home superheroi: pell mitjana-clara
 🦸🏽‍♂️	home superheroi: pell mitjana
 🦸🏽‍♂	home superheroi: pell mitjana
-🦸🏾‍♂️	home superheroi: pell fosca mitjana
-🦸🏾‍♂	home superheroi: pell fosca mitjana
+🦸🏾‍♂️	home superheroi: pell mitjana-fosca
+🦸🏾‍♂	home superheroi: pell mitjana-fosca
 🦸🏿‍♂️	home superheroi: pell fosca
 🦸🏿‍♂	home superheroi: pell fosca
-🦹	supervillano
+🦹	superdolent
 🦹🏻	supervillain: pell clara
 🦹🏼	supervillain: pell mitjana-clara
 🦹🏽	supervillano: pell mitjana
 🦹🏾	supervillain: pell mitjana-fosca
-🦹🏿	supervillain: pell fosca
+🦹🏿	supervillano: pell fosca
 🦹‍♀️	dona supervillana
 🦹‍♀	dona supervillana
 🦹🏻‍♀️	dona supervillana: pell clara
@@ -756,7 +756,7 @@
 🦹🏼‍♀	dona supervillana: pell mitjana-clara
 🦹🏽‍♀️	dona supervillana: pell mitjana
 🦹🏽‍♀	dona supervillana: pell mitjana
-🦹🏾‍♀️	dona supervillana: pell mitjana-fosca
+🦹🏾‍♀️	dona supervillana: pell fosca mitjana
 🦹🏾‍♀	dona supervillana: pell fosca mitjana
 🦹🏿‍♀️	dona supervillana: pell fosca
 🦹🏿‍♀	dona supervillana: pell fosca
@@ -896,7 +896,7 @@
 🧝🏻	elf: pell clara
 🧝🏼	elf: pell mitjana-clara
 🧝🏽	elf: pell mitjana
-🧝🏾	elf: pell fosca mitjana
+🧝🏾	elf: pell mitjana-fosca
 🧝🏿	elf: pell fosca
 🧝‍♀️	dona elfa
 🧝‍♀	dona elfa
@@ -1021,10 +1021,10 @@
 🙅🏾‍♀️	dona gestant NO: pell fosca mitjana
 🙅🏾‍♀	dona gestant NO: pell fosca mitjana
 🙅🏿‍♀️	dona gestant NO: pell fosca
-🙅🏿‍♀	dona gestant NO: pell fosca
+🙅🏿‍♀	dona fent un gest de NO: pell fosca
 🙆	persona fent un gest d'acord
-🙆🏻	persona que fa un gest d'acord: pell clara
-🙆🏼	persona que gesta d'acord: pell mitjana-clara
+🙆🏻	persona fent un gest d'acord: pell clara
+🙆🏼	persona que fa un gest d'acord: pell mitjana-clara
 🙆🏽	persona fent un gest d'acord: pell mitjana
 🙆🏾	persona que fa un gest d'acord: pell fosca mitjana
 🙆🏿	persona que fa un gest d'acord: pell fosca
@@ -1061,7 +1061,7 @@
 💁‍♂️	home donant la mà
 💁‍♂	home donant la mà
 💁🏻‍♂️	home amb la mà inclinada: pell clara
-💁🏻‍♂	home amb la mà inclinada: pell clara
+💁🏻‍♂	home inclinant la mà: pell clara
 💁🏼‍♂️	home amb la mà inclinada: pell mitjana-clara
 💁🏼‍♂	home amb la mà inclinada: pell mitjana-clara
 💁🏽‍♂️	home amb la mà inclinada: pell mitjana
@@ -1078,8 +1078,8 @@
 💁🏼‍♀	dona amb la mà inclinada: pell mitjana-clara
 💁🏽‍♀️	dona amb la mà inclinada: pell mitjana
 💁🏽‍♀	dona amb la mà inclinada: pell mitjana
-💁🏾‍♀️	dona amb la mà inclinada: pell mitjana-fosca
-💁🏾‍♀	dona amb la mà inclinada: pell mitjana-fosca
+💁🏾‍♀️	dona amb la mà inclinada: pell fosca mitjana
+💁🏾‍♀	dona amb la mà inclinada: pell fosca mitjana
 💁🏿‍♀️	dona amb la mà inclinada: pell fosca
 💁🏿‍♀	dona amb la mà inclinada: pell fosca
 🙋	persona aixecant la mà
@@ -1092,7 +1092,7 @@
 🙋‍♂	home aixecant la mà
 🙋🏻‍♂️	home aixecant la mà: pell clara
 🙋🏻‍♂	home aixecant la mà: pell clara
-🙋🏼‍♂️	home aixecant la mà: pell mitjana-clara
+🙋🏼‍♂️	home amb la mà aixecada: pell mitjana-clara
 🙋🏼‍♂	home amb la mà aixecada: pell mitjana-clara
 🙋🏽‍♂️	home aixecant la mà: pell mitjana
 🙋🏽‍♂	home aixecant la mà: pell mitjana
@@ -1139,7 +1139,7 @@
 🙇🏽‍♀️	dona inclinada: pell mitjana
 🙇🏽‍♀	dona inclinada: pell mitjana
 🙇🏾‍♀️	dona inclinada: pell fosca mitjana
-🙇🏾‍♀	dona inclinada: pell fosca mitjana
+🙇🏾‍♀	dona inclinada: pell mitjana-fosca
 🙇🏿‍♀️	dona inclinada: pell fosca
 🙇🏿‍♀	dona inclinada: pell fosca
 🤦	persona facepalming
@@ -1171,7 +1171,7 @@
 🤦🏾‍♀️	dona amb palmes facials: pell mitjana-fosca
 🤦🏾‍♀	dona amb palmes facials: pell mitjana-fosca
 🤦🏿‍♀️	dona amb palma facial: pell fosca
-🤦🏿‍♀	dona amb palmes facials: pell fosca
+🤦🏿‍♀	dona amb palma facial: pell fosca
 🤷	persona arronsant les espatlles
 🤷🏻	persona arronsant les espatlles: pell clara
 🤷🏼	persona arronsant les espatlles: pell mitjana-clara
@@ -1218,8 +1218,8 @@
 💆🏽‍♂	home que rep un massatge: pell mitjana
 💆🏾‍♂️	home que rep un massatge: pell fosca mitjana
 💆🏾‍♂	home que rep un massatge: pell fosca mitjana
-💆🏿‍♂️	home rep un massatge: pell fosca
-💆🏿‍♂	home rep un massatge: pell fosca
+💆🏿‍♂️	home que rep un massatge: pell fosca
+💆🏿‍♂	home que rep un massatge: pell fosca
 💆‍♀️	dona rebent un massatge
 💆‍♀	dona rebent un massatge
 💆🏻‍♀️	dona rebent un massatge: pell clara
@@ -1236,7 +1236,7 @@
 💇🏻	persona que es talla el cabell: pell clara
 💇🏼	persona que es talla el cabell: pell mitjana-clara
 💇🏽	persona que es talla el cabell: pell mitjana
-💇🏾	persona que es talla el cabell: pell fosca mitjana
+💇🏾	persona que es talla el cabell: pell mitjana-fosca
 💇🏿	persona que es talla el cabell: pell fosca
 💇‍♂️	home que es talla el cabell
 💇‍♂	home que es talla el cabell
@@ -1247,7 +1247,7 @@
 💇🏽‍♂️	home que es talla el cabell: pell mitjana
 💇🏽‍♂	home que es talla el cabell: pell mitjana
 💇🏾‍♂️	home que es talla el cabell: pell fosca mitjana
-💇🏾‍♂	home que es talla el cabell: pell mitjana-fosca
+💇🏾‍♂	home que es talla el cabell: pell fosca mitjana
 💇🏿‍♂️	home que es talla el cabell: pell fosca
 💇🏿‍♂	home que es talla el cabell: pell fosca
 💇‍♀️	dona que es talla el cabell
@@ -1259,7 +1259,7 @@
 💇🏽‍♀️	dona que es talla el cabell: pell mitjana
 💇🏽‍♀	dona que es talla el cabell: pell mitjana
 💇🏾‍♀️	dona que es talla el cabell: pell mitjana-fosca
-💇🏾‍♀	dona que es talla el cabell: pell fosca mitjana
+💇🏾‍♀	dona que es talla el cabell: pell mitjana-fosca
 💇🏿‍♀️	dona que es talla el cabell: pell fosca
 💇🏿‍♀	dona que es talla el cabell: pell fosca
 🚶	persona caminant
@@ -1507,7 +1507,7 @@
 🏄🏼	persona navegant: pell mitjana-clara
 🏄🏽	persona navegant: pell mitjana
 🏄🏾	persona navegant: pell fosca mitjana
-🏄🏿	persona que navega: pell fosca
+🏄🏿	persona navegant: pell fosca
 🏄‍♂️	home que fa surf
 🏄‍♂	home que fa surf
 🏄🏻‍♂️	home surfant: pell clara
@@ -1535,9 +1535,9 @@
 🚣	persona amb barca de rem
 🚣🏻	persona barca de rem: pell clara
 🚣🏼	persona vaixell de rem: pell mitjana-clara
-🚣🏽	persona vaixell de rem: pell mitjana
+🚣🏽	persona barca de rem: pell mitjana
 🚣🏾	persona vaixell de rem: pell fosca mitjana
-🚣🏿	persona barca de rem: pell fosca
+🚣🏿	persona vaixell de rem: pell fosca
 🚣‍♂️	home que rem
 🚣‍♂	home que rem
 🚣🏻‍♂️	home amb barca de rem: pell clara
@@ -1576,8 +1576,8 @@
 🏊🏼‍♂	home nedant: pell mitjana-clara
 🏊🏽‍♂️	home nedant: pell mitjana
 🏊🏽‍♂	home nedant: pell mitjana
-🏊🏾‍♂️	home nedant: pell mitjana-fosca
-🏊🏾‍♂	home nedant: pell mitjana-fosca
+🏊🏾‍♂️	home nedant: pell fosca mitjana
+🏊🏾‍♂	home nedant: pell fosca mitjana
 🏊🏿‍♂️	home nedant: pell fosca
 🏊🏿‍♂	home nedant: pell fosca
 🏊‍♀️	dona nedant
@@ -1605,11 +1605,11 @@
 ⛹‍♂	home botant pilota
 ⛹🏻‍♂️	home botant pilota: pell clara
 ⛹🏻‍♂	home botant pilota: pell clara
-⛹🏼‍♂️	home que rebota la pilota: pell mitjana-clara
-⛹🏼‍♂	home que rebota pilota: pell mitjana-clara
+⛹🏼‍♂️	pilota botant home: pell mitjana-clara
+⛹🏼‍♂	home que rebota la pilota: pell mitjana-clara
 ⛹🏽‍♂️	home botant pilota: pell mitjana
 ⛹🏽‍♂	home botant pilota: pell mitjana
-⛹🏾‍♂️	home que rebota pilota: pell fosca mitjana
+⛹🏾‍♂️	home que rebota la pilota: pell fosca mitjana
 ⛹🏾‍♂	home que rebota la pilota: pell fosca mitjana
 ⛹🏿‍♂️	home botant pilota: pell fosca
 ⛹🏿‍♂	home botant pilota: pell fosca
@@ -1625,15 +1625,15 @@
 ⛹🏽‍♀	pilota botant dona: pell mitjana
 ⛹🏾‍♀️	pilota botant dona: pell fosca mitjana
 ⛹🏾‍♀	pilota botant dona: pell fosca mitjana
-⛹🏿‍♀️	pilota botant dona: pell fosca
-⛹🏿‍♀	pilota botant dona: pell fosca
+⛹🏿‍♀️	dona que bota la pilota: pell fosca
+⛹🏿‍♀	dona que bota la pilota: pell fosca
 🏋️	persona aixecant peses
 🏋	persona aixecant peses
 🏋🏻	persona aixecant peses: pell clara
-🏋🏼	persona que aixeca peses: pell mitjana-clara
+🏋🏼	persona aixecant peses: pell mitjana-clara
 🏋🏽	persona aixecant peses: pell mitjana
 🏋🏾	persona aixecant peses: pell mitjana-fosca
-🏋🏿	persona que aixeca peses: pell fosca
+🏋🏿	persona aixecant peses: pell fosca
 🏋️‍♂️	home aixecant peses
 🏋‍♂️	home aixecant peses
 🏋️‍♂	home aixecant peses
@@ -1666,7 +1666,7 @@
 🚴🏻	persona amb bicicleta: pell clara
 🚴🏼	persona amb bicicleta: pell mitjana-clara
 🚴🏽	persona amb bicicleta: pell mitjana
-🚴🏾	persona amb bicicleta: pell mitjana-fosca
+🚴🏾	persona amb bicicleta: pell fosca mitjana
 🚴🏿	persona amb bicicleta: pell fosca
 🚴‍♂️	home amb bicicleta
 🚴‍♂	home amb bicicleta
@@ -1676,8 +1676,8 @@
 🚴🏼‍♂	home amb bicicleta: pell mitjana-clara
 🚴🏽‍♂️	home amb bicicleta: pell mitjana
 🚴🏽‍♂	home amb bicicleta: pell mitjana
-🚴🏾‍♂️	home amb bicicleta: pell mitjana-fosca
-🚴🏾‍♂	home amb bicicleta: pell mitjana-fosca
+🚴🏾‍♂️	home amb bicicleta: pell fosca mitjana
+🚴🏾‍♂	home amb bicicleta: pell fosca mitjana
 🚴🏿‍♂️	home amb bicicleta: pell fosca
 🚴🏿‍♂	home amb bicicleta: pell fosca
 🚴‍♀️	dona amb bicicleta
@@ -1727,12 +1727,12 @@
 🏍️	moto
 🏍	moto
 🤸	persona que fa la roda de carro
-🤸🏻	persona rodant: pell clara
+🤸🏻	persona que fa roda de carro: pell clara
 🤸🏼	persona rodant: pell mitjana-clara
 🤸🏽	persona rodant: pell mitjana
 🤸🏾	persona que fa roda de carro: pell mitjana-fosca
 🤸🏿	persona que gira: pell fosca
-🤸‍♂️	home rodant
+🤸‍♂️	home que fa la roda de carro
 🤸‍♂	home que fa la roda de carro
 🤸🏻‍♂️	home rodant: pell clara
 🤸🏻‍♂	home rodant: pell clara
@@ -1848,7 +1848,7 @@
 🤹🏽‍♀️	dona malabarista: pell mitjana
 🤹🏽‍♀	dona malabarista: pell mitjana
 🤹🏾‍♀️	dona malabarista: pell mig fosca
-🤹🏾‍♀	dona malabarista: pell mitjana-fosca
+🤹🏾‍♀	dona malabarista: pell mig fosca
 🤹🏿‍♀️	dona malabarista: pell fosca
 🤹🏿‍♀	dona malabarista: pell fosca
 👫	home i dona agafats de la mà
@@ -1871,7 +1871,7 @@
 👪	família
 👨‍👩‍👦	família: home, dona, nen
 👨‍👩‍👧	família: home, dona, nena
-👨‍👩‍👧‍👦	família: home, dona, noia, nen
+👨‍👩‍👧‍👦	família: home, dona, nena, nen
 👨‍👩‍👦‍👦	família: home, dona, nen, nen
 👨‍👩‍👧‍👧	família: home, dona, noia, noia
 👨‍👨‍👦	família: home, home, nen
@@ -1953,7 +1953,7 @@
 👇🏻	índex del revés apuntant cap avall: pell clara
 👇🏼	índex del revés apuntant cap avall: pell mitjana-clara
 👇🏽	índex del revés apuntant cap avall: pell mitjana
-👇🏾	índex del revés apuntant cap avall: pell mitjana-fosca
+👇🏾	índex del revés apuntant cap avall: to de pell mig fosc
 👇🏿	índex del revés apuntant cap avall: pell fosca
 ✌️	mà de la victòria
 ✌	mà de la victòria
@@ -2036,11 +2036,11 @@
 🤛🏾	puny a l'esquerra: pell mitjana-fosca
 🤛🏿	puny a l'esquerra: pell fosca
 🤜	puny de cara a la dreta
-🤜🏻	puny a la dreta: pell clara
+🤜🏻	puny de cara a la dreta: pell clara
 🤜🏼	puny de cara a la dreta: pell mitjana-clara
 🤜🏽	puny de cara a la dreta: pell mitjana
 🤜🏾	puny de cara a la dreta: pell mitjana-fosca
-🤜🏿	puny a la dreta: pell fosca
+🤜🏿	puny de cara a la dreta: pell fosca
 🤚	dors de la mà aixecat
 🤚🏻	dors de la mà aixecat: pell clara
 🤚🏼	dors de la mà aixecat: pell mitjana-clara
@@ -2081,7 +2081,7 @@
 🙌	aixecant les mans
 🙌🏻	mans alçades: pell clara
 🙌🏼	mans alçades: pell mitjana-clara
-🙌🏽	mans alçades: pell mitjana
+🙌🏽	mans aixecades: pell mitjana
 🙌🏾	mans alçades: pell fosca mitjana
 🙌🏿	mans alçades: pell fosca
 🤲	palmells cap amunt junts
@@ -2448,7 +2448,7 @@
 🥄	cullera
 🔪	ganivet de cuina
 🏺	àmfora
-🌍	globus terrestre que mostra Europa-Àfrica
+🌍	Globus que mostra Europa-Àfrica
 🌎	globus terrestre que mostra Amèrica
 🌏	Globus que mostra Àsia-Austràlia
 🌐	globus terrestre amb meridians
@@ -2486,7 +2486,7 @@
 🏠	casa
 🏡	casa amb jardí
 🏢	edifici d'oficines
-🏣	Correus japonesos
+🏣	Oficina de correus japonesa
 🏤	Oficina de correus
 🏥	hospital
 🏦	banc
@@ -3115,8 +3115,8 @@
 ▶️	botó de reproducció
 ▶	botó de reproducció
 ⏩	botó d'avançament ràpid
-⏭️	botó de pista següent
-⏭	botó de pista següent
+⏭️	botó de la següent pista
+⏭	botó de la següent pista
 ⏯️	botó de reproducció o pausa
 ⏯	botó de reproducció o pausa
 ◀️	botó de marxa enrere
@@ -3208,14 +3208,14 @@
 2⃣	tecla de tecla: 2
 3️⃣	tecla de tecla: 3
 3⃣	tecla de tecla: 3
-4️⃣	tecla de tecla: 4
+4️⃣	teclat: 4
 4⃣	tecla de tecla: 4
 5️⃣	tecla de tecla: 5
 5⃣	tecla de tecla: 5
 6️⃣	tecla de tecla: 6
 6⃣	tecla de tecla: 6
 7️⃣	tecla: 7
-7⃣	tecla: 7
+7⃣	tecla de tecla: 7
 8️⃣	tecla de tecla: 8
 8⃣	tecla de tecla: 8
 9️⃣	tecla de tecla: 9
@@ -3280,7 +3280,7 @@
 ◼️	quadrat mitjà negre
 ◼	quadrat mitjà negre
 ◽	quadrat blanc mitjà-petit
-◾	quadrat negre mitjà-petit
+◾	quadrat mitjà-petit negre
 ⬛	quadrat gran negre
 ⬜	quadrat gran blanc
 🔶	gran diamant taronja

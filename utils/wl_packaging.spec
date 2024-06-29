@@ -48,7 +48,6 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy_pkuseg'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('en_core_web_trf'))
 datas.extend(PyInstaller.utils.hooks.copy_metadata('spacy_curated_transformers'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('curated_transformers', include_py_files = True))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('pip', include_py_files = True))
 
 # Underthesea
 datas.extend(PyInstaller.utils.hooks.collect_data_files('underthesea'))
@@ -88,8 +87,13 @@ hiddenimports = [
     'en_core_web_trf',
     'spacy_curated_transformers',
 
+    # SciPy
+    'scipy._lib.array_api_compat.numpy.fft',
+    'scipy.special._special_ufuncs',
+
     # Underthesea
-    'sklearn.pipeline'
+    'sklearn.pipeline',
+    'underthesea.pipeline.sentiment'
 ]
 
 # When using uk_core_news_trf the first time after downloading the model using pip, pymorphy3's logging function would be overwritten by pip's and assertion would be raised during logging, so disable logging temporarily and restore logging after packaging completes

@@ -244,14 +244,14 @@ def update_gui_tags(err_msg, new_files):
             assert tokens == [[], [], [[['This', '<', 'TAG', '>', 'is', 'the', 'first', 'sentence', '.']], [['This', 'is', 'the', 'second', 'sentence', '.']]], [], [], [[['This', 'is', 'the', 'third', 'sentence', '.']]], [], []]
             assert tags == [None] * file_text.num_tokens
         case 'untokenized_tagged.txt':
-            assert tokens == [[[['']]], [], [[['This', 'is', 'the', 'first', 'sentence', '.']], [['This', 'is', 'the', 'second', 'sentence', '.']]], [], [], [[['This', 'is', 'the', 'third', 'sentence', '.']]], [], []]
-            assert tags == ['<TAG1>', '<TAG2>', '</TAG2>', '', '', '', '', '_TAG3', '', '', '', '', '', '', '', '', '', '', '<TAG4></TAG4>']
+            assert tokens == [[[['This', 'is', 'the', 'first', 'sentence', '.']], [['This', 'is', 'the', 'second', 'sentence', '.']], [['This', 'is', 'the', 'third', 'sentence', '.']]]]
+            assert tags == ['<TAG1><TAG2>', '</TAG2>', '', '', '', '', '_TAG3', '', '', '', '', '', '', '', '', '', '', '<TAG4></TAG4>']
         case 'tokenized_untagged.txt':
             assert tokens == [[], [], [[['This', '<TAG>is', 'the', 'first', 'sentence', '.']], [['This', 'is', 'the', 'second', 'sentence', '.']]], [], [], [[['This', 'is', 'the', 'third', 'sentence', '.']]], [], []]
             assert tags == [None] * file_text.num_tokens
         case 'tokenized_tagged.txt':
-            assert tokens == [[[['']]], [], [[['This', 'is', 'the', 'first', 'sentence', '.']], [['This', 'is', 'the', 'second', 'sentence', '.']]], [], [], [[['This', 'is', 'the', 'third', 'sentence', '.']]], [], []]
-            assert tags == ['<TAG1>', '<TAG2>', '</TAG2>', '', '', '', '', '_TAG3RunningToken_TAG3', '', '', '', '', '', '', '', '', '', '', '<TAG4></TAG4>']
+            assert tokens == [[], [], [[['This', 'is', 'the', 'first', 'sentence', '.']], [['This', 'is', 'the', 'second', 'sentence', '.']]], [], [], [[['This', 'is', 'the', 'third', 'sentence', '.']]], [], []]
+            assert tags == ['<TAG1><TAG2>', '</TAG2>', '', '', '', '', '_TAG3RunningToken_TAG3', '', '', '', '', '', '', '', '', '', '', '<TAG4></TAG4>']
 
     assert len(tags) == file_text.num_tokens
 

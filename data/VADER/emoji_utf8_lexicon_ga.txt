@@ -24,12 +24,12 @@
 🤔	aghaidh smaointeoireachta
 🤨	aghaidh le eyebrow ardaithe
 😐	aghaidh neodrach
-😑	aghaidh gan chiall
+😑	aghaidh gan chaint
 😶	aghaidh gan bhéal
 🙄	aghaidh leis na súile rollta
 😏	aghaidh smirking
 😣	aghaidh persevering
-😥	aghaidh brónach ach faoisithe
+😥	aghaidh brónach ach faoisimh
 😮	aghaidh le béal oscailte
 🤐	aghaidh zipper-béal
 😯	aghaidh suaimhneach
@@ -170,7 +170,7 @@
 👴	seanfhear
 👴🏻	seanfhear: ton craicinn éadrom
 👴🏼	sean-fhear: ton craiceann meánach
-👴🏽	seanfhear: ton meánach craicinn
+👴🏽	seanfhear: ton craiceann meánach
 👴🏾	seanfhear: ton craiceann meán-dorcha
 👴🏿	seanfhear: ton dorcha craicinn
 👵	seanbhean
@@ -213,15 +213,15 @@
 👩🏻‍🎓	bean léinn: ton craicinn éadrom
 👩🏼‍🎓	bean léinn: ton craiceann meánach
 👩🏽‍🎓	bean léinn: ton craiceann meánach
-👩🏾‍🎓	bean dhalta: ton craiceann mheán-dorcha
+👩🏾‍🎓	bean léinn: ton craiceann meán-dorcha
 👩🏿‍🎓	bean léinn: ton dorcha craicinn
-👨‍🏫	múinteoir fear
+👨‍🏫	fear múinteoir
 👨🏻‍🏫	fear múinteoir: ton craicinn éadrom
 👨🏼‍🏫	fear múinteoir: ton craiceann meánach
 👨🏽‍🏫	fear múinteoir: ton craiceann meánach
 👨🏾‍🏫	fear múinteoir: ton craiceann meán-dorcha
 👨🏿‍🏫	fear múinteoir: ton dorcha craicinn
-👩‍🏫	bean-mhúinteoir
+👩‍🏫	múinteoir bean
 👩🏻‍🏫	bean-mhúinteora: ton craicinn éadrom
 👩🏼‍🏫	bean-mhúinteoir: ton craiceann meánach
 👩🏽‍🏫	bean-mhúinteora: ton craiceann meánach
@@ -393,7 +393,7 @@
 👩🏻‍🚀	spásaire bean: ton craicinn éadrom
 👩🏼‍🚀	spásaire mná: ton craiceann meánach
 👩🏽‍🚀	spásaire bean: ton craiceann meánach
-👩🏾‍🚀	spásaire bean: ton craiceann mheán-dorcha
+👩🏾‍🚀	spásaire bean: ton craiceann meán-dorcha
 👩🏿‍🚀	spásaire bean: ton dorcha craicinn
 👨‍🚒	comhraiceoir dóiteáin fear
 👨🏻‍🚒	fear comhraiceoir dóiteáin: ton craicinn éadrom
@@ -406,7 +406,7 @@
 👩🏼‍🚒	comhraiceoir dóiteáin bean: ton craiceann meánach
 👩🏽‍🚒	bean comhraiceoir dóiteáin: ton craiceann meánach
 👩🏾‍🚒	bean comhraiceoir dóiteáin: ton craiceann meán-dorcha
-👩🏿‍🚒	bean comhraiceoir dóiteáin: ton dorcha craicinn
+👩🏿‍🚒	bean comhraiceoir dóiteáin: ton craiceann dorcha
 👮	póilín
 👮🏻	póilín: ton craicinn éadrom
 👮🏼	póilín: ton craiceann meánach
@@ -419,8 +419,8 @@
 👮🏻‍♂	fear póilín: ton craicinn éadrom
 👮🏼‍♂️	fear póilín: ton craiceann meánach
 👮🏼‍♂	fear póilín: ton craiceann meánach
-👮🏽‍♂️	fear póilín: ton craiceann meánach
-👮🏽‍♂	fear póilín: ton craiceann meánach
+👮🏽‍♂️	fear póilín: ton meánach craicinn
+👮🏽‍♂	fear póilín: ton meánach craicinn
 👮🏾‍♂️	fear póilín: ton craiceann meán-dorcha
 👮🏾‍♂	fear póilín: ton craiceann meán-dorcha
 👮🏿‍♂️	fear póilín: ton dorcha craicinn
@@ -724,7 +724,7 @@
 🦸🏻‍♀	ban superhero: ton craicinn éadrom
 🦸🏼‍♀️	ban crógach: ton craiceann meánach
 🦸🏼‍♀	ban crógach: ton craiceann meánach
-🦸🏽‍♀️	crógach bean: ton craiceann meánach
+🦸🏽‍♀️	crógach bean: ton meánach craicinn
 🦸🏽‍♀	crógach bean: ton craiceann meánach
 🦸🏾‍♀️	crógach bean: ton craiceann meán-dorcha
 🦸🏾‍♀	crógach bean: ton craiceann meán-dorcha
@@ -809,7 +809,7 @@
 🧚🏾	sióg: ton craiceann meán-dorcha
 🧚🏿	sióg: ton dorcha craicinn
 🧚‍♀️	bean sióg
-🧚‍♀	sióg bean
+🧚‍♀	bean sióg
 🧚🏻‍♀️	bean sióg: ton craicinn éadrom
 🧚🏻‍♀	bean sióg: ton craicinn éadrom
 🧚🏼‍♀️	bean sióg: ton craiceann meánach
@@ -868,8 +868,8 @@
 🧜🏽	merperson: ton meánach craicinn
 🧜🏾	merperson: ton craiceann meán-dorcha
 🧜🏿	merperson: ton dorcha craicinn
-🧜‍♀️	maighdean mhara
-🧜‍♀	maighdean mhara
+🧜‍♀️	mermaid
+🧜‍♀	mermaid
 🧜🏻‍♀️	mermaid: ton craicinn éadrom
 🧜🏻‍♀	mermaid: ton craicinn éadrom
 🧜🏼‍♀️	mermaid: ton craiceann meánach
@@ -901,11 +901,11 @@
 🧝‍♀️	bean elf
 🧝‍♀	bean elf
 🧝🏻‍♀️	Elf bean: ton craicinn éadrom
-🧝🏻‍♀	Elf bean: ton craicinn éadrom
+🧝🏻‍♀	bean Elf: ton craicinn éadrom
 🧝🏼‍♀️	Elf bean: ton craiceann meánach
 🧝🏼‍♀	Elf bean: ton craiceann meánach
-🧝🏽‍♀️	Elf bean: ton craiceann meánach
-🧝🏽‍♀	Elf bean: ton craiceann meánach
+🧝🏽‍♀️	Elf bean: ton meánach craicinn
+🧝🏽‍♀	Elf bean: ton meánach craicinn
 🧝🏾‍♀️	Elf bean: ton craiceann meán-dorcha
 🧝🏾‍♀	Elf bean: ton craiceann meán-dorcha
 🧝🏿‍♀️	Elf bean: ton dorcha craicinn
@@ -1008,8 +1008,8 @@
 🙅🏽‍♂	fear gesuring NÍL: ton craiceann meánach
 🙅🏾‍♂️	fear gesuring NÍL: ton craiceann meán-dorcha
 🙅🏾‍♂	fear gesuring NÍL: ton craiceann meán-dorcha
-🙅🏿‍♂️	fear gesuring NÍL: ton dorcha craicinn
-🙅🏿‍♂	fear gesuring NÍL: ton dorcha craicinn
+🙅🏿‍♂️	fear gesuring NÍL: ton craicinn dorcha
+🙅🏿‍♂	fear gesuring NÍL: ton craicinn dorcha
 🙅‍♀️	bean gesuring NÍL
 🙅‍♀	bean gesuring NÍL
 🙅🏻‍♀️	bean gesuring NÍL: ton craicinn éadrom
@@ -1142,7 +1142,7 @@
 🙇🏾‍♀	bean ag bogha: ton craiceann meánach dorcha
 🙇🏿‍♀️	bean ag bogha: ton dorcha craicinn
 🙇🏿‍♀	bean ag bogha: ton dorcha craicinn
-🤦	pailniú aghaidh duine
+🤦	aghaidh duine
 🤦🏻	duine facepalming: ton craicinn éadrom
 🤦🏼	person facepalming: ton craiceann meánach
 🤦🏽	person facepalming: ton craiceann meánach
@@ -1318,10 +1318,10 @@
 🏃🏼‍♀	bean ag rith: ton craiceann meánach
 🏃🏽‍♀️	bean ag rith: ton craiceann meánach
 🏃🏽‍♀	bean ag rith: ton craiceann meánach
-🏃🏾‍♀️	bean ag rith: ton craicinn mheán-dorcha
-🏃🏾‍♀	bean ag rith: ton craicinn mheán-dorcha
-🏃🏿‍♀️	bean ag rith: ton craicinn dorcha
-🏃🏿‍♀	bean ag rith: ton craicinn dorcha
+🏃🏾‍♀️	bean ag rith: ton craiceann mheán-dorcha
+🏃🏾‍♀	bean ag rith: ton craiceann mheán-dorcha
+🏃🏿‍♀️	bean ag rith: ton dorcha craicinn
+🏃🏿‍♀	bean ag rith: ton dorcha craicinn
 💃	bean ag damhsa
 💃🏻	bean ag damhsa: ton craicinn éadrom
 💃🏼	bean ag damhsa: ton craiceann meánach
@@ -1347,12 +1347,12 @@
 🧖🏿	duine i seomra steamy: ton dorcha craicinn
 🧖‍♀️	bean i seomra gaile
 🧖‍♀	bean i seomra gaile
-🧖🏻‍♀️	bean i seomra gaile: ton craicinn éadrom
-🧖🏻‍♀	bean i seomra gaile: ton craicinn éadrom
+🧖🏻‍♀️	bean i seomra steamy: ton craicinn éadrom
+🧖🏻‍♀	bean i seomra steamy: ton craicinn éadrom
 🧖🏼‍♀️	bean i seomra gaile: ton craiceann meánach
 🧖🏼‍♀	bean i seomra gaile: ton craiceann meánach
-🧖🏽‍♀️	bean i seomra steamy: ton craiceann meánach
-🧖🏽‍♀	bean i seomra steamy: ton craiceann meánach
+🧖🏽‍♀️	bean i seomra gaile: ton craiceann meánach
+🧖🏽‍♀	bean i seomra gaile: ton craiceann meánach
 🧖🏾‍♀️	bean i seomra steamy: ton craiceann meán-dorcha
 🧖🏾‍♀	bean i seomra steamy: ton craiceann meán-dorcha
 🧖🏿‍♀️	bean i seomra gaile: ton dorcha craicinn
@@ -1433,7 +1433,7 @@
 🛀🏻	duine ag glacadh folcadh: ton craicinn éadrom
 🛀🏼	duine ag glacadh folcadh: ton craiceann meánach
 🛀🏽	duine ag glacadh folcadh: ton meánach craicinn
-🛀🏾	duine ag glacadh folctha: ton craiceann meán-dorcha
+🛀🏾	duine ag glacadh folcadh: ton craiceann meán-dorcha
 🛀🏿	duine ag glacadh folcadh: ton dorcha craicinn
 🛌	duine sa leaba
 🛌🏻	duine sa leaba: ton craicinn éadrom
@@ -1550,10 +1550,10 @@
 🚣🏾‍♂	fear bád rámhaíochta: ton craiceann meán-dorcha
 🚣🏿‍♂️	fear bád rámhaíochta: ton dorcha craicinn
 🚣🏿‍♂	fear bád rámhaíochta: ton dorcha craicinn
-🚣‍♀️	bád rámhaíochta bean
+🚣‍♀️	bean bád rámhaíochta
 🚣‍♀	bean bád rámhaíochta
-🚣🏻‍♀️	bean bád rámhaíochta: ton craicinn éadrom
-🚣🏻‍♀	bean bád rámhaíochta: ton craicinn éadrom
+🚣🏻‍♀️	bád rámhaíochta bean: ton craicinn éadrom
+🚣🏻‍♀	bád rámhaíochta bean: ton craicinn éadrom
 🚣🏼‍♀️	bád rámhaíochta bean: ton craiceann meánach
 🚣🏼‍♀	bád rámhaíochta bean: ton craiceann meánach
 🚣🏽‍♀️	bean bád rámhaíochta: ton craiceann meánach
@@ -1605,8 +1605,8 @@
 ⛹‍♂	fear ag preabadh liathróid
 ⛹🏻‍♂️	fear preabadh liathróid: ton craicinn éadrom
 ⛹🏻‍♂	fear preabadh liathróid: ton craicinn éadrom
-⛹🏼‍♂️	fear preabadh liathróid: ton craiceann meánach
-⛹🏼‍♂	fear preabadh liathróid: ton craiceann meánach
+⛹🏼‍♂️	liathróid ag preabadh: ton craiceann meánach
+⛹🏼‍♂	liathróid ag preabadh: ton craiceann meánach
 ⛹🏽‍♂️	fear preabadh liathróid: ton craiceann meánach
 ⛹🏽‍♂	fear preabadh liathróid: ton craiceann meánach
 ⛹🏾‍♂️	fear preabadh liathróid: ton craiceann meán-dorcha
@@ -1697,7 +1697,7 @@
 🚵🏼	rothaíocht sléibhe duine: ton craiceann meánach
 🚵🏽	duine rothaíocht sléibhe: ton craiceann meánach
 🚵🏾	duine rothaíocht sléibhe: ton craiceann meán-dorcha
-🚵🏿	duine rothaíocht sléibhe: ton dorcha craicinn
+🚵🏿	rothaíocht sléibhe duine: ton dorcha craicinn
 🚵‍♂️	rothaíocht sléibhe fear
 🚵‍♂	rothaíocht sléibhe fear
 🚵🏻‍♂️	rothaíocht sléibhe fear: ton craicinn éadrom
@@ -1740,8 +1740,8 @@
 🤸🏼‍♂	man cartwheeling: ton craiceann meánach
 🤸🏽‍♂️	fear cartwheeling: ton craiceann meánach
 🤸🏽‍♂	fear cartwheeling: ton craiceann meánach
-🤸🏾‍♂️	man cartwheeling: ton craiceann meán-dorcha
-🤸🏾‍♂	man cartwheeling: ton craiceann meán-dorcha
+🤸🏾‍♂️	fear cartwheeling: ton craiceann meán-dorcha
+🤸🏾‍♂	fear cartwheeling: ton craiceann meán-dorcha
 🤸🏿‍♂️	fear cartwheeling: ton dorcha craicinn
 🤸🏿‍♂	fear cartwheeling: ton dorcha craicinn
 🤸‍♀️	bean cartwheeling
@@ -1845,8 +1845,8 @@
 🤹🏻‍♀	juggling bean: ton craicinn éadrom
 🤹🏼‍♀️	juggling bean: ton craiceann meánach
 🤹🏼‍♀	juggling bean: ton craiceann meánach
-🤹🏽‍♀️	juggling bean: ton craiceann meánach
-🤹🏽‍♀	juggling bean: ton craiceann meánach
+🤹🏽‍♀️	bean juggling: ton craiceann meánach
+🤹🏽‍♀	bean juggling: ton craiceann meánach
 🤹🏾‍♀️	juggling bean: ton craiceann meán-dorcha
 🤹🏾‍♀	juggling bean: ton craiceann meán-dorcha
 🤹🏿‍♀️	bean juggling: ton dorcha craicinn
@@ -1973,12 +1973,12 @@
 🖖🏼	cúirtéis vulcan: ton craiceann meánach
 🖖🏽	cúirtéis vulcan: ton craiceann meánach
 🖖🏾	cúirtéis vulcan: ton craiceann meán-dorcha
-🖖🏿	cúirtéis vulcan: ton dorcha craicinn
+🖖🏿	cúirtéis vulcan: ton craiceann dorcha
 🤘	comhartha na n-adharc
 🤘🏻	comhartha na n-adharc: ton craiceann éadrom
 🤘🏼	comhartha na n-adharc: ton craiceann meánach
 🤘🏽	comhartha na n-adharc: ton craiceann meánach
-🤘🏾	comhartha na n-adharc: ton craiceann meán-dorcha
+🤘🏾	comhartha na n-adharc: ton craiceann meánach dorcha
 🤘🏿	comhartha na n-adharc: ton dorcha craicinn
 🤙	glaoch orm lámh
 🤙🏻	glaoch orm lámh: ton craicinn éadrom
@@ -2041,7 +2041,7 @@
 🤜🏽	dorn aghaidh na láimhe deise: ton meánach craicinn
 🤜🏾	dorn aghaidh na láimhe deise: ton craiceann meán-dorcha
 🤜🏿	dorn aghaidh na láimhe deise: ton dorcha craicinn
-🤚	ardaithe cúl láimhe
+🤚	ardaithe chúl láimhe
 🤚🏻	cúl na láimhe ardaithe: ton craicinn éadrom
 🤚🏼	cúl na láimhe ardaithe: ton craiceann meánach
 🤚🏽	cúl na láimhe ardaithe: ton craiceann meánach
@@ -2158,7 +2158,7 @@
 💣	buama
 💥	imbhualadh
 💦	braoiníní allais
-💨	ag rith
+💨	ag rith ar shiúl
 💫	dizzy
 💬	balún cainte
 🗨️	mboilgeog cainte ar chlé
@@ -2223,7 +2223,7 @@
 🐯	aghaidh tíogair
 🐅	Tíogair
 🐆	liopard
-🐴	aghaidh capaill
+🐴	aghaidh capall
 🐎	capall
 🦄	aghaidh aonbheannaigh
 🦓	séabra
@@ -2448,7 +2448,7 @@
 🥄	spúnóg
 🔪	scian cistine
 🏺	amphora
-🌍	cruinne ag taispeáint an Eoraip-Afraic
+🌍	cruinne ag taispeáint Eoraip-Afraic
 🌎	cruinne ag taispeáint Mheiriceá
 🌏	cruinne ag taispeáint Áise-Astráil
 🌐	cruinne le fadlínte
@@ -2498,7 +2498,7 @@
 🏭	monarcha
 🏯	caisleán Seapánach
 🏰	caisleán
-💒	bainis
+💒	bainise
 🗼	Tóiceo túr
 🗽	Dealbh na Saoirse
 ⛪	eaglais
@@ -2511,8 +2511,8 @@
 ⛺	puball
 🌁	ceo
 🌃	oíche le réaltaí
-🏙️	dreach cathrach
-🏙	dreach cathrach
+🏙️	cathairdhreach
+🏙	cathairdhreach
 🌄	éirí gréine thar sléibhte
 🌅	éirí gréine
 🌆	dreach na cathrach ag dusk
@@ -2652,7 +2652,7 @@
 ☀	ghrian
 🌝	aghaidh ghealach lán
 🌞	ghrian le aghaidh
-⭐	réalta
+⭐	réalt
 🌟	réalta ghleoite
 🌠	réalta reatha
 ☁️	scamall
@@ -2700,7 +2700,7 @@
 🎃	Seán na gealaí
 🎄	Crann nollaig
 🎆	tinte ealaíne
-🎇	screadaíl
+🎇	spréachaire
 🧨	dóiteán
 ✨	sparkles
 🎈	balún
@@ -3095,7 +3095,7 @@
 ☮️	siombail na síochána
 ☮	siombail na síochána
 🕎	menorah
-🔯	réalta sé phointe dotted
+🔯	dotted six-pointed star
 ♈	Aries
 ♉	Tarbh
 ♊	Cúpla
@@ -3401,7 +3401,7 @@
 🇬🇵	Guadalúip
 🇬🇶	An Ghuine Mheánchriosach
 🇬🇷	an Ghréig
-🇬🇸	An tSeoirsia Theas agus Oileáin Sandwich Theas
+🇬🇸	An tSeoirsia Theas & Oileáin Sandwich Theas
 🇬🇹	Guatamala
 🇬🇺	Guam
 🇬🇼	Guine Bhissau
@@ -3426,7 +3426,7 @@
 🇯🇪	Geirsí
 🇯🇲	Iamáice
 🇯🇴	an Iordáin
-🇯🇵	tSeapáin
+🇯🇵	an tSeapáin
 🇰🇪	an Chéinia
 🇰🇬	Chirgeastáin
 🇰🇭	an Chambóid
@@ -3533,7 +3533,7 @@
 🇹🇬	Tóga
 🇹🇭	Téalainn
 🇹🇯	Táidsíceastáin
-🇹🇰	Tócalá
+🇹🇰	Tócalainn
 🇹🇱	Tíomór-Leste
 🇹🇲	Tuircméanastáin
 🇹🇳	an Túinéis

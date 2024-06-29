@@ -110,15 +110,19 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
         else:
             self.button_clr.setEnabled(False)
 
-        # Check for duplicate items
         if topLeft:
             item_row = topLeft.row()
 
             if item_row != -1:
                 item_text = self.model().stringList()[item_row]
 
+                # Check for empty items
                 if re.search(r'^\s*$', item_text):
-                    self.model().stringList()[item_row] = self.items_old[item_row]
+                    data = self.model().stringList()
+                    data[item_row] = self.items_old[item_row]
+
+                    self.model().setStringList(data)
+                # Check for duplicate items
                 else:
                     for i, text in enumerate(self.model().stringList()):
                         if i != item_row and item_text == text:

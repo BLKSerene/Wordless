@@ -114,7 +114,7 @@ if os.path.exists(zip_file_name):
 
 if is_windows:
     # Requires 7-Zip
-    subprocess.run(['7z', 'a', '-tzip', '-mx9', zip_file_name, 'Wordless/'], check = True)
+    subprocess.run(['7z', 'a', '-tzip', '-mx9', zip_file_name, 'Wordless'], check = True)
 elif is_macos:
     subprocess.run(['ditto', '-c', '-k', '--sequesterRsrc', '--keepParent', 'Wordless.app/', zip_file_name], check = True)
 elif is_linux:
