@@ -285,7 +285,7 @@
 👩🏻‍🔧	muller mecánica: ton de pel claro
 👩🏼‍🔧	mecánica feminina: ton de pel medio claro
 👩🏽‍🔧	muller mecánica: ton de pel medio
-👩🏾‍🔧	mecánica de muller: ton de pel medio-escuro
+👩🏾‍🔧	mecánica feminina: ton de pel medio-escuro
 👩🏿‍🔧	muller mecánica: ton de pel escuro
 👨‍🏭	home traballador da fábrica
 👨🏻‍🏭	obreiro de fábrica: ton de pel claro
@@ -303,13 +303,13 @@
 👨🏻‍💼	oficinista: ton de pel claro
 👨🏼‍💼	oficinista: ton de pel medio claro
 👨🏽‍💼	oficinista: ton de pel medio
-👨🏾‍💼	home oficinista: ton de pel medio escuro
+👨🏾‍💼	oficinista: ton de pel medio-escuro
 👨🏿‍💼	oficinista: ton de pel escuro
 👩‍💼	muller traballadora de oficina
 👩🏻‍💼	oficinista: ton de pel claro
 👩🏼‍💼	oficinista: ton de pel medio claro
 👩🏽‍💼	oficinista: ton de pel medio
-👩🏾‍💼	oficinista: ton de pel medio-escuro
+👩🏾‍💼	oficinista: ton de pel medio escuro
 👩🏿‍💼	oficinista: ton de pel escuro
 👨‍🔬	home científico
 👨🏻‍🔬	home científico: ton de pel claro
@@ -346,7 +346,7 @@
 👩🏼‍🎤	cantante: ton de pel medio claro
 👩🏽‍🎤	cantante: ton de pel medio
 👩🏾‍🎤	cantante: ton de pel medio-escuro
-👩🏿‍🎤	muller cantante: ton de pel escuro
+👩🏿‍🎤	cantante: ton de pel escuro
 👨‍🎨	home artista
 👨🏻‍🎨	artista home: ton de pel claro
 👨🏼‍🎨	artista home: ton de pel medio claro
@@ -357,7 +357,7 @@
 👩🏻‍🎨	muller artista: ton de pel claro
 👩🏼‍🎨	muller artista: ton de pel medio claro
 👩🏽‍🎨	muller artista: ton de pel medio
-👩🏾‍🎨	artista muller: ton de pel medio-escuro
+👩🏾‍🎨	artista muller: ton de pel medio escuro
 👩🏿‍🎨	muller artista: ton de pel escuro
 👨‍✈️	home piloto
 👨‍✈	home piloto
@@ -399,7 +399,7 @@
 👨🏻‍🚒	home bombeiro: ton de pel claro
 👨🏼‍🚒	bombeiro home: ton de pel medio claro
 👨🏽‍🚒	bombeiro home: ton de pel medio
-👨🏾‍🚒	bombeiro home: ton de pel medio escuro
+👨🏾‍🚒	bombeiro home: ton de pel medio-escuro
 👨🏿‍🚒	bombeiro home: ton de pel escuro
 👩‍🚒	muller bombeira
 👩🏻‍🚒	muller bombeira: ton de pel claro
@@ -486,8 +486,8 @@
 💂🏼‍♂	garda de home: ton de pel medio claro
 💂🏽‍♂️	garda de home: ton de pel medio
 💂🏽‍♂	garda de home: ton de pel medio
-💂🏾‍♂️	garda de home: ton de pel medio-escuro
-💂🏾‍♂	garda de home: ton de pel medio-escuro
+💂🏾‍♂️	garda home: ton de pel medio-escuro
+💂🏾‍♂	garda home: ton de pel medio-escuro
 💂🏿‍♂️	garda home: ton de pel escuro
 💂🏿‍♂	garda home: ton de pel escuro
 💂‍♀️	muller garda
@@ -583,7 +583,7 @@
 🧕	muller con pano na cabeza
 🧕🏻	muller con pano: ton de pel claro
 🧕🏼	muller con pano: ton de pel medio claro
-🧕🏽	muller con pano na cabeza: ton de pel medio
+🧕🏽	muller con pano: ton de pel medio
 🧕🏾	muller con pano na cabeza: ton de pel medio escuro
 🧕🏿	muller con pano: ton de pel escuro
 🧔	persoa barbuda
@@ -745,7 +745,7 @@
 🦹	supervilán
 🦹🏻	supervilán: ton de pel claro
 🦹🏼	supervillano: ton de pel medio claro
-🦹🏽	supervilán: ton de pel medio
+🦹🏽	supervillano: ton de pel medio
 🦹🏾	supervillano: ton de pel medio-escuro
 🦹🏿	supervilán: ton de pel escuro
 🦹‍♀️	muller supervillana
@@ -906,8 +906,8 @@
 🧝🏼‍♀	elfa: ton de pel medio claro
 🧝🏽‍♀️	muller elfa: ton de pel medio
 🧝🏽‍♀	muller elfa: ton de pel medio
-🧝🏾‍♀️	elfa: ton de pel medio escuro
-🧝🏾‍♀	elfa: ton de pel medio escuro
+🧝🏾‍♀️	elfa: ton de pel medio-escuro
+🧝🏾‍♀	elfa: ton de pel medio-escuro
 🧝🏿‍♀️	muller elfa: ton de pel escuro
 🧝🏿‍♀	muller elfa: ton de pel escuro
 🧝‍♂️	home elfo
@@ -980,8 +980,8 @@
 🙎🏾‍♂	home facendo puchero: ton de pel medio-escuro
 🙎🏿‍♂️	home facendo puchero: ton de pel escuro
 🙎🏿‍♂	home facendo puchero: ton de pel escuro
-🙎‍♀️	muller facendo puchero
-🙎‍♀	muller facendo puchero
+🙎‍♀️	muller facendo pucheros
+🙎‍♀	muller facendo pucheros
 🙎🏻‍♀️	muller facendo puchero: ton de pel claro
 🙎🏻‍♀	muller facendo puchero: ton de pel claro
 🙎🏼‍♀️	muller facendo puchero: ton de pel medio claro
@@ -1027,8 +1027,8 @@
 🙆🏼	persoa facendo xesto OK: ton de pel medio claro
 🙆🏽	persoa facendo ademán de OK: ton de pel medio
 🙆🏾	persoa facendo xesto OK: ton de pel medio escuro
-🙆🏿	persoa facendo xestos OK: ton de pel escuro
-🙆‍♂️	home facendo ademán de OK
+🙆🏿	persoa facendo ademán de OK: ton de pel escuro
+🙆‍♂️	home facendo xestos OK
 🙆‍♂	home facendo xestos OK
 🙆🏻‍♂️	home facendo xestos de Aceptar: ton de pel claro
 🙆🏻‍♂	home facendo xestos de Aceptar: ton de pel claro
@@ -1036,8 +1036,8 @@
 🙆🏼‍♂	home facendo xestos OK: ton de pel medio claro
 🙆🏽‍♂️	home facendo xestos OK: ton de pel medio
 🙆🏽‍♂	home facendo xestos OK: ton de pel medio
-🙆🏾‍♂️	home facendo xestos OK: ton de pel medio escuro
-🙆🏾‍♂	home facendo xestos OK: ton de pel medio escuro
+🙆🏾‍♂️	home facendo xesto de Aceptar: ton de pel medio escuro
+🙆🏾‍♂	home facendo xesto de Aceptar: ton de pel medio escuro
 🙆🏿‍♂️	home facendo xestos de Aceptar: ton de pel escuro
 🙆🏿‍♂	home facendo xestos de Aceptar: ton de pel escuro
 🙆‍♀️	muller facendo ademán de OK
@@ -1050,8 +1050,8 @@
 🙆🏽‍♀	muller facendo xestos de Aceptar: ton de pel medio
 🙆🏾‍♀️	muller facendo xestos OK: ton de pel medio escuro
 🙆🏾‍♀	muller facendo xestos OK: ton de pel medio escuro
-🙆🏿‍♀️	muller facendo xesto de Aceptar: ton de pel escuro
-🙆🏿‍♀	muller facendo xesto de Aceptar: ton de pel escuro
+🙆🏿‍♀️	muller facendo xestos de Aceptar: ton de pel escuro
+🙆🏿‍♀	muller facendo xestos de Aceptar: ton de pel escuro
 💁	persoa botando a man
 💁🏻	persoa inclinando a man: ton de pel claro
 💁🏼	persoa inclinando a man: ton de pel medio claro
@@ -1086,7 +1086,7 @@
 🙋🏻	persoa que levanta a man: ton de pel claro
 🙋🏼	persoa que levanta a man: ton de pel medio claro
 🙋🏽	persoa que levanta a man: ton de pel medio
-🙋🏾	persoa que levanta a man: ton de pel medio-escuro
+🙋🏾	persoa que levanta a man: ton de pel medio escuro
 🙋🏿	persoa que levanta a man: ton de pel escuro
 🙋‍♂️	home levantando a man
 🙋‍♂	home levantando a man
@@ -1143,9 +1143,9 @@
 🙇🏿‍♀️	muller facendo unha reverencia: ton de pel escuro
 🙇🏿‍♀	muller facendo unha reverencia: ton de pel escuro
 🤦	persoa facepalming
-🤦🏻	Facepalming persoa: ton de pel claro
+🤦🏻	persoa facepalming: ton de pel claro
 🤦🏼	Facepalming persoa: ton de pel medio claro
-🤦🏽	Facepalming persoa: ton de pel medio
+🤦🏽	persoa facepalming: ton de pel medio
 🤦🏾	Facepalming persoa: ton de pel medio-escuro
 🤦🏿	persoa facepalming: ton de pel escuro
 🤦‍♂️	home facepalming
@@ -1174,7 +1174,7 @@
 🤦🏿‍♀	muller facepalming: ton de pel escuro
 🤷	persoa encollendo os ombros
 🤷🏻	persoa que encolle os ombreiros: ton de pel claro
-🤷🏼	persoa que encolle os ombreiros: ton de pel medio claro
+🤷🏼	persoa encollendo os ombreiros: ton de pel medio claro
 🤷🏽	persoa encollendo os ombreiros: ton de pel medio
 🤷🏾	persoa encollendo os ombreiros: ton de pel medio-escuro
 🤷🏿	persoa que encolle de ombreiros: ton de pel escuro
@@ -1341,7 +1341,7 @@
 👯‍♀	mulleres con orellas de coello
 🧖	persoa nun cuarto de vapor
 🧖🏻	persoa nun cuarto de vapor: ton de pel claro
-🧖🏼	persoa nun cuarto de vapor: ton de pel medio claro
+🧖🏼	persoa nunha sala de vapor: ton de pel medio claro
 🧖🏽	persoa nunha sala de vapor: ton de pel medio
 🧖🏾	persoa nun cuarto de vapor: ton de pel medio-escuro
 🧖🏿	persoa nun cuarto de vapor: ton de pel escuro
@@ -1365,8 +1365,8 @@
 🧖🏼‍♂	home nun cuarto de vapor: ton de pel medio claro
 🧖🏽‍♂️	home nun cuarto de vapor: ton de pel medio
 🧖🏽‍♂	home nun cuarto de vapor: ton de pel medio
-🧖🏾‍♂️	home nun cuarto de vapor: ton de pel medio-escuro
-🧖🏾‍♂	home nun cuarto de vapor: ton de pel medio-escuro
+🧖🏾‍♂️	home nun cuarto de vapor: ton de pel medio escuro
+🧖🏾‍♂	home nun cuarto de vapor: ton de pel medio escuro
 🧖🏿‍♂️	home nun cuarto de vapor: ton de pel escuro
 🧖🏿‍♂	home nun cuarto de vapor: ton de pel escuro
 🧗	persoa escalando
@@ -1379,8 +1379,8 @@
 🧗‍♀	muller escalando
 🧗🏻‍♀️	muller escalando: ton de pel claro
 🧗🏻‍♀	muller escalando: ton de pel claro
-🧗🏼‍♀️	muller escalada: ton de pel medio claro
-🧗🏼‍♀	muller escalada: ton de pel medio claro
+🧗🏼‍♀️	muller escaladora: ton de pel medio claro
+🧗🏼‍♀	muller escaladora: ton de pel medio claro
 🧗🏽‍♀️	muller escaladora: ton de pel medio
 🧗🏽‍♀	muller escaladora: ton de pel medio
 🧗🏾‍♀️	muller escaladora: ton de pel medio-escuro
@@ -1510,8 +1510,8 @@
 🏄🏿	persoa que practica surf: ton de pel escuro
 🏄‍♂️	home surfeando
 🏄‍♂	home surfeando
-🏄🏻‍♂️	home surfeando: ton de pel claro
-🏄🏻‍♂	home surfeando: ton de pel claro
+🏄🏻‍♂️	home surfing: ton de pel claro
+🏄🏻‍♂	home surfing: ton de pel claro
 🏄🏼‍♂️	home surfing: ton de pel medio claro
 🏄🏼‍♂	home surfing: ton de pel medio claro
 🏄🏽‍♂️	home surfeando: ton de pel medio
@@ -1527,7 +1527,7 @@
 🏄🏼‍♀️	muller practicando surf: ton de pel medio claro
 🏄🏼‍♀	muller practicando surf: ton de pel medio claro
 🏄🏽‍♀️	muller practicando surf: ton de pel medio
-🏄🏽‍♀	muller practicando surf: ton de pel medio
+🏄🏽‍♀	muller surfeando: ton de pel medio
 🏄🏾‍♀️	muller surfeando: ton de pel medio-escuro
 🏄🏾‍♀	muller surfeando: ton de pel medio-escuro
 🏄🏿‍♀️	muller practicando surf: ton de pel escuro
@@ -1620,7 +1620,7 @@
 ⛹🏻‍♀️	muller botando pelota: ton de pel claro
 ⛹🏻‍♀	muller botando pelota: ton de pel claro
 ⛹🏼‍♀️	muller botando pelota: ton de pel medio claro
-⛹🏼‍♀	muller botando pelota: ton de pel medio claro
+⛹🏼‍♀	pelota rebotando muller: ton de pel medio claro
 ⛹🏽‍♀️	muller botando pelota: ton de pel medio
 ⛹🏽‍♀	muller botando pelota: ton de pel medio
 ⛹🏾‍♀️	pelota rebotando muller: ton de pel medio escuro
@@ -1793,7 +1793,7 @@
 🤽🏿‍♀	muller xogando ao waterpolo: ton de pel escuro
 🤾	persoa xogando ao balonmán
 🤾🏻	persoa que xoga ao balonmán: ton de pel claro
-🤾🏼	persoa que xoga a balonmán: ton de pel medio claro
+🤾🏼	persoa que xoga ao balonmán: ton de pel medio claro
 🤾🏽	persoa que xoga ao balonmán: ton de pel medio
 🤾🏾	persoa que xoga ao balonmán: ton de pel medio-escuro
 🤾🏿	persoa que xoga ao balonmán: ton de pel escuro
@@ -2160,7 +2160,7 @@
 💦	gotas de suor
 💨	fuxindo
 💫	mareado
-💬	globo de discurso
+💬	globo de fala
 🗨️	burbulla esquerda
 🗨	burbulla esquerda
 🗯️	burbulla de rabia dereita
@@ -2287,7 +2287,7 @@
 🐉	dragón
 🦕	saurópodo
 🦖	T-Rex
-🐳	balea chorando
+🐳	balea que choca
 🐋	balea
 🐬	Golfiño
 🐟	peixe
@@ -2419,7 +2419,7 @@
 🍩	rosca
 🍪	galleta
 🎂	Bolo de aniversario
-🍰	bolo
+🍰	torta
 🧁	magdalena
 🥧	empanada
 🍫	barra de chocolate
@@ -2837,8 +2837,8 @@
 📀	dvd
 🧮	ábaco
 🎥	cámara de cine
-🎞️	cadros de película
-🎞	cadros de película
+🎞️	fotogramas de película
+🎞	fotogramas de película
 📽️	proxector de cine
 📽	proxector de cine
 🎬	taboleiro de batea
@@ -2892,7 +2892,7 @@
 📤	bandexa da caixa de saída
 📥	bandexa de entrada
 📦	paquete
-📫	caixa de correo pechada con bandeira en alto
+📫	caixa de correo pechada con bandeira en alza
 📪	caixa de correo pechada coa bandeira baixada
 📬	caixa de correo aberta coa bandeira levantada
 📭	caixa de correo aberta coa bandeira baixada
@@ -2940,7 +2940,7 @@
 🗃️	caixa de arquivo de tarxeta
 🗃	caixa de arquivo de tarxeta
 🗄️	archivador
-🗄	archivador
+🗄	arquivador
 🗑️	papeleira
 🗑	papeleira
 🔒	pechado
@@ -3064,8 +3064,8 @@
 ↩	frecha dereita curvando cara á esquerda
 ↪️	frecha esquerda curva cara á dereita
 ↪	frecha esquerda curva cara á dereita
-⤴️	frecha dereita curvando cara arriba
-⤴	frecha dereita curvando cara arriba
+⤴️	frecha cara arriba curvando cara arriba
+⤴	frecha cara arriba curvando cara arriba
 ⤵️	frecha cara abaixo
 ⤵	frecha cara abaixo
 🔃	frechas verticais no sentido horario
@@ -3158,7 +3158,7 @@
 📛	distintivo de nome
 🔰	Símbolo xaponés para principiantes
 ⭕	círculo grande pesado
-✅	marca de verificación branca pesada
+✅	marca de verificación pesada branca
 ☑️	urna con cheque
 ☑	urna con cheque
 ✔️	marca de verificación pesada
@@ -3260,10 +3260,10 @@
 🉐	Botón de "ganga" xaponés
 🈹	Botón de "desconto" xaponés
 🈚	Botón xaponés "gratis".
-🈲	Botón xaponés "prohibido".
+🈲	Botón "prohibido" xaponés
 🉑	Botón xaponés "aceptable".
 🈸	Botón de "aplicación" xaponés
-🈴	Botón xaponés de "nota de aprobación".
+🈴	Botón xaponés "aprobación".
 🈳	Botón de "vacante" xaponés
 ㊗️	Botón xaponés "parabéns".
 ㊗	Botón xaponés "parabéns".

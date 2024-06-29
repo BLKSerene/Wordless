@@ -558,7 +558,11 @@ class Wl_Table_Profiler_Counts(Wl_Table_Profiler):
                     # Count of Syllables
                     if count_syls is not None:
                         self.set_item_num(10, i, count_syls)
-                        self.set_item_num(11, i, count_syls, count_syls_total)
+
+                        if count_syls_total is not None:
+                            self.set_item_num(11, i, count_syls, count_syls_total)
+                        else:
+                            self.set_item_err(11, i, text = self.tr('No language support'), alignment_hor = 'right')
                     else:
                         self.set_item_err(10, i, text = self.tr('No language support'), alignment_hor = 'right')
                         self.set_item_err(11, i, text = self.tr('No language support'), alignment_hor = 'right')

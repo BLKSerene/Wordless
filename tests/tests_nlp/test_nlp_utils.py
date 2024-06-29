@@ -285,8 +285,8 @@ def test_skipgrams():
     assert list(wl_nlp_utils.skipgrams(range(5), 3, 2)) == [(0, 1, 2), (0, 1, 3), (0, 1, 4), (0, 2, 3), (0, 2, 4), (0, 3, 4), (1, 2, 3), (1, 2, 4), (1, 3, 4), (2, 3, 4)]
     assert list(wl_nlp_utils.skipgrams(range(5), 6, 9)) == list(wl_nlp_utils.ngrams(range(5), 6))
 
-def test_escape_text():
-    assert wl_nlp_utils.escape_text('<test test="test">') == '&lt;test test=&quot;test&quot;&gt;'
+def test_escape_token():
+    assert wl_nlp_utils.escape_token('<test test="test">') == '&lt;test test=&quot;test&quot;&gt;'
 
 def test_escape_tokens():
     assert wl_nlp_utils.escape_tokens(['<test test="test">'] * 10) == ['&lt;test test=&quot;test&quot;&gt;'] * 10
@@ -329,6 +329,6 @@ if __name__ == '__main__':
     test_everygrams()
     test_skipgrams()
 
-    test_escape_text()
+    test_escape_token()
     test_escape_tokens()
     test_html_to_text()

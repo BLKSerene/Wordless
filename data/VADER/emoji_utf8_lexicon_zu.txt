@@ -79,7 +79,7 @@
 🤢	ubuso obucanuzela inhliziyo
 🤮	ubuso ukuhlanza
 🤧	ubuso obuthimulayo
-😇	ubuso obumamathekayo obune-halo
+😇	ubuso obumoyizelayo obune-halo
 🤠	ubuso besigqoko se-cowboy
 🥳	ubuso bephathi
 🥴	ubuso obumnandi
@@ -88,7 +88,7 @@
 🤫	ubuso obunzima
 🤭	ubuso nesandla emlonyeni
 🧐	ubuso obune-monocle
-🤓	ubuso obunzima
+🤓	ubuso be-nerd
 😈	ubuso obumoyizelayo obunezimpondo
 👿	ubuso obuthukuthele obunezimpondo
 🤡	ubuso be-clown
@@ -244,7 +244,7 @@
 👩🏻‍⚖️	ijaji lesifazane: isikhumba esikhanyayo
 👩🏻‍⚖	ijaji lesifazane: isikhumba esikhanyayo
 👩🏼‍⚖️	ijaji lesifazane: isikhumba esikhanyayo esimaphakathi
-👩🏼‍⚖	ijaji lesifazane: isikhumba esikhanyayo esimaphakathi
+👩🏼‍⚖	ijaji lesifazane: ithoni yesikhumba ekhanyayo emaphakathi
 👩🏽‍⚖️	ijaji lesifazane: ithoni yesikhumba esimaphakathi
 👩🏽‍⚖	ijaji lesifazane: ithoni yesikhumba esimaphakathi
 👩🏾‍⚖️	ijaji lesifazane: ithoni yesikhumba esimnyama maphakathi
@@ -278,7 +278,7 @@
 👨‍🔧	umakhenikha womuntu
 👨🏻‍🔧	umakhenikha womuntu: ithoni yesikhumba esikhanyayo
 👨🏼‍🔧	umakhenikha womuntu: ithoni yesikhumba ekhanyayo emaphakathi
-👨🏽‍🔧	umakhenikha wendoda: ithoni yesikhumba esimaphakathi
+👨🏽‍🔧	umakhenikha womuntu: ithoni yesikhumba emaphakathi
 👨🏾‍🔧	umakhenikha wendoda: ithoni yesikhumba esimnyama maphakathi
 👨🏿‍🔧	Umakhenikha wendoda: ithoni yesikhumba esimnyama
 👩‍🔧	umakhenikha wesifazane
@@ -299,14 +299,14 @@
 👩🏽‍🏭	isisebenzi sasefektri sowesifazane: ithoni yesikhumba esimaphakathi
 👩🏾‍🏭	isisebenzi sasefektri sowesifazane: ithoni yesikhumba esimnyama maphakathi
 👩🏿‍🏭	isisebenzi sasefektri sowesifazane: isikhumba esimnyama
-👨‍💼	isisebenzi sehhovisi lomuntu
+👨‍💼	isisebenzi sehhovisi lendoda
 👨🏻‍💼	isisebenzi sasehhovisi wesilisa: ithoni yesikhumba esikhanyayo
 👨🏼‍💼	isisebenzi sasehhovisi wesilisa: ithoni yesikhumba esikhanyayo
 👨🏽‍💼	isisebenzi sasehhovisi wesilisa: ithoni yesikhumba esimaphakathi
-👨🏾‍💼	isisebenzi sasehhovisi wesilisa: ithoni yesikhumba esimnyama
+👨🏾‍💼	isisebenzi sasehhovisi wesilisa: ithoni yesikhumba esimnyama maphakathi
 👨🏿‍💼	isisebenzi sasehhovisi wesilisa: ithoni yesikhumba esimnyama
-👩‍💼	isisebenzi sasehhovisi wesifazane
-👩🏻‍💼	isisebenzi sasehhovisi wesifazane: isikhumba esikhanyayo
+👩‍💼	isisebenzi sehhovisi lesifazane
+👩🏻‍💼	isisebenzi sehhovisi lesifazane: ithoni yesikhumba esikhanyayo
 👩🏼‍💼	isisebenzi sasehhovisi wesifazane: ithoni yesikhumba esikhanyayo
 👩🏽‍💼	isisebenzi sasehhovisi wesifazane: ithoni yesikhumba esimaphakathi
 👩🏾‍💼	isisebenzi sasehhovisi wesifazane: ithoni yesikhumba esimnyama maphakathi
@@ -314,11 +314,11 @@
 👨‍🔬	usosayensi wendoda
 👨🏻‍🔬	usosayensi wendoda: ithoni yesikhumba esikhanyayo
 👨🏼‍🔬	usosayensi wendoda: ithoni yesikhumba ekhanyayo emaphakathi
-👨🏽‍🔬	usosayensi wendoda: ithoni yesikhumba emaphakathi
+👨🏽‍🔬	usosayensi wendoda: ithoni yesikhumba esimaphakathi
 👨🏾‍🔬	usosayensi wendoda: ithoni yesikhumba esimnyama maphakathi
 👨🏿‍🔬	usosayensi wendoda: ithoni yesikhumba esimnyama
 👩‍🔬	usosayensi wesifazane
-👩🏻‍🔬	usosayensi wesifazane: ithoni yesikhumba esikhanyayo
+👩🏻‍🔬	usosayensi wesifazane: isikhumba esikhanyayo
 👩🏼‍🔬	usosayensi wesifazane: ithoni yesikhumba ekhanyayo emaphakathi
 👩🏽‍🔬	usosayensi wesifazane: ithoni yesikhumba esimaphakathi
 👩🏾‍🔬	usosayensi wesifazane: ithoni yesikhumba esimnyama
@@ -397,16 +397,16 @@
 👩🏿‍🚀	i-astronaut wesifazane: isikhumba esimnyama
 👨‍🚒	isicishamlilo indoda
 👨🏻‍🚒	umcimi-mlilo indoda: ithoni yesikhumba esikhanyayo
-👨🏼‍🚒	isicishimlilo somuntu: ithoni yesikhumba esikhanyayo
+👨🏼‍🚒	isicishamlilo somuntu: ithoni yesikhumba ekhanyayo emaphakathi
 👨🏽‍🚒	umcimi-mlilo indoda: ithoni yesikhumba esimaphakathi
-👨🏾‍🚒	isicishamlilo somuntu: ithoni yesikhumba esimnyama
+👨🏾‍🚒	umcimi-mlilo indoda: ithoni yesikhumba esimnyama maphakathi
 👨🏿‍🚒	umcimi-mlilo indoda: isikhumba esimnyama
 👩‍🚒	isicishamlilo sowesifazane
 👩🏻‍🚒	isicishamlilo sowesifazane: isikhumba esikhanyayo
 👩🏼‍🚒	isicishamlilo sowesifazane: ithoni yesikhumba ekhanyayo emaphakathi
 👩🏽‍🚒	umcimi-mlilo wesifazane: ithoni yesikhumba esimaphakathi
 👩🏾‍🚒	umcimi-mlilo wesifazane: ithoni yesikhumba esimnyama
-👩🏿‍🚒	umcimi-mlilo wesifazane: isikhumba esimnyama
+👩🏿‍🚒	isicishamlilo sowesifazane: isikhumba esimnyama
 👮	iphoyisa
 👮🏻	iphoyisa: ukukhanya kwesikhumba
 👮🏼	iphoyisa: ithoni yesikhumba esikhanyayo
@@ -524,18 +524,18 @@
 👷‍♀	isisebenzi sokwakha wesifazane
 👷🏻‍♀️	isisebenzi sokwakha wesifazane: ithoni yesikhumba esikhanyayo
 👷🏻‍♀	isisebenzi sokwakha wesifazane: ithoni yesikhumba esikhanyayo
-👷🏼‍♀️	isisebenzi sokwakha wesifazane: ithoni yesikhumba esikhanyayo
-👷🏼‍♀	isisebenzi sokwakha wesifazane: ithoni yesikhumba esikhanyayo
+👷🏼‍♀️	isisebenzi sokwakha wesifazane: ithoni yesikhumba ekhanyayo emaphakathi
+👷🏼‍♀	isisebenzi sokwakha wesifazane: ithoni yesikhumba ekhanyayo emaphakathi
 👷🏽‍♀️	isisebenzi sokwakha wesifazane: ithoni yesikhumba esimaphakathi
 👷🏽‍♀	isisebenzi sokwakha wesifazane: ithoni yesikhumba esimaphakathi
-👷🏾‍♀️	isisebenzi sokwakha sowesifazane: ithoni yesikhumba esimnyama
+👷🏾‍♀️	umsebenzi wokwakha wesifazane: ithoni yesikhumba esimnyama
 👷🏾‍♀	umsebenzi wokwakha wesifazane: ithoni yesikhumba esimnyama
 👷🏿‍♀️	isisebenzi sokwakha wesifazane: isikhumba esimnyama
 👷🏿‍♀	isisebenzi sokwakha wesifazane: isikhumba esimnyama
 🤴	inkosana
 🤴🏻	inkosana: ukukhanya kwesikhumba
 🤴🏼	inkosana: ithoni yesikhumba ekhanyayo emaphakathi
-🤴🏽	inkosana: ithoni yesikhumba esimaphakathi
+🤴🏽	inkosana: ithoni yesikhumba emaphakathi
 🤴🏾	inkosana: ithoni yesikhumba esimnyama esimaphakathi
 🤴🏿	inkosana: ithoni yesikhumba esimnyama
 👸	nkosazane
@@ -550,7 +550,7 @@
 👳🏽	umuntu ogqoke isiphandla: ithoni yesikhumba esimaphakathi
 👳🏾	umuntu ogqoke isiphandla: ithoni yesikhumba esimnyama maphakathi
 👳🏿	umuntu ogqoke isiphandla: isikhumba esimnyama
-👳‍♂️	indoda efake isiphandla
+👳‍♂️	indoda egqoke isiphandla
 👳‍♂	indoda efake isiphandla
 👳🏻‍♂️	indoda egqoke isiphandla: isikhumba esikhanyayo
 👳🏻‍♂	indoda egqoke isiphandla: isikhumba esikhanyayo
@@ -560,8 +560,8 @@
 👳🏽‍♂	indoda egqoke isiphandla: isikhumba esimaphakathi
 👳🏾‍♂️	indoda egqoke isiphandla: ithoni yesikhumba esimnyama ngokumaphakathi
 👳🏾‍♂	indoda egqoke isiphandla: ithoni yesikhumba esimnyama ngokumaphakathi
-👳🏿‍♂️	indoda egqoke isigqoko: isikhumba esimnyama
-👳🏿‍♂	indoda egqoke isiphandla: isikhumba esimnyama
+👳🏿‍♂️	indoda egqoke isiphandla: isikhumba esimnyama
+👳🏿‍♂	indoda egqoke isigqoko: isikhumba esimnyama
 👳‍♀️	owesifazane ofake isiphandla
 👳‍♀	owesifazane ofake isiphandla
 👳🏻‍♀️	owesifazane ogqoke isiphandla: isikhumba esikhanyayo
@@ -626,7 +626,7 @@
 👨🏻‍🦰	indoda, izinwele ezibomvu: isikhumba esikhanyayo
 👨🏼‍🦰	indoda, izinwele ezibomvu: ithoni yesikhumba ekhanyayo emaphakathi
 👨🏽‍🦰	indoda, izinwele ezibomvu: ithoni yesikhumba emaphakathi
-👨🏾‍🦰	indoda, izinwele ezibomvu: ithoni yesikhumba esimnyama ngokumaphakathi
+👨🏾‍🦰	indoda, izinwele ezibomvu: ithoni yesikhumba esimnyama maphakathi
 👨🏿‍🦰	indoda, izinwele ezibomvu: ithoni yesikhumba esimnyama
 👩‍🦰	owesifazane, onezinwele ezibomvu
 👩🏻‍🦰	owesifazane, onezinwele ezibomvu: isikhumba esikhanyayo
@@ -635,7 +635,7 @@
 👩🏾‍🦰	owesifazane, onezinwele ezibomvu: isikhumba esimnyama esimaphakathi
 👩🏿‍🦰	owesifazane, onezinwele ezibomvu: isikhumba esimnyama
 👨‍🦱	indoda, izinwele ezigoqene
-👨🏻‍🦱	indoda, izinwele ezisontekile: isikhumba esikhanyayo
+👨🏻‍🦱	indoda, enezinwele ezigoqene: isikhumba esikhanyayo
 👨🏼‍🦱	indoda, enezinwele ezigoqene: ithoni yesikhumba ekhanyayo emaphakathi
 👨🏽‍🦱	indoda, izinwele ezigoqene: ithoni yesikhumba emaphakathi
 👨🏾‍🦱	indoda, enezinwele ezigoqene: ithoni yesikhumba esimnyama ngokumaphakathi
@@ -752,7 +752,7 @@
 🦹‍♀	i-supervillain yowesifazane
 🦹🏻‍♀️	i-supervillain yowesifazane: ithoni yesikhumba esikhanyayo
 🦹🏻‍♀	i-supervillain yowesifazane: ithoni yesikhumba esikhanyayo
-🦹🏼‍♀️	i-supervillain yowesifazane: ithoni yesikhumba esikhanyayo
+🦹🏼‍♀️	i-supervillain yowesifazane: ithoni yesikhumba ekhanyayo emaphakathi
 🦹🏼‍♀	i-supervillain yowesifazane: ithoni yesikhumba ekhanyayo emaphakathi
 🦹🏽‍♀️	i-supervillain yowesifazane: ithoni yesikhumba esimaphakathi
 🦹🏽‍♀	i-supervillain yowesifazane: ithoni yesikhumba esimaphakathi
@@ -795,7 +795,7 @@
 🧙🏻‍♂️	indoda: ithoni yesikhumba esikhanyayo
 🧙🏻‍♂	indoda: ithoni yesikhumba esikhanyayo
 🧙🏼‍♂️	i-man mage: isikhumba esikhanyayo esimaphakathi
-🧙🏼‍♂	i-man mage: isikhumba esikhanyayo esimaphakathi
+🧙🏼‍♂	i-man mage: ithoni yesikhumba ekhanyayo emaphakathi
 🧙🏽‍♂️	indoda: ithoni yesikhumba esimaphakathi
 🧙🏽‍♂	indoda: ithoni yesikhumba esimaphakathi
 🧙🏾‍♂️	indoda: ithoni yesikhumba esimnyama maphakathi
@@ -814,7 +814,7 @@
 🧚🏻‍♀	inganekwane yowesifazane: isikhumba esikhanyayo
 🧚🏼‍♀️	inganekwane yowesifazane: isikhumba esikhanyayo esimaphakathi
 🧚🏼‍♀	inganekwane yowesifazane: isikhumba esikhanyayo esimaphakathi
-🧚🏽‍♀️	inganekwane yowesifazane: ithoni yesikhumba esimaphakathi
+🧚🏽‍♀️	inganekwane yowesifazane: isikhumba esimaphakathi
 🧚🏽‍♀	inganekwane yowesifazane: isikhumba esimaphakathi
 🧚🏾‍♀️	inganekwane yowesifazane: isikhumba esimnyama esimaphakathi
 🧚🏾‍♀	inganekwane yowesifazane: isikhumba esimnyama esimaphakathi
@@ -900,16 +900,16 @@
 🧝🏿	i-elf: isikhumba esimnyama
 🧝‍♀️	owesifazane elf
 🧝‍♀	owesifazane elf
-🧝🏻‍♀️	I-elf yowesifazane: ithoni yesikhumba esikhanyayo
-🧝🏻‍♀	I-elf yowesifazane: ithoni yesikhumba esikhanyayo
+🧝🏻‍♀️	I-elf yowesifazane: isikhumba esikhanyayo
+🧝🏻‍♀	I-elf yowesifazane: isikhumba esikhanyayo
 🧝🏼‍♀️	I-elf yowesifazane: ithoni yesikhumba ekhanyayo emaphakathi
 🧝🏼‍♀	I-elf yowesifazane: ithoni yesikhumba ekhanyayo emaphakathi
 🧝🏽‍♀️	I-elf yowesifazane: ithoni yesikhumba esimaphakathi
 🧝🏽‍♀	I-elf yowesifazane: ithoni yesikhumba esimaphakathi
 🧝🏾‍♀️	I-elf yowesifazane: ithoni yesikhumba esimnyama maphakathi
 🧝🏾‍♀	I-elf yowesifazane: ithoni yesikhumba esimnyama maphakathi
-🧝🏿‍♀️	i-elf yowesifazane: isikhumba esimnyama
-🧝🏿‍♀	i-elf yowesifazane: isikhumba esimnyama
+🧝🏿‍♀️	I-elf yowesifazane: isikhumba esimnyama
+🧝🏿‍♀	I-elf yowesifazane: isikhumba esimnyama
 🧝‍♂️	indoda elf
 🧝‍♂	indoda elf
 🧝🏻‍♂️	indoda elf: ithoni yesikhumba esikhanyayo
@@ -946,7 +946,7 @@
 🙍🏼‍♂	indoda ehwaqayo: isikhumba esikhanyayo esimaphakathi
 🙍🏽‍♂️	indoda ehwaqayo: isikhumba esimaphakathi
 🙍🏽‍♂	indoda ehwaqayo: isikhumba esimaphakathi
-🙍🏾‍♂️	indoda ehwaqayo: isikhumba esimnyama esimaphakathi
+🙍🏾‍♂️	indoda ehwaqabala: isikhumba esimnyama esimaphakathi
 🙍🏾‍♂	indoda ehwaqayo: isikhumba esimnyama esimaphakathi
 🙍🏿‍♂️	indoda ehwaqabala: isikhumba esimnyama
 🙍🏿‍♂	indoda ehwaqabala: isikhumba esimnyama
@@ -954,8 +954,8 @@
 🙍‍♀	owesifazane ehwaqabala
 🙍🏻‍♀️	owesifazane ohwaqabele: isikhumba esikhanyayo
 🙍🏻‍♀	owesifazane ohwaqabele: isikhumba esikhanyayo
-🙍🏼‍♀️	owesifazane ohwaqabele: isikhumba esikhanyayo esimaphakathi
-🙍🏼‍♀	owesifazane ohwaqabele: isikhumba esikhanyayo esimaphakathi
+🙍🏼‍♀️	owesifazane ohwaqayo: isikhumba esikhanyayo esimaphakathi
+🙍🏼‍♀	owesifazane ohwaqayo: isikhumba esikhanyayo esimaphakathi
 🙍🏽‍♀️	owesifazane ohwaqabele: isikhumba esimaphakathi
 🙍🏽‍♀	owesifazane ohwaqabele: isikhumba esimaphakathi
 🙍🏾‍♀️	owesifazane ohwaqabele: isikhumba esimnyama esimaphakathi
@@ -966,26 +966,26 @@
 🙎🏻	umuntu oqumayo: isikhumba esikhanyayo
 🙎🏼	umuntu ophowulayo: isikhumba esikhanyayo esimaphakathi
 🙎🏽	umuntu ophowulayo: isikhumba esimaphakathi
-🙎🏾	umuntu ophowulayo: isikhumba esimnyama esimaphakathi
+🙎🏾	umuntu ophowulayo: ithoni yesikhumba esimnyama maphakathi
 🙎🏿	umuntu oqumayo: isikhumba esimnyama
 🙎‍♂️	indoda ebubula
 🙎‍♂	indoda ebubula
-🙎🏻‍♂️	indoda equmayo: isikhumba esikhanyayo
-🙎🏻‍♂	indoda equmayo: isikhumba esikhanyayo
+🙎🏻‍♂️	indoda epouting: isikhumba esikhanyayo
+🙎🏻‍♂	indoda epouting: isikhumba esikhanyayo
 🙎🏼‍♂️	indoda epouting: isikhumba esikhanyayo esimaphakathi
 🙎🏼‍♂	indoda epouting: isikhumba esikhanyayo esimaphakathi
 🙎🏽‍♂️	indoda equmayo: ithoni yesikhumba esimaphakathi
 🙎🏽‍♂	indoda equmayo: ithoni yesikhumba esimaphakathi
-🙎🏾‍♂️	indoda epouting: ithoni yesikhumba esimnyama maphakathi
-🙎🏾‍♂	indoda epouting: ithoni yesikhumba esimnyama maphakathi
+🙎🏾‍♂️	indoda epouting: isikhumba esimnyama esimaphakathi
+🙎🏾‍♂	indoda epouting: isikhumba esimnyama esimaphakathi
 🙎🏿‍♂️	indoda equmayo: isikhumba esimnyama
 🙎🏿‍♂	indoda equmayo: isikhumba esimnyama
 🙎‍♀️	owesifazane equma
 🙎‍♀	owesifazane equma
 🙎🏻‍♀️	owesifazane opouting: isikhumba esikhanyayo
 🙎🏻‍♀	owesifazane opouting: isikhumba esikhanyayo
-🙎🏼‍♀️	owesifazane opouting: isikhumba esikhanyayo esimaphakathi
-🙎🏼‍♀	owesifazane opouting: isikhumba esikhanyayo esimaphakathi
+🙎🏼‍♀️	owesifazane opouting: ithoni yesikhumba ekhanyayo emaphakathi
+🙎🏼‍♀	owesifazane opouting: ithoni yesikhumba ekhanyayo emaphakathi
 🙎🏽‍♀️	owesifazane oququdayo: isikhumba esimaphakathi
 🙎🏽‍♀	owesifazane oququdayo: isikhumba esimaphakathi
 🙎🏾‍♀️	owesifazane oququdayo: isikhumba esimnyama esimaphakathi
@@ -995,7 +995,7 @@
 🙅	umuntu okhombisa ukuthi CHA
 🙅🏻	umuntu okhombisayo CHA: isikhumba esikhanyayo
 🙅🏼	umuntu okhombisayo CHA: ithoni yesikhumba ekhanyayo emaphakathi
-🙅🏽	umuntu okhombisayo CHA: ithoni yesikhumba esimaphakathi
+🙅🏽	umuntu okhombisayo CHA: ithoni yesikhumba emaphakathi
 🙅🏾	umuntu othintayo CHA: ithoni yesikhumba esimnyama maphakathi
 🙅🏿	umuntu okhombisayo CHA: isikhumba esimnyama
 🙅‍♂️	indoda ikhombisa CHA
@@ -1032,8 +1032,8 @@
 🙆‍♂	indoda ekhombisa ukuthi KULUNGILE
 🙆🏻‍♂️	indoda enyakazayo KULUNGILE: isikhumba esikhanyayo
 🙆🏻‍♂	indoda enyakazayo KULUNGILE: isikhumba esikhanyayo
-🙆🏼‍♂️	indoda enyakazayo KULUNGILE: ithoni yesikhumba ekhanyayo emaphakathi
-🙆🏼‍♂	indoda enyakazayo KULUNGILE: ithoni yesikhumba ekhanyayo emaphakathi
+🙆🏼‍♂️	indoda enyakazayo KULUNGILE: isikhumba esikhanyayo esimaphakathi
+🙆🏼‍♂	indoda enyakazayo KULUNGILE: isikhumba esikhanyayo esimaphakathi
 🙆🏽‍♂️	indoda enyakazayo KULUNGILE: isikhumba esimaphakathi
 🙆🏽‍♂	indoda enyakazayo KULUNGILE: isikhumba esimaphakathi
 🙆🏾‍♂️	indoda enyakazayo KULUNGILE: ithoni yesikhumba esimnyama maphakathi
@@ -1046,8 +1046,8 @@
 🙆🏻‍♀	Owesifazane okhombisayo ukuthi KULUNGILE: isikhumba esikhanyayo
 🙆🏼‍♀️	Owesifazane othintayo KULUNGILE: isikhumba esikhanyayo esimaphakathi
 🙆🏼‍♀	Owesifazane othintayo KULUNGILE: isikhumba esikhanyayo esimaphakathi
-🙆🏽‍♀️	Owesifazane okhombisayo ukuthi KULUNGILE: ithoni yesikhumba esimaphakathi
-🙆🏽‍♀	Owesifazane okhombisayo ukuthi KULUNGILE: ithoni yesikhumba esimaphakathi
+🙆🏽‍♀️	Owesifazane okhombisayo ukuthi KULUNGILE: isikhumba esimaphakathi
+🙆🏽‍♀	Owesifazane okhombisayo ukuthi KULUNGILE: isikhumba esimaphakathi
 🙆🏾‍♀️	owesifazane othintayo KULUNGILE: ithoni yesikhumba esimnyama maphakathi
 🙆🏾‍♀	owesifazane othintayo KULUNGILE: ithoni yesikhumba esimnyama maphakathi
 🙆🏿‍♀️	Owesifazane okhombisayo ukuthi KULUNGILE: isikhumba esimnyama
@@ -1056,14 +1056,14 @@
 💁🏻	umuntu ophakamisa isandla: isikhumba esikhanyayo
 💁🏼	umuntu osikisela isandla: ithoni yesikhumba esikhanyayo
 💁🏽	umuntu osikisela isandla: ithoni yesikhumba emaphakathi
-💁🏾	umuntu osikisela isandla: ithoni yesikhumba esimnyama
+💁🏾	umuntu osikisela isandla: ithoni yesikhumba esimnyama maphakathi
 💁🏿	umuntu ophakamisa isandla: isikhumba esimnyama
 💁‍♂️	indoda eqhweba isandla
 💁‍♂	indoda eqhweba isandla
 💁🏻‍♂️	indoda ephakamisa isandla: isikhumba esikhanyayo
 💁🏻‍♂	indoda ephakamisa isandla: isikhumba esikhanyayo
-💁🏼‍♂️	indoda esikisela isandla: ithoni yesikhumba esikhanyayo
-💁🏼‍♂	indoda esikisela isandla: ithoni yesikhumba esikhanyayo
+💁🏼‍♂️	indoda ephakamisa isandla: ithoni yesikhumba esikhanyayo
+💁🏼‍♂	indoda ephakamisa isandla: ithoni yesikhumba esikhanyayo
 💁🏽‍♂️	indoda ephakamisa isandla: ithoni yesikhumba emaphakathi
 💁🏽‍♂	indoda ephakamisa isandla: ithoni yesikhumba emaphakathi
 💁🏾‍♂️	indoda ephakamisa isandla: ithoni yesikhumba esimnyama maphakathi
@@ -1078,8 +1078,8 @@
 💁🏼‍♀	isandla sowesifazane esinyakazayo: ithoni yesikhumba esikhanyayo
 💁🏽‍♀️	owesifazane osikisela isandla: ithoni yesikhumba esimaphakathi
 💁🏽‍♀	owesifazane osikisela isandla: ithoni yesikhumba esimaphakathi
-💁🏾‍♀️	isandla sowesifazane esinyakazayo: ithoni yesikhumba esimnyama maphakathi
-💁🏾‍♀	isandla sowesifazane esinyakazayo: ithoni yesikhumba esimnyama maphakathi
+💁🏾‍♀️	owesifazane osikisela isandla: ithoni yesikhumba esimnyama maphakathi
+💁🏾‍♀	owesifazane osikisela isandla: ithoni yesikhumba esimnyama maphakathi
 💁🏿‍♀️	owesifazane osikisela isandla: isikhumba esimnyama
 💁🏿‍♀	owesifazane osikisela isandla: isikhumba esimnyama
 🙋	umuntu ophakamisa isandla
@@ -1115,7 +1115,7 @@
 🙇	umuntu ekhothama
 🙇🏻	umuntu okhothamayo: isikhumba esikhanyayo
 🙇🏼	umuntu okhothayo: isikhumba esikhanyayo esimaphakathi
-🙇🏽	umuntu okhothayo: isikhumba esimaphakathi
+🙇🏽	umuntu okhothayo: ithoni yesikhumba emaphakathi
 🙇🏾	umuntu okhothayo: ithoni yesikhumba esimnyama maphakathi
 🙇🏿	umuntu okhothamayo: isikhumba esimnyama
 🙇‍♂️	indoda ikhothama
@@ -1126,7 +1126,7 @@
 🙇🏼‍♂	indoda ekhothayo: ithoni yesikhumba ekhanyayo emaphakathi
 🙇🏽‍♂️	indoda ekhothamayo: ithoni yesikhumba esimaphakathi
 🙇🏽‍♂	indoda ekhothamayo: ithoni yesikhumba esimaphakathi
-🙇🏾‍♂️	indoda ekhothayo: ithoni yesikhumba esimnyama maphakathi
+🙇🏾‍♂️	indoda ekhothamayo: ithoni yesikhumba esimnyama maphakathi
 🙇🏾‍♂	indoda ekhothayo: ithoni yesikhumba esimnyama maphakathi
 🙇🏿‍♂️	indoda ekhothamayo: isikhumba esimnyama
 🙇🏿‍♂	indoda ekhothamayo: isikhumba esimnyama
@@ -1137,7 +1137,7 @@
 🙇🏼‍♀️	owesifazane okhothayo: ithoni yesikhumba ekhanyayo emaphakathi
 🙇🏼‍♀	owesifazane okhothayo: ithoni yesikhumba ekhanyayo emaphakathi
 🙇🏽‍♀️	owesifazane okhothayo: ithoni yesikhumba esimaphakathi
-🙇🏽‍♀	owesifazane okhothayo: ithoni yesikhumba esimaphakathi
+🙇🏽‍♀	owesifazane okhothamayo: isikhumba esimaphakathi
 🙇🏾‍♀️	owesifazane okhothayo: ithoni yesikhumba esimnyama maphakathi
 🙇🏾‍♀	owesifazane okhothayo: ithoni yesikhumba esimnyama maphakathi
 🙇🏿‍♀️	owesifazane okhotheme: isikhumba esimnyama
@@ -1168,14 +1168,14 @@
 🤦🏼‍♀	ubuso bowesifazane: ithoni yesikhumba esikhanyayo
 🤦🏽‍♀️	ubuso bowesifazane: ithoni yesikhumba esimaphakathi
 🤦🏽‍♀	ubuso bowesifazane: ithoni yesikhumba esimaphakathi
-🤦🏾‍♀️	ubuso bowesifazane: isikhumba esimnyama esimaphakathi
+🤦🏾‍♀️	ubuso bowesifazane: ithoni yesikhumba esimnyama
 🤦🏾‍♀	ubuso bowesifazane: isikhumba esimnyama esimaphakathi
 🤦🏿‍♀️	ubuso bowesifazane: isikhumba esimnyama
 🤦🏿‍♀	ubuso bowesifazane: isikhumba esimnyama
 🤷	umuntu ehlikihla
 🤷🏻	umuntu ohlikihla: isikhumba esikhanyayo
-🤷🏼	umuntu ohlikihlayo: isikhumba esikhanyayo esimaphakathi
-🤷🏽	umuntu ohlikihla: isikhumba esimaphakathi
+🤷🏼	umuntu onyakazayo: isikhumba esikhanyayo esimaphakathi
+🤷🏽	umuntu onyakazayo: isikhumba esimaphakathi
 🤷🏾	umuntu ohlikihla: isikhumba esimnyama esimaphakathi
 🤷🏿	umuntu ophakamisa amahlombe: isikhumba esimnyama
 🤷‍♂️	indoda iphakamisa amahlombe
@@ -1246,7 +1246,7 @@
 💇🏼‍♂	indoda egunda izinwele: ithoni yesikhumba ekhanyayo emaphakathi
 💇🏽‍♂️	indoda egunda izinwele: ithoni yesikhumba esimaphakathi
 💇🏽‍♂	indoda egunda izinwele: ithoni yesikhumba esimaphakathi
-💇🏾‍♂️	indoda egunda izinwele: ithoni yesikhumba esimnyama
+💇🏾‍♂️	indoda egunda izinwele: ithoni yesikhumba esimnyama ngokumaphakathi
 💇🏾‍♂	indoda egunda izinwele: ithoni yesikhumba esimnyama
 💇🏿‍♂️	indoda egunda izinwele: isikhumba esimnyama
 💇🏿‍♂	indoda egunda izinwele: isikhumba esimnyama
@@ -1503,11 +1503,11 @@
 🏌🏿‍♀️	igalofu lowesifazane: isikhumba esimnyama
 🏌🏿‍♀	igalofu lowesifazane: isikhumba esimnyama
 🏄	umuntu otshuzayo
-🏄🏻	umuntu otshuzayo: isikhumba esikhanyayo
+🏄🏻	ukuntweza komuntu: isikhumba esikhanyayo
 🏄🏼	ukuntweza komuntu: ithoni yesikhumba ekhanyayo emaphakathi
 🏄🏽	ukuntweza komuntu: ithoni yesikhumba esimaphakathi
 🏄🏾	ukuntweza komuntu: ithoni yesikhumba esimnyama maphakathi
-🏄🏿	umuntu otshuzayo: isikhumba esimnyama
+🏄🏿	Umuntu otshuzayo: isikhumba esimnyama
 🏄‍♂️	ukuntweza kwendoda
 🏄‍♂	ukuntweza kwendoda
 🏄🏻‍♂️	ukuntweza kwendoda: isikhumba esikhanyayo
@@ -1528,10 +1528,10 @@
 🏄🏼‍♀	ukuntweza wesifazane: ithoni yesikhumba ekhanyayo emaphakathi
 🏄🏽‍♀️	ukuntweza wesifazane: ithoni yesikhumba esimaphakathi
 🏄🏽‍♀	ukuntweza wesifazane: ithoni yesikhumba esimaphakathi
-🏄🏾‍♀️	ukuntweza kowesifazane: isikhumba esimnyama esimaphakathi
-🏄🏾‍♀	ukuntweza kowesifazane: isikhumba esimnyama esimaphakathi
-🏄🏿‍♀️	owesimame otshuzayo: isikhumba esimnyama
-🏄🏿‍♀	owesimame otshuzayo: isikhumba esimnyama
+🏄🏾‍♀️	ukuntweza wesifazane: ithoni yesikhumba esimnyama maphakathi
+🏄🏾‍♀	ukuntweza wesifazane: ithoni yesikhumba esimnyama maphakathi
+🏄🏿‍♀️	ukuntweza owesifazane: isikhumba esimnyama
+🏄🏿‍♀	ukuntweza owesifazane: isikhumba esimnyama
 🚣	isikebhe somuntu ogwedlayo
 🚣🏻	Isikebhe somuntu ogwedlayo: isikhumba esikhanyayo
 🚣🏼	isikebhe somuntu ogwedlayo: isikhumba esikhanyayo esimaphakathi
@@ -1544,8 +1544,8 @@
 🚣🏻‍♂	isikebhe somuntu ogwedlayo: isikhumba esikhanyayo
 🚣🏼‍♂️	isikebhe somuntu ogwedlayo: isikhumba esikhanyayo esimaphakathi
 🚣🏼‍♂	isikebhe somuntu ogwedlayo: isikhumba esikhanyayo esimaphakathi
-🚣🏽‍♂️	isikebhe somuntu ogwedlayo: ithoni yesikhumba esimaphakathi
-🚣🏽‍♂	isikebhe somuntu ogwedlayo: ithoni yesikhumba esimaphakathi
+🚣🏽‍♂️	isikebhe somuntu ogwedlayo: isikhumba esimaphakathi
+🚣🏽‍♂	isikebhe somuntu ogwedlayo: isikhumba esimaphakathi
 🚣🏾‍♂️	isikebhe somuntu ogwedlayo: isikhumba esimnyama esimaphakathi
 🚣🏾‍♂	isikebhe somuntu ogwedlayo: isikhumba esimnyama esimaphakathi
 🚣🏿‍♂️	isikebhe somuntu ogwedlayo: isikhumba esimnyama
@@ -1566,14 +1566,14 @@
 🏊🏻	umuntu obhukudayo: isikhumba esikhanyayo
 🏊🏼	umuntu obhukudayo: isikhumba esikhanyayo esimaphakathi
 🏊🏽	umuntu obhukudayo: isikhumba esimaphakathi
-🏊🏾	umuntu obhukudayo: ithoni yesikhumba esimnyama maphakathi
+🏊🏾	umuntu obhukudayo: isikhumba esimnyama esimaphakathi
 🏊🏿	umuntu obhukudayo: isikhumba esimnyama
 🏊‍♂️	indoda ibhukuda
 🏊‍♂	indoda ibhukuda
 🏊🏻‍♂️	ukubhukuda kwendoda: isikhumba esikhanyayo
 🏊🏻‍♂	ukubhukuda kwendoda: isikhumba esikhanyayo
-🏊🏼‍♂️	ukubhukuda kwendoda: ithoni yesikhumba ekhanyayo emaphakathi
-🏊🏼‍♂	ukubhukuda kwendoda: ithoni yesikhumba ekhanyayo emaphakathi
+🏊🏼‍♂️	ukubhukuda kwendoda: ithoni yesikhumba esikhanyayo
+🏊🏼‍♂	ukubhukuda kwendoda: ithoni yesikhumba esikhanyayo
 🏊🏽‍♂️	ukubhukuda kwendoda: ithoni yesikhumba esimaphakathi
 🏊🏽‍♂	ukubhukuda kwendoda: ithoni yesikhumba esimaphakathi
 🏊🏾‍♂️	ukubhukuda kwendoda: ithoni yesikhumba esimnyama maphakathi
@@ -1588,8 +1588,8 @@
 🏊🏼‍♀	owesifazane obhukudayo: ithoni yesikhumba ekhanyayo emaphakathi
 🏊🏽‍♀️	owesifazane obhukudayo: isikhumba esimaphakathi
 🏊🏽‍♀	owesifazane obhukudayo: isikhumba esimaphakathi
-🏊🏾‍♀️	ukubhukuda kowesifazane: isikhumba esimnyama esimaphakathi
-🏊🏾‍♀	ukubhukuda kowesifazane: isikhumba esimnyama esimaphakathi
+🏊🏾‍♀️	owesifazane obhukudayo: isikhumba esimnyama esimaphakathi
+🏊🏾‍♀	owesifazane obhukudayo: isikhumba esimnyama esimaphakathi
 🏊🏿‍♀️	ukubhukuda kowesifazane: isikhumba esimnyama
 🏊🏿‍♀	ukubhukuda kowesifazane: isikhumba esimnyama
 ⛹️	umuntu oshaya ibhola
@@ -1605,8 +1605,8 @@
 ⛹‍♂	indoda eshaya ibhola
 ⛹🏻‍♂️	Ibhola elibhampayo indoda: isikhumba esikhanyayo
 ⛹🏻‍♂	Ibhola elibhampayo indoda: isikhumba esikhanyayo
-⛹🏼‍♂️	ibhola elibhampayo lomuntu: ithoni yesikhumba ekhanyayo emaphakathi
-⛹🏼‍♂	ibhola elibhampayo lomuntu: ithoni yesikhumba ekhanyayo emaphakathi
+⛹🏼‍♂️	ibhola eligxumayo lomuntu: ithoni yesikhumba ekhanyayo emaphakathi
+⛹🏼‍♂	ibhola eligxumayo lomuntu: ithoni yesikhumba ekhanyayo emaphakathi
 ⛹🏽‍♂️	Ibhola lowesilisa elibhampayo: ithoni yesikhumba esimaphakathi
 ⛹🏽‍♂	Ibhola lowesilisa elibhampayo: ithoni yesikhumba esimaphakathi
 ⛹🏾‍♂️	ibhola eligxumayo lomuntu: ithoni yesikhumba esimnyama maphakathi
@@ -1643,7 +1643,7 @@
 🏋🏼‍♂️	indoda ephakamisa izinsimbi: ithoni yesikhumba ekhanyayo emaphakathi
 🏋🏼‍♂	indoda ephakamisa izinsimbi: ithoni yesikhumba ekhanyayo emaphakathi
 🏋🏽‍♂️	indoda ephakamisa izinsimbi: ithoni yesikhumba esimaphakathi
-🏋🏽‍♂	indoda ephakamisa izinsimbi: ithoni yesikhumba esimaphakathi
+🏋🏽‍♂	indoda ephakamisa izinsimbi: ithoni yesikhumba emaphakathi
 🏋🏾‍♂️	indoda ephakamisa izinsimbi: ithoni yesikhumba esimnyama maphakathi
 🏋🏾‍♂	indoda ephakamisa izinsimbi: ithoni yesikhumba esimnyama maphakathi
 🏋🏿‍♂️	indoda ephakamisa izinsimbi: isikhumba esimnyama
@@ -1672,8 +1672,8 @@
 🚴‍♂	indoda ehamba ngebhayisikili
 🚴🏻‍♂️	ukuhamba ngebhayisikili indoda: isikhumba esikhanyayo
 🚴🏻‍♂	ukuhamba ngebhayisikili indoda: isikhumba esikhanyayo
-🚴🏼‍♂️	ukuhamba ngebhayisikili komuntu: ithoni yesikhumba ekhanyayo emaphakathi
-🚴🏼‍♂	ukuhamba ngebhayisikili komuntu: ithoni yesikhumba ekhanyayo emaphakathi
+🚴🏼‍♂️	ukuhamba ngebhayisikili indoda: ithoni yesikhumba ekhanyayo emaphakathi
+🚴🏼‍♂	ukuhamba ngebhayisikili indoda: ithoni yesikhumba ekhanyayo emaphakathi
 🚴🏽‍♂️	ukuhamba ngebhayisikili indoda: ithoni yesikhumba esimaphakathi
 🚴🏽‍♂	ukuhamba ngebhayisikili indoda: ithoni yesikhumba esimaphakathi
 🚴🏾‍♂️	ukuhamba ngebhayisikili indoda: ithoni yesikhumba esimnyama maphakathi
@@ -1702,8 +1702,8 @@
 🚵‍♂	indoda entabeni ngebhayisikili
 🚵🏻‍♂️	indoda entabeni ngebhayisikili: ukukhanya isikhumba tone
 🚵🏻‍♂	indoda entabeni ngebhayisikili: ukukhanya isikhumba tone
-🚵🏼‍♂️	indoda entabeni ibhayisikili: medium-light light tone
-🚵🏼‍♂	indoda entabeni ibhayisikili: medium-light light tone
+🚵🏼‍♂️	ibhayisikili lendoda entabeni: ithoni yesikhumba ekhanyayo emaphakathi
+🚵🏼‍♂	ibhayisikili lendoda entabeni: ithoni yesikhumba ekhanyayo emaphakathi
 🚵🏽‍♂️	indoda entabeni ibhayisikili: medium skin tone
 🚵🏽‍♂	indoda entabeni ibhayisikili: medium skin tone
 🚵🏾‍♂️	indoda entabeni ibhayisikili: medium-mnyama isikhumba tone
@@ -1739,7 +1739,7 @@
 🤸🏼‍♂️	i-man cartwheeling: ithoni yesikhumba ekhanyayo emaphakathi
 🤸🏼‍♂	i-man cartwheeling: ithoni yesikhumba ekhanyayo emaphakathi
 🤸🏽‍♂️	i-man cartwheeling: ithoni yesikhumba esimaphakathi
-🤸🏽‍♂	i-man cartwheeling: ithoni yesikhumba esimaphakathi
+🤸🏽‍♂	i-man cartwheeling: ithoni yesikhumba emaphakathi
 🤸🏾‍♂️	i-man cartwheeling: ithoni yesikhumba esimnyama maphakathi
 🤸🏾‍♂	i-man cartwheeling: ithoni yesikhumba esimnyama maphakathi
 🤸🏿‍♂️	i-man cartwheeling: isikhumba esimnyama
@@ -1781,14 +1781,14 @@
 🤽🏿‍♂	indoda edlala ipolo yamanzi: isikhumba esimnyama
 🤽‍♀️	owesifazane odlala ipolo yamanzi
 🤽‍♀	owesifazane odlala ipolo yamanzi
-🤽🏻‍♀️	owesifazane odlala ipolo yamanzi: isikhumba esikhanyayo
+🤽🏻‍♀️	owesifazane odlala ipolo yamanzi: ithoni yesikhumba esikhanyayo
 🤽🏻‍♀	owesifazane odlala ipolo yamanzi: isikhumba esikhanyayo
 🤽🏼‍♀️	owesifazane odlala ipolo yamanzi: ithoni yesikhumba ekhanyayo emaphakathi
 🤽🏼‍♀	owesifazane odlala ipolo yamanzi: ithoni yesikhumba ekhanyayo emaphakathi
 🤽🏽‍♀️	owesifazane odlala ipolo yamanzi: ithoni yesikhumba esimaphakathi
 🤽🏽‍♀	owesifazane odlala ipolo yamanzi: ithoni yesikhumba esimaphakathi
-🤽🏾‍♀️	owesifazane odlala ipolo yamanzi: ithoni yesikhumba esimnyama maphakathi
-🤽🏾‍♀	owesifazane odlala ipolo yamanzi: ithoni yesikhumba esimnyama maphakathi
+🤽🏾‍♀️	owesifazane odlala ipolo yamanzi: ithoni yesikhumba esimnyama
+🤽🏾‍♀	owesifazane odlala ipolo yamanzi: ithoni yesikhumba esimnyama
 🤽🏿‍♀️	owesifazane odlala ipolo yamanzi: isikhumba esimnyama
 🤽🏿‍♀	owesifazane odlala ipolo yamanzi: isikhumba esimnyama
 🤾	umuntu odlala ibhola lezandla
@@ -1841,8 +1841,8 @@
 🤹🏿‍♂	indoda juggling: isikhumba esimnyama
 🤹‍♀️	umfazi juggling
 🤹‍♀	umfazi juggling
-🤹🏻‍♀️	umfazi juggling: ukukhanya kwesikhumba
-🤹🏻‍♀	umfazi juggling: ukukhanya kwesikhumba
+🤹🏻‍♀️	owesimame juggling: isikhumba esikhanyayo
+🤹🏻‍♀	owesimame juggling: isikhumba esikhanyayo
 🤹🏼‍♀️	umfazi juggling: medium-light-light tone
 🤹🏼‍♀	umfazi juggling: medium-light-light tone
 🤹🏽‍♀️	umfazi juggling: medium skin tone
@@ -1938,7 +1938,7 @@
 ☝🏾	ukukhomba phezulu: isikhumba esimnyama esimaphakathi
 ☝🏿	ukukhomba phezulu: isikhumba esimnyama
 👆	inkomba ye-backhand ibheke phezulu
-👆🏻	inkomba ye-backhand ekhomba phezulu: isikhumba esikhanyayo
+👆🏻	i-backhand index ekhomba phezulu: isikhumba esikhanyayo
 👆🏼	inkomba ye-backhand ebheke phezulu: ithoni yesikhumba ekhanyayo emaphakathi
 👆🏽	inkomba ye-backhand ebheke phezulu: ithoni yesikhumba emaphakathi
 👆🏾	inkomba ye-backhand ebheke phezulu: ithoni yesikhumba esimnyama maphakathi
@@ -1952,7 +1952,7 @@
 👇	inkomba ye-backhand ebheke phansi
 👇🏻	inkomba ye-backhand ebheke phansi: isikhumba esikhanyayo
 👇🏼	inkomba ye-backhand ebheke phansi: ithoni yesikhumba ekhanyayo emaphakathi
-👇🏽	i-backhand index ebheke phansi: ithoni yesikhumba esimaphakathi
+👇🏽	inkomba yesandla ebheke phansi: ithoni yesikhumba emaphakathi
 👇🏾	inkomba ye-backhand ebheke phansi: ithoni yesikhumba esimnyama maphakathi
 👇🏿	inkomba ye-backhand ebheke phansi: isikhumba esimnyama
 ✌️	isandla sokunqoba
@@ -1999,7 +1999,7 @@
 ✋🏽	isandla esiphakanyisiwe: ithoni yesikhumba emaphakathi
 ✋🏾	isandla esiphakanyisiwe: ithoni yesikhumba esimnyama maphakathi
 ✋🏿	isandla esiphakanyisiwe: isikhumba esimnyama
-👌	KULUNGILE isandla
+👌	Kulungile isandla
 👌🏻	Isandla esilungile: ithoni yesikhumba esikhanyayo
 👌🏼	Isandla esilungile: ithoni yesikhumba ekhanyayo emaphakathi
 👌🏽	Isandla esilungile: ithoni yesikhumba emaphakathi
@@ -2044,7 +2044,7 @@
 🤚	aphakamise emuva kwesandla
 🤚🏻	ingemuva lesandla eliphakanyisiwe: isikhumba esikhanyayo
 🤚🏼	ingemuva lesandla eliphakanyisiwe: ithoni yesikhumba ekhanyayo emaphakathi
-🤚🏽	ingemuva lesandla eliphakanyisiwe: isikhumba esimaphakathi
+🤚🏽	ingemuva lesandla eliphakanyisiwe: ithoni yesikhumba emaphakathi
 🤚🏾	ingemuva lesandla eliphakanyisiwe: ithoni yesikhumba esimnyama maphakathi
 🤚🏿	ingemuva lesandla eliphakanyisiwe: isikhumba esimnyama
 👋	isandla esinyakazayo
@@ -2084,7 +2084,7 @@
 🙌🏽	ukuphakamisa izandla: ithoni yesikhumba emaphakathi
 🙌🏾	ukuphakamisa izandla: ithoni yesikhumba esimnyama maphakathi
 🙌🏿	ukuphakamisa izandla: isikhumba esimnyama
-🤲	izintende zibheke phezulu
+🤲	izintende zikhuphuke ndawonye
 🤲🏻	izintende zihlangene: isikhumba esikhanyayo
 🤲🏼	izintende zihlangene: ithoni yesikhumba ekhanyayo
 🤲🏽	izintende zihlangene: ithoni yesikhumba emaphakathi
@@ -2464,8 +2464,8 @@
 🗻	intaba fuji
 🏕️	ukukhempa
 🏕	ukukhempa
-🏖️	ulwandle ngesambulela
-🏖	ulwandle ngesambulela
+🏖️	beach nesambulela
+🏖	beach nesambulela
 🏜️	ugwadule
 🏜	ugwadule
 🏝️	isiqhingi esiwugwadule
@@ -2504,8 +2504,8 @@
 ⛪	ibandla
 🕌	mosque
 🕍	isinagoge
-⛩️	ithempeli lamaShinto
-⛩	ithempeli lamaShinto
+⛩️	ithempeli le-shinto
+⛩	ithempeli le-shinto
 🕋	kaaba
 ⛲	umthombo
 ⛺	ithende
@@ -2533,7 +2533,7 @@
 🚆	isitimela
 🚇	idolobha
 🚈	ujantshi omncane
-🚉	isiteshi
+🚉	esiteshini
 🚊	ithilamu
 🚝	umzila owodwa
 🚞	wesitimela entabeni
@@ -2550,7 +2550,7 @@
 🚖	itekisi ezayo
 🚗	imoto
 🚘	imoto ezayo
-🚙	imoto yosizo lwezemidlalo
+🚙	imoto utility yezemidlalo
 🚚	iloli yokulethwa
 🚛	iloli elihlanganisiwe
 🚜	ugandaganda
@@ -2591,7 +2591,7 @@
 💺	isihlalo
 🚁	indiza enophephela emhlane
 🚟	ujantshi wokumiswa
-🚠	entabeni cableway
+🚠	intaba cableway
 🚡	ithilamu yasemoyeni
 🛰️	isathelayithi
 🛰	isathelayithi
@@ -2706,7 +2706,7 @@
 🎈	ibhaluni
 🎉	i-party popper
 🎊	ibhola le-confetti
-🎋	tanabata tree
+🎋	isihlahla se-tanabata
 🎍	umhlobiso kaphayini
 🎎	Onodoli baseJapane
 🎏	i-carp streamer
@@ -2726,7 +2726,7 @@
 🏅	indondo yezemidlalo
 🥇	Indondo yendawo yokuqala
 🥈	Indondo yendawo yesibili
-🥉	Indondo yendawo yesithathu
+🥉	indondo yendawo yesithathu
 ⚽	ibhola likanobhutshuzwayo
 ⚾	i-baseball
 🥎	i-softball
@@ -2744,7 +2744,7 @@
 🏓	i-ping pong
 🏸	i-badminton
 🥊	igilavu yesibhakela
-🥋	umfaniswano we-karate
+🥋	iyunifomu ye-karate
 🥅	inethi yegoli
 ⛳	ifulegi emgodini
 ⛸️	i-ice skate
@@ -2753,7 +2753,7 @@
 🎽	ihembe eligijimayo
 🎿	skis
 🛷	isihlibhi
-🥌	itshe eligoqayo
+🥌	curling itshe
 🎯	hit ngqo
 🎱	pool 8 ibhola
 🔮	ibhola lekristalu
@@ -2797,7 +2797,7 @@
 🎵	inothi lomculo
 🎶	amanothi omculo
 🎙️	imakrofoni yesitudiyo
-🎙	imakrofoni yesitudiyo
+🎙	umbhobho we studio
 🎚️	isilayidi sezinga
 🎚	isilayidi sezinga
 🎛️	control knobs
@@ -2969,8 +2969,8 @@
 🔩	nati nebhawodi
 ⚙️	igiya
 ⚙	igiya
-🗜️	ukubopha
-🗜	ukubopha
+🗜️	qinisa
+🗜	qinisa
 ⚖️	ibhalansi isikali
 ⚖	ibhalansi isikali
 🔗	isixhumanisi
@@ -3156,7 +3156,7 @@
 ⚜	i-fleur-de-lis
 🔱	uphawu lwezintathu
 📛	ibheji legama
-🔰	Uphawu lwesiJapane lwabaqalayo
+🔰	Uphawu lwesi-Japanese lwabaqalayo
 ⭕	indilinga enkulu esindayo
 ✅	uphawu lokuhlola olumhlophe olusindayo
 ☑️	ibhokisi lokuvota elinesheke
@@ -3257,7 +3257,7 @@
 🈷	Inkinobho yesi-Japanese "inani lanyanga zonke".
 🈶	Inkinobho yesi-Japanese "hhayi mahhala".
 🈯	Inkinobho yesi-Japanese "igodliwe".
-🉐	Inkinobho yesi-Japanese "yokuthengiselana".
+🉐	Inkinobho ye-Japanese "bargain".
 🈹	Inkinobho yesiJapane "yesaphulelo".
 🈚	Inkinobho yesi-Japanese "yamahhala".
 🈲	Inkinobho yesi-Japanese "enqatshelwe".
@@ -3266,8 +3266,8 @@
 🈴	Inkinobho yesi-Japanese "ibanga lokuphasa".
 🈳	Inkinobho yesi-Japanese "isikhala".
 ㊗️	Inkinobho yesi-Japanese "siyakuhalalisela".
-㊗	Inkinobho yesi-Japanese "siyakuhalalisela".
-㊙️	Inkinobho yesi-Japanese "eyimfihlo".
+㊗	Inkinobho yesi-Japanese "yokuhalalisela".
+㊙️	Inkinobho "yemfihlo" yesi-Japanese
 ㊙	Inkinobho yesi-Japanese "eyimfihlo".
 🈺	Inkinobho yesi-Japanese "evulekile ibhizinisi".
 🈵	Inkinobho yesi-Japanese "asikho isikhala".
@@ -3324,7 +3324,7 @@
 🇦🇼	E-Aruba
 🇦🇽	Iziqhingi zase-Åland
 🇦🇿	I-Azerbaijan
-🇧🇦	I-Bosnia & Herzegovina
+🇧🇦	I-Bosnia ne-Herzegovina
 🇧🇧	I-Barbados
 🇧🇩	I-Bangladesh
 🇧🇪	EBelgium
@@ -3344,7 +3344,7 @@
 🇧🇻	Isiqhingi saseBouvet
 🇧🇼	Botswana
 🇧🇾	Belarus
-🇧🇿	E-Belize
+🇧🇿	I-Belize
 🇨🇦	Canada
 🇨🇨	I-Cocos (Keeling) Islands
 🇨🇩	I-Congo - Kinshasa
@@ -3401,7 +3401,7 @@
 🇬🇵	Guadeloupe
 🇬🇶	I-Equatorial Guinea
 🇬🇷	Greece
-🇬🇸	I-South Georgia ne-South Sandwich Islands
+🇬🇸	I-South Georgia kanye ne-South Sandwich Islands
 🇬🇹	eGuatemala
 🇬🇺	I-Guam
 🇬🇼	I-Guinea-Bissau
@@ -3440,7 +3440,7 @@
 🇰🇿	Kazakhstan
 🇱🇦	I-Laos
 🇱🇧	Lebanon
-🇱🇨	St. Lucia
+🇱🇨	I-St. Lucia
 🇱🇮	I-Liechtenstein
 🇱🇰	i-Sri Lanka
 🇱🇷	I-Liberia
@@ -3501,14 +3501,14 @@
 🇵🇾	Paraguay
 🇶🇦	Qatar
 🇷🇪	Réunion
-🇷🇴	I-Romania
+🇷🇴	E-Romania
 🇷🇸	I-Serbia
 🇷🇺	Russia
 🇷🇼	Rwanda
 🇸🇦	I-Saudi Arabia
 🇸🇧	Iziqhingi zaseSolomon
 🇸🇨	I-Seychelles
-🇸🇩	eSudan
+🇸🇩	Sudan
 🇸🇪	eSweden
 🇸🇬	Singapore
 🇸🇭	St. Helena

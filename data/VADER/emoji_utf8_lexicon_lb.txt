@@ -170,7 +170,7 @@
 👴	ale Mann
 👴🏻	ale Mann: Liicht Haut Tonalitéit
 👴🏼	ale Mann: mëttel- Liicht Haut Tonalitéit
-👴🏽	ale Mann: mëttelfristeg Haut Tonalitéit
+👴🏽	ale Mann: mëttelgrouss Haut Tonalitéit
 👴🏾	ale Mann: mëttel- donkel Haut Tonalitéit
 👴🏿	ale Mann: donkel Haut Tonalitéit
 👵	al Fra
@@ -246,7 +246,7 @@
 👩🏼‍⚖️	Fra Riichter: mëttel- Liicht Haut Tonalitéit
 👩🏼‍⚖	Fra Riichter: mëttel- Liicht Haut Tonalitéit
 👩🏽‍⚖️	Fra Riichter: mëttelfristeg Haut Tonalitéit
-👩🏽‍⚖	Fra Riichter: mëttel Haut Tonalitéit
+👩🏽‍⚖	Fra Riichter: mëttelfristeg Haut Tonalitéit
 👩🏾‍⚖️	Fra Riichter: mëttel- donkel Haut Tonalitéit
 👩🏾‍⚖	Fra Riichter: mëttel- donkel Haut Tonalitéit
 👩🏿‍⚖️	Fra Riichter: donkel Haut Tonalitéit
@@ -324,7 +324,7 @@
 👩🏾‍🔬	weiblech Wëssenschaftler: mëttel- donkel Haut Tonalitéit
 👩🏿‍🔬	Fra Wëssenschaftler: donkel Haut Tonalitéit
 👨‍💻	Mann technologist
-👨🏻‍💻	Mann technologist: hell Haut Tonalitéit
+👨🏻‍💻	Mann Technologist: Liicht Haut Tonalitéit
 👨🏼‍💻	Mann Technologist: mëttel- Liicht Haut Tonalitéit
 👨🏽‍💻	Mann technologist: mëttelfristeg Haut Tonalitéit
 👨🏾‍💻	Mann Technologist: mëttel- donkel Haut Tonalitéit
@@ -333,7 +333,7 @@
 👩🏻‍💻	Fra technologist: hell Haut Tonalitéit
 👩🏼‍💻	Fra Technologist: mëttel- Liicht Haut Tonalitéit
 👩🏽‍💻	Fra technologist: mëttelfristeg Haut Tonalitéit
-👩🏾‍💻	Fra technologist: mëttel- donkel Haut Tonalitéit
+👩🏾‍💻	Fra Technologist: mëttel- donkel Haut Tonalitéit
 👩🏿‍💻	Fra Technologist: donkel Haut Tonalitéit
 👨‍🎤	Mann Sänger
 👨🏻‍🎤	Mann Sänger: Liicht Haut Tonalitéit
@@ -562,7 +562,7 @@
 👳🏾‍♂	Mann mat Turban: mëttel-donkel Haut Tonalitéit
 👳🏿‍♂️	Mann Turban Droen: donkel Haut Tonalitéit
 👳🏿‍♂	Mann Turban Droen: donkel Haut Tonalitéit
-👳‍♀️	Fra déi Turban droen
+👳‍♀️	Fra mat Turban
 👳‍♀	Fra déi Turban droen
 👳🏻‍♀️	Fra Turban Droen: Liicht Haut Tonalitéit
 👳🏻‍♀	Fra Turban Droen: Liicht Haut Tonalitéit
@@ -656,8 +656,8 @@
 👩🏻‍🦲	Fra, kal: Liicht Haut Tonalitéit
 👩🏼‍🦲	Fra, kal: mëttel- Liicht Haut Tonalitéit
 👩🏽‍🦲	Fra, Kaal: mëttel Haut Tonalitéit
-👩🏾‍🦲	Fra, kaal: mëttel- donkel Haut Tonalitéit
-👩🏿‍🦲	Fra, kaal: donkel Haut Tonalitéit
+👩🏾‍🦲	Fra, kal: mëttel- donkel Haut Tonalitéit
+👩🏿‍🦲	Fra, kal: donkel Haut Tonalitéit
 👨‍🦳	Mann, wäiss Hoer
 👨🏻‍🦳	Mann, wäiss Hoer: hell Haut Tonalitéit
 👨🏼‍🦳	Mann, wäiss Hoer: mëttel- Liicht Haut Tonalitéit
@@ -775,7 +775,7 @@
 🧙	magesch
 🧙🏻	mage: Liicht Haut Tonalitéit
 🧙🏼	mage: mëttel- Liicht Haut Tonalitéit
-🧙🏽	mage: mëttelfristeg Haut Tonalitéit
+🧙🏽	mage: mëttel Haut Tonalitéit
 🧙🏾	mage: mëttel- donkel Haut Tonalitéit
 🧙🏿	mage: donkel Haut Tonalitéit
 🧙‍♀️	Fra Mage
@@ -974,8 +974,8 @@
 🙎🏻‍♂	Mann pouting: Liicht Haut Tonalitéit
 🙎🏼‍♂️	Mann pouting: mëttel- Liicht Haut Tonalitéit
 🙎🏼‍♂	Mann pouting: mëttel- Liicht Haut Tonalitéit
-🙎🏽‍♂️	Mann pouting: mëttel- Haut Tonalitéit
-🙎🏽‍♂	Mann pouting: mëttel- Haut Tonalitéit
+🙎🏽‍♂️	Mann pouting: mëttel Haut Tonalitéit
+🙎🏽‍♂	Mann pouting: mëttel Haut Tonalitéit
 🙎🏾‍♂️	Mann pouting: mëttel- donkel Haut Tonalitéit
 🙎🏾‍♂	Mann pouting: mëttel- donkel Haut Tonalitéit
 🙎🏿‍♂️	Mann pouting: donkel Haut Tonalitéit
@@ -992,18 +992,18 @@
 🙎🏾‍♀	Fra pouting: mëttel- donkel Haut Tonalitéit
 🙎🏿‍♀️	Fra pouting: donkel Haut Tonalitéit
 🙎🏿‍♀	Fra pouting: donkel Haut Tonalitéit
-🙅	Persoun gestéiert NEE
-🙅🏻	Persoun gestéiert NEE: Liicht Haut Tonalitéit
+🙅	Persoun gesturt NEE
+🙅🏻	Persoun gestéiert NEE: Liicht Hautfaarf
 🙅🏼	Persoun gesturt NEE: mëttel-hell Haut Tonalitéit
-🙅🏽	Persoun gesturt NEE: mëttel Haut Tonalitéit
+🙅🏽	Persoun gestéiert NEE: mëttel Haut Ton
 🙅🏾	Persoun gestéiert NEE: mëttel-donkel Haut Tonalitéit
 🙅🏿	Persoun gestéiert NEE: donkel Haut Ton
 🙅‍♂️	Mann gesteiert NEE
 🙅‍♂	Mann gesteiert NEE
 🙅🏻‍♂️	Mann gestéiert NEE: liicht Hautfaarf
 🙅🏻‍♂	Mann gestéiert NEE: liicht Hautfaarf
-🙅🏼‍♂️	Mann gesturt NEE: mëttel-hell Haut Tonalitéit
-🙅🏼‍♂	Mann gesturt NEE: mëttel-hell Haut Tonalitéit
+🙅🏼‍♂️	Mann gestéiert NEE: mëttel-hell Haut Tonalitéit
+🙅🏼‍♂	Mann gestéiert NEE: mëttel-hell Haut Tonalitéit
 🙅🏽‍♂️	Mann gestéiert NEE: mëttel Haut Ton
 🙅🏽‍♂	Mann gestéiert NEE: mëttel Haut Ton
 🙅🏾‍♂️	Mann gesturing NEE: mëttel-donkel Haut Tonalitéit
@@ -1012,18 +1012,18 @@
 🙅🏿‍♂	Mann gestéiert NEE: donkel Haut Ton
 🙅‍♀️	Fra gesturt NEE
 🙅‍♀	Fra gesturt NEE
-🙅🏻‍♀️	Fra gestéiert NEE: liicht Hautfaarf
-🙅🏻‍♀	Fra gestéiert NEE: liicht Hautfaarf
-🙅🏼‍♀️	Fra gestéiert NEE: mëttel-hell Haut Tonalitéit
-🙅🏼‍♀	Fra gestéiert NEE: mëttel-hell Haut Tonalitéit
-🙅🏽‍♀️	Fra gesturt NEE: mëttel Haut Ton
-🙅🏽‍♀	Fra gesturt NEE: mëttel Haut Ton
-🙅🏾‍♀️	Fra gesturing NEE: mëttel-donkel Haut Tonalitéit
-🙅🏾‍♀	Fra gesturing NEE: mëttel-donkel Haut Tonalitéit
-🙅🏿‍♀️	Fra gesturing NEE: donkel Haut Tonalitéit
-🙅🏿‍♀	Fra gesturing NEE: donkel Haut Tonalitéit
+🙅🏻‍♀️	Fra gesturt NEE: liicht Hautfaarf
+🙅🏻‍♀	Fra gesturt NEE: liicht Hautfaarf
+🙅🏼‍♀️	Fra gesturt NEE: mëttel-hell Haut Tonalitéit
+🙅🏼‍♀	Fra gesturt NEE: mëttel-hell Haut Tonalitéit
+🙅🏽‍♀️	Fra gesteiert NEE: mëttel Haut Ton
+🙅🏽‍♀	Fra gesteiert NEE: mëttel Haut Ton
+🙅🏾‍♀️	Fra gestuert NEE: mëttel-donkel Haut Tonalitéit
+🙅🏾‍♀	Fra gestuert NEE: mëttel-donkel Haut Tonalitéit
+🙅🏿‍♀️	Fra gestéiert NEE: donkel Haut Ton
+🙅🏿‍♀	Fra gestéiert NEE: donkel Haut Ton
 🙆	Persoun gesturt OK
-🙆🏻	Persoun gesturt OK: hell Haut Tonalitéit
+🙆🏻	Persoun gesturt OK: Liicht Haut Tonalitéit
 🙆🏼	Persoun gesturt OK: mëttel- Liicht Haut Tonalitéit
 🙆🏽	Persoun gesturt OK: mëttel Haut Tonalitéit
 🙆🏾	Persoun gesturt OK: mëttel-donkel Haut Tonalitéit
@@ -1036,16 +1036,16 @@
 🙆🏼‍♂	Mann gestéiert OK: mëttel- Liicht Haut Tonalitéit
 🙆🏽‍♂️	Mann gestéiert OK: mëttel Haut Tonalitéit
 🙆🏽‍♂	Mann gestéiert OK: mëttel Haut Tonalitéit
-🙆🏾‍♂️	Mann gesturing OK: mëttel-donkel Haut Tonalitéit
-🙆🏾‍♂	Mann gesturing OK: mëttel-donkel Haut Tonalitéit
+🙆🏾‍♂️	Mann gestéiert OK: mëttel-donkel Haut Tonalitéit
+🙆🏾‍♂	Mann gestéiert OK: mëttel-donkel Haut Tonalitéit
 🙆🏿‍♂️	Mann gestéiert OK: donkel Haut Tonalitéit
 🙆🏿‍♂	Mann gestéiert OK: donkel Haut Tonalitéit
 🙆‍♀️	Fra gesturt OK
 🙆‍♀	Fra gesturt OK
 🙆🏻‍♀️	Fra gesturing OK: Liicht Haut Tonalitéit
 🙆🏻‍♀	Fra gesturing OK: Liicht Haut Tonalitéit
-🙆🏼‍♀️	Fra gesturing OK: mëttel- Liicht Haut Tonalitéit
-🙆🏼‍♀	Fra gesturing OK: mëttel- Liicht Haut Tonalitéit
+🙆🏼‍♀️	Fra gesturing OK: mëttel-hell Haut Tonalitéit
+🙆🏼‍♀	Fra gesturing OK: mëttel-hell Haut Tonalitéit
 🙆🏽‍♀️	Fra gesturt OK: mëttel Haut Tonalitéit
 🙆🏽‍♀	Fra gesturt OK: mëttel Haut Tonalitéit
 🙆🏾‍♀️	Fra gesturing OK: mëttel-donkel Haut Tonalitéit
@@ -1055,8 +1055,8 @@
 💁	Persoun déi d'Hand kippt
 💁🏻	Persoun klappt Hand: Liicht Haut Tonalitéit
 💁🏼	Persoun kippt Hand: mëttel- Liicht Haut Tonalitéit
-💁🏽	Persoun klappt Hand: mëttelfristeg Haut Tonalitéit
-💁🏾	Persoun klappt Hand: mëttel- donkel Haut Tonalitéit
+💁🏽	Persoun déi Hand: mëttel Haut Tonalitéit
+💁🏾	Persoun kippt Hand: mëttel- donkel Haut Tonalitéit
 💁🏿	Persoun klappt Hand: donkel Haut Tonalitéit
 💁‍♂️	Mann kippt Hand
 💁‍♂	Mann kippt Hand
@@ -1066,8 +1066,8 @@
 💁🏼‍♂	Mann Tipp Hand: mëttel- Liicht Haut Tonalitéit
 💁🏽‍♂️	Mann tippt Hand: mëttel Haut Tonalitéit
 💁🏽‍♂	Mann tippt Hand: mëttel Haut Tonalitéit
-💁🏾‍♂️	Mann Tipp Hand: mëttel- donkel Haut Tonalitéit
-💁🏾‍♂	Mann Tipp Hand: mëttel- donkel Haut Tonalitéit
+💁🏾‍♂️	Mann tippt Hand: mëttel-donkel Haut Tonalitéit
+💁🏾‍♂	Mann tippt Hand: mëttel-donkel Haut Tonalitéit
 💁🏿‍♂️	Mann Tipp Hand: donkel Haut Tonalitéit
 💁🏿‍♂	Mann Tipp Hand: donkel Haut Tonalitéit
 💁‍♀️	Fra kippt Hand
@@ -1102,8 +1102,8 @@
 🙋🏿‍♂	Mann hieft Hand: donkel Haut Tonalitéit
 🙋‍♀️	Fra hieft d'Hand op
 🙋‍♀	Fra hieft d'Hand op
-🙋🏻‍♀️	Fra hieft Hand: Liicht Haut Tonalitéit
-🙋🏻‍♀	Fra hieft Hand: Liicht Haut Tonalitéit
+🙋🏻‍♀️	Fra Erhéijung Hand: Liicht Haut Tonalitéit
+🙋🏻‍♀	Fra Erhéijung Hand: Liicht Haut Tonalitéit
 🙋🏼‍♀️	Fra Erhéijung Hand: mëttel- Liicht Haut Tonalitéit
 🙋🏼‍♀	Fra Erhéijung Hand: mëttel- Liicht Haut Tonalitéit
 🙋🏽‍♀️	Fra hieft Hand: mëttel Haut Tonalitéit
@@ -1197,7 +1197,7 @@
 🤷🏼‍♀️	Fra shrugging: mëttel- Liicht Haut Tonalitéit
 🤷🏼‍♀	Fra shrugging: mëttel- Liicht Haut Tonalitéit
 🤷🏽‍♀️	Fra shrugging: mëttelfristeg Haut Tonalitéit
-🤷🏽‍♀	Fra shrugging: mëttelfristeg Haut Tonalitéit
+🤷🏽‍♀	Fra shrugging: mëttel- Haut Tonalitéit
 🤷🏾‍♀️	Fra shrugging: mëttel- donkel Haut Tonalitéit
 🤷🏾‍♀	Fra shrugging: mëttel- donkel Haut Tonalitéit
 🤷🏿‍♀️	Fra shrugging: donkel Haut Tonalitéit
@@ -1233,17 +1233,17 @@
 💆🏿‍♀️	Fra kritt Massage: donkel Haut Tonalitéit
 💆🏿‍♀	Fra kritt Massage: donkel Haut Tonalitéit
 💇	Persoun déi Frisur kritt
-💇🏻	Persoun gëtt Frisur: Liicht Haut Tonalitéit
+💇🏻	Persoun déi Frisur kritt: liicht Hautfaarf
 💇🏼	Persoun déi Frisur kritt: mëttel-hell Haut Ton
-💇🏽	Persoun gëtt Frisur: mëttel Haut Tonalitéit
-💇🏾	Persoun déi Frisur kritt: mëttel-donkel Haut Ton
-💇🏿	Persoun déi Frisur kritt: donkel Haut Ton
+💇🏽	Persoun déi Frisur kritt: mëttel Haut Ton
+💇🏾	Persoun gëtt Frisur: mëttel-donkel Haut Tonalitéit
+💇🏿	Persoun déi Frisur: donkel Haut Tonalitéit
 💇‍♂️	Mann gëtt Frisur
 💇‍♂	Mann gëtt Frisur
 💇🏻‍♂️	Mann gëtt Frisur: Liicht Haut Tonalitéit
 💇🏻‍♂	Mann gëtt Frisur: Liicht Haut Tonalitéit
-💇🏼‍♂️	Mann gëtt Frisur: mëttel- Liicht Haut Tonalitéit
-💇🏼‍♂	Mann gëtt Frisur: mëttel- Liicht Haut Tonalitéit
+💇🏼‍♂️	Mann gëtt Frisur: mëttel-hell Haut Tonalitéit
+💇🏼‍♂	Mann gëtt Frisur: mëttel-hell Haut Tonalitéit
 💇🏽‍♂️	Mann gëtt Frisur: mëttel Haut Tonalitéit
 💇🏽‍♂	Mann gëtt Frisur: mëttel Haut Tonalitéit
 💇🏾‍♂️	Mann gëtt Frisur: mëttel-donkel Haut Tonalitéit
@@ -1286,8 +1286,8 @@
 🚶🏻‍♀	Fra Spadséiergank: Liicht Haut Tonalitéit
 🚶🏼‍♀️	Fra Spadséiergank: mëttel- Liicht Haut Tonalitéit
 🚶🏼‍♀	Fra Spadséiergank: mëttel- Liicht Haut Tonalitéit
-🚶🏽‍♀️	Fra Spadséiergank: mëttelfristeg Haut Tonalitéit
-🚶🏽‍♀	Fra Spadséiergank: mëttelfristeg Haut Tonalitéit
+🚶🏽‍♀️	Fra Spadséiergank: mëttel Haut Tonalitéit
+🚶🏽‍♀	Fra Spadséiergank: mëttel Haut Tonalitéit
 🚶🏾‍♀️	Fra Spadséiergank: mëttel- donkel Haut Tonalitéit
 🚶🏾‍♀	Fra Spadséiergank: mëttel- donkel Haut Tonalitéit
 🚶🏿‍♀️	Fra Spadséiergank: donkel Haut Tonalitéit
@@ -1295,7 +1295,7 @@
 🏃	Persoun Lafen
 🏃🏻	Persoun Lafen: Liicht Haut Tonalitéit
 🏃🏼	Persoun Lafen: mëttel- Liicht Haut Tonalitéit
-🏃🏽	Persoun Lafen: mëttelfristeg Haut Tonalitéit
+🏃🏽	Persoun Lafen: mëttel- Haut Tonalitéit
 🏃🏾	Persoun Lafen: mëttel- donkel Haut Tonalitéit
 🏃🏿	Persoun Lafen: donkel Haut Tonalitéit
 🏃‍♂️	Mann lafen
@@ -1342,7 +1342,7 @@
 🧖	Persoun am steamy Sall
 🧖🏻	Persoun am steamy Sall: Liicht Haut Tonalitéit
 🧖🏼	Persoun am steamy Sall: mëttel- Liicht Haut Tonalitéit
-🧖🏽	Persoun am steamy Sall: mëttelfristeg Haut Tonalitéit
+🧖🏽	Persoun am steamy Sall: mëttel Haut Tonalitéit
 🧖🏾	Persoun am steamy Sall: mëttel- donkel Haut Tonalitéit
 🧖🏿	Persoun am steamy Sall: donkel Haut Tonalitéit
 🧖‍♀️	Fra am Dampzëmmer
@@ -1381,8 +1381,8 @@
 🧗🏻‍♀	Fra Kloteren: Liicht Haut Tonalitéit
 🧗🏼‍♀️	Fra Kloteren: mëttel- Liicht Haut Tonalitéit
 🧗🏼‍♀	Fra Kloteren: mëttel- Liicht Haut Tonalitéit
-🧗🏽‍♀️	Fra Kloteren: mëttel Haut Tonalitéit
-🧗🏽‍♀	Fra Kloteren: mëttel Haut Tonalitéit
+🧗🏽‍♀️	Fra Kloteren: mëttelfristeg Haut Tonalitéit
+🧗🏽‍♀	Fra Kloteren: mëttelfristeg Haut Tonalitéit
 🧗🏾‍♀️	Fra Kloteren: mëttel- donkel Haut Tonalitéit
 🧗🏾‍♀	Fra Kloteren: mëttel- donkel Haut Tonalitéit
 🧗🏿‍♀️	Fra Kloteren: donkel Haut Tonalitéit
@@ -1407,8 +1407,8 @@
 🧘🏿	Persoun an Lotus Positioun: donkel Haut Tonalitéit
 🧘‍♀️	Fra an der Lotuspositioun
 🧘‍♀	Fra an der Lotuspositioun
-🧘🏻‍♀️	Fra an Lotus Positioun: Liicht Haut Tonalitéit
-🧘🏻‍♀	Fra an Lotus Positioun: Liicht Haut Tonalitéit
+🧘🏻‍♀️	Fra an Lotus Positioun: hell Haut Tonalitéit
+🧘🏻‍♀	Fra an Lotus Positioun: hell Haut Tonalitéit
 🧘🏼‍♀️	Fra an Lotus Positioun: mëttel- Liicht Haut Tonalitéit
 🧘🏼‍♀	Fra an Lotus Positioun: mëttel- Liicht Haut Tonalitéit
 🧘🏽‍♀️	Fra an Lotus Positioun: mëttel Haut Tonalitéit
@@ -1429,7 +1429,7 @@
 🧘🏾‍♂	Mann an Lotus Positioun: mëttel- donkel Haut Tonalitéit
 🧘🏿‍♂️	Mann an Lotus Positioun: donkel Haut Tonalitéit
 🧘🏿‍♂	Mann an Lotus Positioun: donkel Haut Tonalitéit
-🛀	Persoun déi Bad mécht
+🛀	Persoun hëlt Bad
 🛀🏻	Persoun déi Bad: Liicht Haut Tonalitéit
 🛀🏼	Persoun déi Bad: mëttel- Liicht Haut Tonalitéit
 🛀🏽	Persoun déi Bad: mëttel Haut Tonalitéit
@@ -1447,7 +1447,7 @@
 🕴🏼	Mann am Kostüm levitéieren: mëttel- Liicht Haut Tonalitéit
 🕴🏽	Mann am Kostüm levitéieren: mëttel Haut Tonalitéit
 🕴🏾	Mann am Kostüm levitéieren: mëttel-donkel Haut Tonalitéit
-🕴🏿	Mann am Kostüm levitéieren: donkel Haut Tonalitéit
+🕴🏿	Mann am Kostüm levitating: donkel Haut Tonalitéit
 🗣️	schwätzen Kapp
 🗣	schwätzen Kapp
 👤	Bust an Silhouette
@@ -1471,7 +1471,7 @@
 🏌	Persoun golfing
 🏌🏻	Persoun golfing: Liicht Haut Tonalitéit
 🏌🏼	Persoun golfing: mëttel- Liicht Haut Tonalitéit
-🏌🏽	Persoun golfing: mëttel- Haut Tonalitéit
+🏌🏽	Persoun golfing: mëttelfristeg Haut Tonalitéit
 🏌🏾	Persoun golfing: mëttel- donkel Haut Tonalitéit
 🏌🏿	Persoun golfing: donkel Haut Tonalitéit
 🏌️‍♂️	Mann golfing
@@ -1544,8 +1544,8 @@
 🚣🏻‍♂	Mann Rudderboot: Liicht Haut Tonalitéit
 🚣🏼‍♂️	Mann Rudderboot: mëttel- Liicht Haut Tonalitéit
 🚣🏼‍♂	Mann Rudderboot: mëttel- Liicht Haut Tonalitéit
-🚣🏽‍♂️	Mann Rudderboot: mëttelgrouss Haut Tonalitéit
-🚣🏽‍♂	Mann Rudderboot: mëttelgrouss Haut Tonalitéit
+🚣🏽‍♂️	Mann Rudderboot: mëttelfristeg Haut Tonalitéit
+🚣🏽‍♂	Mann Rudderboot: mëttelfristeg Haut Tonalitéit
 🚣🏾‍♂️	Mann Rudderboot: mëttel- donkel Haut Tonalitéit
 🚣🏾‍♂	Mann Rudderboot: mëttel- donkel Haut Tonalitéit
 🚣🏿‍♂️	Mann Rudderboot: donkel Haut Tonalitéit
@@ -1631,8 +1631,8 @@
 🏋	Persoun hieft Gewiichter
 🏋🏻	Persoun hieft Gewiichter: Liicht Haut Tonalitéit
 🏋🏼	Persoun hieft Gewiichter: mëttel- Liicht Haut Tonalitéit
-🏋🏽	Persoun hieft Gewiichter: mëttelfristeg Haut Tonalitéit
-🏋🏾	Persoun hieft Gewiichter: mëttel- donkel Haut Tonalitéit
+🏋🏽	Persoun hieft Gewiichter: mëttel Haut Tonalitéit
+🏋🏾	Persoun hieft Gewiichter: mëttel-donkel Haut Tonalitéit
 🏋🏿	Persoun hieft Gewiichter: donkel Haut Tonalitéit
 🏋️‍♂️	Mann hieft Gewiichter
 🏋‍♂️	Mann hieft Gewiichter
@@ -1766,7 +1766,7 @@
 🤽🏼	Persoun déi Waasser Polo spillt: mëttel- Liicht Haut Tonalitéit
 🤽🏽	Persoun déi Waasser Polo spillt: mëttel Haut Tonalitéit
 🤽🏾	Persoun déi Waasser Polo spillt: mëttel-donkel Haut Tonalitéit
-🤽🏿	Persoun déi Waasserpolo spillt: donkel Haut Ton
+🤽🏿	Persoun déi Waasser Polo spillt: donkel Haut Tonalitéit
 🤽‍♂️	Mann spillt Waasserpolo
 🤽‍♂	Mann spillt Waasserpolo
 🤽🏻‍♂️	Mann spillt Waasser Polo: Liicht Haut Tonalitéit
@@ -1802,13 +1802,13 @@
 🤾🏻‍♂️	Mann Handball spillen: Liicht Haut Tonalitéit
 🤾🏻‍♂	Mann Handball spillen: Liicht Haut Tonalitéit
 🤾🏼‍♂️	Mann Handball gespillt: mëttel- Liicht Haut Tonalitéit
-🤾🏼‍♂	Mann spillt Handball: mëttel- Liicht Haut Tonalitéit
+🤾🏼‍♂	Mann Handball gespillt: mëttel- Liicht Haut Tonalitéit
 🤾🏽‍♂️	Mann spillt Handball: mëttel Haut Tonalitéit
 🤾🏽‍♂	Mann spillt Handball: mëttel Haut Tonalitéit
-🤾🏾‍♂️	Mann Handball gespillt: mëttel- donkel Haut Tonalitéit
-🤾🏾‍♂	Mann Handball gespillt: mëttel- donkel Haut Tonalitéit
-🤾🏿‍♂️	Mann Handball gespillt: donkel Haut Tonalitéit
-🤾🏿‍♂	Mann Handball gespillt: donkel Haut Tonalitéit
+🤾🏾‍♂️	Mann spillt Handball: mëttel- donkel Haut Tonalitéit
+🤾🏾‍♂	Mann spillt Handball: mëttel- donkel Haut Tonalitéit
+🤾🏿‍♂️	Mann spillt Handball: donkel Haut Tonalitéit
+🤾🏿‍♂	Mann spillt Handball: donkel Haut Tonalitéit
 🤾‍♀️	Fra Handball spillt
 🤾‍♀	Fra Handball spillt
 🤾🏻‍♀️	Fra Handball gespillt: Liicht Haut Tonalitéit
@@ -1903,7 +1903,7 @@
 💪	geflexéiert Bizeps
 💪🏻	flexed biceps: hell Haut Tonalitéit
 💪🏼	flexed biceps: mëttel- Liicht Haut Tonalitéit
-💪🏽	flexed biceps: mëttelfristeg Haut Tonalitéit
+💪🏽	flexed biceps: mëttel- Haut Tonalitéit
 💪🏾	flexed biceps: mëttel- donkel Haut Tonalitéit
 💪🏿	flexed biceps: donkel Haut Tonalitéit
 🦵	Been
@@ -1928,7 +1928,7 @@
 👉🏻	backhand Index weist riets: hell Haut Tonalitéit
 👉🏼	backhand Index weist riets: mëttel- Liicht Haut Tonalitéit
 👉🏽	backhand Index weist riets: mëttel Haut Tonalitéit
-👉🏾	backhand Index weist riets: mëttel- donkel Haut Tonalitéit
+👉🏾	backhand Index weist riets: mëttel-donkel Haut Tonalitéit
 👉🏿	backhand Index weist riets: donkel Haut Tonalitéit
 ☝️	Index weist erop
 ☝	Index weist erop
@@ -1938,7 +1938,7 @@
 ☝🏾	Index weist erop: mëttel-donkel Haut Ton
 ☝🏿	Index weist erop: donkel Haut Ton
 👆	backhand Index weist erop
-👆🏻	backhand Index weist op: Liicht Haut Tonalitéit
+👆🏻	backhand Index weist erop: Liicht Haut Tonalitéit
 👆🏼	backhand Index weist erop: mëttel-hell Haut Tonalitéit
 👆🏽	backhand Index weist erop: mëttel Haut Tonalitéit
 👆🏾	backhand Index weist erop: mëttel-donkel Haut Tonalitéit
@@ -1959,13 +1959,13 @@
 ✌	Victoire Hand
 ✌🏻	Victoire Hand: Liicht Haut Tonalitéit
 ✌🏼	Victoire Hand: mëttel- Liicht Haut Tonalitéit
-✌🏽	Victoire Hand: mëttel- Haut Tonalitéit
+✌🏽	Victoire Hand: mëttelfristeg Haut Tonalitéit
 ✌🏾	Victoire Hand: mëttel- donkel Haut Tonalitéit
 ✌🏿	Victoire Hand: donkel Haut Tonalitéit
 🤞	gekräizegt Fanger
 🤞🏻	gekräizegt Fangeren: Liicht Haut Tonalitéit
 🤞🏼	gekräizt Fangeren: mëttel- Liicht Haut Tonalitéit
-🤞🏽	gekräizegt Fangeren: mëttel- Haut Tonalitéit
+🤞🏽	gekräizegt Fangeren: mëttelfristeg Haut Tonalitéit
 🤞🏾	gekräizegt Fangeren: mëttel- donkel Haut Tonalitéit
 🤞🏿	gekräizegt Fangeren: donkel Haut Tonalitéit
 🖖	Vulkan Salut
@@ -1975,9 +1975,9 @@
 🖖🏾	Vulkan Salut: mëttel- donkel Haut Tonalitéit
 🖖🏿	Vulkan Salut: donkel Haut Tonalitéit
 🤘	Zeechen vun den Hunnen
-🤘🏻	Zeeche vun den Hunnen: liicht Hautfaarf
+🤘🏻	Zeechen vun den Hunnen: liicht Hautfaarf
 🤘🏼	Zeeche vun den Hunnen: mëttel-hell Haut Tonalitéit
-🤘🏽	Zeeche vun den Hunnen: mëttel Haut Ton
+🤘🏽	Zeechen vun den Hoer: mëttel Haut Tonalitéit
 🤘🏾	Zeechen vun den Hoer: mëttel-donkel Haut Tonalitéit
 🤘🏿	Zeechen vun den Hunnen: däischter Hautfaarf
 🤙	ruff mech Hand
@@ -1987,7 +1987,7 @@
 🤙🏾	rufft mech Hand: mëttel- donkel Haut Tonalitéit
 🤙🏿	rufft mech Hand: donkel Haut Tonalitéit
 🖐️	d'Hand mat de Fangeren ausgestraalt
-🖐	d'Hand mat de Fangeren ausgestraalt
+🖐	d'Hand mat de Fangeren ausgesat
 🖐🏻	Hand mat Fangeren splayed: Liicht Haut Tonalitéit
 🖐🏼	Hand mat Fangeren splayed: mëttel- Liicht Haut Tonalitéit
 🖐🏽	Hand mat Fangeren splayed: mëttel Haut Tonalitéit
@@ -2003,7 +2003,7 @@
 👌🏻	OK Hand: Liicht Haut Tonalitéit
 👌🏼	OK Hand: mëttel- Liicht Haut Tonalitéit
 👌🏽	OK Hand: mëttel Haut Tonalitéit
-👌🏾	OK Hand: mëttel-donkel Haut Tonalitéit
+👌🏾	OK Hand: mëttel- donkel Haut Tonalitéit
 👌🏿	OK Hand: donkel Haut Tonalitéit
 👍	Daum héich
 👍🏻	Daumen erop: Liicht Haut Tonalitéit
@@ -2050,12 +2050,12 @@
 👋	wénken Hand
 👋🏻	wénken Hand: Liicht Haut Tonalitéit
 👋🏼	wénken Hand: mëttel- Liicht Haut Tonalitéit
-👋🏽	wénken Hand: mëttelfristeg Haut Tonalitéit
+👋🏽	wénken Hand: mëttel Haut Tonalitéit
 👋🏾	wénken Hand: mëttel- donkel Haut Tonalitéit
 👋🏿	wénken Hand: donkel Haut Tonalitéit
 🤟	hunn dech gär Geste
 🤟🏻	Léift-dech Geste: Liicht Haut Tonalitéit
-🤟🏼	Léift-dech Geste: mëttel-hell Haut Tonalitéit
+🤟🏼	Léift-dech Geste: mëttel- Liicht Haut Tonalitéit
 🤟🏽	Léift-dech Geste: mëttel Haut Tonalitéit
 🤟🏾	Léift-dech Geste: mëttel-donkel Haut Tonalitéit
 🤟🏿	Léift-dech Geste: donkel Haut Tonalitéit
@@ -2063,13 +2063,13 @@
 ✍	schreiwen Hand
 ✍🏻	schreiwen Hand: Liicht Haut Tonalitéit
 ✍🏼	schreiwen Hand: mëttel- Liicht Haut Tonalitéit
-✍🏽	schreiwen Hand: mëttel- Haut Tonalitéit
+✍🏽	schreiwen Hand: mëttelfristeg Haut Tonalitéit
 ✍🏾	schreiwen Hand: mëttel- donkel Haut Tonalitéit
 ✍🏿	schreiwen Hand: donkel Haut Tonalitéit
 👏	klappen Hänn
 👏🏻	klappen Hänn: Liicht Haut Tonalitéit
 👏🏼	klappen Hänn: mëttel- Liicht Haut Tonalitéit
-👏🏽	klappen Hänn: mëttel Haut Tonalitéit
+👏🏽	klappen Hänn: mëttelfristeg Haut Tonalitéit
 👏🏾	klappen Hänn: mëttel- donkel Haut Tonalitéit
 👏🏿	klappen Hänn: donkel Haut Tonalitéit
 👐	oppen Hänn
@@ -2089,7 +2089,7 @@
 🤲🏼	Palmen erop zesummen: mëttel-hell Haut Tonalitéit
 🤲🏽	Palmen erop zesummen: mëttel Haut Tonalitéit
 🤲🏾	Palmen erop zesummen: mëttel-donkel Haut Tonalitéit
-🤲🏿	Palmen erop zesummen: donkel Haut Tonalitéit
+🤲🏿	Handfläch zesummen: donkel Haut Tonalitéit
 🙏	zesummegeklappt Hänn
 🙏🏻	gefaltet Hänn: Liicht Haut Tonalitéit
 🙏🏼	gefaltet Hänn: mëttel- Liicht Haut Tonalitéit
@@ -2200,7 +2200,7 @@
 👑	Kroun
 👒	Frauen Hut
 🎩	Top Hutt
-🎓	Ofschlosskapp
+🎓	Ofschlosskap
 🧢	Rechnung Cap
 ⛑️	Rettungsaarbechter Helm
 ⛑	Rettungsaarbechter Helm
@@ -2267,7 +2267,7 @@
 🐓	Hunn
 🐣	knaschteg Chick
 🐤	Puppelchen Chick
-🐥	virun-konfrontéiert Puppelchen Chick
+🐥	virun-denen Puppelchen Chick
 🐦	Vugel
 🐧	Pinguin
 🕊️	dauf
@@ -2276,7 +2276,7 @@
 🦆	ent
 🦢	Schwan
 🦉	Eule
-🦚	Päif
+🦚	Pfauen
 🦜	Papagei
 🐸	frosch Gesiicht
 🐊	krokodil
@@ -2362,7 +2362,7 @@
 🌽	Ouer vu Mais
 🌶️	waarm Peffer
 🌶	waarm Peffer
-🥒	Gurken
+🥒	Gurke
 🥬	blatzeg gréng
 🥦	broccoli
 🍄	Champignon
@@ -2481,8 +2481,8 @@
 🧱	Zillen
 🏘️	Haiser
 🏘	Haiser
-🏚️	verlooss Haus
-🏚	verlooss Haus
+🏚️	entlooss Haus
+🏚	entlooss Haus
 🏠	Haus
 🏡	Haus mat Gaart
 🏢	Büro Gebai
@@ -2641,7 +2641,7 @@
 🌕	Vollmound
 🌖	verschwonnene Gibbous Mound
 🌗	leschte Véierel Mound
-🌘	verschwannende Moundhimmel
+🌘	verschwannende Moundmound
 🌙	Moundhimmel
 🌚	neie Mound Gesiicht
 🌛	éischte Véierel Mound Gesiicht
@@ -2664,8 +2664,8 @@
 🌤	Sonn hannert kleng Wollek
 🌥️	Sonn hannert grousser Wollek
 🌥	Sonn hannert grousser Wollek
-🌦️	Sonn hannert Reenwollek
-🌦	Sonn hannert Reenwollek
+🌦️	Sonn hannert Reen Wollek
+🌦	Sonn hannert Reen Wollek
 🌧️	Wollek mat Reen
 🌧	Wollek mat Reen
 🌨️	Wollek mat Schnéi
@@ -2786,7 +2786,7 @@
 🧶	garen
 🔇	gedämpft Lautsprecher
 🔈	Lautsprecher niddereg Volumen
-🔉	Lautsprecher mëttelméisseg Volume
+🔉	Lautsprecher mëttlerer Volumen
 🔊	Lautsprecher héich Volumen
 📢	Lautsprecher
 📣	megaphone
@@ -2845,15 +2845,15 @@
 📺	Televisioun
 📷	Kamera
 📸	Kamera mat Flash
-📹	videokamera
+📹	Video Kamera
 📼	videokassett
 🔍	Lupp gekippt lénks
-🔎	Lupp gekippt riets
+🔎	Vergréisserungsglas riets gekippt
 🕯️	Käerz
 🕯	Käerz
 💡	Bir
 🔦	Täscheluucht
-🏮	rout Pabeier lantern
+🏮	roude Pabeier lantern
 📔	Notizbuch mat dekorativen Deckel
 📕	zougemaach Buch
 📖	oppene Buch
@@ -2877,7 +2877,7 @@
 💴	Yen Geldschäin
 💵	Dollar Geldschäin
 💶	Euro Geldschäin
-💷	Pound Geldschäin
+💷	Pond Geldschäin
 💸	Suen mat Flilleken
 💳	Kreditkaart
 🧾	Empfang
@@ -2901,8 +2901,8 @@
 🗳	Wahlziedel mat Wahlziedel
 ✏️	Bläistëft
 ✏	Bläistëft
-✒️	schwaarze Knupp
-✒	schwaarze Knupp
+✒️	schwaarz knabber
+✒	schwaarz knabber
 🖋️	Füllfieder
 🖋	Füllfieder
 🖊️	pen
@@ -3126,7 +3126,7 @@
 ⏮	lescht Streck Knäppchen
 🔼	erop Knäppchen
 ⏫	séier erop Knäppchen
-🔽	erof Knäppchen
+🔽	ënnen Knäppchen
 ⏬	séier erof Knäppchen
 ⏸️	Paus Knäppchen
 ⏸	Paus Knäppchen
@@ -3174,22 +3174,22 @@
 ➿	duebel Curly Loop
 〽️	Deel Ofwiesselung Mark
 〽	Deel Ofwiesselung Mark
-✳️	aacht geschwat Asterisk
-✳	aacht geschwat Asterisk
+✳️	aacht-geschwat Asterisk
+✳	aacht-geschwat Asterisk
 ✴️	aachtspëtzege Stär
 ✴	aachtspëtzege Stär
 ❇️	fonkelen
 ❇	fonkelen
 ‼️	duebel Ausrufezeeche
 ‼	duebel Ausrufezeeche
-⁉️	Ausrufezeeche Fro
+⁉️	Ausrufezeeche Fragezeechen
 ⁉	Ausrufezeeche Fro
 ❓	Fragezeechen
 ❔	wäiss Fro Zeechen
 ❕	wäiss Ausrufezeeche
 ❗	Ausrufezeeche
-〰️	gewellte Strich
-〰	gewellte Strich
+〰️	gewellt Strich
+〰	gewellt Strich
 ©️	Copyright
 ©	Copyright
 ®️	ugemellt
@@ -3257,7 +3257,7 @@
 🈷	Japanesch "monatlecht Betrag" Knäppchen
 🈶	Japanesch "net gratis" Knäppchen
 🈯	Japanesch "reservéiert" Knäppchen
-🉐	Japanesch "Affär" Knäppchen
+🉐	Japanesch "Verhandlunge" Knäppchen
 🈹	Japanesch "Rabatt" Knäppchen
 🈚	Japanesch "gratis" Knäppchen
 🈲	Japanesch "verbueden" Knäppchen
@@ -3271,8 +3271,8 @@
 ㊙	Japanesch "Geheim" Knäppchen
 🈺	Japanesch "Open fir Business" Knäppchen
 🈵	Japanesch "keng Vakanz" Knäppchen
-▪️	schwaarz kleng Feld
-▪	schwaarz kleng Feld
+▪️	schwaarz klenge Feld
+▪	schwaarz klenge Feld
 ▫️	wäiss klenge Quadrat
 ▫	wäiss klenge Quadrat
 ◻️	wäiss mëttel- Quadrat
@@ -3495,7 +3495,7 @@
 🇵🇲	Saint Pierre & Miquelon
 🇵🇳	Pitcairn Inselen
 🇵🇷	Puerto Rico
-🇵🇸	Palästinensesch Territoiren
+🇵🇸	palästinensesch Territoiren
 🇵🇹	Portugal
 🇵🇼	Palau
 🇵🇾	Paraguay
@@ -3529,7 +3529,7 @@
 🇹🇦	Tristan da Cunha
 🇹🇨	Turks & Caicos Inselen
 🇹🇩	Tschad
-🇹🇫	Franséisch Süden Territoiren
+🇹🇫	Franséisch südlech Territoiren
 🇹🇬	Togo
 🇹🇭	Thailand
 🇹🇯	Tadjikistan

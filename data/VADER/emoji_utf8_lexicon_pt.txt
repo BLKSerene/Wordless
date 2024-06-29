@@ -368,7 +368,7 @@
 👨🏽‍✈️	piloto homem: pele morena
 👨🏽‍✈	piloto homem: pele morena
 👨🏾‍✈️	piloto homem: pele morena escura
-👨🏾‍✈	piloto homem: pele morena escura
+👨🏾‍✈	homem piloto: pele morena escura
 👨🏿‍✈️	piloto homem: pele escura
 👨🏿‍✈	piloto homem: pele escura
 👩‍✈️	mulher piloto
@@ -534,15 +534,15 @@
 👷🏿‍♀	mulher trabalhadora da construção civil: pele escura
 🤴	Principe
 🤴🏻	príncipe: pele clara
-🤴🏼	príncipe: pele morena clara
+🤴🏼	Príncipe: pele morena clara
 🤴🏽	príncipe: pele morena
 🤴🏾	Príncipe: pele morena escura
 🤴🏿	príncipe: pele morena
 👸	princesa
 👸🏻	princesa: pele clara
-👸🏼	Princesa: pele morena clara
+👸🏼	princesa: pele morena clara
 👸🏽	Princesa: pele morena
-👸🏾	Princesa: pele morena escura
+👸🏾	princesa: pele morena escura
 👸🏿	princesa: pele morena
 👳	pessoa usando turbante
 👳🏻	pessoa usando turbante: pele clara
@@ -1140,8 +1140,8 @@
 🙇🏽‍♀	mulher se curvando: pele morena
 🙇🏾‍♀️	mulher se curvando: pele morena escura
 🙇🏾‍♀	mulher se curvando: pele morena escura
-🙇🏿‍♀️	mulher se curvando: pele morena
-🙇🏿‍♀	mulher se curvando: pele morena
+🙇🏿‍♀️	mulher se curvando: pele escura
+🙇🏿‍♀	mulher se curvando: pele escura
 🤦	pessoa fazendo facepal
 🤦🏻	pessoa que faz facepalm: pele clara
 🤦🏼	pessoa com palma facial: pele morena clara
@@ -3144,8 +3144,8 @@
 📴	celular desligado
 ♀️	signo feminino
 ♀	signo feminino
-♂️	sinal masculino
-♂	sinal masculino
+♂️	signo masculino
+♂	signo masculino
 ⚕️	símbolo médico
 ⚕	símbolo médico
 ♾️	infinidade

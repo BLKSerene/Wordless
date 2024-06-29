@@ -705,11 +705,12 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
                     token_settings = settings['token_settings']
                 )
 
-                # Remove empty tokens
                 tokens = text.get_tokens_flat()
 
+                # Remove empty tokens
                 self.keywords_freq_files[0] += collections.Counter([token for token in tokens if token])
 
+                # Preserve empty tokens for tests of statistical significance and measures of Bayes factor which require that the corpus be segmented into equal-sized sections
                 tokens_ref.extend(tokens)
 
             len_tokens_ref = len(tokens_ref)
@@ -721,11 +722,12 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
                     token_settings = settings['token_settings']
                 )
 
-                # Remove empty tokens
                 tokens = text.get_tokens_flat()
 
+                # Remove empty tokens
                 self.keywords_freq_files.append(collections.Counter([token for token in tokens if token]))
 
+                # Preserve empty tokens for tests of statistical significance and measures of Bayes factor which require that the corpus be segmented into equal-sized sections
                 texts.append(text)
 
             # Total

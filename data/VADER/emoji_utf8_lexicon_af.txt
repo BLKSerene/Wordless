@@ -26,7 +26,7 @@
 😐	neutrale gesig
 😑	uitdrukkinglose gesig
 😶	gesig sonder mond
-🙄	gesig met rollende oë
+🙄	gesig met rol oë
 😏	glimlaggende gesig
 😣	volhardende gesig
 😥	hartseer maar verligte gesig
@@ -69,7 +69,7 @@
 🥶	koue gesig
 😳	blosende gesig
 🤪	snaakse gesig
-😵	duiselig gesig
+😵	duiselige gesig
 😡	pruilende gesig
 😠	kwaai gesig
 🤬	gesig met simbole op die mond
@@ -146,7 +146,7 @@
 🧑	volwassene
 🧑🏻	volwassene: ligte velkleur
 🧑🏼	volwasse: medium-ligte velkleur
-🧑🏽	volwasse: medium velkleur
+🧑🏽	volwassene: medium velkleur
 🧑🏾	volwasse: medium-donker velkleur
 🧑🏿	volwassene: donker velkleur
 👨	man
@@ -336,7 +336,7 @@
 👩🏾‍💻	vroulike tegnoloog: medium-donker velkleur
 👩🏿‍💻	vroulike tegnoloog: donker velkleur
 👨‍🎤	man sanger
-👨🏻‍🎤	mansanger: ligte velkleur
+👨🏻‍🎤	man sanger: ligte velkleur
 👨🏼‍🎤	mansanger: medium-ligte velkleur
 👨🏽‍🎤	mansanger: medium velkleur
 👨🏾‍🎤	mansanger: medium-donker velkleur
@@ -344,8 +344,8 @@
 👩‍🎤	vroulike sangeres
 👩🏻‍🎤	vrou sangeres: ligte velkleur
 👩🏼‍🎤	vroulike sangeres: medium-ligte velkleur
-👩🏽‍🎤	vroulike sanger: medium velkleur
-👩🏾‍🎤	vrouensanger: medium-donker velkleur
+👩🏽‍🎤	vroulike sangeres: medium velkleur
+👩🏾‍🎤	vroulike sangeres: medium-donker velkleur
 👩🏿‍🎤	vrou sangeres: donker velkleur
 👨‍🎨	man kunstenaar
 👨🏻‍🎨	man kunstenaar: ligte velkleur
@@ -602,7 +602,7 @@
 👱‍♂	blondekop man
 👱🏻‍♂️	blonde man: ligte velkleur
 👱🏻‍♂	blonde man: ligte velkleur
-👱🏼‍♂️	blonde man: medium-ligte velkleur
+👱🏼‍♂️	man met blonde hare: medium-ligte velkleur
 👱🏼‍♂	man met blonde hare: medium-ligte velkleur
 👱🏽‍♂️	man met blonde hare: medium velkleur
 👱🏽‍♂	man met blonde hare: medium velkleur
@@ -612,7 +612,7 @@
 👱🏿‍♂	blonde man: donker velkleur
 👱‍♀️	blonde hare vrou
 👱‍♀	blonde hare vrou
-👱🏻‍♀️	blonde vrou: ligte velkleur
+👱🏻‍♀️	blonde hare vrou: ligte velkleur
 👱🏻‍♀	blonde hare vrou: ligte velkleur
 👱🏼‍♀️	blonde hare vrou: medium-ligte velkleur
 👱🏼‍♀	blonde hare vrou: medium-ligte velkleur
@@ -620,8 +620,8 @@
 👱🏽‍♀	blonde hare vrou: medium velkleur
 👱🏾‍♀️	blonde hare vrou: medium-donker velkleur
 👱🏾‍♀	blonde hare vrou: medium-donker velkleur
-👱🏿‍♀️	blonde hare vrou: donker velkleur
-👱🏿‍♀	blonde hare vrou: donker velkleur
+👱🏿‍♀️	blonde vrou: donker velkleur
+👱🏿‍♀	blonde vrou: donker velkleur
 👨‍🦰	man, rooi hare
 👨🏻‍🦰	man, rooi hare: ligte velkleur
 👨🏼‍🦰	man, rooi hare: medium-ligte velkleur
@@ -646,14 +646,14 @@
 👩🏽‍🦱	vrou, krulhare: medium velkleur
 👩🏾‍🦱	vrou, krulhare: medium-donker velkleur
 👩🏿‍🦱	vrou, krulhare: donker velkleur
-👨‍🦲	man, kaalkop
+👨‍🦲	man, kaal
 👨🏻‍🦲	man, bles: ligte velkleur
 👨🏼‍🦲	man, kaal: medium-ligte velkleur
 👨🏽‍🦲	man, kaal: medium velkleur
 👨🏾‍🦲	man, kaal: medium-donker velkleur
 👨🏿‍🦲	man, kaal: donker velkleur
 👩‍🦲	vrou, bles
-👩🏻‍🦲	vrou, bles: ligte velkleur
+👩🏻‍🦲	vrou, kaal: ligte velkleur
 👩🏼‍🦲	vrou, kaal: medium-ligte velkleur
 👩🏽‍🦲	vrou, kaal: medium velkleur
 👩🏾‍🦲	vrou, kaal: medium-donker velkleur
@@ -812,12 +812,12 @@
 🧚‍♀	vrou feetjie
 🧚🏻‍♀️	vrou fee: ligte velkleur
 🧚🏻‍♀	vrou fee: ligte velkleur
-🧚🏼‍♀️	vrou fee: medium-ligte velkleur
+🧚🏼‍♀️	vroulike feetjie: medium-ligte velkleur
 🧚🏼‍♀	vroulike feetjie: medium-ligte velkleur
 🧚🏽‍♀️	vrou fee: medium velkleur
 🧚🏽‍♀	vrou fee: medium velkleur
-🧚🏾‍♀️	vrou fee: medium-donker velkleur
-🧚🏾‍♀	vrou fee: medium-donker velkleur
+🧚🏾‍♀️	vroulike feetjie: medium-donker velkleur
+🧚🏾‍♀	vroulike feetjie: medium-donker velkleur
 🧚🏿‍♀️	vrou fee: donker velkleur
 🧚🏿‍♀	vrou fee: donker velkleur
 🧚‍♂️	man feetjie
@@ -940,22 +940,22 @@
 🙍🏿	persoon wat frons: donker velkleur
 🙍‍♂️	man wat frons
 🙍‍♂	man wat frons
-🙍🏻‍♂️	man frons: ligte velkleur
-🙍🏻‍♂	man frons: ligte velkleur
+🙍🏻‍♂️	man wat frons: ligte velkleur
+🙍🏻‍♂	man wat frons: ligte velkleur
 🙍🏼‍♂️	man wat frons: medium-ligte velkleur
 🙍🏼‍♂	man wat frons: medium-ligte velkleur
 🙍🏽‍♂️	man wat frons: medium velkleur
 🙍🏽‍♂	man wat frons: medium velkleur
 🙍🏾‍♂️	man wat frons: medium-donker velkleur
 🙍🏾‍♂	man wat frons: medium-donker velkleur
-🙍🏿‍♂️	man wat frons: donker velkleur
-🙍🏿‍♂	man wat frons: donker velkleur
+🙍🏿‍♂️	man frons: donker velkleur
+🙍🏿‍♂	man frons: donker velkleur
 🙍‍♀️	vrou wat frons
 🙍‍♀	vrou wat frons
 🙍🏻‍♀️	vrou frons: ligte velkleur
 🙍🏻‍♀	vrou frons: ligte velkleur
-🙍🏼‍♀️	vrou frons: medium-ligte velkleur
-🙍🏼‍♀	vrou frons: medium-ligte velkleur
+🙍🏼‍♀️	vrou wat frons: medium-ligte velkleur
+🙍🏼‍♀	vrou wat frons: medium-ligte velkleur
 🙍🏽‍♀️	vrou wat frons: medium velkleur
 🙍🏽‍♀	vrou wat frons: medium velkleur
 🙍🏾‍♀️	vrou frons: medium-donker velkleur
@@ -995,7 +995,7 @@
 🙅	persoon wat NEE beduie
 🙅🏻	persoon wat NEE beduie: ligte velkleur
 🙅🏼	persoon wat NEE beduie: medium-ligte velkleur
-🙅🏽	persoon wat beduie NEE: medium velkleur
+🙅🏽	persoon beduie NEE: medium velkleur
 🙅🏾	persoon wat NEE beduie: medium-donker velkleur
 🙅🏿	persoon wat NEE beduie: donker velkleur
 🙅‍♂️	man beduie NEE
@@ -1060,7 +1060,7 @@
 💁🏿	persoon wat hand opsteek: donker velkleur
 💁‍♂️	man steek hand
 💁‍♂	man steek hand
-💁🏻‍♂️	man steek hand: ligte velkleur
+💁🏻‍♂️	man wat hand opsteek: ligte velkleur
 💁🏻‍♂	man steek hand: ligte velkleur
 💁🏼‍♂️	man wat hand opsteek: medium-ligte velkleur
 💁🏼‍♂	man wat hand opsteek: medium-ligte velkleur
@@ -1145,8 +1145,8 @@
 🤦	persoon gesigpalm
 🤦🏻	persoon wat gesigpalm: ligte velkleur
 🤦🏼	persoon gesigpalm: medium-ligte velkleur
-🤦🏽	persoon wat gesigpalm: medium velkleur
-🤦🏾	persoon gesigpalm: medium-donker velkleur
+🤦🏽	persoon gesigpalm: medium velkleur
+🤦🏾	persoon wat gesigpalm: medium-donker velkleur
 🤦🏿	persoon gesigpalm: donker velkleur
 🤦‍♂️	man gesigpalm
 🤦‍♂	man gesigpalm
@@ -1158,36 +1158,36 @@
 🤦🏽‍♂	man gesigpalming: medium velkleur
 🤦🏾‍♂️	man gesigpalm: medium-donker velkleur
 🤦🏾‍♂	man gesigpalm: medium-donker velkleur
-🤦🏿‍♂️	man facepalming: donker velkleur
-🤦🏿‍♂	man facepalming: donker velkleur
+🤦🏿‍♂️	man gesigpalming: donker velkleur
+🤦🏿‍♂	man gesigpalming: donker velkleur
 🤦‍♀️	vrou gesigpalm
 🤦‍♀	vrou gesigpalm
-🤦🏻‍♀️	vrou gesigpalm: ligte velkleur
-🤦🏻‍♀	vrou gesigpalm: ligte velkleur
+🤦🏻‍♀️	vrou se gesigpalm: ligte velkleur
+🤦🏻‍♀	vrou se gesigpalm: ligte velkleur
 🤦🏼‍♀️	vrou se gesigpalm: medium-ligte velkleur
 🤦🏼‍♀	vrou se gesigpalm: medium-ligte velkleur
 🤦🏽‍♀️	vrou se gesigpalm: medium velkleur
 🤦🏽‍♀	vrou se gesigpalm: medium velkleur
 🤦🏾‍♀️	vrou se gesigpalm: medium-donker velkleur
 🤦🏾‍♀	vrou se gesigpalm: medium-donker velkleur
-🤦🏿‍♀️	vrou se gesigpalm: donker velkleur
-🤦🏿‍♀	vrou se gesigpalm: donker velkleur
+🤦🏿‍♀️	vrou gesigpalm: donker velkleur
+🤦🏿‍♀	vrou gesigpalm: donker velkleur
 🤷	persoon wat skouers ophaal
 🤷🏻	persoon wat skouers ophaal: ligte velkleur
 🤷🏼	persoon wat skouers ophaal: medium-ligte velkleur
 🤷🏽	persoon wat skouers ophaal: medium velkleur
 🤷🏾	persoon wat skouers ophaal: medium-donker velkleur
 🤷🏿	persoon wat skouers ophaal: donker velkleur
-🤷‍♂️	man wat skouers ophaal
-🤷‍♂	man wat skouers ophaal
+🤷‍♂️	man wat sy skouers ophaal
+🤷‍♂	man wat sy skouers ophaal
 🤷🏻‍♂️	man wat skouers ophaal: ligte velkleur
 🤷🏻‍♂	man wat skouers ophaal: ligte velkleur
-🤷🏼‍♂️	man wat sy skouers ophaal: medium-ligte velkleur
-🤷🏼‍♂	man wat sy skouers ophaal: medium-ligte velkleur
+🤷🏼‍♂️	man wat skouers ophaal: medium-ligte velkleur
+🤷🏼‍♂	man wat skouers ophaal: medium-ligte velkleur
 🤷🏽‍♂️	man wat skouers ophaal: medium velkleur
 🤷🏽‍♂	man wat skouers ophaal: medium velkleur
-🤷🏾‍♂️	man wat skouers ophaal: medium-donker velkleur
-🤷🏾‍♂	man wat skouers ophaal: medium-donker velkleur
+🤷🏾‍♂️	man wat sy skouers ophaal: medium-donker velkleur
+🤷🏾‍♂	man wat sy skouers ophaal: medium-donker velkleur
 🤷🏿‍♂️	man wat sy skouers ophaal: donker velkleur
 🤷🏿‍♂	man wat sy skouers ophaal: donker velkleur
 🤷‍♀️	vrou wat haar skouers ophaal
@@ -1232,7 +1232,7 @@
 💆🏾‍♀	vrou kry massering: medium-donker velkleur
 💆🏿‍♀️	vrou kry massering: donker velkleur
 💆🏿‍♀	vrou kry massering: donker velkleur
-💇	persoon wat kapsel kry
+💇	persoon wat haar sny
 💇🏻	persoon wat haar sny: ligte velkleur
 💇🏼	persoon wat haar sny: medium-ligte velkleur
 💇🏽	persoon wat haar sny: medium velkleur
@@ -1293,7 +1293,7 @@
 🚶🏿‍♀️	vrou loop: donker velkleur
 🚶🏿‍♀	vrou loop: donker velkleur
 🏃	persoon hardloop
-🏃🏻	persoon wat hardloop: ligte velkleur
+🏃🏻	persoon hardloop: ligte velkleur
 🏃🏼	persoon wat hardloop: medium-ligte velkleur
 🏃🏽	persoon wat hardloop: medium velkleur
 🏃🏾	persoon wat hardloop: medium-donker velkleur
@@ -1405,7 +1405,7 @@
 🧘🏽	persoon in lotusposisie: medium velkleur
 🧘🏾	persoon in lotusposisie: medium-donker velkleur
 🧘🏿	persoon in lotusposisie: donker velkleur
-🧘‍♀️	vrou in lotusposisie
+🧘‍♀️	vrou in lotus posisie
 🧘‍♀	vrou in lotus posisie
 🧘🏻‍♀️	vrou in lotusposisie: ligte velkleur
 🧘🏻‍♀	vrou in lotusposisie: ligte velkleur
@@ -1534,7 +1534,7 @@
 🏄🏿‍♀	vrou navigeer: donker velkleur
 🚣	persoon roeiboot
 🚣🏻	persoon roeiboot: ligte velkleur
-🚣🏼	persoon-roeiboot: medium-ligte velkleur
+🚣🏼	persoon roeiboot: medium-ligte velkleur
 🚣🏽	persoon roeiboot: medium velkleur
 🚣🏾	persoon-roeiboot: medium-donker velkleur
 🚣🏿	persoon roeiboot: donker velkleur
@@ -1597,18 +1597,18 @@
 ⛹🏻	persoon hop bal: ligte velkleur
 ⛹🏼	persoon bons bal: medium-ligte velkleur
 ⛹🏽	persoon bons bal: medium velkleur
-⛹🏾	persoon bons bal: medium-donker velkleur
+⛹🏾	persoon hop bal: medium-donker velkleur
 ⛹🏿	persoon hop bal: donker velkleur
 ⛹️‍♂️	man bons bal
 ⛹‍♂️	man bons bal
 ⛹️‍♂	man bons bal
 ⛹‍♂	man bons bal
-⛹🏻‍♂️	man bons bal: ligte velkleur
+⛹🏻‍♂️	man bonsbal: ligte velkleur
 ⛹🏻‍♂	man bons bal: ligte velkleur
-⛹🏼‍♂️	man bons bal: medium-ligte velkleur
-⛹🏼‍♂	man bons bal: medium-ligte velkleur
-⛹🏽‍♂️	man bonsbal: medium velkleur
-⛹🏽‍♂	man bonsbal: medium velkleur
+⛹🏼‍♂️	man bonsbal: medium-ligte velkleur
+⛹🏼‍♂	man bonsbal: medium-ligte velkleur
+⛹🏽‍♂️	man bons bal: medium velkleur
+⛹🏽‍♂	man bons bal: medium velkleur
 ⛹🏾‍♂️	man bons bal: medium-donker velkleur
 ⛹🏾‍♂	man bons bal: medium-donker velkleur
 ⛹🏿‍♂️	man bons bal: donker velkleur
@@ -1744,7 +1744,7 @@
 🤸🏾‍♂	man karretjie: medium-donker velkleur
 🤸🏿‍♂️	man met karretjie: donker velkleur
 🤸🏿‍♂	man met karretjie: donker velkleur
-🤸‍♀️	vrou wat karring
+🤸‍♀️	vrou wat wawiel
 🤸‍♀	vrou wat karring
 🤸🏻‍♀️	vrou wat wawiel: ligte velkleur
 🤸🏻‍♀	vrou wat wawiel: ligte velkleur
@@ -1753,7 +1753,7 @@
 🤸🏽‍♀️	vrou se karretjie: medium velkleur
 🤸🏽‍♀	vrou se karretjie: medium velkleur
 🤸🏾‍♀️	vrou se karretjie: medium-donker velkleur
-🤸🏾‍♀	vrou se karretjie: medium-donker velkleur
+🤸🏾‍♀	vroulike karretjie: medium-donker velkleur
 🤸🏿‍♀️	vrou wawiel: donker velkleur
 🤸🏿‍♀	vrou wawiel: donker velkleur
 🤼	mense wat stoei
@@ -1939,7 +1939,7 @@
 ☝🏿	indeks wat op wys: donker velkleur
 👆	rughand-indeks wat op wys
 👆🏻	rughand-indeks wat na bo wys: ligte velkleur
-👆🏼	rughand-indeks wat na bo wys: medium-ligte velkleur
+👆🏼	rughandindeks wat na bo wys: medium-ligte velkleur
 👆🏽	rughand-indeks wat na bo wys: medium velkleur
 👆🏾	rughand-indeks wat na bo wys: medium-donker velkleur
 👆🏿	rughand-indeks wat na bo wys: donker velkleur
@@ -1969,7 +1969,7 @@
 🤞🏾	gekruiste vingers: medium-donker velkleur
 🤞🏿	gekruiste vingers: donker velkleur
 🖖	vulkaansgroet
-🖖🏻	vulkaansgroet: ligte velkleur
+🖖🏻	vulkaansaluut: ligte velkleur
 🖖🏼	vulkaansgroet: medium-ligte velkleur
 🖖🏽	vulkaansgroet: medium velkleur
 🖖🏾	vulkaansgroet: medium-donker velkleur
@@ -2017,7 +2017,7 @@
 👎🏽	duime af: medium velkleur
 👎🏾	duime af: medium-donker velkleur
 👎🏿	duime af: donker velkleur
-✊	opgesteekte vuis
+✊	opgelig vuis
 ✊🏻	opgehewe vuis: ligte velkleur
 ✊🏼	opgehewe vuis: medium-ligte velkleur
 ✊🏽	opgehewe vuis: medium velkleur
@@ -2029,7 +2029,7 @@
 👊🏽	aankomende vuis: medium velkleur
 👊🏾	aankomende vuis: medium-donker velkleur
 👊🏿	aankomende vuis: donker velkleur
-🤛	links-gesig vuis
+🤛	linkervuis
 🤛🏻	linkervuis: ligte velkleur
 🤛🏼	linkervuis: medium-ligte velkleur
 🤛🏽	linkervuis: medium velkleur
@@ -2714,7 +2714,7 @@
 🎑	maankykseremonie
 🧧	rooi koevert
 🎀	lint
-🎁	toegedraaide geskenk
+🎁	toegedraai geskenk
 🎗️	herinnering lint
 🎗	herinnering lint
 🎟️	toegangskaartjies
@@ -3084,8 +3084,8 @@
 ✡	ster van Dawid
 ☸️	wiel van dharma
 ☸	wiel van dharma
-☯️	yin yang
-☯	yin yang
+☯️	jin yang
+☯	jin yang
 ✝️	Latynse kruis
 ✝	Latynse kruis
 ☦️	ortodokse kruis
@@ -3166,9 +3166,9 @@
 ✖️	swaar vermenigvuldiging x
 ✖	swaar vermenigvuldiging x
 ❌	kruis merk
-❎	kruismerk knoppie
+❎	kruismerkknoppie
 ➕	swaar plusteken
-➖	swaar minusteken
+➖	swaar minus teken
 ➗	swaar verdelingsteken
 ➰	krul lus
 ➿	dubbele krullus
@@ -3253,9 +3253,9 @@
 🈁	Japannese "hier" knoppie
 🈂️	Japannese "diensheffing"-knoppie
 🈂	Japannese "diensheffing"-knoppie
-🈷️	Japannese "maandelikse bedrag" knoppie
-🈷	Japannese "maandelikse bedrag" knoppie
-🈶	Japannese "nie gratis nie"-knoppie
+🈷️	Japannese "maandelikse bedrag"-knoppie
+🈷	Japannese "maandelikse bedrag"-knoppie
+🈶	Japannese "nie gratis nie" knoppie
 🈯	Japannese "gereserveerde" knoppie
 🉐	Japannese "winskoop"-knoppie
 🈹	Japannese "afslag" knoppie
@@ -3287,7 +3287,7 @@
 🔷	groot blou diamant
 🔸	klein oranje diamant
 🔹	klein blou diamant
-🔺	rooi driehoek wat na bo wys
+🔺	rooi driehoek na bo wys
 🔻	rooi driehoek wat na onder wys
 💠	diamant met 'n punt
 🔘	radio knoppie

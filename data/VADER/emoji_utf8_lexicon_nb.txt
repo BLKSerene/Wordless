@@ -107,7 +107,7 @@
 😹	katteansikt med gledestårer
 😻	smilende kattefjes med hjerteøyne
 😼	katteansikt med skjevt smil
-😽	kysse katten ansikt
+😽	kyssende kattansikt
 🙀	sliten katteansikt
 😿	gråtende katteansikt
 😾	buldrende katteansikt
@@ -150,7 +150,7 @@
 🧑🏾	voksen: middels mørk hudtone
 🧑🏿	voksen: mørk hudtone
 👨	Mann
-👨🏻	mann: lys hudtone
+👨🏻	mann: lys hudfarge
 👨🏼	mann: middels lys hudtone
 👨🏽	mann: middels hudtone
 👨🏾	mann: middels mørk hudtone
@@ -204,7 +204,7 @@
 👩🏿‍⚕️	kvinnelig helsearbeider: mørk hudtone
 👩🏿‍⚕	kvinnelig helsearbeider: mørk hudtone
 👨‍🎓	mann student
-👨🏻‍🎓	mann student: lys hudtone
+👨🏻‍🎓	mann student: lys hudfarge
 👨🏼‍🎓	mann student: middels lys hudtone
 👨🏽‍🎓	mann student: medium hudtone
 👨🏾‍🎓	mann student: middels mørk hudtone
@@ -212,15 +212,15 @@
 👩‍🎓	kvinnelig student
 👩🏻‍🎓	kvinnelig student: lys hudtone
 👩🏼‍🎓	kvinnelig student: middels lys hudtone
-👩🏽‍🎓	kvinnelig student: middels hudtone
+👩🏽‍🎓	kvinnelig student: medium hudtone
 👩🏾‍🎓	kvinnelig student: middels mørk hudtone
 👩🏿‍🎓	kvinnelig student: mørk hudtone
-👨‍🏫	mannlig lærer
+👨‍🏫	mann lærer
 👨🏻‍🏫	mann lærer: lys hudfarge
 👨🏼‍🏫	mannlig lærer: middels lys hudtone
 👨🏽‍🏫	mann lærer: middels hudtone
 👨🏾‍🏫	mann lærer: middels mørk hudtone
-👨🏿‍🏫	mann lærer: mørk hudtone
+👨🏿‍🏫	mann lærer: mørk hudfarge
 👩‍🏫	kvinnelig lærer
 👩🏻‍🏫	kvinnelig lærer: lys hudtone
 👩🏼‍🏫	kvinnelig lærer: middels lys hudtone
@@ -231,11 +231,11 @@
 👨‍⚖	mannlig dommer
 👨🏻‍⚖️	mann dommer: lys hudfarge
 👨🏻‍⚖	mann dommer: lys hudfarge
-👨🏼‍⚖️	mann dommer: middels lys hudtone
-👨🏼‍⚖	mann dommer: middels lys hudtone
+👨🏼‍⚖️	mannlig dommer: middels lys hudtone
+👨🏼‍⚖	mannlig dommer: middels lys hudtone
 👨🏽‍⚖️	mann dommer: middels hudtone
 👨🏽‍⚖	mann dommer: middels hudtone
-👨🏾‍⚖️	mann dommer: middels mørk hudtone
+👨🏾‍⚖️	mannlig dommer: middels mørk hudtone
 👨🏾‍⚖	mannlig dommer: middels mørk hudtone
 👨🏿‍⚖️	mann dommer: mørk hudfarge
 👨🏿‍⚖	mann dommer: mørk hudfarge
@@ -262,7 +262,7 @@
 👩🏼‍🌾	kvinnelig bonde: middels lys hudtone
 👩🏽‍🌾	kvinnelig bonde: middels hudtone
 👩🏾‍🌾	kvinnelig bonde: middels mørk hudtone
-👩🏿‍🌾	kvinnelig bonde: mørk hudtone
+👩🏿‍🌾	kvinnelig bonde: mørk hudfarge
 👨‍🍳	mann kokk
 👨🏻‍🍳	mann kokk: lys hudfarge
 👨🏼‍🍳	mann kokk: middels lys hudtone
@@ -284,19 +284,19 @@
 👩‍🔧	kvinnelig mekaniker
 👩🏻‍🔧	kvinnelig mekaniker: lys hudfarge
 👩🏼‍🔧	kvinnelig mekaniker: middels lys hudtone
-👩🏽‍🔧	kvinnelig mekaniker: middels hudtone
+👩🏽‍🔧	kvinnelig mekaniker: medium hudtone
 👩🏾‍🔧	kvinnelig mekaniker: middels mørk hudtone
 👩🏿‍🔧	kvinnelig mekaniker: mørk hudtone
 👨‍🏭	mannlig fabrikkarbeider
 👨🏻‍🏭	mann fabrikkarbeider: lys hudfarge
 👨🏼‍🏭	mannlig fabrikkarbeider: middels lys hudtone
 👨🏽‍🏭	mann fabrikkarbeider: medium hudtone
-👨🏾‍🏭	mann fabrikkarbeider: middels mørk hudtone
+👨🏾‍🏭	mannlig fabrikkarbeider: middels mørk hudtone
 👨🏿‍🏭	mann fabrikkarbeider: mørk hudfarge
 👩‍🏭	kvinnelig fabrikkarbeider
 👩🏻‍🏭	kvinnelig fabrikkarbeider: lys hudfarge
 👩🏼‍🏭	kvinnelig fabrikkarbeider: middels lys hudtone
-👩🏽‍🏭	kvinnelig fabrikkarbeider: middels hudtone
+👩🏽‍🏭	kvinnelig fabrikkarbeider: medium hudtone
 👩🏾‍🏭	kvinnelig fabrikkarbeider: middels mørk hudtone
 👩🏿‍🏭	kvinnelig fabrikkarbeider: mørk hudfarge
 👨‍💼	mannlig kontorarbeider
@@ -306,7 +306,7 @@
 👨🏾‍💼	mannlig kontorarbeider: middels mørk hudtone
 👨🏿‍💼	mannlig kontorarbeider: mørk hudtone
 👩‍💼	kvinnelig kontorarbeider
-👩🏻‍💼	kvinnelig kontorarbeider: lys hudtone
+👩🏻‍💼	kvinnelig kontorarbeider: lys hudfarge
 👩🏼‍💼	kvinnelig kontorarbeider: middels lys hudtone
 👩🏽‍💼	kvinnelig kontorarbeider: medium hudtone
 👩🏾‍💼	kvinnelig kontorarbeider: middels mørk hudtone
@@ -314,15 +314,15 @@
 👨‍🔬	mannlig vitenskapsmann
 👨🏻‍🔬	mannlig vitenskapsmann: lys hudfarge
 👨🏼‍🔬	mannlig vitenskapsmann: middels lys hudtone
-👨🏽‍🔬	mannlig vitenskapsmann: middels hudtone
+👨🏽‍🔬	mannlig vitenskapsmann: medium hudtone
 👨🏾‍🔬	mannlig vitenskapsmann: middels mørk hudtone
-👨🏿‍🔬	mannlig vitenskapsmann: mørk hudtone
+👨🏿‍🔬	mannlig vitenskapsmann: mørk hudfarge
 👩‍🔬	kvinnelig vitenskapsmann
 👩🏻‍🔬	kvinnelig vitenskapsmann: lys hudfarge
 👩🏼‍🔬	kvinnelig vitenskapsmann: middels lys hudtone
-👩🏽‍🔬	kvinnelig vitenskapsmann: medium hudtone
+👩🏽‍🔬	kvinnelig vitenskapsmann: middels hudtone
 👩🏾‍🔬	kvinnelig vitenskapsmann: middels mørk hudtone
-👩🏿‍🔬	kvinnelig vitenskapsmann: mørk hudfarge
+👩🏿‍🔬	kvinnelig vitenskapsmann: mørk hudtone
 👨‍💻	mannlig teknolog
 👨🏻‍💻	mann teknolog: lys hudfarge
 👨🏼‍💻	mannlig teknolog: middels lys hudtone
@@ -347,7 +347,7 @@
 👩🏽‍🎤	kvinnelig sanger: middels hudtone
 👩🏾‍🎤	kvinnelig sanger: middels mørk hudtone
 👩🏿‍🎤	kvinnelig sanger: mørk hudtone
-👨‍🎨	mannlig kunstner
+👨‍🎨	mann kunstner
 👨🏻‍🎨	mannlig artist: lys hudtone
 👨🏼‍🎨	mannlig artist: middels lys hudtone
 👨🏽‍🎨	mannlig artist: middels hudtone
@@ -381,8 +381,8 @@
 👩🏽‍✈	kvinnelig pilot: middels hudtone
 👩🏾‍✈️	kvinnelig pilot: middels mørk hudtone
 👩🏾‍✈	kvinnelig pilot: middels mørk hudtone
-👩🏿‍✈️	kvinne pilot: mørk hudtone
-👩🏿‍✈	kvinne pilot: mørk hudtone
+👩🏿‍✈️	kvinnelig pilot: mørk hudtone
+👩🏿‍✈	kvinnelig pilot: mørk hudtone
 👨‍🚀	mannlig astronaut
 👨🏻‍🚀	mannlig astronaut: lys hudfarge
 👨🏼‍🚀	mannlig astronaut: middels lys hudtone
@@ -392,13 +392,13 @@
 👩‍🚀	kvinnelig astronaut
 👩🏻‍🚀	kvinnelig astronaut: lys hudfarge
 👩🏼‍🚀	kvinnelig astronaut: middels lys hudtone
-👩🏽‍🚀	kvinnelig astronaut: middels hudtone
+👩🏽‍🚀	kvinnelig astronaut: medium hudtone
 👩🏾‍🚀	kvinnelig astronaut: middels mørk hudtone
 👩🏿‍🚀	kvinnelig astronaut: mørk hudfarge
-👨‍🚒	mannlig brannmann
+👨‍🚒	mann brannmann
 👨🏻‍🚒	mann brannmann: lys hudfarge
 👨🏼‍🚒	mann brannmann: middels lys hudtone
-👨🏽‍🚒	mann brannmann: medium hudtone
+👨🏽‍🚒	mann brannmann: middels hudtone
 👨🏾‍🚒	mann brannmann: middels mørk hudtone
 👨🏿‍🚒	mann brannmann: mørk hudfarge
 👩‍🚒	kvinnelig brannmann
@@ -433,15 +433,15 @@
 👮🏼‍♀	kvinnelig politibetjent: middels lys hudtone
 👮🏽‍♀️	kvinnelig politimann: middels hudtone
 👮🏽‍♀	kvinnelig politimann: middels hudtone
-👮🏾‍♀️	kvinnelig politibetjent: middels mørk hudtone
-👮🏾‍♀	kvinnelig politibetjent: middels mørk hudtone
-👮🏿‍♀️	kvinnelig politibetjent: mørk hudtone
-👮🏿‍♀	kvinnelig politibetjent: mørk hudtone
+👮🏾‍♀️	kvinnelig politimann: middels mørk hudtone
+👮🏾‍♀	kvinnelig politimann: middels mørk hudtone
+👮🏿‍♀️	kvinnelig politibetjent: mørk hudfarge
+👮🏿‍♀	kvinnelig politibetjent: mørk hudfarge
 🕵️	detektiv
 🕵	detektiv
 🕵🏻	detektiv: lys hudtone
 🕵🏼	detektiv: middels lys hudtone
-🕵🏽	detektiv: medium hudtone
+🕵🏽	detektiv: middels hudtone
 🕵🏾	detektiv: middels mørk hudtone
 🕵🏿	detektiv: mørk hudtone
 🕵️‍♂️	mannlig detektiv
@@ -452,8 +452,8 @@
 🕵🏻‍♂	mann detektiv: lys hudfarge
 🕵🏼‍♂️	manndetektiv: middels lys hudtone
 🕵🏼‍♂	manndetektiv: middels lys hudtone
-🕵🏽‍♂️	mann detektiv: medium hudtone
-🕵🏽‍♂	mann detektiv: medium hudtone
+🕵🏽‍♂️	manndetektiv: middels hudtone
+🕵🏽‍♂	manndetektiv: middels hudtone
 🕵🏾‍♂️	manndetektiv: middels mørk hudtone
 🕵🏾‍♂	manndetektiv: middels mørk hudtone
 🕵🏿‍♂️	mann detektiv: mørk hudfarge
@@ -488,7 +488,7 @@
 💂🏽‍♂	mann guard: medium hudtone
 💂🏾‍♂️	mann guard: middels mørk hudtone
 💂🏾‍♂	mann guard: middels mørk hudtone
-💂🏿‍♂️	mann vakt: mørk hudfarge
+💂🏿‍♂️	mann vakt: mørk hudtone
 💂🏿‍♂	mann vakt: mørk hudtone
 💂‍♀️	kvinnevakt
 💂‍♀	kvinnevakt
@@ -516,8 +516,8 @@
 👷🏼‍♂	mannlig bygningsarbeider: middels lys hudtone
 👷🏽‍♂️	mann bygningsarbeider: middels hudtone
 👷🏽‍♂	mann bygningsarbeider: middels hudtone
-👷🏾‍♂️	mannlig bygningsarbeider: middels mørk hudtone
-👷🏾‍♂	mannlig bygningsarbeider: middels mørk hudtone
+👷🏾‍♂️	mann bygningsarbeider: middels mørk hudtone
+👷🏾‍♂	mann bygningsarbeider: middels mørk hudtone
 👷🏿‍♂️	mann bygningsarbeider: mørk hudfarge
 👷🏿‍♂	mann bygningsarbeider: mørk hudfarge
 👷‍♀️	kvinnelig bygningsarbeider
@@ -545,7 +545,7 @@
 👸🏾	prinsesse: middels mørk hudtone
 👸🏿	prinsesse: mørk hudtone
 👳	person som har på seg turban
-👳🏻	person som har på seg turban: lys hudtone
+👳🏻	person som bærer turban: lys hudfarge
 👳🏼	person med turban: middels lys hudtone
 👳🏽	person med turban: medium hudtone
 👳🏾	person som bærer turban: middels mørk hudtone
@@ -568,8 +568,8 @@
 👳🏻‍♀	kvinne iført turban: lys hudfarge
 👳🏼‍♀️	kvinne med turban: middels lys hudtone
 👳🏼‍♀	kvinne med turban: middels lys hudtone
-👳🏽‍♀️	kvinne med turban: medium hudtone
-👳🏽‍♀	kvinne med turban: medium hudtone
+👳🏽‍♀️	kvinne iført turban: medium hudtone
+👳🏽‍♀	kvinne iført turban: medium hudtone
 👳🏾‍♀️	kvinne med turban: middels mørk hudtone
 👳🏾‍♀	kvinne med turban: middels mørk hudtone
 👳🏿‍♀️	kvinne iført turban: mørk hudtone
@@ -595,7 +595,7 @@
 👱	blondhåret person
 👱🏻	blondhåret person: lys hudtone
 👱🏼	blondhåret person: middels lys hudtone
-👱🏽	blondhåret person: medium hudtone
+👱🏽	blondhåret person: middels hudtone
 👱🏾	blondhåret person: middels mørk hudtone
 👱🏿	blondhåret person: mørk hudtone
 👱‍♂️	blondhåret mann
@@ -604,8 +604,8 @@
 👱🏻‍♂	blondhåret mann: lys hudtone
 👱🏼‍♂️	blondhåret mann: middels lys hudtone
 👱🏼‍♂	blondhåret mann: middels lys hudtone
-👱🏽‍♂️	blondhåret mann: middels hudtone
-👱🏽‍♂	blondhåret mann: middels hudtone
+👱🏽‍♂️	blondhåret mann: medium hudtone
+👱🏽‍♂	blondhåret mann: medium hudtone
 👱🏾‍♂️	blondhåret mann: middels mørk hudtone
 👱🏾‍♂	blondhåret mann: middels mørk hudtone
 👱🏿‍♂️	blondhåret mann: mørk hudtone
@@ -661,7 +661,7 @@
 👨‍🦳	mann, hvithåret
 👨🏻‍🦳	mann, hvithåret: lys hudtone
 👨🏼‍🦳	mann, hvithåret: middels lys hudtone
-👨🏽‍🦳	mann, hvithåret: middels hudtone
+👨🏽‍🦳	mann, hvithåret: medium hudtone
 👨🏾‍🦳	mann, hvithåret: middels mørk hudtone
 👨🏿‍🦳	mann, hvithåret: mørk hudtone
 👩‍🦳	kvinne, hvithåret
@@ -838,7 +838,7 @@
 🧛🏽	vampyr: medium hudtone
 🧛🏾	vampyr: middels mørk hudtone
 🧛🏿	vampyr: mørk hudtone
-🧛‍♀️	kvinnelig vampyr
+🧛‍♀️	kvinne vampyr
 🧛‍♀	kvinne vampyr
 🧛🏻‍♀️	kvinne vampyr: lys hudtone
 🧛🏻‍♀	kvinne vampyr: lys hudtone
@@ -921,7 +921,7 @@
 🧝🏾‍♂️	mann alv: middels mørk hudtone
 🧝🏾‍♂	mann alv: middels mørk hudtone
 🧝🏿‍♂️	mann alv: mørk hudtone
-🧝🏿‍♂	mann alv: mørk hudfarge
+🧝🏿‍♂	mann alv: mørk hudtone
 🧞	genie
 🧞‍♀️	kvinne genie
 🧞‍♀	kvinne genie
@@ -1072,7 +1072,7 @@
 💁🏿‍♂	mann vipper hånden: mørk hudtone
 💁‍♀️	kvinne vipper hånden
 💁‍♀	kvinne vipper hånden
-💁🏻‍♀️	kvinne vipper hånden: lys hudfarge
+💁🏻‍♀️	kvinne vipper hånden: lys hudtone
 💁🏻‍♀	kvinne vipper hånden: lys hudtone
 💁🏼‍♀️	kvinne vipper hånden: middels lys hudtone
 💁🏼‍♀	kvinne vipper hånden: middels lys hudtone
@@ -1237,7 +1237,7 @@
 💇🏼	person som klipper seg: middels lys hudtone
 💇🏽	person som klipper seg: middels hudtone
 💇🏾	person som klipper seg: middels mørk hudtone
-💇🏿	person som klipper seg: mørk hudtone
+💇🏿	person får hårklipp: mørk hudtone
 💇‍♂️	mann får hårklipp
 💇‍♂	mann får hårklipp
 💇🏻‍♂️	mann får hårklipp: lys hudtone
@@ -1245,7 +1245,7 @@
 💇🏼‍♂️	mann får hårklipp: middels lys hudtone
 💇🏼‍♂	mann får hårklipp: middels lys hudtone
 💇🏽‍♂️	mann får hårklipp: middels hudtone
-💇🏽‍♂	mann får hårklipp: middels hudtone
+💇🏽‍♂	mann får hårklipp: medium hudtone
 💇🏾‍♂️	mann får hårklipp: middels mørk hudtone
 💇🏾‍♂	mann får hårklipp: middels mørk hudtone
 💇🏿‍♂️	mann får hårklipp: mørk hudtone
@@ -1278,8 +1278,8 @@
 🚶🏽‍♂	mann som går: middels hudtone
 🚶🏾‍♂️	mann som går: middels mørk hudtone
 🚶🏾‍♂	mann som går: middels mørk hudtone
-🚶🏿‍♂️	mann som går: mørk hudfarge
-🚶🏿‍♂	mann som går: mørk hudfarge
+🚶🏿‍♂️	mann som går: mørk hudtone
+🚶🏿‍♂	mann som går: mørk hudtone
 🚶‍♀️	kvinne som går
 🚶‍♀	kvinne som går
 🚶🏻‍♀️	kvinne som går: lys hudtone
@@ -1385,7 +1385,7 @@
 🧗🏽‍♀	kvinneklatring: middels hudtone
 🧗🏾‍♀️	kvinneklatring: middels mørk hudtone
 🧗🏾‍♀	kvinneklatring: middels mørk hudtone
-🧗🏿‍♀️	kvinneklatring: mørk hudtone
+🧗🏿‍♀️	kvinneklatring: mørk hudfarge
 🧗🏿‍♀	kvinneklatring: mørk hudfarge
 🧗‍♂️	mann som klatrer
 🧗‍♂	mann som klatrer
@@ -1492,8 +1492,8 @@
 🏌‍♀️	kvinne som spiller golf
 🏌️‍♀	kvinne som spiller golf
 🏌‍♀	kvinne som spiller golf
-🏌🏻‍♀️	kvinne golf: lys hudtone
-🏌🏻‍♀	kvinne golf: lys hudtone
+🏌🏻‍♀️	kvinne som spiller golf: lys hudtone
+🏌🏻‍♀	kvinne som spiller golf: lys hudtone
 🏌🏼‍♀️	kvinne som spiller golf: middels lys hudtone
 🏌🏼‍♀	kvinne som spiller golf: middels lys hudtone
 🏌🏽‍♀️	kvinne som spiller golf: middels hudtone
@@ -1546,8 +1546,8 @@
 🚣🏼‍♂	mann robåt: middels lys hudfarge
 🚣🏽‍♂️	mann robåt: medium hudtone
 🚣🏽‍♂	mann robåt: medium hudtone
-🚣🏾‍♂️	mann robåt: middels mørk hudtone
-🚣🏾‍♂	mann robåt: middels mørk hudtone
+🚣🏾‍♂️	mann robåt: middels mørk hudfarge
+🚣🏾‍♂	mann robåt: middels mørk hudfarge
 🚣🏿‍♂️	mann robåt: mørk hudfarge
 🚣🏿‍♂	mann robåt: mørk hudfarge
 🚣‍♀️	kvinne robåt
@@ -1576,16 +1576,16 @@
 🏊🏼‍♂	mann svømming: middels lys hudtone
 🏊🏽‍♂️	mann svømming: middels hudtone
 🏊🏽‍♂	mann svømming: middels hudtone
-🏊🏾‍♂️	mann som svømmer: middels mørk hudtone
-🏊🏾‍♂	mann som svømmer: middels mørk hudtone
+🏊🏾‍♂️	mann svømming: middels mørk hudtone
+🏊🏾‍♂	mann svømming: middels mørk hudtone
 🏊🏿‍♂️	mann svømming: mørk hudtone
 🏊🏿‍♂	mann svømming: mørk hudtone
 🏊‍♀️	kvinne svømming
 🏊‍♀	kvinne svømming
 🏊🏻‍♀️	kvinne svømming: lys hudfarge
 🏊🏻‍♀	kvinne svømming: lys hudfarge
-🏊🏼‍♀️	kvinne som svømmer: middels lys hudtone
-🏊🏼‍♀	kvinne som svømmer: middels lys hudtone
+🏊🏼‍♀️	kvinne svømmer: middels lys hudtone
+🏊🏼‍♀	kvinne svømmer: middels lys hudtone
 🏊🏽‍♀️	kvinne svømming: middels hudtone
 🏊🏽‍♀	kvinne svømming: middels hudtone
 🏊🏾‍♀️	kvinne svømmer: middels mørk hudtone
@@ -1604,15 +1604,15 @@
 ⛹️‍♂	mann spretter ball
 ⛹‍♂	mann spretter ball
 ⛹🏻‍♂️	mann sprettball: lys hudtone
-⛹🏻‍♂	mann hoppende ball: lys hudtone
+⛹🏻‍♂	mann sprettball: lys hudtone
 ⛹🏼‍♂️	mann hoppende ball: middels lys hudtone
 ⛹🏼‍♂	mann hoppende ball: middels lys hudtone
 ⛹🏽‍♂️	mann hoppende ball: medium hudtone
 ⛹🏽‍♂	mann hoppende ball: medium hudtone
 ⛹🏾‍♂️	mann hoppende ball: middels mørk hudtone
-⛹🏾‍♂	mann hoppende ball: middels mørk hudtone
-⛹🏿‍♂️	mann sprettball: mørk hudtone
-⛹🏿‍♂	mann sprettball: mørk hudtone
+⛹🏾‍♂	mann sprettball: middels mørk hudtone
+⛹🏿‍♂️	mann hoppende ball: mørk hudtone
+⛹🏿‍♂	mann hoppende ball: mørk hudtone
 ⛹️‍♀️	kvinne spretter ball
 ⛹‍♀️	kvinne spretter ball
 ⛹️‍♀	kvinne spretter ball
@@ -1621,8 +1621,8 @@
 ⛹🏻‍♀	kvinne sprettball: lys hudtone
 ⛹🏼‍♀️	kvinne med sprettball: middels lys hudtone
 ⛹🏼‍♀	kvinne med sprettball: middels lys hudtone
-⛹🏽‍♀️	kvinne med sprettball: medium hudtone
-⛹🏽‍♀	kvinne med sprettball: medium hudtone
+⛹🏽‍♀️	kvinne hoppende ball: medium hudtone
+⛹🏽‍♀	kvinne hoppende ball: medium hudtone
 ⛹🏾‍♀️	kvinne med sprettball: middels mørk hudtone
 ⛹🏾‍♀	kvinne med sprettball: middels mørk hudtone
 ⛹🏿‍♀️	kvinne sprettball: mørk hudtone
@@ -1631,7 +1631,7 @@
 🏋	person som løfter vekter
 🏋🏻	person som løfter vekter: lys hudtone
 🏋🏼	person som løfter vekter: middels lys hudtone
-🏋🏽	person som løfter vekter: middels hudtone
+🏋🏽	person som løfter vekter: medium hudtone
 🏋🏾	person som løfter vekter: middels mørk hudtone
 🏋🏿	person som løfter vekter: mørk hudtone
 🏋️‍♂️	mann som løfter vekter
@@ -1678,8 +1678,8 @@
 🚴🏽‍♂	mann sykling: medium hudtone
 🚴🏾‍♂️	mannsykling: middels mørk hudtone
 🚴🏾‍♂	mannsykling: middels mørk hudtone
-🚴🏿‍♂️	mann sykling: mørk hudtone
-🚴🏿‍♂	mann sykling: mørk hudtone
+🚴🏿‍♂️	mann sykling: mørk hudfarge
+🚴🏿‍♂	mann sykling: mørk hudfarge
 🚴‍♀️	kvinne som sykler
 🚴‍♀	kvinne som sykler
 🚴🏻‍♀️	kvinnesykling: lys hudfarge
@@ -1742,12 +1742,12 @@
 🤸🏽‍♂	mann cartwheeling: medium hudtone
 🤸🏾‍♂️	mann cartwheeling: middels mørk hudtone
 🤸🏾‍♂	mann cartwheeling: middels mørk hudtone
-🤸🏿‍♂️	mann cartwheeling: mørk hudfarge
-🤸🏿‍♂	mann cartwheeling: mørk hudfarge
+🤸🏿‍♂️	mann cartwheeling: mørk hudtone
+🤸🏿‍♂	mann cartwheeling: mørk hudtone
 🤸‍♀️	kvinne som kjører vogn
 🤸‍♀	kvinne som kjører vogn
-🤸🏻‍♀️	kvinne med vogn: lys hudtone
-🤸🏻‍♀	kvinne med vogn: lys hudtone
+🤸🏻‍♀️	kvinne som kjører vogn: lys hudtone
+🤸🏻‍♀	kvinne som kjører vogn: lys hudtone
 🤸🏼‍♀️	kvinne med vogn: middels lys hudtone
 🤸🏼‍♀	kvinne med vogn: middels lys hudtone
 🤸🏽‍♀️	kvinne med vogn: medium hudtone
@@ -1811,7 +1811,7 @@
 🤾🏿‍♂	mann som spiller håndball: mørk hudtone
 🤾‍♀️	kvinne som spiller håndball
 🤾‍♀	kvinne som spiller håndball
-🤾🏻‍♀️	kvinne som spiller håndball: lys hudtone
+🤾🏻‍♀️	kvinne som spiller håndball: lys hudfarge
 🤾🏻‍♀	kvinne som spiller håndball: lys hudtone
 🤾🏼‍♀️	kvinne som spiller håndball: middels lys hudtone
 🤾🏼‍♀	kvinne som spiller håndball: middels lys hudtone
@@ -1823,7 +1823,7 @@
 🤾🏿‍♀	kvinne som spiller håndball: mørk hudtone
 🤹	person som sjonglerer
 🤹🏻	person sjonglerer: lys hudtone
-🤹🏼	person sjonglering: middels lys hudtone
+🤹🏼	person sjonglerer: middels lys hudtone
 🤹🏽	person sjonglerer: medium hudtone
 🤹🏾	person sjonglerer: middels mørk hudtone
 🤹🏿	person sjonglerer: mørk hudtone
@@ -1904,7 +1904,7 @@
 💪🏻	bøyde biceps: lys hudtone
 💪🏼	bøyde biceps: middels lys hudtone
 💪🏽	bøyde biceps: medium hudtone
-💪🏾	bøyde biceps: middels mørk hudtone
+💪🏾	bøyd biceps: middels mørk hudtone
 💪🏿	bøyde biceps: mørk hudtone
 🦵	bein
 🦵🏻	ben: lys hudtone
@@ -1921,7 +1921,7 @@
 👈	bakhåndsindeks som peker til venstre
 👈🏻	bakhåndsindeks som peker til venstre: lys hudtone
 👈🏼	bakhåndsindeks som peker til venstre: middels lys hudtone
-👈🏽	bakhåndsindeks som peker til venstre: middels hudtone
+👈🏽	bakhåndsindeks som peker til venstre: medium hudtone
 👈🏾	bakhåndsindeks som peker til venstre: middels mørk hudtone
 👈🏿	bakhåndsindeks som peker til venstre: mørk hudtone
 👉	bakhåndsindeks som peker til høyre
@@ -1955,8 +1955,8 @@
 👇🏽	bakhåndsindeks som peker ned: middels hudtone
 👇🏾	bakhåndsindeks som peker ned: middels mørk hudtone
 👇🏿	bakhåndsindeks som peker ned: mørk hudtone
-✌️	seiershånd
-✌	seiershånd
+✌️	seier hånd
+✌	seier hånd
 ✌🏻	seiershånd: lys hudtone
 ✌🏼	seiershånd: middels lys hudtone
 ✌🏽	seier hånd: middels hudtone
@@ -1996,7 +1996,7 @@
 ✋	løftet hånd
 ✋🏻	løftet hånd: lys hudtone
 ✋🏼	løftet hånd: middels lys hudtone
-✋🏽	løftet hånd: medium hudtone
+✋🏽	løftet hånd: middels hudtone
 ✋🏾	løftet hånd: middels mørk hudtone
 ✋🏿	løftet hånd: mørk hudtone
 👌	OK hånd
@@ -2041,7 +2041,7 @@
 🤜🏽	høyrevendt knyttneve: medium hudtone
 🤜🏾	høyrevendt knyttneve: middels mørk hudtone
 🤜🏿	høyrevendt knyttneve: mørk hudtone
-🤚	løftet håndbaken
+🤚	løftet opp håndbaken
 🤚🏻	løftet håndbak: lys hudtone
 🤚🏼	løftet håndbak: middels lys hudtone
 🤚🏽	løftet håndbak: middels hudtone
@@ -2086,7 +2086,7 @@
 🙌🏿	heve hender: mørk hudtone
 🤲	håndflatene opp sammen
 🤲🏻	håndflatene opp sammen: lys hudtone
-🤲🏼	håndflatene opp sammen: middels lys hudtone
+🤲🏼	håndflatene opp mot hverandre: middels lys hudtone
 🤲🏽	håndflatene opp sammen: medium hudtone
 🤲🏾	håndflatene opp mot hverandre: middels mørk hudtone
 🤲🏿	håndflatene opp sammen: mørk hudtone
@@ -2376,7 +2376,7 @@
 🥞	pannekaker
 🧀	ostebit
 🍖	kjøtt på bein
-🍗	fjærkre bein
+🍗	fjærfeben
 🥩	kutt av kjøtt
 🥓	bacon
 🍔	hamburger
@@ -2435,7 +2435,7 @@
 🍾	flaske med spratt kork
 🍷	vinglass
 🍸	cocktailglass
-🍹	tropisk drink
+🍹	tropisk drikke
 🍺	ølmugge
 🍻	klirrende ølkrus
 🥂	klirrende briller
@@ -2587,7 +2587,7 @@
 🛩️	lite fly
 🛩	lite fly
 🛫	flyavgang
-🛬	ankomst av fly
+🛬	flyankomst
 💺	sete
 🚁	helikopter
 🚟	hengende jernbane
@@ -2744,7 +2744,7 @@
 🏓	bordtennis
 🏸	badminton
 🥊	boksehanske
-🥋	kampsportuniform
+🥋	kampsport uniform
 🥅	mål netto
 ⛳	flagg i hull
 ⛸️	skøyte
@@ -2762,7 +2762,7 @@
 🕹️	joystick
 🕹	joystick
 🎰	spilleautomat
-🎲	spillet dør
+🎲	spill dø
 🧩	stikksag
 🧸	Teddybjørn
 ♠️	spade farge
@@ -2798,8 +2798,8 @@
 🎶	musikknoter
 🎙️	studiomikrofon
 🎙	studiomikrofon
-🎚️	nivåglidebryter
-🎚	nivåglidebryter
+🎚️	nivåglider
+🎚	nivåglider
 🎛️	kontrollknapper
 🎛	kontrollknapper
 🎤	mikrofon
@@ -3012,7 +3012,7 @@
 ⚱	begravelsesurne
 🗿	moai
 🏧	ATM-skilt
-🚮	søppel i bin skilt
+🚮	søppel i bin sign
 🚰	drikkevann
 ♿	rullestol symbol
 🚹	herretoalett
@@ -3171,7 +3171,7 @@
 ➖	tungt minustegn
 ➗	tungt delingsskilt
 ➰	krøllete løkke
-➿	dobbel krøllet løkke
+➿	dobbel krøllete løkke
 〽️	del vekslingsmerke
 〽	del vekslingsmerke
 ✳️	åtteeket stjerne
@@ -3270,7 +3270,7 @@
 ㊙️	Japansk "hemmelig"-knapp
 ㊙	Japansk "hemmelig"-knapp
 🈺	Japansk "open for business"-knapp
-🈵	Japansk «ingen ledig stilling»-knapp
+🈵	Japansk "ingen ledig"-knapp
 ▪️	svart liten firkant
 ▪	svart liten firkant
 ▫️	hvit liten firkant
@@ -3346,7 +3346,7 @@
 🇧🇾	Hviterussland
 🇧🇿	Belize
 🇨🇦	Canada
-🇨🇨	Cocos (Keeling) Islands
+🇨🇨	Kokosøyene (Keeling).
 🇨🇩	Kongo - Kinshasa
 🇨🇫	Den sentralafrikanske republikk
 🇨🇬	Kongo - Brazzaville
@@ -3492,7 +3492,7 @@
 🇵🇭	Filippinene
 🇵🇰	Pakistan
 🇵🇱	Polen
-🇵🇲	St. Pierre og Miquelon
+🇵🇲	St. Pierre & Miquelon
 🇵🇳	Pitcairnøyene
 🇵🇷	Puerto Rico
 🇵🇸	Palestinske områder

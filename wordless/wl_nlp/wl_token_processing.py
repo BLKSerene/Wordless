@@ -81,7 +81,10 @@ def text_ignore_tags(text, settings):
 def text_use_tags_only(text, settings):
     if settings['use_tags']:
         text.set_token_texts(text.get_token_properties('tag', flat = True))
+
+        # Remove all tags and punctuation marks
         text.set_token_properties('tag', None)
+        text.set_token_properties('punc_mark', None)
 
 # Filter stop words after token texts have been converted to lowercase, replaced by lemmas, or replaced by tags
 def text_filter_stop_words(main, text, settings):
@@ -106,6 +109,25 @@ def text_filter_stop_words(main, text, settings):
                             # Convert to strings to ignore tags and punctuation marks, if any, when checking for stop words
                             if token.lower() in stop_words:
                                 sentence_seg[i] = wl_texts.Wl_Token('')
+
+def remove_empty_tokens(tokens_multilevel):
+    tokens_multilevel = [
+        [
+            [
+                [token for token in sentence_seg if token]
+                for sentence_seg in sentence
+            ]
+            for sentence in para
+        ]
+        for para in tokens_multilevel
+    ]
+
+    return tokens_multilevel
+
+def remove_empty_paras(tokens_multilevel):
+    tokens_multilevel = [para for para in tokens_multilevel if para]
+
+    return tokens_multilevel
 
 def wl_process_tokens(main, text, token_settings, search_settings = None):
     settings = copy.deepcopy(token_settings)
@@ -232,54 +254,6 @@ def wl_process_tokens_ngram_generator(main, text, token_settings, search_setting
 
     return text_modified
 
-def remove_empty_tokens(tokens_multilevel):
-    tokens_multilevel = [
-        [
-            [
-                [token for token in sentence_seg if token]
-                for sentence_seg in sentence
-            ]
-            for sentence in para
-        ]
-        for para in tokens_multilevel
-    ]
-
-    return tokens_multilevel
-
-def remove_empty_tokens_multilevel(tokens_multilevel, empty_tokens = True):
-    # Remove empty tokens
-    if empty_tokens:
-        tokens_multilevel = [
-            [
-                [
-                    [token for token in sentence_seg if token]
-                    for sentence_seg in sentence
-                ]
-                for sentence in para
-            ]
-            for para in tokens_multilevel
-        ]
-
-    # Remove empty sentence segments
-    tokens_multilevel = [
-        [
-            [sentence_seg for sentence_seg in sentence if sentence_seg]
-            for sentence in para
-        ]
-        for para in tokens_multilevel
-    ]
-
-    # Remove empty sentences
-    tokens_multilevel = [
-        [sentence for sentence in para if sentence]
-        for para in tokens_multilevel
-    ]
-
-    # Remove paragraphs
-    tokens_multilevel = [para for para in tokens_multilevel if para]
-
-    return tokens_multilevel
-
 def wl_process_tokens_profiler(main, text, token_settings, profiler_tab):
     # Punctuation marks must be preserved for some readability measures (e.g. Wheeler & Smith's Readability Formula)
     text.tokens_multilevel_with_puncs = copy.deepcopy(text.tokens_multilevel)
@@ -305,7 +279,38 @@ def wl_process_tokens_profiler(main, text, token_settings, profiler_tab):
 
     return text_modified
 
-def wl_process_tokens_concordancer(main, text, token_settings, search_settings):
+def wl_process_tokens_wordlist_generator(main, text, token_settings, generation_settings):
+    # Syllabification
+    if generation_settings['syllabification']:
+        text_syl_tokenize(main, text)
+
+    text_modified = wl_process_tokens_ngram_generator(main, text, token_settings)
+    text_modified.update_num_tokens()
+
+    return text_modified
+
+def wl_process_tokens_colligation_extractor(main, text, token_settings, search_settings):
+    # Do not modify custom settings, as adding new options would clear user's custom settings
+    settings = copy.deepcopy(token_settings)
+    # Always assign part-of-speech tags
+    settings['assign_pos_tags'] = True
+
+    text_modified = wl_process_tokens(main, text, settings, search_settings)
+
+    text_modified.tags = wl_texts.to_tokens(
+        text_modified.get_token_properties('tag', flat = True),
+        lang = text.lang
+    )
+
+    text_ignore_tags(text_modified, token_settings)
+    text_use_tags_only(text_modified, token_settings)
+    text_filter_stop_words(main, text_modified, token_settings)
+
+    text_modified.update_num_tokens()
+
+    return text_modified
+
+def wl_process_tokens_concordancer(main, text, token_settings, search_settings, preserve_blank_lines = False):
     text_pos_tag(main, text, token_settings)
     text_lemmatize(main, text, token_settings, search_settings)
 
@@ -369,6 +374,9 @@ def wl_process_tokens_concordancer(main, text, token_settings, search_settings):
     text_ignore_tags(text_modified, token_settings)
     text_use_tags_only(text_modified, token_settings)
 
+    if not preserve_blank_lines:
+        text_modified.tokens_multilevel = remove_empty_paras(text_modified.tokens_multilevel)
+
     text_modified.update_num_tokens()
 
     return text_modified
@@ -384,35 +392,3 @@ def wl_process_tokens_dependency_parser(main, text, token_settings, search_setti
             )
 
     return wl_process_tokens_concordancer(main, text, token_settings, search_settings)
-
-def wl_process_tokens_wordlist_generator(main, text, token_settings, generation_settings):
-    # Syllabification
-    if generation_settings['syllabification']:
-        text_syl_tokenize(main, text)
-
-    text_modified = wl_process_tokens_ngram_generator(main, text, token_settings)
-    text_modified.tokens_multilevel = remove_empty_tokens_multilevel(text_modified.tokens_multilevel)
-    text_modified.update_num_tokens()
-
-    return text_modified
-
-def wl_process_tokens_colligation_extractor(main, text, token_settings, search_settings):
-    # Do not modify custom settings, as adding new options would clear user's custom settings
-    settings = copy.deepcopy(token_settings)
-    # Always assign part-of-speech tags
-    settings['assign_pos_tags'] = True
-
-    text_modified = wl_process_tokens(main, text, settings, search_settings)
-
-    text_modified.tags = wl_texts.to_tokens(
-        text_modified.get_token_properties('tag', flat = True),
-        lang = text.lang
-    )
-
-    text_ignore_tags(text_modified, token_settings)
-    text_use_tags_only(text_modified, token_settings)
-    text_filter_stop_words(main, text_modified, token_settings)
-
-    text_modified.update_num_tokens()
-
-    return text_modified

@@ -325,7 +325,7 @@
 👩🏿‍🔬	scienziata: carnagione scura
 👨‍💻	tecnologo uomo
 👨🏻‍💻	tecnologo uomo: carnagione chiara
-👨🏼‍💻	tecnologo uomo: carnagione medio-chiara
+👨🏼‍💻	tecnologo uomo: carnagione abbastanza chiara
 👨🏽‍💻	tecnologo uomo: carnagione media
 👨🏾‍💻	tecnologo uomo: carnagione medio-scura
 👨🏿‍💻	tecnologo uomo: carnagione scura
@@ -396,7 +396,7 @@
 👩🏾‍🚀	astronauta donna: carnagione abbastanza scura
 👩🏿‍🚀	donna astronauta: carnagione scura
 👨‍🚒	uomo pompiere
-👨🏻‍🚒	pompiere uomo: carnagione chiara
+👨🏻‍🚒	pompiere: carnagione chiara
 👨🏼‍🚒	pompiere uomo: carnagione abbastanza chiara
 👨🏽‍🚒	pompiere uomo: carnagione olivastra
 👨🏾‍🚒	pompiere uomo: carnagione abbastanza scura
@@ -489,7 +489,7 @@
 💂🏾‍♂️	guardia uomo: carnagione medio-scura
 💂🏾‍♂	guardia uomo: carnagione medio-scura
 💂🏿‍♂️	guardia uomo: carnagione scura
-💂🏿‍♂	uomo guardia: carnagione scura
+💂🏿‍♂	guardia uomo: carnagione scura
 💂‍♀️	guardia donna
 💂‍♀	guardia donna
 💂🏻‍♀️	guardia donna: carnagione chiara
@@ -699,7 +699,7 @@
 👼🏼	baby angel: carnagione abbastanza chiara
 👼🏽	baby angel: carnagione olivastra
 👼🏾	baby angel: carnagione medio-scura
-👼🏿	baby angel: carnagione scura
+👼🏿	angelo bambino: carnagione scura
 🎅	Babbo Natale
 🎅🏻	Babbo Natale: carnagione chiara
 🎅🏼	Babbo Natale: carnagione abbastanza chiara
@@ -754,8 +754,8 @@
 🦹🏻‍♀	supercriminale donna: carnagione chiara
 🦹🏼‍♀️	supercriminale donna: carnagione medio-chiara
 🦹🏼‍♀	supercriminale donna: carnagione medio-chiara
-🦹🏽‍♀️	supercriminale donna: carnagione media
-🦹🏽‍♀	supercriminale donna: carnagione media
+🦹🏽‍♀️	supercriminale donna: carnagione olivastra
+🦹🏽‍♀	supercriminale donna: carnagione olivastra
 🦹🏾‍♀️	supercriminale donna: carnagione medio-scura
 🦹🏾‍♀	supercriminale donna: carnagione medio-scura
 🦹🏿‍♀️	supercriminale donna: carnagione scura
@@ -784,8 +784,8 @@
 🧙🏻‍♀	donna maga: carnagione chiara
 🧙🏼‍♀️	donna maga: carnagione medio-chiara
 🧙🏼‍♀	donna maga: carnagione medio-chiara
-🧙🏽‍♀️	donna maga: carnagione media
-🧙🏽‍♀	donna maga: carnagione media
+🧙🏽‍♀️	donna maga: carnagione olivastra
+🧙🏽‍♀	donna maga: carnagione olivastra
 🧙🏾‍♀️	donna maga: carnagione medio-scura
 🧙🏾‍♀	donna maga: carnagione medio-scura
 🧙🏿‍♀️	donna maga: carnagione scura
@@ -843,7 +843,7 @@
 🧛🏻‍♀️	donna vampira: carnagione chiara
 🧛🏻‍♀	donna vampira: carnagione chiara
 🧛🏼‍♀️	donna vampiro: carnagione abbastanza chiara
-🧛🏼‍♀	donna vampiro: carnagione abbastanza chiara
+🧛🏼‍♀	donna vampira: carnagione abbastanza chiara
 🧛🏽‍♀️	vampiro donna: carnagione olivastra
 🧛🏽‍♀	vampiro donna: carnagione olivastra
 🧛🏾‍♀️	donna vampiro: carnagione medio-scura
@@ -874,8 +874,8 @@
 🧜🏻‍♀	sirena: carnagione chiara
 🧜🏼‍♀️	sirena: carnagione abbastanza chiara
 🧜🏼‍♀	sirena: carnagione abbastanza chiara
-🧜🏽‍♀️	sirena: carnagione media
-🧜🏽‍♀	sirena: carnagione media
+🧜🏽‍♀️	sirena: carnagione olivastra
+🧜🏽‍♀	sirena: carnagione olivastra
 🧜🏾‍♀️	sirena: carnagione medio-scura
 🧜🏾‍♀	sirena: carnagione medio-scura
 🧜🏿‍♀️	sirena: carnagione scura
@@ -900,8 +900,8 @@
 🧝🏿	elfo: carnagione scura
 🧝‍♀️	elfo donna
 🧝‍♀	elfo donna
-🧝🏻‍♀️	elfa donna: carnagione chiara
-🧝🏻‍♀	elfa donna: carnagione chiara
+🧝🏻‍♀️	Elfa Donna: carnagione chiara
+🧝🏻‍♀	Elfa Donna: carnagione chiara
 🧝🏼‍♀️	Elfa donna: carnagione abbastanza chiara
 🧝🏼‍♀	Elfa donna: carnagione abbastanza chiara
 🧝🏽‍♀️	Elfa donna: carnagione olivastra
@@ -1000,7 +1000,7 @@
 🙅🏿	persona che gesticola NO: carnagione scura
 🙅‍♂️	uomo che indica NO
 🙅‍♂	uomo che indica NO
-🙅🏻‍♂️	uomo che fa segno di NO: carnagione chiara
+🙅🏻‍♂️	uomo che gesticola NO: carnagione chiara
 🙅🏻‍♂	uomo che fa segno di NO: carnagione chiara
 🙅🏼‍♂️	uomo che gesticola NO: carnagione abbastanza chiara
 🙅🏼‍♂	uomo che gesticola NO: carnagione abbastanza chiara
@@ -1052,7 +1052,7 @@
 🙆🏾‍♀	donna che fa segno di OK: carnagione medio-scura
 🙆🏿‍♀️	donna che gesticola OK: carnagione scura
 🙆🏿‍♀	donna che gesticola OK: carnagione scura
-💁	persona che dà la mano
+💁	persona che dà la mancia
 💁🏻	persona che dà la mano: carnagione chiara
 💁🏼	persona che dà la mano: carnagione abbastanza chiara
 💁🏽	persona che dà la mano: carnagione olivastra
@@ -1076,7 +1076,7 @@
 💁🏻‍♀	donna che inclina la mano: carnagione chiara
 💁🏼‍♀️	donna che inclina la mano: carnagione abbastanza chiara
 💁🏼‍♀	donna che inclina la mano: carnagione abbastanza chiara
-💁🏽‍♀️	donna che inclina la mano: carnagione olivastra
+💁🏽‍♀️	donna con la mancia della mano: carnagione olivastra
 💁🏽‍♀	donna che inclina la mano: carnagione olivastra
 💁🏾‍♀️	donna che inclina la mano: carnagione abbastanza scura
 💁🏾‍♀	donna che inclina la mano: carnagione abbastanza scura
@@ -1162,7 +1162,7 @@
 🤦🏿‍♂	uomo che fa facepalming: carnagione scura
 🤦‍♀️	donna che fa il facepalming
 🤦‍♀	donna che fa il facepalming
-🤦🏻‍♀️	donna che fa facepalming: carnagione chiara
+🤦🏻‍♀️	donna che fa il facepalming: carnagione chiara
 🤦🏻‍♀	donna che fa facepalming: carnagione chiara
 🤦🏼‍♀️	facepalming donna: carnagione medio-chiara
 🤦🏼‍♀	facepalming donna: carnagione medio-chiara
@@ -1202,7 +1202,7 @@
 🤷🏾‍♀	donna che alza le spalle: carnagione medio-scura
 🤷🏿‍♀️	donna che alza le spalle: carnagione scura
 🤷🏿‍♀	donna che alza le spalle: carnagione scura
-💆	persona che riceve un massaggio
+💆	persona che riceve il massaggio
 💆🏻	persona che riceve il massaggio: carnagione chiara
 💆🏼	persona che riceve il massaggio: carnagione abbastanza chiara
 💆🏽	persona che riceve il massaggio: carnagione olivastra
@@ -1221,7 +1221,7 @@
 💆🏿‍♂️	uomo che riceve un massaggio: carnagione scura
 💆🏿‍♂	uomo che riceve un massaggio: carnagione scura
 💆‍♀️	donna che riceve un massaggio
-💆‍♀	donna che riceve un massaggio
+💆‍♀	donna che riceve il massaggio
 💆🏻‍♀️	donna che riceve un massaggio: carnagione chiara
 💆🏻‍♀	donna che riceve un massaggio: carnagione chiara
 💆🏼‍♀️	donna che riceve un massaggio: carnagione abbastanza chiara
@@ -1421,8 +1421,8 @@
 🧘‍♂	uomo nella posizione del loto
 🧘🏻‍♂️	uomo nella posizione del loto: carnagione chiara
 🧘🏻‍♂	uomo nella posizione del loto: carnagione chiara
-🧘🏼‍♂️	uomo nella posizione del loto: carnagione medio-chiara
-🧘🏼‍♂	uomo nella posizione del loto: carnagione medio-chiara
+🧘🏼‍♂️	uomo nella posizione del loto: carnagione abbastanza chiara
+🧘🏼‍♂	uomo nella posizione del loto: carnagione abbastanza chiara
 🧘🏽‍♂️	uomo nella posizione del loto: carnagione media
 🧘🏽‍♂	uomo nella posizione del loto: carnagione media
 🧘🏾‍♂️	uomo nella posizione del loto: carnagione medio-scura
@@ -1458,7 +1458,7 @@
 🏇🏼	corsa di cavalli: carnagione abbastanza chiara
 🏇🏽	corse di cavalli: carnagione olivastra
 🏇🏾	corse di cavalli: carnagione medio-scura
-🏇🏿	corse di cavalli: carnagione scura
+🏇🏿	corsa di cavalli: carnagione scura
 ⛷️	sciatore
 ⛷	sciatore
 🏂	snowboarder
@@ -1987,7 +1987,7 @@
 🤙🏾	chiamami mano: carnagione abbastanza scura
 🤙🏿	chiamami con la mano: carnagione scura
 🖐️	mano con le dita allargate
-🖐	mano con le dita allargate
+🖐	mano con le dita aperte
 🖐🏻	mano con le dita allargate: carnagione chiara
 🖐🏼	mano con dita divaricate: carnagione medio-chiara
 🖐🏽	mano con le dita allargate: carnagione media
@@ -3071,7 +3071,7 @@
 🔃	frecce verticali in senso orario
 🔄	pulsante frecce in senso antiorario
 🔙	Freccia INDIETRO
-🔚	Freccia FINE
+🔚	freccia FINE
 🔛	Freccia ON
 🔜	PRESTO freccia
 🔝	Freccia IN ALTO
@@ -3137,7 +3137,7 @@
 ⏏️	pulsante di espulsione
 ⏏	pulsante di espulsione
 🎦	cinema
-🔅	pulsante di attenuazione
+🔅	pulsante attenuato
 🔆	pulsante luminoso
 📶	barre dell'antenna
 📳	modalità di vibrazione
@@ -3334,7 +3334,7 @@
 🇧🇮	Burundi
 🇧🇯	Benin
 🇧🇱	San Bartolomeo
-🇧🇲	Bermuda
+🇧🇲	Bermude
 🇧🇳	Brunei
 🇧🇴	Bolivia
 🇧🇶	Paesi Bassi caraibici
@@ -3551,7 +3551,7 @@
 🇺🇾	Uruguay
 🇺🇿	Uzbekistan
 🇻🇦	Città del Vaticano
-🇻🇨	St. Vincent e Grenadine
+🇻🇨	Saint Vincent e Grenadine
 🇻🇪	Venezuela
 🇻🇬	Isole Vergini Britanniche
 🇻🇮	Isole Vergini americane

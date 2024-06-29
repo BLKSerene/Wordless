@@ -80,8 +80,13 @@ def wl_status_bar_msg_file_access_denied(main):
 
 def check_search_terms(main, search_settings, show_warning = True):
     if (
-        (not search_settings['multi_search_mode'] and search_settings['search_term'])
-        or (search_settings['multi_search_mode'] and search_settings['search_terms'])
+        (
+            not search_settings['multi_search_mode']
+            and search_settings['search_term'].strip()
+        ) or (
+            search_settings['multi_search_mode']
+            and any((search_term.strip() for search_term in search_settings['search_terms']))
+        )
     ):
         search_terms_ok = True
     else:
@@ -183,8 +188,6 @@ def check_results_download_model(main, err_msg, model_name = ''):
     try:
         if model_name:
             importlib.import_module(model_name)
-
-        wl_status_bar_msg_success_download_model(main)
     except ModuleNotFoundError:
         results_ok = False
 
@@ -193,7 +196,8 @@ def check_results_download_model(main, err_msg, model_name = ''):
             err_msg = traceback.format_exc()
 
     if err_msg:
-        wl_dialogs_errs.Wl_Dialog_Err_Download_Model(main, err_msg).open()
+        # Use exec_() instead of open() here to prevent the dialog from being hidden on OS X 10.11 with PyQt 5.10
+        wl_dialogs_errs.Wl_Dialog_Err_Download_Model(main, err_msg).exec_()
         wl_status_bar_msg_err_download_model(main)
 
         results_ok = False

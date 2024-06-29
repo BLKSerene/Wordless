@@ -457,9 +457,11 @@ def wl_widgets_search_settings(parent, tab):
     def multi_search_mode_changed():
         if checkbox_multi_search_mode.isChecked():
             label_search_term.setText(_tr('wl_widgets', 'Search terms:'))
+            search_term = line_edit_search_term.text().strip()
 
-            if line_edit_search_term.text() and list_search_terms.model().rowCount() == 0:
-                list_search_terms.load_items([line_edit_search_term.text()])
+            # Automatically add the non-empty search term
+            if search_term and list_search_terms.model().rowCount() == 0:
+                list_search_terms.load_items([search_term])
 
             stacked_widget_search_term.setCurrentIndex(1)
         else:

@@ -195,10 +195,11 @@ def match_tokens(
 
             # Match inflected forms of search terms and search results
             if settings['match_inflected_forms']:
-                lemmas_search = wl_texts.get_token_properties(tokens_search, 'lemma')
+                lemmas_search = wl_texts.get_token_properties(tokens_search, 'lemma', convert_none = True)
                 lemmas_matched = wl_texts.get_token_properties(
                     wl_lemmatization.wl_lemmatize(main, {*search_terms, *search_results}, lang),
-                    'lemma'
+                    'lemma',
+                    convert_none = True
                 )
 
                 for lemma_matched in set(lemmas_matched):
@@ -252,13 +253,14 @@ def match_ngrams(
                     tokens_matched[search_term_token].add(token)
 
         if settings['match_inflected_forms']:
-            lemmas_search = wl_texts.get_token_properties(tokens_search, 'lemma')
+            lemmas_search = wl_texts.get_token_properties(tokens_search, 'lemma', convert_none = True)
 
             # Search for inflected forms of tokens in search results first
             for search_term_token, search_term_tokens_matched in copy.deepcopy(tokens_matched).items():
                 lemmas_matched = wl_texts.get_token_properties(
                     wl_lemmatization.wl_lemmatize(main, search_term_tokens_matched, lang),
-                    'lemma'
+                    'lemma',
+                    convert_none = True
                 )
 
                 for token_matched, lemma_matched in zip(search_term_tokens_matched, lemmas_matched):
@@ -271,7 +273,8 @@ def match_ngrams(
 
             lemmas_matched = wl_texts.get_token_properties(
                 wl_lemmatization.wl_lemmatize(main, search_term_tokens, lang),
-                'lemma'
+                'lemma',
+                convert_none = True
             )
 
             # Search for inflected forms of tokens in search terms

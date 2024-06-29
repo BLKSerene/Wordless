@@ -460,34 +460,34 @@ class Wl_Main(QMainWindow):
 
     # Help - Need Help?
     def help_need_help(self):
-        Wl_Dialog_Need_Help(self).open()
+        Wl_Dialog_Need_Help(self).exec_()
 
     # Help - Citing
     def help_citing(self):
-        Wl_Dialog_Citing(self).open()
+        Wl_Dialog_Citing(self).exec_()
 
     # Help - Donating
     def help_donating(self):
-        Wl_Dialog_Donating(self).open()
+        Wl_Dialog_Donating(self).exec_()
 
     # Help - Acknowledgments
     def help_acks(self):
-        Wl_Dialog_Acks(self).open()
+        Wl_Dialog_Acks(self).exec_()
 
     # Help - Check for Updates
     def help_check_updates(self, on_startup = False):
         dialog_check_updates = Wl_Dialog_Check_Updates(self, on_startup = on_startup)
 
         if not on_startup:
-            dialog_check_updates.open()
+            dialog_check_updates.exec_()
 
     # Help - Changelog
     def help_changelog(self):
-        Wl_Dialog_Changelog(self).open()
+        Wl_Dialog_Changelog(self).exec_()
 
     # Help - About Wordless
     def help_about(self):
-        Wl_Dialog_About(self).open()
+        Wl_Dialog_About(self).exec_()
 
     def init_central_widget(self):
         self.tabs_file_area = wl_layouts.Wl_Tab_Widget(self)
@@ -1037,8 +1037,7 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
         # On startup
         if self.on_startup:
             if status == 'updates_available':
-                self.open()
-                self.setFocus()
+                self.exec_()
             else:
                 self.accept()
 
@@ -1277,16 +1276,18 @@ if __name__ == '__main__':
     wl_loading.fade_out()
     wl_loading.finish(wl_main)
 
-    # Check for updates on startup
-    if wl_main.settings_custom['general']['update_settings']['check_updates_on_startup']:
-        wl_main.help_check_updates(on_startup = True)
+    wl_main.showMaximized()
 
     # Show changelog on first startup
     if wl_main.settings_custom['1st_startup']:
-        wl_main.help_changelog()
+        dialog_changelog = Wl_Dialog_Changelog(wl_main)
+        dialog_changelog.move_to_center()
+        dialog_changelog.exec_()
 
         wl_main.settings_custom['1st_startup'] = False
 
-    wl_main.showMaximized()
+    # Check for updates on startup
+    if wl_main.settings_custom['general']['update_settings']['check_updates_on_startup']:
+        wl_main.help_check_updates(on_startup = True)
 
     sys.exit(wl_app.exec_())

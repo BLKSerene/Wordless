@@ -480,8 +480,8 @@
 💂🏿	Schutz: dunkler Hautton
 💂‍♂️	Mann Wache
 💂‍♂	Mann Wache
-💂🏻‍♂️	Mann: helle Hautfarbe
-💂🏻‍♂	Mann: helle Hautfarbe
+💂🏻‍♂️	Mann: heller Hautton
+💂🏻‍♂	Mann: heller Hautton
 💂🏼‍♂️	Männerschutz: mittelhelle Hautfarbe
 💂🏼‍♂	Männerschutz: mittelhelle Hautfarbe
 💂🏽‍♂️	Mann: mittlere Hautfarbe
@@ -584,7 +584,7 @@
 🧕🏻	Frau mit Kopftuch: helle Hautfarbe
 🧕🏼	Frau mit Kopftuch: mittelhelle Hautfarbe
 🧕🏽	Frau mit Kopftuch: mittlere Hautfarbe
-🧕🏾	Frau mit Kopftuch: mitteldunkle Hautfarbe
+🧕🏾	Frau mit Kopftuch: mitteldunkler Hautton
 🧕🏿	Frau mit Kopftuch: dunkle Hautfarbe
 🧔	bärtiger Mensch
 🧔🏻	bärtige Person: helle Hautfarbe
@@ -593,7 +593,7 @@
 🧔🏾	bärtige Person: mitteldunkler Hautton
 🧔🏿	bärtige Person: dunkle Hautfarbe
 👱	blondhaarige Person
-👱🏻	Blonde Person: heller Hautton
+👱🏻	Blonde Person: helle Hautfarbe
 👱🏼	blondhaarige Person: mittelheller Hautton
 👱🏽	Blonde Person: mittlerer Hautton
 👱🏾	blondhaarige Person: mitteldunkler Hautton
@@ -639,7 +639,7 @@
 👨🏼‍🦱	Mann, lockiges Haar: mittelheller Hautton
 👨🏽‍🦱	Mann, lockiges Haar: mittlerer Hautton
 👨🏾‍🦱	Mann, lockiges Haar: mitteldunkler Hautton
-👨🏿‍🦱	Mann, lockiges Haar: dunkle Hautfarbe
+👨🏿‍🦱	Mann, lockiges Haar: dunkler Hautton
 👩‍🦱	Frau, lockiges Haar
 👩🏻‍🦱	Frau, lockiges Haar: helle Hautfarbe
 👩🏼‍🦱	Frau, lockiges Haar: mittelheller Hautton
@@ -669,7 +669,7 @@
 👩🏼‍🦳	Frau, weißhaarig: mittelheller Hautton
 👩🏽‍🦳	Frau, weißhaarig: mittlerer Hautton
 👩🏾‍🦳	Frau, weißhaarig: mitteldunkler Hautton
-👩🏿‍🦳	Frau, weißhaarig: dunkler Hautton
+👩🏿‍🦳	Frau, weißhaarig: dunkle Hautfarbe
 🤵	Mann im Smoking
 🤵🏻	Mann im Smoking: helle Hautfarbe
 🤵🏼	Mann im Smoking: mittelhelle Hautfarbe
@@ -746,7 +746,7 @@
 🦹🏻	Superschurke: helle Hautfarbe
 🦹🏼	Superschurke: mittelheller Hautton
 🦹🏽	Superschurke: mittlere Hautfarbe
-🦹🏾	Superschurke: mitteldunkle Hautfarbe
+🦹🏾	Superschurke: mitteldunkler Hautton
 🦹🏿	Superschurke: dunkle Hautfarbe
 🦹‍♀️	Frau Superschurke
 🦹‍♀	Frau Superschurke
@@ -830,8 +830,8 @@
 🧚🏽‍♂	Feenmann: mittlerer Hautton
 🧚🏾‍♂️	Feenmann: mitteldunkler Hautton
 🧚🏾‍♂	Feenmann: mitteldunkler Hautton
-🧚🏿‍♂️	Feenmann: dunkle Hautfarbe
-🧚🏿‍♂	Feenmann: dunkle Hautfarbe
+🧚🏿‍♂️	Mann Fee: dunkle Hautfarbe
+🧚🏿‍♂	Mann Fee: dunkle Hautfarbe
 🧛	Vampir
 🧛🏻	Vampir: heller Hautton
 🧛🏼	Vampir: mittelheller Hautton
@@ -846,8 +846,8 @@
 🧛🏼‍♀	Vampirfrau: mittelheller Hautton
 🧛🏽‍♀️	Vampirfrau: mittlerer Hautton
 🧛🏽‍♀	Vampirfrau: mittlerer Hautton
-🧛🏾‍♀️	Frau Vampir: mitteldunkle Hautfarbe
-🧛🏾‍♀	Frau Vampir: mitteldunkle Hautfarbe
+🧛🏾‍♀️	Vampirfrau: mitteldunkler Hautton
+🧛🏾‍♀	Vampirfrau: mitteldunkler Hautton
 🧛🏿‍♀️	Frau Vampir: dunkle Hautfarbe
 🧛🏿‍♀	Frau Vampir: dunkle Hautfarbe
 🧛‍♂️	Mann Vampir
@@ -994,8 +994,8 @@
 🙎🏿‍♀	schmollende Frau: dunkle Hautfarbe
 🙅	Person gestikuliert NEIN
 🙅🏻	Person gestikuliert NEIN: helle Hautfarbe
-🙅🏼	Person, die NEIN zeigt: mittelhelle Hautfarbe
-🙅🏽	Person, die NEIN zeigt: mittlere Hautfarbe
+🙅🏼	NEIN gestikulierende Person: mittelhelle Hautfarbe
+🙅🏽	Person gestikuliert NEIN: mittlere Hautfarbe
 🙅🏾	Person, die NEIN zeigt: mitteldunkle Hautfarbe
 🙅🏿	Person gestikuliert NEIN: dunkle Hautfarbe
 🙅‍♂️	Mann gestikuliert NEIN
@@ -1124,9 +1124,9 @@
 🙇🏻‍♂	Mann verbeugt sich: helle Hautfarbe
 🙇🏼‍♂️	Verbeugender Mann: mittelhelle Hautfarbe
 🙇🏼‍♂	Verbeugender Mann: mittelhelle Hautfarbe
-🙇🏽‍♂️	Mann verbeugt sich: mittlere Hautfarbe
+🙇🏽‍♂️	Verbeugender Mann: mittlere Hautfarbe
 🙇🏽‍♂	Verbeugender Mann: mittlere Hautfarbe
-🙇🏾‍♂️	Mann verbeugt sich: mitteldunkle Hautfarbe
+🙇🏾‍♂️	Verbeugender Mann: mitteldunkle Hautfarbe
 🙇🏾‍♂	Verbeugender Mann: mitteldunkle Hautfarbe
 🙇🏿‍♂️	Mann verbeugt sich: dunkle Hautfarbe
 🙇🏿‍♂	Mann verbeugt sich: dunkle Hautfarbe
@@ -1135,7 +1135,7 @@
 🙇🏻‍♀️	Frau verbeugt sich: helle Hautfarbe
 🙇🏻‍♀	Frau verbeugt sich: helle Hautfarbe
 🙇🏼‍♀️	Verbeugende Frau: mittelhelle Hautfarbe
-🙇🏼‍♀	Verbeugende Frau: mittelhelle Hautfarbe
+🙇🏼‍♀	Frau verbeugt sich: mittelhelle Hautfarbe
 🙇🏽‍♀️	Frau verbeugt sich: mittlere Hautfarbe
 🙇🏽‍♀	Frau verbeugt sich: mittlere Hautfarbe
 🙇🏾‍♀️	Verbeugende Frau: mitteldunkle Hautfarbe
@@ -1225,7 +1225,7 @@
 💆🏻‍♀️	Frau bekommt Massage: helle Hautfarbe
 💆🏻‍♀	Frau bekommt Massage: helle Hautfarbe
 💆🏼‍♀️	Frau, die sich massieren lässt: mittelhelle Hautfarbe
-💆🏼‍♀	Frau lässt sich massieren: mittelhelle Hautfarbe
+💆🏼‍♀	Frau, die sich massieren lässt: mittelhelle Hautfarbe
 💆🏽‍♀️	Frau bekommt Massage: mittlere Hautfarbe
 💆🏽‍♀	Frau bekommt Massage: mittlere Hautfarbe
 💆🏾‍♀️	Frau bekommt Massage: mitteldunkle Hautfarbe
@@ -1344,7 +1344,7 @@
 🧖🏼	Person im Dampfraum: mittelhelle Hautfarbe
 🧖🏽	Person im Dampfraum: mittlere Hautfarbe
 🧖🏾	Person in feuchtem Raum: mitteldunkle Hautfarbe
-🧖🏿	Person in dampfendem Raum: dunkle Hautfarbe
+🧖🏿	Person im Dampfraum: dunkle Hautfarbe
 🧖‍♀️	Frau in dampfendem Raum
 🧖‍♀	Frau in dampfendem Raum
 🧖🏻‍♀️	Frau in dampfendem Raum: helle Hautfarbe
@@ -1352,7 +1352,7 @@
 🧖🏼‍♀️	Frau in dampfendem Raum: mittelhelle Hautfarbe
 🧖🏼‍♀	Frau in dampfendem Raum: mittelhelle Hautfarbe
 🧖🏽‍♀️	Frau im Dampfraum: mittlere Hautfarbe
-🧖🏽‍♀	Frau im Dampfraum: mittlere Hautfarbe
+🧖🏽‍♀	Frau in dampfendem Raum: mittlere Hautfarbe
 🧖🏾‍♀️	Frau in dampfendem Raum: mitteldunkle Hautfarbe
 🧖🏾‍♀	Frau in dampfendem Raum: mitteldunkle Hautfarbe
 🧖🏿‍♀️	Frau in dampfendem Raum: dunkle Hautfarbe
@@ -1522,7 +1522,7 @@
 🏄🏿‍♂	Mann beim Surfen: dunkle Hautfarbe
 🏄‍♀️	Frau surft
 🏄‍♀	Frau surft
-🏄🏻‍♀️	Frau beim Surfen: helle Hautfarbe
+🏄🏻‍♀️	Surfende Frau: helle Hautfarbe
 🏄🏻‍♀	Frau beim Surfen: helle Hautfarbe
 🏄🏼‍♀️	Surfende Frau: mittelhelle Hautfarbe
 🏄🏼‍♀	Surfende Frau: mittelhelle Hautfarbe
@@ -1603,7 +1603,7 @@
 ⛹‍♂️	Mann springt mit Ball
 ⛹️‍♂	Mann springt mit Ball
 ⛹‍♂	Mann springt mit Ball
-⛹🏻‍♂️	Mann, der mit dem Ball hüpft: helle Hautfarbe
+⛹🏻‍♂️	Mann springt mit Ball: helle Hautfarbe
 ⛹🏻‍♂	Mann springt mit Ball: helle Hautfarbe
 ⛹🏼‍♂️	Mann, der Ball springt: mittelhelle Hautfarbe
 ⛹🏼‍♂	Mann, der Ball springt: mittelhelle Hautfarbe
@@ -1651,7 +1651,7 @@
 🏋️‍♀️	Frau, die Gewichte hebt
 🏋‍♀️	Frau, die Gewichte hebt
 🏋️‍♀	Frau, die Gewichte hebt
-🏋‍♀	Frau, die Gewichte hebt
+🏋‍♀	Frau hebt Gewichte
 🏋🏻‍♀️	Frau beim Gewichtheben: helle Hautfarbe
 🏋🏻‍♀	Frau beim Gewichtheben: helle Hautfarbe
 🏋🏼‍♀️	Gewichthebende Frau: mittelhelle Hautfarbe
@@ -1719,7 +1719,7 @@
 🚵🏽‍♀️	Mountainbikerin: mittlere Hautfarbe
 🚵🏽‍♀	Mountainbikerin: mittlere Hautfarbe
 🚵🏾‍♀️	Frau beim Mountainbiken: mitteldunkle Hautfarbe
-🚵🏾‍♀	Mountainbikerin: mitteldunkle Hautfarbe
+🚵🏾‍♀	Frau beim Mountainbiken: mitteldunkle Hautfarbe
 🚵🏿‍♀️	Frau beim Mountainbiken: dunkle Hautfarbe
 🚵🏿‍♀	Frau beim Mountainbiken: dunkle Hautfarbe
 🏎️	Rennauto
@@ -1939,7 +1939,7 @@
 ☝🏿	Zeigefinger nach oben: dunkler Hautton
 👆	Der Zeigefinger der Rückhand zeigt nach oben
 👆🏻	Nach oben zeigender Zeigefinger der Rückhand: helle Hautfarbe
-👆🏼	Hinterhandzeiger zeigt nach oben: mittelheller Hautton
+👆🏼	Nach oben zeigender Zeigefinger: mittelheller Hautton
 👆🏽	Rückhandzeiger zeigt nach oben: mittlerer Hautton
 👆🏾	Hinterhandzeiger zeigt nach oben: mitteldunkle Hautfarbe
 👆🏿	Nach oben zeigender Zeigefinger der Rückhand: dunkle Hautfarbe
@@ -1951,7 +1951,7 @@
 🖕🏿	Mittelfinger: dunkler Hautton
 👇	Der Zeigefinger der Rückhand zeigt nach unten
 👇🏻	Hinterhandzeiger zeigt nach unten: helle Hautfarbe
-👇🏼	Hinterhandzeiger zeigt nach unten: mittelheller Hautton
+👇🏼	Hinterhandzeiger nach unten: mittelheller Hautton
 👇🏽	Hinterhandzeiger zeigt nach unten: mittlerer Hautton
 👇🏾	Hinterhandzeiger zeigt nach unten: mitteldunkler Hautton
 👇🏿	Hinterhandzeiger zeigt nach unten: dunkle Hautfarbe
@@ -2375,7 +2375,7 @@
 🥯	Bagel
 🥞	Pfannkuchen
 🧀	Käse Keil
-🍖	Fleisch am Knochen
+🍖	Fleisch mit Knochen
 🍗	Geflügelkeule
 🥩	Stück Fleisch
 🥓	Speck
@@ -2641,7 +2641,7 @@
 🌕	Vollmond
 🌖	abnehmender Halbmond
 🌗	Mond im letzten Viertel
-🌘	abnehmende Mondsichel
+🌘	abnehmender Halbmond
 🌙	Halbmond
 🌚	Neumondgesicht
 🌛	Mondgesicht im ersten Viertel
@@ -3171,7 +3171,7 @@
 ➖	schweres Minuszeichen
 ➗	schweres Divisionsschild
 ➰	lockige Schleife
-➿	doppelte lockige Schleife
+➿	doppelte geschweifte Schleife
 〽️	Teilwechselmarkierung
 〽	Teilwechselmarkierung
 ✳️	achtspeichiger Stern

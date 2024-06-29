@@ -5,7 +5,7 @@
 😃	muka tersengih dengan mata besar
 😄	muka tersengih dengan mata tersenyum
 😅	muka tersengih dengan peluh
-😆	muka tersengih-sengih
+😆	tersengih menjeling muka
 😉	muka mengenyit mata
 😊	muka tersenyum dengan mata tersenyum
 😋	muka menyedap makanan
@@ -87,7 +87,7 @@
 🤥	muka berbohong
 🤫	muka tersipu-sipu
 🤭	muka dengan tangan menutup mulut
-🧐	muka dengan monokel
+🧐	muka dengan monocle
 🤓	muka nerd
 😈	muka tersenyum dengan tanduk
 👿	muka marah bertanduk
@@ -655,7 +655,7 @@
 👩‍🦲	perempuan, botak
 👩🏻‍🦲	perempuan, botak: ton kulit cerah
 👩🏼‍🦲	wanita, botak: ton kulit sederhana cerah
-👩🏽‍🦲	perempuan, botak: ton kulit sederhana
+👩🏽‍🦲	wanita, botak: ton kulit sederhana
 👩🏾‍🦲	wanita, botak: ton kulit sederhana gelap
 👩🏿‍🦲	perempuan, botak: ton kulit gelap
 👨‍🦳	lelaki, berambut putih
@@ -742,7 +742,7 @@
 🦸🏾‍♂	adiwira lelaki: ton kulit sederhana gelap
 🦸🏿‍♂️	adiwira lelaki: ton kulit gelap
 🦸🏿‍♂	adiwira lelaki: ton kulit gelap
-🦹	supervillain
+🦹	penjahat super
 🦹🏻	penjahat super: ton kulit cerah
 🦹🏼	supervillain: ton kulit sederhana cerah
 🦹🏽	penjahat super: ton kulit sederhana
@@ -862,7 +862,7 @@
 🧛🏾‍♂	vampire lelaki: ton kulit sederhana gelap
 🧛🏿‍♂️	vampire lelaki: ton kulit gelap
 🧛🏿‍♂	vampire lelaki: ton kulit gelap
-🧜	orang dagang
+🧜	merperson
 🧜🏻	merperson: ton kulit cerah
 🧜🏼	merperson: ton kulit sederhana cerah
 🧜🏽	merperson: ton kulit sederhana
@@ -990,8 +990,8 @@
 🙎🏽‍♀	wanita mencebik: ton kulit sederhana
 🙎🏾‍♀️	wanita mencebik: ton kulit sederhana gelap
 🙎🏾‍♀	wanita mencebik: ton kulit sederhana gelap
-🙎🏿‍♀️	wanita mencebik: ton kulit gelap
-🙎🏿‍♀	wanita mencebik: ton kulit gelap
+🙎🏿‍♀️	perempuan mencebik: ton kulit gelap
+🙎🏿‍♀	perempuan mencebik: ton kulit gelap
 🙅	orang memberi isyarat TIDAK
 🙅🏻	orang memberi isyarat TIDAK: ton kulit cerah
 🙅🏼	orang yang memberi isyarat TIDAK: ton kulit sederhana cerah
@@ -1064,12 +1064,12 @@
 💁🏻‍♂	lelaki menjongket tangan: ton kulit cerah
 💁🏼‍♂️	lelaki menjongket tangan: ton kulit sederhana cerah
 💁🏼‍♂	lelaki menjongket tangan: ton kulit sederhana cerah
-💁🏽‍♂️	lelaki mencungkil tangan: ton kulit sederhana
+💁🏽‍♂️	lelaki menjinjit tangan: ton kulit sederhana
 💁🏽‍♂	lelaki mencungkil tangan: ton kulit sederhana
 💁🏾‍♂️	lelaki mencungkil tangan: ton kulit sederhana gelap
-💁🏾‍♂	lelaki mencungkil tangan: ton kulit sederhana gelap
+💁🏾‍♂	lelaki menjongket tangan: ton kulit sederhana gelap
 💁🏿‍♂️	lelaki menjinjit tangan: ton kulit gelap
-💁🏿‍♂	lelaki menjinjit tangan: ton kulit gelap
+💁🏿‍♂	lelaki menjongket tangan: ton kulit gelap
 💁‍♀️	wanita menjinjit tangan
 💁‍♀	wanita menjinjit tangan
 💁🏻‍♀️	wanita menjongket tangan: ton kulit cerah
@@ -1080,8 +1080,8 @@
 💁🏽‍♀	wanita mencungkil tangan: ton kulit sederhana
 💁🏾‍♀️	wanita menjongket tangan: ton kulit sederhana gelap
 💁🏾‍♀	wanita menjongket tangan: ton kulit sederhana gelap
-💁🏿‍♀️	wanita menjongket tangan: ton kulit gelap
-💁🏿‍♀	wanita menjongket tangan: ton kulit gelap
+💁🏿‍♀️	wanita mencungkil tangan: ton kulit gelap
+💁🏿‍♀	wanita mencungkil tangan: ton kulit gelap
 🙋	orang mengangkat tangan
 🙋🏻	orang mengangkat tangan: ton kulit cerah
 🙋🏼	orang mengangkat tangan: ton kulit sederhana cerah
@@ -1148,8 +1148,8 @@
 🤦🏽	orang menepuk muka: ton kulit sederhana
 🤦🏾	orang menepuk muka: ton kulit sederhana gelap
 🤦🏿	orang tepuk muka: ton kulit gelap
-🤦‍♂️	lelaki bermuka telapak tangan
-🤦‍♂	lelaki bermuka telapak tangan
+🤦‍♂️	lelaki bermuka-muka
+🤦‍♂	lelaki bermuka-muka
 🤦🏻‍♂️	lelaki menepuk muka: ton kulit cerah
 🤦🏻‍♂	lelaki menepuk muka: ton kulit cerah
 🤦🏼‍♂️	lelaki menepuk muka: ton kulit sederhana cerah
@@ -1727,11 +1727,11 @@
 🏍️	motosikal
 🏍	motosikal
 🤸	orang mengendarai kereta
-🤸🏻	orang sedang bergoyang: ton kulit cerah
-🤸🏼	orang sedang bergoyang: ton kulit sederhana cerah
+🤸🏻	orang sedang bergetar kereta: ton kulit cerah
+🤸🏼	orang sedang bergetar kereta: ton kulit sederhana cerah
 🤸🏽	orang sedang bergoyang: ton kulit sederhana
 🤸🏾	orang sedang bergoyang: ton kulit sederhana gelap
-🤸🏿	orang sedang bergoyang: ton kulit gelap
+🤸🏿	orang sedang bergetar kereta: ton kulit gelap
 🤸‍♂️	lelaki mengendarai kereta
 🤸‍♂	lelaki mengendarai kereta
 🤸🏻‍♂️	man cartwheeling: ton kulit cerah
@@ -1993,7 +1993,7 @@
 🖐🏽	tangan dengan jari terhampar: ton kulit sederhana
 🖐🏾	tangan dengan jari terhampar: ton kulit sederhana gelap
 🖐🏿	tangan dengan jari terhampar: ton kulit gelap
-✋	angkat tangan
+✋	mengangkat tangan
 ✋🏻	angkat tangan: ton kulit cerah
 ✋🏼	angkat tangan: ton kulit sederhana cerah
 ✋🏽	angkat tangan: ton kulit sederhana
@@ -2023,7 +2023,7 @@
 ✊🏽	angkat penumbuk: ton kulit sederhana
 ✊🏾	angkat penumbuk: ton kulit sederhana gelap
 ✊🏿	angkat penumbuk: ton kulit gelap
-👊	penumbuk datang
+👊	penumbuk yang akan datang
 👊🏻	penumbuk mendekat: ton kulit cerah
 👊🏼	penumbuk mendekat: ton kulit sederhana cerah
 👊🏽	penumbuk mendekat: ton kulit sederhana
@@ -2159,7 +2159,7 @@
 💥	perlanggaran
 💦	titisan peluh
 💨	berlari menjauh
-💫	pening
+💫	pening kepala
 💬	belon ucapan
 🗨️	gelembung pertuturan kiri
 🗨	gelembung pertuturan kiri
@@ -2267,7 +2267,7 @@
 🐓	ayam jantan
 🐣	anak ayam penetasan
 🐤	anak ayam
-🐥	anak ayam menghadap ke hadapan
+🐥	anak ayam menghadap hadapan
 🐦	burung
 🐧	penguin
 🕊️	burung merpati
@@ -2340,7 +2340,7 @@
 🍃	daun berkibar ditiup angin
 🍇	buah anggur
 🍈	tembikai
-🍉	buah tembikai
+🍉	tembikai
 🍊	tangerine
 🍋	limau
 🍌	pisang
@@ -2645,7 +2645,7 @@
 🌙	bulan Sabit
 🌚	muka bulan baru
 🌛	muka bulan suku pertama
-🌜	muka suku bulan lepas
+🌜	muka bulan suku lepas
 🌡️	termometer
 🌡	termometer
 ☀️	matahari
@@ -2830,7 +2830,7 @@
 🖱️	tetikus komputer
 🖱	tetikus komputer
 🖲️	bola jejak
-🖲	bola jejak
+🖲	bola trek
 💽	cakera komputer
 💾	cakera liut
 💿	cakera optik
@@ -3035,7 +3035,7 @@
 🚱	air tidak boleh diminum
 🚷	tiada pejalan kaki
 📵	tiada telefon bimbit
-🔞	tiada seorang pun di bawah lapan belas tahun
+🔞	tiada seorang pun di bawah umur lapan belas tahun
 ☢️	radioaktif
 ☢	radioaktif
 ☣️	bahaya bio
@@ -3109,7 +3109,7 @@
 ♒	Aquarius
 ♓	Pisces
 ⛎	Ophiuchus
-🔀	butang kocok trek
+🔀	kocok butang trek
 🔁	butang ulang
 🔂	ulang butang tunggal
 ▶️	butang main
@@ -3220,7 +3220,7 @@
 8⃣	kekunci: 8
 9️⃣	kekunci: 9
 9⃣	kekunci: 9
-🔟	cap kekunci: 10
+🔟	kekunci: 10
 💯	seratus mata
 🔠	masukkan huruf besar latin
 🔡	masukkan huruf kecil latin
@@ -3257,7 +3257,7 @@
 🈷	Butang "jumlah bulanan" Jepun
 🈶	Butang "tidak percuma" Jepun
 🈯	Butang "terpelihara" Jepun
-🉐	Butang "tawar" Jepun
+🉐	Butang "tawar-tawar" Jepun
 🈹	Butang "diskaun" Jepun
 🈚	Butang "percuma" Jepun
 🈲	Butang "dilarang" Jepun
@@ -3280,9 +3280,9 @@
 ◼️	persegi sederhana hitam
 ◼	persegi sederhana hitam
 ◽	segi empat sama putih sederhana kecil
-◾	segi empat sama hitam sederhana kecil
+◾	persegi hitam sederhana-kecil
 ⬛	persegi besar hitam
-⬜	persegi besar putih
+⬜	segi empat sama besar berwarna putih
 🔶	berlian oren besar
 🔷	berlian biru besar
 🔸	berlian oren kecil
@@ -3462,7 +3462,7 @@
 🇲🇳	Mongolia
 🇲🇴	Macau SAR China
 🇲🇵	Kepulauan Mariana Utara
-🇲🇶	Martinique
+🇲🇶	Martinik
 🇲🇷	Mauritania
 🇲🇸	Montserrat
 🇲🇹	Malta

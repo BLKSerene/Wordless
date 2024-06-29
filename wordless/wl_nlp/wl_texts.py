@@ -176,8 +176,11 @@ def has_token_properties(tokens, name):
 
     return False
 
-def get_token_properties(tokens, name):
-    return [getattr(token, name) for token in tokens]
+def get_token_properties(tokens, name, convert_none = False):
+    if convert_none:
+        return [getattr(token, name) or '' for token in tokens]
+    else:
+        return [getattr(token, name) for token in tokens]
 
 def set_token_properties(tokens, name, vals):
     if isinstance(vals, str) or vals is None:
@@ -212,7 +215,6 @@ class Wl_Text:
 
         file_ext = os.path.splitext(file['path'])[1].lower()
         re_tags = re.compile(wl_matching.get_re_tags(self.main, tag_type = 'body'))
-        re_tags_start = re.compile(fr"\s*({wl_matching.get_re_tags(self.main, tag_type = 'body')})")
 
         if (
             file_ext == '.txt'
@@ -229,34 +231,32 @@ class Wl_Text:
                 self.tokens_multilevel.extend(tokens)
             # Untokenized & Tagged
             elif not self.tokenized and self.tagged:
-                # Replace all tags with a whitespace to ensure no words run together
+                # Replace all tags with a whitespace character to ensure that no words run together
                 text_no_tags = re.sub(re_tags, ' ', text)
+                # Remove redundant whitespace characters so that sentences are split correctly
+                text_no_tags = re.sub(r'\s{2}', ' ', text_no_tags)
 
                 tokens = wl_word_tokenization.wl_word_tokenize(self.main, text_no_tags, lang = self.lang)
 
                 self.tokens_multilevel.extend(tokens)
 
-                # Check if the first token in the text is a tag
-                if re.match(re_tags_start, text):
-                    # Check if the first paragraph is empty
-                    if not self.tokens_multilevel[0]:
-                        self.tokens_multilevel[0].append([[]])
-
-                    self.tokens_multilevel[0][0][0].insert(0, '')
-                    tags_tokens.append([])
-
                 # Extract tags
-                tag_end = 0
+                text = self.check_tags_text_start(text)
+                i_tag_end = 0
 
                 for tag in re.finditer(re_tags, text):
-                    tags_tokens = self.add_tags_tokenization(text[tag_end:tag.start()], tags_tokens)
+                    tags_tokens = self.add_tags_tokenization(text[i_tag_end:tag.start()], tags_tokens)
                     tags_tokens[-1].append(tag.group())
 
-                    tag_end = tag.end()
+                    i_tag_end = tag.end()
 
                 # The last part of the text
-                if (text := text[tag_end:]):
+                if (text := text[i_tag_end:]):
                     tags_tokens = self.add_tags_tokenization(text, tags_tokens)
+
+                # Insert tags at the start of the text
+                if self.tags_text_start and tags_tokens:
+                    tags_tokens[0] = self.tags_text_start + tags_tokens[0]
             # Tokenized & Untagged
             elif self.tokenized and not self.tagged:
                 for para in text.splitlines():
@@ -273,7 +273,9 @@ class Wl_Text:
                                 self.tokens_multilevel[-1][-1].append(sentence_seg)
             # Tokenized & Tagged
             elif self.tokenized and self.tagged:
-                for i, para in enumerate(text.splitlines()):
+                text = self.check_tags_text_start(text)
+
+                for para in text.splitlines():
                     self.tokens_multilevel.append([])
 
                     if para:
@@ -289,28 +291,22 @@ class Wl_Text:
                             ):
                                 self.tokens_multilevel[-1][-1].append(sentence_seg)
 
-                        # Check if the first token in the text is a tag
-                        if i == 0 and re.match(re_tags_start, para):
-                            # Check if the first paragraph is empty
-                            if not self.tokens_multilevel[0]:
-                                self.tokens_multilevel[0].append([[]])
-
-                            self.tokens_multilevel[0][0][0].insert(0, '')
-
-                            tags_tokens.append([])
-
                         # Extract tags
-                        tag_last_end = 0
+                        i_tag_end = 0
 
                         for tag in re.finditer(re_tags, para):
-                            tags_tokens = self.add_tags_splitting(para[tag_last_end:tag.start()], tags_tokens)
+                            tags_tokens = self.add_tags_splitting(para[i_tag_end:tag.start()], tags_tokens)
                             tags_tokens[-1].append(tag.group())
 
-                            tag_last_end = tag.end()
+                            i_tag_end = tag.end()
 
                         # The last part of the text
-                        if (para := para[tag_last_end:]):
+                        if (para := para[i_tag_end:]):
                             tags_tokens = self.add_tags_splitting(para, tags_tokens)
+
+                # Insert tags at the start of the text
+                if self.tags_text_start and tags_tokens:
+                    tags_tokens[0] = self.tags_text_start + tags_tokens[0]
 
             # Add empty tags for untagged files
             if not self.tagged:
@@ -398,6 +394,19 @@ class Wl_Text:
 
         # Remove Wl_Main object from the text since it cannot be pickled
         del self.main
+
+    # Check whether there are tags at the start of the text
+    def check_tags_text_start(self, text):
+        re_tag_text_start = re.compile(fr"\s*({wl_matching.get_re_tags(self.main, tag_type = 'body')})")
+        self.tags_text_start = []
+
+        while (re_result := re.match(re_tag_text_start, text)):
+            tag = re_result.group()
+
+            self.tags_text_start.append(tag)
+            text = text[len(tag):]
+
+        return text
 
     def add_tags_tokenization(self, text, tags):
         if (text := text.strip()):
@@ -511,7 +520,7 @@ class Wl_Text:
                             if refs is not None:
                                 token.head = self.tokens_multilevel[refs[0]][refs[1]][refs[2]][refs[3]]
 
-                                i_token += 1
+                            i_token += 1
 
     def has_token_properties(self, name):
         return has_token_properties(self.get_tokens_flat(), name)

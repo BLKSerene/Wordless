@@ -364,7 +364,8 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                 text = wl_token_processing.wl_process_tokens_concordancer(
                     self.main, file['text'],
                     token_settings = settings['token_settings'],
-                    search_settings = settings['search_settings']
+                    search_settings = settings['search_settings'],
+                    preserve_blank_lines = True
                 )
 
                 offsets_paras_files.append(text.get_offsets()[0])
@@ -376,10 +377,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
             for i, (text, offsets_paras) in enumerate(zip(texts, offsets_paras_files)):
                 tokens = text.get_tokens_flat()
 
-                if (
-                    not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']
-                    or settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']
-                ):
+                if wl_checks_work_area.check_search_terms(self.main, settings['search_settings'], show_warning = False):
                     search_terms = wl_matching.match_search_terms_ngrams(
                         self.main, tokens,
                         lang = text.lang,

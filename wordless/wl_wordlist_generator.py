@@ -694,6 +694,21 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
 
                 self.tokens_stats_files.append(tokens_stats_file)
 
+            # Remove empty tokens
+            for tokens_freq in self.tokens_freq_files:
+                for token in copy.deepcopy(tokens_freq):
+                    if token == wl_texts.Wl_Token(''):
+                        del tokens_freq[token]
+
+                        break
+
+            for tokens_stats in self.tokens_stats_files:
+                for token in copy.deepcopy(tokens_stats):
+                    if token == wl_texts.Wl_Token(''):
+                        del tokens_stats[token]
+
+                        break
+
             if len(files) == 1:
                 self.tokens_freq_files *= 2
                 self.tokens_stats_files *= 2

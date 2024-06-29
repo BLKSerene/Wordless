@@ -252,7 +252,7 @@ def init_settings_default(main):
             'sort_results': {
                 'sorting_rules': [
                     [_tr('wl_settings_default', 'File'), _tr('wl_settings_default', 'Ascending')],
-                    [_tr('wl_settings_default', 'Token no.'), _tr('wl_settings_default', 'Ascending')]
+                    [_tr('wl_settings_default', 'Token No.'), _tr('wl_settings_default', 'Ascending')]
                 ]
             },
 

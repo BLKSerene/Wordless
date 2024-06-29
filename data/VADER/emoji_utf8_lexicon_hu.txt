@@ -3,7 +3,7 @@
 😂	arc az öröm könnyeivel
 🤣	a padlón gurulva nevetni
 😃	vigyorgó arc nagy szemekkel
-😄	vigyorgó arc, mosolygós szemekkel
+😄	vigyorgó arc mosolygó szemekkel
 😅	izzadságtól vigyorgó arc
 😆	vigyorgó hunyorgó arc
 😉	kacsintó arc
@@ -194,7 +194,7 @@
 👩‍⚕️	egészségügyi dolgozó nő
 👩‍⚕	egészségügyi dolgozó nő
 👩🏻‍⚕️	egészségügyi dolgozó nő: világos bőrtónus
-👩🏻‍⚕	egészségügyi dolgozó nő: világos bőrtónus
+👩🏻‍⚕	nő egészségügyi dolgozó: világos bőrtónus
 👩🏼‍⚕️	egészségügyi dolgozó nő: közepesen világos bőrtónus
 👩🏼‍⚕	egészségügyi dolgozó nő: közepesen világos bőrtónus
 👩🏽‍⚕️	nő egészségügyi dolgozó: közepes bőrtónus
@@ -401,7 +401,7 @@
 👨🏽‍🚒	férfi tűzoltó: közepes bőrtónus
 👨🏾‍🚒	férfi tűzoltó: közepesen sötét bőrtónus
 👨🏿‍🚒	férfi tűzoltó: sötét bőrtónus
-👩‍🚒	nő tűzoltó
+👩‍🚒	tűzoltó nő
 👩🏻‍🚒	tűzoltó nő: világos bőrtónus
 👩🏼‍🚒	tűzoltó nő: közepesen világos bőrtónus
 👩🏽‍🚒	tűzoltó nő: közepes bőrtónus
@@ -780,8 +780,8 @@
 🧙🏿	mágus: sötét bőrtónus
 🧙‍♀️	nő mágus
 🧙‍♀	nő mágus
-🧙🏻‍♀️	nő mágus: világos bőrtónus
-🧙🏻‍♀	nő mágus: világos bőrtónus
+🧙🏻‍♀️	női mágus: világos bőrtónus
+🧙🏻‍♀	női mágus: világos bőrtónus
 🧙🏼‍♀️	női mágus: közepesen világos bőrtónus
 🧙🏼‍♀	női mágus: közepesen világos bőrtónus
 🧙🏽‍♀️	női mágus: közepes bőrtónus
@@ -846,8 +846,8 @@
 🧛🏼‍♀	női vámpír: közepesen világos bőrtónus
 🧛🏽‍♀️	nő vámpír: közepes bőrtónus
 🧛🏽‍♀	nő vámpír: közepes bőrtónus
-🧛🏾‍♀️	női vámpír: közepesen sötét bőrtónus
-🧛🏾‍♀	női vámpír: közepesen sötét bőrtónus
+🧛🏾‍♀️	nő vámpír: közepesen sötét bőrtónus
+🧛🏾‍♀	nő vámpír: közepesen sötét bőrtónus
 🧛🏿‍♀️	nő vámpír: sötét bőrtónus
 🧛🏿‍♀	nő vámpír: sötét bőrtónus
 🧛‍♂️	férfi vámpír
@@ -966,7 +966,7 @@
 🙎🏻	duzzadó személy: világos bőrtónus
 🙎🏼	duzzadó személy: közepesen világos bőrtónus
 🙎🏽	duzzadó személy: közepes bőrtónus
-🙎🏾	duzzadó személy: közepesen sötét bőrtónus
+🙎🏾	duzzogó személy: közepesen sötét bőrtónus
 🙎🏿	duzzogó személy: sötét bőrtónus
 🙎‍♂️	duzzogva férfi
 🙎‍♂	duzzogva férfi
@@ -978,8 +978,8 @@
 🙎🏽‍♂	férfi duzzogva: közepes bőrtónus
 🙎🏾‍♂️	férfi duzzogva: közepesen sötét bőrtónus
 🙎🏾‍♂	férfi duzzogva: közepesen sötét bőrtónus
-🙎🏿‍♂️	duzzogva férfi: sötét bőrtónus
-🙎🏿‍♂	duzzogva férfi: sötét bőrtónus
+🙎🏿‍♂️	férfi duzzogva: sötét bőrtónus
+🙎🏿‍♂	férfi duzzogva: sötét bőrtónus
 🙎‍♀️	nő duzzogva
 🙎‍♀	nő duzzogva
 🙎🏻‍♀️	nő duzzog: világos bőrtónus
@@ -991,7 +991,7 @@
 🙎🏾‍♀️	duzzogva nő: közepesen sötét bőrtónus
 🙎🏾‍♀	duzzogva nő: közepesen sötét bőrtónus
 🙎🏿‍♀️	nő duzzog: sötét bőrtónus
-🙎🏿‍♀	duzzogva nő: sötét bőrtónus
+🙎🏿‍♀	nő duzzog: sötét bőrtónus
 🙅	személy intett NEM
 🙅🏻	személy intett NEM: világos bőrtónus
 🙅🏼	személy intett NEM: közepesen világos bőrtónus
@@ -1170,7 +1170,7 @@
 🤦🏽‍♀	női arcpalming: közepes bőrtónus
 🤦🏾‍♀️	női arcpalming: közepesen sötét bőrtónus
 🤦🏾‍♀	női arcpalming: közepesen sötét bőrtónus
-🤦🏿‍♀️	nő arcpalming: sötét bőrtónus
+🤦🏿‍♀️	női arcpalming: sötét bőrtónus
 🤦🏿‍♀	nő arcpalming: sötét bőrtónus
 🤷	személy vállat von
 🤷🏻	személy vállat von: világos bőrtónus
@@ -1192,7 +1192,7 @@
 🤷🏿‍♂	férfi vállat von: sötét bőrtónus
 🤷‍♀️	nő vállat vont
 🤷‍♀	nő vállat vont
-🤷🏻‍♀️	nő vállat von: világos bőrtónus
+🤷🏻‍♀️	nő vállat vonva: világos bőrtónus
 🤷🏻‍♀	nő vállat von: világos bőrtónus
 🤷🏼‍♀️	nő vállat vonva: közepesen világos bőrtónus
 🤷🏼‍♀	nő vállat vonva: közepesen világos bőrtónus
@@ -1200,8 +1200,8 @@
 🤷🏽‍♀	nő vállat vonva: közepes bőrtónus
 🤷🏾‍♀️	nő vállat vonva: közepesen sötét bőrtónus
 🤷🏾‍♀	nő vállat vonva: közepesen sötét bőrtónus
-🤷🏿‍♀️	nő vállat von: sötét bőrtónus
-🤷🏿‍♀	nő vállat von: sötét bőrtónus
+🤷🏿‍♀️	nő vállat vonva: sötét bőrtónus
+🤷🏿‍♀	nő vállat vonva: sötét bőrtónus
 💆	masszázsban részesülő személy
 💆🏻	masszázsban részesülő személy: világos bőrtónus
 💆🏼	masszírozó személy: közepesen világos bőrtónus
@@ -1334,7 +1334,7 @@
 🕺🏽	táncoló férfi: közepes bőrtónus
 🕺🏾	táncoló férfi: közepesen sötét bőrtónus
 🕺🏿	táncoló férfi: sötét bőrtónus
-👯	nyuszi fülű emberek
+👯	nyuszifülű emberek
 👯‍♂️	nyuszifülű férfiak
 👯‍♂	nyuszifülű férfiak
 👯‍♀️	nyuszi fülű nők
@@ -1348,7 +1348,7 @@
 🧖‍♀️	nő a párás szobában
 🧖‍♀	nő a párás szobában
 🧖🏻‍♀️	nő párás szobában: világos bőrtónus
-🧖🏻‍♀	nő párás szobában: világos bőrtónus
+🧖🏻‍♀	nő a párás szobában: világos bőrtónus
 🧖🏼‍♀️	nő párás szobában: közepesen világos bőrtónus
 🧖🏼‍♀	nő párás szobában: közepesen világos bőrtónus
 🧖🏽‍♀️	nő párás szobában: közepes bőrtónus
@@ -1388,7 +1388,7 @@
 🧗🏿‍♀️	nő mászó: sötét bőrtónus
 🧗🏿‍♀	nő mászó: sötét bőrtónus
 🧗‍♂️	ember hegymászó
-🧗‍♂	férfi hegymászó
+🧗‍♂	ember hegymászó
 🧗🏻‍♂️	férfi mászó: világos bőrtónus
 🧗🏻‍♂	férfi mászó: világos bőrtónus
 🧗🏼‍♂️	férfi mászó: közepesen világos bőrtónus
@@ -1474,10 +1474,10 @@
 🏌🏽	golfozó személy: közepes bőrtónus
 🏌🏾	golfozó személy: közepesen sötét bőrtónus
 🏌🏿	golfozó személy: sötét bőrtónus
-🏌️‍♂️	golfozó férfi
-🏌‍♂️	férfi golfozó
-🏌️‍♂	férfi golfozó
-🏌‍♂	golfozó férfi
+🏌️‍♂️	férfi golfozó
+🏌‍♂️	golfozó férfi
+🏌️‍♂	golfozó férfi
+🏌‍♂	férfi golfozó
 🏌🏻‍♂️	férfi golfozó: világos bőrtónus
 🏌🏻‍♂	férfi golfozó: világos bőrtónus
 🏌🏼‍♂️	férfi golfozó: közepesen világos bőrtónus
@@ -1529,9 +1529,9 @@
 🏄🏽‍♀️	szörfölő nő: közepes bőrtónus
 🏄🏽‍♀	szörfölő nő: közepes bőrtónus
 🏄🏾‍♀️	szörfölő nő: közepesen sötét bőrtónus
-🏄🏾‍♀	szörföző nő: közepesen sötét bőrtónus
-🏄🏿‍♀️	szörfölő nő: sötét bőrtónus
-🏄🏿‍♀	szörfölő nő: sötét bőrtónus
+🏄🏾‍♀	szörfölő nő: közepesen sötét bőrtónus
+🏄🏿‍♀️	szörföző nő: sötét bőrtónus
+🏄🏿‍♀	szörföző nő: sötét bőrtónus
 🚣	személy evezős csónak
 🚣🏻	személy evezős csónak: világos bőrtónus
 🚣🏼	személy evezős csónak: közepesen világos bőrtónus
@@ -1580,7 +1580,7 @@
 🏊🏾‍♂	férfi úszás: közepesen sötét bőrtónus
 🏊🏿‍♂️	úszó férfi: sötét bőrtónus
 🏊🏿‍♂	úszó férfi: sötét bőrtónus
-🏊‍♀️	nő úszik
+🏊‍♀️	nő úszás
 🏊‍♀	nő úszik
 🏊🏻‍♀️	úszó nő: világos bőrtónus
 🏊🏻‍♀	úszó nő: világos bőrtónus
@@ -1645,7 +1645,7 @@
 🏋🏽‍♂️	súlyemelő férfi: közepes bőrtónus
 🏋🏽‍♂	súlyemelő férfi: közepes bőrtónus
 🏋🏾‍♂️	súlyemelő férfi: közepesen sötét bőrtónus
-🏋🏾‍♂	súlyzó férfi: közepesen sötét bőrtónus
+🏋🏾‍♂	súlyemelő férfi: közepesen sötét bőrtónus
 🏋🏿‍♂️	súlyzó férfi: sötét bőrtónus
 🏋🏿‍♂	súlyzó férfi: sötét bőrtónus
 🏋️‍♀️	nő súlyzózás
@@ -1913,11 +1913,11 @@
 🦵🏾	láb: közepesen sötét bőrtónus
 🦵🏿	láb: sötét bőrtónus
 🦶	láb
-🦶🏻	láb: világos bőrtónus
+🦶🏻	lábfej: világos bőrtónus
 🦶🏼	lábfej: közepesen világos bőrtónus
 🦶🏽	láb: közepes bőrtónus
 🦶🏾	láb: közepesen sötét bőrtónus
-🦶🏿	lábfej: sötét bőrtónus
+🦶🏿	láb: sötét bőrtónus
 👈	balra mutató fonák index
 👈🏻	hátramutató balra mutató: világos bőrtónus
 👈🏼	balra mutató hátkézi index: közepesen világos bőrtónus
@@ -2481,8 +2481,8 @@
 🧱	téglák
 🏘️	házak
 🏘	házak
-🏚️	elhagyott ház
-🏚	elhagyott ház
+🏚️	elhagyatott ház
+🏚	elhagyatott ház
 🏠	ház
 🏡	ház kerttel
 🏢	irodaház
@@ -2579,8 +2579,8 @@
 🛳	személyszállító hajó
 ⛴️	komp
 ⛴	komp
-🛥️	motorcsónak
-🛥	motorcsónak
+🛥️	motoros csónak
+🛥	motoros csónak
 🚢	hajó
 ✈️	repülőgép
 ✈	repülőgép
@@ -2643,7 +2643,7 @@
 🌗	utolsó negyed hold
 🌘	fogyó félhold
 🌙	félhold
-🌚	újhold arc
+🌚	újhold arcát
 🌛	első negyed holdarca
 🌜	utolsó negyed holdarca
 🌡️	hőmérő
@@ -2863,7 +2863,7 @@
 📚	könyveket
 📓	jegyzetfüzet
 📒	főkönyv
-📃	oldal a göndörítéssel
+📃	göndörítő oldal
 📜	tekercs
 📄	oldal felfelé nézzen
 📰	újság
@@ -3012,7 +3012,7 @@
 ⚱	temetési urna
 🗿	moai
 🏧	ATM jele
-🚮	alom a bin jel
+🚮	alom a bin jele
 🚰	iható víz
 ♿	kerekesszék szimbólum
 🚹	férfi mosdó
@@ -3034,7 +3034,7 @@
 🚯	nincs szemetelés
 🚱	nem iható víz
 🚷	nincs gyalogos
-📵	nincs mobiltelefon
+📵	nincsenek mobiltelefonok
 🔞	tizennyolc év alatti senki
 ☢️	radioaktív
 ☢	radioaktív
@@ -3064,8 +3064,8 @@
 ↩	jobbra ívelő nyíl balra
 ↪️	balra nyíl jobbra görbül
 ↪	balra nyíl jobbra görbül
-⤴️	felfelé görbülő jobb nyíl
-⤴	felfelé görbülő jobb nyíl
+⤴️	felfelé görbülő jobbra mutató nyíl
+⤴	felfelé görbülő jobbra mutató nyíl
 ⤵️	lefelé görbülő jobb nyíl
 ⤵	lefelé görbülő jobb nyíl
 🔃	az óramutató járásával megegyező irányú függőleges nyilak
@@ -3125,9 +3125,9 @@
 ⏮️	utolsó szám gomb
 ⏮	utolsó szám gomb
 🔼	felfelé gomb
-⏫	gyors fel gomb
+⏫	gyorsító gomb
 🔽	lefelé gomb
-⏬	gyors le gombot
+⏬	gyorsleállító gomb
 ⏸️	szünet gomb
 ⏸	szünet gomb
 ⏹️	stop gomb
@@ -3269,7 +3269,7 @@
 ㊗	Japán „gratulálok” gomb
 ㊙️	Japán „titkos” gomb
 ㊙	Japán „titkos” gomb
-🈺	Japán „nyitott üzletre” gomb
+🈺	Japán „nyitva az üzletre” gomb
 🈵	Japán „nincs üresedés” gomb
 ▪️	fekete kis négyzet
 ▪	fekete kis négyzet
