@@ -69,17 +69,17 @@ Wordless is an integrated corpus tool with multilingual support for the study of
 
 ## Download
 
-The latest version (**3.4.0**) of Wordless supports **Windows 7/8/8.1/10/11**, **macOS 10.11 or later**, and **Ubuntu 18.04 or later**, all **64-bit only**. Both Intel-based and Apple Silicon-based Macs are supported.
+The latest version (**3.5.0**) of Wordless supports **Windows 7/8/8.1/10/11**, **macOS 10.11 or later**, **Ubuntu 18.04 or later**, **Debian 10 or later**, and **Arch Linux**, all **64-bit only**. Both Intel-based and Apple Silicon-based Macs are supported.
 
 For a detailed changelog, please see [CHANGELOG.md](/CHANGELOG.md).
 
 Release|Remarks
 -------|-------
-[Latest Release for Windows](https://github.com/BLKSerene/Wordless/releases/download/3.4.0/wordless_3.4.0_windows.zip)|1. Extract all files<br>2. Double-click **Wordless/Wordless.exe** to run
-[Latest Release for macOS](https://github.com/BLKSerene/Wordless/releases/download/3.4.0/wordless_3.4.0_macos.zip)|1. Extract all files<br>2. Double-click **Wordless.app** to run
-[Latest Release for Linux](https://github.com/BLKSerene/Wordless/releases/download/3.4.0/wordless_3.4.0_linux.tar.gz)|1. Extract all files<br>2. Double-click **Wordless/Wordless** to run<br>3. [Optional] Double-click **Wordless/Wordless - Create Shortucut** to create a shortcut in **Show Applications**
+[Latest Release for Windows](https://github.com/BLKSerene/Wordless/releases/download/3.5.0/wordless_3.5.0_windows.zip)|1. Extract all files<br>2. Double-click **Wordless/Wordless.exe** to run
+[Latest Release for macOS](https://github.com/BLKSerene/Wordless/releases/download/3.5.0/wordless_3.5.0_macos.zip)|1. Extract all files<br>2. Double-click **Wordless.app** to run
+[Latest Release for Linux](https://github.com/BLKSerene/Wordless/releases/download/3.5.0/wordless_3.5.0_linux.tar.gz)|1. Extract all files<br>2. Double-click **Wordless/Wordless** to run<br>3. [Optional] Double-click **Wordless/Wordless - Create Shortucut** to create a shortcut in **Show Applications**
 [Past Releases](https://github.com/BLKSerene/Wordless/releases)|Not recommended
-[Baidu Netdisk](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2FWordless%203.4.0)|For Chinese users with unstable connections to Github (**PASSWORD: wdls**)
+[Baidu Netdisk](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2FWordless%203.5.0&parentPath=%2F)|For Chinese users with unstable connections to Github (**PASSWORD: wdls**)
 
 > [!IMPORTANT]
 > **Note 1:** It is recommended that the path to Wordless **not contain any non-ASCII chatacters, such as Chinese characters and letters with diacritics**.
@@ -108,7 +108,7 @@ If you have any questions, find software bugs, need to provide feedback, or want
 
 Support Channel       |Information
 ----------------------|-----------
-Official documentation|[Stable Version](https://github.com/BLKSerene/Wordless/blob/3.4.0/doc/doc_eng.md) \| [Development Version](/doc/doc.md)
+Official documentation|[Stable Version](https://github.com/BLKSerene/Wordless/blob/3.5.0/doc/doc.md) \| [Development Version](/doc/doc.md)
 Tutorial videos       |[YouTube](https://www.youtube.com/@BLKSerene) \| [bilibili](https://space.bilibili.com/34963752/video)
 Bug reports           |[Github Issues](https://github.com/BLKSerene/Wordless/issues)
 Usage questions       |[Github Discussions](https://github.com/BLKSerene/Wordless/discussions)
@@ -121,11 +121,11 @@ If you are going to publish a work that uses Wordless, please cite as follows.
 
 APA (7th edition):
 
-<pre><code>Ye, L. (2023). <i>Wordless</i> (Version 3.4.0) [Computer software]. Github. https://github.com/BLKSerene/Wordless</code></pre>
+<pre><code>Ye, L. (2024). <i>Wordless</i> (Version 3.5.0) [Computer software]. Github. https://github.com/BLKSerene/Wordless</code></pre>
 
 MLA (8th edition):
 
-<pre><code>Ye Lei. <i>Wordless</i>, version 3.4.0, 2023. <i>Github</i>, https://github.com/BLKSerene/Wordless.</code></pre>
+<pre><code>Ye Lei. <i>Wordless</i>, version 3.5.0, 2024. <i>Github</i>, https://github.com/BLKSerene/Wordless.</code></pre>
 
 ## Works Using *Wordless*
 For details, please click [HERE](/WORKS_USING_WORDLESS.md).

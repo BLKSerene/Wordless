@@ -127,11 +127,6 @@ def test_check_err_fig():
     wl_checks_work_area.check_err_fig(main, '')
     wl_checks_work_area.check_err_fig(main, 'test')
 
-def test_check_err_exp_table():
-    wl_checks_work_area.check_err_exp_table(main, '', 'test')
-    wl_checks_work_area.check_err_exp_table(main, 'permission_err', 'test')
-    wl_checks_work_area.check_err_exp_table(main, 'err', 'test')
-
 if __name__ == '__main__':
     test_wl_msg_box_missing_search_terms()
     test_wl_msg_box_no_results()
@@ -153,4 +148,3 @@ if __name__ == '__main__':
     test_check_results_download_model()
     test_check_err_table()
     test_check_err_fig()
-    test_check_err_exp_table()

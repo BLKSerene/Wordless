@@ -222,6 +222,7 @@ def check_err_fig(main, err_msg):
         wl_status_bar_msg_success_generate_fig(main)
 
 def check_err_exp_table(main, err_msg, file_path):
+    # Use exec_() instead of open() here to prevent the dialog from being hidden on OS X 10.11 with PyQt 5.10
     if err_msg:
         if err_msg == 'permission_err':
             wl_msg_boxes.Wl_Msg_Box_Info(
@@ -230,9 +231,9 @@ def check_err_exp_table(main, err_msg, file_path):
                 text = _tr('wl_checks_work_area', '''
                     <div>Access to "{}" is denied, please specify another location or close the file and try again.</div>
                 ''').format(file_path)
-            ).open()
+            ).exec_()
         else:
-            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
+            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).exec_()
 
         wl_status_bar_msg_file_access_denied(main)
     else:
@@ -242,6 +243,6 @@ def check_err_exp_table(main, err_msg, file_path):
             text = _tr('wl_checks_work_area', '''
                 <div>The table has been successfully exported to "{}".</div>
             ''').format(file_path)
-        ).open()
+        ).exec_()
 
         wl_status_bar_msg_success_exp_table(main)

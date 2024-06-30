@@ -6240,12 +6240,12 @@ Frequency</source>
         <translation>文件请求被拒绝！</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_checks/wl_checks_work_area.py" line="227"/>
+        <location filename="../wordless/wl_checks/wl_checks_work_area.py" line="228"/>
         <source>File Access Denied</source>
         <translation>文件请求被拒绝</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_checks/wl_checks_work_area.py" line="227"/>
+        <location filename="../wordless/wl_checks/wl_checks_work_area.py" line="228"/>
         <source>
                     &lt;div&gt;Access to &quot;{}&quot; is denied, please specify another location or close the file and try again.&lt;/div&gt;
                 </source>
@@ -6254,12 +6254,12 @@ Frequency</source>
                 </translation>
     </message>
     <message>
-        <location filename="../wordless/wl_checks/wl_checks_work_area.py" line="239"/>
+        <location filename="../wordless/wl_checks/wl_checks_work_area.py" line="240"/>
         <source>Export Completed</source>
         <translation>导出已完成</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_checks/wl_checks_work_area.py" line="239"/>
+        <location filename="../wordless/wl_checks/wl_checks_work_area.py" line="240"/>
         <source>
                 &lt;div&gt;The table has been successfully exported to &quot;{}&quot;.&lt;/div&gt;
             </source>
