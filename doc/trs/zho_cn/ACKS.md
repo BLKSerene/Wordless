@@ -33,7 +33,7 @@
 9|[NLTK](https://www.nltk.org/)|3.8.1|Steven Bird, Edward Loper, Ewan Klein|[Apache-2.0](https://github.com/nltk/nltk/blob/develop/LICENSE.txt)
 10|[NumPy](https://www.numpy.org/)|1.26.4|NumPy 开发人员|[BSD-3-Clause](https://github.com/numpy/numpy/blob/main/LICENSE.txt)
 11|[opencc-python](https://github.com/yichen0831/opencc-python)|0.1.7|郭家宝, Yicheng Huang|[Apache-2.0](https://github.com/yichen0831/opencc-python/blob/master/LICENSE.txt)
-12|[openpyxl](https://foss.heptapod.net/openpyxl/openpyxl)|3.1.4|Eric Gazoni, Charlie Clark|[MIT](https://foss.heptapod.net/openpyxl/openpyxl/-/blob/branch/3.1/LICENCE.rst)
+12|[openpyxl](https://foss.heptapod.net/openpyxl/openpyxl)|3.1.5|Eric Gazoni, Charlie Clark|[MIT](https://foss.heptapod.net/openpyxl/openpyxl/-/blob/branch/3.1/LICENCE.rst)
 13|[PyInstaller](https://pyinstaller.org/)|6.8.0|Hartmut Goebel, Jasper Harrison, Bryan A. Jones,<br>Brénainn Woodsend, Rok Mandeljc|[Bootloader-exception](https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt)
 14|[pymorphy3](https://github.com/no-plagiarism/pymorphy3)|2.0.2|Mikhail Korobov, Danylo Halaiko|[MIT](https://github.com/no-plagiarism/pymorphy3/blob/master/LICENSE.txt)
 15|[pypdf](https://github.com/py-pdf/pypdf)|4.2.0|Mathieu Fenniak, Ashish Kulkarni, Steve Witham, Martin Thoma|[BSD-3-Clause](https://github.com/py-pdf/pypdf/blob/main/LICENSE)

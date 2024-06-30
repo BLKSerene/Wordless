@@ -82,7 +82,7 @@ ACKS = [
         'Apache-2.0', 'https://github.com/yichen0831/opencc-python/blob/master/LICENSE.txt'
     ], [
         'openpyxl', 'https://foss.heptapod.net/openpyxl/openpyxl',
-        '3.1.4', 'Eric Gazoni, Charlie Clark',
+        '3.1.5', 'Eric Gazoni, Charlie Clark',
         'MIT', 'https://foss.heptapod.net/openpyxl/openpyxl/-/blob/branch/3.1/LICENCE.rst'
     ], [
         'PyInstaller', 'https://pyinstaller.org/',

@@ -70,7 +70,7 @@
 - Dependencies: Upgrade Matplotlib to 3.9.0
 - Dependencies: Upgrade NetworkX to 3.3
 - Dependencies: Upgrade NumPy to 1.26.4
-- Dependencies: Upgrade openpyxl to 3.1.4
+- Dependencies: Upgrade openpyxl to 3.1.5
 - Dependencies: Upgrade PyInstaller to 6.8.0
 - Dependencies: Upgrade pymorphy3 to 2.0.2
 - Dependencies: Upgrade pypdf to 4.2.0
