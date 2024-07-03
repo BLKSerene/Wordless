@@ -1613,7 +1613,7 @@ Measure of Effect Size|Formula
 <span id="ref-douma-1960"></span>
 1. [**^**](#ref-re) Douma, W. H. (1960). *De leesbaarheid van landbouwbladen: Een onderzoek naar en een toepassing van leesbaarheidsformules* [Readability of Dutch farm papers: A discussion and application of readability-formulas]. Afdeling sociologie en sociografie van de Landbouwhogeschool Wageningen. https://edepot.wur.nl/276323
 <span id="ref-dugast-1978"></span>
-1. [**^**](#ref-logttr) Dugast, D. (1978). Sur quoi se fonde la notion d’étendue théoretique du vocabulaire?. *Le Français Moderne*, *46*, 25–32.
+1. [**^**](#ref-logttr) Dugast, D. (1978). Sur quoi se fonde la notion d’étendue théoretique du vocabulaire? *Le Français Moderne*, *46*, 25–32.
 <span id="ref-dugast-1979"></span>
 1. [**^**](#ref-logttr) [**^**](#ref-logttr) Dugast, D. (1979). *Vocabulaire et stylistique: I théâtre et dialogue, travaux de linguistique quantitative*. Slatkine.
 <span id="ref-dunning-1993"></span>
@@ -1722,7 +1722,7 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 <span id="ref-pedersen-1998"></span>
 1. [**^**](#ref-min-sensitivity) Pedersen, T. (1998). Dependent bigram identification. In *Proceedings of the Fifteenth National Conference on Artificial Intelligence* (p. 1197). AAAI Press.
 <span id="ref-pisarek-1969"></span>
-1. [**^**](#ref-fog-index) Pisarek, W. (1969). Jak mierzyć zrozumiałość tekstu?. *Zeszyty Prasoznawcze*, *4*(42), 35–48.
+1. [**^**](#ref-fog-index) Pisarek, W. (1969). Jak mierzyć zrozumiałość tekstu? *Zeszyty Prasoznawcze*, *4*(42), 35–48.
 <span id="ref-pojanapunya-todd-2016"></span>
 1. [**^**](#ref-odds-ratio) Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. *Corpus Linguistics and Linguistic Theory*, *15*(1), 133–167. https://doi.org/10.1515/cllt-2015-0030
 <span id="ref-popescu-et-al-2008"></span>

@@ -145,7 +145,7 @@ def lexical_density(main, text):
 # Maas:
 #     Maas, H.-D. (1972). Über den zusammenhang zwischen wortschatzumfang und länge eines textes. Zeitschrift für Literaturwissenschaft und Linguistik, 2(8), 73–96.
 # Dugast:
-#     Dugast, D. (1978). Sur quoi se fonde la notion d’étendue théoretique du vocabulaire?. Le Français Moderne, 46, 25–32.
+#     Dugast, D. (1978). Sur quoi se fonde la notion d’étendue théoretique du vocabulaire? Le Français Moderne, 46, 25–32.
 #     Dugast, D. (1979). Vocabulaire et stylistique: I théâtre et dialogue, travaux de linguistique quantitative. Slatkine.
 #     Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). Lexical diversity and language development: Quantification and assessment (p. 28). Palgrave Macmillan.
 def logttr(main, text):

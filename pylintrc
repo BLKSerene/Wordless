@@ -47,7 +47,7 @@ disable=
     too-many-locals,
     too-many-statements,
     too-many-branches,
-    too-many-positional,
+    too-many-positional-arguments,
     # R1702, R1705, R1720, R1723, R1724
     too-many-nested-blocks,
     no-else-return,
