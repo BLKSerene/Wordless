@@ -749,7 +749,7 @@ def formula_de_crawford(main, text):
 # Fucks's Stilcharakteristik
 # References:
 #     Fucks, W. (1955). Unterschied des Prosastils von Dichtern und anderen Schriftstellern: ein Beispiel mathematischer Stilanalyse. Bouvier.
-#     Briest, W. (1974). Kann man Verständlichkeit messen?. STUF - Language Typology and Universals, 27(1-3), 543–563. https://doi.org/10.1524/stuf.1974.27.13.543
+#     Briest, W. (1974). Kann man Verständlichkeit messen? STUF - Language Typology and Universals, 27(1-3), 543–563. https://doi.org/10.1524/stuf.1974.27.13.543
 def fuckss_stilcharakteristik(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         text = get_nums(main, text)
@@ -791,7 +791,7 @@ def gulpease_index(main, text):
 # Navy:
 #     Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel (Report No. RBR 8-75, p. 14). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
 # Polish:
-#     Pisarek, W. (1969). Jak mierzyć zrozumiałość tekstu?. Zeszyty Prasoznawcze, 4(42), 35–48.
+#     Pisarek, W. (1969). Jak mierzyć zrozumiałość tekstu? Zeszyty Prasoznawcze, 4(42), 35–48.
 def fog_index(main, text):
     if text.lang.startswith('eng_') or text.lang == 'pol':
         text = get_nums(main, text)
