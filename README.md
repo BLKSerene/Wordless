@@ -117,15 +117,29 @@ Email support         |[blkserene<i>@</i>gmail<i>.</i>com](mailto:blkserene@gmai
 
 ## Citing
 
-If you are going to publish a work that uses Wordless, please cite as follows.
+If you are going to publish a work that uses *Wordless*, please cite *Wordless* as a journal article or a piece of computer software.
+
+1. Cite as a journal article
 
 APA (7th edition):
+<pre><code>Ye, L. (2024). Wordless: An integrated corpus tool with multilingual support for the study of language, literature, and translation. <i>SoftwareX</i>, <i>28</i>, Article 101931. https://doi.org/10.1016/j.softx.2024.101931</code></pre>
 
+Chicago (18th edition):
+<pre><code>Ye, Lei. “Wordless: An Integrated Corpus Tool with Multilingual Support for the Study of Language, Literature, and Translation.” <i>SoftwareX</i> 28 (December 2024): 101931. https://doi.org/10.1016/j.softx.2024.101931.</code></pre>
+
+MLA (9th edition):
+<pre><code>Ye Lei. “Wordless: An Integrated Corpus Tool with Multilingual Support for the Study of Language, Literature, and Translation.” <i>SoftwareX</i>, vol. 28, Dec. 2024, https://doi.org/10.1016/j.softx.2024.101931.</code></pre>
+
+2. Cite as a piece of computer software
+
+APA (7th edition):
 <pre><code>Ye, L. (2024). <i>Wordless</i> (Version 3.5.0) [Computer software]. Github. https://github.com/BLKSerene/Wordless</code></pre>
 
-MLA (8th edition):
+Chicago (18th edition):
+<pre><code>Ye, Lei. <i>Wordless</i>. V. 3.5.0. Released July 1, 2024. PC. https://github.com/BLKSerene/Wordless.</code></pre>
 
-<pre><code>Ye Lei. <i>Wordless</i>, version 3.5.0, 2024. <i>Github</i>, https://github.com/BLKSerene/Wordless.</code></pre>
+MLA (9th edition):
+<pre><code>Ye Lei. <i>Wordless</i>. Version 3.5.0, <i>Github</i>, 1 Jul. 2024, https://github.com/BLKSerene/Wordless.</code></pre>
 
 ## Works Using *Wordless*
 For details, please click [HERE](/WORKS_USING_WORDLESS.md).

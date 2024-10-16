@@ -108,7 +108,8 @@ def init_settings_default(main):
 
             'help': {
                 'citing': {
-                    'select_citation_sys': _tr('wl_settings_default', 'APA (7th edition)')
+                    'citation_sys': _tr('wl_settings_default', 'APA (7th edition)'),
+                    'cite_as': _tr('wl_settings_default', 'As a journal article')
                 },
 
                 'donating': {

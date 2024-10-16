@@ -21,10 +21,10 @@
 以下列表並非詳盡無遺，僅供參考。如果你知道其他使用了 Wordless 的作品沒有在下方列出，歡迎提供詳細的文獻信息。<br>
 
 <div align="center">
-    <a href="https://github.com/BLKSerene/Wordless/blob/main/doc/trs/zho_tw/WORKS_USING_WORDLESS.md#期刊文章">期刊文章</a> | <a href="https://github.com/BLKSerene/Wordless/blob/main/doc/trs/zho_tw/WORKS_USING_WORDLESS.md#碩士論文">碩士論文</a> | <a href="https://github.com/BLKSerene/Wordless/blob/main/doc/trs/zho_tw/WORKS_USING_WORDLESS.md#博士論文">博士論文</a> | <a href="https://github.com/BLKSerene/Wordless/blob/main/doc/trs/zho_tw/WORKS_USING_WORDLESS.md#會議論文">會議論文</a>
+    <a href="https://github.com/BLKSerene/Wordless/blob/main/doc/trs/zho_tw/WORKS_USING_WORDLESS.md#期刊論文">期刊論文</a> | <a href="https://github.com/BLKSerene/Wordless/blob/main/doc/trs/zho_tw/WORKS_USING_WORDLESS.md#碩士論文">碩士論文</a> | <a href="https://github.com/BLKSerene/Wordless/blob/main/doc/trs/zho_tw/WORKS_USING_WORDLESS.md#博士論文">博士論文</a> | <a href="https://github.com/BLKSerene/Wordless/blob/main/doc/trs/zho_tw/WORKS_USING_WORDLESS.md#會議論文">會議論文</a>
 </div>
 
-<div align="center"><h2>期刊文章</h2></div>
+<div align="center"><h2>期刊論文</h2></div>
 
 1. Chang, Y. (2020). A corpus-based comparative study of translation universals in two English translations of Li Sao. *Journal of Literature and Art Studies*, *10*(10), 916–922. https://doi.org/10.17265/2159-5836/2020.10.007
 1. Fu, L., & Liu, L. (2024). What are the differences? A comparative study of generative artificial intelligence translation and human translation of scientific texts. *Humanities and Social Sciences Communications*, *11*, Article 1236. https://doi.org/10.1057/s41599-024-03726-7
