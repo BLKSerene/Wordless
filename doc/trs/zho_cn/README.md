@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<div align="center"><img src="/doc/wl_logo.png" alt="Wordless：一款拥有多语种支持的语料库集成工具，可用于语言学、文学及翻译研究"></div>
+<div align="center"><img src="/doc/wl_logo.png" alt="Wordless：一款具有多语种支持的语料库集成工具，可用于语言学、文学及翻译研究"></div>
 
 <br>
 
@@ -65,7 +65,7 @@
 
 <br>
 
-Wordless 是一款拥有多语种支持的语料库集成工具，可用于语言学、文学及翻译研究，由当时就读于上海外国语大学口译研究专业的硕士研究生叶磊设计并开发。
+Wordless 是一款具有多语种支持的语料库集成工具，可用于语言学、文学及翻译研究，由当时就读于上海外国语大学口译研究专业的硕士研究生叶磊设计并开发。
 
 ## 下载
 
@@ -117,15 +117,29 @@ Bug 提交|[Github Issues](https://github.com/BLKSerene/Wordless/issues)
 
 ## 引用
 
-如果你准备发表的成果中使用了 Wordless，请按如下格式进行引用。
+如果你打算发表使用了 *Wordless* 的成果，请根据期刊论文或电脑软件的格式对 *Wordless* 进行引用。
 
-APA（第7版）：
+1. 根据期刊论文的格式进行引用
 
+APA（第 7 版）：
+<pre><code>Ye, L. (2024). Wordless: An integrated corpus tool with multilingual support for the study of language, literature, and translation. <i>SoftwareX</i>, <i>28</i>, Article 101931. https://doi.org/10.1016/j.softx.2024.101931</code></pre>
+
+Chicago（第 18 版）：
+<pre><code>Ye, Lei. “Wordless: An Integrated Corpus Tool with Multilingual Support for the Study of Language, Literature, and Translation.” <i>SoftwareX</i> 28 (December 2024): 101931. https://doi.org/10.1016/j.softx.2024.101931.</code></pre>
+
+MLA（第 9 版）：
+<pre><code>Ye Lei. “Wordless: An Integrated Corpus Tool with Multilingual Support for the Study of Language, Literature, and Translation.” <i>SoftwareX</i>, vol. 28, Dec. 2024, https://doi.org/10.1016/j.softx.2024.101931.</code></pre>
+
+2. 根据电脑软件的格式进行引用
+
+APA（第 7 版）：
 <pre><code>Ye, L. (2024). <i>Wordless</i> (Version 3.5.0) [Computer software]. Github. https://github.com/BLKSerene/Wordless</code></pre>
 
-MLA（第8版）：
+Chicago（第 18 版）：
+<pre><code>Ye, Lei. <i>Wordless</i>. V. 3.5.0. Released July 1, 2024. PC. https://github.com/BLKSerene/Wordless.</code></pre>
 
-<pre><code>Ye Lei. <i>Wordless</i>, version 3.5.0, 2024. <i>Github</i>, https://github.com/BLKSerene/Wordless.</code></pre>
+MLA（第 9 版）：
+<pre><code>Ye Lei. <i>Wordless</i>. Version 3.5.0, <i>Github</i>, 1 Jul. 2024, https://github.com/BLKSerene/Wordless.</code></pre>
 
 ## 使用 *Wordless* 的成果
 

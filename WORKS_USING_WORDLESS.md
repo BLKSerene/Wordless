@@ -18,7 +18,7 @@
 
 <div align="center"><h1>Works Using <i>Wordless</i></h1></div>
 
-The following lists are not intended to be exhaustive and are just for reference. If you are aware of other works using Wordless that are not listed below, please contact the author for them to be added here.<br>
+The following lists are not intended to be exhaustive and are just for reference. If you are aware of other works using *Wordless* that are not listed below, please contact the author for them to be added here.<br>
 
 <div align="center">
     <a href="https://github.com/BLKSerene/Wordless/blob/main/WORKS_USING_WORDLESS.md#journal-articles">Journal Articles</a> | <a href="https://github.com/BLKSerene/Wordless/blob/main/WORKS_USING_WORDLESS.md#masters-theses">Master’s Theses</a> | <a href="https://github.com/BLKSerene/Wordless/blob/main/WORKS_USING_WORDLESS.md#doctoral-dissertations">Doctoral Dissertations</a> | <a href="https://github.com/BLKSerene/Wordless/blob/main/WORKS_USING_WORDLESS.md#conference-papers">Conference Papers</a>
