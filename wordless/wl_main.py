@@ -771,27 +771,37 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info_Copy):
 
         self.label_citing = wl_labels.Wl_Label_Dialog(
             self.tr('''
-                <div>If you are going to publish a work that uses Wordless, please cite as follows.</div>
+                <div>If you are going to publish a work that uses <i>Wordless</i>, please cite <i>Wordless</i> as a journal article or a piece of computer software.</div>
             '''),
             self
         )
 
-        self.label_select_citation_sys = QLabel(self.tr('Select citation system:'), self)
-        self.combo_box_select_citation_sys = wl_boxes.Wl_Combo_Box(self)
+        self.label_citation_sys = QLabel(self.tr('Citation system:'), self)
+        self.combo_box_citation_sys = wl_boxes.Wl_Combo_Box(self)
+        self.label_cite_as = QLabel(self.tr('Cite as:'), self)
+        self.combo_box_cite_as = wl_boxes.Wl_Combo_Box(self)
 
-        self.combo_box_select_citation_sys.addItems([
+        self.combo_box_citation_sys.addItems([
             self.tr('APA (7th edition)'),
-            self.tr('MLA (8th edition)')
+            self.tr('Chicago (18th edition)'),
+            self.tr('MLA (9th edition)')
+        ])
+        self.combo_box_cite_as.addItems([
+            self.tr('A journal article'),
+            self.tr('A piece of computer software')
         ])
 
-        self.combo_box_select_citation_sys.currentTextChanged.connect(self.select_citation_sys_changed)
+        self.combo_box_citation_sys.currentTextChanged.connect(self.citation_changed)
+        self.combo_box_cite_as.currentTextChanged.connect(self.citation_changed)
 
         self.layout_info.addWidget(self.label_citing, 0, 0, 1, 2)
-        self.layout_info.addWidget(self.label_select_citation_sys, 1, 0)
-        self.layout_info.addWidget(self.combo_box_select_citation_sys, 1, 1)
-        self.layout_info.addWidget(self.text_edit_info, 2, 0, 1, 2)
+        self.layout_info.addWidget(self.label_citation_sys, 1, 0)
+        self.layout_info.addWidget(self.combo_box_citation_sys, 1, 1)
+        self.layout_info.addWidget(self.label_cite_as, 2, 0)
+        self.layout_info.addWidget(self.combo_box_cite_as, 2, 1)
+        self.layout_info.addWidget(self.text_edit_info, 3, 0, 1, 2)
 
-        self.layout_info.setRowStretch(2, 1)
+        self.layout_info.setRowStretch(3, 1)
         self.layout_info.setColumnStretch(1, 1)
 
         self.load_settings()
@@ -799,23 +809,44 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info_Copy):
     def load_settings(self):
         settings = copy.deepcopy(self.main.settings_custom['menu']['help']['citing'])
 
-        self.combo_box_select_citation_sys.setCurrentText(settings['select_citation_sys'])
+        self.combo_box_citation_sys.setCurrentText(settings['citation_sys'])
+        self.combo_box_cite_as.setCurrentText(settings['cite_as'])
 
-        self.select_citation_sys_changed()
+        self.citation_changed()
 
-    def select_citation_sys_changed(self):
+    def citation_changed(self):
         settings = self.main.settings_custom['menu']['help']['citing']
 
-        settings['select_citation_sys'] = self.combo_box_select_citation_sys.currentText()
+        settings['citation_sys'] = self.combo_box_citation_sys.currentText()
+        settings['cite_as'] = self.combo_box_cite_as.currentText()
 
-        if settings['select_citation_sys'].startswith('APA'):
-            self.set_info(
-                f'Ye, L. ({self.main.copyright_year}). <i>Wordless</i> (Version {self.main.ver}) [Computer software]. Github. https://github.com/BLKSerene/Wordless'
-            )
-        elif settings['select_citation_sys'].startswith('MLA'):
-            self.set_info(
-                f'Ye Lei. <i>Wordless</i>, version {self.main.ver}, {self.main.copyright_year}. <i>Github</i>, https://github.com/BLKSerene/Wordless.'
-            )
+        if settings['citation_sys'].startswith('APA'):
+            if settings['cite_as'] == self.tr('A journal article'):
+                self.set_info(
+                    'Ye, L. (2024). Wordless: An integrated corpus tool with multilingual support for the study of language, literature, and translation. <i>SoftwareX</i>, <i>28</i>, Article 101931. https://doi.org/10.1016/j.softx.2024.101931'
+                )
+            elif settings['cite_as'] == self.tr('A piece of computer software'):
+                self.set_info(
+                    f'Ye, L. ({self.main.copyright_year}). <i>Wordless</i> (Version {self.main.ver}) [Computer software]. Github. https://github.com/BLKSerene/Wordless'
+                )
+        elif settings['citation_sys'].startswith('Chicago'):
+            if settings['cite_as'] == self.tr('A journal article'):
+                self.set_info(
+                    'Ye, Lei. “Wordless: An Integrated Corpus Tool with Multilingual Support for the Study of Language, Literature, and Translation.” <i>SoftwareX</i> 28 (December 2024): 101931. https://doi.org/10.1016/j.softx.2024.101931.'
+                )
+            elif settings['cite_as'] == self.tr('A piece of computer software'):
+                self.set_info(
+                    f'Ye, Lei. <i>Wordless</i>. V. {self.main.ver}. Released July 1, {self.main.copyright_year}. PC. https://github.com/BLKSerene/Wordless.'
+                )
+        elif settings['citation_sys'].startswith('MLA'):
+            if settings['cite_as'] == self.tr('A journal article'):
+                self.set_info(
+                    'Ye Lei. “Wordless: An Integrated Corpus Tool with Multilingual Support for the Study of Language, Literature, and Translation.” <i>SoftwareX</i>, vol. 28, Dec. 2024, https://doi.org/10.1016/j.softx.2024.101931.'
+                )
+            elif settings['cite_as'] == self.tr('A piece of computer software'):
+                self.set_info(
+                    f'Ye Lei. <i>Wordless</i>. Version {self.main.ver}, <i>Github</i>, 1 Jul. {self.main.copyright_year}, https://github.com/BLKSerene/Wordless.'
+                )
 
 class Wl_Dialog_Donating(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):

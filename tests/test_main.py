@@ -44,7 +44,7 @@ def test_wl_dialog_citing():
     wl_dialog_citing = wl_main.Wl_Dialog_Citing(main)
     wl_dialog_citing.open()
     wl_dialog_citing.load_settings()
-    wl_dialog_citing.select_citation_sys_changed()
+    wl_dialog_citing.citation_changed()
 
 def test_wl_dialog_donating():
     wl_dialog_donating = wl_main.Wl_Dialog_Donating(main)
