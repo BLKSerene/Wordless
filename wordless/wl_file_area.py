@@ -308,7 +308,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
 
                 self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}'].append(file)
 
-            # Checkbox
+            # Checkboxes
             check_states = []
 
             for i in range(self.model().rowCount()):
@@ -377,7 +377,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
                     item_name.setCheckState(Qt.Unchecked)
 
                 self.model().setItem(i, 0, item_name)
-                self.model().setItem(i, 1, QStandardItem(file['path_original']))
+                self.model().setItem(i, 1, QStandardItem(file['path_orig']))
                 self.model().setItem(i, 2, QStandardItem(wl_conversion.to_encoding_text(self.main, file['encoding'])))
                 self.model().setItem(i, 3, QStandardItem(wl_conversion.to_lang_text(self.main, file['lang'])))
                 self.model().setItem(i, 4, QStandardItem(wl_conversion.to_yes_no_text(file['tokenized'])))
@@ -437,7 +437,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
         files = self.main.settings_custom['file_area'][f'files_closed{self.settings_suffix}'].pop()
 
         dialog_open_files = Wl_Dialog_Open_Files(self.main)
-        dialog_open_files._add_files(list(dict.fromkeys([file['path_original'] for file in files])))
+        dialog_open_files._add_files(list(dict.fromkeys([file['path_orig'] for file in files])))
 
         self._open_files(files_to_open = dialog_open_files.table_files.files_to_open)
 
@@ -584,7 +584,7 @@ class Wl_Dialog_Open_Files(wl_dialogs.Wl_Dialog):
             self.main,
             new_file_paths = file_paths,
             file_paths = [
-                file['path_original']
+                file['path_orig']
                 for file in (
                     self.main.settings_custom['file_area'][f'files_open{self.main.tabs_file_area.currentWidget().settings_suffix}']
                     + self.table_files.files_to_open
@@ -769,7 +769,7 @@ class Table_Open_Files(wl_tables.Wl_Table_Add_Ins_Del_Clr):
             self.disable_updates()
 
             for i, file in enumerate(files):
-                self.model().setItem(i, 0, QStandardItem(file['path_original']))
+                self.model().setItem(i, 0, QStandardItem(file['path_orig']))
                 self.model().setItem(i, 1, QStandardItem(wl_conversion.to_encoding_text(self.main, file['encoding'])))
                 self.model().setItem(i, 2, QStandardItem(wl_conversion.to_lang_text(self.main, file['lang'])))
                 self.model().setItem(i, 3, QStandardItem(wl_conversion.to_yes_no_text(file['tokenized'])))
@@ -827,6 +827,157 @@ class Wl_Dialog_Opening_Nontext_Files(wl_dialogs.Wl_Dialog_Info):
 
         settings['display_warning_when_opening_nontext_files'] = self.checkbox_dont_show_this_again.isChecked()
 
+# Reference: https://github.com/python-openxml/python-docx/issues/40#issuecomment-1793226714
+def iter_block_items(blkcntnr):
+    for item in blkcntnr.iter_inner_content():
+        if isinstance(item, docx.text.paragraph.Paragraph):
+            yield item
+        elif isinstance(item, docx.table.Table):
+            for row in iter_visual_cells(item):
+                for cell in row:
+                    yield from iter_block_items(cell)
+
+# Reference: https://github.com/python-openxml/python-docx/issues/344#issuecomment-271390490
+def iter_visual_cells(table):
+    visual_cells = []
+    prior_tcs = set()
+
+    for row in table.rows:
+        visual_cells.append([])
+
+        for cell in row.cells:
+            if cell._tc in prior_tcs: # skip cells pointing to same `<w:tc>` element
+                continue
+            else:
+                visual_cells[-1].append(cell)
+
+                prior_tcs.add(cell._tc)
+
+    return visual_cells
+
+# Reference: https://stackoverflow.com/questions/51701626/how-to-extract-text-from-a-text-shape-within-a-group-shape-in-powerpoint-using
+def iter_slide_shapes(shapes):
+    texts = []
+
+    for shape in shapes:
+        if shape.shape_type == pptx.enum.shapes.MSO_SHAPE_TYPE.GROUP: # pylint: disable=no-member
+            iter_slide_shapes(shape)
+
+        if shape.has_text_frame:
+            texts.append(shape.text)
+
+    return texts
+
+LRC_TIME_TAGS_VALID = r'[0-9]{2}:[0-5][0-9][\.:][0-9]{2,3}'
+RE_LRC_TIME_TAGS_LINE_START = re.compile(r'^\[[^\]]+?\]')
+RE_LRC_TIME_TAGS_VALID = re.compile(fr'^\[{LRC_TIME_TAGS_VALID}\]$')
+RE_LRC_TIME_TAGS_WORDS = re.compile(fr'\<{LRC_TIME_TAGS_VALID}\>')
+
+def get_text_non_tmx(file):
+    file_path = file['path_orig']
+    file_ext = os.path.splitext(os.path.basename(file_path))[1].lower()
+
+    match file_ext:
+        # Text and XML files
+        case '.txt' | '.xml':
+            with open(file_path, 'r', encoding = file['encoding'], errors = 'replace') as f:
+                text = f.read()
+        # CSV files
+        case '.csv':
+            lines = []
+
+            with open(file_path, 'r', encoding = file['encoding'], errors = 'replace', newline = '') as f:
+                # Remove NULL bytes to avoid error
+                csv_reader = csv.reader([line.replace('\0', '') for line in f])
+
+                for row in csv_reader:
+                    lines.append('\t'.join(row))
+
+            text = '\n'.join(lines)
+        # Excel workbooks
+        case '.xlsx':
+            lines = []
+            workbook = openpyxl.load_workbook(file_path, data_only = True)
+
+            for worksheet_name in workbook.sheetnames:
+                worksheet = workbook[worksheet_name]
+
+                for row in worksheet.rows:
+                    cells = [
+                        # Numbers need to be converted to strings
+                        (str(cell.value) if cell.value is not None else '')
+                        for cell in row
+                    ]
+
+                    lines.append('\t'.join(cells))
+
+            text = '\n'.join(lines)
+        # HTML pages
+        case '.htm' | '.html':
+            with open(file_path, 'r', encoding = file['encoding'], errors = 'replace') as f:
+                soup = bs4.BeautifulSoup(f.read(), 'lxml')
+
+            text = soup.get_text()
+        # Lyrics files
+        case '.lrc':
+            lyrics = {}
+
+            with open(file_path, 'r', encoding = file['encoding'], errors = 'replace') as f:
+                for line in f:
+                    time_tags = []
+
+                    line = line.strip()
+
+                    # Extract time tags at the beginning of the line
+                    while (re_time_tag := RE_LRC_TIME_TAGS_LINE_START.search(line)):
+                        time_tags.append(re_time_tag.group())
+
+                        line = line[len(time_tags[-1]):].strip()
+
+                    # Strip word time tags
+                    line = RE_LRC_TIME_TAGS_WORDS.sub(r'', line)
+                    line = re.sub(r'\s{2,}', r' ', line).strip()
+
+                    for time_tag in time_tags:
+                        if RE_LRC_TIME_TAGS_VALID.search(time_tag):
+                            lyrics[time_tag] = line
+
+            text = '\n'.join((lyrics_line for _, lyrics_line in sorted(lyrics.items()))) + '\n'
+        # PDF files
+        case '.pdf':
+            reader = pypdf.PdfReader(file_path)
+            text = '\n'.join([page.extract_text() for page in reader.pages])
+        # PowerPoint presentations
+        case '.pptx':
+            texts = []
+            prs = pptx.Presentation(file_path)
+
+            for slide in prs.slides:
+                texts.extend(iter_slide_shapes(slide.shapes))
+
+            text = '\n'.join(texts)
+        # Word documents
+        # Reference: https://github.com/python-openxml/python-docx/issues/40#issuecomment-1793226714
+        case '.docx':
+            lines = []
+            doc = docx.Document(file_path)
+
+            for item in doc.iter_inner_content():
+                if isinstance(item, docx.text.paragraph.Paragraph):
+                    lines.append(item.text)
+                elif isinstance(item, docx.table.Table):
+                    for row in iter_visual_cells(item):
+                        cells = [
+                            ' '.join([cell_item.text for cell_item in iter_block_items(cell)])
+                            for cell in row
+                        ]
+
+                        lines.append('\t'.join(cells))
+
+            text = '\n'.join(lines)
+
+    return text
+
 class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(str, list)
 
@@ -844,7 +995,7 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                 file_name, file_ext = os.path.splitext(os.path.basename(file_path))
                 file_ext = file_ext.lower()
 
-                new_file = {'selected': True, 'path_original': file_path}
+                new_file = {'selected': True, 'path_orig': file_path}
 
                 # Check for duplicate file names
                 file_names = [
@@ -892,104 +1043,7 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
 
                 # Cleanse contents before language detection
                 if file_ext != '.tmx':
-                    match file_ext:
-                        case '.txt' | '.xml':
-                            with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace') as f:
-                                new_file['text'] = f.read()
-                        # CSV files
-                        case '.csv':
-                            lines = []
-
-                            with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace', newline = '') as f:
-                                # Remove NULL bytes to avoid error
-                                csv_reader = csv.reader([line.replace('\0', '') for line in f])
-
-                                for row in csv_reader:
-                                    lines.append('\t'.join(row))
-
-                            new_file['text'] = '\n'.join(lines)
-                        # Excel workbooks
-                        case '.xlsx':
-                            lines = []
-                            workbook = openpyxl.load_workbook(file_path, data_only = True)
-
-                            for worksheet_name in workbook.sheetnames:
-                                worksheet = workbook[worksheet_name]
-
-                                for row in worksheet.rows:
-                                    cells = [
-                                        # Numbers need to be converted to strings
-                                        (str(cell.value) if cell.value is not None else '')
-                                        for cell in row
-                                    ]
-
-                                    lines.append('\t'.join(cells))
-
-                            new_file['text'] = '\n'.join(lines)
-                        # HTML pages
-                        case '.htm' | '.html':
-                            with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace') as f:
-                                soup = bs4.BeautifulSoup(f.read(), 'lxml')
-
-                            new_file['text'] = soup.get_text()
-                        # Lyrics files
-                        case '.lrc':
-                            lyrics = {}
-                            RE_TIME_TAGS = r'[0-9]{2}:[0-5][0-9][\.:][0-9]{2,3}'
-
-                            with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace') as f:
-                                for line in f:
-                                    time_tags = []
-
-                                    line = line.strip()
-
-                                    # Extract time tags at the beginning of the line
-                                    while (re_time_tag := re.search(r'^\[[^\]]+?\]', line)):
-                                        time_tags.append(re_time_tag.group())
-
-                                        line = line[len(time_tags[-1]):].strip()
-
-                                    # Strip word time tags
-                                    line = re.sub(fr'\<{RE_TIME_TAGS}\>', r'', line)
-                                    line = re.sub(r'\s{2,}', r' ', line).strip()
-
-                                    for time_tag in time_tags:
-                                        if re.search(fr'^\[{RE_TIME_TAGS}\]$', time_tag):
-                                            lyrics[time_tag] = line
-
-                            new_file['text'] = '\n'.join((lyrics_line for _, lyrics_line in sorted(lyrics.items()))) + '\n'
-                        # PDF files
-                        case '.pdf':
-                            reader = pypdf.PdfReader(file_path)
-                            new_file['text'] = '\n'.join([page.extract_text() for page in reader.pages])
-                        # Powerpoint presentations
-                        case '.pptx':
-                            texts = []
-                            prs = pptx.Presentation(file_path)
-
-                            for slide in prs.slides:
-                                texts.extend(self.iter_slide_shapes(slide.shapes))
-
-                            new_file['text'] = '\n'.join(texts)
-                        # Word documents
-                        # Reference: https://github.com/python-openxml/python-docx/issues/40#issuecomment-1793226714
-                        case '.docx':
-                            lines = []
-                            doc = docx.Document(file_path)
-
-                            for item in doc.iter_inner_content():
-                                if isinstance(item, docx.text.paragraph.Paragraph):
-                                    lines.append(item.text)
-                                elif isinstance(item, docx.table.Table):
-                                    for row in self.iter_visual_cells(item):
-                                        cells = [
-                                            ' '.join([cell_item.text for cell_item in self.iter_block_items(cell)])
-                                            for cell in row
-                                        ]
-
-                                        lines.append('\t'.join(cells))
-
-                            new_file['text'] = '\n'.join(lines)
+                    new_file['text'] = get_text_non_tmx(new_file)
 
                     if self.main.settings_custom['file_area']['dialog_open_files']['auto_detect_langs']:
                         new_file['lang'] = wl_detection.detect_lang_text(self.main, new_file['text'])
@@ -1000,18 +1054,24 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                 # Translation memory files
                 else:
                     lines_src = []
-                    lines_target = []
+                    lines_tgt = []
 
                     new_file_src = copy.deepcopy(new_file)
                     new_file_tgt = copy.deepcopy(new_file)
 
+                    new_file_src['tmx_type'] = 'src'
+                    new_file_tgt['tmx_type'] = 'tgt'
+
                     new_file_src['name'] = new_file_src['name_old'] = wl_checks_misc.check_new_name(f'{file_name}_source', file_names)
                     new_file_tgt['name'] = new_file_tgt['name_old'] = wl_checks_misc.check_new_name(f'{file_name}_target', file_names)
+
+                    new_file_src['path'] = wl_checks_misc.check_new_path(os.path.join(default_dir, f'{file_name}_source.txt'))
+                    new_file_tgt['path'] = wl_checks_misc.check_new_path(os.path.join(default_dir, f'{file_name}_target.txt'))
 
                     with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace') as f:
                         soup = bs4.BeautifulSoup(f.read(), 'lxml-xml')
 
-                    # Extract source and target languages
+                    # Identify source and target languages
                     elements_tuv = soup.select(r'tu:first-child tuv[xml\:lang]')
 
                     if len(elements_tuv) == 2:
@@ -1025,17 +1085,17 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                     else:
                         new_file_src['lang'] = new_file_tgt['lang'] = self.main.settings_custom['files']['default_settings']['lang']
 
+                    with open(new_file['path_orig'], 'r', encoding = new_file['encoding'], errors = 'replace') as f:
+                        soup = bs4.BeautifulSoup(f.read(), 'lxml-xml')
+
                     for elements_tu in soup.select('tu'):
-                        seg_src, seg_target = elements_tu.select('seg')
+                        seg_src, seg_tgt = elements_tu.select('seg')
 
                         lines_src.append(seg_src.get_text().replace(r'\n', ' ').strip())
-                        lines_target.append(seg_target.get_text().replace(r'\n', ' ').strip())
-
-                    new_file_src['path'] = wl_checks_misc.check_new_path(os.path.join(default_dir, f'{file_name}_source.txt'))
-                    new_file_tgt['path'] = wl_checks_misc.check_new_path(os.path.join(default_dir, f'{file_name}_target.txt'))
+                        lines_tgt.append(seg_tgt.get_text().replace(r'\n', ' ').strip())
 
                     new_file_src['text'] = '\n'.join(lines_src)
-                    new_file_tgt['text'] = '\n'.join(lines_target)
+                    new_file_tgt['text'] = '\n'.join(lines_tgt)
 
                     new_files.append(new_file_src)
                     new_files.append(new_file_tgt)
@@ -1048,47 +1108,6 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
         self.progress_updated.emit(self.tr('Updating table...'))
         self.worker_done.emit(err_msg, new_files)
 
-    # Reference: https://github.com/python-openxml/python-docx/issues/40#issuecomment-1793226714
-    def iter_block_items(self, blkcntnr):
-        for item in blkcntnr.iter_inner_content():
-            if isinstance(item, docx.text.paragraph.Paragraph):
-                yield item
-            elif isinstance(item, docx.table.Table):
-                for row in self.iter_visual_cells(item):
-                    for cell in row:
-                        yield from self.iter_block_items(cell)
-
-    # Reference: https://github.com/python-openxml/python-docx/issues/344#issuecomment-271390490
-    def iter_visual_cells(self, table):
-        visual_cells = []
-        prior_tcs = set()
-
-        for row in table.rows:
-            visual_cells.append([])
-
-            for cell in row.cells:
-                if cell._tc in prior_tcs: # skip cells pointing to same `<w:tc>` element
-                    continue
-                else:
-                    visual_cells[-1].append(cell)
-
-                    prior_tcs.add(cell._tc)
-
-        return visual_cells
-
-    # Reference: https://stackoverflow.com/questions/51701626/how-to-extract-text-from-a-text-shape-within-a-group-shape-in-powerpoint-using
-    def iter_slide_shapes(self, shapes):
-        texts = []
-
-        for shape in shapes:
-            if shape.shape_type == pptx.enum.shapes.MSO_SHAPE_TYPE.GROUP: # pylint: disable=no-member
-                self.iter_slide_shapes(shape)
-
-            if shape.has_text_frame:
-                texts.append(shape.text)
-
-        return texts
-
 class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(str, list)
 
@@ -1099,19 +1118,41 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
         try:
             len_files = len(self.files_to_open)
             # Regex for headers
-            re_tags_header = wl_matching.get_re_tags_with_tokens(self.main, tag_type = 'header')
+            tags_header = wl_matching.get_re_tags_with_tokens(self.main, tag_type = 'header')
+            RE_TAGS_HEADER = re.compile(tags_header)
 
             for i, file in enumerate(self.files_to_open):
                 self.progress_updated.emit(self.tr('Opening files... ({}/{})').format(i + 1, len_files))
+
+                # Re-decode texts in case encoding settings are manually changed
+                file_ext = os.path.splitext(os.path.basename(file['path_orig']))[1].lower()
+
+                if file_ext != '.tmx':
+                    file['text'] = get_text_non_tmx(file)
+                else:
+                    lines = []
+
+                    with open(file['path_orig'], 'r', encoding = file['encoding'], errors = 'replace') as f:
+                        soup = bs4.BeautifulSoup(f.read(), 'lxml-xml')
+
+                    for elements_tu in soup.select('tu'):
+                        seg_src, seg_tgt = elements_tu.select('seg')
+
+                        if file['tmx_type'] == 'src':
+                            lines.append(seg_src.get_text().replace(r'\n', ' ').strip())
+                        elif file['tmx_type'] == 'tgt':
+                            lines.append(seg_tgt.get_text().replace(r'\n', ' ').strip())
+
+                    file['text'] = '\n'.join(lines)
 
                 # Remove header tags
                 with open(file['path'], 'w', encoding = file['encoding']) as f:
                     text = file['text']
 
-                    if file['tagged'] and re_tags_header:
+                    if file['tagged'] and tags_header:
                         # Use regex here since BeautifulSoup will add tags including <html> and <body> to the text
                         # See: https://www.crummy.com/software/BeautifulSoup/bs4/doc/#differences-between-parsers
-                        text = re.sub(re_tags_header, '', text)
+                        text = RE_TAGS_HEADER.sub('', text)
 
                     f.write(text)
 

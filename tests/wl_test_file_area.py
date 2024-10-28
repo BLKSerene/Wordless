@@ -126,7 +126,7 @@ def wl_test_file_area(main):
                 'imports'
             )
 
-        assert new_file['path_original'] == wl_paths.get_normalized_path(file_path)
+        assert new_file['path_orig'] == wl_paths.get_normalized_path(file_path)
 
         if i < NUM_FILES_ALL or new_file['name'] in ['[amh] No language support', '[eng_gb] Tagged']:
             assert new_file['encoding'] == 'utf_8'
