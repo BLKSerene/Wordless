@@ -65,7 +65,7 @@ def check_file_paths_dup(main, new_file_paths, file_paths = None):
 
     if new_file_paths:
         if file_paths is None:
-            file_paths = [file['path_original'] for file in main.settings_custom['file_area']['files_open']]
+            file_paths = [file['path_orig'] for file in main.settings_custom['file_area']['files_open']]
 
         for new_file_path in new_file_paths:
             if new_file_path in file_paths + file_paths_ok:

@@ -26,7 +26,7 @@ def get_normalized_file_path(file_name):
 main = wl_test_init.Wl_Test_Main()
 main.settings_custom['file_area']['files_open'] = [
     {
-        'path_original': get_normalized_file_path('dup.txt')
+        'path_orig': get_normalized_file_path('dup.txt')
     }
 ]
 
