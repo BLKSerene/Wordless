@@ -217,7 +217,7 @@ def update_gui_file_types(err_msg, new_files):
         print(file_text_tgt.lang)
         print(tokens_tgt)
 
-        # Avoid loading the French model
+        # Avoid loading spaCy's French model
         assert file_text_tgt.lang == 'eng_gb'
         assert tokens_tgt == [[[['Bonjour', 'tout', 'le', 'monde', '!']]]]
         assert tags_tgt == [None] * 5

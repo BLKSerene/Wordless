@@ -18,6 +18,11 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
+## [3.6.0](https://github.com/BLKSerene/Wordless/releases/tag/3.6.0) - ??/??/2024
+### 📌 Bugfixes
+- File Area: Fix Open Files - Encoding
+- Utils: Fix Wordless's Japanese kanji tokenizer
+
 ## [3.5.0](https://github.com/BLKSerene/Wordless/releases/tag/3.5.0) - 07/01/2024
 ### 🎉 New Features
 - File Area: Add support for .lrc and .pptx files
