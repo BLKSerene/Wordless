@@ -19,6 +19,9 @@
 <div align="center"><h1>📄 Changelog</h1></div>
 
 ## [3.6.0](https://github.com/BLKSerene/Wordless/releases/tag/3.6.0) - ??/??/2024
+### 🎉 New Features
+- Utils: Add Stanza's Sindhi dependency parser
+
 ### 📌 Bugfixes
 - File Area: Fix Open Files - Encoding
 - Utils: Fix Wordless's Japanese kanji tokenizer
