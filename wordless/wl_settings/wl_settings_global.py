@@ -1211,6 +1211,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Stanza - Sanskrit dependency parser'): 'stanza_san',
                 _tr('wl_settings_global', 'Stanza - Scottish Gaelic dependency parser'): 'stanza_gla',
                 _tr('wl_settings_global', 'Stanza - Serbian (Latin script) dependency parser'): 'stanza_srp_latn',
+                _tr('wl_settings_global', 'Stanza - Sindhi dependency parser'): 'stanza_snd',
                 _tr('wl_settings_global', 'Stanza - Slovak dependency parser'): 'stanza_slk',
                 _tr('wl_settings_global', 'Stanza - Slovene dependency parser'): 'stanza_slv',
                 _tr('wl_settings_global', 'Stanza - Sorbian (Upper) dependency parser'): 'stanza_hsb',
@@ -3371,6 +3372,7 @@ def init_settings_global():
             'san': ['stanza_san'],
             'gla': ['stanza_gla'],
             'srp_latn': ['stanza_srp_latn'],
+            'snd': ['stanza_snd'],
             'slk': ['stanza_slk'],
 
             'slv': [
