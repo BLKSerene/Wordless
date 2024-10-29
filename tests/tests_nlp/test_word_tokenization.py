@@ -25,6 +25,8 @@ from wordless.wl_utils import wl_misc
 _, is_macos, _ = wl_misc.check_os()
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
+# Avoid loading spaCy's Japanese model when testing the Japanese kanji tokenizer
+main.settings_default['word_tokenization']['word_tokenizer_settings']['jpn'] = 'sudachipy_jpn_split_mode_a'
 
 test_word_tokenizers = []
 test_word_tokenizers_local = []

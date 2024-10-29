@@ -16,6 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import re
+
 import khmernltk
 import laonlp
 import pythainlp
@@ -114,29 +116,29 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                             tokens_multilevel[-1].append(main.pkuseg_word_tokenizer.cut(sentence))
                     elif word_tokenizer == 'wordless_zho_char':
                         for sentence in sentences:
+                            char_scripts = ''
                             tokens = []
-                            token_temp = ''
 
                             for char in sentence:
                                 if wl_checks_tokens.is_han(char):
-                                    if token_temp:
-                                        tokens.extend(wl_word_tokenize_flat(
-                                            main, token_temp,
-                                            lang = 'other'
-                                        ))
+                                    char_scripts += 'h'
+                                else:
+                                    char_scripts += 'o'
 
-                                    token_temp = ''
+                            while sentence:
+                                len_token = len(re.search(r'^h+|^o+', char_scripts).group())
+                                token = sentence[:len_token]
 
-                                    tokens.append(char)
-                                # Other languages
-                                elif not wl_checks_tokens.is_han(char):
-                                    token_temp += char
+                                if char_scripts.startswith('h'):
+                                    tokens.extend(token)
+                                else:
+                                    tokens.extend(wl_word_tokenize_flat(
+                                        main, token,
+                                        lang = 'other'
+                                    ))
 
-                            if token_temp:
-                                tokens.extend(wl_word_tokenize_flat(
-                                    main, token_temp,
-                                    lang = 'other'
-                                ))
+                                char_scripts = char_scripts[len_token:]
+                                sentence = sentence[len_token:]
 
                             tokens_multilevel[-1].append(tokens)
                 # Japanese
@@ -160,64 +162,37 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                     sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, line, lang = lang)
 
                     for sentence in sentences:
+                        char_scripts = ''
                         tokens = []
-                        token_temp = ''
-                        char_last_script = 'kanji'
 
                         for char in sentence:
                             if wl_checks_tokens.is_han(char):
-                                if token_temp:
-                                    if char_last_script == 'kana':
-                                        tokens.extend(wl_word_tokenize_flat(
-                                            main, token_temp,
-                                            lang = 'jpn'
-                                        ))
-                                    elif char_last_script == 'other':
-                                        tokens.extend(wl_word_tokenize_flat(
-                                            main, token_temp,
-                                            lang = 'other'
-                                        ))
-
-                                    token_temp = ''
-
-                                tokens.append(char)
-                                char_last_script = 'kanji'
-                            # Kana
+                                char_scripts += 'h'
                             elif wl_checks_tokens.is_kana(char):
-                                if token_temp and char_last_script == 'other':
-                                    tokens.extend(wl_word_tokenize_flat(
-                                        main, token_temp,
-                                        lang = 'other'
-                                    ))
-
-                                    token_temp = ''
-
-                                token_temp += char
-                                char_last_script = 'kana'
-                            # Other languages
+                                char_scripts += 'k'
                             else:
-                                if token_temp and char_last_script == 'kana':
-                                    tokens.extend(wl_word_tokenize_flat(
-                                        main, token_temp,
-                                        lang = 'jpn'
-                                    ))
+                                char_scripts += 'o'
 
-                                    token_temp = ''
+                        while sentence:
+                            len_token = len(re.search(r'^h+|^k+|^o+', char_scripts).group())
+                            token = sentence[:len_token]
 
-                                token_temp += char
-                                char_last_script = 'other'
-
-                        if token_temp:
-                            if char_last_script == 'kana':
+                            if char_scripts.startswith('h'):
+                                tokens.extend(token)
+                            elif char_scripts.startswith('k'):
                                 tokens.extend(wl_word_tokenize_flat(
-                                    main, token_temp,
-                                    lang = 'jpn'
+                                    main, token,
+                                    lang = 'jpn',
+                                    word_tokenizer = main.settings_default['word_tokenization']['word_tokenizer_settings']['jpn']
                                 ))
-                            elif char_last_script == 'other':
+                            else:
                                 tokens.extend(wl_word_tokenize_flat(
-                                    main, token_temp,
+                                    main, token,
                                     lang = 'other'
                                 ))
+
+                            char_scripts = char_scripts[len_token:]
+                            sentence = sentence[len_token:]
 
                         tokens_multilevel[-1].append(tokens)
                 # Khmer
