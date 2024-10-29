@@ -112,7 +112,7 @@ def griess_dp(main, freqs):
 def juillands_d(main, freqs):
     freqs = numpy.array(freqs)
 
-    if numpy.sum(freqs) == 0:
+    if numpy.sum(freqs) == 0 or len(freqs) == 1:
         d = 0
     else:
         cv = numpy.std(freqs) / numpy.mean(freqs)
