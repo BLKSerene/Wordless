@@ -55,6 +55,8 @@
         <img src="https://img.shields.io/github/license/BLKSerene/Wordless?label=%E8%AE%B8%E5%8F%AF" alt="许可"></a>
     <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FBLKSerene%2FWordless?ref=badge_shield">
         <img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FBLKSerene%2FWordless.svg?type=shield" alt="FOSSA Status"></a>
+    <a href="https://doi.org/10.1016/j.softx.2024.101931">
+        <img src="https://img.shields.io/badge/DOI-10.1016%2Fj.softx.2024.101931-blue" alt="DOI"></a>
 </div>
 
 <br>
