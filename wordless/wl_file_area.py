@@ -799,17 +799,17 @@ class Wl_Dialog_Opening_Nontext_Files(wl_dialogs.Wl_Dialog_Info):
             self
         )
 
-        self.checkbox_dont_show_this_again = QCheckBox(self.tr('Do not show this again'), self)
+        self.checkbox_do_not_show_this_again = QCheckBox(self.tr('Do not show this again'), self)
         self.button_proceed = QPushButton(self.tr('Proceed'), self)
         self.button_abort = QPushButton(self.tr('Abort'), self)
 
-        self.checkbox_dont_show_this_again.stateChanged.connect(self.dont_show_this_again_changed)
+        self.checkbox_do_not_show_this_again.stateChanged.connect(self.do_not_show_this_again_changed)
         self.button_proceed.clicked.connect(self.accept)
         self.button_abort.clicked.connect(self.reject)
 
         self.layout_info.addWidget(self.label_opening_non_text_files, 0, 0)
 
-        self.layout_buttons.addWidget(self.checkbox_dont_show_this_again, 0, 0)
+        self.layout_buttons.addWidget(self.checkbox_do_not_show_this_again, 0, 0)
         self.layout_buttons.addWidget(self.button_proceed, 0, 2)
         self.layout_buttons.addWidget(self.button_abort, 0, 3)
 
@@ -820,12 +820,12 @@ class Wl_Dialog_Opening_Nontext_Files(wl_dialogs.Wl_Dialog_Info):
     def load_settings(self):
         settings = copy.deepcopy(self.main.settings_custom['files']['misc_settings'])
 
-        self.checkbox_dont_show_this_again.setChecked(settings['display_warning_when_opening_nontext_files'])
+        self.checkbox_do_not_show_this_again.setChecked(not settings['display_warning_when_opening_nontext_files'])
 
-    def dont_show_this_again_changed(self):
+    def do_not_show_this_again_changed(self):
         settings = self.main.settings_custom['files']['misc_settings']
 
-        settings['display_warning_when_opening_nontext_files'] = self.checkbox_dont_show_this_again.isChecked()
+        settings['display_warning_when_opening_nontext_files'] = not self.checkbox_do_not_show_this_again.isChecked()
 
 # Reference: https://github.com/python-openxml/python-docx/issues/40#issuecomment-1793226714
 def iter_block_items(blkcntnr):

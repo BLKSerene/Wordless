@@ -24,6 +24,7 @@
 
 ### 📌 Bugfixes
 - File Area: Fix Open Files - Encoding
+- File Area: Fix Open Files - Opening Non-text Files - Do not show this again
 - Utils: Fix Wordless's Japanese kanji tokenizer
 
 ## [3.5.0](https://github.com/BLKSerene/Wordless/releases/tag/3.5.0) - 07/01/2024
