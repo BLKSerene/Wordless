@@ -63,9 +63,9 @@ def test_im3():
     assert_zeros(wl_measures_effect_size.im3)
 
 # Reference: Smadja, F., McKeown, K. R., & Hatzivassiloglou, V. (1996). Translating collocations for bilingual lexicons: A statistical approach. Computational Linguistics, 22(1), pp. 1–38. (p. 13)
-def test_dices_coeff():
+def test_dice_sorensen_coeff():
     numpy.testing.assert_array_equal(
-        numpy.round(wl_measures_effect_size.dices_coeff(
+        numpy.round(wl_measures_effect_size.dice_sorensen_coeff(
             main,
             numpy.array([130] * 2),
             numpy.array([3121 - 130] * 2),
@@ -75,7 +75,7 @@ def test_dices_coeff():
         numpy.array([0.08] * 2)
     )
 
-    assert_zeros(wl_measures_effect_size.dices_coeff)
+    assert_zeros(wl_measures_effect_size.dice_sorensen_coeff)
 
 # Reference: Hofland, K., & Johanson, S. (1982). Word frequencies in British and American English. Norwegian Computing Centre for the Humanities. (p. 471)
 def test_diff_coeff():
@@ -110,7 +110,13 @@ def test_kilgarriffs_ratio():
 
     assert_zeros(wl_measures_effect_size.kilgarriffs_ratio, result = 1)
 
-# Reference: Hardie, A. (2014, April 28). Log ratio: An informal introduction. ESRC Centre for Corpus Approaches to Social Science (CASS). http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/.
+def test_log_dice():
+    assert_zeros(wl_measures_effect_size.log_dice, result = 14)
+
+def test_lfmd():
+    assert_zeros(wl_measures_effect_size.lfmd)
+
+# Reference: Hardie, A. (2014, April 28). Log Ratio: An informal introduction. ESRC Centre for Corpus Approaches to Social Science (CASS). http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/.
 def test_log_ratio():
     numpy.testing.assert_array_equal(
         wl_measures_effect_size.log_ratio(
@@ -133,12 +139,6 @@ def test_log_ratio():
         ),
         numpy.array([float('-inf'), float('inf'), 0])
     )
-
-def test_lfmd():
-    assert_zeros(wl_measures_effect_size.lfmd)
-
-def test_log_dice():
-    assert_zeros(wl_measures_effect_size.log_dice, result = 14)
 
 def test_mi_log_f():
     assert_zeros(wl_measures_effect_size.mi_log_f)
@@ -164,7 +164,7 @@ def test_md():
 def test_me():
     assert_zeros(wl_measures_effect_size.me)
 
-# Reference: Dunning, T. E. (1998). Finding structure in text, genome and other symbolic sequences [Doctoral dissertation, University of Sheffield]. arXiv. arxiv.org/pdf/1207.1847.pdf (p. 51)
+# Reference: Dunning, T. E. (1998). Finding structure in text, genome and other symbolic sequences [Doctoral dissertation, University of Sheffield]. arXiv. https://arxiv.org/pdf/1207.1847 (p. 51)
 def test_mi():
     numpy.testing.assert_array_equal(
         numpy.round(wl_measures_effect_size.mi(
@@ -221,6 +221,9 @@ def test_pmi():
 def test_poisson_collocation_measure():
     assert_zeros(wl_measures_effect_size.poisson_collocation_measure)
 
+def test_im2():
+    assert_zeros(wl_measures_effect_size.im2)
+
 # Reference: Church, K. W., & Gale, W. A. (1991, September 29–October 1). Concordances for parallel text [Paper presentation]. Using Corpora: Seventh Annual Conference of the UW Centre for the New OED and Text Research, St. Catherine's College, Oxford, United Kingdom.
 def test_squared_phi_coeff():
     numpy.testing.assert_array_equal(
@@ -239,13 +242,13 @@ def test_squared_phi_coeff():
 if __name__ == '__main__':
     test_pct_diff()
     test_im3()
-    test_dices_coeff()
+    test_dice_sorensen_coeff()
     test_diff_coeff()
     test_jaccard_index()
     test_kilgarriffs_ratio()
-    test_log_ratio()
-    test_lfmd()
     test_log_dice()
+    test_lfmd()
+    test_log_ratio()
     test_mi_log_f()
     test_min_sensitivity()
     test_md()
@@ -254,4 +257,5 @@ if __name__ == '__main__':
     test_odds_ratio()
     test_pmi()
     test_poisson_collocation_measure()
+    test_im2()
     test_squared_phi_coeff()

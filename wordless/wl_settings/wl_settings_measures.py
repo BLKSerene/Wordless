@@ -31,8 +31,8 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.settings_default = self.main.settings_default['measures']['readability']
         self.settings_custom = self.main.settings_custom['measures']['readability']
 
-        # Al-Heeti's Readability Prediction Formula
-        self.group_box_rd = QGroupBox(self.tr("Al-Heeti's Readability Prediction Formula"), self)
+        # Al-Heeti's Readability Formula
+        self.group_box_rd = QGroupBox(self.tr("Al-Heeti's Readability Formula"), self)
 
         self.label_rd_variant = QLabel(self.tr('Variant:'), self)
         self.combo_box_rd_variant = wl_boxes.Wl_Combo_Box(self)
@@ -207,16 +207,16 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
 
         self.group_box_nws.layout().setColumnStretch(2, 1)
 
-        # Spache Grade Level
-        self.group_box_spache_grade_lvl = QGroupBox(self.tr('Spache Grade Level'), self)
+        # Spache Readability Formula
+        self.group_box_spache_readability_formula = QGroupBox(self.tr('Spache Readability Formula'), self)
 
         self.checkbox_use_rev_formula = QCheckBox(self.tr('Use revised formula'), self)
 
-        self.group_box_spache_grade_lvl.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_spache_grade_lvl.layout().addWidget(self.checkbox_use_rev_formula, 0, 0)
+        self.group_box_spache_readability_formula.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_spache_readability_formula.layout().addWidget(self.checkbox_use_rev_formula, 0, 0)
 
-        # Tränkle & Bailer's Readability Formula
-        self.group_box_trankle_bailers_readability_formula = QGroupBox(self.tr("Tränkle & Bailer's Readability Formula"), self)
+        # Tränkle-Bailer's Readability Formula
+        self.group_box_trankle_bailers_readability_formula = QGroupBox(self.tr("Tränkle-Bailer's Readability Formula"), self)
 
         self.label_trankle_bailers_readability_formula_variant = QLabel(self.tr('Variant:'), self)
         self.combo_box_trankle_bailers_readability_formula_variant = wl_boxes.Wl_Combo_Box(self)
@@ -242,7 +242,7 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.layout().addWidget(self.group_box_lorge_readability_index, 9, 0)
         self.layout().addWidget(self.group_box_nwl, 10, 0)
         self.layout().addWidget(self.group_box_nws, 11, 0)
-        self.layout().addWidget(self.group_box_spache_grade_lvl, 12, 0)
+        self.layout().addWidget(self.group_box_spache_readability_formula, 12, 0)
         self.layout().addWidget(self.group_box_trankle_bailers_readability_formula, 13, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
@@ -262,7 +262,7 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         else:
             settings = copy.deepcopy(self.settings_custom)
 
-        # Al-Heeti's Readability Prediction Formula
+        # Al-Heeti's Readability Formula
         self.combo_box_rd_variant.setCurrentText(settings['rd']['variant'])
 
         # Automated Readability Index
@@ -300,14 +300,14 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         # neue Wiener Sachtextformel
         self.combo_box_nws_variant.setCurrentText(settings['nws']['variant'])
 
-        # Spache Grade Level
-        self.checkbox_use_rev_formula.setChecked(settings['spache_grade_lvl']['use_rev_formula'])
+        # Spache Readability Formula
+        self.checkbox_use_rev_formula.setChecked(settings['spache_readability_formula']['use_rev_formula'])
 
-        # Tränkle & Bailer's Readability Formula
+        # Tränkle-Bailer's Readability Formula
         self.combo_box_trankle_bailers_readability_formula_variant.setCurrentText(settings['trankle_bailers_readability_formula']['variant'])
 
     def apply_settings(self):
-        # Al-Heeti's Readability Prediction Formula
+        # Al-Heeti's Readability Formula
         self.settings_custom['rd']['variant'] = self.combo_box_rd_variant.currentText()
 
         # Automated Readability Index
@@ -345,10 +345,10 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         # neue Wiener Sachtextformel
         self.settings_custom['nws']['variant'] = self.combo_box_nws_variant.currentText()
 
-        # Spache Grade Level
-        self.settings_custom['spache_grade_lvl']['use_rev_formula'] = self.checkbox_use_rev_formula.isChecked()
+        # Spache Readability Formula
+        self.settings_custom['spache_readability_formula']['use_rev_formula'] = self.checkbox_use_rev_formula.isChecked()
 
-        # Tränkle & Bailer's Readability Formula
+        # Tränkle-Bailer's Readability Formula
         self.settings_custom['trankle_bailers_readability_formula']['variant'] = self.combo_box_trankle_bailers_readability_formula_variant.currentText()
 
         return True
@@ -760,33 +760,33 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
 
         self.group_box_students_t_test_2_sample.layout().setColumnStretch(2, 1)
 
-        # z-score
-        self.group_box_z_score = QGroupBox(self.tr('z-score'), self)
+        # Z-test
+        self.group_box_z_test = QGroupBox(self.tr('Z-test'), self)
 
         (
-            self.label_z_score_direction,
-            self.combo_box_z_score_direction
+            self.label_z_test_direction,
+            self.combo_box_z_test_direction
         ) = wl_widgets.wl_widgets_direction(self)
 
-        self.group_box_z_score.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_z_score.layout().addWidget(self.label_z_score_direction, 0, 0)
-        self.group_box_z_score.layout().addWidget(self.combo_box_z_score_direction, 0, 1)
+        self.group_box_z_test.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_z_test.layout().addWidget(self.label_z_test_direction, 0, 0)
+        self.group_box_z_test.layout().addWidget(self.combo_box_z_test_direction, 0, 1)
 
-        self.group_box_z_score.layout().setColumnStretch(2, 1)
+        self.group_box_z_test.layout().setColumnStretch(2, 1)
 
-        # z-score (Berry-Rogghe)
-        self.group_box_z_score_berry_rogghe = QGroupBox(self.tr('z-score (Berry-Rogghe)'), self)
+        # Z-test (Berry-Rogghe)
+        self.group_box_z_test_berry_rogghe = QGroupBox(self.tr('Z-test (Berry-Rogghe)'), self)
 
         (
-            self.label_z_score_berry_rogghe_direction,
-            self.combo_box_z_score_berry_rogghe_direction
+            self.label_z_test_berry_rogghe_direction,
+            self.combo_box_z_test_berry_rogghe_direction
         ) = wl_widgets.wl_widgets_direction(self)
 
-        self.group_box_z_score_berry_rogghe.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_z_score_berry_rogghe.layout().addWidget(self.label_z_score_berry_rogghe_direction, 0, 0)
-        self.group_box_z_score_berry_rogghe.layout().addWidget(self.combo_box_z_score_berry_rogghe_direction, 0, 1)
+        self.group_box_z_test_berry_rogghe.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_z_test_berry_rogghe.layout().addWidget(self.label_z_test_berry_rogghe_direction, 0, 0)
+        self.group_box_z_test_berry_rogghe.layout().addWidget(self.combo_box_z_test_berry_rogghe_direction, 0, 1)
 
-        self.group_box_z_score_berry_rogghe.layout().setColumnStretch(2, 1)
+        self.group_box_z_test_berry_rogghe.layout().setColumnStretch(2, 1)
 
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_fishers_exact_test, 0, 0)
@@ -795,8 +795,8 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
         self.layout().addWidget(self.group_box_pearsons_chi_squared_test, 3, 0)
         self.layout().addWidget(self.group_box_students_t_test_1_sample, 4, 0)
         self.layout().addWidget(self.group_box_students_t_test_2_sample, 5, 0)
-        self.layout().addWidget(self.group_box_z_score, 6, 0)
-        self.layout().addWidget(self.group_box_z_score_berry_rogghe, 7, 0)
+        self.layout().addWidget(self.group_box_z_test, 6, 0)
+        self.layout().addWidget(self.group_box_z_test_berry_rogghe, 7, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(8, 1)
@@ -830,11 +830,11 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
         self.combo_box_students_t_test_2_sample_use_data.setCurrentText(settings['students_t_test_2_sample']['use_data'])
         self.combo_box_students_t_test_2_sample_direction.setCurrentText(settings['students_t_test_2_sample']['direction'])
 
-        # z-score
-        self.combo_box_z_score_direction.setCurrentText(settings['z_score']['direction'])
+        # Z-test
+        self.combo_box_z_test_direction.setCurrentText(settings['z_test']['direction'])
 
-        # z-score (Berry-Rogghe)
-        self.combo_box_z_score_berry_rogghe_direction.setCurrentText(settings['z_score_berry_rogghe']['direction'])
+        # Z-test (Berry-Rogghe)
+        self.combo_box_z_test_berry_rogghe_direction.setCurrentText(settings['z_test_berry_rogghe']['direction'])
 
     def apply_settings(self):
         # Fisher's Exact Test
@@ -860,11 +860,11 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
         self.settings_custom['students_t_test_2_sample']['use_data'] = self.combo_box_students_t_test_2_sample_use_data.currentText()
         self.settings_custom['students_t_test_2_sample']['direction'] = self.combo_box_students_t_test_2_sample_direction.currentText()
 
-        # z-score
-        self.settings_custom['z_score']['direction'] = self.combo_box_z_score_direction.currentText()
+        # Z-test
+        self.settings_custom['z_test']['direction'] = self.combo_box_z_test_direction.currentText()
 
-        # z-score (Berry-Rogghe)
-        self.settings_custom['z_score_berry_rogghe']['direction'] = self.combo_box_z_score_berry_rogghe_direction.currentText()
+        # Z-test (Berry-Rogghe)
+        self.settings_custom['z_test_berry_rogghe']['direction'] = self.combo_box_z_test_berry_rogghe_direction.currentText()
 
         return True
 

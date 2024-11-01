@@ -36,7 +36,7 @@ def _get_dists(tokens, search_term):
 
     return dists
 
-# Average Logarithmic Distance
+# Average logarithmic distance
 def ald(main, tokens, search_term):
     dists = _get_dists(tokens, search_term)
 
@@ -47,7 +47,7 @@ def ald(main, tokens, search_term):
 
     return ald
 
-# Average Reduced Frequency
+# Average reduced frequency
 def arf(main, tokens, search_term):
     dists = _get_dists(tokens, search_term)
 
@@ -59,7 +59,7 @@ def arf(main, tokens, search_term):
 
     return arf
 
-# Average Waiting Time
+# Average waiting time
 def awt(main, tokens, search_term):
     dists = _get_dists(tokens, search_term)
 
@@ -121,7 +121,7 @@ def juillands_d(main, freqs):
     return max(0, d)
 
 # Lyne's D₃
-# Reference: Lyne, A. A. (1985). Dispersion. In The vocabulary of French business correspondence: Word frequencies, collocations, and problems of lexicometric method (pp. 101–124). Slatkine/Champion.
+# Reference: Lyne, A. A. (1985). Dispersion. In A. A. Lyne (Ed.), The vocabulary of French business correspondence: Word frequencies, collocations, and problems of lexicometric method (pp. 101–124). Slatkine.
 def lynes_d3(main, freqs):
     freqs = numpy.array(freqs)
 
@@ -146,7 +146,7 @@ def rosengrens_s(main, freqs):
     return s
 
 # Zhang's Distributional Consistency
-# Reference: Zhang, H., Huang, C., & Yu, S. (2004). Distributional consistency: As a general method for defining a core lexicon. In M. T. Lino, M. F. Xavier, F. Ferreira, R. Costa, & R. Silva (Eds.), Proceedings of Fourth International Conference on Language Resources and Evaluation (pp. 1119–1122). European Language Resources Association.
+# Reference: Zhang, H., Huang, C., & Yu, S. (2004). Distributional Consistency: As a general method for defining a core lexicon. In M. T. Lino, M. F. Xavier, F. Ferreira, R. Costa, & R. Silva (Eds.), Proceedings of Fourth International Conference on Language Resources and Evaluation (pp. 1119–1122). European Language Resources Association.
 def zhangs_distributional_consistency(main, freqs):
     freqs = numpy.array(freqs)
 

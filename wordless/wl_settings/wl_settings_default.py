@@ -2318,7 +2318,7 @@ def init_settings_default(main):
                     'variant': '1'
                 },
 
-                'spache_grade_lvl': {
+                'spache_readability_formula': {
                     'use_rev_formula': True
                 },
 
@@ -2407,11 +2407,11 @@ def init_settings_default(main):
                     'direction': _tr('wl_settings_default', 'Two-tailed')
                 },
 
-                'z_score': {
+                'z_test': {
                     'direction': _tr('wl_settings_default', 'Two-tailed')
                 },
 
-                'z_score_berry_rogghe': {
+                'z_test_berry_rogghe': {
                     'direction': _tr('wl_settings_default', 'Two-tailed')
                 }
             },

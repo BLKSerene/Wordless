@@ -70,7 +70,7 @@ def get_alt(direction):
 
     return alt
 
-# Fisher's Exact Test
+# Fisher's exact test
 # References: Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference (pp. 188–200). The South–Central Regional SAS Users' Group.
 def fishers_exact_test(main, o11s, o12s, o21s, o22s):
     settings = main.settings_custom['measures']['statistical_significance']['fishers_exact_test']
@@ -85,7 +85,7 @@ def fishers_exact_test(main, o11s, o12s, o21s, o22s):
 
     return [None] * len(p_vals), p_vals
 
-# Log-likelihood Ratio
+# Log-likelihood ratio test
 # References: Dunning, T. E. (1993). Accurate methods for the statistics of surprise and coincidence. Computational Linguistics, 19(1), 61–74.
 def log_likelihood_ratio_test(main, o11s, o12s, o21s, o22s):
     settings = main.settings_custom['measures']['statistical_significance']['log_likelihood_ratio_test']
@@ -108,7 +108,7 @@ def log_likelihood_ratio_test(main, o11s, o12s, o21s, o22s):
 
     return gs, p_vals
 
-# Mann-Whitney U Test
+# Mann-Whitney U test
 # References: Kilgarriff, A. (2001). Comparing corpora. International Journal of Corpus Linguistics, 6(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil
 def mann_whitney_u_test(main, freqs_x1s, freqs_x2s):
     settings = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']
@@ -129,10 +129,10 @@ def mann_whitney_u_test(main, freqs_x1s, freqs_x2s):
 
     return u1s, p_vals
 
-# Pearson's Chi-squared Test
+# Pearson's chi-squared test
 # References:
 #     Hofland, K., & Johanson, S. (1982). Word frequencies in British and American English. Norwegian Computing Centre for the Humanities.
-#     Oakes, M. P. (1998). Statistics for Corpus Linguistics. Edinburgh University Press.
+#     Oakes, M. P. (1998). Statistics for corpus linguistics. Edinburgh University Press.
 def pearsons_chi_squared_test(main, o11s, o12s, o21s, o22s):
     settings = main.settings_custom['measures']['statistical_significance']['pearsons_chi_squared_test']
 
@@ -202,7 +202,7 @@ def students_t_test_2_sample(main, freqs_x1s, freqs_x2s):
 
     return t_stats, p_vals
 
-def _z_score_p_val(z_scores, direction):
+def _z_test_p_val(z_scores, direction):
     p_vals = numpy.empty_like(z_scores)
 
     if direction == _tr('wl_measures_statistical_significance', 'Two-tailed'):
@@ -217,23 +217,23 @@ def _z_score_p_val(z_scores, direction):
 
     return p_vals
 
-# z-score
+# Z-test
 # References: Dennis, S. F. (1964). The construction of a thesaurus automatically from a sample of text. In M. E. Stevens, V. E. Giuliano, & L. B. Heilprin (Eds.), Proceedings of the symposium on statistical association methods for mechanized documentation (pp. 61–148). National Bureau of Standards.
-def z_score(main, o11s, o12s, o21s, o22s):
-    settings = main.settings_custom['measures']['statistical_significance']['z_score']
+def z_test(main, o11s, o12s, o21s, o22s):
+    settings = main.settings_custom['measures']['statistical_significance']['z_test']
 
     oxxs = o11s + o12s + o21s + o22s
     e11s, _, _, _ = get_freqs_expected(o11s, o12s, o21s, o22s)
 
     z_scores = wl_measure_utils.numpy_divide(o11s - e11s, numpy.sqrt(e11s * (1 - wl_measure_utils.numpy_divide(e11s, oxxs))))
-    p_vals = _z_score_p_val(z_scores, settings['direction'])
+    p_vals = _z_test_p_val(z_scores, settings['direction'])
 
     return z_scores, p_vals
 
-# z-score (Berry-Rogghe)
+# Z-test (Berry-Rogghe)
 # References: Berry-Rogghe, G. L. M. (1973). The computation of collocations and their relevance in lexical studies. In A. J. Aiken, R. W. Bailey, & N. Hamilton-Smith (Eds.), The computer and literary studies (pp. 103–112). Edinburgh University Press.
-def z_score_berry_rogghe(main, o11s, o12s, o21s, o22s, span):
-    settings = main.settings_custom['measures']['statistical_significance']['z_score_berry_rogghe']
+def z_test_berry_rogghe(main, o11s, o12s, o21s, o22s, span):
+    settings = main.settings_custom['measures']['statistical_significance']['z_test_berry_rogghe']
 
     o1xs, o2xs, ox1s, _ = get_freqs_marginal(o11s, o12s, o21s, o22s)
 
@@ -242,6 +242,6 @@ def z_score_berry_rogghe(main, o11s, o12s, o21s, o22s, span):
     es = ps * o1xs * span
 
     z_scores = wl_measure_utils.numpy_divide(o11s - es, numpy.sqrt(es * (1 - ps)))
-    p_vals = _z_score_p_val(z_scores, settings['direction'])
+    p_vals = _z_test_p_val(z_scores, settings['direction'])
 
     return z_scores, p_vals

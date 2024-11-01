@@ -3546,8 +3546,7 @@ def init_settings_global():
             'zul': ['vader_zul']
         },
 
-        # Only people's names are capitalized
-        # Case of measure names are preserved
+        # Only people's names are capitalized and case of measure names are preserved as in original papers
         'mapping_measures': {
             'dispersion': {
                 _tr('wl_settings_global', 'None'): 'none',
@@ -3578,12 +3577,12 @@ def init_settings_global():
                 _tr('wl_settings_global', 'None'): 'none',
                 _tr('wl_settings_global', "Fisher's exact test"): 'fishers_exact_test',
                 _tr('wl_settings_global', 'Log-likelihood ratio test'): 'log_likelihood_ratio_test',
-                _tr('wl_settings_global', 'Mann-Whitney U Test'): 'mann_whitney_u_test',
+                _tr('wl_settings_global', 'Mann-Whitney U test'): 'mann_whitney_u_test',
                 _tr('wl_settings_global', "Pearson's chi-squared test"): 'pearsons_chi_squared_test',
                 _tr('wl_settings_global', "Student's t-test (1-sample)"): 'students_t_test_1_sample',
                 _tr('wl_settings_global', "Student's t-test (2-sample)"): 'students_t_test_2_sample',
-                _tr('wl_settings_global', 'z-score'): 'z_score',
-                _tr('wl_settings_global', 'z-score (Berry-Rogghe)'): 'z_score_berry_rogghe'
+                _tr('wl_settings_global', 'Z-test'): 'z_test',
+                _tr('wl_settings_global', 'Z-test (Berry-Rogghe)'): 'z_test_berry_rogghe'
             },
 
             'bayes_factor': {
@@ -3599,9 +3598,9 @@ def init_settings_global():
                 _tr('wl_settings_global', "Dice's coefficient"): 'dices_coeff',
                 _tr('wl_settings_global', 'Difference coefficient'): 'diff_coeff',
                 _tr('wl_settings_global', 'Jaccard index'): 'jaccard_index',
-                _tr('wl_settings_global', 'Log-frequency biased MD'): 'lfmd',
                 _tr('wl_settings_global', "Kilgarriff's ratio"): 'kilgarriffs_ratio',
                 'logDice': 'log_dice',
+                _tr('wl_settings_global', 'Log-frequency biased MD'): 'lfmd',
                 _tr('wl_settings_global', 'Log ratio'): 'log_ratio',
                 'MI.log-f': 'mi_log_f',
                 _tr('wl_settings_global', 'Minimum sensitivity'): 'min_sensitivity',
@@ -3611,6 +3610,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Odds ratio'): 'or',
                 _tr('wl_settings_global', 'Pointwise mutual information'): 'pmi',
                 _tr('wl_settings_global', 'Poisson collocation measure'): 'poisson_collocation_measure',
+                _tr('wl_settings_global', 'Squared association ratio'): 'im2',
                 _tr('wl_settings_global', 'Squared phi coefficient'): 'squared_phi_coeff'
             }
         },
@@ -3791,17 +3791,17 @@ def init_settings_global():
                 'keyword_extractor': True
             },
 
-            'z_score': {
+            'z_test': {
                 'col_text': _tr('wl_settings_global', 'z-score'),
-                'func': wl_measures_statistical_significance.z_score,
+                'func': wl_measures_statistical_significance.z_test,
                 'to_sections': False,
                 'collocation_extractor': True,
                 'keyword_extractor': True
             },
 
-            'z_score_berry_rogghe': {
+            'z_test_berry_rogghe': {
                 'col_text': _tr('wl_settings_global', 'z-score'),
-                'func': wl_measures_statistical_significance.z_score_berry_rogghe,
+                'func': wl_measures_statistical_significance.z_test_berry_rogghe,
                 'to_sections': False,
                 'collocation_extractor': True,
                 'keyword_extractor': False
@@ -3847,9 +3847,9 @@ def init_settings_global():
                 'func': wl_measures_effect_size.im3
             },
 
-            'dices_coeff': {
-                'col_text': _tr('wl_settings_global', "Dice's Coefficient"),
-                'func': wl_measures_effect_size.dices_coeff
+            'dice_sorensen_coeff': {
+                'col_text': _tr('wl_settings_global', 'Dice-Sørensen coefficient'),
+                'func': wl_measures_effect_size.dice_sorensen_coeff
             },
 
             'diff_coeff': {
@@ -3920,6 +3920,11 @@ def init_settings_global():
             'poisson_collocation_measure': {
                 'col_text': _tr('wl_settings_global', 'Poisson Collocation Measure'),
                 'func': wl_measures_effect_size.poisson_collocation_measure
+            },
+
+            'im2': {
+                'col_text': 'IM²',
+                'func': wl_measures_effect_size.im2
             },
 
             'squared_phi_coeff': {

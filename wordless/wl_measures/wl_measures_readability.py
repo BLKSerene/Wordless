@@ -182,7 +182,7 @@ def get_num_sentences_sample(text, sample, sample_start):
         + 1
     )
 
-# Al-Heeti's Readability Prediction Formula
+# Al-Heeti's readability formula
 # Reference: Al-Heeti, K. N. (1984). Judgment analysis technique applied to readability prediction of Arabic reading material [Doctoral dissertation, University of Northern Colorado] (pp. 102, 104, 106). ProQuest Dissertations and Theses Global.
 def rd(main, text):
     if text.lang == 'ara':
@@ -256,7 +256,7 @@ def ari(main, text):
 
     return ari
 
-# Bormuth's Cloze Mean & Grade Placement
+# Bormuth's cloze mean & grade placement
 # Reference: Bormuth, J. R. (1969). Development of readability analyses (pp. 152, 160). U.S. Department of Health, Education, and Welfare. http://files.eric.ed.gov/fulltext/ED029166.pdf
 def bormuths_cloze_mean(main, text):
     if text.lang.startswith('eng_'):
@@ -294,7 +294,7 @@ def bormuths_gp(main, text):
 
     return gp
 
-# Coleman-Liau Index
+# Coleman-Liau index
 # Reference: Coleman, M., & Liau, T. L. (1975). A computer readability formula designed for machine scoring. Journal of Applied Psychology, 60(2), 283–284. https://doi.org/10.1037/h0076540
 def coleman_liau_index(main, text):
     text = get_nums(main, text)
@@ -311,7 +311,7 @@ def coleman_liau_index(main, text):
 
     return grade_level
 
-# Coleman's Readability Formula
+# Coleman's readability formula
 # Reference: Liau, T. L., Bassin, C. B., Martin, C. J., & Coleman, E. B. (1976). Modification of the Coleman readability formulas. Journal of Reading Behavior, 8(4), 381–386. https://journals.sagepub.com/doi/pdf/10.1080/10862967609547193
 def colemans_readability_formula(main, text):
     variant = main.settings_custom['measures']['readability']['colemans_readability_formula']['variant']
@@ -374,7 +374,26 @@ def colemans_readability_formula(main, text):
 
     return cloze_pct
 
-# Dale-Chall Readability Formula
+# Crawford's readability formula
+# Reference: Crawford, A. N. (1985). Fórmula y gráfico para determinar la comprensibilidad de textos de nivel primario en castellano. Lectura y Vida, 6(4). http://www.lecturayvida.fahce.unlp.edu.ar/numeros/a6n4/06_04_Crawford.pdf
+def crawfords_readability_formula(main, text):
+    if text.lang == 'spa' and text.lang in main.settings_global['syl_tokenizers']:
+        text = get_nums(main, text)
+
+        if text.num_words:
+            grade_level = (
+                text.num_sentences / text.num_words * 100 * (-0.205)
+                + text.num_syls / text.num_words * 100 * 0.049
+                - 3.407
+            )
+        else:
+            grade_level = 'text_too_short'
+    else:
+        grade_level = 'no_support'
+
+    return grade_level
+
+# Dale-Chall readability formula
 # References:
 #     Dale, E., & Chall, J. S. (1948a). A formula for predicting readability. Educational Research Bulletin, 27(1), 11–20, 28.
 #     Dale, E., & Chall, J. S. (1948b). A formula for predicting readability: Instructions. Educational Research Bulletin, 27(2), 37–54.
@@ -382,7 +401,7 @@ def colemans_readability_formula(main, text):
 #     Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. Journal of Educational Psychology, 49(2), 99–105. https://doi.org/10.1037/h0043254
 # New:
 #     Chall, J. S., & Dale, E. (1995). Readability revisited: The new Dale-Chall readability formula. Brookline Books.
-#     清川英男. (1996). CHALL, J. S. and DALE, E.(1995) Readability Revisited: The New Dale-Chall Readability Formula. Brookline Books. 教育メディア研究, 3(1), 59. https://www.jstage.jst.go.jp/article/jaems/3/1/3_KJ00009004543/_pdf
+#     清川英男. (1996). CHALL, J. S. and DALE, E.(1995) Readability revisited: The new Dale-Chall readability formula. Brookline Books. 教育メディア研究, 3(1), 59. https://www.jstage.jst.go.jp/article/jaems/3/1/3_KJ00009004543/_pdf
 def x_c50(main, text):
     if text.lang.startswith('eng_'):
         text = get_nums(main, text)
@@ -416,7 +435,7 @@ def x_c50(main, text):
 
     return x_c50
 
-# Danielson-Bryan's Readability Formula
+# Danielson-Bryan's readability formula
 # Reference: Danielson, W. A., & Bryan, S. D. (1963). Computer automation of two readability formulas. Journalism Quarterly, 40(2), 201–206. https://doi.org/10.1177/107769906304000207
 def danielson_bryans_readability_formula(main, text):
     text = get_nums(main, text)
@@ -441,10 +460,10 @@ def danielson_bryans_readability_formula(main, text):
 
     return danielson_bryan
 
-# Dawood's Readability Formula
+# Dawood's readability formula
 # References:
 #     Dawood, B.A.K. (1977). The relationship between readability and selected language variables [Unpublished master’s thesis]. University of Baghdad.
-#     Cavalli-Sforza, V., Saddiki, H., & Nassiri, N. (2018). Arabic readability research—Current state and future directions. Procedia Computer Science, 142, 38–49.
+#     Cavalli-Sforza, V., Saddiki, H., & Nassiri, N. (2018). Arabic readability research: Current state and future directions. Procedia Computer Science, 142, 38–49.
 def dawoods_readability_formula(main, text):
     if text.lang == 'ara':
         text = get_nums(main, text)
@@ -527,7 +546,7 @@ def elf(main, text):
 
     return elf
 
-# Flesch-Kincaid Grade Level
+# Flesch-Kincaid grade level
 # Reference: Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel (Report No. RBR 8-75, p. 14). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
 def gl(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
@@ -546,18 +565,18 @@ def gl(main, text):
 
     return gl
 
-# Flesch Reading Ease
+# Flesch reading ease
 # References:
 #     Flesch, R. (1948). A new readability yardstick. Journal of Applied Psychology, 32(3), 221–233. https://doi.org/10.1037/h0057532
 # Powers-Sumner-Kearl:
 #     Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. Journal of Educational Psychology, 49(2), 99–105. https://doi.org/10.1037/h0043254
 # Dutch (Douma):
-#     Douma, W. H. (1960). De leesbaarheid van landbouwbladen: Een onderzoek naar en een toepassing van leesbaarheidsformules [Readability of Dutch farm papers: A discussion and application of readability-formulas] (p. 453). Afdeling sociologie en sociografie van de Landbouwhogeschool Wageningen. https://edepot.wur.nl/276323
+#     Douma, W. H. (1960). De leesbaarheid van landbouwbladen: Een onderzoek naar en een toepassing van leesbaarheidsformules [Readability of Dutch farm papers: A discussion and application of readability-formulas] (p. 453). Afdeling Sociologie en Sociografie van de Landbouwhogeschool Wageningen. https://edepot.wur.nl/276323
 # Dutch (Brouwer's Leesindex A):
-#     Brouwer, R. H. M. (1963). Onderzoek naar de leesmoeilijkheid van Nederlands proza. Paedagogische studiën, 40, 454–464. https://objects.library.uu.nl/reader/index.php?obj=1874-205260&lan=en
+#     Brouwer, R. H. M. (1963). Onderzoek naar de leesmoeilijkheid van Nederlands proza. Paedagogische Studiën, 40, 454–464. https://objects.library.uu.nl/reader/index.php?obj=1874-205260&lan=en
 # French:
-#     Kandel, L., & Moles A. (1958). Application de l’indice de flesch la langue francaise [applying flesch index to french language]. The Journal of Educational Research, 21, 283–287.
-#     Kopient, A., & Grabar, N. (2020). Rated lexicon for the simplification of medical texts. In B.  Gersbeck-Schierholz (ed.), HEALTHINFO 2020: The fifth international conference on informatics and assistive technologies for health-care, medical support and wellbeing (pp. 11–17). IARIA. https://hal.science/hal-03095275/document
+#     Kandel, L., & Moles, A. (1958). Application de l’indice de flesch à la langue française. The Journal of Educational Research, 21, 283–287.
+#     Sitbon, L., Bellot, P., & Blache, P. (2007). Eléments pour adapter les systèmes de recherche d’information aux dyslexiques. Revue TAL : traitement automatique des langues, 48(2), 123–147.
 # German:
 #     Amstad, T. (1978). Wie verständlich sind unsere Zeitungen? [Unpublished doctoral dissertation]. University of Zurich.
 #     Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache (p. 56). Jugend und Volk.
@@ -656,7 +675,7 @@ def re_flesch(main, text):
 
     return re
 
-# Flesch Reading Ease (Farr-Jenkins-Paterson)
+# Flesch reading ease (Farr-Jenkins-Paterson)
 # References:
 #     Farr, J. N., Jenkins, J. J., & Paterson, D. G. (1951). Simplification of Flesch reading ease formula. Journal of Applied Psychology, 35(5), 333–337. https://doi.org/10.1037/h0062427
 # Powers-Sumner-Kearl:
@@ -687,7 +706,7 @@ def re_farr_jenkins_paterson(main, text):
 
     return re
 
-# FORCAST Grade Level
+# FORCAST
 # Reference: Caylor, J. S., & Sticht, T. G. (1973). Development of a simple readability index for job reading material (p. 3). Human Resource Research Organization. https://ia902703.us.archive.org/31/items/ERIC_ED076707/ERIC_ED076707.pdf
 def rgl(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
@@ -706,49 +725,9 @@ def rgl(main, text):
 
     return rgl
 
-# Fórmula de Comprensibilidad de Gutiérrez de Polini
-# References:
-#     Gutiérrez de Polini, L. E. (1972). Investigación sobre lectura en Venezuela [Paper presentation]. Primeras Jornadas de Educación Primaria, Ministerio de Educación, Caracas, Venezuela.
-#     Rodríguez Trujillo, N. (1980). Determinación de la comprensibilidad de materiales de lectura por medio de variables lingüísticas. Lectura y Vida, 1(1). http://www.lecturayvida.fahce.unlp.edu.ar/numeros/a1n1/01_01_Rodriguez.pdf
-def cp(main, text):
-    if text.lang == 'spa':
-        text = get_nums(main, text)
-
-        if text.num_words and text.num_sentences:
-            cp = (
-                95.2
-                - 9.7 * (text.num_chars_alpha / text.num_words)
-                - 0.35 * (text.num_words / text.num_sentences)
-            )
-        else:
-            cp = 'text_too_short'
-    else:
-        cp = 'no_support'
-
-    return cp
-
-# Fórmula de Crawford
-# Reference: Crawford, A. N. (1985). Fórmula y gráfico para determinar la comprensibilidad de textos de nivel primario en castellano. Lectura y Vida, 6(4). http://www.lecturayvida.fahce.unlp.edu.ar/numeros/a6n4/06_04_Crawford.pdf
-def formula_de_crawford(main, text):
-    if text.lang == 'spa' and text.lang in main.settings_global['syl_tokenizers']:
-        text = get_nums(main, text)
-
-        if text.num_words:
-            grade_level = (
-                text.num_sentences / text.num_words * 100 * (-0.205)
-                + text.num_syls / text.num_words * 100 * 0.049
-                - 3.407
-            )
-        else:
-            grade_level = 'text_too_short'
-    else:
-        grade_level = 'no_support'
-
-    return grade_level
-
 # Fucks's Stilcharakteristik
 # References:
-#     Fucks, W. (1955). Unterschied des Prosastils von Dichtern und anderen Schriftstellern: ein Beispiel mathematischer Stilanalyse. Bouvier.
+#     Fucks, W. (1955). Unterschied des prosastils von dichtern und anderen schriftstellern: Ein beispiel mathematischer stilanalyse. Bouvier.
 #     Briest, W. (1974). Kann man Verständlichkeit messen? STUF - Language Typology and Universals, 27(1-3), 543–563. https://doi.org/10.1524/stuf.1974.27.13.543
 def fuckss_stilcharakteristik(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
@@ -763,25 +742,25 @@ def fuckss_stilcharakteristik(main, text):
 
     return stilcharakteristik
 
-# Gulpease Index
+# GULPEASE
 # References:
 #     Lucisano, P., & Emanuela Piemontese, M. (1988). GULPEASE: A formula for the prediction of the difficulty of texts in Italian. Scuola e Città, 39(3), 110–124.
-#     Indice Gulpease. (2021, July 9). In Wikipedia.https://it.wikipedia.org/w/index.php?title=Indice_Gulpease&oldid=121763335.
-def gulpease_index(main, text):
+#     Indice Gulpease. (2021, July 9). In Wikipedia. https://it.wikipedia.org/w/index.php?title=Indice_Gulpease&oldid=121763335.
+def gulpease(main, text):
     if text.lang == 'ita':
         text = get_nums(main, text)
 
         if text.num_words:
-            gulpease_index = (
+            gulpease = (
                 89
                 + (300 * text.num_sentences - 10 * text.num_chars_alpha) / text.num_words
             )
         else:
-            gulpease_index = 'text_too_short'
+            gulpease = 'text_too_short'
     else:
-        gulpease_index = 'no_support'
+        gulpease = 'no_support'
 
-    return gulpease_index
+    return gulpease
 
 # Gunning Fog Index
 # References:
@@ -863,6 +842,27 @@ def fog_index(main, text):
 
     return fog_index
 
+# Gutiérrez de Polini's readability formula
+# References:
+#     Gutiérrez de Polini, L. E. (1972). Investigación sobre lectura en Venezuela [Paper presentation]. Primeras Jornadas de Educación Primaria, Ministerio de Educación, Caracas, Venezuela.
+#     Rodríguez Trujillo, N. (1980). Determinación de la comprensibilidad de materiales de lectura por medio de variables lingüísticas. Lectura y Vida, 1(1). http://www.lecturayvida.fahce.unlp.edu.ar/numeros/a1n1/01_01_Rodriguez.pdf
+def cp(main, text):
+    if text.lang == 'spa':
+        text = get_nums(main, text)
+
+        if text.num_words and text.num_sentences:
+            cp = (
+                95.2
+                - 9.7 * (text.num_chars_alpha / text.num_words)
+                - 0.35 * (text.num_words / text.num_sentences)
+            )
+        else:
+            cp = 'text_too_short'
+    else:
+        cp = 'no_support'
+
+    return cp
+
 # Legibilidad µ
 # Reference: Muñoz Baquedano, M. (2006). Legibilidad y variabilidad de los textos. Boletín de Investigación Educacional, Pontificia Universidad Católica de Chile, 21(2), 13–26.
 def mu(main, text):
@@ -888,9 +888,9 @@ def mu(main, text):
 
     return mu
 
-# Lensear Write
+# Lensear Write Formula
 # Reference: O’Hayre, J. (1966). Gobbledygook has gotta go (p. 8). U.S. Government Printing Office. https://www.governmentattic.org/15docs/Gobbledygook_Has_Gotta_Go_1966.pdf
-def lensear_write(main, text):
+def lensear_write_formula(main, text):
     if text.lang.startswith('eng_') and text.lang in main.settings_global['syl_tokenizers']:
         text = get_nums(main, text)
 
@@ -950,7 +950,7 @@ def lix(main, text):
 #     Lorge, I. (1948). The Lorge and Flesch readability formulae: A correction. School and Society, 67, 141–142.
 #     DuBay, W. H. (2006). In W. H. DuBay (Ed.), The classic readability studies (pp. 46–60). Impact Information. https://files.eric.ed.gov/fulltext/ED506404.pdf
 def lorge_readability_index(main, text):
-    if text.lang in main.settings_global['pos_taggers']:
+    if text.lang.startswith('eng_'):
         text = get_nums(main, text)
 
         if text.num_sentences and text.num_words:
@@ -986,7 +986,7 @@ def lorge_readability_index(main, text):
 
     return lorge
 
-# Luong-Nguyen-Dinh's Readability Formula
+# Luong-Nguyen-Dinh's readability formula
 # Reference: Luong, A.-V., Nguyen, D., & Dinh, D. (2018). A new formula for Vietnamese text readability assessment. 2018 10th International Conference on Knowledge and Systems Engineering (KSE) (pp. 198–202). IEEE. https://doi.org/10.1109/KSE.2018.8573379
 def luong_nguyen_dinhs_readability_formula(main, text):
     if text.lang == 'vie':
@@ -1010,7 +1010,7 @@ def luong_nguyen_dinhs_readability_formula(main, text):
     return readability
 
 # McAlpine EFLAW Readability Score
-# Reference: Nirmaldasan. (2009, April 30). McAlpine EFLAW readability score. Readability Monitor. Retrieved November 15, 2022, from https://strainindex.wordpress.com/2009/04/30/mcalpine-eflaw-readability-score/
+# Reference: McAlpine, R. (2006). From plain English to global English. Journalism Online. Retrieved October 31, 2024, from https://www.angelfire.com/nd/nirmaldasan/journalismonline/fpetge.html
 def eflaw(main, text):
     if text.lang.startswith('eng_'):
         text = get_nums(main, text)
@@ -1169,12 +1169,12 @@ def rix(main, text):
 
     return rix
 
-# SMOG Grade
+# SMOG Grading
 # References:
-#     McLaughlin, G. H. (1969). SMOG grading: A new readability formula. Journal of Reading, 12(8), 639–646.
+#     McLaughlin, G. H. (1969). SMOG Grading: A new readability formula. Journal of Reading, 12(8), 639–646.
 # German:
 #     Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache (p. 78). Jugend und Volk.
-def smog_grade(main, text):
+def smog_grading(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         text = get_nums(main, text)
 
@@ -1206,14 +1206,15 @@ def smog_grade(main, text):
 
     return g
 
-# Spache Grade Level
+# Spache readability formula
 # References:
 #     Spache, G. (1953). A new readability formula for primary-grade reading materials. Elementary School Journal, 53(7), 410–413. https://doi.org/10.1086/458513
+# Revised:
 #     Spache, G. (1974). Good reading for poor readers (Rev. 9th ed.). Garrard.
 #     Michalke, M., Brown, E., Mirisola, A., Brulet, A., & Hauser, L. (2021, May 17). Measure readability. Documentation for package ‘koRpus’ version 0.13-8. Retrieved August 3, 2023, from https://search.r-project.org/CRAN/refmans/koRpus/html/readability-methods.html
 # Spache word list:
 #     Benoit, K., Watanabe, K., Wang, H., Nulty, P., Obeng, A., Müller, S., & Matsuo, A. (2020, November 17). data_char_wordlists.rda. quanteda.textstats. Retrieved August 3, 2023, from https://github.com/quanteda/quanteda.textstats/raw/master/data/data_char_wordlists.rda
-def spache_grade_lvl(main, text):
+def spache_readability_formula(main, text):
     if text.lang.startswith('eng_'):
         text = get_nums(main, text)
 
@@ -1227,7 +1228,7 @@ def spache_grade_lvl(main, text):
 
                 num_sentences = get_num_sentences_sample(text, sample, sample_start)
 
-                if main.settings_custom['measures']['readability']['spache_grade_lvl']['use_rev_formula']:
+                if main.settings_custom['measures']['readability']['spache_readability_formula']['use_rev_formula']:
                     num_difficult_words = get_num_words_outside_list(sample, wordlist = 'spache')
                     grade_lvls.append(
                         0.121 * (100 / num_sentences)
@@ -1252,8 +1253,8 @@ def spache_grade_lvl(main, text):
 
 # Strain Index
 # References:
-#     Solomon, N. W. (2006). Qualitative analysis of media language [Unpublished doctoral dissertation]. Madurai Kamaraj University.
-#     Nirmaldasan. (2007, September 25). Strain index: A new readability formula. Readability Monitor. Retrieved August 3, 2023, from https://strainindex.wordpress.com/2007/09/25/hello-world/
+#     Nathaniel, W. S. (2017). A quantitative analysis of media language [Master’s thesis, Madurai Kamaraj University]. LAMBERT Academic Publishing.
+#     Nirmaldasan. (2007, July). Strain Index: A new readability formula. Journalism Online. Retrieved October 31, 2024, from https://www.angelfire.com/nd/nirmaldasan/readability/si.html
 def strain_index(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         text = get_nums(main, text)
@@ -1277,9 +1278,9 @@ def strain_index(main, text):
 
     return strain_index
 
-# Tränkle & Bailer's Readability Formula
+# Tränkle-Bailer's readability formula
 # References:
-#     Tränkle, U., & Bailer, H. (1984). Kreuzvalidierung und Neuberechnung von Lesbarkeitsformeln für die Deutsche Sprache [Cross-validation and recalculation of the readability formulas for the German language]. Zeitschrift für Entwicklungspsychologie und Pädagogische Psychologie, 16(3), 231–244.
+#     Tränkle, U., & Bailer, H. (1984). Kreuzvalidierung und neuberechnung von lesbarkeitsformeln für die Deutsche sprache. Zeitschrift für Entwicklungspsychologie und Pädagogische Psychologie, 16(3), 231–244.
 #     Benoit, K. (2020, November 24). Calculate readability. quanteda: Quantitative Analysis of Textual Data. Retrieved August 3, 2023, from https://quanteda.io/reference/textstat_readability.html
 def trankle_bailers_readability_formula(main, text):
     if text.lang in main.settings_global['pos_taggers']:
@@ -1322,9 +1323,9 @@ def trankle_bailers_readability_formula(main, text):
 
     return trankle_bailers
 
-# Tuldava's Text Difficulty
+# Tuldava's readability formula
 # References:
-#     Tuldava, J. (1975). Ob izmerenii trudnosti tekstov [On measuring the complexity of the text]. Uchenye zapiski Tartuskogo universiteta. Trudy po metodike prepodavaniya inostrannykh yazykov, 345, 102–120.
+#     Tuldava, J. (1975). Ob izmerenii trudnosti tekstov. Uchenye zapiski Tartuskogo universiteta. Trudy po metodike prepodavaniya inostrannykh yazykov, 345, 102–120.
 #     Grzybek, P. (2010). Text difficulty and the Arens-Altmann law. In P. Grzybek, E. Kelih, & J. Mačutek (eds.), Text and language: Structures · functions · interrelations quantitative perspectives. Praesens Verlag. https://www.iqla.org/includes/basic_references/qualico_2009_proceedings_Grzybek_Kelih_Macutek_2009.pdf
 def td(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
@@ -1342,7 +1343,7 @@ def td(main, text):
 
     return td
 
-# Wheeler & Smith's Readability Formula
+# Wheeler-Smith's readability formula
 # Reference: Wheeler, L. R., & Smith, E. H. (1954). A practical readability formula for the classroom teacher in the primary grades. Elementary English, 31(7), 397–399.
 UNIT_TERMINATORS = ''.join(list(wl_sentence_tokenization.SENTENCE_TERMINATORS) + list(dict.fromkeys([
     # Colons and semicolons: https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=[:name=/COLON/:]%26[:General_Category=/Punctuation/:]
