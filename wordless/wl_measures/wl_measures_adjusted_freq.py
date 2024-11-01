@@ -27,7 +27,7 @@ from wordless.wl_measures import wl_measures_dispersion
 C = -scipy.special.digamma(1)
 
 # Reference: Savický, P., & Hlaváčová, J. (2002). Measures of word commonness. Journal of Quantitative Linguistics, 9(3), 215–231. https://doi.org/10.1076/jqul.9.3.215.14124
-# Average Logarithmic Distance
+# Average logarithmic distance
 def fald(main, tokens, search_term):
     dists = wl_measures_dispersion._get_dists(tokens, search_term)
 
@@ -39,11 +39,11 @@ def fald(main, tokens, search_term):
 
     return fald
 
-# Average Reduced Frequency
+# Average reduced frequency
 def farf(main, tokens, search_term):
     return wl_measures_dispersion.arf(main, tokens, search_term)
 
-# Average Waiting Time
+# Average waiting time
 def fawt(main, tokens, search_term):
     dists = wl_measures_dispersion._get_dists(tokens, search_term)
 

@@ -1176,7 +1176,7 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                         test_stats = [None] * num_colligations_all
                         p_vals = [None] * num_colligations_all
                     else:
-                        if test_statistical_significance == 'z_score_berry_rogghe':
+                        if test_statistical_significance == 'z_test_berry_rogghe':
                             test_stats, p_vals = func_statistical_significance(self.main, o11s, o12s, o21s, o22s, span)
                         else:
                             test_stats, p_vals = func_statistical_significance(self.main, o11s, o12s, o21s, o22s)

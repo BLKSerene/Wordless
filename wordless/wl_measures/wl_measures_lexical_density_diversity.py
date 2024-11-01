@@ -29,7 +29,7 @@ from wordless.wl_nlp import wl_nlp_utils, wl_pos_tagging
 
 _tr = QCoreApplication.translate
 
-# Brunét's Index
+# Brunét's index
 # References:
 #     Brunét, E. (1978). Le vocabulaire de Jean Giraudoux: Structure et evolution. Slatkine.
 #     Bucks, R. S., Singh, S., Cuerden, J. M., & Wilcock, G. K. (2000). Analysis of spontaneous, conversational speech in dementia of Alzheimer type: Evaluation of an objective technique for analysing lexical performance. Aphasiology, 14(1), 71–91. https://doi.org/10.1080/026870300401603
@@ -66,7 +66,7 @@ def fishers_index_of_diversity(main, text):
 
     return alpha
 
-# Herdan's Vₘ
+# Herdan's vₘ
 # Reference: Herdan, G. (1955). A new derivation and interpretation of Yule's ‘Characteristic’ K. Zeitschrift für Angewandte Mathematik und Physik (ZAMP), 6(4), 332–339. https://doi.org/10.1007/BF01587632
 def herdans_vm(main, text):
     types_freqs = collections.Counter(text.get_tokens_flat())
@@ -99,7 +99,7 @@ def hdd(main, text):
 
     return sum(ttrs)
 
-# Honoré's Statistic
+# Honoré's statistic
 # References:
 #     Honoré, A. (1979). Some simple measures of richness of vocabulary. Association of Literary and Linguistic Computing Bulletin, 7(2), 172–177.
 #     Bucks, R. S., Singh, S., Cuerden, J. M., & Wilcock, G. K. (2000). Analysis of spontaneous, conversational speech in dementia of Alzheimer type: Evaluation of an objective technique for analysing lexical performance. Aphasiology, 14(1), 71–91. https://doi.org/10.1080/026870300401603
@@ -114,8 +114,8 @@ def honores_stat(main, text):
 
     return r
 
-# Lexical Density
-# Reference: Halliday, M. A. K. (1989). Spoken and written language (2nd ed., p. 64).
+# Lexical density
+# Reference: Halliday, M. A. K. (1989). Spoken and written language (2nd ed., p. 64). Oxford University Press.
 def lexical_density(main, text):
     if text.lang in main.settings_global['pos_taggers']:
         wl_pos_tagging.wl_pos_tag_universal(main, text.get_tokens_flat(), lang = text.lang, tagged = text.tagged)
@@ -164,7 +164,7 @@ def logttr(main, text):
 
     return logttr
 
-# Mean Segmental TTR
+# Mean segmental TTR
 # References:
 #     Johnson, W. (1944). Studies in language behavior: I. a program of research. Psychological Monographs, 56(2), 1–15. https://doi.org/10.1037/h0093508
 #     McCarthy, P. M. (2005). An assessment of the range and usefulness of lexical diversity measures and the potential of the measure of textual, lexical diversity (MTLD) [Doctoral dissertation, The University of Memphis] (p. 37). ProQuest Dissertations and Theses Global.
@@ -185,7 +185,7 @@ def msttr(main, text):
 
     return msttr
 
-# Measure of Textual Lexical Diversity
+# Measure of textual lexical diversity
 # References:
 #     McCarthy, P. M. (2005). An assessment of the range and usefulness of lexical diversity measures and the potential of the measure of textual, lexical diversity (MTLD) [Doctoral dissertation, The University of Memphis] (pp. 95–96, 99–100). ProQuest Dissertations and Theses Global.
 #     McCarthy, P. M., & Jarvis, S. (2010). MTLD, vocd-D, and HD-D: A validation study of sophisticated approaches to lexical diversity assessment. Behavior Research Methods, 42(2), 381–392. https://doi.org/10.3758/BRM.42.2.381
@@ -388,7 +388,7 @@ def popescus_r4(main, text):
 
     return r4
 
-# Repeat Rate
+# Repeat rate
 # Reference: Popescu, I.-I. (2009). Word frequency studies (p. 166). Mouton de Gruyter.
 def repeat_rate(main, text):
     use_data = main.settings_custom['measures']['lexical_density_diversity']['repeat_rate']['use_data']
@@ -408,12 +408,12 @@ def repeat_rate(main, text):
 
 # Root TTR
 # References:
-#     Guiraud, P. (1954). Les caractères statistiques du vocabulaire: Essai de méthodologie. Presses universitaires de France.
+#     Guiraud, P. (1954). Les caractères statistiques du vocabulaire: Essai de méthodologie. Presses Universitaires de France.
 #     Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). Lexical diversity and language development: Quantification and assessment (p. 26). Palgrave Macmillan.
 def rttr(main, text):
     return text.num_types / numpy.sqrt(text.num_tokens)
 
-# Shannon Entropy
+# Shannon entropy
 # Reference: Popescu, I.-I. (2009). Word frequency studies (p. 173). Mouton de Gruyter.
 def shannon_entropy(main, text):
     use_data = main.settings_custom['measures']['lexical_density_diversity']['shannon_entropy']['use_data']
@@ -432,7 +432,7 @@ def shannon_entropy(main, text):
     return h
 
 # Simpson's l
-# Reference: Simpson, E. H. (1949). Measurement of diversity. Nature, 163, p. 688. https://doi.org/10.1038/163688a0
+# Reference: Simpson, E. H. (1949). Measurement of diversity. Nature, 163, 688. https://doi.org/10.1038/163688a0
 def simpsons_l(main, text):
     types_freqs = collections.Counter(text.get_tokens_flat())
     freqs_nums_types = collections.Counter(types_freqs.values())
@@ -444,7 +444,7 @@ def simpsons_l(main, text):
 
     return l
 
-# Type-token Ratio
+# Type-token ratio
 # Reference: Johnson, W. (1944). Studies in language behavior: I. a program of research. Psychological Monographs, 56(2), 1–15. https://doi.org/10.1037/h0093508
 def ttr(main, text):
     return text.num_types / text.num_tokens
@@ -479,7 +479,7 @@ def vocdd(main, text):
 
     return popt[0]
 
-# Yule's Characteristic K
+# Yule's characteristic K
 # Reference: Yule, G. U. (1944). The statistical study of literary vocabulary (pp. 52–53). Cambridge University Press.
 def yules_characteristic_k(main, text):
     types_freqs = collections.Counter(text.get_tokens_flat())

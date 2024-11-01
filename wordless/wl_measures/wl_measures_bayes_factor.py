@@ -20,8 +20,8 @@ import numpy
 
 from wordless.wl_measures import wl_measures_statistical_significance, wl_measure_utils
 
-# Log-likelihood Ratio
-# Reference: Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger & A. Koll-Stobbe (Eds.), New Approaches to the Study of Linguistic Variability (pp. 3–11). Peter Lang.
+# Log-likelihood ratio test
+# Reference: Wilson, A. (2013). Embracing Bayes factors for key item analysis in corpus linguistics. In M. Bieswanger & A. Koll-Stobbe (Eds.), New approaches to the study of linguistic variability (pp. 3–11). Peter Lang.
 def bayes_factor_log_likelihood_ratio_test(main, o11s, o12s, o21s, o22s):
     oxxs = o11s + o12s + o21s + o22s
 
@@ -38,7 +38,7 @@ def bayes_factor_log_likelihood_ratio_test(main, o11s, o12s, o21s, o22s):
     return bics
 
 # Student's t-test (2-sample)
-# Reference: Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger & A. Koll-Stobbe (Eds.), New Approaches to the Study of Linguistic Variability (pp. 3–11). Peter Lang.
+# Reference: Wilson, A. (2013). Embracing Bayes factors for key item analysis in corpus linguistics. In M. Bieswanger & A. Koll-Stobbe (Eds.), New approaches to the study of linguistic variability (pp. 3–11). Peter Lang.
 def bayes_factor_students_t_test_2_sample(main, freqs_x1s, freqs_x2s):
 
     # Modify settings temporarily

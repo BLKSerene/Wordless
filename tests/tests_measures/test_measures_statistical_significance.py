@@ -263,22 +263,22 @@ def test_students_t_test_2_sample():
     numpy.testing.assert_array_equal(t_stats, numpy.array([0] * 2))
     numpy.testing.assert_array_equal(p_vals, numpy.array([1] * 2))
 
-def test__z_score_p_val():
+def test__z_test_p_val():
     numpy.testing.assert_array_equal(
-        wl_measures_statistical_significance._z_score_p_val(numpy.array([0] * 2), 'Two-tailed'),
+        wl_measures_statistical_significance._z_test_p_val(numpy.array([0] * 2), 'Two-tailed'),
         numpy.array([1] * 2)
     )
     numpy.testing.assert_array_equal(
-        wl_measures_statistical_significance._z_score_p_val(numpy.array([0] * 2), 'Left-tailed'),
+        wl_measures_statistical_significance._z_test_p_val(numpy.array([0] * 2), 'Left-tailed'),
         numpy.array([0] * 2)
     )
     numpy.testing.assert_array_equal(
-        wl_measures_statistical_significance._z_score_p_val(numpy.array([0] * 2), 'Right-tailed'),
+        wl_measures_statistical_significance._z_test_p_val(numpy.array([0] * 2), 'Right-tailed'),
         numpy.array([0] * 2)
     )
 
-def test_z_score():
-    z_scores, p_vals = wl_measures_statistical_significance.z_score(
+def test_z_test():
+    z_scores, p_vals = wl_measures_statistical_significance.z_test(
         main,
         numpy.array([0] * 2),
         numpy.array([0] * 2),
@@ -289,8 +289,8 @@ def test_z_score():
     numpy.testing.assert_array_equal(z_scores, numpy.array([0] * 2))
     numpy.testing.assert_array_equal(p_vals, numpy.array([1] * 2))
 
-def test_z_score_berry_rogghe():
-    z_scores, p_vals = wl_measures_statistical_significance.z_score_berry_rogghe(
+def test_z_test_berry_rogghe():
+    z_scores, p_vals = wl_measures_statistical_significance.z_test_berry_rogghe(
         main,
         numpy.array([0] * 2),
         numpy.array([0] * 2),
@@ -314,6 +314,6 @@ if __name__ == '__main__':
     test_students_t_test_1_sample()
     test_students_t_test_2_sample()
 
-    test__z_score_p_val()
-    test_z_score()
-    test_z_score_berry_rogghe()
+    test__z_test_p_val()
+    test_z_test()
+    test_z_test_berry_rogghe()
