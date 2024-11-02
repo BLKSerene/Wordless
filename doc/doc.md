@@ -914,6 +914,7 @@ Ukrainian              |KOI8-U                 |✔
 Urdu                   |CP1006                 |✔
 Vietnamese             |CP1258                 |✔
 
+<!-- Only people's names are capitalized and case of measure names are preserved as in original papers -->
 <span id="doc-12-4"></span>
 ### [12.4 Supported Measures](#doc)
 
@@ -946,8 +947,6 @@ The following variables would be used in formulas:<br>
 **NumCharsAlpha**: Number of alphabetic characters (letters, CJK characters, etc.)
 
 <!--
-* Only people's names are capitalized and case of readability formulas is preserved as in original papers
-
 Al-Heeti's readability formula:
 \begin{align*}
     \text{RD}_\text{Policy One} &= 4.41434307 \times \frac{\text{NumCharsAlpha}}{\text{NumWords}} - 13.46873475 \\
@@ -1193,8 +1192,6 @@ The following variables would be used in formulas:<br>
 **NumTokens**: Number of tokens<br>
 
 <!--
-* Only people's names are capitalized and case of indicators of density/diversity is preserved as in original papers
-
 Brunét's index:
     \text{W} = \text{NumTokens}^{\text{NumTypes}^{-0.165}}
 
@@ -1369,9 +1366,9 @@ Zhang's Distributional Consistency:
 Measure of Dispersion (Parts-based)|Measure of Adjusted Frequency (Parts-based)|Formula
 -----------------------------------|-------------------------------------------|-------
 <span id="ref-carrolls-d2"></span>Carroll's D₂<br>([Carroll, 1970](#ref-carroll-1970))|<span id="ref-carrolls-um"></span>Carroll's Uₘ<br>([Carroll, 1970](#ref-carroll-1970))|![Formula](/doc/measures/dispersion_adjusted_frequency/carrolls_um.svg)
-&nbsp;|<span id="ref-engwalls-fm"></span>Engwall's FM<br>([Engwall, 1974](#ref-engwall-1974))|![Formula](/doc/measures/dispersion_adjusted_frequency/engwalls_fm.svg)<br>where **R** is the number of sub-sections in which the word appears at least once.
+&nbsp;|<span id="ref-engwalls-fm"></span>Engwall's FM<br>([Engwall, 1974, p. 53](#ref-engwall-1974))|![Formula](/doc/measures/dispersion_adjusted_frequency/engwalls_fm.svg)<br>where **R** is the number of sub-sections in which the word appears at least once.
 <span id="ref-griess-dp"></span>Gries's DP<br>([Gries, 2008](#ref-gries-2008); [Lijffijt & Gries, 2012](#ref-lijffijt-gries-2012))||![Formula](/doc/measures/dispersion_adjusted_frequency/griess_dp.svg)<br><br>* Normalization is applied by default, which behavior you could change via **Menu Bar → Preferences → Settings → Measures → Dispersion → Gries's DP → Apply normalization**.
-<span id="ref-juillands-d"></span>Juilland's D<br>([Juilland & Chang-Rodrigues, 1964](#ref-juilland-chang-rodrigues-1964))|<span id="ref-juillands-u"></span>Juilland's U<br>([Juilland & Chang-Rodrigues, 1964](#ref-juilland-chang-rodrigues-1964))|![Formula](/doc/measures/dispersion_adjusted_frequency/juillands_u.svg)
+<span id="ref-juillands-d"></span>Juilland's D<br>([Juilland & Chang-Rodrigues, 1964, p. LIII](#ref-juilland-chang-rodrigues-1964))|<span id="ref-juillands-u"></span>Juilland's U<br>([Juilland & Chang-Rodrigues, 1964, p. LXVIII](#ref-juilland-chang-rodrigues-1964))|![Formula](/doc/measures/dispersion_adjusted_frequency/juillands_u.svg)
 &nbsp;|<span id="ref-kromers-ur"></span>Kromer's U<sub>R</sub><br>([Kromer, 2003](#ref-kromer-2003))|![Formula](/doc/measures/dispersion_adjusted_frequency/kromers_ur.svg)<br>where **ψ** is the [digamma function](https://en.wikipedia.org/wiki/Digamma_function), and **C** is the [Euler–Mascheroni constant](https://en.wikipedia.org/wiki/Euler%E2%80%93Mascheroni_constant).
 <span id="ref-lynes-d3"></span>Lyne's D₃<br>([Lyne, 1985](#ref-lyne-1985))||![Formula](/doc/measures/dispersion_adjusted_frequency/lynes_d3.svg)
 <span id="ref-rosengrens-s"></span>Rosengren's S<br>([Rosengren, 1971](#ref-rosengren-1971))|<span id="ref-rosengrens-kf"></span>Rosengren's KF<br>([Rosengren, 1971](#ref-rosengren-1971))|![Formula](/doc/measures/dispersion_adjusted_frequency/rosengrens_s.svg)
@@ -1462,20 +1459,23 @@ Z-test (Berry-Rogghe):
     \end{align*}
 -->
 
-Test of Statistical Significance|Measure of Bayes Factor|Formula
---------------------------------|-----------------------|-------
-<span id="ref-fishers-exact-test"></span>Fisher's exact test<br>([Pedersen, 1996](#ref-pedersen-1996))||See: [Fisher's exact test - Wikipedia](https://en.wikipedia.org/wiki/Fisher%27s_exact_test#Example)
-<span id="ref-log-likehood-ratio-test"></span>Log-likelihood ratio test<br>([Dunning, 1993](#ref-dunning-1993))|Log-likelihood ratio test<br>([Wilson, 2013](#ref-wilson-2013))|![Formula](/doc/measures/statistical_significance/log_likehood_ratio_test.svg)
-<span id="ref-mann-whiteney-u-test"></span>Mann-Whitney U test<br>([Kilgarriff, 2001](#ref-kilgarriff-2001))||See: [Mann–Whitney U test - Wikipedia](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test#Calculations)
-<span id="ref-pearsons-chi-squared-test"></span>Pearson's chi-squared test<br>([Hofland & Johansson, 1982](#ref-hofland-johansson-1982); [Oakes, 1998](#ref-oakes-1998))||![Formula](/doc/measures/statistical_significance/pearsons_chi_squared_test.svg)
-<span id="ref-students-t-test-1-sample"></span>Student's t-test (1-sample)<br>([Church et al., 1991](#ref-church-et-al-1991))||![Formula](/doc/measures/statistical_significance/students_t_test_1_sample.svg)
-<span id="ref-students-t-test-2-sample"></span>Student's t-test (2-sample)<br>([Paquot & Bestgen, 2009](#ref-paquot-bestgen-2009))|Student's t-test (2-sample)<br>([Wilson, 2013](#ref-wilson-2013))|![Formula](/doc/measures/statistical_significance/students_t_test_2_sample.svg)
-<span id="ref-z-test"></span>Z-test<br>([Dennis, 1964](#ref-dennis-1964))||![Formula](/doc/measures/statistical_significance/z_test.svg)
-<span id="ref-z-test-berry-rogghes"></span>Z-test (Berry-Rogghe)<br>([Berry-Rogghe, 1973](#ref-berry-rogghe-1973))||![Formula](/doc/measures/statistical_significance/z_test_berry_rogghe.svg)<br>where **S** is the average span size on both sides of the node word.
+Test of Statistical Significance|Measure of Bayes Factor|Formula|Collocation Extraction|Keyword Extraction
+--------------------------------|-----------------------|-------|:--------------------:|:----------------:
+<span id="ref-fishers-exact-test"></span>Fisher's exact test<br>([Pedersen, 1996](#ref-pedersen-1996); [Kilgarriff, 2001, p. 105](#ref-kilgarriff-2001))||See: [Fisher's exact test - Wikipedia](https://en.wikipedia.org/wiki/Fisher%27s_exact_test#Example)|✔|✔
+<span id="ref-log-likehood-ratio-test"></span>Log-likelihood ratio test<br>([Dunning, 1993](#ref-dunning-1993); [Kilgarriff, 2001, p. 105](#ref-kilgarriff-2001))|Log-likelihood ratio test<br>([Wilson, 2013](#ref-wilson-2013))|![Formula](/doc/measures/statistical_significance/log_likehood_ratio_test.svg)|✔|✔
+<span id="ref-mann-whiteney-u-test"></span>Mann-Whitney U test<br>([Kilgarriff, 2001, pp. 103–104](#ref-kilgarriff-2001))||See: [Mann–Whitney U test - Wikipedia](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test#Calculations)|✖️|✔
+<span id="ref-pearsons-chi-squared-test"></span>Pearson's chi-squared test<br>([Hofland & Johansson, 1982, p. 12](#ref-hofland-johansson-1982); [Dunning, 1993, p. 63](#ref-dunning-1993); [Oakes, 1998, p. 25](#ref-oakes-1998))||![Formula](/doc/measures/statistical_significance/pearsons_chi_squared_test.svg)|✔|✔
+<span id="ref-students-t-test-1-sample"></span>Student's t-test (1-sample)<br>([Church et al., 1991, pp. 120–126](#ref-church-et-al-1991))||![Formula](/doc/measures/statistical_significance/students_t_test_1_sample.svg)|✔|✖️
+<span id="ref-students-t-test-2-sample"></span>Student's t-test (2-sample)<br>([Paquot & Bestgen, 2009, pp. 252–253](#ref-paquot-bestgen-2009))|Student's t-test (2-sample)<br>([Wilson, 2013](#ref-wilson-2013))|![Formula](/doc/measures/statistical_significance/students_t_test_2_sample.svg)|✖️|✔
+<span id="ref-z-test"></span>Z-test<br>([Dennis, 1964, p. 69](#ref-dennis-1964))||![Formula](/doc/measures/statistical_significance/z_test.svg)|✔|✖️
+<span id="ref-z-test-berry-rogghes"></span>Z-test (Berry-Rogghe)<br>([Berry-Rogghe, 1973](#ref-berry-rogghe-1973))||![Formula](/doc/measures/statistical_significance/z_test_berry_rogghe.svg)<br>where **S** is the average span size on both sides of the node word.|✔|✖️
 
 <!--
 %DIFF:
     \text{%DIFF} = \frac{\left(\frac{O_{11}}{O_{x1}} - \frac{O_{12}}{O_{x2}}\right) \times 100}{\frac{O_{12}}{O_{x2}}}
+
+Conditional probability:
+    \text{P} = \frac{O_{11}}{O_{x1}} \times 100
 
 Cubic association ratio:
     \text{IM}^3 = \log_{2} \frac{{O_{11}}^3}{E_{11}}
@@ -1532,32 +1532,33 @@ Squared phi coefficient:
     \phi^2 = \frac{(O_{11} \times O_{22} - O_{12} \times O_{21})^2}{O_{1x} \times O_{2x} \times O_{x1} \times O_{x2}}
 -->
 
-Measure of Effect Size|Formula
-----------------------|-------
-<span id="ref-pct-diff"></span>%DIFF<br>([Gabrielatos & Marchi, 2011](#ref-gabrielatos-marchi-2011))|![Formula](/doc/measures/effect_size/pct_diff.svg)
-<span id="ref-im3"></span>Cubic association ratio<br>([Daille, 1994](#ref-daille-1994))|![Formula](/doc/measures/effect_size/im3.svg)
-<span id="ref-dice-sorensen-coeff"></span>Dice-Sørensen coefficient<br>([Smadja et al., 1996](#ref-smadja-et-al-1996))|![Formula](/doc/measures/effect_size/dice_sorensen_coeff.svg)
-<span id="ref-diff-coeff"></span>Difference coefficient<br>([Hofland & Johansson, 1982](#ref-hofland-johansson-1982); [Gabrielatos, 2018](#ref-gabrielatos-2018))|![Formula](/doc/measures/effect_size/diff_coeff.svg)
-<span id="ref-jaccard-index"></span>Jaccard index<br>([Dunning, 1998](#ref-dunning-1998))|![Formula](/doc/measures/effect_size/jaccard_index.svg)
-<span id="ref-kilgarriffs-ratio"></span>Kilgarriff's ratio<br>([Kilgarriff, 2009](#ref-kilgarriff-2009))|![Formula](/doc/measures/effect_size/kilgarriffs_ratio.svg)<br>where **α** is the smoothing parameter, whose value could be changed via **Menu Bar → Preferences → Settings → Measures → Effect Size → Kilgarriff's Ratio → Smoothing Parameter**.
-<span id="ref-log-dice"></span>logDice<br>([Rychlý, 2008](#ref-rychly-2008))|![Formula](/doc/measures/effect_size/log_dice.svg)
-<span id="ref-lfmd"></span>Log-frequency biased MD<br>([Thanopoulos et al., 2002](#ref-thanopoulos-et-al-2002))|![Formula](/doc/measures/effect_size/lfmd.svg)
-<span id="ref-log-ratio"></span>Log Ratio<br>([Hardie, 2014](#ref-hardie-2014))|![Formula](/doc/measures/effect_size/log_ratio.svg)
-<span id="ref-mi-log-f"></span>MI.log-f<br>([Kilgarriff & Tugwell, 2002](#ref-kilgarriff-tugwell-2002); [Lexical Computing Ltd., 2015](#ref-lexical-computing-ltd-2015))|![Formula](/doc/measures/effect_size/mi_log_f.svg)
-<span id="ref-min-sensitivity"></span>Minimum sensitivity<br>([Pedersen, 1998](#ref-pedersen-1998))|![Formula](/doc/measures/effect_size/min_sensitivity.svg)
-<span id="ref-md"></span>Mutual Dependency<br>([Thanopoulos et al., 2002](#ref-thanopoulos-et-al-2002))|![Formula](/doc/measures/effect_size/md.svg)
-<span id="ref-me"></span>Mutual Expectation<br>([Dias et al., 1999](#ref-dias-et-al-1999))|![Formula](/doc/measures/effect_size/me.svg)
-<span id="ref-mi"></span>Mutual information<br>([Dunning, 1998](#ref-dunning-1998))|![Formula](/doc/measures/effect_size/mi.svg)
-<span id="ref-odds-ratio"></span>Odds ratio<br>([Pojanapunya & Todd, 2016](#ref-pojanapunya-todd-2016))|![Formula](/doc/measures/effect_size/odds_ratio.svg)
-<span id="ref-pmi"></span>Pointwise mutual information<br>([Church & Hanks, 1990](#ref-church-hanks-1990))|![Formula](/doc/measures/effect_size/pmi.svg)
-<span id="ref-poisson-collocation-measure"></span>Poisson collocation measure<br>([Quasthoff & Wolff, 2002](#ref-quasthoff-wolff-2002))|![Formula](/doc/measures/effect_size/poisson_collocation_measure.svg)
-<span id="ref-im2"></span>Squared association ratio<br>([Daille, 1995](#ref-daille-1995))|![Formula](/doc/measures/effect_size/im2.svg)
-<span id="ref-squared-phi-coeff"></span>Squared phi coefficient<br>([Church & Gale, 1991](#ref-church-gale-1991))|![Formula](/doc/measures/effect_size/squared_phi_coeff.svg)
+Measure of Effect Size|Formula|Collocation Extraction|Keyword Extraction
+----------------------|-------|:--------------------:|:----------------:
+<span id="ref-pct-diff"></span>%DIFF<br>([Gabrielatos & Marchi, 2011](#ref-gabrielatos-marchi-2011))|![Formula](/doc/measures/effect_size/pct_diff.svg)|✖️|✔
+<span id="ref-conditional-probability"></span>Conditional probability<br>([Durrant, 2008, p. 84](#ref-durrant-2008))|![Formula](/doc/measures/effect_size/conditional_probability.svg)|✔|✖️
+<span id="ref-im3"></span>Cubic association ratio<br>([Daille, 1994, p. 139](#ref-daille-1994); [Kilgarriff, 2001, p, 99](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/im3.svg)|✔|✔
+<span id="ref-dice-sorensen-coeff"></span>Dice-Sørensen coefficient<br>([Smadja et al., 1996, p. 8](#ref-smadja-et-al-1996))|![Formula](/doc/measures/effect_size/dice_sorensen_coeff.svg)|✔|✖️
+<span id="ref-diff-coeff"></span>Difference coefficient<br>([Hofland & Johansson, 1982, p. 14](#ref-hofland-johansson-1982); [Gabrielatos, 2018, p. 236](#ref-gabrielatos-2018))|![Formula](/doc/measures/effect_size/diff_coeff.svg)|✖️|✔
+<span id="ref-jaccard-index"></span>Jaccard index<br>([Dunning, 1998, p. 48](#ref-dunning-1998))|![Formula](/doc/measures/effect_size/jaccard_index.svg)|✔|✖️
+<span id="ref-kilgarriffs-ratio"></span>Kilgarriff's ratio<br>([Kilgarriff, 2009](#ref-kilgarriff-2009))|![Formula](/doc/measures/effect_size/kilgarriffs_ratio.svg)<br>where **α** is the smoothing parameter, whose value could be changed via **Menu Bar → Preferences → Settings → Measures → Effect Size → Kilgarriff's Ratio → Smoothing Parameter**.|✖️|✔
+<span id="ref-log-dice"></span>logDice<br>([Rychlý, 2008, p. 9](#ref-rychly-2008))|![Formula](/doc/measures/effect_size/log_dice.svg)|✔|✖️
+<span id="ref-lfmd"></span>Log-frequency biased MD<br>([Thanopoulos et al., 2002, p. 621](#ref-thanopoulos-et-al-2002))|![Formula](/doc/measures/effect_size/lfmd.svg)|✔|✖️
+<span id="ref-log-ratio"></span>Log Ratio<br>([Hardie, 2014](#ref-hardie-2014))|![Formula](/doc/measures/effect_size/log_ratio.svg)|✔|✔
+<span id="ref-mi-log-f"></span>MI.log-f<br>([Kilgarriff & Tugwell, 2002](#ref-kilgarriff-tugwell-2002); [Lexical Computing Ltd., 2015, p. 4](#ref-lexical-computing-ltd-2015))|![Formula](/doc/measures/effect_size/mi_log_f.svg)|✔|✖️
+<span id="ref-min-sensitivity"></span>Minimum sensitivity<br>([Pedersen, 1998](#ref-pedersen-1998))|![Formula](/doc/measures/effect_size/min_sensitivity.svg)|✔|✖️
+<span id="ref-md"></span>Mutual Dependency<br>([Thanopoulos et al., 2002, p. 621](#ref-thanopoulos-et-al-2002))|![Formula](/doc/measures/effect_size/md.svg)|✔|✖️
+<span id="ref-me"></span>Mutual Expectation<br>([Dias et al., 1999](#ref-dias-et-al-1999))|![Formula](/doc/measures/effect_size/me.svg)|✔|✖️
+<span id="ref-mi"></span>Mutual information<br>([Dunning, 1998, pp. 49–52](#ref-dunning-1998))|![Formula](/doc/measures/effect_size/mi.svg)|✔|✖️
+<span id="ref-odds-ratio"></span>Odds ratio<br>([Pecina, 2005, p. 15](#ref-pecina-2005), [Pojanapunya & Todd, 2016](#ref-pojanapunya-todd-2016))|![Formula](/doc/measures/effect_size/odds_ratio.svg)|✔|✔
+<span id="ref-pmi"></span>Pointwise mutual information<br>([Church & Hanks, 1990](#ref-church-hanks-1990); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/pmi.svg)|✔|✔
+<span id="ref-poisson-collocation-measure"></span>Poisson collocation measure<br>([Quasthoff & Wolff, 2002](#ref-quasthoff-wolff-2002))|![Formula](/doc/measures/effect_size/poisson_collocation_measure.svg)|✔|✖️
+<span id="ref-im2"></span>Squared association ratio<br>([Daille, 1995, p. 21](#ref-daille-1995); [Kilgarriff, 2001, p, 99](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/im2.svg)|✔|✔
+<span id="ref-squared-phi-coeff"></span>Squared phi coefficient<br>([Church & Gale, 1991](#ref-church-gale-1991))|![Formula](/doc/measures/effect_size/squared_phi_coeff.svg)|✔|✖️
 
 <span id="doc-13"></span>
 ## [13 References](#doc)
 <span id="ref-al-heeti-1984"></span>
-1. [**^**](#ref-rd) Al-Heeti, K. N. (1984). *Judgment analysis technique applied to readability prediction of Arabic reading material* [Doctoral dissertation, University of Northern Colorado]. ProQuest Dissertations and Theses Global.
+1. [**^**](#ref-rd) Al-Heeti, K. N. (1984). *Judgment analysis technique applied to readability prediction of Arabic reading material* (Publication No. 8411458) [Doctoral dissertation, University of Northern Colorado]. ProQuest Dissertations and Theses Global.
 <span id="ref-al-tamimi-et-al-2013"></span>
 1. [**^**](#ref-aari) Al-Tamimi, A., Jaradat M., Aljarrah, N., & Ghanim, S. (2013). AARI: Automatic Arabic Readability Index. *The International Arab Journal of Information Technology*, *11*(4), 370–378.
 <span id="ref-amstad-1978"></span>
@@ -1579,7 +1580,7 @@ Measure of Effect Size|Formula
 <span id="ref-carroll-1964"></span>
 1. [**^**](#ref-cttr) Carroll, J. B. (1964). *Language and thought*. Prentice-Hall.
 <span id="ref-carroll-1970"></span>
-1. [**^**](#ref-carrolls-d2) [**^**](#ref-carrolls-um) Carroll, J. B. (1970). An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index. *Computer Studies in the Humanities and Verbal Behaviour*, *3*(2), 61–65. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x
+1. [**^**](#ref-carrolls-d2) [**^**](#ref-carrolls-um) Carroll, J. B. (1970). An alternative to Juillands's usage coefficient for lexical frequencies. *ETS Research Bulletin Series*, *1970*(2), i–15. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x
 <span id="ref-caylor-sticht-1973"></span>
 1. [**^**](#ref-rgl) Caylor, J. S., & Sticht, T. G. (1973). *Development of a simple readability index for job reading material*. Human Resource Research Organization. https://ia902703.us.archive.org/31/items/ERIC_ED076707/ERIC_ED076707.pdf
 <span id="ref-chall-dale-1995"></span>
@@ -1613,7 +1614,7 @@ Measure of Effect Size|Formula
 <span id="ref-dawood-1977"></span>
 1. [**^**](#ref-dawoods-readability-formula) Dawood, B.A.K. (1977). *The relationship between readability and selected language variables* [Unpublished master’s thesis]. University of Baghdad.
 <span id="ref-dennis-1964"></span>
-1. [**^**](#ref-z-test) Dennis, S. F. (1964). The construction of a thesaurus automatically from a sample of text. In M. E. Stevens, V. E. Giuliano, & L. B. Heilprin (Eds.), *Proceedings of the symposium on statistical association methods for mechanized documentation* (pp. 61–148). National Bureau of Standards.
+1. [**^**](#ref-z-test) Dennis, S. F. (1964). The construction of a thesaurus automatically from a sample of text. In M. E. Stevens, V. E. Giuliano, & L. B. Heilprin (Eds.), *Statistical association methods for mechanized documentation: Symposium proceedings* (pp. 61–148). National Bureau of Standards.
 <span id="ref-dias-et-al-1999"></span>
 1. [**^**](#ref-me) Dias, G., Guilloré, S., & Pereira Lopes, J. G. (1999). Language independent automatic acquisition of rigid multiword units from unrestricted text corpora. In A. Condamines, C. Fabre, & M. Péry-Woodley (Eds.), *TALN'99: 6ème Conférence Annuelle Sur le Traitement Automatique des Langues Naturelles* (pp. 333–339). TALN.
 <span id="ref-dickes-steiwer-1977"></span>
@@ -1625,9 +1626,11 @@ Measure of Effect Size|Formula
 <span id="ref-dugast-1979"></span>
 1. [**^**](#ref-logttr) [**^**](#ref-logttr) Dugast, D. (1979). *Vocabulaire et stylistique: I théâtre et dialogue, travaux de linguistique quantitative*. Slatkine.
 <span id="ref-dunning-1993"></span>
-1. [**^**](#ref-log-likehood-ratio-test) Dunning, T. E. (1993). Accurate methods for the statistics of surprise and coincidence. *Computational Linguistics*, *19*(1), 61–74.
+1. [**^**](#ref-log-likehood-ratio-test) [**^**](#ref-pearsons-chi-squared-test) Dunning, T. E. (1993). Accurate methods for the statistics of surprise and coincidence. *Computational Linguistics*, *19*(1), 61–74.
 <span id="ref-dunning-1998"></span>
 1. [**^**](#ref-jaccard-index) [**^**](#ref-mi) Dunning, T. E. (1998). *Finding structure in text, genome and other symbolic sequences* [Doctoral dissertation, University of Sheffield]. arXiv. https://arxiv.org/pdf/1207.1847
+<span id="ref-durrant-2008"></span>
+1. [**^**](#ref-conditional-probability) Durrant, P. (2008). *High frequency collocations and second language learning* [Doctoral dissertation, University of Nottingham]. Nottingham eTheses. https://eprints.nottingham.ac.uk/10622/1/final_thesis.pdf
 <span id="ref-elhaj-rayson-2016"></span>
 1. [**^**](#ref-osman) El-Haj, M., & Rayson, P. (2016). OSMAN: A novel Arabic readability metric. In N. Calzolari, K. Choukri, T. Declerck, S. Goggi, M. Grobelnik, B. Maegaard, J. Mariani, H. Mazo, A. Moreno, J. Odijk, & S. Piperidis (Eds.), *Proceedings of the Tenth International Conference on Language Resources and Evaluation (LREC 2016)* (pp. 250–255). European Language Resources Association. http://www.lrec-conf.org/proceedings/lrec2016/index.html
 <span id="ref-engwall-1974"></span>
@@ -1678,11 +1681,11 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 <span id="ref-kandel-moles-1958"></span>
 1. [**^**](#ref-re) Kandel, L., & Moles, A. (1958). Application de l’indice de flesch à la langue française. *The Journal of Educational Research*, *21*, 283–287.
 <span id="ref-kilgarriff-2001"></span>
-1. [**^**](#ref-mann-whiteney-u-test) Kilgarriff, A. (2001). Comparing corpora. *International Journal of Corpus Linguistics*, *6*(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil
+1. [**^**](#ref-fishers-exact-test) [**^**](#ref-log-likehood-ratio-test) [**^**](#ref-mann-whiteney-u-test) [**^**](#ref-im3) [**^**](#ref-pmi) [**^**](#ref-im2) Kilgarriff, A. (2001). Comparing corpora. *International Journal of Corpus Linguistics*, *6*(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil
 <span id="ref-kilgarriff-2009"></span>
-1. [**^**](#ref-kilgarriffs-ratio) Kilgarriff, A. (2009). Simple maths for keywords. In M. Mahlberg, V. González-Díaz, & C. Smith (Eds.), *Proceedings of the Corpus Linguistics Conference 2009* (p. 171). University of Liverpool.
+1. [**^**](#ref-kilgarriffs-ratio) Kilgarriff, A. (2009). Simple maths for keywords. In M. Mahlberg, V. González-Díaz, & C. Smith (Eds.), *Proceedings of the Corpus Linguistics Conference 2009 (CL2009)* (Article 171). University of Liverpool.
 <span id="ref-kilgarriff-tugwell-2002"></span>
-1. [**^**](#ref-mi-log-f) Kilgarriff, A., & Tugwell, D. (2002). WASP-bench: An MT lexicographers' workstation supporting state-of-the-art lexical disambiguation. In *Proceedings of the 8th Machine Translation Summit* (pp. 187–190). European Association for Machine Translation.
+1. [**^**](#ref-mi-log-f) Kilgarriff, A., & Tugwell, D. (2001). WASP-bench: An MT lexicographers' workstation supporting state-of-the-art lexical disambiguation. In B. Maegaard (Ed.), *Proceedings of Machine Translation Summit VIII* (pp. 187–190). European Association for Machine Translation.
 <span id="ref-kincaid-et-al-1975"></span>
 1. [**^**](#ref-ari) [**^**](#ref-gl) [**^**](#ref-fog-index) Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). *Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel* (Report No. RBR 8-75). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
 <span id="ref-kromer-2003"></span>
@@ -1700,7 +1703,7 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 <span id="ref-lucisano-emanuela-piemontese-1988"></span>
 1. [**^**](#ref-gulpease) Lucisano, P., & Emanuela Piemontese, M. (1988). GULPEASE: A formula for the prediction of the difficulty of texts in Italian. *Scuola e Città*, *39*(3), 110–124.
 <span id="ref-luong-et-al-2018"></span>
-1. [**^**](#ref-num-syls-luong-nguyen-dinh-1000) [**^**](#ref-luong-nguyen-dinhs-readability-formula) Luong, A.-V., Nguyen, D., & Dinh, D. (2018). A new formula for Vietnamese text readability assessment. *2018 10th International Conference on Knowledge and Systems Engineering (KSE)* (pp. 198–202). IEEE. https://doi.org/10.1109/KSE.2018.8573379
+1. [**^**](#ref-num-syls-luong-nguyen-dinh-1000) [**^**](#ref-luong-nguyen-dinhs-readability-formula) Luong, A.-V., Nguyen, D., & Dinh, D. (2018). A new formula for Vietnamese text readability assessment. In T. M. Phuong & M. L. Nguyen (Eds.), *Proceedings of 2018 10th International Conference on Knowledge and Systems Engineering (KSE)* (pp. 198–202). IEEE. https://doi.org/10.1109/KSE.2018.8573379
 <span id="ref-lyne-1985"></span>
 1. [**^**](#ref-lynes-d3) Lyne, A. A. (1985). Dispersion. In A. A. Lyne (Ed.), *The vocabulary of French business correspondence: Word frequencies, collocations, and problems of lexicometric method* (pp. 101–124). Slatkine.
 <span id="ref-malvern-et-al-2004"></span>
@@ -1710,7 +1713,7 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 <span id="ref-mcalpine-2006"></span>
 1. [**^**](#ref-eflaw) McAlpine, R. (2006). *From plain English to global English*. Journalism Online. Retrieved October 31, 2024, from https://www.angelfire.com/nd/nirmaldasan/journalismonline/fpetge.html
 <span id="ref-mccarthy-2005"></span>
-1. [**^**](#ref-mtld) McCarthy, P. M. (2005). *An assessment of the range and usefulness of lexical diversity measures and the potential of the measure of textual, lexical diversity (MTLD)* [Doctoral dissertation, The University of Memphis]. ProQuest Dissertations and Theses Global.
+1. [**^**](#ref-mtld) McCarthy, P. M. (2005). *An assessment of the range and usefulness of lexical diversity measures and the potential of the measure of textual, lexical diversity (MTLD)* (Publication No. 3199485) [Doctoral dissertation, The University of Memphis]. ProQuest Dissertations and Theses Global.
 <span id="ref-mccarthy-jarvis-2010"></span>
 1. [**^**](#ref-hdd) [**^**](#ref-mtld) McCarthy, P. M., & Jarvis, S. (2010). MTLD, vocd-D, and HD-D: A validation study of sophisticated approaches to lexical diversity assessment. *Behavior Research Methods*, *42*(2), 381–392. https://doi.org/10.3758/BRM.42.2.381
 <span id="ref-mclaughlin-1969"></span>
@@ -1731,6 +1734,8 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 1. [**^**](#ref-fishers-exact-test) Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), *Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference* (pp. 188–200). The South–Central Regional SAS Users' Group.
 <span id="ref-pedersen-1998"></span>
 1. [**^**](#ref-min-sensitivity) Pedersen, T. (1998). Dependent bigram identification. In *Proceedings of the Fifteenth National Conference on Artificial Intelligence* (p. 1197). AAAI Press.
+<span id="ref-pecina-2005"></span>
+1. [**^**](#ref-odds-ratio) Pecina, P. (2005). An extensive empirical study of collocation extraction methods. In C. Callison-Burch & S. Wan (Eds.), *Proceedings of the Student Research Workshop* (pp. 13–18). Association for Computational Linguistics.
 <span id="ref-pisarek-1969"></span>
 1. [**^**](#ref-fog-index) Pisarek, W. (1969). Jak mierzyć zrozumiałość tekstu? *Zeszyty Prasoznawcze*, *4*(42), 35–48.
 <span id="ref-pojanapunya-todd-2016"></span>
@@ -1746,7 +1751,7 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 <span id="ref-rosengren-1971"></span>
 1. [**^**](#ref-rosengrens-s) [**^**](#ref-rosengrens-kf) Rosengren, I. (1971). The quantitative concept of language and its relation to the structure of frequency dictionaries. *Études de linguistique appliquée*, *1*, 103–127.
 <span id="ref-rychly-2008"></span>
-1. [**^**](#ref-log-dice) Rychlý, P. (2008). A lexicographyer-friendly association score. In P. Sojka & A. Horák (Eds.), *Proceedings of Second Workshop on Recent Advances in Slavonic Natural Languages Processing*. Masaryk University
+1. [**^**](#ref-log-dice) Rychlý, P. (2008). A lexicographyer-friendly association score. In P. Sojka & A. Horák (Eds.), *Proceedings of Second Workshop on Recent Advances in Slavonic Natural Languages Processing* (pp. 6–9). Masaryk University
 <span id="ref-savicky-hlavacova-2002"></span>
 1. [**^**](#ref-ald) [**^**](#ref-fald) [**^**](#ref-arf) [**^**](#ref-farf) [**^**](#ref-awt) [**^**](#ref-fawt) Savický, P., & Hlaváčová, J. (2002). Measures of word commonness. *Journal of Quantitative Linguistics*, *9*(3), 215–231. https://doi.org/10.1076/jqul.9.3.215.14124
 <span id="ref-simpson-1949"></span>

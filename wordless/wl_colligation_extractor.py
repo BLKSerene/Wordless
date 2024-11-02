@@ -214,7 +214,10 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
             self.combo_box_measure_bayes_factor,
             self.label_measure_effect_size,
             self.combo_box_measure_effect_size
-        ) = wl_widgets.wl_widgets_measures_collocation_extractor(self, tab = 'collocation_extractor')
+        ) = wl_widgets.wl_widgets_measures_collocation_keyword_extraction(
+            self,
+            extraction_type = 'collocation'
+        )
 
         self.combo_box_limit_searching.addItems([
             self.tr('None'),

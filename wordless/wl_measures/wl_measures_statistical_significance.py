@@ -109,7 +109,7 @@ def log_likelihood_ratio_test(main, o11s, o12s, o21s, o22s):
     return gs, p_vals
 
 # Mann-Whitney U test
-# References: Kilgarriff, A. (2001). Comparing corpora. International Journal of Corpus Linguistics, 6(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil
+# References: Kilgarriff, A. (2001). Comparing corpora. International Journal of Corpus Linguistics, 6(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil | pp. 103–104
 def mann_whitney_u_test(main, freqs_x1s, freqs_x2s):
     settings = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']
 
@@ -131,8 +131,8 @@ def mann_whitney_u_test(main, freqs_x1s, freqs_x2s):
 
 # Pearson's chi-squared test
 # References:
-#     Hofland, K., & Johanson, S. (1982). Word frequencies in British and American English. Norwegian Computing Centre for the Humanities.
-#     Oakes, M. P. (1998). Statistics for corpus linguistics. Edinburgh University Press.
+#     Hofland, K., & Johanson, S. (1982). Word frequencies in British and American English. Norwegian Computing Centre for the Humanities. | p. 12
+#     Oakes, M. P. (1998). Statistics for corpus linguistics. Edinburgh University Press. | p. 25
 def pearsons_chi_squared_test(main, o11s, o12s, o21s, o22s):
     settings = main.settings_custom['measures']['statistical_significance']['pearsons_chi_squared_test']
 
@@ -155,7 +155,7 @@ def pearsons_chi_squared_test(main, o11s, o12s, o21s, o22s):
     return chi2s, p_vals
 
 # Student's t-test (1-sample)
-# References: Church, K., Gale, W., Hanks, P., & Hindle, D. (1991). Using statistics in lexical analysis. In U. Zernik (Ed.), Lexical acquisition: Exploiting on-line resources to build a lexicon (pp. 115–164). Psychology Press.
+# References: Church, K., Gale, W., Hanks, P., & Hindle, D. (1991). Using statistics in lexical analysis. In U. Zernik (Ed.), Lexical acquisition: Exploiting on-line resources to build a lexicon (pp. 115–164). Psychology Press. | pp. 120–126
 def students_t_test_1_sample(main, o11s, o12s, o21s, o22s):
     settings = main.settings_custom['measures']['statistical_significance']['students_t_test_1_sample']
 
@@ -178,7 +178,7 @@ def students_t_test_1_sample(main, o11s, o12s, o21s, o22s):
     return t_stats, p_vals
 
 # Student's t-test (2-sample)
-# References: Paquot, M., & Bestgen, Y. (2009). Distinctive words in academic writing: A comparison of three statistical tests for keyword extraction. Language and Computers, 68, 247–269.
+# References: Paquot, M., & Bestgen, Y. (2009). Distinctive words in academic writing: A comparison of three statistical tests for keyword extraction. Language and Computers, 68, 247–269. | pp. 252–253
 def students_t_test_2_sample(main, freqs_x1s, freqs_x2s):
     settings = main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']
 
@@ -218,7 +218,7 @@ def _z_test_p_val(z_scores, direction):
     return p_vals
 
 # Z-test
-# References: Dennis, S. F. (1964). The construction of a thesaurus automatically from a sample of text. In M. E. Stevens, V. E. Giuliano, & L. B. Heilprin (Eds.), Proceedings of the symposium on statistical association methods for mechanized documentation (pp. 61–148). National Bureau of Standards.
+# References: Dennis, S. F. (1964). The construction of a thesaurus automatically from a sample of text. In M. E. Stevens, V. E. Giuliano, & L. B. Heilprin (Eds.), Statistical association methods for mechanized documentation: Symposium proceedings (pp. 61–148). National Bureau of Standards. | p. 69
 def z_test(main, o11s, o12s, o21s, o22s):
     settings = main.settings_custom['measures']['statistical_significance']['z_test']
 

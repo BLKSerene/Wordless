@@ -132,7 +132,7 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
             self.combo_box_measure_dispersion,
             self.label_measure_adjusted_freq,
             self.combo_box_measure_adjusted_freq
-        ) = wl_widgets.wl_widgets_measures_wordlist_generator(self)
+        ) = wl_widgets.wl_widgets_measures_wordlist_ngram_generation(self)
 
         self.checkbox_syllabification.stateChanged.connect(self.generation_settings_changed)
         self.combo_box_measure_dispersion.currentTextChanged.connect(self.generation_settings_changed)

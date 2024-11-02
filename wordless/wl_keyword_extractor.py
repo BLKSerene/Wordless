@@ -128,7 +128,10 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
             self.combo_box_measure_bayes_factor,
             self.label_measure_effect_size,
             self.combo_box_measure_effect_size
-        ) = wl_widgets.wl_widgets_measures_collocation_extractor(self, tab = 'keyword_extractor')
+        ) = wl_widgets.wl_widgets_measures_collocation_keyword_extraction(
+            self,
+            extraction_type = 'keyword'
+        )
 
         self.combo_box_test_statistical_significance.currentTextChanged.connect(self.generation_settings_changed)
         self.combo_box_measure_bayes_factor.currentTextChanged.connect(self.generation_settings_changed)

@@ -40,15 +40,22 @@ def pct_diff(main, o11s, o12s, o21s, o22s):
         )
     )
 
+# Conditional probability
+# Reference: Durrant, P. (2008). High frequency collocations and second language learning [Doctoral dissertation, University of Nottingham]. Nottingham eTheses. https://eprints.nottingham.ac.uk/10622/1/final_thesis.pdf | p. 84
+def conditional_probability(main, o11s, o12s, o21s, o22s):
+    _, _, ox1s, _ = wl_measures_statistical_significance.get_freqs_marginal(o11s, o12s, o21s, o22s)
+
+    return wl_measure_utils.numpy_divide(o11s, ox1s) * 100
+
 # Cubic association ratio
-# Reference: Daille, B. (1994). Approche mixte pour l'extraction automatique de terminologie: statistiques lexicales et filtres linguistiques [Doctoral thesis, Paris Diderot University]. Béatrice Daille. http://www.bdaille.com/index.php?option=com_docman&task=doc_download&gid=8&Itemid=
+# Reference: Daille, B. (1994). Approche mixte pour l'extraction automatique de terminologie: statistiques lexicales et filtres linguistiques [Doctoral thesis, Paris Diderot University]. Béatrice Daille. http://www.bdaille.com/index.php?option=com_docman&task=doc_download&gid=8&Itemid= | p. 139
 def im3(main, o11s, o12s, o21s, o22s):
     e11s, _, _, _ = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
 
     return wl_measure_utils.numpy_log2(wl_measure_utils.numpy_divide(o11s ** 3, e11s))
 
 # Dice-Sørensen coefficient
-# Reference: Smadja, F., McKeown, K. R., & Hatzivassiloglou, V. (1996). Translating collocations for bilingual lexicons: A statistical approach. Computational Linguistics, 22(1), 1–38.
+# Reference: Smadja, F., McKeown, K. R., & Hatzivassiloglou, V. (1996). Translating collocations for bilingual lexicons: A statistical approach. Computational Linguistics, 22(1), 1–38. | p. 8
 def dice_sorensen_coeff(main, o11s, o12s, o21s, o22s):
     o1xs, _, ox1s, _ = wl_measures_statistical_significance.get_freqs_marginal(o11s, o12s, o21s, o22s)
 
@@ -56,8 +63,8 @@ def dice_sorensen_coeff(main, o11s, o12s, o21s, o22s):
 
 # Difference coefficient
 # References:
-#     Hofland, K., & Johanson, S. (1982). Word frequencies in British and American English. Norwegian Computing Centre for the Humanities.
-#     Gabrielatos, C. (2018). Keyness analysis: Nature, metrics and techniques. In C. Taylor & A. Marchi (Eds.), Corpus approaches to discourse: A critical review (pp. 225–258). Routledge.
+#     Hofland, K., & Johanson, S. (1982). Word frequencies in British and American English. Norwegian Computing Centre for the Humanities. | p. 14
+#     Gabrielatos, C. (2018). Keyness analysis: Nature, metrics and techniques. In C. Taylor & A. Marchi (Eds.), Corpus approaches to discourse: A critical review (pp. 225–258). Routledge. | p. 236
 def diff_coeff(main, o11s, o12s, o21s, o22s):
     _, _, ox1s, ox2s = wl_measures_statistical_significance.get_freqs_marginal(o11s, o12s, o21s, o22s)
 
@@ -71,12 +78,12 @@ def diff_coeff(main, o11s, o12s, o21s, o22s):
     )
 
 # Jaccard index
-# Reference: Dunning, T. E. (1998). Finding structure in text, genome and other symbolic sequences [Doctoral dissertation, University of Sheffield]. arXiv. https://arxiv.org/pdf/1207.1847
+# Reference: Dunning, T. E. (1998). Finding structure in text, genome and other symbolic sequences [Doctoral dissertation, University of Sheffield]. arXiv. https://arxiv.org/pdf/1207.1847 | p. 48
 def jaccard_index(main, o11s, o12s, o21s, o22s):
     return wl_measure_utils.numpy_divide(o11s, o11s + o12s + o21s)
 
 # Kilgarriff's ratio
-# Reference: Kilgarriff, A. (2009). Simple maths for keywords. In M. Mahlberg, V. González-Díaz, & C. Smith (Eds.), Proceedings of the Corpus Linguistics Conference 2009 (p. 171). University of Liverpool.
+# Reference: Kilgarriff, A. (2009). Simple maths for keywords. In M. Mahlberg, V. González-Díaz, & C. Smith (Eds.), Proceedings of the Corpus Linguistics Conference 2009 (CL2009) (Article 171). University of Liverpool.
 def kilgarriffs_ratio(main, o11s, o12s, o21s, o22s):
     smoothing_param = main.settings_custom['measures']['effect_size']['kilgarriffs_ratio']['smoothing_param']
 
@@ -86,14 +93,14 @@ def kilgarriffs_ratio(main, o11s, o12s, o21s, o22s):
     )
 
 # logDice
-# Reference: Rychlý, P. (2008). A lexicographyer-friendly association score. In P. Sojka & A. Horák (Eds.), Proceedings of Second Workshop on Recent Advances in Slavonic Natural Languages Processing. Masaryk University
+# Reference: Rychlý, P. (2008). A lexicographyer-friendly association score. In P. Sojka & A. Horák (Eds.), Proceedings of Second Workshop on Recent Advances in Slavonic Natural Languages Processing (pp. 6–9). Masaryk University
 def log_dice(main, o11s, o12s, o21s, o22s):
     o1xs, _, ox1s, _ = wl_measures_statistical_significance.get_freqs_marginal(o11s, o12s, o21s, o22s)
 
     return wl_measure_utils.numpy_log2(wl_measure_utils.numpy_divide(2 * o11s, o1xs + ox1s), default = 14)
 
 # Log-frequency biased MD
-# Reference: Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), Proceedings of the Third International Conference on Language Resources and Evaluation (pp. 620–625). European Language Resources Association.
+# Reference: Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), Proceedings of the Third International Conference on Language Resources and Evaluation (pp. 620–625). European Language Resources Association. | p. 621
 def lfmd(main, o11s, o12s, o21s, o22s):
     e11s, _, _, _ = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
 
@@ -121,8 +128,8 @@ def log_ratio(main, o11s, o12s, o21s, o22s):
 
 # MI.log-f
 # References:
-#     Kilgarriff, A., & Tugwell, D. (2002). WASP-bench: An MT lexicographers' workstation supporting state-of-the-art lexical disambiguation. In Proceedings of the 8th Machine Translation Summit (pp. 187–190). European Association for Machine Translation.
-#     Lexical Computing. (2015, July 8). Statistics used in Sketch Engine. Sketch Engine. https://www.sketchengine.eu/documentation/statistics-used-in-sketch-engine/
+#     Kilgarriff, A., & Tugwell, D. (2001). WASP-bench: An MT lexicographers' workstation supporting state-of-the-art lexical disambiguation. In B. Maegaard (Ed.), Proceedings of Machine Translation Summit VIII (pp. 187–190). European Association for Machine Translation.
+#     Lexical Computing. (2015, July 8). Statistics used in Sketch Engine. Sketch Engine. https://www.sketchengine.eu/documentation/statistics-used-in-sketch-engine/ | p. 4
 def mi_log_f(main, o11s, o12s, o21s, o22s):
     e11s, _, _, _ = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
 
@@ -139,7 +146,7 @@ def min_sensitivity(main, o11s, o12s, o21s, o22s):
     )
 
 # Mutual Dependency
-# Reference: Thanopoulos, A, Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González, & C. P. S. Araujo (Eds.), Proceedings of the Third International Conference on Language Resources and Evaluation (pp. 620–625). European Language Resources Association.
+# Reference: Thanopoulos, A, Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González, & C. P. S. Araujo (Eds.), Proceedings of the Third International Conference on Language Resources and Evaluation (pp. 620–625). European Language Resources Association. | p. 621
 def md(main, o11s, o12s, o21s, o22s):
     e11s, _, _, _ = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
 
@@ -153,7 +160,7 @@ def me(main, o11s, o12s, o21s, o22s):
     return o11s * wl_measure_utils.numpy_divide(2 * o11s, o1xs + ox1s)
 
 # Mutual information
-# Reference: Dunning, T. E. (1998). Finding structure in text, genome and other symbolic sequences [Doctoral dissertation, University of Sheffield]. arXiv. https://arxiv.org/pdf/1207.1847
+# Reference: Dunning, T. E. (1998). Finding structure in text, genome and other symbolic sequences [Doctoral dissertation, University of Sheffield]. arXiv. https://arxiv.org/pdf/1207.1847 | pp. 49–52
 def mi(main, o11s, o12s, o21s, o22s):
     oxxs = o11s + o12s + o21s + o22s
     e11s, e12s, e21s, e22s = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
@@ -200,7 +207,7 @@ def poisson_collocation_measure(main, o11s, o12s, o21s, o22s):
     )
 
 # Squared association ratio
-# Reference: Daille, B. (1995). Combined approach for terminology extraction: Lexical statistics and linguistic filtering. UCREL technical papers (Vol. 5). Lancaster University.
+# Reference: Daille, B. (1995). Combined approach for terminology extraction: Lexical statistics and linguistic filtering. UCREL technical papers (Vol. 5). Lancaster University. | p. 21
 def im2(main, o11s, o12s, o21s, o22s):
     e11s, _, _, _ = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
 

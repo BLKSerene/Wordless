@@ -20,7 +20,7 @@
 
 ## [3.6.0](https://github.com/BLKSerene/Wordless/releases/tag/3.6.0) - ??/??/2024
 ### 🎉 New Features
-- Measures: Add effect size - squared association ratio
+- Measures: Add effect size - conditional probability / squared association ratio
 - Utils: Add Stanza's Sindhi dependency parser
 
 ### 📌 Bugfixes

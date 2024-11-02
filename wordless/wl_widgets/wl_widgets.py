@@ -616,7 +616,7 @@ def wl_widgets_context_settings(parent, tab):
     return label_context_settings, button_context_settings
 
 # Generation Settings
-def wl_widgets_measures_wordlist_generator(parent):
+def wl_widgets_measures_wordlist_ngram_generation(parent):
     label_measure_dispersion = QLabel(_tr('wl_widgets', 'Measure of dispersion:'), parent)
     combo_box_measure_dispersion = wl_boxes.Wl_Combo_Box_Measure(parent, measure_type = 'dispersion')
     label_measure_adjusted_freq = QLabel(_tr('wl_widgets', 'Measure of adjusted frequency:'), parent)
@@ -627,7 +627,7 @@ def wl_widgets_measures_wordlist_generator(parent):
         label_measure_adjusted_freq, combo_box_measure_adjusted_freq
     )
 
-def wl_widgets_measures_collocation_extractor(parent, tab):
+def wl_widgets_measures_collocation_keyword_extraction(parent, extraction_type):
     main = wl_misc.find_wl_main(parent)
 
     label_test_statistical_significance = QLabel(_tr('wl_widgets', 'Test of statistical significance:'), parent)
@@ -641,15 +641,22 @@ def wl_widgets_measures_collocation_extractor(parent, tab):
         measure_text = combo_box_test_statistical_significance.itemText(i)
         measure_code = wl_measure_utils.to_measure_code(main, 'statistical_significance', measure_text)
 
-        if not main.settings_global['tests_statistical_significance'][measure_code][tab]:
+        if not main.settings_global['tests_statistical_significance'][measure_code][extraction_type]:
             combo_box_test_statistical_significance.removeItem(i)
 
     for i in reversed(range(combo_box_measure_bayes_factor.count())):
         measure_text = combo_box_measure_bayes_factor.itemText(i)
         measure_code = wl_measure_utils.to_measure_code(main, 'bayes_factor', measure_text)
 
-        if not main.settings_global['measures_bayes_factor'][measure_code][tab]:
+        if not main.settings_global['measures_bayes_factor'][measure_code][extraction_type]:
             combo_box_measure_bayes_factor.removeItem(i)
+
+    for i in reversed(range(combo_box_measure_effect_size.count())):
+        measure_text = combo_box_measure_effect_size.itemText(i)
+        measure_code = wl_measure_utils.to_measure_code(main, 'effect_size', measure_text)
+
+        if not main.settings_global['measures_effect_size'][measure_code][extraction_type]:
+            combo_box_measure_effect_size.removeItem(i)
 
     return (
         label_test_statistical_significance, combo_box_test_statistical_significance,

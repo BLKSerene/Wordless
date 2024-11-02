@@ -26,8 +26,8 @@ from wordless.wl_measures import wl_measures_dispersion
 # Euler-Mascheroni Constant
 C = -scipy.special.digamma(1)
 
-# Reference: Savický, P., & Hlaváčová, J. (2002). Measures of word commonness. Journal of Quantitative Linguistics, 9(3), 215–231. https://doi.org/10.1076/jqul.9.3.215.14124
 # Average logarithmic distance
+# Reference: Savický, P., & Hlaváčová, J. (2002). Measures of word commonness. Journal of Quantitative Linguistics, 9(3), 215–231. https://doi.org/10.1076/jqul.9.3.215.14124
 def fald(main, tokens, search_term):
     dists = wl_measures_dispersion._get_dists(tokens, search_term)
 
@@ -40,10 +40,12 @@ def fald(main, tokens, search_term):
     return fald
 
 # Average reduced frequency
+# Reference: Savický, P., & Hlaváčová, J. (2002). Measures of word commonness. Journal of Quantitative Linguistics, 9(3), 215–231. https://doi.org/10.1076/jqul.9.3.215.14124
 def farf(main, tokens, search_term):
     return wl_measures_dispersion.arf(main, tokens, search_term)
 
 # Average waiting time
+# Reference: Savický, P., & Hlaváčová, J. (2002). Measures of word commonness. Journal of Quantitative Linguistics, 9(3), 215–231. https://doi.org/10.1076/jqul.9.3.215.14124
 def fawt(main, tokens, search_term):
     dists = wl_measures_dispersion._get_dists(tokens, search_term)
 
@@ -55,7 +57,7 @@ def fawt(main, tokens, search_term):
     return fawt
 
 # Carroll's Um
-# Reference: Carroll, J. B. (1970). An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index. Computer Studies in the Humanities and Verbal Behaviour, 3(2), 61–65. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x
+# Reference: Carroll, J. B. (1970). An alternative to Juillands's usage coefficient for lexical frequencies. ETS Research Bulletin Series, 1970(2), i–15. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x
 def carrolls_um(main, freqs):
     freq_total = sum(freqs)
 
@@ -65,7 +67,7 @@ def carrolls_um(main, freqs):
     return um
 
 # Engwall's FM
-# Reference: Engwall, G. (1974). Fréquence et distribution du vocabulaire dans un choix de romans français [Unpublished doctoral dissertation]. Stockholm University.
+# Reference: Engwall, G. (1974). Fréquence et distribution du vocabulaire dans un choix de romans français [Unpublished doctoral dissertation]. Stockholm University. | p. 53
 def juillands_u(main, freqs):
     d = wl_measures_dispersion.juillands_d(main, freqs)
     u = max(0, d) * sum(freqs)
@@ -73,7 +75,7 @@ def juillands_u(main, freqs):
     return u
 
 # Juilland's U
-# Reference: Juilland, A., & Chang-Rodriguez, E. (1964). Frequency dictionary of Spanish words. Mouton.
+# Reference: Juilland, A., & Chang-Rodriguez, E. (1964). Frequency dictionary of Spanish words. Mouton. | p. LXVIII
 def rosengrens_kf(main, freqs):
     return numpy.sum(numpy.sqrt(freqs)) ** 2 / len(freqs)
 

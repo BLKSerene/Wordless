@@ -183,7 +183,7 @@ def get_num_sentences_sample(text, sample, sample_start):
     )
 
 # Al-Heeti's readability formula
-# Reference: Al-Heeti, K. N. (1984). Judgment analysis technique applied to readability prediction of Arabic reading material [Doctoral dissertation, University of Northern Colorado] (pp. 102, 104, 106). ProQuest Dissertations and Theses Global.
+# Reference: Al-Heeti, K. N. (1984). Judgment analysis technique applied to readability prediction of Arabic reading material (Publication No. 8411458) [Doctoral dissertation, University of Northern Colorado]. ProQuest Dissertations and Theses Global. | pp. 102, 104, 106
 def rd(main, text):
     if text.lang == 'ara':
         text = get_nums(main, text)
@@ -232,9 +232,9 @@ def aari(main, text):
 
 # Automated Readability Index
 # References:
-#     Smith, E. A., & Senter, R. J. (1967). Automated readability index (p. 8). Aerospace Medical Research Laboratories. https://apps.dtic.mil/sti/pdfs/AD0667273.pdf
+#     Smith, E. A., & Senter, R. J. (1967). Automated readability index. Aerospace Medical Research Laboratories. https://apps.dtic.mil/sti/pdfs/AD0667273.pdf | p. 8
 # Navy:
-#     Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel (Report No. RBR 8-75, p. 14). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
+#     Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel (Report No. RBR 8-75). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf | p. 14
 def ari(main, text):
     text = get_nums(main, text)
 
@@ -257,7 +257,7 @@ def ari(main, text):
     return ari
 
 # Bormuth's cloze mean & grade placement
-# Reference: Bormuth, J. R. (1969). Development of readability analyses (pp. 152, 160). U.S. Department of Health, Education, and Welfare. http://files.eric.ed.gov/fulltext/ED029166.pdf
+# Reference: Bormuth, J. R. (1969). Development of readability analyses. U.S. Department of Health, Education, and Welfare. http://files.eric.ed.gov/fulltext/ED029166.pdf | pp. 152, 160
 def bormuths_cloze_mean(main, text):
     if text.lang.startswith('eng_'):
         text = get_nums(main, text)
@@ -515,7 +515,7 @@ def devereux_readability_index(main, text):
 # Dickes-Steiwer Handformel
 # References:
 #     Dickes, P. & Steiwer, L. (1977). Ausarbeitung von lesbarkeitsformeln für die deutsche sprache. Zeitschrift für Entwicklungspsychologie und Pädagogische Psychologie, 9(1), 20–28.
-#     Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache (p. 57). Jugend und Volk.
+#     Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache. Jugend und Volk. | p. 57
 def dickes_steiwer_handformel(main, text):
     text = get_nums(main, text)
 
@@ -547,7 +547,7 @@ def elf(main, text):
     return elf
 
 # Flesch-Kincaid grade level
-# Reference: Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel (Report No. RBR 8-75, p. 14). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
+# Reference: Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel (Report No. RBR 8-75). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf | p. 14
 def gl(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         text = get_nums(main, text)
@@ -571,7 +571,7 @@ def gl(main, text):
 # Powers-Sumner-Kearl:
 #     Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. Journal of Educational Psychology, 49(2), 99–105. https://doi.org/10.1037/h0043254
 # Dutch (Douma):
-#     Douma, W. H. (1960). De leesbaarheid van landbouwbladen: Een onderzoek naar en een toepassing van leesbaarheidsformules [Readability of Dutch farm papers: A discussion and application of readability-formulas] (p. 453). Afdeling Sociologie en Sociografie van de Landbouwhogeschool Wageningen. https://edepot.wur.nl/276323
+#     Douma, W. H. (1960). De leesbaarheid van landbouwbladen: Een onderzoek naar en een toepassing van leesbaarheidsformules [Readability of Dutch farm papers: A discussion and application of readability-formulas]. Afdeling Sociologie en Sociografie van de Landbouwhogeschool Wageningen. https://edepot.wur.nl/276323 | p. 453
 # Dutch (Brouwer's Leesindex A):
 #     Brouwer, R. H. M. (1963). Onderzoek naar de leesmoeilijkheid van Nederlands proza. Paedagogische Studiën, 40, 454–464. https://objects.library.uu.nl/reader/index.php?obj=1874-205260&lan=en
 # French:
@@ -579,17 +579,17 @@ def gl(main, text):
 #     Sitbon, L., Bellot, P., & Blache, P. (2007). Eléments pour adapter les systèmes de recherche d’information aux dyslexiques. Revue TAL : traitement automatique des langues, 48(2), 123–147.
 # German:
 #     Amstad, T. (1978). Wie verständlich sind unsere Zeitungen? [Unpublished doctoral dissertation]. University of Zurich.
-#     Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache (p. 56). Jugend und Volk.
+#     Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache. Jugend und Volk. | p. 56
 # Italian:
 #     Franchina, V., & Vacca, R. (1986). Adaptation of Flesh readability index on a bilingual text written by the same author both in Italian and English languages. Linguaggi, 3, 47–49.
 #     Garais, E. (2011). Web applications readability. Journal of Information Systems and Operations Management, 5(1), 117–121. http://www.rebe.rau.ro/RePEc/rau/jisomg/SP11/JISOM-SP11-A13.pdf
 # Russian:
-#     Oborneva, I. V. (2006). Автоматизированная оценка сложности учебных текстов на основе статистических параметров [Doctoral dissertation, Institute for Strategy of Education Development of the Russian Academy of Education] (p. 13). Freereferats.ru. https://static.freereferats.ru/_avtoreferats/01002881899.pdf?ver=3
+#     Oborneva, I. V. (2006). Автоматизированная оценка сложности учебных текстов на основе статистических параметров [Doctoral dissertation, Institute for Strategy of Education Development of the Russian Academy of Education]. Freereferats.ru. https://static.freereferats.ru/_avtoreferats/01002881899.pdf?ver=3 | p. 13
 # Spanish (Fernández Huerta):
 #     Fernández Huerta, J. (1959). Medidas sencillas de lecturabilidad. Consigna, 214, 29–32.
 #     Garais, E. (2011). Web applications readability. Journal of Information Systems and Operations Management, 5(1), 117–121. http://www.rebe.rau.ro/RePEc/rau/jisomg/SP11/JISOM-SP11-A13.pdf
 # Spanish (Szigriszt Pazos):
-#     Szigriszt Pazos, F. (1993). Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad [Doctoral dissertation, Complutense University of Madrid] (p. 247). Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y
+#     Szigriszt Pazos, F. (1993). Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad [Doctoral dissertation, Complutense University of Madrid]. Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y | p. 247
 # Ukrainian:
 #     Partiko, Z. V. (2001). Zagal’ne redaguvannja. Normativni osnovi. Afiša.
 #     Grzybek, P. (2010). Text difficulty and the Arens-Altmann law. In P. Grzybek, E. Kelih, & J. Mačutek (eds.), Text and language: Structures · functions · interrelations quantitative perspectives. Praesens Verlag. https://www.iqla.org/includes/basic_references/qualico_2009_proceedings_Grzybek_Kelih_Macutek_2009.pdf
@@ -707,7 +707,7 @@ def re_farr_jenkins_paterson(main, text):
     return re
 
 # FORCAST
-# Reference: Caylor, J. S., & Sticht, T. G. (1973). Development of a simple readability index for job reading material (p. 3). Human Resource Research Organization. https://ia902703.us.archive.org/31/items/ERIC_ED076707/ERIC_ED076707.pdf
+# Reference: Caylor, J. S., & Sticht, T. G. (1973). Development of a simple readability index for job reading material. Human Resource Research Organization. https://ia902703.us.archive.org/31/items/ERIC_ED076707/ERIC_ED076707.pdf | p. 3
 def rgl(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         text = get_nums(main, text)
@@ -728,7 +728,7 @@ def rgl(main, text):
 # Fucks's Stilcharakteristik
 # References:
 #     Fucks, W. (1955). Unterschied des prosastils von dichtern und anderen schriftstellern: Ein beispiel mathematischer stilanalyse. Bouvier.
-#     Briest, W. (1974). Kann man Verständlichkeit messen? STUF - Language Typology and Universals, 27(1-3), 543–563. https://doi.org/10.1524/stuf.1974.27.13.543
+#     Briest, W. (1974). Kann man Verständlichkeit messen? STUF - Language Typology and Universals, 27(1–3), 543–563. https://doi.org/10.1524/stuf.1974.27.13.543
 def fuckss_stilcharakteristik(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         text = get_nums(main, text)
@@ -764,11 +764,11 @@ def gulpease(main, text):
 
 # Gunning Fog Index
 # References:
-#     Gunning, R. (1968). The technique of clear writing (revised ed., p. 38). McGraw-Hill Book Company.
+#     Gunning, R. (1968). The technique of clear writing (revised ed.). McGraw-Hill Book Company. | p. 38
 # Powers-Sumner-Kearl:
 #     Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. Journal of Educational Psychology, 49(2), 99–105. https://doi.org/10.1037/h0043254
 # Navy:
-#     Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel (Report No. RBR 8-75, p. 14). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
+#     Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel (Report No. RBR 8-75). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf | p. 14
 # Polish:
 #     Pisarek, W. (1969). Jak mierzyć zrozumiałość tekstu? Zeszyty Prasoznawcze, 4(42), 35–48.
 def fog_index(main, text):
@@ -889,7 +889,7 @@ def mu(main, text):
     return mu
 
 # Lensear Write Formula
-# Reference: O’Hayre, J. (1966). Gobbledygook has gotta go (p. 8). U.S. Government Printing Office. https://www.governmentattic.org/15docs/Gobbledygook_Has_Gotta_Go_1966.pdf
+# Reference: O’Hayre, J. (1966). Gobbledygook has gotta go. U.S. Government Printing Office. https://www.governmentattic.org/15docs/Gobbledygook_Has_Gotta_Go_1966.pdf | p. 8
 def lensear_write_formula(main, text):
     if text.lang.startswith('eng_') and text.lang in main.settings_global['syl_tokenizers']:
         text = get_nums(main, text)
@@ -945,10 +945,10 @@ def lix(main, text):
 # Lorge Readability Index
 # References:
 #     Lorge, I. (1944). Predicting readability. Teachers College Record, 45, 404–419.
-#     DuBay, W. H. (2006). In W. H. DuBay (Ed.), The classic readability studies (pp. 46–60). Impact Information. https://files.eric.ed.gov/fulltext/ED506404.pdf
+#     Lorge, I. (1944). Predicting readability. In W. H. DuBay (Ed.), The classic readability studies (pp. 46–60). Impact Information. https://files.eric.ed.gov/fulltext/ED506404.pdf
 # Corrected:
 #     Lorge, I. (1948). The Lorge and Flesch readability formulae: A correction. School and Society, 67, 141–142.
-#     DuBay, W. H. (2006). In W. H. DuBay (Ed.), The classic readability studies (pp. 46–60). Impact Information. https://files.eric.ed.gov/fulltext/ED506404.pdf
+#     Lorge, I. (1944). Predicting readability. In W. H. DuBay (Ed.), The classic readability studies (pp. 46–60). Impact Information. https://files.eric.ed.gov/fulltext/ED506404.pdf
 def lorge_readability_index(main, text):
     if text.lang.startswith('eng_'):
         text = get_nums(main, text)
@@ -987,7 +987,7 @@ def lorge_readability_index(main, text):
     return lorge
 
 # Luong-Nguyen-Dinh's readability formula
-# Reference: Luong, A.-V., Nguyen, D., & Dinh, D. (2018). A new formula for Vietnamese text readability assessment. 2018 10th International Conference on Knowledge and Systems Engineering (KSE) (pp. 198–202). IEEE. https://doi.org/10.1109/KSE.2018.8573379
+# Reference: Luong, A.-V., Nguyen, D., & Dinh, D. (2018). A new formula for Vietnamese text readability assessment. In T. M. Phuong & M. L. Nguyen (Eds.), Proceedings of 2018 10th International Conference on Knowledge and Systems Engineering (KSE) (pp. 198–202). IEEE. https://doi.org/10.1109/KSE.2018.8573379
 def luong_nguyen_dinhs_readability_formula(main, text):
     if text.lang == 'vie':
         text = get_nums(main, text)
@@ -1026,7 +1026,7 @@ def eflaw(main, text):
     return eflaw
 
 # neue Wiener Literaturformeln
-# Reference: Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache (p. 82). Jugend und Volk.
+# Reference: Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache. Jugend und Volk. | p. 82
 def nwl(main, text):
     if text.lang.startswith('deu_'):
         text = get_nums(main, text)
@@ -1054,7 +1054,7 @@ def nwl(main, text):
     return nwl
 
 # neue Wiener Sachtextformel
-# Reference: Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache (pp. 83–84). Jugend und Volk.
+# Reference: Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache. Jugend und Volk. | pp. 83–84
 def nws(main, text):
     if text.lang.startswith('deu_'):
         text = get_nums(main, text)
@@ -1173,7 +1173,7 @@ def rix(main, text):
 # References:
 #     McLaughlin, G. H. (1969). SMOG Grading: A new readability formula. Journal of Reading, 12(8), 639–646.
 # German:
-#     Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache (p. 78). Jugend und Volk.
+#     Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache. Jugend und Volk. | p. 78
 def smog_grading(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         text = get_nums(main, text)

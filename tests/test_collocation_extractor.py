@@ -34,12 +34,12 @@ def test_collocation_extractor():
     tests_statistical_significance = [
         test_statistical_significance
         for test_statistical_significance, vals in main.settings_global['tests_statistical_significance'].items()
-        if vals['collocation_extractor']
+        if vals['collocation']
     ]
     measures_bayes_factor = [
         measure_bayes_factor
         for measure_bayes_factor, vals in main.settings_global['measures_bayes_factor'].items()
-        if vals['collocation_extractor']
+        if vals['collocation']
     ]
     measures_effect_size = list(main.settings_global['measures_effect_size'].keys())
 
