@@ -55,7 +55,7 @@ def test_get_alt():
     assert wl_measures_statistical_significance.get_alt('Left-tailed') == 'less'
     assert wl_measures_statistical_significance.get_alt('Right-tailed') == 'greater'
 
-# References: Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference (pp. 188-200). The South–Central Regional SAS Users' Group. (p. 10)
+# References: Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference (pp. 188–200). The South–Central Regional SAS Users' Group. | p. 10
 def test_fishers_exact_test():
     settings['fishers_exact_test']['direction'] = 'Two-tailed'
     test_stats, p_vals = wl_measures_statistical_significance.fishers_exact_test(
@@ -100,7 +100,7 @@ def test_fishers_exact_test():
     assert test_stats == [None] * 2
     numpy.testing.assert_array_equal(p_vals, numpy.array([1] * 2))
 
-# References: Dunning, T. E. (1993). Accurate methods for the statistics of surprise and coincidence. Computational Linguistics, 19(1), 61–74. (p. 72)
+# References: Dunning, T. E. (1993). Accurate methods for the statistics of surprise and coincidence. Computational Linguistics, 19(1), 61–74. | p. 72
 def test_log_likelihood_ratio_test():
     settings['log_likelihood_ratio_test']['apply_correction'] = False
     gs, _ = wl_measures_statistical_significance.log_likelihood_ratio_test(
@@ -134,7 +134,7 @@ def test_log_likelihood_ratio_test():
     numpy.testing.assert_array_equal(gs, numpy.array([0, 0]))
     numpy.testing.assert_array_equal(p_vals, numpy.array([1, 1]))
 
-# References: Kilgarriff, A. (2001). Comparing corpora. International Journal of Corpus Linguistics, 6(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil (p. 238)
+# References: Kilgarriff, A. (2001). Comparing corpora. International Journal of Corpus Linguistics, 6(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil | p. 238
 def test_mann_whitney_u_test():
     u1s, _ = wl_measures_statistical_significance.mann_whitney_u_test(
         main,
@@ -175,8 +175,8 @@ def test_mann_whitney_u_test():
     )
 
 # References:
-#     Dunning, T. E. (1993). Accurate methods for the statistics of surprise and coincidence. Computational Linguistics, 19(1), 61–74. (p. 73)
-#     Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference (pp. 188-200). The South–Central Regional SAS Users' Group. (p. 10)
+#     Dunning, T. E. (1993). Accurate methods for the statistics of surprise and coincidence. Computational Linguistics, 19(1), 61–74. | p. 73
+#     Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference (pp. 188–200). The South–Central Regional SAS Users' Group. | p. 10
 def test_pearsons_chi_squared_test():
     settings['pearsons_chi_squared_test']['apply_correction'] = False
     chi2s, _ = wl_measures_statistical_significance.pearsons_chi_squared_test(
@@ -209,7 +209,7 @@ def test_pearsons_chi_squared_test():
     numpy.testing.assert_array_equal(chi2s, numpy.array([0] * 2))
     numpy.testing.assert_array_equal(p_vals, numpy.array([1] * 2))
 
-# Manning, C. D., & Schütze, H. (1999). Foundations of statistical natural language processing. MIT Press. (pp. 164-165)
+# Manning, C. D., & Schütze, H. (1999). Foundations of statistical natural language processing. MIT Press. | pp. 164–165
 def test_students_t_test_1_sample():
     t_stats, _ = wl_measures_statistical_significance.students_t_test_1_sample(
         main,

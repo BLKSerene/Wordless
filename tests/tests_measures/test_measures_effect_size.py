@@ -35,17 +35,17 @@ def assert_zeros(func, result = 0):
         numpy.array([result] * 10)
     )
 
-# Reference: Gabrielatos, C., & Marchi, A. (2012, September 13–14). Keyness: Appropriate metrics and practical issues [Conference session]. CADS International Conference 2012, University of Bologna, Italy. (pp. 21-22)
+# Reference: Gabrielatos, C., & Marchi, A. (2011, November 5). Keyness: Matching metrics to definitions [Conference session]. Corpus Linguistics in the South 1, University of Portsmouth, United Kingdom. https://eprints.lancs.ac.uk/id/eprint/51449/4/Gabrielatos_Marchi_Keyness.pdf | p. 18
 def test_pct_diff():
     numpy.testing.assert_array_equal(
         numpy.round(wl_measures_effect_size.pct_diff(
             main,
-            numpy.array([20] * 2),
-            numpy.array([1] * 2),
-            numpy.array([29954 - 20] * 2),
-            numpy.array([23691 - 1] * 2)
-        ), 2),
-        numpy.array([1481.83] * 2)
+            numpy.array([206523] * 2),
+            numpy.array([178174] * 2),
+            numpy.array([959641 - 206523] * 2),
+            numpy.array([1562358 - 178174] * 2)
+        ), 1),
+        numpy.array([88.7] * 2)
     )
 
     numpy.testing.assert_array_equal(
@@ -59,10 +59,23 @@ def test_pct_diff():
         numpy.array([float('-inf'), float('inf'), 0])
     )
 
+# Reference: Durrant, P. (2008). High frequency collocations and second language learning [Doctoral dissertation, University of Nottingham]. Nottingham eTheses. https://eprints.nottingham.ac.uk/10622/1/final_thesis.pdf | pp. 80, 84
+def test_conditional_probability():
+    numpy.testing.assert_array_equal(
+        numpy.round(wl_measures_effect_size.conditional_probability(
+            main,
+            numpy.array([28, 28]),
+            numpy.array([8002, 15740]),
+            numpy.array([15740, 8002]),
+            numpy.array([97596164, 97596164])
+        ), 3),
+        numpy.array([0.178, 0.349])
+    )
+
 def test_im3():
     assert_zeros(wl_measures_effect_size.im3)
 
-# Reference: Smadja, F., McKeown, K. R., & Hatzivassiloglou, V. (1996). Translating collocations for bilingual lexicons: A statistical approach. Computational Linguistics, 22(1), pp. 1–38. (p. 13)
+# Reference: Smadja, F., McKeown, K. R., & Hatzivassiloglou, V. (1996). Translating collocations for bilingual lexicons: A statistical approach. Computational Linguistics, 22(1), pp. 1–38. | p. 13
 def test_dice_sorensen_coeff():
     numpy.testing.assert_array_equal(
         numpy.round(wl_measures_effect_size.dice_sorensen_coeff(
@@ -77,7 +90,7 @@ def test_dice_sorensen_coeff():
 
     assert_zeros(wl_measures_effect_size.dice_sorensen_coeff)
 
-# Reference: Hofland, K., & Johanson, S. (1982). Word frequencies in British and American English. Norwegian Computing Centre for the Humanities. (p. 471)
+# Reference: Hofland, K., & Johanson, S. (1982). Word frequencies in British and American English. Norwegian Computing Centre for the Humanities. | p. 471
 def test_diff_coeff():
     numpy.testing.assert_array_equal(
         numpy.round(wl_measures_effect_size.diff_coeff(
@@ -95,7 +108,7 @@ def test_diff_coeff():
 def test_jaccard_index():
     assert_zeros(wl_measures_effect_size.jaccard_index)
 
-# Reference: Kilgarriff, A. (2009). Simple maths for keywords. In M. Mahlberg, V. González-Díaz, & C. Smith (Eds.), Proceedings of the Corpus Linguistics Conference 2009 (p. 171). University of Liverpool.
+# Reference: Kilgarriff, A. (2009). Simple maths for keywords. In M. Mahlberg, V. González-Díaz, & C. Smith (Eds.), Proceedings of the Corpus Linguistics Conference 2009 (CL2009) (Article 171). University of Liverpool.
 def test_kilgarriffs_ratio():
     numpy.testing.assert_array_equal(
         numpy.round(wl_measures_effect_size.kilgarriffs_ratio(
@@ -164,7 +177,7 @@ def test_md():
 def test_me():
     assert_zeros(wl_measures_effect_size.me)
 
-# Reference: Dunning, T. E. (1998). Finding structure in text, genome and other symbolic sequences [Doctoral dissertation, University of Sheffield]. arXiv. https://arxiv.org/pdf/1207.1847 (p. 51)
+# Reference: Dunning, T. E. (1998). Finding structure in text, genome and other symbolic sequences [Doctoral dissertation, University of Sheffield]. arXiv. https://arxiv.org/pdf/1207.1847 | p. 51
 def test_mi():
     numpy.testing.assert_array_equal(
         numpy.round(wl_measures_effect_size.mi(
@@ -179,7 +192,7 @@ def test_mi():
 
     assert_zeros(wl_measures_effect_size.mi)
 
-# Reference: Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. Corpus Linguistics and Linguistic Theory, 15(1), pp. 133–167. https://doi.org/10.1515/cllt-2015-0030 (p. 154)
+# Reference: Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. Corpus Linguistics and Linguistic Theory, 15(1), pp. 133–167. https://doi.org/10.1515/cllt-2015-0030 | p. 154
 def test_odds_ratio():
     numpy.testing.assert_array_equal(
         numpy.round(wl_measures_effect_size.odds_ratio(
@@ -203,7 +216,7 @@ def test_odds_ratio():
         numpy.array([float('-inf'), float('inf'), 0])
     )
 
-# Reference: Church, K. W., & Hanks, P. (1990). Word association norms, mutual information, and lexicography. Computational Linguistics, 16(1), 22–29. (p. 24)
+# Reference: Church, K. W., & Hanks, P. (1990). Word association norms, mutual information, and lexicography. Computational Linguistics, 16(1), 22–29. | p. 24
 def test_pmi():
     numpy.testing.assert_array_equal(
         numpy.round(wl_measures_effect_size.pmi(
@@ -241,6 +254,7 @@ def test_squared_phi_coeff():
 
 if __name__ == '__main__':
     test_pct_diff()
+    test_conditional_probability()
     test_im3()
     test_dice_sorensen_coeff()
     test_diff_coeff()

@@ -30,7 +30,7 @@ TOKENS_100 = ['This', 'is', 'a', 'sentence', '.'] * 20
 TOKENS_101 = ['This', 'is', 'a', 'sentence', '.'] * 20 + ['another']
 TOKENS_1000 = ['This', 'is', 'a', 'sentence', '.'] * 200
 
-# Reference: Popescu, I.-I. (2009). Word frequency studies (p. 26). Mouton de Gruyter.
+# Reference: Popescu, I.-I. (2009). Word frequency studies. Mouton de Gruyter. | p. 26
 TOKENS_225 = [1] * 11 + [2, 3] * 9 + [4] * 7 + [5, 6] * 6 + [7, 8] * 5 + list(range(9, 16)) * 4 + list(range(16, 22)) * 3 + list(range(22, 40)) * 2 + list(range(40, 125))
 
 def get_test_text(tokens):
@@ -130,31 +130,31 @@ def test_popescu_macutek_altmanns_b1_b2_b3_b4_b5():
     assert round(b4, 3) == 0.078
     assert round(b5, 3) == 0.664
 
-# Reference: Popescu, I.-I. (2009). Word frequency studies (p. 30). Mouton de Gruyter.
+# Reference: Popescu, I.-I. (2009). Word frequency studies. Mouton de Gruyter. | p. 30
 def test_popescus_r1():
     r1 = wl_measures_lexical_density_diversity.popescus_r1(main, text_tokens_225)
 
     assert round(r1, 4) == 0.8667
 
-# Reference: Popescu, I.-I. (2009). Word frequency studies (p. 39). Mouton de Gruyter.
+# Reference: Popescu, I.-I. (2009). Word frequency studies. Mouton de Gruyter. | p. 39
 def test_popescus_r2():
     r2 = wl_measures_lexical_density_diversity.popescus_r2(main, text_tokens_225)
 
     assert round(r2, 3) == 0.871
 
-# Reference: Popescu, I.-I. (2009). Word frequency studies (p. 51). Mouton de Gruyter.
+# Reference: Popescu, I.-I. (2009). Word frequency studies. Mouton de Gruyter. | p. 51
 def test_popescus_r3():
     r3 = wl_measures_lexical_density_diversity.popescus_r3(main, text_tokens_225)
 
     assert round(r3, 4) == 0.3778
 
-# Reference: Popescu, I.-I. (2009). Word frequency studies (p. 59). Mouton de Gruyter.
+# Reference: Popescu, I.-I. (2009). Word frequency studies. Mouton de Gruyter. | p. 59
 def test_popescus_r4():
     r4 = wl_measures_lexical_density_diversity.popescus_r4(main, text_tokens_225)
 
     assert round(r4, 4) == 0.6344
 
-# Reference: Popescu, I.-I. (2009). Word frequency studies (pp. 170, 172). Mouton de Gruyter.
+# Reference: Popescu, I.-I. (2009). Word frequency studies. Mouton de Gruyter. | pp. 170, 172
 def test_repeat_rate():
     settings['repeat_rate']['use_data'] = 'Rank-frequency distribution'
     rr_distribution = wl_measures_lexical_density_diversity.repeat_rate(main, text_tokens_225)
@@ -169,7 +169,7 @@ def test_rttr():
 
     assert rttr == 5 / 100 ** 0.5
 
-# Reference: Popescu, I.-I. (2009). Word frequency studies (pp. 176, 178). Mouton de Gruyter.
+# Reference: Popescu, I.-I. (2009). Word frequency studies. Mouton de Gruyter. | pp. 176, 178
 def test_shannon_entropy():
     settings['shannon_entropy']['use_data'] = 'Rank-frequency distribution'
     h_distribution = wl_measures_lexical_density_diversity.shannon_entropy(main, text_tokens_225)

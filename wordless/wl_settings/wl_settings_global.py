@@ -3594,18 +3594,19 @@ def init_settings_global():
             'effect_size': {
                 _tr('wl_settings_global', 'None'): 'none',
                 '%DIFF': 'pct_diff',
+                _tr('wl_settings_global', 'Conditional probability'): 'conditional_probability',
                 _tr('wl_settings_global', 'Cubic association ratio'): 'im3',
-                _tr('wl_settings_global', "Dice's coefficient"): 'dices_coeff',
+                _tr('wl_settings_global', "Dice-Sørensen coefficient"): 'dice_sorensen_coeff',
                 _tr('wl_settings_global', 'Difference coefficient'): 'diff_coeff',
                 _tr('wl_settings_global', 'Jaccard index'): 'jaccard_index',
                 _tr('wl_settings_global', "Kilgarriff's ratio"): 'kilgarriffs_ratio',
                 'logDice': 'log_dice',
                 _tr('wl_settings_global', 'Log-frequency biased MD'): 'lfmd',
-                _tr('wl_settings_global', 'Log ratio'): 'log_ratio',
+                _tr('wl_settings_global', 'Log Ratio'): 'log_ratio',
                 'MI.log-f': 'mi_log_f',
                 _tr('wl_settings_global', 'Minimum sensitivity'): 'min_sensitivity',
-                _tr('wl_settings_global', 'Mutual dependency'): 'md',
-                _tr('wl_settings_global', 'Mutual expectation'): 'me',
+                _tr('wl_settings_global', 'Mutual Dependency'): 'md',
+                _tr('wl_settings_global', 'Mutual Expectation'): 'me',
                 _tr('wl_settings_global', 'Mutual information'): 'mi',
                 _tr('wl_settings_global', 'Odds ratio'): 'or',
                 _tr('wl_settings_global', 'Pointwise mutual information'): 'pmi',
@@ -3738,8 +3739,8 @@ def init_settings_global():
                 'col_text': None,
                 'func': None,
                 'to_sections': False,
-                'collocation_extractor': True,
-                'keyword_extractor': True
+                'collocation': True,
+                'keyword': True
             },
 
             'fishers_exact_test': {
@@ -3747,64 +3748,64 @@ def init_settings_global():
                 'col_text': None,
                 'func': wl_measures_statistical_significance.fishers_exact_test,
                 'to_sections': False,
-                'collocation_extractor': True,
-                'keyword_extractor': True
+                'collocation': True,
+                'keyword': True
             },
 
             'log_likelihood_ratio_test': {
                 'col_text': _tr('wl_settings_global', 'Log-likelihood Ratio'),
                 'func': wl_measures_statistical_significance.log_likelihood_ratio_test,
                 'to_sections': False,
-                'collocation_extractor': True,
-                'keyword_extractor': True
+                'collocation': True,
+                'keyword': True
             },
 
             'mann_whitney_u_test': {
                 'col_text': 'U1',
                 'func': wl_measures_statistical_significance.mann_whitney_u_test,
                 'to_sections': True,
-                'collocation_extractor': False,
-                'keyword_extractor': True
+                'collocation': False,
+                'keyword': True
             },
 
             'pearsons_chi_squared_test': {
                 'col_text': 'χ2',
                 'func': wl_measures_statistical_significance.pearsons_chi_squared_test,
                 'to_sections': False,
-                'collocation_extractor': True,
-                'keyword_extractor': True
+                'collocation': True,
+                'keyword': True
             },
 
             'students_t_test_1_sample': {
                 'col_text': _tr('wl_settings_global', 't-statistic'),
                 'func': wl_measures_statistical_significance.students_t_test_1_sample,
                 'to_sections': False,
-                'collocation_extractor': True,
-                'keyword_extractor': True
+                'collocation': True,
+                'keyword': False
             },
 
             'students_t_test_2_sample': {
                 'col_text': _tr('wl_settings_global', 't-statistic'),
                 'func': wl_measures_statistical_significance.students_t_test_2_sample,
                 'to_sections': True,
-                'collocation_extractor': False,
-                'keyword_extractor': True
+                'collocation': False,
+                'keyword': True
             },
 
             'z_test': {
                 'col_text': _tr('wl_settings_global', 'z-score'),
                 'func': wl_measures_statistical_significance.z_test,
                 'to_sections': False,
-                'collocation_extractor': True,
-                'keyword_extractor': True
+                'collocation': True,
+                'keyword': False
             },
 
             'z_test_berry_rogghe': {
                 'col_text': _tr('wl_settings_global', 'z-score'),
                 'func': wl_measures_statistical_significance.z_test_berry_rogghe,
                 'to_sections': False,
-                'collocation_extractor': True,
-                'keyword_extractor': False
+                'collocation': True,
+                'keyword': False
             }
         },
 
@@ -3812,124 +3813,171 @@ def init_settings_global():
             'none': {
                 'func': None,
                 'to_sections': None,
-                'collocation_extractor': True,
-                'keyword_extractor': True
+                'collocation': True,
+                'keyword': True
             },
 
             'log_likelihood_ratio_test': {
                 'func': wl_measures_bayes_factor.bayes_factor_log_likelihood_ratio_test,
                 'to_sections': False,
-                'collocation_extractor': True,
-                'keyword_extractor': True
+                'collocation': True,
+                'keyword': True
             },
 
             'students_t_test_2_sample': {
                 'func': wl_measures_bayes_factor.bayes_factor_students_t_test_2_sample,
                 'to_sections': True,
-                'collocation_extractor': False,
-                'keyword_extractor': True
+                'collocation': False,
+                'keyword': True
             },
         },
 
         'measures_effect_size': {
             'none': {
                 'col_text': None,
-                'func': None
+                'func': None,
+                'collocation': True,
+                'keyword': True
             },
 
             'pct_diff': {
                 'col_text': '%DIFF',
-                'func': wl_measures_effect_size.pct_diff
+                'func': wl_measures_effect_size.pct_diff,
+                'collocation': False,
+                'keyword': True
+            },
+
+            'conditional_probability': {
+                'col_text': 'P',
+                'func': wl_measures_effect_size.conditional_probability,
+                'collocation': True,
+                'keyword': False
             },
 
             'im3': {
                 'col_text': 'IM³',
-                'func': wl_measures_effect_size.im3
+                'func': wl_measures_effect_size.im3,
+                'collocation': True,
+                'keyword': True
             },
 
             'dice_sorensen_coeff': {
-                'col_text': _tr('wl_settings_global', 'Dice-Sørensen coefficient'),
-                'func': wl_measures_effect_size.dice_sorensen_coeff
+                'col_text': _tr('wl_settings_global', 'Dice-Sørensen Coefficient'),
+                'func': wl_measures_effect_size.dice_sorensen_coeff,
+                'collocation': True,
+                'keyword': False
             },
 
             'diff_coeff': {
                 'col_text': _tr('wl_settings_global', 'Difference Coefficient'),
-                'func': wl_measures_effect_size.diff_coeff
+                'func': wl_measures_effect_size.diff_coeff,
+                'collocation': False,
+                'keyword': True
             },
 
             'jaccard_index': {
                 'col_text': _tr('wl_settings_global', 'Jaccard Index'),
-                'func': wl_measures_effect_size.jaccard_index
-            },
-
-            'lfmd': {
-                'col_text': 'LFMD',
-                'func': wl_measures_effect_size.lfmd
+                'func': wl_measures_effect_size.jaccard_index,
+                'collocation': True,
+                'keyword': False
             },
 
             'kilgarriffs_ratio': {
                 'col_text': _tr('wl_settings_global', "Kilgarriff's Ratio"),
-                'func': wl_measures_effect_size.kilgarriffs_ratio
+                'func': wl_measures_effect_size.kilgarriffs_ratio,
+                'collocation': False,
+                'keyword': True
             },
 
             'log_dice': {
                 'col_text': 'logDice',
-                'func': wl_measures_effect_size.log_dice
+                'func': wl_measures_effect_size.log_dice,
+                'collocation': True,
+                'keyword': False
+            },
+
+            'lfmd': {
+                'col_text': 'LFMD',
+                'func': wl_measures_effect_size.lfmd,
+                'collocation': True,
+                'keyword': False
             },
 
             'log_ratio': {
                 'col_text': _tr('wl_settings_global', 'Log Ratio'),
-                'func': wl_measures_effect_size.log_ratio
+                'func': wl_measures_effect_size.log_ratio,
+                'collocation': True,
+                'keyword': True
             },
 
             'mi_log_f': {
                 'col_text': 'MI.log-f',
-                'func': wl_measures_effect_size.mi_log_f
+                'func': wl_measures_effect_size.mi_log_f,
+                'collocation': True,
+                'keyword': False
             },
 
             'min_sensitivity': {
                 'col_text': _tr('wl_settings_global', 'Minimum Sensitivity'),
-                'func': wl_measures_effect_size.min_sensitivity
+                'func': wl_measures_effect_size.min_sensitivity,
+                'collocation': True,
+                'keyword': False
             },
 
             'md': {
                 'col_text': 'MD',
-                'func': wl_measures_effect_size.md
+                'func': wl_measures_effect_size.md,
+                'collocation': True,
+                'keyword': False
             },
 
             'me': {
                 'col_text': 'ME',
-                'func': wl_measures_effect_size.me
+                'func': wl_measures_effect_size.me,
+                'collocation': True,
+                'keyword': False
             },
 
             'mi': {
                 'col_text': 'MI',
-                'func': wl_measures_effect_size.mi
+                'func': wl_measures_effect_size.mi,
+                'collocation': True,
+                'keyword': False
             },
 
             'or': {
                 'col_text': 'OR',
-                'func': wl_measures_effect_size.odds_ratio
+                'func': wl_measures_effect_size.odds_ratio,
+                'collocation': True,
+                'keyword': True
             },
 
             'pmi': {
                 'col_text': 'PMI',
-                'func': wl_measures_effect_size.pmi
+                'func': wl_measures_effect_size.pmi,
+                'collocation': True,
+                'keyword': True
             },
 
             'poisson_collocation_measure': {
                 'col_text': _tr('wl_settings_global', 'Poisson Collocation Measure'),
-                'func': wl_measures_effect_size.poisson_collocation_measure
+                'func': wl_measures_effect_size.poisson_collocation_measure,
+                'collocation': True,
+                'keyword': False
             },
 
             'im2': {
                 'col_text': 'IM²',
-                'func': wl_measures_effect_size.im2
+                'func': wl_measures_effect_size.im2,
+                'collocation': True,
+                'keyword': True
             },
 
             'squared_phi_coeff': {
                 'col_text': 'φ2',
-                'func': wl_measures_effect_size.squared_phi_coeff
+                'func': wl_measures_effect_size.squared_phi_coeff,
+                'collocation': True,
+                'keyword': False
             }
         },
 

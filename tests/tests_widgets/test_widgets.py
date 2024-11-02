@@ -125,11 +125,12 @@ def test_wl_widgets_search_settings_tokens():
 def test_wl_widgets_context_settings():
     wl_widgets.wl_widgets_context_settings(main, tab = 'concordancer')
 
-def test_wl_widgets_measures_wordlist_generator():
-    wl_widgets.wl_widgets_measures_wordlist_generator(main)
+def test_wl_widgets_measures_wordlist_ngram_generation():
+    wl_widgets.wl_widgets_measures_wordlist_ngram_generation(main)
 
-def test_wl_widgets_measures_collocation_extractor():
-    wl_widgets.wl_widgets_measures_collocation_extractor(main, tab = 'collocation_extractor')
+def test_wl_widgets_measures_collocation_keyword_extraction():
+    wl_widgets.wl_widgets_measures_collocation_keyword_extraction(main, extraction_type = 'collocation')
+    wl_widgets.wl_widgets_measures_collocation_keyword_extraction(main, extraction_type = 'keyword')
 
 def test_wl_widgets_table_settings():
     table = QTableView()
@@ -223,8 +224,8 @@ if __name__ == '__main__':
     test_wl_widgets_search_settings()
     test_wl_widgets_context_settings()
 
-    test_wl_widgets_measures_wordlist_generator()
-    test_wl_widgets_measures_collocation_extractor()
+    test_wl_widgets_measures_wordlist_ngram_generation()
+    test_wl_widgets_measures_collocation_keyword_extraction()
 
     test_wl_widgets_table_settings()
     test_wl_widgets_table_settings_span_position()

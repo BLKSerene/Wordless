@@ -39,7 +39,7 @@ def brunets_index(main, text):
 # Corrected TTR
 # References:
 #     Carroll, J. B. (1964). Language and thought. Prentice-Hall.
-#     Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). Lexical diversity and language development: Quantification and assessment (p. 26). Palgrave Macmillan.
+#     Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). Lexical diversity and language development: Quantification and assessment. Palgrave Macmillan. | p. 26
 def cttr(main, text):
     return text.num_types / numpy.sqrt(2 * text.num_tokens)
 
@@ -115,7 +115,7 @@ def honores_stat(main, text):
     return r
 
 # Lexical density
-# Reference: Halliday, M. A. K. (1989). Spoken and written language (2nd ed., p. 64). Oxford University Press.
+# Reference: Halliday, M. A. K. (1989). Spoken and written language (2nd ed.). Oxford University Press. | p. 64
 def lexical_density(main, text):
     if text.lang in main.settings_global['pos_taggers']:
         wl_pos_tagging.wl_pos_tag_universal(main, text.get_tokens_flat(), lang = text.lang, tagged = text.tagged)
@@ -135,19 +135,19 @@ def lexical_density(main, text):
 
 # LogTTR
 # Herdan:
-#     Herdan, G. (1960). Type-token mathematics: A textbook of mathematical linguistics (p. 28). Mouton.
+#     Herdan, G. (1960). Type-token mathematics: A textbook of mathematical linguistics. Mouton. | p. 28
 # Somers:
 #     Somers, H. H. (1966). Statistical methods in literary analysis. In J. Leeds (Ed.), The computer and literary style (pp. 128–140). Kent State University Press.
-#     Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). Lexical diversity and language development: Quantification and assessment (p. 28). Palgrave Macmillan.
+#     Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). Lexical diversity and language development: Quantification and assessment. Palgrave Macmillan. | p. 28
 # Rubet:
 #     Dugast, D. (1979). Vocabulaire et stylistique: I théâtre et dialogue, travaux de linguistique quantitative. Slatkine.
-#     Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). Lexical diversity and language development: Quantification and assessment (p. 28). Palgrave Macmillan.
+#     Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). Lexical diversity and language development: Quantification and assessment. Palgrave Macmillan. | p. 28
 # Maas:
 #     Maas, H.-D. (1972). Über den zusammenhang zwischen wortschatzumfang und länge eines textes. Zeitschrift für Literaturwissenschaft und Linguistik, 2(8), 73–96.
 # Dugast:
 #     Dugast, D. (1978). Sur quoi se fonde la notion d’étendue théoretique du vocabulaire? Le Français Moderne, 46, 25–32.
 #     Dugast, D. (1979). Vocabulaire et stylistique: I théâtre et dialogue, travaux de linguistique quantitative. Slatkine.
-#     Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). Lexical diversity and language development: Quantification and assessment (p. 28). Palgrave Macmillan.
+#     Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). Lexical diversity and language development: Quantification and assessment. Palgrave Macmillan. | p. 28
 def logttr(main, text):
     variant = main.settings_custom['measures']['lexical_density_diversity']['logttr']['variant']
 
@@ -167,7 +167,7 @@ def logttr(main, text):
 # Mean segmental TTR
 # References:
 #     Johnson, W. (1944). Studies in language behavior: I. a program of research. Psychological Monographs, 56(2), 1–15. https://doi.org/10.1037/h0093508
-#     McCarthy, P. M. (2005). An assessment of the range and usefulness of lexical diversity measures and the potential of the measure of textual, lexical diversity (MTLD) [Doctoral dissertation, The University of Memphis] (p. 37). ProQuest Dissertations and Theses Global.
+#     McCarthy, P. M. (2005). An assessment of the range and usefulness of lexical diversity measures and the potential of the measure of textual, lexical diversity (MTLD) (Publication No. 3199485) [Doctoral dissertation, The University of Memphis]. ProQuest Dissertations and Theses Global. | p. 37
 def msttr(main, text):
     num_tokens_seg = main.settings_custom['measures']['lexical_density_diversity']['msttr']['num_tokens_in_each_seg']
 
@@ -187,7 +187,7 @@ def msttr(main, text):
 
 # Measure of textual lexical diversity
 # References:
-#     McCarthy, P. M. (2005). An assessment of the range and usefulness of lexical diversity measures and the potential of the measure of textual, lexical diversity (MTLD) [Doctoral dissertation, The University of Memphis] (pp. 95–96, 99–100). ProQuest Dissertations and Theses Global.
+#     McCarthy, P. M. (2005). An assessment of the range and usefulness of lexical diversity measures and the potential of the measure of textual, lexical diversity (MTLD) (Publication No. 3199485) [Doctoral dissertation, The University of Memphis]. ProQuest Dissertations and Theses Global. | pp. 95–96, 99–100
 #     McCarthy, P. M., & Jarvis, S. (2010). MTLD, vocd-D, and HD-D: A validation study of sophisticated approaches to lexical diversity assessment. Behavior Research Methods, 42(2), 381–392. https://doi.org/10.3758/BRM.42.2.381
 def mtld(main, text):
     mtlds = numpy.empty(shape = 2)
@@ -275,7 +275,7 @@ def popescu_macutek_altmanns_b1_b2_b3_b4_b5(main, text):
     return b1, b2, b3, b4, b5
 
 # Popescu's R₁
-# Reference: Popescu, I.-I. (2009). Word frequency studies (pp. 18, 30, 33). Mouton de Gruyter.
+# Reference: Popescu, I.-I. (2009). Word frequency studies. Mouton de Gruyter. | pp. 18, 30, 33
 def popescus_r1(main, text):
     types_freqs = collections.Counter(text.get_tokens_flat())
     ranks = numpy.empty(shape = text.num_types)
@@ -309,7 +309,7 @@ def popescus_r1(main, text):
     return r1
 
 # Popescu's R₂
-# Reference: Popescu, I.-I. (2009). Word frequency studies (pp. 35–36, 38). Mouton de Gruyter.
+# Reference: Popescu, I.-I. (2009). Word frequency studies. Mouton de Gruyter. | pp. 35–36, 38
 def popescus_r2(main, text):
     types_freqs = collections.Counter(text.get_tokens_flat())
     freqs_nums_types = sorted(collections.Counter(types_freqs.values()).items())
@@ -344,7 +344,7 @@ def popescus_r2(main, text):
     return r2
 
 # Popescu's R₃
-# Reference: Popescu, I.-I. (2009). Word frequency studies (pp. 48–49, 53). Mouton de Gruyter.
+# Reference: Popescu, I.-I. (2009). Word frequency studies. Mouton de Gruyter. | pp. 48–49, 53
 def popescus_r3(main, text):
     types_freqs = collections.Counter(text.get_tokens_flat())
     ranks_freqs = [
@@ -373,7 +373,7 @@ def popescus_r3(main, text):
     return r3
 
 # Popescu's R₄
-# Reference: Popescu, I.-I. (2009). Word frequency studies (p. 57). Mouton de Gruyter.
+# Reference: Popescu, I.-I. (2009). Word frequency studies. Mouton de Gruyter. | p. 57
 def popescus_r4(main, text):
     types_freqs = collections.Counter(text.get_tokens_flat())
 
@@ -389,7 +389,7 @@ def popescus_r4(main, text):
     return r4
 
 # Repeat rate
-# Reference: Popescu, I.-I. (2009). Word frequency studies (p. 166). Mouton de Gruyter.
+# Reference: Popescu, I.-I. (2009). Word frequency studies. Mouton de Gruyter. | p. 166
 def repeat_rate(main, text):
     use_data = main.settings_custom['measures']['lexical_density_diversity']['repeat_rate']['use_data']
 
@@ -414,7 +414,7 @@ def rttr(main, text):
     return text.num_types / numpy.sqrt(text.num_tokens)
 
 # Shannon entropy
-# Reference: Popescu, I.-I. (2009). Word frequency studies (p. 173). Mouton de Gruyter.
+# Reference: Popescu, I.-I. (2009). Word frequency studies. Mouton de Gruyter. | p. 173
 def shannon_entropy(main, text):
     use_data = main.settings_custom['measures']['lexical_density_diversity']['shannon_entropy']['use_data']
 
@@ -450,7 +450,7 @@ def ttr(main, text):
     return text.num_types / text.num_tokens
 
 # vocd-D
-# Reference: Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). Lexical diversity and language development: Quantification and assessment (pp. 51, 56–57). Palgrave Macmillan.
+# Reference: Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). Lexical diversity and language development: Quantification and assessment. Palgrave Macmillan. | pp. 51, 56–57
 def vocdd(main, text):
     def ttr(n, d):
         return (d / n) * (numpy.sqrt(1 + 2 * n / d) - 1)
@@ -480,7 +480,7 @@ def vocdd(main, text):
     return popt[0]
 
 # Yule's characteristic K
-# Reference: Yule, G. U. (1944). The statistical study of literary vocabulary (pp. 52–53). Cambridge University Press.
+# Reference: Yule, G. U. (1944). The statistical study of literary vocabulary. Cambridge University Press. | pp. 52–53
 def yules_characteristic_k(main, text):
     types_freqs = collections.Counter(text.get_tokens_flat())
     freqs_nums_types = collections.Counter(types_freqs.values())
@@ -493,7 +493,7 @@ def yules_characteristic_k(main, text):
     return k
 
 # Yule's Index of Diversity
-# Reference: Williams, C. B. (1970). Style and vocabulary: Numerical studies (p. 100). Griffin.
+# Reference: Williams, C. B. (1970). Style and vocabulary: Numerical studies. Griffin. | p. 100
 def yules_index_of_diversity(main, text):
     types_freqs = collections.Counter(text.get_tokens_flat())
     freqs_nums_types = collections.Counter(types_freqs.values())
