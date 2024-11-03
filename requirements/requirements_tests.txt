@@ -56,18 +56,16 @@ beautifulsoup4
 lxml
 matplotlib
 networkx
-## spaCy is incompatible with NumPy 2.0
-numpy == 1.26.4
+numpy == 1.26.4 # spaCy is incompatible with NumPy 2.0
 opencc-python-reimplemented
 openpyxl
 pypdf
-pyqt5
+pyqt5==5.15.10 # To be compatible with macOS < 11 on AppVeyor
 pytest
 python-docx
 python-pptx
 requests
-# Underthesea is incompatible with scikit-learn 1.5
-scikit-learn == 1.4.2
+scikit-learn == 1.4.2 # Underthesea is incompatible with scikit-learn 1.5
 scipy
 wordcloud
 
