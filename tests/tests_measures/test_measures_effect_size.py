@@ -35,30 +35,6 @@ def assert_zeros(func, result = 0):
         numpy.array([result] * 10)
     )
 
-# Reference: Gabrielatos, C., & Marchi, A. (2011, November 5). Keyness: Matching metrics to definitions [Conference session]. Corpus Linguistics in the South 1, University of Portsmouth, United Kingdom. https://eprints.lancs.ac.uk/id/eprint/51449/4/Gabrielatos_Marchi_Keyness.pdf | p. 18
-def test_pct_diff():
-    numpy.testing.assert_array_equal(
-        numpy.round(wl_measures_effect_size.pct_diff(
-            main,
-            numpy.array([206523] * 2),
-            numpy.array([178174] * 2),
-            numpy.array([959641 - 206523] * 2),
-            numpy.array([1562358 - 178174] * 2)
-        ), 1),
-        numpy.array([88.7] * 2)
-    )
-
-    numpy.testing.assert_array_equal(
-        wl_measures_effect_size.pct_diff(
-            main,
-            numpy.array([0, 1, 0]),
-            numpy.array([1, 0, 0]),
-            numpy.array([0, 0, 0]),
-            numpy.array([1, 1, 0])
-        ),
-        numpy.array([float('-inf'), float('inf'), 0])
-    )
-
 # Reference: Durrant, P. (2008). High frequency collocations and second language learning [Doctoral dissertation, University of Nottingham]. Nottingham eTheses. https://eprints.nottingham.ac.uk/10622/1/final_thesis.pdf | pp. 80, 84
 def test_conditional_probability():
     numpy.testing.assert_array_equal(
@@ -72,8 +48,25 @@ def test_conditional_probability():
         numpy.array([0.178, 0.349])
     )
 
+    assert_zeros(wl_measures_effect_size.conditional_probability)
+
 def test_im3():
     assert_zeros(wl_measures_effect_size.im3)
+
+# Reference: Gries, S. T. (2013). 50-something years of work on collocations: What is or should be next …. International Journal of Corpus Linguistics, 18(1), 137–165. https://doi.org/10.1075/ijcl.18.1.09gri | p. 144
+def test_delta_p():
+    numpy.testing.assert_array_equal(
+        numpy.round(wl_measures_effect_size.delta_p(
+            main,
+            numpy.array([5610, 5610]),
+            numpy.array([2257, 168938]),
+            numpy.array([168938, 2257]),
+            numpy.array([10233063, 10233063])
+        ), 3),
+        numpy.array([0.032, 0.697])
+    )
+
+    assert_zeros(wl_measures_effect_size.delta_p)
 
 # Reference: Smadja, F., McKeown, K. R., & Hatzivassiloglou, V. (1996). Translating collocations for bilingual lexicons: A statistical approach. Computational Linguistics, 22(1), pp. 1–38. | p. 13
 def test_dice_sorensen_coeff():
@@ -216,6 +209,30 @@ def test_odds_ratio():
         numpy.array([float('-inf'), float('inf'), 0])
     )
 
+# Reference: Gabrielatos, C., & Marchi, A. (2011, November 5). Keyness: Matching metrics to definitions [Conference session]. Corpus Linguistics in the South 1, University of Portsmouth, United Kingdom. https://eprints.lancs.ac.uk/id/eprint/51449/4/Gabrielatos_Marchi_Keyness.pdf | p. 18
+def test_pct_diff():
+    numpy.testing.assert_array_equal(
+        numpy.round(wl_measures_effect_size.pct_diff(
+            main,
+            numpy.array([206523] * 2),
+            numpy.array([178174] * 2),
+            numpy.array([959641 - 206523] * 2),
+            numpy.array([1562358 - 178174] * 2)
+        ), 1),
+        numpy.array([88.7] * 2)
+    )
+
+    numpy.testing.assert_array_equal(
+        wl_measures_effect_size.pct_diff(
+            main,
+            numpy.array([0, 1, 0]),
+            numpy.array([1, 0, 0]),
+            numpy.array([0, 0, 0]),
+            numpy.array([1, 1, 0])
+        ),
+        numpy.array([float('-inf'), float('inf'), 0])
+    )
+
 # Reference: Church, K. W., & Hanks, P. (1990). Word association norms, mutual information, and lexicography. Computational Linguistics, 16(1), 22–29. | p. 24
 def test_pmi():
     numpy.testing.assert_array_equal(
@@ -253,9 +270,9 @@ def test_squared_phi_coeff():
     assert_zeros(wl_measures_effect_size.squared_phi_coeff)
 
 if __name__ == '__main__':
-    test_pct_diff()
     test_conditional_probability()
     test_im3()
+    test_delta_p()
     test_dice_sorensen_coeff()
     test_diff_coeff()
     test_jaccard_index()
@@ -269,6 +286,7 @@ if __name__ == '__main__':
     test_me()
     test_mi()
     test_odds_ratio()
+    test_pct_diff()
     test_pmi()
     test_poisson_collocation_measure()
     test_im2()
