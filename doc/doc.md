@@ -1471,14 +1471,14 @@ Test of Statistical Significance|Measure of Bayes Factor|Formula|Collocation Ext
 <span id="ref-z-test-berry-rogghes"></span>Z-test (Berry-Rogghe)<br>([Berry-Rogghe, 1973](#ref-berry-rogghe-1973))||![Formula](/doc/measures/statistical_significance/z_test_berry_rogghe.svg)<br>where **S** is the average span size on both sides of the node word.|✔|✖️
 
 <!--
-%DIFF:
-    \text{%DIFF} = \frac{\left(\frac{O_{11}}{O_{x1}} - \frac{O_{12}}{O_{x2}}\right) \times 100}{\frac{O_{12}}{O_{x2}}}
-
 Conditional probability:
     \text{P} = \frac{O_{11}}{O_{x1}} \times 100
 
 Cubic association ratio:
     \text{IM}^3 = \log_{2} \frac{{O_{11}}^3}{E_{11}}
+
+ΔP:
+    \Delta\text{P} = \frac{O_{11}}{O_{x1}} - \frac{O_{12}}{O_{x2}}
 
 Dice-Sørensen coefficient:
     \text{DSC} = \frac{2 \times O_{11}}{O_{1x} + O_{x1}}
@@ -1519,6 +1519,9 @@ Mutual information:
 Odds ratio:
     \text{Odds ratio} = \frac{O_{11} \times O_{22}}{O_{12} \times O_{21}}
 
+%DIFF:
+    \text{%DIFF} = \frac{\left(\frac{O_{11}}{O_{x1}} - \frac{O_{12}}{O_{x2}}\right) \times 100}{\frac{O_{12}}{O_{x2}}}
+
 Pointwise mutual information:
     \text{PMI} = \log_{2} \frac{O_{11}}{E_{11}}
 
@@ -1534,9 +1537,9 @@ Squared phi coefficient:
 
 Measure of Effect Size|Formula|Collocation Extraction|Keyword Extraction
 ----------------------|-------|:--------------------:|:----------------:
-<span id="ref-pct-diff"></span>%DIFF<br>([Gabrielatos & Marchi, 2011](#ref-gabrielatos-marchi-2011))|![Formula](/doc/measures/effect_size/pct_diff.svg)|✖️|✔
 <span id="ref-conditional-probability"></span>Conditional probability<br>([Durrant, 2008, p. 84](#ref-durrant-2008))|![Formula](/doc/measures/effect_size/conditional_probability.svg)|✔|✖️
 <span id="ref-im3"></span>Cubic association ratio<br>([Daille, 1994, p. 139](#ref-daille-1994); [Kilgarriff, 2001, p, 99](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/im3.svg)|✔|✔
+<span id="ref-delta-p"></span><br>ΔP<br>([Gries, 2013](#ref-gries-2013))|![Formula](/doc/measures/effect_size/delta_p.svg)|✔|✖️
 <span id="ref-dice-sorensen-coeff"></span>Dice-Sørensen coefficient<br>([Smadja et al., 1996, p. 8](#ref-smadja-et-al-1996))|![Formula](/doc/measures/effect_size/dice_sorensen_coeff.svg)|✔|✖️
 <span id="ref-diff-coeff"></span>Difference coefficient<br>([Hofland & Johansson, 1982, p. 14](#ref-hofland-johansson-1982); [Gabrielatos, 2018, p. 236](#ref-gabrielatos-2018))|![Formula](/doc/measures/effect_size/diff_coeff.svg)|✖️|✔
 <span id="ref-jaccard-index"></span>Jaccard index<br>([Dunning, 1998, p. 48](#ref-dunning-1998))|![Formula](/doc/measures/effect_size/jaccard_index.svg)|✔|✖️
@@ -1550,6 +1553,7 @@ Measure of Effect Size|Formula|Collocation Extraction|Keyword Extraction
 <span id="ref-me"></span>Mutual Expectation<br>([Dias et al., 1999](#ref-dias-et-al-1999))|![Formula](/doc/measures/effect_size/me.svg)|✔|✖️
 <span id="ref-mi"></span>Mutual information<br>([Dunning, 1998, pp. 49–52](#ref-dunning-1998))|![Formula](/doc/measures/effect_size/mi.svg)|✔|✖️
 <span id="ref-odds-ratio"></span>Odds ratio<br>([Pecina, 2005, p. 15](#ref-pecina-2005), [Pojanapunya & Todd, 2016](#ref-pojanapunya-todd-2016))|![Formula](/doc/measures/effect_size/odds_ratio.svg)|✔|✔
+<span id="ref-pct-diff"></span>%DIFF<br>([Gabrielatos & Marchi, 2011](#ref-gabrielatos-marchi-2011))|![Formula](/doc/measures/effect_size/pct_diff.svg)|✖️|✔
 <span id="ref-pmi"></span>Pointwise mutual information<br>([Church & Hanks, 1990](#ref-church-hanks-1990); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/pmi.svg)|✔|✔
 <span id="ref-poisson-collocation-measure"></span>Poisson collocation measure<br>([Quasthoff & Wolff, 2002](#ref-quasthoff-wolff-2002))|![Formula](/doc/measures/effect_size/poisson_collocation_measure.svg)|✔|✖️
 <span id="ref-im2"></span>Squared association ratio<br>([Daille, 1995, p. 21](#ref-daille-1995); [Kilgarriff, 2001, p, 99](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/im2.svg)|✔|✔
@@ -1655,6 +1659,8 @@ Measure of Effect Size|Formula|Collocation Extraction|Keyword Extraction
 1. [**^**](#ref-pct-diff) Gabrielatos, C., & Marchi, A. (2011, November 5). *Keyness: Matching metrics to definitions* [Conference session]. Corpus Linguistics in the South 1, University of Portsmouth, United Kingdom. https://eprints.lancs.ac.uk/id/eprint/51449/4/Gabrielatos_Marchi_Keyness.pdf
 <span id="ref-gries-2008"></span>
 1. [**^**](#ref-griess-dp) Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. *International Journal of Corpus Linguistics*, *13*(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri
+<span id="ref-gries-2013"></span>
+1. [**^**](#ref-delta-p) Gries, S. T. (2013). 50-something years of work on collocations: What is or should be next …. *International Journal of Corpus Linguistics*, *18*(1), 137–165. https://doi.org/10.1075/ijcl.18.1.09gri
 <span id="ref-guiraud-1954"></span>
 1. [**^**](#ref-rttr) Guiraud, P. (1954). *Les caractères statistiques du vocabulaire: Essai de méthodologie*. Presses Universitaires de France.
 <span id="ref-gunning-1968"></span>

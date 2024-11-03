@@ -22,24 +22,6 @@ import numpy
 
 from wordless.wl_measures import wl_measures_statistical_significance, wl_measure_utils
 
-# %DIFF
-# Reference: Gabrielatos, C., & Marchi, A. (2011, November 5). Keyness: Matching metrics to definitions [Conference session]. Corpus Linguistics in the South 1, University of Portsmouth, United Kingdom. https://eprints.lancs.ac.uk/id/eprint/51449/4/Gabrielatos_Marchi_Keyness.pdf
-def pct_diff(main, o11s, o12s, o21s, o22s):
-    _, _, ox1s, ox2s = wl_measures_statistical_significance.get_freqs_marginal(o11s, o12s, o21s, o22s)
-
-    return numpy.where(
-        (o11s == 0) & (o12s > 0),
-        -numpy.inf,
-        numpy.where(
-            (o11s > 0) & (o12s == 0),
-            numpy.inf,
-            wl_measure_utils.numpy_divide(
-                (wl_measure_utils.numpy_divide(o11s, ox1s) - wl_measure_utils.numpy_divide(o12s, ox2s)) * 100,
-                wl_measure_utils.numpy_divide(o12s, ox2s)
-            )
-        )
-    )
-
 # Conditional probability
 # Reference: Durrant, P. (2008). High frequency collocations and second language learning [Doctoral dissertation, University of Nottingham]. Nottingham eTheses. https://eprints.nottingham.ac.uk/10622/1/final_thesis.pdf | p. 84
 def conditional_probability(main, o11s, o12s, o21s, o22s):
@@ -53,6 +35,13 @@ def im3(main, o11s, o12s, o21s, o22s):
     e11s, _, _, _ = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
 
     return wl_measure_utils.numpy_log2(wl_measure_utils.numpy_divide(o11s ** 3, e11s))
+
+# ΔP
+# Reference: Gries, S. T. (2013). 50-something years of work on collocations: What is or should be next …. International Journal of Corpus Linguistics, 18(1), 137–165. https://doi.org/10.1075/ijcl.18.1.09gri
+def delta_p(main, o11s, o12s, o21s, o22s):
+    _, _, ox1s, ox2s = wl_measures_statistical_significance.get_freqs_marginal(o11s, o12s, o21s, o22s)
+
+    return wl_measure_utils.numpy_divide(o11s, ox1s) - wl_measure_utils.numpy_divide(o12s, ox2s)
 
 # Dice-Sørensen coefficient
 # Reference: Smadja, F., McKeown, K. R., & Hatzivassiloglou, V. (1996). Translating collocations for bilingual lexicons: A statistical approach. Computational Linguistics, 22(1), 1–38. | p. 8
@@ -184,6 +173,24 @@ def odds_ratio(main, o11s, o12s, o21s, o22s):
             wl_measure_utils.numpy_divide(
                 o11s * o22s,
                 o12s * o21s
+            )
+        )
+    )
+
+# %DIFF
+# Reference: Gabrielatos, C., & Marchi, A. (2011, November 5). Keyness: Matching metrics to definitions [Conference session]. Corpus Linguistics in the South 1, University of Portsmouth, United Kingdom. https://eprints.lancs.ac.uk/id/eprint/51449/4/Gabrielatos_Marchi_Keyness.pdf
+def pct_diff(main, o11s, o12s, o21s, o22s):
+    _, _, ox1s, ox2s = wl_measures_statistical_significance.get_freqs_marginal(o11s, o12s, o21s, o22s)
+
+    return numpy.where(
+        (o11s == 0) & (o12s > 0),
+        -numpy.inf,
+        numpy.where(
+            (o11s > 0) & (o12s == 0),
+            numpy.inf,
+            wl_measure_utils.numpy_divide(
+                (wl_measure_utils.numpy_divide(o11s, ox1s) - wl_measure_utils.numpy_divide(o12s, ox2s)) * 100,
+                wl_measure_utils.numpy_divide(o12s, ox2s)
             )
         )
     )

@@ -3593,10 +3593,10 @@ def init_settings_global():
 
             'effect_size': {
                 _tr('wl_settings_global', 'None'): 'none',
-                '%DIFF': 'pct_diff',
                 _tr('wl_settings_global', 'Conditional probability'): 'conditional_probability',
                 _tr('wl_settings_global', 'Cubic association ratio'): 'im3',
-                _tr('wl_settings_global', "Dice-Sørensen coefficient"): 'dice_sorensen_coeff',
+                'ΔP': 'delta_p',
+                _tr('wl_settings_global', 'Dice-Sørensen coefficient'): 'dice_sorensen_coeff',
                 _tr('wl_settings_global', 'Difference coefficient'): 'diff_coeff',
                 _tr('wl_settings_global', 'Jaccard index'): 'jaccard_index',
                 _tr('wl_settings_global', "Kilgarriff's ratio"): 'kilgarriffs_ratio',
@@ -3609,6 +3609,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Mutual Expectation'): 'me',
                 _tr('wl_settings_global', 'Mutual information'): 'mi',
                 _tr('wl_settings_global', 'Odds ratio'): 'or',
+                '%DIFF': 'pct_diff',
                 _tr('wl_settings_global', 'Pointwise mutual information'): 'pmi',
                 _tr('wl_settings_global', 'Poisson collocation measure'): 'poisson_collocation_measure',
                 _tr('wl_settings_global', 'Squared association ratio'): 'im2',
@@ -3616,11 +3617,12 @@ def init_settings_global():
             }
         },
 
+        # Column headers are capitalized
         'measures_dispersion': {
             'none': {
                 'col_text': None,
                 'func': None,
-                'type': ''
+                'type': None
             },
 
             'ald': {
@@ -3682,7 +3684,7 @@ def init_settings_global():
             'none': {
                 'col_text': None,
                 'func': None,
-                'type': ''
+                'type': None
             },
 
             'fald': {
@@ -3840,13 +3842,6 @@ def init_settings_global():
                 'keyword': True
             },
 
-            'pct_diff': {
-                'col_text': '%DIFF',
-                'func': wl_measures_effect_size.pct_diff,
-                'collocation': False,
-                'keyword': True
-            },
-
             'conditional_probability': {
                 'col_text': 'P',
                 'func': wl_measures_effect_size.conditional_probability,
@@ -3859,6 +3854,13 @@ def init_settings_global():
                 'func': wl_measures_effect_size.im3,
                 'collocation': True,
                 'keyword': True
+            },
+
+            'delta_p': {
+                'col_text': 'ΔP',
+                'func': wl_measures_effect_size.delta_p,
+                'collocation': True,
+                'keyword': False
             },
 
             'dice_sorensen_coeff': {
@@ -3949,6 +3951,13 @@ def init_settings_global():
                 'col_text': 'OR',
                 'func': wl_measures_effect_size.odds_ratio,
                 'collocation': True,
+                'keyword': True
+            },
+
+            'pct_diff': {
+                'col_text': '%DIFF',
+                'func': wl_measures_effect_size.pct_diff,
+                'collocation': False,
                 'keyword': True
             },
 
