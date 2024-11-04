@@ -28,6 +28,9 @@
 - File Area: Fix Open Files - Opening Non-text Files - Do not show this again
 - Utils: Fix Wordless's Japanese kanji tokenizer
 
+### ❌ Removals
+- Measures: Remove effect size - Log-frequency biased MD / Mutual Dependency
+
 ## [3.5.0](https://github.com/BLKSerene/Wordless/releases/tag/3.5.0) - 07/01/2024
 ### 🎉 New Features
 - File Area: Add support for .lrc and .pptx files

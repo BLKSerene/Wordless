@@ -1495,9 +1495,6 @@ Kilgarriff's ratio:
 logDice:
     \text{logDice} = 14 + \log_{2} \frac{2 \times O_{11}}{O_{1x} + O_{x1}}
 
-Log-frequency biased MD:
-    \text{LFMD} = \log_{2} \frac{O_{11}}{E_{11}} + \log_{2} O_{11}
-
 Log Ratio:
     \text{Log Ratio} = \log_{2} \frac{\frac{O_{11}}{O_{x1}}}{\frac{O_{12}}{O_{x2}}}
 
@@ -1506,9 +1503,6 @@ MI.log-f:
 
 Minimum sensitivity:
     \text{S} = \min\left\{\frac{O_{11}}{O_{1x}},\;\frac{O_{11}}{O_{x1}}\right\}
-
-Mutual Dependency:
-    \text{MD} = \log_{2} \frac{{O_{11}}^2}{E_{11}}
 
 Mutual Expectation:
     \text{ME} = O_{11} \times \frac{2 \times O_{11}}{O_{1x} + O_{x1}}
@@ -1538,26 +1532,27 @@ Squared phi coefficient:
 Measure of Effect Size|Formula|Collocation Extraction|Keyword Extraction
 ----------------------|-------|:--------------------:|:----------------:
 <span id="ref-conditional-probability"></span>Conditional probability<br>([Durrant, 2008, p. 84](#ref-durrant-2008))|![Formula](/doc/measures/effect_size/conditional_probability.svg)|✔|✖️
-<span id="ref-im3"></span>Cubic association ratio<br>([Daille, 1994, p. 139](#ref-daille-1994); [Kilgarriff, 2001, p, 99](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/im3.svg)|✔|✔
 <span id="ref-delta-p"></span><br>ΔP<br>([Gries, 2013](#ref-gries-2013))|![Formula](/doc/measures/effect_size/delta_p.svg)|✔|✖️
 <span id="ref-dice-sorensen-coeff"></span>Dice-Sørensen coefficient<br>([Smadja et al., 1996, p. 8](#ref-smadja-et-al-1996))|![Formula](/doc/measures/effect_size/dice_sorensen_coeff.svg)|✔|✖️
 <span id="ref-diff-coeff"></span>Difference coefficient<br>([Hofland & Johansson, 1982, p. 14](#ref-hofland-johansson-1982); [Gabrielatos, 2018, p. 236](#ref-gabrielatos-2018))|![Formula](/doc/measures/effect_size/diff_coeff.svg)|✖️|✔
 <span id="ref-jaccard-index"></span>Jaccard index<br>([Dunning, 1998, p. 48](#ref-dunning-1998))|![Formula](/doc/measures/effect_size/jaccard_index.svg)|✔|✖️
 <span id="ref-kilgarriffs-ratio"></span>Kilgarriff's ratio<br>([Kilgarriff, 2009](#ref-kilgarriff-2009))|![Formula](/doc/measures/effect_size/kilgarriffs_ratio.svg)<br>where **α** is the smoothing parameter, whose value could be changed via **Menu Bar → Preferences → Settings → Measures → Effect Size → Kilgarriff's Ratio → Smoothing Parameter**.|✖️|✔
 <span id="ref-log-dice"></span>logDice<br>([Rychlý, 2008, p. 9](#ref-rychly-2008))|![Formula](/doc/measures/effect_size/log_dice.svg)|✔|✖️
-<span id="ref-lfmd"></span>Log-frequency biased MD<br>([Thanopoulos et al., 2002, p. 621](#ref-thanopoulos-et-al-2002))|![Formula](/doc/measures/effect_size/lfmd.svg)|✔|✖️
 <span id="ref-log-ratio"></span>Log Ratio<br>([Hardie, 2014](#ref-hardie-2014))|![Formula](/doc/measures/effect_size/log_ratio.svg)|✔|✔
 <span id="ref-mi-log-f"></span>MI.log-f<br>([Kilgarriff & Tugwell, 2002](#ref-kilgarriff-tugwell-2002); [Lexical Computing Ltd., 2015, p. 4](#ref-lexical-computing-ltd-2015))|![Formula](/doc/measures/effect_size/mi_log_f.svg)|✔|✖️
 <span id="ref-min-sensitivity"></span>Minimum sensitivity<br>([Pedersen, 1998](#ref-pedersen-1998))|![Formula](/doc/measures/effect_size/min_sensitivity.svg)|✔|✖️
-<span id="ref-md"></span>Mutual Dependency<br>([Thanopoulos et al., 2002, p. 621](#ref-thanopoulos-et-al-2002))|![Formula](/doc/measures/effect_size/md.svg)|✔|✖️
 <span id="ref-me"></span>Mutual Expectation<br>([Dias et al., 1999](#ref-dias-et-al-1999))|![Formula](/doc/measures/effect_size/me.svg)|✔|✖️
 <span id="ref-mi"></span>Mutual information<br>([Dunning, 1998, pp. 49–52](#ref-dunning-1998))|![Formula](/doc/measures/effect_size/mi.svg)|✔|✖️
 <span id="ref-odds-ratio"></span>Odds ratio<br>([Pecina, 2005, p. 15](#ref-pecina-2005), [Pojanapunya & Todd, 2016](#ref-pojanapunya-todd-2016))|![Formula](/doc/measures/effect_size/odds_ratio.svg)|✔|✔
 <span id="ref-pct-diff"></span>%DIFF<br>([Gabrielatos & Marchi, 2011](#ref-gabrielatos-marchi-2011))|![Formula](/doc/measures/effect_size/pct_diff.svg)|✖️|✔
 <span id="ref-pmi"></span>Pointwise mutual information<br>([Church & Hanks, 1990](#ref-church-hanks-1990); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/pmi.svg)|✔|✔
+<span id="ref-im3"></span>Pointwise mutual information (cubic)**¹**<br>([Daille, 1994, p. 139](#ref-daille-1994); [Kilgarriff, 2001, p, 99](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/im3.svg)|✔|✔
+<span id="ref-im2"></span>Pointwise mutual information (squared)**¹**<br>([Daille, 1995, p. 21](#ref-daille-1995); [Kilgarriff, 2001, p, 99](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/im2.svg)|✔|✔
 <span id="ref-poisson-collocation-measure"></span>Poisson collocation measure<br>([Quasthoff & Wolff, 2002](#ref-quasthoff-wolff-2002))|![Formula](/doc/measures/effect_size/poisson_collocation_measure.svg)|✔|✖️
-<span id="ref-im2"></span>Squared association ratio<br>([Daille, 1995, p. 21](#ref-daille-1995); [Kilgarriff, 2001, p, 99](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/im2.svg)|✔|✔
 <span id="ref-squared-phi-coeff"></span>Squared phi coefficient<br>([Church & Gale, 1991](#ref-church-gale-1991))|![Formula](/doc/measures/effect_size/squared_phi_coeff.svg)|✔|✖️
+
+> [!NOTE]
+> 1. The calculation of *Pointwise mutual information (squared)* and *pointwise mutual information (cubic)* are exactly the same as that of *Mutual Dependency* and *Log-frequency biased MD* respectively which were proposed in:<br><br>Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation (LREC’02)* (pp. 620–625). European Language Resources Association.
 
 <span id="doc-13"></span>
 ## [13 References](#doc)
@@ -1778,8 +1773,6 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 1. [**^**](#ref-num-words-spache) [**^**](#ref-spache-readability-formula) Spache, G. (1974). *Good reading for poor readers* (Rev. 9th ed.). Garrard.
 <span id="ref-szigrisze-pazos-1993"></span>
 1. [**^**](#ref-re) Szigriszt Pazos, F. (1993). *Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad* [Doctoral dissertation, Complutense University of Madrid]. Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y
-<span id="ref-thanopoulos-et-al-2002"></span>
-1. [**^**](#ref-lfmd) [**^**](#ref-md) Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation* (pp. 620–625). European Language Resources Association.
 <span id="ref-trankle-bailer-1984"></span>
 1. [**^**](#ref-trankle-bailers-readability-formula) Tränkle, U., & Bailer, H. (1984). Kreuzvalidierung und neuberechnung von lesbarkeitsformeln für die Deutsche sprache. *Zeitschrift für Entwicklungspsychologie und Pädagogische Psychologie*, *16*(3), 231–244.
 <span id="ref-tuldava-1975"></span>
