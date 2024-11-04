@@ -1505,7 +1505,10 @@ Mutual Expectation:
     \text{ME} = O_{11} \times \frac{2 \times O_{11}}{O_{1x} + O_{x1}}
 
 Mutual information:
-    \text{MI} = \sum_{i = 1}^n \sum_{j = 1}^n \left(\frac{O_{ij}}{O_{xx}} \times \log_{base} \frac{O_{ij}}{E_{ij}}\right)
+    \text{MI} = \sum_{i = 1}^2 \sum_{j = 1}^2 \left(\frac{O_{ij}}{O_{xx}} \times \log_{base} \frac{O_{ij}}{E_{ij}}\right)
+
+Mutual information (normalized):
+    \text{NMI} = \frac{\sum_{i = 1}^2 \sum_{j = 1}^2 \left(\frac{O_{ij}}{O_{xx}} \times \log_{base} \frac{O_{ij}}{E_{ij}}\right)}{-\sum_{i = 1}^2 \sum_{j = 1}^2 \left(\frac{O_{ij}}{O_{xx}} \times \log_{base} \frac{O_{ij}}{O_{xx}}\right)}
 
 Odds ratio:
     \text{Odds ratio} = \frac{O_{11} \times O_{22}}{O_{12} \times O_{21}}
@@ -1518,6 +1521,9 @@ Pointwise mutual information:
 
 Pointwise mutual information (cubic):
     \text{IM}^3 = \log_{base} \frac{{O_{11}}^3}{E_{11}}
+
+Pointwise mutual information (normalized):
+    \text{NPMI} = \frac{\log_{base} \frac{O_{11}}{E_{11}}}{-\log_{base} \frac{O_{11}}{O_{xx}}}
 
 Pointwise mutual information (squared):
     \text{IM}^2 = \log_{base} \frac{{O_{11}}^2}{E_{11}}
@@ -1542,12 +1548,14 @@ Measure of Effect Size|Formula|Collocation Extraction|Keyword Extraction
 <span id="ref-mi-log-f"></span>MI.log-f<br>([Kilgarriff & Tugwell, 2002](#ref-kilgarriff-tugwell-2002); [Lexical Computing Ltd., 2015, p. 4](#ref-lexical-computing-ltd-2015))|![Formula](/doc/measures/effect_size/mi_log_f.svg)|✔|✖️
 <span id="ref-min-sensitivity"></span>Minimum sensitivity<br>([Pedersen, 1998](#ref-pedersen-1998))|![Formula](/doc/measures/effect_size/min_sensitivity.svg)|✔|✖️
 <span id="ref-me"></span>Mutual Expectation<br>([Dias et al., 1999](#ref-dias-et-al-1999))|![Formula](/doc/measures/effect_size/me.svg)|✔|✖️
-<span id="ref-mi"></span>Mutual information<br>([Dunning, 1998, pp. 49–52](#ref-dunning-1998))|![Formula](/doc/measures/effect_size/mi.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Mutual Information → Base of logarithm**.|✔|✖️
+<span id="ref-mi"></span>Mutual information<br>([Dunning, 1998, pp. 49–52](#ref-dunning-1998); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/mi.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Mutual Information → Base of logarithm**.|✔|✔
+<span id="ref-nmi"></span>Mutual information (normalized)<br>([Bouma, 2009](#ref-bouma-2009); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/nmi.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Mutual Information (Normalized) → Base of logarithm**.|✔|✔
 <span id="ref-odds-ratio"></span>Odds ratio<br>([Pecina, 2005, p. 15](#ref-pecina-2005), [Pojanapunya & Todd, 2016](#ref-pojanapunya-todd-2016))|![Formula](/doc/measures/effect_size/odds_ratio.svg)|✔|✔
 <span id="ref-pct-diff"></span>%DIFF<br>([Gabrielatos & Marchi, 2011](#ref-gabrielatos-marchi-2011))|![Formula](/doc/measures/effect_size/pct_diff.svg)|✖️|✔
 <span id="ref-pmi"></span>Pointwise mutual information<br>([Church & Hanks, 1990](#ref-church-hanks-1990); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/pmi.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information → Base of logarithm**.|✔|✔
-<span id="ref-im3"></span>Pointwise mutual information (cubic)**¹**<br>([Daille, 1994, p. 139](#ref-daille-1994); [Kilgarriff, 2001, p, 99](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/im3.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information (Cubic) → Base of logarithm**.|✔|✔
-<span id="ref-im2"></span>Pointwise mutual information (squared)**¹**<br>([Daille, 1995, p. 21](#ref-daille-1995); [Kilgarriff, 2001, p, 99](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/im2.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information (Squared) → Base of logarithm**.|✔|✔
+<span id="ref-im3"></span>Pointwise mutual information (cubic)¹<br>([Daille, 1994, p. 139](#ref-daille-1994); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/im3.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information (Cubic) → Base of logarithm**.|✔|✔
+<span id="ref-npmi"></span>Pointwise mutual information (normalized)<br>([Bouma, 2009](#ref-bouma-2009); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/npmi.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information (Normalized) → Base of logarithm**.|✔|✔
+<span id="ref-im2"></span>Pointwise mutual information (squared)¹<br>([Daille, 1995, p. 21](#ref-daille-1995); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/im2.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information (Squared) → Base of logarithm**.|✔|✔
 <span id="ref-poisson-collocation-measure"></span>Poisson collocation measure<br>([Quasthoff & Wolff, 2002](#ref-quasthoff-wolff-2002))|![Formula](/doc/measures/effect_size/poisson_collocation_measure.svg)|✔|✖️
 <span id="ref-squared-phi-coeff"></span>Squared phi coefficient<br>([Church & Gale, 1991](#ref-church-gale-1991))|![Formula](/doc/measures/effect_size/squared_phi_coeff.svg)|✔|✖️
 
@@ -1570,6 +1578,8 @@ Measure of Effect Size|Formula|Collocation Extraction|Keyword Extraction
 1. [**^**](#ref-z-test-berry-rogghes) Berry-Rogghe, G. L. M. (1973). The computation of collocations and their relevance in lexical studies. In A. J. Aiken, R. W. Bailey, & N. Hamilton-Smith (Eds.), *The computer and literary studies* (pp. 103–112). Edinburgh University Press.
 <span id="ref-bormuth-1969"></span>
 1. [**^**](#ref-bormuths-cloze-mean-gp) Bormuth, J. R. (1969). *Development of readability analyses*. U.S. Department of Health, Education, and Welfare. http://files.eric.ed.gov/fulltext/ED029166.pdf
+<span id="ref-bouma-2009"></span>
+1. [**^**](#ref-nmi) [**^**](#ref-npmi) Bouma, G. (2009). Normalized (pointwise) mutual information in collocation extraction. In C. CHiarcos, R. Eckart de Castilho, & M. Stede (Eds.), *From form to meaning: processing texts automatically: Proceedings of the Biennial GSCL Conference 2009* (pp. 31–40). Gunter Narr Verlag.
 <span id="ref-bjornsson-1968"></span>
 1. [**^**](#ref-lix) Björnsson, C.-H. (1968). *Läsbarhet*. Liber.
 <span id="ref-brouwer-1963"></span>
@@ -1682,7 +1692,7 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 <span id="ref-kandel-moles-1958"></span>
 1. [**^**](#ref-re) Kandel, L., & Moles, A. (1958). Application de l’indice de flesch à la langue française. *The Journal of Educational Research*, *21*, 283–287.
 <span id="ref-kilgarriff-2001"></span>
-1. [**^**](#ref-fishers-exact-test) [**^**](#ref-log-likehood-ratio-test) [**^**](#ref-mann-whiteney-u-test) [**^**](#ref-im3) [**^**](#ref-pmi) [**^**](#ref-im2) Kilgarriff, A. (2001). Comparing corpora. *International Journal of Corpus Linguistics*, *6*(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil
+1. [**^**](#ref-fishers-exact-test) [**^**](#ref-log-likehood-ratio-test) [**^**](#ref-mann-whiteney-u-test) [**^**](#ref-mi) [**^**](#ref-nmi) [**^**](#ref-pmi) [**^**](#ref-im3) [**^**](#ref-npmi) [**^**](#ref-im2) Kilgarriff, A. (2001). Comparing corpora. *International Journal of Corpus Linguistics*, *6*(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil
 <span id="ref-kilgarriff-2009"></span>
 1. [**^**](#ref-kilgarriffs-ratio) Kilgarriff, A. (2009). Simple maths for keywords. In M. Mahlberg, V. González-Díaz, & C. Smith (Eds.), *Proceedings of the Corpus Linguistics Conference 2009 (CL2009)* (Article 171). University of Liverpool.
 <span id="ref-kilgarriff-tugwell-2002"></span>

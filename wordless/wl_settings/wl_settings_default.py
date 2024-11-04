@@ -17,6 +17,7 @@
 # ----------------------------------------------------------------------
 
 import copy
+import math
 
 import networkx
 from PyQt5.QtCore import QCoreApplication
@@ -2439,12 +2440,20 @@ def init_settings_default(main):
                     'base_log': 2
                 },
 
+                'nmi': {
+                    'base_log': math.e
+                },
+
                 'pmi': {
                     'base_log': 2
                 },
 
                 'im3': {
                     'base_log': 2
+                },
+
+                'npmi': {
+                    'base_log': math.e
                 },
 
                 'im2': {

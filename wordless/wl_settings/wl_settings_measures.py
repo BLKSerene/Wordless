@@ -1015,6 +1015,18 @@ class Wl_Settings_Measures_Effect_Size(wl_settings.Wl_Settings_Node):
 
         self.group_box_mi.layout().setColumnStretch(2, 1)
 
+        # Mutual Information (Normalized)
+        self.group_box_nmi = QGroupBox(self.tr('Mutual Information (Normalized)'), self)
+
+        self.label_nmi_base_log = QLabel(self.tr('Base of logarithm:'), self)
+        self.combo_box_nmi_base_log = Wl_Combo_Box_Base_Log(self)
+
+        self.group_box_nmi.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_nmi.layout().addWidget(self.label_nmi_base_log, 0, 0)
+        self.group_box_nmi.layout().addWidget(self.combo_box_nmi_base_log, 0, 1)
+
+        self.group_box_nmi.layout().setColumnStretch(2, 1)
+
         # Pointwise Mutual Information
         self.group_box_pmi = QGroupBox(self.tr('Pointwise Mutual Information'), self)
 
@@ -1039,6 +1051,18 @@ class Wl_Settings_Measures_Effect_Size(wl_settings.Wl_Settings_Node):
 
         self.group_box_im3.layout().setColumnStretch(2, 1)
 
+        # Pointwise Mutual Information (Normalized)
+        self.group_box_npmi = QGroupBox(self.tr('Pointwise Mutual Information (Normalized)'), self)
+
+        self.label_npmi_base_log = QLabel(self.tr('Base of logarithm:'), self)
+        self.combo_box_npmi_base_log = Wl_Combo_Box_Base_Log(self)
+
+        self.group_box_npmi.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_npmi.layout().addWidget(self.label_npmi_base_log, 0, 0)
+        self.group_box_npmi.layout().addWidget(self.combo_box_npmi_base_log, 0, 1)
+
+        self.group_box_npmi.layout().setColumnStretch(2, 1)
+
         # Pointwise Mutual Information (Squared)
         self.group_box_im2 = QGroupBox(self.tr('Pointwise Mutual Information (Squared)'), self)
 
@@ -1054,12 +1078,14 @@ class Wl_Settings_Measures_Effect_Size(wl_settings.Wl_Settings_Node):
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_kilgarriffs_ratio, 0, 0)
         self.layout().addWidget(self.group_box_mi, 1, 0)
-        self.layout().addWidget(self.group_box_pmi, 2, 0)
-        self.layout().addWidget(self.group_box_im3, 3, 0)
-        self.layout().addWidget(self.group_box_im2, 4, 0)
+        self.layout().addWidget(self.group_box_nmi, 2, 0)
+        self.layout().addWidget(self.group_box_pmi, 3, 0)
+        self.layout().addWidget(self.group_box_im3, 4, 0)
+        self.layout().addWidget(self.group_box_npmi, 5, 0)
+        self.layout().addWidget(self.group_box_im2, 6, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(5, 1)
+        self.layout().setRowStretch(7, 1)
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -1073,11 +1099,17 @@ class Wl_Settings_Measures_Effect_Size(wl_settings.Wl_Settings_Node):
         # Mutual Information
         self.combo_box_mi_base_log.set_base_log(settings['mi']['base_log'])
 
+        # Mutual Information (Normalized)
+        self.combo_box_nmi_base_log.set_base_log(settings['nmi']['base_log'])
+
         # Pointwise Mutual Information
         self.combo_box_pmi_base_log.set_base_log(settings['pmi']['base_log'])
 
         # Pointwise Mutual Information (Cubic)
         self.combo_box_im3_base_log.set_base_log(settings['im3']['base_log'])
+
+        # Pointwise Mutual Information (Normalized)
+        self.combo_box_npmi_base_log.set_base_log(settings['npmi']['base_log'])
 
         # Pointwise Mutual Information (Squared)
         self.combo_box_im2_base_log.set_base_log(settings['im2']['base_log'])
@@ -1089,11 +1121,17 @@ class Wl_Settings_Measures_Effect_Size(wl_settings.Wl_Settings_Node):
         # Mutual Information
         self.settings_custom['mi']['base_log'] = self.combo_box_mi_base_log.get_base_log()
 
+        # Mutual Information (Normalized)
+        self.settings_custom['nmi']['base_log'] = self.combo_box_nmi_base_log.get_base_log()
+
         # Pointwise Mutual Information
         self.settings_custom['pmi']['base_log'] = self.combo_box_pmi_base_log.get_base_log()
 
         # Pointwise Mutual Information (Cubic)
         self.settings_custom['im3']['base_log'] = self.combo_box_im3_base_log.get_base_log()
+
+        # Pointwise Mutual Information (Normalized)
+        self.settings_custom['npmi']['base_log'] = self.combo_box_npmi_base_log.get_base_log()
 
         # Pointwise Mutual Information (Squared)
         self.settings_custom['im2']['base_log'] = self.combo_box_im2_base_log.get_base_log()

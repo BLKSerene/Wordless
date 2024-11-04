@@ -24,6 +24,15 @@ import numpy
 
 from wordless.wl_measures import wl_measures_statistical_significance, wl_measure_utils
 
+def get_numpy_log(main, measure_code):
+    match main.settings_custom['measures']['effect_size'][measure_code]['base_log']:
+        case 2:
+            return wl_measure_utils.numpy_log2
+        case 10:
+            return wl_measure_utils.numpy_log10
+        case math.e:
+            return wl_measure_utils.numpy_log
+
 # Conditional probability
 # Reference: Durrant, P. (2008). High frequency collocations and second language learning [Doctoral dissertation, University of Nottingham]. Nottingham eTheses. https://eprints.nottingham.ac.uk/10622/1/final_thesis.pdf | p. 84
 def conditional_probability(main, o11s, o12s, o21s, o22s):
@@ -135,13 +144,7 @@ def mi(main, o11s, o12s, o21s, o22s):
     oxxs = o11s + o12s + o21s + o22s
     e11s, e12s, e21s, e22s = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
 
-    match main.settings_custom['measures']['effect_size']['mi']['base_log']:
-        case 2:
-            numpy_log = wl_measure_utils.numpy_log2
-        case 10:
-            numpy_log = wl_measure_utils.numpy_log10
-        case math.e:
-            numpy_log = wl_measure_utils.numpy_log
+    numpy_log = get_numpy_log(main, 'mi')
 
     mi_11 = wl_measure_utils.numpy_divide(o11s, oxxs) * numpy_log(wl_measure_utils.numpy_divide(o11s, e11s))
     mi_12 = wl_measure_utils.numpy_divide(o12s, oxxs) * numpy_log(wl_measure_utils.numpy_divide(o12s, e12s))
@@ -149,6 +152,29 @@ def mi(main, o11s, o12s, o21s, o22s):
     mi_22 = wl_measure_utils.numpy_divide(o22s, oxxs) * numpy_log(wl_measure_utils.numpy_divide(o22s, e22s))
 
     return mi_11 + mi_12 + mi_21 + mi_22
+
+# Mutual information (normalized)
+# Reference: Bouma, G. (2009). Normalized (pointwise) mutual information in collocation extraction. In C. CHiarcos, R. Eckart de Castilho, & M. Stede (Eds.), From form to meaning: processing texts automatically: Proceedings of the Biennial GSCL Conference 2009 (pp. 31–40). Gunter Narr Verlag.
+def nmi(main, o11s, o12s, o21s, o22s):
+    oxxs = o11s + o12s + o21s + o22s
+    e11s, e12s, e21s, e22s = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
+
+    numpy_log = get_numpy_log(main, 'nmi')
+
+    mi_11 = wl_measure_utils.numpy_divide(o11s, oxxs) * numpy_log(wl_measure_utils.numpy_divide(o11s, e11s))
+    mi_12 = wl_measure_utils.numpy_divide(o12s, oxxs) * numpy_log(wl_measure_utils.numpy_divide(o12s, e12s))
+    mi_21 = wl_measure_utils.numpy_divide(o21s, oxxs) * numpy_log(wl_measure_utils.numpy_divide(o21s, e21s))
+    mi_22 = wl_measure_utils.numpy_divide(o22s, oxxs) * numpy_log(wl_measure_utils.numpy_divide(o22s, e22s))
+
+    joint_entropy_11 = wl_measure_utils.numpy_divide(o11s, oxxs) * numpy_log(wl_measure_utils.numpy_divide(o11s, oxxs))
+    joint_entropy_12 = wl_measure_utils.numpy_divide(o12s, oxxs) * numpy_log(wl_measure_utils.numpy_divide(o12s, oxxs))
+    joint_entropy_21 = wl_measure_utils.numpy_divide(o21s, oxxs) * numpy_log(wl_measure_utils.numpy_divide(o21s, oxxs))
+    joint_entropy_22 = wl_measure_utils.numpy_divide(o22s, oxxs) * numpy_log(wl_measure_utils.numpy_divide(o22s, oxxs))
+
+    return wl_measure_utils.numpy_divide(
+        mi_11 + mi_12 + mi_21 + mi_22,
+        -(joint_entropy_11 + joint_entropy_12 + joint_entropy_21 + joint_entropy_22)
+    )
 
 # Odds ratio
 # Reference: Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. Corpus Linguistics and Linguistic Theory, 15(1), 133–167. https://doi.org/10.1515/cllt-2015-0030
@@ -189,13 +215,7 @@ def pct_diff(main, o11s, o12s, o21s, o22s):
 def pmi(main, o11s, o12s, o21s, o22s):
     e11s, _, _, _ = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
 
-    match main.settings_custom['measures']['effect_size']['pmi']['base_log']:
-        case 2:
-            numpy_log = wl_measure_utils.numpy_log2
-        case 10:
-            numpy_log = wl_measure_utils.numpy_log10
-        case math.e:
-            numpy_log = wl_measure_utils.numpy_log
+    numpy_log = get_numpy_log(main, 'pmi')
 
     return numpy_log(wl_measure_utils.numpy_divide(o11s, e11s))
 
@@ -204,28 +224,33 @@ def pmi(main, o11s, o12s, o21s, o22s):
 def im3(main, o11s, o12s, o21s, o22s):
     e11s, _, _, _ = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
 
-    match main.settings_custom['measures']['effect_size']['im3']['base_log']:
-        case 2:
-            numpy_log = wl_measure_utils.numpy_log2
-        case 10:
-            numpy_log = wl_measure_utils.numpy_log10
-        case math.e:
-            numpy_log = wl_measure_utils.numpy_log
+    numpy_log = get_numpy_log(main, 'im3')
 
     return numpy_log(wl_measure_utils.numpy_divide(o11s ** 3, e11s))
+
+# Pointwise mutual information (normalized)
+# Reference: Bouma, G. (2009). Normalized (pointwise) mutual information in collocation extraction. In C. CHiarcos, R. Eckart de Castilho, & M. Stede (Eds.), From form to meaning: processing texts automatically: Proceedings of the Biennial GSCL Conference 2009 (pp. 31–40). Gunter Narr Verlag.
+def npmi(main, o11s, o12s, o21s, o22s):
+    oxxs = o11s + o12s + o21s + o22s
+    e11s, _, _, _ = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
+
+    numpy_log = get_numpy_log(main, 'npmi')
+
+    return numpy.where(
+        o11s > 0,
+        wl_measure_utils.numpy_divide(
+            numpy_log(wl_measure_utils.numpy_divide(o11s, e11s)),
+            -(numpy_log(wl_measure_utils.numpy_divide(o11s, oxxs)))
+        ),
+        -1
+    )
 
 # Pointwise mutual information (squared)
 # Reference: Daille, B. (1995). Combined approach for terminology extraction: Lexical statistics and linguistic filtering. UCREL technical papers (Vol. 5). Lancaster University. | p. 21
 def im2(main, o11s, o12s, o21s, o22s):
     e11s, _, _, _ = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
 
-    match main.settings_custom['measures']['effect_size']['im2']['base_log']:
-        case 2:
-            numpy_log = wl_measure_utils.numpy_log2
-        case 10:
-            numpy_log = wl_measure_utils.numpy_log10
-        case math.e:
-            numpy_log = wl_measure_utils.numpy_log
+    numpy_log = get_numpy_log(main, 'im2')
 
     return numpy_log(wl_measure_utils.numpy_divide(o11s ** 2, e11s))
 

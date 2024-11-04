@@ -176,6 +176,21 @@ def test_mi():
 
     assert_zeros(wl_measures_effect_size.mi)
 
+# Reference: Bouma, G. (2009). Normalized (pointwise) mutual information in collocation extraction. In C. CHiarcos, R. Eckart de Castilho, & M. Stede (Eds.), From form to meaning: processing texts automatically: Proceedings of the Biennial GSCL Conference 2009 (pp. 31–40). Gunter Narr Verlag. | p. 37
+def test_nmi():
+    numpy.testing.assert_array_equal(
+        numpy.round(wl_measures_effect_size.nmi(
+            main,
+            numpy.array([10, 1, 0]),
+            numpy.array([0, 9, 50]),
+            numpy.array([0, 9, 50]),
+            numpy.array([90, 81, 0])
+        ), 10),
+        numpy.array([1, 0, 1])
+    )
+
+    assert_zeros(wl_measures_effect_size.nmi)
+
 # Reference: Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. Corpus Linguistics and Linguistic Theory, 15(1), pp. 133–167. https://doi.org/10.1515/cllt-2015-0030 | p. 154
 def test_odds_ratio():
     numpy.testing.assert_array_equal(
@@ -242,6 +257,21 @@ def test_pmi():
 def test_im3():
     assert_zeros(wl_measures_effect_size.im3)
 
+# Reference: Bouma, G. (2009). Normalized (pointwise) mutual information in collocation extraction. In C. CHiarcos, R. Eckart de Castilho, & M. Stede (Eds.), From form to meaning: processing texts automatically: Proceedings of the Biennial GSCL Conference 2009 (pp. 31–40). Gunter Narr Verlag. | p. 36
+def test_npmi():
+    numpy.testing.assert_array_equal(
+        numpy.round(wl_measures_effect_size.npmi(
+            main,
+            numpy.array([10, 1, 0]),
+            numpy.array([0, 9, 10]),
+            numpy.array([0, 9, 10]),
+            numpy.array([90, 81, 80])
+        ), 10),
+        numpy.array([1, 0, -1])
+    )
+
+    assert_zeros(wl_measures_effect_size.npmi, result = -1)
+
 def test_im2():
     assert_zeros(wl_measures_effect_size.im2)
 
@@ -276,10 +306,12 @@ if __name__ == '__main__':
     test_min_sensitivity()
     test_me()
     test_mi()
+    test_nmi()
     test_odds_ratio()
     test_pct_diff()
     test_pmi()
     test_im3()
+    test_npmi()
     test_im2()
     test_poisson_collocation_measure()
     test_squared_phi_coeff()
