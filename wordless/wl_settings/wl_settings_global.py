@@ -3594,25 +3594,23 @@ def init_settings_global():
             'effect_size': {
                 _tr('wl_settings_global', 'None'): 'none',
                 _tr('wl_settings_global', 'Conditional probability'): 'conditional_probability',
-                _tr('wl_settings_global', 'Cubic association ratio'): 'im3',
                 'ΔP': 'delta_p',
                 _tr('wl_settings_global', 'Dice-Sørensen coefficient'): 'dice_sorensen_coeff',
                 _tr('wl_settings_global', 'Difference coefficient'): 'diff_coeff',
                 _tr('wl_settings_global', 'Jaccard index'): 'jaccard_index',
                 _tr('wl_settings_global', "Kilgarriff's ratio"): 'kilgarriffs_ratio',
                 'logDice': 'log_dice',
-                _tr('wl_settings_global', 'Log-frequency biased MD'): 'lfmd',
                 _tr('wl_settings_global', 'Log Ratio'): 'log_ratio',
                 'MI.log-f': 'mi_log_f',
                 _tr('wl_settings_global', 'Minimum sensitivity'): 'min_sensitivity',
-                _tr('wl_settings_global', 'Mutual Dependency'): 'md',
                 _tr('wl_settings_global', 'Mutual Expectation'): 'me',
                 _tr('wl_settings_global', 'Mutual information'): 'mi',
                 _tr('wl_settings_global', 'Odds ratio'): 'or',
                 '%DIFF': 'pct_diff',
                 _tr('wl_settings_global', 'Pointwise mutual information'): 'pmi',
+                _tr('wl_settings_global', 'Pointwise mutual information (cubic)'): 'im3',
+                _tr('wl_settings_global', 'Pointwise mutual information (squared)'): 'im2',
                 _tr('wl_settings_global', 'Poisson collocation measure'): 'poisson_collocation_measure',
-                _tr('wl_settings_global', 'Squared association ratio'): 'im2',
                 _tr('wl_settings_global', 'Squared phi coefficient'): 'squared_phi_coeff'
             }
         },
@@ -3849,13 +3847,6 @@ def init_settings_global():
                 'keyword': False
             },
 
-            'im3': {
-                'col_text': 'IM³',
-                'func': wl_measures_effect_size.im3,
-                'collocation': True,
-                'keyword': True
-            },
-
             'delta_p': {
                 'col_text': 'ΔP',
                 'func': wl_measures_effect_size.delta_p,
@@ -3898,13 +3889,6 @@ def init_settings_global():
                 'keyword': False
             },
 
-            'lfmd': {
-                'col_text': 'LFMD',
-                'func': wl_measures_effect_size.lfmd,
-                'collocation': True,
-                'keyword': False
-            },
-
             'log_ratio': {
                 'col_text': _tr('wl_settings_global', 'Log Ratio'),
                 'func': wl_measures_effect_size.log_ratio,
@@ -3922,13 +3906,6 @@ def init_settings_global():
             'min_sensitivity': {
                 'col_text': _tr('wl_settings_global', 'Minimum Sensitivity'),
                 'func': wl_measures_effect_size.min_sensitivity,
-                'collocation': True,
-                'keyword': False
-            },
-
-            'md': {
-                'col_text': 'MD',
-                'func': wl_measures_effect_size.md,
                 'collocation': True,
                 'keyword': False
             },
@@ -3968,11 +3945,11 @@ def init_settings_global():
                 'keyword': True
             },
 
-            'poisson_collocation_measure': {
-                'col_text': _tr('wl_settings_global', 'Poisson Collocation Measure'),
-                'func': wl_measures_effect_size.poisson_collocation_measure,
+            'im3': {
+                'col_text': 'IM³',
+                'func': wl_measures_effect_size.im3,
                 'collocation': True,
-                'keyword': False
+                'keyword': True
             },
 
             'im2': {
@@ -3980,6 +3957,13 @@ def init_settings_global():
                 'func': wl_measures_effect_size.im2,
                 'collocation': True,
                 'keyword': True
+            },
+
+            'poisson_collocation_measure': {
+                'col_text': _tr('wl_settings_global', 'Poisson Collocation Measure'),
+                'func': wl_measures_effect_size.poisson_collocation_measure,
+                'collocation': True,
+                'keyword': False
             },
 
             'squared_phi_coeff': {

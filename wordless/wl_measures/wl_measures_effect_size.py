@@ -29,13 +29,6 @@ def conditional_probability(main, o11s, o12s, o21s, o22s):
 
     return wl_measure_utils.numpy_divide(o11s, ox1s) * 100
 
-# Cubic association ratio
-# Reference: Daille, B. (1994). Approche mixte pour l'extraction automatique de terminologie: statistiques lexicales et filtres linguistiques [Doctoral thesis, Paris Diderot University]. Béatrice Daille. http://www.bdaille.com/index.php?option=com_docman&task=doc_download&gid=8&Itemid= | p. 139
-def im3(main, o11s, o12s, o21s, o22s):
-    e11s, _, _, _ = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
-
-    return wl_measure_utils.numpy_log2(wl_measure_utils.numpy_divide(o11s ** 3, e11s))
-
 # ΔP
 # Reference: Gries, S. T. (2013). 50-something years of work on collocations: What is or should be next …. International Journal of Corpus Linguistics, 18(1), 137–165. https://doi.org/10.1075/ijcl.18.1.09gri
 def delta_p(main, o11s, o12s, o21s, o22s):
@@ -88,13 +81,6 @@ def log_dice(main, o11s, o12s, o21s, o22s):
 
     return wl_measure_utils.numpy_log2(wl_measure_utils.numpy_divide(2 * o11s, o1xs + ox1s), default = 14)
 
-# Log-frequency biased MD
-# Reference: Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), Proceedings of the Third International Conference on Language Resources and Evaluation (pp. 620–625). European Language Resources Association. | p. 621
-def lfmd(main, o11s, o12s, o21s, o22s):
-    e11s, _, _, _ = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
-
-    return wl_measure_utils.numpy_log2(wl_measure_utils.numpy_divide(o11s ** 2, e11s)) + wl_measure_utils.numpy_log2(o11s)
-
 # Log Ratio
 # Reference: Hardie, A. (2014, April 28). Log Ratio: An informal introduction. ESRC Centre for Corpus Approaches to Social Science (CASS). http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/
 def log_ratio(main, o11s, o12s, o21s, o22s):
@@ -133,13 +119,6 @@ def min_sensitivity(main, o11s, o12s, o21s, o22s):
         wl_measure_utils.numpy_divide(o11s, o1xs),
         wl_measure_utils.numpy_divide(o11s, ox1s)
     )
-
-# Mutual Dependency
-# Reference: Thanopoulos, A, Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González, & C. P. S. Araujo (Eds.), Proceedings of the Third International Conference on Language Resources and Evaluation (pp. 620–625). European Language Resources Association. | p. 621
-def md(main, o11s, o12s, o21s, o22s):
-    e11s, _, _, _ = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
-
-    return wl_measure_utils.numpy_log2(wl_measure_utils.numpy_divide(o11s ** 2, e11s))
 
 # Mutual Expectation
 # Reference: Dias, G., Guilloré, S., & Pereira Lopes, J. G. (1999). Language independent automatic acquisition of rigid multiword units from unrestricted text corpora. In A. Condamines, C. Fabre, & M. Péry-Woodley (Eds.), TALN'99: 6ème Conférence Annuelle Sur le Traitement Automatique des Langues Naturelles (pp. 333–339). TALN.
@@ -202,6 +181,20 @@ def pmi(main, o11s, o12s, o21s, o22s):
 
     return wl_measure_utils.numpy_log2(wl_measure_utils.numpy_divide(o11s, e11s))
 
+# Pointwise mutual information (cubic)
+# Reference: Daille, B. (1994). Approche mixte pour l'extraction automatique de terminologie: statistiques lexicales et filtres linguistiques [Doctoral thesis, Paris Diderot University]. Béatrice Daille. http://www.bdaille.com/index.php?option=com_docman&task=doc_download&gid=8&Itemid= | p. 139
+def im3(main, o11s, o12s, o21s, o22s):
+    e11s, _, _, _ = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
+
+    return wl_measure_utils.numpy_log2(wl_measure_utils.numpy_divide(o11s ** 3, e11s))
+
+# Pointwise mutual information (squared)
+# Reference: Daille, B. (1995). Combined approach for terminology extraction: Lexical statistics and linguistic filtering. UCREL technical papers (Vol. 5). Lancaster University. | p. 21
+def im2(main, o11s, o12s, o21s, o22s):
+    e11s, _, _, _ = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
+
+    return wl_measure_utils.numpy_log2(wl_measure_utils.numpy_divide(o11s ** 2, e11s))
+
 # Poisson collocation measure
 # Reference: Quasthoff, U., & Wolff, C. (2002). The poisson collocation measure and its applications. Proceedings of 2nd International Workshop on Computational Approaches to Collocations. IEEE.
 def poisson_collocation_measure(main, o11s, o12s, o21s, o22s):
@@ -212,13 +205,6 @@ def poisson_collocation_measure(main, o11s, o12s, o21s, o22s):
         o11s * (wl_measure_utils.numpy_log(o11s) - wl_measure_utils.numpy_log(e11s) - 1),
         wl_measure_utils.numpy_log(oxxs)
     )
-
-# Squared association ratio
-# Reference: Daille, B. (1995). Combined approach for terminology extraction: Lexical statistics and linguistic filtering. UCREL technical papers (Vol. 5). Lancaster University. | p. 21
-def im2(main, o11s, o12s, o21s, o22s):
-    e11s, _, _, _ = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
-
-    return wl_measure_utils.numpy_log2(wl_measure_utils.numpy_divide(o11s ** 2, e11s))
 
 # Squared phi coefficient
 # Reference: Church, K. W., & Gale, W. A. (1991, September 29–October 1). Concordances for parallel text [Paper presentation]. Using Corpora: Seventh Annual Conference of the UW Centre for the New OED and Text Research, St. Catherine's College, Oxford, United Kingdom.

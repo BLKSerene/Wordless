@@ -50,9 +50,6 @@ def test_conditional_probability():
 
     assert_zeros(wl_measures_effect_size.conditional_probability)
 
-def test_im3():
-    assert_zeros(wl_measures_effect_size.im3)
-
 # Reference: Gries, S. T. (2013). 50-something years of work on collocations: What is or should be next …. International Journal of Corpus Linguistics, 18(1), 137–165. https://doi.org/10.1075/ijcl.18.1.09gri | p. 144
 def test_delta_p():
     numpy.testing.assert_array_equal(
@@ -119,9 +116,6 @@ def test_kilgarriffs_ratio():
 def test_log_dice():
     assert_zeros(wl_measures_effect_size.log_dice, result = 14)
 
-def test_lfmd():
-    assert_zeros(wl_measures_effect_size.lfmd)
-
 # Reference: Hardie, A. (2014, April 28). Log Ratio: An informal introduction. ESRC Centre for Corpus Approaches to Social Science (CASS). http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/.
 def test_log_ratio():
     numpy.testing.assert_array_equal(
@@ -163,9 +157,6 @@ def test_min_sensitivity():
     )
 
     assert_zeros(wl_measures_effect_size.min_sensitivity)
-
-def test_md():
-    assert_zeros(wl_measures_effect_size.md)
 
 def test_me():
     assert_zeros(wl_measures_effect_size.me)
@@ -248,11 +239,14 @@ def test_pmi():
 
     assert_zeros(wl_measures_effect_size.pmi)
 
-def test_poisson_collocation_measure():
-    assert_zeros(wl_measures_effect_size.poisson_collocation_measure)
+def test_im3():
+    assert_zeros(wl_measures_effect_size.im3)
 
 def test_im2():
     assert_zeros(wl_measures_effect_size.im2)
+
+def test_poisson_collocation_measure():
+    assert_zeros(wl_measures_effect_size.poisson_collocation_measure)
 
 # Reference: Church, K. W., & Gale, W. A. (1991, September 29–October 1). Concordances for parallel text [Paper presentation]. Using Corpora: Seventh Annual Conference of the UW Centre for the New OED and Text Research, St. Catherine's College, Oxford, United Kingdom.
 def test_squared_phi_coeff():
@@ -271,23 +265,21 @@ def test_squared_phi_coeff():
 
 if __name__ == '__main__':
     test_conditional_probability()
-    test_im3()
     test_delta_p()
     test_dice_sorensen_coeff()
     test_diff_coeff()
     test_jaccard_index()
     test_kilgarriffs_ratio()
     test_log_dice()
-    test_lfmd()
     test_log_ratio()
     test_mi_log_f()
     test_min_sensitivity()
-    test_md()
     test_me()
     test_mi()
     test_odds_ratio()
     test_pct_diff()
     test_pmi()
-    test_poisson_collocation_measure()
+    test_im3()
     test_im2()
+    test_poisson_collocation_measure()
     test_squared_phi_coeff()
