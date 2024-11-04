@@ -18,6 +18,8 @@
 
 # pylint: disable=unused-argument
 
+import math
+
 import numpy
 
 from wordless.wl_measures import wl_measures_statistical_significance, wl_measure_utils
@@ -133,10 +135,18 @@ def mi(main, o11s, o12s, o21s, o22s):
     oxxs = o11s + o12s + o21s + o22s
     e11s, e12s, e21s, e22s = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
 
-    mi_11 = wl_measure_utils.numpy_divide(o11s, oxxs) * wl_measure_utils.numpy_log2(wl_measure_utils.numpy_divide(o11s, e11s))
-    mi_12 = wl_measure_utils.numpy_divide(o12s, oxxs) * wl_measure_utils.numpy_log2(wl_measure_utils.numpy_divide(o12s, e12s))
-    mi_21 = wl_measure_utils.numpy_divide(o21s, oxxs) * wl_measure_utils.numpy_log2(wl_measure_utils.numpy_divide(o21s, e21s))
-    mi_22 = wl_measure_utils.numpy_divide(o22s, oxxs) * wl_measure_utils.numpy_log2(wl_measure_utils.numpy_divide(o22s, e22s))
+    match main.settings_custom['measures']['effect_size']['mi']['base_log']:
+        case 2:
+            numpy_log = wl_measure_utils.numpy_log2
+        case 10:
+            numpy_log = wl_measure_utils.numpy_log10
+        case math.e:
+            numpy_log = wl_measure_utils.numpy_log
+
+    mi_11 = wl_measure_utils.numpy_divide(o11s, oxxs) * numpy_log(wl_measure_utils.numpy_divide(o11s, e11s))
+    mi_12 = wl_measure_utils.numpy_divide(o12s, oxxs) * numpy_log(wl_measure_utils.numpy_divide(o12s, e12s))
+    mi_21 = wl_measure_utils.numpy_divide(o21s, oxxs) * numpy_log(wl_measure_utils.numpy_divide(o21s, e21s))
+    mi_22 = wl_measure_utils.numpy_divide(o22s, oxxs) * numpy_log(wl_measure_utils.numpy_divide(o22s, e22s))
 
     return mi_11 + mi_12 + mi_21 + mi_22
 
@@ -179,21 +189,45 @@ def pct_diff(main, o11s, o12s, o21s, o22s):
 def pmi(main, o11s, o12s, o21s, o22s):
     e11s, _, _, _ = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
 
-    return wl_measure_utils.numpy_log2(wl_measure_utils.numpy_divide(o11s, e11s))
+    match main.settings_custom['measures']['effect_size']['pmi']['base_log']:
+        case 2:
+            numpy_log = wl_measure_utils.numpy_log2
+        case 10:
+            numpy_log = wl_measure_utils.numpy_log10
+        case math.e:
+            numpy_log = wl_measure_utils.numpy_log
+
+    return numpy_log(wl_measure_utils.numpy_divide(o11s, e11s))
 
 # Pointwise mutual information (cubic)
 # Reference: Daille, B. (1994). Approche mixte pour l'extraction automatique de terminologie: statistiques lexicales et filtres linguistiques [Doctoral thesis, Paris Diderot University]. Béatrice Daille. http://www.bdaille.com/index.php?option=com_docman&task=doc_download&gid=8&Itemid= | p. 139
 def im3(main, o11s, o12s, o21s, o22s):
     e11s, _, _, _ = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
 
-    return wl_measure_utils.numpy_log2(wl_measure_utils.numpy_divide(o11s ** 3, e11s))
+    match main.settings_custom['measures']['effect_size']['im3']['base_log']:
+        case 2:
+            numpy_log = wl_measure_utils.numpy_log2
+        case 10:
+            numpy_log = wl_measure_utils.numpy_log10
+        case math.e:
+            numpy_log = wl_measure_utils.numpy_log
+
+    return numpy_log(wl_measure_utils.numpy_divide(o11s ** 3, e11s))
 
 # Pointwise mutual information (squared)
 # Reference: Daille, B. (1995). Combined approach for terminology extraction: Lexical statistics and linguistic filtering. UCREL technical papers (Vol. 5). Lancaster University. | p. 21
 def im2(main, o11s, o12s, o21s, o22s):
     e11s, _, _, _ = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
 
-    return wl_measure_utils.numpy_log2(wl_measure_utils.numpy_divide(o11s ** 2, e11s))
+    match main.settings_custom['measures']['effect_size']['im2']['base_log']:
+        case 2:
+            numpy_log = wl_measure_utils.numpy_log2
+        case 10:
+            numpy_log = wl_measure_utils.numpy_log10
+        case math.e:
+            numpy_log = wl_measure_utils.numpy_log
+
+    return numpy_log(wl_measure_utils.numpy_divide(o11s ** 2, e11s))
 
 # Poisson collocation measure
 # Reference: Quasthoff, U., & Wolff, C. (2002). The poisson collocation measure and its applications. Proceedings of 2nd International Workshop on Computational Approaches to Collocations. IEEE.

@@ -134,3 +134,9 @@ def numpy_log2(a, default = 0):
         return numpy.log2(a, out = numpy.full_like(a, default, dtype = float), where = a > 0)
     else:
         return numpy.log2(a, out = numpy.zeros_like(a, dtype = float), where = a > 0)
+
+def numpy_log10(a, default = 0):
+    if default:
+        return numpy.log10(a, out = numpy.full_like(a, default, dtype = float), where = a > 0)
+    else:
+        return numpy.log10(a, out = numpy.zeros_like(a, dtype = float), where = a > 0)
