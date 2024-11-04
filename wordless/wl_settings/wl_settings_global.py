@@ -3605,10 +3605,12 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Minimum sensitivity'): 'min_sensitivity',
                 _tr('wl_settings_global', 'Mutual Expectation'): 'me',
                 _tr('wl_settings_global', 'Mutual information'): 'mi',
+                _tr('wl_settings_global', 'Mutual information (normalized)'): 'nmi',
                 _tr('wl_settings_global', 'Odds ratio'): 'or',
                 '%DIFF': 'pct_diff',
                 _tr('wl_settings_global', 'Pointwise mutual information'): 'pmi',
                 _tr('wl_settings_global', 'Pointwise mutual information (cubic)'): 'im3',
+                _tr('wl_settings_global', 'Pointwise mutual information (normalized)'): 'npmi',
                 _tr('wl_settings_global', 'Pointwise mutual information (squared)'): 'im2',
                 _tr('wl_settings_global', 'Poisson collocation measure'): 'poisson_collocation_measure',
                 _tr('wl_settings_global', 'Squared phi coefficient'): 'squared_phi_coeff'
@@ -3921,7 +3923,14 @@ def init_settings_global():
                 'col_text': 'MI',
                 'func': wl_measures_effect_size.mi,
                 'collocation': True,
-                'keyword': False
+                'keyword': True
+            },
+
+            'nmi': {
+                'col_text': 'NMI',
+                'func': wl_measures_effect_size.nmi,
+                'collocation': True,
+                'keyword': True
             },
 
             'or': {
@@ -3948,6 +3957,13 @@ def init_settings_global():
             'im3': {
                 'col_text': 'IM³',
                 'func': wl_measures_effect_size.im3,
+                'collocation': True,
+                'keyword': True
+            },
+
+            'npmi': {
+                'col_text': 'NPMI',
+                'func': wl_measures_effect_size.npmi,
                 'collocation': True,
                 'keyword': True
             },
