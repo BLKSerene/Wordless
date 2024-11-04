@@ -21,6 +21,7 @@
 ## [3.6.0](https://github.com/BLKSerene/Wordless/releases/tag/3.6.0) - ??/??/2024
 ### 🎉 New Features
 - Measures: Add effect size - conditional probability / ΔP / squared association ratio
+- Settings: Add Settings - Measures - Effect Size - Mutual Information / Pointwise Mutual Information / Pointwise Mutual Information (Cubic) / Pointwise Mutual Information (Squared)
 - Utils: Add Stanza's Sindhi dependency parser
 
 ### 📌 Bugfixes

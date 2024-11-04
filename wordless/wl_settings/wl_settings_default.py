@@ -2433,6 +2433,22 @@ def init_settings_default(main):
             'effect_size': {
                 'kilgarriffs_ratio': {
                     'smoothing_param': 1.00
+                },
+
+                'mi': {
+                    'base_log': 2
+                },
+
+                'pmi': {
+                    'base_log': 2
+                },
+
+                'im3': {
+                    'base_log': 2
+                },
+
+                'im2': {
+                    'base_log': 2
                 }
             }
         },

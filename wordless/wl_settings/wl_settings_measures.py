@@ -17,11 +17,15 @@
 # ----------------------------------------------------------------------
 
 import copy
+import math
 
+from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtWidgets import QCheckBox, QGroupBox, QLabel
 
 from wordless.wl_settings import wl_settings
 from wordless.wl_widgets import wl_boxes, wl_layouts, wl_widgets
+
+_tr = QCoreApplication.translate
 
 # Measures - Readability
 class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
@@ -950,6 +954,34 @@ class Wl_Settings_Measures_Bayes_Factor(wl_settings.Wl_Settings_Node):
         return True
 
 # Measures - Effect Size
+class Wl_Combo_Box_Base_Log(wl_boxes.Wl_Combo_Box):
+    # pylint: disable=inconsistent-return-statements
+
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.addItems([
+            '2',
+            '10',
+            _tr('wl_settings_measures', 'Base of natural logarithm')
+        ])
+
+    def get_base_log(self):
+        if self.currentText() == '2':
+            return 2
+        elif self.currentText() == '10':
+            return 10
+        elif self.currentText() == _tr('wl_settings_measures', 'Base of natural logarithm'):
+            return math.e
+
+    def set_base_log(self, base_log):
+        if base_log == 2:
+            self.setCurrentText('2')
+        elif base_log == 10:
+            self.setCurrentText('10')
+        elif base_log == math.e:
+            self.setCurrentText(_tr('wl_settings_measures', 'Base of natural logarithm'))
+
 class Wl_Settings_Measures_Effect_Size(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
@@ -971,11 +1003,63 @@ class Wl_Settings_Measures_Effect_Size(wl_settings.Wl_Settings_Node):
 
         self.group_box_kilgarriffs_ratio.layout().setColumnStretch(2, 1)
 
+        # Mutual Information
+        self.group_box_mi = QGroupBox(self.tr('Mutual Information'), self)
+
+        self.label_mi_base_log = QLabel(self.tr('Base of logarithm:'), self)
+        self.combo_box_mi_base_log = Wl_Combo_Box_Base_Log(self)
+
+        self.group_box_mi.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_mi.layout().addWidget(self.label_mi_base_log, 0, 0)
+        self.group_box_mi.layout().addWidget(self.combo_box_mi_base_log, 0, 1)
+
+        self.group_box_mi.layout().setColumnStretch(2, 1)
+
+        # Pointwise Mutual Information
+        self.group_box_pmi = QGroupBox(self.tr('Pointwise Mutual Information'), self)
+
+        self.label_pmi_base_log = QLabel(self.tr('Base of logarithm:'), self)
+        self.combo_box_pmi_base_log = Wl_Combo_Box_Base_Log(self)
+
+        self.group_box_pmi.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_pmi.layout().addWidget(self.label_pmi_base_log, 0, 0)
+        self.group_box_pmi.layout().addWidget(self.combo_box_pmi_base_log, 0, 1)
+
+        self.group_box_pmi.layout().setColumnStretch(2, 1)
+
+        # Pointwise Mutual Information (Cubic)
+        self.group_box_im3 = QGroupBox(self.tr('Pointwise Mutual Information (Cubic)'), self)
+
+        self.label_im3_base_log = QLabel(self.tr('Base of logarithm:'), self)
+        self.combo_box_im3_base_log = Wl_Combo_Box_Base_Log(self)
+
+        self.group_box_im3.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_im3.layout().addWidget(self.label_im3_base_log, 0, 0)
+        self.group_box_im3.layout().addWidget(self.combo_box_im3_base_log, 0, 1)
+
+        self.group_box_im3.layout().setColumnStretch(2, 1)
+
+        # Pointwise Mutual Information (Squared)
+        self.group_box_im2 = QGroupBox(self.tr('Pointwise Mutual Information (Squared)'), self)
+
+        self.label_im2_base_log = QLabel(self.tr('Base of logarithm:'), self)
+        self.combo_box_im2_base_log = Wl_Combo_Box_Base_Log(self)
+
+        self.group_box_im2.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_im2.layout().addWidget(self.label_im2_base_log, 0, 0)
+        self.group_box_im2.layout().addWidget(self.combo_box_im2_base_log, 0, 1)
+
+        self.group_box_im2.layout().setColumnStretch(2, 1)
+
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_kilgarriffs_ratio, 0, 0)
+        self.layout().addWidget(self.group_box_mi, 1, 0)
+        self.layout().addWidget(self.group_box_pmi, 2, 0)
+        self.layout().addWidget(self.group_box_im3, 3, 0)
+        self.layout().addWidget(self.group_box_im2, 4, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(1, 1)
+        self.layout().setRowStretch(5, 1)
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -986,8 +1070,32 @@ class Wl_Settings_Measures_Effect_Size(wl_settings.Wl_Settings_Node):
         # Kilgarriff's Ratio
         self.spin_box_kilgarriffs_ratio_smoothing_param.setValue(settings['kilgarriffs_ratio']['smoothing_param'])
 
+        # Mutual Information
+        self.combo_box_mi_base_log.set_base_log(settings['mi']['base_log'])
+
+        # Pointwise Mutual Information
+        self.combo_box_pmi_base_log.set_base_log(settings['pmi']['base_log'])
+
+        # Pointwise Mutual Information (Cubic)
+        self.combo_box_im3_base_log.set_base_log(settings['im3']['base_log'])
+
+        # Pointwise Mutual Information (Squared)
+        self.combo_box_im2_base_log.set_base_log(settings['im2']['base_log'])
+
     def apply_settings(self):
         # Kilgarriff's Ratio
         self.settings_custom['kilgarriffs_ratio']['smoothing_param'] = self.spin_box_kilgarriffs_ratio_smoothing_param.value()
+
+        # Mutual Information
+        self.settings_custom['mi']['base_log'] = self.combo_box_mi_base_log.get_base_log()
+
+        # Pointwise Mutual Information
+        self.settings_custom['pmi']['base_log'] = self.combo_box_pmi_base_log.get_base_log()
+
+        # Pointwise Mutual Information (Cubic)
+        self.settings_custom['im3']['base_log'] = self.combo_box_im3_base_log.get_base_log()
+
+        # Pointwise Mutual Information (Squared)
+        self.settings_custom['im2']['base_log'] = self.combo_box_im2_base_log.get_base_log()
 
         return True
