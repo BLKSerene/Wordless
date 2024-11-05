@@ -143,17 +143,17 @@ def test_log_ratio():
 def test_mi_log_f():
     assert_zeros(wl_measures_effect_size.mi_log_f)
 
-# Reference: Pedersen, T. (1998). Dependent bigram identification. In Proceedings of the Fifteenth National Conference on Artificial Intelligence (p. 1197). AAAI Press.
+# Reference: Pedersen, T., & Bruce, R. (1996). What to infer from a description. In Technical report 96-CSE-04. Southern Methodist University. | p. 12
 def test_min_sensitivity():
     numpy.testing.assert_array_equal(
         numpy.round(wl_measures_effect_size.min_sensitivity(
             main,
-            numpy.array([17] * 2),
-            numpy.array([240] * 2),
-            numpy.array([1001] * 2),
-            numpy.array([1298742] * 2)
-        ), 3),
-        numpy.array([0.017] * 2)
+            numpy.array([17, 10, 0]),
+            numpy.array([240, 0, 10]),
+            numpy.array([1001, 0, 10]),
+            numpy.array([1298742, 90, 80])
+        ), 6),
+        numpy.array([0.016699, 1, 0])
     )
 
     assert_zeros(wl_measures_effect_size.min_sensitivity)
@@ -190,6 +190,21 @@ def test_nmi():
     )
 
     assert_zeros(wl_measures_effect_size.nmi)
+
+# Reference: Evert, S. (2005). The statistics of word cooccurrences: Word pairs and collocations [Doctoral dissertation, University of Stuttgart]. OPUS - Online Publikationen der Universität Stuttgart. https://doi.org/10.18419/opus-2556 | p. 54
+def test_mu_val():
+    numpy.testing.assert_array_equal(
+        wl_measures_effect_size.mu_val(
+            main,
+            numpy.array([1] * 2),
+            numpy.array([9] * 2),
+            numpy.array([9] * 2),
+            numpy.array([81] * 2)
+        ),
+        numpy.array([1] * 2)
+    )
+
+    assert_zeros(wl_measures_effect_size.mu_val)
 
 # Reference: Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. Corpus Linguistics and Linguistic Theory, 15(1), pp. 133–167. https://doi.org/10.1515/cllt-2015-0030 | p. 154
 def test_odds_ratio():
@@ -307,6 +322,7 @@ if __name__ == '__main__':
     test_me()
     test_mi()
     test_nmi()
+    test_mu_val()
     test_odds_ratio()
     test_pct_diff()
     test_pmi()

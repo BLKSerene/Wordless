@@ -3606,6 +3606,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Mutual Expectation'): 'me',
                 _tr('wl_settings_global', 'Mutual information'): 'mi',
                 _tr('wl_settings_global', 'Mutual information (normalized)'): 'nmi',
+                _tr('wl_settings_global', 'μ-value'): 'mu_val',
                 _tr('wl_settings_global', 'Odds ratio'): 'or',
                 '%DIFF': 'pct_diff',
                 _tr('wl_settings_global', 'Pointwise mutual information'): 'pmi',
@@ -3931,6 +3932,13 @@ def init_settings_global():
                 'func': wl_measures_effect_size.nmi,
                 'collocation': True,
                 'keyword': True
+            },
+
+            'mu_val': {
+                'col_text': 'μ-value',
+                'func': wl_measures_effect_size.mu_val,
+                'collocation': True,
+                'keyword': False
             },
 
             'or': {
