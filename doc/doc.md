@@ -1499,7 +1499,7 @@ MI.log-f:
     \text{MI.log-f} = \log_{2} \frac{{O_{11}}^2}{E_{11}} \times \ln (O_{11} + 1)
 
 Minimum sensitivity:
-    \text{S} = \min\left\{\frac{O_{11}}{O_{1x}},\;\frac{O_{11}}{O_{x1}}\right\}
+    \text{S}_\text{min} = \min\left\{\frac{O_{11}}{O_{1x}},\;\frac{O_{11}}{O_{x1}}\right\}
 
 Mutual Expectation:
     \text{ME} = O_{11} \times \frac{2 \times O_{11}}{O_{1x} + O_{x1}}
@@ -1509,6 +1509,9 @@ Mutual information:
 
 Mutual information (normalized):
     \text{NMI} = \frac{\sum_{i = 1}^2 \sum_{j = 1}^2 \left(\frac{O_{ij}}{O_{xx}} \times \log_{base} \frac{O_{ij}}{E_{ij}}\right)}{-\sum_{i = 1}^2 \sum_{j = 1}^2 \left(\frac{O_{ij}}{O_{xx}} \times \log_{base} \frac{O_{ij}}{O_{xx}}\right)}
+
+μ-value:
+    \mu = \frac{O_{11}}{E_{11}}
 
 Odds ratio:
     \text{Odds ratio} = \frac{O_{11} \times O_{22}}{O_{12} \times O_{21}}
@@ -1546,10 +1549,11 @@ Measure of Effect Size|Formula|Collocation Extraction|Keyword Extraction
 <span id="ref-log-dice"></span>logDice<br>([Rychlý, 2008, p. 9](#ref-rychly-2008))|![Formula](/doc/measures/effect_size/log_dice.svg)|✔|✖️
 <span id="ref-log-ratio"></span>Log Ratio<br>([Hardie, 2014](#ref-hardie-2014))|![Formula](/doc/measures/effect_size/log_ratio.svg)|✔|✔
 <span id="ref-mi-log-f"></span>MI.log-f<br>([Kilgarriff & Tugwell, 2002](#ref-kilgarriff-tugwell-2002); [Lexical Computing Ltd., 2015, p. 4](#ref-lexical-computing-ltd-2015))|![Formula](/doc/measures/effect_size/mi_log_f.svg)|✔|✖️
-<span id="ref-min-sensitivity"></span>Minimum sensitivity<br>([Pedersen, 1998](#ref-pedersen-1998))|![Formula](/doc/measures/effect_size/min_sensitivity.svg)|✔|✖️
+<span id="ref-min-sensitivity"></span>Minimum sensitivity<br>([Pedersen & Bruce, 1996](#ref-pedersen-bruce-1996))|![Formula](/doc/measures/effect_size/min_sensitivity.svg)|✔|✖️
 <span id="ref-me"></span>Mutual Expectation<br>([Dias et al., 1999](#ref-dias-et-al-1999))|![Formula](/doc/measures/effect_size/me.svg)|✔|✖️
 <span id="ref-mi"></span>Mutual information<br>([Dunning, 1998, pp. 49–52](#ref-dunning-1998); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/mi.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Mutual Information → Base of logarithm**.|✔|✔
 <span id="ref-nmi"></span>Mutual information (normalized)<br>([Bouma, 2009](#ref-bouma-2009); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/nmi.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Mutual Information (Normalized) → Base of logarithm**.|✔|✔
+<span id="ref-mu-val"></span>μ-value<br>([Evert, 2005, p. 54](#ref-evert-2005))|![Formula](/doc/measures/effect_size/mu_val.svg)|✔|✖️
 <span id="ref-odds-ratio"></span>Odds ratio<br>([Pecina, 2005, p. 15](#ref-pecina-2005), [Pojanapunya & Todd, 2016](#ref-pojanapunya-todd-2016))|![Formula](/doc/measures/effect_size/odds_ratio.svg)|✔|✔
 <span id="ref-pct-diff"></span>%DIFF<br>([Gabrielatos & Marchi, 2011](#ref-gabrielatos-marchi-2011))|![Formula](/doc/measures/effect_size/pct_diff.svg)|✖️|✔
 <span id="ref-pmi"></span>Pointwise mutual information<br>([Church & Hanks, 1990](#ref-church-hanks-1990); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/pmi.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information → Base of logarithm**.|✔|✔
@@ -1644,6 +1648,8 @@ Measure of Effect Size|Formula|Collocation Extraction|Keyword Extraction
 1. [**^**](#ref-osman) El-Haj, M., & Rayson, P. (2016). OSMAN: A novel Arabic readability metric. In N. Calzolari, K. Choukri, T. Declerck, S. Goggi, M. Grobelnik, B. Maegaard, J. Mariani, H. Mazo, A. Moreno, J. Odijk, & S. Piperidis (Eds.), *Proceedings of the Tenth International Conference on Language Resources and Evaluation (LREC 2016)* (pp. 250–255). European Language Resources Association. http://www.lrec-conf.org/proceedings/lrec2016/index.html
 <span id="ref-engwall-1974"></span>
 1. [**^**](#ref-engwalls-fm) Engwall, G. (1974). *Fréquence et distribution du vocabulaire dans un choix de romans français* [Unpublished doctoral dissertation]. Stockholm University.
+<span id="ref-evert-2005"></span>
+1. [**^**](#ref-mu-val) Evert, S. (2005). *The statistics of word cooccurrences: Word pairs and collocations* [Doctoral dissertation, University of Stuttgart]. OPUS - Online Publikationen der Universität Stuttgart. https://doi.org/10.18419/opus-2556
 <span id="ref-fang-1966"></span>
 1. [**^**](#ref-elf) Fang, I. E. (1966). The easy listening formula. *Journal of Broadcasting*, *11*(1), 63–68. https://doi.org/10.1080/08838156609363529
 <span id="ref-farr-et-al-1951"></span>
@@ -1743,8 +1749,8 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 1. [**^**](#ref-re) Partiko, Z. V. (2001). *Zagal’ne redaguvannja. Normativni osnovi.* Afiša.
 <span id="ref-pedersen-1996"></span>
 1. [**^**](#ref-fishers-exact-test) Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), *Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference* (pp. 188–200). The South–Central Regional SAS Users' Group.
-<span id="ref-pedersen-1998"></span>
-1. [**^**](#ref-min-sensitivity) Pedersen, T. (1998). Dependent bigram identification. In *Proceedings of the Fifteenth National Conference on Artificial Intelligence* (p. 1197). AAAI Press.
+<span id="ref-pedersen-bruce-1996"></span>
+1. [**^**](#ref-min-sensitivity) Pedersen, T., & Bruce, R. (1996). What to infer from a description. In *Technical report 96-CSE-04*. Southern Methodist University.
 <span id="ref-pecina-2005"></span>
 1. [**^**](#ref-odds-ratio) Pecina, P. (2005). An extensive empirical study of collocation extraction methods. In C. Callison-Burch & S. Wan (Eds.), *Proceedings of the Student Research Workshop* (pp. 13–18). Association for Computational Linguistics.
 <span id="ref-pisarek-1969"></span>

@@ -122,7 +122,7 @@ def mi_log_f(main, o11s, o12s, o21s, o22s):
     return wl_measure_utils.numpy_log2(wl_measure_utils.numpy_divide(o11s ** 2, e11s)) * wl_measure_utils.numpy_log(o11s + 1)
 
 # Minimum sensitivity
-# Reference: Pedersen, T. (1998). Dependent bigram identification. In Proceedings of the Fifteenth National Conference on Artificial Intelligence (p. 1197). AAAI Press.
+# Reference: Pedersen, T., & Bruce, R. (1996). What to infer from a description. In Technical report 96-CSE-04. Southern Methodist University.
 def min_sensitivity(main, o11s, o12s, o21s, o22s):
     o1xs, _, ox1s, _ = wl_measures_statistical_significance.get_freqs_marginal(o11s, o12s, o21s, o22s)
 
@@ -175,6 +175,13 @@ def nmi(main, o11s, o12s, o21s, o22s):
         mi_11 + mi_12 + mi_21 + mi_22,
         -(joint_entropy_11 + joint_entropy_12 + joint_entropy_21 + joint_entropy_22)
     )
+
+# μ-value
+# Reference: Evert, S. (2005). The statistics of word cooccurrences: Word pairs and collocations [Doctoral dissertation, University of Stuttgart]. OPUS - Online Publikationen der Universität Stuttgart. https://doi.org/10.18419/opus-2556 | p. 54
+def mu_val(main, o11s, o12s, o21s, o22s):
+    e11s, _, _, _ = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
+
+    return wl_measure_utils.numpy_divide(o11s, e11s)
 
 # Odds ratio
 # Reference: Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. Corpus Linguistics and Linguistic Theory, 15(1), 133–167. https://doi.org/10.1515/cllt-2015-0030
