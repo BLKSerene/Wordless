@@ -1149,16 +1149,18 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                     ox1s = {}
                     oxxs = {}
 
+                    # Total frequencies of the node and collocate
                     for ngram_size, collocations_freqs in collocations_freqs_file_all.items():
                         o1xs[ngram_size] = collections.Counter()
                         ox1s[ngram_size] = collections.Counter()
 
                         for (node, collocate), freq in collocations_freqs.items():
-                            o1xs[ngram_size][collocate] += freq
-                            ox1s[ngram_size][node] += freq
+                            o1xs[ngram_size][node] += freq
+                            ox1s[ngram_size][collocate] += freq
 
                         oxxs[ngram_size] = sum(collocations_freqs.values())
 
+                    # Observed values
                     o11s = numpy.empty(shape = num_collocations_all, dtype = float)
                     o12s = numpy.empty(shape = num_collocations_all, dtype = float)
                     o21s = numpy.empty(shape = num_collocations_all, dtype = float)
@@ -1168,8 +1170,8 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                         len_node = len(node)
 
                         o11s[i] = sum(collocations_freqs_file.get((node, collocate), [0]))
-                        o12s[i] = o1xs[len_node][collocate] - o11s[i]
-                        o21s[i] = ox1s[len_node][node] - o11s[i]
+                        o12s[i] = o1xs[len_node][node] - o11s[i]
+                        o21s[i] = ox1s[len_node][collocate] - o11s[i]
                         o22s[i] = oxxs[len_node] - o11s[i] - o12s[i] - o21s[i]
 
                     # Test Statistic & p-value

@@ -41,8 +41,8 @@ def test_conditional_probability():
         numpy.round(wl_measures_effect_size.conditional_probability(
             main,
             numpy.array([28, 28]),
-            numpy.array([8002, 15740]),
             numpy.array([15740, 8002]),
+            numpy.array([8002, 15740]),
             numpy.array([97596164, 97596164])
         ), 3),
         numpy.array([0.178, 0.349])
@@ -56,8 +56,8 @@ def test_delta_p():
         numpy.round(wl_measures_effect_size.delta_p(
             main,
             numpy.array([5610, 5610]),
-            numpy.array([2257, 168938]),
             numpy.array([168938, 2257]),
+            numpy.array([2257, 168938]),
             numpy.array([10233063, 10233063])
         ), 3),
         numpy.array([0.032, 0.697])
@@ -293,7 +293,10 @@ def test_im2():
 def test_poisson_collocation_measure():
     assert_zeros(wl_measures_effect_size.poisson_collocation_measure)
 
-# Reference: Church, K. W., & Gale, W. A. (1991, September 29–October 1). Concordances for parallel text [Paper presentation]. Using Corpora: Seventh Annual Conference of the UW Centre for the New OED and Text Research, St. Catherine's College, Oxford, United Kingdom.
+def test_rr():
+    assert_zeros(wl_measures_effect_size.rr)
+
+# Reference: Church, K. W., & Gale, W. A. (1991, September 29–October 1). Concordances for parallel text [Paper presentation]. Using Corpora: Seventh Annual Conference of the UW Centre for the New OED and Text Research, St. Catherine's College, Oxford, United Kingdom. | p. 12
 def test_squared_phi_coeff():
     numpy.testing.assert_array_equal(
         numpy.round(wl_measures_effect_size.squared_phi_coeff(
@@ -330,4 +333,5 @@ if __name__ == '__main__':
     test_npmi()
     test_im2()
     test_poisson_collocation_measure()
+    test_rr()
     test_squared_phi_coeff()
