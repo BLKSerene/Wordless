@@ -3614,6 +3614,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Pointwise mutual information (normalized)'): 'npmi',
                 _tr('wl_settings_global', 'Pointwise mutual information (squared)'): 'im2',
                 _tr('wl_settings_global', 'Poisson collocation measure'): 'poisson_collocation_measure',
+                _tr('wl_settings_global', 'Relative risk'): 'rr',
                 _tr('wl_settings_global', 'Squared phi coefficient'): 'squared_phi_coeff'
             }
         },
@@ -3943,6 +3944,7 @@ def init_settings_global():
 
             'or': {
                 'col_text': 'OR',
+                # "or" is a Python keyword
                 'func': wl_measures_effect_size.odds_ratio,
                 'collocation': True,
                 'keyword': True
@@ -3988,6 +3990,13 @@ def init_settings_global():
                 'func': wl_measures_effect_size.poisson_collocation_measure,
                 'collocation': True,
                 'keyword': False
+            },
+
+            'rr': {
+                'col_text': 'RR',
+                'func': wl_measures_effect_size.rr,
+                'collocation': True,
+                'keyword': True
             },
 
             'squared_phi_coeff': {

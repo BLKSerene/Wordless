@@ -1383,49 +1383,52 @@ Measure of Dispersion (Distance-based)|Measure of Adjusted Frequency (Distance-b
 <span id="doc-12-4-4"></span>
 #### [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, and Measures of Effect Size](#doc)
 
-In order to calculate the statistical significance, Bayes factor, and effect size (except **Mann-Whitney U test**, **Student's t-test (2-sample)**, and **Welch's t-test**) for two words in the same file (collocates) or for one specific word in two different files (keywords), two contingency tables must be constructed first, one for observed values, the other for expected values.
+In order to calculate the test statistics of tests of statistical significance, Bayes factors, and effect sizes (except **Mann-Whitney U test** and **Student's t-test (2-sample)**) for potential collocations in *Collocation Extractor* and *Colligation Extractor* and potential keywords in *Keyword Extractor*, two contingency tables must be constructed first. One for observed values and the other for expected values.
 
-As for collocates (in *Collocation Extractor* and *Colligation Extractor*):
+As for potential collocations in *Collocation Extractor* and *Colligation Extractor*:
 
-Observed Values|*Word 1*           |Not *Word 1*       |Row Total
+Observed Values|*Word 2*           |Not *Word 2*       |Row Total
 --------------:|:-----------------:|:-----------------:|:---------------------------------:
-*Word 2*       |O₁₁                |O₁₂                |O₁ₓ = *O₁₁* + *O₁₂*
-Not *Word 2*   |O₂₁                |O₂₂                |O₂ₓ = *O₂₁* + *O₂₂*
+*Word 1*       |O₁₁                |O₁₂                |O₁ₓ = *O₁₁* + *O₁₂*
+Not *Word 1*   |O₂₁                |O₂₂                |O₂ₓ = *O₂₁* + *O₂₂*
 Column Total   |Oₓ₁ = *O₁₁* + *O₂₁*|Oₓ₂ = *O₁₂* + *O₂₂*|Oₓₓ = *O₁₁* + *O₁₂* + *O₂₁* + *O₂₂*
 
-Expected Values|*Word 1*             |Not *Word 1*
+Expected Values|*Word 2*             |Not *Word 2*
 --------------:|:-------------------:|:-------------------:
-*Word 2*       |![E₁₁](/doc/e_11.svg)|![E₁₂](/doc/e_12.svg)
-Not *Word 2*   |![E₂₁](/doc/e_21.svg)|![E₂₂](/doc/e_22.svg)
+*Word 1*       |![E₁₁](/doc/e_11.svg)|![E₁₂](/doc/e_12.svg)
+Not *Word 1*   |![E₂₁](/doc/e_21.svg)|![E₂₂](/doc/e_22.svg)
 
-O₁₁: Number of occurrences of *Word 1* followed by *Word 2*.<br>
-O₁₂: Number of occurrences of *Word 1* followed by any word except *Word 2*.<br>
-O₂₁: Number of occurrences of any word except *Word 1* followed by *Word 2*.<br>
-O₂₂: Number of occurrences of any word except *Word 1* followed by any word except *Word 2*.
+O₁₁: Number of occurrences of the *Word 1* followed by the *Word 2*.<br>
+O₁₂: Number of occurrences of the *Word 1* followed by any word except the *Word 2*.<br>
+O₂₁: Number of occurrences of any word except the *Word 1* followed by the *Word 2*.<br>
+O₂₂: Number of occurrences of any word except the *Word 1* followed by any word except the *Word 2*.<br>
+O₁ₓ: Total frequency of the *Word 1* in the corpus.<br>
+Oₓ₁: Total frequency of the *Word 2* in the corpus.<br>
+Oₓₓ: Size of the corpus
 
-As for keywords (in *Keyword Extractor*):
+As for potential keywords in *Keyword Extractor*:
 
-Observed Values|Observed File      |Reference File     |Row Total
+Observed Values|Observed Corpus    |Reference Corpus   |Row Total
 --------------:|:-----------------:|:-----------------:|:---------------------------------:
 *Word w*       |O₁₁                |O₁₂                |O₁ₓ = *O₁₁* + *O₁₂*
 *Not Word w*   |O₂₁                |O₂₂                |O₂ₓ = *O₂₁* + *O₂₂*
 Column Total   |Oₓ₁ = *O₁₁* + *O₂₁*|Oₓ₂ = *O₁₂* + *O₂₂*|Oₓₓ = *O₁₁* + *O₁₂* + *O₂₁* + *O₂₂*
 
-Expected Values|Observed File        |Reference File
+Expected Values|Observed Corpus      |Reference Corpus
 --------------:|:-------------------:|:-------------------:
 *Word w*       |![E₁₁](/doc/e_11.svg)|![E₁₂](/doc/e_12.svg)
 *Not Word w*   |![E₂₁](/doc/e_21.svg)|![E₂₂](/doc/e_22.svg)
 
-O₁₁: Number of occurrences of *Word w* in the observed file.<br>
-O₁₂: Number of occurrences of *Word w* in the reference file.<br>
-O₂₁: Number of occurrences of all words except *Word w* in the observed file.<br>
-O₂₂: Number of occurrences of all words except *Word w* in the reference file.
+O₁₁: Number of occurrences of the *Word w* in the observed corpus.<br>
+O₁₂: Number of occurrences of the *Word w* in the reference corpus.<br>
+O₂₁: Number of occurrences of all words except the *Word w* in the observed corpus.<br>
+O₂₂: Number of occurrences of all words except the *Word w* in the reference corpus.<br>
+Oₓ₁: Size of the observed corpus.<br>
+Oₓ₂: Size of the reference corpus.
 
-To conduct **Mann-Whitney U test**, **Student's t-test (2-sample)**, and **Welch's t-test** on a specific word, each column total is first divided into **n** (5 by default) sub-sections respectively. To be more specific, in *Collocation Extractor* and *Colligation Extractor*, all collocates where Word 1 appears as node and the other collocates where Word 1 does not appear as node are divided into **n** parts respectively. And in *Keyword Extractor*, all tokens in the observed file and all tokens in the reference files are equally divided into **n** parts respectively.
+To conduct **Mann-Whitney U test** and **Student's t-test (2-sample)** on a potential keyword, all tokens in the observed corpus and reference corpus are equally divided into **n** parts respectively. The frequencies of the *Word w* in the **n** sub-sections in the observed corpus and reference corpus are counted and denoted by **F₁₁**, **F₂₁**, **F₃₁**, ..., **Fₙ₁** and **F₁₂**, **F₂₂**, **F₃₂**, ..., **Fₙ₂** respectively. The total frequencies of the *Word w* in the observed corpus and reference corpus are denoted by **Fₓ₁** and **Fₓ₂** respectively. The mean values of the frequencies of the *Word w* over the **n** sub-sections in the observed corpus and reference corpus are denoted by ![f_x1_bar](/doc/measures/f_x1_bar.svg) and ![f_x2_bar](/doc/measures/f_x2_bar.svg) respectively.
 
-The frequencies of *Word 2* (in *Collocation Extractor* and *Colligation Extractor*) or *Word w* (in *Keyword Extractor*) in each sub-section of the 2 column totals are counted and denoted by **F₁₁**, **F₂₁**, **F₃₁**, ..., **Fₙ₁**, and **F₁₂**, **F₂₂**, **F₃₂**, ..., **Fₙ₂** respectively. The total frequency of *Word 2* (in *Collocation Extractor* and *Colligation Extractor*) or *Word w* (in *Keyword Extractor*) in the 2 column totals are denoted by **Fₓ₁** and **Fₓ₂** respectively. The mean value of the frequencies over all sub-sections in the 2 column totals are denoted by ![f_x1_bar](/doc/measures/f_x1_bar.svg) and ![f_x2_bar](/doc/measures/f_x2_bar.svg) respectively.
-
-Then the test statistic, Bayes factor, and effect size are calculated as follows:
+Then the test statistics, Bayes factors, and effect sizes are calculated as follows:
 
 <!--
 Log-likelihood ratio test:
@@ -1472,10 +1475,10 @@ Test of Statistical Significance|Measure of Bayes Factor|Formula|Collocation Ext
 
 <!--
 Conditional probability:
-    \text{P} = \frac{O_{11}}{O_{x1}} \times 100
+    \text{P} = \frac{O_{11}}{O_{1x}} \times 100
 
 ΔP:
-    \Delta\text{P} = \frac{O_{11}}{O_{x1}} - \frac{O_{12}}{O_{x2}}
+    \Delta\text{P} = \frac{O_{11}}{O_{1x}} - \frac{O_{21}}{O_{2x}}
 
 Dice-Sørensen coefficient:
     \text{DSC} = \frac{2 \times O_{11}}{O_{1x} + O_{x1}}
@@ -1487,7 +1490,7 @@ Jaccard index:
     \text{J} = \frac{O_{11}}{O_{11} + O_{12} + O_{21}}
 
 Kilgarriff's ratio:
-    \text{Kilgarriff's ratio} = \frac{\frac{O_{11}}{O_{11} + O_{21}} \times 1000000 + \alpha}{\frac{O_{12}}{O_{12} + O_{22}} \times 1000000 + \alpha}
+    \text{Kilgarriff's ratio} = \frac{\frac{O_{11}}{O_{x1}} \times 1000000 + \alpha}{\frac{O_{12}}{O_{x2}} \times 1000000 + \alpha}
 
 logDice:
     \text{logDice} = 14 + \log_{2} \frac{2 \times O_{11}}{O_{1x} + O_{x1}}
@@ -1514,7 +1517,7 @@ Mutual information (normalized):
     \mu = \frac{O_{11}}{E_{11}}
 
 Odds ratio:
-    \text{Odds ratio} = \frac{O_{11} \times O_{22}}{O_{12} \times O_{21}}
+    \text{OR} = \frac{O_{11} \times O_{22}}{O_{12} \times O_{21}}
 
 %DIFF:
     \text{%DIFF} = \frac{\left(\frac{O_{11}}{O_{x1}} - \frac{O_{12}}{O_{x2}}\right) \times 100}{\frac{O_{12}}{O_{x2}}}
@@ -1533,6 +1536,9 @@ Pointwise mutual information (squared):
 
 Poisson collocation measure:
     \text{sig} = \frac{O_{11} \times (\ln O_{11} - \ln E_{11} - 1)}{\ln O_{xx}}
+
+Relative risk:
+    \text{RR} = \frac{O_{11} \times O_{x2}}{O_{12} \times O_{x1}}
 
 Squared phi coefficient:
     \phi^2 = \frac{(O_{11} \times O_{22} - O_{12} \times O_{21})^2}{O_{1x} \times O_{2x} \times O_{x1} \times O_{x2}}
@@ -1554,13 +1560,14 @@ Measure of Effect Size|Formula|Collocation Extraction|Keyword Extraction
 <span id="ref-mi"></span>Mutual information<br>([Dunning, 1998, pp. 49–52](#ref-dunning-1998); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/mi.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Mutual Information → Base of logarithm**.|✔|✔
 <span id="ref-nmi"></span>Mutual information (normalized)<br>([Bouma, 2009](#ref-bouma-2009); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/nmi.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Mutual Information (Normalized) → Base of logarithm**.|✔|✔
 <span id="ref-mu-val"></span>μ-value<br>([Evert, 2005, p. 54](#ref-evert-2005))|![Formula](/doc/measures/effect_size/mu_val.svg)|✔|✖️
-<span id="ref-odds-ratio"></span>Odds ratio<br>([Pecina, 2005, p. 15](#ref-pecina-2005), [Pojanapunya & Todd, 2016](#ref-pojanapunya-todd-2016))|![Formula](/doc/measures/effect_size/odds_ratio.svg)|✔|✔
+<span id="ref-or"></span>Odds ratio<br>([Pecina, 2005, p. 15](#ref-pecina-2005), [Pojanapunya & Todd, 2016](#ref-pojanapunya-todd-2016))|![Formula](/doc/measures/effect_size/or.svg)|✔|✔
 <span id="ref-pct-diff"></span>%DIFF<br>([Gabrielatos & Marchi, 2011](#ref-gabrielatos-marchi-2011))|![Formula](/doc/measures/effect_size/pct_diff.svg)|✖️|✔
 <span id="ref-pmi"></span>Pointwise mutual information<br>([Church & Hanks, 1990](#ref-church-hanks-1990); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/pmi.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information → Base of logarithm**.|✔|✔
 <span id="ref-im3"></span>Pointwise mutual information (cubic)¹<br>([Daille, 1994, p. 139](#ref-daille-1994); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/im3.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information (Cubic) → Base of logarithm**.|✔|✔
 <span id="ref-npmi"></span>Pointwise mutual information (normalized)<br>([Bouma, 2009](#ref-bouma-2009); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/npmi.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information (Normalized) → Base of logarithm**.|✔|✔
 <span id="ref-im2"></span>Pointwise mutual information (squared)¹<br>([Daille, 1995, p. 21](#ref-daille-1995); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/im2.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information (Squared) → Base of logarithm**.|✔|✔
 <span id="ref-poisson-collocation-measure"></span>Poisson collocation measure<br>([Quasthoff & Wolff, 2002](#ref-quasthoff-wolff-2002))|![Formula](/doc/measures/effect_size/poisson_collocation_measure.svg)|✔|✖️
+<span id="ref-rr"></span>Relative risk<br>([Evert, 2005, p. 55](#ref-evert-2005), [Gries, 2010, p. 276](#ref-gries-2010))|![Formula](/doc/measures/effect_size/rr.svg)|✔|✔
 <span id="ref-squared-phi-coeff"></span>Squared phi coefficient<br>([Church & Gale, 1991](#ref-church-gale-1991))|![Formula](/doc/measures/effect_size/squared_phi_coeff.svg)|✔|✖️
 
 > [!NOTE]
@@ -1649,7 +1656,7 @@ Measure of Effect Size|Formula|Collocation Extraction|Keyword Extraction
 <span id="ref-engwall-1974"></span>
 1. [**^**](#ref-engwalls-fm) Engwall, G. (1974). *Fréquence et distribution du vocabulaire dans un choix de romans français* [Unpublished doctoral dissertation]. Stockholm University.
 <span id="ref-evert-2005"></span>
-1. [**^**](#ref-mu-val) Evert, S. (2005). *The statistics of word cooccurrences: Word pairs and collocations* [Doctoral dissertation, University of Stuttgart]. OPUS - Online Publikationen der Universität Stuttgart. https://doi.org/10.18419/opus-2556
+1. [**^**](#ref-mu-val) [**^**](#ref-rr) Evert, S. (2005). *The statistics of word cooccurrences: Word pairs and collocations* [Doctoral dissertation, University of Stuttgart]. OPUS - Online Publikationen der Universität Stuttgart. https://doi.org/10.18419/opus-2556
 <span id="ref-fang-1966"></span>
 1. [**^**](#ref-elf) Fang, I. E. (1966). The easy listening formula. *Journal of Broadcasting*, *11*(1), 63–68. https://doi.org/10.1080/08838156609363529
 <span id="ref-farr-et-al-1951"></span>
@@ -1670,6 +1677,8 @@ Measure of Effect Size|Formula|Collocation Extraction|Keyword Extraction
 1. [**^**](#ref-pct-diff) Gabrielatos, C., & Marchi, A. (2011, November 5). *Keyness: Matching metrics to definitions* [Conference session]. Corpus Linguistics in the South 1, University of Portsmouth, United Kingdom. https://eprints.lancs.ac.uk/id/eprint/51449/4/Gabrielatos_Marchi_Keyness.pdf
 <span id="ref-gries-2008"></span>
 1. [**^**](#ref-griess-dp) Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. *International Journal of Corpus Linguistics*, *13*(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri
+<span id="ref-gries-2010"></span>
+1. [**^**](#ref-rr) Gries, S. T. (2010). Useful statistics for corpus linguistics. In A. Sánchez Pérez & M. Almela Sánchez (Eds.), A mosaic of corpus linguistics: Selected papers (pp. 269–291). Peter Lang.
 <span id="ref-gries-2013"></span>
 1. [**^**](#ref-delta-p) Gries, S. T. (2013). 50-something years of work on collocations: What is or should be next …. *International Journal of Corpus Linguistics*, *18*(1), 137–165. https://doi.org/10.1075/ijcl.18.1.09gri
 <span id="ref-guiraud-1954"></span>
@@ -1752,11 +1761,11 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 <span id="ref-pedersen-bruce-1996"></span>
 1. [**^**](#ref-min-sensitivity) Pedersen, T., & Bruce, R. (1996). What to infer from a description. In *Technical report 96-CSE-04*. Southern Methodist University.
 <span id="ref-pecina-2005"></span>
-1. [**^**](#ref-odds-ratio) Pecina, P. (2005). An extensive empirical study of collocation extraction methods. In C. Callison-Burch & S. Wan (Eds.), *Proceedings of the Student Research Workshop* (pp. 13–18). Association for Computational Linguistics.
+1. [**^**](#ref-or) Pecina, P. (2005). An extensive empirical study of collocation extraction methods. In C. Callison-Burch & S. Wan (Eds.), *Proceedings of the Student Research Workshop* (pp. 13–18). Association for Computational Linguistics.
 <span id="ref-pisarek-1969"></span>
 1. [**^**](#ref-fog-index) Pisarek, W. (1969). Jak mierzyć zrozumiałość tekstu? *Zeszyty Prasoznawcze*, *4*(42), 35–48.
 <span id="ref-pojanapunya-todd-2016"></span>
-1. [**^**](#ref-odds-ratio) Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. *Corpus Linguistics and Linguistic Theory*, *15*(1), 133–167. https://doi.org/10.1515/cllt-2015-0030
+1. [**^**](#ref-or) Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. *Corpus Linguistics and Linguistic Theory*, *15*(1), 133–167. https://doi.org/10.1515/cllt-2015-0030
 <span id="ref-popescu-et-al-2008"></span>
 1. [**^**](#ref-popescu-macutek-altmanns-b1-b2-b3-b4-b5) Popescu I.-I., Mačutek, J, & Altmann, G. (2008). Word frequency and arc length. *Glottometrics*, *17*, 18–42.
 <span id="ref-popescu-2009"></span>

@@ -36,16 +36,16 @@ def get_numpy_log(main, measure_code):
 # Conditional probability
 # Reference: Durrant, P. (2008). High frequency collocations and second language learning [Doctoral dissertation, University of Nottingham]. Nottingham eTheses. https://eprints.nottingham.ac.uk/10622/1/final_thesis.pdf | p. 84
 def conditional_probability(main, o11s, o12s, o21s, o22s):
-    _, _, ox1s, _ = wl_measures_statistical_significance.get_freqs_marginal(o11s, o12s, o21s, o22s)
+    o1xs, _, _, _ = wl_measures_statistical_significance.get_freqs_marginal(o11s, o12s, o21s, o22s)
 
-    return wl_measure_utils.numpy_divide(o11s, ox1s) * 100
+    return wl_measure_utils.numpy_divide(o11s, o1xs) * 100
 
 # ΔP
 # Reference: Gries, S. T. (2013). 50-something years of work on collocations: What is or should be next …. International Journal of Corpus Linguistics, 18(1), 137–165. https://doi.org/10.1075/ijcl.18.1.09gri
 def delta_p(main, o11s, o12s, o21s, o22s):
-    _, _, ox1s, ox2s = wl_measures_statistical_significance.get_freqs_marginal(o11s, o12s, o21s, o22s)
+    o1xs, o2xs, _, _ = wl_measures_statistical_significance.get_freqs_marginal(o11s, o12s, o21s, o22s)
 
-    return wl_measure_utils.numpy_divide(o11s, ox1s) - wl_measure_utils.numpy_divide(o12s, ox2s)
+    return wl_measure_utils.numpy_divide(o11s, o1xs) - wl_measure_utils.numpy_divide(o21s, o2xs)
 
 # Dice-Sørensen coefficient
 # Reference: Smadja, F., McKeown, K. R., & Hatzivassiloglou, V. (1996). Translating collocations for bilingual lexicons: A statistical approach. Computational Linguistics, 22(1), 1–38. | p. 8
@@ -271,6 +271,13 @@ def poisson_collocation_measure(main, o11s, o12s, o21s, o22s):
         o11s * (wl_measure_utils.numpy_log(o11s) - wl_measure_utils.numpy_log(e11s) - 1),
         wl_measure_utils.numpy_log(oxxs)
     )
+
+# Relative risk
+# Reference: Evert, S. (2005). The statistics of word cooccurrences: Word pairs and collocations [Doctoral dissertation, University of Stuttgart]. OPUS - Online Publikationen der Universität Stuttgart. https://doi.org/10.18419/opus-2556 | p. 55
+def rr(main, o11s, o12s, o21s, o22s):
+    _, _, ox1s, ox2s = wl_measures_statistical_significance.get_freqs_marginal(o11s, o12s, o21s, o22s)
+
+    return wl_measure_utils.numpy_divide(o11s * ox2s, o12s * ox1s)
 
 # Squared phi coefficient
 # Reference: Church, K. W., & Gale, W. A. (1991, September 29–October 1). Concordances for parallel text [Paper presentation]. Using Corpora: Seventh Annual Conference of the UW Centre for the New OED and Text Research, St. Catherine's College, Oxford, United Kingdom.
