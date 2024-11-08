@@ -154,7 +154,7 @@ def mi(main, o11s, o12s, o21s, o22s):
     return mi_11 + mi_12 + mi_21 + mi_22
 
 # Mutual information (normalized)
-# Reference: Bouma, G. (2009). Normalized (pointwise) mutual information in collocation extraction. In C. CHiarcos, R. Eckart de Castilho, & M. Stede (Eds.), From form to meaning: processing texts automatically: Proceedings of the Biennial GSCL Conference 2009 (pp. 31–40). Gunter Narr Verlag.
+# Reference: Bouma, G. (2009). Normalized (pointwise) mutual information in collocation extraction. In C. Chiarcos, R. Eckart de Castilho, & M. Stede (Eds.), From form to meaning: processing texts automatically: Proceedings of the Biennial GSCL Conference 2009 (pp. 31–40). Gunter Narr Verlag.
 def nmi(main, o11s, o12s, o21s, o22s):
     oxxs = o11s + o12s + o21s + o22s
     e11s, e12s, e21s, e22s = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
@@ -236,7 +236,7 @@ def im3(main, o11s, o12s, o21s, o22s):
     return numpy_log(wl_measure_utils.numpy_divide(o11s ** 3, e11s))
 
 # Pointwise mutual information (normalized)
-# Reference: Bouma, G. (2009). Normalized (pointwise) mutual information in collocation extraction. In C. CHiarcos, R. Eckart de Castilho, & M. Stede (Eds.), From form to meaning: processing texts automatically: Proceedings of the Biennial GSCL Conference 2009 (pp. 31–40). Gunter Narr Verlag.
+# Reference: Bouma, G. (2009). Normalized (pointwise) mutual information in collocation extraction. In C. Chiarcos, R. Eckart de Castilho, & M. Stede (Eds.), From form to meaning: processing texts automatically: Proceedings of the Biennial GSCL Conference 2009 (pp. 31–40). Gunter Narr Verlag.
 def npmi(main, o11s, o12s, o21s, o22s):
     oxxs = o11s + o12s + o21s + o22s
     e11s, _, _, _ = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)

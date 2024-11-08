@@ -400,8 +400,7 @@ def crawfords_readability_formula(main, text):
 # Powers-Sumner-Kearl:
 #     Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. Journal of Educational Psychology, 49(2), 99–105. https://doi.org/10.1037/h0043254
 # New:
-#     Chall, J. S., & Dale, E. (1995). Readability revisited: The new Dale-Chall readability formula. Brookline Books.
-#     清川英男. (1996). CHALL, J. S. and DALE, E.(1995) Readability revisited: The new Dale-Chall readability formula. Brookline Books. 教育メディア研究, 3(1), 59. https://www.jstage.jst.go.jp/article/jaems/3/1/3_KJ00009004543/_pdf
+#     Chall, J. S., & Dale, E. (1995). Readability revisited: The new Dale-Chall readability formula. Brookline Books. | p. 66
 def x_c50(main, text):
     if text.lang.startswith('eng_'):
         text = get_nums(main, text)

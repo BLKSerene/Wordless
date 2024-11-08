@@ -45,7 +45,7 @@ text_tokens_225 = get_test_text(TOKENS_225)
 def test_brunets_index():
     w = wl_measures_lexical_density_diversity.brunets_index(main, text_tokens_100)
 
-    assert w == numpy.power(100, numpy.power(5, -0.165))
+    assert w == numpy.power(100, numpy.power(5, -0.172))
 
 def test_cttr():
     cttr = wl_measures_lexical_density_diversity.cttr(main, text_tokens_100)
