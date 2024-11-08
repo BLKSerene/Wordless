@@ -25,6 +25,7 @@ import re
 import subprocess
 import sys
 import time
+import fickling
 
 # Fix working directory on macOS
 if getattr(sys, '_MEIPASS', False) and platform.system() == 'Darwin':
@@ -122,7 +123,7 @@ file_settings_display_lang = wl_paths.get_path_file('wl_settings_display_lang.pi
 
 if os.path.exists(file_settings):
     with open(file_settings, 'rb') as f:
-        settings_custom = pickle.load(f)
+        settings_custom = fickling.load(f)
 
     ui_scaling = settings_custom['general']['ui_settings']['interface_scaling']
     global_font_family = settings_custom['general']['ui_settings']['font_family']
@@ -238,7 +239,7 @@ class Wl_Main(QMainWindow):
         # Custom settings
         if os.path.exists(file_settings):
             with open(file_settings, 'rb') as f:
-                settings_custom = pickle.load(f)
+                settings_custom = fickling.load(f)
 
             if wl_checks_misc.check_custom_settings(settings_custom, self.settings_default):
                 self.settings_custom = settings_custom
@@ -249,7 +250,7 @@ class Wl_Main(QMainWindow):
 
         if os.path.exists(file_settings_display_lang):
             with open(file_settings_display_lang, 'rb') as f:
-                self.settings_custom['menu']['prefs']['display_lang'] = pickle.load(f)
+                self.settings_custom['menu']['prefs']['display_lang'] = fickling.load(f)
 
         self.loading_window.show_message(self.tr('Initializing main window...'))
 
@@ -1285,7 +1286,7 @@ if __name__ == '__main__':
     # Translations
     if os.path.exists(file_settings_display_lang):
         with open(file_settings_display_lang, 'rb') as f:
-            display_lang = pickle.load(f)
+            display_lang = fickling.load(f)
     else:
         display_lang = 'eng_us'
 
