@@ -29,17 +29,13 @@ from wordless.wl_nlp import wl_nlp_utils, wl_pos_tagging
 
 _tr = QCoreApplication.translate
 
-# Brunét's index
-# References:
-#     Brunét, E. (1978). Le vocabulaire de Jean Giraudoux: Structure et evolution. Slatkine.
-#     Bucks, R. S., Singh, S., Cuerden, J. M., & Wilcock, G. K. (2000). Analysis of spontaneous, conversational speech in dementia of Alzheimer type: Evaluation of an objective technique for analysing lexical performance. Aphasiology, 14(1), 71–91. https://doi.org/10.1080/026870300401603
+# Brunet's index
+# Reference: Brunet, E. (1978). Le vocabulaire de Jean Giraudoux: Structure et evolution. Slatkine. | p. 57
 def brunets_index(main, text):
-    return numpy.power(text.num_tokens, numpy.power(text.num_types, -0.165))
+    return numpy.power(text.num_tokens, numpy.power(text.num_types, -0.172))
 
 # Corrected TTR
-# References:
-#     Carroll, J. B. (1964). Language and thought. Prentice-Hall.
-#     Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). Lexical diversity and language development: Quantification and assessment. Palgrave Macmillan. | p. 26
+# Reference: Carroll, J. B. (1964). Language and thought. Prentice-Hall. | p. 54
 def cttr(main, text):
     return text.num_types / numpy.sqrt(2 * text.num_tokens)
 

@@ -1139,11 +1139,11 @@ Readability Formula|Formula|Supported Languages
 <span id="ref-rd"></span>Al-Heeti's readability formula¹<br>([Al-Heeti, 1984, pp. 102, 104, 106](#ref-al-heeti-1984))|![Formula](/doc/measures/readability/rd.svg)|**Arabic**
 <span id="ref-aari"></span>Automated Arabic Readability Index<br>([Al-Tamimi et al., 2013](#ref-al-tamimi-et-al-2013))|![Formula](/doc/measures/readability/aari.svg)|**Arabic**
 <span id="ref-ari"></span>Automated Readability Index¹<br>([Smith & Senter, 1967, p. 8](#ref-smith-senter-1967)<br>Navy: [Kincaid et al., 1975, p. 14](#ref-kincaid-et-al-1975))|![Formula](/doc/measures/readability/ari.svg)|All languages
-<span id="ref-bormuths-cloze-mean-gp"></span>Bormuth's cloze mean & grade placement<br>([Bormuth, 1969, pp. 152, 160](#ref-bormuth-1969))|![Formula](/doc/measures/readability/bormuths_cloze_mean_gp.svg)<br>where **C** is the cloze criterion score, whose value could be changed via **Menu Bar → Preferences → Settings → Measures → Readability → Bormuth's Grade Placement → Cloze criterion score**|**English**
+<span id="ref-bormuths-cloze-mean-gp"></span>Bormuth's cloze mean & grade placement<br>([Bormuth, 1969, pp. 152, 160](#ref-bormuth-1969))|![Formula](/doc/measures/readability/bormuths_cloze_mean_gp.svg)<br>where **C** is the cloze criterion score, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Readability → Bormuth's Grade Placement → Cloze criterion score**|**English**
 <span id="ref-coleman-liau-index"></span>Coleman-Liau index<br>([Coleman & Liau, 1975](#ref-coleman-liau-1975))|![Formula](/doc/measures/readability/coleman_liau_index.svg)|All languages
 <span id="ref-colemans-readability-formula"></span>Coleman's readability formula¹<br>([Liau et al., 1976](#ref-liau-et-al-1976))|![Formula](/doc/measures/readability/colemans_readability_formula.svg)|All languages²³
 <span id="ref-crawfords-readability-formula"></span>Crawford's readability formula<br>([Crawford, 1985](#ref-crawford-1985))|![Formula](/doc/measures/readability/crawfords_readability_formula.svg)|**Spanish**²
-<span id="ref-x-c50"></span>Dale-Chall readability formula¹<br>([Dale & Chall, 1948a](#ref-dale-chall-1948a); [Dale & Chall, 1948b](#ref-dale-chall-1948b)<br>Powers-Sumner-Kearl: [Powers et al., 1958](#ref-powers-et-al-1958)<br>New: [Chall & Dale, 1995](#ref-chall-dale-1995))|![Formula](/doc/measures/readability/x_c50.svg)|**English**
+<span id="ref-x-c50"></span>Dale-Chall readability formula¹<br>([Dale & Chall, 1948a](#ref-dale-chall-1948a); [Dale & Chall, 1948b](#ref-dale-chall-1948b)<br>Powers-Sumner-Kearl: [Powers et al., 1958](#ref-powers-et-al-1958)<br>New: [Chall & Dale, 1995, p. 66](#ref-chall-dale-1995))|![Formula](/doc/measures/readability/x_c50.svg)|**English**
 <span id="ref-danielson-bryans-readability-formula"></span>Danielson-Bryan's readability formula¹<br>([Danielson & Bryan, 1963](#ref-danielson-bryan-1963))|![Formula](/doc/measures/readability/danielson_bryans_readability_formula.svg)|All languages
 <span id="ref-dawoods-readability-formula"></span>Dawood's readability formula<br>([Dawood, 1977](#ref-dawood-1977))|![Formula](/doc/measures/readability/dawoods_readability_formula.svg)|**Arabic**
 <span id="ref-drp"></span>Degrees of Reading Power<br>([College Entrance Examination Board, 1981](#ref-college-entrance-examination-board-1981))|![Formula](/doc/measures/readability/drp.svg)<br>where **M** is *Bormuth's cloze mean*.|**English**
@@ -1153,25 +1153,25 @@ Readability Formula|Formula|Supported Languages
 <span id="ref-gl"></span>Flesch-Kincaid grade level<br>([Kincaid et al., 1975, p. 14](#ref-kincaid-et-al-1975))|![Formula](/doc/measures/readability/gl.svg)|All languages²
 <span id="ref-re"></span>Flesch reading ease¹<br>([Flesch, 1948](#ref-flesch-1948)<br>Powers-Sumner-Kearl: [Powers et al., 1958](#ref-powers-et-al-1958)<br>Dutch: [Douma, 1960, p. 453](#ref-douma-1960); [Brouwer, 1963](#ref-brouwer-1963)<br>French: [Kandel & Moles, 1958](#ref-kandel-moles-1958)<br>German: [Amstad, 1978](#ref-amstad-1978)<br>Italian: [Franchina & Vacca, 1986](#ref-franchina-vacca-1986)<br>Russian: [Oborneva, 2006, p. 13](#ref-oborneva-2006)<br>Spanish: [Fernández Huerta, 1959](#ref-fernandez-huerta-1959); [Szigriszt Pazos, 1993, p. 247](#ref-szigrisze-pazos-1993)<br>Ukrainian: [Partiko, 2001](#ref-partiko-2001))|![Formula](/doc/measures/readability/re.svg)|All languages²
 <span id="ref-re-farr-jenkins-paterson"></span>Flesch reading ease (Farr-Jenkins-Paterson)¹<br>([Farr et al., 1951](#ref-farr-et-al-1951)<br>Powers-Sumner-Kearl: [Powers et al., 1958](#ref-powers-et-al-1958))|![Formula](/doc/measures/readability/re_farr_jenkins_paterson.svg)|All languages²
-<span id="ref-rgl"></span>FORCAST<br>([Caylor & Sticht, 1973, p. 3](#ref-caylor-sticht-1973))|![Formula](/doc/measures/readability/rgl.svg)<br><br>* **One sample of 150 words** would be taken randomly from the text, so the text should be **at least 150 words long**.|All languages²
+<span id="ref-rgl"></span>FORCAST<br>([Caylor & Sticht, 1973, p. 3](#ref-caylor-sticht-1973))|![Formula](/doc/measures/readability/rgl.svg)<br><br>* **A 150-word-long sample** would be taken randomly from the text, so the text should be **at least 150 words long**.|All languages²
 <span id="ref-fuckss-stilcharakteristik"></span>Fucks's Stilcharakteristik<br>([Fucks, 1955](#ref-fucks-1955))|![Formula](/doc/measures/readability/fuckss_stilcharakteristik.svg)|All languages²
 <span id="ref-gulpease"></span>GULPEASE<br>([Lucisano & Emanuela Piemontese, 1988](#ref-lucisano-emanuela-piemontese-1988))|![Formula](/doc/measures/readability/gulpease.svg)|**Italian**
 <span id="ref-fog-index"></span>Gunning Fog Index¹<br>(English: [Gunning, 1968, p. 38](#ref-gunning-1968)<br>Powers-Sumner-Kearl: [Powers et al., 1958](#ref-powers-et-al-1958)<br>Navy: [Kincaid et al., 1975, p. 14](#ref-kincaid-et-al-1975)<br>Polish: [Pisarek, 1969](#ref-pisarek-1969))|![Formula](/doc/measures/readability/fog_index.svg)<br>where **NumHardWords** is the number of words with 3 or more syllables, except proper nouns and words with 3 syllables ending with *-ed* or *-es*, for **English texts**, and the number of words with 4 or more syllables in their base forms, except proper nouns, for **Polish texts**.|**English & Polish**²
 <span id="ref-cp"></span>Gutiérrez de Polini's readability formula<br>([Gutiérrez de Polini, 1972](#ref-gutierrez-de-polini-1972))|![Formula](/doc/measures/readability/cp.svg)|**Spanish**
 <span id="ref-mu"></span>Legibilidad µ<br>([Muñoz Baquedano, 2006](#ref-munoz-baquedano-2006))|![Formula](/doc/measures/readability/mu.svg)<br>where **LenWordsAvg** is the average word length in letters, and **LenWordsVar** is the variance of word lengths in letters.|**Spanish**
-<span id="ref-lensear-write-formula"></span>Lensear Write Formula<br>([O’Hayre, 1966, p. 8](#ref-o-hayre-1966))|![Formula](/doc/measures/readability/lensear_write_formula.svg)<br>where **NumWords1Syl** is the number of monosyllabic words excluding *the*, *is*, *are*, *was*, *were*.<br><br>* **One sample of 100 words** would be taken randomly from the text, and if the text is **shorter than 100 words**, **NumWords1Syl** and **NumSentences** would be multiplied by 100 and then divided by **NumWords**.|**English**²
+<span id="ref-lensear-write-formula"></span>Lensear Write Formula<br>([O’Hayre, 1966, p. 8](#ref-o-hayre-1966))|![Formula](/doc/measures/readability/lensear_write_formula.svg)<br>where **NumWords1Syl** is the number of monosyllabic words excluding *the*, *is*, *are*, *was*, *were*.<br><br>* **A 100-word-long sample** would be taken randomly from the text. If the text is **shorter than 100 words**, **NumWords1Syl** and **NumSentences** would be multiplied by 100 and then divided by **NumWords**.|**English**²
 <span id="ref-lix"></span>Lix<br>([Björnsson, 1968](#ref-bjornsson-1968))|![Formula](/doc/measures/readability/lix.svg)|All languages
 <span id="ref-lorge-readability-index"></span>Lorge Readability Index¹<br>([Lorge, 1944](#ref-lorge-1944)<br>Corrected: [Lorge, 1948](#ref-lorge-1948))|![Formula](/doc/measures/readability/lorge_readability_index.svg)|**English**³
-<span id="ref-luong-nguyen-dinhs-readability-formula"></span>Luong-Nguyen-Dinh's readability formula<br>([Luong et al., 2018](#ref-luong-et-al-2018))|![Formula](/doc/measures/readability/luong_nguyen_dinhs_readability_formula.svg)<br><br>* The number of syllables is estimated by tokenizing the text by whitespace and counting the number of tokens excluding punctuation marks|**Vietnamese**
+<span id="ref-luong-nguyen-dinhs-readability-formula"></span>Luong-Nguyen-Dinh's readability formula<br>([Luong et al., 2018](#ref-luong-et-al-2018))|![Formula](/doc/measures/readability/luong_nguyen_dinhs_readability_formula.svg)<br><br>* The number of syllables is estimated by tokenizing the text by whitespace and counting the number of tokens excluding punctuation marks.|**Vietnamese**
 <span id="ref-eflaw"></span>McAlpine EFLAW Readability Score<br>([McAlpine, 2006](#ref-mcalpine-2006))|![Formula](/doc/measures/readability/eflaw.svg)|**English**
 <span id="ref-nwl"></span>neue Wiener Literaturformeln¹<br>([Bamberger & Vanecek, 1984, p. 82](#ref-bamberger-vanecek-1984))|![Formula](/doc/measures/readability/nwl.svg)|**German**²
 <span id="ref-nws"></span>neue Wiener Sachtextformel¹<br>([Bamberger & Vanecek, 1984, pp. 83–84](#ref-bamberger-vanecek-1984))|![Formula](/doc/measures/readability/nws.svg)|**German**²
 <span id="ref-osman"></span>OSMAN<br>([El-Haj & Rayson, 2016](#ref-elhaj-rayson-2016))|![Formula](/doc/measures/readability/osman.svg)<br>where **NumFaseehWords** is the number of words which have 5 or more syllables and contain ء/ئ/ؤ/ذ/ظ or end with وا/ون.<br><br>* The number of syllables in each word is estimated by adding up the number of short syllables and twice the number of long and stress syllables in each word.|**Arabic**
 <span id="ref-rix"></span>Rix<br>([Anderson, 1983](#ref-anderson-1983))|![Formula](/doc/measures/readability/rix.svg)|All languages
-<span id="ref-smog-grading"></span>SMOG Grading<br>([McLaughlin, 1969](#ref-mclaughlin-1969)<br>German: [Bamberger & Vanecek, 1984, p.78](#ref-bamberger-vanecek-1984))|![Formula](/doc/measures/readability/smog_grading.svg)<br><br>* A sample would be constructed using **the first 10 sentences, the last 10 sentences, and the 10 sentences at the middle of the text**, so the text should be **at least 30 sentences long**.|All languages²
-<span id="ref-spache-readability-formula"></span>Spache readability formula¹<br>([Spache, 1953](#ref-spache-1953)<br>Revised: [Spache, 1974](#ref-spache-1974))|![Formula](/doc/measures/readability/spache_readability_formula.svg)<br><br>* **Three samples each of 100 words** would be taken randomly from the text and the results would be averaged out, so the text should be **at least 100 words long**.|English
-<span id="ref-strain-index"></span>Strain Index<br>([Nathaniel, 2017](#ref-nathaniel-2017))|![Formula](/doc/measures/readability/strain_index.svg)<br><br>* A sample would be constructed using **the first 3 sentences in the text**, so the text should be **at least 3 sentences long**.|All languages²
-<span id="ref-trankle-bailers-readability-formula"></span>Tränkle-Bailer's readability formula¹<br>([Tränkle & Bailer, 1984](#ref-trankle-bailer-1984))|![Formula](/doc/measures/readability/trankle_bailers_readability_formula.svg)<br><br>* **One sample of 100 words** would be taken randomly from the text, so the text should be **at least 100 words long**.|All languages³
+<span id="ref-smog-grading"></span>SMOG Grading<br>([McLaughlin, 1969](#ref-mclaughlin-1969)<br>German: [Bamberger & Vanecek, 1984, p.78](#ref-bamberger-vanecek-1984))|![Formula](/doc/measures/readability/smog_grading.svg)<br><br>* A sample consisting of **the first 10 sentences, the last 10 sentences, and the 10 sentences at the middle of the text** would be taken from the text, so the text should be **at least 30 sentences long**.|All languages²
+<span id="ref-spache-readability-formula"></span>Spache readability formula¹<br>([Spache, 1953](#ref-spache-1953)<br>Revised: [Spache, 1974](#ref-spache-1974))|![Formula](/doc/measures/readability/spache_readability_formula.svg)<br><br>* **Three 100-word-long samples** would be taken randomly from the text and the results would be averaged out, so the text should be **at least 100 words long**.|English
+<span id="ref-strain-index"></span>Strain Index<br>([Nathaniel, 2017](#ref-nathaniel-2017))|![Formula](/doc/measures/readability/strain_index.svg)<br><br>* A sample consisting of **the first 3 sentences of the text** would be taken from the text, so the text should be **at least 3 sentences long**.|All languages²
+<span id="ref-trankle-bailers-readability-formula"></span>Tränkle-Bailer's readability formula¹<br>([Tränkle & Bailer, 1984](#ref-trankle-bailer-1984))|![Formula](/doc/measures/readability/trankle_bailers_readability_formula.svg)<br><br>* **A 100-word-long sample** would be taken randomly from the text, so the text should be **at least 100 words long**.|All languages³
 <span id="ref-td"></span>Tuldava's readability formula<br>([Tuldava, 1975](#ref-tuldava-1975))|![Formula](/doc/measures/readability/td.svg)|All languages²
 <span id="ref-wheeler-smiths-readability-formula"></span>Wheeler-Smith's readability formula<br>([Wheeler & Smith, 1954](#ref-wheeler-smith-1954))|![Formula](/doc/measures/readability/wheeler_smiths_readability_formula.svg)<br>where **NumUnits** is the number of sentence segments ending in periods, question marks, exclamation marks, colons, semicolons, and dashes.|All languages²
 
@@ -1192,8 +1192,8 @@ The following variables would be used in formulas:<br>
 **NumTokens**: Number of tokens<br>
 
 <!--
-Brunét's index:
-    \text{W} = \text{NumTokens}^{\text{NumTypes}^{-0.165}}
+Brunet's index:
+    \text{W} = \text{NumTokens}^{\text{NumTypes}^{-0.172}}
 
 Corrected TTR:
     \text{CTTR} = \frac{\text{NumTypes}}{\sqrt{2 \times \text{NumTokens}}}
@@ -1267,16 +1267,16 @@ Yule's Index of Diversity:
 
 Indicator of Lexical Density/Diversity|Formula
 --------------------------------------|-------
-<span id="ref-brunets-index"></span>Brunét's index<br>([Brunét, 1978](#ref-brunet-1978))|![Formula](/doc/measures/lexical_density_diversity/brunets_index.svg)
-<span id="ref-cttr"></span>Corrected TTR<br>([Carroll, 1964](#ref-carroll-1964))|![Formula](/doc/measures/lexical_density_diversity/cttr.svg)
-<span id="ref-fishers-index-of-diversity"></span>Fisher's Index of Diversity<br>([Fisher et al., 1943](#ref-fisher-et-al-1943))|![Formula](/doc/measures/lexical_density_diversity/fishers_index_of_diversity.svg)<br>where *W*₋₁ is the -1 branch of the [Lambert W function](https://en.wikipedia.org/wiki/Lambert_W_function)
+<span id="ref-brunets-index"></span>Brunet's index<br>([Brunet, 1978, p. 57](#ref-brunet-1978))|![Formula](/doc/measures/lexical_density_diversity/brunets_index.svg)
+<span id="ref-cttr"></span>Corrected TTR<br>([Carroll, 1964, p. 54](#ref-carroll-1964))|![Formula](/doc/measures/lexical_density_diversity/cttr.svg)
+<span id="ref-fishers-index-of-diversity"></span>Fisher's Index of Diversity<br>([Fisher et al., 1943](#ref-fisher-et-al-1943))|![Formula](/doc/measures/lexical_density_diversity/fishers_index_of_diversity.svg)<br>where *W*₋₁ is the -1 branch of the [Lambert W function](https://en.wikipedia.org/wiki/Lambert_W_function).
 <span id="ref-herdans-vm"></span>Herdan's vₘ<br>([Herdan, 1955](#ref-herdan-1955))|![Formula](/doc/measures/lexical_density_diversity/herdans_vm.svg)
-<span id="ref-hdd"></span>HD-D<br>([McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see reference.<br>The sample size could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Density/Diversity → HD-D → Sample size**.
+<span id="ref-hdd"></span>HD-D<br>([McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see reference.<br><br>The sample size could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Density/Diversity → HD-D → Sample size**.
 <span id="ref-honores-stat"></span>Honoré's statistic<br>([Honoré, 1979](#ref-honore-1979))|![Formula](/doc/measures/lexical_density_diversity/honores_stat.svg)
-<span id="ref-lexical-density"></span>Lexical density<br>([Halliday, 1989, p. 64](#ref-halliday-1989))|![Formula](/doc/measures/lexical_density_diversity/lexical_density.svg)<br>where **NumContentWords** is the number of content words. By default, all tokens whose universal part-of-speech tags assigned by built-in part-of-speech taggers are ADJ (adjectives), ADV (adverbs), INTJ (interjections), NOUN (nouns), PROPN (proper nouns), NUM (numerals), VERB (verbs), SYM (symbols), or X (others) are categorized as content words. For some built-in part-of-speech taggers, this behavior could be changed via **Menu Bar → Preferences → Settings → Part-of-speech Tagging → Tagsets → Mapping Settings → Content/Function Words**.
+<span id="ref-lexical-density"></span>Lexical density<br>([Halliday, 1989, p. 64](#ref-halliday-1989))|![Formula](/doc/measures/lexical_density_diversity/lexical_density.svg)<br>where **NumContentWords** is the number of content words. By default, all tokens whose universal part-of-speech tags assigned by built-in part-of-speech taggers are ADJ (adjectives), ADV (adverbs), INTJ (interjections), NOUN (nouns), PROPN (proper nouns), NUM (numerals), VERB (verbs), SYM (symbols), or X (others) are categorized as content words. For some built-in part-of-speech taggers, this behavior could be modified via **Menu Bar → Preferences → Settings → Part-of-speech Tagging → Tagsets → Mapping Settings → Content/Function Words**.
 <span id="ref-logttr"></span>LogTTR¹<br>(Herdan: [Herdan, 1960, p. 28](#ref-herdan-1960)<br>Somers: [Somers, 1966](#ref-somers-1966)<br>Rubet: [Dugast, 1979](#ref-dugast-1979)<br>Maas: [Maas, 1972](#ref-maas-1972)<br>Dugast: [Dugast, 1978](#ref-dugast-1978); [Dugast, 1979](#ref-dugast-1979))|![Formula](/doc/measures/lexical_density_diversity/logttr.svg)
 <span id="ref-msttr"></span>Mean segmental TTR<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/lexical_density_diversity/msttr.svg)<br>where **n** is the number of equal-sized segment, the length of which could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Density/Diversity → Mean Segmental TTR → Number of tokens in each segment**, **NumTypesSegᵢ** is the number of token types in the **i**-th segment, and **NumTokensSegᵢ** is the number of tokens in the **i**-th segment.
-<span id="ref-mtld"></span>Measure of textual lexical diversity<br>([McCarthy, 2005, pp. 95–96, 99–100](#ref-mccarthy-2005); [McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see references.<br>The factor size could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Density/Diversity → Measure of Textual Lexical Diversity → Factor size**.
+<span id="ref-mtld"></span>Measure of textual lexical diversity<br>([McCarthy, 2005, pp. 95–96, 99–100](#ref-mccarthy-2005); [McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see references.<br><br>The factor size could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Density/Diversity → Measure of Textual Lexical Diversity → Factor size**.
 <span id="ref-mattr"></span>Moving-average TTR<br>([Covington & McFall, 2010](#ref-covington-mcfall-2010))|![Formula](/doc/measures/lexical_density_diversity/mattr.svg)<br>where **w** is the window size which could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Density/Diversity → Moving-average TTR → Window size**, **NumTypesWindowₚ** is the number of token types within the moving window starting at position **p**, and **NumTokensWindowₚ** is the number of tokens within the moving window starting at position **p**.
 <span id="ref-popescu-macutek-altmanns-b1-b2-b3-b4-b5"></span>Popescu-Mačutek-Altmann's B₁/B₂/B₃/B₄/B₅<br>([Popescu et al., 2008](#ref-popescu-et-al-2008))|![Formula](/doc/measures/lexical_density_diversity/popescu_macutek_altmanns_b1_b2_b3_b4_b5.svg)
 <span id="ref-popescus-r1"></span>Popescu's R₁<br>([Popescu, 2009, pp. 18, 30, 33](#ref-popescu-2009))|For detailed calculation procedures, see reference.
@@ -1367,10 +1367,10 @@ Measure of Dispersion (Parts-based)|Measure of Adjusted Frequency (Parts-based)|
 -----------------------------------|-------------------------------------------|-------
 <span id="ref-carrolls-d2"></span>Carroll's D₂<br>([Carroll, 1970](#ref-carroll-1970))|<span id="ref-carrolls-um"></span>Carroll's Uₘ<br>([Carroll, 1970](#ref-carroll-1970))|![Formula](/doc/measures/dispersion_adjusted_frequency/carrolls_um.svg)
 &nbsp;|<span id="ref-engwalls-fm"></span>Engwall's FM<br>([Engwall, 1974, p. 53](#ref-engwall-1974))|![Formula](/doc/measures/dispersion_adjusted_frequency/engwalls_fm.svg)<br>where **R** is the number of sub-sections in which the word appears at least once.
-<span id="ref-griess-dp"></span>Gries's DP<br>([Gries, 2008](#ref-gries-2008); [Lijffijt & Gries, 2012](#ref-lijffijt-gries-2012))||![Formula](/doc/measures/dispersion_adjusted_frequency/griess_dp.svg)<br><br>* Normalization is applied by default, which behavior you could change via **Menu Bar → Preferences → Settings → Measures → Dispersion → Gries's DP → Apply normalization**.
+<span id="ref-griess-dp"></span>Gries's DP<br>([Gries, 2008](#ref-gries-2008); [Lijffijt & Gries, 2012](#ref-lijffijt-gries-2012))||![Formula](/doc/measures/dispersion_adjusted_frequency/griess_dp.svg)<br><br>* Normalization is applied by default, which behavior could be modified via **Menu Bar → Preferences → Settings → Measures → Dispersion → Gries's DP → Apply normalization**.
 <span id="ref-juillands-d"></span>Juilland's D<br>([Juilland & Chang-Rodrigues, 1964, p. LIII](#ref-juilland-chang-rodrigues-1964))|<span id="ref-juillands-u"></span>Juilland's U<br>([Juilland & Chang-Rodrigues, 1964, p. LXVIII](#ref-juilland-chang-rodrigues-1964))|![Formula](/doc/measures/dispersion_adjusted_frequency/juillands_u.svg)
-&nbsp;|<span id="ref-kromers-ur"></span>Kromer's U<sub>R</sub><br>([Kromer, 2003](#ref-kromer-2003))|![Formula](/doc/measures/dispersion_adjusted_frequency/kromers_ur.svg)<br>where **ψ** is the [digamma function](https://en.wikipedia.org/wiki/Digamma_function), and **C** is the [Euler–Mascheroni constant](https://en.wikipedia.org/wiki/Euler%E2%80%93Mascheroni_constant).
-<span id="ref-lynes-d3"></span>Lyne's D₃<br>([Lyne, 1985](#ref-lyne-1985))||![Formula](/doc/measures/dispersion_adjusted_frequency/lynes_d3.svg)
+&nbsp;|<span id="ref-kromers-ur"></span>Kromer's U<sub>R</sub><br>([Kromer, 2003](#ref-kromer-2003))|![Formula](/doc/measures/dispersion_adjusted_frequency/kromers_ur.svg)<br>where **ψ** is the [digamma function](https://en.wikipedia.org/wiki/Digamma_function) and **C** is the [Euler–Mascheroni constant](https://en.wikipedia.org/wiki/Euler%E2%80%93Mascheroni_constant).
+<span id="ref-lynes-d3"></span>Lyne's D₃<br>([Lyne, 1985, p. 129](#ref-lyne-1985))||![Formula](/doc/measures/dispersion_adjusted_frequency/lynes_d3.svg)
 <span id="ref-rosengrens-s"></span>Rosengren's S<br>([Rosengren, 1971](#ref-rosengren-1971))|<span id="ref-rosengrens-kf"></span>Rosengren's KF<br>([Rosengren, 1971](#ref-rosengren-1971))|![Formula](/doc/measures/dispersion_adjusted_frequency/rosengrens_s.svg)
 <span id="ref-zhangs-distributional-consistency"></span>Zhang's Distributional Consistency<br>([Zhang, 2004](#ref-zhang-2004))||![Formula](/doc/measures/dispersion_adjusted_frequency/zhangs_distributional_consistency.svg)
 
@@ -1383,49 +1383,52 @@ Measure of Dispersion (Distance-based)|Measure of Adjusted Frequency (Distance-b
 <span id="doc-12-4-4"></span>
 #### [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, and Measures of Effect Size](#doc)
 
-In order to calculate the statistical significance, Bayes factor, and effect size (except **Mann-Whitney U test**, **Student's t-test (2-sample)**, and **Welch's t-test**) for two words in the same file (collocates) or for one specific word in two different files (keywords), two contingency tables must be constructed first, one for observed values, the other for expected values.
+In order to calculate the test statistics of tests of statistical significance, Bayes factors, and effect sizes (except **Mann-Whitney U test** and **Student's t-test (2-sample)**) for potential collocations in *Collocation Extractor* and *Colligation Extractor* and potential keywords in *Keyword Extractor*, two contingency tables must be constructed first. One for observed values and the other for expected values.
 
-As for collocates (in *Collocation Extractor* and *Colligation Extractor*):
+As for potential collocations in *Collocation Extractor* and *Colligation Extractor*:
 
-Observed Values|*Word 1*           |Not *Word 1*       |Row Total
+Observed Values|*Word 2*           |Not *Word 2*       |Row Total
 --------------:|:-----------------:|:-----------------:|:---------------------------------:
-*Word 2*       |O₁₁                |O₁₂                |O₁ₓ = *O₁₁* + *O₁₂*
-Not *Word 2*   |O₂₁                |O₂₂                |O₂ₓ = *O₂₁* + *O₂₂*
+*Word 1*       |O₁₁                |O₁₂                |O₁ₓ = *O₁₁* + *O₁₂*
+Not *Word 1*   |O₂₁                |O₂₂                |O₂ₓ = *O₂₁* + *O₂₂*
 Column Total   |Oₓ₁ = *O₁₁* + *O₂₁*|Oₓ₂ = *O₁₂* + *O₂₂*|Oₓₓ = *O₁₁* + *O₁₂* + *O₂₁* + *O₂₂*
 
-Expected Values|*Word 1*             |Not *Word 1*
+Expected Values|*Word 2*             |Not *Word 2*
 --------------:|:-------------------:|:-------------------:
-*Word 2*       |![E₁₁](/doc/e_11.svg)|![E₁₂](/doc/e_12.svg)
-Not *Word 2*   |![E₂₁](/doc/e_21.svg)|![E₂₂](/doc/e_22.svg)
+*Word 1*       |![E₁₁](/doc/e_11.svg)|![E₁₂](/doc/e_12.svg)
+Not *Word 1*   |![E₂₁](/doc/e_21.svg)|![E₂₂](/doc/e_22.svg)
 
-O₁₁: Number of occurrences of *Word 1* followed by *Word 2*.<br>
-O₁₂: Number of occurrences of *Word 1* followed by any word except *Word 2*.<br>
-O₂₁: Number of occurrences of any word except *Word 1* followed by *Word 2*.<br>
-O₂₂: Number of occurrences of any word except *Word 1* followed by any word except *Word 2*.
+O₁₁: Number of occurrences of the *Word 1* followed by the *Word 2*.<br>
+O₁₂: Number of occurrences of the *Word 1* followed by any word except the *Word 2*.<br>
+O₂₁: Number of occurrences of any word except the *Word 1* followed by the *Word 2*.<br>
+O₂₂: Number of occurrences of any word except the *Word 1* followed by any word except the *Word 2*.<br>
+O₁ₓ: Total frequency of the *Word 1* in the corpus.<br>
+Oₓ₁: Total frequency of the *Word 2* in the corpus.<br>
+Oₓₓ: Size of the corpus
 
-As for keywords (in *Keyword Extractor*):
+As for potential keywords in *Keyword Extractor*:
 
-Observed Values|Observed File      |Reference File     |Row Total
+Observed Values|Observed Corpus    |Reference Corpus   |Row Total
 --------------:|:-----------------:|:-----------------:|:---------------------------------:
 *Word w*       |O₁₁                |O₁₂                |O₁ₓ = *O₁₁* + *O₁₂*
 *Not Word w*   |O₂₁                |O₂₂                |O₂ₓ = *O₂₁* + *O₂₂*
 Column Total   |Oₓ₁ = *O₁₁* + *O₂₁*|Oₓ₂ = *O₁₂* + *O₂₂*|Oₓₓ = *O₁₁* + *O₁₂* + *O₂₁* + *O₂₂*
 
-Expected Values|Observed File        |Reference File
+Expected Values|Observed Corpus      |Reference Corpus
 --------------:|:-------------------:|:-------------------:
 *Word w*       |![E₁₁](/doc/e_11.svg)|![E₁₂](/doc/e_12.svg)
 *Not Word w*   |![E₂₁](/doc/e_21.svg)|![E₂₂](/doc/e_22.svg)
 
-O₁₁: Number of occurrences of *Word w* in the observed file.<br>
-O₁₂: Number of occurrences of *Word w* in the reference file.<br>
-O₂₁: Number of occurrences of all words except *Word w* in the observed file.<br>
-O₂₂: Number of occurrences of all words except *Word w* in the reference file.
+O₁₁: Number of occurrences of the *Word w* in the observed corpus.<br>
+O₁₂: Number of occurrences of the *Word w* in the reference corpus.<br>
+O₂₁: Number of occurrences of all words except the *Word w* in the observed corpus.<br>
+O₂₂: Number of occurrences of all words except the *Word w* in the reference corpus.<br>
+Oₓ₁: Size of the observed corpus.<br>
+Oₓ₂: Size of the reference corpus.
 
-To conduct **Mann-Whitney U test**, **Student's t-test (2-sample)**, and **Welch's t-test** on a specific word, each column total is first divided into **n** (5 by default) sub-sections respectively. To be more specific, in *Collocation Extractor* and *Colligation Extractor*, all collocates where Word 1 appears as node and the other collocates where Word 1 does not appear as node are divided into **n** parts respectively. And in *Keyword Extractor*, all tokens in the observed file and all tokens in the reference files are equally divided into **n** parts respectively.
+To conduct **Mann-Whitney U test** and **Student's t-test (2-sample)** on a potential keyword, all tokens in the observed corpus and reference corpus are equally divided into **n** parts respectively. The frequencies of the *Word w* in the **n** sub-sections in the observed corpus and reference corpus are counted and denoted by **F₁₁**, **F₂₁**, **F₃₁**, ..., **Fₙ₁** and **F₁₂**, **F₂₂**, **F₃₂**, ..., **Fₙ₂** respectively. The total frequencies of the *Word w* in the observed corpus and reference corpus are denoted by **Fₓ₁** and **Fₓ₂** respectively. The mean values of the frequencies of the *Word w* over the **n** sub-sections in the observed corpus and reference corpus are denoted by ![f_x1_bar](/doc/measures/f_x1_bar.svg) and ![f_x2_bar](/doc/measures/f_x2_bar.svg) respectively.
 
-The frequencies of *Word 2* (in *Collocation Extractor* and *Colligation Extractor*) or *Word w* (in *Keyword Extractor*) in each sub-section of the 2 column totals are counted and denoted by **F₁₁**, **F₂₁**, **F₃₁**, ..., **Fₙ₁**, and **F₁₂**, **F₂₂**, **F₃₂**, ..., **Fₙ₂** respectively. The total frequency of *Word 2* (in *Collocation Extractor* and *Colligation Extractor*) or *Word w* (in *Keyword Extractor*) in the 2 column totals are denoted by **Fₓ₁** and **Fₓ₂** respectively. The mean value of the frequencies over all sub-sections in the 2 column totals are denoted by ![f_x1_bar](/doc/measures/f_x1_bar.svg) and ![f_x2_bar](/doc/measures/f_x2_bar.svg) respectively.
-
-Then the test statistic, Bayes factor, and effect size are calculated as follows:
+Then the test statistics, Bayes factors, and effect sizes are calculated as follows:
 
 <!--
 Log-likelihood ratio test:
@@ -1471,14 +1474,11 @@ Test of Statistical Significance|Measure of Bayes Factor|Formula|Collocation Ext
 <span id="ref-z-test-berry-rogghes"></span>Z-test (Berry-Rogghe)<br>([Berry-Rogghe, 1973](#ref-berry-rogghe-1973))||![Formula](/doc/measures/statistical_significance/z_test_berry_rogghe.svg)<br>where **S** is the average span size on both sides of the node word.|✔|✖️
 
 <!--
-%DIFF:
-    \text{%DIFF} = \frac{\left(\frac{O_{11}}{O_{x1}} - \frac{O_{12}}{O_{x2}}\right) \times 100}{\frac{O_{12}}{O_{x2}}}
-
 Conditional probability:
-    \text{P} = \frac{O_{11}}{O_{x1}} \times 100
+    \text{P} = \frac{O_{11}}{O_{1x}} \times 100
 
-Cubic association ratio:
-    \text{IM}^3 = \log_{2} \frac{{O_{11}}^3}{E_{11}}
+ΔP:
+    \Delta\text{P} = \frac{O_{11}}{O_{1x}} - \frac{O_{21}}{O_{2x}}
 
 Dice-Sørensen coefficient:
     \text{DSC} = \frac{2 \times O_{11}}{O_{1x} + O_{x1}}
@@ -1490,13 +1490,10 @@ Jaccard index:
     \text{J} = \frac{O_{11}}{O_{11} + O_{12} + O_{21}}
 
 Kilgarriff's ratio:
-    \text{Kilgarriff's ratio} = \frac{\frac{O_{11}}{O_{11} + O_{21}} \times 1000000 + \alpha}{\frac{O_{12}}{O_{12} + O_{22}} \times 1000000 + \alpha}
+    \text{Kilgarriff's ratio} = \frac{\frac{O_{11}}{O_{x1}} \times 1000000 + \alpha}{\frac{O_{12}}{O_{x2}} \times 1000000 + \alpha}
 
 logDice:
     \text{logDice} = 14 + \log_{2} \frac{2 \times O_{11}}{O_{1x} + O_{x1}}
-
-Log-frequency biased MD:
-    \text{LFMD} = \log_{2} \frac{O_{11}}{E_{11}} + \log_{2} O_{11}
 
 Log Ratio:
     \text{Log Ratio} = \log_{2} \frac{\frac{O_{11}}{O_{x1}}}{\frac{O_{12}}{O_{x2}}}
@@ -1505,28 +1502,43 @@ MI.log-f:
     \text{MI.log-f} = \log_{2} \frac{{O_{11}}^2}{E_{11}} \times \ln (O_{11} + 1)
 
 Minimum sensitivity:
-    \text{S} = \min\left\{\frac{O_{11}}{O_{1x}},\;\frac{O_{11}}{O_{x1}}\right\}
-
-Mutual Dependency:
-    \text{MD} = \log_{2} \frac{{O_{11}}^2}{E_{11}}
+    \text{S}_\text{min} = \min\left\{\frac{O_{11}}{O_{1x}},\;\frac{O_{11}}{O_{x1}}\right\}
 
 Mutual Expectation:
     \text{ME} = O_{11} \times \frac{2 \times O_{11}}{O_{1x} + O_{x1}}
 
 Mutual information:
-    \text{MI} = \sum_{i = 1}^n \sum_{j = 1}^n \left(\frac{O_{ij}}{O_{xx}} \times \log_{2} \frac{O_{ij}}{E_{ij}}\right)
+    \text{MI} = \sum_{i = 1}^2 \sum_{j = 1}^2 \left(\frac{O_{ij}}{O_{xx}} \times \log_{base} \frac{O_{ij}}{E_{ij}}\right)
+
+Mutual information (normalized):
+    \text{NMI} = \frac{\sum_{i = 1}^2 \sum_{j = 1}^2 \left(\frac{O_{ij}}{O_{xx}} \times \log_{base} \frac{O_{ij}}{E_{ij}}\right)}{-\sum_{i = 1}^2 \sum_{j = 1}^2 \left(\frac{O_{ij}}{O_{xx}} \times \log_{base} \frac{O_{ij}}{O_{xx}}\right)}
+
+μ-value:
+    \mu = \frac{O_{11}}{E_{11}}
 
 Odds ratio:
-    \text{Odds ratio} = \frac{O_{11} \times O_{22}}{O_{12} \times O_{21}}
+    \text{OR} = \frac{O_{11} \times O_{22}}{O_{12} \times O_{21}}
+
+%DIFF:
+    \text{%DIFF} = \frac{\left(\frac{O_{11}}{O_{x1}} - \frac{O_{12}}{O_{x2}}\right) \times 100}{\frac{O_{12}}{O_{x2}}}
 
 Pointwise mutual information:
-    \text{PMI} = \log_{2} \frac{O_{11}}{E_{11}}
+    \text{PMI} = \log_{base} \frac{O_{11}}{E_{11}}
+
+Pointwise mutual information (cubic):
+    \text{IM}^3 = \log_{base} \frac{{O_{11}}^3}{E_{11}}
+
+Pointwise mutual information (normalized):
+    \text{NPMI} = \frac{\log_{base} \frac{O_{11}}{E_{11}}}{-\log_{base} \frac{O_{11}}{O_{xx}}}
+
+Pointwise mutual information (squared):
+    \text{IM}^2 = \log_{base} \frac{{O_{11}}^2}{E_{11}}
 
 Poisson collocation measure:
     \text{sig} = \frac{O_{11} \times (\ln O_{11} - \ln E_{11} - 1)}{\ln O_{xx}}
 
-Squared association ratio:
-    \text{IM}^2 = \log_{2} \frac{{O_{11}}^2}{E_{11}}
+Relative risk:
+    \text{RR} = \frac{O_{11} \times O_{x2}}{O_{12} \times O_{x1}}
 
 Squared phi coefficient:
     \phi^2 = \frac{(O_{11} \times O_{22} - O_{12} \times O_{21})^2}{O_{1x} \times O_{2x} \times O_{x1} \times O_{x2}}
@@ -1534,26 +1546,32 @@ Squared phi coefficient:
 
 Measure of Effect Size|Formula|Collocation Extraction|Keyword Extraction
 ----------------------|-------|:--------------------:|:----------------:
-<span id="ref-pct-diff"></span>%DIFF<br>([Gabrielatos & Marchi, 2011](#ref-gabrielatos-marchi-2011))|![Formula](/doc/measures/effect_size/pct_diff.svg)|✖️|✔
 <span id="ref-conditional-probability"></span>Conditional probability<br>([Durrant, 2008, p. 84](#ref-durrant-2008))|![Formula](/doc/measures/effect_size/conditional_probability.svg)|✔|✖️
-<span id="ref-im3"></span>Cubic association ratio<br>([Daille, 1994, p. 139](#ref-daille-1994); [Kilgarriff, 2001, p, 99](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/im3.svg)|✔|✔
+<span id="ref-delta-p"></span><br>ΔP<br>([Gries, 2013](#ref-gries-2013))|![Formula](/doc/measures/effect_size/delta_p.svg)|✔|✖️
 <span id="ref-dice-sorensen-coeff"></span>Dice-Sørensen coefficient<br>([Smadja et al., 1996, p. 8](#ref-smadja-et-al-1996))|![Formula](/doc/measures/effect_size/dice_sorensen_coeff.svg)|✔|✖️
 <span id="ref-diff-coeff"></span>Difference coefficient<br>([Hofland & Johansson, 1982, p. 14](#ref-hofland-johansson-1982); [Gabrielatos, 2018, p. 236](#ref-gabrielatos-2018))|![Formula](/doc/measures/effect_size/diff_coeff.svg)|✖️|✔
 <span id="ref-jaccard-index"></span>Jaccard index<br>([Dunning, 1998, p. 48](#ref-dunning-1998))|![Formula](/doc/measures/effect_size/jaccard_index.svg)|✔|✖️
-<span id="ref-kilgarriffs-ratio"></span>Kilgarriff's ratio<br>([Kilgarriff, 2009](#ref-kilgarriff-2009))|![Formula](/doc/measures/effect_size/kilgarriffs_ratio.svg)<br>where **α** is the smoothing parameter, whose value could be changed via **Menu Bar → Preferences → Settings → Measures → Effect Size → Kilgarriff's Ratio → Smoothing Parameter**.|✖️|✔
+<span id="ref-kilgarriffs-ratio"></span>Kilgarriff's ratio<br>([Kilgarriff, 2009](#ref-kilgarriff-2009))|![Formula](/doc/measures/effect_size/kilgarriffs_ratio.svg)<br>where **α** is the smoothing parameter, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Kilgarriff's Ratio → Smoothing parameter**.|✖️|✔
 <span id="ref-log-dice"></span>logDice<br>([Rychlý, 2008, p. 9](#ref-rychly-2008))|![Formula](/doc/measures/effect_size/log_dice.svg)|✔|✖️
-<span id="ref-lfmd"></span>Log-frequency biased MD<br>([Thanopoulos et al., 2002, p. 621](#ref-thanopoulos-et-al-2002))|![Formula](/doc/measures/effect_size/lfmd.svg)|✔|✖️
 <span id="ref-log-ratio"></span>Log Ratio<br>([Hardie, 2014](#ref-hardie-2014))|![Formula](/doc/measures/effect_size/log_ratio.svg)|✔|✔
 <span id="ref-mi-log-f"></span>MI.log-f<br>([Kilgarriff & Tugwell, 2002](#ref-kilgarriff-tugwell-2002); [Lexical Computing Ltd., 2015, p. 4](#ref-lexical-computing-ltd-2015))|![Formula](/doc/measures/effect_size/mi_log_f.svg)|✔|✖️
-<span id="ref-min-sensitivity"></span>Minimum sensitivity<br>([Pedersen, 1998](#ref-pedersen-1998))|![Formula](/doc/measures/effect_size/min_sensitivity.svg)|✔|✖️
-<span id="ref-md"></span>Mutual Dependency<br>([Thanopoulos et al., 2002, p. 621](#ref-thanopoulos-et-al-2002))|![Formula](/doc/measures/effect_size/md.svg)|✔|✖️
+<span id="ref-min-sensitivity"></span>Minimum sensitivity<br>([Pedersen & Bruce, 1996](#ref-pedersen-bruce-1996))|![Formula](/doc/measures/effect_size/min_sensitivity.svg)|✔|✖️
 <span id="ref-me"></span>Mutual Expectation<br>([Dias et al., 1999](#ref-dias-et-al-1999))|![Formula](/doc/measures/effect_size/me.svg)|✔|✖️
-<span id="ref-mi"></span>Mutual information<br>([Dunning, 1998, pp. 49–52](#ref-dunning-1998))|![Formula](/doc/measures/effect_size/mi.svg)|✔|✖️
-<span id="ref-odds-ratio"></span>Odds ratio<br>([Pecina, 2005, p. 15](#ref-pecina-2005), [Pojanapunya & Todd, 2016](#ref-pojanapunya-todd-2016))|![Formula](/doc/measures/effect_size/odds_ratio.svg)|✔|✔
-<span id="ref-pmi"></span>Pointwise mutual information<br>([Church & Hanks, 1990](#ref-church-hanks-1990); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/pmi.svg)|✔|✔
+<span id="ref-mi"></span>Mutual information<br>([Dunning, 1998, pp. 49–52](#ref-dunning-1998); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/mi.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Mutual Information → Base of logarithm**.|✔|✔
+<span id="ref-nmi"></span>Mutual information (normalized)<br>([Bouma, 2009](#ref-bouma-2009); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/nmi.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Mutual Information (Normalized) → Base of logarithm**.|✔|✔
+<span id="ref-mu-val"></span>μ-value<br>([Evert, 2005, p. 54](#ref-evert-2005))|![Formula](/doc/measures/effect_size/mu_val.svg)|✔|✖️
+<span id="ref-or"></span>Odds ratio<br>([Pecina, 2005, p. 15](#ref-pecina-2005); [Pojanapunya & Todd, 2016](#ref-pojanapunya-todd-2016))|![Formula](/doc/measures/effect_size/or.svg)|✔|✔
+<span id="ref-pct-diff"></span>%DIFF<br>([Gabrielatos & Marchi, 2011](#ref-gabrielatos-marchi-2011))|![Formula](/doc/measures/effect_size/pct_diff.svg)|✖️|✔
+<span id="ref-pmi"></span>Pointwise mutual information<br>([Church & Hanks, 1990](#ref-church-hanks-1990); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/pmi.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information → Base of logarithm**.|✔|✔
+<span id="ref-im3"></span>Pointwise mutual information (cubic)¹<br>([Daille, 1994, p. 139](#ref-daille-1994); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/im3.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information (Cubic) → Base of logarithm**.|✔|✔
+<span id="ref-npmi"></span>Pointwise mutual information (normalized)<br>([Bouma, 2009](#ref-bouma-2009); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/npmi.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information (Normalized) → Base of logarithm**.|✔|✔
+<span id="ref-im2"></span>Pointwise mutual information (squared)¹<br>([Daille, 1995, p. 21](#ref-daille-1995); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/im2.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information (Squared) → Base of logarithm**.|✔|✔
 <span id="ref-poisson-collocation-measure"></span>Poisson collocation measure<br>([Quasthoff & Wolff, 2002](#ref-quasthoff-wolff-2002))|![Formula](/doc/measures/effect_size/poisson_collocation_measure.svg)|✔|✖️
-<span id="ref-im2"></span>Squared association ratio<br>([Daille, 1995, p. 21](#ref-daille-1995); [Kilgarriff, 2001, p, 99](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/im2.svg)|✔|✔
+<span id="ref-rr"></span>Relative risk<br>([Evert, 2005, p. 55](#ref-evert-2005); [Gries, 2010, p. 276](#ref-gries-2010))|![Formula](/doc/measures/effect_size/rr.svg)|✔|✔
 <span id="ref-squared-phi-coeff"></span>Squared phi coefficient<br>([Church & Gale, 1991](#ref-church-gale-1991))|![Formula](/doc/measures/effect_size/squared_phi_coeff.svg)|✔|✖️
+
+> [!NOTE]
+> 1. The calculation of *Pointwise mutual information (squared)* and *pointwise mutual information (cubic)* are exactly the same as that of *Mutual Dependency* and *Log-frequency biased MD* respectively which were proposed in:<br><br>Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation (LREC’02)* (pp. 620–625). European Language Resources Association.
 
 <span id="doc-13"></span>
 ## [13 References](#doc)
@@ -1571,12 +1589,14 @@ Measure of Effect Size|Formula|Collocation Extraction|Keyword Extraction
 1. [**^**](#ref-z-test-berry-rogghes) Berry-Rogghe, G. L. M. (1973). The computation of collocations and their relevance in lexical studies. In A. J. Aiken, R. W. Bailey, & N. Hamilton-Smith (Eds.), *The computer and literary studies* (pp. 103–112). Edinburgh University Press.
 <span id="ref-bormuth-1969"></span>
 1. [**^**](#ref-bormuths-cloze-mean-gp) Bormuth, J. R. (1969). *Development of readability analyses*. U.S. Department of Health, Education, and Welfare. http://files.eric.ed.gov/fulltext/ED029166.pdf
+<span id="ref-bouma-2009"></span>
+1. [**^**](#ref-nmi) [**^**](#ref-npmi) Bouma, G. (2009). Normalized (pointwise) mutual information in collocation extraction. In C. Chiarcos, R. Eckart de Castilho, & M. Stede (Eds.), *From form to meaning: processing texts automatically: Proceedings of the Biennial GSCL Conference 2009* (pp. 31–40). Gunter Narr Verlag.
 <span id="ref-bjornsson-1968"></span>
 1. [**^**](#ref-lix) Björnsson, C.-H. (1968). *Läsbarhet*. Liber.
 <span id="ref-brouwer-1963"></span>
 1. [**^**](#ref-re) Brouwer, R. H. M. (1963). Onderzoek naar de leesmoeilijkheid van Nederlands proza. *Paedagogische Studiën*, *40*, 454–464. https://objects.library.uu.nl/reader/index.php?obj=1874-205260&lan=en
 <span id="ref-brunet-1978"></span>
-1. [**^**](#ref-brunets-index) Brunét, E. (1978). *Le vocabulaire de Jean Giraudoux: Structure et evolution*. Slatkine.
+1. [**^**](#ref-brunets-index) Brunet, E. (1978). *Le vocabulaire de Jean Giraudoux: Structure et evolution*. Slatkine.
 <span id="ref-carroll-1964"></span>
 1. [**^**](#ref-cttr) Carroll, J. B. (1964). *Language and thought*. Prentice-Hall.
 <span id="ref-carroll-1970"></span>
@@ -1635,6 +1655,8 @@ Measure of Effect Size|Formula|Collocation Extraction|Keyword Extraction
 1. [**^**](#ref-osman) El-Haj, M., & Rayson, P. (2016). OSMAN: A novel Arabic readability metric. In N. Calzolari, K. Choukri, T. Declerck, S. Goggi, M. Grobelnik, B. Maegaard, J. Mariani, H. Mazo, A. Moreno, J. Odijk, & S. Piperidis (Eds.), *Proceedings of the Tenth International Conference on Language Resources and Evaluation (LREC 2016)* (pp. 250–255). European Language Resources Association. http://www.lrec-conf.org/proceedings/lrec2016/index.html
 <span id="ref-engwall-1974"></span>
 1. [**^**](#ref-engwalls-fm) Engwall, G. (1974). *Fréquence et distribution du vocabulaire dans un choix de romans français* [Unpublished doctoral dissertation]. Stockholm University.
+<span id="ref-evert-2005"></span>
+1. [**^**](#ref-mu-val) [**^**](#ref-rr) Evert, S. (2005). *The statistics of word cooccurrences: Word pairs and collocations* [Doctoral dissertation, University of Stuttgart]. OPUS - Online Publikationen der Universität Stuttgart. https://doi.org/10.18419/opus-2556
 <span id="ref-fang-1966"></span>
 1. [**^**](#ref-elf) Fang, I. E. (1966). The easy listening formula. *Journal of Broadcasting*, *11*(1), 63–68. https://doi.org/10.1080/08838156609363529
 <span id="ref-farr-et-al-1951"></span>
@@ -1655,6 +1677,10 @@ Measure of Effect Size|Formula|Collocation Extraction|Keyword Extraction
 1. [**^**](#ref-pct-diff) Gabrielatos, C., & Marchi, A. (2011, November 5). *Keyness: Matching metrics to definitions* [Conference session]. Corpus Linguistics in the South 1, University of Portsmouth, United Kingdom. https://eprints.lancs.ac.uk/id/eprint/51449/4/Gabrielatos_Marchi_Keyness.pdf
 <span id="ref-gries-2008"></span>
 1. [**^**](#ref-griess-dp) Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. *International Journal of Corpus Linguistics*, *13*(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri
+<span id="ref-gries-2010"></span>
+1. [**^**](#ref-rr) Gries, S. T. (2010). Useful statistics for corpus linguistics. In A. Sánchez Pérez & M. Almela Sánchez (Eds.), A mosaic of corpus linguistics: Selected papers (pp. 269–291). Peter Lang.
+<span id="ref-gries-2013"></span>
+1. [**^**](#ref-delta-p) Gries, S. T. (2013). 50-something years of work on collocations: What is or should be next …. *International Journal of Corpus Linguistics*, *18*(1), 137–165. https://doi.org/10.1075/ijcl.18.1.09gri
 <span id="ref-guiraud-1954"></span>
 1. [**^**](#ref-rttr) Guiraud, P. (1954). *Les caractères statistiques du vocabulaire: Essai de méthodologie*. Presses Universitaires de France.
 <span id="ref-gunning-1968"></span>
@@ -1681,7 +1707,7 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 <span id="ref-kandel-moles-1958"></span>
 1. [**^**](#ref-re) Kandel, L., & Moles, A. (1958). Application de l’indice de flesch à la langue française. *The Journal of Educational Research*, *21*, 283–287.
 <span id="ref-kilgarriff-2001"></span>
-1. [**^**](#ref-fishers-exact-test) [**^**](#ref-log-likehood-ratio-test) [**^**](#ref-mann-whiteney-u-test) [**^**](#ref-im3) [**^**](#ref-pmi) [**^**](#ref-im2) Kilgarriff, A. (2001). Comparing corpora. *International Journal of Corpus Linguistics*, *6*(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil
+1. [**^**](#ref-fishers-exact-test) [**^**](#ref-log-likehood-ratio-test) [**^**](#ref-mann-whiteney-u-test) [**^**](#ref-mi) [**^**](#ref-nmi) [**^**](#ref-pmi) [**^**](#ref-im3) [**^**](#ref-npmi) [**^**](#ref-im2) Kilgarriff, A. (2001). Comparing corpora. *International Journal of Corpus Linguistics*, *6*(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil
 <span id="ref-kilgarriff-2009"></span>
 1. [**^**](#ref-kilgarriffs-ratio) Kilgarriff, A. (2009). Simple maths for keywords. In M. Mahlberg, V. González-Díaz, & C. Smith (Eds.), *Proceedings of the Corpus Linguistics Conference 2009 (CL2009)* (Article 171). University of Liverpool.
 <span id="ref-kilgarriff-tugwell-2002"></span>
@@ -1705,7 +1731,7 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 <span id="ref-luong-et-al-2018"></span>
 1. [**^**](#ref-num-syls-luong-nguyen-dinh-1000) [**^**](#ref-luong-nguyen-dinhs-readability-formula) Luong, A.-V., Nguyen, D., & Dinh, D. (2018). A new formula for Vietnamese text readability assessment. In T. M. Phuong & M. L. Nguyen (Eds.), *Proceedings of 2018 10th International Conference on Knowledge and Systems Engineering (KSE)* (pp. 198–202). IEEE. https://doi.org/10.1109/KSE.2018.8573379
 <span id="ref-lyne-1985"></span>
-1. [**^**](#ref-lynes-d3) Lyne, A. A. (1985). Dispersion. In A. A. Lyne (Ed.), *The vocabulary of French business correspondence: Word frequencies, collocations, and problems of lexicometric method* (pp. 101–124). Slatkine.
+1. [**^**](#ref-lynes-d3) Lyne, A. A. (1985). *The vocabulary of French business correspondence: Word frequencies, collocations, and problems of lexicometric method*. Slatkine.
 <span id="ref-malvern-et-al-2004"></span>
 1. [**^**](#ref-vocdd) Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). *Lexical diversity and language development: Quantification and assessment*. Palgrave Macmillan.
 <span id="ref-maas-1972"></span>
@@ -1732,14 +1758,14 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 1. [**^**](#ref-re) Partiko, Z. V. (2001). *Zagal’ne redaguvannja. Normativni osnovi.* Afiša.
 <span id="ref-pedersen-1996"></span>
 1. [**^**](#ref-fishers-exact-test) Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), *Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference* (pp. 188–200). The South–Central Regional SAS Users' Group.
-<span id="ref-pedersen-1998"></span>
-1. [**^**](#ref-min-sensitivity) Pedersen, T. (1998). Dependent bigram identification. In *Proceedings of the Fifteenth National Conference on Artificial Intelligence* (p. 1197). AAAI Press.
+<span id="ref-pedersen-bruce-1996"></span>
+1. [**^**](#ref-min-sensitivity) Pedersen, T., & Bruce, R. (1996). What to infer from a description. In *Technical report 96-CSE-04*. Southern Methodist University.
 <span id="ref-pecina-2005"></span>
-1. [**^**](#ref-odds-ratio) Pecina, P. (2005). An extensive empirical study of collocation extraction methods. In C. Callison-Burch & S. Wan (Eds.), *Proceedings of the Student Research Workshop* (pp. 13–18). Association for Computational Linguistics.
+1. [**^**](#ref-or) Pecina, P. (2005). An extensive empirical study of collocation extraction methods. In C. Callison-Burch & S. Wan (Eds.), *Proceedings of the Student Research Workshop* (pp. 13–18). Association for Computational Linguistics.
 <span id="ref-pisarek-1969"></span>
 1. [**^**](#ref-fog-index) Pisarek, W. (1969). Jak mierzyć zrozumiałość tekstu? *Zeszyty Prasoznawcze*, *4*(42), 35–48.
 <span id="ref-pojanapunya-todd-2016"></span>
-1. [**^**](#ref-odds-ratio) Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. *Corpus Linguistics and Linguistic Theory*, *15*(1), 133–167. https://doi.org/10.1515/cllt-2015-0030
+1. [**^**](#ref-or) Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. *Corpus Linguistics and Linguistic Theory*, *15*(1), 133–167. https://doi.org/10.1515/cllt-2015-0030
 <span id="ref-popescu-et-al-2008"></span>
 1. [**^**](#ref-popescu-macutek-altmanns-b1-b2-b3-b4-b5) Popescu I.-I., Mačutek, J, & Altmann, G. (2008). Word frequency and arc length. *Glottometrics*, *17*, 18–42.
 <span id="ref-popescu-2009"></span>
@@ -1772,8 +1798,6 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 1. [**^**](#ref-num-words-spache) [**^**](#ref-spache-readability-formula) Spache, G. (1974). *Good reading for poor readers* (Rev. 9th ed.). Garrard.
 <span id="ref-szigrisze-pazos-1993"></span>
 1. [**^**](#ref-re) Szigriszt Pazos, F. (1993). *Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad* [Doctoral dissertation, Complutense University of Madrid]. Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y
-<span id="ref-thanopoulos-et-al-2002"></span>
-1. [**^**](#ref-lfmd) [**^**](#ref-md) Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation* (pp. 620–625). European Language Resources Association.
 <span id="ref-trankle-bailer-1984"></span>
 1. [**^**](#ref-trankle-bailers-readability-formula) Tränkle, U., & Bailer, H. (1984). Kreuzvalidierung und neuberechnung von lesbarkeitsformeln für die Deutsche sprache. *Zeitschrift für Entwicklungspsychologie und Pädagogische Psychologie*, *16*(3), 231–244.
 <span id="ref-tuldava-1975"></span>

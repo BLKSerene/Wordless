@@ -20,13 +20,20 @@
 
 ## [3.6.0](https://github.com/BLKSerene/Wordless/releases/tag/3.6.0) - ??/??/2024
 ### 🎉 New Features
-- Measures: Add effect size - conditional probability / squared association ratio
+- Measures: Add effect size - conditional probability / ΔP / mutual information (normalized) / μ-value / pointwise mutual information (squared) / pointwise mutual information (normalized) / relative risk
+- Settings: Add Settings - Measures - Effect Size - Mutual Information / Pointwise Mutual Information / Pointwise Mutual Information (Cubic) / Pointwise Mutual Information (Squared)
 - Utils: Add Stanza's Sindhi dependency parser
+
+### ✨ Improvements
+- Measures: Update lexical density/diversity - Brunet's index
 
 ### 📌 Bugfixes
 - File Area: Fix Open Files - Encoding
 - File Area: Fix Open Files - Opening Non-text Files - Do not show this again
 - Utils: Fix Wordless's Japanese kanji tokenizer
+
+### ❌ Removals
+- Measures: Remove effect size - Log-frequency biased MD / Mutual Dependency
 
 ## [3.5.0](https://github.com/BLKSerene/Wordless/releases/tag/3.5.0) - 07/01/2024
 ### 🎉 New Features

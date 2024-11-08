@@ -586,7 +586,7 @@ class Wl_Table_Profiler_Counts(Wl_Table_Profiler):
 class Wl_Table_Profiler_Lexical_Density_Diversity(Wl_Table_Profiler):
     def __init__(self, parent):
         HEADERS_LEXICAL_DENSITY_DIVERSITY = [
-            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', "Brunét's Index"),
+            _tr('Wl_Table_Profiler_Lexical_Density_Diversity', "Brunet's Index"),
             _tr('Wl_Table_Profiler_Lexical_Density_Diversity', 'Corrected TTR'),
             _tr('Wl_Table_Profiler_Lexical_Density_Diversity', "Fisher's Index of Diversity"),
             _tr('Wl_Table_Profiler_Lexical_Density_Diversity', "Herdan's vₘ"),

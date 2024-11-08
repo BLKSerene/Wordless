@@ -3593,34 +3593,38 @@ def init_settings_global():
 
             'effect_size': {
                 _tr('wl_settings_global', 'None'): 'none',
-                '%DIFF': 'pct_diff',
                 _tr('wl_settings_global', 'Conditional probability'): 'conditional_probability',
-                _tr('wl_settings_global', 'Cubic association ratio'): 'im3',
-                _tr('wl_settings_global', "Dice-Sørensen coefficient"): 'dice_sorensen_coeff',
+                'ΔP': 'delta_p',
+                _tr('wl_settings_global', 'Dice-Sørensen coefficient'): 'dice_sorensen_coeff',
                 _tr('wl_settings_global', 'Difference coefficient'): 'diff_coeff',
                 _tr('wl_settings_global', 'Jaccard index'): 'jaccard_index',
                 _tr('wl_settings_global', "Kilgarriff's ratio"): 'kilgarriffs_ratio',
                 'logDice': 'log_dice',
-                _tr('wl_settings_global', 'Log-frequency biased MD'): 'lfmd',
                 _tr('wl_settings_global', 'Log Ratio'): 'log_ratio',
                 'MI.log-f': 'mi_log_f',
                 _tr('wl_settings_global', 'Minimum sensitivity'): 'min_sensitivity',
-                _tr('wl_settings_global', 'Mutual Dependency'): 'md',
                 _tr('wl_settings_global', 'Mutual Expectation'): 'me',
                 _tr('wl_settings_global', 'Mutual information'): 'mi',
+                _tr('wl_settings_global', 'Mutual information (normalized)'): 'nmi',
+                _tr('wl_settings_global', 'μ-value'): 'mu_val',
                 _tr('wl_settings_global', 'Odds ratio'): 'or',
+                '%DIFF': 'pct_diff',
                 _tr('wl_settings_global', 'Pointwise mutual information'): 'pmi',
+                _tr('wl_settings_global', 'Pointwise mutual information (cubic)'): 'im3',
+                _tr('wl_settings_global', 'Pointwise mutual information (normalized)'): 'npmi',
+                _tr('wl_settings_global', 'Pointwise mutual information (squared)'): 'im2',
                 _tr('wl_settings_global', 'Poisson collocation measure'): 'poisson_collocation_measure',
-                _tr('wl_settings_global', 'Squared association ratio'): 'im2',
+                _tr('wl_settings_global', 'Relative risk'): 'rr',
                 _tr('wl_settings_global', 'Squared phi coefficient'): 'squared_phi_coeff'
             }
         },
 
+        # Column headers are capitalized
         'measures_dispersion': {
             'none': {
                 'col_text': None,
                 'func': None,
-                'type': ''
+                'type': None
             },
 
             'ald': {
@@ -3682,7 +3686,7 @@ def init_settings_global():
             'none': {
                 'col_text': None,
                 'func': None,
-                'type': ''
+                'type': None
             },
 
             'fald': {
@@ -3840,13 +3844,6 @@ def init_settings_global():
                 'keyword': True
             },
 
-            'pct_diff': {
-                'col_text': '%DIFF',
-                'func': wl_measures_effect_size.pct_diff,
-                'collocation': False,
-                'keyword': True
-            },
-
             'conditional_probability': {
                 'col_text': 'P',
                 'func': wl_measures_effect_size.conditional_probability,
@@ -3854,11 +3851,11 @@ def init_settings_global():
                 'keyword': False
             },
 
-            'im3': {
-                'col_text': 'IM³',
-                'func': wl_measures_effect_size.im3,
+            'delta_p': {
+                'col_text': 'ΔP',
+                'func': wl_measures_effect_size.delta_p,
                 'collocation': True,
-                'keyword': True
+                'keyword': False
             },
 
             'dice_sorensen_coeff': {
@@ -3896,13 +3893,6 @@ def init_settings_global():
                 'keyword': False
             },
 
-            'lfmd': {
-                'col_text': 'LFMD',
-                'func': wl_measures_effect_size.lfmd,
-                'collocation': True,
-                'keyword': False
-            },
-
             'log_ratio': {
                 'col_text': _tr('wl_settings_global', 'Log Ratio'),
                 'func': wl_measures_effect_size.log_ratio,
@@ -3924,13 +3914,6 @@ def init_settings_global():
                 'keyword': False
             },
 
-            'md': {
-                'col_text': 'MD',
-                'func': wl_measures_effect_size.md,
-                'collocation': True,
-                'keyword': False
-            },
-
             'me': {
                 'col_text': 'ME',
                 'func': wl_measures_effect_size.me,
@@ -3942,19 +3925,62 @@ def init_settings_global():
                 'col_text': 'MI',
                 'func': wl_measures_effect_size.mi,
                 'collocation': True,
+                'keyword': True
+            },
+
+            'nmi': {
+                'col_text': 'NMI',
+                'func': wl_measures_effect_size.nmi,
+                'collocation': True,
+                'keyword': True
+            },
+
+            'mu_val': {
+                'col_text': 'μ-value',
+                'func': wl_measures_effect_size.mu_val,
+                'collocation': True,
                 'keyword': False
             },
 
             'or': {
                 'col_text': 'OR',
+                # "or" is a Python keyword
                 'func': wl_measures_effect_size.odds_ratio,
                 'collocation': True,
+                'keyword': True
+            },
+
+            'pct_diff': {
+                'col_text': '%DIFF',
+                'func': wl_measures_effect_size.pct_diff,
+                'collocation': False,
                 'keyword': True
             },
 
             'pmi': {
                 'col_text': 'PMI',
                 'func': wl_measures_effect_size.pmi,
+                'collocation': True,
+                'keyword': True
+            },
+
+            'im3': {
+                'col_text': 'IM³',
+                'func': wl_measures_effect_size.im3,
+                'collocation': True,
+                'keyword': True
+            },
+
+            'npmi': {
+                'col_text': 'NPMI',
+                'func': wl_measures_effect_size.npmi,
+                'collocation': True,
+                'keyword': True
+            },
+
+            'im2': {
+                'col_text': 'IM²',
+                'func': wl_measures_effect_size.im2,
                 'collocation': True,
                 'keyword': True
             },
@@ -3966,9 +3992,9 @@ def init_settings_global():
                 'keyword': False
             },
 
-            'im2': {
-                'col_text': 'IM²',
-                'func': wl_measures_effect_size.im2,
+            'rr': {
+                'col_text': 'RR',
+                'func': wl_measures_effect_size.rr,
                 'collocation': True,
                 'keyword': True
             },
