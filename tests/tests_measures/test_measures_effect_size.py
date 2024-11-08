@@ -176,7 +176,7 @@ def test_mi():
 
     assert_zeros(wl_measures_effect_size.mi)
 
-# Reference: Bouma, G. (2009). Normalized (pointwise) mutual information in collocation extraction. In C. CHiarcos, R. Eckart de Castilho, & M. Stede (Eds.), From form to meaning: processing texts automatically: Proceedings of the Biennial GSCL Conference 2009 (pp. 31–40). Gunter Narr Verlag. | p. 37
+# Reference: Bouma, G. (2009). Normalized (pointwise) mutual information in collocation extraction. In C. Chiarcos, R. Eckart de Castilho, & M. Stede (Eds.), From form to meaning: processing texts automatically: Proceedings of the Biennial GSCL Conference 2009 (pp. 31–40). Gunter Narr Verlag. | p. 37
 def test_nmi():
     numpy.testing.assert_array_equal(
         numpy.round(wl_measures_effect_size.nmi(
@@ -272,7 +272,7 @@ def test_pmi():
 def test_im3():
     assert_zeros(wl_measures_effect_size.im3)
 
-# Reference: Bouma, G. (2009). Normalized (pointwise) mutual information in collocation extraction. In C. CHiarcos, R. Eckart de Castilho, & M. Stede (Eds.), From form to meaning: processing texts automatically: Proceedings of the Biennial GSCL Conference 2009 (pp. 31–40). Gunter Narr Verlag. | p. 36
+# Reference: Bouma, G. (2009). Normalized (pointwise) mutual information in collocation extraction. In C. Chiarcos, R. Eckart de Castilho, & M. Stede (Eds.), From form to meaning: processing texts automatically: Proceedings of the Biennial GSCL Conference 2009 (pp. 31–40). Gunter Narr Verlag. | p. 36
 def test_npmi():
     numpy.testing.assert_array_equal(
         numpy.round(wl_measures_effect_size.npmi(

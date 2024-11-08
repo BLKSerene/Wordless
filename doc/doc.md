@@ -1143,7 +1143,7 @@ Readability Formula|Formula|Supported Languages
 <span id="ref-coleman-liau-index"></span>Coleman-Liau index<br>([Coleman & Liau, 1975](#ref-coleman-liau-1975))|![Formula](/doc/measures/readability/coleman_liau_index.svg)|All languages
 <span id="ref-colemans-readability-formula"></span>Coleman's readability formula¹<br>([Liau et al., 1976](#ref-liau-et-al-1976))|![Formula](/doc/measures/readability/colemans_readability_formula.svg)|All languages²³
 <span id="ref-crawfords-readability-formula"></span>Crawford's readability formula<br>([Crawford, 1985](#ref-crawford-1985))|![Formula](/doc/measures/readability/crawfords_readability_formula.svg)|**Spanish**²
-<span id="ref-x-c50"></span>Dale-Chall readability formula¹<br>([Dale & Chall, 1948a](#ref-dale-chall-1948a); [Dale & Chall, 1948b](#ref-dale-chall-1948b)<br>Powers-Sumner-Kearl: [Powers et al., 1958](#ref-powers-et-al-1958)<br>New: [Chall & Dale, 1995](#ref-chall-dale-1995))|![Formula](/doc/measures/readability/x_c50.svg)|**English**
+<span id="ref-x-c50"></span>Dale-Chall readability formula¹<br>([Dale & Chall, 1948a](#ref-dale-chall-1948a); [Dale & Chall, 1948b](#ref-dale-chall-1948b)<br>Powers-Sumner-Kearl: [Powers et al., 1958](#ref-powers-et-al-1958)<br>New: [Chall & Dale, 1995, p. 66](#ref-chall-dale-1995))|![Formula](/doc/measures/readability/x_c50.svg)|**English**
 <span id="ref-danielson-bryans-readability-formula"></span>Danielson-Bryan's readability formula¹<br>([Danielson & Bryan, 1963](#ref-danielson-bryan-1963))|![Formula](/doc/measures/readability/danielson_bryans_readability_formula.svg)|All languages
 <span id="ref-dawoods-readability-formula"></span>Dawood's readability formula<br>([Dawood, 1977](#ref-dawood-1977))|![Formula](/doc/measures/readability/dawoods_readability_formula.svg)|**Arabic**
 <span id="ref-drp"></span>Degrees of Reading Power<br>([College Entrance Examination Board, 1981](#ref-college-entrance-examination-board-1981))|![Formula](/doc/measures/readability/drp.svg)<br>where **M** is *Bormuth's cloze mean*.|**English**
@@ -1192,8 +1192,8 @@ The following variables would be used in formulas:<br>
 **NumTokens**: Number of tokens<br>
 
 <!--
-Brunét's index:
-    \text{W} = \text{NumTokens}^{\text{NumTypes}^{-0.165}}
+Brunet's index:
+    \text{W} = \text{NumTokens}^{\text{NumTypes}^{-0.172}}
 
 Corrected TTR:
     \text{CTTR} = \frac{\text{NumTypes}}{\sqrt{2 \times \text{NumTokens}}}
@@ -1267,8 +1267,8 @@ Yule's Index of Diversity:
 
 Indicator of Lexical Density/Diversity|Formula
 --------------------------------------|-------
-<span id="ref-brunets-index"></span>Brunét's index<br>([Brunét, 1978](#ref-brunet-1978))|![Formula](/doc/measures/lexical_density_diversity/brunets_index.svg)
-<span id="ref-cttr"></span>Corrected TTR<br>([Carroll, 1964](#ref-carroll-1964))|![Formula](/doc/measures/lexical_density_diversity/cttr.svg)
+<span id="ref-brunets-index"></span>Brunet's index<br>([Brunet, 1978, p. 57](#ref-brunet-1978))|![Formula](/doc/measures/lexical_density_diversity/brunets_index.svg)
+<span id="ref-cttr"></span>Corrected TTR<br>([Carroll, 1964, p. 54](#ref-carroll-1964))|![Formula](/doc/measures/lexical_density_diversity/cttr.svg)
 <span id="ref-fishers-index-of-diversity"></span>Fisher's Index of Diversity<br>([Fisher et al., 1943](#ref-fisher-et-al-1943))|![Formula](/doc/measures/lexical_density_diversity/fishers_index_of_diversity.svg)<br>where *W*₋₁ is the -1 branch of the [Lambert W function](https://en.wikipedia.org/wiki/Lambert_W_function).
 <span id="ref-herdans-vm"></span>Herdan's vₘ<br>([Herdan, 1955](#ref-herdan-1955))|![Formula](/doc/measures/lexical_density_diversity/herdans_vm.svg)
 <span id="ref-hdd"></span>HD-D<br>([McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see reference.<br><br>The sample size could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Density/Diversity → HD-D → Sample size**.
@@ -1370,7 +1370,7 @@ Measure of Dispersion (Parts-based)|Measure of Adjusted Frequency (Parts-based)|
 <span id="ref-griess-dp"></span>Gries's DP<br>([Gries, 2008](#ref-gries-2008); [Lijffijt & Gries, 2012](#ref-lijffijt-gries-2012))||![Formula](/doc/measures/dispersion_adjusted_frequency/griess_dp.svg)<br><br>* Normalization is applied by default, which behavior could be modified via **Menu Bar → Preferences → Settings → Measures → Dispersion → Gries's DP → Apply normalization**.
 <span id="ref-juillands-d"></span>Juilland's D<br>([Juilland & Chang-Rodrigues, 1964, p. LIII](#ref-juilland-chang-rodrigues-1964))|<span id="ref-juillands-u"></span>Juilland's U<br>([Juilland & Chang-Rodrigues, 1964, p. LXVIII](#ref-juilland-chang-rodrigues-1964))|![Formula](/doc/measures/dispersion_adjusted_frequency/juillands_u.svg)
 &nbsp;|<span id="ref-kromers-ur"></span>Kromer's U<sub>R</sub><br>([Kromer, 2003](#ref-kromer-2003))|![Formula](/doc/measures/dispersion_adjusted_frequency/kromers_ur.svg)<br>where **ψ** is the [digamma function](https://en.wikipedia.org/wiki/Digamma_function) and **C** is the [Euler–Mascheroni constant](https://en.wikipedia.org/wiki/Euler%E2%80%93Mascheroni_constant).
-<span id="ref-lynes-d3"></span>Lyne's D₃<br>([Lyne, 1985](#ref-lyne-1985))||![Formula](/doc/measures/dispersion_adjusted_frequency/lynes_d3.svg)
+<span id="ref-lynes-d3"></span>Lyne's D₃<br>([Lyne, 1985, p. 129](#ref-lyne-1985))||![Formula](/doc/measures/dispersion_adjusted_frequency/lynes_d3.svg)
 <span id="ref-rosengrens-s"></span>Rosengren's S<br>([Rosengren, 1971](#ref-rosengren-1971))|<span id="ref-rosengrens-kf"></span>Rosengren's KF<br>([Rosengren, 1971](#ref-rosengren-1971))|![Formula](/doc/measures/dispersion_adjusted_frequency/rosengrens_s.svg)
 <span id="ref-zhangs-distributional-consistency"></span>Zhang's Distributional Consistency<br>([Zhang, 2004](#ref-zhang-2004))||![Formula](/doc/measures/dispersion_adjusted_frequency/zhangs_distributional_consistency.svg)
 
@@ -1560,14 +1560,14 @@ Measure of Effect Size|Formula|Collocation Extraction|Keyword Extraction
 <span id="ref-mi"></span>Mutual information<br>([Dunning, 1998, pp. 49–52](#ref-dunning-1998); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/mi.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Mutual Information → Base of logarithm**.|✔|✔
 <span id="ref-nmi"></span>Mutual information (normalized)<br>([Bouma, 2009](#ref-bouma-2009); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/nmi.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Mutual Information (Normalized) → Base of logarithm**.|✔|✔
 <span id="ref-mu-val"></span>μ-value<br>([Evert, 2005, p. 54](#ref-evert-2005))|![Formula](/doc/measures/effect_size/mu_val.svg)|✔|✖️
-<span id="ref-or"></span>Odds ratio<br>([Pecina, 2005, p. 15](#ref-pecina-2005), [Pojanapunya & Todd, 2016](#ref-pojanapunya-todd-2016))|![Formula](/doc/measures/effect_size/or.svg)|✔|✔
+<span id="ref-or"></span>Odds ratio<br>([Pecina, 2005, p. 15](#ref-pecina-2005); [Pojanapunya & Todd, 2016](#ref-pojanapunya-todd-2016))|![Formula](/doc/measures/effect_size/or.svg)|✔|✔
 <span id="ref-pct-diff"></span>%DIFF<br>([Gabrielatos & Marchi, 2011](#ref-gabrielatos-marchi-2011))|![Formula](/doc/measures/effect_size/pct_diff.svg)|✖️|✔
 <span id="ref-pmi"></span>Pointwise mutual information<br>([Church & Hanks, 1990](#ref-church-hanks-1990); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/pmi.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information → Base of logarithm**.|✔|✔
 <span id="ref-im3"></span>Pointwise mutual information (cubic)¹<br>([Daille, 1994, p. 139](#ref-daille-1994); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/im3.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information (Cubic) → Base of logarithm**.|✔|✔
 <span id="ref-npmi"></span>Pointwise mutual information (normalized)<br>([Bouma, 2009](#ref-bouma-2009); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/npmi.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information (Normalized) → Base of logarithm**.|✔|✔
 <span id="ref-im2"></span>Pointwise mutual information (squared)¹<br>([Daille, 1995, p. 21](#ref-daille-1995); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/im2.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information (Squared) → Base of logarithm**.|✔|✔
 <span id="ref-poisson-collocation-measure"></span>Poisson collocation measure<br>([Quasthoff & Wolff, 2002](#ref-quasthoff-wolff-2002))|![Formula](/doc/measures/effect_size/poisson_collocation_measure.svg)|✔|✖️
-<span id="ref-rr"></span>Relative risk<br>([Evert, 2005, p. 55](#ref-evert-2005), [Gries, 2010, p. 276](#ref-gries-2010))|![Formula](/doc/measures/effect_size/rr.svg)|✔|✔
+<span id="ref-rr"></span>Relative risk<br>([Evert, 2005, p. 55](#ref-evert-2005); [Gries, 2010, p. 276](#ref-gries-2010))|![Formula](/doc/measures/effect_size/rr.svg)|✔|✔
 <span id="ref-squared-phi-coeff"></span>Squared phi coefficient<br>([Church & Gale, 1991](#ref-church-gale-1991))|![Formula](/doc/measures/effect_size/squared_phi_coeff.svg)|✔|✖️
 
 > [!NOTE]
@@ -1590,13 +1590,13 @@ Measure of Effect Size|Formula|Collocation Extraction|Keyword Extraction
 <span id="ref-bormuth-1969"></span>
 1. [**^**](#ref-bormuths-cloze-mean-gp) Bormuth, J. R. (1969). *Development of readability analyses*. U.S. Department of Health, Education, and Welfare. http://files.eric.ed.gov/fulltext/ED029166.pdf
 <span id="ref-bouma-2009"></span>
-1. [**^**](#ref-nmi) [**^**](#ref-npmi) Bouma, G. (2009). Normalized (pointwise) mutual information in collocation extraction. In C. CHiarcos, R. Eckart de Castilho, & M. Stede (Eds.), *From form to meaning: processing texts automatically: Proceedings of the Biennial GSCL Conference 2009* (pp. 31–40). Gunter Narr Verlag.
+1. [**^**](#ref-nmi) [**^**](#ref-npmi) Bouma, G. (2009). Normalized (pointwise) mutual information in collocation extraction. In C. Chiarcos, R. Eckart de Castilho, & M. Stede (Eds.), *From form to meaning: processing texts automatically: Proceedings of the Biennial GSCL Conference 2009* (pp. 31–40). Gunter Narr Verlag.
 <span id="ref-bjornsson-1968"></span>
 1. [**^**](#ref-lix) Björnsson, C.-H. (1968). *Läsbarhet*. Liber.
 <span id="ref-brouwer-1963"></span>
 1. [**^**](#ref-re) Brouwer, R. H. M. (1963). Onderzoek naar de leesmoeilijkheid van Nederlands proza. *Paedagogische Studiën*, *40*, 454–464. https://objects.library.uu.nl/reader/index.php?obj=1874-205260&lan=en
 <span id="ref-brunet-1978"></span>
-1. [**^**](#ref-brunets-index) Brunét, E. (1978). *Le vocabulaire de Jean Giraudoux: Structure et evolution*. Slatkine.
+1. [**^**](#ref-brunets-index) Brunet, E. (1978). *Le vocabulaire de Jean Giraudoux: Structure et evolution*. Slatkine.
 <span id="ref-carroll-1964"></span>
 1. [**^**](#ref-cttr) Carroll, J. B. (1964). *Language and thought*. Prentice-Hall.
 <span id="ref-carroll-1970"></span>
@@ -1731,7 +1731,7 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 <span id="ref-luong-et-al-2018"></span>
 1. [**^**](#ref-num-syls-luong-nguyen-dinh-1000) [**^**](#ref-luong-nguyen-dinhs-readability-formula) Luong, A.-V., Nguyen, D., & Dinh, D. (2018). A new formula for Vietnamese text readability assessment. In T. M. Phuong & M. L. Nguyen (Eds.), *Proceedings of 2018 10th International Conference on Knowledge and Systems Engineering (KSE)* (pp. 198–202). IEEE. https://doi.org/10.1109/KSE.2018.8573379
 <span id="ref-lyne-1985"></span>
-1. [**^**](#ref-lynes-d3) Lyne, A. A. (1985). Dispersion. In A. A. Lyne (Ed.), *The vocabulary of French business correspondence: Word frequencies, collocations, and problems of lexicometric method* (pp. 101–124). Slatkine.
+1. [**^**](#ref-lynes-d3) Lyne, A. A. (1985). *The vocabulary of French business correspondence: Word frequencies, collocations, and problems of lexicometric method*. Slatkine.
 <span id="ref-malvern-et-al-2004"></span>
 1. [**^**](#ref-vocdd) Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). *Lexical diversity and language development: Quantification and assessment*. Palgrave Macmillan.
 <span id="ref-maas-1972"></span>

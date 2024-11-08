@@ -24,6 +24,9 @@
 - Settings: Add Settings - Measures - Effect Size - Mutual Information / Pointwise Mutual Information / Pointwise Mutual Information (Cubic) / Pointwise Mutual Information (Squared)
 - Utils: Add Stanza's Sindhi dependency parser
 
+### ✨ Improvements
+- Measures: Update lexical density/diversity - Brunet's index
+
 ### 📌 Bugfixes
 - File Area: Fix Open Files - Encoding
 - File Area: Fix Open Files - Opening Non-text Files - Do not show this again

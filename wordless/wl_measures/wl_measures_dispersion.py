@@ -123,7 +123,7 @@ def juillands_d(main, freqs):
     return max(0, d)
 
 # Lyne's D₃
-# Reference: Lyne, A. A. (1985). Dispersion. In A. A. Lyne (Ed.), The vocabulary of French business correspondence: Word frequencies, collocations, and problems of lexicometric method (pp. 101–124). Slatkine.
+# Reference: Lyne, A. A. (1985). The vocabulary of French business correspondence: Word frequencies, collocations, and problems of lexicometric method. Slatkine. | p. 129
 def lynes_d3(main, freqs):
     freqs = numpy.array(freqs)
 
