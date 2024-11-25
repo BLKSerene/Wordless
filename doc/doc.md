@@ -1499,7 +1499,7 @@ Log Ratio:
     \text{Log Ratio} = \log_{2} \frac{\frac{O_{11}}{O_{x1}}}{\frac{O_{12}}{O_{x2}}}
 
 MI.log-f:
-    \text{MI.log-f} = \log_{2} \frac{{O_{11}}^2}{E_{11}} \times \ln (O_{11} + 1)
+    \text{MI.log-f} = \log_{2} \frac{O_{11}}{E_{11}} \times \ln (O_{11} + 1)
 
 Minimum sensitivity:
     \text{S}_\text{min} = \min\left\{\frac{O_{11}}{O_{1x}},\;\frac{O_{11}}{O_{x1}}\right\}
@@ -1554,7 +1554,7 @@ Measure of Effect Size|Formula|Collocation Extraction|Keyword Extraction
 <span id="ref-kilgarriffs-ratio"></span>Kilgarriff's ratio<br>([Kilgarriff, 2009](#ref-kilgarriff-2009))|![Formula](/doc/measures/effect_size/kilgarriffs_ratio.svg)<br>where **α** is the smoothing parameter, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Kilgarriff's Ratio → Smoothing parameter**.|✖️|✔
 <span id="ref-log-dice"></span>logDice<br>([Rychlý, 2008, p. 9](#ref-rychly-2008))|![Formula](/doc/measures/effect_size/log_dice.svg)|✔|✖️
 <span id="ref-log-ratio"></span>Log Ratio<br>([Hardie, 2014](#ref-hardie-2014))|![Formula](/doc/measures/effect_size/log_ratio.svg)|✔|✔
-<span id="ref-mi-log-f"></span>MI.log-f<br>([Kilgarriff & Tugwell, 2002](#ref-kilgarriff-tugwell-2002); [Lexical Computing Ltd., 2015, p. 4](#ref-lexical-computing-ltd-2015))|![Formula](/doc/measures/effect_size/mi_log_f.svg)|✔|✖️
+<span id="ref-mi-log-f"></span>MI.log-f<br>([Kilgarriff & Tugwell, 2001](#ref-kilgarriff-tugwell-2001); [Lexical Computing Ltd., 2015, p. 4](#ref-lexical-computing-ltd-2015))|![Formula](/doc/measures/effect_size/mi_log_f.svg)|✔|✖️
 <span id="ref-min-sensitivity"></span>Minimum sensitivity<br>([Pedersen & Bruce, 1996](#ref-pedersen-bruce-1996))|![Formula](/doc/measures/effect_size/min_sensitivity.svg)|✔|✖️
 <span id="ref-me"></span>Mutual Expectation<br>([Dias et al., 1999](#ref-dias-et-al-1999))|![Formula](/doc/measures/effect_size/me.svg)|✔|✖️
 <span id="ref-mi"></span>Mutual information<br>([Dunning, 1998, pp. 49–52](#ref-dunning-1998); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/mi.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Mutual Information → Base of logarithm**.|✔|✔
@@ -1710,7 +1710,7 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 1. [**^**](#ref-fishers-exact-test) [**^**](#ref-log-likehood-ratio-test) [**^**](#ref-mann-whiteney-u-test) [**^**](#ref-mi) [**^**](#ref-nmi) [**^**](#ref-pmi) [**^**](#ref-im3) [**^**](#ref-npmi) [**^**](#ref-im2) Kilgarriff, A. (2001). Comparing corpora. *International Journal of Corpus Linguistics*, *6*(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil
 <span id="ref-kilgarriff-2009"></span>
 1. [**^**](#ref-kilgarriffs-ratio) Kilgarriff, A. (2009). Simple maths for keywords. In M. Mahlberg, V. González-Díaz, & C. Smith (Eds.), *Proceedings of the Corpus Linguistics Conference 2009 (CL2009)* (Article 171). University of Liverpool.
-<span id="ref-kilgarriff-tugwell-2002"></span>
+<span id="ref-kilgarriff-tugwell-2001"></span>
 1. [**^**](#ref-mi-log-f) Kilgarriff, A., & Tugwell, D. (2001). WASP-bench: An MT lexicographers' workstation supporting state-of-the-art lexical disambiguation. In B. Maegaard (Ed.), *Proceedings of Machine Translation Summit VIII* (pp. 187–190). European Association for Machine Translation.
 <span id="ref-kincaid-et-al-1975"></span>
 1. [**^**](#ref-ari) [**^**](#ref-gl) [**^**](#ref-fog-index) Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). *Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel* (Report No. RBR 8-75). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf

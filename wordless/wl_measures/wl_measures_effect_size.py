@@ -119,7 +119,7 @@ def log_ratio(main, o11s, o12s, o21s, o22s):
 def mi_log_f(main, o11s, o12s, o21s, o22s):
     e11s, _, _, _ = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)
 
-    return wl_measure_utils.numpy_log2(wl_measure_utils.numpy_divide(o11s ** 2, e11s)) * wl_measure_utils.numpy_log(o11s + 1)
+    return wl_measure_utils.numpy_log2(wl_measure_utils.numpy_divide(o11s, e11s)) * wl_measure_utils.numpy_log(o11s + 1)
 
 # Minimum sensitivity
 # Reference: Pedersen, T., & Bruce, R. (1996). What to infer from a description. In Technical report 96-CSE-04. Southern Methodist University.
