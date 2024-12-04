@@ -36,11 +36,12 @@
 1. 宋祝, 李玲, & 梁淵. (2021). “構式驅動”讀寫教學模式下的構式習得研究. *成都師範學院學報*, *37*(3), 51–58.
 1. Sun, Y., Kong, D., & Zhou, C. (2023). Economy or ecology: Metaphor use over time in China’s government work reports. *Language and Cognition*, *15*(3), 551–573. https://doi.org/10.1017/langcog.2023.18
 1. 陶源. (2021). 基於俄媒語料庫的新冠肺炎主題詞與疫情變遷研究. *南昌航空大學學報：社會科學*, *23*(1), 114–124.
-1. 汪藍玉, & 朱玉彬. (2024). 數字人文視域下二十四史論贊引語的言據性研究. *數字人文*, *2024*(1).
+1. 汪藍玉, & 朱玉彬. (2024). 數字人文視域下二十四史論贊引語的言據性研究. *數字人文*, *2024*(1). https://mp.weixin.qq.com/s/isbctwZeNQKRIy8a-_UO1A
 1. Wang, S. (2023). Cómo fomentar la incorporación de agendas políticas feministas en el discurso político: Estrategias para la construcción del espacio discursivo en respuesta a las crisis de género. *Comunicación y Género*, *6*(2), 147–157. https://doi.org/10.5209/cgen.91079
 1. Xiong, L. (2023). Audio description for educational videos on COVID-19 response: A corpus-based study on linguistic and textual idiosyncrasies. *Journal of Literature and Art Studies*, *13*(4), 276–285. https://doi.org/10.17265/2159-5836/2023.04.008
 1. Xu, B., & Tao, Y. (2023). National identity in media discourses from Russia and Ukraine: Amid the 2022 Russo-Ukranian War. *Zeitschrift für Slawistik*, *68*(3), 419–439. https://doi.org/10.1515/slaw-2023-0021
 1. Yang, Y., & Yang, K. (2022). Оценка в китайском и русском официальных политических дискурсах в эпоху пандемии COVID-19 (на материале выступлений глав КНР и РФ на Всемирном экономическом форуме 2021 г.). *Политическая Лингвистика*, *2022*(1), 135–142. https://doi.org/10.26170/1999-2629_2022_01_15
+1. Yao, M., Tian, S., & Zhong, W. (2024). Readable and neutral: Reliability of crowdsourced misinformation debunking through linguistic and psycholinguistic cues. *Frontiers in Psychology*, *15*, Article 1478176. https://doi.org/10.3389/fpsyg.2024.1478176
 1. Yi, W., & DeKeyser, R. (2022). Incidental learning of semantically transparent and opaque Chinese compounds from reading: An eye-tracking approach. *System*, *107*, Article 102825. https://doi.org/10.1016/j.system.2022.102825
 1. Yih, T., & Liu, H. (2023). The meaning distributions on different levels of granularity. *Glottometrics*, *54*, 13–38. https://doi.org/10.53482/2023_54_405
 1. Zhang, H., & Hou, Y. (2024). The construction of interpersonal meanings in Jiaqi Li’s e-commerce live streams: Integrating verbal and visual semiotics. *Journal of Business and Technical Communication*, *38*(4), 371–409. https://doi.org/10.1177/10506519241258445
@@ -53,7 +54,7 @@
 <div align="center"><h2>碩士論文</h2></div>
 
 1. 陳佳惠. (2024). *基於語料庫的初中生英語寫作詞彙豐富性的行動研究* [Master’ thesis, 集美大學]. CNKI. https://link.cnki.net/doi/10.27720/d.cnki.gjmdx.2024.000102
-1. 康政. (2023). *Investigating the translator\'s style: A corpus-based analysis of Howard Goldblatt\'s style in his English translations of Mo Yan\'s novels* [Master’s thesis, 北京外國語大學]. CNKI. https://link.cnki.net/doi/10.27316/d.cnki.gswyu.2020.000479
+1. 康政. (2023). *Investigating the translator\'s style: A corpus-based analysis of Howard Goldblatt\'s style in his English translations of Mo Yan\'s novels* [Master’s thesis, 北京外國語大學]. CNKI. https://link.cnki.net/doi/10.26962/d.cnki.gbjwu.2023.000867
 1. 李碩. (2023). *A corpus-based study on the international image of China: A case study of on building a human community with a shared future* [Master’s thesis, 河北大學]. CNKI. https://link.cnki.net/doi/10.27103/d.cnki.ghebu.2023.000324
 1. 林瑩藝. (2023). *歷史數據可視化在高中歷史教學中的應用研究* [Master’s thesis, 福建師範大學]. CNKI. https://link.cnki.net/doi/10.27019/d.cnki.gfjsu.2023.002670
 1. 羅豪偉. (2023). *“學霸”的話語建構: 學習者身份的批評敘事探究* [Master’s thesis, 上海外國語大學]. CNKI. https://link.cnki.net/doi/10.27316/d.cnki.gswyu.2023.000538
@@ -61,12 +62,15 @@
 1. 馬琳. (2023). *高校·大學における日本語教科書の連結に関する研究: 『普通高校教科書 日語』と『新世紀大學日語』を例に* [Master’s thesis, 哈爾濱師範大學]. CNKI. https://link.cnki.net/doi/10.27064/d.cnki.ghasu.2023.001925
 1. Ma, X. (2024). *Applying semantic prosody for machine translation improvement on English-Chinese passive sentences* [Master’s thesis, University of Barcelona]. Dipòsit Digital de la Universitat de Barcelona. http://hdl.handle.net/2445/215937
 1. 沈雅楠. (2020). *On the influence of translator\'s habitus on translation: A case study of the two English versions of Bian Cheng* [Master’s thesis, 上海外國語大學]. CNKI. https://link.cnki.net/doi/10.27316/d.cnki.gswyu.2020.000479
+1. 謝詩婧. (2024). *Marketing Higher Education: Understanding How to Build and Promote the University Brand（Chapters10-11）英漢翻譯實踐報告* [Master’s thesis, 黑龍江大學]. CNKI. https://link.cnki.net/doi/10.27123/d.cnki.ghlju.2024.001057
 1. 嚴明. (2023). *A comparative study on the translation styles of three English versions of Na Han and Pang Huang* [Master’s thesis, 北京外國語大學]. CNKI. https://link.cnki.net/doi/10.26962/d.cnki.gbjwu.2023.000337
 1. 趙瑾乾. (2023). *義務教育階段語文教材詞語研究* [Master’s thesis, 遼寧師範大學]. CNKI. https://link.cnki.net/doi/10.27212/d.cnki.glnsu.2023.000956
-1. 週一欽. (2023). *《人生》俄譯本鄉土中國文化形象重構研究* [Master’s thesis, 黑龍江大學]. CNKI. https://link.cnki.net/doi/10.13963/j.cnki.hhuxb.2023.06.004
+1. 週一欽. (2023). *《人生》俄譯本鄉土中國文化形象重構研究* [Master’s thesis, 黑龍江大學]. CNKI. https://link.cnki.net/doi/10.27123/d.cnki.ghlju.2023.000890
+1. 朱玲. (2024). *Transforming Learning Through Tangible Instruction: The Case for Thinking with Things (Chapter 4) 英漢翻譯實踐報告* [Master’s thesis, 黑龍江大學]. CNKI. https://link.cnki.net/doi/10.27123/d.cnki.ghlju.2024.001859
 
 <div align="center"><h2>博士論文</h2></div>
 
+1. 黃廣哲. (2024). *多模態外宣翻譯中的中國軍人形象塑造研究: 以《中國軍隊》（中英文版）故事欄目圖文新聞爲例* [Doctoral dissertation, 上海外國語大學]. CNKI. https://link.cnki.net/doi/10.27316/d.cnki.gswyu.2024.000039
 1. 戴哲遠. (2023). *當代華語流行歌詞詞彙計量研究（1978-2021）* [Unpublished doctoral dissertation]. 浙江大學.
 
 <div align="center"><h2>會議論文</h2></div>
