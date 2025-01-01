@@ -213,6 +213,9 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
 
         self.combo_box_file_to_filter.setCurrentText(settings['file_to_filter'])
 
+        # Update the setting if saved file to filter no long exists
+        self.file_to_filter_changed()
+
     def file_to_filter_changed(self):
         self.settings['file_to_filter'] = self.combo_box_file_to_filter.currentText()
 

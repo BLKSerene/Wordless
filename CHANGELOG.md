@@ -31,6 +31,7 @@
 - File Area: Fix Open Files - Encoding
 - File Area: Fix Open Files - Opening Non-text Files - Do not show this again
 - Utils: Fix Wordless's Japanese kanji tokenizer
+- Work Area: Fix Work Area - Filter results - File to filter
 
 ### ❌ Removals
 - Measures: Remove effect size - Log-frequency biased MD / Mutual Dependency
