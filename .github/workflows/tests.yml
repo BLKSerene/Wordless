@@ -58,13 +58,13 @@ jobs:
           pytest --cov=./ --cov-report=xml --cov-append --ignore=tests/tests_nlp
 
       - name: "Upload coverage to Codecov"
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   # macOS
   build-macos:
-    runs-on: macos-12
+    runs-on: macos-13
 
     steps:
       - uses: actions/checkout@v4
