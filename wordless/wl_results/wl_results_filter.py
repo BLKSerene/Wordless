@@ -387,6 +387,11 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
         self.col_text_dispersion = self.main.settings_global['measures_dispersion'][measure_dispersion]['col_text']
         self.col_text_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][measure_adjusted_freq]['col_text']
 
+        if self.tab == 'wordlist_generator':
+            self.has_syllabification = settings['generation_settings']['syllabification']
+        else:
+            self.has_syllabification = True
+
         self.has_dispersion = measure_dispersion != 'none'
         self.has_adjusted_freq = measure_adjusted_freq != 'none'
 
@@ -404,7 +409,7 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
             settings = self.settings, filter_name = f'len_{self.type_node}'
         ))
 
-        if self.tab == 'wordlist_generator':
+        if self.tab == 'wordlist_generator' and settings['generation_settings']['syllabification']:
             self.layouts_filters.append(widgets_filter(
                 self,
                 label = self.tr('Number of syllables:'),
@@ -468,7 +473,9 @@ class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
     def run(self):
         if self.dialog.tab == 'wordlist_generator':
             col_node = self.dialog.table.find_header_hor(self.tr('Token'))
-            col_num_syls = self.dialog.table.find_header_hor(self.tr('Syllabification'))
+
+            if self.dialog.has_syllabification:
+                col_num_syls = self.dialog.table.find_header_hor(self.tr('Syllabification'))
         elif self.dialog.tab == 'ngram_generator':
             col_node = self.dialog.table.find_header_hor(self.tr('N-gram'))
 
@@ -536,7 +543,7 @@ class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
             if self.dialog.table.model().item(i, col_freq).val > 0:
                 filters.append(len_node_min <= len_node <= len_node_max)
 
-            if self.dialog.tab == 'wordlist_generator':
+            if self.dialog.tab == 'wordlist_generator' and self.dialog.has_syllabification:
                 filter_num_syls = False
                 syllabification = self.dialog.table.model().item(i, col_num_syls).text()
 
