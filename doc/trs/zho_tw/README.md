@@ -39,7 +39,7 @@
     <a href="https://app.codacy.com/gh/BLKSerene/Wordless/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade">
         <img src="https://app.codacy.com/project/badge/Grade/8226d15d1c4b4268beee760f9b59b3db" alt="Codacy"></a>
     <a href="https://codeclimate.com/github/BLKSerene/Wordless/maintainability">
-        <img src="https://api.codeclimate.com/v1/badges/e4d3b7664cc0a265668c/maintainability" alt="Maintainability"></a>
+        <img src="https://api.codeclimate.com/v1/badges/61542007f837cf508b5c/maintainability" alt="Maintainability"></a>
     <a href="https://www.codefactor.io/repository/github/blkserene/wordless">
         <img src="https://www.codefactor.io/repository/github/blkserene/wordless/badge" alt="CodeFactor"></a>
     <a href="https://sonarcloud.io/summary/new_code?id=BLKSerene_Wordless">
