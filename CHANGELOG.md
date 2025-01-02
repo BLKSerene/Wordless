@@ -32,6 +32,7 @@
 - File Area: Fix Open Files - Opening Non-text Files - Do not show this again
 - Utils: Fix Wordless's Japanese kanji tokenizer
 - Work Area: Fix Wordlist Generator - Filter results - Number of syllables
+- Work Area: Fix Wordlist Generator - Syllabification
 - Work Area: Fix Work Area - Filter results - File to filter
 
 ### ❌ Removals
