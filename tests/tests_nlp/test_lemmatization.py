@@ -152,7 +152,7 @@ def test_lemmatize(lang, lemmatizer):
         case 'lat':
             results = ['lingua', 'Latinus', ',', '[', '1', ']', 'sive', 'sermo', 'Latinus', ',', '[', '2', ']', 'sum', 'lingua', 'indoeuropaeus', 'qui', 'primus', 'Latinus', 'universus', 'et', 'Romanus', 'antiquus', 'in', 'primus', 'loquor', 'quamobrem', 'interdum', 'etiam', 'lingua', 'Latius', '[', '3', ']', '(', 'in', 'Latium', 'enim', 'suetus', ')', 'et', 'lingua', 'Romanus', '[', '4', ']', '(', 'nam', 'imperium', 'Romanus', 'sermo', 'sollemne', ')', 'appello', '.']
         case 'lav':
-            results = ['latviete', 'valoda', 'būt', 'dzimta', 'valoda', 'apmērs', '1,5', 'miljons', 'cilvēks', ',', 'galvenokārt', 'Latvija', ',', 'kur', 'tā', 'būt', 'vienīgs', 'valsts', 'valoda.', '[', '1', ']', '[', '3', ']']
+            results = ['latviete', 'valoda', 'būt', 'dzimta', 'valoda', 'apmērs', '1,5', 'miljons', 'cilvēks', ',', 'galvenokārt', 'Latvija', ',', 'kur', 'tā', 'būt', 'vienīgs', 'valsts', 'valoda', '(', '1', ')', '(', '3', ')']
         case 'lit':
             results = ['lietuvė', 'kalba', '–', 'ižti', 'baltas', 'prokalbė', 'kilęs', 'lietuvė', 'tauta', 'kalba', ',', 'kurti', 'Lietuva', 'irti', 'valstybinis', ',', 'o', 'Europa', 'sąjunga', '–', 'Viena', 'ižti', 'oficialus', 'kalbus', '.']
         case 'ltz':

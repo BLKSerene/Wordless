@@ -39,6 +39,9 @@
 ### ❌ Removals
 - Measures: Remove effect size - Log-frequency biased MD / Mutual Dependency
 
+### ⏫ Dependency Changes
+- Dependencies: Upgrade simplemma to 1.1.2
+
 ## [3.5.0](https://github.com/BLKSerene/Wordless/releases/tag/3.5.0) - 07/01/2024
 ### 🎉 New Features
 - File Area: Add support for .lrc and .pptx files
