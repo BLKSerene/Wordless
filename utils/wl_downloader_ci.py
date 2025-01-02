@@ -34,7 +34,7 @@ def run_cli(commands):
             if platform_os == 'Darwin':
                 subprocess.run(['python3', '-m'] + commands, check = True)
             elif platform_os == 'Linux':
-                subprocess.run(['python3.10', '-m'] + commands, check = True)
+                subprocess.run(['python3.11', '-m'] + commands, check = True)
         except subprocess.CalledProcessError:
             subprocess.run(['python', '-m'] + commands, check = True)
 

@@ -45,6 +45,8 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
         super().__init__(main)
 
+        self.tab = 'keyword_extractor'
+
         # Table
         self.table_keyword_extractor = Wl_Table_Keyword_Extractor(self)
 
@@ -178,7 +180,7 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
             self.combo_box_use_data,
             self.checkbox_use_pct,
             self.checkbox_use_cumulative
-        ) = wl_widgets.wl_widgets_fig_settings(self, tab = 'keyword_extractor')
+        ) = wl_widgets.wl_widgets_fig_settings(self, tab = self.tab)
 
         self.label_rank = QLabel(self.tr('Rank:'), self)
         (

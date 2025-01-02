@@ -50,6 +50,8 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
         super().__init__(main)
 
+        self.tab = 'ngram_generator'
+
         # Table
         self.table_ngram_generator = Wl_Table_Ngram_Generator(self)
 
@@ -141,10 +143,7 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
             self.checkbox_use_regex,
             self.checkbox_match_without_tags,
             self.checkbox_match_tags
-        ) = wl_widgets.wl_widgets_search_settings(
-            main,
-            tab = 'ngram_generator'
-        )
+        ) = wl_widgets.wl_widgets_search_settings(main, tab = self.tab)
 
         self.label_search_term_position = QLabel(self.tr('Search term position:'), self)
         (
@@ -164,10 +163,7 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
         (
             self.label_context_settings,
             self.button_context_settings
-        ) = wl_widgets.wl_widgets_context_settings(
-            self,
-            tab = 'ngram_generator'
-        )
+        ) = wl_widgets.wl_widgets_context_settings(self, tab = self.tab)
 
         self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
         self.line_edit_search_term.textChanged.connect(self.search_settings_changed)
@@ -315,7 +311,7 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
             self.combo_box_use_data,
             self.checkbox_use_pct,
             self.checkbox_use_cumulative
-        ) = wl_widgets.wl_widgets_fig_settings(self, tab = 'ngram_generator')
+        ) = wl_widgets.wl_widgets_fig_settings(self, tab = self.tab)
 
         self.label_rank = QLabel(self.tr('Rank:'), self)
         (

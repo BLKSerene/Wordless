@@ -31,7 +31,11 @@ from PyQt5.QtCore import (
     QItemSelection,
     Qt
 )
-from PyQt5.QtGui import QFont, QStandardItem, QStandardItemModel
+from PyQt5.QtGui import (
+    QFont,
+    QStandardItem,
+    QStandardItemModel
+)
 from PyQt5.QtWidgets import (
     QAbstractItemView,
     QApplication,
@@ -1856,6 +1860,17 @@ class Wl_Table_Data_Search(Wl_Table_Data):
 
             self.button_results_search.setEnabled(False)
 
+        self.results_changed_menu_edit()
+
+    def results_changed_menu_edit(self):
+        if self.button_results_search.isEnabled():
+            self.main.action_edit_results_search.setEnabled(True)
+        else:
+            self.main.action_edit_results_search.setEnabled(False)
+
+        self.main.action_edit_results_filter.setEnabled(False)
+        self.main.action_edit_results_sort.setEnabled(False)
+
 class Wl_Table_Data_Sort_Search(Wl_Table_Data):
     def __init__(
         self, main, tab,
@@ -1905,6 +1920,21 @@ class Wl_Table_Data_Sort_Search(Wl_Table_Data):
 
             self.button_results_sort.setEnabled(False)
             self.button_results_search.setEnabled(False)
+
+        self.results_changed_menu_edit()
+
+    def results_changed_menu_edit(self):
+        if self.button_results_search.isEnabled():
+            self.main.action_edit_results_search.setEnabled(True)
+        else:
+            self.main.action_edit_results_search.setEnabled(False)
+
+        if self.button_results_sort.isEnabled():
+            self.main.action_edit_results_sort.setEnabled(True)
+        else:
+            self.main.action_edit_results_sort.setEnabled(False)
+
+        self.main.action_edit_results_filter.setEnabled(False)
 
 class Wl_Table_Data_Filter_Search(Wl_Table_Data):
     def __init__(
@@ -1957,6 +1987,21 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
             self.button_results_search.setEnabled(True)
         else:
             self.button_results_search.setEnabled(False)
+
+        self.results_changed_menu_edit()
+
+    def results_changed_menu_edit(self):
+        if self.button_results_search.isEnabled():
+            self.main.action_edit_results_search.setEnabled(True)
+        else:
+            self.main.action_edit_results_search.setEnabled(False)
+
+        if self.button_results_filter.isEnabled():
+            self.main.action_edit_results_filter.setEnabled(True)
+        else:
+            self.main.action_edit_results_filter.setEnabled(False)
+
+        self.main.action_edit_results_sort.setEnabled(False)
 
     def results_filter_clicked(self):
         match self.tab:

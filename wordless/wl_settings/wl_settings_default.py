@@ -96,7 +96,7 @@ def init_settings_default(main):
     settings_default = {
         '1st_startup': True,
         'file_area_cur': _tr('wl_settings_default', 'Observed Files'),
-        'work_area_cur': _tr('wl_settings_default', 'Profiler'),
+        'work_area_cur': 'profiler',
 
         'menu': {
             'prefs': {
@@ -133,7 +133,7 @@ def init_settings_default(main):
         },
 
         'profiler': {
-            'tab': _tr('wl_settings_default', 'Counts'),
+            'tab': 'counts',
 
             'token_settings': {
                 'words': True,

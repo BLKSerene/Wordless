@@ -52,6 +52,8 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
         super().__init__(main)
 
+        self.tab = 'colligation_extractor'
+
         # Table
         self.table_colligation_extractor = Wl_Table_Colligation_Extractor(self)
 
@@ -143,18 +145,12 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
             self.checkbox_use_regex,
             self.checkbox_match_without_tags,
             self.checkbox_match_tags
-        ) = wl_widgets.wl_widgets_search_settings(
-            self,
-            tab = 'colligation_extractor'
-        )
+        ) = wl_widgets.wl_widgets_search_settings(self, tab = self.tab)
 
         (
             self.label_context_settings,
             self.button_context_settings
-        ) = wl_widgets.wl_widgets_context_settings(
-            self,
-            tab = 'colligation_extractor'
-        )
+        ) = wl_widgets.wl_widgets_context_settings(self, tab = self.tab)
 
         self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
         self.line_edit_search_term.textChanged.connect(self.search_settings_changed)
@@ -299,7 +295,7 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
             self.combo_box_use_data,
             self.checkbox_use_pct,
             self.checkbox_use_cumulative
-        ) = wl_widgets.wl_widgets_fig_settings(self, tab = 'colligation_extractor')
+        ) = wl_widgets.wl_widgets_fig_settings(self, tab = self.tab)
 
         self.label_rank = QLabel(self.tr('Rank:'), self)
         (

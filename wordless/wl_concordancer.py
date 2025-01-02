@@ -59,6 +59,9 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
         super().__init__(main)
 
+        self.tab = 'concordancer'
+
+        # Table
         self.table_concordancer = Wl_Table_Concordancer(self)
 
         layout_results = wl_layouts.Wl_Layout()
@@ -120,18 +123,12 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
             self.checkbox_use_regex,
             self.checkbox_match_without_tags,
             self.checkbox_match_tags
-        ) = wl_widgets.wl_widgets_search_settings(
-            self,
-            tab = 'concordancer'
-        )
+        ) = wl_widgets.wl_widgets_search_settings(self, tab = self.tab)
 
         (
             self.label_context_settings,
             self.button_context_settings
-        ) = wl_widgets.wl_widgets_context_settings(
-            self,
-            tab = 'concordancer'
-        )
+        ) = wl_widgets.wl_widgets_context_settings(self, tab = self.tab)
 
         self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
         self.line_edit_search_term.textChanged.connect(self.search_settings_changed)

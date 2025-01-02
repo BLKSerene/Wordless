@@ -285,14 +285,6 @@ class Wl_Main(QMainWindow):
 
         self.load_settings()
 
-    def fix_macos_layout(self, parent):
-        for widget in parent.children():
-            if widget.children():
-                self.fix_macos_layout(widget)
-            else:
-                if isinstance(widget, QWidget) and not isinstance(widget, QPushButton):
-                    widget.setAttribute(Qt.WA_LayoutUsesWidgetRect)
-
     def closeEvent(self, event):
         if self.settings_custom['general']['misc_settings']['always_confirm_on_exit']:
             result = Wl_Dialog_Confirm_Exit(self).exec_()
@@ -310,6 +302,7 @@ class Wl_Main(QMainWindow):
 
     def init_menu(self):
         self.menu_file = self.menuBar().addMenu(self.tr('&File'))
+        self.menu_edit = self.menuBar().addMenu(self.tr('&Edit'))
         self.menu_prefs = self.menuBar().addMenu(self.tr('&Preferences'))
         self.menu_help = self.menuBar().addMenu(self.tr('&Help'))
 
@@ -347,6 +340,19 @@ class Wl_Main(QMainWindow):
         self.action_file_exit.setShortcut(QKeySequence('Ctrl+Q'))
         self.action_file_exit.setStatusTip(self.tr('Exit the program'))
         self.action_file_exit.triggered.connect(self.close)
+
+        # Edit
+        self.action_edit_results_search = self.menu_edit.addAction(self.tr('&Search in Results...'))
+        self.action_edit_results_search.setShortcut(QKeySequence('Ctrl+F'))
+        self.action_edit_results_search.setStatusTip(self.tr('Search in results displayed in the table'))
+        self.action_edit_results_search.triggered.connect(self.edit_results_search)
+        self.action_edit_results_filter = self.menu_edit.addAction(self.tr('&Filter Results...'))
+        self.action_edit_results_filter.setShortcut(QKeySequence('Ctrl+Shift+L'))
+        self.action_edit_results_filter.setStatusTip(self.tr('Filter results displayed in the table'))
+        self.action_edit_results_filter.triggered.connect(self.edit_results_filter)
+        self.action_edit_results_sort = self.menu_edit.addAction(self.tr('S&ort Results...'))
+        self.action_edit_results_sort.setStatusTip(self.tr('Sort results displayed in the table'))
+        self.action_edit_results_sort.triggered.connect(self.edit_results_sort)
 
         # Preferences
         self.action_prefs_settings = self.menu_prefs.addAction(self.tr('&Settings'))
@@ -412,82 +418,6 @@ class Wl_Main(QMainWindow):
         self.action_help_about = self.menu_help.addAction(self.tr('About &Wordless'))
         self.action_help_about.setStatusTip(self.tr('Show information about Wordless'))
         self.action_help_about.triggered.connect(self.help_about)
-
-    # Preferences - Display Language
-    def prefs_display_lang(self):
-        for action in self.action_group_prefs_display_lang.actions():
-            if action.isChecked():
-                if action.lang != self.settings_custom['menu']['prefs']['display_lang']:
-                    if wl_dialogs_misc.Wl_Dialog_Restart_Required(self).exec_() == QDialog.Accepted:
-                        with open(file_settings_display_lang, 'wb') as f:
-                            pickle.dump(action.lang, f)
-
-                        # Remove settings file
-                        if os.path.exists(file_settings):
-                            os.remove(file_settings)
-
-                        # Remove file caches
-                        for file in glob.glob(os.path.join(
-                            self.settings_custom['general']['imp']['temp_files']['default_path'], '*.*'
-                        )):
-                            os.remove(file)
-
-                        self.restart(save_settings = False)
-                    else:
-                        self.__dict__[f"action_prefs_display_lang_{self.settings_custom['menu']['prefs']['display_lang']}"].setChecked(True)
-
-                break
-
-    # Preferences - Reset Layouts
-    def prefs_reset_layouts(self):
-        if wl_msg_boxes.wl_msg_box_question(
-            main = self,
-            title = self.tr('Reset Layouts'),
-            text = self.tr('''
-                <div>Do you want to reset all layouts to their default settings?</div>
-            ''')
-        ):
-            self.centralWidget().setSizes(self.settings_default['menu']['prefs']['layouts']['central_widget'])
-
-    # Preferences - Show Status Bar
-    def prefs_show_status_bar(self):
-        self.settings_custom['menu']['prefs']['show_status_bar'] = self.action_prefs_show_status_bar.isChecked()
-
-        if self.settings_custom['menu']['prefs']['show_status_bar']:
-            self.statusBar().show()
-        else:
-            self.statusBar().hide()
-
-    # Help - Need Help?
-    def help_need_help(self):
-        Wl_Dialog_Need_Help(self).exec_()
-
-    # Help - Citing
-    def help_citing(self):
-        Wl_Dialog_Citing(self).exec_()
-
-    # Help - Donating
-    def help_donating(self):
-        Wl_Dialog_Donating(self).exec_()
-
-    # Help - Acknowledgments
-    def help_acks(self):
-        Wl_Dialog_Acks(self).exec_()
-
-    # Help - Check for Updates
-    def help_check_updates(self, on_startup = False):
-        dialog_check_updates = Wl_Dialog_Check_Updates(self, on_startup = on_startup)
-
-        if not on_startup:
-            dialog_check_updates.exec_()
-
-    # Help - Changelog
-    def help_changelog(self):
-        Wl_Dialog_Changelog(self).exec_()
-
-    # Help - About Wordless
-    def help_about(self):
-        Wl_Dialog_About(self).exec_()
 
     def init_central_widget(self):
         self.tabs_file_area = wl_layouts.Wl_Tab_Widget(self)
@@ -567,23 +497,13 @@ class Wl_Main(QMainWindow):
 
         self.wl_work_area.currentChanged.connect(self.work_area_changed)
 
-    def file_area_changed(self):
-        # Current tab
-        self.settings_custom['file_area_cur'] = self.tabs_file_area.tabText(self.tabs_file_area.currentIndex())
-
-    def work_area_changed(self):
-        # Current tab
-        self.settings_custom['work_area_cur'] = self.wl_work_area.tabText(self.wl_work_area.currentIndex())
-
-        # File area
-        if self.settings_custom['work_area_cur'] != self.tr('Keyword Extractor'):
-            self.tabs_file_area.setCurrentIndex(0)
-
-            # Hide single tab
-            self.tabs_file_area.tabBar().hide()
-        # Keyword Extractor
-        else:
-            self.tabs_file_area.tabBar().show()
+    def fix_macos_layout(self, parent):
+        for widget in parent.children():
+            if widget.children():
+                self.fix_macos_layout(widget)
+            else:
+                if isinstance(widget, QWidget) and not isinstance(widget, QPushButton):
+                    widget.setAttribute(Qt.WA_LayoutUsesWidgetRect)
 
     def load_settings(self):
         settings = self.settings_custom
@@ -609,12 +529,173 @@ class Wl_Main(QMainWindow):
 
         # Work area
         for i in range(self.wl_work_area.count()):
-            if self.wl_work_area.tabText(i) == self.settings_custom['work_area_cur']:
+            if self.wl_work_area.widget(i).tab == self.settings_custom['work_area_cur']:
                 self.wl_work_area.setCurrentIndex(i)
 
                 break
 
         self.work_area_changed()
+
+    def file_area_changed(self):
+        # Current tab
+        self.settings_custom['file_area_cur'] = self.tabs_file_area.tabText(self.tabs_file_area.currentIndex())
+
+    def work_area_changed(self):
+        # Current tab
+        self.settings_custom['work_area_cur'] = self.wl_work_area.currentWidget().tab
+
+        # File Area
+        if self.settings_custom['work_area_cur'] == 'keyword_extractor':
+            self.tabs_file_area.tabBar().show()
+        else:
+            self.tabs_file_area.setCurrentIndex(0)
+
+            # Hide single tab
+            self.tabs_file_area.tabBar().hide()
+
+        # Menu - Edit
+        match self.wl_work_area.currentWidget().tab:
+            case 'concordancer':
+                table = self.wl_work_area.currentWidget().table_concordancer
+            case 'concordancer_parallel':
+                table = self.wl_work_area.currentWidget().table_concordancer_parallel
+            case 'dependency_parser':
+                table = self.wl_work_area.currentWidget().table_dependency_parser
+            case 'wordlist_generator':
+                table = self.wl_work_area.currentWidget().table_wordlist_generator
+            case 'ngram_generator':
+                table = self.wl_work_area.currentWidget().table_ngram_generator
+            case 'collocation_extractor':
+                table = self.wl_work_area.currentWidget().table_collocation_extractor
+            case 'colligation_extractor':
+                table = self.wl_work_area.currentWidget().table_colligation_extractor
+            case 'keyword_extractor':
+                table = self.wl_work_area.currentWidget().table_keyword_extractor
+            case _:
+                table = None
+
+        if table:
+            table.results_changed_menu_edit()
+
+    def edit_results_search(self):
+        match self.wl_work_area.currentWidget().tab:
+            case 'concordancer':
+                button_results_search = self.wl_work_area.currentWidget().table_concordancer.button_results_search
+            case 'concordancer_parallel':
+                button_results_search = self.wl_work_area.currentWidget().table_concordancer_parallel.button_results_search
+            case 'dependency_parser':
+                button_results_search = self.wl_work_area.currentWidget().table_dependency_parser.button_results_search
+            case 'wordlist_generator':
+                button_results_search = self.wl_work_area.currentWidget().table_wordlist_generator.button_results_search
+            case 'ngram_generator':
+                button_results_search = self.wl_work_area.currentWidget().table_ngram_generator.button_results_search
+            case 'collocation_extractor':
+                button_results_search = self.wl_work_area.currentWidget().table_collocation_extractor.button_results_search
+            case 'colligation_extractor':
+                button_results_search = self.wl_work_area.currentWidget().table_colligation_extractor.button_results_search
+            case 'keyword_extractor':
+                button_results_search = self.wl_work_area.currentWidget().table_keyword_extractor.button_results_search
+            case _:
+                button_results_search = None
+
+        if button_results_search and button_results_search.isEnabled():
+            button_results_search.click()
+
+    def edit_results_filter(self):
+        match self.wl_work_area.currentWidget().tab:
+            case 'dependency_parser':
+                button_results_filter = self.wl_work_area.currentWidget().table_dependency_parser.button_results_filter
+            case 'wordlist_generator':
+                button_results_filter = self.wl_work_area.currentWidget().table_wordlist_generator.button_results_filter
+            case 'ngram_generator':
+                button_results_filter = self.wl_work_area.currentWidget().table_ngram_generator.button_results_filter
+            case 'collocation_extractor':
+                button_results_filter = self.wl_work_area.currentWidget().table_collocation_extractor.button_results_filter
+            case 'colligation_extractor':
+                button_results_filter = self.wl_work_area.currentWidget().table_colligation_extractor.button_results_filter
+            case 'keyword_extractor':
+                button_results_filter = self.wl_work_area.currentWidget().table_keyword_extractor.button_results_filter
+            case _:
+                button_results_filter = None
+
+        if button_results_filter and button_results_filter.isEnabled():
+            button_results_filter.click()
+
+    def edit_results_sort(self):
+        match self.wl_work_area.currentWidget().tab:
+            case 'concordancer':
+                button_results_sort = self.wl_work_area.currentWidget().table_concordancer.button_results_sort
+            case _:
+                button_results_sort = None
+
+        if button_results_sort and button_results_sort.isEnabled():
+            button_results_sort.click()
+
+    def prefs_display_lang(self):
+        for action in self.action_group_prefs_display_lang.actions():
+            if action.isChecked():
+                if action.lang != self.settings_custom['menu']['prefs']['display_lang']:
+                    if wl_dialogs_misc.Wl_Dialog_Restart_Required(self).exec_() == QDialog.Accepted:
+                        with open(file_settings_display_lang, 'wb') as f:
+                            pickle.dump(action.lang, f)
+
+                        # Remove settings file
+                        if os.path.exists(file_settings):
+                            os.remove(file_settings)
+
+                        # Remove file caches
+                        for file in glob.glob(os.path.join(
+                            self.settings_custom['general']['imp']['temp_files']['default_path'], '*.*'
+                        )):
+                            os.remove(file)
+
+                        self.restart(save_settings = False)
+                    else:
+                        self.__dict__[f"action_prefs_display_lang_{self.settings_custom['menu']['prefs']['display_lang']}"].setChecked(True)
+
+                break
+
+    def prefs_reset_layouts(self):
+        if wl_msg_boxes.wl_msg_box_question(
+            main = self,
+            title = self.tr('Reset Layouts'),
+            text = self.tr('''
+                <div>Do you want to reset all layouts to their default settings?</div>
+            ''')
+        ):
+            self.centralWidget().setSizes(self.settings_default['menu']['prefs']['layouts']['central_widget'])
+
+    def prefs_show_status_bar(self):
+        self.settings_custom['menu']['prefs']['show_status_bar'] = self.action_prefs_show_status_bar.isChecked()
+
+        if self.settings_custom['menu']['prefs']['show_status_bar']:
+            self.statusBar().show()
+        else:
+            self.statusBar().hide()
+
+    def help_need_help(self):
+        Wl_Dialog_Need_Help(self).exec_()
+
+    def help_citing(self):
+        Wl_Dialog_Citing(self).exec_()
+
+    def help_donating(self):
+        Wl_Dialog_Donating(self).exec_()
+
+    def help_acks(self):
+        Wl_Dialog_Acks(self).exec_()
+
+    def help_check_updates(self, on_startup = False):
+        dialog_check_updates = Wl_Dialog_Check_Updates(self, on_startup = on_startup)
+
+        if not on_startup:
+            dialog_check_updates.exec_()
+
+    def help_changelog(self):
+        Wl_Dialog_Changelog(self).exec_()
+
+    def help_about(self):
+        Wl_Dialog_About(self).exec_()
 
     def save_settings(self):
         # Clear history of closed files
@@ -644,7 +725,7 @@ class Wl_Main(QMainWindow):
             elif is_macos:
                 subprocess.Popen(['python3', '-m', 'wordless.wl_main'])
             elif is_linux:
-                subprocess.Popen(['python3.10', '-m', 'wordless.wl_main'])
+                subprocess.Popen(['python3.11', '-m', 'wordless.wl_main'])
 
         sys.exit(0)
 

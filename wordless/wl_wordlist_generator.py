@@ -50,6 +50,8 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
         super().__init__(main)
 
+        self.tab = 'wordlist_generator'
+
         # Table
         self.table_wordlist_generator = Wl_Table_Wordlist_Generator(self)
 
@@ -178,7 +180,7 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
             self.combo_box_use_data,
             self.checkbox_use_pct,
             self.checkbox_use_cumulative
-        ) = wl_widgets.wl_widgets_fig_settings(self, tab = 'wordlist_generator')
+        ) = wl_widgets.wl_widgets_fig_settings(self, tab = self.tab)
 
         self.label_rank = QLabel(self.tr('Rank:'), self)
         (

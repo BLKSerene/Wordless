@@ -48,7 +48,7 @@ def test_profiler():
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
             update_gui = update_gui,
-            profiler_tab = 'all'
+            tab = 'all'
         ).run()
 
 def update_gui(err_msg, texts_stats_files):

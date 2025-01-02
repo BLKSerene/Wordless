@@ -254,13 +254,13 @@ def wl_process_tokens_ngram_generator(main, text, token_settings, search_setting
 
     return text_modified
 
-def wl_process_tokens_profiler(main, text, token_settings, profiler_tab):
+def wl_process_tokens_profiler(main, text, token_settings, tab):
     # Punctuation marks must be preserved for some readability measures (e.g. Wheeler & Smith's Readability Formula)
     text.tokens_multilevel_with_puncs = copy.deepcopy(text.tokens_multilevel)
 
     text_syl_tokenize(main, text)
 
-    if profiler_tab in ['readability', 'all']:
+    if tab in ['readability', 'all']:
         if text.lang in main.settings_global['pos_taggers']:
             wl_pos_tagging.wl_pos_tag_universal(main, text.get_tokens_flat(), lang = text.lang, tagged = text.tagged)
 
@@ -268,7 +268,7 @@ def wl_process_tokens_profiler(main, text, token_settings, profiler_tab):
         if text.lang == 'pol':
             wl_lemmatization.wl_lemmatize(main, text.get_tokens_flat(), lang = text.lang)
 
-    if profiler_tab in ['lexical_density_diversity', 'all']:
+    if tab in ['lexical_density_diversity', 'all']:
         # Lexical density
         if text.lang in main.settings_global['pos_taggers']:
             wl_pos_tagging.wl_pos_tag_universal(main, text.get_tokens_flat(), lang = text.lang, tagged = text.tagged)

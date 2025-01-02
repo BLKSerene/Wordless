@@ -50,6 +50,9 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
         super().__init__(main)
 
+        self.tab = 'dependency_parser'
+
+        # Table
         self.table_dependency_parser = Wl_Table_Dependency_Parser(self)
 
         layout_results = wl_layouts.Wl_Layout()
@@ -111,19 +114,13 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
             self.checkbox_use_regex,
             self.checkbox_match_without_tags,
             self.checkbox_match_tags
-        ) = wl_widgets.wl_widgets_search_settings_tokens(
-            self,
-            tab = 'dependency_parser'
-        )
+        ) = wl_widgets.wl_widgets_search_settings_tokens(self, tab = self.tab)
         self.checkbox_match_dependency_relations = QCheckBox(self.tr('Match dependency relations'), self)
 
         (
             self.label_context_settings,
             self.button_context_settings
-        ) = wl_widgets.wl_widgets_context_settings(
-            self,
-            tab = 'dependency_parser'
-        )
+        ) = wl_widgets.wl_widgets_context_settings(self, tab = self.tab)
 
         self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
         self.line_edit_search_term.textChanged.connect(self.search_settings_changed)

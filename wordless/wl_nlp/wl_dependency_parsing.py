@@ -520,6 +520,8 @@ def wl_dependency_parse_fig_tokens(
     return htmls
 
 def wl_show_dependency_graphs(main, htmls, show_in_separate_tab):
+    # pylint: disable=consider-using-with
+
     DIR_PATH = os.path.join(wl_settings_default.DEFAULT_DIR_EXPS, '_dependency_parsing_figs')
 
     # Clean cache
@@ -556,7 +558,7 @@ def wl_show_dependency_graphs(main, htmls, show_in_separate_tab):
             elif is_linux:
                 wl_misc.change_file_owner_to_user(fig_path)
 
-                subprocess.Popen(['xdg-open', f'file://{fig_path}']) # pylint: disable=consider-using-with
+                subprocess.Popen(['xdg-open', f'file://{fig_path}'])
     else:
         fig_path = wl_checks_misc.check_new_path(os.path.join(fig_dir, 'fig.html'))
         fig_path = wl_paths.get_normalized_path(fig_path)
@@ -569,4 +571,4 @@ def wl_show_dependency_graphs(main, htmls, show_in_separate_tab):
         elif is_linux:
             wl_misc.change_file_owner_to_user(fig_path)
 
-            subprocess.Popen(['xdg-open', f'file://{fig_path}']) # pylint: disable=consider-using-with
+            subprocess.Popen(['xdg-open', f'file://{fig_path}'])

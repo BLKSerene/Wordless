@@ -44,7 +44,9 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
         super().__init__(main)
 
-        # Table
+        self.tab = 'profiler'
+
+        # Tables
         self.table_profiler_readability = Wl_Table_Profiler_Readability(self)
         self.table_profiler_counts = Wl_Table_Profiler_Counts(self)
         self.table_profiler_lexical_density_diversity = Wl_Table_Profiler_Lexical_Density_Diversity(self)
@@ -195,7 +197,7 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
 
         # Tab
         for i in range(self.tabs_profiler.count()):
-            if self.tabs_profiler.tabText(i) == settings['tab']:
+            if self.tabs_profiler.widget(i).tab == settings['tab']:
                 self.tabs_profiler.setCurrentIndex(i)
 
         # Token Settings
@@ -225,14 +227,14 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         self.table_settings_changed()
 
     def tabs_changed(self):
-        i_tabs = self.tabs_profiler.currentIndex()
+        self.main.settings_custom['profiler']['tab'] = self.tabs_profiler.currentWidget().tab
 
-        self.main.settings_custom['profiler']['tab'] = self.tabs_profiler.tabText(i_tabs)
+        i_tab = self.tabs_profiler.currentIndex()
 
-        self.stacked_widget_button_generate_table.setCurrentIndex(i_tabs)
-        self.stacked_widget_button_exp_selected_cells.setCurrentIndex(i_tabs)
-        self.stacked_widget_button_exp_all_cells.setCurrentIndex(i_tabs)
-        self.stacked_widget_button_clr_table.setCurrentIndex(i_tabs)
+        self.stacked_widget_button_generate_table.setCurrentIndex(i_tab)
+        self.stacked_widget_button_exp_selected_cells.setCurrentIndex(i_tab)
+        self.stacked_widget_button_exp_all_cells.setCurrentIndex(i_tab)
+        self.stacked_widget_button_clr_table.setCurrentIndex(i_tab)
 
     def item_changed(self):
         if any((not table.is_empty() for table in self.tables)):
@@ -283,7 +285,7 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
                 self.main,
                 dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
                 update_gui = self.update_gui_table,
-                profiler_tab = 'all'
+                tab = 'all'
             )
 
             wl_threading.Wl_Thread(worker_profiler_table).start_worker()
@@ -323,7 +325,7 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
     def __init__(
         self, parent, headers,
         headers_int = None, headers_float = None, headers_pct = None, headers_cum = None,
-        profiler_tab = 'all'
+        tab = 'all'
     ):
         super().__init__(
             parent,
@@ -337,7 +339,7 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
             generate_fig = False
         )
 
-        self.profiler_tab = profiler_tab
+        self.tab = tab
 
     def clr_table(self, confirm = False): # pylint: disable=arguments-differ
         if super().clr_table(num_headers = 0, confirm = confirm):
@@ -355,7 +357,7 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 self.main,
                 dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
                 update_gui = self.update_gui_table,
-                profiler_tab = self.profiler_tab
+                tab = self.tab
             )
 
             wl_threading.Wl_Thread(worker_profiler_table).start_worker()
@@ -411,7 +413,7 @@ class Wl_Table_Profiler_Readability(Wl_Table_Profiler):
             parent,
             headers = HEADERS_READABILITY,
             headers_float = HEADERS_READABILITY,
-            profiler_tab = 'readability'
+            tab = 'readability'
         )
 
     def update_gui_table(self, err_msg, text_stats_files):
@@ -487,7 +489,7 @@ class Wl_Table_Profiler_Counts(Wl_Table_Profiler):
             ],
             # Excluding count of types
             headers_cum = HEADERS_COUNTS[:8] + HEADERS_COUNTS[10:],
-            profiler_tab = 'counts'
+            tab = 'counts'
         )
 
     def update_gui_table(self, err_msg, text_stats_files):
@@ -620,7 +622,7 @@ class Wl_Table_Profiler_Lexical_Density_Diversity(Wl_Table_Profiler):
             parent,
             headers = HEADERS_LEXICAL_DENSITY_DIVERSITY,
             headers_float = HEADERS_LEXICAL_DENSITY_DIVERSITY,
-            profiler_tab = 'lexical_density_diversity'
+            tab = 'lexical_density_diversity'
         )
 
     def update_gui_table(self, err_msg, text_stats_files):
@@ -826,7 +828,7 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
                 [*HEADERS[0:3], *HEADERS[4:7], HEADERS[9]]
                 for HEADERS in HEADERS_LENS
             ), start = []),
-            profiler_tab = 'lens'
+            tab = 'lens'
         )
 
     def update_gui_table(self, err_msg, text_stats_files):
@@ -947,7 +949,7 @@ class Wl_Table_Profiler_Len_Breakdown(Wl_Table_Profiler):
         super().__init__(
             parent,
             headers = [],
-            profiler_tab = 'len_breakdown'
+            tab = 'len_breakdown'
         )
 
     def update_gui_table(self, err_msg, text_stats_files):
@@ -1146,8 +1148,8 @@ class Wl_Table_Profiler_Len_Breakdown(Wl_Table_Profiler):
 class Wl_Worker_Profiler(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(str, list)
 
-    def __init__(self, main, dialog_progress, update_gui, profiler_tab):
-        super().__init__(main, dialog_progress, update_gui, profiler_tab = profiler_tab)
+    def __init__(self, main, dialog_progress, update_gui, tab):
+        super().__init__(main, dialog_progress, update_gui, tab = tab)
 
         self.err_msg = ''
         self.text_stats_files = []
@@ -1163,7 +1165,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 text = wl_token_processing.wl_process_tokens_profiler(
                     self.main, file['text'],
                     token_settings = settings['token_settings'],
-                    profiler_tab = self.profiler_tab
+                    tab = self.tab
                 )
 
                 texts.append(text)
@@ -1176,7 +1178,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 tokens = text.get_tokens_flat()
 
                 # Readability
-                if self.profiler_tab in ['readability', 'all']:
+                if self.tab in ['readability', 'all']:
                     stats_readability = [
                         wl_measures_readability.rd(self.main, text),
                         wl_measures_readability.aari(self.main, text),
@@ -1221,7 +1223,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 else:
                     stats_readability = None
 
-                if self.profiler_tab in ['lexical_density_diversity', 'counts', 'lens', 'len_breakdown', 'all']:
+                if self.tab in ['lexical_density_diversity', 'counts', 'lens', 'len_breakdown', 'all']:
                     # Paragraph length
                     len_paras_sentences = [
                         len(para)
@@ -1284,7 +1286,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                     len_syls = None
 
                 # Lexical Density/Diversity
-                if self.profiler_tab in ['lexical_density_diversity', 'all']:
+                if self.tab in ['lexical_density_diversity', 'all']:
                     if tokens:
                         stats_lexical_density_diversity = [
                             wl_measures_lexical_density_diversity.brunets_index(self.main, text),
