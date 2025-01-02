@@ -95,8 +95,8 @@ def init_settings_default(main):
 
     settings_default = {
         '1st_startup': True,
-        'file_area_cur': _tr('wl_settings_default', 'Observed Files'),
-        'work_area_cur': 'profiler',
+        'tab_file_area': 'corpora_observed',
+        'tab_work_area': 'profiler',
 
         'menu': {
             'prefs': {

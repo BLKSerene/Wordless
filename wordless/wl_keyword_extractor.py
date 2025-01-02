@@ -364,7 +364,7 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
 
         self.main.wl_file_area_ref.table_files.model().itemChanged.connect(self.file_changed)
 
-    # Enable the buttons and prompt the user if there are only observed files or only reference files
+    # Enable the buttons and prompt the user if there are only observed corpora or only reference corpora
     def file_changed(self):
         if list(self.main.wl_file_area.get_selected_files()) or list(self.main.wl_file_area_ref.get_selected_files()):
             self.button_generate_table.setEnabled(True)
@@ -373,29 +373,29 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
             self.button_generate_table.setEnabled(False)
             self.button_generate_fig.setEnabled(False)
 
-    def wl_msg_box_missing_files_observed(self):
+    def wl_msg_box_missing_corpus_observed(self):
         wl_msg_boxes.Wl_Msg_Box_Warning(
             self.main,
-            title = self.tr('Missing Observed Files'),
+            title = self.tr('Missing Observed Corpus'),
             text = self.tr('''
-                <div>You have not specified any observed files yet.</div>
+                <div>You have not specified any observed corpus yet.</div>
             ''')
         ).open()
 
-    def wl_msg_box_missing_files_ref(self):
+    def wl_msg_box_missing_corpus_ref(self):
         wl_msg_boxes.Wl_Msg_Box_Warning(
             self.main,
-            title = self.tr('Missing Reference Files'),
+            title = self.tr('Missing Reference Corpus'),
             text = self.tr('''
-                <div>You have not specified any reference files yet.</div>
+                <div>You have not specified any reference corpus yet.</div>
             ''')
         ).open()
 
-    def wl_status_bar_msg_missing_files_observed(self):
-        self.main.statusBar().showMessage(self.tr('Missing observed files!'))
+    def wl_status_bar_msg_missing_corpus_observed(self):
+        self.main.statusBar().showMessage(self.tr('Missing observed corpus!'))
 
-    def wl_status_bar_msg_missing_files_ref(self):
-        self.main.statusBar().showMessage(self.tr('Missing reference files!'))
+    def wl_status_bar_msg_missing_corpus_ref(self):
+        self.main.statusBar().showMessage(self.tr('Missing reference corpus!'))
 
     @wl_misc.log_time
     def generate_table(self):
@@ -421,11 +421,11 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                 wl_threading.Wl_Thread(worker_keyword_extractor_table).start_worker()
         else:
             if not files_observed:
-                self.wl_msg_box_missing_files_observed()
-                self.wl_status_bar_msg_missing_files_observed()
+                self.wl_msg_box_missing_corpus_observed()
+                self.wl_status_bar_msg_missing_corpus_observed()
             elif not files_ref:
-                self.wl_msg_box_missing_files_ref()
-                self.wl_status_bar_msg_missing_files_ref()
+                self.wl_msg_box_missing_corpus_ref()
+                self.wl_status_bar_msg_missing_corpus_ref()
 
     def update_gui_table(self, err_msg, keywords_freq_files, keywords_stats_files):
         if wl_checks_work_area.check_results(self.main, err_msg, keywords_freq_files):
@@ -447,12 +447,12 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                 # Insert columns
                 self.ins_header_hor(
                     self.model().columnCount() - 2,
-                    self.tr('[Reference Files]\nFrequency'),
+                    self.tr('[Reference Corpora]\nFrequency'),
                     is_int = True, is_cum = True
                 )
                 self.ins_header_hor(
                     self.model().columnCount() - 2,
-                    self.tr('[Reference Files]\nFrequency %'),
+                    self.tr('[Reference Corpora]\nFrequency %'),
                     is_pct = True, is_cum = True
                 )
 
@@ -507,25 +507,25 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                             is_breakdown_file = is_breakdown_file
                         )
 
-                # Sort by p-value of the first observed file
+                # Sort by p-value of the first observed corpus
                 if test_statistical_significance != 'none':
                     self.horizontalHeader().setSortIndicator(
                         self.find_header_hor(self.tr('[{}]\np-value').format(files_observed[0]['name'])),
                         Qt.AscendingOrder
                     )
-                # Sort by bayes factor of the first observed file
+                # Sort by bayes factor of the first observed corpus
                 elif measure_bayes_factor != 'none':
                     self.horizontalHeader().setSortIndicator(
                         self.find_header_hor(self.tr('[{}]\nBayes Factor').format(files_observed[0]['name'])),
                         Qt.DescendingOrder
                     )
-                # Sort by effect size of the first observed file
+                # Sort by effect size of the first observed corpus
                 elif measure_effect_size != 'none':
                     self.horizontalHeader().setSortIndicator(
                         self.find_header_hor(f"[{files_observed[0]['name']}]\n{col_text_effect_size}"),
                         Qt.DescendingOrder
                     )
-                # Otherwise sort by frequency of the first observed file
+                # Otherwise sort by frequency of the first observed corpus
                 else:
                     self.horizontalHeader().setSortIndicator(
                         self.find_header_hor(self.tr('[{}]\nFrequency').format(files_observed[0]['name'])),
@@ -624,11 +624,11 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                 wl_threading.Wl_Thread(self.worker_keyword_extractor_fig).start_worker()
         else:
             if not files_observed:
-                self.wl_msg_box_missing_files_observed()
-                self.wl_status_bar_msg_missing_files_observed()
+                self.wl_msg_box_missing_corpus_observed()
+                self.wl_status_bar_msg_missing_corpus_observed()
             elif not files_ref:
-                self.wl_msg_box_missing_files_ref()
-                self.wl_status_bar_msg_missing_files_ref()
+                self.wl_msg_box_missing_corpus_ref()
+                self.wl_status_bar_msg_missing_corpus_ref()
 
     def update_gui_fig(self, err_msg, keywords_freq_files, keywords_stats_files):
         if wl_checks_work_area.check_results(self.main, err_msg, keywords_freq_files):
@@ -700,7 +700,7 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
             files_observed = list(self.main.wl_file_area.get_selected_files())
             files_ref = list(self.main.wl_file_area_ref.get_selected_files())
 
-            # Frequency (Reference files)
+            # Frequency (Reference Corpora)
             self.keywords_freq_files.append(collections.Counter())
             tokens_ref = []
 
@@ -720,7 +720,7 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
 
             len_tokens_ref = len(tokens_ref)
 
-            # Frequency (Observed files)
+            # Frequency (Observed Corpus)
             for file_observed in files_observed:
                 text = wl_token_processing.wl_process_tokens_ngram_generator(
                     self.main, file_observed['text'],
@@ -741,7 +741,7 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
 
                 self.keywords_freq_files.append(sum(self.keywords_freq_files[1:], collections.Counter()))
 
-            # Remove tokens that do not appear in any of the observed files
+            # Remove tokens that do not appear in any observed corpus
             self.keywords_freq_files[0] = {
                 token: freq
                 for token, freq in self.keywords_freq_files[0].items()

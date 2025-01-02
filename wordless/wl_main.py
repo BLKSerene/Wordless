@@ -264,7 +264,7 @@ class Wl_Main(QMainWindow):
         # Menu
         self.init_menu()
 
-        # Work area & File area
+        # Work Area & File Area
         self.init_central_widget()
 
         # Status bar
@@ -425,13 +425,13 @@ class Wl_Main(QMainWindow):
         self.wl_file_area = wl_file_area.Wrapper_File_Area(self)
         self.wl_file_area_ref = wl_file_area.Wrapper_File_Area(self, file_type = 'ref')
 
-        # File area
-        self.tabs_file_area.addTab(self.wl_file_area, self.tr('Observed Files'))
-        self.tabs_file_area.addTab(self.wl_file_area_ref, self.tr('Reference Files'))
+        # File Area
+        self.tabs_file_area.addTab(self.wl_file_area, self.tr('Observed Corpora'))
+        self.tabs_file_area.addTab(self.wl_file_area_ref, self.tr('Reference Corpora'))
 
         self.tabs_file_area.currentChanged.connect(self.file_area_changed)
 
-        # Work area
+        # Work Area
         self.init_work_area()
 
         # Splitter
@@ -518,18 +518,18 @@ class Wl_Main(QMainWindow):
         # Layouts
         self.centralWidget().setSizes(settings['menu']['prefs']['layouts']['central_widget'])
 
-        # File area
+        # File Area
         for i in range(self.tabs_file_area.count()):
-            if self.tabs_file_area.tabText(i) == self.settings_custom['file_area_cur']:
+            if self.tabs_file_area.widget(i).tab == self.settings_custom['tab_file_area']:
                 self.tabs_file_area.setCurrentIndex(i)
 
                 break
 
         self.tabs_file_area.currentWidget().table_files.model().itemChanged.emit(QStandardItem())
 
-        # Work area
+        # Work Area
         for i in range(self.wl_work_area.count()):
-            if self.wl_work_area.widget(i).tab == self.settings_custom['work_area_cur']:
+            if self.wl_work_area.widget(i).tab == self.settings_custom['tab_work_area']:
                 self.wl_work_area.setCurrentIndex(i)
 
                 break
@@ -538,14 +538,14 @@ class Wl_Main(QMainWindow):
 
     def file_area_changed(self):
         # Current tab
-        self.settings_custom['file_area_cur'] = self.tabs_file_area.tabText(self.tabs_file_area.currentIndex())
+        self.settings_custom['tab_file_area'] = self.tabs_file_area.currentWidget().tab
 
     def work_area_changed(self):
         # Current tab
-        self.settings_custom['work_area_cur'] = self.wl_work_area.currentWidget().tab
+        self.settings_custom['tab_work_area'] = self.wl_work_area.currentWidget().tab
 
         # File Area
-        if self.settings_custom['work_area_cur'] == 'keyword_extractor':
+        if self.settings_custom['tab_work_area'] == 'keyword_extractor':
             self.tabs_file_area.tabBar().show()
         else:
             self.tabs_file_area.setCurrentIndex(0)

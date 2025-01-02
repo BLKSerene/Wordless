@@ -609,7 +609,7 @@ You can generate line charts or word clouds for patterns of colligation using an
 > [!NOTE]
 > Renamed from **Keyword** to **Keyword Extractor** in *Wordless* 2.2
 
-In *Keyword Extractor*, you can search for candidates of potential keywords (tokens that have far more or far less frequency in the observed file than in the reference file) in different files given a reference corpus, conduct different tests of statistical significance on each keyword and calculate the Bayes factor and effect size for each keyword using different measures. You can adjust the settings for the generated data via **Generation Settings**. You can disable the calculation of statistical significance and/or Bayes factor and/or effect size by setting **Generation Settings → Test of Statistical Significance / Measures of Bayes Factor / Measure of Effect Size** to **None**.
+In *Keyword Extractor*, you can search for candidates of potential keywords (tokens that have far more or far less frequency in the observed corpus than in the reference corpus) in different files given a reference corpus, conduct different tests of statistical significance on each keyword and calculate the Bayes factor and effect size for each keyword using different measures. You can adjust the settings for the generated data via **Generation Settings**. You can disable the calculation of statistical significance and/or Bayes factor and/or effect size by setting **Generation Settings → Test of Statistical Significance / Measures of Bayes Factor / Measure of Effect Size** to **None**.
 
 You can filter the results by clicking **Filter results** or search in *Data Table* for parts that might be of interest to you by clicking **Search in results**.
 
@@ -621,11 +621,11 @@ You can generate line charts or word clouds for keywords using any statistics. Y
 - **11.2 Keyword**<br>
   The potential keyword. You can specify what should be counted as a "token" via **Token Settings**.
 
-- **11.3 Frequency (in Reference File)**<br>
-  The number of occurrences of the keyword in the reference file.
+- **11.3 Frequency (in Reference Corpora)**<br>
+  The number of occurrences of the keyword in reference corpora.
 
-- **11.4 Frequency (in Observed Files)**<br>
-  The number of occurrences of the keyword in each observed file.
+- **11.4 Frequency (in Observed Corpus)**<br>
+  The number of occurrences of the keyword in each observed corpus.
 
 - **11.5 Test Statistic**<br>
   The test statistic of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.

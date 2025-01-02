@@ -83,8 +83,10 @@ class Wrapper_File_Area(wl_layouts.Wl_Wrapper_File_Area):
 
         # Suffix for settings
         if self.file_type == 'observed':
+            self.tab = 'corpora_observed'
             self.settings_suffix = ''
         elif self.file_type == 'ref':
+            self.tab = 'corpora_ref'
             self.settings_suffix = '_ref'
 
         # Table
@@ -237,17 +239,33 @@ class Wl_Table_Files(wl_tables.Wl_Table):
         self.clicked.connect(self.item_clicked)
 
         # Menu
-        self.main.action_file_open_files.triggered.connect(lambda: self.check_file_area(self.open_files))
-        self.main.action_file_reopen.triggered.connect(lambda: self.check_file_area(self.reopen))
+        self.main.action_file_open_files.triggered.connect(
+            lambda: self.check_file_area(self.open_files)
+        )
+        self.main.action_file_reopen.triggered.connect(
+            lambda: self.check_file_area(self.reopen)
+        )
 
-        self.main.action_file_select_all.triggered.connect(lambda: self.check_file_area(self.horizontalHeader().select_all))
-        self.main.action_file_deselect_all.triggered.connect(lambda: self.check_file_area(self.horizontalHeader().deselect_all))
-        self.main.action_file_invert_selection.triggered.connect(lambda: self.check_file_area(self.horizontalHeader().invert_selection))
+        self.main.action_file_select_all.triggered.connect(
+            lambda: self.check_file_area(self.horizontalHeader().select_all)
+        )
+        self.main.action_file_deselect_all.triggered.connect(
+            lambda: self.check_file_area(self.horizontalHeader().deselect_all)
+        )
+        self.main.action_file_invert_selection.triggered.connect(
+            lambda: self.check_file_area(self.horizontalHeader().invert_selection)
+        )
 
-        self.main.action_file_close_selected.triggered.connect(lambda: self.check_file_area(self.close_selected))
-        self.main.action_file_close_all.triggered.connect(lambda: self.check_file_area(self.close_all))
+        self.main.action_file_close_selected.triggered.connect(
+            lambda: self.check_file_area(self.close_selected)
+        )
+        self.main.action_file_close_all.triggered.connect(
+            lambda: self.check_file_area(self.close_all)
+        )
 
-        self.main.tabs_file_area.currentChanged.connect(lambda: self.check_file_area(self.model().itemChanged.emit, self.model().item(0, 0)))
+        self.main.tabs_file_area.currentChanged.connect(
+            lambda: self.check_file_area(self.model().itemChanged.emit, self.model().item(0, 0))
+        )
 
     def item_changed(self):
         super().item_changed()
@@ -391,10 +409,10 @@ class Wl_Table_Files(wl_tables.Wl_Table):
         if (
             (
                 self.file_type == 'observed'
-                and self.main.tabs_file_area.tabText(self.main.tabs_file_area.currentIndex()) == self.tr('Observed Files')
+                and self.main.tabs_file_area.tabText(self.main.tabs_file_area.currentIndex()) == self.tr('Observed Corpora')
             ) or (
                 self.file_type == 'ref'
-                and self.main.tabs_file_area.tabText(self.main.tabs_file_area.currentIndex()) == self.tr('Reference Files')
+                and self.main.tabs_file_area.tabText(self.main.tabs_file_area.currentIndex()) == self.tr('Reference Corpora')
             )
         ):
             return op(*args, **kwargs)
