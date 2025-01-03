@@ -31,6 +31,7 @@
 ### 📌 Bugfixes
 - File Area: Fix Open Files - Encoding
 - File Area: Fix Open Files - Opening Non-text Files - Do not show this again
+- Utils: Fix matching of inflected forms of tokens/n-grams with tags
 - Utils: Fix Wordless's Japanese kanji tokenizer
 - Work Area: Fix Wordlist Generator - Filter results - Number of syllables
 - Work Area: Fix Wordlist Generator - Syllabification

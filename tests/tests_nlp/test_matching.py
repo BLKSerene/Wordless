@@ -19,7 +19,7 @@
 import re
 
 from tests import wl_test_init
-from wordless.wl_nlp import wl_lemmatization, wl_matching, wl_texts
+from wordless.wl_nlp import wl_matching, wl_texts
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
@@ -250,7 +250,10 @@ def test_match_tokens():
     compare_tokens_matched(wl_matching.match_tokens(
         main,
         search_terms = ['tAke'],
-        tokens = wl_texts.to_tokens(['take', 'TAKE', 'Take', 'tAke', 'TaKE', 'test'], lang = 'eng_us'),
+        tokens = wl_texts.to_tokens(
+            ['take', 'TAKE', 'Take', 'tAke', 'TaKE', 'test'],
+            lang = 'eng_us'
+        ),
         lang = 'eng_us',
         settings = init_search_settings(match_case = True)
     ), ['tAke'])
@@ -258,25 +261,59 @@ def test_match_tokens():
     compare_tokens_matched(wl_matching.match_tokens(
         main,
         search_terms = ['take'],
-        tokens = wl_texts.to_tokens(['take', 'takes', 'took', 'taken', 'taking', 'test'], lang = 'eng_us'),
+        tokens = wl_texts.to_tokens(
+            ['take', 'takes', 'took', 'taken', 'taking', 'test'],
+            lang = 'eng_us'
+        ),
         lang = 'eng_us',
         settings = init_search_settings(match_whole_words = True)
     ), ['take'])
 
-    tokens = wl_texts.to_tokens(['take', 'takes', 'took', 'taken', 'taking', 'test'], lang = 'eng_us')
-    tokens = wl_lemmatization.wl_lemmatize(main, tokens, lang = 'eng_us')
     compare_tokens_matched(wl_matching.match_tokens(
         main,
-        search_terms = ['takes'],
-        tokens = tokens,
+        search_terms = ['took'],
+        tokens = wl_texts.to_tokens(
+            ['take', 'takes', 'took', 'taken', 'taking', 'test'],
+            lemmas = ['take', 'take', 'take', 'take', 'take', 'test'],
+            lang = 'eng_us'
+        ),
         lang = 'eng_us',
         settings = init_search_settings(match_inflected_forms = True)
-    ), ['take', 'takes', 'took', 'taken'])
+    ), ['take', 'takes', 'took', 'taken', 'taking'])
+
+    compare_tokens_matched(wl_matching.match_tokens(
+        main,
+        search_terms = ['took_NN'],
+        tokens = wl_texts.to_tokens(
+            ['take', 'takes', 'took', 'taken', 'test_NN'],
+            lang = 'eng_us',
+            tags = ['', '_NN', '_NN', '_NNP', ''],
+            lemmas = ['take', 'take', 'take', 'take', 'test']
+        ),
+        lang = 'eng_us',
+        settings = init_search_settings(match_inflected_forms = True)
+    ), ['takes_NN', 'took_NN', 'taken_NNP'])
+
+    compare_tokens_matched(wl_matching.match_tokens(
+        main,
+        search_terms = ['took_NN'],
+        tokens = wl_texts.to_tokens(
+            ['take', 'takes', 'took', 'taken', 'test_NN'],
+            lang = 'eng_us',
+            tags = ['', '_NN', '_NN', '_NNP', ''],
+            lemmas = ['take', 'take', 'take', 'take', 'test']
+        ),
+        lang = 'eng_us',
+        settings = init_search_settings(match_whole_words = True, match_inflected_forms = True)
+    ), ['takes_NN', 'took_NN'])
 
     compare_tokens_matched(wl_matching.match_tokens(
         main,
         search_terms = ['take[sn]'],
-        tokens = wl_texts.to_tokens(['take', 'takes', 'took', 'taken', 'taking', 'test'], lang = 'eng_us'),
+        tokens = wl_texts.to_tokens(
+            ['take', 'takes', 'took', 'taken', 'taking', 'test'],
+            lang = 'eng_us'
+        ),
         lang = 'eng_us',
         settings = init_search_settings(use_regex = True)
     ), ['takes', 'taken'])
@@ -287,7 +324,7 @@ def test_match_tokens():
         tokens = wl_texts.to_tokens(
             ['take', 'takes', 'took', 'test'],
             lang = 'eng_us',
-            tags = ['', '_NN', '_NN', '_TAKES']
+            tags = ['', '_NN', '_NN', '_JJ']
         ),
         lang = 'eng_us',
         settings = init_search_settings(match_without_tags = True)
@@ -317,6 +354,18 @@ def test_match_tokens():
         settings = init_search_settings(match_dependency_relations = True)
     ), ['aux', 'auxpass'])
 
+    compare_tokens_matched(wl_matching.match_tokens(
+        main,
+        search_terms = ['aux'],
+        tokens = wl_texts.to_tokens(
+            ['take', 'takes', 'took', 'taken', 'test_NN'],
+            lang = 'eng_us',
+            dependency_relations = ['ROOT', 'nsubj', 'advmod', 'aux', 'auxpass']
+        ),
+        lang = 'eng_us',
+        settings = init_search_settings(match_whole_words = True, match_dependency_relations = True)
+    ), ['aux'])
+
 def test_match_ngrams():
     compare_ngrams_matched(wl_matching.match_ngrams(
         main,
@@ -333,7 +382,10 @@ def test_match_ngrams():
     compare_ngrams_matched(wl_matching.match_ngrams(
         main,
         search_terms = ['tAke WaLK'],
-        tokens = wl_texts.to_tokens(['take', 'tAke', 'WALK', 'WaLK', 'test'], lang = 'eng_us'),
+        tokens = wl_texts.to_tokens(
+            ['take', 'tAke', 'WALK', 'WaLK', 'test'],
+            lang = 'eng_us'
+        ),
         lang = 'eng_us',
         settings = init_search_settings(match_case = True)
     ), [('tAke', 'WaLK')])
@@ -341,25 +393,59 @@ def test_match_ngrams():
     compare_ngrams_matched(wl_matching.match_ngrams(
         main,
         search_terms = ['take walk'],
-        tokens = wl_texts.to_tokens(['take', 'takes', 'walk', 'walked', 'test'], lang = 'eng_us'),
+        tokens = wl_texts.to_tokens(
+            ['take', 'takes', 'walk', 'walked', 'test'],
+            lang = 'eng_us'
+        ),
         lang = 'eng_us',
         settings = init_search_settings(match_whole_words = True)
     ), [('take', 'walk')])
 
-    tokens = wl_texts.to_tokens(['take', 'takes', 'walk', 'walked', 'test'], lang = 'eng_us')
-    tokens = wl_lemmatization.wl_lemmatize(main, tokens, lang = 'eng_us')
     compare_ngrams_matched(wl_matching.match_ngrams(
         main,
         search_terms = ['take walk'],
-        tokens = tokens,
+        tokens = wl_texts.to_tokens(
+            ['take', 'takes', 'walk', 'walked', 'test'],
+            lang = 'eng_us',
+            lemmas = ['take', 'take', 'walk', 'walk', 'test'],
+        ),
         lang = 'eng_us',
         settings = init_search_settings(match_inflected_forms = True)
     ), [('take', 'walk'), ('take', 'walked'), ('takes', 'walk'), ('takes', 'walked')])
 
     compare_ngrams_matched(wl_matching.match_ngrams(
         main,
+        search_terms = ['took_NN walked_NN'],
+        tokens = wl_texts.to_tokens(
+            ['take', 'took', 'walk', 'walked', 'test'],
+            lang = 'eng_us',
+            tags = ['', '_NNP', '_NN', '_NNP', '_JJ'],
+            lemmas = ['take', 'take', 'walk', 'walk', 'test'],
+        ),
+        lang = 'eng_us',
+        settings = init_search_settings(match_inflected_forms = True)
+    ), [('took_NNP', 'walk_NN'), ('took_NNP', 'walked_NNP')])
+
+    compare_ngrams_matched(wl_matching.match_ngrams(
+        main,
+        search_terms = ['took_NN walked_NN'],
+        tokens = wl_texts.to_tokens(
+            ['take', 'took', 'walk', 'walked', 'test'],
+            lang = 'eng_us',
+            tags = ['_NN', '_NNP', '_NN', '_NNP', '_JJ'],
+            lemmas = ['take', 'take', 'walk', 'walk', 'test'],
+        ),
+        lang = 'eng_us',
+        settings = init_search_settings(match_whole_words = True, match_inflected_forms = True)
+    ), [('take_NN', 'walk_NN')])
+
+    compare_ngrams_matched(wl_matching.match_ngrams(
+        main,
         search_terms = ['took|taken walk(s|ing)'],
-        tokens = wl_texts.to_tokens(['took', 'taken', 'takes', 'walks', 'walking', 'walked', 'test'], lang = 'eng_us'),
+        tokens = wl_texts.to_tokens(
+            ['took', 'taken', 'takes', 'walks', 'walking', 'walked', 'test'],
+            lang = 'eng_us'
+        ),
         lang = 'eng_us',
         settings = init_search_settings(use_regex = True)
     ), [('took', 'walks'), ('took', 'walking'), ('taken', 'walks'), ('taken', 'walking')])
@@ -407,9 +493,11 @@ def test_match_search_terms_ngrams():
     ), [('take', 'walk')])
 
 def init_context_settings(
-    incl = False, incl_multi_search_mode = False, incl_search_term = '', incl_search_terms = None,
+    incl = False,
+    incl_multi_search_mode = False, incl_search_term = '', incl_search_terms = None,
     incl_context_window_left = -5, incl_context_window_right = 5,
-    excl = False, excl_multi_search_mode = False, excl_search_term = '', excl_search_terms = None,
+    excl = False,
+    excl_multi_search_mode = False, excl_search_term = '', excl_search_terms = None,
     excl_context_window_left = -5, excl_context_window_right = 5,
 ):
     incl_search_terms = incl_search_terms or []

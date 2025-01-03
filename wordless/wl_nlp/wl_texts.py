@@ -118,10 +118,10 @@ def to_tokens(
     ]
 
 def display_texts_to_tokens(main, display_texts, lang = 'eng_us'):
-    re_tags = wl_matching.get_re_tags(main, tag_type = 'body')
+    re_tags = re.compile(wl_matching.get_re_tags(main, tag_type = 'body'))
 
-    tags = [''.join(re.findall(re_tags, display_text)) for display_text in display_texts]
-    texts = [re.sub(re_tags, '', display_text) for display_text in display_texts]
+    tags = [''.join(re_tags.findall(display_text)) for display_text in display_texts]
+    texts = [re_tags.sub('', display_text) for display_text in display_texts]
 
     return to_tokens(texts, lang = lang, tags = tags)
 
