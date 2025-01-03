@@ -40,6 +40,7 @@
 - Measures: Remove effect size - Log-frequency biased MD / Mutual Dependency
 
 ### ⏫ Dependency Changes
+- Dependencies: Upgrade python-mecab-ko to 1.3.7
 - Dependencies: Upgrade python-pptx to 1.0.2
 - Dependencies: Upgrade simplemma to 1.1.2
 
