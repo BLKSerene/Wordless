@@ -46,6 +46,7 @@
 - Dependencies: Upgrade python-mecab-ko to 1.3.7
 - Dependencies: Upgrade python-pptx to 1.0.2
 - Dependencies: Upgrade simplemma to 1.1.2
+- Dependencies: Upgrade SudachiPy to 0.6.9
 - Dependencies: Upgrade wordcloud to 1.9.4
 
 ## [3.5.0](https://github.com/BLKSerene/Wordless/releases/tag/3.5.0) - 07/01/2024
