@@ -26,11 +26,23 @@ _tr = QCoreApplication.translate
 def normalize_lang_code(lang_code):
     return lang_code.replace('-', '_').lower()
 
-def to_lang_code(main, lang_text):
-    return main.settings_global['langs'][lang_text][0]
+def to_lang_code(main, lang_text, iso_639_3 = True):
+    if iso_639_3:
+        return main.settings_global['langs'][lang_text][0]
+    else:
+        return main.settings_global['langs'][lang_text][1]
 
-def to_lang_codes(main, lang_texts):
-    return (main.settings_global['langs'][lang_text][0] for lang_text in lang_texts)
+def to_lang_codes(main, lang_texts, iso_639_3 = True):
+    if iso_639_3:
+        return (
+            main.settings_global['langs'][lang_text][0]
+            for lang_text in lang_texts
+        )
+    else:
+        return (
+            main.settings_global['langs'][lang_text][1]
+            for lang_text in lang_texts
+        )
 
 def to_lang_text(main, lang_code):
     lang_code = normalize_lang_code(lang_code)

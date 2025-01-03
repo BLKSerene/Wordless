@@ -330,7 +330,7 @@ def test_word_tokenize(lang, word_tokenizer):
         case 'vie':
             match word_tokenizer:
                 case 'nltk_tok_tok':
-                    assert tokens == ['Tiếng', 'Việt', ',', 'cũng', 'gọi', 'là', 'tiếng', 'Việt', 'Nam[', '9', ']', 'hay', 'Việt', 'ngữ', 'là', 'ngôn', 'ngữ', 'của', 'người', 'Việt', 'và', 'là', 'ngôn', 'ngữ', 'chính', 'thức', 'tại', 'Việt', 'Nam', '.']
+                    assert tokens == ['Tiếng', 'Việt', ',', 'cũng', 'gọi', 'là', 'tiếng', 'Việt', 'Nam', '[', '9', ']', 'hay', 'Việt', 'ngữ', 'là', 'ngôn', 'ngữ', 'của', 'người', 'Việt', 'và', 'là', 'ngôn', 'ngữ', 'chính', 'thức', 'tại', 'Việt', 'Nam', '.']
                 case 'underthesea_vie':
                     assert tokens == ['Tiếng', 'Việt', ',', 'cũng', 'gọi là', 'tiếng', 'Việt Nam', '[', '9', ']', 'hay', 'Việt ngữ', 'là', 'ngôn ngữ', 'của', 'người', 'Việt', 'và', 'là', 'ngôn ngữ', 'chính thức', 'tại', 'Việt Nam', '.']
                 case _:

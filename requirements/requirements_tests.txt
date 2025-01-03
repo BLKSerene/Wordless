@@ -23,7 +23,7 @@ charset-normalizer == 3.3.2
 khmer-nltk == 1.6
 laonlp == 1.2.0
 lingua-language-detector == 2.0.2
-nltk == 3.8.1
+nltk == 3.9.1
 pyphen == 0.17.0
 pythainlp == 5.0.4
 sacremoses == 0.1.1

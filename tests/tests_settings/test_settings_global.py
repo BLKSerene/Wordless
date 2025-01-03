@@ -20,6 +20,7 @@ import os
 import pkgutil
 import re
 
+import nltk
 import requests
 import sacremoses
 import simplemma
@@ -142,15 +143,65 @@ class Check_Settings_Global:
             stop_word_lists.append('custom')
 
         # NLTK
+        langs_nltk_sentence_tokenizers_supported = []
+        langs_nltk_punkt_sentence_tokenizers = []
         langs_nltk_word_tokenizers = []
 
+        for lang in os.listdir(nltk.data.find('tokenizers/punkt_tab/')):
+            match lang:
+                case 'english':
+                    langs_nltk_sentence_tokenizers_supported.extend(['en_gb', 'en_us'])
+                case 'german':
+                    langs_nltk_sentence_tokenizers_supported.extend(['de_at', 'de_de', 'de_ch'])
+                case 'greek':
+                    langs_nltk_sentence_tokenizers_supported.append('el')
+                case 'norwegian':
+                    langs_nltk_sentence_tokenizers_supported.append('nb')
+                case 'portuguese':
+                    langs_nltk_sentence_tokenizers_supported.extend(['pt_br', 'pt_pt'])
+                case 'README':
+                    pass
+                case _:
+                    langs_nltk_sentence_tokenizers_supported.append(wl_conversion.to_lang_code(
+                        main,
+                        lang.capitalize(),
+                        iso_639_3 = False
+                    ))
+
+        for lang_code, sentence_tokenizers in settings_sentence_tokenizers.items():
+            if (
+                lang_code != 'other'
+                and any((
+                    sentence_tokenizer.startswith('nltk_punkt_')
+                    for sentence_tokenizer in sentence_tokenizers
+                ))
+            ):
+                langs_nltk_punkt_sentence_tokenizers.append(lang_code)
+
+        self.check_missing_extra_langs(
+            langs_nltk_sentence_tokenizers_supported,
+            langs_nltk_punkt_sentence_tokenizers,
+            "NLTK's Punkt sentence tokenizer"
+        )
+
         for lang_code, word_tokenizers in settings_word_tokenizers.items():
-            if lang_code != 'other' and any(('nltk_nltk' in word_tokenizer for word_tokenizer in word_tokenizers)):
+            if (
+                lang_code != 'other'
+                and any((
+                    'nltk_nltk' in word_tokenizer
+                    for word_tokenizer in word_tokenizers
+                ))
+            ):
                 langs_nltk_word_tokenizers.append(lang_code)
 
         for lang_code in settings_word_tokenizers:
             if lang_code != 'other':
-                if lang_code not in ['amh', 'mya', 'lzh', 'zho_cn', 'zho_tw', 'jpn', 'khm', 'lao', 'tha', 'bod', 'vie']:
+                # Exclude languages without spaces between words
+                if lang_code not in [
+                    'amh', 'mya', 'lzh', 'zho_cn', 'zho_tw',
+                    'jpn', 'khm', 'lao', 'tha', 'bod',
+                    'vie'
+                ]:
                     if lang_code not in langs_nltk_word_tokenizers:
                         print(f'''Missing language code "{lang_code}" found for NLTK's tokenizers!''')
 
@@ -174,10 +225,20 @@ class Check_Settings_Global:
         langs_sacremoses_supported = add_lang_suffixes(langs_sacremoses_supported)
 
         for lang_code, word_tokenizers in settings_word_tokenizers.items():
-            if lang_code != 'other' and any(('sacremoses' in word_tokenizer for word_tokenizer in word_tokenizers)):
+            if (
+                lang_code != 'other'
+                and any((
+                    'sacremoses' in word_tokenizer
+                    for word_tokenizer in word_tokenizers
+                ))
+            ):
                 langs_sacremoses_moses_tokenizer.append(lang_code)
 
-        self.check_missing_extra_langs(langs_sacremoses_supported, langs_sacremoses_moses_tokenizer, "Sacremoses's Moses tokenizer")
+        self.check_missing_extra_langs(
+            langs_sacremoses_supported,
+            langs_sacremoses_moses_tokenizer,
+            "Sacremoses's Moses tokenizer"
+        )
 
         # simplemma
         langs_simplemma_supported = []
@@ -193,10 +254,17 @@ class Check_Settings_Global:
         langs_simplemma_supported = add_lang_suffixes(langs_simplemma_supported)
 
         for lang_code, lemmatizers in settings_lemmatizers.items():
-            if any((lemmatizer.startswith('simplemma_') for lemmatizer in lemmatizers)):
+            if any((
+                lemmatizer.startswith('simplemma_')
+                for lemmatizer in lemmatizers
+            )):
                 langs_simplemma_lemmatizers.append(lang_code)
 
-        self.check_missing_extra_langs(langs_simplemma_supported, langs_simplemma_lemmatizers, "simplemma's lemmatizers")
+        self.check_missing_extra_langs(
+            langs_simplemma_supported,
+            langs_simplemma_lemmatizers,
+            "simplemma's lemmatizers"
+        )
 
         # spaCy
         langs_spacy_supported = []
@@ -228,7 +296,10 @@ class Check_Settings_Global:
         for lang_code, sentence_tokenizers in settings_sentence_tokenizers.items():
             if (
                 lang_code not in ['khm', 'tha', 'bod', 'vie']
-                and not any((sentence_tokenizer.startswith('spacy_') for sentence_tokenizer in sentence_tokenizers))
+                and not any((
+                    sentence_tokenizer.startswith('spacy_')
+                    for sentence_tokenizer in sentence_tokenizers
+                ))
             ):
                 lang_code_639_1 = wl_conversion.to_iso_639_1(main, lang_code)
 
@@ -237,13 +308,25 @@ class Check_Settings_Global:
                 self.lang_utils_missing = True
 
         for lang_code, word_tokenizers in settings_word_tokenizers.items():
-            if lang_code != 'other' and any(('spacy' in word_tokenizer for word_tokenizer in word_tokenizers)):
+            if (
+                lang_code != 'other'
+                and any((
+                    'spacy' in word_tokenizer
+                    for word_tokenizer in word_tokenizers
+                ))
+            ):
                 langs_spacy_word_tokenizers.append(lang_code)
 
         self.check_missing_extra_langs(langs_spacy_supported, langs_spacy_word_tokenizers, "spaCy's word tokenizers")
 
         for lang_code, lemmatizers in settings_lemmatizers.items():
-            if lang_code != 'other' and any(('spacy' in lemmatizer for lemmatizer in lemmatizers)):
+            if (
+                lang_code != 'other'
+                and any((
+                    'spacy' in lemmatizer
+                    for lemmatizer in lemmatizers
+                ))
+            ):
                 langs_spacy_lemmatizers.append(lang_code)
 
         self.check_missing_extra_langs(langs_spacy_supported_lemmatizers, langs_spacy_lemmatizers, "spaCy's lemmatizers")
@@ -271,7 +354,10 @@ class Check_Settings_Global:
 
                     break
 
-        r = requests.get(f'https://raw.githubusercontent.com/stanfordnlp/stanza-resources/main/resources_{ver_stanza}.json', timeout = 10)
+        r = requests.get(
+            f'https://raw.githubusercontent.com/stanfordnlp/stanza-resources/main/resources_{ver_stanza}.json',
+            timeout = 10
+        )
 
         for lang, lang_resources in r.json().items():
             if lang != 'multilingual' and 'default_processors' in lang_resources:
@@ -331,7 +417,13 @@ class Check_Settings_Global:
             (settings_sentiment_analyzers, langs_stanza_sentiment_analyzers, langs_stanza_supported_sentiment_analyzers, 'sentiment analyzer')
         ]:
             for lang_code, lang_utils in settings_lang_utils.items():
-                if lang_code != 'other' and any(('stanza' in lang_util for lang_util in lang_utils)):
+                if (
+                    lang_code != 'other'
+                    and any((
+                        'stanza' in lang_util
+                        for lang_util in lang_utils
+                    ))
+                ):
                     langs.append(lang_code)
 
             self.check_missing_extra_langs(langs_supported, langs, f"Stanza's {msg_lang_util}")

@@ -39,18 +39,13 @@ def run_cli(commands):
             subprocess.run(['python', '-m'] + commands, check = True)
 
 # Download NLTK data
-# Corpora
-nltk.download('omw-1.4')
+nltk.download('averaged_perceptron_tagger_eng')
+nltk.download('averaged_perceptron_tagger_rus')
+nltk.download('perluniprops')
+nltk.download('punkt_tab')
 nltk.download('stopwords')
 nltk.download('wordnet')
 nltk.download('words')
-# Taggers
-nltk.download('averaged_perceptron_tagger')
-nltk.download('averaged_perceptron_tagger_ru')
-# Tokenizers
-nltk.download('punkt')
-# Misc
-nltk.download('perluniprops')
 
 # Download models
 spacy.cli.download('en_core_web_trf')

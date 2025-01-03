@@ -40,15 +40,17 @@ def test_normalize_lang_code():
     for lang_code in settings_langs.values():
         assert wl_conversion.normalize_lang_code(lang_code[0].replace('_', '-').upper()) == lang_code[0]
 
-
 def test_to_lang_code():
     for lang_text, lang_code in settings_langs.items():
         assert wl_conversion.to_lang_code(main, lang_text) == lang_code[0]
+        assert wl_conversion.to_lang_code(main, lang_text, iso_639_3 = False) == lang_code[1]
 
 def test_to_lang_codes():
-    lang_codes = wl_conversion.to_lang_codes(main, settings_langs.keys())
+    lang_codes_639_3 = wl_conversion.to_lang_codes(main, settings_langs.keys())
+    lang_codes_639_1 = wl_conversion.to_lang_codes(main, settings_langs.keys(), iso_639_3 = False)
 
-    assert list(lang_codes) == [lang_vals[0] for lang_vals in settings_langs.values()]
+    assert list(lang_codes_639_3) == [lang_vals[0] for lang_vals in settings_langs.values()]
+    assert list(lang_codes_639_1) == [lang_vals[1] for lang_vals in settings_langs.values()]
 
 def test_to_lang_text():
     for lang_code in TO_LANG_TEXT.keys():
