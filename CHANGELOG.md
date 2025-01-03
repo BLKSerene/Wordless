@@ -40,6 +40,7 @@
 - Measures: Remove effect size - Log-frequency biased MD / Mutual Dependency
 
 ### ⏫ Dependency Changes
+- Dependencies: Upgrade python-pptx to 1.0.2
 - Dependencies: Upgrade simplemma to 1.1.2
 
 ## [3.5.0](https://github.com/BLKSerene/Wordless/releases/tag/3.5.0) - 07/01/2024
@@ -87,6 +88,7 @@
 - Dependencies: Add VADER
 - Dependencies: Remove Dostoevsky
 - Dependencies: Remove jieba
+- Dependencies: Add python-pptx
 - Dependencies: Upgrade Beautiful Soup to 4.12.3
 - Dependencies: Upgrade Charset Normalizer to 3.3.2
 - Dependencies: Upgrade LaoNLP to 1.2.0
