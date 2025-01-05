@@ -28,6 +28,9 @@ from wordless.wl_checks import wl_checks_tokens
 from wordless.wl_nlp import wl_nlp_utils, wl_sentence_tokenization, wl_texts
 from wordless.wl_utils import wl_conversion, wl_misc
 
+RE_CHAR_HAN_OTHER = re.compile(r'^h+|^o+')
+RE_CHAR_HAN_KANJI_OTHER = re.compile(r'^h+|^k+|^o+')
+
 def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
     tokens_multilevel = []
 
@@ -126,7 +129,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                                     char_scripts += 'o'
 
                             while sentence:
-                                len_token = len(re.search(r'^h+|^o+', char_scripts).group())
+                                len_token = len(RE_CHAR_HAN_OTHER.search(char_scripts).group())
                                 token = sentence[:len_token]
 
                                 if char_scripts.startswith('h'):
@@ -174,7 +177,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                                 char_scripts += 'o'
 
                         while sentence:
-                            len_token = len(re.search(r'^h+|^k+|^o+', char_scripts).group())
+                            len_token = len(RE_CHAR_HAN_KANJI_OTHER.search(char_scripts).group())
                             token = sentence[:len_token]
 
                             if char_scripts.startswith('h'):

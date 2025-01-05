@@ -399,8 +399,8 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Filter_Search):
                 self.settings = copy.deepcopy(self.main.settings_custom)
 
                 self.clr_table(0)
-
                 self.model().setRowCount(len(results))
+
                 self.disable_updates()
 
                 for i, (

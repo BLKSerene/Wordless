@@ -317,7 +317,7 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
         settings['measure_bayes_factor'] = self.combo_box_measure_bayes_factor.get_measure()
         settings['measure_effect_size'] = self.combo_box_measure_effect_size.get_measure()
 
-        # Use Data
+        # Use data
         self.combo_box_use_data.measures_changed()
 
     def table_settings_changed(self):
@@ -432,7 +432,7 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
             try:
                 self.settings = copy.deepcopy(self.main.settings_custom)
 
-                settings = self.main.settings_custom['keyword_extractor']
+                settings = self.settings['keyword_extractor']
                 files_observed = list(self.main.wl_file_area.get_selected_files())
 
                 test_statistical_significance = settings['generation_settings']['test_statistical_significance']
@@ -443,6 +443,7 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                 col_text_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['col_text']
 
                 self.clr_table()
+                self.model().setRowCount(len(keywords_freq_files))
 
                 # Insert columns
                 self.ins_header_hor(
@@ -548,7 +549,6 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                 freq_totals = numpy.array(list(keywords_freq_files.values())).sum(axis = 0)
                 len_files_observed = len(files_observed)
 
-                self.model().setRowCount(len(keywords_freq_files))
                 self.disable_updates()
 
                 for i, (keyword, stats_files) in enumerate(wl_sorting.sorted_stats_files_items(keywords_stats_files)):

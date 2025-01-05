@@ -61,7 +61,10 @@ def generate_line_chart(
     vals = numpy.array([vals for item, vals in data_files_items])
 
     # Frequency data
-    if fig_settings['use_data'] == _tr('wl_figs', 'Frequency') or re.search(_tr('wl_figs', r'^[LR][1-9][0-9]*$'), fig_settings['use_data']):
+    if (
+        fig_settings['use_data'] == _tr('wl_figs', 'Frequency')
+        or re.search(_tr('wl_figs', r'^[LR][1-9][0-9]*$'), fig_settings['use_data'])
+    ):
         if fig_settings['use_cumulative']:
             vals = numpy.cumsum(vals, axis = 0)
 

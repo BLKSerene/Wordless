@@ -500,7 +500,7 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
         settings['measure_bayes_factor'] = self.combo_box_measure_bayes_factor.get_measure()
         settings['measure_effect_size'] = self.combo_box_measure_effect_size.get_measure()
 
-        # Use Data
+        # Use data
         self.combo_box_use_data.measures_changed()
 
     def table_settings_changed(self):
@@ -573,9 +573,7 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
             try:
                 self.settings = copy.deepcopy(self.main.settings_custom)
 
-                self.clr_table()
-
-                settings = self.main.settings_custom['colligation_extractor']
+                settings = self.settings['colligation_extractor']
 
                 test_statistical_significance = settings['generation_settings']['test_statistical_significance']
                 measure_bayes_factor = settings['generation_settings']['measure_bayes_factor']
@@ -583,6 +581,9 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
 
                 col_text_test_stat = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['col_text']
                 col_text_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['col_text']
+
+                self.clr_table()
+                self.model().setRowCount(len(colligations_freqs_files))
 
                 # Insert columns
                 files = list(self.main.wl_file_area.get_selected_files())
@@ -722,8 +723,6 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                 freqs_totals = numpy.array(list(colligations_freqs_files.values())).sum(axis = 0)
                 freq_totals = numpy.array(list(colligations_freqs_files.values())).sum(axis = 2).sum(axis = 0)
                 len_files = len(files)
-
-                self.model().setRowCount(len(colligations_freqs_files))
 
                 self.disable_updates()
 

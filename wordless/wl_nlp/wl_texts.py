@@ -232,7 +232,7 @@ class Wl_Text:
             # Untokenized & Tagged
             elif not self.tokenized and self.tagged:
                 # Replace all tags with a whitespace character to ensure that no words run together
-                text_no_tags = re.sub(re_tags, ' ', text)
+                text_no_tags = re_tags.sub(' ', text)
                 # Remove redundant whitespace characters so that sentences are split correctly
                 text_no_tags = re.sub(r'\s{2}', ' ', text_no_tags)
 
@@ -244,7 +244,7 @@ class Wl_Text:
                 text = self.check_tags_text_start(text)
                 i_tag_end = 0
 
-                for tag in re.finditer(re_tags, text):
+                for tag in re_tags.finditer(text):
                     tags_tokens = self.add_tags_tokenization(text[i_tag_end:tag.start()], tags_tokens)
                     tags_tokens[-1].append(tag.group())
 
@@ -280,7 +280,7 @@ class Wl_Text:
 
                     if para:
                         # Replace all tags with a whitespace to ensure no words run together
-                        text_no_tags = re.sub(re_tags, ' ', para)
+                        text_no_tags = re_tags.sub(' ', para)
 
                         for sentence in wl_sentence_tokenization.wl_sentence_split(self.main, text_no_tags):
                             self.tokens_multilevel[-1].append([])
@@ -294,7 +294,7 @@ class Wl_Text:
                         # Extract tags
                         i_tag_end = 0
 
-                        for tag in re.finditer(re_tags, para):
+                        for tag in re_tags.finditer(para):
                             tags_tokens = self.add_tags_splitting(para[i_tag_end:tag.start()], tags_tokens)
                             tags_tokens[-1].append(tag.group())
 
@@ -364,7 +364,7 @@ class Wl_Text:
                 for sentence in para:
                     for i, sentence_seg in enumerate(sentence):
                         sentence[i] = [
-                            re.sub(RE_VIE_TOKENIZED, ' ', token)
+                            RE_VIE_TOKENIZED.sub(' ', token)
                             for token in sentence_seg
                         ]
 
@@ -400,7 +400,7 @@ class Wl_Text:
         re_tag_text_start = re.compile(fr"\s*({wl_matching.get_re_tags(self.main, tag_type = 'body')})")
         self.tags_text_start = []
 
-        while (re_result := re.match(re_tag_text_start, text)):
+        while (re_result := re_tag_text_start.match(text)):
             tag = re_result.group()
 
             self.tags_text_start.append(tag)
@@ -613,7 +613,7 @@ class Wl_Text_Ref(Wl_Text):
             # Untokenized & Tagged
             elif not self.tokenized and self.tagged:
                 # Replace all tags with a whitespace to ensure no words run together
-                text_no_tags = re.sub(re_tags, ' ', text)
+                text_no_tags = re_tags.sub(' ', text)
                 tokens = wl_word_tokenization.wl_word_tokenize_flat(self.main, text_no_tags, lang = self.lang)
 
                 self.tokens_multilevel[0][0][0].extend(tokens)
@@ -623,7 +623,7 @@ class Wl_Text_Ref(Wl_Text):
             # Tokenized & Tagged
             elif self.tokenized and self.tagged:
                 # Replace all tags with a whitespace to ensure no words run together
-                text_no_tags = re.sub(re_tags, ' ', text)
+                text_no_tags = re_tags.sub(' ', text)
 
                 self.tokens_multilevel[0][0][0].extend(text_no_tags.split())
         elif file_ext == '.xml' and self.tagged:
@@ -658,7 +658,7 @@ class Wl_Text_Ref(Wl_Text):
                 for sentence in para:
                     for i, sentence_seg in enumerate(sentence):
                         sentence[i] = [
-                            re.sub(RE_VIE_TOKENIZED, ' ', token)
+                            RE_VIE_TOKENIZED.sub(' ', token)
                             for token in sentence_seg
                         ]
 

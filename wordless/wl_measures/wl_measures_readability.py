@@ -1083,20 +1083,21 @@ def nws(main, text):
 # References:
 #     https://github.com/drelhaj/OsmanReadability/blob/master/src/org/project/osman/process/Syllables.java
 #     https://github.com/textstat/textstat/blob/9bf37414407bcaaa45c498478ee383c8738e5d0c/textstat/textstat.py#L569
+RE_STRESS = re.compile(r'[\u064B\u064C\u064D\u0651]')
+RE_SHORT = re.compile(r'[\u0627\u0649\?\.\!\,\s]')
+
 def _get_num_syls_ara(word):
     count_short = 0
     count_long = 0
 
-    # Tashkeel: fatha, damma, kasra
-    tashkeel = ['\u064E', '\u064F', '\u0650']
-
     for i, char in enumerate(word):
-        if char not in tashkeel:
+        # Tashkeel: fatha, damma, kasra
+        if char not in ('\u064E', '\u064F', '\u0650'):
             continue
 
         # Only if a character is a tashkeel, has a successor, and is followed by an alef, waw, or yeh
         if i + 1 < len(word):
-            if word[i + 1] in ['\u0627', '\u0648', '\u064A']:
+            if word[i + 1] in ('\u0627', '\u0648', '\u064A'):
                 count_long += 1
             else:
                 count_short += 1
@@ -1104,10 +1105,10 @@ def _get_num_syls_ara(word):
             count_short += 1
 
     # Stress syllables: tanween fatha, tanween damma, tanween kasra, shadda
-    count_stress = len(re.findall(r'[\u064B\u064C\u064D\u0651]', word))
+    count_stress = len(RE_STRESS.findall(word))
 
     if count_short == 0:
-        word = re.sub(r'[\u0627\u0649\?\.\!\,\s]', '', word)
+        word = RE_SHORT.sub('', word)
         count_short = max(0, len(word) - 2)
 
     # Reference: https://github.com/drelhaj/OsmanReadability/blob/405b927ef3fde200fa08efe12ec2f39b8716e4be/src/org/project/osman/process/OsmanReadability.java#L259

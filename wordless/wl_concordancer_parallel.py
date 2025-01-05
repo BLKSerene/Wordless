@@ -308,14 +308,15 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data_Search):
                 self.settings = copy.deepcopy(self.main.settings_custom)
 
                 self.clr_table(0)
+                self.model().setRowCount(len(concordance_lines))
 
+                # Insert columns
                 for file_name in self.main.wl_file_area.get_selected_file_names():
                     self.ins_header_hor(
                         self.model().columnCount(),
                         file_name
                     )
 
-                self.model().setRowCount(len(concordance_lines))
                 self.disable_updates()
 
                 for i, concordance_line in enumerate(concordance_lines):

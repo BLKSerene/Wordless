@@ -40,6 +40,9 @@ from wordless.wl_widgets import (
 
 _tr = QCoreApplication.translate
 
+RE_SORTING_COL_L = re.compile(_tr('Wl_Dialog_Results_Sort_Concordancer', r'^L[1-9][0-9]*$'))
+RE_SORTING_COL_R = re.compile(_tr('Wl_Dialog_Results_Sort_Concordancer', r'^R[1-9][0-9]*$'))
+
 class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
     def __init__(self, main, table):
         super().__init__(
@@ -133,9 +136,6 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
             results[i][2] = right_new
 
         # Sort results
-        re_sorting_col_l = re.compile(self.tr(r'^L[1-9][0-9]*$'))
-        re_sorting_col_r = re.compile(self.tr(r'^R[1-9][0-9]*$'))
-
         for sorting_col, sorting_order in reversed(self.settings['sorting_rules']):
             reverse = 0 if sorting_order == self.tr('Ascending') else 1
 
@@ -151,9 +151,9 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
             else:
                 span = int(sorting_col[1:])
 
-                if re_sorting_col_l.search(sorting_col):
+                if RE_SORTING_COL_L.search(sorting_col):
                     results.sort(key = lambda item, span = span: item[0].tokens_raw[-span], reverse = reverse)
-                elif re_sorting_col_r.search(sorting_col):
+                elif RE_SORTING_COL_R.search(sorting_col):
                     results.sort(key = lambda item, span = span: item[2].tokens_raw[span - 1], reverse = reverse)
 
         # Clear highlights before sorting the results
@@ -193,7 +193,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
             i_highlight_color_right = 1
 
             for sorting_col, _ in self.settings['sorting_rules']:
-                if re_sorting_col_l.search(sorting_col) and int(sorting_col[1:]) <= len(text_left):
+                if RE_SORTING_COL_L.search(sorting_col) and int(sorting_col[1:]) <= len(text_left):
                     hightlight_color = highlight_colors[i_highlight_color_left % len(highlight_colors)]
 
                     text_left[-int(sorting_col[1:])] = f'''
@@ -203,7 +203,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
                     '''
 
                     i_highlight_color_left += 1
-                elif re_sorting_col_r.search(sorting_col) and int(sorting_col[1:]) - 1 < len(text_right):
+                elif RE_SORTING_COL_R.search(sorting_col) and int(sorting_col[1:]) - 1 < len(text_right):
                     hightlight_color = highlight_colors[i_highlight_color_right % len(highlight_colors)]
 
                     text_right[int(sorting_col[1:]) - 1] = f'''
@@ -382,7 +382,7 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
             max_left = max((
                 int(col[1:])
                 for col in self.cols_to_sort
-                if re.search(self.tr(r'^L[0-9]+$'), col)
+                if RE_SORTING_COL_L.search(col)
             ))
         else:
             max_left = 0
@@ -394,7 +394,7 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
             max_right = max((
                 int(col[1:])
                 for col in self.cols_to_sort
-                if re.search(self.tr(r'^R[0-9]+$'), col)
+                if RE_SORTING_COL_R.search(col)
             ))
         else:
             max_right = 0
@@ -418,12 +418,12 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         cols_left = sorted([
             int(self.model().item(i, 0).text()[1:])
             for i in range(self.model().rowCount())
-            if re.search(self.tr(r'^L[0-9]+$'), self.model().item(i, 0).text())
+            if RE_SORTING_COL_L.search(self.model().item(i, 0).text())
         ])
         cols_right = sorted([
             int(self.model().item(i, 0).text()[1:])
             for i in range(self.model().rowCount())
-            if re.search(self.tr(r'^R[0-9]+$'), self.model().item(i, 0).text())
+            if RE_SORTING_COL_R.search(self.model().item(i, 0).text())
         ])
 
         if sorting_col:

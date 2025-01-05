@@ -41,6 +41,8 @@ from wordless.wl_utils import wl_detection, wl_misc
 
 _tr = QCoreApplication.translate
 
+RE_EMPTY_ITEM = re.compile(r'^\s*$')
+
 # self.tr() does not work in inherited classes
 class Wl_List_Add_Ins_Del_Clr(QListView):
     def __init__(
@@ -117,7 +119,7 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
                 item_text = self.model().stringList()[item_row]
 
                 # Check for empty items
-                if re.search(r'^\s*$', item_text):
+                if RE_EMPTY_ITEM.search(item_text):
                     data = self.model().stringList()
                     data[item_row] = self.items_old[item_row]
 

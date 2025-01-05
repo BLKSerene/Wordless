@@ -243,6 +243,11 @@ class Wl_Settings_Files_Tags(wl_settings.Wl_Settings_Node):
         return True
 
 # self.tr() does not work in inherited classes
+RE_TAG_EMBEDDED = re.compile(r'^([^\w\s]|_)+\S*$')
+RE_TAG_NON_EMBEDDED = re.compile(r'^([^\w\s]|_)+\S*([^\w\s]|_)+$')
+RE_TAG_HTML_BRACKETS = re.compile(r'(^<)|(>$)')
+RE_TAG_HTML_PARENTHESES = re.compile(r'\s\((\d+)\)')
+
 class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
     def __init__(self, parent, settings_tags, defaults_row):
         super().__init__(
@@ -283,12 +288,12 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
 
                 # Opening Tag
                 if self.model().item(row, 0).text() == _tr('Wl_Table_Tags', 'Embedded'):
-                    re_validation = re.search(r'^([^\w\s]|_)+\S*$', item_opening_tag.text())
+                    re_validation = RE_TAG_EMBEDDED.search(item_opening_tag.text())
                     warning_text = _tr('Wl_Table_Tags', '''
                         <div>Embedded tags must begin with a punctuation mark, e.g. an underscore or a slash!</div>
                     ''')
                 else:
-                    re_validation = re.search(r'^([^\w\s]|_)+\S*([^\w\s]|_)+$', item_opening_tag.text())
+                    re_validation = RE_TAG_NON_EMBEDDED.search(item_opening_tag.text())
                     warning_text = _tr('Wl_Table_Tags', '''
                         <div>Non-embedded tags must begin and end with a punctuation mark, e.g. brackets!</div>
                     ''')
@@ -368,7 +373,7 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
             # HTML tags
             if opening_tag.startswith('<') and opening_tag.endswith('>'):
                 opening_tags = [
-                    re.sub(r'(^<)|(>$)', r'', self.model().item(i, 2).text())
+                    RE_TAG_HTML_BRACKETS.sub(r'', self.model().item(i, 2).text())
                     for i in range(self.model().rowCount())
                 ]
                 opening_tag = f"<{wl_checks_misc.check_new_name(opening_tag[1:-1], opening_tags, separator = '')}>"
@@ -376,7 +381,7 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                 opening_tags = [self.model().item(i, 2).text() for i in range(self.model().rowCount())]
                 opening_tag = wl_checks_misc.check_new_name(opening_tag, opening_tags, separator = '')
 
-            opening_tag = re.sub(r'\s\((\d+)\)', r'\1', opening_tag)
+            opening_tag = RE_TAG_HTML_PARENTHESES.sub(r'\1', opening_tag)
         else:
             type_, level, opening_tag, _ = texts
 

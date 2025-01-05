@@ -73,31 +73,35 @@ def test_get_re_tags():
     assert re_tags_body == r'_\S*(?=\s|$)|/\S*(?=\s|$)|_(?=\s|$)|</?.*?>|</?\ \*\ >|</?\ T\ AG\ >|</?>|</?\ >'
     assert re_tags_xml == r'</?p>|</?s>|</?w>|</?c>|</?\ p\ p\ >|</?>|</?\ >'
 
-    assert re.search(re_tags_header, r'token<teiHeader>').group() == '<teiHeader>'
-    assert re.search(re_tags_header, r'</teiHeader>token').group() == '</teiHeader>'
-    assert re.search(re_tags_header, r'<teiHeader>token</teiHeader>').group() == '<teiHeader>'
-    assert re.search(re_tags_header, r'< tei Header >token</ tei Header >').group() == '< tei Header >'
-    assert re.search(re_tags_header, r'<>token</>').group() == '<>'
-    assert re.search(re_tags_header, r'< >token</ >').group() == '< >'
+    re_tags_header = re.compile(re_tags_header)
+    re_tags_body = re.compile(re_tags_body)
+    re_tags_xml = re.compile(re_tags_xml)
 
-    assert re.search(re_tags_body, r'token_TAG').group() == '_TAG'
-    assert re.search(re_tags_body, r'token_T_AG').group() == '_T_AG'
-    assert re.search(re_tags_body, r'token_').group() == '_'
-    assert re.search(re_tags_body, r'token/TAG').group() == '/TAG'
-    assert re.search(re_tags_body, r'token<TAG>').group() == '<TAG>'
-    assert re.search(re_tags_body, r'</TAG>token').group() == '</TAG>'
-    assert re.search(re_tags_body, r'< T AG >token</ T AG >').group() == '< T AG >'
-    assert re.search(re_tags_body, r'<TAG>token</TAG>').group() == '<TAG>'
-    assert re.search(re_tags_body, r'<>token</>').group() == '<>'
-    assert re.search(re_tags_body, r'< >token</ >').group() == '< >'
-    assert re.search(re_tags_body, r'< * >token</ * >').group() == '< * >'
+    assert re_tags_header.search(r'token<teiHeader>').group() == '<teiHeader>'
+    assert re_tags_header.search(r'</teiHeader>token').group() == '</teiHeader>'
+    assert re_tags_header.search(r'<teiHeader>token</teiHeader>').group() == '<teiHeader>'
+    assert re_tags_header.search(r'< tei Header >token</ tei Header >').group() == '< tei Header >'
+    assert re_tags_header.search(r'<>token</>').group() == '<>'
+    assert re_tags_header.search(r'< >token</ >').group() == '< >'
 
-    assert re.search(re_tags_xml, r'token<p>').group() == '<p>'
-    assert re.search(re_tags_xml, r'</p>token').group() == '</p>'
-    assert re.search(re_tags_xml, r'<p>token</p>').group() == '<p>'
-    assert re.search(re_tags_xml, r'< p p >token</ p p >').group() == '< p p >'
-    assert re.search(re_tags_xml, r'<>token</>').group() == '<>'
-    assert re.search(re_tags_xml, r'< >token</ >').group() == '< >'
+    assert re_tags_body.search(r'token_TAG').group() == '_TAG'
+    assert re_tags_body.search(r'token_T_AG').group() == '_T_AG'
+    assert re_tags_body.search(r'token_').group() == '_'
+    assert re_tags_body.search(r'token/TAG').group() == '/TAG'
+    assert re_tags_body.search(r'token<TAG>').group() == '<TAG>'
+    assert re_tags_body.search(r'</TAG>token').group() == '</TAG>'
+    assert re_tags_body.search(r'< T AG >token</ T AG >').group() == '< T AG >'
+    assert re_tags_body.search(r'<TAG>token</TAG>').group() == '<TAG>'
+    assert re_tags_body.search(r'<>token</>').group() == '<>'
+    assert re_tags_body.search(r'< >token</ >').group() == '< >'
+    assert re_tags_body.search(r'< * >token</ * >').group() == '< * >'
+
+    assert re_tags_xml.search(r'token<p>').group() == '<p>'
+    assert re_tags_xml.search(r'</p>token').group() == '</p>'
+    assert re_tags_xml.search(r'<p>token</p>').group() == '<p>'
+    assert re_tags_xml.search(r'< p p >token</ p p >').group() == '< p p >'
+    assert re_tags_xml.search(r'<>token</>').group() == '<>'
+    assert re_tags_xml.search(r'< >token</ >').group() == '< >'
 
 def test_get_re_tags_with_tokens():
     re_tags_header = wl_matching.get_re_tags_with_tokens(main, tag_type = 'header')
@@ -108,26 +112,30 @@ def test_get_re_tags_with_tokens():
     assert re_tags_body == r'\S*_\S*(?=\s|$)|\S*/\S*(?=\s|$)|\S*_(?=\s|$)|<.*?>.*?</.*?>|<\ \*\ >.*</\ \*\ >|<\ T\ AG\ >.*</\ T\ AG\ >|<>.*</>|<\ >.*</\ >'
     assert re_tags_xml == r'<p>.*</p>|<s>.*</s>|<w>.*</w>|<c>.*</c>|<\ p\ p\ >.*</\ p\ p\ >|<>.*</>|<\ >.*</\ >'
 
-    assert re.search(re_tags_header, r'token <teiHeader>token</teiHeader> token').group() == '<teiHeader>token</teiHeader>'
-    assert re.search(re_tags_header, r'token <teiHeader>token</teiHeader> token').group() == '<teiHeader>token</teiHeader>'
-    assert re.search(re_tags_header, r'token < tei Header >token</ tei Header > token').group() == '< tei Header >token</ tei Header >'
-    assert re.search(re_tags_header, r'token <>token</> token').group() == '<>token</>'
-    assert re.search(re_tags_header, r'token < >token</ > token').group() == '< >token</ >'
+    re_tags_header = re.compile(re_tags_header)
+    re_tags_body = re.compile(re_tags_body)
+    re_tags_xml = re.compile(re_tags_xml)
 
-    assert re.search(re_tags_body, r'token token_TAG token').group() == 'token_TAG'
-    assert re.search(re_tags_body, r'token token/TAG token').group() == 'token/TAG'
-    assert re.search(re_tags_body, r'token token_T_AG token').group() == 'token_T_AG'
-    assert re.search(re_tags_body, r'token token_ token').group() == 'token_'
-    assert re.search(re_tags_body, r'token <TAG>token</TAG> token').group() == '<TAG>token</TAG>'
-    assert re.search(re_tags_body, r'token < T AG >token</ T AG > token').group() == '< T AG >token</ T AG >'
-    assert re.search(re_tags_body, r'token <>token</> token').group() == '<>token</>'
-    assert re.search(re_tags_body, r'token < >token</ > token').group() == '< >token</ >'
-    assert re.search(re_tags_body, r'token < * >token</ * > token').group() == '< * >token</ * >'
+    assert re_tags_header.search(r'token <teiHeader>token</teiHeader> token').group() == '<teiHeader>token</teiHeader>'
+    assert re_tags_header.search(r'token <teiHeader>token</teiHeader> token').group() == '<teiHeader>token</teiHeader>'
+    assert re_tags_header.search(r'token < tei Header >token</ tei Header > token').group() == '< tei Header >token</ tei Header >'
+    assert re_tags_header.search(r'token <>token</> token').group() == '<>token</>'
+    assert re_tags_header.search(r'token < >token</ > token').group() == '< >token</ >'
 
-    assert re.search(re_tags_xml, r'token <p>token</p> token').group() == '<p>token</p>'
-    assert re.search(re_tags_xml, r'token < p p >token</ p p > token').group() == '< p p >token</ p p >'
-    assert re.search(re_tags_xml, r'token <>token</> token').group() == '<>token</>'
-    assert re.search(re_tags_xml, r'token < >token</ > token').group() == '< >token</ >'
+    assert re_tags_body.search(r'token token_TAG token').group() == 'token_TAG'
+    assert re_tags_body.search(r'token token/TAG token').group() == 'token/TAG'
+    assert re_tags_body.search(r'token token_T_AG token').group() == 'token_T_AG'
+    assert re_tags_body.search(r'token token_ token').group() == 'token_'
+    assert re_tags_body.search(r'token <TAG>token</TAG> token').group() == '<TAG>token</TAG>'
+    assert re_tags_body.search(r'token < T AG >token</ T AG > token').group() == '< T AG >token</ T AG >'
+    assert re_tags_body.search(r'token <>token</> token').group() == '<>token</>'
+    assert re_tags_body.search(r'token < >token</ > token').group() == '< >token</ >'
+    assert re_tags_body.search(r'token < * >token</ * > token').group() == '< * >token</ * >'
+
+    assert re_tags_xml.search(r'token <p>token</p> token').group() == '<p>token</p>'
+    assert re_tags_xml.search(r'token < p p >token</ p p > token').group() == '< p p >token</ p p >'
+    assert re_tags_xml.search(r'token <>token</> token').group() == '<>token</>'
+    assert re_tags_xml.search(r'token < >token</ > token').group() == '< >token</ >'
 
 def init_token_settings(assign_pos_tags = False, ignore_tags = False, use_tags = False):
     return {

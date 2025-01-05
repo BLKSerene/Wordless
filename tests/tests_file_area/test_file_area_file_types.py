@@ -18,7 +18,6 @@
 
 import glob
 import os
-import re
 import time
 
 from PyQt5.QtCore import QObject
@@ -289,7 +288,7 @@ def update_gui_misc(err_msg, new_files):
         for sentence in para:
             for sentence_seg in sentence:
                 for token in sentence_seg:
-                    assert not re.search(wl_texts.RE_VIE_TOKENIZED, token)
+                    assert not wl_texts.RE_VIE_TOKENIZED.search(token)
 
 if __name__ == '__main__':
     test_file_area_file_types()

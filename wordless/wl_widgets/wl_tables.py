@@ -502,6 +502,10 @@ class Wl_Table(QTableView):
 
         wl_checks_work_area.check_err_exp_table(self.main, err_msg, file_path)
 
+RE_REDUNDANT_SPACES = re.compile(r'\s+')
+RE_INVALID_XML_CHARS = re.compile(r'[^\u0009\u000A\u000D\u0020-\uD7FF\uE000-\uFFFD\U00010000-\U0010FFFF]+')
+RE_COLOR = re.compile(r'(?<=color: #)([0-9a-fA-F]{3}|[0-9a-fA-F]{6})(?=;)')
+
 class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(str, str)
 
@@ -756,7 +760,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
     def clean_text_csv(self, items):
         for i, item in enumerate(items):
             items[i] = item.replace('\n', ' ')
-            items[i] = re.sub(r'\s+', ' ', items[i])
+            items[i] = RE_REDUNDANT_SPACES.sub(' ', items[i])
             items[i] = items[i].strip()
 
         return items
@@ -765,7 +769,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
     def remove_invalid_xml_chars(self, text):
         # openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE is not complete
         # Reference: https://www.w3.org/TR/xml/#charsets
-        return re.sub(r'[^\u0009\u000A\u000D\u0020-\uD7FF\uE000-\uFFFD\U00010000-\U0010FFFF]+', '', text)
+        return RE_INVALID_XML_CHARS.sub('', text)
 
     def style_header(self, cell):
         cell.font = openpyxl.styles.Font(
@@ -922,9 +926,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                 if isinstance(html, bs4.element.Tag) and html.has_attr('style'):
                     style = html['style']
 
-                    re_color = re.search(r'(?<=color: #)([0-9a-fA-F]{3}|[0-9a-fA-F]{6})(?=;)', style)
-
-                    if re_color:
+                    if (re_color := RE_COLOR.search(style)):
                         color = re_color.group()
 
                         # 3-digit color shorthand
@@ -1010,9 +1012,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                 if isinstance(html, bs4.element.Tag) and html.has_attr('style'):
                     style = html['style']
 
-                    re_color = re.search(r'(?<=color: #)([0-9a-fA-F]{3}|[0-9a-fA-F]{6})(?=;)', style)
-
-                    if re_color:
+                    if (re_color := RE_COLOR.search(style)):
                         color = re_color.group()
 
                         # 3-digit color shorthand

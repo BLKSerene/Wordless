@@ -128,7 +128,7 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
         # Generation Settings
         self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'))
 
-        self.checkbox_syllabification = QCheckBox(self.tr('Syllabification'))
+        self.checkbox_show_syllabified_forms = QCheckBox(self.tr('Show syllabified forms'))
         (
             self.label_measure_dispersion,
             self.combo_box_measure_dispersion,
@@ -136,12 +136,12 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
             self.combo_box_measure_adjusted_freq
         ) = wl_widgets.wl_widgets_measures_wordlist_ngram_generation(self)
 
-        self.checkbox_syllabification.stateChanged.connect(self.generation_settings_changed)
+        self.checkbox_show_syllabified_forms.stateChanged.connect(self.generation_settings_changed)
         self.combo_box_measure_dispersion.currentTextChanged.connect(self.generation_settings_changed)
         self.combo_box_measure_adjusted_freq.currentTextChanged.connect(self.generation_settings_changed)
 
         self.group_box_generation_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_generation_settings.layout().addWidget(self.checkbox_syllabification, 0, 0)
+        self.group_box_generation_settings.layout().addWidget(self.checkbox_show_syllabified_forms, 0, 0)
         self.group_box_generation_settings.layout().addWidget(self.label_measure_dispersion, 1, 0)
         self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_dispersion, 2, 0)
         self.group_box_generation_settings.layout().addWidget(self.label_measure_adjusted_freq, 3, 0)
@@ -266,7 +266,8 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
         self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
 
         # Generation Settings
-        self.checkbox_syllabification.setChecked(settings['generation_settings']['syllabification'])
+        self.checkbox_show_syllabified_forms.setChecked(settings['generation_settings']['show_syllabified_forms'])
+
         self.combo_box_measure_dispersion.set_measure(settings['generation_settings']['measure_dispersion'])
         self.combo_box_measure_adjusted_freq.set_measure(settings['generation_settings']['measure_adjusted_freq'])
 
@@ -313,11 +314,12 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
     def generation_settings_changed(self):
         settings = self.main.settings_custom['wordlist_generator']['generation_settings']
 
-        settings['syllabification'] = self.checkbox_syllabification.isChecked()
+        settings['show_syllabified_forms'] = self.checkbox_show_syllabified_forms.isChecked()
+
         settings['measure_dispersion'] = self.combo_box_measure_dispersion.get_measure()
         settings['measure_adjusted_freq'] = self.combo_box_measure_adjusted_freq.get_measure()
 
-        # Use Data
+        # Use data
         self.combo_box_use_data.measures_changed()
 
     def table_settings_changed(self):
@@ -383,7 +385,7 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
             try:
                 self.settings = copy.deepcopy(self.main.settings_custom)
 
-                settings = self.main.settings_custom['wordlist_generator']
+                settings = self.settings['wordlist_generator']
 
                 measure_dispersion = settings['generation_settings']['measure_dispersion']
                 measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
@@ -392,12 +394,13 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
                 col_text_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][measure_adjusted_freq]['col_text']
 
                 self.clr_table()
+                self.model().setRowCount(len(tokens_freq_files))
 
                 # Insert columns
-                if settings['generation_settings']['syllabification']:
+                if settings['generation_settings']['show_syllabified_forms']:
                     self.ins_header_hor(
                         self.model().columnCount() - 2,
-                        self.tr('Syllabification')
+                        self.tr('Syllabified Form')
                     )
 
                 files = list(self.main.wl_file_area.get_selected_files())
@@ -457,7 +460,6 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
                 freq_totals = numpy.array(list(tokens_freq_files.values())).sum(axis = 0)
                 len_files = len(files)
 
-                self.model().setRowCount(len(tokens_freq_files))
                 self.disable_updates()
 
                 for i, (token, freq_files) in enumerate(wl_sorting.sorted_freq_files_items(tokens_freq_files)):
@@ -470,8 +472,8 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
                     self.model().setItem(i, 1, wl_tables.Wl_Table_Item(token.display_text()))
                     self.model().item(i, 1).tokens_filter = [token]
 
-                    # Syllabification
-                    if settings['generation_settings']['syllabification']:
+                    # Syllabified Form
+                    if settings['generation_settings']['show_syllabified_forms']:
                         # Use tags only
                         if settings['token_settings']['use_tags']:
                             self.set_item_err(
@@ -480,12 +482,12 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
                                 alignment_hor = 'left'
                             )
                         elif len(syls_tokens[token]) == 1:
-                            token_syllabified = list(syls_tokens[token].values())[0]
+                            token_syllabified_form = list(syls_tokens[token].values())[0]
 
-                            if token_syllabified == self.tr('No language support'):
-                                self.set_item_err(i, 2, token_syllabified, alignment_hor = 'left')
+                            if token_syllabified_form == self.tr('No language support'):
+                                self.set_item_err(i, 2, token_syllabified_form, alignment_hor = 'left')
                             else:
-                                self.model().setItem(i, 2, wl_tables.Wl_Table_Item(token_syllabified))
+                                self.model().setItem(i, 2, wl_tables.Wl_Table_Item(token_syllabified_form))
                         # Same token found in more than one language
                         else:
                             token_syllabified_forms = []
@@ -494,12 +496,12 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
                                 lang_text = wl_conversion.to_lang_text(self.main, lang)
                                 token_syllabified_forms.append(f"{syllabified_form} [{lang_text}]")
 
-                            tokens_syllabified = ', '.join(token_syllabified_forms)
+                            token_syllabified_forms = ', '.join(token_syllabified_forms)
 
-                            if self.tr('No language support') in tokens_syllabified:
-                                self.set_item_err(i, 2, tokens_syllabified, alignment_hor = 'left')
+                            if self.tr('No language support') in token_syllabified_forms:
+                                self.set_item_err(i, 2, token_syllabified_forms, alignment_hor = 'left')
                             else:
-                                self.model().setItem(i, 2, wl_tables.Wl_Table_Item(tokens_syllabified))
+                                self.model().setItem(i, 2, wl_tables.Wl_Table_Item(token_syllabified_forms))
 
                     # Frequency
                     for j, freq in enumerate(freq_files):

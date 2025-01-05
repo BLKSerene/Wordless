@@ -207,9 +207,11 @@ SENTENCE_TERMINATORS = ''.join(list(dict.fromkeys([
 ])))
 
 def wl_sentence_split(main, text, terminators = SENTENCE_TERMINATORS):
+    re_terminators = re.compile(fr'.+?[{terminators}]+\s|.+?$')
+
     return [
         sentence.strip()
-        for sentence in re.findall(fr'.+?[{terminators}]+\s|.+?$', text.strip())
+        for sentence in re_terminators.findall(text.strip())
     ]
 
 # Reference: https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=[:Terminal_Punctuation=Yes:]
@@ -290,9 +292,11 @@ SENTENCE_SEG_TERMINATORS = ''.join(list(dict.fromkeys([
 ])))
 
 def wl_sentence_seg_tokenize(main, text, terminators = SENTENCE_SEG_TERMINATORS):
+    re_terminators = re.compile(fr'.+?[{terminators}]+|.+?$')
+
     return [
         sentence_seg.strip()
-        for sentence_seg in re.findall(fr'.+?[{terminators}]+|.+?$', text.strip())
+        for sentence_seg in re_terminators.findall(text.strip())
     ]
 
 REPLACEMENT_CHAR = '\uFFFF'
@@ -300,8 +304,9 @@ REPLACEMENT_CHAR = '\uFFFF'
 def wl_sentence_seg_tokenize_tokens(main, tokens, terminators = SENTENCE_SEG_TERMINATORS):
     # Insert a replacement character between tokens to prevent text from being split within tokens
     text = REPLACEMENT_CHAR.join(tokens)
+    re_terminators = re.compile(fr'.+?[{terminators}]+{REPLACEMENT_CHAR}|.+?$')
 
     return [
         wl_texts.clean_texts(sentence_seg.split(REPLACEMENT_CHAR))
-        for sentence_seg in re.findall(fr'.+?[{terminators}]+{REPLACEMENT_CHAR}|.+?$', text.strip())
+        for sentence_seg in re_terminators.findall(text.strip())
     ]

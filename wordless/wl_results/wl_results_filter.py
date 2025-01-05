@@ -388,9 +388,9 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
         self.col_text_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][measure_adjusted_freq]['col_text']
 
         if self.tab == 'wordlist_generator':
-            self.has_syllabification = settings['generation_settings']['syllabification']
+            self.has_syllabified_forms = settings['generation_settings']['show_syllabified_forms']
         else:
-            self.has_syllabification = True
+            self.has_syllabified_forms = True
 
         self.has_dispersion = measure_dispersion != 'none'
         self.has_adjusted_freq = measure_adjusted_freq != 'none'
@@ -409,7 +409,7 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
             settings = self.settings, filter_name = f'len_{self.type_node}'
         ))
 
-        if self.tab == 'wordlist_generator' and settings['generation_settings']['syllabification']:
+        if self.tab == 'wordlist_generator' and settings['generation_settings']['show_syllabified_forms']:
             self.layouts_filters.append(widgets_filter(
                 self,
                 label = self.tr('Number of syllables:'),
@@ -474,8 +474,8 @@ class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
         if self.dialog.tab == 'wordlist_generator':
             col_node = self.dialog.table.find_header_hor(self.tr('Token'))
 
-            if self.dialog.has_syllabification:
-                col_num_syls = self.dialog.table.find_header_hor(self.tr('Syllabification'))
+            if self.dialog.has_syllabified_forms:
+                col_num_syls = self.dialog.table.find_header_hor(self.tr('Syllabified Form'))
         elif self.dialog.tab == 'ngram_generator':
             col_node = self.dialog.table.find_header_hor(self.tr('N-gram'))
 
@@ -543,11 +543,11 @@ class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
             if self.dialog.table.model().item(i, col_freq).val > 0:
                 filters.append(len_node_min <= len_node <= len_node_max)
 
-            if self.dialog.tab == 'wordlist_generator' and self.dialog.has_syllabification:
+            if self.dialog.tab == 'wordlist_generator' and self.dialog.has_syllabified_forms:
                 filter_num_syls = False
-                syllabification = self.dialog.table.model().item(i, col_num_syls).text()
+                syllabified_form = self.dialog.table.model().item(i, col_num_syls).text()
 
-                for syls in syllabification.split(', '):
+                for syls in syllabified_form.split(', '):
                     if num_syls_min <= len(syls.split('-')) <= num_syls_max:
                         filter_num_syls = True
 

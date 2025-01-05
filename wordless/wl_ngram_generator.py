@@ -504,7 +504,7 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
         settings['measure_dispersion'] = self.combo_box_measure_dispersion.get_measure()
         settings['measure_adjusted_freq'] = self.combo_box_measure_adjusted_freq.get_measure()
 
-        # Keyword Position
+        # Search term position
         if self.spin_box_search_term_position_max.value() == self.spin_box_search_term_position_max.maximum():
             self.spin_box_search_term_position_min.setMaximum(settings['ngram_size_max'])
             self.spin_box_search_term_position_max.setMaximum(settings['ngram_size_max'])
@@ -520,7 +520,7 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
         else:
             self.spin_box_allow_skipped_tokens.setEnabled(False)
 
-        # Use Data
+        # Use data
         self.combo_box_use_data.measures_changed()
 
     def table_settings_changed(self):
@@ -590,7 +590,7 @@ class Wl_Table_Ngram_Generator(wl_tables.Wl_Table_Data_Filter_Search):
             try:
                 self.settings = copy.deepcopy(self.main.settings_custom)
 
-                settings = self.main.settings_custom['ngram_generator']
+                settings = self.settings['ngram_generator']
 
                 measure_dispersion = settings['generation_settings']['measure_dispersion']
                 measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
@@ -599,6 +599,7 @@ class Wl_Table_Ngram_Generator(wl_tables.Wl_Table_Data_Filter_Search):
                 col_text_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][measure_adjusted_freq]['col_text']
 
                 self.clr_table()
+                self.model().setRowCount(len(ngrams_freq_files))
 
                 # Insert columns
                 files = list(self.main.wl_file_area.get_selected_files())
@@ -658,7 +659,6 @@ class Wl_Table_Ngram_Generator(wl_tables.Wl_Table_Data_Filter_Search):
                 freq_totals = numpy.array(list(ngrams_freq_files.values())).sum(axis = 0)
                 len_files = len(files)
 
-                self.model().setRowCount(len(ngrams_freq_files))
                 self.disable_updates()
 
                 for i, (ngram, freq_files) in enumerate(wl_sorting.sorted_freq_files_items(ngrams_freq_files)):

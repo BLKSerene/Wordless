@@ -280,8 +280,8 @@ def wl_process_tokens_profiler(main, text, token_settings, tab):
     return text_modified
 
 def wl_process_tokens_wordlist_generator(main, text, token_settings, generation_settings):
-    # Syllabification
-    if generation_settings['syllabification']:
+    # Show syllabified forms
+    if generation_settings['show_syllabified_forms']:
         text_syl_tokenize(main, text)
 
     text_modified = wl_process_tokens_ngram_generator(main, text, token_settings)

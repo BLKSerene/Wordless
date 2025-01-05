@@ -426,7 +426,7 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         settings['context_len_right_para'] = self.spin_box_context_len_right_para.value()
         settings['context_len_unit'] = self.combo_box_context_len_unit.currentText()
 
-        # Width Unit
+        # Unit of context length
         if settings['context_len_unit'] == self.tr('Character'):
             self.stacked_widget_context_len_left.setCurrentIndex(0)
             self.stacked_widget_context_len_right.setCurrentIndex(0)

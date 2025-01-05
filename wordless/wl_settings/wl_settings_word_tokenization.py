@@ -220,6 +220,8 @@ class Wl_Settings_Word_Tokenization(wl_settings.Wl_Settings_Node):
 
         return True
 
+RE_VIE_SPECES_UNDERSCORES = re.compile(r'\s+')
+
 class Wl_Worker_Preview_Word_Tokenizer(wl_threading.Wl_Worker_No_Progress):
     worker_done = pyqtSignal(list)
 
@@ -241,7 +243,7 @@ class Wl_Worker_Preview_Word_Tokenizer(wl_threading.Wl_Worker_No_Progress):
 
             # Replace spaces with underscores in Vietnamese texts
             if preview_lang == 'vie':
-                tokens = [re.sub(r'\s+', r'_', token) for token in tokens]
+                tokens = [RE_VIE_SPECES_UNDERSCORES.sub(r'_', token) for token in tokens]
 
             preview_results.append(' '.join(tokens))
 
