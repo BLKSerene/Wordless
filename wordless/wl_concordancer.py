@@ -168,6 +168,8 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         # Generation Settings
         self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'), self)
 
+        self.checkbox_calc_sentiment_scores = QCheckBox(self.tr('Calculate sentiment scores'), self)
+
         self.label_context_len_left = QLabel(self.tr('Context length (left):'), self)
         self.stacked_widget_context_len_left = QStackedWidget(self)
         self.spin_box_context_len_left_char = wl_boxes.Wl_Spin_Box(self)
@@ -215,6 +217,8 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         self.spin_box_context_len_right_sentence.setRange(0, 1000)
         self.spin_box_context_len_right_para.setRange(0, 100)
 
+        self.checkbox_calc_sentiment_scores.stateChanged.connect(self.generation_settings_changed)
+
         self.spin_box_context_len_left_char.valueChanged.connect(self.generation_settings_changed)
         self.spin_box_context_len_left_token.valueChanged.connect(self.generation_settings_changed)
         self.spin_box_context_len_left_sentence_seg.valueChanged.connect(self.generation_settings_changed)
@@ -228,12 +232,14 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         self.combo_box_context_len_unit.currentTextChanged.connect(self.generation_settings_changed)
 
         self.group_box_generation_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_generation_settings.layout().addWidget(self.label_context_len_left, 0, 0)
-        self.group_box_generation_settings.layout().addWidget(self.stacked_widget_context_len_left, 0, 1)
-        self.group_box_generation_settings.layout().addWidget(self.label_context_len_right, 1, 0)
-        self.group_box_generation_settings.layout().addWidget(self.stacked_widget_context_len_right, 1, 1)
-        self.group_box_generation_settings.layout().addWidget(self.label_context_len_unit, 2, 0)
-        self.group_box_generation_settings.layout().addWidget(self.combo_box_context_len_unit, 2, 1)
+        self.group_box_generation_settings.layout().addWidget(self.checkbox_calc_sentiment_scores, 0, 0, 1, 2)
+
+        self.group_box_generation_settings.layout().addWidget(self.label_context_len_left, 1, 0)
+        self.group_box_generation_settings.layout().addWidget(self.stacked_widget_context_len_left, 1, 1)
+        self.group_box_generation_settings.layout().addWidget(self.label_context_len_right, 2, 0)
+        self.group_box_generation_settings.layout().addWidget(self.stacked_widget_context_len_right, 2, 1)
+        self.group_box_generation_settings.layout().addWidget(self.label_context_len_unit, 3, 0)
+        self.group_box_generation_settings.layout().addWidget(self.combo_box_context_len_unit, 3, 1)
 
         self.group_box_generation_settings.layout().setColumnStretch(1, 1)
 
@@ -344,6 +350,8 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
             self.main.wl_context_settings_concordancer.load_settings(defaults = True)
 
         # Generation Settings
+        self.checkbox_calc_sentiment_scores.setChecked(settings['generation_settings']['calc_sentiment_scores'])
+
         self.spin_box_context_len_left_char.setValue(settings['generation_settings']['context_len_left_char'])
         self.spin_box_context_len_left_token.setValue(settings['generation_settings']['context_len_left_token'])
         self.spin_box_context_len_left_sentence_seg.setValue(settings['generation_settings']['context_len_left_sentence_seg'])
@@ -404,6 +412,8 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
     def generation_settings_changed(self):
         settings = self.main.settings_custom['concordancer']['generation_settings']
 
+        settings['calc_sentiment_scores'] = self.checkbox_calc_sentiment_scores.isChecked()
+
         settings['context_len_left_char'] = self.spin_box_context_len_left_char.value()
         settings['context_len_left_token'] = self.spin_box_context_len_left_token.value()
         settings['context_len_left_sentence_seg'] = self.spin_box_context_len_left_sentence_seg.value()
@@ -461,7 +471,6 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
                 _tr('Wl_Table_Concordancer', 'Left'),
                 _tr('Wl_Table_Concordancer', 'Node'),
                 _tr('Wl_Table_Concordancer', 'Right'),
-                _tr('Wl_Table_Concordancer', 'Sentiment'),
                 _tr('Wl_Table_Concordancer', 'Token No.'),
                 _tr('Wl_Table_Concordancer', 'Token No. %'),
                 _tr('Wl_Table_Concordancer', 'Sentence Segment No.'),
@@ -477,9 +486,6 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
                 _tr('Wl_Table_Concordancer', 'Sentence Segment No.'),
                 _tr('Wl_Table_Concordancer', 'Sentence No.'),
                 _tr('Wl_Table_Concordancer', 'Paragraph No.')
-            ],
-            headers_float = [
-                _tr('Wl_Table_Concordancer', 'Sentiment')
             ],
             headers_pct = [
                 _tr('Wl_Table_Concordancer', 'Token No. %'),
@@ -514,8 +520,18 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
             try:
                 self.settings = copy.deepcopy(self.main.settings_custom)
 
+                settings = self.settings['concordancer']
+
                 self.clr_table(0)
                 self.model().setRowCount(len(concordance_lines))
+
+                # Insert columns
+                if settings['generation_settings']['calc_sentiment_scores']:
+                    self.ins_header_hor(
+                        3,
+                        self.tr('Sentiment score'),
+                        is_float = True
+                    )
 
                 self.disable_updates()
 
@@ -569,27 +585,32 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
                     self.indexWidget(self.model().index(i, 2)).tokens_search = right_tokens_search
 
                     # Sentiment
-                    if not isinstance(sentiment, str):
-                        self.set_item_num(i, 3, sentiment)
-                    # No language support
+                    if settings['generation_settings']['calc_sentiment_scores']:
+                        if not isinstance(sentiment, str):
+                            self.set_item_num(i, 3, sentiment)
+                        # No language support
+                        else:
+                            self.set_item_err(i, 3, text = sentiment, alignment_hor = 'right')
+
+                        i_token_no = 4
                     else:
-                        self.set_item_err(i, 3, text = sentiment, alignment_hor = 'right')
+                        i_token_no = 3
 
                     # Token No.
-                    self.set_item_num(i, 4, no_token)
-                    self.set_item_num(i, 5, no_token, len_tokens)
+                    self.set_item_num(i, i_token_no, no_token)
+                    self.set_item_num(i, i_token_no + 1, no_token, len_tokens)
                     # Sentence Segment No.
-                    self.set_item_num(i, 6, no_sentence_seg)
-                    self.set_item_num(i, 7, no_sentence_seg, len_sentence_segs)
+                    self.set_item_num(i, i_token_no + 2, no_sentence_seg)
+                    self.set_item_num(i, i_token_no + 3, no_sentence_seg, len_sentence_segs)
                     # Sentence No.
-                    self.set_item_num(i, 8, no_sentence)
-                    self.set_item_num(i, 9, no_sentence, len_sentences)
+                    self.set_item_num(i, i_token_no + 4, no_sentence)
+                    self.set_item_num(i, i_token_no + 5, no_sentence, len_sentences)
                     # Paragraph No.
-                    self.set_item_num(i, 10, no_para)
-                    self.set_item_num(i, 11, no_para, len_paras)
+                    self.set_item_num(i, i_token_no + 6, no_para)
+                    self.set_item_num(i, i_token_no + 7, no_para, len_paras)
 
                     # File
-                    self.model().setItem(i, 12, wl_tables.Wl_Table_Item(file_name))
+                    self.model().setItem(i, i_token_no + 8, wl_tables.Wl_Table_Item(file_name))
 
                 self.enable_updates()
 
@@ -877,7 +898,10 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                             concordance_line.append([right_tokens_raw, right_tokens_search])
 
                             # Sentiment
-                            if text.lang in self.main.settings_global['sentiment_analyzers']:
+                            if (
+                                settings['generation_settings']['calc_sentiment_scores']
+                                and text.lang in self.main.settings_global['sentiment_analyzers']
+                            ):
                                 sentiment_inputs.append(' '.join(
                                     [*left_tokens_search, *node_tokens_search, *right_tokens_search]
                                 ))
@@ -895,18 +919,22 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
 
                             concordance_lines_file.append(concordance_line)
 
-                if sentiment_inputs:
-                    sentiment_scores = wl_sentiment_analysis.wl_sentiment_analyze(
-                        self.main,
-                        inputs = sentiment_inputs,
-                        lang = text.lang
-                    )
+                if settings['generation_settings']['calc_sentiment_scores']:
+                    if sentiment_inputs:
+                        sentiment_scores = wl_sentiment_analysis.wl_sentiment_analyze(
+                            self.main,
+                            inputs = sentiment_inputs,
+                            lang = text.lang
+                        )
 
-                    for concordance_line, sentiment_score in zip(concordance_lines_file, sentiment_scores):
-                        concordance_line.insert(3, sentiment_score)
+                        for concordance_line, sentiment_score in zip(concordance_lines_file, sentiment_scores):
+                            concordance_line.insert(3, sentiment_score)
+                    else:
+                        for concordance_line in concordance_lines_file:
+                            concordance_line.insert(3, self.tr('No language support'))
                 else:
                     for concordance_line in concordance_lines_file:
-                        concordance_line.insert(3, self.tr('No language support'))
+                        concordance_line.insert(3, None)
 
                 concordance_lines.extend(concordance_lines_file)
         except Exception:

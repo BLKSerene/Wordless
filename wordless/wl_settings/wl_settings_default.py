@@ -222,6 +222,8 @@ def init_settings_default(main):
             },
 
             'generation_settings': {
+                'calc_sentiment_scores': False,
+
                 'context_len_left_char': 50,
                 'context_len_left_token': 10,
                 'context_len_left_sentence_seg': 0,

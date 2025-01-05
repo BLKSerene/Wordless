@@ -31,6 +31,7 @@ def test_concordancer():
 
     settings['search_settings']['multi_search_mode'] = True
     settings['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
+    settings['generation_settings']['calc_sentiment_scores'] = True
 
     for i in range(2 + len(glob.glob('tests/files/file_area/misc/*.txt'))):
         match i:
