@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<div align="center"><img src="/doc/wl_logo.png" alt="Wordless：一款具有多語種支援的語料庫整合工具，可用於語言學、文學及翻譯研究"></div>
+<div align="center"><img src="/doc/wl_logo.png" alt="Wordless：一款具有多語種支援的語料庫整合工具，可用於語言、文學及翻譯研究"></div>
 
 <br>
 
@@ -67,11 +67,11 @@
 
 <br>
 
-Wordless 是一款具有多語種支援的語料庫整合工具，可用於語言學、文學及翻譯研究，由當時就讀於上海外國語大學口譯研究專業的碩士研究生葉磊設計並開發。
+Wordless 是一款具有多語種支援的語料庫整合工具，可用於語言、文學及翻譯研究，由當時就讀於上海外國語大學口譯研究專業的碩士研究生葉磊自2018年起設計和開發。
 
 ## 下載
 
-Wordless 最新版（**3.4.0**）支援 **Windows 7/8/8.1/10/11**、**macOS 10.11 或更高版本**、**Ubuntu 18.04 或更高版本**、**Debian 10 或更高版本**以及**Arch Linux**，均僅支援**64位作業系統**。英特爾和 Apple 晶片的蘋果電腦均有支援。
+Wordless 最新版（**3.5.0**）支援 **Windows 7/8/8.1/10/11**、**macOS 10.11 或更高版本**、**Ubuntu 18.04 或更高版本**、**Debian 10 或更高版本**以及**Arch Linux**，均僅支援**64位作業系統**。英特爾和 Apple 晶片的蘋果電腦均有支援。
 
 如需完整的更新日誌，請參閱 [CHANGELOG.md](/CHANGELOG.md)（待翻譯）。
 
@@ -118,7 +118,7 @@ Bug 提交|[Github Issues](https://github.com/BLKSerene/Wordless/issues)
 
 ## 引用
 
-如果你打算發表使用了 *Wordless* 的成果，請根據期刊論文或電腦軟體的格式對 *Wordless* 進行引用。
+如果你打算發表使用了 *Wordless* 的成果，請根據期刊論文或計算機軟體的格式對 *Wordless* 進行引用。
 
 1. 根據期刊論文的格式進行引用
 
@@ -131,7 +131,7 @@ Chicago（第 18 版）：
 MLA（第 9 版）：
 <pre><code>Ye Lei. “Wordless: An Integrated Corpus Tool with Multilingual Support for the Study of Language, Literature, and Translation.” <i>SoftwareX</i>, vol. 28, Dec. 2024, https://doi.org/10.1016/j.softx.2024.101931.</code></pre>
 
-2. 根據電腦軟體的格式進行引用
+2. 根據計算機軟體的格式進行引用
 
 APA（第 7 版）：
 <pre><code>Ye, L. (2024). <i>Wordless</i> (Version 3.5.0) [Computer software]. Github. https://github.com/BLKSerene/Wordless</code></pre>
@@ -148,7 +148,7 @@ MLA（第 9 版）：
 
 ## 許可
 
-    Copyright (C) 2018-2024  Ye Lei (叶磊)
+    Copyright (C) 2018-2024  Ye Lei (葉磊)
     
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
