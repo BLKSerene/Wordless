@@ -263,10 +263,10 @@ class Wl_Table(QTableView):
         self.selectionModel().blockSignals(False)
         self.show()
 
-        self.horizontalHeader().sectionCountChanged.emit(self.num_cols_old, self.model().columnCount())
-        self.verticalHeader().sectionCountChanged.emit(self.num_rows_old, self.model().rowCount())
-
         if emit_signals:
+            self.horizontalHeader().sectionCountChanged.emit(self.num_cols_old, self.model().columnCount())
+            self.verticalHeader().sectionCountChanged.emit(self.num_rows_old, self.model().rowCount())
+
             self.model().itemChanged.emit(QStandardItem())
             self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
 

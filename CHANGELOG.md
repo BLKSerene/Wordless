@@ -36,6 +36,7 @@
 - Work Area: Fix Wordlist Generator - Filter results - Number of syllables
 - Work Area: Fix Wordlist Generator - Syllabification
 - Work Area: Fix Work Area - Filter results - File to filter
+- Work Area: Fix Work Area - Search in results - Clear highlights
 
 ### ❌ Removals
 - Measures: Remove effect size - Log-frequency biased MD / Mutual Dependency

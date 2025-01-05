@@ -197,9 +197,6 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
             selected_rows = []
 
             for table in self.tables:
-                table.disable_updates()
-
-            for table in self.tables:
                 if table.get_selected_rows():
                     selected_rows = [id(table), table.get_selected_rows()]
 
@@ -231,18 +228,12 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
                 self.tables[0].scrollTo(table.model().index(self.items_found[0][1], 0))
                 self.tables[0].selectRow(self.items_found[0][1])
 
-            for table in self.tables:
-                table.enable_updates()
-
     @wl_misc.log_time
     def find_prev(self):
         self.find_all()
 
         if self.items_found:
             selected_rows = []
-
-            for table in self.tables:
-                table.disable_updates()
 
             for table in self.tables:
                 if table.get_selected_rows():
@@ -275,9 +266,6 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
             else:
                 self.tables[-1].scrollTo(table.model().index(self.items_found[-1][1], 0))
                 self.tables[-1].selectRow(self.items_found[-1][1])
-
-            for table in self.tables:
-                table.enable_updates()
 
     @wl_misc.log_time
     def find_all(self):
@@ -338,26 +326,28 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
             for table in self.tables:
                 table.disable_updates()
 
-            for table, row, col in self.items_found:
-                if table.indexWidget(table.model().index(row, col)):
-                    table.indexWidget(table.model().index(row, col)).setStyleSheet('border: 0')
-                # Skip if the found item no longer exist (eg. the table has been re-generated)
-                elif table.model().item(row, col):
-                    table.model().item(row, col).setForeground(QBrush(QColor(table.default_foreground)))
-                    table.model().item(row, col).setBackground(QBrush(QColor(table.default_background)))
+            # Clear highlights for every cell since indexes of items found would be changed after sorting
+            for table in self.tables:
+                for row in range(table.model().rowCount()):
+                    for col in range(table.model().columnCount()):
+                        if table.indexWidget(table.model().index(row, col)):
+                            table.indexWidget(table.model().index(row, col)).setStyleSheet('border: 0')
+                        else:
+                            table.model().item(row, col).setForeground(QBrush(QColor(table.default_foreground)))
+                            table.model().item(row, col).setBackground(QBrush(QColor(table.default_background)))
 
             for table in self.tables:
-                table.enable_updates()
+                table.enable_updates(emit_signals = False)
 
             self.clr_history()
 
             self.main.statusBar().showMessage(self.tr('Highlights cleared.'))
 
-        self.button_clr_hightlights.setEnabled(False)
-
     def clr_history(self):
         self.last_search_settings.clear()
         self.items_found.clear()
+
+        self.button_clr_hightlights.setEnabled(False)
 
 class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
     def run(self):
@@ -406,13 +396,22 @@ class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
 
                     search_terms |= set(search_terms_file)
 
-            for search_term in search_terms:
-                len_search_term = len(search_term)
+            lens_search_terms = [len(search_term) for search_term in search_terms]
 
-                for (row, col), text in results.items():
+            for (row, col), text in results.items():
+                matched = False
+
+                for search_term, len_search_term in zip(search_terms, lens_search_terms):
                     for ngram in wl_nlp_utils.ngrams(text, len_search_term):
                         if ngram == tuple(search_term):
                             self.dialog.items_found.append([table, row, col])
+
+                            matched = True
+
+                            break
+
+                    if matched:
+                        break
 
         self.dialog.items_found = sorted(
             self.dialog.items_found,

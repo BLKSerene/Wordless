@@ -133,6 +133,9 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
             results[i][2] = right_new
 
         # Sort results
+        re_sorting_col_l = re.compile(self.tr(r'^L[1-9][0-9]*$'))
+        re_sorting_col_r = re.compile(self.tr(r'^R[1-9][0-9]*$'))
+
         for sorting_col, sorting_order in reversed(self.settings['sorting_rules']):
             reverse = 0 if sorting_order == self.tr('Ascending') else 1
 
@@ -148,12 +151,13 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
             else:
                 span = int(sorting_col[1:])
 
-                if re.search(self.tr(r'^L[1-9][0-9]*$'), sorting_col):
-
+                if re_sorting_col_l.search(sorting_col):
                     results.sort(key = lambda item, span = span: item[0].tokens_raw[-span], reverse = reverse)
-                elif re.search(self.tr(r'^R[1-9][0-9]*$'), sorting_col):
-
+                elif re_sorting_col_r.search(sorting_col):
                     results.sort(key = lambda item, span = span: item[2].tokens_raw[span - 1], reverse = reverse)
+
+        # Clear highlights before sorting the results
+        self.table.dialog_results_search.clr_highlights()
 
         self.table.disable_updates()
 
@@ -166,6 +170,8 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
             color_settings['lvl_5'],
             color_settings['lvl_6']
         ]
+
+        re_node_color = re.compile(r'(?<=color: )#[0-9A-Za-z]{6}(?=;)')
 
         for row, (
             left, node, right, sentiment,
@@ -180,18 +186,14 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
             text_right = [token for token in right.tokens_raw if token]
 
             # Re-apply node color
-            node_text = re.sub(
-                r'(?<=color: )#[0-9A-Za-z]{6}(?=;)',
-                color_settings['lvl_1'],
-                node.text()
-            )
+            node_text = re_node_color.sub(color_settings['lvl_1'], node.text())
 
             # Start from level 2 (level 1 applies to nodes)
             i_highlight_color_left = 1
             i_highlight_color_right = 1
 
             for sorting_col, _ in self.settings['sorting_rules']:
-                if re.search(self.tr(r'^L[0-9]+$'), sorting_col) and int(sorting_col[1:]) <= len(text_left):
+                if re_sorting_col_l.search(sorting_col) and int(sorting_col[1:]) <= len(text_left):
                     hightlight_color = highlight_colors[i_highlight_color_left % len(highlight_colors)]
 
                     text_left[-int(sorting_col[1:])] = f'''
@@ -201,7 +203,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
                     '''
 
                     i_highlight_color_left += 1
-                elif re.search(self.tr(r'^R[0-9]+$'), sorting_col) and int(sorting_col[1:]) - 1 < len(text_right):
+                elif re_sorting_col_r.search(sorting_col) and int(sorting_col[1:]) - 1 < len(text_right):
                     hightlight_color = highlight_colors[i_highlight_color_right % len(highlight_colors)]
 
                     text_right[int(sorting_col[1:]) - 1] = f'''
@@ -239,9 +241,6 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
             self.table.set_item_num_val(row, 10, no_para)
             self.table.set_item_num_val(row, 11, no_para_pct)
             self.table.model().item(row, 12).setText(file)
-
-            # Clear highlights
-            self.table.dialog_results_search.clr_highlights()
 
         self.table.enable_updates(emit_signals = False)
 

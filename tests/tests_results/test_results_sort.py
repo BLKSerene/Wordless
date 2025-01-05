@@ -19,10 +19,14 @@
 from PyQt5.QtCore import QItemSelectionModel
 
 from tests import wl_test_init
-from wordless.wl_results import wl_results_sort
+from wordless.wl_results import wl_results_search, wl_results_sort
 
 main = wl_test_init.Wl_Test_Main()
 table = wl_test_init.Wl_Test_Table(main, tab = 'concordancer')
+table.dialog_results_search = wl_results_search.Wl_Dialog_Results_Search(
+    main,
+    table = table
+)
 
 def test_wl_dialog_results_sort_concordancer():
     dialog_results_sort_concordancer = wl_results_sort.Wl_Dialog_Results_Sort_Concordancer(
