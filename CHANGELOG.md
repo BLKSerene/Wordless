@@ -25,6 +25,7 @@
 - Settings: Add Settings - Measures - Effect Size - Mutual Information / Pointwise Mutual Information / Pointwise Mutual Information (Cubic) / Pointwise Mutual Information (Squared)
 - Utils: Add Stanza's Sindhi dependency parser
 - Work Area: Add Concordancer - Generation Settings - Calculate sentiment scores
+- Work Area: Add Concordancer - Sort results - Column - Sentence Segment / Sentence / Paragraph No.
 
 ### ✨ Improvements
 - Measures: Update lexical density/diversity - Brunet's index

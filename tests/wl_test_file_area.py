@@ -37,8 +37,8 @@ def wl_test_file_area(main):
     def open_file(err_msg, files_to_open):
         assert not err_msg
 
-        if files_to_open[-1]['name'] == '[amh] No language support':
-            files_to_open[-1]['lang'] = 'amh'
+        if files_to_open[-1]['name'] == '[other] No language support':
+            files_to_open[-1]['lang'] = 'other'
 
         if files_to_open[-1]['name'] == '[eng_gb] Tagged':
             files_to_open[-1]['tokenized'] = True
@@ -128,13 +128,13 @@ def wl_test_file_area(main):
 
         assert new_file['path_orig'] == wl_paths.get_normalized_path(file_path)
 
-        if i < NUM_FILES_ALL or new_file['name'] in ['[amh] No language support', '[eng_gb] Tagged']:
+        if i < NUM_FILES_ALL or new_file['name'] in ['[eng_gb] Tagged']:
             assert new_file['encoding'] == 'utf_8'
         else:
             assert new_file['encoding'] == 'ascii'
 
-        if new_file['name'] == '[amh] No language support':
-            assert new_file['lang'] == 'amh'
+        if new_file['name'] == '[other] No language support':
+            assert new_file['lang'] == 'other'
         else:
             assert new_file['lang'] == 'eng_us'
 

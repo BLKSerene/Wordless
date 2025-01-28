@@ -38,11 +38,17 @@ def test_wordlist_generator():
             # Single file
             case 0:
                 wl_test_init.select_test_files(main, no_files = [0])
+
+                settings['generation_settings']['show_syllabified_forms'] = False
             # Multiple files
             case 1:
                 wl_test_init.select_test_files(main, no_files = [1, 2])
+
+                settings['generation_settings']['show_syllabified_forms'] = True
             # Miscellaneous
             case _:
+                settings['generation_settings']['show_syllabified_forms'] = True
+
                 wl_test_init.select_test_files(main, no_files = [i + 1])
 
         global main_global
@@ -61,25 +67,53 @@ def test_wordlist_generator():
             update_gui = update_gui
         ).run()
 
-def update_gui(err_msg, tokens_freq_files, tokens_stats_files, tokens_syllabified_form):
+def update_gui(err_msg, tokens_freq_files, tokens_stats_files, syls_tokens):
     print(err_msg)
     assert not err_msg
 
     assert len(tokens_freq_files) == len(tokens_stats_files) >= 1
 
     num_files_selected = len(list(main_global.wl_file_area.get_selected_files()))
+    settings = main_global.settings_custom['wordlist_generator']['generation_settings']
+
+    show_syllabified_forms = settings['show_syllabified_forms']
+    measure_dispersion = settings['measure_dispersion']
+    measure_adjusted_freq = settings['measure_adjusted_freq']
 
     for token, freq_files in tokens_freq_files.items():
         stats_files = tokens_stats_files[token]
 
         # Token
         assert token
+
         # Syllabified Form
-        assert tokens_syllabified_form[token]
+        if show_syllabified_forms:
+            token_syllabified_form = list(syls_tokens[token].values())[0]
+
+            if list(main_global.wl_file_area.get_selected_file_names())[0] == '[other] No language support':
+                assert token_syllabified_form == 'No language support'
+            else:
+                assert token_syllabified_form
+        else:
+            assert not syls_tokens
+
         # Frequency
         assert len(freq_files) == num_files_selected + 1
+
         # Dispersion & Adjusted Frequency
         assert len(stats_files) == num_files_selected + 1
+
+        for dispersion, adjusted_freq in stats_files:
+            if measure_dispersion == 'none':
+                assert dispersion is None
+            else:
+                assert dispersion >= 0
+
+            if measure_adjusted_freq == 'none':
+                assert adjusted_freq is None
+            else:
+                assert adjusted_freq >= 0
+
         # Number of Files Found
         assert len([freq for freq in freq_files[:-1] if freq]) >= 1
 

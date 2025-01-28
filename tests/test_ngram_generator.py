@@ -71,16 +71,34 @@ def update_gui(err_msg, ngrams_freq_files, ngrams_stats_files):
     assert len(ngrams_freq_files) == len(ngrams_stats_files) >= 1
 
     num_files_selected = len(list(main_global.wl_file_area.get_selected_files()))
+    settings = main_global.settings_custom['ngram_generator']['generation_settings']
+
+    measure_dispersion = settings['measure_dispersion']
+    measure_adjusted_freq = settings['measure_adjusted_freq']
 
     for ngram, freq_files in ngrams_freq_files.items():
         stats_files = ngrams_stats_files[ngram]
 
         # N-gram
         assert ngram
+
         # Frequency
         assert len(freq_files) == num_files_selected + 1
+
         # Dispersion & Adjusted Frequency
         assert len(stats_files) == num_files_selected + 1
+
+        for dispersion, adjusted_freq in stats_files:
+            if measure_dispersion == 'none':
+                assert dispersion is None
+            else:
+                assert dispersion >= 0
+
+            if measure_adjusted_freq == 'none':
+                assert adjusted_freq is None
+            else:
+                assert adjusted_freq >= 0
+
         # Number of Files Found
         assert len([freq for freq in freq_files[:-1] if freq]) >= 1
 

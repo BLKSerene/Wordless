@@ -16,9 +16,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import copy
+# pylint: disable=broad-exception-caught
 
-from PyQt5.QtCore import QCoreApplication, Qt
+import copy
+import traceback
+
+from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
 from PyQt5.QtGui import QBrush, QColor
 from PyQt5.QtWidgets import QPushButton
 
@@ -284,41 +287,45 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
 
             wl_threading.Wl_Thread(worker_results_search).start_worker()
 
-    def update_gui(self):
-        if self.items_found:
-            for table in self.tables:
-                table.disable_updates()
+    def update_gui(self, err_msg):
+        if wl_checks_work_area.check_postprocessing(self.main, err_msg):
+            try:
+                if self.items_found:
+                    for table in self.tables:
+                        table.disable_updates()
 
-            for table, row, col in self.items_found:
-                if table.indexWidget(table.model().index(row, col)):
-                    table.indexWidget(table.model().index(row, col)).setStyleSheet('border: 1px solid #E53E3A;')
+                    for table, row, col in self.items_found:
+                        if table.indexWidget(table.model().index(row, col)):
+                            table.indexWidget(table.model().index(row, col)).setStyleSheet('border: 1px solid #E53E3A;')
+                        else:
+                            table.model().item(row, col).setForeground(QBrush(QColor('#FFF')))
+                            table.model().item(row, col).setBackground(QBrush(QColor('#E53E3A')))
+
+                    for table in self.tables:
+                        table.enable_updates()
+
+                    self.button_clr_hightlights.setEnabled(True)
                 else:
-                    table.model().item(row, col).setForeground(QBrush(QColor('#FFF')))
-                    table.model().item(row, col).setBackground(QBrush(QColor('#E53E3A')))
+                    wl_msg_boxes.Wl_Msg_Box_Warning(
+                        self.main,
+                        title = self.tr('No Search Results'),
+                        text = self.tr('''
+                            <div>Searching has completed successfully, but there are no results found.</div>
+                            <div>You can change your settings and try again.</div>
+                        ''')
+                    ).open()
 
-            for table in self.tables:
-                table.enable_updates()
+                    self.button_clr_hightlights.setEnabled(False)
 
-            self.button_clr_hightlights.setEnabled(True)
-        else:
-            wl_msg_boxes.Wl_Msg_Box_Warning(
-                self.main,
-                title = self.tr('No Search Results'),
-                text = self.tr('''
-                    <div>Searching has completed successfully, but there are no results found.</div>
-                    <div>You can change your settings and try again.</div>
-                ''')
-            ).open()
+                # Save search settings
+                self.last_search_settings = copy.deepcopy(self.settings)
 
-            self.button_clr_hightlights.setEnabled(False)
+                len_items_found = len(self.items_found)
+                msg_item = self.tr('item') if len_items_found == 1 else self.tr('items')
 
-        # Save search settings
-        self.last_search_settings = copy.deepcopy(self.settings)
-
-        len_items_found = len(self.items_found)
-        msg_item = self.tr('item') if len_items_found == 1 else self.tr('items')
-
-        self.main.statusBar().showMessage(self.tr('Found {} {}.').format(len_items_found, msg_item))
+                self.main.statusBar().showMessage(self.tr('Found {} {}.').format(len_items_found, msg_item))
+            except Exception:
+                wl_checks_work_area.check_err(self.main, traceback.format_exc())
 
     @wl_misc.log_time
     def clr_highlights(self):
@@ -350,73 +357,81 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.button_clr_hightlights.setEnabled(False)
 
 class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
+    worker_done = pyqtSignal(str)
+
     def run(self):
-        for table in self.dialog.tables:
-            results = {}
-            search_terms = set()
+        err_msg = ''
 
-            # Only search in visible rows and columns
-            rows_to_search = [
-                row
-                for row in range(table.model().rowCount())
-                if not table.isRowHidden(row)
-            ]
-            cols_to_search = [
-                col
-                for col in range(table.model().columnCount())
-                if not table.isColumnHidden(col)
-            ]
+        try:
+            for table in self.dialog.tables:
+                results = {}
+                search_terms = set()
 
-            for col in cols_to_search:
-                # Concordancer - Left, Node, Right / Parallel Concordancer - Parallel Unit / Dependency Parser - Sentence
-                if table.indexWidget(table.model().index(0, col)):
-                    for row in rows_to_search:
-                        results[(row, col)] = table.indexWidget(table.model().index(row, col)).tokens_search
-                else:
-                    for row in rows_to_search:
-                        # Dependency Parser - Sentence / N-gram Generator - N-gram
-                        try:
-                            results[(row, col)] = table.model().item(row, col).tokens_search
-                        except AttributeError:
-                            results[(row, col)] = wl_texts.display_texts_to_tokens(
-                                self.main,
-                                [table.model().item(row, col).text()]
-                            )
+                # Only search in visible rows and columns
+                rows_to_search = [
+                    row
+                    for row in range(table.model().rowCount())
+                    if not table.isRowHidden(row)
+                ]
+                cols_to_search = [
+                    col
+                    for col in range(table.model().columnCount())
+                    if not table.isColumnHidden(col)
+                ]
 
-            items = [token for text in results.values() for token in text]
+                for col in cols_to_search:
+                    # Concordancer - Left, Node, Right / Parallel Concordancer - Parallel Unit / Dependency Parser - Sentence
+                    if table.indexWidget(table.model().index(0, col)):
+                        for row in rows_to_search:
+                            results[(row, col)] = table.indexWidget(table.model().index(row, col)).tokens_search
+                    else:
+                        for row in rows_to_search:
+                            # Dependency Parser - Sentence / N-gram Generator - N-gram
+                            try:
+                                results[(row, col)] = table.model().item(row, col).tokens_search
+                            except AttributeError:
+                                results[(row, col)] = wl_texts.display_texts_to_tokens(
+                                    self.main,
+                                    [table.model().item(row, col).text()]
+                                )
 
-            for file in table.settings['file_area']['files_open']:
-                if file['selected']:
-                    search_terms_file = wl_matching.match_search_terms_ngrams(
-                        self.main, items,
-                        lang = file['lang'],
-                        token_settings = table.settings[self.dialog.tab]['token_settings'],
-                        search_settings = self.dialog.settings
-                    )
+                items = [token for text in results.values() for token in text]
 
-                    search_terms |= set(search_terms_file)
+                for file in table.settings['file_area']['files_open']:
+                    if file['selected']:
+                        search_terms_file = wl_matching.match_search_terms_ngrams(
+                            self.main, items,
+                            lang = file['lang'],
+                            token_settings = table.settings[self.dialog.tab]['token_settings'],
+                            search_settings = self.dialog.settings
+                        )
 
-            lens_search_terms = [len(search_term) for search_term in search_terms]
+                        search_terms |= set(search_terms_file)
 
-            for (row, col), text in results.items():
-                matched = False
+                lens_search_terms = [len(search_term) for search_term in search_terms]
 
-                for search_term, len_search_term in zip(search_terms, lens_search_terms):
-                    for ngram in wl_nlp_utils.ngrams(text, len_search_term):
-                        if ngram == tuple(search_term):
-                            self.dialog.items_found.append([table, row, col])
+                for (row, col), text in results.items():
+                    matched = False
 
-                            matched = True
+                    for search_term, len_search_term in zip(search_terms, lens_search_terms):
+                        for ngram in wl_nlp_utils.ngrams(text, len_search_term):
+                            if ngram == tuple(search_term):
+                                self.dialog.items_found.append([table, row, col])
 
+                                matched = True
+
+                                break
+
+                        if matched:
                             break
 
-                    if matched:
-                        break
+            self.dialog.items_found = sorted(
+                self.dialog.items_found,
+                key = lambda item: (id(item[0]), item[1], item[2])
+            )
 
-        self.dialog.items_found = sorted(
-            self.dialog.items_found,
-            key = lambda item: (id(item[0]), item[1], item[2])
-        )
-
-        self.progress_updated.emit(self.tr('Highlighting found items...'))
-        self.worker_done.emit()
+            self.progress_updated.emit(self.tr('Highlighting found items...'))
+        except Exception:
+            err_msg = traceback.format_exc()
+        finally:
+            self.worker_done.emit(err_msg)

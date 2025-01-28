@@ -119,6 +119,10 @@ def test_check_results():
 def test_check_results_download_model():
     assert wl_checks_work_area.check_results_download_model(main, '', 'test')
 
+def test_check_postprocessing():
+    assert wl_checks_work_area.check_postprocessing(main, '')
+    assert not wl_checks_work_area.check_postprocessing(main, 'test')
+
 def test_check_err_table():
     wl_checks_work_area.check_err_table(main, '')
     wl_checks_work_area.check_err_table(main, 'test')
@@ -146,5 +150,6 @@ if __name__ == '__main__':
     test_check_nlp_support()
     test_check_results()
     test_check_results_download_model()
+    test_check_postprocessing()
     test_check_err_table()
     test_check_err_fig()

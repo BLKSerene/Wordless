@@ -43,8 +43,8 @@ from wordless.wl_settings import wl_settings, wl_settings_default, wl_settings_g
 from wordless.wl_utils import wl_misc
 from wordless.wl_widgets import wl_tables
 
-# English, Amharic
-SEARCH_TERMS = ['take', 'አማርኛ']
+# English
+SEARCH_TERMS = ['take']
 
 # An instance of QApplication must be created before any instance of QWidget
 wl_app = QApplication(sys.argv)

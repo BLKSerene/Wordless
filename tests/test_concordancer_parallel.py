@@ -54,6 +54,8 @@ def update_gui(err_msg, concordance_lines):
     assert concordance_lines
 
     for concordance_line in concordance_lines:
+        assert len(concordance_line) == 2
+
         parallel_unit_no, len_parallel_units = concordance_line[0]
 
         # Parallel Unit No.
