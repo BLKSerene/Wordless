@@ -908,7 +908,7 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info_Copy):
                 )
             elif settings['cite_as'] == self.tr('A piece of computer software'):
                 self.set_info(
-                    f'Ye, L. ({self.main.copyright_year}). <i>Wordless</i> (Version {self.main.ver}) [Computer software]. Github. https://github.com/BLKSerene/Wordless'
+                    f'Ye, L. ({self.main.copyright_year}). <i>Wordless</i> (Version {self.main.ver}) [Computer software]. GitHub. https://github.com/BLKSerene/Wordless'
                 )
         elif settings['citation_sys'].startswith('Chicago'):
             if settings['cite_as'] == self.tr('A journal article'):
@@ -926,7 +926,7 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info_Copy):
                 )
             elif settings['cite_as'] == self.tr('A piece of computer software'):
                 self.set_info(
-                    f'Ye Lei. <i>Wordless</i>. Version {self.main.ver}, <i>Github</i>, 1 Jul. {self.main.copyright_year}, https://github.com/BLKSerene/Wordless.'
+                    f'Ye Lei. <i>Wordless</i>. Version {self.main.ver}, <i>GitHub</i>, 1 Jul. {self.main.copyright_year}, https://github.com/BLKSerene/Wordless.'
                 )
 
 class Wl_Dialog_Donating(wl_dialogs.Wl_Dialog_Info):

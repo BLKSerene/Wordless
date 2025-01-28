@@ -16,6 +16,6 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # --------------------------------------------------------------------->
 
-If you would like to contribute to the development of Wordless, you can help with bug fixes, performance enhancements, or implementation of new features by submitting [pull requests](https://github.com/BLKSerene/Wordless/pulls) on Github.
+If you would like to contribute to the development of *Wordless*, you can help with bug fixes, performance enhancements, or implementation of new features by submitting [pull requests](https://github.com/BLKSerene/Wordless/pulls) on GitHub.
 
-Besides, you may contribute by writing [wikis](https://github.com/BLKSerene/Wordless/wiki) on Github, making tutorial videos, or helping with the translation of the user interface and [documentation](/doc/doc_eng.md) into other languages.
+Besides, you may contribute by writing [wikis](https://github.com/BLKSerene/Wordless/wiki) on GitHub, making tutorial videos, or helping with the translation of the user interface and [documentation](/doc/doc_eng.md) into other languages.
