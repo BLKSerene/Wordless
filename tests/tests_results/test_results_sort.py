@@ -46,7 +46,7 @@ def test_wl_dialog_results_sort_concordancer():
         ['L1', 'Ascending']
     ]
     dialog_results_sort_concordancer.sort_results()
-    dialog_results_sort_concordancer.update_gui([])
+    dialog_results_sort_concordancer.update_gui([], '')
 
 def test_table_results_sort_concordancer():
     table_results_sort_concordancer = wl_results_sort.Wl_Table_Results_Sort_Conordancer(

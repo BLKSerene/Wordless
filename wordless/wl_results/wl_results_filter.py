@@ -16,12 +16,16 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+# pylint: disable=broad-exception-caught
+
 import copy
 import math
+import traceback
 
-from PyQt5.QtCore import QCoreApplication
+from PyQt5.QtCore import pyqtSignal, QCoreApplication
 from PyQt5.QtWidgets import QLabel, QPushButton
 
+from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc
 from wordless.wl_utils import wl_misc, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_buttons, wl_layouts
@@ -232,10 +236,14 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
         )
         wl_threading.Wl_Thread(worker_filter_results).start_worker()
 
-    def update_gui(self):
-        self.table.filter_table()
+    def update_gui(self, err_msg):
+        if wl_checks_work_area.check_postprocessing(self.main, err_msg):
+            try:
+                self.table.filter_table()
 
-        self.main.statusBar().showMessage(_tr('Wl_Dialog_Results_Filter', 'The results in the data table has been successfully filtered.'))
+                self.main.statusBar().showMessage(_tr('Wl_Dialog_Results_Filter', 'The results in the data table has been successfully filtered.'))
+            except Exception:
+                wl_checks_work_area.check_err(self.main, traceback.format_exc())
 
     def show(self):
         super().show()
@@ -312,66 +320,74 @@ class Wl_Dialog_Results_Filter_Dependency_Parser(Wl_Dialog_Results_Filter):
             layout.load_settings(settings)
 
 class Wl_Worker_Results_Filter_Dependency_Parser(wl_threading.Wl_Worker):
+    worker_done = pyqtSignal(str)
+
     def run(self):
-        col_head = self.dialog.table.find_header_hor(self.tr('Head'))
-        col_dependent = self.dialog.table.find_header_hor(self.tr('Dependent'))
-        col_dependency_len = self.dialog.table.find_header_hor(self.tr('Dependency Length'))
-        col_dependency_len_abs = self.dialog.table.find_header_hor(self.tr('Dependency Length (Absolute)'))
-        col_file = self.dialog.table.find_header_hor(self.tr('File'))
+        err_msg = ''
 
-        len_head_min, len_head_max = get_filter_min_max(
-            settings = self.dialog.settings,
-            filter_name = 'len_head'
-        )
-        len_dependent_min, len_dependent_max = get_filter_min_max(
-            settings = self.dialog.settings,
-            filter_name = 'len_dependent'
-        )
-        dependency_len_min, dependency_len_max = get_filter_min_max(
-            settings = self.dialog.settings,
-            filter_name = 'dependency_len'
-        )
-        dependency_len_abs_min, dependency_len_abs_max = get_filter_min_max(
-            settings = self.dialog.settings,
-            filter_name = 'dependency_len_abs'
-        )
+        try:
+            col_head = self.dialog.table.find_header_hor(self.tr('Head'))
+            col_dependent = self.dialog.table.find_header_hor(self.tr('Dependent'))
+            col_dependency_len = self.dialog.table.find_header_hor(self.tr('Dependency Length'))
+            col_dependency_len_abs = self.dialog.table.find_header_hor(self.tr('Dependency Length (Absolute)'))
+            col_file = self.dialog.table.find_header_hor(self.tr('File'))
 
-        self.dialog.table.row_filters = []
+            len_head_min, len_head_max = get_filter_min_max(
+                settings = self.dialog.settings,
+                filter_name = 'len_head'
+            )
+            len_dependent_min, len_dependent_max = get_filter_min_max(
+                settings = self.dialog.settings,
+                filter_name = 'len_dependent'
+            )
+            dependency_len_min, dependency_len_max = get_filter_min_max(
+                settings = self.dialog.settings,
+                filter_name = 'dependency_len'
+            )
+            dependency_len_abs_min, dependency_len_abs_max = get_filter_min_max(
+                settings = self.dialog.settings,
+                filter_name = 'dependency_len_abs'
+            )
 
-        for i in range(self.dialog.table.model().rowCount()):
-            if (
-                self.dialog.settings['file_to_filter'] == self.tr('Total')
-                or self.dialog.table.model().item(i, col_file).text() == self.dialog.settings['file_to_filter']
-            ):
-                filters = []
+            self.dialog.table.row_filters = []
 
-                # Only count the length of token texts when filtering tagged tokens
-                len_head = sum((
-                    len(str(token))
-                    for token in self.dialog.table.model().item(i, col_head).tokens_filter
-                ))
-                filters.append(len_head_min <= len_head <= len_head_max)
+            for i in range(self.dialog.table.model().rowCount()):
+                if (
+                    self.dialog.settings['file_to_filter'] == self.tr('Total')
+                    or self.dialog.table.model().item(i, col_file).text() == self.dialog.settings['file_to_filter']
+                ):
+                    filters = []
 
-                len_dependent = sum((
-                    len(str(token))
-                    for token in self.dialog.table.model().item(i, col_dependent).tokens_filter
-                ))
-                filters.append(len_dependent_min <= len_dependent <= len_dependent_max)
+                    # Only count the length of token texts when filtering tagged tokens
+                    len_head = sum((
+                        len(str(token))
+                        for token in self.dialog.table.model().item(i, col_head).tokens_filter
+                    ))
+                    filters.append(len_head_min <= len_head <= len_head_max)
 
-                filters.append(
-                    dependency_len_min <= self.dialog.table.model().item(i, col_dependency_len).val <= dependency_len_max
-                )
+                    len_dependent = sum((
+                        len(str(token))
+                        for token in self.dialog.table.model().item(i, col_dependent).tokens_filter
+                    ))
+                    filters.append(len_dependent_min <= len_dependent <= len_dependent_max)
 
-                filters.append(
-                    dependency_len_abs_min <= self.dialog.table.model().item(i, col_dependency_len_abs).val <= dependency_len_abs_max
-                )
+                    filters.append(
+                        dependency_len_min <= self.dialog.table.model().item(i, col_dependency_len).val <= dependency_len_max
+                    )
 
-                self.dialog.table.row_filters.append(all(filters))
-            else:
-                self.dialog.table.row_filters.append(True)
+                    filters.append(
+                        dependency_len_abs_min <= self.dialog.table.model().item(i, col_dependency_len_abs).val <= dependency_len_abs_max
+                    )
 
-        self.progress_updated.emit(self.tr('Updating table...'))
-        self.worker_done.emit()
+                    self.dialog.table.row_filters.append(all(filters))
+                else:
+                    self.dialog.table.row_filters.append(True)
+
+            self.progress_updated.emit(self.tr('Updating table...'))
+        except Exception:
+            err_msg = traceback.format_exc()
+        finally:
+            self.worker_done.emit(err_msg)
 
 class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
     def __init__(self, main, table):
@@ -470,113 +486,121 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
             layout.load_settings(settings)
 
 class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
+    worker_done = pyqtSignal(str)
+
     def run(self):
-        if self.dialog.tab == 'wordlist_generator':
-            col_node = self.dialog.table.find_header_hor(self.tr('Token'))
+        err_msg = ''
 
-            if self.dialog.has_syllabified_forms:
-                col_num_syls = self.dialog.table.find_header_hor(self.tr('Syllabified Form'))
-        elif self.dialog.tab == 'ngram_generator':
-            col_node = self.dialog.table.find_header_hor(self.tr('N-gram'))
+        try:
+            if self.dialog.tab == 'wordlist_generator':
+                col_node = self.dialog.table.find_header_hor(self.tr('Token'))
 
-        col_freq = self.dialog.table.find_header_hor(
-            self.tr('[{}]\nFrequency').format(self.dialog.settings['file_to_filter'])
-        )
+                if self.dialog.has_syllabified_forms:
+                    col_num_syls = self.dialog.table.find_header_hor(self.tr('Syllabified Form'))
+            elif self.dialog.tab == 'ngram_generator':
+                col_node = self.dialog.table.find_header_hor(self.tr('N-gram'))
 
-        if self.dialog.has_dispersion:
-            col_dispersion = self.dialog.table.find_header_hor(
-                f"[{self.dialog.settings['file_to_filter']}]\n{self.dialog.col_text_dispersion}"
-            )
-
-        if self.dialog.has_adjusted_freq:
-            col_adjusted_freq = self.dialog.table.find_header_hor(
-                f"[{self.dialog.settings['file_to_filter']}]\n{self.dialog.col_text_adjusted_freq}"
-            )
-
-        col_num_files_found = self.dialog.table.find_header_hor(self.tr('Number of\nFiles Found'))
-
-        len_node_min, len_node_max = get_filter_min_max(
-            settings = self.dialog.settings,
-            filter_name = f'len_{self.dialog.type_node}'
-        )
-
-        if self.dialog.tab == 'wordlist_generator':
-            num_syls_min, num_syls_max = get_filter_min_max(
-                settings = self.dialog.settings,
-                filter_name = 'num_syls'
-            )
-
-        freq_min, freq_max = get_filter_min_max(
-            settings = self.dialog.settings,
-            filter_name = 'freq'
-        )
-
-        if self.dialog.has_dispersion:
-            dispersion_min, dispersion_max = get_filter_min_max(
-                settings = self.dialog.settings,
-                filter_name = 'dispersion'
-            )
-
-        if self.dialog.has_adjusted_freq:
-            adjusted_freq_min, adjusted_freq_max = get_filter_min_max(
-                settings = self.dialog.settings,
-                filter_name = 'adjusted_freq'
-            )
-
-        num_files_found_min, num_files_found_max = get_filter_min_max(
-            settings = self.dialog.settings,
-            filter_name = 'num_files_found'
-        )
-
-        self.dialog.table.row_filters = []
-
-        for i in range(self.dialog.table.model().rowCount()):
-            filters = []
-
-            # Only count the length of token texts when filtering tagged tokens
-            len_node = sum((
-                len(str(token))
-                for token in self.dialog.table.model().item(i, col_node).tokens_filter
-            ))
-
-            # Filter node length only when the node appears at least once in the specified file
-            if self.dialog.table.model().item(i, col_freq).val > 0:
-                filters.append(len_node_min <= len_node <= len_node_max)
-
-            if self.dialog.tab == 'wordlist_generator' and self.dialog.has_syllabified_forms:
-                filter_num_syls = False
-                syllabified_form = self.dialog.table.model().item(i, col_num_syls).text()
-
-                for syls in syllabified_form.split(', '):
-                    if num_syls_min <= len(syls.split('-')) <= num_syls_max:
-                        filter_num_syls = True
-
-                        break
-
-                filters.append(filter_num_syls)
-
-            filters.append(
-                freq_min <= self.dialog.table.model().item(i, col_freq).val <= freq_max
+            col_freq = self.dialog.table.find_header_hor(
+                self.tr('[{}]\nFrequency').format(self.dialog.settings['file_to_filter'])
             )
 
             if self.dialog.has_dispersion:
-                filters.append(
-                    dispersion_min <= self.dialog.table.model().item(i, col_dispersion).val <= dispersion_max
+                col_dispersion = self.dialog.table.find_header_hor(
+                    f"[{self.dialog.settings['file_to_filter']}]\n{self.dialog.col_text_dispersion}"
                 )
 
             if self.dialog.has_adjusted_freq:
-                filters.append(
-                    adjusted_freq_min <= self.dialog.table.model().item(i, col_adjusted_freq).val <= adjusted_freq_max
+                col_adjusted_freq = self.dialog.table.find_header_hor(
+                    f"[{self.dialog.settings['file_to_filter']}]\n{self.dialog.col_text_adjusted_freq}"
                 )
 
-            filters.append(
-                num_files_found_min <= self.dialog.table.model().item(i, col_num_files_found).val <= num_files_found_max
+            col_num_files_found = self.dialog.table.find_header_hor(self.tr('Number of\nFiles Found'))
+
+            len_node_min, len_node_max = get_filter_min_max(
+                settings = self.dialog.settings,
+                filter_name = f'len_{self.dialog.type_node}'
             )
 
-            self.dialog.table.row_filters.append(all(filters))
+            if self.dialog.tab == 'wordlist_generator':
+                num_syls_min, num_syls_max = get_filter_min_max(
+                    settings = self.dialog.settings,
+                    filter_name = 'num_syls'
+                )
 
-        self.progress_updated.emit(self.tr('Updating table...'))
-        self.worker_done.emit()
+            freq_min, freq_max = get_filter_min_max(
+                settings = self.dialog.settings,
+                filter_name = 'freq'
+            )
+
+            if self.dialog.has_dispersion:
+                dispersion_min, dispersion_max = get_filter_min_max(
+                    settings = self.dialog.settings,
+                    filter_name = 'dispersion'
+                )
+
+            if self.dialog.has_adjusted_freq:
+                adjusted_freq_min, adjusted_freq_max = get_filter_min_max(
+                    settings = self.dialog.settings,
+                    filter_name = 'adjusted_freq'
+                )
+
+            num_files_found_min, num_files_found_max = get_filter_min_max(
+                settings = self.dialog.settings,
+                filter_name = 'num_files_found'
+            )
+
+            self.dialog.table.row_filters = []
+
+            for i in range(self.dialog.table.model().rowCount()):
+                filters = []
+
+                # Only count the length of token texts when filtering tagged tokens
+                len_node = sum((
+                    len(str(token))
+                    for token in self.dialog.table.model().item(i, col_node).tokens_filter
+                ))
+
+                # Filter node length only when the node appears at least once in the specified file
+                if self.dialog.table.model().item(i, col_freq).val > 0:
+                    filters.append(len_node_min <= len_node <= len_node_max)
+
+                if self.dialog.tab == 'wordlist_generator' and self.dialog.has_syllabified_forms:
+                    filter_num_syls = False
+                    syllabified_form = self.dialog.table.model().item(i, col_num_syls).text()
+
+                    for syls in syllabified_form.split(', '):
+                        if num_syls_min <= len(syls.split('-')) <= num_syls_max:
+                            filter_num_syls = True
+
+                            break
+
+                    filters.append(filter_num_syls)
+
+                filters.append(
+                    freq_min <= self.dialog.table.model().item(i, col_freq).val <= freq_max
+                )
+
+                if self.dialog.has_dispersion:
+                    filters.append(
+                        dispersion_min <= self.dialog.table.model().item(i, col_dispersion).val <= dispersion_max
+                    )
+
+                if self.dialog.has_adjusted_freq:
+                    filters.append(
+                        adjusted_freq_min <= self.dialog.table.model().item(i, col_adjusted_freq).val <= adjusted_freq_max
+                    )
+
+                filters.append(
+                    num_files_found_min <= self.dialog.table.model().item(i, col_num_files_found).val <= num_files_found_max
+                )
+
+                self.dialog.table.row_filters.append(all(filters))
+
+            self.progress_updated.emit(self.tr('Updating table...'))
+        except Exception:
+            err_msg = traceback.format_exc()
+        finally:
+            self.worker_done.emit(err_msg)
 
 class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
     def __init__(self, main, table):
@@ -737,156 +761,164 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
             self.settings['freq_position'] = self.combo_box_freq_position.currentText()
 
 class Wl_Worker_Results_Filter_Collocation_Extractor(wl_threading.Wl_Worker):
-    def run(self):
-        if self.dialog.type_node == 'node':
-            col_node = self.dialog.table.find_header_hor(self.tr('Node'))
-            col_collocate = self.dialog.table.find_header_hor(self.tr('Collocate'))
+    worker_done = pyqtSignal(str)
 
-            if self.dialog.settings['freq_position'] == self.tr('Total'):
+    def run(self):
+        err_msg = ''
+
+        try:
+            if self.dialog.type_node == 'node':
+                col_node = self.dialog.table.find_header_hor(self.tr('Node'))
+                col_collocate = self.dialog.table.find_header_hor(self.tr('Collocate'))
+
+                if self.dialog.settings['freq_position'] == self.tr('Total'):
+                    col_freq = self.dialog.table.find_header_hor(
+                        self.tr('[{}]\nFrequency').format(self.dialog.settings['file_to_filter'])
+                    )
+                else:
+                    col_freq = self.dialog.table.find_header_hor(
+                        f"[{self.dialog.settings['file_to_filter']}]\n{self.dialog.settings['freq_position']}"
+                    )
+            else:
+                col_node = self.dialog.table.find_header_hor(self.tr('Keyword'))
                 col_freq = self.dialog.table.find_header_hor(
                     self.tr('[{}]\nFrequency').format(self.dialog.settings['file_to_filter'])
                 )
-            else:
-                col_freq = self.dialog.table.find_header_hor(
-                    f"[{self.dialog.settings['file_to_filter']}]\n{self.dialog.settings['freq_position']}"
-                )
-        else:
-            col_node = self.dialog.table.find_header_hor(self.tr('Keyword'))
-            col_freq = self.dialog.table.find_header_hor(
+
+            col_freq_total = self.dialog.table.find_header_hor(
                 self.tr('[{}]\nFrequency').format(self.dialog.settings['file_to_filter'])
             )
 
-        col_freq_total = self.dialog.table.find_header_hor(
-            self.tr('[{}]\nFrequency').format(self.dialog.settings['file_to_filter'])
-        )
-
-        if self.dialog.has_test_stat:
-            col_test_stat = self.dialog.table.find_header_hor(
-                f"[{self.dialog.settings['file_to_filter']}]\n{self.dialog.col_text_test_stat}"
-            )
-
-        if self.dialog.has_p_val:
-            col_p_value = self.dialog.table.find_header_hor(
-                self.tr('[{}]\np-value').format(self.dialog.settings['file_to_filter'])
-            )
-
-        if self.dialog.has_bayes_factor:
-            col_bayes_factor = self.dialog.table.find_header_hor(
-                self.tr('[{}]\nBayes Factor').format(self.dialog.settings['file_to_filter'])
-            )
-
-        if self.dialog.has_effect_size:
-            col_effect_size = self.dialog.table.find_header_hor(
-                f"[{self.dialog.settings['file_to_filter']}]\n{self.dialog.col_text_effect_size}"
-            )
-
-        col_num_files_found = self.dialog.table.find_header_hor(self.tr('Number of\nFiles Found'))
-
-        len_node_min, len_node_max = get_filter_min_max(
-            settings = self.dialog.settings,
-            filter_name = f'len_{self.dialog.type_node}'
-        )
-
-        if self.dialog.type_node == 'node':
-            len_collocate_min, len_collocate_max = get_filter_min_max(
-                settings = self.dialog.settings,
-                filter_name = 'len_collocate'
-            )
-
-            len_collocation_min, len_collocation_max = get_filter_min_max(
-                settings = self.dialog.settings,
-                filter_name = f'len_{self.dialog.type_collocation}'
-            )
-
-        freq_min, freq_max = get_filter_min_max(
-            settings = self.dialog.settings,
-            filter_name = 'freq'
-        )
-
-        if self.dialog.has_test_stat:
-            test_stat_min, test_stat_max = get_filter_min_max(
-                settings = self.dialog.settings,
-                filter_name = 'test_stat'
-            )
-
-        if self.dialog.has_p_val:
-            p_val_min, p_val_max = get_filter_min_max(
-                settings = self.dialog.settings,
-                filter_name = 'p_val'
-            )
-
-        if self.dialog.has_bayes_factor:
-            bayes_factor_min, bayes_factor_max = get_filter_min_max(
-                settings = self.dialog.settings,
-                filter_name = 'bayes_factor'
-            )
-
-        if self.dialog.has_effect_size:
-            effect_size_min, effect_size_max = get_filter_min_max(
-                settings = self.dialog.settings,
-                filter_name = 'effect_size'
-            )
-
-        num_files_found_min, num_files_found_max = get_filter_min_max(
-            settings = self.dialog.settings,
-            filter_name = 'num_files_found'
-        )
-
-        self.dialog.table.row_filters = []
-
-        for i in range(self.dialog.table.model().rowCount()):
-            filters = []
-
-            # Only count the length of token texts when filtering tagged tokens
-            len_node = sum((
-                len(str(token))
-                for token in self.dialog.table.model().item(i, col_node).tokens_filter
-            ))
-
-            # Filter node length only when the collocation/colligation/keyword appears at least once in the specified file
-            if self.dialog.table.model().item(i, col_freq_total).val > 0:
-                filters.append(len_node_min <= len_node <= len_node_max)
-
-            if self.dialog.type_node == 'node':
-                len_collocate = sum((
-                    len(str(token))
-                    for token in self.dialog.table.model().item(i, col_collocate).tokens_filter
-                ))
-
-                # Filter collocate/collocation/colligation length only when the collocation/colligation/keyword appears at least once in the specified file
-                if self.dialog.table.model().item(i, col_freq_total).val > 0:
-                    filters.append(len_collocate_min <= len_collocate <= len_collocate_max)
-                    filters.append(len_collocation_min <= len_node + len_collocate <= len_collocation_max)
-
-            filters.append(
-                freq_min <= self.dialog.table.model().item(i, col_freq).val <= freq_max
-            )
-
             if self.dialog.has_test_stat:
-                filters.append(
-                    test_stat_min <= self.dialog.table.model().item(i, col_test_stat).val <= test_stat_max
+                col_test_stat = self.dialog.table.find_header_hor(
+                    f"[{self.dialog.settings['file_to_filter']}]\n{self.dialog.col_text_test_stat}"
                 )
 
             if self.dialog.has_p_val:
-                filters.append(
-                    p_val_min <= self.dialog.table.model().item(i, col_p_value).val <= p_val_max
+                col_p_value = self.dialog.table.find_header_hor(
+                    self.tr('[{}]\np-value').format(self.dialog.settings['file_to_filter'])
                 )
 
             if self.dialog.has_bayes_factor:
-                filters.append(
-                    bayes_factor_min <= self.dialog.table.model().item(i, col_bayes_factor).val <= bayes_factor_max
+                col_bayes_factor = self.dialog.table.find_header_hor(
+                    self.tr('[{}]\nBayes Factor').format(self.dialog.settings['file_to_filter'])
                 )
 
             if self.dialog.has_effect_size:
-                filters.append(
-                    effect_size_min <= self.dialog.table.model().item(i, col_effect_size).val <= effect_size_max
+                col_effect_size = self.dialog.table.find_header_hor(
+                    f"[{self.dialog.settings['file_to_filter']}]\n{self.dialog.col_text_effect_size}"
                 )
 
-            filters.append(
-                num_files_found_min <= self.dialog.table.model().item(i, col_num_files_found).val <= num_files_found_max
+            col_num_files_found = self.dialog.table.find_header_hor(self.tr('Number of\nFiles Found'))
+
+            len_node_min, len_node_max = get_filter_min_max(
+                settings = self.dialog.settings,
+                filter_name = f'len_{self.dialog.type_node}'
             )
 
-            self.dialog.table.row_filters.append(all(filters))
+            if self.dialog.type_node == 'node':
+                len_collocate_min, len_collocate_max = get_filter_min_max(
+                    settings = self.dialog.settings,
+                    filter_name = 'len_collocate'
+                )
 
-        self.progress_updated.emit(self.tr('Updating table...'))
-        self.worker_done.emit()
+                len_collocation_min, len_collocation_max = get_filter_min_max(
+                    settings = self.dialog.settings,
+                    filter_name = f'len_{self.dialog.type_collocation}'
+                )
+
+            freq_min, freq_max = get_filter_min_max(
+                settings = self.dialog.settings,
+                filter_name = 'freq'
+            )
+
+            if self.dialog.has_test_stat:
+                test_stat_min, test_stat_max = get_filter_min_max(
+                    settings = self.dialog.settings,
+                    filter_name = 'test_stat'
+                )
+
+            if self.dialog.has_p_val:
+                p_val_min, p_val_max = get_filter_min_max(
+                    settings = self.dialog.settings,
+                    filter_name = 'p_val'
+                )
+
+            if self.dialog.has_bayes_factor:
+                bayes_factor_min, bayes_factor_max = get_filter_min_max(
+                    settings = self.dialog.settings,
+                    filter_name = 'bayes_factor'
+                )
+
+            if self.dialog.has_effect_size:
+                effect_size_min, effect_size_max = get_filter_min_max(
+                    settings = self.dialog.settings,
+                    filter_name = 'effect_size'
+                )
+
+            num_files_found_min, num_files_found_max = get_filter_min_max(
+                settings = self.dialog.settings,
+                filter_name = 'num_files_found'
+            )
+
+            self.dialog.table.row_filters = []
+
+            for i in range(self.dialog.table.model().rowCount()):
+                filters = []
+
+                # Only count the length of token texts when filtering tagged tokens
+                len_node = sum((
+                    len(str(token))
+                    for token in self.dialog.table.model().item(i, col_node).tokens_filter
+                ))
+
+                # Filter node length only when the collocation/colligation/keyword appears at least once in the specified file
+                if self.dialog.table.model().item(i, col_freq_total).val > 0:
+                    filters.append(len_node_min <= len_node <= len_node_max)
+
+                if self.dialog.type_node == 'node':
+                    len_collocate = sum((
+                        len(str(token))
+                        for token in self.dialog.table.model().item(i, col_collocate).tokens_filter
+                    ))
+
+                    # Filter collocate/collocation/colligation length only when the collocation/colligation/keyword appears at least once in the specified file
+                    if self.dialog.table.model().item(i, col_freq_total).val > 0:
+                        filters.append(len_collocate_min <= len_collocate <= len_collocate_max)
+                        filters.append(len_collocation_min <= len_node + len_collocate <= len_collocation_max)
+
+                filters.append(
+                    freq_min <= self.dialog.table.model().item(i, col_freq).val <= freq_max
+                )
+
+                if self.dialog.has_test_stat:
+                    filters.append(
+                        test_stat_min <= self.dialog.table.model().item(i, col_test_stat).val <= test_stat_max
+                    )
+
+                if self.dialog.has_p_val:
+                    filters.append(
+                        p_val_min <= self.dialog.table.model().item(i, col_p_value).val <= p_val_max
+                    )
+
+                if self.dialog.has_bayes_factor:
+                    filters.append(
+                        bayes_factor_min <= self.dialog.table.model().item(i, col_bayes_factor).val <= bayes_factor_max
+                    )
+
+                if self.dialog.has_effect_size:
+                    filters.append(
+                        effect_size_min <= self.dialog.table.model().item(i, col_effect_size).val <= effect_size_max
+                    )
+
+                filters.append(
+                    num_files_found_min <= self.dialog.table.model().item(i, col_num_files_found).val <= num_files_found_max
+                )
+
+                self.dialog.table.row_filters.append(all(filters))
+
+            self.progress_updated.emit(self.tr('Updating table...'))
+        except Exception:
+            err_msg = traceback.format_exc()
+        finally:
+            self.worker_done.emit(err_msg)

@@ -43,7 +43,7 @@ def test_wl_dialog_results_search():
     dialog_results_search.find_next()
     dialog_results_search.find_prev()
     dialog_results_search.find_all()
-    dialog_results_search.update_gui()
+    dialog_results_search.update_gui('')
     dialog_results_search.clr_highlights()
     dialog_results_search.clr_history()
 

@@ -31,18 +31,23 @@ def test_concordancer():
 
     settings['search_settings']['multi_search_mode'] = True
     settings['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
-    settings['generation_settings']['calc_sentiment_scores'] = True
 
     for i in range(2 + len(glob.glob('tests/files/file_area/misc/*.txt'))):
         match i:
             # Single file
             case 0:
+                settings['generation_settings']['calc_sentiment_scores'] = False
+
                 wl_test_init.select_test_files(main, no_files = [0])
             # Multiple files
             case 1:
+                settings['generation_settings']['calc_sentiment_scores'] = True
+
                 wl_test_init.select_test_files(main, no_files = [1, 2])
             # Miscellaneous
             case _:
+                settings['generation_settings']['calc_sentiment_scores'] = True
+
                 wl_test_init.select_test_files(main, no_files = [i + 1])
 
         global main_global
@@ -69,6 +74,8 @@ def update_gui_table(err_msg, concordance_lines):
     file_names_selected = list(main_global.wl_file_area.get_selected_file_names())
 
     for concordance_line in concordance_lines:
+        assert len(concordance_line) == 9
+
         left_tokens_raw, left_tokens_search = concordance_line[0]
         node_tokens_raw, node_tokens_search = concordance_line[1]
         right_tokens_raw, right_tokens_search = concordance_line[2]
@@ -93,7 +100,14 @@ def update_gui_table(err_msg, concordance_lines):
         assert right_tokens_search == [] or all(right_tokens_search)
 
         # Sentiment
-        assert sentiment == 'No language support' or -1 <= sentiment <= 1
+        if main_global.settings_custom['concordancer']['generation_settings']['calc_sentiment_scores']:
+            if file_name == '[other] No language support':
+                assert sentiment == 'No language support'
+            else:
+                assert -1 <= sentiment <= 1
+        else:
+            assert sentiment is None
+
         # Token No.
         assert no_token >= 1
         assert len_tokens >= 1

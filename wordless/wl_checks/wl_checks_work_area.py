@@ -204,6 +204,17 @@ def check_results_download_model(main, err_msg, model_name = ''):
 
     return results_ok
 
+def check_postprocessing(main, err_msg):
+    results_ok = True
+
+    if err_msg:
+        results_ok = False
+
+        wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
+        wl_status_bar_msg_err_fatal(main)
+
+    return results_ok
+
 def check_err(main, err_msg):
     if err_msg:
         wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()

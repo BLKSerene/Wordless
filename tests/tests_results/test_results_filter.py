@@ -97,36 +97,60 @@ def test_wl_dialog_results_filter_dependency_parser():
 
     dialog_results_filter_dependency_parser.load_settings(defaults = True)
     dialog_results_filter_dependency_parser.load_settings(defaults = False)
+    dialog_results_filter_dependency_parser.filter_results()
+    dialog_results_filter_dependency_parser.update_gui('')
 
 def test_wl_dialog_results_filter_wordlist_generator():
     dialog_results_filter_wordlist_generator = wl_results_filter.Wl_Dialog_Results_Filter_Wordlist_Generator(
         main,
         table = wl_test_init.Wl_Test_Table(main, tab = 'wordlist_generator')
     )
+
     dialog_results_filter_wordlist_generator.load_settings(defaults = True)
     dialog_results_filter_wordlist_generator.load_settings(defaults = False)
+    dialog_results_filter_wordlist_generator.filter_results()
+    dialog_results_filter_wordlist_generator.update_gui('')
 
-    wl_results_filter.Wl_Dialog_Results_Filter_Wordlist_Generator(
+    dialog_results_filter_ngram_generator = wl_results_filter.Wl_Dialog_Results_Filter_Wordlist_Generator(
         main,
         table = wl_test_init.Wl_Test_Table(main, tab = 'ngram_generator')
     )
+
+    dialog_results_filter_ngram_generator.load_settings(defaults = True)
+    dialog_results_filter_ngram_generator.load_settings(defaults = False)
+    dialog_results_filter_ngram_generator.filter_results()
+    dialog_results_filter_ngram_generator.update_gui('')
 
 def test_wl_dialog_results_filter_collocation_extractor():
     dialog_results_filter_collocation_extractor = wl_results_filter.Wl_Dialog_Results_Filter_Collocation_Extractor(
         main,
         table = wl_test_init.Wl_Test_Table(main, tab = 'collocation_extractor')
     )
+
     dialog_results_filter_collocation_extractor.load_settings(defaults = True)
     dialog_results_filter_collocation_extractor.load_settings(defaults = False)
+    dialog_results_filter_collocation_extractor.filter_results()
+    dialog_results_filter_collocation_extractor.update_gui('')
 
-    wl_results_filter.Wl_Dialog_Results_Filter_Collocation_Extractor(
+    dialog_results_filter_colligation_extractor = wl_results_filter.Wl_Dialog_Results_Filter_Collocation_Extractor(
         main,
         table = wl_test_init.Wl_Test_Table(main, tab = 'colligation_extractor')
     )
-    wl_results_filter.Wl_Dialog_Results_Filter_Collocation_Extractor(
+
+    dialog_results_filter_colligation_extractor.load_settings(defaults = True)
+    dialog_results_filter_colligation_extractor.load_settings(defaults = False)
+    dialog_results_filter_colligation_extractor.filter_results()
+    dialog_results_filter_colligation_extractor.update_gui('')
+
+    dialog_results_filter_keyword_extractor = wl_results_filter.Wl_Dialog_Results_Filter_Collocation_Extractor(
         main,
         table = wl_test_init.Wl_Test_Table(main, tab = 'keyword_extractor')
     )
+
+    dialog_results_filter_keyword_extractor.load_settings(defaults = True)
+    dialog_results_filter_keyword_extractor.load_settings(defaults = False)
+    dialog_results_filter_keyword_extractor.filter_results()
+    dialog_results_filter_keyword_extractor.update_gui('')
 
 if __name__ == '__main__':
     test_widgets_filter()

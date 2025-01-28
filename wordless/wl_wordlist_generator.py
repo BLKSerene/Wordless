@@ -622,15 +622,16 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
                 self.tokens_freq_files.append(collections.Counter(tokens))
 
                 # Syllabification
-                for token in set(tokens):
-                    if token not in self.syls_tokens:
-                        self.syls_tokens[token] = {}
+                if settings['generation_settings']['show_syllabified_forms']:
+                    for token in set(tokens):
+                        if token not in self.syls_tokens:
+                            self.syls_tokens[token] = {}
 
-                    if text.lang not in self.syls_tokens[token]:
-                        if token.syls:
-                            self.syls_tokens[token][text.lang] = '-'.join(token.syls)
-                        else:
-                            self.syls_tokens[token][text.lang] = _tr('Wl_Worker_Wordlist_Generator', 'No language support')
+                        if text.lang not in self.syls_tokens[token]:
+                            if token.syls:
+                                self.syls_tokens[token][text.lang] = '-'.join(token.syls)
+                            else:
+                                self.syls_tokens[token][text.lang] = _tr('Wl_Worker_Wordlist_Generator', 'No language support')
 
                 texts.append(text)
 

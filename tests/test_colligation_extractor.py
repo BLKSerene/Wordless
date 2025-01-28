@@ -23,6 +23,8 @@ from tests import wl_test_init
 from wordless import wl_colligation_extractor
 from wordless.wl_dialogs import wl_dialogs_misc
 
+main_global = None
+
 def test_colligation_extractor():
     main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
@@ -66,6 +68,9 @@ def test_colligation_extractor():
         settings['generation_settings']['measure_bayes_factor'] = random.choice(measures_bayes_factor)
         settings['generation_settings']['measure_effect_size'] = random.choice(measures_effect_size)
 
+        global main_global
+        main_global = main
+
         print(f"Files: {' | '.join(wl_test_init.get_test_file_names(main))}")
         print(f"Test of statistical significance: {settings['generation_settings']['test_statistical_significance']}")
         print(f"Measure of Bayes factor: {settings['generation_settings']['measure_bayes_factor']}")
@@ -85,6 +90,9 @@ def update_gui(err_msg, colligations_freqs_files, colligations_stats_files):
     assert colligations_stats_files
     assert len(colligations_freqs_files) == len(colligations_stats_files)
 
+    num_files_selected = len(list(main_global.wl_file_area.get_selected_files()))
+    test_statistical_significance = main_global.settings_custom['colligation_extractor']['generation_settings']['test_statistical_significance']
+
     for (node, collocate), stats_files in colligations_stats_files.items():
         freqs_files = colligations_freqs_files[(node, collocate)]
 
@@ -100,11 +108,20 @@ def update_gui(err_msg, colligations_freqs_files, colligations_stats_files):
             assert len(freqs_file) == 10
 
         # Frequency (total)
+        assert len(freqs_files) == num_files_selected + 1
         assert sum((sum(freqs_file) for freqs_file in freqs_files)) >= 0
 
-        # p-value
-        for _, p_value, _, _ in stats_files:
-            assert p_value is None or 0 <= p_value <= 1
+        # Test Statistic & p-value
+        assert len(stats_files) == num_files_selected + 1
+
+        for test_stat, p_value, _, _ in stats_files:
+            if test_statistical_significance == 'fishers_exact_test':
+                assert test_stat is None
+
+            if test_statistical_significance == 'none':
+                assert p_value is None
+            else:
+                assert 0 <= p_value <= 1
 
         # Number of Files Found
         assert len([freqs_file for freqs_file in freqs_files[:-1] if sum(freqs_file)]) >= 1
