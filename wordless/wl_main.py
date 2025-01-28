@@ -1,6 +1,6 @@
 # ----------------------------------------------------------------------
 # Wordless: Main window
-# Copyright (C) 2018-2024  Ye Lei (叶磊)
+# Copyright (C) 2018-2025  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,7 +13,7 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
 import copy
@@ -219,7 +219,7 @@ class Wl_Main(QMainWindow):
         self.threads_check_updates = []
         # Version number
         self.ver = wl_misc.get_wl_ver()
-        self.copyright_year = '2024'
+        self.copyright_year = '2025'
         # Email
         self.email = 'blkserene@gmail.com'
         self.email_html = '<a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a>'

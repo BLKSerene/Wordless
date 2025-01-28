@@ -1,6 +1,6 @@
 # ----------------------------------------------------------------------
 # Utilities: Generate acknowledgment files
-# Copyright (C) 2018-2024  Ye Lei (叶磊)
+# Copyright (C) 2018-2025  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,7 +13,7 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
 FILES = [
@@ -201,9 +201,9 @@ for i, (file, header_lang, title, description, col_headers) in enumerate(zip(
     FILES, HEADER_LANGS, TITLES, DESCRIPTIONS, COL_HEADERS
 )):
     with open(file, 'w', encoding = 'utf_8') as f:
-        f.write(f'''<!--
-# Wordless: Acknowledgments - {header_lang}
-# Copyright (C) 2018-2024  Ye Lei (叶磊)
+        f.write(f'''<!----------------------------------------------------------------------
+# Wordless: README - Acknowledgments - {header_lang}
+# Copyright (C) 2018-2025  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -216,8 +216,8 @@ for i, (file, header_lang, title, description, col_headers) in enumerate(zip(
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
--->
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+# --------------------------------------------------------------------->
 
 <div align="center"><h1>{title}</h1></div>
 
