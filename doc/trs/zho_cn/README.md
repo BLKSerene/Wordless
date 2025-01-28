@@ -28,7 +28,7 @@
     <a href="https://dl.circleci.com/status-badge/redirect/gh/BLKSerene/Wordless/tree/main">
         <img src="https://dl.circleci.com/status-badge/img/gh/BLKSerene/Wordless/tree/main.svg?style=svg" alt="CircleCI"></a>
     <a href="https://github.com/BLKSerene/Wordless/actions/workflows/tests.yml">
-        <img src="https://github.com/BLKSerene/Wordless/actions/workflows/tests.yml/badge.svg" alt="Github Actions"></a>
+        <img src="https://github.com/BLKSerene/Wordless/actions/workflows/tests.yml/badge.svg" alt="GitHub Actions"></a>
     <a href="https://codecov.io/gh/BLKSerene/Wordless">
         <img src="https://codecov.io/gh/BLKSerene/Wordless/branch/main/graph/badge.svg?token=ED6TW92A7G" alt="Codecov"></a>
 </div>
@@ -67,11 +67,13 @@
 
 <br>
 
-Wordless 是一款具有多语种支持的语料库集成工具，可用于语言、文学及翻译研究，由当时就读于上海外国语大学口译研究专业的硕士研究生叶磊自2018年起设计和开发。
+*Wordless* 是一款具有多语种支持的语料库集成工具，可用于语言、文学及翻译研究，由当时就读于上海外国语大学口译研究专业的硕士研究生叶磊自 2018 年起设计并开发。
+
+荣获[第三届麻雀山国际青年学生学者论坛优秀论文奖](https://mp.weixin.qq.com/s/nVcIeZHgKG0eFbyv1Ux3iw)
 
 ## 下载
 
-Wordless 最新版（**3.5.0**）支持 **Windows 7/8/8.1/10/11**、**macOS 10.11 或更高版本**、**Ubuntu 18.04 或更高版本**、**Debian 10 或更高版本**以及**Arch Linux**，均仅支持**64位操作系统**。英特尔和 Apple 芯片的苹果电脑均有支持。
+最新版 *Wordless*（**3.5.0**）支持 **Windows 7/8/8.1/10/11**、**macOS 10.11 或更高版本**、**Ubuntu 18.04 或更高版本**、**Debian 10 或更高版本**以及 **Arch Linux**，均仅支持**64位操作系统**。英特尔和 Apple 芯片的苹果电脑均有支持。
 
 如需完整的更新日志，请参阅 [CHANGELOG.md](/CHANGELOG.md)（待翻译）。
 
@@ -81,20 +83,20 @@ Wordless 最新版（**3.5.0**）支持 **Windows 7/8/8.1/10/11**、**macOS 10.1
 [macOS 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.5.0/wordless_3.5.0_macos.zip)|1. 解压缩所有文件<br>2. 双击运行 **Wordless.app**
 [Linux 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.5.0/wordless_3.5.0_linux.tar.gz)|1. 解压缩所有文件<br>2. 双击运行 **Wordless/Wordless**<br>3. [可选] 双击 **Wordless/Wordless - Create Shortucut** 在**显示应用程序**中创建一个快捷方式
 [历史版本](https://github.com/BLKSerene/Wordless/releases)|不推荐
-[百度网盘](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2FWordless%203.5.0&parentPath=%2F)|中国用户若 Github 连接不稳定可尝试该下载链接（**提取码：wdls**）
+[百度网盘](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2FWordless%203.5.0&parentPath=%2F)|国内用户若 GitHub 连接不稳定可尝试该下载链接（**提取码：wdls**）
 
 > [!IMPORTANT]
-> **备注 1：**Wordless 的路径中**不建议包含任何非 ASCII 字符，如汉字和带变音记号的字母等**。
+> **备注 1：***Wordless* 的路径中**不建议包含任何非 ASCII 字符，如汉字和带变音记号的字母等**。
 > 
 > **备注 2：**苹果电脑用户如遇提示 **“Wordless”已损坏，无法打开**，请打开**终端**（启动台 → 其他）后运行：
 > 
 > <code>xattr -rc /Applications/Wordless.app</code><br>
 > 
-> 请注意将 **/Applications/Wordless.app** 替换为 Wordless 在电脑上的实际存放路径（可直接拖拽 **Wordless.app** 文件至**终端**中）。然后，**再次运行 Wordless**（若程序可成功运行，终端中提示的警告可忽略）。
+> 请注意将 **/Applications/Wordless.app** 替换为 *Wordless* 在电脑上的实际存放路径（可直接拖拽 **Wordless.app** 文件至**终端**中）。然后，**再次运行 *Wordless***（若程序可成功运行，终端中提示的警告可忽略）。
 > 
 > **备注 3：**在 *Wordless* 中打开除英语外语种的语料库时，可能需要从网上下载额外的模型文件。如果出现**网络错误**对话框，那么大概率是字面意义上的网络错误，所以只需要按照错误信息中的指示检查网络连接，然后再次尝试下载模型即可。
 > 
-> 中国国内和 Github 以及 Hugging Face Hub 的连接不稳定，因此建议用户使用代理并在**菜单栏 → 偏好 → 设置 → 全局 → 代理设置**处进行设置。或者也可以手动从[百度网盘](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2Fmodels&parentPath=%2F)下载模型文件。模型的安装步骤如下：
+> 国内与 GitHub 以及 Hugging Face Hub 的连接不稳定，因此建议用户使用代理并在**菜单栏 → 偏好 → 设置 → 全局 → 代理设置**处进行设置。或者也可以手动从[百度网盘](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2Fmodels&parentPath=%2F)下载模型文件。模型的安装步骤如下：
 > 
 > 1. 查看**网络错误**对话框中的错误信息。如果错误信息中能找到 **stanza** 的字样，那么你需要的是 *Stanza* 模型，否则你需要的是 *spaCy* 模型。
 > 2. 从上方链接中下载你的语料库语种所对应的模型文件然后**将所有文件解压出来**。
@@ -111,9 +113,9 @@ Wordless 最新版（**3.5.0**）支持 **Windows 7/8/8.1/10/11**、**macOS 10.1
 支持渠道|信息
 -------|----
 官方文档|[稳定版](https://github.com/BLKSerene/Wordless/blob/3.5.0/doc/doc.md) \| [开发版](/doc/doc.md)
-视频教程|[YouTube](https://www.youtube.com/@BLKSerene) \| [B站](https://space.bilibili.com/34963752/video)
-Bug 提交|[Github Issues](https://github.com/BLKSerene/Wordless/issues)
-使用疑问|[Github Discussions](https://github.com/BLKSerene/Wordless/discussions)
+视频教程|[YouTube](https://www.youtube.com/@BLKSerene) \| [B 站](https://space.bilibili.com/34963752/video)
+Bug 提交|[GitHub Issues](https://github.com/BLKSerene/Wordless/issues)
+使用疑问|[GitHub Discussions](https://github.com/BLKSerene/Wordless/discussions)
 邮件咨询|[blkserene<i>@</i>gmail<i>.</i>com](mailto:blkserene@gmail.com)
 [微信](https://weixin.qq.com/)公众号|![微信公众号](/imgs/wechat_official_account.jpg)
 
@@ -135,13 +137,13 @@ MLA（第 9 版）：
 2. 根据计算机软件的格式进行引用
 
 APA（第 7 版）：
-<pre><code>Ye, L. (2024). <i>Wordless</i> (Version 3.5.0) [Computer software]. Github. https://github.com/BLKSerene/Wordless</code></pre>
+<pre><code>Ye, L. (2024). <i>Wordless</i> (Version 3.5.0) [Computer software]. GitHub. https://github.com/BLKSerene/Wordless</code></pre>
 
 Chicago（第 18 版）：
 <pre><code>Ye, Lei. <i>Wordless</i>. V. 3.5.0. Released July 1, 2024. PC. https://github.com/BLKSerene/Wordless.</code></pre>
 
 MLA（第 9 版）：
-<pre><code>Ye Lei. <i>Wordless</i>. Version 3.5.0, <i>Github</i>, 1 Jul. 2024, https://github.com/BLKSerene/Wordless.</code></pre>
+<pre><code>Ye Lei. <i>Wordless</i>. Version 3.5.0, <i>GitHub</i>, 1 Jul. 2024, https://github.com/BLKSerene/Wordless.</code></pre>
 
 ## 使用 *Wordless* 的成果
 
@@ -172,7 +174,7 @@ MLA（第 9 版）：
 
 ## 赞助
 
-如果你愿意支持 Wordless 的开发工作，你可以通过 [PayPal](https://www.paypal.com/)、[支付宝](https://www.alipay.com/)或[微信支付](https://pay.weixin.qq.com/)进行赞助。
+如果你愿意支持 *Wordless* 的开发工作，你可以通过 [PayPal](https://www.paypal.com/)、[支付宝](https://www.alipay.com/)或[微信支付](https://pay.weixin.qq.com/)进行赞助。
 
 PayPal|支付宝|微信支付
 ------|-----|--------

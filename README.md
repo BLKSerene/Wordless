@@ -28,7 +28,7 @@
     <a href="https://dl.circleci.com/status-badge/redirect/gh/BLKSerene/Wordless/tree/main">
         <img src="https://dl.circleci.com/status-badge/img/gh/BLKSerene/Wordless/tree/main.svg?style=svg" alt="CircleCI"></a>
     <a href="https://github.com/BLKSerene/Wordless/actions/workflows/tests.yml">
-        <img src="https://github.com/BLKSerene/Wordless/actions/workflows/tests.yml/badge.svg" alt="Github Actions"></a>
+        <img src="https://github.com/BLKSerene/Wordless/actions/workflows/tests.yml/badge.svg" alt="GitHub Actions"></a>
     <a href="https://codecov.io/gh/BLKSerene/Wordless">
         <img src="https://codecov.io/gh/BLKSerene/Wordless/branch/main/graph/badge.svg?token=ED6TW92A7G" alt="Codecov"></a>
 </div>
@@ -67,11 +67,13 @@
 
 <br>
 
-Wordless is an integrated corpus tool with multilingual support for the study of language, literature, and translation designed and developed since 2018 by Ye Lei (叶磊), then MA student in interpreting studies at Shanghai International Studies University (上海外国语大学).
+*Wordless* is an integrated corpus tool with multilingual support for the study of language, literature, and translation designed and developed by Ye Lei (叶磊), then MA student in interpreting studies at Shanghai International Studies University, Shanghai, China since 2018.
+
+Recipient of the [Excellent Paper Award of the 3rd Vorobyovy Gory International Forum of Young Students and Scholars (VGIF-2024)](https://mp.weixin.qq.com/s/nVcIeZHgKG0eFbyv1Ux3iw)
 
 ## Download
 
-The latest version (**3.5.0**) of Wordless supports **Windows 7/8/8.1/10/11**, **macOS 10.11 or later**, **Ubuntu 18.04 or later**, **Debian 10 or later**, and **Arch Linux**, all **64-bit only**. Both Intel-based and Apple Silicon-based Macs are supported.
+The latest version (**3.5.0**) of *Wordless* supports **Windows 7/8/8.1/10/11**, **macOS 10.11 or later**, **Ubuntu 18.04 or later**, **Debian 10 or later**, and **Arch Linux**, all **64-bit only**. Both Intel-based and Apple Silicon-based Macs are supported.
 
 For a detailed changelog, please see [CHANGELOG.md](/CHANGELOG.md).
 
@@ -81,20 +83,20 @@ Release|Remarks
 [Latest Release for macOS](https://github.com/BLKSerene/Wordless/releases/download/3.5.0/wordless_3.5.0_macos.zip)|1. Extract all files<br>2. Double-click **Wordless.app** to run
 [Latest Release for Linux](https://github.com/BLKSerene/Wordless/releases/download/3.5.0/wordless_3.5.0_linux.tar.gz)|1. Extract all files<br>2. Double-click **Wordless/Wordless** to run<br>3. [Optional] Double-click **Wordless/Wordless - Create Shortucut** to create a shortcut in **Show Applications**
 [Past Releases](https://github.com/BLKSerene/Wordless/releases)|Not recommended
-[Baidu Netdisk](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2FWordless%203.5.0&parentPath=%2F)|For Chinese users with unstable connections to Github (**PASSWORD: wdls**)
+[Baidu Netdisk](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2FWordless%203.5.0&parentPath=%2F)|For Chinese users with unstable connections to GitHub (**PASSWORD: wdls**)
 
 > [!IMPORTANT]
-> **Note 1:** It is recommended that the path to Wordless **not contain any non-ASCII chatacters, such as Chinese characters and letters with diacritics**.
+> **Note 1:** It is recommended that the path to *Wordless* **not contain any non-ASCII chatacters, such as Chinese characters and letters with diacritics**.
 > 
 > **Note 2:** If your Mac says that **“Wordless” is damaged and can’t be opened**, please open **Terminal** (Launchpad → Other) and run:
 > 
 > <code>xattr -rc /Applications/Wordless.app</code><br>
 > 
-> remember to replace **/Applications/Wordless.app** with the actual path of Wordless on your computer (you could drag **Wordless.app** to the **Terminal**). Then, **run Wordless again** (the warning prompted in Terminal could be ignored if the program could be successfully opened).
+> remember to replace **/Applications/Wordless.app** with the actual path of *Wordless* on your computer (you could drag **Wordless.app** to the **Terminal**). Then, **run *Wordless* again** (the warning prompted in Terminal could be ignored if the program could be successfully opened).
 > 
 > **Note 3:** While opening corpora in languages other than English in *Wordless*, extra model files might need to be downloaded from the internet. If you encounter a **Network Error** dialog while downloading the model, chances are that it's a literal network error, so you just need to check your internet connections following the instructions in the error message and try downloading the model once more.
 > 
-> Users in China, where connections to Github and Hugging Face Hub are unstable, are recommended to use a proxy and set properly the settings in **Menu Bar → Preferences → Settings → General → Proxy Settings**. Alternatively, Chinese users can choose to manually download model files from [Baidu Netdisk](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2Fmodels&parentPath=%2F). The steps of installing models are as follows:
+> Users in China, where connections to GitHub and Hugging Face Hub are unstable, are recommended to use a proxy and set properly the settings in **Menu Bar → Preferences → Settings → General → Proxy Settings**. Alternatively, Chinese users can choose to manually download model files from [Baidu Netdisk](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2Fmodels&parentPath=%2F). The steps of installing models are as follows:
 > 
 > 1. Check the error message displayed in the **Network Error** dialog. If **stanza** is found in the error message, you need a *Stanza* model, otherwise you need a *spaCy* model.
 > 2. Download model files for the language of your corpus from the above link and **extract all files**.
@@ -112,8 +114,8 @@ Support Channel       |Information
 ----------------------|-----------
 Official documentation|[Stable Version](https://github.com/BLKSerene/Wordless/blob/3.5.0/doc/doc.md) \| [Development Version](/doc/doc.md)
 Tutorial videos       |[YouTube](https://www.youtube.com/@BLKSerene) \| [bilibili](https://space.bilibili.com/34963752/video)
-Bug reports           |[Github Issues](https://github.com/BLKSerene/Wordless/issues)
-Usage questions       |[Github Discussions](https://github.com/BLKSerene/Wordless/discussions)
+Bug reports           |[GitHub Issues](https://github.com/BLKSerene/Wordless/issues)
+Usage questions       |[GitHub Discussions](https://github.com/BLKSerene/Wordless/discussions)
 Email support         |[blkserene<i>@</i>gmail<i>.</i>com](mailto:blkserene@gmail.com)
 [WeChat](https://www.wechat.com/en/) official account|![WeChat official account](/imgs/wechat_official_account.jpg)
 
@@ -135,13 +137,13 @@ MLA (9th edition):
 2. Cite as a piece of computer software
 
 APA (7th edition):
-<pre><code>Ye, L. (2024). <i>Wordless</i> (Version 3.5.0) [Computer software]. Github. https://github.com/BLKSerene/Wordless</code></pre>
+<pre><code>Ye, L. (2024). <i>Wordless</i> (Version 3.5.0) [Computer software]. GitHub. https://github.com/BLKSerene/Wordless</code></pre>
 
 Chicago (18th edition):
 <pre><code>Ye, Lei. <i>Wordless</i>. V. 3.5.0. Released July 1, 2024. PC. https://github.com/BLKSerene/Wordless.</code></pre>
 
 MLA (9th edition):
-<pre><code>Ye Lei. <i>Wordless</i>. Version 3.5.0, <i>Github</i>, 1 Jul. 2024, https://github.com/BLKSerene/Wordless.</code></pre>
+<pre><code>Ye Lei. <i>Wordless</i>. Version 3.5.0, <i>GitHub</i>, 1 Jul. 2024, https://github.com/BLKSerene/Wordless.</code></pre>
 
 ## Works Using *Wordless*
 For details, please click [HERE](/WORKS_USING_WORDLESS.md).
@@ -171,7 +173,7 @@ For details, please click [HERE](/CONTRIBUTING.md).
 
 ## Donating
 
-If you would like to support the development of Wordless, you may donate via [PayPal](https://www.paypal.com/), [Alipay](https://global.alipay.com/), or [WeChat Pay](https://pay.weixin.qq.com/index.php/public/wechatpay_en).
+If you would like to support the development of *Wordless*, you may donate via [PayPal](https://www.paypal.com/), [Alipay](https://global.alipay.com/), or [WeChat Pay](https://pay.weixin.qq.com/index.php/public/wechatpay_en).
 
 PayPal|Alipay|WeChat Pay
 ------|------|----------
