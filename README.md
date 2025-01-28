@@ -1,6 +1,6 @@
-<!--
+<!----------------------------------------------------------------------
 # Wordless: README - English
-# Copyright (C) 2018-2024  Ye Lei (叶磊)
+# Copyright (C) 2018-2025  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,8 +13,8 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
--->
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+# --------------------------------------------------------------------->
 
 <div align="center"><img src="/doc/wl_logo.png" alt="Wordless: An Integrated Corpus Tool With Multilingual Support for the Study of Language, Literature, and Translation"></div>
 
@@ -148,7 +148,7 @@ For details, please click [HERE](/WORKS_USING_WORDLESS.md).
 
 ## License
 
-    Copyright (C) 2018-2024  Ye Lei (叶磊)
+    Copyright (C) 2018-2025  Ye Lei (叶磊)
     
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -161,7 +161,7 @@ For details, please click [HERE](/WORKS_USING_WORDLESS.md).
     GNU General Public License for more details.
     
     You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FBLKSerene%2FWordless.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FBLKSerene%2FWordless?ref=badge_large)
 
