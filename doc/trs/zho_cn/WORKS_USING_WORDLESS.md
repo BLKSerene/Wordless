@@ -37,7 +37,7 @@
 1. 宋祝, 李玲, & 梁渊. (2021). “构式驱动”读写教学模式下的构式习得研究. *成都师范学院学报*, *37*(3), 51–58. https://doi.org/10.3969/j.issn.2095-5642.2021.03.008
 1. Sun, Y., Kong, D., & Zhou, C. (2023). Economy or ecology: Metaphor use over time in China’s government work reports. *Language and Cognition*, *15*(3), 551–573. https://doi.org/10.1017/langcog.2023.18
 1. 陶源. (2021). 基于俄媒语料库的新冠肺炎主题词与疫情变迁研究. *南昌航空大学学报：社会科学*, *23*(1), 114–124.
-1. 汪蓝玉, & 朱玉彬. (2024). 数字人文视域下二十四史论赞引语的言据性研究. *数字人文*, *2024*(1). https://mp.weixin.qq.com/s/isbctwZeNQKRIy8a-_UO1A
+1. 汪蓝玉, & 朱玉彬. (2024). 数字人文视域下二十四史论赞引语的言据性研究. *数字人文*, *2024*(1), 59–76. https://kns.cnki.net/kcms2/article/abstract?v=kjkRiloLuecXY-PxJpGJ-S31a9ZqOl-jEYFzJXzbCtsF7fweFAQ-pz3Fl-bZSsP2R6Jp_c4KTPAI_XhC9RaVoUBDMbHImNcd7oTOftahrn3kiqR8tCC7nbM9yK97vZBjESDYX0XwhyLdm0sRMYMzBOQW7rALA4S2wgqXCZ0wgqqcSZ64QJkifpu-fL1PoVLU&uniplatform=NZKPT&language=CHS
 1. Wang, S. (2023). Cómo fomentar la incorporación de agendas políticas feministas en el discurso político: Estrategias para la construcción del espacio discursivo en respuesta a las crisis de género. *Comunicación y Género*, *6*(2), 147–157. https://doi.org/10.5209/cgen.91079
 1. Xiong, L. (2023). Audio description for educational videos on COVID-19 response: A corpus-based study on linguistic and textual idiosyncrasies. *Journal of Literature and Art Studies*, *13*(4), 276–285. https://doi.org/10.17265/2159-5836/2023.04.008
 1. Xu, B., & Tao, Y. (2023). National identity in media discourses from Russia and Ukraine: Amid the 2022 Russo-Ukranian War. *Zeitschrift für Slawistik*, *68*(3), 419–439. https://doi.org/10.1515/slaw-2023-0021
@@ -65,6 +65,8 @@
 1. Ma, X. (2024). *Applying semantic prosody for machine translation improvement on English-Chinese passive sentences* [Master’s thesis, University of Barcelona]. Dipòsit Digital de la Universitat de Barcelona. http://hdl.handle.net/2445/215937
 1. 孟浩. (2022). *A report on C-E translation practice from the perspective of technical communication: A case study of Writing in the Techinical Fields: A Practical Guide (chapter 1 and chapter 4)* [Master’s thesis, 重庆邮电大学]. CNKI. https://doi.org/10.27675/d.cnki.gcydx.2022.000561
 1. 沈雅楠. (2020). *On the influence of translator's habitus on translation: A case study of the two English versions of Bian Cheng* [Master’s thesis, 上海外国语大学]. CNKI. https://doi.org/10.27316/d.cnki.gswyu.2020.000479
+1. 唐思瑶. (2024). *A corpus-based study of the dissemination and reception of the English translation of renmin zhanzheng (人民战争)* [Master’s thesis, 上海外国语大学]. 上海外国语大学论文管理系统. https://webvpn.shisu.edu.cn/http/77726476706e69737468656265737421a2a713d27662391e275ec7fdcb03/docinfo.action?id1=dcbed28177958feac9893d31e231523e&id2=femIqxJ4GWE%253D
+1. 吴佳媚. (2024). *Comedic recharacterization in Hanan’s translation of Li Yu’s novels: A cognitive stylistic approach* [Master’s thesis, 上海外国语大学]. CNKI. https://link.cnki.net/doi/10.27316/d.cnki.gswyu.2024.000837
 1. 谢诗婧. (2024). *Marketing Higher Education: Understanding How to Build and Promote the University Brand（Chapters10-11）英汉翻译实践报告* [Master’s thesis, 黑龙江大学]. CNKI. https://doi.org/10.27123/d.cnki.ghlju.2024.001057
 1. 严明. (2023). *A comparative study on the translation styles of three English versions of Na Han and Pang Huang* [Master’s thesis, 北京外国语大学]. CNKI. https://link.cnki.net/doi/10.26962/d.cnki.gbjwu.2023.000337
 1. 赵瑾乾. (2023). *义务教育阶段语文教材词语研究* [Master’s thesis, 辽宁师范大学]. CNKI. https://link.cnki.net/doi/10.27212/d.cnki.glnsu.2023.000956
