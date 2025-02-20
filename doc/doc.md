@@ -125,7 +125,7 @@ By default, *Wordless* would try to detect the encoding and language settings of
 <span id="doc-3"></span>
 ### [3 Profiler](#doc)
 > [!NOTE]
-> Renamed from **Overview** to **Profiler** in *Wordless* 2.2.0
+> Renamed from **Overview** to **Profiler** in *Wordless* 2.2.0.
 
 In *Profiler*, you can check and compare general linguistic features of different files.
 
@@ -384,8 +384,8 @@ You can generate concordance plots for all search terms. You can modify the sett
 <span id="doc-5"></span>
 ### [5 Parallel Concordancer](#doc)
 > [!NOTE]
-> 1. Added in *Wordless* 2.0.0
-> 1. Renamed from **Concordancer (Parallel Mode)** to **Parallel Concordancer** in *Wordless* 2.2.0
+> 1. Added in *Wordless* 2.0.0.
+> 1. Renamed from **Concordancer (Parallel Mode)** to **Parallel Concordancer** in *Wordless* 2.2.0.
 
 In *Parallel Concordancer*, you can search for tokens in parallel corpora and generate parallel concordance lines. You may leave **Search Settings → Search Term** blank so as to search for instances of additions and deletions.
 
@@ -405,7 +405,7 @@ You can search in *Data Table* for parts that might be of interest to you by cli
 <span id="doc-6"></span>
 ### [6 Dependency Parser](#doc)
 > [!NOTE]
-> Added in *Wordless* 3.0.0
+> Added in *Wordless* 3.0.0.
 
 In *Dependency Parser*, you can search for all dependency relations associated with different tokens and calculate their dependency lengths (distances).
 
@@ -442,7 +442,7 @@ You can select lines in the *Results Area* and then click *Generate Figure* to s
 <span id="doc-7"></span>
 ### [7 Wordlist Generator](#doc)
 > [!NOTE]
-> Renamed from **Wordlist** to **Wordlist Generator** in *Wordless* 2.2.0
+> Renamed from **Wordlist** to **Wordlist Generator** in *Wordless* 2.2.0.
 
 In *Wordlist Generator*, you can generate wordlists for different files and calculate the raw frequency, relative frequency, dispersion and adjusted frequency for each token. You can disable the calculation of dispersion and/or adjusted frequency by setting **Generation Settings → Measures of Dispersion / Measure of Adjusted Frequency** to **None**.
 
@@ -481,7 +481,7 @@ You can generate line charts or word clouds for wordlists using any statistics. 
 <span id="doc-8"></span>
 ### [8 N-gram Generator](#doc)
 > [!NOTE]
-> Renamed from **N-gram** to **N-gram Generator** in *Wordless* 2.2.0
+> Renamed from **N-gram** to **N-gram Generator** in *Wordless* 2.2.0.
 
 In *N-gram Generator*, you can search for n-grams (consecutive tokens) or skip-grams (non-consecutive tokens) in different files, count and compute the raw frequency and relative frequency of each n-gram/skip-gram, and calculate the dispersion and adjusted frequency for each n-gram/skip-gram using different measures. You can adjust the settings for the generated results via **Generation Settings**.  You can disable the calculation of dispersion and/or adjusted frequency by setting **Generation Settings → Measures of Dispersion / Measure of Adjusted Frequency** to **None**. To allow skip-grams in the results, check **Generation Settings → Allow skipped tokens** and modify the settings. You can also set constraints on the position of search terms in all n-grams via **Search Settings → Search Term Position**.
 
@@ -513,7 +513,7 @@ You can generate line charts or word clouds for n-grams using any statistics. Yo
 <span id="doc-9"></span>
 ### [9 Collocation Extractor](#doc)
 > [!NOTE]
-> Renamed from **Collocation** to **Collocation Extractor** in *Wordless* 2.2.0
+> Renamed from **Collocation** to **Collocation Extractor** in *Wordless* 2.2.0.
 
 In *Collocation Extractor*, you can search for patterns of collocation (tokens that co-occur more often than would be expected by chance) within a given collocational window (from 5 words to the left to 5 words to the right by default), conduct different tests of statistical significance on each pair of collocates and calculate the Bayes factor and effect size for each pair using different measures. You can adjust the settings for the generated results via **Generation Settings**. You can disable the calculation of statistical significance and/or Bayes factor and/or effect size by setting **Generation Settings → Test of Statistical Significance / Measures of Bayes Factor / Measure of Effect Size** to **None**.
 
@@ -559,7 +559,7 @@ You can generate line charts, word clouds, and network graphs for patterns of co
 <span id="doc-10"></span>
 ### [10 Colligation Extractor](#doc)
 > [!NOTE]
-> Renamed from **Colligation** to **Colligation Extractor** in *Wordless* 2.2.0
+> Renamed from **Colligation** to **Colligation Extractor** in *Wordless* 2.2.0.
 
 In *Colligation Extractor*, you can search for patterns of colligation (parts of speech that co-occur more often than would be expected by chance) within a given collocational window (from 5 words to the left to 5 words to the right by default), conduct different tests of statistical significance on each pair of parts of speech and calculate the Bayes factor and effect size for each pair using different measures. You can adjust the settings for the generated data via **Generation Settings**. You can disable the calculation of statistical significance and/or Bayes factor and/or effect size by setting **Generation Settings → Test of Statistical Significance / Measures of Bayes Factor / Measure of Effect Size** to **None**.
 
@@ -607,7 +607,7 @@ You can generate line charts or word clouds for patterns of colligation using an
 <span id="doc-11"></span>
 ### [11 Keyword Extractor](#doc)
 > [!NOTE]
-> Renamed from **Keyword** to **Keyword Extractor** in *Wordless* 2.2
+> Renamed from **Keyword** to **Keyword Extractor** in *Wordless* 2.2.
 
 In *Keyword Extractor*, you can search for candidates of potential keywords (tokens that have far more or far less frequency in the observed corpus than in the reference corpus) in different files given a reference corpus, conduct different tests of statistical significance on each keyword and calculate the Bayes factor and effect size for each keyword using different measures. You can adjust the settings for the generated data via **Generation Settings**. You can disable the calculation of statistical significance and/or Bayes factor and/or effect size by setting **Generation Settings → Test of Statistical Significance / Measures of Bayes Factor / Measure of Effect Size** to **None**.
 
@@ -781,9 +781,9 @@ Zulu                     |⭕️ |⭕️ |✔|✖️|✖️|✖️|✖️|✔
 Other languages          |⭕️ |⭕️ |✖️|✖️|✖️|✖️|✖️|✖️
 
 > [!NOTE]
-> ✔: Supported<br>
-> ⭕️: Supported but falls back to the default English (United States) tokenizer<br>
-> ✖️: Not supported
+> ✔: Supported.<br>
+> ⭕️: Supported but falls back to the default English (United States) tokenizer.<br>
+> ✖️: Not supported.
 
 <span id="doc-12-2"></span>
 ### [12.2 Supported File Types](#doc)
@@ -1176,9 +1176,9 @@ Readability Formula|Formula|Supported Languages
 <span id="ref-wheeler-smiths-readability-formula"></span>Wheeler-Smith's readability formula<br>([Wheeler & Smith, 1954](#ref-wheeler-smith-1954))|![Formula](/doc/measures/readability/wheeler_smiths_readability_formula.svg)<br>where **NumUnits** is the number of sentence segments ending in periods, question marks, exclamation marks, colons, semicolons, and dashes.|All languages²
 
 > [!NOTE]
-> 1. Variants available and can be selected via **Menu Bar → Preferences → Settings → Measures → Readability**
-> 1. Requires **built-in syllable tokenization support**
-> 1. Requires **built-in part-of-speech tagging support**
+> 1. Variants available and can be selected via **Menu Bar → Preferences → Settings → Measures → Readability**.
+> 1. Requires **built-in syllable tokenization support**.
+> 1. Requires **built-in part-of-speech tagging support**.
 
 <span id="doc-12-4-2"></span>
 #### [12.4.2 Indicators of Lexical Density/Diversity](#doc)
@@ -1269,13 +1269,13 @@ Indicator of Lexical Density/Diversity|Formula
 --------------------------------------|-------
 <span id="ref-brunets-index"></span>Brunet's index<br>([Brunet, 1978, p. 57](#ref-brunet-1978))|![Formula](/doc/measures/lexical_density_diversity/brunets_index.svg)
 <span id="ref-cttr"></span>Corrected TTR<br>([Carroll, 1964, p. 54](#ref-carroll-1964))|![Formula](/doc/measures/lexical_density_diversity/cttr.svg)
-<span id="ref-fishers-index-of-diversity"></span>Fisher's Index of Diversity<br>([Fisher et al., 1943](#ref-fisher-et-al-1943))|![Formula](/doc/measures/lexical_density_diversity/fishers_index_of_diversity.svg)<br>where *W*₋₁ is the -1 branch of the [Lambert W function](https://en.wikipedia.org/wiki/Lambert_W_function).
+<span id="ref-fishers-index-of-diversity"></span>Fisher's Index of Diversity<br>([Fisher et al., 1943](#ref-fisher-et-al-1943))|![Formula](/doc/measures/lexical_density_diversity/fishers_index_of_diversity.svg)<br>where *W*₋₁ is the *W*₋₁ branch of the [Lambert W function](https://en.wikipedia.org/wiki/Lambert_W_function).
 <span id="ref-herdans-vm"></span>Herdan's vₘ<br>([Herdan, 1955](#ref-herdan-1955))|![Formula](/doc/measures/lexical_density_diversity/herdans_vm.svg)
 <span id="ref-hdd"></span>HD-D<br>([McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see reference.<br><br>The sample size could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Density/Diversity → HD-D → Sample size**.
 <span id="ref-honores-stat"></span>Honoré's statistic<br>([Honoré, 1979](#ref-honore-1979))|![Formula](/doc/measures/lexical_density_diversity/honores_stat.svg)
 <span id="ref-lexical-density"></span>Lexical density<br>([Halliday, 1989, p. 64](#ref-halliday-1989))|![Formula](/doc/measures/lexical_density_diversity/lexical_density.svg)<br>where **NumContentWords** is the number of content words. By default, all tokens whose universal part-of-speech tags assigned by built-in part-of-speech taggers are ADJ (adjectives), ADV (adverbs), INTJ (interjections), NOUN (nouns), PROPN (proper nouns), NUM (numerals), VERB (verbs), SYM (symbols), or X (others) are categorized as content words. For some built-in part-of-speech taggers, this behavior could be modified via **Menu Bar → Preferences → Settings → Part-of-speech Tagging → Tagsets → Mapping Settings → Content/Function Words**.
 <span id="ref-logttr"></span>LogTTR¹<br>(Herdan: [Herdan, 1960, p. 28](#ref-herdan-1960)<br>Somers: [Somers, 1966](#ref-somers-1966)<br>Rubet: [Dugast, 1979](#ref-dugast-1979)<br>Maas: [Maas, 1972](#ref-maas-1972)<br>Dugast: [Dugast, 1978](#ref-dugast-1978); [Dugast, 1979](#ref-dugast-1979))|![Formula](/doc/measures/lexical_density_diversity/logttr.svg)
-<span id="ref-msttr"></span>Mean segmental TTR<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/lexical_density_diversity/msttr.svg)<br>where **n** is the number of equal-sized segment, the length of which could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Density/Diversity → Mean Segmental TTR → Number of tokens in each segment**, **NumTypesSegᵢ** is the number of token types in the **i**-th segment, and **NumTokensSegᵢ** is the number of tokens in the **i**-th segment.
+<span id="ref-msttr"></span>Mean segmental TTR²<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/lexical_density_diversity/msttr.svg)<br>where **n** is the number of equal-sized segment, the length of which could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Density/Diversity → Mean Segmental TTR → Number of tokens in each segment**, **NumTypesSegᵢ** is the number of token types in the **i**-th segment, and **NumTokensSegᵢ** is the number of tokens in the **i**-th segment.
 <span id="ref-mtld"></span>Measure of textual lexical diversity<br>([McCarthy, 2005, pp. 95–96, 99–100](#ref-mccarthy-2005); [McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see references.<br><br>The factor size could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Density/Diversity → Measure of Textual Lexical Diversity → Factor size**.
 <span id="ref-mattr"></span>Moving-average TTR<br>([Covington & McFall, 2010](#ref-covington-mcfall-2010))|![Formula](/doc/measures/lexical_density_diversity/mattr.svg)<br>where **w** is the window size which could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Density/Diversity → Moving-average TTR → Window size**, **NumTypesWindowₚ** is the number of token types within the moving window starting at position **p**, and **NumTokensWindowₚ** is the number of tokens within the moving window starting at position **p**.
 <span id="ref-popescu-macutek-altmanns-b1-b2-b3-b4-b5"></span>Popescu-Mačutek-Altmann's B₁/B₂/B₃/B₄/B₅<br>([Popescu et al., 2008](#ref-popescu-et-al-2008))|![Formula](/doc/measures/lexical_density_diversity/popescu_macutek_altmanns_b1_b2_b3_b4_b5.svg)
@@ -1293,7 +1293,8 @@ Indicator of Lexical Density/Diversity|Formula
 <span id="ref-yules-index-of-diversity"></span>Yule's Index of Diversity<br>([Williams, 1970, p. 100](#ref-williams-1970))|![Formula](/doc/measures/lexical_density_diversity/yules_index_of_diversity.svg)
 
 > [!NOTE]
-> 1. Variants available and can be selected via **Menu Bar → Preferences → Settings → Measures → Lexical Density/Diversity**
+> 1. Variants available and can be selected via **Menu Bar → Preferences → Settings → Measures → Lexical Density/Diversity**.
+> 1. Known as **STTR** (standardized type-token ratio) in some corpus tools.
 
 <span id="doc-12-4-3"></span>
 #### [12.4.3 Measures of Dispersion and Adjusted Frequency](#doc)
@@ -1562,16 +1563,22 @@ Measure of Effect Size|Formula|Collocation Extraction|Keyword Extraction
 <span id="ref-mu-val"></span>μ-value<br>([Evert, 2005, p. 54](#ref-evert-2005))|![Formula](/doc/measures/effect_size/mu_val.svg)|✔|✖️
 <span id="ref-or"></span>Odds ratio<br>([Pecina, 2005, p. 15](#ref-pecina-2005); [Pojanapunya & Todd, 2016](#ref-pojanapunya-todd-2016))|![Formula](/doc/measures/effect_size/or.svg)|✔|✔
 <span id="ref-pct-diff"></span>%DIFF<br>([Gabrielatos & Marchi, 2011](#ref-gabrielatos-marchi-2011))|![Formula](/doc/measures/effect_size/pct_diff.svg)|✖️|✔
-<span id="ref-pmi"></span>Pointwise mutual information<br>([Church & Hanks, 1990](#ref-church-hanks-1990); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/pmi.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information → Base of logarithm**.|✔|✔
-<span id="ref-im3"></span>Pointwise mutual information (cubic)¹<br>([Daille, 1994, p. 139](#ref-daille-1994); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/im3.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information (Cubic) → Base of logarithm**.|✔|✔
+<span id="ref-pmi"></span>Pointwise mutual information¹<br>([Church & Hanks, 1990](#ref-church-hanks-1990); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/pmi.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information → Base of logarithm**.|✔|✔
+<span id="ref-im3"></span>Pointwise mutual information (cubic)²⁴<br>([Daille, 1994, p. 139](#ref-daille-1994); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/im3.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information (Cubic) → Base of logarithm**.|✔|✔
 <span id="ref-npmi"></span>Pointwise mutual information (normalized)<br>([Bouma, 2009](#ref-bouma-2009); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/npmi.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information (Normalized) → Base of logarithm**.|✔|✔
-<span id="ref-im2"></span>Pointwise mutual information (squared)¹<br>([Daille, 1995, p. 21](#ref-daille-1995); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/im2.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information (Squared) → Base of logarithm**.|✔|✔
+<span id="ref-im2"></span>Pointwise mutual information (squared)³⁴<br>([Daille, 1995, p. 21](#ref-daille-1995); [Kilgarriff, 2001, pp. 104–105](#ref-kilgarriff-2001))|![Formula](/doc/measures/effect_size/im2.svg)<br>where **base** is the base of the logarithm, whose value could be modified via **Menu Bar → Preferences → Settings → Measures → Effect Size → Pointwise Mutual Information (Squared) → Base of logarithm**.|✔|✔
 <span id="ref-poisson-collocation-measure"></span>Poisson collocation measure<br>([Quasthoff & Wolff, 2002](#ref-quasthoff-wolff-2002))|![Formula](/doc/measures/effect_size/poisson_collocation_measure.svg)|✔|✖️
-<span id="ref-rr"></span>Relative risk<br>([Evert, 2005, p. 55](#ref-evert-2005); [Gries, 2010, p. 276](#ref-gries-2010))|![Formula](/doc/measures/effect_size/rr.svg)|✔|✔
+<span id="ref-rr"></span>Relative risk⁵<br>([Evert, 2005, p. 55](#ref-evert-2005); [Gries, 2010, p. 276](#ref-gries-2010))|![Formula](/doc/measures/effect_size/rr.svg)|✔|✔
 <span id="ref-squared-phi-coeff"></span>Squared phi coefficient<br>([Church & Gale, 1991](#ref-church-gale-1991))|![Formula](/doc/measures/effect_size/squared_phi_coeff.svg)|✔|✖️
 
+<span id="doc-12-4-4-note">
+
 > [!NOTE]
-> 1. The calculation of *Pointwise mutual information (squared)* and *pointwise mutual information (cubic)* are exactly the same as that of *Mutual Dependency* and *Log-frequency biased MD* respectively which were proposed in:<br><br>Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation (LREC’02)* (pp. 620–625). European Language Resources Association.
+> 1. What is commonly known as **mutual information** in corpus linguistics and some corpus tools is actually called **pointwise mutual information** in the field of information retrieval, which is a misnomer (see [Dunning, 1998, p. 49](#ref-dunning-1998); [Bouma, 2009, p. 34](#ref-bouma-2009)). **Mutual information** and **pointwise mutual information** are two different measures of effect size and both are implemented in *Wordless*.
+> 1. Known as **MI3** in some corpus tools.
+> 1. Known as **MI2** in some corpus tools.
+> 1. The calculation of **Pointwise mutual information (squared)** and **pointwise mutual information (cubic)** is exactly the same as that of **Mutual Dependency** and **Log-frequency biased MD** respectively which were proposed in:<br><br>Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation (LREC’02)* (pp. 620–625). European Language Resources Association.
+> 1. Known as **RRF** (ratio of relative frequencies) in *AntConc* (see [Common statistics used in corpus linguistics](https://www.laurenceanthony.net/resources/statistics/common_statistics_used_in_corpus_linguistics.pdf)).
 
 <span id="doc-13"></span>
 ## [13 References](#doc)
@@ -1590,7 +1597,7 @@ Measure of Effect Size|Formula|Collocation Extraction|Keyword Extraction
 <span id="ref-bormuth-1969"></span>
 1. [**^**](#ref-bormuths-cloze-mean-gp) Bormuth, J. R. (1969). *Development of readability analyses*. U.S. Department of Health, Education, and Welfare. http://files.eric.ed.gov/fulltext/ED029166.pdf
 <span id="ref-bouma-2009"></span>
-1. [**^**](#ref-nmi) [**^**](#ref-npmi) Bouma, G. (2009). Normalized (pointwise) mutual information in collocation extraction. In C. Chiarcos, R. Eckart de Castilho, & M. Stede (Eds.), *From form to meaning: processing texts automatically: Proceedings of the Biennial GSCL Conference 2009* (pp. 31–40). Gunter Narr Verlag.
+1. [**^**](#ref-nmi) [**^**](#ref-npmi) [**^**](#doc-12-4-4-note) Bouma, G. (2009). Normalized (pointwise) mutual information in collocation extraction. In C. Chiarcos, R. Eckart de Castilho, & M. Stede (Eds.), *From form to meaning: processing texts automatically: Proceedings of the Biennial GSCL Conference 2009* (pp. 31–40). Gunter Narr Verlag.
 <span id="ref-bjornsson-1968"></span>
 1. [**^**](#ref-lix) Björnsson, C.-H. (1968). *Läsbarhet*. Liber.
 <span id="ref-brouwer-1963"></span>
@@ -1648,7 +1655,7 @@ Measure of Effect Size|Formula|Collocation Extraction|Keyword Extraction
 <span id="ref-dunning-1993"></span>
 1. [**^**](#ref-log-likehood-ratio-test) [**^**](#ref-pearsons-chi-squared-test) Dunning, T. E. (1993). Accurate methods for the statistics of surprise and coincidence. *Computational Linguistics*, *19*(1), 61–74.
 <span id="ref-dunning-1998"></span>
-1. [**^**](#ref-jaccard-index) [**^**](#ref-mi) Dunning, T. E. (1998). *Finding structure in text, genome and other symbolic sequences* [Doctoral dissertation, University of Sheffield]. arXiv. https://arxiv.org/pdf/1207.1847
+1. [**^**](#ref-jaccard-index) [**^**](#ref-mi) [**^**](#doc-12-4-4-note) Dunning, T. E. (1998). *Finding structure in text, genome and other symbolic sequences* [Doctoral dissertation, University of Sheffield]. arXiv. https://arxiv.org/pdf/1207.1847
 <span id="ref-durrant-2008"></span>
 1. [**^**](#ref-conditional-probability) Durrant, P. (2008). *High frequency collocations and second language learning* [Doctoral dissertation, University of Nottingham]. Nottingham eTheses. https://eprints.nottingham.ac.uk/10622/1/final_thesis.pdf
 <span id="ref-elhaj-rayson-2016"></span>
@@ -1707,7 +1714,7 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 <span id="ref-kandel-moles-1958"></span>
 1. [**^**](#ref-re) Kandel, L., & Moles, A. (1958). Application de l’indice de flesch à la langue française. *The Journal of Educational Research*, *21*, 283–287.
 <span id="ref-kilgarriff-2001"></span>
-1. [**^**](#ref-fishers-exact-test) [**^**](#ref-log-likehood-ratio-test) [**^**](#ref-mann-whiteney-u-test) [**^**](#ref-mi) [**^**](#ref-nmi) [**^**](#ref-pmi) [**^**](#ref-im3) [**^**](#ref-npmi) [**^**](#ref-im2) Kilgarriff, A. (2001). Comparing corpora. *International Journal of Corpus Linguistics*, *6*(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil
+1. [**^**](#ref-fishers-exact-test) [**^**](#ref-log-likehood-ratio-test) [**^**](#ref-mann-whiteney-u-test) [**^**](#ref-mi) [**^**](#ref-nmi) [**^**](#ref-pmi) [**^**](#ref-im3) [**^**](#ref-npmi) [**^**](#ref-im2) Kilgarriff, A. (2001). Comparing corpora. *International Journal of Corpus Linguistics*, *6*(1), 97–133. https://doi.org/10.1075/ijcl.6.1.05kil
 <span id="ref-kilgarriff-2009"></span>
 1. [**^**](#ref-kilgarriffs-ratio) Kilgarriff, A. (2009). Simple maths for keywords. In M. Mahlberg, V. González-Díaz, & C. Smith (Eds.), *Proceedings of the Corpus Linguistics Conference 2009 (CL2009)* (Article 171). University of Liverpool.
 <span id="ref-kilgarriff-tugwell-2001"></span>
