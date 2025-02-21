@@ -42,7 +42,6 @@
 
 ### ❌ Removals
 - Measures: Remove effect size - Log-frequency biased MD / Mutual Dependency
-- Utils: Remove NLTK's Malayalam Punkt sentence tokenizer
 
 ### ⏫ Dependency Changes
 - Dependencies: Upgrade NLTK to 3.9.1

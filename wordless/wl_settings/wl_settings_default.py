@@ -1353,7 +1353,7 @@ def init_settings_default(main):
                 'lij': 'stanza_lij',
                 'lit': 'spacy_dependency_parser_lit',
                 'mkd': 'spacy_dependency_parser_mkd',
-                'mal': 'spacy_sentencizer',
+                'mal': 'nltk_punkt_mal',
                 'mlt': 'stanza_mlt',
                 'glv': 'stanza_glv',
                 'mar': 'stanza_mar',

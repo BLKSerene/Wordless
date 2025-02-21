@@ -398,6 +398,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'NLTK - German Punkt sentence tokenizer'): 'nltk_punkt_deu',
                 _tr('wl_settings_global', 'NLTK - Greek Punkt sentence tokenizer'): 'nltk_punkt_ell',
                 _tr('wl_settings_global', 'NLTK - Italian Punkt sentence tokenizer'): 'nltk_punkt_ita',
+                _tr('wl_settings_global', 'NLTK - Malayalam Punkt sentence tokenizer'): 'nltk_punkt_mal',
                 _tr('wl_settings_global', 'NLTK - Norwegian (Bokmål) Punkt sentence tokenizer'): 'nltk_punkt_nob',
                 _tr('wl_settings_global', 'NLTK - Polish Punkt sentence tokenizer'): 'nltk_punkt_pol',
                 _tr('wl_settings_global', 'NLTK - Portuguese Punkt sentence tokenizer'): 'nltk_punkt_por',
@@ -1638,7 +1639,10 @@ def init_settings_global():
                 'spacy_sentencizer'
             ],
 
-            'mal': ['spacy_sentencizer'],
+            'mal': [
+                'nltk_punkt_mal',
+                'spacy_sentencizer'
+            ],
 
             'mlt': [
                 'spacy_sentencizer',
