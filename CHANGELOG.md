@@ -29,6 +29,7 @@
 
 ### ✨ Improvements
 - Measures: Update lexical density/diversity - Brunet's index
+- Misc: Disable mouse wheel events for tabs
 
 ### 📌 Bugfixes
 - File Area: Fix Open Files - Encoding

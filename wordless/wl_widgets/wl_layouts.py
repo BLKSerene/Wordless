@@ -18,6 +18,7 @@
 
 import platform
 
+from PyQt5.QtCore import QEvent
 from PyQt5.QtGui import QPainter, QPalette
 from PyQt5.QtWidgets import (
     QFrame,
@@ -110,6 +111,8 @@ class Wl_Tab_Widget(QTabWidget):
     def __init__(self, parent):
         super().__init__(parent)
 
+        self.tabBar().installEventFilter(self)
+
         # Fix invisible white text color in selected tabs on newer macOSes
         if is_macos:
             self.setStyleSheet('''
@@ -120,6 +123,13 @@ class Wl_Tab_Widget(QTabWidget):
                     color: #FFF;
                 }
             ''')
+
+    # Disable mouse wheel events for tabs
+    def eventFilter(self, obj, event):
+        if obj == self.tabBar() and event.type() == QEvent.Wheel:
+            return True
+
+        return super().eventFilter(obj, event)
 
 class Wl_Splitter(QSplitter):
     def __init__(self, orientation, parent):
