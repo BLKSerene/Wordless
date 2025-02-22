@@ -65,8 +65,7 @@ from PyQt5.QtWidgets import (
     QLabel,
     QMainWindow,
     QPushButton,
-    QSplashScreen,
-    QWidget
+    QSplashScreen
 )
 import pythainlp
 import spacy_pkuseg
@@ -146,8 +145,7 @@ class Wl_Loading(QSplashScreen):
         self.showMessage(
             f' {message}',
             color = Qt.white,
-            # To be compatible with PyQt 5.10.0 on OS X 10.11
-            alignment = int(Qt.AlignLeft | Qt.AlignBottom)
+            alignment = Qt.AlignLeft | Qt.AlignBottom
         )
 
     def fade_in(self):
@@ -276,10 +274,6 @@ class Wl_Main(QMainWindow):
                 background-color: #D0D0D0;
             }
         ''')
-
-        # Fix layout on macOS
-        if is_macos:
-            self.fix_macos_layout(self)
 
         self.loading_window.show_message(self.tr('Starting Wordless...'))
 
@@ -496,14 +490,6 @@ class Wl_Main(QMainWindow):
         )
 
         self.wl_work_area.currentChanged.connect(self.work_area_changed)
-
-    def fix_macos_layout(self, parent):
-        for widget in parent.children():
-            if widget.children():
-                self.fix_macos_layout(widget)
-            else:
-                if isinstance(widget, QWidget) and not isinstance(widget, QPushButton):
-                    widget.setAttribute(Qt.WA_LayoutUsesWidgetRect)
 
     def load_settings(self):
         settings = self.settings_custom

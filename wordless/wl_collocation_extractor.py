@@ -156,6 +156,7 @@ class Wrapper_Collocation_Extractor(wl_layouts.Wl_Wrapper):
         self.line_edit_search_term.textChanged.connect(self.search_settings_changed)
         self.line_edit_search_term.returnPressed.connect(self.table_collocation_extractor.button_generate_table.click)
         self.list_search_terms.model().dataChanged.connect(self.search_settings_changed)
+        self.list_search_terms.enter_pressed.connect(self.table_collocation_extractor.button_generate_table.click)
 
         self.checkbox_match_case.stateChanged.connect(self.search_settings_changed)
         self.checkbox_match_whole_words.stateChanged.connect(self.search_settings_changed)

@@ -20,10 +20,12 @@ import os
 import re
 
 from PyQt5.QtCore import (
+    pyqtSignal,
     QCoreApplication,
     QItemSelection,
     QModelIndex,
-    QStringListModel
+    QStringListModel,
+    Qt
 )
 from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import (
@@ -43,8 +45,12 @@ _tr = QCoreApplication.translate
 
 RE_EMPTY_ITEM = re.compile(r'^\s*$')
 
+is_windows, is_macos, is_linux = wl_misc.check_os()
+
 # self.tr() does not work in inherited classes
 class Wl_List_Add_Ins_Del_Clr(QListView):
+    enter_pressed = pyqtSignal()
+
     def __init__(
         self, parent,
         new_item_text = '',
@@ -58,7 +64,7 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
         self.items_old = []
 
         if editable:
-            self.setEditTriggers(QAbstractItemView.DoubleClicked | QAbstractItemView.SelectedClicked)
+            self.setEditTriggers(QAbstractItemView.DoubleClicked | QAbstractItemView.SelectedClicked | QAbstractItemView.EditKeyPressed)
         else:
             self.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
@@ -105,6 +111,58 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
         self.model().dataChanged.emit(QModelIndex(), QModelIndex())
 
         event.accept()
+
+    def keyPressEvent(self, event):
+        match event.key():
+            # Clear the selected item if no item is being edited
+            case Qt.Key_Backspace:
+                if not self.findChild(QLineEdit):
+                    self.edit(self.model().index(self.get_selected_rows()[-1]))
+                    self.findChild(QLineEdit).clear()
+                else:
+                    super().keyPressEvent(event)
+            # Start editing after moving up or down if the previously selected item is being edited
+            case Qt.Key_Up | Qt.Key_Down | Qt.Key_PageUp | Qt.Key_PageDown | Qt.Key_Home | Qt.Key_End:
+                # On OSes other than macOS, home and end keys jump to the first or last item or the start or end of the item being edited
+                if event.key() not in (Qt.Key_Home, Qt.Key_End) or is_macos:
+                    row_selected_prev = self.get_selected_rows()[-1]
+                    editing = self.findChild(QLineEdit)
+
+                    super().keyPressEvent(event)
+
+                    # No need to start editing if the previously selected item is the first or last item
+                    if editing and row_selected_prev != self.get_selected_rows()[-1]:
+                        self.edit(self.model().index(self.get_selected_rows()[-1]))
+                # On macOS, home and end keys always jump to the first or last item
+                else:
+                    super().keyPressEvent(event)
+            # Insert an item if no item is being edited
+            case Qt.Key_Insert:
+                if self.findChild(QLineEdit):
+                    super().keyPressEvent(event)
+                else:
+                    self.ins_item()
+            case Qt.Key_Delete:
+                self.del_item()
+            # Clear the item being edited or whole list
+            # Do nothing on OSes other than macOS as there is no clear key
+            case Qt.Key_Clear:
+                if is_macos:
+                    if (line_edit := self.findChild(QLineEdit)):
+                        line_edit.clear()
+                    else:
+                        self.clr_list()
+                else:
+                    super().keyPressEvent(event)
+            # Generate the table if no item is being edited
+            # Key_Return is the main key return/enter and Key_Enter is the enter key in the numeric keypad
+            case Qt.Key_Return | Qt.Key_Enter:
+                if self.findChild(QLineEdit):
+                    super().keyPressEvent(event)
+                else:
+                    self.enter_pressed.emit()
+            case _:
+                super().keyPressEvent(event)
 
     def data_changed(self, topLeft = None, bottomRight = None): # pylint: disable=unused-argument
         if self.model().rowCount():
@@ -161,7 +219,7 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
             self.button_del.setEnabled(False)
 
     def get_selected_rows(self):
-        return sorted({index.row() for index in self.selectionModel().selectedIndexes()})
+        return [index.row() for index in self.selectionModel().selectedIndexes()]
 
     def _add_item(self, text = '', row = None):
         if text:
@@ -205,8 +263,9 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
 
         self.edit(self.model().index(self.model().rowCount() - 1))
 
+    # Insert before the last selected item
     def ins_item(self, text = ''):
-        row = self.get_selected_rows()[0]
+        row = self.get_selected_rows()[-1]
 
         self._add_item(text = text, row = row)
         self.setCurrentIndex(self.model().index(row))
@@ -216,7 +275,7 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
     def del_item(self):
         data = self.model().stringList()
 
-        for row in reversed(self.get_selected_rows()):
+        for row in sorted(self.get_selected_rows(), reverse = True):
             del data[row]
             del self.items_old[row]
 
@@ -402,7 +461,7 @@ class Wl_List_Stop_Words(Wl_List_Add_Ins_Del_Clr_Imp_Exp):
         self.button_del.setEnabled(False)
 
     def switch_to_custom(self):
-        self.setEditTriggers(QAbstractItemView.DoubleClicked | QAbstractItemView.SelectedClicked)
+        self.setEditTriggers(QAbstractItemView.DoubleClicked | QAbstractItemView.SelectedClicked | QAbstractItemView.EditKeyPressed)
         self.setDragEnabled(True)
 
         self.button_add.setEnabled(True)

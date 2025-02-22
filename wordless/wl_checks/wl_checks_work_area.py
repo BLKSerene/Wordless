@@ -196,7 +196,7 @@ def check_results_download_model(main, err_msg, model_name = ''):
             err_msg = traceback.format_exc()
 
     if err_msg:
-        # Use exec_() instead of open() here to prevent the dialog from being hidden on OS X 10.11 with PyQt 5.10
+        # Use exec_() instead of open() here to prevent the error dialog from being hidden on macOS
         wl_dialogs_errs.Wl_Dialog_Err_Download_Model(main, err_msg).exec_()
         wl_status_bar_msg_err_download_model(main)
 
@@ -233,7 +233,7 @@ def check_err_fig(main, err_msg):
         wl_status_bar_msg_success_generate_fig(main)
 
 def check_err_exp_table(main, err_msg, file_path):
-    # Use exec_() instead of open() here to prevent the dialog from being hidden on OS X 10.11 with PyQt 5.10
+    # Use exec_() instead of open() here to prevent the error dialog from being hidden on macOS
     if err_msg:
         if err_msg == 'permission_err':
             wl_msg_boxes.Wl_Msg_Box_Info(
