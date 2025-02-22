@@ -19,7 +19,7 @@
 
 # NLP
 botok == 0.8.12
-charset-normalizer == 3.3.2
+charset-normalizer == 3.4.1
 khmer-nltk == 1.6
 laonlp == 1.2.0
 lingua-language-detector == 2.0.2

@@ -31,7 +31,7 @@
 - Measures: Update lexical density/diversity - Brunet's index
 - Misc: Disable mouse wheel events for tabs
 
-### 📌 Bugfixes
+### 🔧 Bugfixes
 - File Area: Fix Open Files - Encoding
 - File Area: Fix Open Files - Opening Non-text Files - Do not show this again
 - Utils: Fix matching of inflected forms of tokens/n-grams with tags
@@ -41,11 +41,12 @@
 - Work Area: Fix Work Area - Filter results - File to filter
 - Work Area: Fix Work Area - Search in results - Clear highlights
 
-### ❌ Removals
+### 🚫 Removals
 - Measures: Remove effect size - Log-frequency biased MD / Mutual Dependency
 
 ### ⏫ Dependency Changes
 - Dependencies: Upgrade Beautiful Soup to 4.13.3
+- Dependencies: Upgrade Charset Normalizer to 3.4.1
 - Dependencies: Upgrade NLTK to 3.9.1
 - Dependencies: Upgrade Pyphen to 0.17.0
 - Dependencies: Upgrade python-mecab-ko to 1.3.7
@@ -83,13 +84,13 @@
 - Utils: Update custom stop word lists
 - Work Area: Dependency Parser - Sentence - Highlight heads and dependents
 
-### 📌 Bugfixes
+### 🔧 Bugfixes
 - File Area: Fix support for .xlsx files
 - Utils: Fix downloading of Stanza models
 - Utils: Fix language detection
 - Work Area: Fix Dependency Parser - analysis of files whose first token is a punctuation mark
 
-### ❌ Removals
+### 🚫 Removals
 - Measures: Remove statistical significance - Welch's t-test
 - Settings: Remove Settings - Measures - Statistical Significance - Welch's t-test
 - Utils: Remove Dostoevsky's Russian sentiment analyzer
@@ -143,7 +144,7 @@
 - Utils: Update Wordless's Chinese character tokenizer and Japanese kanji tokenizer
 - Utils: Update Wordless's Chinese, Japanese, and Tibetan word detokenizer
 
-### ❌ Removals
+### 🚫 Removals
 - Settings: Remove Settings - Tables - Profiler
 - Utils: Remove stopword's stop word lists
 
@@ -179,10 +180,10 @@
 - Utils: Update spaCy's sentence recognizers, word tokenizers, part-of-speech taggers, lemmatizers, and dependency parsers
 - Utils: Update Wordless's sentence and sentence segment splitters
 
-### 📌 Bugfixes
+### 🔧 Bugfixes
 - Work Area: Fix Concordancer - Generation Settings - Width unit - Character
 
-### ❌ Removals
+### 🚫 Removals
 - Measures: Remove Fernández Huerta's Readability Score / Szigriszt's Perspicuity Index
 - Utils: Remove PyThaiNLP's perceptron part-of-speech tagger (LST20)
 - Utils: Remove TextBlob's English sentiment analyzer
@@ -222,7 +223,7 @@
 - Utils: Update spaCy's dependency parsers
 - Work Area: Update Concordancer / Parallel Concordancer - Export selected/all cells - Word documents
 
-### 📌 Bugfixes
+### 🔧 Bugfixes
 - Work Area: Remove all invalid XML characters when exporting tables to Excel workbooks
 - Work Area: Fix Parallel Concordancer - searching for additions and deletions
 
@@ -266,7 +267,7 @@
 - Visualization: Update word clouds and network graphs
 - Work Area: Update Concordancer / Parallel Concordancer - Export selected/all cells - Excel workbooks
 
-### 📌 Bugfixes
+### 🔧 Bugfixes
 - Settings: Fix global settings - encodings
 - Settings: Fix Settings - General - User Interface Settings - Interface scaling
 - Settings: Fix Settings - Part-of-speech Tagging - Tagsets
@@ -274,7 +275,7 @@
 - Work Area: Fix Work Area - Filter results
 - Work Area: Fix Work Area - Table Settings - Show percentage data / Show breakdown by span position / Show breakdown by file
 
-### ❌ Removals
+### 🚫 Removals
 - Measures: Remove dispersion - Gries's DPnorm
 - Settings: Remove Settings - Figures - Word Clouds - Font - GNU FreeFont
 - Work Area: Remove Wordlist/N-gram Generator - Generation Settings - Measure of Dispersion - Gries's DPnorm
@@ -322,7 +323,7 @@
 - Work Area: Update Profiler - Gunning Fog Index / Lensear Write
 - Work Area: Update Search Settings / Search in Results
 
-### ❌ Removals
+### 🚫 Removals
 - Menu: Remove Help - Contributing
 - Utils: Remove extra-stopwords's stop word lists
 - Utils: Remove Lemmatization Lists's lemma lists
@@ -388,14 +389,14 @@
 - Visualization: Update word clouds
 - Work Area: Allow one-to-many parallel concordancing in Parallel Concordancer
 
-### 📌 Bugfixes
+### 🔧 Bugfixes
 - File Area: Fix support for .tmx files
 - Work Area: Fix Collocation/Colligation Extractor - Generation Settings - Limit Searching
 - Work Area: Fix Concordancer / Parallel Concordancer - Exported Selected/All after sorting
 - Work Area: Fix Profiler - Table Settings - Show Cumulative after clicking horizontal headers
 - Work Area: Fix Profiler - Token Settings - Use tags only
 
-### ❌ Removals
+### 🚫 Removals
 - Settings: Remove Settings - Measures - Adjusted Frequency - Use same settings in "Settings → Measures → Dispersion"
 - Utils: Remove CLTK's stop word lists
 - Utils: Remove nagisa's Japanese word tokenizer and part-of-speech tagger
@@ -449,7 +450,7 @@
 - File Area: Show original file paths instead of modified ones
 - Utils: Update CLTK's Norse (Old) stop word list
 
-### ❌ Removals
+### 🚫 Removals
 - File Area: Remove Open File(s) / Open Folder / Reload Selected / Reload All / Close Selected / Close All
 - Menu: Remove File - Reload Selected/All
 - Menu: Remove Preferences - Settings - Word Detokenization
@@ -496,12 +497,12 @@
 ### ✨ Improvements
 - Work Area: Update Keyword - Generation Settings - Reference Files
 
-### 📌 Bugfixes
+### 🔧 Bugfixes
 - File Area: Fix Auto-detection Settings
 - Settings: Fix Settings - POS Tagging - Tagsets - Mapping Settings - Reset All
 - Settings: Fix Settings - Stop Word Lists - Stop Word Lists Settings - Custom List
 
-### ❌ Removals
+### 🚫 Removals
 - File Area: Remove support for .tmx files
 
 ### ⏫ Dependency Changes
@@ -543,11 +544,11 @@
 - Utils: Update NLTK's word tokenizers
 - Utils: Update spaCy's sentencizer, word tokenizers, part-of-speech taggers, and lemmatizers
 
-### 📌 Bugfixes
+### 🔧 Bugfixes
 - Utils: Fix Sacremoses's Moses tokenizer and Moses detokenizer
 - Work Area: Fix Concordancer - Sort Results - Order
 
-### ❌ Removals
+### 🚫 Removals
 - Utils: Remove AttaCut's Thai word tokenizer
 
 ### ⏫ Dependency Changes
@@ -584,12 +585,12 @@
 ### ✨ Improvements
 - File Area: Only load files that can be successfully decoded
 
-### 📌 Bugfixes
+### 🔧 Bugfixes
 - Settings: Fix Settings - Word Tokenization - Preview - Select language - Vietnamese
 - Utils: Fix NLTK's Penn Treebank detokenizer
 - Work Area: Fix Concordancer - Generate Figure
 
-### ❌ Removals
+### 🚫 Removals
 - File Area: Remove support for .lrc and .xls files
 - Work Area: Remove Concordancer - Sentence Segment No.
 - Work Area: Remove Overview - Count of Sentence Segments / Paragraph Length in Sentence Segment / Sentence Segment Length in Token
@@ -633,11 +634,11 @@
 - Utils: Update Sacremoses's Moses tokenizer
 - Utils: Update Stopwords ISO's Greek and Norwegian stop word lists
 
-### 📌 Bugfixes
+### 🔧 Bugfixes
 - Settings: Fix Settings - POS Tagging
 - Work Area: Fix batch processing of a large number of files
 
-### ❌ Removals
+### 🚫 Removals
 - Utils: Remove grk-stoplist's Greek (Ancient) stop word list
 
 ### ⏫ Dependency Changes
@@ -689,14 +690,14 @@
 - Work Area: Do not add borders to exported Excel workbooks due to performance issues
 - Work Area: Remove illegal characters when exporting tables to Excel workbooks
 
-### 📌 Bugfixes
+### 🔧 Bugfixes
 - File Area / Utils: Fix encoding detection
 - Settings: Fix Settings - POS Tagging - Tagsets - Preview Settings - POS Tagger
 - Utils: Fix lemmatization of empty tokens
 - Work Area: Fix file checking
 - Work Area: Fix Overview - Paragraph/Sentence Length
 
-### ❌ Removals
+### 🚫 Removals
 - Utils: Remove Sacremoses's Penn Treebank tokenizer
 
 ### ⏫ Dependency Changes
@@ -737,7 +738,7 @@
 - Utils: Update Sacremoses's tokenizers and detokenizer
 - Visualization: Update line charts and word clouds
 
-### 📌 Bugfixes
+### 🔧 Bugfixes
 - Settings: Fix Settings - Stop Words - Preview - Count of Stop Words
 - Utils: Fix NLTK's word tokenizers
 - Work Area: Fix Collocation and Colligation
@@ -772,7 +773,7 @@
 - Utils: Update spaCy's sentencizer
 - Utils: Update tagset mapping of spaCy's English part-of-speech tagger
 
-### 📌 Bugfixes
+### 🔧 Bugfixes
 - File Area: Fix Open Folder
 - Settings: Fix Settings - Sentence Tokenization / Word Tokenization / Word Detokenization / POS Tagging / Lemmatization - Preview
 - Startup: Fix checking for updates on startup
