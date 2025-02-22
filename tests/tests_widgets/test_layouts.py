@@ -31,9 +31,6 @@ def test_wl_wrapper():
     wrapper = wl_layouts.Wl_Wrapper(main)
     wrapper.load_settings()
 
-def test_wl_wrapper_file_area():
-    wl_layouts.Wl_Wrapper_File_Area(main)
-
 def test_wl_splitter():
     wl_layouts.Wl_Splitter(Qt.Vertical, main)
 
@@ -52,7 +49,6 @@ def test_wl_separator():
 if __name__ == '__main__':
     test_wl_layout()
     test_wl_wrapper()
-    test_wl_wrapper_file_area()
     test_wl_splitter()
     test_wl_scroll_area()
     test_wl_stacked_widget_resizable()

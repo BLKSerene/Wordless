@@ -96,16 +96,11 @@ class Wl_Wrapper(QWidget):
         opt = QStyleOption()
         opt.initFrom(self)
         p = QPainter(self)
+
         self.style().drawPrimitive(QStyle.PE_Widget, opt, p, self)
 
     def load_settings(self, defaults = False):
         pass
-
-class Wl_Wrapper_File_Area(Wl_Wrapper):
-    def __init__(self, parent):
-        super().__init__(parent)
-
-        self.scroll_area_settings.hide()
 
 class Wl_Tab_Widget(QTabWidget):
     def __init__(self, parent):

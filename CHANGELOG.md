@@ -20,6 +20,7 @@
 
 ## [3.6.0](https://github.com/BLKSerene/Wordless/releases/tag/3.6.0) - ??/??/2025
 ### 🎉 New Features
+- File Area: Add Number of corpora / tokens / types (selected)
 - Measures: Add effect size - conditional probability / ΔP / mutual information (normalized) / μ-value / pointwise mutual information (squared) / pointwise mutual information (normalized) / relative risk
 - Menu: Add Edit
 - Settings: Add Settings - Measures - Effect Size - Mutual Information / Pointwise Mutual Information / Pointwise Mutual Information (Cubic) / Pointwise Mutual Information (Squared)

@@ -42,6 +42,7 @@ from PyQt5.QtWidgets import (
     QCheckBox,
     QFileDialog,
     QHeaderView,
+    QLabel,
     QLineEdit,
     QPushButton,
     QStyle,
@@ -74,9 +75,11 @@ from wordless.wl_widgets import (
 
 _tr = QCoreApplication.translate
 
-class Wrapper_File_Area(wl_layouts.Wl_Wrapper_File_Area):
+class Wrapper_File_Area(wl_layouts.Wl_Wrapper):
     def __init__(self, main, file_type = 'observed'):
         super().__init__(main)
+
+        self.scroll_area_settings.hide()
 
         self.file_names_old = []
         self.file_type = file_type
@@ -89,10 +92,19 @@ class Wrapper_File_Area(wl_layouts.Wl_Wrapper_File_Area):
             self.tab = 'corpora_ref'
             self.settings_suffix = '_ref'
 
+        self.label_num_corpora = QLabel()
+        self.label_num_tokens = QLabel()
+        self.label_num_types = QLabel()
+
         # Table
         self.table_files = Wl_Table_Files(self)
 
-        self.wrapper_table.layout().addWidget(self.table_files, 0, 0)
+        self.wrapper_table.layout().addWidget(self.label_num_corpora, 0, 0)
+        self.wrapper_table.layout().addWidget(self.label_num_tokens, 0, 2)
+        self.wrapper_table.layout().addWidget(self.label_num_types, 0, 3)
+        self.wrapper_table.layout().addWidget(self.table_files, 1, 0, 1, 4)
+
+        self.wrapper_table.layout().setColumnStretch(1, 1)
 
         # Load files
         self.table_files.update_table()
@@ -235,6 +247,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
         self.setItemDelegateForColumn(4, wl_item_delegates.Wl_Item_Delegate_Uneditable(self))
         self.setItemDelegateForColumn(5, wl_item_delegates.Wl_Item_Delegate_Uneditable(self))
 
+        self.horizontalHeader().sectionClicked.connect(self.update_labels)
         self.selectionModel().selectionChanged.connect(self.selection_changed)
         self.clicked.connect(self.item_clicked)
 
@@ -371,6 +384,8 @@ class Wl_Table_Files(wl_tables.Wl_Table):
                 else:
                     self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}'][row]['selected'] = False
 
+        self.update_labels()
+
     def selection_changed(self):
         if self.get_selected_rows():
             self.main.action_file_close_selected.setEnabled(True)
@@ -404,6 +419,48 @@ class Wl_Table_Files(wl_tables.Wl_Table):
             self.enable_updates()
         else:
             self.clr_table(1)
+
+        self.update_labels()
+
+    def update_labels(self):
+        files = self.file_area.get_files()
+        files_selected = list(self.file_area.get_selected_files())
+
+        if files:
+            num_tokens_all = sum((file['text'].num_tokens for file in files))
+            num_types_all = sum((file['text'].num_types for file in files))
+        else:
+            num_tokens_all = 0
+            num_types_all = 0
+
+        if files_selected:
+            num_tokens = sum((file['text'].num_tokens for file in files_selected))
+            num_types = sum((file['text'].num_types for file in files_selected))
+        else:
+            num_tokens = 0
+            num_types = 0
+
+        self.file_area.label_num_corpora.setText(
+            self.tr('Number of corpora (selected): ')
+            + str(len(files))
+            + ' ('
+            + str(len(files_selected))
+            + ')'
+        )
+        self.file_area.label_num_tokens.setText(
+            self.tr('Number of tokens (selected): ')
+            + str(num_tokens_all)
+            + ' ('
+            + str(num_tokens)
+            + ')'
+        )
+        self.file_area.label_num_types.setText(
+            self.tr('| Number of types (selected): ')
+            + str(num_types_all)
+            + ' ('
+            + str(num_types)
+            + ')'
+        )
 
     def check_file_area(self, op, *args, **kwargs):
         if (

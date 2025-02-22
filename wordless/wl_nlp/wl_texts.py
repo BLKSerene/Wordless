@@ -666,7 +666,8 @@ class Wl_Text_Ref(Wl_Text):
         self.tokens_multilevel[0][0][0] = clean_texts(self.tokens_multilevel[0][0][0])
         self.tokens_multilevel[0][0][0] = to_tokens(self.tokens_multilevel[0][0][0], self.lang)
 
-        self.num_tokens = len(self.get_tokens_flat())
+        # Record number of tokens and types
+        self.update_num_tokens()
 
         # Remove Wl_Main object from the text since it cannot be pickled
         del self.main
