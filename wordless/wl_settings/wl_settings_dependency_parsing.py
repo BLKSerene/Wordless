@@ -134,6 +134,7 @@ class Wl_Settings_Dependency_Parsing(wl_settings.Wl_Settings_Node):
 
             self.table_dependency_parsers.itemDelegateForRow(row).set_enabled(False)
             self.combo_box_preview_lang.setEnabled(False)
+            self.button_preview_settings.setEnabled(False)
             self.button_show_preview.setEnabled(False)
             self.text_edit_preview_samples.setEnabled(False)
 
@@ -177,6 +178,7 @@ class Wl_Settings_Dependency_Parsing(wl_settings.Wl_Settings_Node):
 
         self.table_dependency_parsers.itemDelegateForRow(row).set_enabled(True)
         self.combo_box_preview_lang.setEnabled(True)
+        self.button_preview_settings.setEnabled(True)
         self.button_show_preview.setEnabled(True)
         self.text_edit_preview_samples.setEnabled(True)
 

@@ -161,7 +161,8 @@ class Wl_Settings_Sentiment_Analysis(wl_settings.Wl_Settings_Node):
                 self.update_gui_err()
 
     def update_gui(self, preview_results):
-        self.label_preview_sentiment_score_val.setText(str(preview_results))
+        precision = self.main.settings_custom['tables']['precision_settings']['precision_decimals']
+        self.label_preview_sentiment_score_val.setText(f'{preview_results:.{precision}f}')
         self.settings_custom['preview']['preview_sentiment_score'] = self.label_preview_sentiment_score_val.text()
 
         self.update_gui_err()

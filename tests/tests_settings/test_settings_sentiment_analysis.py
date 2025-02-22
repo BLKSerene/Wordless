@@ -28,7 +28,7 @@ def test_wl_settings_sentiment_analysis():
     settings_sentiment_analysis.apply_settings()
 
     settings_sentiment_analysis.preview_changed()
-    settings_sentiment_analysis.update_gui('test')
+    settings_sentiment_analysis.update_gui(0.123456789)
     settings_sentiment_analysis.update_gui_err()
 
 if __name__ == '__main__':

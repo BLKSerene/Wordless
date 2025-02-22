@@ -144,6 +144,7 @@ class Wl_Settings_Lemmatization(wl_settings.Wl_Settings_Node):
             self.combo_box_preview_lang.setEnabled(False)
             self.button_show_preview.setEnabled(False)
             self.text_edit_preview_samples.setEnabled(False)
+            self.text_edit_preview_results.setEnabled(False)
 
             self.button_show_preview.setText(self.tr('Processing...'))
 
@@ -183,6 +184,7 @@ class Wl_Settings_Lemmatization(wl_settings.Wl_Settings_Node):
         self.combo_box_preview_lang.setEnabled(True)
         self.button_show_preview.setEnabled(True)
         self.text_edit_preview_samples.setEnabled(True)
+        self.text_edit_preview_results.setEnabled(True)
 
     def load_settings(self, defaults = False):
         if defaults:

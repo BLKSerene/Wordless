@@ -145,10 +145,11 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
             row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
 
             self.table_pos_taggers.itemDelegateForRow(row).set_enabled(False)
+            self.checkbox_to_universal_pos_tags.setEnabled(False)
             self.combo_box_preview_lang.setEnabled(False)
             self.button_show_preview.setEnabled(False)
             self.text_edit_preview_samples.setEnabled(False)
-            self.checkbox_to_universal_pos_tags.setEnabled(False)
+            self.text_edit_preview_results.setEnabled(False)
 
             self.button_show_preview.setText(self.tr('Processing...'))
 
@@ -191,10 +192,11 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
         row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
 
         self.table_pos_taggers.itemDelegateForRow(row).set_enabled(True)
+        self.checkbox_to_universal_pos_tags.setEnabled(True)
         self.combo_box_preview_lang.setEnabled(True)
         self.button_show_preview.setEnabled(True)
         self.text_edit_preview_samples.setEnabled(True)
-        self.checkbox_to_universal_pos_tags.setEnabled(True)
+        self.text_edit_preview_results.setEnabled(True)
 
     def load_settings(self, defaults = False):
         if defaults:

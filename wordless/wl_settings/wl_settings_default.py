@@ -2221,8 +2221,7 @@ def init_settings_default(main):
 
             'preview': {
                 'preview_lang': 'eng_us',
-                'preview_samples': '',
-                'preview_sentiment_score': '0',
+                'preview_samples': ''
             }
         },
 
@@ -2554,6 +2553,10 @@ def init_settings_default(main):
             }
         }
     }
+
+    # Sentiment Analysis - Preview - Sentiment score
+    precision = settings_default['tables']['precision_settings']['precision_decimals']
+    settings_default['sentiment_analysis']['preview']['preview_sentiment_score'] = f'{0:.{precision}f}'
 
     # Tagsets
     for mappings in settings_default['pos_tagging']['tagsets']['mapping_settings'].values():
