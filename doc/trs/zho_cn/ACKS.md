@@ -22,7 +22,7 @@
 
 &nbsp;|名称|版本|作者|许可
 -----:|----|:-----:|-------|:-----:
-1|[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)|4.12.3|Leonard Richardson|[MIT](https://git.launchpad.net/beautifulsoup/tree/LICENSE)
+1|[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)|4.13.3|Leonard Richardson|[MIT](https://git.launchpad.net/beautifulsoup/tree/LICENSE)
 2|[Botok](https://github.com/OpenPecha/Botok)|0.8.12|Hélios Drupchen Hildt|[Apache-2.0](https://github.com/OpenPecha/Botok/blob/master/LICENSE)
 3|[Charset Normalizer](https://github.com/Ousret/charset_normalizer)|3.3.2|TAHRI Ahmed R.|[MIT](https://github.com/Ousret/charset_normalizer/blob/master/LICENSE)
 4|[khmer-nltk](https://github.com/VietHoang1512/khmer-nltk)|1.6|Phan Viet Hoang|[Apache-2.0](https://github.com/VietHoang1512/khmer-nltk/blob/main/LICENSE)

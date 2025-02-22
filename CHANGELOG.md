@@ -45,6 +45,7 @@
 - Measures: Remove effect size - Log-frequency biased MD / Mutual Dependency
 
 ### ⏫ Dependency Changes
+- Dependencies: Upgrade Beautiful Soup to 4.13.3
 - Dependencies: Upgrade NLTK to 3.9.1
 - Dependencies: Upgrade Pyphen to 0.17.0
 - Dependencies: Upgrade python-mecab-ko to 1.3.7
