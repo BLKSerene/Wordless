@@ -28,7 +28,7 @@ pyphen == 0.17.0
 pythainlp == 5.0.4
 sacremoses == 0.1.1
 simplemma == 1.1.2
-stanza == 1.8.2
+stanza == 1.10.1
 underthesea == 6.8.4
 vaderSentiment == 3.3.2
 
@@ -72,4 +72,4 @@ wordcloud
 # See: https://stackoverflow.com/a/57060441
 --index-url=https://download.pytorch.org/whl/cpu
 --extra-index-url=https://pypi.org/simple
-torch < 2.6.0 # Stanza 1.8.2 is incompatible with PyTorch >= 2.6.0
+torch

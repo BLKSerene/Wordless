@@ -75,7 +75,7 @@ def wl_test_supported_langs(main):
                 doc_supported_lang = f'{lang_name:{len_max_langs}s}'
 
                 if lang_code_639_3 == 'other':
-                    doc_supported_lang += '|⭕️ |⭕️ |✖️|✖️|✖️|✖️|✖️|✖️'
+                    doc_supported_lang += '|⭕️|⭕️|✖️|✖️|✖️|✖️|✖️|✖️'
                 else:
                     for i, langs in enumerate(langs_nlp_utils):
                         # Sentence/word tokenization
@@ -83,7 +83,7 @@ def wl_test_supported_langs(main):
                             if lang_code_639_3 in langs:
                                 doc_supported_lang += '|✔'
                             else:
-                                doc_supported_lang += '|⭕️ '
+                                doc_supported_lang += '|⭕️'
                         else:
                             if lang_code_639_3 in langs:
                                 doc_supported_lang += '|✔'

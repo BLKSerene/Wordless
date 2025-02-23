@@ -39,13 +39,13 @@ for lang, lemmatizers in main.settings_global['lemmatizers'].items():
 
             test_lemmatizers_local.append((lang, lemmatizer))
         elif (
-            lemmatizer not in [
+            lemmatizer not in (
                 'spacy_cat', 'spacy_zho', 'spacy_hrv', 'spacy_dan', 'spacy_nld',
                 'spacy_eng', 'spacy_fin', 'spacy_fra', 'spacy_deu', 'spacy_ell',
                 'spacy_ita', 'spacy_jpn', 'spacy_kor', 'spacy_lit', 'spacy_mkd',
                 'spacy_nob', 'spacy_pol', 'spacy_por', 'spacy_ron', 'spacy_rus',
                 'spacy_slv', 'spacy_spa', 'spacy_swe', 'spacy_ukr'
-            ]
+            )
             and not lemmatizer.startswith('stanza_')
         ):
             test_lemmatizers.append((lang, lemmatizer))
@@ -64,7 +64,7 @@ def test_lemmatize(lang, lemmatizer):
 
     match lang:
         case 'sqi':
-            results = ['gjuhë', 'shqip', '(', 'ose', 'thjesht', 'shqipe', ')', 'jam', 'gjuhë', 'jap', 'degë', 'ai', 'veçantë', 'ai', 'familje', 'indo-evropiane', 'që', 'flitet', 'nga', 'rreth', '7-10', 'milionë', 'njeri', 'në', 'botë', ',', '[', '1', ']', 'kryesisht', 'në', 'Shqipëri', ',', 'Kosovë', 'jap', 'Maqedoninë', 'ai', 'veri', ',', 'por', 'edhe', 'në', 'zonë', 'ti', 'tjera', 'ti', 'Evropës', 'Juglindore', 'ku', 'kam', 'një', 'popullsi', 'shqiptar', ',', 'duk', 'përfshij', 'mal', 'ai', 'Zi', 'jap', 'luginë', 'ai', 'Preshevës', '.']
+            results = ['Keto', 'gjuhë', 'kryesisht', 'perdoret', 'në', 'Shqipëri', ',', 'Kosovë', 'jap', 'Maqedoninë', 'ai', 'veri', ',', 'por', 'edhe', 'në', 'zonë', 'ti', 'tjera', 'ti', 'Evropës', 'Juglindore', 'ku', 'kam', 'një', 'popullsi', 'shqiptar', ',', 'duk', 'përfshij', 'mal', 'ai', 'Zi', 'jap', 'luginë', 'ai', 'Preshevës', '.']
         case 'hye':
             results = ['հայոց', 'լեզվով', 'ստեղծվել', 'է', 'մեծ', 'գրականություն։', 'գրաբար', 'է', 'ավանդված', 'հայ', 'հին', 'պատմագրությունը', ',', 'գիտափիլիսոփայական', ',', 'մաթեմատիկական', ',', 'բժշկագիտական', ',', 'աստվածաբանական-դավանաբանական', 'գրականությունը։']
         case 'ast':
@@ -108,7 +108,7 @@ def test_lemmatize(lang, lemmatizer):
         case 'glg':
             results = ['O', 'galego', '(', '[', 'ɡaˈleɣo̝', ']', '[', '1', ']', ')', 'ser', 'un', 'lingua', 'indoeuropeo', 'que', 'pertencer', 'á', 'póla', 'de', 'lingua', 'románico', '.']
         case 'kat':
-            results = ['ქართული', 'ენა', '—', 'იბერიულ-კავკასიურ', 'ენათა', 'ოჯახის', 'ქართველურ', 'ენათა', 'ჯგუფი', 'ენა', '.']
+            results = ['ქართული', 'ენა', '—', 'ქართველურ', 'ენათა', 'ოჯახის', 'ენა', '.']
         case 'deu_at' | 'deu_de' | 'deu_ch':
             results = ['der', 'Deutscher', 'sein', 'ein', 'plurizentrische', 'Sprache', ',', 'enthalten', 'also', 'mehrere', 'Standardvarietät', 'in', 'verschieden', 'Region', '.']
         case 'grc':

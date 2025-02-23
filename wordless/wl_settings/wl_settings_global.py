@@ -74,6 +74,7 @@ def init_settings_global():
             _tr('wl_settings_global', 'Georgian'): ['kat', 'ka'],
             _tr('wl_settings_global', 'German (Austria)'): ['deu_at', 'de_at'],
             _tr('wl_settings_global', 'German (Germany)'): ['deu_de', 'de_de'],
+            _tr('wl_settings_global', 'German (Low)'): ['nds', 'nds'],
             _tr('wl_settings_global', 'German (Switzerland)'): ['deu_ch', 'de_ch'],
             _tr('wl_settings_global', 'Gothic'): ['got', 'got'],
             _tr('wl_settings_global', 'Greek (Ancient)'): ['grc', 'grc'],
@@ -91,6 +92,7 @@ def init_settings_global():
             _tr('wl_settings_global', 'Kannada'): ['kan', 'kn'],
             _tr('wl_settings_global', 'Kazakh'): ['kaz', 'kk'],
             _tr('wl_settings_global', 'Khmer'): ['khm', 'km'],
+            _tr('wl_settings_global', 'Komi (Zyrian)'): ['kpv', 'kpv'],
             _tr('wl_settings_global', 'Korean'): ['kor', 'ko'],
             _tr('wl_settings_global', 'Kurdish (Kurmanji)'): ['kmr', 'kmr'],
             _tr('wl_settings_global', 'Kyrgyz'): ['kir', 'ky'],
@@ -148,6 +150,7 @@ def init_settings_global():
             _tr('wl_settings_global', 'Tigrinya'): ['tir', 'ti'],
             _tr('wl_settings_global', 'Tswana'): ['tsn', 'tn'],
             _tr('wl_settings_global', 'Turkish'): ['tur', 'tr'],
+            _tr('wl_settings_global', 'Turkish (Ottoman)'): ['ota', 'ota'],
             _tr('wl_settings_global', 'Ukrainian'): ['ukr', 'uk'],
             _tr('wl_settings_global', 'Urdu'): ['urd', 'ur'],
             _tr('wl_settings_global', 'Uyghur'): ['uig', 'ug'],
@@ -454,7 +457,9 @@ def init_settings_global():
                 _tr('wl_settings_global', 'spaCy - Sentencizer'): 'spacy_sentencizer',
 
                 _tr('wl_settings_global', 'Stanza - Afrikaans sentence tokenizer'): 'stanza_afr',
+
                 _tr('wl_settings_global', 'Stanza - Arabic sentence tokenizer'): 'stanza_ara',
+                _tr('wl_settings_global', 'Stanza - Albanian sentence tokenizer'): 'stanza_sqi',
                 _tr('wl_settings_global', 'Stanza - Armenian (Classical) sentence tokenizer'): 'stanza_xcl',
                 _tr('wl_settings_global', 'Stanza - Armenian (Eastern) sentence tokenizer'): 'stanza_hye',
                 _tr('wl_settings_global', 'Stanza - Armenian (Western) sentence tokenizer'): 'stanza_hyw',
@@ -482,7 +487,9 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Stanza - French sentence tokenizer'): 'stanza_fra',
                 _tr('wl_settings_global', 'Stanza - French (Old) sentence tokenizer'): 'stanza_fro',
                 _tr('wl_settings_global', 'Stanza - Galician sentence tokenizer'): 'stanza_glg',
+                _tr('wl_settings_global', 'Stanza - Georgian sentence tokenizer'): 'stanza_kat',
                 _tr('wl_settings_global', 'Stanza - German sentence tokenizer'): 'stanza_deu',
+                _tr('wl_settings_global', 'Stanza - German (Low) sentence tokenizer'): 'stanza_nds',
                 _tr('wl_settings_global', 'Stanza - Gothic sentence tokenizer'): 'stanza_got',
                 _tr('wl_settings_global', 'Stanza - Greek (Ancient) sentence tokenizer'): 'stanza_grc',
                 _tr('wl_settings_global', 'Stanza - Greek (Modern) sentence tokenizer'): 'stanza_ell',
@@ -496,6 +503,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Stanza - Italian sentence tokenizer'): 'stanza_ita',
                 _tr('wl_settings_global', 'Stanza - Japanese sentence tokenizer'): 'stanza_jpn',
                 _tr('wl_settings_global', 'Stanza - Kazakh sentence tokenizer'): 'stanza_kaz',
+                _tr('wl_settings_global', 'Stanza - Komi (Zyrian) sentence tokenizer'): 'stanza_kpv',
                 _tr('wl_settings_global', 'Stanza - Korean sentence tokenizer'): 'stanza_kor',
                 _tr('wl_settings_global', 'Stanza - Kurdish (Kurmanji) sentence tokenizer'): 'stanza_kmr',
                 _tr('wl_settings_global', 'Stanza - Kyrgyz sentence tokenizer'): 'stanza_kir',
@@ -530,6 +538,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Stanza - Telugu sentence tokenizer'): 'stanza_tel',
                 _tr('wl_settings_global', 'Stanza - Thai sentence tokenizer'): 'stanza_tha',
                 _tr('wl_settings_global', 'Stanza - Turkish sentence tokenizer'): 'stanza_tur',
+                _tr('wl_settings_global', 'Stanza - Turkish (Ottoman) sentence tokenizer'): 'stanza_ota',
                 _tr('wl_settings_global', 'Stanza - Ukrainian sentence tokenizer'): 'stanza_ukr',
                 _tr('wl_settings_global', 'Stanza - Urdu sentence tokenizer'): 'stanza_urd',
                 _tr('wl_settings_global', 'Stanza - Uyghur sentence tokenizer'): 'stanza_uig',
@@ -636,6 +645,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'spaCy - Yoruba word tokenizer'): 'spacy_yor',
 
                 _tr('wl_settings_global', 'Stanza - Afrikaans word tokenizer'): 'stanza_afr',
+                _tr('wl_settings_global', 'Stanza - Albanian word tokenizer'): 'stanza_sqi',
                 _tr('wl_settings_global', 'Stanza - Arabic word tokenizer'): 'stanza_ara',
                 _tr('wl_settings_global', 'Stanza - Armenian (Classical) word tokenizer'): 'stanza_xcl',
                 _tr('wl_settings_global', 'Stanza - Armenian (Eastern) word tokenizer'): 'stanza_hye',
@@ -664,7 +674,9 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Stanza - French word tokenizer'): 'stanza_fra',
                 _tr('wl_settings_global', 'Stanza - French (Old) word tokenizer'): 'stanza_fro',
                 _tr('wl_settings_global', 'Stanza - Galician word tokenizer'): 'stanza_glg',
+                _tr('wl_settings_global', 'Stanza - Georgian word tokenizer'): 'stanza_kat',
                 _tr('wl_settings_global', 'Stanza - German word tokenizer'): 'stanza_deu',
+                _tr('wl_settings_global', 'Stanza - German (Old) word tokenizer'): 'stanza_nds',
                 _tr('wl_settings_global', 'Stanza - Gothic word tokenizer'): 'stanza_got',
                 _tr('wl_settings_global', 'Stanza - Greek (Ancient) word tokenizer'): 'stanza_grc',
                 _tr('wl_settings_global', 'Stanza - Greek (Modern) word tokenizer'): 'stanza_ell',
@@ -678,6 +690,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Stanza - Italian word tokenizer'): 'stanza_ita',
                 _tr('wl_settings_global', 'Stanza - Japanese word tokenizer'): 'stanza_jpn',
                 _tr('wl_settings_global', 'Stanza - Kazakh word tokenizer'): 'stanza_kaz',
+                _tr('wl_settings_global', 'Stanza - Komi (Zyrian) word tokenizer'): 'stanza_kpv',
                 _tr('wl_settings_global', 'Stanza - Korean word tokenizer'): 'stanza_kor',
                 _tr('wl_settings_global', 'Stanza - Kurdish (Kurmanji) word tokenizer'): 'stanza_kmr',
                 _tr('wl_settings_global', 'Stanza - Kyrgyz word tokenizer'): 'stanza_kir',
@@ -712,6 +725,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Stanza - Telugu word tokenizer'): 'stanza_tel',
                 _tr('wl_settings_global', 'Stanza - Thai word tokenizer'): 'stanza_tha',
                 _tr('wl_settings_global', 'Stanza - Turkish word tokenizer'): 'stanza_tur',
+                _tr('wl_settings_global', 'Stanza - Turkish (Ottoman) word tokenizer'): 'stanza_ota',
                 _tr('wl_settings_global', 'Stanza - Ukrainian word tokenizer'): 'stanza_ukr',
                 _tr('wl_settings_global', 'Stanza - Urdu word tokenizer'): 'stanza_urd',
                 _tr('wl_settings_global', 'Stanza - Uyghur word tokenizer'): 'stanza_uig',
@@ -825,6 +839,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'spaCy - Ukrainian part-of-speech tagger'): 'spacy_ukr',
 
                 _tr('wl_settings_global', 'Stanza - Afrikaans part-of-speech tagger'): 'stanza_afr',
+                _tr('wl_settings_global', 'Stanza - Albanian part-of-speech tagger'): 'stanza_sqi',
                 _tr('wl_settings_global', 'Stanza - Arabic part-of-speech tagger'): 'stanza_ara',
                 _tr('wl_settings_global', 'Stanza - Armenian (Classical) part-of-speech tagger'): 'stanza_xcl',
                 _tr('wl_settings_global', 'Stanza - Armenian (Eastern) part-of-speech tagger'): 'stanza_hye',
@@ -852,7 +867,9 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Stanza - French part-of-speech tagger'): 'stanza_fra',
                 _tr('wl_settings_global', 'Stanza - French (Old) part-of-speech tagger'): 'stanza_fro',
                 _tr('wl_settings_global', 'Stanza - Galician part-of-speech tagger'): 'stanza_glg',
+                _tr('wl_settings_global', 'Stanza - Georgian part-of-speech tagger'): 'stanza_kat',
                 _tr('wl_settings_global', 'Stanza - German part-of-speech tagger'): 'stanza_deu',
+                _tr('wl_settings_global', 'Stanza - German (Old) part-of-speech tagger'): 'stanza_nds',
                 _tr('wl_settings_global', 'Stanza - Gothic part-of-speech tagger'): 'stanza_got',
                 _tr('wl_settings_global', 'Stanza - Greek (Ancient) part-of-speech tagger'): 'stanza_grc',
                 _tr('wl_settings_global', 'Stanza - Greek (Modern) part-of-speech tagger'): 'stanza_ell',
@@ -866,6 +883,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Stanza - Italian part-of-speech tagger'): 'stanza_ita',
                 _tr('wl_settings_global', 'Stanza - Japanese part-of-speech tagger'): 'stanza_jpn',
                 _tr('wl_settings_global', 'Stanza - Kazakh part-of-speech tagger'): 'stanza_kaz',
+                _tr('wl_settings_global', 'Stanza - Komi (Zyrian) part-of-speech tagger'): 'stanza_kpv',
                 _tr('wl_settings_global', 'Stanza - Korean part-of-speech tagger'): 'stanza_kor',
                 _tr('wl_settings_global', 'Stanza - Kurdish (Kurmanji) part-of-speech tagger'): 'stanza_kmr',
                 _tr('wl_settings_global', 'Stanza - Kyrgyz part-of-speech tagger'): 'stanza_kir',
@@ -899,6 +917,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Stanza - Tamil part-of-speech tagger'): 'stanza_tam',
                 _tr('wl_settings_global', 'Stanza - Telugu part-of-speech tagger'): 'stanza_tel',
                 _tr('wl_settings_global', 'Stanza - Turkish part-of-speech tagger'): 'stanza_tur',
+                _tr('wl_settings_global', 'Stanza - Turkish (Ottoman) part-of-speech tagger'): 'stanza_ota',
                 _tr('wl_settings_global', 'Stanza - Ukrainian part-of-speech tagger'): 'stanza_ukr',
                 _tr('wl_settings_global', 'Stanza - Urdu part-of-speech tagger'): 'stanza_urd',
                 _tr('wl_settings_global', 'Stanza - Uyghur part-of-speech tagger'): 'stanza_uig',
@@ -1002,6 +1021,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'spaCy - Urdu lemmatizer'): 'spacy_urd',
 
                 _tr('wl_settings_global', 'Stanza - Afrikaans lemmatizer'): 'stanza_afr',
+                _tr('wl_settings_global', 'Stanza - Albanian lemmatizer'): 'stanza_sqi',
                 _tr('wl_settings_global', 'Stanza - Arabic lemmatizer'): 'stanza_ara',
                 _tr('wl_settings_global', 'Stanza - Armenian (Classical) lemmatizer'): 'stanza_xcl',
                 _tr('wl_settings_global', 'Stanza - Armenian (Eastern) lemmatizer'): 'stanza_hye',
@@ -1028,7 +1048,9 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Stanza - French lemmatizer'): 'stanza_fra',
                 _tr('wl_settings_global', 'Stanza - French (Old) lemmatizer'): 'stanza_fro',
                 _tr('wl_settings_global', 'Stanza - Galician lemmatizer'): 'stanza_glg',
+                _tr('wl_settings_global', 'Stanza - Georgian lemmatizer'): 'stanza_kat',
                 _tr('wl_settings_global', 'Stanza - German lemmatizer'): 'stanza_deu',
+                _tr('wl_settings_global', 'Stanza - German (Low) lemmatizer'): 'stanza_nds',
                 _tr('wl_settings_global', 'Stanza - Gothic lemmatizer'): 'stanza_got',
                 _tr('wl_settings_global', 'Stanza - Greek (Ancient) lemmatizer'): 'stanza_grc',
                 _tr('wl_settings_global', 'Stanza - Greek (Modern) lemmatizer'): 'stanza_ell',
@@ -1042,6 +1064,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Stanza - Italian lemmatizer'): 'stanza_ita',
                 _tr('wl_settings_global', 'Stanza - Japanese lemmatizer'): 'stanza_jpn',
                 _tr('wl_settings_global', 'Stanza - Kazakh lemmatizer'): 'stanza_kaz',
+                _tr('wl_settings_global', 'Stanza - Komi (Zyrian) lemmatizer'): 'stanza_kpv',
                 _tr('wl_settings_global', 'Stanza - Korean lemmatizer'): 'stanza_kor',
                 _tr('wl_settings_global', 'Stanza - Kurdish (Kurmanji) lemmatizer'): 'stanza_kmr',
                 _tr('wl_settings_global', 'Stanza - Kyrgyz lemmatizer'): 'stanza_kir',
@@ -1072,6 +1095,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Stanza - Swedish lemmatizer'): 'stanza_swe',
                 _tr('wl_settings_global', 'Stanza - Tamil lemmatizer'): 'stanza_tam',
                 _tr('wl_settings_global', 'Stanza - Turkish lemmatizer'): 'stanza_tur',
+                _tr('wl_settings_global', 'Stanza - Turkish (Ottoman) lemmatizer'): 'stanza_ota',
                 _tr('wl_settings_global', 'Stanza - Ukrainian lemmatizer'): 'stanza_ukr',
                 _tr('wl_settings_global', 'Stanza - Urdu lemmatizer'): 'stanza_urd',
                 _tr('wl_settings_global', 'Stanza - Uyghur lemmatizer'): 'stanza_uig',
@@ -1146,6 +1170,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'spaCy - Ukrainian dependency parser'): 'spacy_ukr',
 
                 _tr('wl_settings_global', 'Stanza - Afrikaans dependency parser'): 'stanza_afr',
+                _tr('wl_settings_global', 'Stanza - Albanian dependency parser'): 'stanza_sqi',
                 _tr('wl_settings_global', 'Stanza - Arabic dependency parser'): 'stanza_ara',
                 _tr('wl_settings_global', 'Stanza - Armenian (Classical) dependency parser'): 'stanza_xcl',
                 _tr('wl_settings_global', 'Stanza - Armenian (Eastern) dependency parser'): 'stanza_hye',
@@ -1173,7 +1198,9 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Stanza - French dependency parser'): 'stanza_fra',
                 _tr('wl_settings_global', 'Stanza - French (Old) dependency parser'): 'stanza_fro',
                 _tr('wl_settings_global', 'Stanza - Galician dependency parser'): 'stanza_glg',
+                _tr('wl_settings_global', 'Stanza - Georgian dependency parser'): 'stanza_kat',
                 _tr('wl_settings_global', 'Stanza - German dependency parser'): 'stanza_deu',
+                _tr('wl_settings_global', 'Stanza - German (Old) dependency parser'): 'stanza_nds',
                 _tr('wl_settings_global', 'Stanza - Gothic dependency parser'): 'stanza_got',
                 _tr('wl_settings_global', 'Stanza - Greek (Ancient) dependency parser'): 'stanza_grc',
                 _tr('wl_settings_global', 'Stanza - Greek (Modern) dependency parser'): 'stanza_ell',
@@ -1187,6 +1214,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Stanza - Italian dependency parser'): 'stanza_ita',
                 _tr('wl_settings_global', 'Stanza - Japanese dependency parser'): 'stanza_jpn',
                 _tr('wl_settings_global', 'Stanza - Kazakh dependency parser'): 'stanza_kaz',
+                _tr('wl_settings_global', 'Stanza - Komi (Zyrian) dependency parser'): 'stanza_kpv',
                 _tr('wl_settings_global', 'Stanza - Korean dependency parser'): 'stanza_kor',
                 _tr('wl_settings_global', 'Stanza - Kurdish (Kurmanji) dependency parser'): 'stanza_kmr',
                 _tr('wl_settings_global', 'Stanza - Kyrgyz dependency parser'): 'stanza_kir',
@@ -1220,6 +1248,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Stanza - Tamil dependency parser'): 'stanza_tam',
                 _tr('wl_settings_global', 'Stanza - Telugu dependency parser'): 'stanza_tel',
                 _tr('wl_settings_global', 'Stanza - Turkish dependency parser'): 'stanza_tur',
+                _tr('wl_settings_global', 'Stanza - Turkish (Ottoman) dependency parser'): 'stanza_ota',
                 _tr('wl_settings_global', 'Stanza - Ukrainian dependency parser'): 'stanza_ukr',
                 _tr('wl_settings_global', 'Stanza - Urdu dependency parser'): 'stanza_urd',
                 _tr('wl_settings_global', 'Stanza - Uyghur dependency parser'): 'stanza_uig',
@@ -1337,6 +1366,11 @@ def init_settings_global():
             'afr': [
                 'spacy_sentencizer',
                 'stanza_afr'
+            ],
+
+            'sqi': [
+                'spacy_sentencizer',
+                'stanza_sqi'
             ],
 
             'ara': [
@@ -1498,6 +1532,11 @@ def init_settings_global():
                 'stanza_glg'
             ],
 
+            'kat': [
+                'spacy_sentencizer',
+                'stanza_kat'
+            ],
+
             'deu_at': [
                 'nltk_punkt_deu',
                 'spacy_dependency_parser_deu',
@@ -1509,6 +1548,10 @@ def init_settings_global():
                 'spacy_dependency_parser_deu',
                 'spacy_sentencizer',
                 'stanza_deu'
+            ],
+            'nds': [
+                'spacy_sentencizer',
+                'stanza_nds'
             ],
             'deu_ch': [
                 'nltk_punkt_deu',
@@ -1582,11 +1625,16 @@ def init_settings_global():
                 'stanza_jpn'
             ],
 
-            'khm': ['khmer_nltk_khm'],
-
             'kaz': [
                 'spacy_sentencizer',
                 'stanza_kaz'
+            ],
+
+            'khm': ['khmer_nltk_khm'],
+
+            'kpv': [
+                'spacy_sentencizer',
+                'stanza_kpv'
             ],
 
             'kor': [
@@ -1809,6 +1857,10 @@ def init_settings_global():
                 'spacy_sentencizer',
                 'stanza_tur'
             ],
+            'ota': [
+                'spacy_sentencizer',
+                'stanza_ota'
+            ],
 
             'ukr': [
                 'spacy_dependency_parser_ukr',
@@ -1857,7 +1909,8 @@ def init_settings_global():
 
             'sqi': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
-                'spacy_sqi'
+                'spacy_sqi',
+                'stanza_sqi'
             ],
 
             'amh': ['spacy_amh'],
@@ -1898,15 +1951,15 @@ def init_settings_global():
                 'stanza_eus'
             ],
 
+            'bel': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'stanza_bel'
+            ],
+
             'ben': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_ben'
-            ],
-
-            'bel': [
-                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
-                'stanza_bel'
             ],
 
             'bul': [
@@ -2037,9 +2090,9 @@ def init_settings_global():
                 'stanza_glg'
             ],
 
-            'lug': [
+            'kat': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
-                'spacy_lug'
+                'stanza_kat'
             ],
 
             'deu_at': [
@@ -2053,6 +2106,10 @@ def init_settings_global():
                 'sacremoses_moses',
                 'spacy_deu',
                 'stanza_deu'
+            ],
+            'nds': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'stanza_nds'
             ],
             'deu_ch': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
@@ -2155,6 +2212,11 @@ def init_settings_global():
 
             'khm': ['khmer_nltk_khm'],
 
+            'kpv': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'stanza_kpv'
+            ],
+
             'kor': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'python_mecab_ko_mecab',
@@ -2201,6 +2263,11 @@ def init_settings_global():
                 'stanza_lit'
             ],
 
+            'lug': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'spacy_lug'
+            ],
+
             'ltz': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_ltz'
@@ -2239,11 +2306,6 @@ def init_settings_global():
                 'stanza_mar'
             ],
 
-            'pcm': [
-                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
-                'stanza_pcm'
-            ],
-
             'mni_mtei': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses'
@@ -2252,6 +2314,11 @@ def init_settings_global():
             'nep': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_nep'
+            ],
+
+            'pcm': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'stanza_pcm'
             ],
 
             'nob': [
@@ -2456,6 +2523,10 @@ def init_settings_global():
                 'spacy_tur',
                 'stanza_tur'
             ],
+            'ota': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'stanza_ota'
+            ],
 
             'ukr': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
@@ -2539,8 +2610,8 @@ def init_settings_global():
             'isl': ['pyphen_isl'],
             'ind': ['pyphen_ind'],
             'ita': ['pyphen_ita'],
-            'lit': ['pyphen_lit'],
             'lav': ['pyphen_lav'],
+            'lit': ['pyphen_lit'],
             'mon': ['pyphen_mon'],
             'nob': ['pyphen_nob'],
             'nno': ['pyphen_nno'],
@@ -2569,6 +2640,7 @@ def init_settings_global():
 
         'pos_taggers': {
             'afr': ['stanza_afr'],
+            'sqi': ['stanza_sqi'],
             'ara': ['stanza_ara'],
             'xcl': ['stanza_xcl'],
             'hye': ['stanza_hye'],
@@ -2641,6 +2713,7 @@ def init_settings_global():
             'fro': ['stanza_fro'],
 
             'glg': ['stanza_glg'],
+            'kat': ['stanza_kat'],
 
             'deu_at': [
                 'spacy_deu',
@@ -2650,6 +2723,7 @@ def init_settings_global():
                 'spacy_deu',
                 'stanza_deu'
             ],
+            'nds': ['stanza_nds'],
             'deu_ch': [
                 'spacy_deu',
                 'stanza_deu'
@@ -2684,6 +2758,7 @@ def init_settings_global():
 
             'kaz': ['stanza_kaz'],
             'khm': ['khmer_nltk_khm'],
+            'kpv': ['stanza_kpv'],
 
             'kor': [
                 'python_mecab_ko_mecab',
@@ -2786,7 +2861,9 @@ def init_settings_global():
             ],
 
             'bod': ['botok_bod'],
+
             'tur': ['stanza_tur'],
+            'ota': ['stanza_ota'],
 
             'ukr': [
                 'pymorphy3_morphological_analyzer',
@@ -2808,7 +2885,12 @@ def init_settings_global():
 
         'lemmatizers': {
             'afr': ['stanza_afr'],
-            'sqi': ['simplemma_sqi'],
+
+            'sqi': [
+                'simplemma_sqi',
+                'stanza_sqi'
+            ],
+
             'ara': ['stanza_ara'],
 
             'xcl': ['stanza_xcl'],
@@ -2906,7 +2988,10 @@ def init_settings_global():
                 'stanza_glg'
             ],
 
-            'kat': ['simplemma_kat'],
+            'kat': [
+                'simplemma_kat',
+                'stanza_kat'
+            ],
 
             'deu_at': [
                 'simplemma_deu',
@@ -2918,6 +3003,7 @@ def init_settings_global():
                 'spacy_deu',
                 'stanza_deu'
             ],
+            'nds': ['stanza_nds'],
             'deu_ch': [
                 'simplemma_deu',
                 'spacy_deu',
@@ -2980,6 +3066,7 @@ def init_settings_global():
             ],
 
             'kaz': ['stanza_kaz'],
+            'kpv': ['stanza_kpv'],
 
             'kor': [
                 'spacy_kor',
@@ -3134,6 +3221,7 @@ def init_settings_global():
                 'spacy_tur',
                 'stanza_tur'
             ],
+            'ota': ['stanza_ota'],
 
             'ukr': [
                 'pymorphy3_morphological_analyzer',
@@ -3199,6 +3287,7 @@ def init_settings_global():
 
         'dependency_parsers': {
             'afr': ['stanza_afr'],
+            'sqi': ['stanza_sqi'],
             'ara': ['stanza_ara'],
             'xcl': ['stanza_xcl'],
             'hye': ['stanza_hye'],
@@ -3269,6 +3358,7 @@ def init_settings_global():
             'fro': ['stanza_fro'],
 
             'glg': ['stanza_glg'],
+            'kat': ['stanza_kat'],
 
             'deu_at': [
                 'spacy_deu',
@@ -3278,6 +3368,7 @@ def init_settings_global():
                 'spacy_deu',
                 'stanza_deu'
             ],
+            'nds': ['stanza_nds'],
             'deu_ch': [
                 'spacy_deu',
                 'stanza_deu'
@@ -3310,6 +3401,7 @@ def init_settings_global():
             ],
 
             'kaz': ['stanza_kaz'],
+            'kpv': ['stanza_kpv'],
 
             'kor': [
                 'spacy_kor',
@@ -3394,7 +3486,9 @@ def init_settings_global():
 
             'tam': ['stanza_tam'],
             'tel': ['stanza_tel'],
+
             'tur': ['stanza_tur'],
+            'ota': ['stanza_ota'],
 
             'ukr': [
                 'spacy_ukr',
@@ -3503,8 +3597,8 @@ def init_settings_global():
             'ori': ['vader_ori'],
             'fas': ['vader_fas'],
             'pol': ['vader_pol'],
-            'por_pt': ['vader_por'],
             'por_br': ['vader_por'],
+            'por_pt': ['vader_por'],
             'pan_guru': ['vader_pan_guru'],
             'ron': ['vader_ron'],
             'rus': ['vader_rus'],

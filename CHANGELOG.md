@@ -24,6 +24,7 @@
 - Measures: Add effect size - conditional probability / ΔP / mutual information (normalized) / μ-value / pointwise mutual information (squared) / pointwise mutual information (normalized) / relative risk
 - Menu: Add Edit
 - Settings: Add Settings - Measures - Effect Size - Mutual Information / Pointwise Mutual Information / Pointwise Mutual Information (Cubic) / Pointwise Mutual Information (Squared)
+- Utils: Add Stanza's Albanian, Georgian, German (Old), Komi (Zyrian), and Turkish (Ottoman) sentence tokenizers / word tokenizers / part-of-speech taggers / lemmatizers / dependency parsers
 - Utils: Add Stanza's Sindhi dependency parser
 - Work Area: Add Concordancer - Generation Settings - Calculate sentiment scores
 - Work Area: Add Concordancer - Sort results - Column - Sentence Segment / Sentence / Paragraph No.
@@ -53,6 +54,7 @@
 - Dependencies: Upgrade python-mecab-ko to 1.3.7
 - Dependencies: Upgrade python-pptx to 1.0.2
 - Dependencies: Upgrade simplemma to 1.1.2
+- Dependencies: Upgrade Stanza to 1.10.1
 - Dependencies: Upgrade SudachiPy to 0.6.10
 - Dependencies: Upgrade wordcloud to 1.9.4
 
@@ -67,8 +69,7 @@
 - Utils: Add Pyphen's Basque syllable tokenizer
 - Utils: Add PyThaiNLP's Han-solo
 - Utils: Add spaCy's Faroese and Norwegian (Nynorsk) word tokenizers
-- Utils: Add Stanza's Armenian (Classical) sentence tokenizer, word tokenizer, part-of-speech tagger, lemmatizer, and dependency parser
-- Utils: Add Stanza's English (Old) sentence tokenizer, word tokenizer, part-of-speech tagger, lemmatizer, and dependency parser
+- Utils: Add Stanza's Armenian (Classical) and English (Old) sentence tokenizers / word tokenizers / part-of-speech taggers / lemmatizers / dependency parsers
 - Utils: Add Stanza's Sindhi part-of-speech tagger
 - Utils: Add VADER's sentiment analyzers
 - Work Area: Add Colligation Extractor - Filter results - Node/Colligation length
@@ -361,15 +362,12 @@
 - Settings: Add Settings - Measures - Statistical Significance - Log-likelihood Ratio Test / Welch's t-test / z-score (Berry-Rogghe)
 - Settings: Add Settings - Measures - Statistical Significance - Student's t-test (1-sample) / Student's t-test (2-sample) - Direction
 - Settings: Add Settings - Tables - Profiler
-- Utils: Add NLTK's legality syllable tokenizer and sonority sequencing syllable tokenizer
-- Utils: Add NLTK's regular-expression tokenizer
+- Utils: Add NLTK's regular-expression tokenizer, legality syllable tokenizer, sonority sequencing syllable tokenizer
 - Utils: Add Pyphen's Catalan syllable tokenizer
 - Utils: Add PyThaiNLP's ThaiSumCut
 - Utils: Add spaCy's Croatian and Swedish part-of-speech taggers
-- Utils: Add spaCy's Finnish part-of-speech tagger and lemmatizer
-- Utils: Add spaCy's Sorbian (Lower) word tokenizer and stop word list
-- Utils: Add spaCy's Sorbian (Upper) word tokenizer and stop word list
-- Utils: Add spaCy's Ukrainian part-of-speech tagger and lemmatizer
+- Utils: Add spaCy's Finnish and Ukrainian part-of-speech taggers / lemmatizers
+- Utils: Add spaCy's Sorbian (Lower) and Sorbian (Upper) word tokenizers / stop word lists
 - Work Area: Add Collocation/Colligation Extractor - Generation Settings - Limit Searching - Within Sentence Segments
 - Work Area: Add Collocation/Colligation/Keyword Extractor - Generation Settings - Measure of Bayes Factor
 - Work Area: Add Collocation/Colligation/Keyword Extractor - Generation Settings - Test of Statistical Significance / Measure of Effect Size - None
@@ -489,8 +487,7 @@
 - Settings: Add Settings - Syllable Tokenization
 - Utils: Add Pyphen's syllable tokenizers
 - Utils: Add PyThaiNLP's Thai syllable tokenizer
-- Utils: Add spaCy's Azerbaijani word tokenizer and stop word list
-- Utils: Add spaCy's Greek (Ancient) word tokenizer and stop word list
+- Utils: Add spaCy's Azerbaijani and Greek (Ancient) word tokenizers / stop word lists
 - Utils: Add ssg's Thai syllable tokenizer
 - Work Area: Add Overview - Automated Readability Index / Coleman-Liau Index / Dale-Chall Readability Score / Devereaux Readability Index / Flesch Reading Ease / Flesch Reading Ease (Simplified) / Flesch-Kincaid Grade Level / FORCAST Grade Level / Gunning Fog Index / SMOG Grade / Spache Grade Level / Write Score / Count of Syllables / Token Length in Syllable / Type Length in Syllable / Syllable Length in Character
 - Work Area: Add Work Area - Search Settings - Multi-search Mode - Insert
@@ -531,10 +528,8 @@
 - Utils: Add spaCy's Amharic, Kyrgyz, Macedonian, Sanskrit, Tigrinya, and Tswana word tokenizers
 - Utils: Add spaCy's Amharic, Korean, Kyrgyz, Macedonian, Sanskrit, Tigrinya, and Tswana stop word lists
 - Utils: Add spaCy's Bengali, Croatian, Czech, Hungarian, Indonesian, Luxembourgish, Persian, Serbian (Cyrillic), Swedish, Tagalog, Turkish, and Urdu lemmatizers
-- Utils: Add spaCy's Catalan part-of-speech tagger and lemmatizer
+- Utils: Add spaCy's Catalan, Macedonian, and Russian part-of-speech taggers / lemmatizers
 - Utils: Add spaCy's Chinese word tokenizer and part-of-speech tagger
-- Utils: Add spaCy's Macedonian part-of-speech tagger and lemmatizer
-- Utils: Add spaCy's Russian part-of-speech tagger and lemmatizer
 - Utils: Add spaCy's sentence recognizer
 - Work Area: Add Collocation/Colligation - Generation Settings - Limit Searching
 - Work Area: Add Concordancer (Parallel Mode)
@@ -615,9 +610,7 @@
 - Utils: Add PyThaiNLP's maximum matching + TCC (safe mode)
 - Utils: Add spaCy's Armenian, Basque, Estonian, Gujarati, Latvian, Ligurian, Malayalam, Nepali, and Yoruba word tokenizers
 - Utils: Add spaCy's Armenian, Basque, Gujarati, Ligurian, Luxembourgish, Malayalam, Nepali, Slovak, Slovenian, and Yoruba stop word lists
-- Utils: Add spaCy's Danish part-of-speech tagger and lemmatizer
-- Utils: Add spaCy's Polish part-of-speech tagger and lemmatizer
-- Utils: Add spaCy's Romanian part-of-speech tagger and lemmatizer
+- Utils: Add spaCy's Danish, Polish, and Romanian part-of-speech taggers / lemmatizers
 - Utils: Add Stopwords ISO's Gujarati and Lithuanian stop word lists
 - Work Area: Add Concordancer - Zapping Settings
 
@@ -629,9 +622,7 @@
 - Utils: Update botok's Tibetan word tokenizer, part-of-speech tagger, and lemmatizer
 - Utils: Update Chinese (Traditional) stop word lists
 - Utils: Update NLTK's word tokenizers
-- Utils: Update PyThaiNLP's CRFCut
-- Utils: Update PyThaiNLP's part-of-speech taggers
-- Utils: Update PyThaiNLP's Thai word tokenizers
+- Utils: Update PyThaiNLP's CRFCut, Thai word tokenizers, and Thai part-of-speech taggers
 - Utils: Update Sacremoses's Moses tokenizer
 - Utils: Update Stopwords ISO's Greek and Norwegian stop word lists
 
@@ -673,9 +664,8 @@
 ## [1.3.0](https://github.com/BLKSerene/Wordless/releases/tag/1.3.0) - 11/30/2019
 ### 🎉 New Features
 - Utils: Add razdel's Russian sentenizer and word tokenizer
-- Utils: Add spaCy's Lithuanian word tokenizer, part-of-speech tagger, and lemmatizer
+- Utils: Add spaCy's Lithuanian and Norwegian Bokmål word tokenizers / part-of-speech taggers / lemmatizers
 - Utils: Add spaCy's Luxembourgish word tokenizer
-- Utils: Add spaCy's Norwegian Bokmål word tokenizer, part-of-speech tagger, and lemmatizer
 - Utils: Add syntok's sentence segmenter and word tokenizer
 - Utils: Add Wordless's sentence and sentence segment splitters
 - Work Area: Add Concordancer - Generation Settings - Sampling Method
@@ -724,8 +714,7 @@
 - Utils: Add extra-stopwords's stop word lists
 - Utils: Add NLTK's Russian Punkt sentence tokenizer
 - Utils: Add NLTK's Slovenian and Tajik stop word lists
-- Utils: Add spaCy's Marathi word tokenizer and stop word list
-- Utils: Add spaCy's Serbian word tokenizer and stop word list
+- Utils: Add spaCy's Marathi and Serbian word tokenizers / stop word lists
 - Visualization: Add network graphs
 - Work Area: Add Collocation/Colligation - Figure Settings - Graph Type - Network Graph
 - Work Area: Add Concordancer - Clause No.

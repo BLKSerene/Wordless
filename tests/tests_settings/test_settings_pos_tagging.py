@@ -17,6 +17,7 @@
 # ----------------------------------------------------------------------
 
 from tests import wl_test_init
+from wordless.wl_nlp import wl_pos_tagging
 from wordless.wl_settings import wl_settings_pos_tagging
 from wordless.wl_widgets import wl_layouts
 
@@ -45,6 +46,30 @@ def test_wl_settings_pos_tagging_tagsets():
     main.settings_custom['pos_tagging']['tagsets']['preview_settings']['preview_pos_tagger']['eng_us'] = 'nltk_perceptron_eng'
     settings_pos_tagging_tagsets.reset_currently_shown_table()
 
+# Check missing and extra universal tagset mappings
+def test_wl_settings_pos_tagging_tagsets_universal_tagsets():
+    universal_tagsets_spacy = set()
+    universal_tagsets_stanza = set()
+
+    for mappings in main.settings_default['pos_tagging']['tagsets']['mapping_settings'].values():
+        for pos_tagger in mappings:
+            if pos_tagger.startswith('spacy_'):
+                universal_tagsets_spacy.add(pos_tagger)
+            elif pos_tagger.startswith('stanza_'):
+                universal_tagsets_stanza.add(pos_tagger)
+
+    for tagsets_mappings, tagsets_universal in (
+        (universal_tagsets_spacy, wl_pos_tagging.UNIVERSAL_TAGSETS_SPACY),
+        (universal_tagsets_stanza, wl_pos_tagging.UNIVERSAL_TAGSETS_STANZA)
+    ):
+        for tagset in tagsets_universal:
+            assert tagset in tagsets_mappings, f'Missing universal tagset mapping for {tagset} found!'
+
+        for tagset in tagsets_mappings:
+            assert tagset in tagsets_universal, f'Extra universal tagset mapping for {tagset} found!'
+
 if __name__ == '__main__':
     test_wl_settings_pos_tagging()
     test_wl_settings_pos_tagging_tagsets()
+
+    test_wl_settings_pos_tagging_tagsets_universal_tagsets()

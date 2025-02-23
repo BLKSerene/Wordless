@@ -135,9 +135,9 @@ def wl_test_lemmatize(lang, test_sentence, tokens, results):
     test_lemmatization.wl_test_lemmatize_models(
         lang, lemmatizer, test_sentence, tokens, results,
         lang_exceptions = [
-            'xcl', 'bul', 'chu', 'cop', 'ang', 'est', 'got', 'grc', 'ell', 'hin',
-            'isl', 'lij', 'lit', 'glv', 'pcm', 'pol', 'orv', 'sme', 'san', 'tur',
-            'cym'
+            'xcl', 'bul', 'chu', 'cop', 'ang', 'est', 'nds', 'got', 'grc', 'ell',
+            'hin', 'isl', 'kpv', 'lij', 'lit', 'glv', 'pcm', 'pol', 'orv', 'sme',
+            'san', 'tur', 'cym'
         ]
     )
 

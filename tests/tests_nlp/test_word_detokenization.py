@@ -55,7 +55,6 @@ def test_word_detokenize(lang):
         text = text,
         lang = lang
     )
-    print(tokens)
     text = wl_word_detokenization.wl_word_detokenize(
         main,
         tokens = tokens,

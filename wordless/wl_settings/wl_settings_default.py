@@ -1298,6 +1298,7 @@ def init_settings_default(main):
         'sentence_tokenization': {
             'sentence_tokenizer_settings': {
                 'afr': 'stanza_afr',
+                'sqi': 'stanza_sqi',
                 'ara': 'stanza_ara',
                 'xcl': 'stanza_xcl',
                 'hye': 'stanza_hye',
@@ -1327,8 +1328,10 @@ def init_settings_default(main):
                 'fra': 'spacy_dependency_parser_fra',
                 'fro': 'stanza_fro',
                 'glg': 'stanza_glg',
+                'kat': 'stanza_kat',
                 'deu_at': 'spacy_dependency_parser_deu',
                 'deu_de': 'spacy_dependency_parser_deu',
+                'nds': 'stanza_nds',
                 'deu_ch': 'spacy_dependency_parser_deu',
                 'got': 'stanza_got',
                 'grc': 'stanza_grc',
@@ -1342,8 +1345,9 @@ def init_settings_default(main):
                 'gle': 'stanza_gle',
                 'ita': 'spacy_dependency_parser_ita',
                 'jpn': 'spacy_dependency_parser_jpn',
-                'khm': 'khmer_nltk_khm',
                 'kaz': 'stanza_kaz',
+                'khm': 'khmer_nltk_khm',
+                'kpv': 'stanza_kpv',
                 'kor': 'spacy_dependency_parser_kor',
                 'kmr': 'stanza_kmr',
                 'kir': 'stanza_kir',
@@ -1383,6 +1387,7 @@ def init_settings_default(main):
                 'tha': 'pythainlp_crfcut',
                 'bod': 'botok_bod',
                 'tur': 'stanza_tur',
+                'ota': 'stanza_ota',
                 'ukr': 'spacy_dependency_parser_ukr',
                 'urd': 'stanza_urd',
                 'uig': 'stanza_uig',
@@ -1404,7 +1409,7 @@ def init_settings_default(main):
         'word_tokenization': {
             'word_tokenizer_settings': {
                 'afr': 'stanza_afr',
-                'sqi': 'spacy_sqi',
+                'sqi': 'stanza_sqi',
                 'amh': 'spacy_amh',
                 'ara': 'stanza_ara',
                 'xcl': 'stanza_xcl',
@@ -1413,8 +1418,8 @@ def init_settings_default(main):
                 'asm': 'sacremoses_moses',
                 'aze': 'spacy_aze',
                 'eus': 'stanza_eus',
-                'ben': 'sacremoses_moses',
                 'bel': 'stanza_bel',
+                'ben': 'sacremoses_moses',
                 'bul': 'stanza_bul',
                 'mya': 'stanza_mya',
                 'bxr': 'stanza_bxr',
@@ -1438,9 +1443,10 @@ def init_settings_default(main):
                 'fra': 'spacy_fra',
                 'fro': 'stanza_fro',
                 'glg': 'stanza_glg',
-                'lug': 'spacy_lug',
+                'kat': 'stanza_kat',
                 'deu_at': 'spacy_deu',
                 'deu_de': 'spacy_deu',
+                'nds': 'stanza_nds',
                 'deu_ch': 'spacy_deu',
                 'got': 'stanza_got',
                 'grc': 'stanza_grc',
@@ -1458,6 +1464,7 @@ def init_settings_default(main):
                 'kan': 'sacremoses_moses',
                 'kaz': 'stanza_kaz',
                 'khm': 'khmer_nltk_khm',
+                'kpv': 'stanza_kpv',
                 'kor': 'spacy_kor',
                 'kmr': 'stanza_kmr',
                 'kir': 'stanza_kir',
@@ -1466,6 +1473,7 @@ def init_settings_default(main):
                 'lav': 'stanza_lav',
                 'lij': 'stanza_lij',
                 'lit': 'spacy_lit',
+                'lug': 'spacy_lug',
                 'ltz': 'spacy_ltz',
                 'mkd': 'spacy_mkd',
                 'msa': 'spacy_msa',
@@ -1473,9 +1481,9 @@ def init_settings_default(main):
                 'mlt': 'stanza_mlt',
                 'glv': 'stanza_glv',
                 'mar': 'stanza_mar',
-                'pcm': 'stanza_pcm',
                 'mni_mtei': 'sacremoses_moses',
                 'nep': 'spacy_nep',
+                'pcm': 'stanza_pcm',
                 'nob': 'spacy_nob',
                 'nno': 'stanza_nno',
                 'ori': 'sacremoses_moses',
@@ -1512,6 +1520,7 @@ def init_settings_default(main):
                 'tir': 'spacy_tir',
                 'tsn': 'spacy_tsn',
                 'tur': 'stanza_tur',
+                'ota': 'stanza_ota',
                 'ukr': 'spacy_ukr',
                 'urd': 'stanza_urd',
                 'uig': 'stanza_uig',
@@ -1557,8 +1566,8 @@ def init_settings_default(main):
                 'isl': 'pyphen_isl',
                 'ind': 'pyphen_ind',
                 'ita': 'pyphen_ita',
-                'lit': 'pyphen_lit',
                 'lav': 'pyphen_lav',
+                'lit': 'pyphen_lit',
                 'mon': 'pyphen_mon',
                 'nob': 'pyphen_nob',
                 'nno': 'pyphen_nno',
@@ -1591,6 +1600,7 @@ def init_settings_default(main):
             'pos_tagger_settings': {
                 'pos_taggers': {
                     'afr': 'stanza_afr',
+                    'sqi': 'stanza_sqi',
                     'ara': 'stanza_ara',
                     'xcl': 'stanza_xcl',
                     'hye': 'stanza_hye',
@@ -1619,8 +1629,10 @@ def init_settings_default(main):
                     'fra': 'spacy_fra',
                     'fro': 'stanza_fro',
                     'glg': 'stanza_glg',
+                    'kat': 'stanza_kat',
                     'deu_at': 'spacy_deu',
                     'deu_de': 'spacy_deu',
+                    'nds': 'stanza_nds',
                     'deu_ch': 'spacy_deu',
                     'got': 'stanza_got',
                     'grc': 'stanza_grc',
@@ -1636,6 +1648,7 @@ def init_settings_default(main):
                     'jpn': 'spacy_jpn',
                     'kaz': 'stanza_kaz',
                     'khm': 'khmer_nltk_khm',
+                    'kpv': 'stanza_kpv',
                     'kor': 'spacy_kor',
                     'kmr': 'stanza_kmr',
                     'kir': 'stanza_kir',
@@ -1674,6 +1687,7 @@ def init_settings_default(main):
                     'tha': 'pythainlp_perceptron_pud',
                     'bod': 'botok_bod',
                     'tur': 'stanza_tur',
+                    'ota': 'stanza_ota',
                     'ukr': 'spacy_ukr',
                     'urd': 'stanza_urd',
                     'uig': 'stanza_uig',
@@ -1699,8 +1713,12 @@ def init_settings_default(main):
                 },
 
                 'mapping_settings': {
+                    'sqi': {
+                        'stanza_sqi': copy.deepcopy(wl_tagset_eng_universal.tagset_mapping)
+                    },
+
                     'xcl': {
-                        'stanza_xcl': copy.deepcopy(wl_tagset_xcl_universal.tagset_mapping)
+                        'stanza_xcl': wl_tagset_xcl_universal.tagset_mapping
                     },
                     'hye': {
                         'stanza_hye': copy.deepcopy(wl_tagset_hye_universal.tagset_mapping)
@@ -1710,7 +1728,7 @@ def init_settings_default(main):
                     },
 
                     'eus': {
-                        'stanza_eus': copy.deepcopy(wl_tagset_eus_universal.tagset_mapping)
+                        'stanza_eus': wl_tagset_eus_universal.tagset_mapping
                     },
 
                     'bxr': {
@@ -1718,7 +1736,7 @@ def init_settings_default(main):
                     },
 
                     'cat': {
-                        'spacy_cat': copy.deepcopy(wl_tagset_cat_universal.tagset_mapping)
+                        'spacy_cat': wl_tagset_cat_universal.tagset_mapping
                     },
 
                     'dan': {
@@ -1727,10 +1745,10 @@ def init_settings_default(main):
                     },
 
                     'eng_gb': {
-                        'nltk_perceptron_eng': wl_tagset_eng_penn_treebank.tagset_mapping,
+                        'nltk_perceptron_eng': copy.deepcopy(wl_tagset_eng_penn_treebank.tagset_mapping),
                     },
                     'eng_us': {
-                        'nltk_perceptron_eng': wl_tagset_eng_penn_treebank.tagset_mapping,
+                        'nltk_perceptron_eng': copy.deepcopy(wl_tagset_eng_penn_treebank.tagset_mapping),
                     },
 
                     'ell': {
@@ -1743,12 +1761,16 @@ def init_settings_default(main):
                         'stanza_fra': copy.deepcopy(wl_tagset_fra_universal.tagset_mapping)
                     },
 
+                    'nds': {
+                        'stanza_nds': copy.deepcopy(wl_tagset_eng_universal.tagset_mapping)
+                    },
+
                     'heb': {
                         'stanza_heb': copy.deepcopy(wl_tagset_eng_universal.tagset_mapping)
                     },
 
                     'hun': {
-                        'stanza_hun': copy.deepcopy(wl_tagset_hun_universal.tagset_mapping)
+                        'stanza_hun': wl_tagset_hun_universal.tagset_mapping
                     },
 
                     'jpn': {
@@ -1785,11 +1807,11 @@ def init_settings_default(main):
                     },
 
                     'pcm': {
-                        'stanza_pcm': copy.deepcopy(wl_tagset_pcm_universal.tagset_mapping)
+                        'stanza_pcm': wl_tagset_pcm_universal.tagset_mapping
                     },
 
                     'nob': {
-                        'spacy_nob': copy.deepcopy(wl_tagset_nor_universal.tagset_mapping)
+                        'spacy_nob': wl_tagset_nor_universal.tagset_mapping
                     },
 
                     'qpm': {
@@ -1807,7 +1829,7 @@ def init_settings_default(main):
 
                     'rus': {
                         'nltk_perceptron_rus': wl_tagset_rus_russian_national_corpus.tagset_mapping,
-                        'pymorphy3_morphological_analyzer': wl_tagset_rus_open_corpora.tagset_mapping,
+                        'pymorphy3_morphological_analyzer': copy.deepcopy(wl_tagset_rus_open_corpora.tagset_mapping),
                         'spacy_rus': copy.deepcopy(wl_tagset_rus_universal.tagset_mapping),
                         'stanza_rus': copy.deepcopy(wl_tagset_rus_universal.tagset_mapping)
                     },
@@ -1825,7 +1847,7 @@ def init_settings_default(main):
                     },
 
                     'spa': {
-                        'spacy_spa': copy.deepcopy(wl_tagset_spa_universal.tagset_mapping)
+                        'spacy_spa': wl_tagset_spa_universal.tagset_mapping
                     },
 
                     'tel': {
@@ -1843,8 +1865,8 @@ def init_settings_default(main):
                     },
 
                     'ukr': {
-                        'pymorphy3_morphological_analyzer': wl_tagset_rus_open_corpora.tagset_mapping,
-                        'spacy_ukr': copy.deepcopy(wl_tagset_ukr_universal.tagset_mapping)
+                        'pymorphy3_morphological_analyzer': copy.deepcopy(wl_tagset_rus_open_corpora.tagset_mapping),
+                        'spacy_ukr': wl_tagset_ukr_universal.tagset_mapping
                     },
 
                     'vie': {
@@ -1858,7 +1880,7 @@ def init_settings_default(main):
         'lemmatization': {
             'lemmatizer_settings': {
                 'afr': 'stanza_afr',
-                'sqi': 'simplemma_sqi',
+                'sqi': 'stanza_sqi',
                 'ara': 'stanza_ara',
                 'xcl': 'stanza_xcl',
                 'hye': 'stanza_hye',
@@ -1889,9 +1911,10 @@ def init_settings_default(main):
                 'fra': 'spacy_fra',
                 'fro': 'stanza_fro',
                 'glg': 'stanza_glg',
-                'kat': 'simplemma_kat',
+                'kat': 'stanza_kat',
                 'deu_at': 'spacy_deu',
                 'deu_de': 'spacy_deu',
+                'nds': 'stanza_nds',
                 'deu_ch': 'spacy_deu',
                 'got': 'stanza_got',
                 'grc': 'stanza_grc',
@@ -1906,6 +1929,7 @@ def init_settings_default(main):
                 'ita': 'spacy_ita',
                 'jpn': 'spacy_jpn',
                 'kaz': 'stanza_kaz',
+                'kpv': 'stanza_kpv',
                 'kor': 'spacy_kor',
                 'kmr': 'stanza_kmr',
                 'kir': 'stanza_kir',
@@ -1944,6 +1968,7 @@ def init_settings_default(main):
                 'tam': 'stanza_tam',
                 'bod': 'botok_bod',
                 'tur': 'stanza_tur',
+                'ota': 'stanza_ota',
                 'ukr': 'spacy_ukr',
                 'urd': 'stanza_urd',
                 'uig': 'stanza_uig',
@@ -2015,6 +2040,7 @@ def init_settings_default(main):
         'dependency_parsing': {
             'dependency_parser_settings': {
                 'afr': 'stanza_afr',
+                'sqi': 'stanza_sqi',
                 'ara': 'stanza_ara',
                 'xcl': 'stanza_xcl',
                 'hye': 'stanza_hye',
@@ -2043,8 +2069,10 @@ def init_settings_default(main):
                 'fra': 'spacy_fra',
                 'fro': 'stanza_fro',
                 'glg': 'stanza_glg',
+                'kat': 'stanza_kat',
                 'deu_at': 'spacy_deu',
                 'deu_de': 'spacy_deu',
+                'nds': 'stanza_nds',
                 'deu_ch': 'spacy_deu',
                 'got': 'stanza_got',
                 'grc': 'stanza_grc',
@@ -2059,6 +2087,7 @@ def init_settings_default(main):
                 'ita': 'spacy_ita',
                 'jpn': 'spacy_jpn',
                 'kaz': 'stanza_kaz',
+                'kpv': 'stanza_kpv',
                 'kor': 'spacy_kor',
                 'kmr': 'stanza_kmr',
                 'kir': 'stanza_kir',
@@ -2094,6 +2123,7 @@ def init_settings_default(main):
                 'tam': 'stanza_tam',
                 'tel': 'stanza_tel',
                 'tur': 'stanza_tur',
+                'ota': 'stanza_ota',
                 'ukr': 'spacy_ukr',
                 'urd': 'stanza_urd',
                 'uig': 'stanza_uig',
@@ -2186,8 +2216,8 @@ def init_settings_default(main):
                 'ori': 'vader_ori',
                 'fas': 'vader_fas',
                 'pol': 'vader_pol',
-                'por_pt': 'vader_por',
                 'por_br': 'vader_por',
+                'por_pt': 'vader_por',
                 'pan_guru': 'vader_pan_guru',
                 'ron': 'vader_ron',
                 'rus': 'vader_rus',

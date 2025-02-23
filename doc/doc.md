@@ -656,18 +656,18 @@ You can generate line charts or word clouds for keywords using any statistics. Y
 Language|Sentence Token-ization|Word Token-ization|Syllable Token-ization|Part-of-speech Tagging|Lemma-tization|Stop Word List|Depen-dency Parsing|Senti-ment Analysis
 :-----------------------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
 Afrikaans                |✔|✔|✔|✔|✔|✖️|✔|✔
-Albanian                 |⭕️ |✔|✔|✖️|✔|✖️|✖️|✔
-Amharic                  |⭕️ |✔|✖️|✖️|✖️|✖️|✖️|✔
+Albanian                 |✔|✔|✔|✔|✔|✖️|✔|✔
+Amharic                  |⭕️|✔|✖️|✖️|✖️|✖️|✖️|✔
 Arabic                   |✔|✔|✖️|✔|✔|✔|✔|✔
 Armenian (Classical)     |✔|✔|✖️|✔|✔|✖️|✔|✖️
 Armenian (Eastern)       |✔|✔|✖️|✔|✔|✖️|✔|✔
 Armenian (Western)       |✔|✔|✖️|✔|✔|✖️|✔|✔
-Assamese                 |⭕️ |✔|✖️|✖️|✖️|✖️|✖️|✔
-Asturian                 |⭕️ |⭕️ |✖️|✖️|✔|✖️|✖️|✖️
-Azerbaijani              |⭕️ |✔|✖️|✖️|✖️|✔|✖️|✔
+Assamese                 |⭕️|✔|✖️|✖️|✖️|✖️|✖️|✔
+Asturian                 |⭕️|⭕️|✖️|✖️|✔|✖️|✖️|✖️
+Azerbaijani              |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
 Basque                   |✔|✔|✔|✔|✔|✔|✔|✔
 Belarusian               |✔|✔|✔|✔|✔|✖️|✔|✔
-Bengali                  |⭕️ |✔|✖️|✖️|✔|✔|✖️|✔
+Bengali                  |⭕️|✔|✖️|✖️|✔|✔|✖️|✔
 Bulgarian                |✔|✔|✔|✔|✔|✖️|✔|✔
 Burmese                  |✔|✔|✖️|✖️|✖️|✖️|✖️|✔
 Buryat (Russia)          |✔|✔|✖️|✔|✔|✖️|✔|✖️
@@ -681,26 +681,27 @@ Croatian                 |✔|✔|✔|✔|✔|✖️|✔|✔
 Czech                    |✔|✔|✔|✔|✔|✖️|✔|✔
 Danish                   |✔|✔|✔|✔|✔|✔|✔|✔
 Dutch                    |✔|✔|✔|✔|✔|✔|✔|✔
-English (Middle)         |⭕️ |⭕️ |✖️|✖️|✔|✖️|✖️|✖️
+English (Middle)         |⭕️|⭕️|✖️|✖️|✔|✖️|✖️|✖️
 English (Old)            |✔|✔|✖️|✔|✔|✖️|✔|✖️
 English (United Kingdom) |✔|✔|✔|✔|✔|✔|✔|✔
 English (United States)  |✔|✔|✔|✔|✔|✔|✔|✔
 Erzya                    |✔|✔|✖️|✔|✔|✖️|✔|✖️
-Esperanto                |⭕️ |⭕️ |✔|✖️|✖️|✖️|✖️|✔
+Esperanto                |⭕️|⭕️|✔|✖️|✖️|✖️|✖️|✔
 Estonian                 |✔|✔|✔|✔|✔|✖️|✔|✔
 Faroese                  |✔|✔|✖️|✔|✖️|✖️|✔|✖️
 Finnish                  |✔|✔|✖️|✔|✔|✔|✔|✔
 French                   |✔|✔|✔|✔|✔|✔|✔|✔
 French (Old)             |✔|✔|✖️|✔|✔|✖️|✔|✖️
 Galician                 |✔|✔|✔|✔|✔|✖️|✔|✔
-Georgian                 |⭕️ |⭕️ |✖️|✖️|✔|✖️|✖️|✔
+Georgian                 |✔|✔|✖️|✔|✔|✖️|✔|✔
 German (Austria)         |✔|✔|✔|✔|✔|✔|✔|✔
 German (Germany)         |✔|✔|✔|✔|✔|✔|✔|✔
+German (Low)             |✔|✔|✖️|✔|✔|✖️|✔|✖️
 German (Switzerland)     |✔|✔|✔|✔|✔|✔|✔|✔
 Gothic                   |✔|✔|✖️|✔|✔|✖️|✔|✖️
 Greek (Ancient)          |✔|✔|✖️|✔|✔|✖️|✔|✖️
 Greek (Modern)           |✔|✔|✔|✔|✔|✔|✔|✔
-Gujarati                 |⭕️ |✔|✖️|✖️|✖️|✖️|✖️|✔
+Gujarati                 |⭕️|✔|✖️|✖️|✖️|✖️|✖️|✔
 Hebrew (Ancient)         |✔|✔|✖️|✔|✔|✖️|✔|✖️
 Hebrew (Modern)          |✔|✔|✖️|✔|✔|✔|✔|✔
 Hindi                    |✔|✔|✖️|✔|✔|✖️|✔|✔
@@ -710,9 +711,10 @@ Indonesian               |✔|✔|✔|✔|✔|✔|✔|✔
 Irish                    |✔|✔|✖️|✔|✔|✖️|✔|✔
 Italian                  |✔|✔|✔|✔|✔|✔|✔|✔
 Japanese                 |✔|✔|✖️|✔|✔|✖️|✔|✔
-Kannada                  |⭕️ |✔|✖️|✖️|✖️|✖️|✖️|✔
+Kannada                  |⭕️|✔|✖️|✖️|✖️|✖️|✖️|✔
 Kazakh                   |✔|✔|✖️|✔|✔|✔|✔|✔
 Khmer                    |✔|✔|✖️|✔|✖️|✖️|✖️|✔
+Komi (Zyrian)            |✔|✔|✖️|✔|✔|✖️|✔|✖️
 Korean                   |✔|✔|✖️|✔|✔|✖️|✔|✔
 Kurdish (Kurmanji)       |✔|✔|✖️|✔|✔|✖️|✔|✔
 Kyrgyz                   |✔|✔|✖️|✔|✔|✖️|✔|✔
@@ -721,64 +723,65 @@ Latin                    |✔|✔|✖️|✔|✔|✖️|✔|✔
 Latvian                  |✔|✔|✔|✔|✔|✖️|✔|✔
 Ligurian                 |✔|✔|✖️|✔|✔|✖️|✔|✖️
 Lithuanian               |✔|✔|✔|✔|✔|✖️|✔|✔
-Luganda                  |⭕️ |✔|✖️|✖️|✖️|✖️|✖️|✔
-Luxembourgish            |⭕️ |✔|✖️|✖️|✔|✖️|✖️|✔
+Luganda                  |⭕️|✔|✖️|✖️|✖️|✖️|✖️|✔
+Luxembourgish            |⭕️|✔|✖️|✖️|✔|✖️|✖️|✔
 Macedonian               |✔|✔|✖️|✔|✔|✖️|✔|✔
-Malay                    |⭕️ |✔|✖️|✖️|✔|✖️|✖️|✔
+Malay                    |⭕️|✔|✖️|✖️|✔|✖️|✖️|✔
 Malayalam                |✔|✔|✖️|✖️|✖️|✖️|✖️|✔
 Maltese                  |✔|✔|✖️|✔|✖️|✖️|✔|✔
 Manx                     |✔|✔|✖️|✔|✔|✖️|✔|✖️
 Marathi                  |✔|✔|✖️|✔|✔|✖️|✔|✔
-Meitei (Meitei script)   |⭕️ |✔|✖️|✖️|✖️|✖️|✖️|✔
-Mongolian                |⭕️ |⭕️ |✔|✖️|✖️|✖️|✖️|✔
-Nepali                   |⭕️ |✔|✖️|✖️|✖️|✔|✖️|✔
+Meitei (Meitei script)   |⭕️|✔|✖️|✖️|✖️|✖️|✖️|✔
+Mongolian                |⭕️|⭕️|✔|✖️|✖️|✖️|✖️|✔
+Nepali                   |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
 Nigerian Pidgin          |✔|✔|✖️|✔|✔|✖️|✔|✖️
 Norwegian (Bokmål)       |✔|✔|✔|✔|✔|✔|✔|✔
 Norwegian (Nynorsk)      |✔|✔|✔|✔|✔|✖️|✔|✖️
-Odia                     |⭕️ |✔|✖️|✖️|✖️|✖️|✖️|✔
+Odia                     |⭕️|✔|✖️|✖️|✖️|✖️|✖️|✔
 Persian                  |✔|✔|✖️|✔|✔|✖️|✔|✔
 Polish                   |✔|✔|✔|✔|✔|✖️|✔|✔
 Pomak                    |✔|✔|✖️|✔|✔|✖️|✔|✖️
 Portuguese (Brazil)      |✔|✔|✔|✔|✔|✔|✔|✔
 Portuguese (Portugal)    |✔|✔|✔|✔|✔|✔|✔|✔
-Punjabi (Gurmukhi script)|⭕️ |✔|✖️|✖️|✖️|✖️|✖️|✔
+Punjabi (Gurmukhi script)|⭕️|✔|✖️|✖️|✖️|✖️|✖️|✔
 Romanian                 |✔|✔|✔|✔|✔|✔|✔|✔
 Russian                  |✔|✔|✔|✔|✔|✔|✔|✔
 Russian (Old)            |✔|✔|✖️|✔|✔|✖️|✔|✖️
 Sámi (Northern)          |✔|✔|✖️|✔|✔|✖️|✔|✖️
 Sanskrit                 |✔|✔|✖️|✔|✔|✖️|✔|✔
 Scottish Gaelic          |✔|✔|✖️|✔|✔|✖️|✔|✔
-Serbian (Cyrillic script)|⭕️ |✔|✔|✖️|✔|✖️|✖️|✔
+Serbian (Cyrillic script)|⭕️|✔|✔|✖️|✔|✖️|✖️|✔
 Serbian (Latin script)   |✔|✔|✔|✔|✔|✖️|✔|✔
-Sindhi                   |✔|✔|✖️|✔|✖️|✖️|✖️|✔
-Sinhala                  |⭕️ |✔|✖️|✖️|✖️|✖️|✖️|✔
+Sindhi                   |✔|✔|✖️|✔|✖️|✖️|✔|✔
+Sinhala                  |⭕️|✔|✖️|✖️|✖️|✖️|✖️|✔
 Slovak                   |✔|✔|✔|✔|✔|✖️|✔|✔
 Slovene                  |✔|✔|✔|✔|✔|✔|✔|✔
-Sorbian (Lower)          |⭕️ |✔|✖️|✖️|✖️|✖️|✖️|✖️
+Sorbian (Lower)          |⭕️|✔|✖️|✖️|✖️|✖️|✖️|✖️
 Sorbian (Upper)          |✔|✔|✖️|✔|✔|✖️|✔|✖️
 Spanish                  |✔|✔|✔|✔|✔|✔|✔|✔
-Swahili                  |⭕️ |⭕️ |✖️|✖️|✔|✖️|✖️|✔
+Swahili                  |⭕️|⭕️|✖️|✖️|✔|✖️|✖️|✔
 Swedish                  |✔|✔|✔|✔|✔|✔|✔|✔
-Tagalog                  |⭕️ |✔|✖️|✖️|✔|✖️|✖️|✔
-Tajik                    |⭕️ |✔|✖️|✖️|✖️|✔|✖️|✔
+Tagalog                  |⭕️|✔|✖️|✖️|✔|✖️|✖️|✔
+Tajik                    |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
 Tamil                    |✔|✔|✖️|✔|✔|✖️|✔|✔
-Tatar                    |⭕️ |✔|✖️|✖️|✖️|✖️|✖️|✔
+Tatar                    |⭕️|✔|✖️|✖️|✖️|✖️|✖️|✔
 Telugu                   |✔|✔|✔|✔|✖️|✖️|✔|✔
-Tetun (Dili)             |⭕️ |✔|✖️|✖️|✖️|✖️|✖️|✖️
+Tetun (Dili)             |⭕️|✔|✖️|✖️|✖️|✖️|✖️|✖️
 Thai                     |✔|✔|✔|✔|✖️|✔|✖️|✔
 Tibetan                  |✔|✔|✖️|✔|✔|✖️|✖️|✖️
-Tigrinya                 |⭕️ |✔|✖️|✖️|✖️|✖️|✖️|✔
-Tswana                   |⭕️ |✔|✖️|✖️|✖️|✖️|✖️|✖️
+Tigrinya                 |⭕️|✔|✖️|✖️|✖️|✖️|✖️|✔
+Tswana                   |⭕️|✔|✖️|✖️|✖️|✖️|✖️|✖️
 Turkish                  |✔|✔|✖️|✔|✔|✔|✔|✔
+Turkish (Ottoman)        |✔|✔|✖️|✔|✔|✖️|✔|✖️
 Ukrainian                |✔|✔|✔|✔|✔|✖️|✔|✔
 Urdu                     |✔|✔|✖️|✔|✔|✖️|✔|✔
 Uyghur                   |✔|✔|✖️|✔|✔|✖️|✔|✔
 Vietnamese               |✔|✔|✖️|✔|✖️|✖️|✔|✔
 Welsh                    |✔|✔|✖️|✔|✔|✖️|✔|✔
 Wolof                    |✔|✔|✖️|✔|✔|✖️|✔|✖️
-Yoruba                   |⭕️ |✔|✖️|✖️|✖️|✖️|✖️|✔
-Zulu                     |⭕️ |⭕️ |✔|✖️|✖️|✖️|✖️|✔
-Other languages          |⭕️ |⭕️ |✖️|✖️|✖️|✖️|✖️|✖️
+Yoruba                   |⭕️|✔|✖️|✖️|✖️|✖️|✖️|✔
+Zulu                     |⭕️|⭕️|✔|✖️|✖️|✖️|✖️|✔
+Other languages          |⭕️|⭕️|✖️|✖️|✖️|✖️|✖️|✖️
 
 > [!NOTE]
 > ✔: Supported.<br>
