@@ -47,8 +47,8 @@ spacy-lookups-data == 1.0.5
 spacy-pkuseg == 0.0.33
 
 ## SudachiPy
-sudachipy == 0.6.9
-sudachidict_core == 20241021
+sudachipy == 0.6.10
+sudachidict_core == 20250129
 
 # Miscellaneous
 beautifulsoup4

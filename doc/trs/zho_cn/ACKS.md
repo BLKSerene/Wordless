@@ -50,7 +50,7 @@
 26|[spaCy](https://spacy.io/)|3.7.5|Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann|[MIT](https://github.com/explosion/spaCy/blob/master/LICENSE)
 27|[spacy-pkuseg](https://github.com/explosion/spacy-pkuseg)|0.0.33|罗睿轩, 许晶晶, 任宣丞, 张艺, 张之远, 位冰镇, 孙栩<br>Adriane Boyd, Ines Montani|[MIT](https://github.com/explosion/spacy-pkuseg/blob/master/LICENSE)
 28|[Stanza](https://github.com/stanfordnlp/stanza)|1.8.2|齐鹏, 张宇浩, 张钰晖,<br>Jason Bolton, Tim Dozat, John Bauer|[Apache-2.0](https://github.com/stanfordnlp/stanza/blob/main/LICENSE)
-29|[SudachiPy](https://github.com/WorksApplications/sudachi.rs/tree/develop/python)|0.6.9|WAP Tokushima Laboratory of AI and NLP|[Apache-2.0](https://github.com/WorksApplications/sudachi.rs/blob/develop/LICENSE)
+29|[SudachiPy](https://github.com/WorksApplications/sudachi.rs/tree/develop/python)|0.6.10|WAP Tokushima Laboratory of AI and NLP|[Apache-2.0](https://github.com/WorksApplications/sudachi.rs/blob/develop/LICENSE)
 30|[Underthesea](https://undertheseanlp.com/)|6.8.4|Vu Anh|[GPL-3.0-or-later](https://github.com/undertheseanlp/underthesea/blob/main/LICENSE)
 31|[VADER](https://github.com/cjhutto/vaderSentiment)|3.3.2|C.J. Hutto|[MIT](https://github.com/cjhutto/vaderSentiment/blob/master/LICENSE.txt)
 32|[wordcloud](https://github.com/amueller/word_cloud)|1.9.4|Andreas Christian Müller|[MIT](https://github.com/amueller/word_cloud/blob/main/LICENSE)
