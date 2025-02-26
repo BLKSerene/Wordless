@@ -37,7 +37,7 @@ def add_lang_suffixes(lang_codes):
     lang_codes = sorted(set(lang_codes))
 
     for lang_code in lang_codes.copy():
-        if lang_code == 'hye':
+        if lang_code == 'hy':
             lang_codes.append('hyw')
 
         if lang_code in ['zh', 'en', 'de', 'pt', 'pa', 'sr']:
@@ -117,10 +117,6 @@ def test_settings_global():
     settings_dependency_parsers_default = settings_default['dependency_parsing']['dependency_parser_settings']
     settings_sentiment_analyzers = settings_global['sentiment_analyzers']
     settings_sentiment_analyzers_default = settings_default['sentiment_analysis']['sentiment_analyzer_settings']
-
-    # Add custom lists
-    for lang, stop_word_lists in settings_stop_word_lists.items():
-        stop_word_lists.append('custom')
 
     # NLTK
     langs_nltk_sentence_tokenizers_supported = []
@@ -241,21 +237,19 @@ def test_settings_global():
     )
 
     # spaCy
-    langs_spacy_supported = []
+    langs_spacy_supported_word_tokenizers = []
     langs_spacy_supported_lemmatizers = []
+    langs_spacy_supported_stop_word_lists = []
 
     langs_spacy_word_tokenizers = []
     langs_spacy_lemmatizers = []
+    langs_spacy_stop_word_lists = []
 
     for lang in pkgutil.iter_modules(spacy.lang.__path__):
-        if lang.ispkg:
-            # Serbian
-            if lang.name == 'sr':
-                langs_spacy_supported.extend(['sr_cyrl', 'sr_latn'])
-            elif lang.name not in ['th', 'vi', 'xx']:
-                langs_spacy_supported.append(lang.name)
+        if lang.ispkg and lang.name not in ['th', 'vi', 'xx']:
+            langs_spacy_supported_word_tokenizers.append(lang.name)
 
-    langs_spacy_supported = add_lang_suffixes(langs_spacy_supported)
+    langs_spacy_supported_word_tokenizers = add_lang_suffixes(langs_spacy_supported_word_tokenizers)
 
     for file in os.listdir(f'{spacy_lookups_data.__path__[0]}/data/'):
         if 'lemma' in file:
@@ -266,6 +260,15 @@ def test_settings_global():
     # Languages without data files for lemmatizers
     langs_spacy_supported_lemmatizers.extend(['fi', 'ja', 'ko', 'sl', 'uk'])
     langs_spacy_supported_lemmatizers = add_lang_suffixes(langs_spacy_supported_lemmatizers)
+
+    for lang in pkgutil.iter_modules(spacy.lang.__path__):
+        if lang.ispkg and 'stop_words.py' in os.listdir(f'{spacy.lang.__path__[0]}/{lang.name}/'):
+            if lang.name == 'sr':
+                langs_spacy_supported_stop_word_lists.extend(['sr_cyrl', 'sr_latn'])
+            elif lang.name != 'xx':
+                langs_spacy_supported_stop_word_lists.append(lang.name)
+
+    langs_spacy_supported_stop_word_lists = add_lang_suffixes(langs_spacy_supported_stop_word_lists)
 
     for lang_code, sentence_tokenizers in settings_sentence_tokenizers.items():
         if not any((
@@ -286,7 +289,7 @@ def test_settings_global():
         ):
             langs_spacy_word_tokenizers.append(lang_code)
 
-    check_missing_extra_langs(langs_spacy_supported, langs_spacy_word_tokenizers, "spaCy's word tokenizers")
+    check_missing_extra_langs(langs_spacy_supported_word_tokenizers, langs_spacy_word_tokenizers, "spaCy's word tokenizers")
 
     for lang_code, lemmatizers in settings_lemmatizers.items():
         if (
@@ -299,6 +302,18 @@ def test_settings_global():
             langs_spacy_lemmatizers.append(lang_code)
 
     check_missing_extra_langs(langs_spacy_supported_lemmatizers, langs_spacy_lemmatizers, "spaCy's lemmatizers")
+
+    for lang_code, stop_word_lists in settings_stop_word_lists.items():
+        if (
+            lang_code != 'other'
+            and any((
+                'spacy' in stop_word_list
+                for stop_word_list in stop_word_lists
+            ))
+        ):
+            langs_spacy_stop_word_lists.append(lang_code)
+
+    check_missing_extra_langs(langs_spacy_supported_stop_word_lists, langs_spacy_stop_word_lists, "spaCy's stop word lists")
 
     # Stanza
     langs_stanza_supported_tokenizers = []
@@ -458,6 +473,12 @@ def test_settings_global():
     # Check for invalid default values in default settings
     for lang_utils, lang_utils_default, util_type in settings_global_default_util_types:
         check_invalid_default_lang_utils(lang_utils, lang_utils_default, util_type)
+
+    for lang, stop_word_list in settings_stop_word_lists_default.items():
+        if settings_stop_word_lists[lang] != ['custom']:
+            assert stop_word_list != 'custom', f'Invalid default stop word list: {lang} - {stop_word_list}!'
+        else:
+            assert stop_word_list == 'custom'
 
     # Check language order
     for settings_global, settings_default, util_type in settings_global_default_util_types:

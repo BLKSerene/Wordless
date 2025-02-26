@@ -358,9 +358,14 @@ def init_model_spacy(main, lang, sentencizer_only = False):
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
         if f'spacy_nlp_{lang}' not in main.__dict__:
+            if lang == 'hyw':
+                lang_spacy = 'hye'
+            else:
+                lang_spacy = lang
+
             # Languages with models
             if lang in LANGS_SPACY:
-                model_name = LANGS_SPACY[lang]
+                model_name = LANGS_SPACY[lang_spacy]
                 model = importlib.import_module(model_name)
 
                 # Exclude NER to boost speed
@@ -374,7 +379,7 @@ def init_model_spacy(main, lang, sentencizer_only = False):
                     main.__dict__[f'spacy_nlp_{lang}'].add_pipe('sentencizer', config = sentencizer_config)
             # Languages without models
             else:
-                main.__dict__[f'spacy_nlp_{lang}'] = spacy.blank(wl_conversion.to_iso_639_1(main, lang))
+                main.__dict__[f'spacy_nlp_{lang}'] = spacy.blank(wl_conversion.to_iso_639_1(main, lang_spacy))
 
                 # Add sentencizer and lemmatizer
                 main.__dict__[f'spacy_nlp_{lang}'].add_pipe('sentencizer', config = sentencizer_config)

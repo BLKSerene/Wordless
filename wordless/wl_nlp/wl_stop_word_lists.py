@@ -16,11 +16,14 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import importlib
+
 import laonlp
 import nltk
 import opencc
 import pythainlp
 
+from wordless.wl_nlp import wl_nlp_utils
 from wordless.wl_utils import wl_conversion
 
 LANG_TEXTS_NLTK = {
@@ -86,6 +89,23 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
         # PyThaiNLP
         elif stop_word_list == 'pythainlp_tha':
             stop_words = pythainlp.corpus.common.thai_stopwords()
+        # spaCy
+        elif stop_word_list.startswith('spacy_'):
+            if lang.startswith('srp_'):
+                spacy_lang = importlib.import_module('spacy.lang.sr')
+                stop_words = spacy_lang.STOP_WORDS
+
+                if lang == 'srp_latn':
+                    stop_words = wl_nlp_utils.to_srp_latn(stop_words)
+            else:
+                if lang == 'hyw':
+                    lang = 'hye'
+
+                lang = wl_conversion.to_iso_639_1(main, lang)
+                lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+
+                spacy_lang = importlib.import_module(f'spacy.lang.{lang}')
+                stop_words = spacy_lang.STOP_WORDS
 
     # Remove empty tokens
     stop_words = [stop_word for stop_word in stop_words if stop_word.strip()]

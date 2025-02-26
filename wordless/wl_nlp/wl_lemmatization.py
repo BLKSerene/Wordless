@@ -126,7 +126,10 @@ def wl_lemmatize_text(main, inputs, lang, lemmatizer):
                 tokens_line = wl_word_tokenization.wl_word_tokenize_flat(main, line, lang = lang)
                 tokens_line = wl_texts.to_display_texts(tokens_line)
 
-                if lang in ['hrv', 'srp_latn']:
+                if lang == 'hyw':
+                    lang = 'hy'
+                # Serbo-Croatian
+                elif lang in ['hrv', 'srp_latn']:
                     lang = 'hbs'
                 else:
                     lang = wl_conversion.to_iso_639_1(main, lang, no_suffix = True)
@@ -247,7 +250,10 @@ def wl_lemmatize_tokens(main, inputs, lang, lemmatizer):
         for tokens in wl_nlp_utils.split_token_list(main, inputs, lemmatizer):
             # simplemma
             if lemmatizer.startswith('simplemma_'):
-                if lang in ['hrv', 'srp_latn']:
+                if lang == 'hyw':
+                    lang_simplemma = 'hy'
+                # Serbo-Croatian
+                elif lang in ['hrv', 'srp_latn']:
                     lang_simplemma = 'hbs'
                 else:
                     lang_simplemma = wl_conversion.to_iso_639_1(main, lang, no_suffix = True)
