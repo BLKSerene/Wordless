@@ -24,6 +24,7 @@
 - Measures: Add effect size - conditional probability / ΔP / mutual information (normalized) / μ-value / pointwise mutual information (squared) / pointwise mutual information (normalized) / relative risk
 - Menu: Add Edit
 - Settings: Add Settings - Measures - Effect Size - Mutual Information / Pointwise Mutual Information / Pointwise Mutual Information (Cubic) / Pointwise Mutual Information (Squared)
+- Utils: Add spaCy's Kurdish (Kurmanji) and Scottish Gaelic word tokenizers
 - Utils: Add spaCy's stop word lists
 - Utils: Add Stanza's Albanian, Georgian, German (Old), Komi (Zyrian), and Turkish (Ottoman) sentence tokenizers / word tokenizers / part-of-speech taggers / lemmatizers / dependency parsers
 - Utils: Add Stanza's Sindhi dependency parser
@@ -55,6 +56,7 @@
 - Dependencies: Upgrade python-mecab-ko to 1.3.7
 - Dependencies: Upgrade python-pptx to 1.0.2
 - Dependencies: Upgrade simplemma to 1.1.2
+- Dependencies: Upgrade spaCy to 3.8.4
 - Dependencies: Upgrade Stanza to 1.10.1
 - Dependencies: Upgrade SudachiPy to 0.6.10
 - Dependencies: Upgrade wordcloud to 1.9.4

@@ -246,7 +246,9 @@ def test_settings_global():
     langs_spacy_stop_word_lists = []
 
     for lang in pkgutil.iter_modules(spacy.lang.__path__):
-        if lang.ispkg and lang.name not in ['th', 'vi', 'xx']:
+        # Tibetan tokenizer is not funtional
+        # Thai and Vietnamese tokenization are delegated to PyThaiNLP and Pyvi
+        if lang.ispkg and lang.name not in ['bo', 'th', 'vi', 'xx']:
             langs_spacy_supported_word_tokenizers.append(lang.name)
 
     langs_spacy_supported_word_tokenizers = add_lang_suffixes(langs_spacy_supported_word_tokenizers)

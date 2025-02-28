@@ -605,6 +605,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'spaCy - Japanese word tokenizer'): 'spacy_jpn',
                 _tr('wl_settings_global', 'spaCy - Kannada word tokenizer'): 'spacy_kan',
                 _tr('wl_settings_global', 'spaCy - Korean word tokenizer'): 'spacy_kor',
+                _tr('wl_settings_global', 'spaCy - Kurdish (Kurmanji) word tokenizer'): 'spacy_kmr',
                 _tr('wl_settings_global', 'spaCy - Kyrgyz word tokenizer'): 'spacy_kir',
                 _tr('wl_settings_global', 'spaCy - Latin word tokenizer'): 'spacy_lat',
                 _tr('wl_settings_global', 'spaCy - Latvian word tokenizer'): 'spacy_lav',
@@ -625,6 +626,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'spaCy - Romanian word tokenizer'): 'spacy_ron',
                 _tr('wl_settings_global', 'spaCy - Russian word tokenizer'): 'spacy_rus',
                 _tr('wl_settings_global', 'spaCy - Sanskrit word tokenizer'): 'spacy_san',
+                _tr('wl_settings_global', 'spaCy - Scottish Gaelic word tokenizer'): 'spacy_gla',
                 _tr('wl_settings_global', 'spaCy - Serbian (Cyrillic script) word tokenizer'): 'spacy_srp_cyrl',
                 _tr('wl_settings_global', 'spaCy - Sinhala word tokenizer'): 'spacy_sin',
                 _tr('wl_settings_global', 'spaCy - Slovak word tokenizer'): 'spacy_slk',
@@ -1172,6 +1174,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Japanese stop word list'): 'spacy_jpn',
                 _tr('init_settings_global', 'spaCy - Kannada stop word list'): 'spacy_kan',
                 _tr('init_settings_global', 'spaCy - Korean stop word list'): 'spacy_kor',
+                _tr('init_settings_global', 'spaCy - Kurdish (Kurmanji) stop word list'): 'spacy_kmr',
                 _tr('init_settings_global', 'spaCy - Kyrgyz stop word list'): 'spacy_kir',
                 _tr('init_settings_global', 'spaCy - Latin stop word list'): 'spacy_lat',
                 _tr('init_settings_global', 'spaCy - Latvian stop word list'): 'spacy_lav',
@@ -1191,6 +1194,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Romanian stop word list'): 'spacy_ron',
                 _tr('init_settings_global', 'spaCy - Russian stop word list'): 'spacy_rus',
                 _tr('init_settings_global', 'spaCy - Sanskrit stop word list'): 'spacy_san',
+                _tr('init_settings_global', 'spaCy - Scottish Gaelic stop word list'): 'spacy_gla',
                 _tr('init_settings_global', 'spaCy - Serbian (Cyrillic) stop word list'): 'spacy_srp_cyrl',
                 _tr('init_settings_global', 'spaCy - Sinhala stop word list'): 'spacy_sin',
                 _tr('init_settings_global', 'spaCy - Slovak stop word list'): 'spacy_slk',
@@ -1204,6 +1208,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Tatar stop word list'): 'spacy_tat',
                 _tr('init_settings_global', 'spaCy - Telugu stop word list'): 'spacy_tel',
                 _tr('init_settings_global', 'spaCy - Thai stop word list'): 'spacy_tha',
+                _tr('init_settings_global', 'spaCy - Tibetan stop word list'): 'spacy_bod',
                 _tr('init_settings_global', 'spaCy - Tigrinya stop word list'): 'spacy_tir',
                 _tr('init_settings_global', 'spaCy - Tswana stop word list'): 'spacy_tsn',
                 _tr('init_settings_global', 'spaCy - Turkish stop word list'): 'spacy_tur',
@@ -2299,6 +2304,7 @@ def init_settings_global():
 
             'kmr': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'spacy_kmr',
                 'stanza_kmr'
             ],
 
@@ -2477,6 +2483,7 @@ def init_settings_global():
 
             'gla': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'spacy_gla',
                 'stanza_gla'
             ],
 
@@ -3449,6 +3456,7 @@ def init_settings_global():
             'kan': ['spacy_kan'],
             'kaz': ['nltk_kaz'],
             'kor': ['spacy_kor'],
+            'kmr': ['spacy_kmr'],
             'kir': ['spacy_kir'],
             'lao': ['laonlp_lao'],
             'lat': ['spacy_lat'],
@@ -3495,6 +3503,7 @@ def init_settings_global():
             ],
 
             'san': ['spacy_san'],
+            'gla': ['spacy_gla'],
 
             'srp_cyrl': ['spacy_srp_cyrl'],
             'srp_latn': ['spacy_srp_cyrl'],
@@ -3531,6 +3540,7 @@ def init_settings_global():
                 'spacy_tha'
             ],
 
+            'bod': ['spacy_bod'],
             'tir': ['spacy_tir'],
             'tsn': ['spacy_tsn'],
 
