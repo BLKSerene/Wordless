@@ -25,21 +25,22 @@ from wordless.wl_nlp import wl_texts
 def test_wl_fig_freqs():
     main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
-    for tab in [
+    for tab in (
         'wordlist_generator',
         'ngram_generator',
         'collocation_extractor',
         'colligation_extractor',
         'keyword_extractor'
-    ]:
+    ):
         print(f'[{tab}]')
 
-        if tab in ['wordlist_generator', 'ngram_generator', 'keyword_extractor']:
-            graph_types = ['Line Chart', 'Word Cloud']
-            use_datas = ['Frequency']
-        elif tab in ['collocation_extractor', 'colligation_extractor']:
-            graph_types = ['Line Chart', 'Word Cloud', 'Network Graph']
-            use_datas = ['L5', 'L4', 'L3', 'L2', 'L1', 'R1', 'R2', 'R3', 'R4', 'R5', 'Frequency']
+        match tab:
+            case 'wordlist_generator' | 'ngram_generator' | 'keyword_extractor':
+                graph_types = ['Line Chart', 'Word Cloud']
+                use_datas = ['Frequency']
+            case 'collocation_extractor' | 'colligation_extractor':
+                graph_types = ['Line Chart', 'Word Cloud', 'Network Graph']
+                use_datas = ['L5', 'L4', 'L3', 'L2', 'L1', 'R1', 'R2', 'R3', 'R4', 'R5', 'Frequency']
 
         for graph_type in graph_types:
             freq_files_items = {}

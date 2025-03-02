@@ -128,7 +128,7 @@ def wl_test_file_area(main):
 
         assert new_file['path_orig'] == wl_paths.get_normalized_path(file_path)
 
-        if i < NUM_FILES_ALL or new_file['name'] in ['[eng_gb] Tagged']:
+        if i < NUM_FILES_ALL or new_file['name'] in ('[eng_gb] Tagged'):
             assert new_file['encoding'] == 'utf_8'
         else:
             assert new_file['encoding'] == 'ascii'
@@ -143,7 +143,7 @@ def wl_test_file_area(main):
         else:
             assert not new_file['tokenized']
 
-        if new_file['name'] in ['[eng_gb] Tagged', '[eng_us] Tags at start of text']:
+        if new_file['name'] in ('[eng_gb] Tagged', '[eng_us] Tags at start of text'):
             assert new_file['tagged']
         else:
             assert not new_file['tagged']

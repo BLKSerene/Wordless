@@ -183,7 +183,7 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
             else:
                 result = 'cancel'
 
-        if result in ['skip', 'restart']:
+        if result in ('skip', 'restart'):
             # Font Settings
             self.settings_custom['ui_settings']['interface_scaling'] = self.combo_box_interface_scaling.currentText()
             self.settings_custom['ui_settings']['font_family'] = self.combo_box_font_family.currentFont().family()

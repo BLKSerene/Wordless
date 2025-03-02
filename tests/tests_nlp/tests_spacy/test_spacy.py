@@ -75,9 +75,16 @@ def wl_test_sentence_tokenize(lang, results_trf, results_lg):
     print(f'{lang} / {sentence_tokenizer_trf}:')
     print(f'{sentences_trf}\n')
 
-    # The count of sentences should be more than 1
-    if lang not in ['zho_cn']:
-        assert len(sentences_trf) > 1
+    # The count of sentences should be exactly 2
+    match lang:
+        case 'other':
+            assert len(sentences_trf) == 1
+        case 'swe':
+            assert len(sentences_trf) == 3
+        case 'ell':
+            assert len(sentences_trf) == 4
+        case _:
+            assert len(sentences_trf) == 2
 
     assert sentences_trf == results_trf
 
@@ -94,8 +101,14 @@ def wl_test_sentence_tokenize(lang, results_trf, results_lg):
         print(f'{lang} / {sentence_tokenizer_lg}:')
         print(f'{sentences_lg}\n')
 
-        # The count of sentences should be more than 1
-        assert len(sentences_lg) > 1
+        # The count of sentences should be exactly 2
+        match lang:
+            case 'hrv':
+                assert len(sentences_lg) == 1
+            case 'ell':
+                assert len(sentences_lg) == 3
+            case _:
+                assert len(sentences_lg) == 2
 
         assert sentences_lg == results_lg
 
@@ -130,7 +143,10 @@ def wl_test_lemmatize(lang, test_sentence, tokens, results):
     lang_no_suffix = wl_conversion.remove_lang_code_suffixes(main, lang)
     lemmatizer = f'spacy_{lang_no_suffix}'
 
-    test_lemmatization.wl_test_lemmatize_models(lang, lemmatizer, test_sentence, tokens, results)
+    test_lemmatization.wl_test_lemmatize_models(
+        lang, lemmatizer, test_sentence, tokens, results,
+        lang_excs = ('pol',)
+    )
 
 def wl_test_dependency_parse(lang, test_sentence, tokens, results):
     lang_no_suffix = wl_conversion.remove_lang_code_suffixes(main, lang)

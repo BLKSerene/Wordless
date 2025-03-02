@@ -89,11 +89,11 @@ def wl_lemmatize_text(main, inputs, lang, lemmatizer):
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
         nlp = main.__dict__[f'spacy_nlp_{lang}']
 
-        with nlp.select_pipes(disable = [
+        with nlp.select_pipes(disable = (
             pipeline
-            for pipeline in ['parser', 'senter', 'sentencizer']
+            for pipeline in ('parser', 'senter', 'sentencizer')
             if nlp.has_pipe(pipeline)
-        ]):
+        )):
             for doc in nlp.pipe(inputs.splitlines()):
                 for token in doc:
                     tokens.append(token.text)
@@ -104,7 +104,7 @@ def wl_lemmatize_text(main, inputs, lang, lemmatizer):
                         lemmas.append(token.text)
     # Stanza
     elif lemmatizer.startswith('stanza_'):
-        if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+        if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
             lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
         nlp = main.__dict__[f'stanza_nlp_{lang}']
@@ -126,13 +126,14 @@ def wl_lemmatize_text(main, inputs, lang, lemmatizer):
                 tokens_line = wl_word_tokenization.wl_word_tokenize_flat(main, line, lang = lang)
                 tokens_line = wl_texts.to_display_texts(tokens_line)
 
-                if lang == 'hyw':
-                    lang = 'hy'
-                # Serbo-Croatian
-                elif lang in ['hrv', 'srp_latn']:
-                    lang = 'hbs'
-                else:
-                    lang = wl_conversion.to_iso_639_1(main, lang, no_suffix = True)
+                match lang:
+                    case 'hyw':
+                        lang = 'hy'
+                    # Serbo-Croatian
+                    case 'hrv' | 'srp_latn':
+                        lang = 'hbs'
+                    case _:
+                        lang = wl_conversion.to_iso_639_1(main, lang, no_suffix = True)
 
                 tokens.extend((str(token) for token in tokens_line))
                 lemmas.extend((simplemma.lemmatize(token, lang = lang) for token in tokens_line))
@@ -202,11 +203,11 @@ def wl_lemmatize_tokens(main, inputs, lang, lemmatizer):
         lang_spacy = wl_conversion.remove_lang_code_suffixes(main, lang)
         nlp = main.__dict__[f'spacy_nlp_{lang_spacy}']
 
-        with nlp.select_pipes(disable = [
+        with nlp.select_pipes(disable = (
             pipeline
-            for pipeline in ['parser', 'senter', 'sentencizer']
+            for pipeline in ('parser', 'senter', 'sentencizer')
             if nlp.has_pipe(pipeline)
-        ]):
+        )):
             docs = []
 
             for tokens in wl_nlp_utils.split_token_list(main, inputs, lemmatizer):
@@ -227,7 +228,7 @@ def wl_lemmatize_tokens(main, inputs, lang, lemmatizer):
                 lemma_tokens.extend([token.text for token in doc])
     # Stanza
     elif lemmatizer.startswith('stanza_'):
-        if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+        if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
             lang_stanza = wl_conversion.remove_lang_code_suffixes(main, lang)
         else:
             lang_stanza = lang
@@ -245,18 +246,19 @@ def wl_lemmatize_tokens(main, inputs, lang, lemmatizer):
                     else:
                         lemmas.append(token.text)
 
-                lemma_tokens.extend([token.text for token in sentence.words])
+                lemma_tokens.extend((token.text for token in sentence.words))
     else:
         for tokens in wl_nlp_utils.split_token_list(main, inputs, lemmatizer):
             # simplemma
             if lemmatizer.startswith('simplemma_'):
-                if lang == 'hyw':
-                    lang_simplemma = 'hy'
-                # Serbo-Croatian
-                elif lang in ['hrv', 'srp_latn']:
-                    lang_simplemma = 'hbs'
-                else:
-                    lang_simplemma = wl_conversion.to_iso_639_1(main, lang, no_suffix = True)
+                match lang:
+                    case 'hyw':
+                        lang_simplemma = 'hy'
+                    # Serbo-Croatian
+                    case 'hrv' | 'srp_latn':
+                        lang_simplemma = 'hbs'
+                    case _:
+                        lang_simplemma = wl_conversion.to_iso_639_1(main, lang, no_suffix = True)
 
                 lemma_tokens.extend(tokens.copy())
                 lemmas.extend([simplemma.lemmatize(token, lang = lang_simplemma) for token in tokens])

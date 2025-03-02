@@ -436,40 +436,42 @@ class Wl_Table(QTableView):
         default_ext = re.search(r'(?<=\(\*\.)[a-zA-Z0-9]+(?=[;\)])', default_type).group()
 
         # Errors (Search terms, stop word lists, file checking, etc.)
-        if self.tab == 'err':
-            file_path, file_type = QFileDialog.getSaveFileName(
-                parent = self,
-                caption = caption,
-                directory = os.path.join(wl_checks_misc.check_dir(default_dir), f'wordless_error.{default_ext}'),
-                filter = ';;'.join(self.main.settings_global['file_types']['exp_tables']),
-                initialFilter = default_type
-            )
-        # Concordancer (with zapping)
-        elif self.tab == 'concordancer' and self.main.settings_custom['concordancer']['zapping_settings']['zapping']:
-            file_path, file_type = QFileDialog.getSaveFileName(
-                parent = self,
-                caption = caption,
-                directory = os.path.join(wl_checks_misc.check_dir(default_dir), f'wordless_results_{self.tab}.docx'),
-                filter = ';;'.join(self.main.settings_global['file_types']['exp_tables_concordancer_zapping']),
-            )
-        # Concordancer (without zapping) & Parallel Concordancer
-        elif self.tab in ['concordancer', 'concordancer_parallel']:
-            file_path, file_type = QFileDialog.getSaveFileName(
-                parent = self,
-                caption = caption,
-                directory = os.path.join(wl_checks_misc.check_dir(default_dir), f'wordless_results_{self.tab}.{default_ext}'),
-                filter = ';;'.join(self.main.settings_global['file_types']['exp_tables_concordancer']),
-                initialFilter = default_type
-            )
-        # Other modules
-        else:
-            file_path, file_type = QFileDialog.getSaveFileName(
-                parent = self,
-                caption = caption,
-                directory = os.path.join(wl_checks_misc.check_dir(default_dir), f'wordless_results_{self.tab}.{default_ext}'),
-                filter = ';;'.join(self.main.settings_global['file_types']['exp_tables']),
-                initialFilter = default_type
-            )
+        match self.tab:
+            case 'err':
+                file_path, file_type = QFileDialog.getSaveFileName(
+                    parent = self,
+                    caption = caption,
+                    directory = os.path.join(wl_checks_misc.check_dir(default_dir), f'wordless_error.{default_ext}'),
+                    filter = ';;'.join(self.main.settings_global['file_types']['exp_tables']),
+                    initialFilter = default_type
+                )
+            # Concordancer (with zapping)
+            case 'concordancer':
+                if self.main.settings_custom['concordancer']['zapping_settings']['zapping']:
+                    file_path, file_type = QFileDialog.getSaveFileName(
+                        parent = self,
+                        caption = caption,
+                        directory = os.path.join(wl_checks_misc.check_dir(default_dir), f'wordless_results_{self.tab}.docx'),
+                        filter = ';;'.join(self.main.settings_global['file_types']['exp_tables_concordancer_zapping']),
+                    )
+            # Concordancer (without zapping) & Parallel Concordancer
+            case 'concordancer' | 'concordancer_parallel':
+                file_path, file_type = QFileDialog.getSaveFileName(
+                    parent = self,
+                    caption = caption,
+                    directory = os.path.join(wl_checks_misc.check_dir(default_dir), f'wordless_results_{self.tab}.{default_ext}'),
+                    filter = ';;'.join(self.main.settings_global['file_types']['exp_tables_concordancer']),
+                    initialFilter = default_type
+                )
+            # Other modules
+            case _:
+                file_path, file_type = QFileDialog.getSaveFileName(
+                    parent = self,
+                    caption = caption,
+                    directory = os.path.join(wl_checks_misc.check_dir(default_dir), f'wordless_results_{self.tab}.{default_ext}'),
+                    filter = ';;'.join(self.main.settings_global['file_types']['exp_tables']),
+                    initialFilter = default_type
+                )
 
         if file_path:
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = _tr('wl_tables', 'Exporting table...'))

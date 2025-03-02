@@ -260,7 +260,7 @@ def wl_process_tokens_profiler(main, text, token_settings, tab):
 
     text_syl_tokenize(main, text)
 
-    if tab in ['readability', 'all']:
+    if tab in ('readability', 'all'):
         if text.lang in main.settings_global['pos_taggers']:
             wl_pos_tagging.wl_pos_tag_universal(main, text.get_tokens_flat(), lang = text.lang, tagged = text.tagged)
 
@@ -268,10 +268,9 @@ def wl_process_tokens_profiler(main, text, token_settings, tab):
         if text.lang == 'pol':
             wl_lemmatization.wl_lemmatize(main, text.get_tokens_flat(), lang = text.lang)
 
-    if tab in ['lexical_density_diversity', 'all']:
-        # Lexical density
-        if text.lang in main.settings_global['pos_taggers']:
-            wl_pos_tagging.wl_pos_tag_universal(main, text.get_tokens_flat(), lang = text.lang, tagged = text.tagged)
+    # Lexical density
+    if tab in ('lexical_density_diversity', 'all') and text.lang in main.settings_global['pos_taggers']:
+        wl_pos_tagging.wl_pos_tag_universal(main, text.get_tokens_flat(), lang = text.lang, tagged = text.tagged)
 
     text_modified = wl_process_tokens_ngram_generator(main, text, token_settings)
     text_modified.tokens_multilevel = remove_empty_tokens(text_modified.tokens_multilevel)

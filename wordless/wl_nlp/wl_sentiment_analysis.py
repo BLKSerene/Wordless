@@ -27,7 +27,7 @@ import vaderSentiment.vaderSentiment
 from wordless.wl_nlp import wl_nlp_utils, wl_texts, wl_word_tokenization
 from wordless.wl_utils import wl_conversion, wl_paths
 
-VADER_EXCEPTIONS_ENG = [
+VADER_EXCS_ENG = [
     vaderSentiment.vaderSentiment.NEGATE,
     vaderSentiment.vaderSentiment.BOOSTER_DICT,
     vaderSentiment.vaderSentiment.SENTIMENT_LADEN_IDIOMS,
@@ -60,7 +60,7 @@ def wl_sentiment_analyze_text(main, inputs, lang, sentiment_analyzer):
 
     # Stanza
     if sentiment_analyzer.startswith('stanza_'):
-        if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+        if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
             lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
         nlp = main.__dict__[f'stanza_nlp_{lang}']
@@ -92,14 +92,14 @@ def wl_sentiment_analyze_text(main, inputs, lang, sentiment_analyzer):
                 vaderSentiment.vaderSentiment.BOOSTER_DICT,
                 vaderSentiment.vaderSentiment.SENTIMENT_LADEN_IDIOMS,
                 vaderSentiment.vaderSentiment.SPECIAL_CASES
-            ) = VADER_EXCEPTIONS_ENG
+            ) = VADER_EXCS_ENG
         else:
-            vader_exceptions = importlib.import_module(f'data.VADER.exceptions_{lang_vader}')
+            vader_excs = importlib.import_module(f'data.VADER.exceptions_{lang_vader}')
 
-            vaderSentiment.vaderSentiment.NEGATE = vader_exceptions.NEGATE
-            vaderSentiment.vaderSentiment.BOOSTER_DICT = vader_exceptions.BOOSTER_DICT
-            vaderSentiment.vaderSentiment.SENTIMENT_LADEN_IDIOMS = vader_exceptions.SENTIMENT_LADEN_IDIOMS
-            vaderSentiment.vaderSentiment.SPECIAL_CASES = vader_exceptions.SPECIAL_CASES
+            vaderSentiment.vaderSentiment.NEGATE = vader_excs.NEGATE
+            vaderSentiment.vaderSentiment.BOOSTER_DICT = vader_excs.BOOSTER_DICT
+            vaderSentiment.vaderSentiment.SENTIMENT_LADEN_IDIOMS = vader_excs.SENTIMENT_LADEN_IDIOMS
+            vaderSentiment.vaderSentiment.SPECIAL_CASES = vader_excs.SPECIAL_CASES
 
         if lang.startswith('eng_'):
             analyzer = vaderSentiment.vaderSentiment.SentimentIntensityAnalyzer()
@@ -133,7 +133,7 @@ def wl_sentiment_analyze_tokens(main, inputs, lang, sentiment_analyzer):
 
     # Stanza
     if sentiment_analyzer.startswith('stanza_'):
-        if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+        if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
             lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
         nlp = main.__dict__[f'stanza_nlp_{lang}']
@@ -154,7 +154,7 @@ def wl_sentiment_analyze_tokens(main, inputs, lang, sentiment_analyzer):
             else:
                 sentiment_scores.append(0)
     else:
-        inputs = [' '.join(tokens) for tokens in inputs]
+        inputs = (' '.join(tokens) for tokens in inputs)
 
         sentiment_scores = wl_sentiment_analyze_text(main, inputs, lang, sentiment_analyzer)
 

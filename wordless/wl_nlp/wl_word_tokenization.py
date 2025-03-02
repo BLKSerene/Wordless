@@ -53,11 +53,11 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
         nlp = main.__dict__[f'spacy_nlp_{lang}']
 
-        with nlp.select_pipes(disable = [
+        with nlp.select_pipes(disable = (
             pipeline
-            for pipeline in ['tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler']
+            for pipeline in ('tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler')
             if nlp.has_pipe(pipeline)
-        ]):
+        )):
             for doc in nlp.pipe([line.strip() for line in lines]):
                 tokens_multilevel.append([])
 
@@ -65,7 +65,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                     tokens_multilevel[-1].append([token.text for token in sentence])
     # Stanza
     elif word_tokenizer.startswith('stanza_'):
-        if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+        if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
             lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
         nlp = main.__dict__[f'stanza_nlp_{lang}']
@@ -114,36 +114,37 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                 elif lang.startswith('zho_'):
                     sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, line, lang = lang)
 
-                    if word_tokenizer == 'pkuseg_zho':
-                        for sentence in sentences:
-                            tokens_multilevel[-1].append(main.pkuseg_word_tokenizer.cut(sentence))
-                    elif word_tokenizer == 'wordless_zho_char':
-                        for sentence in sentences:
-                            char_scripts = ''
-                            tokens = []
+                    match word_tokenizer:
+                        case 'pkuseg_zho':
+                            for sentence in sentences:
+                                tokens_multilevel[-1].append(main.pkuseg_word_tokenizer.cut(sentence))
+                        case 'wordless_zho_char':
+                            for sentence in sentences:
+                                char_scripts = ''
+                                tokens = []
 
-                            for char in sentence:
-                                if wl_checks_tokens.is_han(char):
-                                    char_scripts += 'h'
-                                else:
-                                    char_scripts += 'o'
+                                for char in sentence:
+                                    if wl_checks_tokens.is_han(char):
+                                        char_scripts += 'h'
+                                    else:
+                                        char_scripts += 'o'
 
-                            while sentence:
-                                len_token = len(RE_CHAR_HAN_OTHER.search(char_scripts).group())
-                                token = sentence[:len_token]
+                                while sentence:
+                                    len_token = len(RE_CHAR_HAN_OTHER.search(char_scripts).group())
+                                    token = sentence[:len_token]
 
-                                if char_scripts.startswith('h'):
-                                    tokens.extend(token)
-                                else:
-                                    tokens.extend(wl_word_tokenize_flat(
-                                        main, token,
-                                        lang = 'other'
-                                    ))
+                                    if char_scripts.startswith('h'):
+                                        tokens.extend(token)
+                                    else:
+                                        tokens.extend(wl_word_tokenize_flat(
+                                            main, token,
+                                            lang = 'other'
+                                        ))
 
-                                char_scripts = char_scripts[len_token:]
-                                sentence = sentence[len_token:]
+                                    char_scripts = char_scripts[len_token:]
+                                    sentence = sentence[len_token:]
 
-                            tokens_multilevel[-1].append(tokens)
+                                tokens_multilevel[-1].append(tokens)
                 # Japanese
                 elif word_tokenizer.startswith('sudachipy_jpn'):
                     match word_tokenizer:

@@ -21,7 +21,7 @@
 鉴于 *Wordless* 立于巨人的肩膀之上，我谨在此向下列开源项目致以本人诚挚的感谢，若没有它们，本项目将无法完成：
 
 &nbsp;|名称|版本|作者|许可
------:|----|:-----:|-------|:-----:
+-----:|----|:--:|---|:--:
 1|[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)|4.13.3|Leonard Richardson|[MIT](https://git.launchpad.net/beautifulsoup/tree/LICENSE)
 2|[Botok](https://github.com/OpenPecha/Botok)|0.8.12|Hélios Drupchen Hildt|[Apache-2.0](https://github.com/OpenPecha/Botok/blob/master/LICENSE)
 3|[Charset Normalizer](https://github.com/Ousret/charset_normalizer)|3.4.1|TAHRI Ahmed R.|[MIT](https://github.com/Ousret/charset_normalizer/blob/master/LICENSE)
@@ -48,7 +48,7 @@
 24|[SciPy](https://scipy.org/scipylib/)|1.14.0|SciPy 开发人员|[BSD-3-Clause](https://github.com/scipy/scipy/blob/main/LICENSE.txt)
 25|[simplemma](https://github.com/adbar/simplemma)|1.1.2|Adrien Barbaresi|[MIT](https://github.com/adbar/simplemma/blob/main/LICENSE)
 26|[spaCy](https://spacy.io/)|3.8.4|Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann|[MIT](https://github.com/explosion/spaCy/blob/master/LICENSE)
-27|[spacy-pkuseg](https://github.com/explosion/spacy-pkuseg)|0.0.33|罗睿轩, 许晶晶, 任宣丞, 张艺, 张之远, 位冰镇, 孙栩<br>Adriane Boyd, Ines Montani|[MIT](https://github.com/explosion/spacy-pkuseg/blob/master/LICENSE)
+27|[spacy-pkuseg](https://github.com/explosion/spacy-pkuseg)|1.0.0|罗睿轩, 许晶晶, 任宣丞, 张艺, 张之远, 位冰镇, 孙栩<br>Adriane Boyd, Ines Montani|[MIT](https://github.com/explosion/spacy-pkuseg/blob/master/LICENSE)
 28|[Stanza](https://github.com/stanfordnlp/stanza)|1.10.1|齐鹏, 张宇浩, 张钰晖,<br>Jason Bolton, Tim Dozat, John Bauer|[Apache-2.0](https://github.com/stanfordnlp/stanza/blob/main/LICENSE)
 29|[SudachiPy](https://github.com/WorksApplications/sudachi.rs/tree/develop/python)|0.6.10|WAP Tokushima Laboratory of AI and NLP|[Apache-2.0](https://github.com/WorksApplications/sudachi.rs/blob/develop/LICENSE)
 30|[Underthesea](https://undertheseanlp.com/)|6.8.4|Vu Anh|[GPL-3.0-or-later](https://github.com/undertheseanlp/underthesea/blob/main/LICENSE)

@@ -52,7 +52,7 @@ from wordless.wl_utils import (
     wl_threading
 )
 
-LANGS_WITHOUT_SPACES = ['mya', 'zho_cn', 'zho_tw', 'khm', 'lao', 'jpn', 'tha', 'bod']
+LANGS_WITHOUT_SPACES = ('mya', 'zho_cn', 'zho_tw', 'khm', 'lao', 'jpn', 'tha', 'bod')
 
 def to_lang_util_code(main, util_type, util_text):
     return main.settings_global['mapping_lang_utils'][util_type][util_text]
@@ -134,46 +134,47 @@ def check_models(main, langs, lang_utils = None):
         for lang in langs:
             lang_utils.append([])
 
-            for settings in [
+            for settings in (
                 main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings'],
                 main.settings_custom['word_tokenization']['word_tokenizer_settings'],
                 main.settings_custom['pos_tagging']['pos_tagger_settings']['pos_taggers'],
                 main.settings_custom['lemmatization']['lemmatizer_settings'],
                 main.settings_custom['dependency_parsing']['dependency_parser_settings'],
                 main.settings_custom['sentiment_analysis']['sentiment_analyzer_settings']
-            ]:
+            ):
                 if lang in settings:
                     lang_utils[-1].append(settings[lang])
-                elif settings in [
+                elif settings in (
                     main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings'],
                     main.settings_custom['word_tokenization']['word_tokenizer_settings']
-                ]:
+                ):
                     lang_utils[-1].append(settings['other'])
 
     for lang, utils in zip(langs, lang_utils):
         for i, util in enumerate(utils):
-            if util == 'default_sentence_tokenizer':
-                if lang in main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings']:
-                    utils[i] = main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings'][lang]
-                else:
-                    utils[i] = main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings']['other']
-            elif util == 'default_word_tokenizer':
-                if lang in main.settings_custom['word_tokenization']['word_tokenizer_settings']:
-                    utils[i] = main.settings_custom['word_tokenization']['word_tokenizer_settings'][lang]
-                else:
-                    utils[i] = main.settings_custom['word_tokenization']['word_tokenizer_settings']['other']
-            elif util == 'default_pos_tagger':
-                if lang in main.settings_custom['pos_tagging']['pos_tagger_settings']['pos_taggers']:
-                    utils[i] = main.settings_custom['pos_tagging']['pos_tagger_settings']['pos_taggers'][lang]
-            elif util == 'default_lemmatizer':
-                if lang in main.settings_custom['lemmatization']['lemmatizer_settings']:
-                    utils[i] = main.settings_custom['lemmatization']['lemmatizer_settings'][lang]
-            elif util == 'default_dependency_parser':
-                if lang in main.settings_custom['dependency_parsing']['dependency_parser_settings']:
-                    utils[i] = main.settings_custom['dependency_parsing']['dependency_parser_settings'][lang]
-            elif util == 'default_sentiment_analyzer':
-                if lang in main.settings_custom['sentiment_analysis']['sentiment_analyzer_settings']:
-                    utils[i] = main.settings_custom['sentiment_analysis']['sentiment_analyzer_settings'][lang]
+            match util:
+                case 'default_sentence_tokenizer':
+                    if lang in main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings']:
+                        utils[i] = main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings'][lang]
+                    else:
+                        utils[i] = main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings']['other']
+                case 'default_word_tokenizer':
+                    if lang in main.settings_custom['word_tokenization']['word_tokenizer_settings']:
+                        utils[i] = main.settings_custom['word_tokenization']['word_tokenizer_settings'][lang]
+                    else:
+                        utils[i] = main.settings_custom['word_tokenization']['word_tokenizer_settings']['other']
+                case 'default_pos_tagger':
+                    if lang in main.settings_custom['pos_tagging']['pos_tagger_settings']['pos_taggers']:
+                        utils[i] = main.settings_custom['pos_tagging']['pos_tagger_settings']['pos_taggers'][lang]
+                case 'default_lemmatizer':
+                    if lang in main.settings_custom['lemmatization']['lemmatizer_settings']:
+                        utils[i] = main.settings_custom['lemmatization']['lemmatizer_settings'][lang]
+                case 'default_dependency_parser':
+                    if lang in main.settings_custom['dependency_parsing']['dependency_parser_settings']:
+                        utils[i] = main.settings_custom['dependency_parsing']['dependency_parser_settings'][lang]
+                case 'default_sentiment_analyzer':
+                    if lang in main.settings_custom['sentiment_analysis']['sentiment_analyzer_settings']:
+                        utils[i] = main.settings_custom['sentiment_analysis']['sentiment_analyzer_settings'][lang]
 
     for lang, utils in zip(langs, lang_utils):
         if any((util.startswith('spacy_') for util in utils)):
@@ -273,10 +274,10 @@ class Wl_Worker_Download_Model_Spacy(wl_threading.Wl_Worker):
                 else:
                     import pip # pylint: disable=import-outside-toplevel
 
-                    pip.main(['install', '--no-deps', model_url])
+                    pip.main(('install', '--no-deps', model_url))
 
                     # Clear cache
-                    pip.main(['cache', 'purge'])
+                    pip.main(('cache', 'purge'))
             else:
                 self.err_msg = err_msg
         except Exception: # pylint: disable=broad-exception-caught
@@ -316,16 +317,17 @@ class Wl_Worker_Download_Model_Stanza(wl_threading.Wl_Worker):
             if self.lang in get_langs_stanza(self.main, util_type = 'sentiment_analyzers'):
                 processors.append('sentiment')
 
-            if self.lang == 'zho_cn':
-                lang_stanza = 'zh-hans'
-            elif self.lang == 'zho_tw':
-                lang_stanza = 'zh-hant'
-            elif self.lang == 'srp_latn':
-                lang_stanza = 'sr'
-            elif self.lang == 'other':
-                lang_stanza = 'en'
-            else:
-                lang_stanza = wl_conversion.to_iso_639_1(self.main, self.lang, no_suffix = True)
+            match self.lang:
+                case 'zho_cn':
+                    lang_stanza = 'zh-hans'
+                case 'zho_tw':
+                    lang_stanza = 'zh-hant'
+                case 'srp_latn':
+                    lang_stanza = 'sr'
+                case 'other':
+                    lang_stanza = 'en'
+                case _:
+                    lang_stanza = wl_conversion.to_iso_639_1(self.main, self.lang, no_suffix = True)
 
             stanza.download(
                 lang = lang_stanza,
@@ -341,10 +343,10 @@ class Wl_Worker_Download_Model_Stanza(wl_threading.Wl_Worker):
         self.progress_updated.emit(self.tr('Download completed successfully.'))
         self.worker_done.emit(self.err_msg)
 
-LANGS_SPACY_LEMMATIZERS = [
+LANGS_SPACY_LEMMATIZERS = (
     'ben', 'ces', 'grc', 'hun', 'ind', 'gle', 'ltz', 'fas', 'srp', 'tgl',
     'tur', 'urd'
-]
+)
 
 def init_model_spacy(main, lang, sentencizer_only = False):
     sentencizer_config = {'punct_chars': list(wl_sentence_tokenization.SENTENCE_TERMINATORS)}
@@ -389,19 +391,20 @@ def init_model_spacy(main, lang, sentencizer_only = False):
                     main.__dict__[f'spacy_nlp_{lang}'].initialize()
 
 def init_model_stanza(main, lang, lang_util, tokenized = False):
-    if lang_util in ['sentence_tokenizer', 'word_tokenizer']:
-        processors = ['tokenize']
-    elif lang_util == 'pos_tagger':
-        processors = ['tokenize', 'pos']
-    elif lang_util == 'lemmatizer':
-        processors = ['tokenize', 'pos', 'lemma']
-    elif lang_util == 'dependency_parser':
-        processors = ['tokenize', 'pos', 'lemma', 'depparse']
-    elif lang_util == 'sentiment_analyzer':
-        processors = ['tokenize', 'sentiment']
+    match lang_util:
+        case 'sentence_tokenizer' | 'word_tokenizer':
+            processors = ['tokenize']
+        case 'pos_tagger':
+            processors = ['tokenize', 'pos']
+        case 'lemmatizer':
+            processors = ['tokenize', 'pos', 'lemma']
+        case 'dependency_parser':
+            processors = ['tokenize', 'pos', 'lemma', 'depparse']
+        case 'sentiment_analyzer':
+            processors = ['tokenize', 'sentiment']
 
     if lang in get_langs_stanza(main, util_type = 'word_tokenizers'):
-        if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+        if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
             lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
         if (
@@ -410,16 +413,17 @@ def init_model_stanza(main, lang, lang_util, tokenized = False):
             or set(processors) | {'mwt'} != set(main.__dict__[f'stanza_nlp_{lang}'].processors) | {'mwt'}
             or tokenized != main.__dict__[f'stanza_nlp_{lang}'].kwargs.get('tokenize_pretokenized', False)
         ):
-            if lang == 'zho_cn':
-                lang_stanza = 'zh-hans'
-            elif lang == 'zho_tw':
-                lang_stanza = 'zh-hant'
-            elif lang == 'srp_latn':
-                lang_stanza = 'sr'
-            elif lang == 'other':
-                lang_stanza = 'en'
-            else:
-                lang_stanza = wl_conversion.to_iso_639_1(main, lang, no_suffix = True)
+            match lang:
+                case 'zho_cn':
+                    lang_stanza = 'zh-hans'
+                case 'zho_tw':
+                    lang_stanza = 'zh-hant'
+                case 'srp_latn':
+                    lang_stanza = 'sr'
+                case 'other':
+                    lang_stanza = 'en'
+                case _:
+                    lang_stanza = wl_conversion.to_iso_639_1(main, lang, no_suffix = True)
 
             if getattr(sys, '_MEIPASS', False):
                 model_dir = wl_paths.get_path_file('stanza_resources')
@@ -459,24 +463,25 @@ def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
 
     # NLTK
     if word_tokenizer.startswith('nltk_'):
-        if word_tokenizer == 'nltk_nist':
-            if 'nltk_nist_tokenizer' not in main.__dict__:
-                main.nltk_nist_tokenizer = nltk.tokenize.nist.NISTTokenizer()
-        elif word_tokenizer == 'nltk_nltk':
-            if 'nltk_nltk_tokenizer' not in main.__dict__:
-                main.nltk_nltk_tokenizer = nltk.NLTKWordTokenizer()
-        elif word_tokenizer == 'nltk_penn_treebank':
-            if 'nltk_treebank_tokenizer' not in main.__dict__:
-                main.nltk_treebank_tokenizer = nltk.TreebankWordTokenizer()
-        elif word_tokenizer == 'nltk_regex':
-            if 'nltk_regex_tokenizer' not in main.__dict__:
-                main.nltk_regex_tokenizer = nltk.WordPunctTokenizer()
-        elif word_tokenizer == 'nltk_tok_tok':
-            if 'nltk_toktok_tokenizer' not in main.__dict__:
-                main.nltk_toktok_tokenizer = nltk.ToktokTokenizer()
-        elif word_tokenizer == 'nltk_twitter':
-            if 'nltk_tweet_tokenizer' not in main.__dict__:
-                main.nltk_tweet_tokenizer = nltk.TweetTokenizer()
+        match word_tokenizer:
+            case 'nltk_nist':
+                if 'nltk_nist_tokenizer' not in main.__dict__:
+                    main.nltk_nist_tokenizer = nltk.tokenize.nist.NISTTokenizer()
+            case 'nltk_nltk':
+                if 'nltk_nltk_tokenizer' not in main.__dict__:
+                    main.nltk_nltk_tokenizer = nltk.NLTKWordTokenizer()
+            case 'nltk_penn_treebank':
+                if 'nltk_treebank_tokenizer' not in main.__dict__:
+                    main.nltk_treebank_tokenizer = nltk.TreebankWordTokenizer()
+            case 'nltk_regex':
+                if 'nltk_regex_tokenizer' not in main.__dict__:
+                    main.nltk_regex_tokenizer = nltk.WordPunctTokenizer()
+            case 'nltk_tok_tok':
+                if 'nltk_toktok_tokenizer' not in main.__dict__:
+                    main.nltk_toktok_tokenizer = nltk.ToktokTokenizer()
+            case 'nltk_twitter':
+                if 'nltk_tweet_tokenizer' not in main.__dict__:
+                    main.nltk_tweet_tokenizer = nltk.TweetTokenizer()
     # Sacremoses
     elif word_tokenizer == 'sacremoses_moses':
         lang_sacremoses = wl_conversion.remove_lang_code_suffixes(main, wl_conversion.to_iso_639_1(main, lang))
@@ -526,7 +531,7 @@ def init_syl_tokenizers(main, lang, syl_tokenizer):
             main.__dict__[f'pyphen_syl_tokenizer_{lang}'] = pyphen.Pyphen(lang = lang_pyphen)
 
 def init_word_detokenizers(main, lang):
-    if lang not in ['zho_cn', 'zho_tw', 'jpn', 'tha', 'bod']:
+    if lang not in ('zho_cn', 'zho_tw', 'jpn', 'tha', 'bod'):
         # Sacremoses
         lang_sacremoses = wl_conversion.remove_lang_code_suffixes(main, wl_conversion.to_iso_639_1(main, lang))
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
@@ -549,12 +554,13 @@ def init_pos_taggers(main, lang, pos_tagger, tokenized = False):
         init_word_tokenizers(main, lang = 'kor', word_tokenizer = 'python_mecab_ko_mecab')
     # Russian & Ukrainian
     elif pos_tagger == 'pymorphy3_morphological_analyzer':
-        if lang == 'rus':
-            if 'pymorphy3_morphological_analyzer_rus' not in main.__dict__:
-                main.pymorphy3_morphological_analyzer_rus = pymorphy3.MorphAnalyzer(lang = 'ru')
-        elif lang == 'ukr':
-            if 'pymorphy3_morphological_analyzer_ukr' not in main.__dict__:
-                main.pymorphy3_morphological_analyzer_ukr = pymorphy3.MorphAnalyzer(lang = 'uk')
+        match lang:
+            case 'rus':
+                if 'pymorphy3_morphological_analyzer_rus' not in main.__dict__:
+                    main.pymorphy3_morphological_analyzer_rus = pymorphy3.MorphAnalyzer(lang = 'ru')
+            case 'ukr':
+                if 'pymorphy3_morphological_analyzer_ukr' not in main.__dict__:
+                    main.pymorphy3_morphological_analyzer_ukr = pymorphy3.MorphAnalyzer(lang = 'uk')
 
 def init_lemmatizers(main, lang, lemmatizer, tokenized = False):
     # spaCy
@@ -568,12 +574,13 @@ def init_lemmatizers(main, lang, lemmatizer, tokenized = False):
         init_sudachipy_word_tokenizer(main)
     # Russian & Ukrainian
     elif lemmatizer == 'pymorphy3_morphological_analyzer':
-        if lang == 'rus':
-            if 'pymorphy3_morphological_analyzer_rus' not in main.__dict__:
-                main.pymorphy3_morphological_analyzer_rus = pymorphy3.MorphAnalyzer(lang = 'ru')
-        elif lang == 'ukr':
-            if 'pymorphy3_morphological_analyzer_ukr' not in main.__dict__:
-                main.pymorphy3_morphological_analyzer_ukr = pymorphy3.MorphAnalyzer(lang = 'uk')
+        match lang:
+            case 'rus':
+                if 'pymorphy3_morphological_analyzer_rus' not in main.__dict__:
+                    main.pymorphy3_morphological_analyzer_rus = pymorphy3.MorphAnalyzer(lang = 'ru')
+            case 'ukr':
+                if 'pymorphy3_morphological_analyzer_ukr' not in main.__dict__:
+                    main.pymorphy3_morphological_analyzer_ukr = pymorphy3.MorphAnalyzer(lang = 'uk')
 
 def init_dependency_parsers(main, lang, dependency_parser, tokenized = False):
     # spaCy
@@ -714,7 +721,7 @@ def split_token_list(main, inputs, nlp_util):
     section_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks']
 
     # Split tokens into sub-lists as inputs of SudachiPy cannot be more than 49149 BYTES
-    if nlp_util in ['spacy_jpn', 'sudachipy_jpn'] and sum((len(token) for token in inputs)) > 49149 // 4:
+    if nlp_util in ('spacy_jpn', 'sudachipy_jpn') and sum((len(token) for token in inputs)) > 49149 // 4:
         # Around 6 characters per token and 4 bytes per character (≈ 49149 / 4 / 6)
         texts = to_sections_unequal(inputs, section_size = 2000)
     else:

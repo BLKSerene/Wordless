@@ -79,10 +79,10 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
     if sentence_tokenizer.startswith('spacy_'):
         # Dependency parsers
         if sentence_tokenizer.startswith('spacy_dependency_parser_'):
-            pipelines_disabled = ['tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler', 'senter']
+            pipelines_disabled = ('tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler', 'senter')
         # Sentence recognizers and sentencizer
         else:
-            pipelines_disabled = ['tagger', 'morphologizer', 'parser', 'lemmatizer', 'attribute_ruler']
+            pipelines_disabled = ('tagger', 'morphologizer', 'parser', 'lemmatizer', 'attribute_ruler')
 
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
@@ -94,22 +94,22 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
             else:
                 nlp = main.__dict__[f'spacy_nlp_{lang}']
 
-        with nlp.select_pipes(disable = [
+        with nlp.select_pipes(disable = (
             pipeline
             for pipeline in pipelines_disabled
             if nlp.has_pipe(pipeline)
-        ]):
+        )):
             for doc in nlp.pipe(lines):
-                sentences.extend([sentence.text for sentence in doc.sents])
+                sentences.extend((sentence.text for sentence in doc.sents))
     # Stanza
     elif sentence_tokenizer.startswith('stanza_'):
-        if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+        if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
             lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
         nlp = main.__dict__[f'stanza_nlp_{lang}']
 
         for doc in nlp.bulk_process(lines):
-            sentences.extend([sentence.text for sentence in doc.sentences])
+            sentences.extend((sentence.text for sentence in doc.sentences))
     else:
         for line in lines:
             # NLTK
@@ -146,7 +146,7 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
 # References:
 #     https://stackoverflow.com/questions/9506869/are-there-character-collections-for-all-international-full-stop-punctuations/9508766#9508766
 #     https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=[:Terminal_Punctuation=Yes:]%26[:Sentence_Break=/[AS]Term/:]
-SENTENCE_TERMINATORS = ''.join(list(dict.fromkeys([
+SENTENCE_TERMINATORS = ''.join(list(dict.fromkeys((
     '\u0021', '\u002E', '\u003F',
     '\u0589',
     '\u061D', '\u061E', '\u061F', '\u06D4',
@@ -204,10 +204,14 @@ SENTENCE_TERMINATORS = ''.join(list(dict.fromkeys([
     '\U00016E98',
     '\U0001BC9F',
     '\U0001DA88'
-])))
+))))
 
-def wl_sentence_split(main, text, terminators = SENTENCE_TERMINATORS):
-    re_terminators = re.compile(fr'.+?[{terminators}]+\s|.+?$')
+def wl_sentence_split(main, text, lang, terminators = SENTENCE_TERMINATORS):
+    # There are no spaces between Chinese and Japanese sentences
+    if lang in ('lzh', 'zho_cn', 'zho_tw', 'jpn'):
+        re_terminators = re.compile(fr'.+?[{terminators}]+|.+?$')
+    else:
+        re_terminators = re.compile(fr'.+?[{terminators}]+\s+|.+?$')
 
     return [
         sentence.strip()
@@ -215,7 +219,7 @@ def wl_sentence_split(main, text, terminators = SENTENCE_TERMINATORS):
     ]
 
 # Reference: https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=[:Terminal_Punctuation=Yes:]
-SENTENCE_SEG_TERMINATORS = ''.join(list(dict.fromkeys([
+SENTENCE_SEG_TERMINATORS = ''.join(list(dict.fromkeys((
     '\u0021', '\u002C', '\u002E', '\u003A', '\u003B', '\u003F',
     '\u037E', '\u0387',
     '\u0589',
@@ -289,7 +293,7 @@ SENTENCE_SEG_TERMINATORS = ''.join(list(dict.fromkeys([
     '\U00016E97', '\U00016E98',
     '\U0001BC9F',
     '\U0001DA87', '\U0001DA88', '\U0001DA89', '\U0001DA8A'
-])))
+))))
 
 def wl_sentence_seg_tokenize(main, text, terminators = SENTENCE_SEG_TERMINATORS):
     re_terminators = re.compile(fr'.+?[{terminators}]+|.+?$')

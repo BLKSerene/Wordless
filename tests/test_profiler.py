@@ -96,10 +96,10 @@ def update_gui(err_msg, texts_stats_files):
         for stat in stats_readability:
             assert (
                 (
-                    type(stat) in [int, float, numpy.float64]
+                    type(stat) in (int, float, numpy.float64)
                     and not numpy.isnan(stat)
                 )
-                or stat in ['text_too_short', 'no_support']
+                or stat in ('text_too_short', 'no_support')
             )
 
         # Counts
@@ -133,7 +133,7 @@ def update_gui(err_msg, texts_stats_files):
         for stat in stats_lexical_density_diversity:
             assert (
                 (
-                    type(stat) in [int, float, numpy.float64]
+                    type(stat) in (int, float, numpy.float64)
                     and not numpy.isnan(stat)
                 )
                 or stat == 'no_support'
@@ -151,7 +151,7 @@ def update_gui(err_msg, texts_stats_files):
             assert numpy.mean(len_tokens_syls) == count_syls / count_tokens
 
         # Range and interquartile range
-        for lens in [
+        for lens in (
             len_paras_sentences,
             len_paras_sentence_segs,
             len_paras_tokens,
@@ -159,7 +159,7 @@ def update_gui(err_msg, texts_stats_files):
             len_sentence_segs,
             len_tokens_syls,
             len_tokens_chars
-        ]:
+        ):
             if lens is not None:
                 assert numpy.ptp(lens) == max(lens) - min(lens)
                 assert scipy.stats.iqr(lens) == numpy.percentile(lens, 75) - numpy.percentile(lens, 25)

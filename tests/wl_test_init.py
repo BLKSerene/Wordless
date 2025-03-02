@@ -175,7 +175,7 @@ class Wl_Test_Main(QMainWindow):
             if 'spacy_sentencizer' in settings_global_sentence_tokenizers[lang]:
                 settings_custom_sentence_tokenizers[lang] = 'spacy_sentencizer'
 
-        for settings_custom, settings_global in [
+        for settings_custom, settings_global in (
             (
                 self.settings_custom['word_tokenization']['word_tokenizer_settings'],
                 self.settings_global['word_tokenizers']
@@ -189,7 +189,7 @@ class Wl_Test_Main(QMainWindow):
                 self.settings_custom['dependency_parsing']['dependency_parser_settings'],
                 self.settings_global['dependency_parsers']
             )
-        ]:
+        ):
             for lang in settings_custom:
                 for lang_util in settings_global[lang]:
                     if lang_util.startswith('spacy_'):
@@ -198,7 +198,7 @@ class Wl_Test_Main(QMainWindow):
                         break
 
     def switch_lang_utils_stanza(self):
-        for settings_custom, settings_global in [
+        for settings_custom, settings_global in (
             (
                 self.settings_custom['sentence_tokenization']['sentence_tokenizer_settings'],
                 self.settings_global['sentence_tokenizers']
@@ -218,7 +218,7 @@ class Wl_Test_Main(QMainWindow):
                 self.settings_custom['sentiment_analysis']['sentiment_analyzer_settings'],
                 self.settings_global['sentiment_analyzers']
             )
-        ]:
+        ):
             for lang in settings_custom:
                 for lang_util in settings_global[lang]:
                     if lang_util.startswith('stanza_'):
@@ -276,11 +276,11 @@ class Wl_Test_Text:
 
         self.update_num_tokens()
 
-class Wl_Exception_Tests_Lang_Skipped(Exception):
+class Wl_Exc_Tests_Lang_Skipped(Exception):
     def __init__(self, lang):
         super().__init__(f'Tests for language "{lang}" is skipped!')
 
-class Wl_Exception_Tests_Lang_Util_Skipped(Exception):
+class Wl_Exc_Tests_Lang_Util_Skipped(Exception):
     def __init__(self, lang_util):
         super().__init__(f'Tests for language utility "{lang_util}" is skipped!')
 

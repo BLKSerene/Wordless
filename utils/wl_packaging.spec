@@ -30,18 +30,11 @@ binaries = []
 datas = []
 is_windows, is_macos, is_linux = wl_misc.check_os()
 
-# Fix PyTorch
-# See: https://github.com/pyinstaller/pyinstaller/issues/7485#issuecomment-1465155018
-if is_macos:
-    binaries.extend(PyInstaller.utils.hooks.collect_dynamic_libs('torch'))
-
 # botok
 datas.extend(PyInstaller.utils.hooks.collect_data_files('botok'))
 # spaCy
 datas.extend(PyInstaller.utils.hooks.copy_metadata('spacy'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy.lang', include_py_files = True))
-# Fix spaCy lookups data
-# See: https://github.com/explosion/spaCy/discussions/9416
 datas.extend(PyInstaller.utils.hooks.copy_metadata('spacy_lookups_data'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy_lookups_data', include_py_files = True))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy_pkuseg'))
@@ -86,6 +79,10 @@ hiddenimports = [
     # spaCy
     'en_core_web_trf',
     'spacy_curated_transformers',
+    # Required by French and Slovenian models
+    'sentencepiece',
+    # Required by the Ukrainian model
+    'transformers',
 
     # SciPy
     'scipy._lib.array_api_compat.numpy.fft',

@@ -282,7 +282,7 @@ def bormuths_cloze_mean(main, text):
 def bormuths_gp(main, text):
     m = bormuths_cloze_mean(main, text)
 
-    if m not in ['no_support', 'text_too_short']:
+    if m not in ('no_support', 'text_too_short'):
         c = main.settings_custom['measures']['readability']['bormuths_gp']['cloze_criterion_score'] / 100
         gp = (
             4.275 + 12.881 * m - 34.934 * (m**2) + 20.388 * (m**3)
@@ -319,8 +319,8 @@ def colemans_readability_formula(main, text):
     if (
         text.lang in main.settings_global['syl_tokenizers']
         and (
-            variant in ['1', '2']
-            or (variant in ['3', '4'] and text.lang in main.settings_global['pos_taggers'])
+            variant in ('1', '2')
+            or (variant in ('3', '4') and text.lang in main.settings_global['pos_taggers'])
         )
     ):
         text = get_nums(main, text)
@@ -488,7 +488,7 @@ def dawoods_readability_formula(main, text):
 def drp(main, text):
     m = bormuths_cloze_mean(main, text)
 
-    if m not in ['no_support', 'text_too_short']:
+    if m not in ('no_support', 'text_too_short'):
         drp = 100 - math.floor(m * 100 + 0.5)
     else:
         drp = m
@@ -779,10 +779,10 @@ def fog_index(main, text):
             variant_eng = main.settings_custom['measures']['readability']['fog_index']['variant_eng']
 
             if text.lang.startswith('eng_'):
-                if variant_eng in [
+                if variant_eng in (
                     _tr('wl_measures_readability', 'Original'),
                     'Powers-Sumner-Kearl'
-                ]:
+                ):
                     pos_tag_words(main, text)
 
                     for word in text.words_flat:
@@ -908,7 +908,7 @@ def lensear_write_formula(main, text):
             )
 
             for syls in sysl_sample:
-                if len(syls) == 1 and syls[0].lower() not in ['the', 'is', 'are', 'was', 'were']:
+                if len(syls) == 1 and syls[0].lower() not in ('the', 'is', 'are', 'was', 'were'):
                     num_words_1_syl += 1
 
             num_sentences = get_num_sentences_sample(text, sample, sample_start)
@@ -1137,7 +1137,7 @@ def osman(main, text):
                     # Reference: https://github.com/drelhaj/OsmanReadability/blob/405b927ef3fde200fa08efe12ec2f39b8716e4be/src/org/project/osman/process/OsmanReadability.java#L264
                     and (
                         # Hamza (ء), yeh with hamza above (ئ), waw with hamza above (ؤ), zah (ظ), thal (ذ)
-                        any((char in word for char in ['\u0621', '\u0626', '\u0624', '\u0638', '\u0630']))
+                        any((char in word for char in ('\u0621', '\u0626', '\u0624', '\u0638', '\u0630')))
                         # Waw noon (ون), waw alef (وا)
                         or word.endswith(('\u0648\u0646', '\u0648\u0627'))
                     )

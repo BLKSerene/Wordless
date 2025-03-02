@@ -70,7 +70,7 @@ def wl_test_stanza(
         wl_test_sentiment_analyze(lang, test_sentence, tokens, results_sentiment_analayze)
 
 def wl_test_get_lang_util(main, lang):
-    if lang in ['zho_cn', 'zho_tw', 'srp_latn']:
+    if lang in ('zho_cn', 'zho_tw', 'srp_latn'):
         lang_util = f'stanza_{lang}'
     else:
         lang_util = f'stanza_{wl_conversion.remove_lang_code_suffixes(main, lang)}'
@@ -91,11 +91,12 @@ def wl_test_sentence_tokenize(lang, results):
     print(f'{lang} / {sentence_tokenizer}:')
     print(f'{sentences}\n')
 
-    # The count of sentences should be more than 1
-    if lang in ['ara', 'fro', 'kaz', 'pcm', 'qpm']:
-        assert len(sentences) == 1
-    else:
-        assert len(sentences) > 1
+    # The count of sentences should be exactly 2
+    match lang:
+        case 'ara' | 'fro' | 'kaz' | 'pcm' | 'qpm':
+            assert len(sentences) == 1
+        case _:
+            assert len(sentences) == 2
 
     assert sentences == results
 
@@ -114,13 +115,15 @@ def wl_test_word_tokenize(lang, test_sentence, results):
 
     # The count of tokens should be more than 1
     assert len(tokens) > 1
+
     # The count of tokens should be more than the length of tokens split by space
-    if lang in ['chu', 'cop', 'pcm', 'orv']:
-        assert len(tokens) == len(test_sentence.split())
-    elif lang == 'vie':
-        assert len(tokens) < len(test_sentence.split())
-    else:
-        assert len(tokens) > len(test_sentence.split())
+    match lang:
+        case 'chu' | 'cop' | 'pcm' | 'orv':
+            assert len(tokens) == len(test_sentence.split())
+        case 'vie':
+            assert len(tokens) < len(test_sentence.split())
+        case _:
+            assert len(tokens) > len(test_sentence.split())
 
     assert wl_texts.to_display_texts(tokens) == results
 
@@ -134,11 +137,11 @@ def wl_test_lemmatize(lang, test_sentence, tokens, results):
 
     test_lemmatization.wl_test_lemmatize_models(
         lang, lemmatizer, test_sentence, tokens, results,
-        lang_exceptions = [
+        lang_excs = (
             'xcl', 'bul', 'chu', 'cop', 'ang', 'est', 'nds', 'got', 'grc', 'ell',
             'hin', 'isl', 'kpv', 'lij', 'lit', 'glv', 'pcm', 'pol', 'orv', 'sme',
             'san', 'tur', 'cym'
-        ]
+        )
     )
 
 def wl_test_dependency_parse(lang, test_sentence, tokens, results):

@@ -71,6 +71,7 @@ def init_settings_global():
             _tr('wl_settings_global', 'French'): ['fra', 'fr'],
             _tr('wl_settings_global', 'French (Old)'): ['fro', 'fro'],
             _tr('wl_settings_global', 'Galician'): ['glg', 'gl'],
+            _tr('wl_settings_global', 'Ganda'): ['lug', 'lg'],
             _tr('wl_settings_global', 'Georgian'): ['kat', 'ka'],
             _tr('wl_settings_global', 'German (Austria)'): ['deu_at', 'de_at'],
             _tr('wl_settings_global', 'German (Germany)'): ['deu_de', 'de_de'],
@@ -101,27 +102,26 @@ def init_settings_global():
             _tr('wl_settings_global', 'Latvian'): ['lav', 'lv'],
             _tr('wl_settings_global', 'Ligurian'): ['lij', 'lij'],
             _tr('wl_settings_global', 'Lithuanian'): ['lit', 'lt'],
-            _tr('wl_settings_global', 'Luganda'): ['lug', 'lg'],
             _tr('wl_settings_global', 'Luxembourgish'): ['ltz', 'lb'],
             _tr('wl_settings_global', 'Macedonian'): ['mkd', 'mk'],
             _tr('wl_settings_global', 'Malay'): ['msa', 'ms'],
             _tr('wl_settings_global', 'Malayalam'): ['mal', 'ml'],
             _tr('wl_settings_global', 'Maltese'): ['mlt', 'mt'],
+            _tr('wl_settings_global', 'Manipuri (Meitei Mayek script)'): ['mni_mtei', 'mni_mtei'],
             _tr('wl_settings_global', 'Manx'): ['glv', 'gv'],
             _tr('wl_settings_global', 'Marathi'): ['mar', 'mr'],
-            _tr('wl_settings_global', 'Meitei (Meitei script)'): ['mni_mtei', 'mni_mtei'],
             _tr('wl_settings_global', 'Mongolian'): ['mon', 'mn'],
             _tr('wl_settings_global', 'Nepali'): ['nep', 'ne'],
             _tr('wl_settings_global', 'Nigerian Pidgin'): ['pcm', 'pcm'],
             _tr('wl_settings_global', 'Norwegian (Bokmål)'): ['nob', 'nb'],
             _tr('wl_settings_global', 'Norwegian (Nynorsk)'): ['nno', 'nn'],
-            _tr('wl_settings_global', 'Odia'): ['ori', 'or'],
+            _tr('wl_settings_global', 'Oriya'): ['ori', 'or'],
+            _tr('wl_settings_global', 'Panjabi (Gurmukhi script)'): ['pan_guru', 'pa_guru'],
             _tr('wl_settings_global', 'Persian'): ['fas', 'fa'],
             _tr('wl_settings_global', 'Polish'): ['pol', 'pl'],
             _tr('wl_settings_global', 'Pomak'): ['qpm', 'qpm'],
             _tr('wl_settings_global', 'Portuguese (Brazil)'): ['por_br', 'pt_br'],
             _tr('wl_settings_global', 'Portuguese (Portugal)'): ['por_pt', 'pt_pt'],
-            _tr('wl_settings_global', 'Punjabi (Gurmukhi script)'): ['pan_guru', 'pa_guru'],
             _tr('wl_settings_global', 'Romanian'): ['ron', 'ro'],
             _tr('wl_settings_global', 'Russian'): ['rus', 'ru'],
             _tr('wl_settings_global', 'Russian (Old)'): ['orv', 'orv'],
@@ -133,7 +133,7 @@ def init_settings_global():
             _tr('wl_settings_global', 'Sindhi'): ['snd', 'sd'],
             _tr('wl_settings_global', 'Sinhala'): ['sin', 'si'],
             _tr('wl_settings_global', 'Slovak'): ['slk', 'sk'],
-            _tr('wl_settings_global', 'Slovene'): ['slv', 'sl'],
+            _tr('wl_settings_global', 'Slovenian'): ['slv', 'sl'],
             _tr('wl_settings_global', 'Sorbian (Lower)'): ['dsb', 'dsb'],
             _tr('wl_settings_global', 'Sorbian (Upper)'): ['hsb', 'hsb'],
             _tr('wl_settings_global', 'Spanish'): ['spa', 'es'],
@@ -406,7 +406,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'NLTK - Polish Punkt sentence tokenizer'): 'nltk_punkt_pol',
                 _tr('wl_settings_global', 'NLTK - Portuguese Punkt sentence tokenizer'): 'nltk_punkt_por',
                 _tr('wl_settings_global', 'NLTK - Russian Punkt sentence tokenizer'): 'nltk_punkt_rus',
-                _tr('wl_settings_global', 'NLTK - Slovene Punkt sentence tokenizer'): 'nltk_punkt_slv',
+                _tr('wl_settings_global', 'NLTK - Slovenian Punkt sentence tokenizer'): 'nltk_punkt_slv',
                 _tr('wl_settings_global', 'NLTK - Spanish Punkt sentence tokenizer'): 'nltk_punkt_spa',
                 _tr('wl_settings_global', 'NLTK - Swedish Punkt sentence tokenizer'): 'nltk_punkt_swe',
                 _tr('wl_settings_global', 'NLTK - Turkish Punkt sentence tokenizer'): 'nltk_punkt_tur',
@@ -434,7 +434,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'spaCy - Portuguese dependency parser'): 'spacy_dependency_parser_por',
                 _tr('wl_settings_global', 'spaCy - Romanian dependency parser'): 'spacy_dependency_parser_ron',
                 _tr('wl_settings_global', 'spaCy - Russian dependency parser'): 'spacy_dependency_parser_rus',
-                _tr('wl_settings_global', 'spaCy - Slovene dependency parser'): 'spacy_dependency_parser_slv',
+                _tr('wl_settings_global', 'spaCy - Slovenian dependency parser'): 'spacy_dependency_parser_slv',
                 _tr('wl_settings_global', 'spaCy - Spanish dependency parser'): 'spacy_dependency_parser_spa',
                 _tr('wl_settings_global', 'spaCy - Swedish dependency parser'): 'spacy_dependency_parser_swe',
                 _tr('wl_settings_global', 'spaCy - Ukrainian dependency parser'): 'spacy_dependency_parser_ukr',
@@ -530,7 +530,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Stanza - Serbian (Latin script) sentence tokenizer'): 'stanza_srp_latn',
                 _tr('wl_settings_global', 'Stanza - Sindhi sentence tokenizer'): 'stanza_snd',
                 _tr('wl_settings_global', 'Stanza - Slovak sentence tokenizer'): 'stanza_slk',
-                _tr('wl_settings_global', 'Stanza - Slovene sentence tokenizer'): 'stanza_slv',
+                _tr('wl_settings_global', 'Stanza - Slovenian sentence tokenizer'): 'stanza_slv',
                 _tr('wl_settings_global', 'Stanza - Sorbian (Upper) sentence tokenizer'): 'stanza_hsb',
                 _tr('wl_settings_global', 'Stanza - Spanish sentence tokenizer'): 'stanza_spa',
                 _tr('wl_settings_global', 'Stanza - Swedish sentence tokenizer'): 'stanza_swe',
@@ -591,6 +591,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'spaCy - Faroese word tokenizer'): 'spacy_fao',
                 _tr('wl_settings_global', 'spaCy - Finnish word tokenizer'): 'spacy_fin',
                 _tr('wl_settings_global', 'spaCy - French word tokenizer'): 'spacy_fra',
+                _tr('wl_settings_global', 'spaCy - Ganda word tokenizer'): 'spacy_lug',
                 _tr('wl_settings_global', 'spaCy - German word tokenizer'): 'spacy_deu',
                 _tr('wl_settings_global', 'spaCy - Greek (Ancient) word tokenizer'): 'spacy_grc',
                 _tr('wl_settings_global', 'spaCy - Greek (Modern) word tokenizer'): 'spacy_ell',
@@ -611,7 +612,6 @@ def init_settings_global():
                 _tr('wl_settings_global', 'spaCy - Latvian word tokenizer'): 'spacy_lav',
                 _tr('wl_settings_global', 'spaCy - Ligurian word tokenizer'): 'spacy_lij',
                 _tr('wl_settings_global', 'spaCy - Lithuanian word tokenizer'): 'spacy_lit',
-                _tr('wl_settings_global', 'spaCy - Luganda word tokenizer'): 'spacy_lug',
                 _tr('wl_settings_global', 'spaCy - Luxembourgish word tokenizer'): 'spacy_ltz',
                 _tr('wl_settings_global', 'spaCy - Macedonian word tokenizer'): 'spacy_mkd',
                 _tr('wl_settings_global', 'spaCy - Malay word tokenizer'): 'spacy_msa',
@@ -630,7 +630,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'spaCy - Serbian (Cyrillic script) word tokenizer'): 'spacy_srp_cyrl',
                 _tr('wl_settings_global', 'spaCy - Sinhala word tokenizer'): 'spacy_sin',
                 _tr('wl_settings_global', 'spaCy - Slovak word tokenizer'): 'spacy_slk',
-                _tr('wl_settings_global', 'spaCy - Slovene word tokenizer'): 'spacy_slv',
+                _tr('wl_settings_global', 'spaCy - Slovenian word tokenizer'): 'spacy_slv',
                 _tr('wl_settings_global', 'spaCy - Sorbian (Lower) word tokenizer'): 'spacy_dsb',
                 _tr('wl_settings_global', 'spaCy - Sorbian (Upper) word tokenizer'): 'spacy_hsb',
                 _tr('wl_settings_global', 'spaCy - Spanish word tokenizer'): 'spacy_spa',
@@ -719,7 +719,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Stanza - Serbian (Latin script) word tokenizer'): 'stanza_srp_latn',
                 _tr('wl_settings_global', 'Stanza - Sindhi word tokenizer'): 'stanza_snd',
                 _tr('wl_settings_global', 'Stanza - Slovak word tokenizer'): 'stanza_slk',
-                _tr('wl_settings_global', 'Stanza - Slovene word tokenizer'): 'stanza_slv',
+                _tr('wl_settings_global', 'Stanza - Slovenian word tokenizer'): 'stanza_slv',
                 _tr('wl_settings_global', 'Stanza - Sorbian (Upper) word tokenizer'): 'stanza_hsb',
                 _tr('wl_settings_global', 'Stanza - Spanish word tokenizer'): 'stanza_spa',
                 _tr('wl_settings_global', 'Stanza - Swedish word tokenizer'): 'stanza_swe',
@@ -786,7 +786,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Pyphen - Serbian (Cyrillic script) syllable tokenizer'): 'pyphen_srp_cyrl',
                 _tr('wl_settings_global', 'Pyphen - Serbian (Latin script) syllable tokenizer'): 'pyphen_srp_latn',
                 _tr('wl_settings_global', 'Pyphen - Slovak syllable tokenizer'): 'pyphen_slk',
-                _tr('wl_settings_global', 'Pyphen - Slovene syllable tokenizer'): 'pyphen_slv',
+                _tr('wl_settings_global', 'Pyphen - Slovenian syllable tokenizer'): 'pyphen_slv',
                 _tr('wl_settings_global', 'Pyphen - Spanish syllable tokenizer'): 'pyphen_spa',
                 _tr('wl_settings_global', 'Pyphen - Swedish syllable tokenizer'): 'pyphen_swe',
                 _tr('wl_settings_global', 'Pyphen - Telugu syllable tokenizer'): 'pyphen_tel',
@@ -835,7 +835,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'spaCy - Portuguese part-of-speech tagger'): 'spacy_por',
                 _tr('wl_settings_global', 'spaCy - Romanian part-of-speech tagger'): 'spacy_ron',
                 _tr('wl_settings_global', 'spaCy - Russian part-of-speech tagger'): 'spacy_rus',
-                _tr('wl_settings_global', 'spaCy - Slovene part-of-speech tagger'): 'spacy_slv',
+                _tr('wl_settings_global', 'spaCy - Slovenian part-of-speech tagger'): 'spacy_slv',
                 _tr('wl_settings_global', 'spaCy - Spanish part-of-speech tagger'): 'spacy_spa',
                 _tr('wl_settings_global', 'spaCy - Swedish part-of-speech tagger'): 'spacy_swe',
                 _tr('wl_settings_global', 'spaCy - Ukrainian part-of-speech tagger'): 'spacy_ukr',
@@ -912,7 +912,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Stanza - Serbian (Latin script) part-of-speech tagger'): 'stanza_srp_latn',
                 _tr('wl_settings_global', 'Stanza - Sindhi part-of-speech tagger'): 'stanza_snd',
                 _tr('wl_settings_global', 'Stanza - Slovak part-of-speech tagger'): 'stanza_slk',
-                _tr('wl_settings_global', 'Stanza - Slovene part-of-speech tagger'): 'stanza_slv',
+                _tr('wl_settings_global', 'Stanza - Slovenian part-of-speech tagger'): 'stanza_slv',
                 _tr('wl_settings_global', 'Stanza - Sorbian (Upper) part-of-speech tagger'): 'stanza_hsb',
                 _tr('wl_settings_global', 'Stanza - Spanish part-of-speech tagger'): 'stanza_spa',
                 _tr('wl_settings_global', 'Stanza - Swedish part-of-speech tagger'): 'stanza_swe',
@@ -977,7 +977,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'simplemma - Scottish Gaelic lemmatizer'): 'simplemma_gla',
                 _tr('wl_settings_global', 'simplemma - Serbo-Croatian lemmatizer'): 'simplemma_hbs',
                 _tr('wl_settings_global', 'simplemma - Slovak lemmatizer'): 'simplemma_slk',
-                _tr('wl_settings_global', 'simplemma - Slovene lemmatizer'): 'simplemma_slv',
+                _tr('wl_settings_global', 'simplemma - Slovenian lemmatizer'): 'simplemma_slv',
                 _tr('wl_settings_global', 'simplemma - Spanish lemmatizer'): 'simplemma_spa',
                 _tr('wl_settings_global', 'simplemma - Swahili lemmatizer'): 'simplemma_swa',
                 _tr('wl_settings_global', 'simplemma - Swedish lemmatizer'): 'simplemma_swe',
@@ -1014,7 +1014,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'spaCy - Romanian lemmatizer'): 'spacy_ron',
                 _tr('wl_settings_global', 'spaCy - Russian lemmatizer'): 'spacy_rus',
                 _tr('wl_settings_global', 'spaCy - Serbian (Cyrillic script) lemmatizer'): 'spacy_srp_cyrl',
-                _tr('wl_settings_global', 'spaCy - Slovene lemmatizer'): 'spacy_slv',
+                _tr('wl_settings_global', 'spaCy - Slovenian lemmatizer'): 'spacy_slv',
                 _tr('wl_settings_global', 'spaCy - Spanish lemmatizer'): 'spacy_spa',
                 _tr('wl_settings_global', 'spaCy - Swedish lemmatizer'): 'spacy_swe',
                 _tr('wl_settings_global', 'spaCy - Tagalog lemmatizer'): 'spacy_tgl',
@@ -1091,7 +1091,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Stanza - Scottish Gaelic lemmatizer'): 'stanza_gla',
                 _tr('wl_settings_global', 'Stanza - Serbian (Latin script) lemmatizer'): 'stanza_srp_latn',
                 _tr('wl_settings_global', 'Stanza - Slovak lemmatizer'): 'stanza_slk',
-                _tr('wl_settings_global', 'Stanza - Slovene lemmatizer'): 'stanza_slv',
+                _tr('wl_settings_global', 'Stanza - Slovenian lemmatizer'): 'stanza_slv',
                 _tr('wl_settings_global', 'Stanza - Sorbian (Upper) lemmatizer'): 'stanza_hsb',
                 _tr('wl_settings_global', 'Stanza - Spanish lemmatizer'): 'stanza_spa',
                 _tr('wl_settings_global', 'Stanza - Swedish lemmatizer'): 'stanza_swe',
@@ -1133,7 +1133,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'NLTK - Portuguese stop word list'): 'nltk_por',
                 _tr('wl_settings_global', 'NLTK - Romanian stop word list'): 'nltk_ron',
                 _tr('wl_settings_global', 'NLTK - Russian stop word list'): 'nltk_rus',
-                _tr('wl_settings_global', 'NLTK - Slovene stop word list'): 'nltk_slv',
+                _tr('wl_settings_global', 'NLTK - Slovenian stop word list'): 'nltk_slv',
                 _tr('wl_settings_global', 'NLTK - Spanish stop word list'): 'nltk_spa',
                 _tr('wl_settings_global', 'NLTK - Swedish stop word list'): 'nltk_swe',
                 _tr('wl_settings_global', 'NLTK - Tajik stop word list'): 'nltk_tgk',
@@ -1160,6 +1160,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Estonian stop word list'): 'spacy_est',
                 _tr('init_settings_global', 'spaCy - Finnish stop word list'): 'spacy_fin',
                 _tr('init_settings_global', 'spaCy - French stop word list'): 'spacy_fra',
+                _tr('init_settings_global', 'spaCy - Ganda stop word list'): 'spacy_lug',
                 _tr('init_settings_global', 'spaCy - German stop word list'): 'spacy_deu',
                 _tr('init_settings_global', 'spaCy - Greek (Ancient) stop word list'): 'spacy_grc',
                 _tr('init_settings_global', 'spaCy - Greek (Modern) stop word list'): 'spacy_ell',
@@ -1180,7 +1181,6 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Latvian stop word list'): 'spacy_lav',
                 _tr('init_settings_global', 'spaCy - Ligurian stop word list'): 'spacy_lij',
                 _tr('init_settings_global', 'spaCy - Lithuanian stop word list'): 'spacy_lit',
-                _tr('init_settings_global', 'spaCy - Luganda stop word list'): 'spacy_lug',
                 _tr('init_settings_global', 'spaCy - Luxembourgish stop word list'): 'spacy_ltz',
                 _tr('init_settings_global', 'spaCy - Macedonian stop word list'): 'spacy_mkd',
                 _tr('init_settings_global', 'spaCy - Malay stop word list'): 'spacy_msa',
@@ -1241,7 +1241,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'spaCy - Portuguese dependency parser'): 'spacy_por',
                 _tr('wl_settings_global', 'spaCy - Romanian dependency parser'): 'spacy_ron',
                 _tr('wl_settings_global', 'spaCy - Russian dependency parser'): 'spacy_rus',
-                _tr('wl_settings_global', 'spaCy - Slovene dependency parser'): 'spacy_slv',
+                _tr('wl_settings_global', 'spaCy - Slovenian dependency parser'): 'spacy_slv',
                 _tr('wl_settings_global', 'spaCy - Spanish dependency parser'): 'spacy_spa',
                 _tr('wl_settings_global', 'spaCy - Swedish dependency parser'): 'spacy_swe',
                 _tr('wl_settings_global', 'spaCy - Ukrainian dependency parser'): 'spacy_ukr',
@@ -1318,7 +1318,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Stanza - Serbian (Latin script) dependency parser'): 'stanza_srp_latn',
                 _tr('wl_settings_global', 'Stanza - Sindhi dependency parser'): 'stanza_snd',
                 _tr('wl_settings_global', 'Stanza - Slovak dependency parser'): 'stanza_slk',
-                _tr('wl_settings_global', 'Stanza - Slovene dependency parser'): 'stanza_slv',
+                _tr('wl_settings_global', 'Stanza - Slovenian dependency parser'): 'stanza_slv',
                 _tr('wl_settings_global', 'Stanza - Sorbian (Upper) dependency parser'): 'stanza_hsb',
                 _tr('wl_settings_global', 'Stanza - Spanish dependency parser'): 'stanza_spa',
                 _tr('wl_settings_global', 'Stanza - Swedish dependency parser'): 'stanza_swe',
@@ -1369,6 +1369,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'VADER - Finnish sentiment analyzer'): 'vader_fin',
                 _tr('wl_settings_global', 'VADER - French sentiment analyzer'): 'vader_fra',
                 _tr('wl_settings_global', 'VADER - Galician sentiment analyzer'): 'vader_glg',
+                _tr('wl_settings_global', 'VADER - Ganda sentiment analyzer'): 'vader_lug',
                 _tr('wl_settings_global', 'VADER - Georgian sentiment analyzer'): 'vader_kat',
                 _tr('wl_settings_global', 'VADER - German sentiment analyzer'): 'vader_deu',
                 _tr('wl_settings_global', 'VADER - Greek (Modern) sentiment analyzer'): 'vader_ell',
@@ -1391,25 +1392,24 @@ def init_settings_global():
                 _tr('wl_settings_global', 'VADER - Latin sentiment analyzer'): 'vader_lat',
                 _tr('wl_settings_global', 'VADER - Latvian sentiment analyzer'): 'vader_lav',
                 _tr('wl_settings_global', 'VADER - Lithuanian sentiment analyzer'): 'vader_lit',
-                _tr('wl_settings_global', 'VADER - Luganda sentiment analyzer'): 'vader_lug',
                 _tr('wl_settings_global', 'VADER - Luxembourgish sentiment analyzer'): 'vader_ltz',
                 _tr('wl_settings_global', 'VADER - Macedonian sentiment analyzer'): 'vader_mkd',
                 _tr('wl_settings_global', 'VADER - Malay sentiment analyzer'): 'vader_msa',
                 _tr('wl_settings_global', 'VADER - Malayalam sentiment analyzer'): 'vader_mal',
                 _tr('wl_settings_global', 'VADER - Maltese sentiment analyzer'): 'vader_mlt',
+                _tr('wl_settings_global', 'VADER - Manipuri (Meitei Mayek script) sentiment analyzer'): 'vader_mni_mtei',
                 _tr('wl_settings_global', 'VADER - Marathi sentiment analyzer'): 'vader_mar',
-                _tr('wl_settings_global', 'VADER - Meitei (Meitei script) sentiment analyzer'): 'vader_mni_mtei',
                 _tr('wl_settings_global', 'VADER - Mongolian sentiment analyzer'): 'vader_mon',
                 _tr('wl_settings_global', 'VADER - Nepali sentiment analyzer'): 'vader_nep',
                 # References:
                 #     https://support.google.com/translate/thread/1818911/norwegin-translate-is-in-bokm%C3%A5l-or-nynorsk?hl=en
                 #     https://www.quora.com/How-does-Google-Translate-do-with-Norwegian-language-as-Norwegian-has-two-official-forms
                 _tr('wl_settings_global', 'VADER - Norwegian (Bokmål) sentiment analyzer'): 'vader_nob',
-                _tr('wl_settings_global', 'VADER - Odia sentiment analyzer'): 'vader_ori',
+                _tr('wl_settings_global', 'VADER - Oriya sentiment analyzer'): 'vader_ori',
+                _tr('wl_settings_global', 'VADER - Panjabi (Gurmukhi script) sentiment analyzer'): 'vader_pan_guru',
                 _tr('wl_settings_global', 'VADER - Persian sentiment analyzer'): 'vader_fas',
                 _tr('wl_settings_global', 'VADER - Polish sentiment analyzer'): 'vader_pol',
                 _tr('wl_settings_global', 'VADER - Portuguese sentiment analyzer'): 'vader_por',
-                _tr('wl_settings_global', 'VADER - Punjabi (Gurmukhi script) sentiment analyzer'): 'vader_pan_guru',
                 _tr('wl_settings_global', 'VADER - Romanian sentiment analyzer'): 'vader_ron',
                 _tr('wl_settings_global', 'VADER - Russian sentiment analyzer'): 'vader_rus',
                 _tr('wl_settings_global', 'VADER - Sanskrit sentiment analyzer'): 'vader_san',
@@ -1418,7 +1418,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'VADER - Sindhi sentiment analyzer'): 'vader_snd',
                 _tr('wl_settings_global', 'VADER - Sinhala sentiment analyzer'): 'vader_sin',
                 _tr('wl_settings_global', 'VADER - Slovak sentiment analyzer'): 'vader_slk',
-                _tr('wl_settings_global', 'VADER - Slovene sentiment analyzer'): 'vader_slv',
+                _tr('wl_settings_global', 'VADER - Slovenian sentiment analyzer'): 'vader_slv',
                 _tr('wl_settings_global', 'VADER - Spanish sentiment analyzer'): 'vader_spa',
                 _tr('wl_settings_global', 'VADER - Swahili sentiment analyzer'): 'vader_swa',
                 _tr('wl_settings_global', 'VADER - Swedish sentiment analyzer'): 'vader_swe',
@@ -2168,6 +2168,11 @@ def init_settings_global():
                 'stanza_glg'
             ],
 
+            'lug': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'spacy_lug'
+            ],
+
             'kat': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_kat'
@@ -2342,11 +2347,6 @@ def init_settings_global():
                 'stanza_lit'
             ],
 
-            'lug': [
-                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
-                'spacy_lug'
-            ],
-
             'ltz': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_ltz'
@@ -2373,6 +2373,11 @@ def init_settings_global():
                 'stanza_mlt'
             ],
 
+            'mni_mtei': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'sacremoses_moses'
+            ],
+
             'glv': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_glv'
@@ -2383,11 +2388,6 @@ def init_settings_global():
                 'sacremoses_moses',
                 'spacy_mar',
                 'stanza_mar'
-            ],
-
-            'mni_mtei': [
-                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
-                'sacremoses_moses'
             ],
 
             'nep': [
@@ -2412,6 +2412,11 @@ def init_settings_global():
             ],
 
             'ori': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'sacremoses_moses'
+            ],
+
+            'pan_guru': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses'
             ],
@@ -2445,11 +2450,6 @@ def init_settings_global():
                 'sacremoses_moses',
                 'spacy_por',
                 'stanza_por'
-            ],
-
-            'pan_guru': [
-                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
-                'sacremoses_moses'
             ],
 
             'ron': [
@@ -3405,6 +3405,8 @@ def init_settings_global():
                 'spacy_fra'
             ],
 
+            'lug': ['spacy_lug'],
+
             'deu_at': [
                 'nltk_deu',
                 'spacy_deu'
@@ -3463,7 +3465,6 @@ def init_settings_global():
             'lav': ['spacy_lav'],
             'lij': ['spacy_lij'],
             'lit': ['spacy_lit'],
-            'lug': ['spacy_lug'],
             'ltz': ['spacy_ltz'],
             'mkd': ['spacy_mkd'],
             'msa': ['spacy_msa'],
@@ -3815,6 +3816,7 @@ def init_settings_global():
             'fin': ['vader_fin'],
             'fra': ['vader_fra'],
             'glg': ['vader_glg'],
+            'lug': ['vader_lug'],
             'kat': ['vader_kat'],
 
             'deu_at': [
@@ -3850,28 +3852,27 @@ def init_settings_global():
             'lat': ['vader_lat'],
             'lav': ['vader_lav'],
             'lit': ['vader_lit'],
-            'lug': ['vader_lug'],
             'ltz': ['vader_ltz'],
             'mkd': ['vader_mkd'],
             'msa': ['vader_msa'],
             'mal': ['vader_mal'],
             'mlt': ['vader_mlt'],
+            'mni_mtei': ['vader_mni_mtei'],
 
             'mar': [
                 'stanza_mar',
                 'vader_mar'
             ],
 
-            'mni_mtei': ['vader_mni_mtei'],
             'mon': ['vader_mon'],
             'nep': ['vader_nep'],
             'nob': ['vader_nob'],
             'ori': ['vader_ori'],
+            'pan_guru': ['vader_pan_guru'],
             'fas': ['vader_fas'],
             'pol': ['vader_pol'],
             'por_br': ['vader_por'],
             'por_pt': ['vader_por'],
-            'pan_guru': ['vader_pan_guru'],
             'ron': ['vader_ron'],
             'rus': ['vader_rus'],
             'san': ['vader_san'],

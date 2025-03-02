@@ -79,14 +79,15 @@ def wl_fig_freqs(main, freq_files_items, tab):
 
     # Line Chart
     if fig_settings['graph_type'] == _tr('wl_figs_freqs', 'Line chart'):
-        if tab == 'wordlist_generator':
-            label_x = _tr('wl_figs_freqs', 'Token')
-        elif tab == 'ngram_generator':
-            label_x = _tr('wl_figs_freqs', 'N-gram')
-        elif tab in ['collocation_extractor', 'colligation_extractor']:
-            label_x = _tr('wl_figs_freqs', 'Collocate')
-        elif tab == 'keyword_extractor':
-            label_x = _tr('wl_figs_freqs', 'Keyword')
+        match tab:
+            case 'wordlist_generator':
+                label_x = _tr('wl_figs_freqs', 'Token')
+            case 'ngram_generator':
+                label_x = _tr('wl_figs_freqs', 'N-gram')
+            case 'collocation_extractor' | 'colligation_extractor':
+                label_x = _tr('wl_figs_freqs', 'Collocate')
+            case 'keyword_extractor':
+                label_x = _tr('wl_figs_freqs', 'Keyword')
 
         wl_figs.generate_line_chart(
             main, freq_files_items,

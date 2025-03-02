@@ -69,14 +69,15 @@ def wl_fig_stats(main, stat_files_items, tab):
 
     # Line Chart
     if fig_settings['graph_type'] == _tr('wl_figs_stats', 'Line chart'):
-        if tab == 'wordlist_generator':
-            label_x = _tr('wl_figs_stats', 'Token')
-        elif tab == 'ngram_generator':
-            label_x = _tr('wl_figs_stats', 'N-gram')
-        elif tab in ['collocation_extractor', 'colligation_extractor']:
-            label_x = _tr('wl_figs_stats', 'Collocate')
-        elif tab == 'keyword_extractor':
-            label_x = _tr('wl_figs_stats', 'Keyword')
+        match tab:
+            case 'wordlist_generator':
+                label_x = _tr('wl_figs_stats', 'Token')
+            case 'ngram_generator':
+                label_x = _tr('wl_figs_stats', 'N-gram')
+            case 'collocation_extractor' | 'colligation_extractor':
+                label_x = _tr('wl_figs_stats', 'Collocate')
+            case 'keyword_extractor':
+                label_x = _tr('wl_figs_stats', 'Keyword')
 
         wl_figs.generate_line_chart(
             main, stat_files_items,

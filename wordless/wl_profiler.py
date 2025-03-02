@@ -1178,7 +1178,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 tokens = text.get_tokens_flat()
 
                 # Readability
-                if self.tab in ['readability', 'all']:
+                if self.tab in ('readability', 'all'):
                     stats_readability = [
                         wl_measures_readability.rd(self.main, text),
                         wl_measures_readability.aari(self.main, text),
@@ -1223,7 +1223,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 else:
                     stats_readability = None
 
-                if self.tab in ['lexical_density_diversity', 'counts', 'lens', 'len_breakdown', 'all']:
+                if self.tab in ('lexical_density_diversity', 'counts', 'lens', 'len_breakdown', 'all'):
                     # Paragraph length
                     len_paras_sentences = [
                         len(para)
@@ -1286,7 +1286,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                     len_syls = None
 
                 # Lexical Density/Diversity
-                if self.tab in ['lexical_density_diversity', 'all']:
+                if self.tab in ('lexical_density_diversity', 'all'):
                     if tokens:
                         stats_lexical_density_diversity = [
                             wl_measures_lexical_density_diversity.brunets_index(self.main, text),

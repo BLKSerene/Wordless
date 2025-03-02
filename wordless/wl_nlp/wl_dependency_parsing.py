@@ -88,11 +88,11 @@ def wl_dependency_parse_text(main, inputs, lang, dependency_parser):
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
         nlp = main.__dict__[f'spacy_nlp_{lang}']
 
-        with nlp.select_pipes(disable = [
+        with nlp.select_pipes(disable = (
             pipeline
-            for pipeline in ['tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler', 'senter', 'sentencizer']
+            for pipeline in ('tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler', 'senter', 'sentencizer')
             if nlp.has_pipe(pipeline)
-        ]):
+        )):
             i_head_start = 0
 
             for doc in nlp.pipe(inputs.splitlines()):
@@ -108,7 +108,7 @@ def wl_dependency_parse_text(main, inputs, lang, dependency_parser):
                 i_head_start += len(doc)
     # Stanza
     elif dependency_parser.startswith('stanza_'):
-        if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+        if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
             lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
         nlp = main.__dict__[f'stanza_nlp_{lang}']
@@ -138,17 +138,17 @@ def wl_dependency_parse_tokens(main, inputs, lang, dependency_parser):
         lang_spacy = wl_conversion.remove_lang_code_suffixes(main, lang)
         nlp = main.__dict__[f'spacy_nlp_{lang_spacy}']
 
-        with nlp.select_pipes(disable = [
+        with nlp.select_pipes(disable = (
             pipeline
-            for pipeline in ['senter', 'sentencizer']
+            for pipeline in ('senter', 'sentencizer')
             if nlp.has_pipe(pipeline)
-        ]):
+        )):
             i_head_start = 0
 
-            for doc in nlp.pipe([
+            for doc in nlp.pipe((
                 spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [True] * len(tokens))
                 for tokens in wl_nlp_utils.split_token_list(main, inputs, dependency_parser)
-            ]):
+            )):
                 for token in doc:
                     dependencies.append((
                         token.head.text,
@@ -160,7 +160,7 @@ def wl_dependency_parse_tokens(main, inputs, lang, dependency_parser):
                 i_head_start += len(doc)
     # Stanza
     elif dependency_parser.startswith('stanza_'):
-        if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+        if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
             lang_stanza = wl_conversion.remove_lang_code_suffixes(main, lang)
         else:
             lang_stanza = lang
@@ -223,13 +223,13 @@ def wl_dependency_parse_fig(
 
 def _get_pipelines_disabled(show_pos_tags, show_lemmas):
     if show_pos_tags and show_lemmas:
-        pipelines_disabled = ['senter', 'sentencizer']
+        pipelines_disabled = ('senter', 'sentencizer')
     elif show_pos_tags and not show_lemmas:
-        pipelines_disabled = ['lemmatizer', 'senter', 'sentencizer']
+        pipelines_disabled = ('lemmatizer', 'senter', 'sentencizer')
     elif not show_pos_tags and show_lemmas:
-        pipelines_disabled = ['senter', 'sentencizer']
+        pipelines_disabled = ('senter', 'sentencizer')
     elif not show_pos_tags and not show_lemmas:
-        pipelines_disabled = ['tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler', 'senter', 'sentencizer']
+        pipelines_disabled = ('tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler', 'senter', 'sentencizer')
 
     return pipelines_disabled
 
@@ -244,11 +244,11 @@ def to_displacy_sentence(lang, sentence, token_properties = None):
     nlp = spacy.blank('en')
 
     # RTL languages
-    if lang in [
+    if lang in (
         'ara', 'heb', 'kmr', 'fas', 'snd', 'urd',
         # Unsupported by Stanza: Aramaic, Azerbaijani, Kurdish (Sorani), Maldivian, Fulah, Mazanderani, N'Ko, Pushto, Rohingya, Syriac
         'arc', 'aze', 'ckb', 'div', 'ful', 'mzn', 'nqo', 'pus', 'rhg', 'syr'
-    ]:
+    ):
         len_sentence = len(sentence.words)
 
         if token_properties is not None:
@@ -335,11 +335,11 @@ def wl_dependency_parse_fig_text(
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
         nlp = main.__dict__[f'spacy_nlp_{lang}']
 
-        with nlp.select_pipes(disable = [
+        with nlp.select_pipes(disable = (
             pipeline
             for pipeline in _get_pipelines_disabled(show_pos_tags, show_lemmas)
             if nlp.has_pipe(pipeline)
-        ]):
+        )):
             if show_in_separate_tab:
                 for doc in nlp.pipe(inputs.splitlines()):
                     for sentence in doc.sents:
@@ -350,11 +350,11 @@ def wl_dependency_parse_fig_text(
                             options = options
                         ))
             else:
-                sentences = [
+                sentences = (
                     sentence
                     for doc in nlp.pipe(inputs.splitlines())
                     for sentence in doc.sents
-                ]
+                )
 
                 htmls.append(spacy.displacy.render(
                     sentences,
@@ -365,7 +365,7 @@ def wl_dependency_parse_fig_text(
     # Stanza
     # Reference: https://github.com/stanfordnlp/stanza/pull/1069/files
     elif dependency_parser.startswith('stanza_'):
-        if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+        if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
             lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
         nlp = main.__dict__[f'stanza_nlp_{lang}']
@@ -380,11 +380,11 @@ def wl_dependency_parse_fig_text(
                         options = options
                     ))
         else:
-            sentences = [
+            sentences = (
                 to_displacy_sentence(lang, sentence)
                 for doc in nlp.bulk_process(inputs.splitlines())
                 for sentence in doc.sentences
-            ]
+            )
 
             htmls.append(spacy.displacy.render(
                 sentences,
@@ -418,11 +418,11 @@ def wl_dependency_parse_fig_tokens(
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
         nlp = main.__dict__[f'spacy_nlp_{lang}']
 
-        with nlp.select_pipes(disable = [
+        with nlp.select_pipes(disable = (
             pipeline
             for pipeline in _get_pipelines_disabled(show_pos_tags, show_lemmas)
             if nlp.has_pipe(pipeline)
-        ]):
+        )):
             docs = []
 
             for tokens in wl_nlp_utils.split_token_list(main, inputs, dependency_parser):
@@ -477,7 +477,7 @@ def wl_dependency_parse_fig_tokens(
                 ))
     # Stanza
     elif dependency_parser.startswith('stanza_'):
-        if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+        if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
             lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
         nlp = main.__dict__[f'stanza_nlp_{lang}']
@@ -558,7 +558,7 @@ def wl_show_dependency_graphs(main, htmls, show_in_separate_tab):
             elif is_linux:
                 wl_misc.change_file_owner_to_user(fig_path)
 
-                subprocess.Popen(['xdg-open', f'file://{fig_path}'])
+                subprocess.Popen(('xdg-open', f'file://{fig_path}'))
     else:
         fig_path = wl_checks_misc.check_new_path(os.path.join(fig_dir, 'fig.html'))
         fig_path = wl_paths.get_normalized_path(fig_path)

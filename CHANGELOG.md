@@ -57,6 +57,7 @@
 - Dependencies: Upgrade python-pptx to 1.0.2
 - Dependencies: Upgrade simplemma to 1.1.2
 - Dependencies: Upgrade spaCy to 3.8.4
+- Dependencies: Upgrade spacy-pkuseg to 1.0.0
 - Dependencies: Upgrade Stanza to 1.10.1
 - Dependencies: Upgrade SudachiPy to 0.6.10
 - Dependencies: Upgrade wordcloud to 1.9.4

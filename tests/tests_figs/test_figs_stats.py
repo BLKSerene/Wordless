@@ -25,24 +25,26 @@ from wordless.wl_nlp import wl_texts
 def test_wl_fig_stats():
     main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
-    for tab in [
+    for tab in (
         'wordlist_generator',
         'ngram_generator',
         'collocation_extractor',
         'colligation_extractor',
         'keyword_extractor'
-    ]:
+    ):
         print(f'[{tab}]')
 
-        if tab in ['wordlist_generator', 'ngram_generator', 'keyword_extractor']:
-            graph_types = ['Line Chart', 'Word Cloud']
-        elif tab in ['collocation_extractor', 'colligation_extractor']:
-            graph_types = ['Line Chart', 'Word Cloud', 'Network Graph']
+        match tab:
+            case 'wordlist_generator' | 'ngram_generator' | 'keyword_extractor':
+                graph_types = ['Line Chart', 'Word Cloud']
+            case 'collocation_extractor' | 'colligation_extractor':
+                graph_types = ['Line Chart', 'Word Cloud', 'Network Graph']
 
-        if tab in ['wordlist_generator', 'ngram_generator']:
-            use_datas = ["Juilland's D", "Juilland's U"]
-        elif tab in ['collocation_extractor', 'colligation_extractor', 'keyword_extractor']:
-            use_datas = ['Test Statistic', 'p-value', 'Bayes Factor', 'Effect Size']
+        match tab:
+            case 'wordlist_generator' | 'ngram_generator':
+                use_datas = ["Juilland's D", "Juilland's U"]
+            case'collocation_extractor' | 'colligation_extractor' | 'keyword_extractor':
+                use_datas = ['Test Statistic', 'p-value', 'Bayes Factor', 'Effect Size']
 
         for graph_type in graph_types:
             stat_files_items = {}

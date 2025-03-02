@@ -89,7 +89,7 @@ for lang, utils in main.settings_global['sentiment_analyzers'].items():
     for util in utils:
         if (
             not lang.startswith('eng_')
-            and lang not in ['fil', 'vie']
+            and lang not in ('fil', 'vie')
             and 'vader_' in util
         ):
             match (lang_vader := util[6:]):
@@ -102,7 +102,7 @@ for lang, utils in main.settings_global['sentiment_analyzers'].items():
 
             dict_path_lexicon = f'data/VADER/vader_lexicon_{lang_vader}.txt'
             dict_path_emoji = f'data/VADER/emoji_utf8_lexicon_{lang_vader}.txt'
-            dict_path_exceptions = f'data/VADER/exceptions_{lang_vader}.py'
+            dict_path_excs = f'data/VADER/exceptions_{lang_vader}.py'
 
             if lang_vader == 'sr':
                 dict_paths_srp = [
@@ -116,7 +116,7 @@ for lang, utils in main.settings_global['sentiment_analyzers'].items():
 
                 dict_path_lexicon = dict_paths_srp[0]
                 dict_path_emoji = dict_paths_srp[2]
-                dict_path_exceptions = dict_paths_srp[4]
+                dict_path_excs = dict_paths_srp[4]
 
             trs_lexicon = {}
             trs_emojis = {}
@@ -178,7 +178,7 @@ for lang, utils in main.settings_global['sentiment_analyzers'].items():
                         for emoji, description in trs_emojis.items():
                             f.write(f'{emoji}\t{description}\n')
 
-            if not os.path.exists(dict_path_exceptions):
+            if not os.path.exists(dict_path_excs):
                 for tr in google_translate(vaderSentiment.vaderSentiment.NEGATE, 'en', lang_vader):
                     if lang in wl_nlp_utils.LANGS_WITHOUT_SPACES:
                         trs_negate.extend(wl_word_tokenization.wl_word_tokenize_flat(main, tr, lang))
@@ -196,8 +196,8 @@ for lang, utils in main.settings_global['sentiment_analyzers'].items():
 
                 trs_booster_dict = {tr: numpy.mean(vals) for tr, vals in trs_booster_dict.items()}
 
-                for i, exceptions in enumerate([sentiment_laden_idioms, special_cases]):
-                    trs = google_translate(exceptions[0], 'en', lang_vader)
+                for i, excs in enumerate([sentiment_laden_idioms, special_cases]):
+                    trs = google_translate(excs[0], 'en', lang_vader)
 
                     if lang in wl_nlp_utils.LANGS_WITHOUT_SPACES:
                         trs = [
@@ -207,7 +207,7 @@ for lang, utils in main.settings_global['sentiment_analyzers'].items():
 
                     trs_merged = {}
 
-                    for tr, val in zip(trs, exceptions[1]):
+                    for tr, val in zip(trs, excs[1]):
                         add_val_to_trs(trs_merged, tr, val)
 
                     trs_merged = {tr: numpy.mean(vals) for tr, vals in trs_merged.items()}
@@ -218,7 +218,7 @@ for lang, utils in main.settings_global['sentiment_analyzers'].items():
                         case 1:
                             trs_special_cases = trs_merged
 
-                with open(dict_path_exceptions, 'w', encoding = 'utf_8') as f:
+                with open(dict_path_excs, 'w', encoding = 'utf_8') as f:
                     f.write(f'NEGATE = {repr(list(dict.fromkeys(trs_negate)))}\n')
                     f.write(f'BOOSTER_DICT = {repr(trs_booster_dict)}\n')
                     f.write(f'SENTIMENT_LADEN_IDIOMS = {repr(trs_sentiment_laden_idioms)}\n')

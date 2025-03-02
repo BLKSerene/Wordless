@@ -56,7 +56,7 @@ def test_check_new_path():
 
     os.mkdir('temp')
 
-    for file_name in ['temp', 'temp (2)', 'temp (4)']:
+    for file_name in ('temp', 'temp (2)', 'temp (4)'):
         with open(f'temp/{file_name}.temp', 'w', encoding = 'utf_8'):
             pass
 

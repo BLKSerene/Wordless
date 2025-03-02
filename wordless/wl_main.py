@@ -357,11 +357,11 @@ class Wl_Main(QMainWindow):
         self.action_group_prefs_display_lang = QActionGroup(self.menu_prefs_display_lang)
         self.action_group_prefs_display_lang.setExclusive(True)
 
-        for action_lang, action_text, action_status_tip in [
-            ['zho_cn', '汉语（简体）', '修改显示语言为汉语（简体）'],
-            ['zho_tw', '漢語（繁體）', '修改顯示語言為漢語（繁體）'],
-            ['eng_us', 'English (United States)', 'Change display language to English (United States)']
-        ]:
+        for action_lang, action_text, action_status_tip in (
+            ('zho_cn', '汉语（简体）', '修改显示语言为汉语（简体）'),
+            ('zho_tw', '漢語（繁體）', '修改顯示語言為漢語（繁體）'),
+            ('eng_us', 'English (United States)', 'Change display language to English (United States)')
+        ):
             self.__dict__[f'action_prefs_display_lang_{action_lang}'] = self.menu_prefs_display_lang.addAction(action_text)
             self.__dict__[f'action_prefs_display_lang_{action_lang}'].lang = action_lang
             self.__dict__[f'action_prefs_display_lang_{action_lang}'].setCheckable(True)
@@ -1111,7 +1111,7 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
             self.button_cancel.disconnect()
             self.button_cancel.clicked.connect(self.stop_checking)
         else:
-            if status in ['updates_available', 'no_updates']:
+            if status in ('updates_available', 'no_updates'):
                 if status == 'updates_available':
                     self.label_checking_status.set_text(self.tr('''
                         <div>Wordless {} is out, click <a href="https://github.com/BLKSerene/Wordless#download"><b>HERE</b></a> to download the latest version of Wordless.</div>
