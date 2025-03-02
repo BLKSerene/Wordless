@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ----------------------------------------------------------------------
-# Wordless: Requirements files - Tests
+# Wordless: Requirements files - Tests on macOS
 # Copyright (C) 2018-2025  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -44,7 +44,7 @@ pymorphy3-dicts-uk == 2.4.1.1.1663094765
 ## spaCy
 spacy == 3.8.4
 spacy-lookups-data == 1.0.5
-spacy-pkuseg == 1.0.0
+# Install spacy-pkuseg separately with "--no-deps" to avoid depending on NumPy 2
 
 ## SudachiPy
 sudachipy == 0.6.10
@@ -55,11 +55,11 @@ beautifulsoup4
 lxml
 matplotlib
 networkx
-numpy
+numpy == 1.26.4 # PyTorch 2.2 is the last version supporting x86 version of macOS which is incompatible with NumPy 2.x 
 opencc-python-reimplemented
 openpyxl
 pypdf
-pyqt5
+pyqt5==5.15.10 # To be compatible with macOS < 11 on AppVeyor
 pytest
 python-docx
 python-pptx

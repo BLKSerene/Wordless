@@ -27,7 +27,7 @@ TRS_LANGS = {
     ' (Cyrillic script)': [' (西里尔文)'],
     ' (Gurmukhi script)': [' (古木基文)'],
     ' (Latin script)': [' (拉丁文)'],
-    ' (Meitei script)': [' (曼尼普尔文)'],
+    ' (Meitei Mayek script)': [' (曼尼普尔文)'],
 
     'Afrikaans': ['南非语'],
     'Albanian': ['阿尔巴尼亚语'],
@@ -74,6 +74,7 @@ TRS_LANGS = {
     'French': ['法语'],
 
     'Galician': ['加里西亚语'],
+    'Ganda': ['卢干达语'],
     'Georgian': ['格鲁吉亚语'],
     'German (Austria)': ['德语（奥地利）'],
     'German (Germany)': ['德语（德国）'],
@@ -104,27 +105,26 @@ TRS_LANGS = {
     'Latvian': ['拉脱维亚语'],
     'Ligurian': ['利古里亚语'],
     'Lithuanian': ['立陶宛语'],
-    'Luganda': ['卢干达语'],
     'Luxembourgish': ['卢森堡语'],
     'Macedonian': ['马其顿语'],
     'Malayalam': ['马拉雅拉姆语'],
     'Malay': ['马来语'],
     'Maltese': ['马耳他语'],
+    'Manipuri': ['曼尼普尔语'],
     'Manx': ['马恩语'],
     'Marathi': ['马拉地语'],
-    'Meitei': ['曼尼普尔语'],
     'Mongolian': ['蒙古语'],
     'Nepali': ['尼泊尔语'],
     'Nigerian Pidgin': ['尼日利亚皮钦语'],
     'Norwegian (Bokmål)': ['挪威语（书面）'],
     'Norwegian (Nynorsk)': ['挪威语（新）'],
-    'Odia': ['奥里亚语'],
+    'Oriya': ['奥里亚语'],
+    'Panjabi': ['旁遮普语'],
     'Persian': ['波斯语'],
     'Polish': ['波兰语'],
     'Pomak': ['波马克语'],
     'Portuguese (Brazil)': ['葡萄牙语（巴西）'],
     'Portuguese (Portugal)': ['葡萄牙语（葡萄牙）'],
-    'Punjabi': ['旁遮普语'],
     'Romanian': ['罗马尼亚语'],
 
     'Russian (Old)': ['俄语（古）'],
@@ -137,7 +137,7 @@ TRS_LANGS = {
     'Sindhi': ['信德语'],
     'Sinhala': ['僧伽罗语'],
     'Slovak': ['斯洛伐克语'],
-    'Slovene': ['斯洛文尼亚语'],
+    'Slovenian': ['斯洛文尼亚语'],
     'Sorbian (Lower)': ['索布语（下）'],
     'Sorbian (Upper)': ['索布语（上）'],
     'Spanish': ['西班牙语'],
@@ -392,7 +392,7 @@ if __name__ == '__main__':
                         break
 
                 # Exceptions
-                if any((text in tr for text in [])):
+                if any((text in tr for text in ())):
                     # Flag translation as unfinished to be reviewed manually
                     unfinished = True
 

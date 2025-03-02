@@ -263,7 +263,7 @@ class Wl_Text:
                     self.tokens_multilevel.append([])
 
                     if para:
-                        for sentence in wl_sentence_tokenization.wl_sentence_split(self.main, para):
+                        for sentence in wl_sentence_tokenization.wl_sentence_split(self.main, para, self.lang):
                             self.tokens_multilevel[-1].append([])
 
                             for sentence_seg in wl_sentence_tokenization.wl_sentence_seg_tokenize_tokens(
@@ -282,7 +282,7 @@ class Wl_Text:
                         # Replace all tags with a whitespace to ensure no words run together
                         text_no_tags = re_tags.sub(' ', para)
 
-                        for sentence in wl_sentence_tokenization.wl_sentence_split(self.main, text_no_tags):
+                        for sentence in wl_sentence_tokenization.wl_sentence_split(self.main, text_no_tags, self.lang):
                             self.tokens_multilevel[-1].append([])
 
                             for sentence_seg in wl_sentence_tokenization.wl_sentence_seg_tokenize_tokens(

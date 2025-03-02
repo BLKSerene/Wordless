@@ -54,19 +54,40 @@ for:
       - cmd: set PATH=%PYTHON%;%PYTHON%/Scripts;%PATH%
       - python -m pip install --upgrade pip setuptools
       - pip install --requirement requirements/requirements_tests.txt
+      # Download models and data files
       - python utils/wl_downloader_ci.py
 
     # Run tests
     test_script:
+      # Run some tests separately to reduce memory usage
       - pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
       - pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
 
-      - pytest tests/tests_nlp/test_word_tokenization.py
-      - pytest tests/tests_nlp/test_pos_tagging.py
+      - pytest tests/tests_nlp/test_dependency_parsing.py
       - pytest tests/tests_nlp/test_lemmatization.py
+      - pytest tests/tests_nlp/test_matching.py
+      - pytest tests/tests_nlp/test_nlp_utils.py
+      - pytest tests/tests_nlp/test_pos_tagging.py
+      - pytest tests/tests_nlp/test_sentence_tokenization.py
+      - pytest tests/tests_nlp/test_sentiment_analysis.py
+      - pytest tests/tests_nlp/test_stop_word_lists.py
+      - pytest tests/tests_nlp/test_syl_tokenization.py
+      - pytest tests/tests_nlp/test_texts.py
+      - pytest tests/tests_nlp/test_word_detokenization.py
+      - pytest tests/tests_nlp/test_word_tokenization.py
 
-      - pytest tests/tests_nlp/ --ignore=tests/tests_nlp/tests_spacy --ignore=tests/tests_nlp/tests_stanza --ignore=tests/tests_nlp/test_word_tokenization.py --ignore=tests/tests_nlp/test_pos_tagging.py --ignore=tests/tests_nlp/test_lemmatization.py
-      - pytest --ignore=tests/tests_nlp
+      - pytest tests/test_colligation_extractor.py
+      - pytest tests/test_collocation_extractor.py
+      - pytest tests/test_concordancer.py
+      - pytest tests/test_concordancer_parallel.py
+      - pytest tests/test_dependency_parser.py
+      - pytest tests/test_keyword_extractor.py
+      - pytest tests/test_main.py
+      - pytest tests/test_ngram_generator.py
+      - pytest tests/test_profiler.py
+      - pytest tests/test_wordlist_generator.py
+
+      - pytest --ignore=tests/tests_nlp --ignore=tests/test_colligation_extractor.py --ignore=test_collocation_extractor.py --ignore=tests/test_concordancer.py --ignore=tests/test_concordancer_parall--ignore=tests/test_dependency_parser.py --ignore=tests/test_keyword_extractor.py --ignore=tests/test_ma--ignore=tests/test_ngram_generator.py --ignore=tests/test_profiler.py --ignore=tests/test_wordlist_generator.py
 
   # macOS
   -
@@ -78,20 +99,43 @@ for:
     install:
       - cmd: set PATH=%PYTHON%;%PYTHON%/Scripts;%PATH%
       - python -m pip install --upgrade pip setuptools
-      - pip install --requirement requirements/requirements_tests.txt
+      - pip install --requirement requirements/requirements_tests_macos.txt
+      # Install spacy-pkuseg separately with "--no-deps" to avoid depending on NumPy 2
+      - pip install --no-deps spacy-pkuseg
+      # Download models and data files
       - python utils/wl_downloader_ci.py
 
     # Run tests
     test_script:
+      # Run some tests separately to reduce memory usage
       - pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
       - pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
 
-      - pytest tests/tests_nlp/test_word_tokenization.py
-      - pytest tests/tests_nlp/test_pos_tagging.py
+      - pytest tests/tests_nlp/test_dependency_parsing.py
       - pytest tests/tests_nlp/test_lemmatization.py
+      - pytest tests/tests_nlp/test_matching.py
+      - pytest tests/tests_nlp/test_nlp_utils.py
+      - pytest tests/tests_nlp/test_pos_tagging.py
+      - pytest tests/tests_nlp/test_sentence_tokenization.py
+      - pytest tests/tests_nlp/test_sentiment_analysis.py
+      - pytest tests/tests_nlp/test_stop_word_lists.py
+      - pytest tests/tests_nlp/test_syl_tokenization.py
+      - pytest tests/tests_nlp/test_texts.py
+      - pytest tests/tests_nlp/test_word_detokenization.py
+      - pytest tests/tests_nlp/test_word_tokenization.py
 
-      - pytest tests/tests_nlp/ --ignore=tests/tests_nlp/tests_spacy --ignore=tests/tests_nlp/tests_stanza --ignore=tests/tests_nlp/test_word_tokenization.py --ignore=tests/tests_nlp/test_syl_tokenization.py --ignore=tests/tests_nlp/test_lemmatization.py
-      - pytest --ignore=tests/tests_nlp
+      - pytest tests/test_colligation_extractor.py
+      - pytest tests/test_collocation_extractor.py
+      - pytest tests/test_concordancer.py
+      - pytest tests/test_concordancer_parallel.py
+      - pytest tests/test_dependency_parser.py
+      - pytest tests/test_keyword_extractor.py
+      - pytest tests/test_main.py
+      - pytest tests/test_ngram_generator.py
+      - pytest tests/test_profiler.py
+      - pytest tests/test_wordlist_generator.py
+
+      - pytest --ignore=tests/tests_nlp --ignore=tests/test_colligation_extractor.py --ignore=test_collocation_extractor.py --ignore=tests/test_concordancer.py --ignore=tests/test_concordancer_parall--ignore=tests/test_dependency_parser.py --ignore=tests/test_keyword_extractor.py --ignore=tests/test_ma--ignore=tests/test_ngram_generator.py --ignore=tests/test_profiler.py --ignore=tests/test_wordlist_generator.py
 
   # Ubuntu
   -
@@ -104,6 +148,7 @@ for:
       - cmd: set PATH=%PYTHON%;%PYTHON%/Scripts;%PATH%
       - python -m pip install --upgrade pip setuptools
       - pip install --requirement requirements/requirements_tests.txt
+      # Download models and data files
       - python utils/wl_downloader_ci.py
 
     # Run tests
@@ -111,12 +156,33 @@ for:
       # Fix PyQt
       - export QT_QPA_PLATFORM=offscreen
 
+      # Run some tests separately to reduce memory usage
       - pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
       - pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
 
-      - pytest tests/tests_nlp/test_word_tokenization.py
-      - pytest tests/tests_nlp/test_pos_tagging.py
+      - pytest tests/tests_nlp/test_dependency_parsing.py
       - pytest tests/tests_nlp/test_lemmatization.py
+      - pytest tests/tests_nlp/test_matching.py
+      - pytest tests/tests_nlp/test_nlp_utils.py
+      - pytest tests/tests_nlp/test_pos_tagging.py
+      - pytest tests/tests_nlp/test_sentence_tokenization.py
+      - pytest tests/tests_nlp/test_sentiment_analysis.py
+      - pytest tests/tests_nlp/test_stop_word_lists.py
+      - pytest tests/tests_nlp/test_syl_tokenization.py
+      - pytest tests/tests_nlp/test_texts.py
+      - pytest tests/tests_nlp/test_word_detokenization.py
+      - pytest tests/tests_nlp/test_word_tokenization.py
 
-      - pytest tests/tests_nlp/ --ignore=tests/tests_nlp/tests_spacy --ignore=tests/tests_nlp/tests_stanza --ignore=tests/tests_nlp/test_word_tokenization.py --ignore=tests/tests_nlp/test_pos_tagging.py --ignore=tests/tests_nlp/test_lemmatization.py
-      - pytest --ignore=tests/tests_nlp --ignore=tests/tests_settings
+      - pytest tests/test_colligation_extractor.py
+      - pytest tests/test_collocation_extractor.py
+      - pytest tests/test_concordancer.py
+      - pytest tests/test_concordancer_parallel.py
+      - pytest tests/test_dependency_parser.py
+      - pytest tests/test_keyword_extractor.py
+      - pytest tests/test_main.py
+      - pytest tests/test_ngram_generator.py
+      - pytest tests/test_profiler.py
+      - pytest tests/test_wordlist_generator.py
+
+      # Exclude tests_settings on Linux
+      - pytest --ignore=tests/tests_nlp --ignore=tests/test_colligation_extractor.py --ignore=test_collocation_extractor.py --ignore=tests/test_concordancer.py --ignore=tests/test_concordancer_parall--ignore=tests/test_dependency_parser.py --ignore=tests/test_keyword_extractor.py --ignore=tests/test_ma--ignore=tests/test_ngram_generator.py --ignore=tests/test_profiler.py --ignore=tests/test_wordlist_generator.py --ignore=tests/tests_settings

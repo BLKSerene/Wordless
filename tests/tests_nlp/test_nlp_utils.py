@@ -20,8 +20,10 @@ import pytest
 
 from tests import wl_test_init, wl_test_lang_examples
 from wordless.wl_nlp import wl_nlp_utils
+from wordless.wl_utils import wl_misc
 
 main = wl_test_init.Wl_Test_Main()
+is_macos = wl_misc.check_os()[1]
 
 settings_lang_utils = main.settings_global['mapping_lang_utils']
 
@@ -130,7 +132,6 @@ def test_init_sentence_tokenizers():
     wl_nlp_utils.init_sentence_tokenizers(main, 'eng_us', 'spacy_eng')
     wl_nlp_utils.init_sentence_tokenizers(main, 'eng_us', 'stanza_eng')
 
-@pytest.mark.xfail
 def test_init_word_tokenizers():
     wl_nlp_utils.init_word_tokenizers(main, 'eng_us', 'nltk_nist')
     wl_nlp_utils.init_word_tokenizers(main, 'eng_us', 'nltk_nltk')
@@ -147,6 +148,9 @@ def test_init_word_tokenizers():
 
     wl_nlp_utils.init_word_tokenizers(main, 'eng_us', 'sudachipy_jpn')
     wl_nlp_utils.init_word_tokenizers(main, 'eng_us', 'python_mecab_ko_mecab')
+
+@pytest.mark.xfail(is_macos, reason = 'https://github.com/OpenPecha/Botok/issues/76')
+def test_init_word_tokenizers_botok():
     wl_nlp_utils.init_word_tokenizers(main, 'eng_us', 'botok_bod')
 
 def test_init_syl_tokenizers():
@@ -308,6 +312,7 @@ if __name__ == '__main__':
 
     test_init_sentence_tokenizers()
     test_init_word_tokenizers()
+    test_init_word_tokenizers_botok()
     test_init_syl_tokenizers()
     test_init_word_detokenizers()
     test_init_pos_taggers()

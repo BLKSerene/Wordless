@@ -64,7 +64,7 @@ def wl_test_supported_langs(main):
         langs_sentiment_analyzers
     ]
 
-    for langs in [langs_supported, langs_supported_zho_cn]:
+    for langs in (langs_supported, langs_supported_zho_cn):
         len_max_langs = max((len(lang_name) for lang_name, lang_code_639_3 in langs))
 
         for lang_name, lang_code_639_3 in langs:
@@ -121,7 +121,7 @@ def wl_test_supported_encodings(main):
         langs_zho_cn.append(encoding_lang)
         encodings_zho_cn.append(encoding_name)
 
-    for langs, encodings in [(langs, encodings), (langs_zho_cn, encodings_zho_cn)]:
+    for langs, encodings in ((langs, encodings), (langs_zho_cn, encodings_zho_cn)):
         len_max_langs = max((len(lang) for lang in langs))
         len_max_encodings = max((len(encoding) for encoding in encodings))
 

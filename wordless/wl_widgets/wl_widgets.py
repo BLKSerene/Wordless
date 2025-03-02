@@ -910,10 +910,10 @@ def wl_widgets_fig_settings(parent, tab):
     ])
 
     # Network Graph
-    if tab in ['collocation_extractor', 'colligation_extractor']:
+    if tab in ('collocation_extractor', 'colligation_extractor'):
         combo_box_graph_type.addItem(_tr('wl_widgets', 'Network graph'))
 
-    if tab in ['wordlist_generator', 'ngram_generator', 'collocation_extractor', 'colligation_extractor', 'keyword_extractor']:
+    if tab in ('wordlist_generator', 'ngram_generator', 'collocation_extractor', 'colligation_extractor', 'keyword_extractor'):
         match tab:
             case 'wordlist_generator' | 'ngram_generator':
                 combo_box_use_data.measures_changed = measures_changed_wordlist_generator

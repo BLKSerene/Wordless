@@ -20,19 +20,19 @@ from wordless.wl_utils import wl_sorting
 
 def test_sorted_freq_files_items():
     freq_files_items = {
-        'a': [10, 10],
-        'b': [5, 5],
-        'c': [5, 10]
+        'a': (10, 10),
+        'b': (5, 5),
+        'c': (5, 10)
     }
     freq_files_items_sorted_0 = [
-        ('a', [10, 10]),
-        ('c', [5, 10]),
-        ('b', [5, 5])
+        ('a', (10, 10)),
+        ('c', (5, 10)),
+        ('b', (5, 5))
     ]
     freq_files_items_sorted_1 = [
-        ('b', [5, 5]),
-        ('c', [5, 10]),
-        ('a', [10, 10])
+        ('b', (5, 5)),
+        ('c', (5, 10)),
+        ('a', (10, 10))
     ]
 
     assert wl_sorting.sorted_freq_files_items(freq_files_items, sort_by_col = 0, reverse = False) == freq_files_items_sorted_0
@@ -40,19 +40,19 @@ def test_sorted_freq_files_items():
 
 def test_sorted_freq_files_items_keyword_extractor():
     freq_files_items = {
-        'a': [10, 10, 10],
-        'b': [5, 5, 10],
-        'c': [5, 10, 20]
+        'a': (10, 10, 10),
+        'b': (5, 5, 10),
+        'c': (5, 10, 20)
     }
     freq_files_items_sorted_1 = [
-        ('c', [5, 10, 20]),
-        ('a', [10, 10, 10]),
-        ('b', [5, 5, 10])
+        ('c', (5, 10, 20)),
+        ('a', (10, 10, 10)),
+        ('b', (5, 5, 10))
     ]
     freq_files_items_sorted_2 = [
-        ('b', [5, 5, 10]),
-        ('a', [10, 10, 10]),
-        ('c', [5, 10, 20])
+        ('b', (5, 5, 10)),
+        ('a', (10, 10, 10)),
+        ('c', (5, 10, 20))
     ]
 
     assert wl_sorting.sorted_freq_files_items_keyword_extractor(freq_files_items, sort_by_col = 1, reverse = False) == freq_files_items_sorted_1
@@ -60,14 +60,14 @@ def test_sorted_freq_files_items_keyword_extractor():
 
 def test_sorted_stats_files_items():
     stats_files_items = {
-        'a': [[10, .8, 10, 10], [10, .8, 10, 10]],
-        'b': [[10, .8, 10, 10], [10, .6, 10, 10]],
-        'c': [[10, .6, 10, 10], [10, .4, 10, 10]]
+        'a': ((10, .8, 10, 10), (10, .8, 10, 10)),
+        'b': ((10, .8, 10, 10), (10, .6, 10, 10)),
+        'c': ((10, .6, 10, 10), (10, .4, 10, 10))
     }
     stats_files_items_sorted = [
-        ('c', [[10, .6, 10, 10], [10, .4, 10, 10]]),
-        ('b', [[10, .8, 10, 10], [10, .6, 10, 10]]),
-        ('a', [[10, .8, 10, 10], [10, .8, 10, 10]])
+        ('c', ((10, .6, 10, 10), (10, .4, 10, 10))),
+        ('b', ((10, .8, 10, 10), (10, .6, 10, 10))),
+        ('a', ((10, .8, 10, 10), (10, .8, 10, 10)))
     ]
 
     assert wl_sorting.sorted_stats_files_items(stats_files_items) == stats_files_items_sorted

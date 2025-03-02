@@ -132,7 +132,7 @@ In *Profiler*, you can check and compare general linguistic features of differen
 All statistics are grouped into 5 tables for better readability: Readability, Counts, Lexical Density/Diversity, Lengths, Length Breakdown.
 
 - **3.1.1 Readability**<br>
-  Readability statistics of each file calculated according to the different readability tests used. See section [12.4.1 Readability Formulas](#doc-12-4-1) for more details.
+  Readability statistics of each file calculated according to the different readability tests used. See [Section 12.4.1](#doc-12-4-1) for more details.
 
 - **3.1.2 Counts**<br>
   - **3.1.2.1 Count of Paragraphs**<br>
@@ -180,7 +180,7 @@ All statistics are grouped into 5 tables for better readability: Readability, Co
     The percentage of the number of characters in each file out of the total number of characters in all files.
 
 - **3.1.3 Lexical Density/Diversity**<br>
-  Statistics of lexical density/diversity which reflect the the extend to which the vocabulary used in each file varies. See section [12.4.2 Indicators of Lexical Density/Diversity](#doc-12-4-2) for more details.
+  Statistics of lexical density/diversity which reflect the the extend to which the vocabulary used in each file varies. See [Section 12.4.2](#doc-12-4-2) for more details.
 
 - **3.1.4 Lengths**<br>
   - **3.1.4.1 Paragraph Length in Sentences / Sentence Segments / Tokens (Mean)**<br>
@@ -461,16 +461,16 @@ You can generate line charts or word clouds for wordlists using any statistics. 
 
   If the token happens to exist in the vocabulary of multiple languages, all syllabified forms with their applicable languages will be listed.
 
-  If there is no syllable tokenization support for the language where the token is found, "No language support" is displayed instead. To check which languages have syllable tokenization support, please refer to section [12.1 Supported Languages](#doc-12-1).
+  If there is no syllable tokenization support for the language where the token is found, "No language support" is displayed instead. To check which languages have syllable tokenization support, please refer to [Section 12.1](#doc-12-1).
 
 - **7.4 Frequency**<br>
   The number of occurrences of the token in each file.
 
 - **7.5 Dispersion**<br>
-  The dispersion of the token in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See section [12.4.3 Measures of Dispersion & Adjusted Frequency](#doc-12-4-3) for more details.
+  The dispersion of the token in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See [Section 12.4.3](#doc-12-4-3) for more details.
 
 - **7.6 Adjusted Frequency**<br>
-  The adjusted frequency of the token in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See section [12.4.3 Measures of Dispersion & Adjusted Frequency](#doc-12-4-3) for more details.
+  The adjusted frequency of the token in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See [Section 12.4.3](#doc-12-4-3) for more details.
 
 - **7.7 Number of Files Found**<br>
   The number of files in which the token appears at least once.
@@ -499,10 +499,10 @@ You can generate line charts or word clouds for n-grams using any statistics. Yo
   The number of occurrences of the n-gram in each file.
 
 - **8.4 Dispersion**<br>
-  The dispersion of the n-gram in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See section [12.4.3 Measures of Dispersion & Adjusted Frequency](#doc-12-4-3) for more details.
+  The dispersion of the n-gram in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See [Section 12.4.3](#doc-12-4-3) for more details.
 
 - **8.5 Adjusted Frequency**<br>
-  The adjusted frequency of the n-gram in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See section [12.4.3 Measures of Dispersion & Adjusted Frequency](#doc-12-4-3) for more details.
+  The adjusted frequency of the n-gram in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See [Section 12.4.3](#doc-12-4-3) for more details.
 
 - **8.6 Number of Files Found**<br>
   The number of files in which the n-gram appears at least once.
@@ -537,18 +537,18 @@ You can generate line charts, word clouds, and network graphs for patterns of co
   The total number of co-occurrences of the node and the collocating token with the collocating token at all possible positions in each file.
 
 - **9.6 Test Statistic**<br>
-  The test statistic of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.
+  The test statistic of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Section 12.4.4](#doc-12-4-4) for more details.
 
   Please note that test statistic is not available for some tests of statistical significance.
 
 - **9.7 p-value**<br>
-  The p-value of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.
+  The p-value of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Section 12.4.4](#doc-12-4-4) for more details.
 
 - **9.8 Bayes Factor**<br>
-  The Bayes factor the node and the collocating token in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.
+  The Bayes factor the node and the collocating token in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See [Section 12.4.4](#doc-12-4-4) for more details.
 
 - **9.9 Effect Size**<br>
-  The effect size of the node and the collocating token in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.
+  The effect size of the node and the collocating token in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Section 12.4.4](#doc-12-4-4) for more details.
 
 - **9.10 Number of Files Found**<br>
   The number of files in which the node and the collocating token co-occur at least once.
@@ -585,18 +585,18 @@ You can generate line charts or word clouds for patterns of colligation using an
   The total number of co-occurrences of the node and the collocating part of speech with the collocating part of speech at all possible positions in each file.
 
 - **10.6 Test Statistic**<br>
-  The test statistic of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.
+  The test statistic of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Section 12.4.4](#doc-12-4-4) for more details.
 
   Please note that test statistic is not available for some tests of statistical significance.
 
 - **10.7 p-value**<br>
-  The p-value of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.
+  The p-value of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Section 12.4.4](#doc-12-4-4) for more details.
 
 - **10.8 Bayes Factor**<br>
-  The Bayes factor of the node and the collocating part of speech in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.
+  The Bayes factor of the node and the collocating part of speech in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See [Section 12.4.4](#doc-12-4-4) for more details.
   
 - **10.9 Effect Size**<br>
-  The effect size of the node and the collocating part of speech in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.
+  The effect size of the node and the collocating part of speech in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Section 12.4.4](#doc-12-4-4) for more details.
 
 - **10.10 Number of Files Found**<br>
   The number of files in which the node and the collocating part of speech co-occur at least once.
@@ -628,18 +628,18 @@ You can generate line charts or word clouds for keywords using any statistics. Y
   The number of occurrences of the keyword in each observed corpus.
 
 - **11.5 Test Statistic**<br>
-  The test statistic of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.
+  The test statistic of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Section 12.4.4](#doc-12-4-4) for more details.
 
   Please note that test statistic is not available for some tests of statistical significance.
 
 - **11.6 p-value**<br>
-  The p-value of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.
+  The p-value of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Section 12.4.4](#doc-12-4-4) for more details.
 
 - **11.7 Bayes Factor**<br>
-  The Bayes factor of the keyword in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.
+  The Bayes factor of the keyword in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See [Section 12.4.4](#doc-12-4-4) for more details.
 
 - **11.8 Effect Size**<br>
-  The effect size of on the keyword in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See section [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-12-4-4) for more details.
+  The effect size of on the keyword in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Section 12.4.4](#doc-12-4-4) for more details.
 
 - **11.9 Number of Files Found**<br>
   The number of files in which the keyword appears at least once.
@@ -655,133 +655,133 @@ You can generate line charts or word clouds for keywords using any statistics. Y
 
 Language|Sentence Token-ization|Word Token-ization|Syllable Token-ization|Part-of-speech Tagging|Lemma-tization|Stop Word List|Depen-dency Parsing|Senti-ment Analysis
 :-----------------------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
-Afrikaans                |✔|✔|✔|✔|✔|✔|✔|✔
-Albanian                 |✔|✔|✔|✔|✔|✔|✔|✔
-Amharic                  |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
-Arabic                   |✔|✔|✖️|✔|✔|✔|✔|✔
-Armenian (Classical)     |✔|✔|✖️|✔|✔|✖️|✔|✖️
-Armenian (Eastern)       |✔|✔|✖️|✔|✔|✔|✔|✔
-Armenian (Western)       |✔|✔|✖️|✔|✔|✔|✔|✔
-Assamese                 |⭕️|✔|✖️|✖️|✖️|✖️|✖️|✔
-Asturian                 |⭕️|⭕️|✖️|✖️|✔|✖️|✖️|✖️
-Azerbaijani              |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
-Basque                   |✔|✔|✔|✔|✔|✔|✔|✔
-Belarusian               |✔|✔|✔|✔|✔|✖️|✔|✔
-Bengali                  |⭕️|✔|✖️|✖️|✔|✔|✖️|✔
-Bulgarian                |✔|✔|✔|✔|✔|✔|✔|✔
-Burmese                  |✔|✔|✖️|✖️|✖️|✖️|✖️|✔
-Buryat (Russia)          |✔|✔|✖️|✔|✔|✖️|✔|✖️
-Catalan                  |✔|✔|✔|✔|✔|✔|✔|✔
-Chinese (Classical)      |✔|✔|✖️|✔|✔|✖️|✔|✖️
-Chinese (Simplified)     |✔|✔|✖️|✔|✔|✔|✔|✔
-Chinese (Traditional)    |✔|✔|✖️|✔|✔|✔|✔|✔
-Church Slavonic (Old)    |✔|✔|✖️|✔|✔|✖️|✔|✖️
-Coptic                   |✔|✔|✖️|✔|✔|✖️|✔|✖️
-Croatian                 |✔|✔|✔|✔|✔|✔|✔|✔
-Czech                    |✔|✔|✔|✔|✔|✔|✔|✔
-Danish                   |✔|✔|✔|✔|✔|✔|✔|✔
-Dutch                    |✔|✔|✔|✔|✔|✔|✔|✔
-English (Middle)         |⭕️|⭕️|✖️|✖️|✔|✖️|✖️|✖️
-English (Old)            |✔|✔|✖️|✔|✔|✖️|✔|✖️
-English (United Kingdom) |✔|✔|✔|✔|✔|✔|✔|✔
-English (United States)  |✔|✔|✔|✔|✔|✔|✔|✔
-Erzya                    |✔|✔|✖️|✔|✔|✖️|✔|✖️
-Esperanto                |⭕️|⭕️|✔|✖️|✖️|✖️|✖️|✔
-Estonian                 |✔|✔|✔|✔|✔|✔|✔|✔
-Faroese                  |✔|✔|✖️|✔|✖️|✖️|✔|✖️
-Finnish                  |✔|✔|✖️|✔|✔|✔|✔|✔
-French                   |✔|✔|✔|✔|✔|✔|✔|✔
-French (Old)             |✔|✔|✖️|✔|✔|✖️|✔|✖️
-Galician                 |✔|✔|✔|✔|✔|✖️|✔|✔
-Georgian                 |✔|✔|✖️|✔|✔|✖️|✔|✔
-German (Austria)         |✔|✔|✔|✔|✔|✔|✔|✔
-German (Germany)         |✔|✔|✔|✔|✔|✔|✔|✔
-German (Low)             |✔|✔|✖️|✔|✔|✖️|✔|✖️
-German (Switzerland)     |✔|✔|✔|✔|✔|✔|✔|✔
-Gothic                   |✔|✔|✖️|✔|✔|✖️|✔|✖️
-Greek (Ancient)          |✔|✔|✖️|✔|✔|✔|✔|✖️
-Greek (Modern)           |✔|✔|✔|✔|✔|✔|✔|✔
-Gujarati                 |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
-Hebrew (Ancient)         |✔|✔|✖️|✔|✔|✖️|✔|✖️
-Hebrew (Modern)          |✔|✔|✖️|✔|✔|✔|✔|✔
-Hindi                    |✔|✔|✖️|✔|✔|✔|✔|✔
-Hungarian                |✔|✔|✔|✔|✔|✔|✔|✔
-Icelandic                |✔|✔|✔|✔|✔|✔|✔|✔
-Indonesian               |✔|✔|✔|✔|✔|✔|✔|✔
-Irish                    |✔|✔|✖️|✔|✔|✔|✔|✔
-Italian                  |✔|✔|✔|✔|✔|✔|✔|✔
-Japanese                 |✔|✔|✖️|✔|✔|✔|✔|✔
-Kannada                  |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
-Kazakh                   |✔|✔|✖️|✔|✔|✔|✔|✔
-Khmer                    |✔|✔|✖️|✔|✖️|✖️|✖️|✔
-Komi (Zyrian)            |✔|✔|✖️|✔|✔|✖️|✔|✖️
-Korean                   |✔|✔|✖️|✔|✔|✔|✔|✔
-Kurdish (Kurmanji)       |✔|✔|✖️|✔|✔|✔|✔|✔
-Kyrgyz                   |✔|✔|✖️|✔|✔|✔|✔|✔
-Lao                      |✔|✔|✖️|✔|✖️|✔|✖️|✔
-Latin                    |✔|✔|✖️|✔|✔|✔|✔|✔
-Latvian                  |✔|✔|✔|✔|✔|✔|✔|✔
-Ligurian                 |✔|✔|✖️|✔|✔|✔|✔|✖️
-Lithuanian               |✔|✔|✔|✔|✔|✔|✔|✔
-Luganda                  |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
-Luxembourgish            |⭕️|✔|✖️|✖️|✔|✔|✖️|✔
-Macedonian               |✔|✔|✖️|✔|✔|✔|✔|✔
-Malay                    |⭕️|✔|✖️|✖️|✔|✔|✖️|✔
-Malayalam                |✔|✔|✖️|✖️|✖️|✔|✖️|✔
-Maltese                  |✔|✔|✖️|✔|✖️|✖️|✔|✔
-Manx                     |✔|✔|✖️|✔|✔|✖️|✔|✖️
-Marathi                  |✔|✔|✖️|✔|✔|✔|✔|✔
-Meitei (Meitei script)   |⭕️|✔|✖️|✖️|✖️|✖️|✖️|✔
-Mongolian                |⭕️|⭕️|✔|✖️|✖️|✖️|✖️|✔
-Nepali                   |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
-Nigerian Pidgin          |✔|✔|✖️|✔|✔|✖️|✔|✖️
-Norwegian (Bokmål)       |✔|✔|✔|✔|✔|✔|✔|✔
-Norwegian (Nynorsk)      |✔|✔|✔|✔|✔|✖️|✔|✖️
-Odia                     |⭕️|✔|✖️|✖️|✖️|✖️|✖️|✔
-Persian                  |✔|✔|✖️|✔|✔|✔|✔|✔
-Polish                   |✔|✔|✔|✔|✔|✔|✔|✔
-Pomak                    |✔|✔|✖️|✔|✔|✖️|✔|✖️
-Portuguese (Brazil)      |✔|✔|✔|✔|✔|✔|✔|✔
-Portuguese (Portugal)    |✔|✔|✔|✔|✔|✔|✔|✔
-Punjabi (Gurmukhi script)|⭕️|✔|✖️|✖️|✖️|✖️|✖️|✔
-Romanian                 |✔|✔|✔|✔|✔|✔|✔|✔
-Russian                  |✔|✔|✔|✔|✔|✔|✔|✔
-Russian (Old)            |✔|✔|✖️|✔|✔|✖️|✔|✖️
-Sámi (Northern)          |✔|✔|✖️|✔|✔|✖️|✔|✖️
-Sanskrit                 |✔|✔|✖️|✔|✔|✔|✔|✔
-Scottish Gaelic          |✔|✔|✖️|✔|✔|✔|✔|✔
-Serbian (Cyrillic script)|⭕️|✔|✔|✖️|✔|✔|✖️|✔
-Serbian (Latin script)   |✔|✔|✔|✔|✔|✔|✔|✔
-Sindhi                   |✔|✔|✖️|✔|✖️|✖️|✔|✔
-Sinhala                  |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
-Slovak                   |✔|✔|✔|✔|✔|✔|✔|✔
-Slovene                  |✔|✔|✔|✔|✔|✔|✔|✔
-Sorbian (Lower)          |⭕️|✔|✖️|✖️|✖️|✔|✖️|✖️
-Sorbian (Upper)          |✔|✔|✖️|✔|✔|✔|✔|✖️
-Spanish                  |✔|✔|✔|✔|✔|✔|✔|✔
-Swahili                  |⭕️|⭕️|✖️|✖️|✔|✖️|✖️|✔
-Swedish                  |✔|✔|✔|✔|✔|✔|✔|✔
-Tagalog                  |⭕️|✔|✖️|✖️|✔|✔|✖️|✔
-Tajik                    |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
-Tamil                    |✔|✔|✖️|✔|✔|✔|✔|✔
-Tatar                    |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
-Telugu                   |✔|✔|✔|✔|✖️|✔|✔|✔
-Tetun (Dili)             |⭕️|✔|✖️|✖️|✖️|✖️|✖️|✖️
-Thai                     |✔|✔|✔|✔|✖️|✔|✖️|✔
-Tibetan                  |✔|✔|✖️|✔|✔|✔|✖️|✖️
-Tigrinya                 |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
-Tswana                   |⭕️|✔|✖️|✖️|✖️|✔|✖️|✖️
-Turkish                  |✔|✔|✖️|✔|✔|✔|✔|✔
-Turkish (Ottoman)        |✔|✔|✖️|✔|✔|✖️|✔|✖️
-Ukrainian                |✔|✔|✔|✔|✔|✔|✔|✔
-Urdu                     |✔|✔|✖️|✔|✔|✔|✔|✔
-Uyghur                   |✔|✔|✖️|✔|✔|✖️|✔|✔
-Vietnamese               |✔|✔|✖️|✔|✖️|✔|✔|✔
-Welsh                    |✔|✔|✖️|✔|✔|✖️|✔|✔
-Wolof                    |✔|✔|✖️|✔|✔|✖️|✔|✖️
-Yoruba                   |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
-Zulu                     |⭕️|⭕️|✔|✖️|✖️|✖️|✖️|✔
-Other languages          |⭕️|⭕️|✖️|✖️|✖️|✖️|✖️|✖️
+Afrikaans                     |✔|✔|✔|✔|✔|✔|✔|✔
+Albanian                      |✔|✔|✔|✔|✔|✔|✔|✔
+Amharic                       |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
+Arabic                        |✔|✔|✖️|✔|✔|✔|✔|✔
+Armenian (Classical)          |✔|✔|✖️|✔|✔|✖️|✔|✖️
+Armenian (Eastern)            |✔|✔|✖️|✔|✔|✔|✔|✔
+Armenian (Western)            |✔|✔|✖️|✔|✔|✔|✔|✔
+Assamese                      |⭕️|✔|✖️|✖️|✖️|✖️|✖️|✔
+Asturian                      |⭕️|⭕️|✖️|✖️|✔|✖️|✖️|✖️
+Azerbaijani                   |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
+Basque                        |✔|✔|✔|✔|✔|✔|✔|✔
+Belarusian                    |✔|✔|✔|✔|✔|✖️|✔|✔
+Bengali                       |⭕️|✔|✖️|✖️|✔|✔|✖️|✔
+Bulgarian                     |✔|✔|✔|✔|✔|✔|✔|✔
+Burmese                       |✔|✔|✖️|✖️|✖️|✖️|✖️|✔
+Buryat (Russia)               |✔|✔|✖️|✔|✔|✖️|✔|✖️
+Catalan                       |✔|✔|✔|✔|✔|✔|✔|✔
+Chinese (Classical)           |✔|✔|✖️|✔|✔|✖️|✔|✖️
+Chinese (Simplified)          |✔|✔|✖️|✔|✔|✔|✔|✔
+Chinese (Traditional)         |✔|✔|✖️|✔|✔|✔|✔|✔
+Church Slavonic (Old)         |✔|✔|✖️|✔|✔|✖️|✔|✖️
+Coptic                        |✔|✔|✖️|✔|✔|✖️|✔|✖️
+Croatian                      |✔|✔|✔|✔|✔|✔|✔|✔
+Czech                         |✔|✔|✔|✔|✔|✔|✔|✔
+Danish                        |✔|✔|✔|✔|✔|✔|✔|✔
+Dutch                         |✔|✔|✔|✔|✔|✔|✔|✔
+English (Middle)              |⭕️|⭕️|✖️|✖️|✔|✖️|✖️|✖️
+English (Old)                 |✔|✔|✖️|✔|✔|✖️|✔|✖️
+English (United Kingdom)      |✔|✔|✔|✔|✔|✔|✔|✔
+English (United States)       |✔|✔|✔|✔|✔|✔|✔|✔
+Erzya                         |✔|✔|✖️|✔|✔|✖️|✔|✖️
+Esperanto                     |⭕️|⭕️|✔|✖️|✖️|✖️|✖️|✔
+Estonian                      |✔|✔|✔|✔|✔|✔|✔|✔
+Faroese                       |✔|✔|✖️|✔|✖️|✖️|✔|✖️
+Finnish                       |✔|✔|✖️|✔|✔|✔|✔|✔
+French                        |✔|✔|✔|✔|✔|✔|✔|✔
+French (Old)                  |✔|✔|✖️|✔|✔|✖️|✔|✖️
+Galician                      |✔|✔|✔|✔|✔|✖️|✔|✔
+Ganda                         |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
+Georgian                      |✔|✔|✖️|✔|✔|✖️|✔|✔
+German (Austria)              |✔|✔|✔|✔|✔|✔|✔|✔
+German (Germany)              |✔|✔|✔|✔|✔|✔|✔|✔
+German (Low)                  |✔|✔|✖️|✔|✔|✖️|✔|✖️
+German (Switzerland)          |✔|✔|✔|✔|✔|✔|✔|✔
+Gothic                        |✔|✔|✖️|✔|✔|✖️|✔|✖️
+Greek (Ancient)               |✔|✔|✖️|✔|✔|✔|✔|✖️
+Greek (Modern)                |✔|✔|✔|✔|✔|✔|✔|✔
+Gujarati                      |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
+Hebrew (Ancient)              |✔|✔|✖️|✔|✔|✖️|✔|✖️
+Hebrew (Modern)               |✔|✔|✖️|✔|✔|✔|✔|✔
+Hindi                         |✔|✔|✖️|✔|✔|✔|✔|✔
+Hungarian                     |✔|✔|✔|✔|✔|✔|✔|✔
+Icelandic                     |✔|✔|✔|✔|✔|✔|✔|✔
+Indonesian                    |✔|✔|✔|✔|✔|✔|✔|✔
+Irish                         |✔|✔|✖️|✔|✔|✔|✔|✔
+Italian                       |✔|✔|✔|✔|✔|✔|✔|✔
+Japanese                      |✔|✔|✖️|✔|✔|✔|✔|✔
+Kannada                       |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
+Kazakh                        |✔|✔|✖️|✔|✔|✔|✔|✔
+Khmer                         |✔|✔|✖️|✔|✖️|✖️|✖️|✔
+Komi (Zyrian)                 |✔|✔|✖️|✔|✔|✖️|✔|✖️
+Korean                        |✔|✔|✖️|✔|✔|✔|✔|✔
+Kurdish (Kurmanji)            |✔|✔|✖️|✔|✔|✔|✔|✔
+Kyrgyz                        |✔|✔|✖️|✔|✔|✔|✔|✔
+Lao                           |✔|✔|✖️|✔|✖️|✔|✖️|✔
+Latin                         |✔|✔|✖️|✔|✔|✔|✔|✔
+Latvian                       |✔|✔|✔|✔|✔|✔|✔|✔
+Ligurian                      |✔|✔|✖️|✔|✔|✔|✔|✖️
+Lithuanian                    |✔|✔|✔|✔|✔|✔|✔|✔
+Luxembourgish                 |⭕️|✔|✖️|✖️|✔|✔|✖️|✔
+Macedonian                    |✔|✔|✖️|✔|✔|✔|✔|✔
+Malay                         |⭕️|✔|✖️|✖️|✔|✔|✖️|✔
+Malayalam                     |✔|✔|✖️|✖️|✖️|✔|✖️|✔
+Maltese                       |✔|✔|✖️|✔|✖️|✖️|✔|✔
+Manipuri (Meitei Mayek script)|⭕️|✔|✖️|✖️|✖️|✖️|✖️|✔
+Manx                          |✔|✔|✖️|✔|✔|✖️|✔|✖️
+Marathi                       |✔|✔|✖️|✔|✔|✔|✔|✔
+Mongolian                     |⭕️|⭕️|✔|✖️|✖️|✖️|✖️|✔
+Nepali                        |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
+Nigerian Pidgin               |✔|✔|✖️|✔|✔|✖️|✔|✖️
+Norwegian (Bokmål)            |✔|✔|✔|✔|✔|✔|✔|✔
+Norwegian (Nynorsk)           |✔|✔|✔|✔|✔|✖️|✔|✖️
+Oriya                         |⭕️|✔|✖️|✖️|✖️|✖️|✖️|✔
+Panjabi (Gurmukhi script)     |⭕️|✔|✖️|✖️|✖️|✖️|✖️|✔
+Persian                       |✔|✔|✖️|✔|✔|✔|✔|✔
+Polish                        |✔|✔|✔|✔|✔|✔|✔|✔
+Pomak                         |✔|✔|✖️|✔|✔|✖️|✔|✖️
+Portuguese (Brazil)           |✔|✔|✔|✔|✔|✔|✔|✔
+Portuguese (Portugal)         |✔|✔|✔|✔|✔|✔|✔|✔
+Romanian                      |✔|✔|✔|✔|✔|✔|✔|✔
+Russian                       |✔|✔|✔|✔|✔|✔|✔|✔
+Russian (Old)                 |✔|✔|✖️|✔|✔|✖️|✔|✖️
+Sámi (Northern)               |✔|✔|✖️|✔|✔|✖️|✔|✖️
+Sanskrit                      |✔|✔|✖️|✔|✔|✔|✔|✔
+Scottish Gaelic               |✔|✔|✖️|✔|✔|✔|✔|✔
+Serbian (Cyrillic script)     |⭕️|✔|✔|✖️|✔|✔|✖️|✔
+Serbian (Latin script)        |✔|✔|✔|✔|✔|✔|✔|✔
+Sindhi                        |✔|✔|✖️|✔|✖️|✖️|✔|✔
+Sinhala                       |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
+Slovak                        |✔|✔|✔|✔|✔|✔|✔|✔
+Slovenian                     |✔|✔|✔|✔|✔|✔|✔|✔
+Sorbian (Lower)               |⭕️|✔|✖️|✖️|✖️|✔|✖️|✖️
+Sorbian (Upper)               |✔|✔|✖️|✔|✔|✔|✔|✖️
+Spanish                       |✔|✔|✔|✔|✔|✔|✔|✔
+Swahili                       |⭕️|⭕️|✖️|✖️|✔|✖️|✖️|✔
+Swedish                       |✔|✔|✔|✔|✔|✔|✔|✔
+Tagalog                       |⭕️|✔|✖️|✖️|✔|✔|✖️|✔
+Tajik                         |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
+Tamil                         |✔|✔|✖️|✔|✔|✔|✔|✔
+Tatar                         |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
+Telugu                        |✔|✔|✔|✔|✖️|✔|✔|✔
+Tetun (Dili)                  |⭕️|✔|✖️|✖️|✖️|✖️|✖️|✖️
+Thai                          |✔|✔|✔|✔|✖️|✔|✖️|✔
+Tibetan                       |✔|✔|✖️|✔|✔|✔|✖️|✖️
+Tigrinya                      |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
+Tswana                        |⭕️|✔|✖️|✖️|✖️|✔|✖️|✖️
+Turkish                       |✔|✔|✖️|✔|✔|✔|✔|✔
+Turkish (Ottoman)             |✔|✔|✖️|✔|✔|✖️|✔|✖️
+Ukrainian                     |✔|✔|✔|✔|✔|✔|✔|✔
+Urdu                          |✔|✔|✖️|✔|✔|✔|✔|✔
+Uyghur                        |✔|✔|✖️|✔|✔|✖️|✔|✔
+Vietnamese                    |✔|✔|✖️|✔|✖️|✔|✔|✔
+Welsh                         |✔|✔|✖️|✔|✔|✖️|✔|✔
+Wolof                         |✔|✔|✖️|✔|✔|✖️|✔|✖️
+Yoruba                        |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
+Zulu                          |⭕️|⭕️|✔|✖️|✖️|✖️|✖️|✔
+Other languages               |⭕️|⭕️|✖️|✖️|✖️|✖️|✖️|✖️
 
 > [!NOTE]
 > ✔: Supported.<br>
@@ -1466,8 +1466,8 @@ Z-test (Berry-Rogghe):
     \end{align*}
 -->
 
-Test of Statistical Significance|Measure of Bayes Factor|Formula|Collocation Extraction|Keyword Extraction
---------------------------------|-----------------------|-------|:--------------------:|:----------------:
+Test of Statistical Significance|Measure of Bayes Factor|Formula|Collocation/Colligation Extraction|Keyword Extraction
+--------------------------------|-----------------------|-------|:--------------------------------:|:----------------:
 <span id="ref-fishers-exact-test"></span>Fisher's exact test<br>([Pedersen, 1996](#ref-pedersen-1996); [Kilgarriff, 2001, p. 105](#ref-kilgarriff-2001))||See: [Fisher's exact test - Wikipedia](https://en.wikipedia.org/wiki/Fisher%27s_exact_test#Example)|✔|✔
 <span id="ref-log-likehood-ratio-test"></span>Log-likelihood ratio test<br>([Dunning, 1993](#ref-dunning-1993); [Kilgarriff, 2001, p. 105](#ref-kilgarriff-2001))|Log-likelihood ratio test<br>([Wilson, 2013](#ref-wilson-2013))|![Formula](/doc/measures/statistical_significance/log_likehood_ratio_test.svg)|✔|✔
 <span id="ref-mann-whiteney-u-test"></span>Mann-Whitney U test<br>([Kilgarriff, 2001, pp. 103–104](#ref-kilgarriff-2001))||See: [Mann–Whitney U test - Wikipedia](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test#Calculations)|✖️|✔
@@ -1548,8 +1548,8 @@ Squared phi coefficient:
     \phi^2 = \frac{(O_{11} \times O_{22} - O_{12} \times O_{21})^2}{O_{1x} \times O_{2x} \times O_{x1} \times O_{x2}}
 -->
 
-Measure of Effect Size|Formula|Collocation Extraction|Keyword Extraction
-----------------------|-------|:--------------------:|:----------------:
+Measure of Effect Size|Formula|Collocation/Colligation Extraction|Keyword Extraction
+----------------------|-------|:--------------------------------:|:----------------:
 <span id="ref-conditional-probability"></span>Conditional probability<br>([Durrant, 2008, p. 84](#ref-durrant-2008))|![Formula](/doc/measures/effect_size/conditional_probability.svg)|✔|✖️
 <span id="ref-delta-p"></span><br>ΔP<br>([Gries, 2013](#ref-gries-2013))|![Formula](/doc/measures/effect_size/delta_p.svg)|✔|✖️
 <span id="ref-dice-sorensen-coeff"></span>Dice-Sørensen coefficient<br>([Smadja et al., 1996, p. 8](#ref-smadja-et-al-1996))|![Formula](/doc/measures/effect_size/dice_sorensen_coeff.svg)|✔|✖️

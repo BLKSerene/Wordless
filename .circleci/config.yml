@@ -48,15 +48,35 @@ jobs:
       - run:
           no_output_timeout: 30m
           command: |
+            # Run some tests separately to reduce memory usage
             pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
             pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
 
-            pytest tests/tests_nlp/test_word_tokenization.py
-            pytest tests/tests_nlp/test_pos_tagging.py
+            pytest tests/tests_nlp/test_dependency_parsing.py
             pytest tests/tests_nlp/test_lemmatization.py
+            pytest tests/tests_nlp/test_matching.py
+            pytest tests/tests_nlp/test_nlp_utils.py
+            pytest tests/tests_nlp/test_pos_tagging.py
+            pytest tests/tests_nlp/test_sentence_tokenization.py
+            pytest tests/tests_nlp/test_sentiment_analysis.py
+            pytest tests/tests_nlp/test_stop_word_lists.py
+            pytest tests/tests_nlp/test_syl_tokenization.py
+            pytest tests/tests_nlp/test_texts.py
+            pytest tests/tests_nlp/test_word_detokenization.py
+            pytest tests/tests_nlp/test_word_tokenization.py
 
-            pytest tests/tests_nlp/ --ignore=tests/tests_nlp/tests_spacy --ignore=tests/tests_nlp/tests_stanza --ignore=tests/tests_nlp/test_word_tokenization.py --ignore=tests/tests_nlp/test_pos_tagging.py --ignore=tests/tests_nlp/test_lemmatization.py
-            pytest --ignore=tests/tests_nlp
+            pytest tests/test_colligation_extractor.py
+            pytest tests/test_collocation_extractor.py
+            pytest tests/test_concordancer.py
+            pytest tests/test_concordancer_parallel.py
+            pytest tests/test_dependency_parser.py
+            pytest tests/test_keyword_extractor.py
+            pytest tests/test_main.py
+            pytest tests/test_ngram_generator.py
+            pytest tests/test_profiler.py
+            pytest tests/test_wordlist_generator.py
+
+            pytest --ignore=tests/tests_nlp --ignore=tests/test_colligation_extractor.py --ignore=tests/test_collocation_extractor.py --ignore=tests/test_concordancer.py --ignore=tests/test_concordancer_parallel.py --ignore=tests/test_dependency_parser.py --ignore=tests/test_keyword_extractor.py --ignore=tests/test_main.py --ignore=tests/test_ngram_generator.py --ignore=tests/test_profiler.py --ignore=tests/test_wordlist_generator.py
           name: Run tests
 
       # Save cache
@@ -85,7 +105,9 @@ jobs:
       - run:
           command: |
             pip3 install --upgrade pip setuptools
-            pip3 install --requirement requirements/requirements_tests.txt
+            pip3 install --requirement requirements/requirements_tests_macos.txt
+            # Install spacy-pkuseg separately with "--no-deps" to avoid depending on NumPy 2
+            pip3 install --no-deps spacy-pkuseg
             # Download models and data files
             python3 utils/wl_downloader_ci.py
           name: Install dependencies
@@ -94,15 +116,35 @@ jobs:
       - run:
           no_output_timeout: 30m
           command: |
+            # Run some tests separately to reduce memory usage
             pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
             pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
 
-            pytest tests/tests_nlp/test_word_tokenization.py
-            pytest tests/tests_nlp/test_pos_tagging.py
+            pytest tests/tests_nlp/test_dependency_parsing.py
             pytest tests/tests_nlp/test_lemmatization.py
+            pytest tests/tests_nlp/test_matching.py
+            pytest tests/tests_nlp/test_nlp_utils.py
+            pytest tests/tests_nlp/test_pos_tagging.py
+            pytest tests/tests_nlp/test_sentence_tokenization.py
+            pytest tests/tests_nlp/test_sentiment_analysis.py
+            pytest tests/tests_nlp/test_stop_word_lists.py
+            pytest tests/tests_nlp/test_syl_tokenization.py
+            pytest tests/tests_nlp/test_texts.py
+            pytest tests/tests_nlp/test_word_detokenization.py
+            pytest tests/tests_nlp/test_word_tokenization.py
 
-            pytest tests/tests_nlp/ --ignore=tests/tests_nlp/tests_spacy --ignore=tests/tests_nlp/tests_stanza --ignore=tests/tests_nlp/test_word_tokenization.py --ignore=tests/tests_nlp/test_pos_tagging.py --ignore=tests/tests_nlp/test_lemmatization.py
-            pytest --ignore=tests/tests_nlp
+            pytest tests/test_colligation_extractor.py
+            pytest tests/test_collocation_extractor.py
+            pytest tests/test_concordancer.py
+            pytest tests/test_concordancer_parallel.py
+            pytest tests/test_dependency_parser.py
+            pytest tests/test_keyword_extractor.py
+            pytest tests/test_main.py
+            pytest tests/test_ngram_generator.py
+            pytest tests/test_profiler.py
+            pytest tests/test_wordlist_generator.py
+
+            pytest --ignore=tests/tests_nlp --ignore=tests/test_colligation_extractor.py --ignore=tests/test_collocation_extractor.py --ignore=tests/test_concordancer.py --ignore=tests/test_concordancer_parallel.py --ignore=tests/test_dependency_parser.py --ignore=tests/test_keyword_extractor.py --ignore=tests/test_main.py --ignore=tests/test_ngram_generator.py --ignore=tests/test_profiler.py --ignore=tests/test_wordlist_generator.py
           name: Run tests
 
       # Save cache
@@ -144,15 +186,36 @@ jobs:
             export QT_QPA_PLATFORM=offscreen
 
             # Use "python -m pytest" instead to fix "pytest: command not found"
+            # Run some tests separately to reduce memory usage
             python3.11 -m pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
             python3.11 -m pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
 
-            python3.11 -m pytest tests/tests_nlp/test_word_tokenization.py
-            python3.11 -m pytest tests/tests_nlp/test_pos_tagging.py
+            python3.11 -m pytest tests/tests_nlp/test_dependency_parsing.py
             python3.11 -m pytest tests/tests_nlp/test_lemmatization.py
+            python3.11 -m pytest tests/tests_nlp/test_matching.py
+            python3.11 -m pytest tests/tests_nlp/test_nlp_utils.py
+            python3.11 -m pytest tests/tests_nlp/test_pos_tagging.py
+            python3.11 -m pytest tests/tests_nlp/test_sentence_tokenization.py
+            python3.11 -m pytest tests/tests_nlp/test_sentiment_analysis.py
+            python3.11 -m pytest tests/tests_nlp/test_stop_word_lists.py
+            python3.11 -m pytest tests/tests_nlp/test_syl_tokenization.py
+            python3.11 -m pytest tests/tests_nlp/test_texts.py
+            python3.11 -m pytest tests/tests_nlp/test_word_detokenization.py
+            python3.11 -m pytest tests/tests_nlp/test_word_tokenization.py
 
-            python3.11 -m pytest tests/tests_nlp/ --ignore=tests/tests_nlp/tests_spacy --ignore=tests/tests_nlp/tests_stanza --ignore=tests/tests_nlp/test_word_tokenization.py --ignore=tests/tests_nlp/test_pos_tagging.py --ignore=tests/tests_nlp/test_lemmatization.py
-            python3.11 -m pytest --ignore=tests/tests_nlp --ignore=tests/tests_settings
+            python3.11 -m pytest tests/test_colligation_extractor.py
+            python3.11 -m pytest tests/test_collocation_extractor.py
+            python3.11 -m pytest tests/test_concordancer.py
+            python3.11 -m pytest tests/test_concordancer_parallel.py
+            python3.11 -m pytest tests/test_dependency_parser.py
+            python3.11 -m pytest tests/test_keyword_extractor.py
+            python3.11 -m pytest tests/test_main.py
+            python3.11 -m pytest tests/test_ngram_generator.py
+            python3.11 -m pytest tests/test_profiler.py
+            python3.11 -m pytest tests/test_wordlist_generator.py
+
+            # Exclude tests_settings on Linux
+            python3.11 -m pytest --ignore=tests/tests_nlp --ignore=tests/test_colligation_extractor.py --ignore=tests/test_collocation_extractor.py --ignore=tests/test_concordancer.py --ignore=tests/test_concordancer_parallel.py --ignore=tests/test_dependency_parser.py --ignore=tests/test_keyword_extractor.py --ignore=tests/test_main.py --ignore=tests/test_ngram_generator.py --ignore=tests/test_profiler.py --ignore=tests/test_wordlist_generator.py --ignore=tests/tests_nlp --ignore=tests/tests_settings
           name: Run tests
 
       # Save cache
@@ -193,15 +256,37 @@ jobs:
             # Fix PyQt
             export QT_QPA_PLATFORM=offscreen
 
+            # Run some tests separately to reduce memory usage
             pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
             pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
 
-            pytest tests/tests_nlp/test_word_tokenization.py
-            pytest tests/tests_nlp/test_pos_tagging.py
+            pytest tests/tests_nlp/test_dependency_parsing.py
             pytest tests/tests_nlp/test_lemmatization.py
+            pytest tests/tests_nlp/test_matching.py
+            pytest tests/tests_nlp/test_nlp_utils.py
+            pytest tests/tests_nlp/test_pos_tagging.py
+            pytest tests/tests_nlp/test_sentence_tokenization.py
+            pytest tests/tests_nlp/test_sentiment_analysis.py
+            pytest tests/tests_nlp/test_stop_word_lists.py
+            pytest tests/tests_nlp/test_syl_tokenization.py
+            pytest tests/tests_nlp/test_texts.py
+            pytest tests/tests_nlp/test_word_detokenization.py
+            pytest tests/tests_nlp/test_word_tokenization.py
 
-            pytest tests/tests_nlp/ --ignore=tests/tests_nlp/tests_spacy --ignore=tests/tests_nlp/tests_stanza --ignore=tests/tests_nlp/test_word_tokenization.py --ignore=tests/tests_nlp/test_pos_tagging.py --ignore=tests/tests_nlp/test_lemmatization.py
-            pytest --ignore=tests/tests_nlp --ignore=tests/tests_settings
+            pytest tests/test_colligation_extractor.py
+            pytest tests/test_collocation_extractor.py
+            pytest tests/test_concordancer.py
+            pytest tests/test_concordancer_parallel.py
+            pytest tests/test_dependency_parser.py
+            pytest tests/test_keyword_extractor.py
+            pytest tests/test_main.py
+            pytest tests/test_ngram_generator.py
+            pytest tests/test_profiler.py
+            pytest tests/test_wordlist_generator.py
+
+            # Exclude tests_settings on Linux
+            pytest --ignore=tests/tests_nlp --ignore=tests/test_colligation_extractor.py --ignore=tests/test_collocation_extractor.py --ignore=tests/test_concordancer.py --ignore=tests/test_concordancer_parallel.py --ignore=tests/test_dependency_parser.py --ignore=tests/test_keyword_extractor.py --ignore=tests/test_main.py --ignore=tests/test_ngram_generator.py --ignore=tests/test_profiler.py --ignore=tests/test_wordlist_generator.py --ignore=tests/tests_settings
+
           name: Run tests
 
       # Save cache

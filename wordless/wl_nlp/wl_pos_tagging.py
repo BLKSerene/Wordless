@@ -44,15 +44,15 @@ UNIVERSAL_TAGSETS_STANZA = {
 }
 
 def to_content_function(universal_pos_tag):
-    if universal_pos_tag in [
+    if universal_pos_tag in (
         'ADJ', 'ADV', 'INTJ', 'NOUN', 'PROPN', 'NUM', 'VERB', 'SYM', 'X',
         'NOUN/NUM', 'SYM/X'
-    ]:
+    ):
         return _tr('wl_pos_tagging', 'Content words')
-    elif universal_pos_tag in [
+    elif universal_pos_tag in (
         'ADP', 'AUX', 'CONJ', 'CCONJ', 'SCONJ', 'DET', 'PART', 'PRON', 'PUNCT',
         'ADP/SCONJ', 'PUNCT/SYM'
-    ]:
+    ):
         return _tr('wl_pos_tagging', 'Function words')
     else:
         return None
@@ -72,10 +72,12 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', f
         texts_tagged = []
         tags = []
 
-        if pos_tagger == 'default':
-            pos_tagger = main.settings_custom['pos_tagging']['pos_tagger_settings']['pos_taggers'][lang]
+        settings = main.settings_custom['pos_tagging']
 
-        if tagset == 'default' and main.settings_custom['pos_tagging']['pos_tagger_settings']['to_universal_pos_tags']:
+        if pos_tagger == 'default':
+            pos_tagger = settings['pos_tagger_settings']['pos_taggers'][lang]
+
+        if tagset == 'default' and settings['pos_tagger_settings']['to_universal_pos_tags']:
             tagset = 'universal'
 
         wl_nlp_utils.init_word_tokenizers(
@@ -96,43 +98,47 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', f
             if pos_tagger.startswith('spacy_'):
                 lang_spacy = wl_conversion.remove_lang_code_suffixes(main, lang)
                 nlp = main.__dict__[f'spacy_nlp_{lang_spacy}']
-                lines = [line.strip() for line in inputs.splitlines() if line.strip()]
+                lines = (line.strip() for line in inputs.splitlines() if line.strip())
 
-                with nlp.select_pipes(disable = [
+                with nlp.select_pipes(disable = (
                     pipeline
-                    for pipeline in ['parser', 'lemmatizer', 'senter', 'sentencizer']
+                    for pipeline in ('parser', 'lemmatizer', 'senter', 'sentencizer')
                     if nlp.has_pipe(pipeline)
-                ]):
+                )):
                     for doc in nlp.pipe(lines):
                         for token in doc:
                             texts_tagged.append(token.text)
 
-                            if tagset in ['default', 'raw']:
-                                tags.append(token.tag_)
-                            elif tagset == 'universal':
-                                tags.append(token.pos_)
+                            match tagset:
+                                case 'default' | 'raw':
+                                    tags.append(token.tag_)
+                                # Convert empty universal POS tags to "X" (e.g. those for numbers in the Romanian model)
+                                case 'universal':
+                                    tags.append(token.pos_.strip() if token.pos_.strip() else 'X')
 
                             if pos_tagger not in UNIVERSAL_TAGSETS_SPACY:
-                                tags_universal.append(token.pos_)
+                                # Convert empty universal POS tags to "X" (e.g. those for numbers in the Romanian model)
+                                tags_universal.append(token.pos_.strip() if token.pos_.strip() else 'X')
             # Stanza
             elif pos_tagger.startswith('stanza_'):
-                if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+                if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
                     lang_stanza = wl_conversion.remove_lang_code_suffixes(main, lang)
                 else:
                     lang_stanza = lang
 
                 nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
-                lines = [line.strip() for line in inputs.splitlines() if line.strip()]
+                lines = (line.strip() for line in inputs.splitlines() if line.strip())
 
                 for doc in nlp.bulk_process(lines):
                     for sentence in doc.sentences:
                         for token in sentence.words:
                             texts_tagged.append(token.text)
 
-                            if tagset in ['default', 'raw']:
-                                tags.append(token.xpos if token.xpos else token.upos)
-                            elif tagset == 'universal':
-                                tags.append(token.upos)
+                            match tagset:
+                                case 'default' | 'raw':
+                                    tags.append(token.xpos if token.xpos else token.upos)
+                                case 'universal':
+                                    tags.append(token.upos)
 
                             if pos_tagger not in UNIVERSAL_TAGSETS_STANZA:
                                 tags_universal.append(token.upos)
@@ -150,11 +156,11 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', f
                 lang_spacy = wl_conversion.remove_lang_code_suffixes(main, lang)
                 nlp = main.__dict__[f'spacy_nlp_{lang_spacy}']
 
-                with nlp.select_pipes(disable = [
+                with nlp.select_pipes(disable = (
                     pipeline
-                    for pipeline in ['parser', 'lemmatizer', 'senter', 'sentencizer']
+                    for pipeline in ('parser', 'lemmatizer', 'senter', 'sentencizer')
                     if nlp.has_pipe(pipeline)
-                ]):
+                )):
                     docs = []
 
                     for tokens in wl_nlp_utils.split_token_list(main, texts, pos_tagger):
@@ -169,16 +175,19 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', f
                         for token in doc:
                             texts_tagged.append(token.text)
 
-                            if tagset in ['default', 'raw']:
-                                tags.append(token.tag_)
-                            elif tagset == 'universal':
-                                tags.append(token.pos_)
+                            match tagset:
+                                case 'default' | 'raw':
+                                    tags.append(token.tag_)
+                                # Convert empty universal POS tags to "X" (e.g. those for numbers in the Romanian model)
+                                case 'universal':
+                                    tags.append(token.pos_.strip() if token.pos_.strip() else 'X')
 
                             if pos_tagger not in UNIVERSAL_TAGSETS_SPACY:
-                                tags_universal.append(token.pos_)
+                                # Convert empty universal POS tags to "X" (e.g. those for numbers in the Romanian model)
+                                tags_universal.append(token.pos_.strip() if token.pos_.strip() else 'X')
             # Stanza
             elif pos_tagger.startswith('stanza_'):
-                if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+                if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
                     lang_stanza = wl_conversion.remove_lang_code_suffixes(main, lang)
                 else:
                     lang_stanza = lang
@@ -193,10 +202,11 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', f
                         for token in sentence.words:
                             texts_tagged.append(token.text)
 
-                            if tagset in ['default', 'raw']:
-                                tags.append(token.xpos if token.xpos else token.upos)
-                            elif tagset == 'universal':
-                                tags.append(token.upos)
+                            match tagset:
+                                case 'default' | 'raw':
+                                    tags.append(token.xpos if token.xpos else token.upos)
+                                case 'universal':
+                                    tags.append(token.upos)
 
                             if pos_tagger not in UNIVERSAL_TAGSETS_STANZA:
                                 tags_universal.append(token.upos)
@@ -213,10 +223,10 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', f
         ):
             mappings = {
                 tag: tag_universal
-                for tag, tag_universal, _, _, _ in main.settings_custom['pos_tagging']['tagsets']['mapping_settings'][lang][pos_tagger]
+                for tag, tag_universal, _, _, _ in settings['tagsets']['mapping_settings'][lang][pos_tagger]
             }
 
-            # Convert empty tags (to be removed later) to X
+            # Convert empty tags (to be removed later) to "X"
             tags_universal = [(mappings[tag.strip()] if tag.strip() else 'X') for tag in tags]
 
         # Remove empty tokens (e.g. SudachiPy) and strip whitespace around tokens and tags
@@ -241,7 +251,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', f
         else:
             mappings = {
                 tag: content_function
-                for tag, _, content_function, _, _ in main.settings_custom['pos_tagging']['tagsets']['mapping_settings'][lang][pos_tagger]
+                for tag, _, content_function, _, _ in settings['tagsets']['mapping_settings'][lang][pos_tagger]
             }
 
             content_functions = [mappings[tag] for tag in tags]
@@ -289,8 +299,17 @@ def wl_pos_tag_universal(main, inputs, lang, pos_tagger = 'default', tagged = Fa
         # Assign universal POS tags to tagged files without modifying original tags
         if tagged:
             tokens = wl_pos_tag(main, copy.deepcopy(inputs), lang, pos_tagger, force = True)
-            wl_texts.set_token_properties(inputs, 'tag_universal', wl_texts.get_token_properties(tokens, 'tag_universal'))
-            wl_texts.set_token_properties(inputs, 'content_function', wl_texts.get_token_properties(tokens, 'content_function'))
+
+            wl_texts.set_token_properties(
+                inputs,
+                'tag_universal',
+                wl_texts.get_token_properties(tokens, 'tag_universal')
+            )
+            wl_texts.set_token_properties(
+                inputs,
+                'content_function',
+                wl_texts.get_token_properties(tokens, 'content_function')
+            )
         else:
             inputs = wl_pos_tag(main, inputs, lang, pos_tagger)
 
@@ -313,7 +332,7 @@ def wl_pos_tag_text(main, text, lang, pos_tagger):
     elif pos_tagger == 'sudachipy_jpn':
         for token in main.sudachipy_word_tokenizer.tokenize(text):
             tokens_tagged.append(token.surface())
-            tags.append('-'.join([pos for pos in token.part_of_speech()[:4] if pos != '*']))
+            tags.append('-'.join((pos for pos in token.part_of_speech()[:4] if pos != '*')))
     # Khmer
     elif pos_tagger == 'khmer_nltk_khm':
         for token, tag in khmernltk.pos_tag(text):
@@ -396,7 +415,11 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger):
     elif pos_tagger == 'sudachipy_jpn':
         for token in main.sudachipy_word_tokenizer.tokenize(''.join(tokens)):
             tokens_tagged.append(token.surface())
-            tags.append('-'.join([pos for pos in token.part_of_speech()[:4] if pos != '*']))
+            tags.append('-'.join((
+                pos
+                for pos in token.part_of_speech()[:4]
+                if pos != '*'
+            )))
     # Khmer
     elif pos_tagger == 'khmer_nltk_khm':
         for token, tag in khmernltk.pos_tag(''.join(tokens)):
@@ -404,7 +427,12 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger):
             tags.append(tag)
     # Korean
     elif pos_tagger == 'python_mecab_ko_mecab':
-        tokens_tagged, tags = wl_pos_tag_text(main, ' '.join(tokens), lang = 'kor', pos_tagger = 'python_mecab_ko_mecab')
+        tokens_tagged, tags = wl_pos_tag_text(
+            main,
+            ' '.join(tokens),
+            lang = 'kor',
+            pos_tagger = 'python_mecab_ko_mecab'
+        )
     # Lao
     elif pos_tagger.startswith('laonlp_'):
         if pos_tagger == 'laonlp_seqlabeling':

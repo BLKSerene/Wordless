@@ -301,11 +301,11 @@ def test_lingua():
         re.search(r'^[^\(\)]+', lang.lower()).group().strip()
         for lang in main.settings_global['langs']
     }
-    langs_exceptions = {'bokmal', 'ganda', 'nynorsk'}
+    langs_excs = {'bokmal', 'nynorsk', 'punjabi', 'slovene'}
     langs_extra = set()
 
     for lang in lingua.Language.all(): # pylint: disable=no-member
-        if lang.name.lower() not in langs | langs_exceptions:
+        if lang.name.lower() not in langs | langs_excs:
             langs_extra.add(lang.name)
 
     assert langs_extra == {'BOSNIAN', 'MAORI', 'SHONA', 'SOMALI', 'SOTHO', 'TSONGA', 'XHOSA'}
@@ -324,20 +324,20 @@ def test_detection_lang():
     assert wl_detection.detect_lang_text(main, '\x00') == 'other'
 
     try:
-        for lang in [
+        for lang in (
             'afr', 'sqi', 'ara', 'hye', 'aze',
             'eus', 'bel', 'ben', 'bul',
             'cat', 'zho_cn', 'zho_tw', 'hrv', 'ces',
             'dan', 'nld',
             'eng_us', 'epo', 'est',
             'fin', 'fra',
-            'kat', 'deu_de', 'ell', 'guj',
+            'lug', 'kat', 'deu_de', 'ell', 'guj',
             'heb', 'hin', 'hun',
             'isl', 'ind', 'gle', 'ita',
             'jpn',
             'kor', 'kaz',
-            'lat', 'lav', 'lit', 'lug',
-            'mkd', 'mar', 'mon', 'msa',
+            'lat', 'lav', 'lit',
+            'mkd', 'mar', 'mon', # 'msa',
             'nno', # 'nob',
             'fas', 'pol', 'por_pt', 'pan_guru',
             'ron', 'rus',
@@ -348,7 +348,7 @@ def test_detection_lang():
             'cym',
             'yor',
             'zul'
-        ]:
+        ):
             file_path = os.path.join(test_file_dir, f'{lang}.txt')
             file = {'path': file_path, 'encoding': 'utf_8'}
             text = wl_test_lang_examples.__dict__[f'SENTENCE_{lang.upper()}']

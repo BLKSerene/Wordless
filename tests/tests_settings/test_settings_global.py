@@ -40,17 +40,17 @@ def add_lang_suffixes(lang_codes):
         if lang_code == 'hy':
             lang_codes.append('hyw')
 
-        if lang_code in ['zh', 'en', 'de', 'pt', 'pa', 'sr']:
+        if lang_code in ('zh', 'en', 'de', 'pt', 'pa', 'sr'):
             lang_codes.remove(lang_code)
 
             if lang_code == 'zh':
-                lang_codes.extend(['zh_cn', 'zh_tw'])
+                lang_codes.extend(('zh_cn', 'zh_tw'))
             elif lang_code == 'en':
-                lang_codes.extend(['en_gb', 'en_us'])
+                lang_codes.extend(('en_gb', 'en_us'))
             elif lang_code == 'de':
-                lang_codes.extend(['de_at', 'de_de', 'de_ch'])
+                lang_codes.extend(('de_at', 'de_de', 'de_ch'))
             elif lang_code == 'pt':
-                lang_codes.extend(['pt_br', 'pt_pt'])
+                lang_codes.extend(('pt_br', 'pt_pt'))
             elif lang_code == 'pa':
                 lang_codes.append('pa_guru')
             elif lang_code == 'sr':
@@ -135,6 +135,8 @@ def test_settings_global():
                 langs_nltk_sentence_tokenizers_supported.append('nb')
             case 'portuguese':
                 langs_nltk_sentence_tokenizers_supported.extend(['pt_br', 'pt_pt'])
+            case 'slovene':
+                langs_nltk_sentence_tokenizers_supported.append('sl')
             case 'README':
                 pass
             case _:
@@ -173,11 +175,10 @@ def test_settings_global():
     for lang_code in settings_word_tokenizers:
         if lang_code != 'other':
             # Exclude languages without spaces between words
-            if lang_code not in [
-                'amh', 'mya', 'lzh', 'zho_cn', 'zho_tw',
-                'jpn', 'khm', 'lao', 'tha', 'bod',
+            if lang_code not in (
+                'amh', 'mya', 'lzh', 'zho_cn', 'zho_tw', 'jpn', 'khm', 'lao', 'tha', 'bod',
                 'vie'
-            ]:
+            ):
                 assert lang_code in langs_nltk_word_tokenizers, f'''Missing language code for NLTK's tokenizers: {lang_code}!'''
             else:
                 assert lang_code not in langs_nltk_word_tokenizers, f'''Extra language code for NLTK's tokenizers: {lang_code}!'''
@@ -189,7 +190,7 @@ def test_settings_global():
     for file in os.listdir(os.path.split(sacremoses.__file__)[0] + '/data/nonbreaking_prefixes/'):
         file_ext = os.path.splitext(file)[1][1:]
 
-        if file_ext not in ['yue', 'zh']:
+        if file_ext not in ('yue', 'zh'):
             langs_sacremoses_supported.append(file_ext)
 
     langs_sacremoses_supported = add_lang_suffixes(langs_sacremoses_supported)
@@ -248,7 +249,7 @@ def test_settings_global():
     for lang in pkgutil.iter_modules(spacy.lang.__path__):
         # Tibetan tokenizer is not funtional
         # Thai and Vietnamese tokenization are delegated to PyThaiNLP and Pyvi
-        if lang.ispkg and lang.name not in ['bo', 'th', 'vi', 'xx']:
+        if lang.ispkg and lang.name not in ('bo', 'th', 'vi', 'xx'):
             langs_spacy_supported_word_tokenizers.append(lang.name)
 
     langs_spacy_supported_word_tokenizers = add_lang_suffixes(langs_spacy_supported_word_tokenizers)
@@ -279,7 +280,9 @@ def test_settings_global():
         )):
             lang_code_639_1 = wl_conversion.to_iso_639_1(main, lang_code)
 
-            assert lang_code in ['khm', 'tha', 'bod', 'vie'], f'''Missing language code for spaCy's sentence recognizers or sentencizer: {lang_code}/{lang_code_639_1}!'''
+            assert lang_code in (
+                'khm', 'tha', 'bod', 'vie'
+            ), f'''Missing language code for spaCy's sentence recognizers or sentencizer: {lang_code}/{lang_code_639_1}!'''
 
     for lang_code, word_tokenizers in settings_word_tokenizers.items():
         if (
@@ -394,14 +397,14 @@ def test_settings_global():
     langs_stanza_supported_dependency_parsers = add_lang_suffixes(langs_stanza_supported_dependency_parsers)
     langs_stanza_supported_sentiment_analyzers = add_lang_suffixes(langs_stanza_supported_sentiment_analyzers)
 
-    for settings_lang_utils, langs, langs_supported, util_type in [
+    for settings_lang_utils, langs, langs_supported, util_type in (
         (settings_sentence_tokenizers, langs_stanza_sentence_tokenizers, langs_stanza_supported_tokenizers, 'sentence tokenizer'),
         (settings_word_tokenizers, langs_stanza_word_tokenizers, langs_stanza_supported_tokenizers, 'word tokenizer'),
         (settings_pos_taggers, langs_stanza_pos_taggers, langs_stanza_supported_pos_taggers, 'POS tagger'),
         (settings_lemmatizers, langs_stanza_lemmatizers, langs_stanza_supported_lemmatizers, 'lemmatizer'),
         (settings_dependency_parsers, langs_stanza_dependency_parsers, langs_stanza_supported_dependency_parsers, 'dependency parser'),
         (settings_sentiment_analyzers, langs_stanza_sentiment_analyzers, langs_stanza_supported_sentiment_analyzers, 'sentiment analyzer')
-    ]:
+    ):
         for lang_code, lang_utils in settings_lang_utils.items():
             if (
                 lang_code != 'other'
@@ -441,7 +444,7 @@ def test_settings_global():
         assert lang in settings_langs_lang_utils, f'Extra language: {lang}!'
 
     # Check for invalid language utils
-    for settings_lang_utils, mapping_lang_utils, util_type in [
+    for settings_lang_utils, mapping_lang_utils, util_type in (
         [settings_sentence_tokenizers, 'sentence_tokenizers', 'sentence tokenizers'],
         [settings_word_tokenizers, 'word_tokenizers', 'word tokenizers'],
         [settings_syl_tokenizers, 'syl_tokenizers', 'syllable tokenizers'],
@@ -450,7 +453,7 @@ def test_settings_global():
         [settings_stop_word_lists, 'stop_word_lists', 'stop word lists'],
         [settings_dependency_parsers, 'dependency_parsers', 'dependency parsers'],
         [settings_sentiment_analyzers, 'sentiment_analyzers', 'sentiment analyzers']
-    ]:
+    ):
         lang_utils_registered = main.settings_global['mapping_lang_utils'][mapping_lang_utils].values()
 
         for lang_utils in settings_lang_utils.values():

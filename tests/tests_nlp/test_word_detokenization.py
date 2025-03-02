@@ -22,9 +22,8 @@ from tests import wl_test_init, wl_test_lang_examples
 from wordless.wl_nlp import wl_word_detokenization, wl_word_tokenization
 from wordless.wl_utils import wl_misc
 
-_, is_macos, _ = wl_misc.check_os()
-
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
+is_macos = wl_misc.check_os()[1]
 
 test_langs = (
     ['zho_cn', 'zho_tw', 'eng_us', 'jpn', 'tha']
@@ -70,15 +69,15 @@ def test_word_detokenize(lang):
         case 'zho_tw':
             assert text == '英國的全稱是United Kingdom of Great Britain，由四個部分組成：England、Scotland、Wales和Northern Ireland。test'
         case 'eng_us' | 'other':
-            assert text == 'English is a West Germanic language in the Indo-European language family.'
+            assert text == 'English is a West Germanic language in the Indo-European language family, whose speakers, called Anglophones, originated in early medieval England on the island of Great Britain. [4] [5] [6]'
         case 'jpn':
             assert text == '''The sentence "天気がいいから、散歩しましょう。"means: The weather is good so let 's take a walk.'''
         case 'tha':
-            assert text == 'ภาษาไทยหรือภาษาไทยกลางเป็นภาษาในกลุ่มภาษาไทซึ่งเป็นกลุ่มย่อยของตระกูลภาษาขร้า - ไทและเป็นภาษาราชการและภาษาประจำชาติของประเทศไทย [3][4]'
+            assert text == 'ภาษาไทยหรือภาษาไทยกลางเป็นภาษาในกลุ่มภาษาไทสาขาย่อยเชียงแสนซึ่งเป็นกลุ่มย่อยของตระกูลภาษาขร้า - ไทและเป็นภาษาราชการและภาษาประจำชาติของประเทศไทย [3][4]'
         case 'bod':
             assert text == 'Test this Tibetan string: དུང་དང་འོ་མར་འགྲན་པའི་ལྷག་བསམ་མཐུ། །དམན་ཡང་དཀར་པོའི་བྱས་འབྲས་ཅུང་ཟད་ཅིག །བློ་དང་འདུན་པ་བཟང་བའི་རང་རིགས་ཀུན། །རྒྱལ་ཁའི་འཕྲིན་བཟང་ལས་དོན་འགྲུབ་ཕྱིར་འབད།། ད། དa'
         case _:
-            raise wl_test_init.Wl_Exception_Tests_Lang_Skipped(lang)
+            raise wl_test_init.Wl_Exc_Tests_Lang_Skipped(lang)
 
 if __name__ == '__main__':
     for lang in test_langs_local:
