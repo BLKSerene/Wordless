@@ -442,24 +442,15 @@ class Wl_Table_Files(wl_tables.Wl_Table):
 
         self.file_area.label_num_corpora.setText(
             self.tr('Number of corpora (selected): ')
-            + str(len(files))
-            + ' ('
-            + str(len(files_selected))
-            + ')'
+            + f'{len(files):,} ({len(files_selected):,})'
         )
         self.file_area.label_num_tokens.setText(
             self.tr('Number of tokens (selected): ')
-            + str(num_tokens_all)
-            + ' ('
-            + str(num_tokens)
-            + ')'
+            + f'{num_tokens_all:,} ({num_tokens:,})'
         )
         self.file_area.label_num_types.setText(
             self.tr('| Number of types (selected): ')
-            + str(num_types_all)
-            + ' ('
-            + str(num_types)
-            + ')'
+            + f'{num_types_all:,} ({num_types:,})'
         )
 
     def check_file_area(self, op, *args, **kwargs):
