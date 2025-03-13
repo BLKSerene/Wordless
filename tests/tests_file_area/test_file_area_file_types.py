@@ -20,7 +20,7 @@ import glob
 import os
 import time
 
-from PyQt5.QtCore import QObject
+from PyQt5 import QtCore
 
 from tests import wl_test_init
 from wordless import wl_file_area
@@ -57,7 +57,7 @@ def add_file(file_paths, update_gui, file_type = 'observed'):
     for file_path in file_paths:
         print(f'Opening file "{os.path.split(file_path)[1]}"...')
 
-        table = QObject()
+        table = QtCore.QObject()
         table.files_to_open = []
 
         wl_file_area.Wl_Worker_Add_Files(

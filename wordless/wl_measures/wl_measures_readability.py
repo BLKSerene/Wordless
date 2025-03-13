@@ -23,7 +23,7 @@ import random
 import re
 
 import numpy
-from PyQt5.QtCore import QCoreApplication
+from PyQt5 import QtCore
 
 from wordless.wl_checks import wl_checks_tokens
 from wordless.wl_nlp import (
@@ -35,7 +35,7 @@ from wordless.wl_nlp import (
 )
 from wordless.wl_utils import wl_misc, wl_paths
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 def get_nums(main, text):
     # Number of sentences

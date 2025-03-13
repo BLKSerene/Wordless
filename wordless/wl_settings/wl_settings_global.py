@@ -16,7 +16,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from PyQt5.QtCore import QCoreApplication
+from PyQt5 import QtCore
 
 from wordless.wl_measures import (
     wl_measures_adjusted_freq,
@@ -26,7 +26,7 @@ from wordless.wl_measures import (
     wl_measures_statistical_significance
 )
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 # Use function instead of constant to defer translation until QTranslator is initialized
 def init_settings_global():
@@ -4372,17 +4372,6 @@ def init_settings_global():
                 'collocation': True,
                 'keyword': False
             }
-        },
-
-        'styles': {
-            'style_dialog': '''
-                <head><style>
-                    * {
-                        margin: 0;
-                        line-height: 120%;
-                    }
-                </style></head>
-            '''
         }
     }
 

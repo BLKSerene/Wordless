@@ -25,39 +25,22 @@ import traceback
 import bs4
 import docx
 import openpyxl
-from PyQt5.QtCore import (
-    pyqtSignal,
-    QCoreApplication,
-    QItemSelection,
-    Qt
-)
-from PyQt5.QtGui import (
-    QFont,
-    QStandardItem,
-    QStandardItemModel
-)
-from PyQt5.QtWidgets import (
-    QAbstractItemView,
-    QApplication,
-    QFileDialog,
-    QHeaderView,
-    QLabel,
-    QPushButton,
-    QTableView
-)
+from PyQt5 import QtCore
+from PyQt5 import QtGui
+from PyQt5 import QtWidgets
 
 from wordless.wl_checks import wl_checks_misc, wl_checks_work_area
-from wordless.wl_dialogs import wl_dialogs_misc, wl_msg_boxes
+from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc
 from wordless.wl_nlp import wl_nlp_utils
 from wordless.wl_utils import wl_misc, wl_paths, wl_threading
 from wordless.wl_widgets import wl_buttons
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 # pylint: disable=unnecessary-lambda
 
 # self.tr() does not work in inherited classes
-class Wl_Table(QTableView):
+class Wl_Table(QtWidgets.QTableView):
     def __init__(
         self, parent,
         headers, header_orientation = 'hor',
@@ -74,7 +57,7 @@ class Wl_Table(QTableView):
         self.settings = self.main.settings_custom
         self.table_settings = {}
 
-        model = QStandardItemModel()
+        model = QtGui.QStandardItemModel()
         model.table = self
 
         self.setModel(model)
@@ -84,29 +67,29 @@ class Wl_Table(QTableView):
         elif self.header_orientation == 'vert':
             self.model().setVerticalHeaderLabels(self.headers)
 
-        self.verticalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
+        self.verticalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeToContents)
 
         self.horizontalHeader().setHighlightSections(False)
         self.verticalHeader().setHighlightSections(False)
 
-        self.setVerticalScrollMode(QAbstractItemView.ScrollPerPixel)
-        self.setHorizontalScrollMode(QAbstractItemView.ScrollPerPixel)
+        self.setVerticalScrollMode(QtWidgets.QAbstractItemView.ScrollPerPixel)
+        self.setHorizontalScrollMode(QtWidgets.QAbstractItemView.ScrollPerPixel)
 
         if editable:
-            self.setEditTriggers(QAbstractItemView.DoubleClicked | QAbstractItemView.SelectedClicked)
+            self.setEditTriggers(QtWidgets.QAbstractItemView.DoubleClicked | QtWidgets.QAbstractItemView.SelectedClicked)
         else:
-            self.setEditTriggers(QAbstractItemView.NoEditTriggers)
+            self.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
 
         if drag_drop:
             self.setDragEnabled(True)
             self.setAcceptDrops(True)
             self.viewport().setAcceptDrops(True)
-            self.setDragDropMode(QAbstractItemView.InternalMove)
+            self.setDragDropMode(QtWidgets.QAbstractItemView.InternalMove)
             self.setDragDropOverwriteMode(False)
 
-        self.setSelectionBehavior(QAbstractItemView.SelectRows)
+        self.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         # Remove dotted gray border around selected cells
-        self.setFocusPolicy(Qt.NoFocus)
+        self.setFocusPolicy(QtCore.Qt.NoFocus)
 
         self.default_foreground = '#292929'
         self.default_background = '#FFF'
@@ -216,7 +199,7 @@ class Wl_Table(QTableView):
 
         for i, row in enumerate(data):
             for j, item in enumerate(row):
-                if isinstance(item, QStandardItem):
+                if isinstance(item, QtGui.QStandardItem):
                     self.model().setItem(i, j, item)
                 else:
                     self.setIndexWidget(self.model().index(i, j), item)
@@ -267,8 +250,8 @@ class Wl_Table(QTableView):
             self.horizontalHeader().sectionCountChanged.emit(self.num_cols_old, self.model().columnCount())
             self.verticalHeader().sectionCountChanged.emit(self.num_rows_old, self.model().rowCount())
 
-            self.model().itemChanged.emit(QStandardItem())
-            self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
+            self.model().itemChanged.emit(QtGui.QStandardItem())
+            self.selectionModel().selectionChanged.emit(QtCore.QItemSelection(), QtCore.QItemSelection())
 
     def is_empty(self):
         if self.header_orientation == 'hor':
@@ -293,13 +276,13 @@ class Wl_Table(QTableView):
 
     def get_header_labels_hor(self):
         return (
-            self.model().headerData(row, Qt.Horizontal)
+            self.model().headerData(row, QtCore.Qt.Horizontal)
             for row in range(self.model().columnCount())
         )
 
     def get_header_labels_vert(self):
         return (
-            self.model().headerData(col, Qt.Vertical)
+            self.model().headerData(col, QtCore.Qt.Vertical)
             for col in range(self.model().rowCount())
         )
 
@@ -389,11 +372,11 @@ class Wl_Table(QTableView):
             self.clr_table(0)
 
         if row is None:
-            self.model().appendRow([QStandardItem(text) for text in texts])
+            self.model().appendRow([QtGui.QStandardItem(text) for text in texts])
         else:
-            self.model().insertRow(row, [QStandardItem(text) for text in texts])
+            self.model().insertRow(row, [QtGui.QStandardItem(text) for text in texts])
 
-        self.model().itemChanged.emit(QStandardItem())
+        self.model().itemChanged.emit(QtGui.QStandardItem())
 
     def add_row(self, texts = None):
         self._add_row(texts = texts)
@@ -409,7 +392,7 @@ class Wl_Table(QTableView):
         for i in reversed(self.get_selected_rows()):
             self.model().removeRow(i)
 
-        self.model().itemChanged.emit(QStandardItem())
+        self.model().itemChanged.emit(QtGui.QStandardItem())
 
     def clr_table(self, num_headers = 1):
         self.model().clear()
@@ -421,7 +404,7 @@ class Wl_Table(QTableView):
             self.model().setVerticalHeaderLabels(self.headers)
             self.model().setColumnCount(num_headers)
 
-        self.model().itemChanged.emit(QStandardItem())
+        self.model().itemChanged.emit(QtGui.QStandardItem())
 
     # Export visible rows only
     @wl_misc.log_time
@@ -438,34 +421,34 @@ class Wl_Table(QTableView):
         # Errors (Search terms, stop word lists, file checking, etc.)
         match self.tab:
             case 'err':
-                file_path, file_type = QFileDialog.getSaveFileName(
+                file_path, file_type = QtWidgets.QFileDialog.getSaveFileName(
                     parent = self,
                     caption = caption,
                     directory = os.path.join(wl_checks_misc.check_dir(default_dir), f'wordless_error.{default_ext}'),
                     filter = ';;'.join(self.main.settings_global['file_types']['exp_tables']),
                     initialFilter = default_type
                 )
-            # Concordancer (with zapping)
-            case 'concordancer':
-                if self.main.settings_custom['concordancer']['zapping_settings']['zapping']:
-                    file_path, file_type = QFileDialog.getSaveFileName(
+            case 'concordancer' | 'concordancer_parallel':
+                # Concordancer (with zapping)
+                if self.tab == 'concordancer' and self.main.settings_custom['concordancer']['zapping_settings']['zapping']:
+                    file_path, file_type = QtWidgets.QFileDialog.getSaveFileName(
                         parent = self,
                         caption = caption,
                         directory = os.path.join(wl_checks_misc.check_dir(default_dir), f'wordless_results_{self.tab}.docx'),
                         filter = ';;'.join(self.main.settings_global['file_types']['exp_tables_concordancer_zapping']),
                     )
-            # Concordancer (without zapping) & Parallel Concordancer
-            case 'concordancer' | 'concordancer_parallel':
-                file_path, file_type = QFileDialog.getSaveFileName(
-                    parent = self,
-                    caption = caption,
-                    directory = os.path.join(wl_checks_misc.check_dir(default_dir), f'wordless_results_{self.tab}.{default_ext}'),
-                    filter = ';;'.join(self.main.settings_global['file_types']['exp_tables_concordancer']),
-                    initialFilter = default_type
-                )
+                # Concordancer (without zapping) & Parallel Concordancer
+                else:
+                    file_path, file_type = QtWidgets.QFileDialog.getSaveFileName(
+                        parent = self,
+                        caption = caption,
+                        directory = os.path.join(wl_checks_misc.check_dir(default_dir), f'wordless_results_{self.tab}.{default_ext}'),
+                        filter = ';;'.join(self.main.settings_global['file_types']['exp_tables_concordancer']),
+                        initialFilter = default_type
+                    )
             # Other modules
             case _:
-                file_path, file_type = QFileDialog.getSaveFileName(
+                file_path, file_type = QtWidgets.QFileDialog.getSaveFileName(
                     parent = self,
                     caption = caption,
                     directory = os.path.join(wl_checks_misc.check_dir(default_dir), f'wordless_results_{self.tab}.{default_ext}'),
@@ -509,7 +492,7 @@ RE_INVALID_XML_CHARS = re.compile(r'[^\u0009\u000A\u000D\u0020-\uD7FF\uE000-\uFF
 RE_COLOR = re.compile(r'(?<=color: #)([0-9a-fA-F]{3}|[0-9a-fA-F]{6})(?=;)')
 
 class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str, str)
+    worker_done = QtCore.pyqtSignal(str, str)
 
     def run(self):
         try:
@@ -581,8 +564,8 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                 workbook = openpyxl.Workbook()
                 worksheet = workbook.active
 
-                dpi_horizontal = QApplication.primaryScreen().logicalDotsPerInchX()
-                dpi_vertical = QApplication.primaryScreen().logicalDotsPerInchY()
+                dpi_horizontal = QtWidgets.QApplication.primaryScreen().logicalDotsPerInchX()
+                dpi_vertical = QtWidgets.QApplication.primaryScreen().logicalDotsPerInchY()
 
                 match self.table.tab:
                     case 'concordancer':
@@ -830,31 +813,31 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
             )
 
     def style_cell_alignment(self, cell, item):
-        if isinstance(item, QStandardItem):
+        if isinstance(item, QtGui.QStandardItem):
             alignment = item.textAlignment()
         else:
             alignment = item.alignment()
 
-        if alignment & Qt.AlignLeft == Qt.AlignLeft:
+        if alignment & QtCore.Qt.AlignLeft == QtCore.Qt.AlignLeft:
             alignment_hor = 'left'
-        elif alignment & Qt.AlignRight == Qt.AlignRight:
+        elif alignment & QtCore.Qt.AlignRight == QtCore.Qt.AlignRight:
             alignment_hor = 'right'
-        elif alignment & Qt.AlignHCenter == Qt.AlignHCenter:
+        elif alignment & QtCore.Qt.AlignHCenter == QtCore.Qt.AlignHCenter:
             alignment_hor = 'center'
-        elif alignment & Qt.AlignJustify == Qt.AlignJustify:
+        elif alignment & QtCore.Qt.AlignJustify == QtCore.Qt.AlignJustify:
             alignment_hor = 'justify'
         # Default
         else:
             alignment_hor = 'left'
 
-        if alignment & Qt.AlignTop == Qt.AlignTop:
+        if alignment & QtCore.Qt.AlignTop == QtCore.Qt.AlignTop:
             alignment_vert = 'top'
-        elif alignment & Qt.AlignBottom == Qt.AlignBottom:
+        elif alignment & QtCore.Qt.AlignBottom == QtCore.Qt.AlignBottom:
             alignment_vert = 'bottom'
-        elif alignment & Qt.AlignVCenter == Qt.AlignVCenter:
+        elif alignment & QtCore.Qt.AlignVCenter == QtCore.Qt.AlignVCenter:
             alignment_vert = 'center'
         # Not sure
-        elif alignment & Qt.AlignBaseline == Qt.AlignBaseline:
+        elif alignment & QtCore.Qt.AlignBaseline == QtCore.Qt.AlignBaseline:
             alignment_vert = 'justify'
         # Default
         else:
@@ -1050,10 +1033,10 @@ class Wl_Table_Add_Ins_Del_Clr(Wl_Table):
 
         self.col_edit = col_edit
 
-        self.button_add = QPushButton(_tr('wl_tables', 'Add'), self)
-        self.button_ins = QPushButton(_tr('wl_tables', 'Insert'), self)
-        self.button_del = QPushButton(_tr('wl_tables', 'Remove'), self)
-        self.button_clr = QPushButton(_tr('wl_tables', 'Clear'), self)
+        self.button_add = QtWidgets.QPushButton(_tr('wl_tables', 'Add'), self)
+        self.button_ins = QtWidgets.QPushButton(_tr('wl_tables', 'Insert'), self)
+        self.button_del = QtWidgets.QPushButton(_tr('wl_tables', 'Remove'), self)
+        self.button_clr = QtWidgets.QPushButton(_tr('wl_tables', 'Clear'), self)
 
         self.button_add.clicked.connect(lambda: self.add_row())
         self.button_ins.clicked.connect(lambda: self.ins_row())
@@ -1088,7 +1071,7 @@ class Wl_Table_Add_Ins_Del_Clr(Wl_Table):
         if self.col_edit is not None:
             self.edit(self.model().index(self.get_selected_rows()[0], self.col_edit))
 
-class Wl_Table_Item(QStandardItem):
+class Wl_Table_Item(QtGui.QStandardItem):
     def read_data(self):
         if (
             self.column() in self.model().table.headers_int
@@ -1102,7 +1085,7 @@ class Wl_Table_Item(QStandardItem):
     def __lt__(self, other):
         return self.read_data() < other.read_data()
 
-class Wl_Table_Item_Err(QStandardItem):
+class Wl_Table_Item_Err(QtGui.QStandardItem):
     def read_data(self):
         return self.text()
 
@@ -1146,11 +1129,11 @@ class Wl_Table_Data(Wl_Table):
         self.model().itemChanged.connect(self.item_changed)
         self.selectionModel().selectionChanged.connect(self.selection_changed)
 
-        self.button_generate_table = QPushButton(_tr('wl_tables', 'Generate table'), self)
-        self.button_generate_fig = QPushButton(_tr('wl_tables', 'Generate figure'), self)
-        self.button_exp_selected_cells = QPushButton(_tr('wl_tables', 'Export selected cells...'), self)
-        self.button_exp_all_cells = QPushButton(_tr('wl_tables', 'Export all cells...'), self)
-        self.button_clr_table = QPushButton(_tr('wl_tables', 'Clear table'), self)
+        self.button_generate_table = QtWidgets.QPushButton(_tr('wl_tables', 'Generate table'), self)
+        self.button_generate_fig = QtWidgets.QPushButton(_tr('wl_tables', 'Generate figure'), self)
+        self.button_exp_selected_cells = QtWidgets.QPushButton(_tr('wl_tables', 'Export selected cells...'), self)
+        self.button_exp_all_cells = QtWidgets.QPushButton(_tr('wl_tables', 'Export all cells...'), self)
+        self.button_clr_table = QtWidgets.QPushButton(_tr('wl_tables', 'Clear table'), self)
 
         if not generate_fig:
             self.button_generate_fig.hide()
@@ -1179,7 +1162,7 @@ class Wl_Table_Data(Wl_Table):
 
         super().item_changed()
 
-        self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
+        self.selectionModel().selectionChanged.emit(QtCore.QItemSelection(), QtCore.QItemSelection())
 
     def selection_changed(self):
         # Enable "Export selected cells" only if any visible rows are selected
@@ -1402,8 +1385,8 @@ class Wl_Table_Data(Wl_Table):
 
         item.val = val
 
-        item.setFont(QFont('Consolas'))
-        item.setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+        item.setFont(QtGui.QFont('Consolas'))
+        item.setTextAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
 
         self.model().setItem(row, col, item)
 
@@ -1438,8 +1421,8 @@ class Wl_Table_Data(Wl_Table):
 
         item.val = val
 
-        item.setFont(QFont('Consolas'))
-        item.setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+        item.setFont(QtGui.QFont('Consolas'))
+        item.setTextAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
 
         self.model().setItem(row, col, item)
 
@@ -1447,17 +1430,17 @@ class Wl_Table_Data(Wl_Table):
         item = Wl_Table_Item_Err(text)
 
         if alignment_hor == 'center':
-            alignment_hor = Qt.AlignHCenter
+            alignment_hor = QtCore.Qt.AlignHCenter
         elif alignment_hor == 'left':
-            alignment_hor = Qt.AlignLeft
+            alignment_hor = QtCore.Qt.AlignLeft
         elif alignment_hor == 'right':
-            alignment_hor = Qt.AlignRight
+            alignment_hor = QtCore.Qt.AlignRight
 
-        item_font = QFont(self.main.settings_custom['general']['ui_settings']['font_family'])
+        item_font = QtGui.QFont(self.main.settings_custom['general']['ui_settings']['font_family'])
         item_font.setItalic(True)
 
         item.setFont(item_font)
-        item.setTextAlignment(alignment_hor | Qt.AlignVCenter)
+        item.setTextAlignment(alignment_hor | QtCore.Qt.AlignVCenter)
 
         self.model().setItem(row, col, item)
 
@@ -1754,15 +1737,15 @@ class Wl_Table_Data(Wl_Table):
         # Ask for confirmation if results have not been exported
         if confirm:
             if not self.is_empty() and not self.results_saved:
-                confirmed = wl_msg_boxes.wl_msg_box_question(
+                confirmed = wl_dialogs.Wl_Dialog_Question(
                     self.main,
                     title = _tr('wl_tables', 'Clear Table'),
                     text = _tr('wl_tables', '''
-                        <div>
-                            The results in the table have yet been exported. Do you really want to clear the table?
-                        </div>
+                        <div>The results in the table have yet been exported.</div>
+                        <br>
+                        <div>Do you want to clear all results in the table?</div>
                     ''')
-                )
+                ).exec_()
 
         if confirmed:
             self.model().clear()
@@ -1812,7 +1795,7 @@ class Wl_Table_Data(Wl_Table):
 
             self.results_saved = False
 
-            self.model().itemChanged.emit(QStandardItem())
+            self.model().itemChanged.emit(QtGui.QStandardItem())
 
         return confirmed
 
@@ -1839,7 +1822,7 @@ class Wl_Table_Data_Search(Wl_Table_Data):
 
         self.model().itemChanged.connect(self.results_changed)
 
-        self.label_num_results = QLabel()
+        self.label_num_results = QtWidgets.QLabel('', self)
         self.button_results_search = wl_buttons.Wl_Button(_tr('wl_tables', 'Search in results'), self)
         self.dialog_results_search = wl_results_search.Wl_Dialog_Results_Search(self.main, table = self)
 
@@ -1893,7 +1876,7 @@ class Wl_Table_Data_Sort_Search(Wl_Table_Data):
 
         self.model().itemChanged.connect(self.results_changed)
 
-        self.label_num_results = QLabel()
+        self.label_num_results = QtWidgets.QLabel('', self)
         self.button_results_sort = wl_buttons.Wl_Button(_tr('wl_tables', 'Sort results'), self)
         self.button_results_search = wl_buttons.Wl_Button(_tr('wl_tables', 'Search in results'), self)
 
@@ -1958,7 +1941,7 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
 
         self.model().itemChanged.connect(self.results_changed)
 
-        self.label_num_results = QLabel()
+        self.label_num_results = QtWidgets.QLabel('', self)
         self.button_results_filter = wl_buttons.Wl_Button(_tr('wl_tables', 'Filter results'), self)
         self.button_results_search = wl_buttons.Wl_Button(_tr('wl_tables', 'Search in results'), self)
 

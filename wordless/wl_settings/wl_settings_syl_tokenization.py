@@ -18,14 +18,9 @@
 
 import copy
 
-from PyQt5.QtCore import pyqtSignal
-from PyQt5.QtGui import QStandardItem
-from PyQt5.QtWidgets import (
-    QGroupBox,
-    QLabel,
-    QPushButton,
-    QTextEdit
-)
+from PyQt5 import QtCore
+from PyQt5 import QtGui
+from PyQt5 import QtWidgets
 
 from wordless.wl_nlp import (
     wl_nlp_utils,
@@ -51,7 +46,7 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['syl_tokenization']
 
         # Syllable Tokenizer Settings
-        self.group_box_syl_tokenizer_settings = QGroupBox(self.tr('Syllable Tokenizer Settings'), self)
+        self.group_box_syl_tokenizer_settings = QtWidgets.QGroupBox(self.tr('Syllable Tokenizer Settings'), self)
 
         self.table_syl_tokenizers = wl_tables.Wl_Table(
             self,
@@ -69,8 +64,8 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
         self.table_syl_tokenizers.disable_updates()
 
         for i, lang in enumerate(self.settings_global):
-            self.table_syl_tokenizers.model().setItem(i, 0, QStandardItem(wl_conversion.to_lang_text(self.main, lang)))
-            self.table_syl_tokenizers.model().setItem(i, 1, QStandardItem())
+            self.table_syl_tokenizers.model().setItem(i, 0, QtGui.QStandardItem(wl_conversion.to_lang_text(self.main, lang)))
+            self.table_syl_tokenizers.model().setItem(i, 1, QtGui.QStandardItem())
 
             self.table_syl_tokenizers.setItemDelegateForRow(i, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
                 parent = self.table_syl_tokenizers,
@@ -88,13 +83,13 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
         self.group_box_syl_tokenizer_settings.layout().addWidget(self.table_syl_tokenizers, 0, 0)
 
         # Preview
-        self.group_box_preview = QGroupBox(self.tr('Preview'), self)
+        self.group_box_preview = QtWidgets.QGroupBox(self.tr('Preview'), self)
 
-        self.label_preview_lang = QLabel(self.tr('Select language:'), self)
+        self.label_preview_lang = QtWidgets.QLabel(self.tr('Select language:'), self)
         self.combo_box_preview_lang = wl_boxes.Wl_Combo_Box(self)
-        self.button_show_preview = QPushButton(self.tr('Show preview'), self)
-        self.text_edit_preview_samples = QTextEdit(self)
-        self.text_edit_preview_results = QTextEdit(self)
+        self.button_show_preview = QtWidgets.QPushButton(self.tr('Show preview'), self)
+        self.text_edit_preview_samples = QtWidgets.QTextEdit(self)
+        self.text_edit_preview_results = QtWidgets.QTextEdit(self)
 
         self.combo_box_preview_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
 
@@ -227,7 +222,7 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
         return True
 
 class Wl_Worker_Preview_Syl_Tokenizer(wl_threading.Wl_Worker_No_Progress):
-    worker_done = pyqtSignal(list)
+    worker_done = QtCore.pyqtSignal(list)
 
     def run(self):
         preview_results = []

@@ -18,18 +18,18 @@
 
 import re
 
-import PIL.Image
-from PyQt5.QtCore import QCoreApplication
-from PyQt5.QtWidgets import QDesktopWidget
 import matplotlib
 import matplotlib.pyplot
 import networkx
 import numpy
+import PIL.Image
+from PyQt5 import QtCore
+from PyQt5 import QtWidgets
 import wordcloud
 
 from wordless.wl_utils import wl_paths, wl_misc
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 # Restore Matplotlib's default settings
 def restore_matplotlib_rcparams():
@@ -133,7 +133,7 @@ def generate_word_cloud(main, data_file_items, fig_settings):
         vals += 1e-15
 
     settings = main.settings_custom['figs']['word_clouds']
-    desktop_widget = QDesktopWidget()
+    desktop_widget = QtWidgets.QDesktopWidget()
 
     if settings['font_settings']['font'] == 'Droid Sans Mono':
         font_path = wordcloud.wordcloud.FONT_PATH

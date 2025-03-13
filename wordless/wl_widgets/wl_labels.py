@@ -16,25 +16,16 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QLabel
+from PyQt5 import QtCore
+from PyQt5 import QtWidgets
 
 from wordless.wl_utils import wl_misc
 
-class Wl_Label(QLabel):
+class Wl_Label(QtWidgets.QLabel):
     def __init__(self, text, parent):
         super().__init__(text, parent)
 
         self.main = wl_misc.find_wl_main(parent)
-
-class Wl_Label_Important(Wl_Label):
-    def __init__(self, text, parent):
-        super().__init__(text, parent)
-
-        self.setStyleSheet('''
-            color: #F00;
-            font-weight: bold;
-        ''')
 
 class Wl_Label_Hint(Wl_Label):
     def __init__(self, text, parent):
@@ -48,23 +39,31 @@ class Wl_Label_Html(Wl_Label):
     def __init__(self, html, parent):
         super().__init__(html, parent)
 
-        self.setTextFormat(Qt.RichText)
+        self.setAlignment(QtCore.Qt.AlignJustify | QtCore.Qt.AlignVCenter)
+        self.setTextFormat(QtCore.Qt.RichText)
         self.setOpenExternalLinks(True)
 
 class Wl_Label_Html_Centered(Wl_Label_Html):
     def __init__(self, html, parent):
         super().__init__(html, parent)
 
-        self.setAlignment(Qt.AlignCenter)
+        self.setAlignment(QtCore.Qt.AlignCenter)
+
+STYLES_DIALOG = '''
+    <head><style>
+      * {
+        margin: 0;
+        line-height: 120%;
+      }
+    </style></head>
+'''
 
 class Wl_Label_Dialog(Wl_Label_Html):
     def __init__(self, text, parent, word_wrap = True):
-        main = wl_misc.find_wl_main(parent)
-
         super().__init__(
             f'''
-                {main.settings_global['styles']['style_dialog']}
-                <body align="justify">{text}</body>
+                {STYLES_DIALOG}
+                <body>{text}</body>
             ''',
             parent
         )
@@ -73,8 +72,8 @@ class Wl_Label_Dialog(Wl_Label_Html):
 
     def set_text(self, text):
         super().setText(f'''
-            {self.main.settings_global['styles']['style_dialog']}
-            <body align="justify">{text}</body>
+            {STYLES_DIALOG}
+            <body>{text}</body>
         ''')
 
 class Wl_Label_Dialog_No_Wrap(Wl_Label_Dialog):

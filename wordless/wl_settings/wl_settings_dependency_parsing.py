@@ -18,9 +18,9 @@
 
 import copy
 
-from PyQt5.QtCore import pyqtSignal
-from PyQt5.QtGui import QStandardItem
-from PyQt5.QtWidgets import QGroupBox, QLabel, QPushButton, QTextEdit
+from PyQt5 import QtCore
+from PyQt5 import QtGui
+from PyQt5 import QtWidgets
 
 from wordless.wl_dialogs import wl_dialogs
 from wordless.wl_nlp import wl_dependency_parsing, wl_nlp_utils
@@ -43,7 +43,7 @@ class Wl_Settings_Dependency_Parsing(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['dependency_parsing']
 
         # Dependency Parser Settings
-        self.group_box_dependency_parser_settings = QGroupBox(self.tr('Dependency Parser Settings'), self)
+        self.group_box_dependency_parser_settings = QtWidgets.QGroupBox(self.tr('Dependency Parser Settings'), self)
 
         self.table_dependency_parsers = wl_tables.Wl_Table(
             self,
@@ -61,8 +61,8 @@ class Wl_Settings_Dependency_Parsing(wl_settings.Wl_Settings_Node):
         self.table_dependency_parsers.disable_updates()
 
         for i, lang in enumerate(self.settings_global):
-            self.table_dependency_parsers.model().setItem(i, 0, QStandardItem(wl_conversion.to_lang_text(self.main, lang)))
-            self.table_dependency_parsers.model().setItem(i, 1, QStandardItem())
+            self.table_dependency_parsers.model().setItem(i, 0, QtGui.QStandardItem(wl_conversion.to_lang_text(self.main, lang)))
+            self.table_dependency_parsers.model().setItem(i, 1, QtGui.QStandardItem())
 
             self.table_dependency_parsers.setItemDelegateForRow(i, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
                 parent = self.table_dependency_parsers,
@@ -80,14 +80,14 @@ class Wl_Settings_Dependency_Parsing(wl_settings.Wl_Settings_Node):
         self.group_box_dependency_parser_settings.layout().addWidget(self.table_dependency_parsers, 0, 0)
 
         # Preview
-        self.group_box_preview = QGroupBox(self.tr('Preview'), self)
+        self.group_box_preview = QtWidgets.QGroupBox(self.tr('Preview'), self)
 
-        self.label_preview_lang = QLabel(self.tr('Select language:'), self)
+        self.label_preview_lang = QtWidgets.QLabel(self.tr('Select language:'), self)
         self.combo_box_preview_lang = wl_boxes.Wl_Combo_Box(self)
-        self.button_preview_settings = QPushButton(self.tr('Preview settings'), self)
+        self.button_preview_settings = QtWidgets.QPushButton(self.tr('Preview settings'), self)
         self.dialog_preview_settings = Wl_Dialog_Preview_Settings(self.main)
-        self.button_show_preview = QPushButton(self.tr('Show preview'), self)
-        self.text_edit_preview_samples = QTextEdit(self)
+        self.button_show_preview = QtWidgets.QPushButton(self.tr('Show preview'), self)
+        self.text_edit_preview_samples = QtWidgets.QTextEdit(self)
 
         self.combo_box_preview_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
 
@@ -282,7 +282,7 @@ class Wl_Dialog_Preview_Settings(wl_dialogs.Wl_Dialog_Settings):
         self.settings_custom['show_in_separate_tab'] = self.checkbox_show_in_separate_tab.isChecked()
 
 class Wl_Worker_Preview_Dependency_Parser(wl_threading.Wl_Worker_No_Progress):
-    worker_done = pyqtSignal(list)
+    worker_done = QtCore.pyqtSignal(list)
 
     def run(self):
         settings = self.main.settings_custom['dependency_parsing']['preview']

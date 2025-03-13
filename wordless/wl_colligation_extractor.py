@@ -26,8 +26,8 @@ import re
 import traceback
 
 import numpy
-from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
-from PyQt5.QtWidgets import QLabel, QGroupBox
+from PyQt5 import QtCore
+from PyQt5 import QtWidgets
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
@@ -46,7 +46,7 @@ from wordless.wl_widgets import (
     wl_widgets
 )
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
@@ -73,7 +73,7 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
         self.wrapper_table.layout().addWidget(self.table_colligation_extractor.button_clr_table, 2, 4)
 
         # Token Settings
-        self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
+        self.group_box_token_settings = QtWidgets.QGroupBox(self.tr('Token Settings'), self)
 
         (
             self.checkbox_words,
@@ -128,7 +128,7 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
         self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 8, 1)
 
         # Search Settings
-        self.group_box_search_settings = QGroupBox(self.tr('Search Settings'), self)
+        self.group_box_search_settings = QtWidgets.QGroupBox(self.tr('Search Settings'), self)
 
         (
             self.label_search_term,
@@ -174,7 +174,7 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
 
         self.group_box_search_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_search_settings.layout().addWidget(self.label_search_term, 0, 0)
-        self.group_box_search_settings.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, QtCore.Qt.AlignRight)
         self.group_box_search_settings.layout().addWidget(self.stacked_widget_search_term, 1, 0, 1, 2)
         self.group_box_search_settings.layout().addWidget(self.label_delimiter, 2, 0, 1, 2)
 
@@ -190,9 +190,9 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
         self.group_box_search_settings.layout().addLayout(layout_context_settings, 10, 0, 1, 2)
 
         # Generation Settings
-        self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'))
+        self.group_box_generation_settings = QtWidgets.QGroupBox(self.tr('Generation Settings'))
 
-        self.label_window = QLabel(self.tr('Collocational window:'), self)
+        self.label_window = QtWidgets.QLabel(self.tr('Collocational window:'), self)
         (
             self.checkbox_window_sync,
             self.label_window_left,
@@ -201,7 +201,7 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
             self.spin_box_window_right
         ) = wl_boxes.wl_spin_boxes_min_max_sync_window(self)
 
-        self.label_limit_searching = QLabel(self.tr('Limit searching:'), self)
+        self.label_limit_searching = QtWidgets.QLabel(self.tr('Limit searching:'), self)
         self.combo_box_limit_searching = wl_boxes.Wl_Combo_Box(self)
 
         (
@@ -241,7 +241,7 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
 
         self.group_box_generation_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_generation_settings.layout().addWidget(self.label_window, 0, 0, 1, 3)
-        self.group_box_generation_settings.layout().addWidget(self.checkbox_window_sync, 0, 3, Qt.AlignRight)
+        self.group_box_generation_settings.layout().addWidget(self.checkbox_window_sync, 0, 3, QtCore.Qt.AlignRight)
         self.group_box_generation_settings.layout().addWidget(self.label_window_left, 1, 0)
         self.group_box_generation_settings.layout().addWidget(self.spin_box_window_left, 1, 1)
         self.group_box_generation_settings.layout().addWidget(self.label_window_right, 1, 2)
@@ -261,7 +261,7 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
         self.group_box_generation_settings.layout().setColumnStretch(3, 1)
 
         # Table Settings
-        self.group_box_table_settings = QGroupBox(self.tr('Table Settings'))
+        self.group_box_table_settings = QtWidgets.QGroupBox(self.tr('Table Settings'))
 
         (
             self.checkbox_show_pct_data,
@@ -285,7 +285,7 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown_file, 3, 0)
 
         # Figure Settings
-        self.group_box_fig_settings = QGroupBox(self.tr('Figure Settings'), self)
+        self.group_box_fig_settings = QtWidgets.QGroupBox(self.tr('Figure Settings'), self)
 
         (
             self.label_graph_type,
@@ -298,7 +298,7 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
             self.checkbox_use_cumulative
         ) = wl_widgets.wl_widgets_fig_settings(self, tab = self.tab)
 
-        self.label_rank = QLabel(self.tr('Rank:'), self)
+        self.label_rank = QtWidgets.QLabel(self.tr('Rank:'), self)
         (
             self.checkbox_rank_sync,
             self.label_rank_min,
@@ -676,25 +676,25 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                 if test_statistical_significance != 'none':
                     self.horizontalHeader().setSortIndicator(
                         self.find_header_hor(self.tr('[{}]\np-value').format(files[0]['name'])),
-                        Qt.AscendingOrder
+                        QtCore.Qt.AscendingOrder
                     )
                 # Sort by bayes factor of the first file
                 elif measure_bayes_factor != 'none':
                     self.horizontalHeader().setSortIndicator(
                         self.find_header_hor(self.tr('[{}]\nBayes Factor').format(files[0]['name'])),
-                        Qt.DescendingOrder
+                        QtCore.Qt.DescendingOrder
                     )
                 # Sort by effect size of the first file
                 elif measure_effect_size != 'none':
                     self.horizontalHeader().setSortIndicator(
                         self.find_header_hor(f"[{files[0]['name']}]\n{col_text_effect_size}"),
-                        Qt.DescendingOrder
+                        QtCore.Qt.DescendingOrder
                     )
                 # Otherwise sort by frequency of the first file
                 else:
                     self.horizontalHeader().setSortIndicator(
                         self.find_header_hor(self.tr('[{}]\nFrequency').format(files[0]['name'])),
-                        Qt.DescendingOrder
+                        QtCore.Qt.DescendingOrder
                     )
 
                 if settings['generation_settings']['window_left'] < 0:
@@ -890,7 +890,7 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
 
 # self.tr() does not work in inherited classes
 class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str, dict, dict)
+    worker_done = QtCore.pyqtSignal(str, dict, dict)
 
     def __init__(self, main, dialog_progress, update_gui):
         super().__init__(main, dialog_progress, update_gui)

@@ -21,7 +21,7 @@
 鑑於 *Wordless* 立於巨人的肩膀之上，我謹在此向下列開源專案致以本人誠摯的感謝，若沒有它們，本專案將無法完成：
 
 &nbsp;|名稱|版本|作者|許可
------:|----|:--:|---|:--:
+-----:|----|:-----:|-------|:-----:
 1|[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)|4.13.3|Leonard Richardson|[MIT](https://git.launchpad.net/beautifulsoup/tree/LICENSE)
 2|[Botok](https://github.com/OpenPecha/Botok)|0.8.12|Hélios Drupchen Hildt|[Apache-2.0](https://github.com/OpenPecha/Botok/blob/master/LICENSE)
 3|[Charset Normalizer](https://github.com/Ousret/charset_normalizer)|3.4.1|TAHRI Ahmed R.|[MIT](https://github.com/Ousret/charset_normalizer/blob/master/LICENSE)
@@ -36,7 +36,7 @@
 12|[openpyxl](https://foss.heptapod.net/openpyxl/openpyxl)|3.1.5|Eric Gazoni, Charlie Clark|[MIT](https://foss.heptapod.net/openpyxl/openpyxl/-/blob/branch/3.1/LICENCE.rst)
 13|[PyInstaller](https://pyinstaller.org/)|6.8.0|Hartmut Goebel, Jasper Harrison, Bryan A. Jones,<br>Brénainn Woodsend, Rok Mandeljc|[Bootloader-exception](https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt)
 14|[pymorphy3](https://github.com/no-plagiarism/pymorphy3)|2.0.2|Mikhail Korobov, Danylo Halaiko|[MIT](https://github.com/no-plagiarism/pymorphy3/blob/master/LICENSE.txt)
-15|[pypdf](https://github.com/py-pdf/pypdf)|4.2.0|Mathieu Fenniak, Ashish Kulkarni, Steve Witham, Martin Thoma|[BSD-3-Clause](https://github.com/py-pdf/pypdf/blob/main/LICENSE)
+15|[pypdf](https://github.com/py-pdf/pypdf)|4.2.0|Mathieu Fenniak, Ashish Kulkarni, Steve Witham,<br>Martin Thoma|[BSD-3-Clause](https://github.com/py-pdf/pypdf/blob/main/LICENSE)
 16|[Pyphen](https://www.courtbouillon.org/pyphen/)|0.17.0|Guillaume Ayoub|[GPL-2.0-or-later/LGPL-2.1-or-later/MPL-1.1](https://github.com/Kozea/Pyphen/blob/main/LICENSE)
 17|[PyQt](https://riverbankcomputing.com/software/pyqt/)|5.15.10|Riverbank Computing|[Commercial-License/GPL-3.0-only](https://www.riverbankcomputing.com/static/Docs/PyQt5/introduction.html#license)
 18|[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)|5.0.4|Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)|[Apache-2.0](https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE)
@@ -47,9 +47,9 @@
 23|[Sacremoses](https://github.com/hplt-project/sacremoses)|0.1.1|Liling Tan, Jelmer van der Linde|[MIT](https://github.com/hplt-project/sacremoses/blob/master/LICENSE)
 24|[SciPy](https://scipy.org/scipylib/)|1.14.0|SciPy 開發人員|[BSD-3-Clause](https://github.com/scipy/scipy/blob/main/LICENSE.txt)
 25|[simplemma](https://github.com/adbar/simplemma)|1.1.2|Adrien Barbaresi|[MIT](https://github.com/adbar/simplemma/blob/main/LICENSE)
-26|[spaCy](https://spacy.io/)|3.8.4|Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O\'Leary McCann|[MIT](https://github.com/explosion/spaCy/blob/master/LICENSE)
-27|[spacy-pkuseg](https://github.com/explosion/spacy-pkuseg)|1.0.0|羅睿軒, 許晶晶, 任宣丞, 張藝, 張之遠, 位冰鎮, 孫栩<br>Adriane Boyd, Ines Montani|[MIT](https://github.com/explosion/spacy-pkuseg/blob/master/LICENSE)
-28|[Stanza](https://github.com/stanfordnlp/stanza)|1.10.1|齊鵬, 張宇浩, 張鈺暉,<br>Jason Bolton, Tim Dozat, John Bauer|[Apache-2.0](https://github.com/stanfordnlp/stanza/blob/main/LICENSE)
+26|[spaCy](https://spacy.io/)|3.8.4|Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann|[MIT](https://github.com/explosion/spaCy/blob/master/LICENSE)
+27|[spacy-pkuseg](https://github.com/explosion/spacy-pkuseg)|1.0.0|Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶), Xuancheng Ren (任宣丞),<br>Yi Zhang (张艺), Zhiyuan Zhang (张之远), Bingzhen Wei (位冰镇),<br>Xu Sun (孙栩), Adriane Boyd, Ines Montani|[MIT](https://github.com/explosion/spacy-pkuseg/blob/master/LICENSE)
+28|[Stanza](https://github.com/stanfordnlp/stanza)|1.10.1|Peng Qi (齐鹏), Yuhao Zhang (张宇浩), Yuhui Zhang (张钰晖),<br>Jason Bolton, Tim Dozat, John Bauer|[Apache-2.0](https://github.com/stanfordnlp/stanza/blob/main/LICENSE)
 29|[SudachiPy](https://github.com/WorksApplications/sudachi.rs/tree/develop/python)|0.6.10|WAP Tokushima Laboratory of AI and NLP|[Apache-2.0](https://github.com/WorksApplications/sudachi.rs/blob/develop/LICENSE)
 30|[Underthesea](https://undertheseanlp.com/)|6.8.4|Vu Anh|[GPL-3.0-or-later](https://github.com/undertheseanlp/underthesea/blob/main/LICENSE)
 31|[VADER](https://github.com/cjhutto/vaderSentiment)|3.3.2|C.J. Hutto|[MIT](https://github.com/cjhutto/vaderSentiment/blob/master/LICENSE.txt)

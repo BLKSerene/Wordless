@@ -19,34 +19,13 @@
 import importlib
 import traceback
 
-from PyQt5.QtCore import QCoreApplication
-from PyQt5.QtGui import QStandardItem
+from PyQt5 import QtCore
+from PyQt5 import QtGui
 
-from wordless.wl_dialogs import wl_dialogs_errs, wl_msg_boxes
+from wordless.wl_dialogs import wl_dialogs, wl_dialogs_errs
 from wordless.wl_utils import wl_conversion
 
-_tr = QCoreApplication.translate
-
-def wl_msg_box_missing_search_terms(main):
-    wl_msg_boxes.Wl_Msg_Box_Warning(
-        main,
-        title = _tr('wl_checks_work_area', 'Missing Search Terms'),
-        text = _tr('wl_checks_work_area', '''
-            <div>
-                You have not specified any search terms yet, please enter one in the input box under "<span style="color: #F00; font-weight: bold;">Search term</span>" first.
-            </div>
-        ''')
-    ).open()
-
-def wl_msg_box_no_results(main):
-    wl_msg_boxes.Wl_Msg_Box_Warning(
-        main,
-        title = _tr('wl_checks_work_area', 'No Results'),
-        text = _tr('wl_checks_work_area', '''
-            <div>Data processing has completed successfully, but there are no results to display.</div>
-            <div>You can change your settings and try again.</div>
-        ''')
-    ).open()
+_tr = QtCore.QCoreApplication.translate
 
 def wl_status_bar_msg_lang_support_unavailable(main):
     main.statusBar().showMessage(_tr('wl_checks_work_area', 'Language support unavailable!'))
@@ -93,7 +72,17 @@ def check_search_terms(main, search_settings, show_warning = True):
         search_terms_ok = False
 
         if show_warning:
-            wl_msg_box_missing_search_terms(main)
+            wl_dialogs.Wl_Dialog_Info_Simple(
+                main,
+                title = _tr('wl_checks_work_area', 'Missing Search Term'),
+                text = _tr('wl_checks_work_area', '''
+                    <div>You have not specified any search term yet.</div>
+                    <br>
+                    <div>Please specify a search term in <b>Search Settings → Search term</b>.</div>
+                '''),
+                icon = 'warning'
+            ).open()
+
             wl_status_bar_msg_missing_search_terms(main)
 
     return search_terms_ok
@@ -135,9 +124,7 @@ def check_nlp_support(main, nlp_utils, files = None, ref = False):
         ])
 
         dialog_err_files.label_err.set_text(_tr('wl_checks_work_area', '''
-            <div>
-                The process cannot be done because language support is unavailable for the following files. Please check your language settings or try again with files of different languages.
-            </div>
+            <div>Data analysis cannot be carried out because language support is unavailable for the following corpora. Please check your language settings or use another corpus.</div>
         '''))
 
         dialog_err_files.table_err_files.model().setRowCount(len(nlp_utils_no_support))
@@ -146,15 +133,15 @@ def check_nlp_support(main, nlp_utils, files = None, ref = False):
         for i, (nlp_util, file) in enumerate(nlp_utils_no_support):
             dialog_err_files.table_err_files.model().setItem(
                 i, 0,
-                QStandardItem(_tr('wl_checks_work_area', NLP_UTILS[nlp_util]))
+                QtGui.QStandardItem(_tr('wl_checks_work_area', NLP_UTILS[nlp_util]))
             )
             dialog_err_files.table_err_files.model().setItem(
                 i, 1,
-                QStandardItem(file['name'])
+                QtGui.QStandardItem(file['name'])
             )
             dialog_err_files.table_err_files.model().setItem(
                 i, 2,
-                QStandardItem(wl_conversion.to_lang_text(main, file['lang']))
+                QtGui.QStandardItem(wl_conversion.to_lang_text(main, file['lang']))
             )
 
         dialog_err_files.table_err_files.enable_updates()
@@ -177,7 +164,17 @@ def check_results(main, err_msg, results):
     elif not any(results):
         results_ok = False
 
-        wl_msg_box_no_results(main)
+        wl_dialogs.Wl_Dialog_Info_Simple(
+            main,
+            title = _tr('wl_checks_work_area', 'No Results'),
+            text = _tr('wl_checks_work_area', '''
+                <div>Data processing has completed successfully, but there are no results to display.</div>
+                <br>
+                <div>You may change your settings and try again.</div>
+            '''),
+            icon = 'warning'
+        ).open()
+
         wl_status_bar_msg_success_no_results(main)
 
     return results_ok
@@ -236,19 +233,20 @@ def check_err_exp_table(main, err_msg, file_path):
     # Use exec_() instead of open() here to prevent the error dialog from being hidden on macOS
     if err_msg:
         if err_msg == 'permission_err':
-            wl_msg_boxes.Wl_Msg_Box_Info(
+            wl_dialogs.Wl_Dialog_Info_Simple(
                 main,
                 title = _tr('wl_checks_work_area', 'File Access Denied'),
                 text = _tr('wl_checks_work_area', '''
                     <div>Access to "{}" is denied, please specify another location or close the file and try again.</div>
-                ''').format(file_path)
+                ''').format(file_path),
+                icon = 'critical'
             ).exec_()
         else:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).exec_()
 
         wl_status_bar_msg_file_access_denied(main)
     else:
-        wl_msg_boxes.Wl_Msg_Box_Info(
+        wl_dialogs.Wl_Dialog_Info_Simple(
             main,
             title = _tr('wl_checks_work_area', 'Export Completed'),
             text = _tr('wl_checks_work_area', '''

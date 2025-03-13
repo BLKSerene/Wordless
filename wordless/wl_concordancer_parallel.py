@@ -22,11 +22,11 @@ import bisect
 import copy
 import traceback
 
-from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
-from PyQt5.QtWidgets import QGroupBox
+from PyQt5 import QtCore
+from PyQt5 import QtWidgets
 
 from wordless.wl_checks import wl_checks_work_area
-from wordless.wl_dialogs import wl_dialogs_misc, wl_msg_boxes
+from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc
 from wordless.wl_nlp import (
     wl_matching,
     wl_nlp_utils,
@@ -41,7 +41,7 @@ from wordless.wl_widgets import (
     wl_widgets
 )
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 class Wrapper_Concordancer_Parallel(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
@@ -66,7 +66,7 @@ class Wrapper_Concordancer_Parallel(wl_layouts.Wl_Wrapper):
         self.wrapper_table.layout().addWidget(self.table_concordancer_parallel.button_clr_table, 2, 3)
 
         # Token Settings
-        self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
+        self.group_box_token_settings = QtWidgets.QGroupBox(self.tr('Token Settings'), self)
 
         (
             self.checkbox_punc_marks,
@@ -92,7 +92,7 @@ class Wrapper_Concordancer_Parallel(wl_layouts.Wl_Wrapper):
         self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 3, 1)
 
         # Search Settings
-        self.group_box_search_settings = QGroupBox(self.tr('Search Settings'), self)
+        self.group_box_search_settings = QtWidgets.QGroupBox(self.tr('Search Settings'), self)
 
         (
             self.label_search_term,
@@ -137,7 +137,7 @@ class Wrapper_Concordancer_Parallel(wl_layouts.Wl_Wrapper):
 
         self.group_box_search_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_search_settings.layout().addWidget(self.label_search_term, 0, 0)
-        self.group_box_search_settings.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, QtCore.Qt.AlignRight)
         self.group_box_search_settings.layout().addWidget(self.stacked_widget_search_term, 1, 0, 1, 2)
         self.group_box_search_settings.layout().addWidget(self.label_delimiter, 2, 0, 1, 2)
 
@@ -153,7 +153,7 @@ class Wrapper_Concordancer_Parallel(wl_layouts.Wl_Wrapper):
         self.group_box_search_settings.layout().addLayout(layout_context_settings, 10, 0, 1, 2)
 
         # Table Settings
-        self.group_box_table_settings = QGroupBox(self.tr('Table Settings'), self)
+        self.group_box_table_settings = QtWidgets.QGroupBox(self.tr('Table Settings'), self)
 
         (
             self.checkbox_show_pct_data,
@@ -266,24 +266,24 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data_Search):
 
     @wl_misc.log_time
     def generate_table(self):
-        if wl_checks_work_area.check_search_terms(
-            self.main,
-            search_settings = self.main.settings_custom['concordancer_parallel']['search_settings'],
-            show_warning = False
-        ):
-            search_additions_deletions = True
-        else:
-            # Check whether the user has simply forgotten to enter search terms
-            search_additions_deletions = wl_msg_boxes.wl_msg_box_question(
+        if (
+            wl_checks_work_area.check_search_terms(
+                self.main,
+                search_settings = self.main.settings_custom['concordancer_parallel']['search_settings'],
+                show_warning = False
+            )
+            # Check whether the user has simply forgotten to enter the search term
+            or wl_dialogs.Wl_Dialog_Question(
                 self.main,
                 title = self.tr('Missing Search Terms'),
                 text = self.tr('''
-                    <div>You have not specified any search terms. Do you want to search for additions and deletions?</div>
+                    <div>You have not specified any search term.</div>
+                    <br>
+                    <div>Do you want to search for additions and deletions?</div>
                 '''),
                 default_to_yes = True
-            )
-
-        if search_additions_deletions:
+            ).exec_()
+        ):
             if self.main.settings_custom['concordancer_parallel']['token_settings']['assign_pos_tags']:
                 nlp_support_ok = wl_checks_work_area.check_nlp_support(
                     self.main,
@@ -332,7 +332,7 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data_Search):
                         label_parallel_unit.tokens_search = parallel_unit_tokens_search
 
                         self.setIndexWidget(self.model().index(i, 2 + j), label_parallel_unit)
-                        self.indexWidget(self.model().index(i, 2 + j)).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+                        self.indexWidget(self.model().index(i, 2 + j)).setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
 
                 self.enable_updates()
 
@@ -343,7 +343,7 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data_Search):
                 wl_checks_work_area.check_err_table(self.main, err_msg)
 
 class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str, list)
+    worker_done = QtCore.pyqtSignal(str, list)
 
     def run(self):
         err_msg = ''

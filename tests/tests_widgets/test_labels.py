@@ -24,9 +24,6 @@ main = wl_test_init.Wl_Test_Main()
 def test_wl_label():
     wl_labels.Wl_Label('test', main)
 
-def test_wl_label_important():
-    wl_labels.Wl_Label_Important('test', main)
-
 def test_wl_label_hint():
     wl_labels.Wl_Label_Hint('test', main)
 
@@ -45,7 +42,6 @@ def test_wl_label_dialog_no_wrap():
 
 if __name__ == '__main__':
     test_wl_label()
-    test_wl_label_important()
     test_wl_label_hint()
     test_wl_label_html()
     test_wl_label_html_centered()

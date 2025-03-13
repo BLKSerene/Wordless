@@ -25,14 +25,8 @@ import traceback
 import matplotlib
 import matplotlib.pyplot
 import numpy
-from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
-from PyQt5.QtWidgets import (
-    QCheckBox,
-    QLabel,
-    QLineEdit,
-    QGroupBox,
-    QStackedWidget
-)
+from PyQt5 import QtCore
+from PyQt5 import QtWidgets
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
@@ -53,7 +47,7 @@ from wordless.wl_widgets import (
     wl_widgets
 )
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
@@ -80,7 +74,7 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         self.wrapper_table.layout().addWidget(self.table_concordancer.button_clr_table, 2, 4)
 
         # Token Settings
-        self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
+        self.group_box_token_settings = QtWidgets.QGroupBox(self.tr('Token Settings'), self)
 
         (
             self.checkbox_punc_marks,
@@ -106,7 +100,7 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 3, 1)
 
         # Search Settings
-        self.group_box_search_settings = QGroupBox(self.tr('Search Settings'), self)
+        self.group_box_search_settings = QtWidgets.QGroupBox(self.tr('Search Settings'), self)
 
         (
             self.label_search_term,
@@ -151,7 +145,7 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
 
         self.group_box_search_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_search_settings.layout().addWidget(self.label_search_term, 0, 0)
-        self.group_box_search_settings.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, QtCore.Qt.AlignRight)
         self.group_box_search_settings.layout().addWidget(self.stacked_widget_search_term, 1, 0, 1, 2)
         self.group_box_search_settings.layout().addWidget(self.label_delimiter, 2, 0, 1, 2)
 
@@ -167,25 +161,25 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         self.group_box_search_settings.layout().addLayout(layout_context_settings, 10, 0, 1, 2)
 
         # Generation Settings
-        self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'), self)
+        self.group_box_generation_settings = QtWidgets.QGroupBox(self.tr('Generation Settings'), self)
 
-        self.checkbox_calc_sentiment_scores = QCheckBox(self.tr('Calculate sentiment scores'), self)
+        self.checkbox_calc_sentiment_scores = QtWidgets.QCheckBox(self.tr('Calculate sentiment scores'), self)
 
-        self.label_context_len_left = QLabel(self.tr('Context length (left):'), self)
-        self.stacked_widget_context_len_left = QStackedWidget(self)
+        self.label_context_len_left = QtWidgets.QLabel(self.tr('Context length (left):'), self)
+        self.stacked_widget_context_len_left = QtWidgets.QStackedWidget(self)
         self.spin_box_context_len_left_char = wl_boxes.Wl_Spin_Box(self)
         self.spin_box_context_len_left_token = wl_boxes.Wl_Spin_Box(self)
         self.spin_box_context_len_left_sentence_seg = wl_boxes.Wl_Spin_Box(self)
         self.spin_box_context_len_left_sentence = wl_boxes.Wl_Spin_Box(self)
         self.spin_box_context_len_left_para = wl_boxes.Wl_Spin_Box(self)
-        self.label_context_len_right = QLabel(self.tr('Context length (right):'), self)
-        self.stacked_widget_context_len_right = QStackedWidget(self)
+        self.label_context_len_right = QtWidgets.QLabel(self.tr('Context length (right):'), self)
+        self.stacked_widget_context_len_right = QtWidgets.QStackedWidget(self)
         self.spin_box_context_len_right_char = wl_boxes.Wl_Spin_Box(self)
         self.spin_box_context_len_right_token = wl_boxes.Wl_Spin_Box(self)
         self.spin_box_context_len_right_sentence_seg = wl_boxes.Wl_Spin_Box(self)
         self.spin_box_context_len_right_sentence = wl_boxes.Wl_Spin_Box(self)
         self.spin_box_context_len_right_para = wl_boxes.Wl_Spin_Box(self)
-        self.label_context_len_unit = QLabel(self.tr('Unit of context length:'), self)
+        self.label_context_len_unit = QtWidgets.QLabel(self.tr('Unit of context length:'), self)
         self.combo_box_context_len_unit = wl_boxes.Wl_Combo_Box(self)
 
         self.stacked_widget_context_len_left.addWidget(self.spin_box_context_len_left_char)
@@ -245,7 +239,7 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         self.group_box_generation_settings.layout().setColumnStretch(1, 1)
 
         # Table Settings
-        self.group_box_table_settings = QGroupBox(self.tr('Table Settings'), self)
+        self.group_box_table_settings = QtWidgets.QGroupBox(self.tr('Table Settings'), self)
 
         (
             self.checkbox_show_pct_data,
@@ -265,9 +259,9 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct_data, 0, 0)
 
         # Figure Settings
-        self.group_box_fig_settings = QGroupBox(self.tr('Figure Settings'), self)
+        self.group_box_fig_settings = QtWidgets.QGroupBox(self.tr('Figure Settings'), self)
 
-        self.label_sort_results_by = QLabel(self.tr('Sort results by:'), self)
+        self.label_sort_results_by = QtWidgets.QLabel(self.tr('Sort results by:'), self)
         self.combo_box_sort_results_by = wl_boxes.Wl_Combo_Box(self)
 
         self.combo_box_sort_results_by.addItems([
@@ -284,13 +278,13 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         self.group_box_fig_settings.layout().setColumnStretch(1, 1)
 
         # Zapping Settings
-        self.group_box_zapping_settings = QGroupBox(self.tr('Zapping Settings'), self)
+        self.group_box_zapping_settings = QtWidgets.QGroupBox(self.tr('Zapping Settings'), self)
 
-        self.label_replace_keywords_with = QLabel(self.tr('Replace keywords with'), self)
+        self.label_replace_keywords_with = QtWidgets.QLabel(self.tr('Replace keywords with'), self)
         self.spin_box_replace_keywords_with = wl_boxes.Wl_Spin_Box(self)
-        self.line_edit_replace_keywords_with = QLineEdit('_', self)
-        self.checkbox_add_line_nums = QCheckBox(self.tr('Add line numbers'), self)
-        self.checkbox_randomize_outputs = QCheckBox(self.tr('Randomize outputs'), self)
+        self.line_edit_replace_keywords_with = QtWidgets.QLineEdit('_', self)
+        self.checkbox_add_line_nums = QtWidgets.QCheckBox(self.tr('Add line numbers'), self)
+        self.checkbox_randomize_outputs = QtWidgets.QCheckBox(self.tr('Randomize outputs'), self)
 
         self.group_box_zapping_settings.setCheckable(True)
         self.spin_box_replace_keywords_with.setRange(1, 100)
@@ -555,7 +549,7 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
                         self.model().index(i, 0),
                         wl_labels.Wl_Label_Html(' '.join(left_tokens_raw), self.main)
                     )
-                    self.indexWidget(self.model().index(i, 0)).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                    self.indexWidget(self.model().index(i, 0)).setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
 
                     self.indexWidget(self.model().index(i, 0)).tokens_raw = left_tokens_raw
                     self.indexWidget(self.model().index(i, 0)).tokens_search = left_tokens_search
@@ -571,7 +565,7 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
                     )
 
                     self.setIndexWidget(self.model().index(i, 1), label_node)
-                    self.indexWidget(self.model().index(i, 1)).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+                    self.indexWidget(self.model().index(i, 1)).setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
 
                     self.indexWidget(self.model().index(i, 1)).tokens_raw = node_tokens_raw
                     self.indexWidget(self.model().index(i, 1)).tokens_search = node_tokens_search
@@ -692,7 +686,7 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
                 wl_checks_work_area.check_err_fig(self.main, err_msg)
 
 class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str, list)
+    worker_done = QtCore.pyqtSignal(str, list)
 
     def run(self):
         err_msg = ''
@@ -945,7 +939,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
         self.worker_done.emit(err_msg, concordance_lines)
 
 class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str, list, list)
+    worker_done = QtCore.pyqtSignal(str, list, list)
 
     def run(self):
         err_msg = ''

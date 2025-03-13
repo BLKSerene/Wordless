@@ -23,8 +23,8 @@ import copy
 import traceback
 
 import numpy
-from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
-from PyQt5.QtWidgets import QCheckBox, QLabel, QGroupBox
+from PyQt5 import QtCore
+from PyQt5 import QtWidgets
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
@@ -44,7 +44,7 @@ from wordless.wl_widgets import (
     wl_widgets
 )
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
@@ -71,7 +71,7 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
         self.wrapper_table.layout().addWidget(self.table_ngram_generator.button_clr_table, 2, 4)
 
         # Token Settings
-        self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
+        self.group_box_token_settings = QtWidgets.QGroupBox(self.tr('Token Settings'), self)
 
         (
             self.checkbox_words,
@@ -126,7 +126,7 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
         self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 9, 1)
 
         # Search Settings
-        self.group_box_search_settings = QGroupBox(self.tr('Search Settings'), self)
+        self.group_box_search_settings = QtWidgets.QGroupBox(self.tr('Search Settings'), self)
 
         (
             self.label_search_term,
@@ -145,7 +145,7 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
             self.checkbox_match_tags
         ) = wl_widgets.wl_widgets_search_settings(main, tab = self.tab)
 
-        self.label_search_term_position = QLabel(self.tr('Search term position:'), self)
+        self.label_search_term_position = QtWidgets.QLabel(self.tr('Search term position:'), self)
         (
             self.checkbox_search_term_position_sync,
             self.label_search_term_position_min,
@@ -203,7 +203,7 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
 
         self.group_box_search_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_search_settings.layout().addWidget(self.label_search_term, 0, 0)
-        self.group_box_search_settings.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, QtCore.Qt.AlignRight)
         self.group_box_search_settings.layout().addWidget(self.stacked_widget_search_term, 1, 0, 1, 2)
         self.group_box_search_settings.layout().addWidget(self.label_delimiter, 2, 0, 1, 2)
 
@@ -223,9 +223,9 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
         self.group_box_search_settings.layout().addLayout(layout_context_settings, 13, 0, 1, 2)
 
         # Generation Settings
-        self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'))
+        self.group_box_generation_settings = QtWidgets.QGroupBox(self.tr('Generation Settings'))
 
-        self.label_ngram_size = QLabel(self.tr('N-gram size:'), self)
+        self.label_ngram_size = QtWidgets.QLabel(self.tr('N-gram size:'), self)
         (
             self.checkbox_ngram_size_sync,
             self.label_ngram_size_min,
@@ -233,7 +233,7 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
             self.label_ngram_size_max,
             self.spin_box_ngram_size_max
         ) = wl_boxes.wl_spin_boxes_min_max_sync(self)
-        self.checkbox_allow_skipped_tokens = QCheckBox(self.tr('Allow skipped tokens:'), self)
+        self.checkbox_allow_skipped_tokens = QtWidgets.QCheckBox(self.tr('Allow skipped tokens:'), self)
         self.spin_box_allow_skipped_tokens = wl_boxes.Wl_Spin_Box(self)
 
         (
@@ -262,7 +262,7 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
 
         self.group_box_generation_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_generation_settings.layout().addWidget(self.label_ngram_size, 0, 0, 1, 3)
-        self.group_box_generation_settings.layout().addWidget(self.checkbox_ngram_size_sync, 0, 3, Qt.AlignRight)
+        self.group_box_generation_settings.layout().addWidget(self.checkbox_ngram_size_sync, 0, 3, QtCore.Qt.AlignRight)
         self.group_box_generation_settings.layout().addWidget(self.label_ngram_size_min, 1, 0)
         self.group_box_generation_settings.layout().addWidget(self.spin_box_ngram_size_min, 1, 1)
         self.group_box_generation_settings.layout().addWidget(self.label_ngram_size_max, 1, 2)
@@ -280,7 +280,7 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
         self.group_box_generation_settings.layout().setColumnStretch(3, 1)
 
         # Table Settings
-        self.group_box_table_settings = QGroupBox(self.tr('Table Settings'))
+        self.group_box_table_settings = QtWidgets.QGroupBox(self.tr('Table Settings'))
 
         (
             self.checkbox_show_pct_data,
@@ -301,7 +301,7 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown_file, 2, 0)
 
         # Figure Settings
-        self.group_box_fig_settings = QGroupBox(self.tr('Figure Settings'), self)
+        self.group_box_fig_settings = QtWidgets.QGroupBox(self.tr('Figure Settings'), self)
 
         (
             self.label_graph_type,
@@ -314,7 +314,7 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
             self.checkbox_use_cumulative
         ) = wl_widgets.wl_widgets_fig_settings(self, tab = self.tab)
 
-        self.label_rank = QLabel(self.tr('Rank:'), self)
+        self.label_rank = QtWidgets.QLabel(self.tr('Rank:'), self)
         (
             self.checkbox_rank_sync,
             self.label_rank_min,
@@ -643,7 +643,7 @@ class Wl_Table_Ngram_Generator(wl_tables.Wl_Table_Data_Filter_Search):
                 # Sort by frequency of the first file
                 self.horizontalHeader().setSortIndicator(
                     self.find_header_hor(self.tr('[{}]\nFrequency').format(files[0]['name'])),
-                    Qt.DescendingOrder
+                    QtCore.Qt.DescendingOrder
                 )
 
                 cols_freq = self.find_headers_hor(self.tr('\nFrequency'))
@@ -766,7 +766,7 @@ class Wl_Table_Ngram_Generator(wl_tables.Wl_Table_Data_Filter_Search):
                 wl_checks_work_area.check_err_fig(self.main, err_msg)
 
 class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str, dict, dict)
+    worker_done = QtCore.pyqtSignal(str, dict, dict)
 
     def __init__(self, main, dialog_progress, update_gui):
         super().__init__(main, dialog_progress, update_gui)

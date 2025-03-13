@@ -23,17 +23,9 @@ import pickle
 import re
 import sys
 
-from PyQt5.QtCore import QObject
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import (
-    QApplication,
-    QLabel,
-    QMainWindow,
-    QPushButton,
-    QStatusBar,
-    QTableView,
-    QTabWidget
-)
+from PyQt5 import QtCore
+from PyQt5 import QtGui
+from PyQt5 import QtWidgets
 
 from tests import wl_test_file_area
 from wordless import wl_file_area
@@ -47,9 +39,9 @@ from wordless.wl_widgets import wl_tables
 SEARCH_TERMS = ['take']
 
 # An instance of QApplication must be created before any instance of QWidget
-wl_app = QApplication(sys.argv)
+wl_app = QtWidgets.QApplication(sys.argv)
 
-class Wl_Test_Main(QMainWindow):
+class Wl_Test_Main(QtWidgets.QMainWindow):
     def __init__(self, switch_lang_utils = 'default'):
         super().__init__()
 
@@ -86,13 +78,13 @@ class Wl_Test_Main(QMainWindow):
                 self.switch_lang_utils_stanza()
 
         # Status bar
-        self.status_bar = QStatusBar()
+        self.status_bar = QtWidgets.QStatusBar()
 
         # Work area
-        self.wl_work_area = QTabWidget()
+        self.wl_work_area = QtWidgets.QTabWidget()
 
         # File area
-        self.wl_file_area = QObject()
+        self.wl_file_area = QtCore.QObject()
         self.wl_file_area.main = self
         self.wl_file_area.file_type = 'observed'
         self.wl_file_area.settings_suffix = ''
@@ -106,7 +98,7 @@ class Wl_Test_Main(QMainWindow):
         self.wl_file_area.find_file_by_name = lambda file_name, selected_only = False: wl_file_area.Wrapper_File_Area.find_file_by_name(self.wl_file_area, file_name, selected_only)
         self.wl_file_area.find_files_by_name = lambda file_names, selected_only = False: wl_file_area.Wrapper_File_Area.find_files_by_name(self.wl_file_area, file_names, selected_only)
 
-        self.wl_file_area_ref = QObject()
+        self.wl_file_area_ref = QtCore.QObject()
         self.wl_file_area_ref.main = self
         self.wl_file_area_ref.file_type = 'ref'
         self.wl_file_area_ref.settings_suffix = '_ref'
@@ -226,7 +218,7 @@ class Wl_Test_Main(QMainWindow):
 
                         break
 
-class Wl_Test_Table(QTableView):
+class Wl_Test_Table(QtWidgets.QTableView):
     def __init__(self, parent, tab = ''):
         super().__init__(parent)
 
@@ -236,20 +228,20 @@ class Wl_Test_Table(QTableView):
         self.settings_global = wl_settings_global.init_settings_global()
         self.settings = wl_settings_default.init_settings_default(self)
 
-        self.setModel(QStandardItemModel())
+        self.setModel(QtGui.QStandardItemModel())
 
-        self.button_generate_table = QPushButton(self)
+        self.button_generate_table = QtWidgets.QPushButton(self)
 
         self.disable_updates = lambda: wl_tables.Wl_Table.disable_updates(self)
         self.enable_updates = lambda emit_signals: wl_tables.Wl_Table.enable_updates(self, emit_signals)
         self.is_empty = lambda: wl_tables.Wl_Table.is_empty(self)
 
     def set_item(self, row, col, text):
-        self.model().setItem(row, col, QStandardItem(text))
+        self.model().setItem(row, col, QtGui.QStandardItem(text))
 
     def set_label(self, row, col, text):
-        self.set_item(row, col, QStandardItem())
-        self.setIndexWidget(self.model().index(row, col), QLabel(text))
+        self.set_item(row, col, QtGui.QStandardItem())
+        self.setIndexWidget(self.model().index(row, col), QtWidgets.QLabel(text))
         self.indexWidget(self.model().index(row, col)).tokens_raw = [text]
 
 class Wl_Test_Text:
@@ -285,7 +277,7 @@ class Wl_Exc_Tests_Lang_Util_Skipped(Exception):
         super().__init__(f'Tests for language utility "{lang_util}" is skipped!')
 
 def wl_test_index(row, col):
-    return QStandardItemModel().createIndex(row, col)
+    return QtGui.QStandardItemModel().createIndex(row, col)
 
 # Select files randomly
 def select_test_files(main, no_files, ref = False):

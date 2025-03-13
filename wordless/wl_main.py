@@ -43,30 +43,9 @@ import botok
 import matplotlib
 import nltk
 import packaging.version
-from PyQt5.QtCore import (
-    pyqtSignal,
-    QCoreApplication,
-    QObject,
-    Qt,
-    QTranslator
-)
-from PyQt5.QtGui import (
-    QFont,
-    QIcon,
-    QKeySequence,
-    QPixmap,
-    QStandardItem
-)
-from PyQt5.QtWidgets import (
-    QActionGroup,
-    QApplication,
-    QCheckBox,
-    QDialog,
-    QLabel,
-    QMainWindow,
-    QPushButton,
-    QSplashScreen
-)
+from PyQt5 import QtCore
+from PyQt5 import QtGui
+from PyQt5 import QtWidgets
 import pythainlp
 import spacy_pkuseg
 import underthesea.file_utils
@@ -87,7 +66,7 @@ from wordless import (
     wl_keyword_extractor
 )
 from wordless.wl_checks import wl_checks_misc
-from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc, wl_msg_boxes
+from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc
 from wordless.wl_settings import wl_settings, wl_settings_default, wl_settings_global
 from wordless.wl_utils import wl_misc, wl_paths, wl_threading
 from wordless.wl_widgets import (
@@ -113,30 +92,15 @@ if getattr(sys, '_MEIPASS', False):
     # Underthesea
     underthesea.file_utils.UNDERTHESEA_FOLDER = wl_paths.get_path_file('.underthesea')
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 is_windows, is_macos, is_linux = wl_misc.check_os()
 
-file_settings = wl_paths.get_path_file('wl_settings.pickle', internal = False)
-file_settings_display_lang = wl_paths.get_path_file('wl_settings_display_lang.pickle', internal = False)
-
-if os.path.exists(file_settings):
-    with open(file_settings, 'rb') as f:
-        settings_custom = pickle.load(f)
-
-    ui_scaling = settings_custom['general']['ui_settings']['interface_scaling']
-    global_font_family = settings_custom['general']['ui_settings']['font_family']
-    global_font_size = settings_custom['general']['ui_settings']['font_size']
-else:
-    ui_scaling = wl_settings_default.DEFAULT_INTERFACE_SCALING
-    global_font_family = wl_settings_default.DEFAULT_FONT_FAMILY
-    global_font_size = wl_settings_default.DEFAULT_FONT_SIZE
-
-class Wl_Loading(QSplashScreen):
+class Wl_Loading(QtWidgets.QSplashScreen):
     def __init__(self):
-        super().__init__(QPixmap(wl_paths.get_path_img('wl_loading.png')))
+        super().__init__(QtGui.QPixmap(wl_paths.get_path_img('wl_loading.png')))
 
         self.setFont(
-            QFont(global_font_family,
+            QtGui.QFont(global_font_family,
             pointSize = global_font_size - 1)
         )
         self.show_message(self.tr('Initializing Wordless...'))
@@ -144,8 +108,8 @@ class Wl_Loading(QSplashScreen):
     def show_message(self, message):
         self.showMessage(
             f' {message}',
-            color = Qt.white,
-            alignment = Qt.AlignLeft | Qt.AlignBottom
+            color = QtCore.Qt.white,
+            alignment = QtCore.Qt.AlignLeft | QtCore.Qt.AlignBottom
         )
 
     def fade_in(self):
@@ -169,21 +133,22 @@ class Wl_Dialog_Confirm_Exit(wl_dialogs.Wl_Dialog_Info):
             main,
             title = _tr('Wl_Dialog_Confirm_Exit', 'Exit Wordless'),
             width = 450,
+            icon = 'question',
             no_buttons = True
         )
 
         self.label_confirm_exit = wl_labels.Wl_Label_Dialog(
             self.tr('''
-                <div>Are you sure you want to exit Wordless?</div>
+                <div>Do you want to exit <i>Wordless</i>?</div>
                 <br>
-                <div><b>Note: All unsaved data and figures will be lost.</b></div>
+                <div><b>Warning:</b> All unsaved data and figures will be lost.</div>
             '''),
             self
         )
 
-        self.checkbox_always_confirm_on_exit = QCheckBox(self.tr('Always confirm on exit'), self)
-        self.button_exit = QPushButton(self.tr('Exit'), self)
-        self.button_cancel = QPushButton(self.tr('Cancel'), self)
+        self.checkbox_always_confirm_on_exit = QtWidgets.QCheckBox(self.tr('Always confirm on exit'), self)
+        self.button_exit = QtWidgets.QPushButton(self.tr('Exit'), self)
+        self.button_cancel = QtWidgets.QPushButton(self.tr('Cancel'), self)
 
         self.checkbox_always_confirm_on_exit.stateChanged.connect(self.always_confirm_on_exit_changed)
         self.button_exit.clicked.connect(self.accept)
@@ -209,7 +174,7 @@ class Wl_Dialog_Confirm_Exit(wl_dialogs.Wl_Dialog_Info):
 
         settings['always_confirm_on_exit'] = self.checkbox_always_confirm_on_exit.isChecked()
 
-class Wl_Main(QMainWindow):
+class Wl_Main(QtWidgets.QMainWindow):
     def __init__(self, loading_window):
         super().__init__()
 
@@ -223,7 +188,7 @@ class Wl_Main(QMainWindow):
         self.email_html = '<a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a>'
 
         # Icon
-        self.setWindowIcon(QIcon(wl_paths.get_path_img('wl_icon.ico')))
+        self.setWindowIcon(QtGui.QIcon(wl_paths.get_path_img('wl_icon.ico')))
         # Title
         self.setWindowTitle(f'Wordless {self.ver}')
 
@@ -236,12 +201,18 @@ class Wl_Main(QMainWindow):
         # Custom settings
         if os.path.exists(file_settings):
             with open(file_settings, 'rb') as f:
-                settings_custom = pickle.load(f)
+                try:
+                    settings_custom = pickle.load(f)
 
-            if wl_checks_misc.check_custom_settings(settings_custom, self.settings_default):
-                self.settings_custom = settings_custom
-            else:
-                self.settings_custom = copy.deepcopy(self.settings_default)
+                    if wl_checks_misc.check_custom_settings(settings_custom, self.settings_default):
+                        self.settings_custom = settings_custom
+                    else:
+                        self.settings_custom = copy.deepcopy(self.settings_default)
+                # Use default settings if the pickle file is empty
+                except EOFError:
+                    self.settings_custom = copy.deepcopy(self.settings_default)
+
+                    os.remove(file_settings)
         else:
             self.settings_custom = copy.deepcopy(self.settings_default)
 
@@ -281,13 +252,11 @@ class Wl_Main(QMainWindow):
 
     def closeEvent(self, event):
         if self.settings_custom['general']['misc_settings']['always_confirm_on_exit']:
-            result = Wl_Dialog_Confirm_Exit(self).exec_()
-
-            if result == QDialog.Accepted:
+            if Wl_Dialog_Confirm_Exit(self).exec_():
                 self.save_settings()
 
                 event.accept()
-            elif result == QDialog.Rejected:
+            else:
                 event.ignore()
         else:
             self.save_settings()
@@ -302,7 +271,7 @@ class Wl_Main(QMainWindow):
 
         # File
         self.action_file_open_files = self.menu_file.addAction(self.tr('&Open Files...'))
-        self.action_file_open_files.setShortcut(QKeySequence('Ctrl+O'))
+        self.action_file_open_files.setShortcut(QtGui.QKeySequence('Ctrl+O'))
         self.action_file_open_files.setStatusTip(self.tr('Open file(s)'))
         self.action_file_reopen = self.menu_file.addAction(self.tr('&Reopen Closed Files'))
         self.action_file_reopen.setStatusTip(self.tr('Reopen closed files'))
@@ -310,38 +279,38 @@ class Wl_Main(QMainWindow):
         self.menu_file.addSeparator()
 
         self.action_file_select_all = self.menu_file.addAction(self.tr('S&elect All'))
-        self.action_file_select_all.setShortcut(QKeySequence('Ctrl+A'))
+        self.action_file_select_all.setShortcut(QtGui.QKeySequence('Ctrl+A'))
         self.action_file_select_all.setStatusTip(self.tr('Select all files'))
         self.action_file_deselect_all = self.menu_file.addAction(self.tr('&Deselect All'))
-        self.action_file_deselect_all.setShortcut(QKeySequence('Ctrl+D'))
+        self.action_file_deselect_all.setShortcut(QtGui.QKeySequence('Ctrl+D'))
         self.action_file_deselect_all.setStatusTip(self.tr('Deselect all files'))
         self.action_file_invert_selection = self.menu_file.addAction(self.tr('&Invert Selection'))
-        self.action_file_invert_selection.setShortcut(QKeySequence('Ctrl+Shift+I'))
+        self.action_file_invert_selection.setShortcut(QtGui.QKeySequence('Ctrl+Shift+I'))
         self.action_file_invert_selection.setStatusTip(self.tr('Invert file selection'))
 
         self.menu_file.addSeparator()
 
         self.action_file_close_selected = self.menu_file.addAction(self.tr('&Close Selected'))
-        self.action_file_close_selected.setShortcut(QKeySequence('Ctrl+W'))
+        self.action_file_close_selected.setShortcut(QtGui.QKeySequence('Ctrl+W'))
         self.action_file_close_selected.setStatusTip(self.tr('Close selected file(s)'))
         self.action_file_close_all = self.menu_file.addAction(self.tr('C&lose All'))
-        self.action_file_close_all.setShortcut(QKeySequence('Ctrl+Shift+W'))
+        self.action_file_close_all.setShortcut(QtGui.QKeySequence('Ctrl+Shift+W'))
         self.action_file_close_all.setStatusTip(self.tr('Close all files'))
 
         self.menu_file.addSeparator()
 
         self.action_file_exit = self.menu_file.addAction(self.tr('&Exit...'))
-        self.action_file_exit.setShortcut(QKeySequence('Ctrl+Q'))
+        self.action_file_exit.setShortcut(QtGui.QKeySequence('Ctrl+Q'))
         self.action_file_exit.setStatusTip(self.tr('Exit the program'))
         self.action_file_exit.triggered.connect(self.close)
 
         # Edit
         self.action_edit_results_search = self.menu_edit.addAction(self.tr('&Search in Results...'))
-        self.action_edit_results_search.setShortcut(QKeySequence('Ctrl+F'))
+        self.action_edit_results_search.setShortcut(QtGui.QKeySequence('Ctrl+F'))
         self.action_edit_results_search.setStatusTip(self.tr('Search in results displayed in the table'))
         self.action_edit_results_search.triggered.connect(self.edit_results_search)
         self.action_edit_results_filter = self.menu_edit.addAction(self.tr('&Filter Results...'))
-        self.action_edit_results_filter.setShortcut(QKeySequence('Ctrl+Shift+L'))
+        self.action_edit_results_filter.setShortcut(QtGui.QKeySequence('Ctrl+Shift+L'))
         self.action_edit_results_filter.setStatusTip(self.tr('Filter results displayed in the table'))
         self.action_edit_results_filter.triggered.connect(self.edit_results_filter)
         self.action_edit_results_sort = self.menu_edit.addAction(self.tr('S&ort Results...'))
@@ -354,7 +323,7 @@ class Wl_Main(QMainWindow):
         self.action_prefs_settings.triggered.connect(self.wl_settings.load)
         self.menu_prefs_display_lang = self.menu_prefs.addMenu(self.tr('&Display Language'))
 
-        self.action_group_prefs_display_lang = QActionGroup(self.menu_prefs_display_lang)
+        self.action_group_prefs_display_lang = QtWidgets.QActionGroup(self.menu_prefs_display_lang)
         self.action_group_prefs_display_lang.setExclusive(True)
 
         for action_lang, action_text, action_status_tip in (
@@ -385,7 +354,7 @@ class Wl_Main(QMainWindow):
 
         # Help
         self.action_help_need_help = self.menu_help.addAction(self.tr('&Need Help?'))
-        self.action_help_need_help.setShortcut(QKeySequence('F1'))
+        self.action_help_need_help.setShortcut(QtGui.QKeySequence('F1'))
         self.action_help_need_help.setStatusTip(self.tr('Show help information'))
         self.action_help_need_help.triggered.connect(self.help_need_help)
         self.action_help_citing = self.menu_help.addAction(self.tr('&Citing'))
@@ -429,14 +398,14 @@ class Wl_Main(QMainWindow):
         self.init_work_area()
 
         # Splitter
-        self.splitter_central_widget = wl_layouts.Wl_Splitter(Qt.Vertical, self)
+        self.splitter_central_widget = wl_layouts.Wl_Splitter(QtCore.Qt.Vertical, self)
         self.splitter_central_widget.addWidget(self.wl_work_area)
         self.splitter_central_widget.addWidget(self.tabs_file_area)
 
-        if is_windows or is_linux:
-            self.splitter_central_widget.setHandleWidth(1)
-        elif is_macos:
+        if is_macos:
             self.splitter_central_widget.setHandleWidth(2)
+        else:
+            self.splitter_central_widget.setHandleWidth(1)
 
         self.splitter_central_widget.setObjectName('splitter-central-widget')
         self.splitter_central_widget.setStyleSheet('''
@@ -511,7 +480,7 @@ class Wl_Main(QMainWindow):
 
                 break
 
-        self.tabs_file_area.currentWidget().table_files.model().itemChanged.emit(QStandardItem())
+        self.tabs_file_area.currentWidget().table_files.model().itemChanged.emit(QtGui.QStandardItem())
 
         # Work Area
         for i in range(self.wl_work_area.count()):
@@ -621,7 +590,7 @@ class Wl_Main(QMainWindow):
         for action in self.action_group_prefs_display_lang.actions():
             if action.isChecked():
                 if action.lang != self.settings_custom['menu']['prefs']['display_lang']:
-                    if wl_dialogs_misc.Wl_Dialog_Restart_Required(self).exec_() == QDialog.Accepted:
+                    if wl_dialogs_misc.Wl_Dialog_Restart_Required(self).exec_():
                         with open(file_settings_display_lang, 'wb') as f:
                             pickle.dump(action.lang, f)
 
@@ -642,13 +611,13 @@ class Wl_Main(QMainWindow):
                 break
 
     def prefs_reset_layouts(self):
-        if wl_msg_boxes.wl_msg_box_question(
+        if wl_dialogs.Wl_Dialog_Question(
             main = self,
             title = self.tr('Reset Layouts'),
             text = self.tr('''
                 <div>Do you want to reset all layouts to their default settings?</div>
             ''')
-        ):
+        ).exec_():
             self.centralWidget().setSizes(self.settings_default['menu']['prefs']['layouts']['central_widget'])
 
     def prefs_show_status_bar(self):
@@ -660,28 +629,28 @@ class Wl_Main(QMainWindow):
             self.statusBar().hide()
 
     def help_need_help(self):
-        Wl_Dialog_Need_Help(self).exec_()
+        Wl_Dialog_Need_Help(self).show()
 
     def help_citing(self):
-        Wl_Dialog_Citing(self).exec_()
+        Wl_Dialog_Citing(self).show()
 
     def help_donating(self):
-        Wl_Dialog_Donating(self).exec_()
+        Wl_Dialog_Donating(self).show()
 
     def help_acks(self):
-        Wl_Dialog_Acks(self).exec_()
+        Wl_Dialog_Acks(self).show()
 
     def help_check_updates(self, on_startup = False):
         dialog_check_updates = Wl_Dialog_Check_Updates(self, on_startup = on_startup)
 
         if not on_startup:
-            dialog_check_updates.exec_()
+            dialog_check_updates.show()
 
     def help_changelog(self):
-        Wl_Dialog_Changelog(self).exec_()
+        Wl_Dialog_Changelog(self).show()
 
     def help_about(self):
-        Wl_Dialog_About(self).exec_()
+        Wl_Dialog_About(self).show()
 
     def save_settings(self):
         # Clear history of closed files
@@ -722,7 +691,7 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
             title = _tr('Wl_Dialog_Need_Help', 'Need Help?'),
             width = 600,
             height = 600,
-            icon = False
+            icon = 'info'
         )
 
         self.label_need_help = wl_labels.Wl_Label_Dialog(
@@ -826,14 +795,15 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
         self.table_need_help.enable_updates()
 
         self.layout_info.addWidget(self.label_need_help, 0, 0)
-        self.layout_info.addWidget(self.table_need_help, 1, 0)
+        self.wrapper_info.layout().addWidget(self.table_need_help, 1, 0)
 
 class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info_Copy):
     def __init__(self, main):
         super().__init__(
             main,
             title = _tr('Wl_Dialog_Citing', 'Citing'),
-            width = 500
+            width = 500,
+            icon = 'info'
         )
 
         self.label_citing = wl_labels.Wl_Label_Dialog(
@@ -843,9 +813,9 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info_Copy):
             self
         )
 
-        self.label_citation_sys = QLabel(self.tr('Citation system:'), self)
+        self.label_citation_sys = QtWidgets.QLabel(self.tr('Citation system:'), self)
         self.combo_box_citation_sys = wl_boxes.Wl_Combo_Box(self)
-        self.label_cite_as = QLabel(self.tr('Cite as:'), self)
+        self.label_cite_as = QtWidgets.QLabel(self.tr('Cite as:'), self)
         self.combo_box_cite_as = wl_boxes.Wl_Combo_Box(self)
 
         self.combo_box_citation_sys.addItems([
@@ -861,15 +831,17 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info_Copy):
         self.combo_box_citation_sys.currentTextChanged.connect(self.citation_changed)
         self.combo_box_cite_as.currentTextChanged.connect(self.citation_changed)
 
-        self.layout_info.addWidget(self.label_citing, 0, 0, 1, 2)
-        self.layout_info.addWidget(self.label_citation_sys, 1, 0)
-        self.layout_info.addWidget(self.combo_box_citation_sys, 1, 1)
-        self.layout_info.addWidget(self.label_cite_as, 2, 0)
-        self.layout_info.addWidget(self.combo_box_cite_as, 2, 1)
-        self.layout_info.addWidget(self.text_edit_info, 3, 0, 1, 2)
+        layout_citation = wl_layouts.Wl_Layout()
+        layout_citation.addWidget(self.label_citation_sys, 0, 0)
+        layout_citation.addWidget(self.combo_box_citation_sys, 0, 1)
+        layout_citation.addWidget(self.label_cite_as, 1, 0)
+        layout_citation.addWidget(self.combo_box_cite_as, 1, 1)
+        layout_citation.addWidget(self.text_edit_info, 2, 0, 1, 2)
 
-        self.layout_info.setRowStretch(3, 1)
-        self.layout_info.setColumnStretch(1, 1)
+        layout_citation.setColumnStretch(1, 1)
+
+        self.layout_info.addWidget(self.label_citing, 0, 0)
+        self.wrapper_info.layout().addLayout(layout_citation, 1, 0)
 
         self.load_settings()
 
@@ -921,16 +893,16 @@ class Wl_Dialog_Donating(wl_dialogs.Wl_Dialog_Info):
             main,
             title = _tr('Wl_Dialog_Donating', 'Donating'),
             width = 450,
-            icon = False
+            icon = 'info'
         )
 
         self.label_donating = wl_labels.Wl_Label_Dialog(
             self.tr('''
-                <div>If you would like to support the development of Wordless, you may donate via <a href="https://www.paypal.com/">PayPal</a>, <a href="https://global.alipay.com/">Alipay</a>, or <a href="https://pay.weixin.qq.com/index.php/public/wechatpay_en">WeChat Pay</a>.</div>
+                <div>If you would like to support the development of <i>Wordless</i>, you may donate via <a href="https://www.paypal.com/">PayPal</a>, <a href="https://global.alipay.com/">Alipay</a>, or <a href="https://pay.weixin.qq.com/index.php/public/wechatpay_en">WeChat Pay</a>.</div>
             '''),
             self
         )
-        self.label_donating_via = QLabel(self.tr('Donating via:'), self)
+        self.label_donating_via = QtWidgets.QLabel(self.tr('Donating via:'), self)
         self.combo_box_donating_via = wl_boxes.Wl_Combo_Box(self)
         self.label_donating_via_img = wl_labels.Wl_Label_Html('', self)
 
@@ -949,10 +921,10 @@ class Wl_Dialog_Donating(wl_dialogs.Wl_Dialog_Info):
         layout_donating_via.setColumnStretch(2, 1)
 
         self.layout_info.addWidget(self.label_donating, 0, 0)
-        self.layout_info.addLayout(layout_donating_via, 1, 0)
-        self.layout_info.addWidget(self.label_donating_via_img, 2, 0, Qt.AlignHCenter | Qt.AlignVCenter)
+        self.wrapper_info.layout().addLayout(layout_donating_via, 1, 0)
+        self.wrapper_info.layout().addWidget(self.label_donating_via_img, 2, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
 
-        self.layout_info.setRowStretch(2, 1)
+        self.wrapper_info.layout().setRowStretch(2, 1)
 
         self.load_settings()
 
@@ -991,7 +963,7 @@ class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
             title = _tr('Wl_Dialog_Acks', 'Acknowledgments'),
             width = 700,
             height = 600,
-            icon = False
+            icon = 'info'
         )
 
         # Load acknowledgments
@@ -1011,7 +983,7 @@ class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
 
         self.label_acks = wl_labels.Wl_Label_Dialog(
             self.tr('''
-                <div>As Wordless stands on the shoulders of giants, I hereby extend my sincere gratitude to the following open-source projects without which this project would not have been possible:</div>
+                <div>As <i>Wordless</i> stands on the shoulders of giants, I hereby extend my sincere gratitude to the following open-source projects without which this project would not have been possible:</div>
             '''),
             self
         )
@@ -1037,7 +1009,7 @@ class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
         self.table_acks.enable_updates()
 
         self.layout_info.addWidget(self.label_acks, 0, 0)
-        self.layout_info.addWidget(self.table_acks, 1, 0)
+        self.wrapper_info.layout().addWidget(self.table_acks, 1, 0)
 
 class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main, on_startup = False):
@@ -1045,8 +1017,7 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
             main,
             title = _tr('Wl_Dialog_Check_Updates', 'Check for Updates'),
             width = 550,
-            no_buttons = True,
-            icon = False
+            no_buttons = True
         )
 
         self.on_startup = on_startup
@@ -1055,9 +1026,9 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
         self.label_cur_ver = wl_labels.Wl_Label_Dialog(self.tr('<div>Current version: </div>') + str(self.main.ver), self)
         self.label_latest_ver = wl_labels.Wl_Label_Dialog('<div></div>', self)
 
-        self.checkbox_check_updates_on_startup = QCheckBox(self.tr('Check for updates on startup'), self)
-        self.button_try_again = QPushButton(self.tr('Try again'), self)
-        self.button_cancel = QPushButton(self.tr('Cancel'), self)
+        self.checkbox_check_updates_on_startup = QtWidgets.QCheckBox(self.tr('Check for updates on startup'), self)
+        self.button_try_again = QtWidgets.QPushButton(self.tr('Try again'), self)
+        self.button_cancel = QtWidgets.QPushButton(self.tr('Cancel'), self)
 
         self.checkbox_check_updates_on_startup.stateChanged.connect(self.check_updates_on_startup_changed)
         self.button_try_again.clicked.connect(self.check_updates)
@@ -1072,7 +1043,6 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
 
         self.layout_buttons.setColumnStretch(1, 1)
 
-        #self.set_fixed_height()
         self.load_settings()
 
     def check_updates(self):
@@ -1114,17 +1084,17 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
             if status in ('updates_available', 'no_updates'):
                 if status == 'updates_available':
                     self.label_checking_status.set_text(self.tr('''
-                        <div>Wordless {} is out, click <a href="https://github.com/BLKSerene/Wordless#download"><b>HERE</b></a> to download the latest version of Wordless.</div>
+                        <div><i>Wordless</i> {} is out. Click <a href="https://github.com/BLKSerene/Wordless#download"><b>HERE</b></a> to download the latest version of <i>Wordless</i>.</div>
                     ''').format(ver_new))
                     self.label_latest_ver.set_text(self.tr('<div>Latest version: </div>') + ver_new)
                 elif status == 'no_updates':
                     self.label_checking_status.set_text(self.tr('''
-                        <div>Hooray, you are using the latest version of Wordless!</div>
+                        <div>Hooray! You are using the latest version of <i>Wordless</i>!</div>
                     '''))
                     self.label_latest_ver.set_text(self.tr('<div>Latest version: </div>') + str(self.main.ver))
             elif status == 'network_err':
                 self.label_checking_status.set_text(self.tr('''
-                    <div>A network error has occurred, please check your network settings and try again or <a href="https://github.com/BLKSerene/Wordless/releases">check for updates manually</a>.</div>
+                    <div>A network error has occurred. Please check your network settings and try again or <a href="https://github.com/BLKSerene/Wordless/releases">check for updates manually</a>.</div>
                 '''))
                 self.label_latest_ver.set_text(self.tr('<div>Latest version: Network error</div>'))
 
@@ -1151,8 +1121,8 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
 
         settings['check_updates_on_startup'] = self.checkbox_check_updates_on_startup.isChecked()
 
-class Worker_Check_Updates(QObject):
-    worker_done = pyqtSignal(str, str)
+class Worker_Check_Updates(QtCore.QObject):
+    worker_done = QtCore.pyqtSignal(str, str)
 
     def __init__(self, main):
         super().__init__()
@@ -1191,8 +1161,7 @@ class Wl_Dialog_Changelog(wl_dialogs.Wl_Dialog_Info):
             main,
             title = _tr('Wl_Dialog_Changelog', 'Changelog'),
             width = 600,
-            height = 600,
-            icon = False
+            height = 600
         )
 
         changelog = []
@@ -1301,13 +1270,12 @@ class Wl_Dialog_About(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
         super().__init__(
             main,
-            title = _tr('Wl_Dialog_About', 'About Wordless'),
-            icon = False
+            title = _tr('Wl_Dialog_About', 'About Wordless')
         )
 
-        img_wl_icon = QPixmap(wl_paths.get_path_img('wl_icon_about.png'))
+        img_wl_icon = QtGui.QPixmap(wl_paths.get_path_img('wl_icon_about.png'))
 
-        label_about_icon = QLabel('', self)
+        label_about_icon = QtWidgets.QLabel('', self)
         label_about_icon.setPixmap(img_wl_icon)
 
         label_about_title = wl_labels.Wl_Label_Dialog_No_Wrap(
@@ -1336,7 +1304,7 @@ class Wl_Dialog_About(wl_dialogs.Wl_Dialog_Info):
             self
         )
 
-        self.layout_info.addWidget(label_about_icon, 0, 0, Qt.AlignHCenter)
+        self.layout_info.addWidget(label_about_icon, 0, 0, QtCore.Qt.AlignHCenter)
         self.layout_info.addWidget(label_about_title, 0, 0, 1, 2)
         self.layout_info.addWidget(label_about_info, 1, 0, 1, 2)
 
@@ -1344,20 +1312,50 @@ class Wl_Dialog_About(wl_dialogs.Wl_Dialog_Info):
         self.layout_info.setColumnStretch(1, 5)
 
 if __name__ == '__main__':
+    file_settings = wl_paths.get_path_file('wl_settings.pickle', internal = False)
+    file_settings_display_lang = wl_paths.get_path_file('wl_settings_display_lang.pickle', internal = False)
+
+    first_startup = not os.path.exists(file_settings)
+    corrupt_settings_file = False
+
+    if not first_startup:
+        with open(file_settings, 'rb') as f:
+            try:
+                settings_custom = pickle.load(f)
+
+                ui_scaling = settings_custom['general']['ui_settings']['interface_scaling']
+                global_font_family = settings_custom['general']['ui_settings']['font_family']
+                global_font_size = settings_custom['general']['ui_settings']['font_size']
+            # Empty pickle file
+            except EOFError:
+                corrupt_settings_file = True
+
+                ui_scaling = wl_settings_default.DEFAULT_INTERFACE_SCALING
+                global_font_family = wl_settings_default.DEFAULT_FONT_FAMILY
+                global_font_size = wl_settings_default.DEFAULT_FONT_SIZE
+    else:
+        ui_scaling = wl_settings_default.DEFAULT_INTERFACE_SCALING
+        global_font_family = wl_settings_default.DEFAULT_FONT_FAMILY
+        global_font_size = wl_settings_default.DEFAULT_FONT_SIZE
+
+    # Remove the empty pickle file
+    if corrupt_settings_file:
+        os.remove(file_settings)
+
     # Environment variables for QT should be set before QApplication is created
     os.environ['QT_SCALE_FACTOR'] = re.sub(r'([0-9]{2})%$', r'.\1', ui_scaling)
 
-    wl_app = QApplication(sys.argv)
+    wl_app = QtWidgets.QApplication(sys.argv)
 
     # Translations
-    if os.path.exists(file_settings_display_lang):
+    if not first_startup:
         with open(file_settings_display_lang, 'rb') as f:
             display_lang = pickle.load(f)
     else:
         display_lang = 'eng_us'
 
     if display_lang != 'eng_us':
-        translator = QTranslator()
+        translator = QtCore.QTranslator()
         translator.load(wl_paths.get_path_file('trs', f'{display_lang}.qm'))
 
         wl_app.installTranslator(translator)
@@ -1377,12 +1375,25 @@ if __name__ == '__main__':
     wl_main.showMaximized()
 
     # Show changelog on first startup
-    if wl_main.settings_custom['1st_startup']:
+    if first_startup:
         dialog_changelog = Wl_Dialog_Changelog(wl_main)
         dialog_changelog.move_to_center()
-        dialog_changelog.exec_()
+        dialog_changelog.show()
 
-        wl_main.settings_custom['1st_startup'] = False
+    if corrupt_settings_file:
+        dialog_corrupt_settings_file = wl_dialogs.Wl_Dialog_Info_Simple(
+            wl_main,
+            title = _tr('wl_main', 'Corrupt Settings File'),
+            text = _tr('wl_main', '''
+                <div>The settings file might be corrupt since an error occurred when loading it.</div>
+                <br>
+                <div>All settings have been automatically reset to their default values to fix the problem.</div>
+            '''),
+            icon = 'critical'
+        )
+
+        dialog_corrupt_settings_file.move_to_center()
+        dialog_corrupt_settings_file.exec_()
 
     # Check for updates on startup
     if wl_main.settings_custom['general']['update_settings']['check_updates_on_startup']:

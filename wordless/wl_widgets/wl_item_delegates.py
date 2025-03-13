@@ -18,17 +18,17 @@
 
 import math
 
-from PyQt5.QtGui import QBrush, QColor
-from PyQt5.QtWidgets import QStyledItemDelegate
+from PyQt5 import QtGui
+from PyQt5 import QtWidgets
 
 from wordless.wl_utils import wl_misc
 from wordless.wl_widgets import wl_boxes
 
-class Wl_Item_Delegate_Uneditable(QStyledItemDelegate):
+class Wl_Item_Delegate_Uneditable(QtWidgets.QStyledItemDelegate):
     def createEditor(self, parent, option, index):
         pass
 
-class Wl_Item_Delegate(QStyledItemDelegate):
+class Wl_Item_Delegate(QtWidgets.QStyledItemDelegate):
     def __init__(self, parent, widget = None, row = None, col = None):
         super().__init__(parent)
 
@@ -72,7 +72,7 @@ class Wl_Item_Delegate_Combo_Box(Wl_Item_Delegate):
             top_right_y = top_right.y()
 
             # Arrows
-            painter.setBrush(QBrush(QColor(73, 74, 76)))
+            painter.setBrush(QtGui.QBrush(QtGui.QColor(73, 74, 76)))
             painter.drawLine(
                 top_right_x - 7 - 8,
                 top_right_y + math.ceil((height - 5) / 2),

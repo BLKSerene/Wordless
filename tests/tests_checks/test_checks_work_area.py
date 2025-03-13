@@ -21,12 +21,6 @@ from wordless.wl_checks import wl_checks_work_area
 
 main = wl_test_init.Wl_Test_Main()
 
-def test_wl_msg_box_missing_search_terms():
-    wl_checks_work_area.wl_msg_box_missing_search_terms(main)
-
-def test_wl_msg_box_no_results():
-    wl_checks_work_area.wl_msg_box_no_results(main)
-
 def test_wl_status_bar_msg_lang_support_unavailable():
     wl_checks_work_area.wl_status_bar_msg_lang_support_unavailable(main)
 
@@ -132,9 +126,6 @@ def test_check_err_fig():
     wl_checks_work_area.check_err_fig(main, 'test')
 
 if __name__ == '__main__':
-    test_wl_msg_box_missing_search_terms()
-    test_wl_msg_box_no_results()
-
     test_wl_status_bar_msg_lang_support_unavailable()
     test_wl_status_bar_msg_lang_support_unavailable()
     test_wl_status_bar_msg_missing_search_terms()

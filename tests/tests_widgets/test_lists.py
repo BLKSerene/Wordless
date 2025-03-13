@@ -16,7 +16,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from PyQt5.QtCore import QItemSelectionModel
+from PyQt5 import QtCore
 
 from tests import wl_test_init
 from wordless.wl_widgets import wl_lists
@@ -37,7 +37,7 @@ def test_wl_list_add_ins_del_clr():
 
     list_add_ins_del_clr.selectionModel().clearSelection()
     list_add_ins_del_clr.selection_changed()
-    list_add_ins_del_clr.selectionModel().select(list_add_ins_del_clr.model().index(0, 0), QItemSelectionModel.Select)
+    list_add_ins_del_clr.selectionModel().select(list_add_ins_del_clr.model().index(0, 0), QtCore.QItemSelectionModel.Select)
     list_add_ins_del_clr.selection_changed()
 
     list_add_ins_del_clr.get_selected_rows()

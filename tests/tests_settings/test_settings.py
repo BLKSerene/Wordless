@@ -16,7 +16,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from PyQt5.QtWidgets import QLineEdit
+from PyQt5 import QtWidgets
 
 from tests import wl_test_init
 from wordless.wl_settings import wl_settings
@@ -35,17 +35,17 @@ def test_wl_settings():
 
 def test_wl_settings_node():
     settings_node = wl_settings.Wl_Settings_Node(main)
-    settings_node.wl_msg_box_path_empty()
-    settings_node.wl_msg_box_path_not_found('test')
-    settings_node.wl_msg_box_path_is_dir('test')
-    settings_node.wl_msg_box_path_not_dir('test')
+    settings_node.wl_dialog_path_empty()
+    settings_node.wl_dialog_path_not_found('test')
+    settings_node.wl_dialog_path_is_dir('test')
+    settings_node.wl_dialog_path_not_dir('test')
 
-    settings_node.validate_path_file(QLineEdit(settings_node))
-    settings_node.validate_path_file(QLineEdit('test', settings_node))
-    settings_node.validate_path_dir(QLineEdit(settings_node))
-    settings_node.validate_path_dir(QLineEdit('test', settings_node))
+    settings_node.validate_path_file(QtWidgets.QLineEdit(settings_node))
+    settings_node.validate_path_file(QtWidgets.QLineEdit('test', settings_node))
+    settings_node.validate_path_dir(QtWidgets.QLineEdit(settings_node))
+    settings_node.validate_path_dir(QtWidgets.QLineEdit('test', settings_node))
 
-    settings_node.confirm_path(QLineEdit(settings_node))
+    settings_node.confirm_path(QtWidgets.QLineEdit(settings_node))
 
     settings_node.validate_settings()
     settings_node.apply_settings()

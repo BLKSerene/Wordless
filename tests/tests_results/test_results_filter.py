@@ -16,7 +16,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from PyQt5.QtWidgets import QComboBox, QGridLayout
+from PyQt5 import QtWidgets
 
 from tests import wl_test_init
 from wordless.wl_results import wl_results_filter
@@ -57,8 +57,8 @@ def test_widgets_filter_p_val():
 def test_add_layouts_filters():
     wl_results_filter.add_layouts_filters(
         main,
-        layouts_filters = [QGridLayout() for _ in range(2)],
-        layout_filters = QGridLayout()
+        layouts_filters = [QtWidgets.QGridLayout() for _ in range(2)],
+        layout_filters = QtWidgets.QGridLayout()
     )
 
 def test_get_filter_min_max():
@@ -82,7 +82,7 @@ def test_wl_dialog_results_filter():
         val_min = 0, val_max = 0,
         settings = settings, filter_name = 'test'
     ))
-    dialog_results_filter.layouts_filters[-1].combo_box_freq_position = QComboBox()
+    dialog_results_filter.layouts_filters[-1].combo_box_freq_position = QtWidgets.QComboBox()
 
     dialog_results_filter.load_settings(defaults = True)
     dialog_results_filter.load_settings(defaults = False)

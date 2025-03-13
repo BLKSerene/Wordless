@@ -19,13 +19,13 @@
 import copy
 import math
 
-from PyQt5.QtCore import QCoreApplication
-from PyQt5.QtWidgets import QCheckBox, QGroupBox, QLabel
+from PyQt5 import QtCore
+from PyQt5 import QtWidgets
 
 from wordless.wl_settings import wl_settings
 from wordless.wl_widgets import wl_boxes, wl_layouts, wl_widgets
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 # Measures - Readability
 class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
@@ -36,9 +36,9 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['measures']['readability']
 
         # Al-Heeti's Readability Formula
-        self.group_box_rd = QGroupBox(self.tr("Al-Heeti's Readability Formula"), self)
+        self.group_box_rd = QtWidgets.QGroupBox(self.tr("Al-Heeti's Readability Formula"), self)
 
-        self.label_rd_variant = QLabel(self.tr('Variant:'), self)
+        self.label_rd_variant = QtWidgets.QLabel(self.tr('Variant:'), self)
         self.combo_box_rd_variant = wl_boxes.Wl_Combo_Box(self)
 
         self.combo_box_rd_variant.addItems([
@@ -53,17 +53,17 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.group_box_rd.layout().setColumnStretch(2, 1)
 
         # Automated Readability Index
-        self.group_box_ari = QGroupBox(self.tr('Automated Readability Index'), self)
+        self.group_box_ari = QtWidgets.QGroupBox(self.tr('Automated Readability Index'), self)
 
-        self.checkbox_use_navy_variant = QCheckBox(self.tr('Use Navy variant'), self)
+        self.checkbox_use_navy_variant = QtWidgets.QCheckBox(self.tr('Use Navy variant'), self)
 
         self.group_box_ari.setLayout(wl_layouts.Wl_Layout())
         self.group_box_ari.layout().addWidget(self.checkbox_use_navy_variant, 0, 0)
 
         # Bormuth's Grade Placement
-        self.group_box_bormuths_gp = QGroupBox(self.tr("Bormuth's Grade Placement"), self)
+        self.group_box_bormuths_gp = QtWidgets.QGroupBox(self.tr("Bormuth's Grade Placement"), self)
 
-        self.label_cloze_criterion_score = QLabel(self.tr('Cloze criterion score:'), self)
+        self.label_cloze_criterion_score = QtWidgets.QLabel(self.tr('Cloze criterion score:'), self)
         self.spin_box_cloze_criterion_score = wl_boxes.Wl_Spin_Box(self)
 
         self.spin_box_cloze_criterion_score.setRange(0, 100)
@@ -76,9 +76,9 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.group_box_bormuths_gp.layout().setColumnStretch(2, 1)
 
         # Coleman's Readability Formula
-        self.group_box_colemans_readability_formula = QGroupBox(self.tr("Coleman's Readability Formula"), self)
+        self.group_box_colemans_readability_formula = QtWidgets.QGroupBox(self.tr("Coleman's Readability Formula"), self)
 
-        self.label_colemans_readability_formula_variant = QLabel(self.tr('Variant:'), self)
+        self.label_colemans_readability_formula_variant = QtWidgets.QLabel(self.tr('Variant:'), self)
         self.combo_box_colemans_readability_formula_variant = wl_boxes.Wl_Combo_Box(self)
 
         self.combo_box_colemans_readability_formula_variant.addItems(['1', '2', '3', '4'])
@@ -90,8 +90,8 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.group_box_colemans_readability_formula.layout().setColumnStretch(2, 1)
 
         # Dale-Chall Readability Formula
-        self.group_box_x_c50 = QGroupBox(self.tr('Dale-Chall Readability Formula'), self)
-        self.label_x_c50_variant = QLabel(self.tr('Variant:'), self)
+        self.group_box_x_c50 = QtWidgets.QGroupBox(self.tr('Dale-Chall Readability Formula'), self)
+        self.label_x_c50_variant = QtWidgets.QLabel(self.tr('Variant:'), self)
         self.combo_box_x_c50_variant = wl_boxes.Wl_Combo_Box(self)
 
         self.combo_box_x_c50_variant.addItems([
@@ -107,9 +107,9 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.group_box_x_c50.layout().setColumnStretch(2, 1)
 
         # Danielson-Bryan's Readability Formula
-        self.group_box_danielson_bryans_readability_formula = QGroupBox(self.tr("Danielson-Bryan's Readability Formula"), self)
+        self.group_box_danielson_bryans_readability_formula = QtWidgets.QGroupBox(self.tr("Danielson-Bryan's Readability Formula"), self)
 
-        self.label_danielson_bryans_readability_formula_variant = QLabel(self.tr('Variant:'), self)
+        self.label_danielson_bryans_readability_formula_variant = QtWidgets.QLabel(self.tr('Variant:'), self)
         self.combo_box_danielson_bryans_readability_formula_variant = wl_boxes.Wl_Combo_Box(self)
 
         self.combo_box_danielson_bryans_readability_formula_variant.addItems(['1', '2'])
@@ -121,12 +121,12 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.group_box_danielson_bryans_readability_formula.layout().setColumnStretch(2, 1)
 
         # Flesch Reading Ease
-        self.group_box_re = QGroupBox(self.tr('Flesch Reading Ease'), self)
+        self.group_box_re = QtWidgets.QGroupBox(self.tr('Flesch Reading Ease'), self)
 
-        self.checkbox_use_powers_sumner_kearl_variant_for_all_langs = QCheckBox(self.tr('Use Powers-Sumner-Kearl variant for all languages'), self)
-        self.label_re_variant_nld = QLabel(self.tr('Dutch variant:'), self)
+        self.checkbox_use_powers_sumner_kearl_variant_for_all_langs = QtWidgets.QCheckBox(self.tr('Use Powers-Sumner-Kearl variant for all languages'), self)
+        self.label_re_variant_nld = QtWidgets.QLabel(self.tr('Dutch variant:'), self)
         self.combo_box_re_variant_nld = wl_boxes.Wl_Combo_Box(self)
-        self.label_re_variant_spa = QLabel(self.tr('Spanish variant:'), self)
+        self.label_re_variant_spa = QtWidgets.QLabel(self.tr('Spanish variant:'), self)
         self.combo_box_re_variant_spa = wl_boxes.Wl_Combo_Box(self)
 
         self.combo_box_re_variant_nld.addItems([
@@ -150,17 +150,17 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.group_box_re.layout().setColumnStretch(2, 1)
 
         # Flesch Reading Ease (Farr-Jenkins-Paterson)
-        self.group_box_re_farr_jenkins_paterson = QGroupBox(self.tr('Flsch Reading Ease (Farr-Jenkins-Paterson)'), self)
+        self.group_box_re_farr_jenkins_paterson = QtWidgets.QGroupBox(self.tr('Flsch Reading Ease (Farr-Jenkins-Paterson)'), self)
 
-        self.checkbox_use_powers_sumner_kearl_variant = QCheckBox(self.tr('Use Powers-Sumner-Kearl variant'), self)
+        self.checkbox_use_powers_sumner_kearl_variant = QtWidgets.QCheckBox(self.tr('Use Powers-Sumner-Kearl variant'), self)
 
         self.group_box_re_farr_jenkins_paterson.setLayout(wl_layouts.Wl_Layout())
         self.group_box_re_farr_jenkins_paterson.layout().addWidget(self.checkbox_use_powers_sumner_kearl_variant, 0, 0)
 
         # Gunning Fog Index
-        self.group_box_fog_index = QGroupBox(self.tr('Gunning Fog Index'), self)
+        self.group_box_fog_index = QtWidgets.QGroupBox(self.tr('Gunning Fog Index'), self)
 
-        self.label_fog_index_variant_eng = QLabel(self.tr('English variant:'), self)
+        self.label_fog_index_variant_eng = QtWidgets.QLabel(self.tr('English variant:'), self)
         self.combo_box_fog_index_variant_eng = wl_boxes.Wl_Combo_Box(self)
 
         self.combo_box_fog_index_variant_eng.addItems([
@@ -176,17 +176,17 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.group_box_fog_index.layout().setColumnStretch(2, 1)
 
         # Lorge Readability Index
-        self.group_box_lorge_readability_index = QGroupBox(self.tr('Lorge Readability Index'), self)
+        self.group_box_lorge_readability_index = QtWidgets.QGroupBox(self.tr('Lorge Readability Index'), self)
 
-        self.checkbox_use_corrected_formula = QCheckBox(self.tr('Use corrected formula'), self)
+        self.checkbox_use_corrected_formula = QtWidgets.QCheckBox(self.tr('Use corrected formula'), self)
 
         self.group_box_lorge_readability_index.setLayout(wl_layouts.Wl_Layout())
         self.group_box_lorge_readability_index.layout().addWidget(self.checkbox_use_corrected_formula, 0, 0)
 
         # neue Wiener Literaturformeln
-        self.group_box_nwl = QGroupBox(self.tr('neue Wiener Literaturformeln'), self)
+        self.group_box_nwl = QtWidgets.QGroupBox(self.tr('neue Wiener Literaturformeln'), self)
 
-        self.label_nwl_variant = QLabel(self.tr('Variant:'), self)
+        self.label_nwl_variant = QtWidgets.QLabel(self.tr('Variant:'), self)
         self.combo_box_nwl_variant = wl_boxes.Wl_Combo_Box(self)
 
         self.combo_box_nwl_variant.addItems(['1', '2', '3'])
@@ -198,9 +198,9 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.group_box_nwl.layout().setColumnStretch(2, 1)
 
         # neue Wiener Sachtextformel
-        self.group_box_nws = QGroupBox(self.tr('neue Wiener Sachtextformel'), self)
+        self.group_box_nws = QtWidgets.QGroupBox(self.tr('neue Wiener Sachtextformel'), self)
 
-        self.label_nws_variant = QLabel(self.tr('Variant:'), self)
+        self.label_nws_variant = QtWidgets.QLabel(self.tr('Variant:'), self)
         self.combo_box_nws_variant = wl_boxes.Wl_Combo_Box(self)
 
         self.combo_box_nws_variant.addItems(['1', '2', '3'])
@@ -212,17 +212,17 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.group_box_nws.layout().setColumnStretch(2, 1)
 
         # Spache Readability Formula
-        self.group_box_spache_readability_formula = QGroupBox(self.tr('Spache Readability Formula'), self)
+        self.group_box_spache_readability_formula = QtWidgets.QGroupBox(self.tr('Spache Readability Formula'), self)
 
-        self.checkbox_use_rev_formula = QCheckBox(self.tr('Use revised formula'), self)
+        self.checkbox_use_rev_formula = QtWidgets.QCheckBox(self.tr('Use revised formula'), self)
 
         self.group_box_spache_readability_formula.setLayout(wl_layouts.Wl_Layout())
         self.group_box_spache_readability_formula.layout().addWidget(self.checkbox_use_rev_formula, 0, 0)
 
         # Tränkle-Bailer's Readability Formula
-        self.group_box_trankle_bailers_readability_formula = QGroupBox(self.tr("Tränkle-Bailer's Readability Formula"), self)
+        self.group_box_trankle_bailers_readability_formula = QtWidgets.QGroupBox(self.tr("Tränkle-Bailer's Readability Formula"), self)
 
-        self.label_trankle_bailers_readability_formula_variant = QLabel(self.tr('Variant:'), self)
+        self.label_trankle_bailers_readability_formula_variant = QtWidgets.QLabel(self.tr('Variant:'), self)
         self.combo_box_trankle_bailers_readability_formula_variant = wl_boxes.Wl_Combo_Box(self)
 
         self.combo_box_trankle_bailers_readability_formula_variant.addItems(['1', '2'])
@@ -366,9 +366,9 @@ class Wl_Settings_Measures_Lexical_Density_Diversity(wl_settings.Wl_Settings_Nod
         self.settings_custom = self.main.settings_custom['measures']['lexical_density_diversity']
 
         # HD-D
-        self.group_box_hdd = QGroupBox('HD-D', self)
+        self.group_box_hdd = QtWidgets.QGroupBox('HD-D', self)
 
-        self.label_sample_size = QLabel(self.tr('Sample size:'), self)
+        self.label_sample_size = QtWidgets.QLabel(self.tr('Sample size:'), self)
         self.spin_box_sample_size = wl_boxes.Wl_Spin_Box(self)
 
         self.spin_box_sample_size.setRange(35, 50)
@@ -380,9 +380,9 @@ class Wl_Settings_Measures_Lexical_Density_Diversity(wl_settings.Wl_Settings_Nod
         self.group_box_hdd.layout().setColumnStretch(2, 1)
 
         # LogTTR
-        self.group_box_logttr = QGroupBox(self.tr('LogTTR'), self)
+        self.group_box_logttr = QtWidgets.QGroupBox(self.tr('LogTTR'), self)
 
-        self.label_variant = QLabel(self.tr('Sample size:'), self)
+        self.label_variant = QtWidgets.QLabel(self.tr('Sample size:'), self)
         self.combo_box_variant = wl_boxes.Wl_Combo_Box(self)
 
         self.combo_box_variant.addItems([
@@ -400,9 +400,9 @@ class Wl_Settings_Measures_Lexical_Density_Diversity(wl_settings.Wl_Settings_Nod
         self.group_box_logttr.layout().setColumnStretch(2, 1)
 
         # Mean Segmental TTR
-        self.group_box_msttr = QGroupBox(self.tr('Mean Segmental TTR'), self)
+        self.group_box_msttr = QtWidgets.QGroupBox(self.tr('Mean Segmental TTR'), self)
 
-        self.label_num_tokens_in_each_seg = QLabel(self.tr('Number of tokens in each segment:'), self)
+        self.label_num_tokens_in_each_seg = QtWidgets.QLabel(self.tr('Number of tokens in each segment:'), self)
         self.spin_box_num_tokens_in_each_seg = wl_boxes.Wl_Spin_Box(self)
 
         self.spin_box_num_tokens_in_each_seg.setRange(1, 1000000)
@@ -414,9 +414,9 @@ class Wl_Settings_Measures_Lexical_Density_Diversity(wl_settings.Wl_Settings_Nod
         self.group_box_msttr.layout().setColumnStretch(2, 1)
 
         # Measure of Textual Lexical Diversity
-        self.group_box_mtld = QGroupBox(self.tr('Measure of Textual Lexical Diversity'), self)
+        self.group_box_mtld = QtWidgets.QGroupBox(self.tr('Measure of Textual Lexical Diversity'), self)
 
-        self.label_factor_size = QLabel(self.tr('Factor size:'), self)
+        self.label_factor_size = QtWidgets.QLabel(self.tr('Factor size:'), self)
         self.spin_box_factor_size = wl_boxes.Wl_Double_Spin_Box(self)
 
         self.spin_box_factor_size.setDecimals(3)
@@ -429,9 +429,9 @@ class Wl_Settings_Measures_Lexical_Density_Diversity(wl_settings.Wl_Settings_Nod
         self.group_box_mtld.layout().setColumnStretch(2, 1)
 
         # Moving-average TTR
-        self.group_box_mattr = QGroupBox(self.tr('Moving-average TTR'), self)
+        self.group_box_mattr = QtWidgets.QGroupBox(self.tr('Moving-average TTR'), self)
 
-        self.label_window_size = QLabel(self.tr('Window size:'), self)
+        self.label_window_size = QtWidgets.QLabel(self.tr('Window size:'), self)
         self.spin_box_window_size = wl_boxes.Wl_Spin_Box(self)
 
         self.spin_box_window_size.setRange(1, 1000000)
@@ -443,9 +443,9 @@ class Wl_Settings_Measures_Lexical_Density_Diversity(wl_settings.Wl_Settings_Nod
         self.group_box_mattr.layout().setColumnStretch(2, 1)
 
         # Repeat Rate
-        self.group_box_repeat_rate = QGroupBox(self.tr('Repeat Rate'), self)
+        self.group_box_repeat_rate = QtWidgets.QGroupBox(self.tr('Repeat Rate'), self)
 
-        self.label_use_data_repeat_rate = QLabel(self.tr('Use data:'), self)
+        self.label_use_data_repeat_rate = QtWidgets.QLabel(self.tr('Use data:'), self)
         self.combo_box_use_data_repeat_rate = wl_boxes.Wl_Combo_Box(self)
 
         self.combo_box_use_data_repeat_rate.addItems([
@@ -460,9 +460,9 @@ class Wl_Settings_Measures_Lexical_Density_Diversity(wl_settings.Wl_Settings_Nod
         self.group_box_repeat_rate.layout().setColumnStretch(2, 1)
 
         # Shannon Entropy
-        self.group_box_shannon_entropy = QGroupBox(self.tr('Shannon Entropy'), self)
+        self.group_box_shannon_entropy = QtWidgets.QGroupBox(self.tr('Shannon Entropy'), self)
 
-        self.label_use_data_shannon_entropy = QLabel(self.tr('Use data:'), self)
+        self.label_use_data_shannon_entropy = QtWidgets.QLabel(self.tr('Use data:'), self)
         self.combo_box_use_data_shannon_entropy = wl_boxes.Wl_Combo_Box(self)
 
         self.combo_box_use_data_shannon_entropy.addItems([
@@ -548,7 +548,7 @@ class Wl_Settings_Measures_Dispersion(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['measures']['dispersion']
 
         # General Settings
-        self.group_box_general_settings = QGroupBox(self.tr('General Settings'), self)
+        self.group_box_general_settings = QtWidgets.QGroupBox(self.tr('General Settings'), self)
 
         (
             self.label_dispersion_divide_each_file_into,
@@ -563,9 +563,9 @@ class Wl_Settings_Measures_Dispersion(wl_settings.Wl_Settings_Node):
 
         self.group_box_general_settings.layout().setColumnStretch(3, 1)
 
-        self.group_box_griess_dp = QGroupBox(self.tr("Gries's DP"), self)
+        self.group_box_griess_dp = QtWidgets.QGroupBox(self.tr("Gries's DP"), self)
 
-        self.checkbox_griess_dp_apply_normalization = QCheckBox(self.tr('Apply normalization'), self)
+        self.checkbox_griess_dp_apply_normalization = QtWidgets.QCheckBox(self.tr('Apply normalization'), self)
 
         self.group_box_griess_dp.setLayout(wl_layouts.Wl_Layout())
         self.group_box_griess_dp.layout().addWidget(self.checkbox_griess_dp_apply_normalization, 0, 0)
@@ -607,7 +607,7 @@ class Wl_Settings_Measures_Adjusted_Freq(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['measures']['adjusted_freq']
 
         # General Settings
-        self.group_box_general_settings = QGroupBox(self.tr('General Settings'), self)
+        self.group_box_general_settings = QtWidgets.QGroupBox(self.tr('General Settings'), self)
 
         (
             self.label_adjusted_freq_divide_each_file_into,
@@ -652,7 +652,7 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
         self.settings_custom = self.main.settings_custom['measures']['statistical_significance']
 
         # Fisher's Exact Test
-        self.group_box_fishers_exact_test = QGroupBox(self.tr("Fisher's Exact Test"), self)
+        self.group_box_fishers_exact_test = QtWidgets.QGroupBox(self.tr("Fisher's Exact Test"), self)
 
         (
             self.label_fishers_exact_test_direction,
@@ -666,15 +666,15 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
         self.group_box_fishers_exact_test.layout().setColumnStretch(2, 1)
 
         # Log-likelihood Ratio Test
-        self.group_box_log_likelihood_ratio_test = QGroupBox(self.tr('Log-likelihood Ratio Test'), self)
+        self.group_box_log_likelihood_ratio_test = QtWidgets.QGroupBox(self.tr('Log-likelihood Ratio Test'), self)
 
-        self.checkbox_log_likelihood_ratio_test_apply_correction = QCheckBox(self.tr("Apply Yates's correction for continuity"))
+        self.checkbox_log_likelihood_ratio_test_apply_correction = QtWidgets.QCheckBox(self.tr("Apply Yates's correction for continuity"))
 
         self.group_box_log_likelihood_ratio_test.setLayout(wl_layouts.Wl_Layout())
         self.group_box_log_likelihood_ratio_test.layout().addWidget(self.checkbox_log_likelihood_ratio_test_apply_correction, 0, 0)
 
         # Mann-Whitney U Test
-        self.group_box_mann_whitney_u_test = QGroupBox(self.tr('Mann-Whitney U Test'), self)
+        self.group_box_mann_whitney_u_test = QtWidgets.QGroupBox(self.tr('Mann-Whitney U Test'), self)
 
         (
             self.label_mann_whitney_u_test_divide_each_file_into,
@@ -690,7 +690,7 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
             self.label_mann_whitney_u_test_direction,
             self.combo_box_mann_whitney_u_test_direction
         ) = wl_widgets.wl_widgets_direction(self)
-        self.checkbox_mann_whitney_u_test_apply_correction = QCheckBox(self.tr('Apply continuity correction'), self)
+        self.checkbox_mann_whitney_u_test_apply_correction = QtWidgets.QCheckBox(self.tr('Apply continuity correction'), self)
 
         layout_mann_whitney_u_test_num_sub_sections = wl_layouts.Wl_Layout()
         layout_mann_whitney_u_test_num_sub_sections.addWidget(self.label_mann_whitney_u_test_divide_each_file_into, 0, 0)
@@ -710,15 +710,15 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
         self.group_box_mann_whitney_u_test.layout().setColumnStretch(3, 1)
 
         # Pearson's Chi-squared Test
-        self.group_box_pearsons_chi_squared_test = QGroupBox(self.tr("Pearson's Chi-squared Test"), self)
+        self.group_box_pearsons_chi_squared_test = QtWidgets.QGroupBox(self.tr("Pearson's Chi-squared Test"), self)
 
-        self.checkbox_pearsons_chi_squared_test_apply_correction = QCheckBox(self.tr("Apply Yates's correction for continuity"))
+        self.checkbox_pearsons_chi_squared_test_apply_correction = QtWidgets.QCheckBox(self.tr("Apply Yates's correction for continuity"))
 
         self.group_box_pearsons_chi_squared_test.setLayout(wl_layouts.Wl_Layout())
         self.group_box_pearsons_chi_squared_test.layout().addWidget(self.checkbox_pearsons_chi_squared_test_apply_correction, 0, 0)
 
         # Student's t-test (1-sample)
-        self.group_box_students_t_test_1_sample = QGroupBox(self.tr("Student's t-test (1-sample)"), self)
+        self.group_box_students_t_test_1_sample = QtWidgets.QGroupBox(self.tr("Student's t-test (1-sample)"), self)
 
         (
             self.label_students_t_test_1_sample_direction,
@@ -732,7 +732,7 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
         self.group_box_students_t_test_1_sample.layout().setColumnStretch(2, 1)
 
         # Student's t-test (2-sample)
-        self.group_box_students_t_test_2_sample = QGroupBox(self.tr("Student's t-test (2-sample)"), self)
+        self.group_box_students_t_test_2_sample = QtWidgets.QGroupBox(self.tr("Student's t-test (2-sample)"), self)
 
         (
             self.label_students_t_test_2_sample_divide_each_file_into,
@@ -765,7 +765,7 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
         self.group_box_students_t_test_2_sample.layout().setColumnStretch(2, 1)
 
         # Z-test
-        self.group_box_z_test = QGroupBox(self.tr('Z-test'), self)
+        self.group_box_z_test = QtWidgets.QGroupBox(self.tr('Z-test'), self)
 
         (
             self.label_z_test_direction,
@@ -779,7 +779,7 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
         self.group_box_z_test.layout().setColumnStretch(2, 1)
 
         # Z-test (Berry-Rogghe)
-        self.group_box_z_test_berry_rogghe = QGroupBox(self.tr('Z-test (Berry-Rogghe)'), self)
+        self.group_box_z_test_berry_rogghe = QtWidgets.QGroupBox(self.tr('Z-test (Berry-Rogghe)'), self)
 
         (
             self.label_z_test_berry_rogghe_direction,
@@ -881,15 +881,15 @@ class Wl_Settings_Measures_Bayes_Factor(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['measures']['bayes_factor']
 
         # Log-likelihood Ratio Test
-        self.group_box_log_likelihood_ratio_test = QGroupBox(self.tr('Log-likelihood Ratio Test'), self)
+        self.group_box_log_likelihood_ratio_test = QtWidgets.QGroupBox(self.tr('Log-likelihood Ratio Test'), self)
 
-        self.checkbox_log_likelihood_ratio_test_apply_correction = QCheckBox(self.tr("Apply Yates's correction for continuity"))
+        self.checkbox_log_likelihood_ratio_test_apply_correction = QtWidgets.QCheckBox(self.tr("Apply Yates's correction for continuity"))
 
         self.group_box_log_likelihood_ratio_test.setLayout(wl_layouts.Wl_Layout())
         self.group_box_log_likelihood_ratio_test.layout().addWidget(self.checkbox_log_likelihood_ratio_test_apply_correction, 0, 0)
 
         # Student's t-test (2-sample)
-        self.group_box_students_t_test_2_sample = QGroupBox(self.tr("Student's t-test (2-sample)"), self)
+        self.group_box_students_t_test_2_sample = QtWidgets.QGroupBox(self.tr("Student's t-test (2-sample)"), self)
 
         (
             self.label_students_t_test_2_sample_divide_each_file_into,
@@ -990,9 +990,9 @@ class Wl_Settings_Measures_Effect_Size(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['measures']['effect_size']
 
         # Kilgarriff's Ratio
-        self.group_box_kilgarriffs_ratio = QGroupBox(self.tr("Kilgarriff's Ratio"), self)
+        self.group_box_kilgarriffs_ratio = QtWidgets.QGroupBox(self.tr("Kilgarriff's Ratio"), self)
 
-        self.label_kilgarriffs_ratio_smoothing_param = QLabel(self.tr('Smoothing parameter:'), self)
+        self.label_kilgarriffs_ratio_smoothing_param = QtWidgets.QLabel(self.tr('Smoothing parameter:'), self)
         self.spin_box_kilgarriffs_ratio_smoothing_param = wl_boxes.Wl_Double_Spin_Box(self)
 
         self.spin_box_kilgarriffs_ratio_smoothing_param.setRange(0.01, 10000)
@@ -1004,9 +1004,9 @@ class Wl_Settings_Measures_Effect_Size(wl_settings.Wl_Settings_Node):
         self.group_box_kilgarriffs_ratio.layout().setColumnStretch(2, 1)
 
         # Mutual Information
-        self.group_box_mi = QGroupBox(self.tr('Mutual Information'), self)
+        self.group_box_mi = QtWidgets.QGroupBox(self.tr('Mutual Information'), self)
 
-        self.label_mi_base_log = QLabel(self.tr('Base of logarithm:'), self)
+        self.label_mi_base_log = QtWidgets.QLabel(self.tr('Base of logarithm:'), self)
         self.combo_box_mi_base_log = Wl_Combo_Box_Base_Log(self)
 
         self.group_box_mi.setLayout(wl_layouts.Wl_Layout())
@@ -1016,9 +1016,9 @@ class Wl_Settings_Measures_Effect_Size(wl_settings.Wl_Settings_Node):
         self.group_box_mi.layout().setColumnStretch(2, 1)
 
         # Mutual Information (Normalized)
-        self.group_box_nmi = QGroupBox(self.tr('Mutual Information (Normalized)'), self)
+        self.group_box_nmi = QtWidgets.QGroupBox(self.tr('Mutual Information (Normalized)'), self)
 
-        self.label_nmi_base_log = QLabel(self.tr('Base of logarithm:'), self)
+        self.label_nmi_base_log = QtWidgets.QLabel(self.tr('Base of logarithm:'), self)
         self.combo_box_nmi_base_log = Wl_Combo_Box_Base_Log(self)
 
         self.group_box_nmi.setLayout(wl_layouts.Wl_Layout())
@@ -1028,9 +1028,9 @@ class Wl_Settings_Measures_Effect_Size(wl_settings.Wl_Settings_Node):
         self.group_box_nmi.layout().setColumnStretch(2, 1)
 
         # Pointwise Mutual Information
-        self.group_box_pmi = QGroupBox(self.tr('Pointwise Mutual Information'), self)
+        self.group_box_pmi = QtWidgets.QGroupBox(self.tr('Pointwise Mutual Information'), self)
 
-        self.label_pmi_base_log = QLabel(self.tr('Base of logarithm:'), self)
+        self.label_pmi_base_log = QtWidgets.QLabel(self.tr('Base of logarithm:'), self)
         self.combo_box_pmi_base_log = Wl_Combo_Box_Base_Log(self)
 
         self.group_box_pmi.setLayout(wl_layouts.Wl_Layout())
@@ -1040,9 +1040,9 @@ class Wl_Settings_Measures_Effect_Size(wl_settings.Wl_Settings_Node):
         self.group_box_pmi.layout().setColumnStretch(2, 1)
 
         # Pointwise Mutual Information (Cubic)
-        self.group_box_im3 = QGroupBox(self.tr('Pointwise Mutual Information (Cubic)'), self)
+        self.group_box_im3 = QtWidgets.QGroupBox(self.tr('Pointwise Mutual Information (Cubic)'), self)
 
-        self.label_im3_base_log = QLabel(self.tr('Base of logarithm:'), self)
+        self.label_im3_base_log = QtWidgets.QLabel(self.tr('Base of logarithm:'), self)
         self.combo_box_im3_base_log = Wl_Combo_Box_Base_Log(self)
 
         self.group_box_im3.setLayout(wl_layouts.Wl_Layout())
@@ -1052,9 +1052,9 @@ class Wl_Settings_Measures_Effect_Size(wl_settings.Wl_Settings_Node):
         self.group_box_im3.layout().setColumnStretch(2, 1)
 
         # Pointwise Mutual Information (Normalized)
-        self.group_box_npmi = QGroupBox(self.tr('Pointwise Mutual Information (Normalized)'), self)
+        self.group_box_npmi = QtWidgets.QGroupBox(self.tr('Pointwise Mutual Information (Normalized)'), self)
 
-        self.label_npmi_base_log = QLabel(self.tr('Base of logarithm:'), self)
+        self.label_npmi_base_log = QtWidgets.QLabel(self.tr('Base of logarithm:'), self)
         self.combo_box_npmi_base_log = Wl_Combo_Box_Base_Log(self)
 
         self.group_box_npmi.setLayout(wl_layouts.Wl_Layout())
@@ -1064,9 +1064,9 @@ class Wl_Settings_Measures_Effect_Size(wl_settings.Wl_Settings_Node):
         self.group_box_npmi.layout().setColumnStretch(2, 1)
 
         # Pointwise Mutual Information (Squared)
-        self.group_box_im2 = QGroupBox(self.tr('Pointwise Mutual Information (Squared)'), self)
+        self.group_box_im2 = QtWidgets.QGroupBox(self.tr('Pointwise Mutual Information (Squared)'), self)
 
-        self.label_im2_base_log = QLabel(self.tr('Base of logarithm:'), self)
+        self.label_im2_base_log = QtWidgets.QLabel(self.tr('Base of logarithm:'), self)
         self.combo_box_im2_base_log = Wl_Combo_Box_Base_Log(self)
 
         self.group_box_im2.setLayout(wl_layouts.Wl_Layout())

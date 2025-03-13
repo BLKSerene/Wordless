@@ -23,21 +23,15 @@ import matplotlib
 import matplotlib.backends.backend_qtagg
 import matplotlib.pyplot
 import networkx
-from PyQt5.QtCore import QCoreApplication
-from PyQt5.QtGui import QFont, QPixmap
-from PyQt5.QtWidgets import (
-    QCheckBox,
-    QDesktopWidget,
-    QGroupBox,
-    QLabel,
-    QLineEdit
-)
+from PyQt5 import QtCore
+from PyQt5 import QtGui
+from PyQt5 import QtWidgets
 
 from wordless.wl_settings import wl_settings
 from wordless.wl_utils import wl_paths
 from wordless.wl_widgets import wl_boxes, wl_buttons, wl_layouts
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 MATPLOTLIB_SHAPES = {
     _tr('wl_settings_figs', 'Square'): 's',
@@ -101,9 +95,9 @@ class Wl_Settings_Figs_Line_Charts(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['figs']['line_charts']
 
         # General Settings
-        self.group_box_general_settings = QGroupBox(self.tr('General Settings'), self)
+        self.group_box_general_settings = QtWidgets.QGroupBox(self.tr('General Settings'), self)
 
-        self.label_font = QLabel(self.tr('Font:'), self)
+        self.label_font = QtWidgets.QLabel(self.tr('Font:'), self)
         self.combo_box_font = wl_boxes.Wl_Combo_Box_Font_Family(self)
 
         self.group_box_general_settings.setLayout(wl_layouts.Wl_Layout())
@@ -128,7 +122,7 @@ class Wl_Settings_Figs_Line_Charts(wl_settings.Wl_Settings_Node):
             settings = copy.deepcopy(self.settings_custom)
 
         # General Settings
-        self.combo_box_font.setCurrentFont(QFont(settings['general_settings']['font']))
+        self.combo_box_font.setCurrentFont(QtGui.QFont(settings['general_settings']['font']))
 
         self.change_fonts()
 
@@ -149,13 +143,13 @@ class Wl_Settings_Figs_Word_Clouds(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['figs']['word_clouds']
 
         # Font Settings
-        self.group_box_font_settings = QGroupBox(self.tr('Font Settings'), self)
+        self.group_box_font_settings = QtWidgets.QGroupBox(self.tr('Font Settings'), self)
 
-        desktop_widget = QDesktopWidget()
+        desktop_widget = QtWidgets.QDesktopWidget()
 
-        self.label_font = QLabel(self.tr('Font:'), self)
+        self.label_font = QtWidgets.QLabel(self.tr('Font:'), self)
         self.combo_box_font = wl_boxes.Wl_Combo_Box(self)
-        self.line_edit_font_path = QLineEdit(self)
+        self.line_edit_font_path = QtWidgets.QLineEdit(self)
         self.button_font_path_browse = wl_buttons.Wl_Button_Browse(
             parent = self,
             line_edit = self.line_edit_font_path,
@@ -163,7 +157,7 @@ class Wl_Settings_Figs_Word_Clouds(wl_settings.Wl_Settings_Node):
             filters = self.main.settings_global['file_types']['fonts']
         )
 
-        self.label_font_size = QLabel(self.tr('Font size:'), self)
+        self.label_font_size = QtWidgets.QLabel(self.tr('Font size:'), self)
 
         (
             self.label_font_size_min, self.spin_box_font_size_min,
@@ -174,15 +168,15 @@ class Wl_Settings_Figs_Word_Clouds(wl_settings.Wl_Settings_Node):
             val_min = 1, val_max = desktop_widget.height()
         )
 
-        self.label_relative_scaling = QLabel(self.tr('Relative scaling:'), self)
+        self.label_relative_scaling = QtWidgets.QLabel(self.tr('Relative scaling:'), self)
         self.double_spin_box_relative_scaling = wl_boxes.Wl_Double_Spin_Box(self)
 
-        self.label_font_color = QLabel(self.tr('Font color:'), self)
+        self.label_font_color = QtWidgets.QLabel(self.tr('Font color:'), self)
         self.combo_box_font_color = wl_boxes.Wl_Combo_Box(self)
         self.stacked_widget_font_color = wl_layouts.Wl_Stacked_Widget_Resizable(self)
         self.button_font_color_monochrome = wl_buttons.wl_button_color(self)
         self.combo_box_font_color_colormap = wl_boxes.Wl_Combo_Box(self)
-        self.label_font_color_colormap = QLabel('', self)
+        self.label_font_color_colormap = QtWidgets.QLabel('', self)
 
         self.combo_box_font.addItems([
             'Droid Sans Mono',
@@ -237,9 +231,9 @@ class Wl_Settings_Figs_Word_Clouds(wl_settings.Wl_Settings_Node):
         self.group_box_font_settings.layout().setColumnStretch(3, 1)
 
         # Background Settings
-        self.group_box_bg_settings = QGroupBox(self.tr('Background Settings'), self)
+        self.group_box_bg_settings = QtWidgets.QGroupBox(self.tr('Background Settings'), self)
 
-        self.label_bg_color = QLabel(self.tr('Background color:'), self)
+        self.label_bg_color = QtWidgets.QLabel(self.tr('Background color:'), self)
         (
             self.button_bg_color,
             self.checkbox_bg_color_transparent
@@ -253,20 +247,20 @@ class Wl_Settings_Figs_Word_Clouds(wl_settings.Wl_Settings_Node):
         self.group_box_bg_settings.layout().setColumnStretch(3, 1)
 
         # Mask Settings
-        self.group_box_mask_settings = QGroupBox(self.tr('Mask Settings'), self)
+        self.group_box_mask_settings = QtWidgets.QGroupBox(self.tr('Mask Settings'), self)
         self.group_box_mask_settings.setCheckable(True)
 
-        self.label_mask_path = QLabel(self.tr('Mask path:'), self)
-        self.line_edit_mask_path = QLineEdit(self)
+        self.label_mask_path = QtWidgets.QLabel(self.tr('Mask path:'), self)
+        self.line_edit_mask_path = QtWidgets.QLineEdit(self)
         self.button_mask_path_browse = wl_buttons.Wl_Button_Browse(
             parent = self,
             line_edit = self.line_edit_mask_path,
             caption = self.tr('Select Mask'),
             filters = self.main.settings_global['file_types']['masks']
         )
-        self.label_contour_width = QLabel(self.tr('Contour width:'), self)
+        self.label_contour_width = QtWidgets.QLabel(self.tr('Contour width:'), self)
         self.spin_box_contour_width = wl_boxes.Wl_Spin_Box(self)
-        self.label_contour_color = QLabel(self.tr('Contour color:'), self)
+        self.label_contour_color = QtWidgets.QLabel(self.tr('Contour color:'), self)
         self.button_contour_color = wl_buttons.wl_button_color(self)
 
         self.spin_box_contour_width.setRange(0, 10)
@@ -286,11 +280,11 @@ class Wl_Settings_Figs_Word_Clouds(wl_settings.Wl_Settings_Node):
         self.group_box_mask_settings.layout().setColumnStretch(2, 1)
 
         # Advanced Settings
-        self.group_box_advanced_settings = QGroupBox(self.tr('Advanced Settings'), self)
+        self.group_box_advanced_settings = QtWidgets.QGroupBox(self.tr('Advanced Settings'), self)
 
-        self.label_prefer_hor = QLabel(self.tr('Prefer horizontal:'), self)
+        self.label_prefer_hor = QtWidgets.QLabel(self.tr('Prefer horizontal:'), self)
         self.spin_box_prefer_hor = wl_boxes.Wl_Spin_Box(self)
-        self.checkbox_allow_repeated_words = QCheckBox(self.tr('Allow repeated words'), self)
+        self.checkbox_allow_repeated_words = QtWidgets.QCheckBox(self.tr('Allow repeated words'), self)
 
         self.spin_box_prefer_hor.setRange(0, 100)
         self.spin_box_prefer_hor.setSuffix('%')
@@ -341,7 +335,7 @@ class Wl_Settings_Figs_Word_Clouds(wl_settings.Wl_Settings_Node):
             fig.savefig(path_colormap_temp, bbox_inches = 'tight', pad_inches = 0)
             matplotlib.pyplot.close()
 
-            self.label_font_color_colormap.setPixmap(QPixmap(path_colormap_temp))
+            self.label_font_color_colormap.setPixmap(QtGui.QPixmap(path_colormap_temp))
             os.remove(path_colormap_temp)
 
     def load_settings(self, defaults = False):
@@ -392,7 +386,10 @@ class Wl_Settings_Figs_Word_Clouds(wl_settings.Wl_Settings_Node):
 
         if (
             self.group_box_mask_settings.isChecked()
-            and self.line_edit_mask_path.text() != self.settings_custom['mask_settings']['mask_path']
+            and (
+                self.group_box_mask_settings.isChecked() != self.settings_custom['mask_settings']['mask_settings']
+                or self.line_edit_mask_path.text() != self.settings_custom['mask_settings']['mask_path']
+            )
             and not self.validate_path_file(self.line_edit_mask_path)
         ):
             return False
@@ -437,15 +434,15 @@ class Wl_Settings_Figs_Network_Graphs(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['figs']['network_graphs']
 
         # Node Settings
-        self.group_box_node_settings = QGroupBox(self.tr('Node Settings'), self)
+        self.group_box_node_settings = QtWidgets.QGroupBox(self.tr('Node Settings'), self)
 
-        self.label_node_shape = QLabel(self.tr('Node shape:'), self)
+        self.label_node_shape = QtWidgets.QLabel(self.tr('Node shape:'), self)
         self.combo_box_node_shape = wl_boxes.Wl_Combo_Box_Enums(self, enums = MATPLOTLIB_SHAPES)
-        self.label_node_size = QLabel(self.tr('Node size:'), self)
+        self.label_node_size = QtWidgets.QLabel(self.tr('Node size:'), self)
         self.spin_box_node_size = wl_boxes.Wl_Spin_Box(self)
-        self.label_node_color = QLabel(self.tr('Node color:'), self)
+        self.label_node_color = QtWidgets.QLabel(self.tr('Node color:'), self)
         self.button_node_color = wl_buttons.wl_button_color(self)
-        self.label_node_opacity = QLabel(self.tr('Node opacity:'), self)
+        self.label_node_opacity = QtWidgets.QLabel(self.tr('Node opacity:'), self)
         self.double_spin_box_node_opacity = wl_boxes.Wl_Double_Spin_Box_Alpha(self)
 
         self.spin_box_node_size.setRange(1, 1000)
@@ -463,17 +460,17 @@ class Wl_Settings_Figs_Network_Graphs(wl_settings.Wl_Settings_Node):
         self.group_box_node_settings.layout().setColumnStretch(2, 1)
 
         # Node Label Settings
-        self.group_box_node_label_settings = QGroupBox(self.tr('Node Label Settings'), self)
+        self.group_box_node_label_settings = QtWidgets.QGroupBox(self.tr('Node Label Settings'), self)
 
-        self.label_label_font_node = QLabel(self.tr('Label font:'), self)
+        self.label_label_font_node = QtWidgets.QLabel(self.tr('Label font:'), self)
         self.combo_box_label_font_node = wl_boxes.Wl_Combo_Box_Font_Family(self)
-        self.label_label_font_size_node = QLabel(self.tr('Label font size:'), self)
+        self.label_label_font_size_node = QtWidgets.QLabel(self.tr('Label font size:'), self)
         self.spin_box_label_font_size_node = wl_boxes.Wl_Spin_Box_Font_Size(self)
-        self.label_label_font_weight_node = QLabel(self.tr('Label font weight:'), self)
+        self.label_label_font_weight_node = QtWidgets.QLabel(self.tr('Label font weight:'), self)
         self.spin_box_label_font_weight_node = wl_boxes.Wl_Spin_Box_Font_Weight(self)
-        self.label_label_font_color_node = QLabel(self.tr('Label font color:'), self)
+        self.label_label_font_color_node = QtWidgets.QLabel(self.tr('Label font color:'), self)
         self.button_label_font_color_node = wl_buttons.wl_button_color(self)
-        self.label_label_opacity_node = QLabel(self.tr('Label opacity:'), self)
+        self.label_label_opacity_node = QtWidgets.QLabel(self.tr('Label opacity:'), self)
         self.double_spin_box_label_opacity_node = wl_boxes.Wl_Double_Spin_Box_Alpha(self)
 
         self.group_box_node_label_settings.setLayout(wl_layouts.Wl_Layout())
@@ -491,11 +488,11 @@ class Wl_Settings_Figs_Network_Graphs(wl_settings.Wl_Settings_Node):
         self.group_box_node_label_settings.layout().setColumnStretch(2, 1)
 
         # Edge Settings
-        self.group_box_edge_settings = QGroupBox(self.tr('Edge Settings'), self)
+        self.group_box_edge_settings = QtWidgets.QGroupBox(self.tr('Edge Settings'), self)
 
-        self.label_connection_style = QLabel(self.tr('Connection style:'), self)
+        self.label_connection_style = QtWidgets.QLabel(self.tr('Connection style:'), self)
         self.combo_box_connection_style = wl_boxes.Wl_Combo_Box_Enums(self, enums = MATPLOTLIB_CONNECTION_STYLES)
-        self.label_edge_width = QLabel(self.tr('Edge width:'), self)
+        self.label_edge_width = QtWidgets.QLabel(self.tr('Edge width:'), self)
 
         (
             self.label_edge_width_min, self.double_spin_box_edge_width_min,
@@ -507,15 +504,15 @@ class Wl_Settings_Figs_Network_Graphs(wl_settings.Wl_Settings_Node):
             double = True
         )
 
-        self.label_edge_style = QLabel(self.tr('Edge style:'), self)
+        self.label_edge_style = QtWidgets.QLabel(self.tr('Edge style:'), self)
         self.combo_box_edge_style = wl_boxes.Wl_Combo_Box_Enums(self, enums = MATPLOTLIB_LINE_STYLES)
-        self.label_edge_color = QLabel(self.tr('Edge color:'), self)
+        self.label_edge_color = QtWidgets.QLabel(self.tr('Edge color:'), self)
         self.button_edge_color = wl_buttons.Wl_Button_Color(self)
-        self.label_edge_opacity = QLabel(self.tr('Edge opacity:'), self)
+        self.label_edge_opacity = QtWidgets.QLabel(self.tr('Edge opacity:'), self)
         self.double_spin_box_edge_opacity = wl_boxes.Wl_Double_Spin_Box_Alpha(self)
-        self.label_arrow_style = QLabel(self.tr('Arrow style:'), self)
+        self.label_arrow_style = QtWidgets.QLabel(self.tr('Arrow style:'), self)
         self.combo_box_arrow_style = wl_boxes.Wl_Combo_Box_Enums(self, enums = MATPLOTLIB_ARROW_STYLES)
-        self.label_arrow_size = QLabel(self.tr('Arrow size:'), self)
+        self.label_arrow_size = QtWidgets.QLabel(self.tr('Arrow size:'), self)
         self.spin_box_arrow_size = wl_boxes.Wl_Spin_Box(self)
 
         self.spin_box_arrow_size.setRange(1, 100)
@@ -545,20 +542,20 @@ class Wl_Settings_Figs_Network_Graphs(wl_settings.Wl_Settings_Node):
         self.group_box_edge_settings.layout().setColumnStretch(2, 1)
 
         # Edge Label Settings
-        self.group_box_edge_label_settings = QGroupBox(self.tr('Edge Label Settings'), self)
+        self.group_box_edge_label_settings = QtWidgets.QGroupBox(self.tr('Edge Label Settings'), self)
 
-        self.label_label_position = QLabel(self.tr('Label position:'), self)
+        self.label_label_position = QtWidgets.QLabel(self.tr('Label position:'), self)
         self.double_spin_box_label_position = wl_boxes.Wl_Double_Spin_Box_Alpha(self)
-        self.checkbox_rotate_labels = QCheckBox(self.tr('Rotate labels to lie parallel to edges'), self)
-        self.label_label_font_edge = QLabel(self.tr('Label font:'), self)
+        self.checkbox_rotate_labels = QtWidgets.QCheckBox(self.tr('Rotate labels to lie parallel to edges'), self)
+        self.label_label_font_edge = QtWidgets.QLabel(self.tr('Label font:'), self)
         self.combo_box_label_font_edge = wl_boxes.Wl_Combo_Box_Font_Family(self)
-        self.label_label_font_size_edge = QLabel(self.tr('Label font size:'), self)
+        self.label_label_font_size_edge = QtWidgets.QLabel(self.tr('Label font size:'), self)
         self.spin_box_label_font_size_edge = wl_boxes.Wl_Spin_Box_Font_Size(self)
-        self.label_label_font_weight_edge = QLabel(self.tr('Label font weight:'), self)
+        self.label_label_font_weight_edge = QtWidgets.QLabel(self.tr('Label font weight:'), self)
         self.spin_box_label_font_weight_edge = wl_boxes.Wl_Spin_Box_Font_Weight(self)
-        self.label_label_font_color_edge = QLabel(self.tr('Label font color:'), self)
+        self.label_label_font_color_edge = QtWidgets.QLabel(self.tr('Label font color:'), self)
         self.button_label_font_color_edge = wl_buttons.wl_button_color(self)
-        self.label_label_opacity_edge = QLabel(self.tr('Label opacity:'), self)
+        self.label_label_opacity_edge = QtWidgets.QLabel(self.tr('Label opacity:'), self)
         self.double_spin_box_label_opacity_edge = wl_boxes.Wl_Double_Spin_Box_Alpha(self)
 
         self.group_box_edge_label_settings.setLayout(wl_layouts.Wl_Layout())
@@ -579,9 +576,9 @@ class Wl_Settings_Figs_Network_Graphs(wl_settings.Wl_Settings_Node):
         self.group_box_edge_label_settings.layout().setColumnStretch(2, 1)
 
         # Advanced Settings
-        self.group_box_advanced_settings = QGroupBox(self.tr('Advanced Settings'), self)
+        self.group_box_advanced_settings = QtWidgets.QGroupBox(self.tr('Advanced Settings'), self)
 
-        self.label_layout = QLabel(self.tr('Layout:'), self)
+        self.label_layout = QtWidgets.QLabel(self.tr('Layout:'), self)
         self.combo_box_layout = wl_boxes.Wl_Combo_Box_Enums(self, enums = NETWORKX_LAYOUTS)
 
         self.group_box_advanced_settings.setLayout(wl_layouts.Wl_Layout())
@@ -613,7 +610,7 @@ class Wl_Settings_Figs_Network_Graphs(wl_settings.Wl_Settings_Node):
         self.double_spin_box_node_opacity.setValue(settings['node_settings']['node_opacity'])
 
         # Node Label Settings
-        self.combo_box_label_font_node.setCurrentFont(QFont(settings['node_label_settings']['label_font']))
+        self.combo_box_label_font_node.setCurrentFont(QtGui.QFont(settings['node_label_settings']['label_font']))
         self.spin_box_label_font_size_node.setValue(settings['node_label_settings']['label_font_size'])
         self.spin_box_label_font_weight_node.setValue(settings['node_label_settings']['label_font_weight'])
         self.button_label_font_color_node.set_color(settings['node_label_settings']['label_font_color'])
@@ -632,7 +629,7 @@ class Wl_Settings_Figs_Network_Graphs(wl_settings.Wl_Settings_Node):
         # Edge Label Settings
         self.double_spin_box_label_position.setValue(settings['edge_label_settings']['label_position'])
         self.checkbox_rotate_labels.setChecked(settings['edge_label_settings']['rotate_labels'])
-        self.combo_box_label_font_edge.setCurrentFont(QFont(settings['edge_label_settings']['label_font']))
+        self.combo_box_label_font_edge.setCurrentFont(QtGui.QFont(settings['edge_label_settings']['label_font']))
         self.spin_box_label_font_size_edge.setValue(settings['edge_label_settings']['label_font_size'])
         self.spin_box_label_font_weight_edge.setValue(settings['edge_label_settings']['label_font_weight'])
         self.button_label_font_color_edge.set_color(settings['edge_label_settings']['label_font_color'])

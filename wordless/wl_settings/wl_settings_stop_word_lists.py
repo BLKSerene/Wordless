@@ -18,8 +18,8 @@
 
 import copy
 
-from PyQt5.QtGui import QStandardItem
-from PyQt5.QtWidgets import QCheckBox, QGroupBox, QLabel
+from PyQt5 import QtGui
+from PyQt5 import QtWidgets
 
 from wordless.wl_nlp import wl_nlp_utils, wl_stop_word_lists
 from wordless.wl_settings import wl_settings
@@ -41,7 +41,7 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['stop_word_lists']
 
         # Stop Word Lists Settings
-        self.group_box_stop_word_list_settings = QGroupBox(self.tr('Stop Word List Settings'), self)
+        self.group_box_stop_word_list_settings = QtWidgets.QGroupBox(self.tr('Stop Word List Settings'), self)
 
         self.table_stop_word_lists = wl_tables.Wl_Table(
             self,
@@ -51,7 +51,7 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
             ],
             editable = True
         )
-        self.checkbox_case_sensitive = QCheckBox(self.tr('Case-sensitive'), self)
+        self.checkbox_case_sensitive = QtWidgets.QCheckBox(self.tr('Case-sensitive'), self)
 
         self.table_stop_word_lists.setFixedHeight(370)
         self.table_stop_word_lists.verticalHeader().setHidden(True)
@@ -62,8 +62,8 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
         self.table_stop_word_lists.disable_updates()
 
         for i, lang in enumerate(self.settings_global):
-            self.table_stop_word_lists.model().setItem(i, 0, QStandardItem(wl_conversion.to_lang_text(self.main, lang)))
-            self.table_stop_word_lists.model().setItem(i, 1, QStandardItem())
+            self.table_stop_word_lists.model().setItem(i, 0, QtGui.QStandardItem(wl_conversion.to_lang_text(self.main, lang)))
+            self.table_stop_word_lists.model().setItem(i, 1, QtGui.QStandardItem())
 
             self.table_stop_word_lists.setItemDelegateForRow(i, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
                 parent = self.table_stop_word_lists,
@@ -82,12 +82,12 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
         self.group_box_stop_word_list_settings.layout().addWidget(self.checkbox_case_sensitive, 1, 0)
 
         # Preview
-        self.group_box_preview = QGroupBox(self.tr('Preview'), self)
+        self.group_box_preview = QtWidgets.QGroupBox(self.tr('Preview'), self)
 
-        self.label_preview_lang = QLabel(self.tr('Select language:'), self)
+        self.label_preview_lang = QtWidgets.QLabel(self.tr('Select language:'), self)
         self.combo_box_preview_lang = wl_boxes.Wl_Combo_Box(self)
         self.combo_box_preview_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
-        self.label_preview_num = QLabel('', self)
+        self.label_preview_num = QtWidgets.QLabel('', self)
 
         self.list_preview_results = wl_lists.Wl_List_Stop_Words(self)
 

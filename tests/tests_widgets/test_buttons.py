@@ -16,7 +16,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from PyQt5.QtWidgets import QLineEdit
+from PyQt5 import QtWidgets
 
 from tests import wl_test_init
 from wordless.wl_widgets import wl_buttons
@@ -27,7 +27,7 @@ def test_wl_button():
     wl_buttons.Wl_Button('test', main)
 
 def test_wl_button_browse():
-    wl_buttons.Wl_Button_Browse(main, 'test', QLineEdit(), 'test', ['test'])
+    wl_buttons.Wl_Button_Browse(main, 'test', QtWidgets.QLineEdit(), 'test', ['test'])
 
 def test_wl_button_color():
     button = wl_buttons.Wl_Button_Color(main)
@@ -40,11 +40,11 @@ def test_wl_button_color():
 
     wl_buttons.wl_button_color(main, allow_transparent = False)
 
-def test_wl_button_restore_defaults():
-    wl_buttons.Wl_Button_Restore_Defaults(main, 'test')
+def test_wl_button_restore_default_vals():
+    wl_buttons.Wl_Button_Restore_Default_Vals(main, 'test')
 
 if __name__ == '__main__':
     test_wl_button()
     test_wl_button_browse()
     test_wl_button_color()
-    test_wl_button_restore_defaults()
+    test_wl_button_restore_default_vals()

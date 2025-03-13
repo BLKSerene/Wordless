@@ -16,7 +16,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from PyQt5.QtWidgets import QComboBox
+from PyQt5 import QtWidgets
 
 from tests import wl_test_init
 from wordless.wl_widgets import wl_item_delegates
@@ -28,7 +28,7 @@ def test_wl_item_delegate_uneditable():
     item_delegates.createEditor(main, '', '')
 
 def test_wl_item_delegate():
-    item_delegate = wl_item_delegates.Wl_Item_Delegate(main, QComboBox)
+    item_delegate = wl_item_delegates.Wl_Item_Delegate(main, QtWidgets.QComboBox)
     item_delegate.createEditor(main, 'test', 'test')
     item_delegate.set_enabled(True)
 
@@ -46,7 +46,7 @@ def test_wl_item_delegate_combo_box():
     assert not item_delegate_combo_box.is_editable(index_uneditable)
 
 def test_wl_item_delegate_combo_box_custom():
-    item_delegate_combo_box_custom = wl_item_delegates.Wl_Item_Delegate_Combo_Box_Custom(main, QComboBox, row = 0, col = 0)
+    item_delegate_combo_box_custom = wl_item_delegates.Wl_Item_Delegate_Combo_Box_Custom(main, QtWidgets.QComboBox, row = 0, col = 0)
     item_delegate_combo_box_custom.createEditor(main, 'test', wl_test_init.wl_test_index(0, 0))
     item_delegate_combo_box_custom.createEditor(main, 'test', wl_test_init.wl_test_index(0, 1))
 

@@ -35,7 +35,7 @@ import nltk.tokenize.nist
 import packaging.version
 import pymorphy3
 import pyphen
-from PyQt5.QtCore import pyqtSignal
+from PyQt5 import QtCore
 import sacremoses
 import spacy
 import spacy_pkuseg
@@ -225,7 +225,7 @@ def check_models(main, langs, lang_utils = None):
     return models_ok
 
 class Wl_Worker_Download_Model_Spacy(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str)
+    worker_done = QtCore.pyqtSignal(str)
 
     def __init__(self, main, dialog_progress, update_gui, model_name):
         super().__init__(main, dialog_progress, update_gui, model_name = model_name)
@@ -287,7 +287,7 @@ class Wl_Worker_Download_Model_Spacy(wl_threading.Wl_Worker):
         self.worker_done.emit(self.err_msg)
 
 class Wl_Worker_Download_Model_Stanza(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str)
+    worker_done = QtCore.pyqtSignal(str)
 
     def __init__(self, main, dialog_progress, update_gui, lang):
         super().__init__(main, dialog_progress, update_gui, lang = lang)

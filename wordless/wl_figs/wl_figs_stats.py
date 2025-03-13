@@ -16,13 +16,13 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from PyQt5.QtCore import QCoreApplication
+from PyQt5 import QtCore
 
 from wordless.wl_figs import wl_figs
 from wordless.wl_nlp import wl_texts
 from wordless.wl_utils import wl_sorting
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 def wl_fig_stats(main, stat_files_items, tab):
     fig_settings = main.settings_custom[tab]['fig_settings']

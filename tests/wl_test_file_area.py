@@ -22,7 +22,7 @@ import pickle
 import random
 import time
 
-from PyQt5.QtCore import QObject
+from PyQt5 import QtCore
 
 from tests import wl_test_init
 from wordless import wl_file_area
@@ -96,7 +96,7 @@ def wl_test_file_area(main):
         elif NUM_FILES_OBSERVED <= i < NUM_FILES_ALL:
             worker_update_gui = open_file_ref
 
-        table = QObject()
+        table = QtCore.QObject()
         table.files_to_open = []
 
         wl_file_area.Wl_Worker_Add_Files(

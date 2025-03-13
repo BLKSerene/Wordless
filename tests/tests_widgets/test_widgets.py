@@ -16,7 +16,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from PyQt5.QtWidgets import QTableView
+from PyQt5 import QtWidgets
 
 from tests import wl_test_init
 from wordless.wl_widgets import wl_widgets
@@ -133,7 +133,7 @@ def test_wl_widgets_measures_collocation_keyword_extraction():
     wl_widgets.wl_widgets_measures_collocation_keyword_extraction(main, extraction_type = 'keyword')
 
 def test_wl_widgets_table_settings():
-    table = QTableView()
+    table = QtWidgets.QTableView()
     table.table_settings = {'show_pct_data': True, 'show_cum_data': True, 'show_breakdown_file': True}
     table.is_empty = lambda: False
     table.toggle_pct_data = lambda: None
@@ -143,7 +143,7 @@ def test_wl_widgets_table_settings():
     wl_widgets.wl_widgets_table_settings(main, tables = [table])
 
 def test_wl_widgets_table_settings_span_position():
-    table = QTableView()
+    table = QtWidgets.QTableView()
     table.table_settings = {
         'show_pct_data': True,
         'show_cum_data': True,

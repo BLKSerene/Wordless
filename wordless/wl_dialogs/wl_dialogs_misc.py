@@ -19,13 +19,13 @@
 import datetime
 import time
 
-from PyQt5.QtCore import QCoreApplication, Qt, QTimer
-from PyQt5.QtWidgets import QPushButton
+from PyQt5 import QtCore
+from PyQt5 import QtWidgets
 
 from wordless.wl_dialogs import wl_dialogs
 from wordless.wl_widgets import wl_labels, wl_layouts
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 # self.tr() does not work in inherited classes
 class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
@@ -34,7 +34,7 @@ class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
 
         self.time_start = time.time()
 
-        self.timer_time_elapsed = QTimer(self)
+        self.timer_time_elapsed = QtCore.QTimer(self)
 
         self.label_progress = wl_labels.Wl_Label_Dialog(text, self, word_wrap = False)
         self.label_time_elapsed = wl_labels.Wl_Label_Dialog(_tr('Wl_Dialog_Progress', '<div>Elapsed time: 0:00:00</div>'), self, word_wrap = False)
@@ -49,7 +49,7 @@ class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
 
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.label_progress, 0, 0)
-        self.layout().addWidget(self.label_time_elapsed, 0, 1, Qt.AlignRight)
+        self.layout().addWidget(self.label_time_elapsed, 0, 1, QtCore.Qt.AlignRight)
         self.layout().addWidget(self.label_processing, 1, 0, 1, 2)
 
         self.layout().setContentsMargins(20, 20, 20, 20)
@@ -76,22 +76,21 @@ class Wl_Dialog_Restart_Required(wl_dialogs.Wl_Dialog_Info):
             main,
             title = _tr('Wl_Dialog_Restart_Required', 'Restart Wordless'),
             width = 450,
+            icon = 'question',
             no_buttons = True
         )
 
         self.label_restart_exit = wl_labels.Wl_Label_Dialog(
             self.tr('''
-                <div>
-                    Restart is required for the settings to take effect. Do you want to restart Wordless now?
-                </div>
+                <div>Restart is required for the settings to take effect. Do you want to restart <i>Wordless</i> now?</div>
                 <br>
-                <div><b>Note: All unsaved data and figures will be lost.</b></div>
+                <div><b>Note:</b> All unsaved data and figures will be lost.</div>
             '''),
             self
         )
 
-        self.button_restart = QPushButton(self.tr('Restart'), self)
-        self.button_cancel = QPushButton(self.tr('Cancel'), self)
+        self.button_restart = QtWidgets.QPushButton(self.tr('Restart'), self)
+        self.button_cancel = QtWidgets.QPushButton(self.tr('Cancel'), self)
 
         self.button_restart.clicked.connect(self.accept)
         self.button_cancel.clicked.connect(self.reject)

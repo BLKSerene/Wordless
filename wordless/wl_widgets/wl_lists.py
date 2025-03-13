@@ -17,39 +17,22 @@
 # ----------------------------------------------------------------------
 
 import os
-import re
 
-from PyQt5.QtCore import (
-    pyqtSignal,
-    QCoreApplication,
-    QItemSelection,
-    QModelIndex,
-    QStringListModel,
-    Qt
-)
-from PyQt5.QtGui import QStandardItem
-from PyQt5.QtWidgets import (
-    QAbstractItemDelegate,
-    QAbstractItemView,
-    QFileDialog,
-    QLineEdit,
-    QListView,
-    QPushButton
-)
+from PyQt5 import QtCore
+from PyQt5 import QtGui
+from PyQt5 import QtWidgets
 
 from wordless.wl_checks import wl_checks_files, wl_checks_misc
-from wordless.wl_dialogs import wl_dialogs_errs, wl_msg_boxes
+from wordless.wl_dialogs import wl_dialogs, wl_dialogs_errs
 from wordless.wl_utils import wl_detection, wl_misc
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
-RE_EMPTY_ITEM = re.compile(r'^\s*$')
-
-is_windows, is_macos, is_linux = wl_misc.check_os()
+is_macos = wl_misc.check_os()[1]
 
 # self.tr() does not work in inherited classes
-class Wl_List_Add_Ins_Del_Clr(QListView):
-    enter_pressed = pyqtSignal()
+class Wl_List_Add_Ins_Del_Clr(QtWidgets.QListView):
+    enter_pressed = QtCore.pyqtSignal()
 
     def __init__(
         self, parent,
@@ -64,24 +47,24 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
         self.items_old = []
 
         if editable:
-            self.setEditTriggers(QAbstractItemView.DoubleClicked | QAbstractItemView.SelectedClicked | QAbstractItemView.EditKeyPressed)
+            self.setEditTriggers(QtWidgets.QAbstractItemView.DoubleClicked | QtWidgets.QAbstractItemView.SelectedClicked | QtWidgets.QAbstractItemView.EditKeyPressed)
         else:
-            self.setEditTriggers(QAbstractItemView.NoEditTriggers)
+            self.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
 
         if drag_drop:
-            self.setDragDropMode(QAbstractItemView.InternalMove)
+            self.setDragDropMode(QtWidgets.QAbstractItemView.InternalMove)
 
-        self.setSelectionMode(QAbstractItemView.ExtendedSelection)
+        self.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
 
-        self.setModel(QStringListModel(self))
+        self.setModel(QtCore.QStringListModel(self))
 
         self.model().dataChanged.connect(self.data_changed)
         self.selectionModel().selectionChanged.connect(self.selection_changed)
 
-        self.button_add = QPushButton(_tr('wl_lists', 'Add'), self)
-        self.button_ins = QPushButton(_tr('wl_lists', 'Insert'), self)
-        self.button_del = QPushButton(_tr('wl_lists', 'Remove'), self)
-        self.button_clr = QPushButton(_tr('wl_lists', 'Clear'), self)
+        self.button_add = QtWidgets.QPushButton(_tr('wl_lists', 'Add'), self)
+        self.button_ins = QtWidgets.QPushButton(_tr('wl_lists', 'Insert'), self)
+        self.button_del = QtWidgets.QPushButton(_tr('wl_lists', 'Remove'), self)
+        self.button_clr = QtWidgets.QPushButton(_tr('wl_lists', 'Clear'), self)
 
         self.button_add.clicked.connect(self.add_item)
         self.button_ins.clicked.connect(self.ins_item)
@@ -108,25 +91,25 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
 
         self.model().setStringList([datum for datum in data if datum])
 
-        self.model().dataChanged.emit(QModelIndex(), QModelIndex())
+        self.model().dataChanged.emit(QtCore.QModelIndex(), QtCore.QModelIndex())
 
         event.accept()
 
     def keyPressEvent(self, event):
         match event.key():
             # Clear the selected item if no item is being edited
-            case Qt.Key_Backspace:
-                if not self.findChild(QLineEdit):
+            case QtCore.Qt.Key_Backspace:
+                if not self.findChild(QtWidgets.QLineEdit) and self.get_selected_rows():
                     self.edit(self.model().index(self.get_selected_rows()[-1]))
-                    self.findChild(QLineEdit).clear()
+                    self.findChild(QtWidgets.QLineEdit).clear()
                 else:
                     super().keyPressEvent(event)
             # Start editing after moving up or down if the previously selected item is being edited
-            case Qt.Key_Up | Qt.Key_Down | Qt.Key_PageUp | Qt.Key_PageDown | Qt.Key_Home | Qt.Key_End:
+            case QtCore.Qt.Key_Up | QtCore.Qt.Key_Down | QtCore.Qt.Key_PageUp | QtCore.Qt.Key_PageDown | QtCore.Qt.Key_Home | QtCore.Qt.Key_End:
                 # On OSes other than macOS, home and end keys jump to the first or last item or the start or end of the item being edited
-                if event.key() not in (Qt.Key_Home, Qt.Key_End) or is_macos:
+                if (event.key() not in (QtCore.Qt.Key_Home, QtCore.Qt.Key_End) or is_macos) and self.get_selected_rows():
                     row_selected_prev = self.get_selected_rows()[-1]
-                    editing = self.findChild(QLineEdit)
+                    editing = self.findChild(QtWidgets.QLineEdit)
 
                     super().keyPressEvent(event)
 
@@ -137,18 +120,18 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
                 else:
                     super().keyPressEvent(event)
             # Insert an item if no item is being edited
-            case Qt.Key_Insert:
-                if self.findChild(QLineEdit):
-                    super().keyPressEvent(event)
-                else:
+            case QtCore.Qt.Key_Insert:
+                if not self.findChild(QtWidgets.QLineEdit) and self.get_selected_rows():
                     self.ins_item()
-            case Qt.Key_Delete:
+                else:
+                    super().keyPressEvent(event)
+            case QtCore.Qt.Key_Delete:
                 self.del_item()
             # Clear the item being edited or whole list
             # Do nothing on OSes other than macOS as there is no clear key
-            case Qt.Key_Clear:
+            case QtCore.Qt.Key_Clear:
                 if is_macos:
-                    if (line_edit := self.findChild(QLineEdit)):
+                    if (line_edit := self.findChild(QtWidgets.QLineEdit)):
                         line_edit.clear()
                     else:
                         self.clr_list()
@@ -156,8 +139,8 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
                     super().keyPressEvent(event)
             # Generate the table if no item is being edited
             # Key_Return is the main key return/enter and Key_Enter is the enter key in the numeric keypad
-            case Qt.Key_Return | Qt.Key_Enter:
-                if self.findChild(QLineEdit):
+            case QtCore.Qt.Key_Return | QtCore.Qt.Key_Enter:
+                if self.findChild(QtWidgets.QLineEdit):
                     super().keyPressEvent(event)
                 else:
                     self.enter_pressed.emit()
@@ -173,25 +156,27 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
         if topLeft:
             item_row = topLeft.row()
 
+            # Check for empty and duplicate items
             if item_row != -1:
                 item_text = self.model().stringList()[item_row]
 
-                # Check for empty items
-                if RE_EMPTY_ITEM.search(item_text):
+                if wl_misc.RE_EMPTY_ITEM.search(item_text):
                     data = self.model().stringList()
                     data[item_row] = self.items_old[item_row]
 
                     self.model().setStringList(data)
-                # Check for duplicate items
                 else:
                     for i, text in enumerate(self.model().stringList()):
                         if i != item_row and item_text == text:
-                            wl_msg_boxes.Wl_Msg_Box_Warning(
+                            wl_dialogs.Wl_Dialog_Info_Simple(
                                 self.main,
-                                title = _tr('wl_lists', 'Duplicates Found'),
+                                title = _tr('wl_lists', 'Duplicate Items'),
                                 text = _tr('wl_lists', '''
-                                    <div>The item that you have just edited already exists in the list, please specify another one!</div>
-                                ''')
+                                    <div>The item that you have edited already exists in the list.</div>
+                                    <br>
+                                    <div>Please specify another item.</div>
+                                '''),
+                                icon = 'warning'
                             ).exec_()
 
                             data = self.model().stringList()
@@ -201,14 +186,14 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
 
                             self.setCurrentIndex(topLeft)
 
-                            self.closeEditor(self.findChild(QLineEdit), QAbstractItemDelegate.NoHint)
+                            self.closeEditor(self.findChild(QtWidgets.QLineEdit), QtWidgets.QAbstractItemDelegate.NoHint)
                             self.edit(topLeft)
 
                             break
 
                     self.items_old[item_row] = self.model().stringList()[item_row]
 
-        self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
+        self.selectionModel().selectionChanged.emit(QtCore.QItemSelection(), QtCore.QItemSelection())
 
     def selection_changed(self):
         if self.selectionModel().selectedIndexes():
@@ -238,7 +223,7 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
 
         self.model().setStringList(data)
 
-        self.model().dataChanged.emit(QModelIndex(), QModelIndex())
+        self.model().dataChanged.emit(QtCore.QModelIndex(), QtCore.QModelIndex())
 
     def _add_items(self, texts, row = None):
         data = self.model().stringList()
@@ -255,7 +240,7 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
 
             self.model().setStringList(data)
 
-        self.model().dataChanged.emit(QModelIndex(), QModelIndex())
+        self.model().dataChanged.emit(QtCore.QModelIndex(), QtCore.QModelIndex())
 
     def add_item(self, text = ''):
         self._add_item(text = text)
@@ -281,13 +266,13 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
 
         self.model().setStringList(data)
 
-        self.model().dataChanged.emit(QModelIndex(), QModelIndex())
+        self.model().dataChanged.emit(QtCore.QModelIndex(), QtCore.QModelIndex())
 
     def clr_list(self):
         self.model().setStringList([])
         self.items_old = []
 
-        self.model().dataChanged.emit(QModelIndex(), QModelIndex())
+        self.model().dataChanged.emit(QtCore.QModelIndex(), QtCore.QModelIndex())
 
     def load_items(self, texts):
         self.clr_list()
@@ -312,8 +297,8 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
         self.settings = settings
         self.exp_file_name = exp_file_name
 
-        self.button_imp = QPushButton(_tr('wl_lists', 'Import'), self)
-        self.button_exp = QPushButton(_tr('wl_lists', 'Export'), self)
+        self.button_imp = QtWidgets.QPushButton(_tr('wl_lists', 'Import'), self)
+        self.button_exp = QtWidgets.QPushButton(_tr('wl_lists', 'Export'), self)
 
         self.button_imp.clicked.connect(self.imp_list)
         self.button_exp.clicked.connect(self.exp_list)
@@ -332,7 +317,7 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
         else:
             default_dir = self.main.settings_default['general']['imp'][self.settings]['default_path']
 
-        file_paths = QFileDialog.getOpenFileNames(
+        file_paths = QtWidgets.QFileDialog.getOpenFileNames(
             parent = self.main,
             caption = _tr('wl_lists', 'Import from Files'),
             directory = default_dir,
@@ -349,9 +334,7 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
                 dialog_err_files = wl_dialogs_errs.Wl_Dialog_Err_Files(self.main, _tr('wl_lists', 'Import Error'))
 
                 dialog_err_files.label_err.set_text(_tr('wl_lists', '''
-                    <div>
-                        An error occurred during import, please check the following files and try again.
-                    </div>
+                    <div>An error occurred during import. Please check the following files and try again.</div>
                 '''))
 
                 dialog_err_files.table_err_files.model().setRowCount(len(file_paths_empty))
@@ -361,11 +344,11 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
                 for i, file_path in enumerate(file_paths_empty):
                     dialog_err_files.table_err_files.model().setItem(
                         i, 0,
-                        QStandardItem(_tr('wl_lists', 'Empty file'))
+                        QtGui.QStandardItem(_tr('wl_lists', 'Empty file'))
                     )
                     dialog_err_files.table_err_files.model().setItem(
                         i, 1,
-                        QStandardItem(file_path)
+                        QtGui.QStandardItem(file_path)
                     )
 
                 dialog_err_files.table_err_files.enable_updates()
@@ -406,7 +389,7 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
     def exp_list(self):
         default_dir = self.main.settings_custom['general']['exp'][self.settings]['default_path']
 
-        file_path = QFileDialog.getSaveFileName(
+        file_path = QtWidgets.QFileDialog.getSaveFileName(
             parent = self.main,
             caption = _tr('wl_lists', 'Export to File'),
             directory = os.path.join(wl_checks_misc.check_dir(default_dir), self.exp_file_name),
@@ -420,7 +403,7 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
                 for item in self.model().stringList():
                     f.write(item + '\n')
 
-            wl_msg_boxes.Wl_Msg_Box_Info(
+            wl_dialogs.Wl_Dialog_Info_Simple(
                 self.main,
                 title = _tr('wl_lists', 'Export Completed'),
                 text = _tr('wl_lists', '''
@@ -461,7 +444,7 @@ class Wl_List_Stop_Words(Wl_List_Add_Ins_Del_Clr_Imp_Exp):
         self.button_del.setEnabled(False)
 
     def switch_to_custom(self):
-        self.setEditTriggers(QAbstractItemView.DoubleClicked | QAbstractItemView.SelectedClicked | QAbstractItemView.EditKeyPressed)
+        self.setEditTriggers(QtWidgets.QAbstractItemView.DoubleClicked | QtWidgets.QAbstractItemView.SelectedClicked | QtWidgets.QAbstractItemView.EditKeyPressed)
         self.setDragEnabled(True)
 
         self.button_add.setEnabled(True)
@@ -473,10 +456,10 @@ class Wl_List_Stop_Words(Wl_List_Add_Ins_Del_Clr_Imp_Exp):
         self.model().dataChanged.connect(self.data_changed)
         self.selectionModel().selectionChanged.connect(self.selection_changed)
 
-        self.model().dataChanged.emit(QModelIndex(), QModelIndex())
+        self.model().dataChanged.emit(QtCore.QModelIndex(), QtCore.QModelIndex())
 
     def switch_to_default(self):
-        self.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.setDragEnabled(False)
 
         self.button_add.setEnabled(False)
@@ -490,4 +473,4 @@ class Wl_List_Stop_Words(Wl_List_Add_Ins_Del_Clr_Imp_Exp):
         self.selectionModel().selectionChanged.connect(self.selection_changed)
         self.selectionModel().selectionChanged.connect(self.selection_changed_default)
 
-        self.model().dataChanged.emit(QModelIndex(), QModelIndex())
+        self.model().dataChanged.emit(QtCore.QModelIndex(), QtCore.QModelIndex())

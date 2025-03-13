@@ -16,9 +16,9 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from PyQt5.QtCore import QCoreApplication
+from PyQt5 import QtCore
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 # pylint: disable=broad-exception-raised
 

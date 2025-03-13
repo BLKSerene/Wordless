@@ -23,8 +23,8 @@ import copy
 import traceback
 
 import numpy
-from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
-from PyQt5.QtWidgets import QCheckBox, QLabel, QGroupBox
+from PyQt5 import QtCore
+from PyQt5 import QtWidgets
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
@@ -44,7 +44,7 @@ from wordless.wl_widgets import (
     wl_widgets
 )
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
@@ -71,7 +71,7 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
         self.wrapper_table.layout().addWidget(self.table_wordlist_generator.button_clr_table, 2, 4)
 
         # Token Settings
-        self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
+        self.group_box_token_settings = QtWidgets.QGroupBox(self.tr('Token Settings'), self)
 
         (
             self.checkbox_words,
@@ -126,9 +126,9 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
         self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 9, 1)
 
         # Generation Settings
-        self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'))
+        self.group_box_generation_settings = QtWidgets.QGroupBox(self.tr('Generation Settings'))
 
-        self.checkbox_show_syllabified_forms = QCheckBox(self.tr('Show syllabified forms'))
+        self.checkbox_show_syllabified_forms = QtWidgets.QCheckBox(self.tr('Show syllabified forms'))
         (
             self.label_measure_dispersion,
             self.combo_box_measure_dispersion,
@@ -148,7 +148,7 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
         self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_adjusted_freq, 4, 0)
 
         # Table Settings
-        self.group_box_table_settings = QGroupBox(self.tr('Table Settings'))
+        self.group_box_table_settings = QtWidgets.QGroupBox(self.tr('Table Settings'))
 
         (
             self.checkbox_show_pct_data,
@@ -169,7 +169,7 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown_file, 2, 0)
 
         # Figure Settings
-        self.group_box_fig_settings = QGroupBox(self.tr('Figure Settings'), self)
+        self.group_box_fig_settings = QtWidgets.QGroupBox(self.tr('Figure Settings'), self)
 
         (
             self.label_graph_type,
@@ -182,7 +182,7 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
             self.checkbox_use_cumulative
         ) = wl_widgets.wl_widgets_fig_settings(self, tab = self.tab)
 
-        self.label_rank = QLabel(self.tr('Rank:'), self)
+        self.label_rank = QtWidgets.QLabel(self.tr('Rank:'), self)
         (
             self.checkbox_rank_sync,
             self.label_rank_min,
@@ -443,7 +443,7 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
                 # Sort by frequency of the first file
                 self.horizontalHeader().setSortIndicator(
                     self.find_header_hor(self.tr('[{}]\nFrequency').format(files[0]['name'])),
-                    Qt.DescendingOrder
+                    QtCore.Qt.DescendingOrder
                 )
 
                 cols_freq = self.find_headers_hor(self.tr('\nFrequency'))
@@ -593,7 +593,7 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
 
 # self.tr() does not work in inherited classes
 class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str, dict, dict, dict)
+    worker_done = QtCore.pyqtSignal(str, dict, dict, dict)
 
     def __init__(self, main, dialog_progress, update_gui):
         super().__init__(main, dialog_progress, update_gui)

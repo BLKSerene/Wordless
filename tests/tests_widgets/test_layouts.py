@@ -16,8 +16,8 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QLabel
+from PyQt5 import QtCore
+from PyQt5 import QtWidgets
 
 from tests import wl_test_init
 from wordless.wl_widgets import wl_layouts
@@ -32,14 +32,14 @@ def test_wl_wrapper():
     wrapper.load_settings()
 
 def test_wl_splitter():
-    wl_layouts.Wl_Splitter(Qt.Vertical, main)
+    wl_layouts.Wl_Splitter(QtCore.Qt.Vertical, main)
 
 def test_wl_scroll_area():
     wl_layouts.Wl_Scroll_Area(main)
 
 def test_wl_stacked_widget_resizable():
     stacked_widget = wl_layouts.Wl_Stacked_Widget_Resizable(main)
-    stacked_widget.addWidget(QLabel())
+    stacked_widget.addWidget(QtWidgets.QLabel())
     stacked_widget.current_changed(0)
 
 def test_wl_separator():

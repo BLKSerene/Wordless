@@ -19,11 +19,11 @@
 import collections
 
 import numpy
-from PyQt5.QtCore import QCoreApplication
+from PyQt5 import QtCore
 
 from wordless.wl_nlp import wl_nlp_utils
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 def to_measure_code(main, measure_type, measure_text):
     return main.settings_global['mapping_measures'][measure_type][measure_text]

@@ -19,26 +19,18 @@
 import os
 import traceback
 
-from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
-from PyQt5.QtGui import QStandardItem, QStandardItemModel
-from PyQt5.QtWidgets import (
-    QAbstractItemView,
-    QHeaderView,
-    QMessageBox,
-    QPushButton,
-    QStackedWidget,
-    QTreeView,
-    QWidget
-)
+from PyQt5 import QtCore
+from PyQt5 import QtGui
+from PyQt5 import QtWidgets
 
 from wordless.wl_checks import wl_checks_misc, wl_checks_work_area
-from wordless.wl_dialogs import wl_dialogs, wl_msg_boxes
+from wordless.wl_dialogs import wl_dialogs
 from wordless.wl_widgets import wl_buttons, wl_layouts
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 class Wl_Settings(wl_dialogs.Wl_Dialog):
-    wl_settings_changed = pyqtSignal()
+    wl_settings_changed = QtCore.pyqtSignal()
 
     def __init__(self, main):
         super().__init__(
@@ -65,51 +57,51 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
             wl_settings_figs
         )
 
-        self.tree_settings = QTreeView(self)
-        self.tree_settings.setModel(QStandardItemModel())
-        self.tree_settings.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.tree_settings = QtWidgets.QTreeView(self)
+        self.tree_settings.setModel(QtGui.QStandardItemModel())
+        self.tree_settings.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
 
         self.tree_settings.setHeaderHidden(True)
-        self.tree_settings.header().setSectionResizeMode(QHeaderView.ResizeToContents)
+        self.tree_settings.header().setSectionResizeMode(QtWidgets.QHeaderView.ResizeToContents)
         self.tree_settings.header().setStretchLastSection(False)
 
-        self.tree_settings.model().appendRow(QStandardItem(self.tr('General')))
-        self.tree_settings.model().item(0).appendRow(QStandardItem(self.tr('Import')))
-        self.tree_settings.model().item(0).appendRow(QStandardItem(self.tr('Export')))
+        self.tree_settings.model().appendRow(QtGui.QStandardItem(self.tr('General')))
+        self.tree_settings.model().item(0).appendRow(QtGui.QStandardItem(self.tr('Import')))
+        self.tree_settings.model().item(0).appendRow(QtGui.QStandardItem(self.tr('Export')))
 
-        self.tree_settings.model().appendRow(QStandardItem(self.tr('Files')))
-        self.tree_settings.model().item(1).appendRow(QStandardItem(self.tr('Tags')))
+        self.tree_settings.model().appendRow(QtGui.QStandardItem(self.tr('Files')))
+        self.tree_settings.model().item(1).appendRow(QtGui.QStandardItem(self.tr('Tags')))
 
-        self.tree_settings.model().appendRow(QStandardItem(self.tr('Sentence Tokenization')))
-        self.tree_settings.model().appendRow(QStandardItem(self.tr('Word Tokenization')))
-        self.tree_settings.model().appendRow(QStandardItem(self.tr('Syllable Tokenization')))
+        self.tree_settings.model().appendRow(QtGui.QStandardItem(self.tr('Sentence Tokenization')))
+        self.tree_settings.model().appendRow(QtGui.QStandardItem(self.tr('Word Tokenization')))
+        self.tree_settings.model().appendRow(QtGui.QStandardItem(self.tr('Syllable Tokenization')))
 
-        self.tree_settings.model().appendRow(QStandardItem(self.tr('Part-of-speech Tagging')))
-        self.tree_settings.model().item(5).appendRow(QStandardItem(self.tr('Tagsets')))
+        self.tree_settings.model().appendRow(QtGui.QStandardItem(self.tr('Part-of-speech Tagging')))
+        self.tree_settings.model().item(5).appendRow(QtGui.QStandardItem(self.tr('Tagsets')))
 
-        self.tree_settings.model().appendRow(QStandardItem(self.tr('Lemmatization')))
-        self.tree_settings.model().appendRow(QStandardItem(self.tr('Stop Word Lists')))
-        self.tree_settings.model().appendRow(QStandardItem(self.tr('Dependency Parsing')))
-        self.tree_settings.model().appendRow(QStandardItem(self.tr('Sentiment Analysis')))
+        self.tree_settings.model().appendRow(QtGui.QStandardItem(self.tr('Lemmatization')))
+        self.tree_settings.model().appendRow(QtGui.QStandardItem(self.tr('Stop Word Lists')))
+        self.tree_settings.model().appendRow(QtGui.QStandardItem(self.tr('Dependency Parsing')))
+        self.tree_settings.model().appendRow(QtGui.QStandardItem(self.tr('Sentiment Analysis')))
 
-        self.tree_settings.model().appendRow(QStandardItem(self.tr('Measures')))
-        self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Readability')))
-        self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Lexical Density/Diversity')))
-        self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Dispersion')))
-        self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Adjusted Frequency')))
-        self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Statistical Significance')))
-        self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Bayes Factor')))
-        self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Effect Size')))
+        self.tree_settings.model().appendRow(QtGui.QStandardItem(self.tr('Measures')))
+        self.tree_settings.model().item(10).appendRow(QtGui.QStandardItem(self.tr('Readability')))
+        self.tree_settings.model().item(10).appendRow(QtGui.QStandardItem(self.tr('Lexical Density/Diversity')))
+        self.tree_settings.model().item(10).appendRow(QtGui.QStandardItem(self.tr('Dispersion')))
+        self.tree_settings.model().item(10).appendRow(QtGui.QStandardItem(self.tr('Adjusted Frequency')))
+        self.tree_settings.model().item(10).appendRow(QtGui.QStandardItem(self.tr('Statistical Significance')))
+        self.tree_settings.model().item(10).appendRow(QtGui.QStandardItem(self.tr('Bayes Factor')))
+        self.tree_settings.model().item(10).appendRow(QtGui.QStandardItem(self.tr('Effect Size')))
 
-        self.tree_settings.model().appendRow(QStandardItem(self.tr('Tables')))
-        self.tree_settings.model().item(11).appendRow(QStandardItem(self.tr('Concordancer')))
-        self.tree_settings.model().item(11).appendRow(QStandardItem(self.tr('Parallel Concordancer')))
-        self.tree_settings.model().item(11).appendRow(QStandardItem(self.tr('Dependency Parser')))
+        self.tree_settings.model().appendRow(QtGui.QStandardItem(self.tr('Tables')))
+        self.tree_settings.model().item(11).appendRow(QtGui.QStandardItem(self.tr('Concordancer')))
+        self.tree_settings.model().item(11).appendRow(QtGui.QStandardItem(self.tr('Parallel Concordancer')))
+        self.tree_settings.model().item(11).appendRow(QtGui.QStandardItem(self.tr('Dependency Parser')))
 
-        self.tree_settings.model().appendRow(QStandardItem(self.tr('Figures')))
-        self.tree_settings.model().item(12).appendRow(QStandardItem(self.tr('Line Charts')))
-        self.tree_settings.model().item(12).appendRow(QStandardItem(self.tr('Word Clouds')))
-        self.tree_settings.model().item(12).appendRow(QStandardItem(self.tr('Network Graphs')))
+        self.tree_settings.model().appendRow(QtGui.QStandardItem(self.tr('Figures')))
+        self.tree_settings.model().item(12).appendRow(QtGui.QStandardItem(self.tr('Line Charts')))
+        self.tree_settings.model().item(12).appendRow(QtGui.QStandardItem(self.tr('Word Clouds')))
+        self.tree_settings.model().item(12).appendRow(QtGui.QStandardItem(self.tr('Network Graphs')))
 
         # Calculate width
         for i in range(self.tree_settings.model().rowCount()):
@@ -122,7 +114,7 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
 
         self.tree_settings.selectionModel().selectionChanged.connect(self.selection_changed)
 
-        self.stacked_widget_settings = QStackedWidget(self)
+        self.stacked_widget_settings = QtWidgets.QStackedWidget(self)
 
         # General
         self.settings_general = wl_settings_general.Wl_Settings_General(self.main)
@@ -213,9 +205,9 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
             self.stacked_widget_settings.addWidget(scroll_area_settings)
 
         button_reset_settings = wl_buttons.Wl_Button(self.tr('Reset all settings'), self)
-        button_save = QPushButton(self.tr('Save'), self)
-        button_apply = QPushButton(self.tr('Apply'), self)
-        button_cancel = QPushButton(self.tr('Cancel'), self)
+        button_save = QtWidgets.QPushButton(self.tr('Save'), self)
+        button_apply = QtWidgets.QPushButton(self.tr('Apply'), self)
+        button_cancel = QtWidgets.QPushButton(self.tr('Cancel'), self)
 
         button_reset_settings.setMinimumWidth(150)
 
@@ -265,7 +257,7 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
                 self.tree_settings.selectionModel().blockSignals(True)
 
                 self.tree_settings.clearSelection()
-                self.tree_settings.setCurrentIndex(self.tree_settings.model().findItems(self.main.settings_custom['settings']['node_cur'], Qt.MatchRecursive)[0].index())
+                self.tree_settings.setCurrentIndex(self.tree_settings.model().findItems(self.main.settings_custom['settings']['node_cur'], QtCore.Qt.MatchRecursive)[0].index())
 
                 self.tree_settings.selectionModel().blockSignals(False)
 
@@ -281,15 +273,15 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
         return True
 
     def reset_all_settings(self):
-        if wl_msg_boxes.wl_msg_box_question(
+        if wl_dialogs.Wl_Dialog_Question(
             main = self.main,
             title = self.tr('Reset All Settings'),
             text = self.tr('''
-                <div>Do you want to reset all settings to their defaults?</div>
+                <div>Do you want to reset all settings to their default values?</div>
                 <br>
-                <div><b>Warning: This will affect settings on all pages!</b></div>
+                <div><b>Warning:</b> This will affect settings on all pages.</div>
             ''')
-        ):
+        ).exec_():
             self.load_settings(defaults = True)
 
         self.activateWindow()
@@ -317,9 +309,9 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
             self.tree_settings.clearSelection()
 
             if node:
-                self.tree_settings.setCurrentIndex(self.tree_settings.model().findItems(node, Qt.MatchRecursive)[0].index())
+                self.tree_settings.setCurrentIndex(self.tree_settings.model().findItems(node, QtCore.Qt.MatchRecursive)[0].index())
             else:
-                self.tree_settings.setCurrentIndex(self.tree_settings.model().findItems(self.main.settings_custom['settings']['node_cur'], Qt.MatchRecursive)[0].index())
+                self.tree_settings.setCurrentIndex(self.tree_settings.model().findItems(self.main.settings_custom['settings']['node_cur'], QtCore.Qt.MatchRecursive)[0].index())
 
             # Expand current node
             node_cur = self.tree_settings.model().itemFromIndex(self.tree_settings.selectionModel().currentIndex())
@@ -334,49 +326,56 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
             wl_checks_work_area.check_err(self.main, traceback.format_exc())
 
 # self.tr() does not work in inherited classes
-class Wl_Settings_Node(QWidget):
+class Wl_Settings_Node(QtWidgets.QWidget):
     def __init__(self, main):
         super().__init__()
 
         self.main = main
 
-    def wl_msg_box_path_empty(self):
-        wl_msg_boxes.Wl_Msg_Box_Warning(
+    def wl_dialog_path_empty(self):
+        wl_dialogs.Wl_Dialog_Info_Simple(
             self.main,
             title = _tr('Wl_Settings_Node', 'Empty Path'),
             text = _tr('Wl_Settings_Node', '''
-                <div>The path should not be left empty!</div>
+                <div>The path should not be left empty.</div>
             '''),
+            icon = 'warning'
         ).open()
 
-    def wl_msg_box_path_not_found(self, path):
-        wl_msg_boxes.Wl_Msg_Box_Warning(
+    def wl_dialog_path_not_found(self, path):
+        wl_dialogs.Wl_Dialog_Info_Simple(
             self.main,
             title = _tr('Wl_Settings_Node', 'Path not Found'),
             text = _tr('Wl_Settings_Node', '''
-                <div>The specified path "{}" could not be found!</div>
-                <div>Please check your settings and try again.</div>
+                <div>The specified path "{}" could not be found.</div>
+                <br>
+                <div>Please check your settings or specify another path.</div>
             ''').format(path),
+            icon = 'warning'
         ).open()
 
-    def wl_msg_box_path_is_dir(self, path):
-        wl_msg_boxes.Wl_Msg_Box_Warning(
+    def wl_dialog_path_is_dir(self, path):
+        wl_dialogs.Wl_Dialog_Info_Simple(
             self.main,
             title = _tr('Wl_Settings_Node', 'Invalid File Path'),
             text = _tr('Wl_Settings_Node', '''
-                <div>The specified path "{}" should be a file, not a directory!</div>
-                <div>Please check your settings and try again.</div>
+                <div>The specified path "{}" should be a file rather than a directory.</div>
+                <br>
+                <div>Please check your settings or specify another path.</div>
             ''').format(path),
+            icon = 'warning'
         ).open()
 
-    def wl_msg_box_path_not_dir(self, path):
-        wl_msg_boxes.Wl_Msg_Box_Warning(
+    def wl_dialog_path_not_dir(self, path):
+        wl_dialogs.Wl_Dialog_Info_Simple(
             self.main,
             title = _tr('Wl_Settings_Node', 'Invalid Directory Path'),
             text = _tr('Wl_Settings_Node', '''
-                <div>The specified path "{}" should be a directory, not a file!</div>
-                <div>Please check your settings and try again.</div>
+                <div>The specified path "{}" should be a directory rather than a file.</div>
+                <br>
+                <div>Please check your settings or specify another path.</div>
             ''').format(path),
+            icon = 'warning'
         ).open()
 
     def validate_path_file(self, line_edit):
@@ -385,15 +384,15 @@ class Wl_Settings_Node(QWidget):
 
         if path:
             if not os.path.exists(path):
-                self.wl_msg_box_path_not_found(path)
+                self.wl_dialog_path_not_found(path)
 
                 path_ok = False
             elif os.path.isdir(path):
-                self.wl_msg_box_path_is_dir(path)
+                self.wl_dialog_path_is_dir(path)
 
                 path_ok = False
         else:
-            self.wl_msg_box_path_empty()
+            self.wl_dialog_path_empty()
 
             path_ok = False
 
@@ -409,15 +408,15 @@ class Wl_Settings_Node(QWidget):
 
         if path:
             if not os.path.exists(path):
-                self.wl_msg_box_path_not_found(path)
+                self.wl_dialog_path_not_found(path)
 
                 path_ok = False
             elif not os.path.isdir(path):
-                self.wl_msg_box_path_not_dir(path)
+                self.wl_dialog_path_not_dir(path)
 
                 path_ok = False
         else:
-            self.wl_msg_box_path_empty()
+            self.wl_dialog_path_empty()
 
             path_ok = False
 
@@ -433,30 +432,24 @@ class Wl_Settings_Node(QWidget):
 
         if path:
             if not os.path.exists(path):
-                reply = QMessageBox.question(
+                if wl_dialogs.Wl_Dialog_Question(
                     self.main,
                     _tr('Wl_Settings_Node', 'Path Not Exist'),
                     _tr('Wl_Settings_Node', '''
-                        {}
-                        <body>
-                            <div>The specified path "{}" does not exist.</div>
-                            <div>Do you want to create the directory?</div>
-                        </body>
-                    ''').format(self.main.settings_global['styles']['style_dialog'], path),
-                    QMessageBox.Yes | QMessageBox.No,
-                    QMessageBox.No
-                )
-
-                if reply == QMessageBox.Yes:
+                        <div>The specified path "{}" does not exist.</div>
+                        <br>
+                        <div>Do you want to create the directory?</div>
+                    ''').format(path),
+                ).exec_():
                     wl_checks_misc.check_dir(path)
                 else:
                     path_ok = False
             elif not os.path.isdir(path):
-                self.wl_msg_box_path_not_dir(path)
+                self.wl_dialog_path_not_dir(path)
 
                 path_ok = False
         else:
-            self.wl_msg_box_path_empty()
+            self.wl_dialog_path_empty()
 
             path_ok = False
 

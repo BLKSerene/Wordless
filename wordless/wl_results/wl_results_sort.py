@@ -22,14 +22,9 @@ import copy
 import re
 import traceback
 
-from PyQt5.QtCore import pyqtSignal, QCoreApplication
-from PyQt5.QtGui import QStandardItem
-from PyQt5.QtWidgets import (
-    QAbstractItemDelegate,
-    QComboBox,
-    QMessageBox,
-    QPushButton
-)
+from PyQt5 import QtCore
+from PyQt5 import QtGui
+from PyQt5 import QtWidgets
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc
@@ -42,7 +37,7 @@ from wordless.wl_widgets import (
     wl_tables
 )
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 RE_SORTING_COL_L = re.compile(_tr('Wl_Dialog_Results_Sort_Concordancer', r'^L[1-9][0-9]*$'))
 RE_SORTING_COL_R = re.compile(_tr('Wl_Dialog_Results_Sort_Concordancer', r'^R[1-9][0-9]*$'))
@@ -64,9 +59,9 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
 
         self.table_sort = Wl_Table_Results_Sort_Conordancer(self, table = self.table)
 
-        self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
-        self.button_sort = QPushButton(self.tr('Sort'), self)
-        self.button_close = QPushButton(self.tr('Close'), self)
+        self.button_restore_default_vals = wl_buttons.Wl_Button_Restore_Default_Vals(self, load_settings = self.load_settings)
+        self.button_sort = QtWidgets.QPushButton(self.tr('Sort'), self)
+        self.button_close = QtWidgets.QPushButton(self.tr('Close'), self)
 
         self.button_sort.clicked.connect(lambda: self.sort_results()) # pylint: disable=unnecessary-lambda
         self.button_close.clicked.connect(self.reject)
@@ -82,7 +77,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
         layout_table_sort.setColumnStretch(0, 1)
 
         layout_buttons = wl_layouts.Wl_Layout()
-        layout_buttons.addWidget(self.button_restore_defaults, 0, 0)
+        layout_buttons.addWidget(self.button_restore_default_vals, 0, 0)
         layout_buttons.addWidget(self.button_sort, 0, 2)
         layout_buttons.addWidget(self.button_close, 0, 3)
 
@@ -96,7 +91,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
 
         self.load_settings()
 
-    # To be called by Restore defaults
+    # To be called by Restore default values
     def load_settings(self, defaults = False):
         self.table_sort.load_settings(defaults = defaults)
 
@@ -306,21 +301,20 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         if item.column() == 0:
             for i in range(self.model().rowCount()):
                 if i != item.row() and self.model().item(i, 0).text() == item.text():
-                    QMessageBox.warning(
+                    wl_dialogs.Wl_Dialog_Info_Simple(
                         self.main,
                         self.tr('Column Sorted More Than Once'),
-                        self.main.settings_global['styles']['style_dialog']
-                        + self.tr('''
-                            <body>
-                                <div>Please refrain from sorting the same column more than once!</div>
-                            </body>
+                        self.tr('''
+                            <div>Please refrain from sorting the same column more than once.</div>
                         '''),
-                        QMessageBox.Ok
-                    )
+                        icon = 'warning'
+                    ).open()
 
                     item.setText(item.text_old)
 
-                    self.closeEditor(self.findChild(QComboBox), QAbstractItemDelegate.NoHint)
+                    self.setCurrentIndex(item.index())
+
+                    self.closeEditor(self.findChild(QtWidgets.QComboBox), QtWidgets.QAbstractItemDelegate.NoHint)
                     self.edit(item.index())
 
                     break
@@ -435,7 +429,7 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
             sorting_order = texts[1]
 
         # Column
-        item_sorting_col = QStandardItem()
+        item_sorting_col = QtGui.QStandardItem()
 
         max_left = self.max_left()
         max_right = self.max_right()
@@ -470,7 +464,7 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                         break
 
         # Order
-        item_sorting_order = QStandardItem()
+        item_sorting_order = QtGui.QStandardItem()
 
         if sorting_order:
             item_sorting_order.setText(sorting_order)
@@ -491,7 +485,7 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                 item_sorting_order
             ])
 
-        self.model().itemChanged.emit(QStandardItem())
+        self.model().itemChanged.emit(QtGui.QStandardItem())
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -505,7 +499,7 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
             self._add_row(texts = sorting_rule)
 
 class Wl_Worker_Results_Sort_Concordancer(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str, list)
+    worker_done = QtCore.pyqtSignal(str, list)
 
     def run(self):
         err_msg = ''

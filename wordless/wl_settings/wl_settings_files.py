@@ -19,22 +19,15 @@
 import copy
 import re
 
-from PyQt5.QtCore import QCoreApplication
-from PyQt5.QtGui import QStandardItem
-from PyQt5.QtWidgets import (
-    QAbstractItemDelegate,
-    QCheckBox,
-    QGroupBox,
-    QLabel,
-    QLineEdit,
-    QPushButton
-)
+from PyQt5 import QtCore
+from PyQt5 import QtGui
+from PyQt5 import QtWidgets
 
 from wordless.wl_checks import wl_checks_misc
-from wordless.wl_dialogs import wl_msg_boxes
+from wordless.wl_dialogs import wl_dialogs
 from wordless.wl_nlp import wl_matching
 from wordless.wl_settings import wl_settings
-from wordless.wl_utils import wl_conversion
+from wordless.wl_utils import wl_conversion, wl_misc
 from wordless.wl_widgets import (
     wl_boxes,
     wl_item_delegates,
@@ -43,7 +36,7 @@ from wordless.wl_widgets import (
     wl_tables
 )
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 # Files
 class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
@@ -54,15 +47,15 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['files']
 
         # Default Settings
-        self.group_box_default_settings = QGroupBox(self.tr('Default Settings'), self)
+        self.group_box_default_settings = QtWidgets.QGroupBox(self.tr('Default Settings'), self)
 
-        self.label_encoding = QLabel(self.tr('Encoding:'), self)
+        self.label_encoding = QtWidgets.QLabel(self.tr('Encoding:'), self)
         self.combo_box_encoding = wl_boxes.Wl_Combo_Box_Encoding(self)
-        self.label_lang = QLabel(self.tr('Language:'), self)
+        self.label_lang = QtWidgets.QLabel(self.tr('Language:'), self)
         self.combo_box_lang = wl_boxes.Wl_Combo_Box_Lang(self)
-        self.label_tokenized = QLabel(self.tr('Tokenized:'), self)
+        self.label_tokenized = QtWidgets.QLabel(self.tr('Tokenized:'), self)
         self.combo_box_tokenized = wl_boxes.Wl_Combo_Box_Yes_No(self)
-        self.label_tagged = QLabel(self.tr('Tagged:'), self)
+        self.label_tagged = QtWidgets.QLabel(self.tr('Tagged:'), self)
         self.combo_box_tagged = wl_boxes.Wl_Combo_Box_Yes_No(self)
 
         self.group_box_default_settings.setLayout(wl_layouts.Wl_Layout())
@@ -78,9 +71,9 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
         self.group_box_default_settings.layout().setColumnStretch(3, 1)
 
         # Detection Settings
-        self.group_box_auto_detection_settings = QGroupBox(self.tr('Auto-detection Settings'), self)
+        self.group_box_auto_detection_settings = QtWidgets.QGroupBox(self.tr('Auto-detection Settings'), self)
 
-        self.label_num_lines = QLabel(self.tr('Number of lines to scan in each file:'), self)
+        self.label_num_lines = QtWidgets.QLabel(self.tr('Number of lines to scan in each file:'), self)
         (
             self.spin_box_num_lines,
             self.checkbox_num_lines_no_limit
@@ -96,12 +89,12 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
         self.group_box_auto_detection_settings.layout().setColumnStretch(3, 1)
 
         # Miscellaneous Settings
-        self.group_box_misc_settings = QGroupBox(self.tr('Miscellaneous Settings'), self)
+        self.group_box_misc_settings = QtWidgets.QGroupBox(self.tr('Miscellaneous Settings'), self)
 
-        self.checkbox_display_warning_when_opening_nontext_files = QCheckBox(self.tr('Display warning when opening non-text files'), self)
-        self.label_read_files_in_chunks = QLabel(self.tr('Read files in chunks of'), self)
+        self.checkbox_display_warning_when_opening_nontext_files = QtWidgets.QCheckBox(self.tr('Display warning when opening non-text files'), self)
+        self.label_read_files_in_chunks = QtWidgets.QLabel(self.tr('Read files in chunks of'), self)
         self.spin_box_read_files_in_chunks = wl_boxes.Wl_Spin_Box(self)
-        self.label_read_files_in_chunks_lines = QLabel(self.tr('lines'), self)
+        self.label_read_files_in_chunks_lines = QtWidgets.QLabel(self.tr('lines'), self)
 
         self.spin_box_read_files_in_chunks.setRange(1, 10000)
 
@@ -167,10 +160,10 @@ class Wl_Settings_Files_Tags(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['files']['tags']
 
         # Header Tag Settings
-        self.group_box_header_tag_settings = QGroupBox(self.tr('Header Tag Settings'), self)
+        self.group_box_header_tag_settings = QtWidgets.QGroupBox(self.tr('Header Tag Settings'), self)
 
         self.table_tags_header = Wl_Table_Tags_Header(self)
-        self.label_tags_header_note = wl_labels.Wl_Label_Important(self.tr('Note: All contents surrounded by header tags will be discarded during text processing!'), self)
+        self.label_tags_header_note = wl_labels.Wl_Label_Html(self.tr('<b>Warning:</b> All contents enclosed by header tags will be discarded during corpus analysis.'), self)
 
         self.group_box_header_tag_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_header_tag_settings.layout().addWidget(self.table_tags_header, 0, 0, 1, 5)
@@ -182,7 +175,7 @@ class Wl_Settings_Files_Tags(wl_settings.Wl_Settings_Node):
         self.group_box_header_tag_settings.layout().addWidget(self.label_tags_header_note, 2, 0, 1, 5)
 
         # Body Tag Settings
-        self.group_box_body_tag_settings = QGroupBox(self.tr('Body Tag Settings'), self)
+        self.group_box_body_tag_settings = QtWidgets.QGroupBox(self.tr('Body Tag Settings'), self)
 
         self.table_tags_body = Wl_Table_Tags_Body(self)
         self.label_tags_body_wildcard = wl_labels.Wl_Label_Hint(self.tr('* Use asterisk character (*) to indicate any number of characters'), self)
@@ -197,7 +190,7 @@ class Wl_Settings_Files_Tags(wl_settings.Wl_Settings_Node):
         self.group_box_body_tag_settings.layout().addWidget(self.label_tags_body_wildcard, 2, 0, 1, 5)
 
         # XML Tag Settings
-        self.group_box_xml_tag_settings = QGroupBox(self.tr('XML Tag Settings'), self)
+        self.group_box_xml_tag_settings = QtWidgets.QGroupBox(self.tr('XML Tag Settings'), self)
 
         self.table_tags_xml = Wl_Table_Tags_Xml(self)
 
@@ -275,64 +268,113 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         self.setItemDelegateForColumn(3, wl_item_delegates.Wl_Item_Delegate_Uneditable(self))
         self.setItemDelegateForColumn(4, wl_item_delegates.Wl_Item_Delegate_Uneditable(self))
 
-        self.button_reset = QPushButton(_tr('Wl_Table_Tags', 'Reset'), self)
+        self.button_reset = QtWidgets.QPushButton(_tr('Wl_Table_Tags', 'Reset'), self)
 
         self.button_reset.clicked.connect(lambda: self.reset_table()) # pylint: disable=unnecessary-lambda
 
         self.reset_table()
 
-    def item_changed(self, item): # pylint: disable=arguments-differ
-        if not self.is_empty():
+    def check_empty_duplicate_tags(self, item):
+        if not self.is_empty() and item.column() == 2:
+            # Check for empty tags
+            if wl_misc.RE_EMPTY_ITEM.search(item.text()):
+                item.setText(item.text_old)
+
+                return  False
+
+            # Check duplicate tags
             for row in range(self.model().rowCount()):
-                item_opening_tag = self.model().item(row, 2)
+                if row != item.row() and self.model().item(row, 2).text() == item.text():
+                    item.setText(item.text_old)
 
-                # Opening Tag
-                if self.model().item(row, 0).text() == _tr('Wl_Table_Tags', 'Embedded'):
-                    re_validation = RE_TAG_EMBEDDED.search(item_opening_tag.text())
-                    warning_text = _tr('Wl_Table_Tags', '''
-                        <div>Embedded tags must begin with a punctuation mark, e.g. an underscore or a slash!</div>
-                    ''')
-                else:
-                    re_validation = RE_TAG_NON_EMBEDDED.search(item_opening_tag.text())
-                    warning_text = _tr('Wl_Table_Tags', '''
-                        <div>Non-embedded tags must begin and end with a punctuation mark, e.g. brackets!</div>
-                    ''')
-
-                if re_validation is None:
-                    wl_msg_boxes.Wl_Msg_Box_Warning(
+                    wl_dialogs.Wl_Dialog_Info_Simple(
                         self.main,
-                        title = _tr('Wl_Table_Tags', 'Invalid Opening Tag'),
-                        text = warning_text
+                        title = _tr('Wl_Table_Tags', 'Duplicate Tags'),
+                        text = _tr('Wl_Table_Tags', '''
+                            <div>The tag that you have specified already exists in the table.</div>
+                            <br>
+                            <div>Please specify another tag.</div>
+                        '''),
+                        icon = 'warning'
                     ).exec_()
 
-                    item_opening_tag.setText(item_opening_tag.text_old)
+                    self.setCurrentIndex(item.index())
 
-                    self.closeEditor(self.findChild(QLineEdit), QAbstractItemDelegate.NoHint)
-                    self.edit(item_opening_tag.index())
+                    self.closeEditor(self.findChild(QtWidgets.QLineEdit), QtWidgets.QAbstractItemDelegate.NoHint)
+                    self.edit(item.index())
 
-                    return
+                    return False
 
-            # Check for duplicate tags
+        return True
+
+    def check_invalid_tags(self, item):
+        if not self.is_empty() and item.column() == 2:
+            # Check for invalid opening tags
+            if self.model().item(item.row(), 0).text() == _tr('Wl_Table_Tags', 'Embedded'):
+                re_validation = RE_TAG_EMBEDDED.search(item.text())
+                warning_text = _tr('Wl_Table_Tags', '''
+                    <div>Embedded tags must begin with a punctuation mark, e.g. an underscore or a slash.</div>
+                ''')
+            else:
+                re_validation = RE_TAG_NON_EMBEDDED.search(item.text())
+                warning_text = _tr('Wl_Table_Tags', '''
+                    <div>Non-embedded tags must begin and end with a punctuation mark, e.g. brackets.</div>
+                ''')
+
+            if re_validation is None:
+                wl_dialogs.Wl_Dialog_Info_Simple(
+                    self.main,
+                    title = _tr('Wl_Table_Tags', 'Invalid Opening Tag'),
+                    text = warning_text,
+                    icon = 'warning'
+                ).exec_()
+
+                item.setText(item.text_old)
+
+                self.setCurrentIndex(item.index())
+
+                self.closeEditor(self.findChild(QtWidgets.QLineEdit), QtWidgets.QAbstractItemDelegate.NoHint)
+                self.edit(item.index())
+
+                return False
+
+        return True
+
+    def check_invalid_tags_xml(self, item):
+        if not self.is_empty() and item.column() == 2:
+            # Reference: https://www.w3.org/TR/REC-xml/#NT-NameStartChar
+            NameStartChar = r'[A-Za-z:_\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\u10000-\uEFFFF]'
+            NameChar = fr'{NameStartChar[:-1]}0-9\-.\u00B7\u0300-\u036F\u203F-\u2040]'
+
+            if not re.search(fr'^<{NameStartChar}{NameChar}*>$', item.text()):
+                wl_dialogs.Wl_Dialog_Info_Simple(
+                    self.main,
+                    title = self.tr('Invalid XML Tag'),
+                    text = self.tr('''
+                        <div>The specified XML tag is invalid.</div>
+                        <br>
+                        <div>Please check your settings or specify another XML tag.</div>
+                    '''),
+                    icon = 'warning'
+                ).exec_()
+
+                item.setText(item.text_old)
+
+                self.setCurrentIndex(item.index())
+
+                self.closeEditor(self.findChild(QtWidgets.QLineEdit), QtWidgets.QAbstractItemDelegate.NoHint)
+                self.edit(item.index())
+
+                return False
+
+        return True
+
+    def update_tags(self, item):
+        if not self.is_empty():
             if item.column() == 2:
-                for row in range(self.model().rowCount()):
-                    if row != item.row() and self.model().item(row, 2).text() == item.text():
-                        wl_msg_boxes.Wl_Msg_Box_Warning(
-                            self.main,
-                            title = _tr('Wl_Table_Tags', 'Duplicate Tags'),
-                            text = _tr('Wl_Table_Tags', '''
-                                <div>The tag that you have specified already exists in the table!</div>
-                            ''')
-                        ).exec_()
-
-                        item.setText(item.text_old)
-
-                        self.closeEditor(self.findChild(QLineEdit), QAbstractItemDelegate.NoHint)
-                        self.edit(item.index())
-
-                        break
-
                 item.text_old = item.text()
 
+            # Update closing tags and preview
             if item.column() in (0, 1, 2):
                 self.disable_updates()
 
@@ -342,7 +384,6 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                     closing_tag = self.model().item(row, 3)
                     preview = self.model().item(row, 4)
 
-                    # Closing Tag & Preview
                     if type_text == _tr('Wl_Table_Tags', 'Embedded'):
                         if wl_matching.split_tag_embedded(opening_tag_text)[1] == '*':
                             opening_tag_text = opening_tag_text.replace('*', self.tr('TAG'))
@@ -364,8 +405,6 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
 
                 self.enable_updates()
 
-        super().item_changed()
-
     def _add_row(self, row = None, texts = None):
         if texts is None:
             type_, level, opening_tag, _ = self.defaults_row
@@ -385,24 +424,24 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         else:
             type_, level, opening_tag, _ = texts
 
-        item_opening_tag = QStandardItem(opening_tag)
+        item_opening_tag = QtGui.QStandardItem(opening_tag)
         item_opening_tag.text_old = opening_tag
 
         if row is None:
             self.model().appendRow([
-                QStandardItem(type_),
-                QStandardItem(level),
+                QtGui.QStandardItem(type_),
+                QtGui.QStandardItem(level),
                 item_opening_tag,
-                QStandardItem(),
-                QStandardItem()
+                QtGui.QStandardItem(),
+                QtGui.QStandardItem()
             ])
         else:
             self.model().insertRow(row, [
-                QStandardItem(type_),
-                QStandardItem(level),
+                QtGui.QStandardItem(type_),
+                QtGui.QStandardItem(level),
                 item_opening_tag,
-                QStandardItem(),
-                QStandardItem()
+                QtGui.QStandardItem(),
+                QtGui.QStandardItem()
             ])
 
         self.model().itemChanged.emit(item_opening_tag)
@@ -426,6 +465,7 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
 
         return tags
 
+# pylint: disable=arguments-differ
 class Wl_Table_Tags_Header(Wl_Table_Tags):
     def __init__(self, parent):
         super().__init__(
@@ -445,6 +485,17 @@ class Wl_Table_Tags_Header(Wl_Table_Tags):
                 self.tr('Header')
             ]
         ))
+
+    def item_changed(self, item):
+        super().item_changed()
+
+        if not self.check_empty_duplicate_tags(item):
+            return
+
+        if not self.check_invalid_tags(item):
+            return
+
+        self.update_tags(item)
 
 class Wl_Table_Tags_Body(Wl_Table_Tags):
     def __init__(self, parent):
@@ -466,6 +517,17 @@ class Wl_Table_Tags_Body(Wl_Table_Tags):
                 self.tr('Others')
             ]
         ))
+
+    def item_changed(self, item):
+        super().item_changed()
+
+        if not self.check_empty_duplicate_tags(item):
+            return
+
+        if not self.check_invalid_tags(item):
+            return
+
+        self.update_tags(item)
 
 class Wl_Table_Tags_Xml(Wl_Table_Tags):
     def __init__(self, parent):
@@ -496,29 +558,12 @@ class Wl_Table_Tags_Xml(Wl_Table_Tags):
         ))
 
     def item_changed(self, item):
-        for row in range(self.model().rowCount()):
-            opening_tag_item = self.model().item(row, 2)
-            opening_tag_text = opening_tag_item.text()
+        super().item_changed()
 
-            # Check if the XML tags are valid
-            # Reference: https://www.w3.org/TR/REC-xml/#NT-NameStartChar
-            NameStartChar = r'[A-Za-z:_\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\u10000-\uEFFFF]'
-            NameChar = fr'{NameStartChar[:-1]}0-9\-.\u00B7\u0300-\u036F\u203F-\u2040]'
+        if not self.check_empty_duplicate_tags(item):
+            return
 
-            if not re.search(fr'^<{NameStartChar}{NameChar}*>$', opening_tag_text):
-                wl_msg_boxes.Wl_Msg_Box_Warning(
-                    self.main,
-                    title = self.tr('Invalid XML Tag'),
-                    text = self.tr('''
-                        <div>The specified XML tag is invalid, please check and try again!</div>
-                    ''')
-                ).exec_()
+        if not self.check_invalid_tags_xml(item):
+            return
 
-                opening_tag_item.setText(item.text_old)
-
-                self.closeEditor(self.findChild(QLineEdit), QAbstractItemDelegate.NoHint)
-                self.edit(opening_tag_item.index())
-
-                return
-
-        super().item_changed(item)
+        self.update_tags(item)

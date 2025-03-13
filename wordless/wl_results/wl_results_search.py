@@ -21,17 +21,17 @@
 import copy
 import traceback
 
-from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
-from PyQt5.QtGui import QBrush, QColor
-from PyQt5.QtWidgets import QPushButton
+from PyQt5 import QtCore
+from PyQt5 import QtGui
+from PyQt5 import QtWidgets
 
 from wordless.wl_checks import wl_checks_work_area
-from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc, wl_msg_boxes
+from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc
 from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_texts
 from wordless.wl_utils import wl_misc, wl_threading
 from wordless.wl_widgets import wl_buttons, wl_layouts, wl_widgets
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
     def __init__(self, main, table):
@@ -64,18 +64,18 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
             self.checkbox_match_tags
         ) = wl_widgets.wl_widgets_search_settings(self, self.tab)
 
-        self.button_find_next = QPushButton(self.tr('Find next'), self)
-        self.button_find_prev = QPushButton(self.tr('Find previous'), self)
-        self.button_find_all = QPushButton(self.tr('Find all'), self)
-        self.button_clr_hightlights = QPushButton(self.tr('Clear highlights'), self)
+        self.button_find_next = QtWidgets.QPushButton(self.tr('Find next'), self)
+        self.button_find_prev = QtWidgets.QPushButton(self.tr('Find previous'), self)
+        self.button_find_all = QtWidgets.QPushButton(self.tr('Find all'), self)
+        self.button_clr_hightlights = QtWidgets.QPushButton(self.tr('Clear highlights'), self)
 
         self.button_find_next.setMinimumWidth(130)
         self.button_find_prev.setMinimumWidth(130)
         self.button_find_all.setMinimumWidth(130)
         self.button_clr_hightlights.setMinimumWidth(130)
 
-        self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
-        self.button_close = QPushButton(self.tr('Close'), self)
+        self.button_restore_default_vals = wl_buttons.Wl_Button_Restore_Default_Vals(self, load_settings = self.load_settings)
+        self.button_close = QtWidgets.QPushButton(self.tr('Close'), self)
 
         self.checkbox_multi_search_mode.stateChanged.connect(self.multi_search_mode_changed)
         self.line_edit_search_term.textChanged.connect(self.search_settings_changed)
@@ -105,14 +105,14 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         layout_buttons_right.setRowStretch(4, 1)
 
         layout_buttons_bottom = wl_layouts.Wl_Layout()
-        layout_buttons_bottom.addWidget(self.button_restore_defaults, 0, 0)
+        layout_buttons_bottom.addWidget(self.button_restore_default_vals, 0, 0)
         layout_buttons_bottom.addWidget(self.button_close, 0, 2)
 
         layout_buttons_bottom.setColumnStretch(1, 1)
 
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.label_search_term, 0, 0)
-        self.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
+        self.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, QtCore.Qt.AlignRight)
         self.layout().addWidget(self.stacked_widget_search_term, 1, 0, 1, 2)
         self.layout().addWidget(self.label_delimiter, 2, 0, 1, 2)
 
@@ -298,19 +298,20 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
                         if table.indexWidget(table.model().index(row, col)):
                             table.indexWidget(table.model().index(row, col)).setStyleSheet('border: 1px solid #E53E3A;')
                         else:
-                            table.model().item(row, col).setForeground(QBrush(QColor('#FFF')))
-                            table.model().item(row, col).setBackground(QBrush(QColor('#E53E3A')))
+                            table.model().item(row, col).setForeground(QtGui.QBrush(QtGui.QColor('#FFF')))
+                            table.model().item(row, col).setBackground(QtGui.QBrush(QtGui.QColor('#E53E3A')))
 
                     for table in self.tables:
                         table.enable_updates()
 
                     self.button_clr_hightlights.setEnabled(True)
                 else:
-                    wl_msg_boxes.Wl_Msg_Box_Warning(
+                    wl_dialogs.Wl_Dialog_Info_Simple(
                         self.main,
                         title = self.tr('No Search Results'),
                         text = self.tr('''
                             <div>Searching has completed successfully, but there are no results found.</div>
+                            <br>
                             <div>You can change your settings and try again.</div>
                         ''')
                     ).open()
@@ -340,8 +341,8 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
                         if table.indexWidget(table.model().index(row, col)):
                             table.indexWidget(table.model().index(row, col)).setStyleSheet('border: 0')
                         else:
-                            table.model().item(row, col).setForeground(QBrush(QColor(table.default_foreground)))
-                            table.model().item(row, col).setBackground(QBrush(QColor(table.default_background)))
+                            table.model().item(row, col).setForeground(QtGui.QBrush(QtGui.QColor(table.default_foreground)))
+                            table.model().item(row, col).setBackground(QtGui.QBrush(QtGui.QColor(table.default_background)))
 
             for table in self.tables:
                 table.enable_updates(emit_signals = False)
@@ -357,7 +358,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.button_clr_hightlights.setEnabled(False)
 
 class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str)
+    worker_done = QtCore.pyqtSignal(str)
 
     def run(self):
         err_msg = ''

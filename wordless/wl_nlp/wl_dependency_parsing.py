@@ -21,16 +21,16 @@ import shutil
 import subprocess
 import webbrowser
 
-from PyQt5.QtCore import QCoreApplication
+from PyQt5 import QtCore
 import spacy
 
 from wordless.wl_checks import wl_checks_misc
-from wordless.wl_dialogs import wl_msg_boxes
+from wordless.wl_dialogs import wl_dialogs
 from wordless.wl_nlp import wl_nlp_utils, wl_texts
 from wordless.wl_settings import wl_settings_default
 from wordless.wl_utils import wl_conversion, wl_misc, wl_paths
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 is_windows, is_macos, is_linux = wl_misc.check_os()
 
@@ -529,14 +529,15 @@ def wl_show_dependency_graphs(main, htmls, show_in_separate_tab):
         shutil.rmtree(DIR_PATH)
 
     # Inform users of figures' save location in case the browser does not start successfully
-    wl_msg_boxes.Wl_Msg_Box_Info(
+    wl_dialogs.Wl_Dialog_Info_Simple(
         main,
         title = _tr('wl_dependency_parsing', 'Dependency Graphs Generated Successfully'),
         text = _tr('wl_dependency_parsing', '''
             <div>Dependency graphs has been successfully generated and exported under folder: {}</div>
-
+            <br>
             <div>If the figures are not displayed automatically, you may try opening them manually using web browsers or image viewers installed on your computer, or save copies of them in other locations for later use.</div>
-        ''').format(wl_paths.get_normalized_path(DIR_PATH))
+        ''').format(wl_paths.get_normalized_path(DIR_PATH)),
+        width = 550
     ).open()
 
     fig_dir = wl_checks_misc.check_dir(DIR_PATH)

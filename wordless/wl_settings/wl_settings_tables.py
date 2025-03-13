@@ -18,7 +18,7 @@
 
 import copy
 
-from PyQt5.QtWidgets import QCheckBox, QGroupBox, QLabel
+from PyQt5 import QtWidgets
 
 from wordless.wl_settings import wl_settings
 from wordless.wl_widgets import wl_boxes, wl_buttons, wl_layouts
@@ -32,21 +32,21 @@ class Wl_Settings_Tables(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['tables']
 
         # Rank Settings
-        self.group_box_rank_settings = QGroupBox(self.tr('Rank Settings'), self)
+        self.group_box_rank_settings = QtWidgets.QGroupBox(self.tr('Rank Settings'), self)
 
-        self.checkbox_continue_numbering_after_ties = QCheckBox(self.tr('Continue numbering after ties'), self)
+        self.checkbox_continue_numbering_after_ties = QtWidgets.QCheckBox(self.tr('Continue numbering after ties'), self)
 
         self.group_box_rank_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_rank_settings.layout().addWidget(self.checkbox_continue_numbering_after_ties, 0, 0)
 
         # Precision Settings
-        self.group_box_precision_settings = QGroupBox(self.tr('Precision Settings'), self)
+        self.group_box_precision_settings = QtWidgets.QGroupBox(self.tr('Precision Settings'), self)
 
-        self.label_precision_decimals = QLabel(self.tr('Decimals:'), self)
+        self.label_precision_decimals = QtWidgets.QLabel(self.tr('Decimals:'), self)
         self.spin_box_precision_decimals = wl_boxes.Wl_Spin_Box(self)
-        self.label_precision_pcts = QLabel(self.tr('Percentages:'), self)
+        self.label_precision_pcts = QtWidgets.QLabel(self.tr('Percentages:'), self)
         self.spin_box_precision_pcts = wl_boxes.Wl_Spin_Box(self)
-        self.label_precision_p_vals = QLabel(self.tr('p-values:'), self)
+        self.label_precision_p_vals = QtWidgets.QLabel(self.tr('p-values:'), self)
         self.spin_box_precision_p_vals = wl_boxes.Wl_Spin_Box(self)
 
         self.spin_box_precision_decimals.setRange(0, 10)
@@ -104,20 +104,20 @@ class Wl_Settings_Tables_Concordancer(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['tables']['concordancer']
 
         # Sorting Settings
-        self.group_box_sorting_settings = QGroupBox(self.tr('Sorting Settings'), self)
+        self.group_box_sorting_settings = QtWidgets.QGroupBox(self.tr('Sorting Settings'), self)
 
-        self.label_highlight_colors = QLabel(self.tr('Highlight colors:'), self)
-        self.label_lvl_1 = QLabel(self.tr('Level 1 / Node:'), self)
+        self.label_highlight_colors = QtWidgets.QLabel(self.tr('Highlight colors:'), self)
+        self.label_lvl_1 = QtWidgets.QLabel(self.tr('Level 1 / Node:'), self)
         self.button_lvl_1 = wl_buttons.wl_button_color(self)
-        self.label_lvl_2 = QLabel(self.tr('Level 2:'), self)
+        self.label_lvl_2 = QtWidgets.QLabel(self.tr('Level 2:'), self)
         self.button_lvl_2 = wl_buttons.wl_button_color(self)
-        self.label_lvl_3 = QLabel(self.tr('Level 3:'), self)
+        self.label_lvl_3 = QtWidgets.QLabel(self.tr('Level 3:'), self)
         self.button_lvl_3 = wl_buttons.wl_button_color(self)
-        self.label_lvl_4 = QLabel(self.tr('Level 4:'), self)
+        self.label_lvl_4 = QtWidgets.QLabel(self.tr('Level 4:'), self)
         self.button_lvl_4 = wl_buttons.wl_button_color(self)
-        self.label_lvl_5 = QLabel(self.tr('Level 5:'), self)
+        self.label_lvl_5 = QtWidgets.QLabel(self.tr('Level 5:'), self)
         self.button_lvl_5 = wl_buttons.wl_button_color(self)
-        self.label_lvl_6 = QLabel(self.tr('Level 6:'), self)
+        self.label_lvl_6 = QtWidgets.QLabel(self.tr('Level 6:'), self)
         self.button_lvl_6 = wl_buttons.wl_button_color(self)
 
         self.group_box_sorting_settings.setLayout(wl_layouts.Wl_Layout())
@@ -177,9 +177,9 @@ class Wl_Settings_Tables_Parallel_Concordancer(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['tables']['parallel_concordancer']
 
         # Color Settings
-        self.group_box_highlight_color_settings = QGroupBox(self.tr('Highlight Color Settings'), self)
+        self.group_box_highlight_color_settings = QtWidgets.QGroupBox(self.tr('Highlight Color Settings'), self)
 
-        self.label_search_term_color = QLabel(self.tr('Search term color:'), self)
+        self.label_search_term_color = QtWidgets.QLabel(self.tr('Search term color:'), self)
         self.button_search_term_color = wl_buttons.wl_button_color(self)
 
         self.group_box_highlight_color_settings.setLayout(wl_layouts.Wl_Layout())
@@ -218,11 +218,11 @@ class Wl_Settings_Tables_Dependency_Parser(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['tables']['dependency_parser']
 
         # Color Settings
-        self.group_box_highlight_color_settings = QGroupBox(self.tr('Highlight Color Settings'), self)
+        self.group_box_highlight_color_settings = QtWidgets.QGroupBox(self.tr('Highlight Color Settings'), self)
 
-        self.label_head_color = QLabel(self.tr('Head color:'), self)
+        self.label_head_color = QtWidgets.QLabel(self.tr('Head color:'), self)
         self.button_head_color = wl_buttons.wl_button_color(self)
-        self.label_dependent_color = QLabel(self.tr('Dependent color:'), self)
+        self.label_dependent_color = QtWidgets.QLabel(self.tr('Dependent color:'), self)
         self.button_dependent_color = wl_buttons.wl_button_color(self)
 
         self.group_box_highlight_color_settings.setLayout(wl_layouts.Wl_Layout())

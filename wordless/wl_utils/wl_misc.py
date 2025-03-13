@@ -27,13 +27,15 @@ import urllib
 
 import numpy
 import packaging.version
+from PyQt5 import QtCore
+from PyQt5 import QtWidgets
 import requests
-from PyQt5.QtCore import QCoreApplication
-from PyQt5.QtWidgets import QMainWindow
 
 from wordless.wl_utils import wl_paths
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
+
+RE_EMPTY_ITEM = re.compile(r'^\s*$')
 
 def check_os():
     is_windows = False
@@ -76,7 +78,7 @@ def find_wl_main(widget):
     else:
         main = widget
 
-        while not isinstance(main, QMainWindow):
+        while not isinstance(main, QtWidgets.QMainWindow):
             main = main.parent()
 
     return main
@@ -144,7 +146,7 @@ def wl_download_file_size(main, url):
 
 def log_time(func):
     def wrapper(widget, *args, **kwargs):
-        if isinstance(widget, QMainWindow):
+        if isinstance(widget, QtWidgets.QMainWindow):
             main = widget
         else:
             main = widget.main

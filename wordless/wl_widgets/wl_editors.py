@@ -16,11 +16,11 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from PyQt5.QtWidgets import QTextBrowser
+from PyQt5 import QtWidgets
 
 from wordless.wl_utils import wl_misc
 
-class Wl_Text_Browser(QTextBrowser):
+class Wl_Text_Browser(QtWidgets.QTextBrowser):
     def __init__(self, parent):
         super().__init__(parent)
 

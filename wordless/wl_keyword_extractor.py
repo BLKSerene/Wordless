@@ -23,11 +23,11 @@ import copy
 import traceback
 
 import numpy
-from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
-from PyQt5.QtWidgets import QLabel, QGroupBox
+from PyQt5 import QtCore
+from PyQt5 import QtWidgets
 
 from wordless.wl_checks import wl_checks_work_area
-from wordless.wl_dialogs import wl_dialogs_misc, wl_msg_boxes
+from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc
 from wordless.wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
 from wordless.wl_measures import wl_measure_utils
 from wordless.wl_nlp import wl_texts, wl_token_processing
@@ -39,7 +39,7 @@ from wordless.wl_widgets import (
     wl_widgets
 )
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
@@ -66,7 +66,7 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
         self.wrapper_table.layout().addWidget(self.table_keyword_extractor.button_clr_table, 2, 4)
 
         # Token Settings
-        self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
+        self.group_box_token_settings = QtWidgets.QGroupBox(self.tr('Token Settings'), self)
 
         (
             self.checkbox_words,
@@ -121,7 +121,7 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
         self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 9, 1)
 
         # Generation Settings
-        self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'))
+        self.group_box_generation_settings = QtWidgets.QGroupBox(self.tr('Generation Settings'))
 
         (
             self.label_test_statistical_significance,
@@ -148,7 +148,7 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
         self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_effect_size, 5, 0)
 
         # Table Settings
-        self.group_box_table_settings = QGroupBox(self.tr('Table Settings'))
+        self.group_box_table_settings = QtWidgets.QGroupBox(self.tr('Table Settings'))
 
         (
             self.checkbox_show_pct_data,
@@ -169,7 +169,7 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown_file, 2, 0)
 
         # Figure Settings
-        self.group_box_fig_settings = QGroupBox(self.tr('Figure Settings'), self)
+        self.group_box_fig_settings = QtWidgets.QGroupBox(self.tr('Figure Settings'), self)
 
         (
             self.label_graph_type,
@@ -182,7 +182,7 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
             self.checkbox_use_cumulative
         ) = wl_widgets.wl_widgets_fig_settings(self, tab = self.tab)
 
-        self.label_rank = QLabel(self.tr('Rank:'), self)
+        self.label_rank = QtWidgets.QLabel(self.tr('Rank:'), self)
         (
             self.checkbox_rank_sync,
             self.label_rank_min,
@@ -373,22 +373,24 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
             self.button_generate_table.setEnabled(False)
             self.button_generate_fig.setEnabled(False)
 
-    def wl_msg_box_missing_corpus_observed(self):
-        wl_msg_boxes.Wl_Msg_Box_Warning(
+    def wl_dialog_missing_corpus_observed(self):
+        wl_dialogs.Wl_Dialog_Info_Simple(
             self.main,
             title = self.tr('Missing Observed Corpus'),
             text = self.tr('''
                 <div>You have not specified any observed corpus yet.</div>
-            ''')
+            '''),
+            icon = 'warning'
         ).open()
 
-    def wl_msg_box_missing_corpus_ref(self):
-        wl_msg_boxes.Wl_Msg_Box_Warning(
+    def wl_dialog_missing_corpus_ref(self):
+        wl_dialogs.Wl_Dialog_Info_Simple(
             self.main,
             title = self.tr('Missing Reference Corpus'),
             text = self.tr('''
                 <div>You have not specified any reference corpus yet.</div>
-            ''')
+            '''),
+            icon = 'warning'
         ).open()
 
     def wl_status_bar_msg_missing_corpus_observed(self):
@@ -421,10 +423,10 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                 wl_threading.Wl_Thread(worker_keyword_extractor_table).start_worker()
         else:
             if not files_observed:
-                self.wl_msg_box_missing_corpus_observed()
+                self.wl_dialog_missing_corpus_observed()
                 self.wl_status_bar_msg_missing_corpus_observed()
             elif not files_ref:
-                self.wl_msg_box_missing_corpus_ref()
+                self.wl_dialog_missing_corpus_ref()
                 self.wl_status_bar_msg_missing_corpus_ref()
 
     def update_gui_table(self, err_msg, keywords_freq_files, keywords_stats_files):
@@ -512,25 +514,25 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                 if test_statistical_significance != 'none':
                     self.horizontalHeader().setSortIndicator(
                         self.find_header_hor(self.tr('[{}]\np-value').format(files_observed[0]['name'])),
-                        Qt.AscendingOrder
+                        QtCore.Qt.AscendingOrder
                     )
                 # Sort by bayes factor of the first observed corpus
                 elif measure_bayes_factor != 'none':
                     self.horizontalHeader().setSortIndicator(
                         self.find_header_hor(self.tr('[{}]\nBayes Factor').format(files_observed[0]['name'])),
-                        Qt.DescendingOrder
+                        QtCore.Qt.DescendingOrder
                     )
                 # Sort by effect size of the first observed corpus
                 elif measure_effect_size != 'none':
                     self.horizontalHeader().setSortIndicator(
                         self.find_header_hor(f"[{files_observed[0]['name']}]\n{col_text_effect_size}"),
-                        Qt.DescendingOrder
+                        QtCore.Qt.DescendingOrder
                     )
                 # Otherwise sort by frequency of the first observed corpus
                 else:
                     self.horizontalHeader().setSortIndicator(
                         self.find_header_hor(self.tr('[{}]\nFrequency').format(files_observed[0]['name'])),
-                        Qt.DescendingOrder
+                        QtCore.Qt.DescendingOrder
                     )
 
                 cols_freq = self.find_headers_hor(self.tr('\nFrequency'))
@@ -624,10 +626,10 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                 wl_threading.Wl_Thread(self.worker_keyword_extractor_fig).start_worker()
         else:
             if not files_observed:
-                self.wl_msg_box_missing_corpus_observed()
+                self.wl_dialog_missing_corpus_observed()
                 self.wl_status_bar_msg_missing_corpus_observed()
             elif not files_ref:
-                self.wl_msg_box_missing_corpus_ref()
+                self.wl_dialog_missing_corpus_ref()
                 self.wl_status_bar_msg_missing_corpus_ref()
 
     def update_gui_fig(self, err_msg, keywords_freq_files, keywords_stats_files):
@@ -682,7 +684,7 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                 wl_checks_work_area.check_err_fig(self.main, err_msg)
 
 class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str, dict, dict)
+    worker_done = QtCore.pyqtSignal(str, dict, dict)
 
     def __init__(self, main, dialog_progress, update_gui):
         super().__init__(main, dialog_progress, update_gui)

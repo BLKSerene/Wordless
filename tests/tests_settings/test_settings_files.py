@@ -40,16 +40,18 @@ def test_wl_table_tags():
         defaults_row = ['Non-embedded', 'Header', '<TAG>', '']
     )
 
-    table_tags.item_changed(table_tags.model().item(0, 0))
+    table_tags.item_changed()
     table_tags._add_row()
     table_tags.reset_table()
     table_tags.get_tags()
 
 def test_wl_table_tags_header():
-    wl_settings_files.Wl_Table_Tags_Header(main)
+    table_tags_header = wl_settings_files.Wl_Table_Tags_Header(main)
+    table_tags_header.item_changed(table_tags_header.model().item(0, 0))
 
 def test_wl_table_tags_body():
-    wl_settings_files.Wl_Table_Tags_Body(main)
+    table_tags_body = wl_settings_files.Wl_Table_Tags_Body(main)
+    table_tags_body.item_changed(table_tags_body.model().item(0, 0))
 
 def test_wl_table_tags_xml():
     table_tags_xml = wl_settings_files.Wl_Table_Tags_Xml(main)

@@ -18,19 +18,11 @@
 
 import copy
 
-from PyQt5.QtCore import pyqtSignal, Qt
-from PyQt5.QtGui import QStandardItem
-from PyQt5.QtWidgets import (
-    QCheckBox,
-    QGroupBox,
-    QLabel,
-    QPlainTextEdit,
-    QPushButton,
-    QStackedWidget,
-    QTextEdit
-)
+from PyQt5 import QtCore
+from PyQt5 import QtGui
+from PyQt5 import QtWidgets
 
-from wordless.wl_dialogs import wl_dialogs_misc, wl_msg_boxes
+from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc
 from wordless.wl_nlp import wl_nlp_utils, wl_pos_tagging
 from wordless.wl_settings import wl_settings
 from wordless.wl_utils import wl_conversion, wl_threading
@@ -52,7 +44,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['pos_tagging']
 
         # Part-of-speech Tagger Settings
-        self.group_box_pos_tagger_settings = QGroupBox(self.tr('Part-of-speech Tagger Settings'), self)
+        self.group_box_pos_tagger_settings = QtWidgets.QGroupBox(self.tr('Part-of-speech Tagger Settings'), self)
 
         self.table_pos_taggers = wl_tables.Wl_Table(
             self,
@@ -63,7 +55,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
             editable = True
         )
 
-        self.checkbox_to_universal_pos_tags = QCheckBox(self.tr('Convert all part-of-speech tags to universal part-of-speech tags'))
+        self.checkbox_to_universal_pos_tags = QtWidgets.QCheckBox(self.tr('Convert all part-of-speech tags to universal part-of-speech tags'))
 
         self.table_pos_taggers.setFixedHeight(370)
         self.table_pos_taggers.verticalHeader().setHidden(True)
@@ -72,8 +64,8 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
         self.table_pos_taggers.disable_updates()
 
         for i, lang in enumerate(self.settings_global):
-            self.table_pos_taggers.model().setItem(i, 0, QStandardItem(wl_conversion.to_lang_text(self.main, lang)))
-            self.table_pos_taggers.model().setItem(i, 1, QStandardItem())
+            self.table_pos_taggers.model().setItem(i, 0, QtGui.QStandardItem(wl_conversion.to_lang_text(self.main, lang)))
+            self.table_pos_taggers.model().setItem(i, 1, QtGui.QStandardItem())
 
             self.table_pos_taggers.setItemDelegateForRow(i, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
                 parent = self.table_pos_taggers,
@@ -92,13 +84,13 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
         self.group_box_pos_tagger_settings.layout().addWidget(self.checkbox_to_universal_pos_tags, 1, 0)
 
         # Preview
-        self.group_box_preview = QGroupBox(self.tr('Preview'), self)
+        self.group_box_preview = QtWidgets.QGroupBox(self.tr('Preview'), self)
 
-        self.label_preview_lang = QLabel(self.tr('Select language:'), self)
+        self.label_preview_lang = QtWidgets.QLabel(self.tr('Select language:'), self)
         self.combo_box_preview_lang = wl_boxes.Wl_Combo_Box(self)
-        self.button_show_preview = QPushButton(self.tr('Show preview'), self)
-        self.text_edit_preview_samples = QTextEdit(self)
-        self.text_edit_preview_results = QTextEdit(self)
+        self.button_show_preview = QtWidgets.QPushButton(self.tr('Show preview'), self)
+        self.text_edit_preview_samples = QtWidgets.QTextEdit(self)
+        self.text_edit_preview_results = QtWidgets.QTextEdit(self)
 
         self.combo_box_preview_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
 
@@ -250,7 +242,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
         return True
 
 class Wl_Worker_Preview_Pos_Tagger(wl_threading.Wl_Worker_No_Progress):
-    worker_done = pyqtSignal(list)
+    worker_done = QtCore.pyqtSignal(list)
 
     def run(self):
         preview_results = []
@@ -285,11 +277,11 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
         self.pos_tag_mappings_loaded = False
 
         # Preview Settings
-        self.group_box_preview_settings = QGroupBox(self.tr('Preview Settings:'), self)
+        self.group_box_preview_settings = QtWidgets.QGroupBox(self.tr('Preview Settings:'), self)
 
-        self.label_tagsets_lang = QLabel(self.tr('Language:'), self)
+        self.label_tagsets_lang = QtWidgets.QLabel(self.tr('Language:'), self)
         self.combo_box_tagsets_lang = wl_boxes.Wl_Combo_Box(self)
-        self.label_tagsets_pos_tagger = QLabel(self.tr('Part-of-speech tagger:'), self)
+        self.label_tagsets_pos_tagger = QtWidgets.QLabel(self.tr('Part-of-speech tagger:'), self)
         self.combo_box_tagsets_pos_tagger = wl_boxes.Wl_Combo_Box_Adjustable(self)
 
         self.combo_box_tagsets_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
@@ -299,20 +291,20 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
 
         self.group_box_preview_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_preview_settings.layout().addWidget(self.label_tagsets_lang, 0, 0)
-        self.group_box_preview_settings.layout().addWidget(self.combo_box_tagsets_lang, 0, 1, Qt.AlignLeft)
+        self.group_box_preview_settings.layout().addWidget(self.combo_box_tagsets_lang, 0, 1, QtCore.Qt.AlignLeft)
         self.group_box_preview_settings.layout().addWidget(self.label_tagsets_pos_tagger, 1, 0)
-        self.group_box_preview_settings.layout().addWidget(self.combo_box_tagsets_pos_tagger, 1, 1, Qt.AlignLeft)
+        self.group_box_preview_settings.layout().addWidget(self.combo_box_tagsets_pos_tagger, 1, 1, QtCore.Qt.AlignLeft)
 
         self.group_box_preview_settings.layout().setColumnStretch(2, 1)
 
         # Mapping Settings
-        self.group_box_mapping_settings = QGroupBox(self.tr('Mapping Settings'))
+        self.group_box_mapping_settings = QtWidgets.QGroupBox(self.tr('Mapping Settings'))
 
-        self.stacked_widget_num_pos_tags = QStackedWidget(self)
-        self.label_tagsets_num_pos_tags = QLabel('', self)
+        self.stacked_widget_num_pos_tags = QtWidgets.QStackedWidget(self)
+        self.label_tagsets_num_pos_tags = QtWidgets.QLabel('', self)
         self.label_tagsets_uneditable = wl_labels.Wl_Label_Hint(self.tr('* This part-of-speech tagger does not support custom mapping.'), self)
-        self.button_tagsets_reset = QPushButton(self.tr('Reset'), self)
-        self.button_tagsets_reset_all = QPushButton(self.tr('Reset all'), self)
+        self.button_tagsets_reset = QtWidgets.QPushButton(self.tr('Reset'), self)
+        self.button_tagsets_reset_all = QtWidgets.QPushButton(self.tr('Reset all'), self)
         self.table_mappings = wl_tables.Wl_Table(
             self,
             headers = [
@@ -360,8 +352,8 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
                 self.tr('Function words')
             ]
         ))
-        self.table_mappings.setItemDelegateForColumn(3, wl_item_delegates.Wl_Item_Delegate(self.table_mappings, QPlainTextEdit))
-        self.table_mappings.setItemDelegateForColumn(4, wl_item_delegates.Wl_Item_Delegate(self.table_mappings, QPlainTextEdit))
+        self.table_mappings.setItemDelegateForColumn(3, wl_item_delegates.Wl_Item_Delegate(self.table_mappings, QtWidgets.QPlainTextEdit))
+        self.table_mappings.setItemDelegateForColumn(4, wl_item_delegates.Wl_Item_Delegate(self.table_mappings, QtWidgets.QPlainTextEdit))
 
         self.button_tagsets_reset.setMinimumWidth(100)
         self.button_tagsets_reset_all.setMinimumWidth(100)
@@ -468,11 +460,11 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
         self.table_mappings.disable_updates()
 
         for i, (tag, tag_universal, content_function_words, description, examples) in enumerate(mappings):
-            self.table_mappings.model().setItem(i, 0, QStandardItem(tag))
-            self.table_mappings.model().setItem(i, 1, QStandardItem(tag_universal))
-            self.table_mappings.model().setItem(i, 2, QStandardItem(content_function_words))
-            self.table_mappings.model().setItem(i, 3, QStandardItem(description))
-            self.table_mappings.model().setItem(i, 4, QStandardItem(examples))
+            self.table_mappings.model().setItem(i, 0, QtGui.QStandardItem(tag))
+            self.table_mappings.model().setItem(i, 1, QtGui.QStandardItem(tag_universal))
+            self.table_mappings.model().setItem(i, 2, QtGui.QStandardItem(content_function_words))
+            self.table_mappings.model().setItem(i, 3, QtGui.QStandardItem(description))
+            self.table_mappings.model().setItem(i, 4, QtGui.QStandardItem(examples))
 
         self.table_mappings.enable_updates()
 
@@ -501,27 +493,27 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
         self.settings_custom['mapping_settings'][preview_lang][preview_pos_tagger] = mappings
 
     def reset_mappings(self):
-        if wl_msg_boxes.wl_msg_box_question(
+        if wl_dialogs.Wl_Dialog_Question(
             main = self.main,
             title = self.tr('Reset Mappings'),
             text = self.tr('''
                 <div>Do you want to reset all mappings to their default settings?</div>
                 <br>
-                <div><b>Note: This will only affect the mapping settings in the currently shown table.</b></div>
+                <div><b>Note:</b> This will only affect the mapping settings in the currently shown table.</div>
             ''')
-        ):
+        ).exec_():
             self.reset_currently_shown_table()
 
     def reset_all_mappings(self):
-        if wl_msg_boxes.wl_msg_box_question(
+        if wl_dialogs.Wl_Dialog_Question(
             main = self.main,
             title = self.tr('Reset All Mappings'),
             text = self.tr('''
                 <div>Do you want to reset all mappings to their default settings?</div>
                 <br>
-                <div><b>Warning: This will affect the mapping settings in all tables!</b></div>
+                <div><b>Warning:</b> This will affect the mapping settings in all tables.</div>
             ''')
-        ):
+        ).exec_():
             self.settings_custom['mapping_settings'] = copy.deepcopy(self.settings_default['mapping_settings'])
 
             self.reset_currently_shown_table()
@@ -563,7 +555,7 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
         return True
 
 class Wl_Worker_Fetch_Data_Tagsets(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(list)
+    worker_done = QtCore.pyqtSignal(list)
 
     def run(self):
         settings_custom = self.main.settings_custom['pos_tagging']['tagsets']

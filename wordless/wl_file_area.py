@@ -29,32 +29,15 @@ import docx
 import openpyxl
 import pptx
 import pypdf
-from PyQt5.QtCore import (
-    pyqtSignal,
-    QCoreApplication,
-    QItemSelection,
-    QRect,
-    Qt
-)
-from PyQt5.QtGui import QStandardItem
-from PyQt5.QtWidgets import (
-    QAbstractItemDelegate,
-    QCheckBox,
-    QFileDialog,
-    QHeaderView,
-    QLabel,
-    QLineEdit,
-    QPushButton,
-    QStyle,
-    QStyleOptionButton
-)
+from PyQt5 import QtCore
+from PyQt5 import QtGui
+from PyQt5 import QtWidgets
 
 from wordless.wl_checks import wl_checks_files, wl_checks_misc
 from wordless.wl_dialogs import (
     wl_dialogs,
     wl_dialogs_errs,
-    wl_dialogs_misc,
-    wl_msg_boxes
+    wl_dialogs_misc
 )
 from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_texts
 from wordless.wl_utils import (
@@ -73,7 +56,7 @@ from wordless.wl_widgets import (
     wl_tables
 )
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 class Wrapper_File_Area(wl_layouts.Wl_Wrapper):
     def __init__(self, main, file_type = 'observed'):
@@ -81,7 +64,6 @@ class Wrapper_File_Area(wl_layouts.Wl_Wrapper):
 
         self.scroll_area_settings.hide()
 
-        self.file_names_old = []
         self.file_type = file_type
 
         # Suffix for settings
@@ -92,9 +74,9 @@ class Wrapper_File_Area(wl_layouts.Wl_Wrapper):
             self.tab = 'corpora_ref'
             self.settings_suffix = '_ref'
 
-        self.label_num_corpora = QLabel()
-        self.label_num_tokens = QLabel()
-        self.label_num_types = QLabel()
+        self.label_num_corpora = QtWidgets.QLabel('', self)
+        self.label_num_tokens = QtWidgets.QLabel('', self)
+        self.label_num_types = QtWidgets.QLabel('', self)
 
         # Table
         self.table_files = Wl_Table_Files(self)
@@ -154,7 +136,7 @@ class Wrapper_File_Area(wl_layouts.Wl_Wrapper):
 # References:
 #     https://stackoverflow.com/a/29621256
 #     https://wiki.qt.io/Technical_FAQ#How_can_I_insert_a_checkbox_into_the_header_of_my_view.3F
-class Wl_Table_Header_Files(QHeaderView):
+class Wl_Table_Header_Files(QtWidgets.QHeaderView):
     def __init__(self, orientation, parent):
         super().__init__(orientation, parent)
 
@@ -173,20 +155,20 @@ class Wl_Table_Header_Files(QHeaderView):
         painter.restore()
 
         if logicalIndex == 0:
-            option = QStyleOptionButton()
-            option.rect = QRect(3, 6, 16, 16)
+            option = QtWidgets.QStyleOptionButton()
+            option.rect = QtCore.QRect(3, 6, 16, 16)
 
             if self.table.is_empty():
-                option.state = QStyle.State_None
+                option.state = QtWidgets.QStyle.State_None
             else:
-                option.state = QStyle.State_Enabled | QStyle.State_Active
+                option.state = QtWidgets.QStyle.State_Enabled | QtWidgets.QStyle.State_Active
 
             if self._is_checked:
-                option.state |= QStyle.State_On
+                option.state |= QtWidgets.QStyle.State_On
             else:
-                option.state |= QStyle.State_Off
+                option.state |= QtWidgets.QStyle.State_Off
 
-            self.style().drawPrimitive(QStyle.PE_IndicatorCheckBox, option, painter)
+            self.style().drawPrimitive(QtWidgets.QStyle.PE_IndicatorCheckBox, option, painter)
 
     def section_clicked(self, logicalIndex):
         if logicalIndex == 0:
@@ -203,20 +185,20 @@ class Wl_Table_Header_Files(QHeaderView):
         self._is_checked = True
 
         for i in range(self.model().rowCount()):
-            self.model().item(i, 0).setCheckState(Qt.Checked)
+            self.model().item(i, 0).setCheckState(QtCore.Qt.Checked)
 
     def deselect_all(self):
         self._is_checked = True
 
         for i in range(self.model().rowCount()):
-            self.model().item(i, 0).setCheckState(Qt.Unchecked)
+            self.model().item(i, 0).setCheckState(QtCore.Qt.Unchecked)
 
     def invert_selection(self):
         for i in range(self.model().rowCount()):
-            if self.model().item(i, 0).checkState() == Qt.Checked:
-                self.model().item(i, 0).setCheckState(Qt.Unchecked)
+            if self.model().item(i, 0).checkState() == QtCore.Qt.Checked:
+                self.model().item(i, 0).setCheckState(QtCore.Qt.Unchecked)
             else:
-                self.model().item(i, 0).setCheckState(Qt.Checked)
+                self.model().item(i, 0).setCheckState(QtCore.Qt.Checked)
 
 class Wl_Table_Files(wl_tables.Wl_Table):
     def __init__(self, parent):
@@ -239,7 +221,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
         self.file_type = self.file_area.file_type
         self.settings_suffix = self.file_area.settings_suffix
 
-        self.setHorizontalHeader(Wl_Table_Header_Files(Qt.Horizontal, self))
+        self.setHorizontalHeader(Wl_Table_Header_Files(QtCore.Qt.Horizontal, self))
 
         self.setItemDelegateForColumn(1, wl_item_delegates.Wl_Item_Delegate_Uneditable(self))
         self.setItemDelegateForColumn(2, wl_item_delegates.Wl_Item_Delegate_Uneditable(self))
@@ -280,57 +262,49 @@ class Wl_Table_Files(wl_tables.Wl_Table):
             lambda: self.check_file_area(self.model().itemChanged.emit, self.model().item(0, 0))
         )
 
-    def item_changed(self):
+    def item_changed(self, item): # pylint: disable=arguments-differ
         super().item_changed()
 
         if not self.is_empty():
-            # Record old file names that might be useful for other slots
-            self.file_area.file_names_old = list(self.file_area.get_selected_file_names())
-
             # Check for empty and duplicate file names
-            for row in range(self.model().rowCount()):
-                file = self.model().item(row, 0).wl_file
-                file_name = self.model().item(row, 0).text()
+            if item.column() == 0:
+                file_name = item.text()
+                file_name_old = item.wl_file['name_old']
 
-                if file_name != file['name_old']:
-                    if not file_name or self.main.wl_file_area.find_file_by_name(file_name):
-                        self.disable_updates()
+                file_names_old = list(self.main.wl_file_area.get_file_names())
+                file_names_old.remove(file_name_old)
 
-                        self.model().item(row, 0).setText(file['name_old'])
+                if (
+                    wl_misc.RE_EMPTY_ITEM.search(file_name)
+                    or file_name in file_names_old
+                ):
+                    item.setText(file_name_old)
 
-                        self.enable_updates()
+                    if file_name in file_names_old:
+                        wl_dialogs.Wl_Dialog_Info_Simple(
+                            self.main,
+                            title = self.tr('Duplicate File Names'),
+                            text = self.tr('''
+                                <div>There is already a file with the same name in the file area.</div>
+                                <br>
+                                <div>Please specify a different file name.</div>
+                            '''),
+                            icon = 'warning'
+                        ).exec_()
 
-                        if not file_name:
-                            wl_msg_boxes.Wl_Msg_Box_Warning(
-                                self.main,
-                                title = self.tr('Empty File Name'),
-                                text = self.tr('''
-                                    <div>The file name should not be left empty!</div>
-                                ''')
-                            ).exec_()
-                        elif self.main.wl_file_area.find_file_by_name(file_name):
-                            wl_msg_boxes.Wl_Msg_Box_Warning(
-                                self.main,
-                                title = self.tr('Duplicate File Names'),
-                                text = self.tr('''
-                                    <div>There is already a file with the same name in the file area.</div>
-                                    <div>Please specify a different file name.</div>
-                                ''')
-                            ).exec_()
+                        self.setCurrentIndex(item.index())
 
-                        self.setCurrentIndex(self.model().index(row, 0))
+                        self.closeEditor(self.findChild(QtWidgets.QLineEdit), QtWidgets.QAbstractItemDelegate.NoHint)
+                        self.edit(item.index())
 
-                        self.closeEditor(self.findChild(QLineEdit), QAbstractItemDelegate.NoHint)
-                        self.edit(self.model().index(row, 0))
-
-                    break
+                    return
 
             self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}'].clear()
 
             for row in range(self.model().rowCount()):
                 file = self.model().item(row, 0).wl_file
 
-                file['selected'] = self.model().item(row, 0).checkState() == Qt.Checked
+                file['selected'] = self.model().item(row, 0).checkState() == QtCore.Qt.Checked
                 file['name'] = file['name_old'] = self.model().item(row, 0).text()
                 file['encoding'] = wl_conversion.to_encoding_code(self.main, self.model().item(row, 2).text())
                 file['lang'] = wl_conversion.to_lang_code(self.main, self.model().item(row, 3).text())
@@ -343,12 +317,12 @@ class Wl_Table_Files(wl_tables.Wl_Table):
             check_states = []
 
             for i in range(self.model().rowCount()):
-                if self.model().item(i, 0).checkState() == Qt.Checked:
-                    check_states.append(Qt.Checked)
+                if self.model().item(i, 0).checkState() == QtCore.Qt.Checked:
+                    check_states.append(QtCore.Qt.Checked)
                 else:
-                    check_states.append(Qt.Unchecked)
+                    check_states.append(QtCore.Qt.Unchecked)
 
-            if all((check_state == Qt.Checked for check_state in check_states)):
+            if all((check_state == QtCore.Qt.Checked for check_state in check_states)):
                 self.horizontalHeader()._is_checked = True
             else:
                 self.horizontalHeader()._is_checked = False
@@ -374,12 +348,12 @@ class Wl_Table_Files(wl_tables.Wl_Table):
         else:
             self.main.action_file_reopen.setEnabled(False)
 
-        self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
+        self.selectionModel().selectionChanged.emit(QtCore.QItemSelection(), QtCore.QItemSelection())
 
     def item_clicked(self):
         if not self.is_empty():
             for row in range(self.model().rowCount()):
-                if self.model().item(row, 0).checkState() == Qt.Checked:
+                if self.model().item(row, 0).checkState() == QtCore.Qt.Checked:
                     self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}'][row]['selected'] = True
                 else:
                     self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}'][row]['selected'] = False
@@ -399,22 +373,22 @@ class Wl_Table_Files(wl_tables.Wl_Table):
             self.disable_updates()
 
             for i, file in enumerate(files):
-                item_name = QStandardItem(file['name'])
+                item_name = QtGui.QStandardItem(file['name'])
                 # Record file properties
                 item_name.wl_file = file
                 item_name.setCheckable(True)
 
                 if file['selected']:
-                    item_name.setCheckState(Qt.Checked)
+                    item_name.setCheckState(QtCore.Qt.Checked)
                 else:
-                    item_name.setCheckState(Qt.Unchecked)
+                    item_name.setCheckState(QtCore.Qt.Unchecked)
 
                 self.model().setItem(i, 0, item_name)
-                self.model().setItem(i, 1, QStandardItem(file['path_orig']))
-                self.model().setItem(i, 2, QStandardItem(wl_conversion.to_encoding_text(self.main, file['encoding'])))
-                self.model().setItem(i, 3, QStandardItem(wl_conversion.to_lang_text(self.main, file['lang'])))
-                self.model().setItem(i, 4, QStandardItem(wl_conversion.to_yes_no_text(file['tokenized'])))
-                self.model().setItem(i, 5, QStandardItem(wl_conversion.to_yes_no_text(file['tagged'])))
+                self.model().setItem(i, 1, QtGui.QStandardItem(file['path_orig']))
+                self.model().setItem(i, 2, QtGui.QStandardItem(wl_conversion.to_encoding_text(self.main, file['encoding'])))
+                self.model().setItem(i, 3, QtGui.QStandardItem(wl_conversion.to_lang_text(self.main, file['lang'])))
+                self.model().setItem(i, 4, QtGui.QStandardItem(wl_conversion.to_yes_no_text(file['tokenized'])))
+                self.model().setItem(i, 5, QtGui.QStandardItem(wl_conversion.to_yes_no_text(file['tagged'])))
 
             self.enable_updates()
         else:
@@ -543,8 +517,8 @@ class Wl_Dialog_Open_Files(wl_dialogs.Wl_Dialog):
         self.table_files.button_add.hide()
         self.table_files.button_ins.hide()
 
-        self.table_files.button_add_files = QPushButton(self.tr('Add files...'), self)
-        self.table_files.button_add_folder = QPushButton(self.tr('Add folder...'), self)
+        self.table_files.button_add_files = QtWidgets.QPushButton(self.tr('Add files...'), self)
+        self.table_files.button_add_folder = QtWidgets.QPushButton(self.tr('Add folder...'), self)
         self.table_files.button_del.setText(self.tr('Remove files'))
         self.table_files.button_clr.setText(self.tr('Clear table'))
 
@@ -565,9 +539,9 @@ class Wl_Dialog_Open_Files(wl_dialogs.Wl_Dialog):
 
         layout_table.setRowStretch(4, 1)
 
-        self.checkbox_auto_detect_encodings = QCheckBox(self.tr('Auto-detect encodings'), self)
-        self.checkbox_auto_detect_langs = QCheckBox(self.tr('Auto-detect languages'), self)
-        self.checkbox_include_files_in_subfolders = QCheckBox(self.tr('Include files in subfolders'), self)
+        self.checkbox_auto_detect_encodings = QtWidgets.QCheckBox(self.tr('Auto-detect encodings'), self)
+        self.checkbox_auto_detect_langs = QtWidgets.QCheckBox(self.tr('Auto-detect languages'), self)
+        self.checkbox_include_files_in_subfolders = QtWidgets.QCheckBox(self.tr('Include files in subfolders'), self)
 
         self.checkbox_auto_detect_encodings.stateChanged.connect(self.settings_changed)
         self.checkbox_auto_detect_langs.stateChanged.connect(self.settings_changed)
@@ -578,9 +552,9 @@ class Wl_Dialog_Open_Files(wl_dialogs.Wl_Dialog):
         layout_checkboxes.addWidget(self.checkbox_auto_detect_langs, 0, 1)
         layout_checkboxes.addWidget(self.checkbox_include_files_in_subfolders, 1, 0)
 
-        self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
-        self.button_open = QPushButton(self.tr('Open'), self)
-        self.button_cancel = QPushButton(self.tr('Cancel'), self)
+        self.button_restore_default_vals = wl_buttons.Wl_Button_Restore_Default_Vals(self, load_settings = self.load_settings)
+        self.button_open = QtWidgets.QPushButton(self.tr('Open'), self)
+        self.button_cancel = QtWidgets.QPushButton(self.tr('Cancel'), self)
 
         self.button_open.clicked.connect(self.accept)
         self.button_cancel.clicked.connect(self.reject)
@@ -591,7 +565,7 @@ class Wl_Dialog_Open_Files(wl_dialogs.Wl_Dialog):
 
         self.layout().addWidget(wl_layouts.Wl_Separator(self), 2, 0, 1, 4)
 
-        self.layout().addWidget(self.button_restore_defaults, 3, 0)
+        self.layout().addWidget(self.button_restore_default_vals, 3, 0)
         self.layout().addWidget(self.button_open, 3, 2)
         self.layout().addWidget(self.button_cancel, 3, 3)
 
@@ -625,7 +599,7 @@ class Wl_Dialog_Open_Files(wl_dialogs.Wl_Dialog):
         self.checkbox_auto_detect_langs.setChecked(settings['auto_detect_langs'])
         self.checkbox_include_files_in_subfolders.setChecked(settings['include_files_in_subfolders'])
 
-        self.table_files.model().itemChanged.emit(QStandardItem())
+        self.table_files.model().itemChanged.emit(QtGui.QStandardItem())
         self.settings_changed()
 
     def table_files_changed(self, item): # pylint: disable=unused-argument
@@ -689,9 +663,7 @@ class Wl_Dialog_Open_Files(wl_dialogs.Wl_Dialog):
                 dialog_err_files = wl_dialogs_errs.Wl_Dialog_Err_Files(self.main, title = self.tr('Error Adding Files'))
 
                 dialog_err_files.label_err.set_text(self.tr('''
-                    <div>
-                        An error occurred while adding files, so the following files are not added to the table.
-                    </div>
+                    <div>An error occurred while adding files, and the following files are not added to the table.</div>
                 '''))
                 dialog_err_files.table_err_files.model().setRowCount(
                     len(self.file_paths_empty)
@@ -705,22 +677,22 @@ class Wl_Dialog_Open_Files(wl_dialogs.Wl_Dialog):
                     if file_path in self.file_paths_empty:
                         dialog_err_files.table_err_files.model().setItem(
                             i, 0,
-                            QStandardItem(self.tr('Empty file'))
+                            QtGui.QStandardItem(self.tr('Empty file'))
                         )
                     elif file_path in self.file_paths_unsupported:
                         dialog_err_files.table_err_files.model().setItem(
                             i, 0,
-                            QStandardItem(self.tr('Unsupported file type'))
+                            QtGui.QStandardItem(self.tr('Unsupported file type'))
                         )
                     elif file_path in self.file_paths_dup:
                         dialog_err_files.table_err_files.model().setItem(
                             i, 0,
-                            QStandardItem(self.tr('Duplicate file'))
+                            QtGui.QStandardItem(self.tr('Duplicate file'))
                         )
 
                     dialog_err_files.table_err_files.model().setItem(
                         i, 1,
-                        QStandardItem(file_path)
+                        QtGui.QStandardItem(file_path)
                     )
 
                 dialog_err_files.table_err_files.enable_updates()
@@ -732,7 +704,7 @@ class Wl_Dialog_Open_Files(wl_dialogs.Wl_Dialog):
         else:
             default_dir = self.main.settings_default['general']['imp']['files']['default_path']
 
-        file_paths = QFileDialog.getOpenFileNames(
+        file_paths = QtWidgets.QFileDialog.getOpenFileNames(
             parent = self.main,
             caption = self.tr('Open Files'),
             directory = wl_checks_misc.check_dir(default_dir),
@@ -746,7 +718,7 @@ class Wl_Dialog_Open_Files(wl_dialogs.Wl_Dialog):
     def add_folder(self):
         file_paths = []
 
-        file_dir = QFileDialog.getExistingDirectory(
+        file_dir = QtWidgets.QFileDialog.getExistingDirectory(
             parent = self.main,
             caption = self.tr('Open Folder'),
             directory = self.main.settings_custom['general']['imp']['files']['default_path']
@@ -835,11 +807,11 @@ class Table_Open_Files(wl_tables.Wl_Table_Add_Ins_Del_Clr):
             self.disable_updates()
 
             for i, file in enumerate(files):
-                self.model().setItem(i, 0, QStandardItem(file['path_orig']))
-                self.model().setItem(i, 1, QStandardItem(wl_conversion.to_encoding_text(self.main, file['encoding'])))
-                self.model().setItem(i, 2, QStandardItem(wl_conversion.to_lang_text(self.main, file['lang'])))
-                self.model().setItem(i, 3, QStandardItem(wl_conversion.to_yes_no_text(file['tokenized'])))
-                self.model().setItem(i, 4, QStandardItem(wl_conversion.to_yes_no_text(file['tagged'])))
+                self.model().setItem(i, 0, QtGui.QStandardItem(file['path_orig']))
+                self.model().setItem(i, 1, QtGui.QStandardItem(wl_conversion.to_encoding_text(self.main, file['encoding'])))
+                self.model().setItem(i, 2, QtGui.QStandardItem(wl_conversion.to_lang_text(self.main, file['lang'])))
+                self.model().setItem(i, 3, QtGui.QStandardItem(wl_conversion.to_yes_no_text(file['tokenized'])))
+                self.model().setItem(i, 4, QtGui.QStandardItem(wl_conversion.to_yes_no_text(file['tagged'])))
 
                 self.model().item(i, 0).file = file
 
@@ -853,6 +825,7 @@ class Wl_Dialog_Opening_Nontext_Files(wl_dialogs.Wl_Dialog_Info):
             main,
             title = _tr('Wl_Dialog_Opening_Nontext_Files', 'Opening Non-text Files'),
             width = 550,
+            icon = 'question',
             no_buttons = True
         )
 
@@ -865,9 +838,9 @@ class Wl_Dialog_Opening_Nontext_Files(wl_dialogs.Wl_Dialog_Info):
             self
         )
 
-        self.checkbox_do_not_show_this_again = QCheckBox(self.tr('Do not show this again'), self)
-        self.button_proceed = QPushButton(self.tr('Proceed'), self)
-        self.button_abort = QPushButton(self.tr('Abort'), self)
+        self.checkbox_do_not_show_this_again = QtWidgets.QCheckBox(self.tr('Do not show this again'), self)
+        self.button_proceed = QtWidgets.QPushButton(self.tr('Proceed'), self)
+        self.button_abort = QtWidgets.QPushButton(self.tr('Abort'), self)
 
         self.checkbox_do_not_show_this_again.stateChanged.connect(self.do_not_show_this_again_changed)
         self.button_proceed.clicked.connect(self.accept)
@@ -1045,7 +1018,7 @@ def get_text_non_tmx(file):
     return text
 
 class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str, list)
+    worker_done = QtCore.pyqtSignal(str, list)
 
     def run(self):
         err_msg = ''
@@ -1175,7 +1148,7 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
         self.worker_done.emit(err_msg, new_files)
 
 class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str, list)
+    worker_done = QtCore.pyqtSignal(str, list)
 
     def run(self):
         err_msg = ''

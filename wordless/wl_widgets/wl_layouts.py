@@ -18,34 +18,23 @@
 
 import platform
 
-from PyQt5.QtCore import QEvent
-from PyQt5.QtGui import QPainter, QPalette
-from PyQt5.QtWidgets import (
-    QFrame,
-    QGridLayout,
-    QScrollArea,
-    QSizePolicy,
-    QSplitter,
-    QStackedWidget,
-    QStyle,
-    QStyleOption,
-    QTabWidget,
-    QWidget
-)
+from PyQt5 import QtCore
+from PyQt5 import QtGui
+from PyQt5 import QtWidgets
 
 from wordless.wl_utils import wl_misc
 from wordless.wl_widgets import wl_buttons
 
 is_windows, is_macos, is_linux = wl_misc.check_os()
 
-class Wl_Layout(QGridLayout):
+class Wl_Layout(QtWidgets.QGridLayout):
     def __init__(self):
         super().__init__()
 
         if platform.system() == 'Darwin':
             self.setSpacing(5)
 
-class Wl_Wrapper(QWidget):
+class Wl_Wrapper(QtWidgets.QWidget):
     def __init__(self, parent):
         super().__init__(parent)
 
@@ -58,26 +47,26 @@ class Wl_Wrapper(QWidget):
             }
         ''')
 
-        self.wrapper_table = QWidget(self)
+        self.wrapper_table = QtWidgets.QWidget(self)
 
         self.wrapper_table.setLayout(Wl_Layout())
         self.wrapper_table.layout().setContentsMargins(0, 0, 0, 0)
 
         self.scroll_area_settings = Wl_Scroll_Area(self)
-        self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
+        self.button_restore_default_vals = wl_buttons.Wl_Button_Restore_Default_Vals(self, load_settings = self.load_settings)
 
         self.scroll_area_settings.setFixedWidth(400)
 
-        self.wrapper_settings_outer = QWidget(self)
+        self.wrapper_settings_outer = QtWidgets.QWidget(self)
         self.wrapper_settings_outer.setLayout(Wl_Layout())
 
-        self.wrapper_settings = QWidget(self)
+        self.wrapper_settings = QtWidgets.QWidget(self)
         self.wrapper_settings.setLayout(Wl_Layout())
 
         self.wrapper_settings.layout().setContentsMargins(0, 0, 0, 0)
 
         self.wrapper_settings_outer.layout().addWidget(self.wrapper_settings, 0, 0)
-        self.wrapper_settings_outer.layout().addWidget(self.button_restore_defaults, 1, 0)
+        self.wrapper_settings_outer.layout().addWidget(self.button_restore_default_vals, 1, 0)
 
         self.wrapper_settings_outer.layout().setContentsMargins(8, 6, 8, 6)
         self.wrapper_settings_outer.layout().setRowStretch(2, 1)
@@ -93,16 +82,16 @@ class Wl_Wrapper(QWidget):
     # If you subclass from QWidget, you need to provide a paintEvent for your custom QWidget as below.
     # See: https://doc.qt.io/qt-5/stylesheet-reference.html#list-of-stylable-widgets - QWidget
     def paintEvent(self, event): # pylint: disable=unused-argument
-        opt = QStyleOption()
+        opt = QtWidgets.QStyleOption()
         opt.initFrom(self)
-        p = QPainter(self)
+        p = QtGui.QPainter(self)
 
-        self.style().drawPrimitive(QStyle.PE_Widget, opt, p, self)
+        self.style().drawPrimitive(QtWidgets.QStyle.PE_Widget, opt, p, self)
 
     def load_settings(self, defaults = False):
         pass
 
-class Wl_Tab_Widget(QTabWidget):
+class Wl_Tab_Widget(QtWidgets.QTabWidget):
     def __init__(self, parent):
         super().__init__(parent)
 
@@ -121,12 +110,12 @@ class Wl_Tab_Widget(QTabWidget):
 
     # Disable mouse wheel events for tabs
     def eventFilter(self, obj, event):
-        if obj == self.tabBar() and event.type() == QEvent.Wheel:
+        if obj == self.tabBar() and event.type() == QtCore.QEvent.Wheel:
             return True
 
         return super().eventFilter(obj, event)
 
-class Wl_Splitter(QSplitter):
+class Wl_Splitter(QtWidgets.QSplitter):
     def __init__(self, orientation, parent):
         super().__init__(orientation, parent)
 
@@ -135,16 +124,16 @@ class Wl_Splitter(QSplitter):
         self.setHandleWidth(0)
         self.setChildrenCollapsible(False)
 
-class Wl_Scroll_Area(QScrollArea):
+class Wl_Scroll_Area(QtWidgets.QScrollArea):
     def __init__(self, parent):
         super().__init__(parent)
 
         self.main = wl_misc.find_wl_main(parent)
 
         self.setWidgetResizable(True)
-        self.setBackgroundRole(QPalette.Light)
+        self.setBackgroundRole(QtGui.QPalette.Light)
 
-class Wl_Stacked_Widget_Resizable(QStackedWidget):
+class Wl_Stacked_Widget_Resizable(QtWidgets.QStackedWidget):
     def __init__(self, parent):
         super().__init__(parent)
 
@@ -154,10 +143,10 @@ class Wl_Stacked_Widget_Resizable(QStackedWidget):
 
     def current_changed(self, index):
         for i in range(self.count()):
-            self.widget(i).setSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
+            self.widget(i).setSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
             self.widget(i).adjustSize()
 
-        self.widget(index).setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.widget(index).setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         self.widget(index).adjustSize()
 
         self.adjustSize()
@@ -167,15 +156,15 @@ class Wl_Stacked_Widget_Resizable(QStackedWidget):
 
         self.currentChanged.emit(self.currentIndex())
 
-class Wl_Separator(QFrame):
+class Wl_Separator(QtWidgets.QFrame):
     def __init__(self, parent, orientation = 'hor'):
         super().__init__(parent)
 
         self.main = wl_misc.find_wl_main(parent)
 
         if orientation == 'hor':
-            self.setFrameShape(QFrame.HLine)
+            self.setFrameShape(QtWidgets.QFrame.HLine)
         elif orientation == 'vert':
-            self.setFrameShape(QFrame.VLine)
+            self.setFrameShape(QtWidgets.QFrame.VLine)
 
         self.setStyleSheet('color: #D0D0D0;')

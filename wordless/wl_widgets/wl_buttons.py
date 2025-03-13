@@ -18,22 +18,17 @@
 
 import os
 
-from PyQt5.QtCore import QCoreApplication
-from PyQt5.QtGui import QBrush, QColor, QPainter
-from PyQt5.QtWidgets import (
-    QCheckBox,
-    QColorDialog,
-    QFileDialog,
-    QPushButton
-)
+from PyQt5 import QtCore
+from PyQt5 import QtGui
+from PyQt5 import QtWidgets
 
 from wordless.wl_checks import wl_checks_misc
-from wordless.wl_dialogs import wl_msg_boxes
+from wordless.wl_dialogs import wl_dialogs
 from wordless.wl_utils import wl_misc, wl_paths
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
-class Wl_Button(QPushButton):
+class Wl_Button(QtWidgets.QPushButton):
     def __init__(self, text, parent = None):
         super().__init__(text, parent)
 
@@ -51,7 +46,7 @@ class Wl_Button_Browse(Wl_Button):
         self.clicked.connect(self.browse)
 
     def browse(self):
-        path = QFileDialog.getOpenFileName(
+        path = QtWidgets.QFileDialog.getOpenFileName(
             parent = self.main,
             caption = self.caption,
             directory = wl_checks_misc.check_dir(os.path.split(self.line_edit.text())[0]),
@@ -72,17 +67,17 @@ class Wl_Button_Color(Wl_Button):
         super().paintEvent(event)
 
         # A white border within a black border
-        painter = QPainter(self)
-        painter.setPen(QColor('#000000'))
-        painter.setBrush(QBrush(QColor(self.get_color())))
+        painter = QtGui.QPainter(self)
+        painter.setPen(QtGui.QColor('#000000'))
+        painter.setBrush(QtGui.QBrush(QtGui.QColor(self.get_color())))
 
         painter.drawRect(4, 4, 19, 19)
 
-        painter.setPen(QColor('#FFFFFF'))
+        painter.setPen(QtGui.QColor('#FFFFFF'))
         painter.drawRect(5, 5, 17, 17)
 
     def pick_color(self):
-        color_picked = QColorDialog.getColor(QColor(self.get_color()), self.main, self.tr('Pick Color'))
+        color_picked = QtWidgets.QColorDialog.getColor(QtGui.QColor(self.get_color()), self.main, self.tr('Pick Color'))
 
         if color_picked.isValid():
             self.set_color(color_picked.name().upper())
@@ -105,7 +100,7 @@ def wl_button_color(parent, allow_transparent = False):
     button_color = Wl_Button_Color(parent)
 
     if allow_transparent:
-        checkbox_transparent = QCheckBox(_tr('wl_buttons', 'Transparent'))
+        checkbox_transparent = QtWidgets.QCheckBox(_tr('wl_buttons', 'Transparent'))
 
         checkbox_transparent.stateChanged.connect(transparent_changed)
 
@@ -113,25 +108,25 @@ def wl_button_color(parent, allow_transparent = False):
     else:
         return button_color
 
-class Wl_Button_Restore_Defaults(Wl_Button):
+class Wl_Button_Restore_Default_Vals(Wl_Button):
     def __init__(self, parent, load_settings):
-        super().__init__(_tr('Wl_Button_Restore_Defaults', 'Restore defaults'), parent)
+        super().__init__(_tr('Wl_Button_Restore_Default_Vals', 'Restore default values'), parent)
 
         self.parent = parent
         self.load_settings = load_settings
 
-        self.setMinimumWidth(150)
+        self.setMinimumWidth(170)
 
-        self.clicked.connect(self.restore_defaults)
+        self.clicked.connect(self.restore_default_vals)
 
-    def restore_defaults(self):
-        if wl_msg_boxes.wl_msg_box_question(
+    def restore_default_vals(self):
+        if wl_dialogs.Wl_Dialog_Question(
             main = self.main,
-            title = self.tr('Restore Defaults'),
+            title = self.tr('Restore Default Values'),
             text = self.tr('''
-                <div>Are you sure you want to reset all settings to their defaults?</div>
+                <div>Do you want to reset all settings to their default values?</div>
             ''')
-        ):
+        ).exec_():
             self.load_settings(defaults = True)
 
         self.parent.activateWindow()

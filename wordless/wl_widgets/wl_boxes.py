@@ -16,34 +16,27 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from PyQt5.QtCore import QCoreApplication, Qt
-from PyQt5.QtWidgets import (
-    QCheckBox,
-    QComboBox,
-    QDoubleSpinBox,
-    QFontComboBox,
-    QLabel,
-    QSpinBox
-)
+from PyQt5 import QtCore
+from PyQt5 import QtWidgets
 
 from wordless.wl_measures import wl_measure_utils
 from wordless.wl_utils import wl_misc
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 # Combo boxes
-class Wl_Combo_Box(QComboBox):
+class Wl_Combo_Box(QtWidgets.QComboBox):
     def __init__(self, parent):
         super().__init__(parent)
 
         self.main = wl_misc.find_wl_main(parent)
 
         self.setMaxVisibleItems(20)
-        self.setFocusPolicy(Qt.StrongFocus)
+        self.setFocusPolicy(QtCore.Qt.StrongFocus)
 
     def wheelEvent(self, event):
         if self.hasFocus():
-            QComboBox.wheelEvent(self, event)
+            QtWidgets.QComboBox.wheelEvent(self, event)
         else:
             event.ignore()
 
@@ -51,7 +44,7 @@ class Wl_Combo_Box_Adjustable(Wl_Combo_Box):
     def __init__(self, parent):
         super().__init__(parent)
 
-        self.setSizeAdjustPolicy(QComboBox.AdjustToContents)
+        self.setSizeAdjustPolicy(QtWidgets.QComboBox.AdjustToContents)
 
 class Wl_Combo_Box_Enums(Wl_Combo_Box):
     def __init__(self, parent, enums):
@@ -146,7 +139,7 @@ class Wl_Combo_Box_File(Wl_Combo_Box):
         super().__init__(parent)
 
         # Clip long file names
-        self.setSizeAdjustPolicy(QComboBox.AdjustToMinimumContentsLengthWithIcon)
+        self.setSizeAdjustPolicy(QtWidgets.QComboBox.AdjustToMinimumContentsLengthWithIcon)
 
         self.addItems(self.main.wl_file_area.get_selected_file_names())
 
@@ -160,33 +153,33 @@ class Wl_Combo_Box_File(Wl_Combo_Box):
     def get_file(self):
         return self.main.wl_file_area.find_file_by_name(self.currentText(), selected_only = True)
 
-class Wl_Combo_Box_Font_Family(QFontComboBox):
+class Wl_Combo_Box_Font_Family(QtWidgets.QFontComboBox):
     def __init__(self, parent):
         super().__init__(parent)
 
         self.main = wl_misc.find_wl_main(parent)
 
         self.setMaxVisibleItems(20)
-        self.setFocusPolicy(Qt.StrongFocus)
+        self.setFocusPolicy(QtCore.Qt.StrongFocus)
 
     def wheelEvent(self, event):
         if self.hasFocus():
-            QComboBox.wheelEvent(self, event)
+            QtWidgets.QComboBox.wheelEvent(self, event)
         else:
             event.ignore()
 
 # Spin boxes
-class Wl_Spin_Box(QSpinBox):
+class Wl_Spin_Box(QtWidgets.QSpinBox):
     def __init__(self, parent):
         super().__init__(parent)
 
         self.main = wl_misc.find_wl_main(parent)
 
-        self.setFocusPolicy(Qt.StrongFocus)
+        self.setFocusPolicy(QtCore.Qt.StrongFocus)
 
     def wheelEvent(self, event):
         if self.hasFocus():
-            QSpinBox.wheelEvent(self, event)
+            QtWidgets.QSpinBox.wheelEvent(self, event)
         else:
             event.ignore()
 
@@ -226,7 +219,7 @@ class Wl_Spin_Box_Font_Weight(Wl_Spin_Box):
         self.setRange(0, 1000)
 
 # Double spin boxes
-class Wl_Double_Spin_Box(QDoubleSpinBox):
+class Wl_Double_Spin_Box(QtWidgets.QDoubleSpinBox):
     def __init__(self, parent):
         super().__init__(parent)
 
@@ -234,11 +227,11 @@ class Wl_Double_Spin_Box(QDoubleSpinBox):
 
         self.setDecimals(2)
         self.setSingleStep(.01)
-        self.setFocusPolicy(Qt.StrongFocus)
+        self.setFocusPolicy(QtCore.Qt.StrongFocus)
 
     def wheelEvent(self, event):
         if self.hasFocus():
-            QDoubleSpinBox.wheelEvent(self, event)
+            QtWidgets.QDoubleSpinBox.wheelEvent(self, event)
         else:
             event.ignore()
 
@@ -261,7 +254,7 @@ def wl_spin_box_no_limit(parent, val_min = 1, val_max = 100, double = False):
     else:
         spin_box_val = Wl_Spin_Box(parent)
 
-    checkbox_no_limit = QCheckBox(_tr('wl_boxes', 'No limit'), parent)
+    checkbox_no_limit = QtWidgets.QCheckBox(_tr('wl_boxes', 'No limit'), parent)
 
     spin_box_val.setRange(val_min, val_max)
 
@@ -289,8 +282,8 @@ def wl_spin_boxes_min_max(
     label_min = label_min or _tr('wl_boxes', 'From')
     label_max = label_max or _tr('wl_boxes', 'to')
 
-    label_min = QLabel(label_min, parent)
-    label_max = QLabel(label_max, parent)
+    label_min = QtWidgets.QLabel(label_min, parent)
+    label_max = QtWidgets.QLabel(label_max, parent)
 
     if double:
         spin_box_min = Wl_Double_Spin_Box(parent)
@@ -334,7 +327,7 @@ def wl_spin_boxes_min_max_sync(
     label_min = label_min or _tr('wl_boxes', 'From')
     label_max = label_max or _tr('wl_boxes', 'to')
 
-    checkbox_sync = QCheckBox(_tr('wl_boxes', 'Sync'), parent)
+    checkbox_sync = QtWidgets.QCheckBox(_tr('wl_boxes', 'Sync'), parent)
 
     (
         label_min, spin_box_min,
@@ -403,10 +396,10 @@ def wl_spin_boxes_min_max_sync_window(parent):
             spin_box_left.setPrefix(spin_box_right.prefix())
             spin_box_left.setValue(spin_box_right.value())
 
-    checkbox_sync = QCheckBox(_tr('wl_boxes', 'Sync'), parent)
-    label_left = QLabel(_tr('wl_boxes', 'From'), parent)
+    checkbox_sync = QtWidgets.QCheckBox(_tr('wl_boxes', 'Sync'), parent)
+    label_left = QtWidgets.QLabel(_tr('wl_boxes', 'From'), parent)
     spin_box_left = Wl_Spin_Box_Window(parent)
-    label_right = QLabel(_tr('wl_boxes', 'to'), parent)
+    label_right = QtWidgets.QLabel(_tr('wl_boxes', 'to'), parent)
     spin_box_right = Wl_Spin_Box_Window(parent)
 
     spin_box_left.setRange(-100, 100)
@@ -453,8 +446,8 @@ def wl_spin_boxes_min_max_no_limit(
         label_max, spin_box_max
     ) = wl_spin_boxes_min_max_sync(parent, label_min, label_max, val_min, val_max, double)
 
-    checkbox_min_no_limit = QCheckBox(_tr('wl_boxes', 'No limit'), parent)
-    checkbox_max_no_limit = QCheckBox(_tr('wl_boxes', 'No limit'), parent)
+    checkbox_min_no_limit = QtWidgets.QCheckBox(_tr('wl_boxes', 'No limit'), parent)
+    checkbox_max_no_limit = QtWidgets.QCheckBox(_tr('wl_boxes', 'No limit'), parent)
 
     checkbox_min_no_limit.stateChanged.connect(no_limit_min_changed)
     checkbox_max_no_limit.stateChanged.connect(no_limit_max_changed)

@@ -17,7 +17,7 @@
 # ----------------------------------------------------------------------
 
 import nltk
-from PyQt5.QtCore import QCoreApplication
+from PyQt5 import QtCore
 import simplemma
 import spacy
 
@@ -29,7 +29,7 @@ from wordless.wl_nlp import (
 )
 from wordless.wl_utils import wl_conversion
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 def wl_lemmatize(main, inputs, lang, lemmatizer = 'default', force = False):
     if (

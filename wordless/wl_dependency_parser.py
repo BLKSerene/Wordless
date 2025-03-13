@@ -24,8 +24,8 @@ import traceback
 
 import numpy
 
-from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
-from PyQt5.QtWidgets import QCheckBox, QGroupBox
+from PyQt5 import QtCore
+from PyQt5 import QtWidgets
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
@@ -44,7 +44,7 @@ from wordless.wl_widgets import (
     wl_widgets
 )
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
@@ -71,7 +71,7 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
         self.wrapper_table.layout().addWidget(self.table_dependency_parser.button_clr_table, 2, 4)
 
         # Token Settings
-        self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
+        self.group_box_token_settings = QtWidgets.QGroupBox(self.tr('Token Settings'), self)
 
         (
             self.checkbox_punc_marks,
@@ -97,7 +97,7 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
         self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 3, 1)
 
         # Search Settings
-        self.group_box_search_settings = QGroupBox(self.tr('Search Settings'), self)
+        self.group_box_search_settings = QtWidgets.QGroupBox(self.tr('Search Settings'), self)
 
         (
             self.label_search_term,
@@ -115,7 +115,7 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
             self.checkbox_match_without_tags,
             self.checkbox_match_tags
         ) = wl_widgets.wl_widgets_search_settings_tokens(self, tab = self.tab)
-        self.checkbox_match_dependency_relations = QCheckBox(self.tr('Match dependency relations'), self)
+        self.checkbox_match_dependency_relations = QtWidgets.QCheckBox(self.tr('Match dependency relations'), self)
 
         (
             self.label_context_settings,
@@ -145,7 +145,7 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
 
         self.group_box_search_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_search_settings.layout().addWidget(self.label_search_term, 0, 0)
-        self.group_box_search_settings.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, QtCore.Qt.AlignRight)
         self.group_box_search_settings.layout().addWidget(self.stacked_widget_search_term, 1, 0, 1, 2)
         self.group_box_search_settings.layout().addWidget(self.label_delimiter, 2, 0, 1, 2)
 
@@ -162,7 +162,7 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
         self.group_box_search_settings.layout().addLayout(layout_context_settings, 11, 0, 1, 2)
 
         # Table Settings
-        self.group_box_table_settings = QGroupBox(self.tr('Table Settings'), self)
+        self.group_box_table_settings = QtWidgets.QGroupBox(self.tr('Table Settings'), self)
 
         (
             self.checkbox_show_pct_data,
@@ -182,7 +182,7 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct_data, 0, 0)
 
         # Figure Settings
-        self.group_box_fig_settings = QGroupBox(self.tr('Figure Settings'), self)
+        self.group_box_fig_settings = QtWidgets.QGroupBox(self.tr('Figure Settings'), self)
 
         (
             self.checkbox_show_pos_tags, self.combo_box_show_pos_tags, self.label_show_pos_tags,
@@ -492,7 +492,7 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Filter_Search):
             wl_checks_work_area.check_err_fig(self.main, err_msg)
 
 class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str, list)
+    worker_done = QtCore.pyqtSignal(str, list)
 
     def run(self):
         err_msg = ''

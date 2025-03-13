@@ -21,12 +21,12 @@ import os
 import re
 
 import bs4
-from PyQt5.QtCore import QCoreApplication
+from PyQt5 import QtCore
 
 from wordless.wl_nlp import wl_matching, wl_sentence_tokenization, wl_word_tokenization
 from wordless.wl_utils import wl_misc
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 RE_VIE_TOKENIZED = re.compile(r'(?<!^)_(?!$)')
 

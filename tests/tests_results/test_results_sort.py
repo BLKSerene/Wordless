@@ -16,7 +16,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from PyQt5.QtCore import QItemSelectionModel
+from PyQt5 import QtCore
 
 from tests import wl_test_init
 from wordless.wl_results import wl_results_search, wl_results_sort
@@ -64,7 +64,7 @@ def test_table_results_sort_concordancer():
     table_results_sort_concordancer.selection_changed()
     table_results_sort_concordancer.selectionModel().select(
         table_results_sort_concordancer.model().index(0, 0),
-        QItemSelectionModel.Select
+        QtCore.QItemSelectionModel.Select
     )
     table_results_sort_concordancer.model().setRowCount(2)
     table_results_sort_concordancer.selection_changed()

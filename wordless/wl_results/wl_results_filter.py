@@ -22,15 +22,15 @@ import copy
 import math
 import traceback
 
-from PyQt5.QtCore import pyqtSignal, QCoreApplication
-from PyQt5.QtWidgets import QLabel, QPushButton
+from PyQt5 import QtCore
+from PyQt5 import QtWidgets
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc
 from wordless.wl_utils import wl_misc, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_buttons, wl_layouts
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 def widgets_filter(parent, label, val_min, val_max, settings, filter_name, double = False):
     def load_settings(settings_load):
@@ -47,7 +47,7 @@ def widgets_filter(parent, label, val_min, val_max, settings, filter_name, doubl
         settings[f'{filter_name}_max'] = spin_box_max.value()
         settings[f'{filter_name}_max_no_limit'] = checkbox_max_no_limit.isChecked()
 
-    label = QLabel(label, parent)
+    label = QtWidgets.QLabel(label, parent)
     (
         checkbox_sync,
         label_min, spin_box_min, checkbox_min_no_limit,
@@ -174,12 +174,12 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
 
         self.main.wl_work_area.currentChanged.connect(self.close)
 
-        self.label_file_to_filter = QLabel(_tr('Wl_Dialog_Results_Filter', 'File to filter:'), self)
+        self.label_file_to_filter = QtWidgets.QLabel(_tr('Wl_Dialog_Results_Filter', 'File to filter:'), self)
         self.combo_box_file_to_filter = wl_boxes.Wl_Combo_Box_File_To_Filter(self, self.table)
-        self.button_filter = QPushButton(_tr('Wl_Dialog_Results_Filter', 'Filter'), self)
+        self.button_filter = QtWidgets.QPushButton(_tr('Wl_Dialog_Results_Filter', 'Filter'), self)
 
-        self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
-        self.button_close = QPushButton(_tr('Wl_Dialog_Results_Filter', 'Close'), self)
+        self.button_restore_default_vals = wl_buttons.Wl_Button_Restore_Default_Vals(self, load_settings = self.load_settings)
+        self.button_close = QtWidgets.QPushButton(_tr('Wl_Dialog_Results_Filter', 'Close'), self)
 
         self.combo_box_file_to_filter.currentTextChanged.connect(self.file_to_filter_changed)
         self.button_filter.clicked.connect(lambda checked: self.filter_results())
@@ -194,7 +194,7 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
         self.layout_filters = wl_layouts.Wl_Layout()
 
         layout_buttons = wl_layouts.Wl_Layout()
-        layout_buttons.addWidget(self.button_restore_defaults, 0, 0)
+        layout_buttons.addWidget(self.button_restore_default_vals, 0, 0)
         layout_buttons.addWidget(self.button_filter, 0, 2)
         layout_buttons.addWidget(self.button_close, 0, 3)
 
@@ -320,7 +320,7 @@ class Wl_Dialog_Results_Filter_Dependency_Parser(Wl_Dialog_Results_Filter):
             layout.load_settings(settings)
 
 class Wl_Worker_Results_Filter_Dependency_Parser(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str)
+    worker_done = QtCore.pyqtSignal(str)
 
     def run(self):
         err_msg = ''
@@ -486,7 +486,7 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
             layout.load_settings(settings)
 
 class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str)
+    worker_done = QtCore.pyqtSignal(str)
 
     def run(self):
         err_msg = ''
@@ -761,7 +761,7 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
             self.settings['freq_position'] = self.combo_box_freq_position.currentText()
 
 class Wl_Worker_Results_Filter_Collocation_Extractor(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str)
+    worker_done = QtCore.pyqtSignal(str)
 
     def run(self):
         err_msg = ''

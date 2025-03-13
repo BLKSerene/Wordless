@@ -16,86 +16,24 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from PyQt5.QtCore import QCoreApplication, Qt
-from PyQt5.QtWidgets import QApplication, QPushButton
+from PyQt5 import QtCore
+from PyQt5 import QtWidgets
 
 from wordless.wl_dialogs import wl_dialogs
 from wordless.wl_widgets import wl_labels, wl_tables
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 class Wl_Dialog_Err(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main, title, width = 0, height = 0, resizable = True, no_buttons = False):
         super().__init__(
-            main, title,
-            width = width, height = height,
-            resizable = resizable, icon = False, no_buttons = no_buttons
-        )
-
-    def exec_(self):
-        super().exec_()
-
-        QApplication.beep()
-
-    def open(self):
-        super().open()
-
-        QApplication.beep()
-
-class Wl_Dialog_Err_Info_Copy(wl_dialogs.Wl_Dialog_Info_Copy):
-    def __init__(self, main, title, width = 0, height = 0, resizable = True, help_info = '', err_msg = ''):
-        super().__init__(
-            main, title,
-            width = width, height = height, resizable = resizable
-        )
-
-        self.label_err_msg = wl_labels.Wl_Label_Dialog(help_info, self)
-
-        self.text_edit_info.setPlainText(err_msg)
-
-        self.layout_info.addWidget(self.label_err_msg, 0, 0)
-        self.layout_info.addWidget(self.text_edit_info, 1, 0)
-
-    def exec_(self):
-        super().exec_()
-
-        QApplication.beep()
-
-    def open(self):
-        super().open()
-
-        QApplication.beep()
-
-class Wl_Dialog_Err_Fatal(Wl_Dialog_Err_Info_Copy):
-    def __init__(self, main, err_msg):
-        super().__init__(
-            main,
-            title = _tr('wl_dialogs_errs', 'Fatal Error'),
-            width = 600,
-            height = 300,
-            help_info = _tr('wl_dialogs_errs', '''
-                <div>A fatal error has occurred, please <b>send the following error messages</b> to {} in order to <b>contact the author for support</b>!</div>
-            ''').format(main.email_html),
-            err_msg = err_msg
-        )
-
-class Wl_Dialog_Err_Download_Model(Wl_Dialog_Err_Info_Copy):
-    def __init__(self, main, err_msg):
-        super().__init__(
-            main,
-            title = _tr('wl_dialogs_errs', 'Network Error'),
-            width = 600,
-            height = 400,
-            help_info = _tr('wl_dialogs_errs', '''
-                <div>A network error occurred while downloading the model, please check your internet connections and proxy settings in <b>Menu → Preferences → General → Proxy Settings</b> if you are using a proxy.</div>
-                <div>If the network issue persists, please <b>send the following error messages</b> to {} in order to <b>contact the author for support</b>.</div>
-            ''').format(main.email_html),
-            err_msg = err_msg
+            main, title, width, height,
+            resizable, icon = 'critical', no_buttons = no_buttons
         )
 
 class Wl_Dialog_Err_Files(Wl_Dialog_Err):
     def __init__(self, main, title):
-        super().__init__(main, title, width = 650, height = 350, no_buttons = True)
+        super().__init__(main, title, width = 600, height = 300, no_buttons = True)
 
         self.label_err = wl_labels.Wl_Label_Dialog('', self)
         self.table_err_files = wl_tables.Wl_Table(
@@ -110,14 +48,55 @@ class Wl_Dialog_Err_Files(Wl_Dialog_Err):
 
         self.table_err_files.model().setRowCount(0)
 
-        self.button_exp_table = QPushButton(' ' * 3 + self.tr('Export table...') + ' ' * 3, self)
-        self.button_ok = QPushButton(self.tr('OK'), self)
+        self.button_exp_table = QtWidgets.QPushButton(' ' * 3 + self.tr('Export table...') + ' ' * 3, self)
+        self.button_ok = QtWidgets.QPushButton(self.tr('OK'), self)
 
         self.button_exp_table.clicked.connect(self.table_err_files.exp_all_cells)
         self.button_ok.clicked.connect(self.accept)
 
         self.layout_info.addWidget(self.label_err, 0, 0)
-        self.layout_info.addWidget(self.table_err_files, 1, 0)
+        self.wrapper_info.layout().addWidget(self.table_err_files, 1, 0, 1, 2)
 
-        self.layout_buttons.addWidget(self.button_exp_table, 0, 0, Qt.AlignLeft)
-        self.layout_buttons.addWidget(self.button_ok, 0, 1, Qt.AlignRight)
+        self.layout_buttons.addWidget(self.button_exp_table, 0, 0, QtCore.Qt.AlignLeft)
+        self.layout_buttons.addWidget(self.button_ok, 0, 1, QtCore.Qt.AlignRight)
+
+class Wl_Dialog_Err_Info_Copy(wl_dialogs.Wl_Dialog_Info_Copy):
+    def __init__(self, main, title, width = 0, height = 0, resizable = True, help_info = '', err_msg = ''):
+        super().__init__(
+            main, title, width, height,
+            resizable, icon = 'critical', is_plain_text = False
+        )
+
+        self.label_help_info = wl_labels.Wl_Label_Dialog(help_info, self)
+
+        self.text_edit_info.setPlainText(err_msg)
+
+        self.layout_info.addWidget(self.label_help_info, 0, 0)
+
+class Wl_Dialog_Err_Fatal(Wl_Dialog_Err_Info_Copy):
+    def __init__(self, main, err_msg):
+        super().__init__(
+            main,
+            title = _tr('wl_dialogs_errs', 'Fatal Error'),
+            width = 600,
+            height = 300,
+            help_info = _tr('wl_dialogs_errs', '''
+                <div>A fatal error has occurred. Please contact the author for support by sending an email <b>with the following error messages</b> to {}.</div>
+            ''').format(main.email_html),
+            err_msg = err_msg
+        )
+
+class Wl_Dialog_Err_Download_Model(Wl_Dialog_Err_Info_Copy):
+    def __init__(self, main, err_msg):
+        super().__init__(
+            main,
+            title = _tr('wl_dialogs_errs', 'Network Error'),
+            width = 600,
+            height = 400,
+            help_info = _tr('wl_dialogs_errs', '''
+                <div>A network error occurred while downloading the model. If you are using a proxy, please check your internet connections and proxy settings in <b>Menu → Preferences → General → Proxy Settings</b>.</div>
+                <br>
+                <div>If the network issue persists, please contact the author for support by sending an email <b>with the following error messages</b> to {}.</div>
+            ''').format(main.email_html),
+            err_msg = err_msg
+        )

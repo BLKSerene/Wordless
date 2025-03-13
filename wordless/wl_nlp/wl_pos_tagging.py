@@ -21,7 +21,7 @@ import copy
 import khmernltk
 import laonlp
 import nltk
-from PyQt5.QtCore import QCoreApplication
+from PyQt5 import QtCore
 import pythainlp
 import spacy
 import underthesea
@@ -29,7 +29,7 @@ import underthesea
 from wordless.wl_nlp import wl_nlp_utils, wl_texts, wl_word_tokenization
 from wordless.wl_utils import wl_conversion
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 UNIVERSAL_TAGSETS_SPACY = {
     'spacy_cat', 'spacy_dan', 'spacy_fra', 'spacy_ell', 'spacy_mkd',

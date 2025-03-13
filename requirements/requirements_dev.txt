@@ -41,8 +41,10 @@ pymorphy3-dicts-uk
 spacy
 spacy-lookups-data
 spacy-pkuseg
-# Required by French model
+# Required by French and Slovenian models
 sentencepiece
+# Required by the Ukrainian model
+transformers
 
 ## SudachiPy
 sudachipy
@@ -71,5 +73,5 @@ wordcloud
 --extra-index-url=https://pypi.org/simple
 torch
 
-# spaCy models
-en_core_web_trf-3.7.3-py3-none-any.whl
+# spaCy's English model
+en_core_web_trf-3.8.0-py3-none-any.whl

@@ -20,8 +20,8 @@ import copy
 import math
 
 import networkx
-from PyQt5.QtCore import QCoreApplication
-from PyQt5.QtWidgets import QDesktopWidget
+from PyQt5 import QtCore
+from PyQt5 import QtWidgets
 
 from wordless.wl_nlp import wl_pos_tagging
 from wordless.wl_tagsets import (
@@ -55,7 +55,7 @@ from wordless.wl_tagsets import (
 )
 from wordless.wl_utils import wl_misc, wl_paths
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 is_windows, is_macos, is_linux = wl_misc.check_os()
 
 # The following settings need to be loaded before initialization of the main window
@@ -91,10 +91,9 @@ DEFAULT_DIR_IMPS = wl_paths.get_path_file('imports', internal = False)
 DEFAULT_DIR_EXPS = wl_paths.get_path_file('exports', internal = False)
 
 def init_settings_default(main):
-    desktop_widget = QDesktopWidget()
+    desktop_widget = QtWidgets.QDesktopWidget()
 
     settings_default = {
-        '1st_startup': True,
         'tab_file_area': 'corpora_observed',
         'tab_work_area': 'profiler',
 

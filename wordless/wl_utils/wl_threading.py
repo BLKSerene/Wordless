@@ -18,17 +18,12 @@
 
 import time
 
-from PyQt5.QtCore import (
-    pyqtSignal,
-    QObject,
-    Qt,
-    QThread
-)
+from PyQt5 import QtCore
 
 # Workers
-class Wl_Worker(QObject):
-    progress_updated = pyqtSignal(str)
-    worker_done = pyqtSignal()
+class Wl_Worker(QtCore.QObject):
+    progress_updated = QtCore.pyqtSignal(str)
+    worker_done = QtCore.pyqtSignal()
 
     def __init__(self, main, dialog_progress, update_gui, **kwargs):
         super().__init__()
@@ -43,12 +38,12 @@ class Wl_Worker(QObject):
         self.progress_updated.connect(self.dialog_progress.update_progress)
 
         # Wait for updating of the progress label
-        self.worker_done.connect(lambda: time.sleep(.01), Qt.DirectConnection)
+        self.worker_done.connect(lambda: time.sleep(.01), QtCore.Qt.DirectConnection)
         self.worker_done.connect(update_gui)
         self.worker_done.connect(self.dialog_progress.accept)
 
-class Wl_Worker_No_Progress(QObject):
-    worker_done = pyqtSignal()
+class Wl_Worker_No_Progress(QtCore.QObject):
+    worker_done = QtCore.pyqtSignal()
 
     def __init__(self, main, update_gui, **kwargs):
         super().__init__()
@@ -61,9 +56,9 @@ class Wl_Worker_No_Progress(QObject):
 
         self.worker_done.connect(update_gui)
 
-class Wl_Worker_No_Callback(QObject):
-    progress_updated = pyqtSignal(str)
-    worker_done = pyqtSignal()
+class Wl_Worker_No_Callback(QtCore.QObject):
+    progress_updated = QtCore.pyqtSignal(str)
+    worker_done = QtCore.pyqtSignal()
 
     def __init__(self, main, dialog_progress, **kwargs):
         super().__init__()
@@ -78,11 +73,11 @@ class Wl_Worker_No_Callback(QObject):
         self.progress_updated.connect(self.dialog_progress.update_progress)
 
         # Wait for updating of the progress label
-        self.worker_done.connect(lambda: time.sleep(.01), Qt.DirectConnection)
+        self.worker_done.connect(lambda: time.sleep(.01), QtCore.Qt.DirectConnection)
         self.worker_done.connect(self.dialog_progress.accept)
 
 # Threads
-class Wl_Thread(QThread):
+class Wl_Thread(QtCore.QThread):
     def __init__(self, worker):
         super().__init__()
 

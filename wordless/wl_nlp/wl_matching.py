@@ -20,11 +20,11 @@ import copy
 import itertools
 import re
 
-from PyQt5.QtCore import QCoreApplication
+from PyQt5 import QtCore
 
 from wordless.wl_nlp import wl_lemmatization, wl_texts
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 # Tags
 def split_tag_embedded(tag):

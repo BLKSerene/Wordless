@@ -23,22 +23,18 @@ import copy
 import traceback
 
 import numpy
+from PyQt5 import QtCore
+from PyQt5 import QtWidgets
 import scipy
-from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
-from PyQt5.QtWidgets import (
-    QGroupBox,
-    QPushButton,
-    QStackedWidget
-)
 
 from wordless.wl_checks import wl_checks_tokens, wl_checks_work_area
-from wordless.wl_dialogs import wl_dialogs_misc, wl_msg_boxes
+from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc
 from wordless.wl_measures import wl_measures_lexical_density_diversity, wl_measures_misc, wl_measures_readability
 from wordless.wl_nlp import wl_texts, wl_token_processing
 from wordless.wl_utils import wl_misc, wl_threading
 from wordless.wl_widgets import wl_layouts, wl_tables, wl_widgets
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
@@ -61,12 +57,12 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
             self.table_profiler_len_breakdown
         ]
 
-        self.stacked_widget_button_generate_table = QStackedWidget(self)
-        self.button_generate_all_tables = QPushButton(self.tr('Generate all tables'), self)
-        self.stacked_widget_button_exp_selected_cells = QStackedWidget(self)
-        self.stacked_widget_button_exp_all_cells = QStackedWidget(self)
-        self.stacked_widget_button_clr_table = QStackedWidget(self)
-        self.button_clr_all_tables = QPushButton(self.tr('Clear all tables'), self)
+        self.stacked_widget_button_generate_table = QtWidgets.QStackedWidget(self)
+        self.button_generate_all_tables = QtWidgets.QPushButton(self.tr('Generate all tables'), self)
+        self.stacked_widget_button_exp_selected_cells = QtWidgets.QStackedWidget(self)
+        self.stacked_widget_button_exp_all_cells = QtWidgets.QStackedWidget(self)
+        self.stacked_widget_button_clr_table = QtWidgets.QStackedWidget(self)
+        self.button_clr_all_tables = QtWidgets.QPushButton(self.tr('Clear all tables'), self)
 
         for table in self.tables:
             self.stacked_widget_button_generate_table.addWidget(table.button_generate_table)
@@ -109,7 +105,7 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         self.file_changed()
 
         # Token Settings
-        self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
+        self.group_box_token_settings = QtWidgets.QGroupBox(self.tr('Token Settings'), self)
 
         (
             self.checkbox_words,
@@ -164,7 +160,7 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 9, 1)
 
         # Table Settings
-        self.group_box_table_settings = QGroupBox(self.tr('Table Settings'), self)
+        self.group_box_table_settings = QtWidgets.QGroupBox(self.tr('Table Settings'), self)
 
         (
             self.checkbox_show_pct_data,
@@ -307,19 +303,22 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
 
         # Ask for confirmation if results have not been exported
         if needs_confirm:
-            confirmed = wl_msg_boxes.wl_msg_box_question(
+            confirmed = wl_dialogs.Wl_Dialog_Question(
                 self.main,
                 title = self.tr('Clear All Tables'),
                 text = self.tr('''
-                    <div>
-                        The results in some of the tables have yet been exported. Do you really want to clear all tables?
-                    </div>
+                    <div>The results in some of the tables have yet been exported.</div>
+                    <br>
+                    <div>Do you want to clear the results displayed in all tables?</div>
                 ''')
-            )
+            ).exec_()
+        else:
+            confirmed = True
 
         if confirmed:
             for table in self.tables:
-                table.clr_table()
+                if not table.is_empty():
+                    table.clr_table()
 
 class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
     def __init__(
@@ -898,7 +897,7 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
 
                             self.model().setItem(row + 10, i, wl_tables.Wl_Table_Item('0'))
 
-                        self.model().item(row + 10, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                        self.model().item(row + 10, i).setTextAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
 
                     # Token/Type Length in Syllables
                     # Syllable Length in Characters
@@ -927,7 +926,7 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
 
                                 self.model().setItem(row + 10, i, wl_tables.Wl_Table_Item('0'))
 
-                            self.model().item(row + 10, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                            self.model().item(row + 10, i).setTextAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
                         else:
                             for j in range(11):
                                 self.set_item_err(row + j, i, text = self.tr('No language support'), alignment_hor = 'right')
@@ -1146,7 +1145,7 @@ class Wl_Table_Profiler_Len_Breakdown(Wl_Table_Profiler):
         return err_msg
 
 class Wl_Worker_Profiler(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str, list)
+    worker_done = QtCore.pyqtSignal(str, list)
 
     def __init__(self, main, dialog_progress, update_gui, tab):
         super().__init__(main, dialog_progress, update_gui, tab = tab)

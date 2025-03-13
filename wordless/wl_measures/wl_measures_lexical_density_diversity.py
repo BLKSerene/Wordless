@@ -22,12 +22,12 @@ import collections
 import random
 
 import numpy
-from PyQt5.QtCore import QCoreApplication
+from PyQt5 import QtCore
 import scipy
 
 from wordless.wl_nlp import wl_nlp_utils, wl_pos_tagging
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 # Brunet's index
 # Reference: Brunet, E. (1978). Le vocabulaire de Jean Giraudoux: Structure et evolution. Slatkine. | p. 57

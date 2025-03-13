@@ -19,12 +19,12 @@
 # pylint: disable=unused-argument
 
 import numpy
-from PyQt5.QtCore import QCoreApplication
+from PyQt5 import QtCore
 import scipy.stats
 
 from wordless.wl_measures import wl_measure_utils
 
-_tr = QCoreApplication.translate
+_tr = QtCore.QCoreApplication.translate
 
 def get_freqs_marginal(o11s, o12s, o21s, o22s):
     o1xs = o11s + o12s
