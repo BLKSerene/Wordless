@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Tests: File area - File types
+# Tests: File Area - File Types
 # Copyright (C) 2018-2025  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -72,8 +72,8 @@ def test_file_area_file_types():
     wl_test_init.clean_import_caches()
 
     # Disable auto-detection
-    main.settings_custom['file_area']['dialog_open_files']['auto_detect_encodings'] = False
-    main.settings_custom['file_area']['dialog_open_files']['auto_detect_langs'] = False
+    main.settings_custom['file_area']['dialog_open_corpora']['auto_detect_encodings'] = False
+    main.settings_custom['file_area']['dialog_open_corpora']['auto_detect_langs'] = False
 
     # File types (Non-XML)
     files_non_xml = glob.glob('tests/files/wl_file_area/file_types/*.*')
@@ -257,8 +257,8 @@ def update_gui_tags(err_msg, new_files):
 def test_file_area_misc():
     wl_test_init.clean_import_caches()
 
-    main.settings_custom['file_area']['dialog_open_files']['auto_detect_encodings'] = False
-    main.settings_custom['file_area']['dialog_open_files']['auto_detect_langs'] = False
+    main.settings_custom['file_area']['dialog_open_corpora']['auto_detect_encodings'] = False
+    main.settings_custom['file_area']['dialog_open_corpora']['auto_detect_langs'] = False
 
     main.settings_custom['files']['default_settings']['encoding'] = 'utf_8'
     main.settings_custom['files']['default_settings']['lang'] = 'vie'

@@ -270,38 +270,38 @@ class Wl_Main(QtWidgets.QMainWindow):
         self.menu_help = self.menuBar().addMenu(self.tr('&Help'))
 
         # File
-        self.action_file_open_files = self.menu_file.addAction(self.tr('&Open Files...'))
-        self.action_file_open_files.setShortcut(QtGui.QKeySequence('Ctrl+O'))
-        self.action_file_open_files.setStatusTip(self.tr('Open file(s)'))
-        self.action_file_reopen = self.menu_file.addAction(self.tr('&Reopen Closed Files'))
-        self.action_file_reopen.setStatusTip(self.tr('Reopen closed files'))
+        self.action_file_open_corpora = self.menu_file.addAction(self.tr('&Open Corpora...'))
+        self.action_file_open_corpora.setShortcut(QtGui.QKeySequence('Ctrl+O'))
+        self.action_file_open_corpora.setStatusTip(self.tr('Add corpora to the File Area'))
+        self.action_file_reopen = self.menu_file.addAction(self.tr('&Reopen'))
+        self.action_file_reopen.setStatusTip(self.tr('Add corpora which have just been closed back to the File Area'))
 
         self.menu_file.addSeparator()
 
         self.action_file_select_all = self.menu_file.addAction(self.tr('S&elect All'))
         self.action_file_select_all.setShortcut(QtGui.QKeySequence('Ctrl+A'))
-        self.action_file_select_all.setStatusTip(self.tr('Select all files'))
+        self.action_file_select_all.setStatusTip(self.tr('Select all corpora in the File Area'))
         self.action_file_deselect_all = self.menu_file.addAction(self.tr('&Deselect All'))
         self.action_file_deselect_all.setShortcut(QtGui.QKeySequence('Ctrl+D'))
-        self.action_file_deselect_all.setStatusTip(self.tr('Deselect all files'))
+        self.action_file_deselect_all.setStatusTip(self.tr('Deselect all corpora in the File Area'))
         self.action_file_invert_selection = self.menu_file.addAction(self.tr('&Invert Selection'))
         self.action_file_invert_selection.setShortcut(QtGui.QKeySequence('Ctrl+Shift+I'))
-        self.action_file_invert_selection.setStatusTip(self.tr('Invert file selection'))
+        self.action_file_invert_selection.setStatusTip(self.tr('Invert corpora selection in the File Area'))
 
         self.menu_file.addSeparator()
 
         self.action_file_close_selected = self.menu_file.addAction(self.tr('&Close Selected'))
         self.action_file_close_selected.setShortcut(QtGui.QKeySequence('Ctrl+W'))
-        self.action_file_close_selected.setStatusTip(self.tr('Close selected file(s)'))
+        self.action_file_close_selected.setStatusTip(self.tr('Remove selected corpora from the File Area'))
         self.action_file_close_all = self.menu_file.addAction(self.tr('C&lose All'))
         self.action_file_close_all.setShortcut(QtGui.QKeySequence('Ctrl+Shift+W'))
-        self.action_file_close_all.setStatusTip(self.tr('Close all files'))
+        self.action_file_close_all.setStatusTip(self.tr('Remove all corpora from the File Area'))
 
         self.menu_file.addSeparator()
 
         self.action_file_exit = self.menu_file.addAction(self.tr('&Exit...'))
         self.action_file_exit.setShortcut(QtGui.QKeySequence('Ctrl+Q'))
-        self.action_file_exit.setStatusTip(self.tr('Exit the program'))
+        self.action_file_exit.setStatusTip(self.tr('Exit Wordless'))
         self.action_file_exit.triggered.connect(self.close)
 
         # Edit

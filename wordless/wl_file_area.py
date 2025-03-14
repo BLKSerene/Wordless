@@ -234,8 +234,8 @@ class Wl_Table_Files(wl_tables.Wl_Table):
         self.clicked.connect(self.item_clicked)
 
         # Menu
-        self.main.action_file_open_files.triggered.connect(
-            lambda: self.check_file_area(self.open_files)
+        self.main.action_file_open_corpora.triggered.connect(
+            lambda: self.check_file_area(self.open_corpora)
         )
         self.main.action_file_reopen.triggered.connect(
             lambda: self.check_file_area(self.reopen)
@@ -469,17 +469,17 @@ class Wl_Table_Files(wl_tables.Wl_Table):
 
             self.main.statusBar().showMessage(self.tr('{} {} has been successfully opened.').format(len_files_opened, msg_file))
 
-    def open_files(self):
-        self.dialog_open_files = Wl_Dialog_Open_Files(self.main)
-        self.dialog_open_files.open()
+    def open_corpora(self):
+        self.dialog_open_corpora = Wl_Dialog_Open_Corpora(self.main)
+        self.dialog_open_corpora.open()
 
     def reopen(self):
         files = self.main.settings_custom['file_area'][f'files_closed{self.settings_suffix}'].pop()
 
-        dialog_open_files = Wl_Dialog_Open_Files(self.main)
-        dialog_open_files._add_files(list(dict.fromkeys([file['path_orig'] for file in files])))
+        dialog_open_corpora = Wl_Dialog_Open_Corpora(self.main)
+        dialog_open_corpora._add_files(list(dict.fromkeys([file['path_orig'] for file in files])))
 
-        self._open_files(files_to_open = dialog_open_files.table_files.files_to_open)
+        self._open_files(files_to_open = dialog_open_corpora.table_files.files_to_open)
 
     def _close_files(self, i_files):
         self.main.settings_custom['file_area'][f'files_closed{self.settings_suffix}'].append([])
@@ -501,11 +501,11 @@ class Wl_Table_Files(wl_tables.Wl_Table):
     def close_all(self):
         self._close_files(list(range(len(self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}']))))
 
-class Wl_Dialog_Open_Files(wl_dialogs.Wl_Dialog):
+class Wl_Dialog_Open_Corpora(wl_dialogs.Wl_Dialog):
     def __init__(self, main):
         super().__init__(
             main,
-            title = _tr('Wl_Dialog_Open_Files', 'Open Files'),
+            title = _tr('Wl_Dialog_Open_Corpora', 'Open Corpora'),
             width = 800,
             height = 320
         )
@@ -591,9 +591,9 @@ class Wl_Dialog_Open_Files(wl_dialogs.Wl_Dialog):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default['file_area']['dialog_open_files'])
+            settings = copy.deepcopy(self.main.settings_default['file_area']['dialog_open_corpora'])
         else:
-            settings = copy.deepcopy(self.main.settings_custom['file_area']['dialog_open_files'])
+            settings = copy.deepcopy(self.main.settings_custom['file_area']['dialog_open_corpora'])
 
         self.checkbox_auto_detect_encodings.setChecked(settings['auto_detect_encodings'])
         self.checkbox_auto_detect_langs.setChecked(settings['auto_detect_langs'])
@@ -609,7 +609,7 @@ class Wl_Dialog_Open_Files(wl_dialogs.Wl_Dialog):
             self.button_open.setEnabled(True)
 
     def settings_changed(self):
-        settings = self.main.settings_custom['file_area']['dialog_open_files']
+        settings = self.main.settings_custom['file_area']['dialog_open_corpora']
 
         settings['auto_detect_encodings'] = self.checkbox_auto_detect_encodings.isChecked()
         settings['auto_detect_langs'] = self.checkbox_auto_detect_langs.isChecked()
@@ -725,7 +725,7 @@ class Wl_Dialog_Open_Files(wl_dialogs.Wl_Dialog):
         )
 
         if file_dir:
-            if self.main.settings_custom['file_area']['dialog_open_files']['include_files_in_subfolders']:
+            if self.main.settings_custom['file_area']['dialog_open_corpora']['include_files_in_subfolders']:
                 for dir_path, _, file_names in os.walk(file_dir):
                     for file_name in file_names:
                         file_paths.append(os.path.join(dir_path, file_name))
@@ -1053,8 +1053,8 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
 
                     # Use default settings for "Tokenized" & "Tagged" if auto-detection of encodings and languages are both disabled
                     if (
-                        not self.main.settings_custom['file_area']['dialog_open_files']['auto_detect_encodings']
-                        and not self.main.settings_custom['file_area']['dialog_open_files']['auto_detect_langs']
+                        not self.main.settings_custom['file_area']['dialog_open_corpora']['auto_detect_encodings']
+                        and not self.main.settings_custom['file_area']['dialog_open_corpora']['auto_detect_langs']
                     ):
                         new_file['tokenized'] = self.main.settings_custom['files']['default_settings']['tokenized']
                         new_file['tagged'] = self.main.settings_custom['files']['default_settings']['tagged']
@@ -1075,7 +1075,7 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                 if file_ext in ('.docx', '.xlsx'):
                     new_file['encoding'] = default_encoding
                 else:
-                    if self.main.settings_custom['file_area']['dialog_open_files']['auto_detect_encodings']:
+                    if self.main.settings_custom['file_area']['dialog_open_corpora']['auto_detect_encodings']:
                         new_file['encoding'] = wl_detection.detect_encoding(self.main, file_path)
                     else:
                         new_file['encoding'] = default_encoding
@@ -1084,7 +1084,7 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                 if file_ext != '.tmx':
                     new_file['text'] = get_text_non_tmx(new_file)
 
-                    if self.main.settings_custom['file_area']['dialog_open_files']['auto_detect_langs']:
+                    if self.main.settings_custom['file_area']['dialog_open_corpora']['auto_detect_langs']:
                         new_file['lang'] = wl_detection.detect_lang_text(self.main, new_file['text'])
                     else:
                         new_file['lang'] = self.main.settings_custom['files']['default_settings']['lang']

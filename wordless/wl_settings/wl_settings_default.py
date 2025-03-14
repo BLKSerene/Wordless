@@ -124,7 +124,7 @@ def init_settings_default(main):
             'files_closed': [],
             'files_closed_ref': [],
 
-            'dialog_open_files': {
+            'dialog_open_corpora': {
                 'auto_detect_encodings': True,
                 'auto_detect_langs': True,
                 'include_files_in_subfolders': True

@@ -52,7 +52,7 @@ class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
         self.layout().addWidget(self.label_time_elapsed, 0, 1, QtCore.Qt.AlignRight)
         self.layout().addWidget(self.label_processing, 1, 0, 1, 2)
 
-        self.layout().setContentsMargins(20, 20, 20, 20)
+        self.layout().setContentsMargins(20, 15, 20, 15)
 
     def update_elapsed_time(self):
         elapsed_time = datetime.timedelta(seconds = round(time.time() - self.time_start))

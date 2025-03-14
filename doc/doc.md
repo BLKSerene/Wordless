@@ -66,37 +66,40 @@ You can modify the global scaling factor and font settings of the user interface
 
 <span id="doc-2"></span>
 ## [2 File Area](#doc)
-In most cases, the first thing to do in *Wordless* is open and select your files to be processed via **Menu Bar → File → Open Files/Folder**.
+In most cases, the first thing to do in *Wordless* is open and select your corpora to be processed via **Menu Bar → File → Open Corpora**.
 
-Files are loaded, cached and selected automatically after being added to the *File Table*. **Only selected files will be processed by *Wordless***. You can drag and drop files around the *File Table* to change their orders, which would be reflected in the results.
+Corpora are loaded, cached and selected automatically after being added to the *File Area*. **Only selected corpora will be processed by *Wordless***. You can drag and drop corpora around the *File Area* to change their orders, which would be reflected in the results.
 
-By default, *Wordless* would try to detect the encoding and language settings of all files for you, you should double check and make sure that the settings of each and every file are correct. If you prefer changing file settings manually, you could uncheck ***Open Files* dialog → Auto-detect encodings** and/or ***Open Files* dialog → Auto-detect languages**. The default file settings could be modified via **Menu Bar → Preferences → Settings → Files → Default Settings**. Additionally, you need to change ***Open Files* dialog → Tokenized** and ***Open Files* dialog → Tagged** options of each files according to whether or not the file has been tokenized or tagged. 
+By default, *Wordless* would try to detect the encoding and language settings of all corpora for you, you should double check and make sure that the settings of each and every corpus are correct. If you prefer changing corpus settings manually, you could uncheck ***Open Corpora* dialog → Auto-detect encodings** and/or ***Open Corpora* dialog → Auto-detect languages**. The default corpus settings could be modified via **Menu Bar → Preferences → Settings → Files → Default Settings**. Additionally, you need to change ***Open Corpora* dialog → Tokenized** and ***Open Corpora* dialog → Tagged** options of each corpus according to whether or not the corpus has been tokenized or tagged. 
 
 - **2.1 Menu Bar → File**<br>
-  - **2.1.1 Open Files**<br>
-    Open the *Open Files* dialog to add file(s) to the *File Table*.
+  - **2.1.1 Open Corpora**<br>
+    Add corpora to the *File Area*.
 
-  - **2.1.2 Reopen Closed Files**<br>
-    Add file(s) that are closed the last time back to the *File Table*.
+  - **2.1.2 Reopen Closed Corpora**<br>
+    Add corpora which have just been closed back to the *File Area*.
 
-    \* The history of all closed files will be erased upon exit of *Wordless*.
+    \* The history of closed corpora will be erased upon exit of *Wordless*.
 
   - **2.1.3 Select All**<br>
-    Select all files in the *File Table*.
+    Select all corpora in the *File Area*.
 
   - **2.1.4 Deselect All**<br>
-    Deselect all files in the *File Table*.
+    Deselect all corpora in the *File Area*.
 
   - **2.1.5 Invert Selection**<br>
-    Select files that are not currently selected and deselect files that are currently selected in the *File Table*.
+    Invert corpora selection in the *File Area*.
 
   - **2.1.6 Close Selected**<br>
-    Remove files that are currently selected from the *File Table*.
+    Remove selected corpora from the *File Area*.
 
   - **2.1.7 Close All**<br>
-    Remove all files from the *File Table*.
+    Remove all corpora from the *File Area*.
 
-- **2.2 *Open Files* dialog**<br>
+  - **2.1.8 Exit**<br>
+    Exit *Wordless*.
+
+- **2.2 *Open Corpora* dialog**<br>
   - **2.2.1 Add files**<br>
     Add one single file or multiple files into the table.
 

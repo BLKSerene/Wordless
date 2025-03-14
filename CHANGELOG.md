@@ -36,8 +36,8 @@
 - Misc: Disable mouse wheel events for tabs
 
 ### 🔧 Bugfixes
-- File Area: Fix Open Files - Encoding
-- File Area: Fix Open Files - Opening Non-text Files - Do not show this again
+- File Area: Fix Open Corpora - Encoding
+- File Area: Fix Open Corpora - Opening Non-text Files - Do not show this again
 - Utils: Fix matching of inflected forms of tokens/n-grams with tags
 - Utils: Fix Wordless's Japanese kanji tokenizer
 - Work Area: Fix Wordlist Generator - Filter results - Number of syllables
