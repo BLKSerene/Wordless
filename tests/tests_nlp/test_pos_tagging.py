@@ -23,7 +23,7 @@ from wordless.wl_nlp import wl_pos_tagging, wl_texts, wl_word_tokenization
 from wordless.wl_utils import wl_misc
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
-is_windows = wl_misc.check_os()[0]
+is_linux = wl_misc.check_os()[2]
 
 test_pos_taggers = []
 test_pos_taggers_local = []
@@ -34,8 +34,8 @@ for lang, pos_taggers in main.settings_global['pos_taggers'].items():
             test_pos_taggers.append(pytest.param(
                 lang, pos_tagger,
                 marks = pytest.mark.xfail(
-                    not is_windows,
-                    reason = 'macOS: https://github.com/OpenPecha/Botok/issues/76; Linux: Different results on AppVeyor, Azure Pipelines, and GitHub Actions'
+                    is_linux,
+                    reason = 'Different results on AppVeyor, Azure Pipelines, and GitHub Actions'
                 )
             ))
 

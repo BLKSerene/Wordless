@@ -25,15 +25,7 @@ from wordless.wl_utils import wl_misc
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 is_macos = wl_misc.check_os()[1]
 
-test_langs = (
-    ['zho_cn', 'zho_tw', 'eng_us', 'jpn', 'tha']
-    + [pytest.param(
-        'bod',
-        marks = pytest.mark.xfail(is_macos, reason = 'https://github.com/OpenPecha/Botok/issues/76')
-    )]
-    + ['other']
-)
-test_langs_local = ['zho_cn', 'zho_tw', 'eng_us', 'jpn', 'tha', 'bod', 'other']
+test_langs = ('zho_cn', 'zho_tw', 'eng_us', 'jpn', 'tha', 'bod', 'other')
 
 @pytest.mark.parametrize('lang', test_langs)
 def test_word_detokenize(lang):
@@ -80,5 +72,5 @@ def test_word_detokenize(lang):
             raise wl_test_init.Wl_Exc_Tests_Lang_Skipped(lang)
 
 if __name__ == '__main__':
-    for lang in test_langs_local:
+    for lang in test_langs:
         test_word_detokenize(lang)

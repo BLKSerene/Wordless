@@ -21,29 +21,15 @@ import pytest
 
 from tests import wl_test_init, wl_test_lang_examples
 from wordless.wl_nlp import wl_sentence_tokenization
-from wordless.wl_utils import wl_misc
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
-is_macos = wl_misc.check_os()[1]
 
 langs_sentence_tokenize = []
-langs_sentence_tokenize_local = []
 
 for lang, sentence_tokenizers in main.settings_global['sentence_tokenizers'].items():
     for sentence_tokenizer in sentence_tokenizers:
-        if sentence_tokenizer == 'botok_bod':
-            langs_sentence_tokenize.append(pytest.param(
-                lang, sentence_tokenizer,
-                marks = pytest.mark.xfail(
-                    is_macos,
-                    reason = 'https://github.com/OpenPecha/Botok/issues/76'
-                )
-            ))
-
-            langs_sentence_tokenize_local.append((lang, sentence_tokenizer))
-        elif not sentence_tokenizer.startswith(('spacy_', 'stanza_')):
+        if not sentence_tokenizer.startswith(('spacy_', 'stanza_')):
             langs_sentence_tokenize.append((lang, sentence_tokenizer))
-            langs_sentence_tokenize_local.append((lang, sentence_tokenizer))
 
 langs_sentence_split = list(main.settings_global['sentence_tokenizers'].keys())
 
@@ -391,7 +377,7 @@ def test_sentence_tokenize_misc():
     assert wl_sentence_tokenization.wl_sentence_seg_tokenize_tokens(main, tokens = ['a,b', 'c']) == [['a,b', 'c']]
 
 if __name__ == '__main__':
-    for lang, sentence_tokenizer in langs_sentence_tokenize_local:
+    for lang, sentence_tokenizer in langs_sentence_tokenize:
         test_sentence_tokenize(lang, sentence_tokenizer)
 
     for lang in langs_sentence_split:

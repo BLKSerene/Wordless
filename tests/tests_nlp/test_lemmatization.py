@@ -23,7 +23,7 @@ from wordless.wl_nlp import wl_lemmatization, wl_texts, wl_word_tokenization
 from wordless.wl_utils import wl_misc
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
-is_windows = wl_misc.check_os()[0]
+is_linux = wl_misc.check_os()[2]
 
 test_lemmatizers = []
 test_lemmatizers_local = []
@@ -34,8 +34,8 @@ for lang, lemmatizers in main.settings_global['lemmatizers'].items():
             test_lemmatizers.append(pytest.param(
                 lang, lemmatizer,
                 marks = pytest.mark.xfail(
-                    not is_windows,
-                    reason = 'macOS: https://github.com/OpenPecha/Botok/issues/76; Linux: Different results on AppVeyor, Azure Pipelines, and GitHub Actions'
+                    is_linux,
+                    reason = 'Different results on AppVeyor, Azure Pipelines, and GitHub Actions'
                 )
             ))
 

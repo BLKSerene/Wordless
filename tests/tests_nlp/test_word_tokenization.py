@@ -20,26 +20,16 @@ import pytest
 
 from tests import wl_test_init, wl_test_lang_examples
 from wordless.wl_nlp import wl_texts, wl_word_tokenization
-from wordless.wl_utils import wl_misc
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 # Avoid loading spaCy's Japanese model when testing the Japanese kanji tokenizer
 main.settings_default['word_tokenization']['word_tokenizer_settings']['jpn'] = 'sudachipy_jpn_split_mode_a'
-is_macos = wl_misc.check_os()[1]
 
 test_word_tokenizers = []
-test_word_tokenizers_local = []
 
 for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
     for word_tokenizer in word_tokenizers:
-        if word_tokenizer == 'botok_bod':
-            test_word_tokenizers.append(pytest.param(
-                lang, word_tokenizer,
-                marks = pytest.mark.xfail(is_macos, reason = 'https://github.com/OpenPecha/Botok/issues/76')
-            ))
-
-            test_word_tokenizers_local.append((lang, word_tokenizer))
-        elif (
+        if (
             word_tokenizer not in (
                 'spacy_cat', 'spacy_zho', 'spacy_hrv', 'spacy_dan', 'spacy_nld',
                 'spacy_eng', 'spacy_fin', 'spacy_fra', 'spacy_deu', 'spacy_ell',
@@ -58,7 +48,6 @@ for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
             )
         ):
             test_word_tokenizers.append((lang, word_tokenizer))
-            test_word_tokenizers_local.append((lang, word_tokenizer))
 
 @pytest.mark.parametrize('lang, word_tokenizer', test_word_tokenizers)
 def test_word_tokenize(lang, word_tokenizer):
@@ -377,7 +366,7 @@ def test_char_tokenizers():
                 assert tokens == ['The', 'sentence', '``', '天', '気', 'が', 'いい', 'から', '、', '散', '歩', 'し', 'ましょう', '。', '``', 'means', ':', 'The', 'weather', 'is', 'good', 'so', 'let', "'s", 'take', 'a', 'walk', '.', 'あ', '阿', '、', 'a', '阿', '、', 's', 'あ', '、', 'あ', 's', '。', 'あ', 'a']
 
 if __name__ == '__main__':
-    for lang, word_tokenizer in test_word_tokenizers_local:
+    for lang, word_tokenizer in test_word_tokenizers:
         test_word_tokenize(lang, word_tokenizer)
 
     test_char_tokenizers()

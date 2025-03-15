@@ -50,6 +50,7 @@
 
 ### ⏫ Dependency Changes
 - Dependencies: Upgrade Beautiful Soup to 4.13.3
+- Dependencies: Upgrade Botok to 0.9.0
 - Dependencies: Upgrade Charset Normalizer to 3.4.1
 - Dependencies: Upgrade NLTK to 3.9.1
 - Dependencies: Upgrade Pyphen to 0.17.0

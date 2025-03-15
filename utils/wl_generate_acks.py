@@ -42,7 +42,7 @@ ACKS = (
         'MIT', 'https://git.launchpad.net/beautifulsoup/tree/LICENSE'
     ), (
         'Botok', 'https://github.com/OpenPecha/Botok',
-        '0.8.12', 'Hélios Drupchen Hildt',
+        '0.9.0', 'Hélios Drupchen Hildt, Elie Roux, Ngawang Trinley,<br>Tenzin Khenrab, Tenzin Kaldan',
         'Apache-2.0', 'https://github.com/OpenPecha/Botok/blob/master/LICENSE'
     ), (
         'Charset Normalizer', 'https://github.com/Ousret/charset_normalizer',
