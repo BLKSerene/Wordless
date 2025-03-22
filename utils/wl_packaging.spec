@@ -83,6 +83,8 @@ hiddenimports = [
     'sentencepiece',
     # Required by the Ukrainian model
     'transformers',
+    # modern-botok's Tibetan (Modern) model
+    'zh_bo_tagger',
 
     # SciPy
     'scipy._lib.array_api_compat.numpy.fft',

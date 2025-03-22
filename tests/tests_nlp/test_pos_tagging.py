@@ -30,7 +30,7 @@ test_pos_taggers_local = []
 
 for lang, pos_taggers in main.settings_global['pos_taggers'].items():
     for pos_tagger in pos_taggers:
-        if pos_tagger == 'botok_bod':
+        if pos_tagger in ('botok_xct', 'modern_botok_bod'):
             test_pos_taggers.append(pytest.param(
                 lang, pos_tagger,
                 marks = pytest.mark.xfail(
@@ -105,9 +105,11 @@ def test_pos_tag(lang, pos_tagger):
                     results = results_universal = [('ภาษาไทย', 'NOUN'), ('หรือ', 'CCONJ'), ('ภาษาไทย', 'NOUN'), ('กลาง', 'NOUN'), ('เป็น', 'AUX'), ('ภาษา', 'NOUN'), ('ใน', 'ADP'), ('กลุ่ม', 'NOUN'), ('ภาษา', 'NOUN'), ('ไท', 'PROPN'), ('สาขา', 'NOUN'), ('ย่อย', 'ADJ'), ('เชียงแสน', 'PROPN'), ('ซึ่ง', 'DET'), ('เป็น', 'AUX'), ('กลุ่มย่อย', 'NOUN'), ('ของ', 'ADP'), ('ตระกูล', 'NOUN'), ('ภาษา', 'NOUN'), ('ข', 'NOUN'), ('ร้า', 'NOUN'), ('-', 'PUNCT'), ('ไท', 'PROPN'), ('และ', 'CCONJ'), ('เป็น', 'AUX'), ('ภาษาราชการ', 'NOUN'), ('และ', 'CCONJ'), ('ภาษาประจำชาติ', 'NOUN'), ('ของ', 'ADP'), ('ประเทศ', 'NOUN'), ('ไทย', 'PROPN'), ('[3][4]', 'NOUN')]
                 case _:
                     tests_lang_util_skipped = True
-        case 'bod':
+        case 'xct':
             results = [('བོད་', 'PROPN'), ('ཀྱི་', 'PART'), ('སྐད་ཡིག་', 'NOUN'), ('ནི་', 'NO_POS'), ('བོད་ཡུལ་', 'PROPN'), ('དང་', 'NO_POS'), ('ཉེ་འཁོར་', 'NOUN'), ('གྱི་', 'PART'), ('ས་ཁུལ་', 'OTHER'), ('བལ་ཡུལ', 'PROPN'), ('།', 'PUNCT'), ('འབྲུག་', 'NOUN'), ('དང་', 'NO_POS'), ('འབྲས་ལྗོངས', 'OTHER'), ('།', 'PUNCT'), ('ལ་དྭགས་', 'PROPN'), ('ནས་', 'PART'), ('ལྷོ་', 'NOUN'), ('མོན་', 'PROPN'), ('རོང་', 'PROPN'), ('སོགས་', 'DET'), ('སུ་', 'ADP'), ('བེད་སྤྱོད་', 'OTHER'), ('བྱེད་པ', 'VERB'), ('འི་', 'PART'), ('སྐད་ཡིག་', 'NOUN'), ('དེ', 'DET'), ('།', 'PUNCT')]
             results_universal = [('བོད་', 'PROPN'), ('ཀྱི་', 'PART'), ('སྐད་ཡིག་', 'NOUN'), ('ནི་', 'X'), ('བོད་ཡུལ་', 'PROPN'), ('དང་', 'X'), ('ཉེ་འཁོར་', 'NOUN'), ('གྱི་', 'PART'), ('ས་ཁུལ་', 'X'), ('བལ་ཡུལ', 'PROPN'), ('།', 'PUNCT'), ('འབྲུག་', 'NOUN'), ('དང་', 'X'), ('འབྲས་ལྗོངས', 'X'), ('།', 'PUNCT'), ('ལ་དྭགས་', 'PROPN'), ('ནས་', 'PART'), ('ལྷོ་', 'NOUN'), ('མོན་', 'PROPN'), ('རོང་', 'PROPN'), ('སོགས་', 'DET'), ('སུ་', 'ADP'), ('བེད་སྤྱོད་', 'X'), ('བྱེད་པ', 'VERB'), ('འི་', 'PART'), ('སྐད་ཡིག་', 'NOUN'), ('དེ', 'DET'), ('།', 'PUNCT')]
+        case 'bod':
+            results = results_universal = [('བོད་', 'NOUN'), ('ཀྱི་', 'ADP'), ('སྐད་ཡིག་', 'NOUN'), ('ནི་', 'PART'), ('བོད་ཡུལ་', 'PROPN'), ('དང་ཉེ་', 'NOUN'), ('འཁོར་', 'NOUN'), ('གྱི་', 'ADP'), ('ས་ཁུལ་', 'NOUN'), ('བལ་ཡུལ', 'PROPN'), ('།', 'PUNCT'), ('འབྲུག་', 'NOUN'), ('དང་', 'CCONJ'), ('འབྲས་ལྗོངས', 'NOUN'), ('།', 'PUNCT'), ('ལ་དྭགས་', 'PROPN'), ('ནས་', 'ADP'), ('ལྷོ་', 'NOUN'), ('མོན་', 'PROPN'), ('རོང་', 'NOUN'), ('སོགས་', 'NOUN'), ('སུ་', 'ADP'), ('བེད་སྤྱོད་བྱེད་པ', 'VERB'), ('འི་', 'ADP'), ('སྐད་ཡིག་', 'NOUN'), ('དེ', 'PRON'), ('།', 'PUNCT')]
         case 'ukr':
             results = [('Украї́нська', 'ADJF'), ('мо́ва', 'ADJF'), ('(', 'PNCT'), ('МФА', 'UNKN'), (':', 'PNCT'), ('[', 'PNCT'), ('ʊkrɐˈjinʲsʲkɐ', 'UNKN'), ('ˈmɔʋɐ', 'UNKN'), (']', 'PNCT'), (',', 'PNCT'), ('історична', 'ADJF'), ('назва', 'NOUN'), ('—', 'PNCT'), ('ру́ська', 'ADJF'), ('[', 'PNCT'), ('10', 'NUMB'), (']', 'PNCT'), ('[', 'PNCT'), ('11', 'NUMB'), (']', 'PNCT'), ('[', 'PNCT'), ('12', 'NUMB'), (']', 'PNCT'), ('[', 'PNCT'), ('*', 'PNCT'), ('1', 'NUMB'), (']', 'PNCT'), (')', 'PNCT'), ('—', 'PNCT'), ('національна', 'ADJF'), ('мова', 'NOUN'), ('українців', 'NOUN'), ('.', 'PNCT')]
             results_universal = [('Украї́нська', 'ADJ'), ('мо́ва', 'ADJ'), ('(', 'PUNCT'), ('МФА', 'SYM/X'), (':', 'PUNCT'), ('[', 'PUNCT'), ('ʊkrɐˈjinʲsʲkɐ', 'SYM/X'), ('ˈmɔʋɐ', 'SYM/X'), (']', 'PUNCT'), (',', 'PUNCT'), ('історична', 'ADJ'), ('назва', 'NOUN'), ('—', 'PUNCT'), ('ру́ська', 'ADJ'), ('[', 'PUNCT'), ('10', 'NUM'), (']', 'PUNCT'), ('[', 'PUNCT'), ('11', 'NUM'), (']', 'PUNCT'), ('[', 'PUNCT'), ('12', 'NUM'), (']', 'PUNCT'), ('[', 'PUNCT'), ('*', 'PUNCT'), ('1', 'NUM'), (']', 'PUNCT'), (')', 'PUNCT'), ('—', 'PUNCT'), ('національна', 'ADJ'), ('мова', 'NOUN'), ('українців', 'NOUN'), ('.', 'PUNCT')]
@@ -174,14 +176,14 @@ def wl_test_pos_tag_models(lang, pos_tagger, test_sentence, tokens, results, res
     assert tokens_tags_untokenized_universal
     assert tokens_tags_tokenized
     assert tokens_tags_tokenized_universal
-    assert all((tag for token, tag in tokens_tags_untokenized))
-    assert all((tag for token, tag in tokens_tags_untokenized_universal))
-    assert all((tag for token, tag in tokens_tags_tokenized))
-    assert all((tag for token, tag in tokens_tags_tokenized_universal))
+    assert all((tag for _, tag in tokens_tags_untokenized))
+    assert all((tag for _, tag in tokens_tags_untokenized_universal))
+    assert all((tag for _, tag in tokens_tags_tokenized))
+    assert all((tag for _, tag in tokens_tags_tokenized_universal))
 
     # Universal tags should not all be "X"
-    assert any((tag for token, tag in tokens_tags_untokenized_universal if tag != 'X'))
-    assert any((tag for token, tag in tokens_tags_tokenized_universal if tag != 'X'))
+    assert any((tag for _, tag in tokens_tags_untokenized_universal if tag != 'X'))
+    assert any((tag for _, tag in tokens_tags_tokenized_universal if tag != 'X'))
 
     # Tokenization should not be modified
     assert len(tokens) == len(tokens_tags_tokenized) == len(tokens_tags_tokenized_universal)
@@ -208,22 +210,45 @@ def wl_test_pos_tag_models(lang, pos_tagger, test_sentence, tokens, results, res
 
     assert tags_tagged == tags_orig
 
-def test_pos_tag_misc():
-    # Default tagset with universal tagset conversion
+@pytest.mark.parametrize('lang, pos_tagger', test_pos_taggers)
+def test_pos_tag_universal(lang, pos_tagger):
+    for i, _ in enumerate(main.settings_custom['pos_tagging']['tagsets']['mapping_settings'][lang][pos_tagger]):
+        main.settings_custom['pos_tagging']['tagsets']['mapping_settings'][lang][pos_tagger][i][1] = 'TAG'
+        main.settings_custom['pos_tagging']['tagsets']['mapping_settings'][lang][pos_tagger][i][2] = 'CONTENT_FUNCTION'
+
     main.settings_custom['pos_tagging']['pos_tagger_settings']['to_universal_pos_tags'] = True
 
-    wl_pos_tagging.wl_pos_tag(
+    test_sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
+
+    tokens_tagged = wl_pos_tagging.wl_pos_tag(
         main,
-        inputs = getattr(wl_test_lang_examples, 'SENTENCE_ENG_US'),
-        lang = 'eng_us'
+        inputs = test_sentence,
+        lang = lang,
+        pos_tagger = pos_tagger
     )
 
+    for token in tokens_tagged:
+        assert token.tag == '_TAG'
+        assert token.tag_universal == 'TAG'
+        assert token.content_function == 'CONTENT_FUNCTION'
+
     main.settings_custom['pos_tagging']['pos_tagger_settings']['to_universal_pos_tags'] = False
+
+    tokens_tagged = wl_pos_tagging.wl_pos_tag(
+        main,
+        inputs = test_sentence,
+        lang = lang,
+        pos_tagger = pos_tagger
+    )
+
+    for token in tokens_tagged:
+        assert token.tag != '_TAG'
+        assert token.tag_universal == 'TAG'
+        assert token.content_function == 'CONTENT_FUNCTION'
 
 if __name__ == '__main__':
     test_to_content_function()
 
     for lang, pos_tagger in test_pos_taggers_local:
         test_pos_tag(lang, pos_tagger)
-
-    test_pos_tag_misc()
+        test_pos_tag_universal(lang, pos_tagger)

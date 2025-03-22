@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Utilities: Generate acknowledgment files
+# Utilities: Generate - Acknowledgment files
 # Copyright (C) 2018-2025  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -64,6 +64,10 @@ ACKS = (
         'Matplotlib', 'https://matplotlib.org/',
         '3.9.0', 'Matplotlib Development Team',
         'Matplotlib', 'https://matplotlib.org/stable/users/project/license.html'
+    ), (
+        'modern-botok', 'https://github.com/Divergent-Discourses/modern-botok',
+        '1.1.3', 'Robert Barnett, Franz Xaver Erhard, Yuki Kyogoku',
+        'Apache-2.0', 'https://github.com/OpenPecha/Botok/blob/master/LICENSE'
     ), (
         'NetworkX', 'https://networkx.org/',
         '3.3', 'NetworkX Developers, Aric Hagberg, Dan Schult,<br>Pieter Swart',

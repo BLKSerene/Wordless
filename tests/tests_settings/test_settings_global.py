@@ -73,12 +73,12 @@ def check_missing_extra_langs(langs_supported, langs_global, util_type):
     for lang_code in langs_supported:
         lang_code_639_3 = wl_conversion.to_iso_639_3(main, lang_code)
 
-        assert lang_code_639_3 in langs_global, f'''Missing language code for {util_type}: {lang_code_639_3}/{lang_code}!'''
+        assert lang_code_639_3 in langs_global, f'Missing language code for {util_type}: {lang_code_639_3}/{lang_code}!'
 
     for lang_code in langs_global:
         lang_code_639_1 = wl_conversion.to_iso_639_1(main, lang_code)
 
-        assert lang_code_639_1 in langs_supported, f'''Extra language code for {util_type}: {lang_code}/{lang_code_639_1}!'''
+        assert lang_code_639_1 in langs_supported, f'Extra language code for {util_type}: {lang_code}/{lang_code_639_1}!'
 
 def check_missing_extra_langs_default(langs, langs_default, util_type):
     for lang_code in langs:
@@ -174,14 +174,11 @@ def test_settings_global():
 
     for lang_code in settings_word_tokenizers:
         if lang_code != 'other':
-            # Exclude languages without spaces between words
-            if lang_code not in (
-                'amh', 'mya', 'lzh', 'zho_cn', 'zho_tw', 'jpn', 'khm', 'lao', 'tha', 'bod',
-                'vie'
-            ):
-                assert lang_code in langs_nltk_word_tokenizers, f'''Missing language code for NLTK's tokenizers: {lang_code}!'''
+            # Exclude languages without spaces between words and Vietnamese where spaces indicate boundaries of syllables instead of words
+            if lang_code not in wl_nlp_utils.LANGS_WITHOUT_SPACES + ('vie',):
+                assert lang_code in langs_nltk_word_tokenizers, f"Missing language code for NLTK's tokenizers: {lang_code}!"
             else:
-                assert lang_code not in langs_nltk_word_tokenizers, f'''Extra language code for NLTK's tokenizers: {lang_code}!'''
+                assert lang_code not in langs_nltk_word_tokenizers, f"Extra language code for NLTK's tokenizers: {lang_code}!"
 
     # Sacremoses
     langs_sacremoses_supported = []
@@ -280,9 +277,7 @@ def test_settings_global():
         )):
             lang_code_639_1 = wl_conversion.to_iso_639_1(main, lang_code)
 
-            assert lang_code in (
-                'khm', 'tha', 'bod', 'vie'
-            ), f'''Missing language code for spaCy's sentence recognizers or sentencizer: {lang_code}/{lang_code_639_1}!'''
+            assert lang_code in wl_nlp_utils.LANGS_WITHOUT_SPACES + ('vie',), f"Missing language code for spaCy's sentence recognizers or sentencizer: {lang_code}/{lang_code_639_1}!"
 
     for lang_code, word_tokenizers in settings_word_tokenizers.items():
         if (
@@ -376,20 +371,20 @@ def test_settings_global():
         langs_stanza_supported_sentiment_analyzers
     ]):
         for i, lang in enumerate(langs):
-            if lang == 'zh-hans':
-                langs[i] = 'zh_cn'
-            elif lang == 'zh-hant':
-                langs[i] = 'zh_tw'
-            elif lang == 'sme':
-                langs[i] = 'se'
-            elif lang == 'sr':
-                langs[i] = 'sr_latn'
+            match lang:
+                case 'zh-hans':
+                    langs[i] = 'zh_cn'
+                case 'zh-hant':
+                    langs[i] = 'zh_tw'
+                case 'sme':
+                    langs[i] = 'se'
+                case 'sr':
+                    langs[i] = 'sr_latn'
 
         # Excluding code-switching languages : Arabic-French, Turkish-German
-        if 'qaf' in langs:
-            langs.remove('qaf')
-        if 'qtd' in langs:
-            langs.remove('qtd')
+        for lang in ('qaf', 'qtd'):
+            if lang in langs:
+                langs.remove(lang)
 
     langs_stanza_supported_tokenizers = add_lang_suffixes(langs_stanza_supported_tokenizers)
     langs_stanza_supported_pos_taggers = add_lang_suffixes(langs_stanza_supported_pos_taggers)
@@ -398,12 +393,37 @@ def test_settings_global():
     langs_stanza_supported_sentiment_analyzers = add_lang_suffixes(langs_stanza_supported_sentiment_analyzers)
 
     for settings_lang_utils, langs, langs_supported, util_type in (
-        (settings_sentence_tokenizers, langs_stanza_sentence_tokenizers, langs_stanza_supported_tokenizers, 'sentence tokenizer'),
-        (settings_word_tokenizers, langs_stanza_word_tokenizers, langs_stanza_supported_tokenizers, 'word tokenizer'),
-        (settings_pos_taggers, langs_stanza_pos_taggers, langs_stanza_supported_pos_taggers, 'POS tagger'),
-        (settings_lemmatizers, langs_stanza_lemmatizers, langs_stanza_supported_lemmatizers, 'lemmatizer'),
-        (settings_dependency_parsers, langs_stanza_dependency_parsers, langs_stanza_supported_dependency_parsers, 'dependency parser'),
-        (settings_sentiment_analyzers, langs_stanza_sentiment_analyzers, langs_stanza_supported_sentiment_analyzers, 'sentiment analyzer')
+        (
+            settings_sentence_tokenizers,
+            langs_stanza_sentence_tokenizers,
+            langs_stanza_supported_tokenizers,
+            'sentence tokenizer'
+        ), (
+            settings_word_tokenizers,
+            langs_stanza_word_tokenizers,
+            langs_stanza_supported_tokenizers,
+            'word tokenizer'
+        ), (
+            settings_pos_taggers,
+            langs_stanza_pos_taggers,
+            langs_stanza_supported_pos_taggers,
+            'POS tagger'
+        ), (
+            settings_lemmatizers,
+            langs_stanza_lemmatizers,
+            langs_stanza_supported_lemmatizers,
+            'lemmatizer'
+        ), (
+            settings_dependency_parsers,
+            langs_stanza_dependency_parsers,
+            langs_stanza_supported_dependency_parsers,
+            'dependency parser'
+        ), (
+            settings_sentiment_analyzers,
+            langs_stanza_sentiment_analyzers,
+            langs_stanza_supported_sentiment_analyzers,
+            'sentiment analyzer'
+        )
     ):
         for lang_code, lang_utils in settings_lang_utils.items():
             if (
@@ -426,7 +446,7 @@ def test_settings_global():
 
     # Check for missing and extra languages
     settings_langs = [lang[0] for lang in settings_global['langs'].values()]
-    settings_langs_lang_utils = set([
+    settings_langs_lang_utils = {
         *settings_sentence_tokenizers,
         *settings_word_tokenizers,
         *settings_syl_tokenizers,
@@ -435,7 +455,7 @@ def test_settings_global():
         *settings_stop_word_lists,
         *settings_dependency_parsers,
         *settings_sentiment_analyzers
-    ])
+    }
 
     for lang in settings_langs_lang_utils:
         assert lang in settings_langs, f'Missing language: {lang}!'
@@ -445,14 +465,14 @@ def test_settings_global():
 
     # Check for invalid language utils
     for settings_lang_utils, mapping_lang_utils, util_type in (
-        [settings_sentence_tokenizers, 'sentence_tokenizers', 'sentence tokenizers'],
-        [settings_word_tokenizers, 'word_tokenizers', 'word tokenizers'],
-        [settings_syl_tokenizers, 'syl_tokenizers', 'syllable tokenizers'],
-        [settings_pos_taggers, 'pos_taggers', 'POS taggers'],
-        [settings_lemmatizers, 'lemmatizers', 'lemmatizers'],
-        [settings_stop_word_lists, 'stop_word_lists', 'stop word lists'],
-        [settings_dependency_parsers, 'dependency_parsers', 'dependency parsers'],
-        [settings_sentiment_analyzers, 'sentiment_analyzers', 'sentiment analyzers']
+        (settings_sentence_tokenizers, 'sentence_tokenizers', 'sentence tokenizers'),
+        (settings_word_tokenizers, 'word_tokenizers', 'word tokenizers'),
+        (settings_syl_tokenizers, 'syl_tokenizers', 'syllable tokenizers'),
+        (settings_pos_taggers, 'pos_taggers', 'POS taggers'),
+        (settings_lemmatizers, 'lemmatizers', 'lemmatizers'),
+        (settings_stop_word_lists, 'stop_word_lists', 'stop word lists'),
+        (settings_dependency_parsers, 'dependency_parsers', 'dependency parsers'),
+        (settings_sentiment_analyzers, 'sentiment_analyzers', 'sentiment analyzers')
     ):
         lang_utils_registered = main.settings_global['mapping_lang_utils'][mapping_lang_utils].values()
 
@@ -480,10 +500,10 @@ def test_settings_global():
         check_invalid_default_lang_utils(lang_utils, lang_utils_default, util_type)
 
     for lang, stop_word_list in settings_stop_word_lists_default.items():
-        if settings_stop_word_lists[lang] != ['custom']:
+        if settings_stop_word_lists[lang] != ('custom',):
             assert stop_word_list != 'custom', f'Invalid default stop word list: {lang} - {stop_word_list}!'
         else:
-            assert stop_word_list == 'custom'
+            assert stop_word_list == 'custom', f'Invalid default stop word list: {lang} - {stop_word_list}!'
 
     # Check language order
     for settings_global, settings_default, util_type in settings_global_default_util_types:

@@ -21,6 +21,7 @@ import html
 import importlib
 import itertools
 import os
+import pathlib
 import re
 import shutil
 import sys
@@ -52,7 +53,9 @@ from wordless.wl_utils import (
     wl_threading
 )
 
-LANGS_WITHOUT_SPACES = ('mya', 'zho_cn', 'zho_tw', 'khm', 'lao', 'jpn', 'tha', 'bod')
+LANGS_WITHOUT_SPACES = ('mya', 'lzh', 'zho_cn', 'zho_tw', 'khm', 'lao', 'jpn', 'tha', 'xct', 'bod')
+
+is_windows = wl_misc.check_os()[0]
 
 def to_lang_util_code(main, util_type, util_text):
     return main.settings_global['mapping_lang_utils'][util_type][util_text]
@@ -365,8 +368,18 @@ def init_model_spacy(main, lang, sentencizer_only = False):
             else:
                 lang_spacy = lang
 
+            # modern-botok
+            if lang == 'bod':
+                if is_windows:
+                    temp = pathlib.PosixPath
+                    pathlib.PosixPath = pathlib.WindowsPath
+
+                main.__dict__[f'spacy_nlp_{lang}'] = spacy.load('zh_bo_tagger')
+
+                if is_windows:
+                    pathlib.PosixPath = temp
             # Languages with models
-            if lang in LANGS_SPACY:
+            elif lang in LANGS_SPACY:
                 model_name = LANGS_SPACY[lang_spacy]
                 model = importlib.import_module(model_name)
 
@@ -393,15 +406,15 @@ def init_model_spacy(main, lang, sentencizer_only = False):
 def init_model_stanza(main, lang, lang_util, tokenized = False):
     match lang_util:
         case 'sentence_tokenizer' | 'word_tokenizer':
-            processors = ['tokenize']
+            processors = ('tokenize',)
         case 'pos_tagger':
-            processors = ['tokenize', 'pos']
+            processors = ('tokenize', 'pos')
         case 'lemmatizer':
-            processors = ['tokenize', 'pos', 'lemma']
+            processors = ('tokenize', 'pos', 'lemma')
         case 'dependency_parser':
-            processors = ['tokenize', 'pos', 'lemma', 'depparse']
+            processors = ('tokenize', 'pos', 'lemma', 'depparse')
         case 'sentiment_analyzer':
-            processors = ['tokenize', 'sentiment']
+            processors = ('tokenize', 'sentiment')
 
     if lang in get_langs_stanza(main, util_type = 'word_tokenizers'):
         if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
@@ -511,9 +524,14 @@ def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
         if 'python_mecab_ko_mecab' not in main.__dict__:
             main.__dict__['python_mecab_ko_mecab'] = mecab.MeCab()
     # Tibetan
-    elif word_tokenizer == 'botok_bod':
+    elif word_tokenizer == 'botok_xct':
         if 'botok_word_tokenizer' not in main.__dict__:
             main.botok_word_tokenizer = botok.WordTokenizer()
+    elif word_tokenizer == 'modern_botok_bod':
+        if 'modern_botok_word_tokenizer' not in main.__dict__:
+            config = botok.config.Config(dialect_name = 'custom')
+
+            main.modern_botok_word_tokenizer = botok.WordTokenizer(config)
 
 def init_syl_tokenizers(main, lang, syl_tokenizer):
     # NLTK
@@ -561,6 +579,9 @@ def init_pos_taggers(main, lang, pos_tagger, tokenized = False):
             case 'ukr':
                 if 'pymorphy3_morphological_analyzer_ukr' not in main.__dict__:
                     main.pymorphy3_morphological_analyzer_ukr = pymorphy3.MorphAnalyzer(lang = 'uk')
+    # Tibetan
+    elif pos_tagger == 'modern_botok_bod':
+        init_model_spacy(main, 'bod')
 
 def init_lemmatizers(main, lang, lemmatizer, tokenized = False):
     # spaCy

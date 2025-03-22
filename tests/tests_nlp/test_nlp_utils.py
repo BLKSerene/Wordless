@@ -16,8 +16,6 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import pytest
-
 from tests import wl_test_init, wl_test_lang_examples
 from wordless.wl_nlp import wl_nlp_utils
 from wordless.wl_utils import wl_misc
@@ -148,10 +146,7 @@ def test_init_word_tokenizers():
 
     wl_nlp_utils.init_word_tokenizers(main, 'eng_us', 'sudachipy_jpn')
     wl_nlp_utils.init_word_tokenizers(main, 'eng_us', 'python_mecab_ko_mecab')
-
-@pytest.mark.xfail(is_macos, reason = 'https://github.com/OpenPecha/Botok/issues/76')
-def test_init_word_tokenizers_botok():
-    wl_nlp_utils.init_word_tokenizers(main, 'eng_us', 'botok_bod')
+    wl_nlp_utils.init_word_tokenizers(main, 'eng_us', 'botok_xct')
 
 def test_init_syl_tokenizers():
     wl_nlp_utils.init_syl_tokenizers(main, 'eng_us', 'nltk_legality')
@@ -312,7 +307,6 @@ if __name__ == '__main__':
 
     test_init_sentence_tokenizers()
     test_init_word_tokenizers()
-    test_init_word_tokenizers_botok()
     test_init_syl_tokenizers()
     test_init_word_detokenizers()
     test_init_pos_taggers()

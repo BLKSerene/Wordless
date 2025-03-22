@@ -24,6 +24,7 @@
 - Measures: Add effect size - conditional probability / ΔP / mutual information (normalized) / μ-value / pointwise mutual information (squared) / pointwise mutual information (normalized) / relative risk
 - Menu: Add Edit
 - Settings: Add Settings - Measures - Effect Size - Mutual Information / Pointwise Mutual Information / Pointwise Mutual Information (Cubic) / Pointwise Mutual Information (Squared)
+- Utils: Add modern-botok's Tibetan (Modern) sentence tokenizer, word tokenizer, part-of-speech tagger, and lemmatizer
 - Utils: Add spaCy's Kurdish (Kurmanji) and Scottish Gaelic word tokenizers
 - Utils: Add spaCy's stop word lists
 - Utils: Add Stanza's Albanian, Georgian, German (Old), Komi (Zyrian), and Turkish (Ottoman) sentence tokenizers / word tokenizers / part-of-speech taggers / lemmatizers / dependency parsers
@@ -49,6 +50,7 @@
 - Measures: Remove effect size - Log-frequency biased MD / Mutual Dependency
 
 ### ⏫ Dependency Changes
+- Dependencies: Add modern-botok
 - Dependencies: Upgrade Beautiful Soup to 4.13.3
 - Dependencies: Upgrade Botok to 0.9.0
 - Dependencies: Upgrade Charset Normalizer to 3.4.1

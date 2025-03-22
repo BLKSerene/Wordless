@@ -337,7 +337,7 @@ def test_detection_lang():
             'jpn',
             'kor', 'kaz',
             'lat', 'lav', 'lit',
-            'mkd', 'mar', 'mon', # 'msa',
+            'mkd', 'mar', 'mon_cyrl', # 'msa',
             'nno', # 'nob',
             'fas', 'pol', 'por_pt', 'pan_guru',
             'ron', 'rus',

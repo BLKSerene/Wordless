@@ -89,6 +89,8 @@ def detect_lang_text(main, text):
                 lang_code = 'eng_us'
             case 'GERMAN':
                 lang_code = 'deu_de'
+            case 'MONGOLIAN':
+                lang_code = 'mon_cyrl'
             case 'PUNJABI':
                 lang_code = 'pan_guru'
             case 'PORTUGUESE':

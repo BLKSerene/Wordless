@@ -47,7 +47,7 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
 
     # The count of sentences should be exactly 2
     match lang:
-        case 'dan' | 'ita' | 'nob' | 'por_br' | 'por_pt' | 'bod':
+        case 'dan' | 'ita' | 'nob' | 'por_br' | 'por_pt':
             assert len(sentences) == 3
         case 'tha':
             match sentence_tokenizer:
@@ -109,8 +109,8 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
                     assert sentences == ['ภาษาไทย', 'หรือ ภาษาไทยกลาง เป็นภาษาในกลุ่มภาษาไท สาขาย่อยเชียงแสน', 'ซึ่งเป็นกลุ่มย่อยของตระกูลภาษาขร้า-ไท และเป็นภาษาราชการ', 'และภาษาประจำชาติของประเทศไทย[3][4] มีการสันนิษฐานว่าภาษาในตระกูลนี้มีถิ่นกำเนิดจากทางตอนใต้ของประเทศจีน', 'และนักภาษาศาสตร์บางส่วนเสนอว่า ภาษาไทยน่าจะมีความเชื่อมโยงกับตระกูลภาษาออสโตร-เอเชียติก ตระกูลภาษาออสโตรนีเซียน และตระกูลภาษาจีน-ทิเบต']
                 case _:
                     tests_lang_util_skipped = True
-        case 'bod':
-            assert sentences == ['བོད་ཀྱི་སྐད་ཡིག་ནི་བོད་ཡུལ་དང་ཉེ་འཁོར་གྱི་ས་ཁུལ་བལ་ཡུལ། འབྲུག་དང་འབྲས་ལྗོངས། ལ་དྭགས་ནས་ལྷོ་མོན་རོང་སོགས་སུ་བེད་སྤྱོད་བྱེད་པའི་སྐད་ཡིག་དེ།', 'ད་ཆར་ཡོངས་གྲགས་སུ་བོད་ཀྱི་ཡུལ་གྲུ་སྟོད་སྨད་བར་གསུམ་ལ་ལྟོས་ཏེ་ནང་གསེས་རིགས་གསུམ་དུ་ཕྱེ་བ་སྟེ།', 'སྟོད་དབུས་གཙང་གི་སྐད་དང་། བར་ཁམས་པའི་སྐད་དང་། སྨད་ཨ་མདོའི་སྐད་རྣམས་སོ།']
+        case 'xct' | 'bod':
+            assert sentences == ['བོད་ཀྱི་སྐད་ཡིག་ནི་བོད་ཡུལ་དང་ཉེ་འཁོར་གྱི་ས་ཁུལ་བལ་ཡུལ། འབྲུག་དང་འབྲས་ལྗོངས། ལ་དྭགས་ནས་ལྷོ་མོན་རོང་སོགས་སུ་བེད་སྤྱོད་བྱེད་པའི་སྐད་ཡིག་དེ།', 'ད་ཆར་ཡོངས་གྲགས་སུ་བོད་ཀྱི་ཡུལ་གྲུ་སྟོད་སྨད་བར་གསུམ་ལ་ལྟོས་ཏེ་ནང་གསེས་རིགས་གསུམ་དུ་ཕྱེ་བ་སྟེ།']
         case 'tur':
             assert sentences == ["Türkçe ya da Türk dili, Güneydoğu Avrupa ve Batı Asya'da konuşulan, Türk dilleri dil ailesine ait sondan eklemeli bir dildir.", '[10] Türk dilleri ailesinin Oğuz dilleri grubundan bir Batı Oğuz dili olan Osmanlı Türkçesinin devamını oluşturur.']
         case 'vie':
@@ -137,7 +137,7 @@ def test_sentence_split(lang):
     assert all(sentences_split)
 
     match lang:
-        case 'ara' | 'eus' | 'chu' | 'cop' | 'hrv' | 'eng_gb' | 'eng_us' | 'hbo' | 'isl' | 'ind' | 'orv' | 'srp_latn' | 'tha' | 'bod' | 'tur' | 'other':
+        case 'ara' | 'eus' | 'chu' | 'cop' | 'hrv' | 'eng_gb' | 'eng_us' | 'hbo' | 'isl' | 'ind' | 'orv' | 'srp_latn' | 'tha' | 'xct' | 'bod' | 'tur' | 'other':
             assert len(sentences_split) == 1
         case 'xcl' | 'dan' | 'est' | 'grc' | 'kaz' | 'kpv' | 'pcm' | 'nno' | 'slk':
             assert len(sentences_split) == 3
@@ -330,8 +330,8 @@ def test_sentence_seg_tokenize(lang):
             assert sentence_segs == ['తెలుగు ఆంధ్ర,', 'తెలంగాణ రాష్ట్రాలలో మున్నధికారిక నుడి.', 'ఇది ద్రావిడ కుటుంబానికి చెందిన నుడి.']
         case 'tha':
             assert sentence_segs == ['ภาษาไทย หรือ ภาษาไทยกลาง เป็นภาษาในกลุ่มภาษาไท สาขาย่อยเชียงแสน ซึ่งเป็นกลุ่มย่อยของตระกูลภาษาขร้า-ไท และเป็นภาษาราชการ และภาษาประจำชาติของประเทศไทย[3][4] มีการสันนิษฐานว่าภาษาในตระกูลนี้มีถิ่นกำเนิดจากทางตอนใต้ของประเทศจีน และนักภาษาศาสตร์บางส่วนเสนอว่า ภาษาไทยน่าจะมีความเชื่อมโยงกับตระกูลภาษาออสโตร-เอเชียติก ตระกูลภาษาออสโตรนีเซียน และตระกูลภาษาจีน-ทิเบต']
-        case 'bod':
-            assert sentence_segs == ['བོད་ཀྱི་སྐད་ཡིག་ནི་བོད་ཡུལ་དང་ཉེ་འཁོར་གྱི་ས་ཁུལ་བལ་ཡུལ།', 'འབྲུག་དང་འབྲས་ལྗོངས།', 'ལ་དྭགས་ནས་ལྷོ་མོན་རོང་སོགས་སུ་བེད་སྤྱོད་བྱེད་པའི་སྐད་ཡིག་དེ།', 'ད་ཆར་ཡོངས་གྲགས་སུ་བོད་ཀྱི་ཡུལ་གྲུ་སྟོད་སྨད་བར་གསུམ་ལ་ལྟོས་ཏེ་ནང་གསེས་རིགས་གསུམ་དུ་ཕྱེ་བ་སྟེ།', 'སྟོད་དབུས་གཙང་གི་སྐད་དང་།', 'བར་ཁམས་པའི་སྐད་དང་།', 'སྨད་ཨ་མདོའི་སྐད་རྣམས་སོ།']
+        case 'xct' | 'bod':
+            assert sentence_segs == ['བོད་ཀྱི་སྐད་ཡིག་ནི་བོད་ཡུལ་དང་ཉེ་འཁོར་གྱི་ས་ཁུལ་བལ་ཡུལ།', 'འབྲུག་དང་འབྲས་ལྗོངས།', 'ལ་དྭགས་ནས་ལྷོ་མོན་རོང་སོགས་སུ་བེད་སྤྱོད་བྱེད་པའི་སྐད་ཡིག་དེ།', 'ད་ཆར་ཡོངས་གྲགས་སུ་བོད་ཀྱི་ཡུལ་གྲུ་སྟོད་སྨད་བར་གསུམ་ལ་ལྟོས་ཏེ་ནང་གསེས་རིགས་གསུམ་དུ་ཕྱེ་བ་སྟེ།']
         case 'tur':
             assert sentence_segs == ['Türkçe ya da Türk dili,', "Güneydoğu Avrupa ve Batı Asya'da konuşulan,", 'Türk dilleri dil ailesine ait sondan eklemeli bir dildir.', '[10] Türk dilleri ailesinin Oğuz dilleri grubundan bir Batı Oğuz dili olan Osmanlı Türkçesinin devamını oluşturur.']
         case 'ota':

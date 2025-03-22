@@ -164,7 +164,7 @@ def test_syl_tokenize(lang, syl_tokenizer):
             assert syls_tokens == [('Lat', 'vie', 'šu'), ('va', 'lo', 'da'), ('ir',), ('dzim', 'tā'), ('va', 'lo', 'da'), ('ap', 'mē', 'ram'), ('1,5',), ('mil', 'jo', 'niem'), ('cil', 'vē', 'ku'), (',',), ('gal', 've', 'no', 'kārt'), ('Lat', 'vi', 'jā'), (',',), ('kur',), ('tā',), ('ir',), ('vien', 'ī', 'gā'), ('valsts',), ('va', 'lo', 'da.'), ('[',), ('1',), (']',), ('[',), ('3',), (']',)]
         case 'lit':
             assert syls_tokens == [('Lie', 'tu', 'vių'), ('kal', 'ba'), ('–',), ('iš',), ('bal', 'tų'), ('pro', 'kal', 'bės'), ('ki', 'lu', 'si'), ('lie', 'tu', 'vių'), ('tau', 'tos'), ('kal', 'ba'), (',',), ('ku', 'ri'), ('Lie', 'tu', 'vo', 'je'), ('yra',), ('vals', 'ty', 'bi', 'nė'), (',',), ('o',), ('Eu', 'ro', 'pos'), ('Są', 'jun', 'go', 'je'), ('–',), ('vie', 'na'), ('iš',), ('ofi', 'cia', 'lių', 'jų'), ('kal', 'bų'), ('.',)]
-        case 'mon':
+        case 'mon_cyrl':
             assert syls_tokens == [('Мон', 'гол'), ('хэл',), ('нь',), ('Мон', 'гол'), ('ул', 'сын'), ('ал', 'бан'), ('ёс', 'ны'), ('хэл',), ('юм',), ('.',)]
         case 'nob':
             assert syls_tokens == [('Bok', 'mål'), ('er',), ('en',), ('av',), ('to',), ('of', 'fi', 'si', 'el', 'le'), ('mål', 'for', 'mer'), ('av',), ('norsk',), ('skrift', 'språk'), (',',), ('hvor', 'av'), ('den',), ('and', 're'), ('er',), ('ny', 'norsk'), ('.',)]

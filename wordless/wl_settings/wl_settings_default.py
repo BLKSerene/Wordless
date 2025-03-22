@@ -48,7 +48,7 @@ from wordless.wl_tagsets import (
     wl_tagset_spa_universal,
     wl_tagset_tha_blackboard,
     wl_tagset_tha_orchid,
-    wl_tagset_bod_botok,
+    wl_tagset_xct_botok,
     wl_tagset_ukr_universal,
     wl_tagset_vie_underthesea,
     wl_tagset_xcl_universal
@@ -1384,7 +1384,8 @@ def init_settings_default(main):
                 'tam': 'stanza_tam',
                 'tel': 'stanza_tel',
                 'tha': 'pythainlp_crfcut',
-                'bod': 'botok_bod',
+                'xct': 'botok_xct',
+                'bod': 'modern_botok_bod',
                 'tur': 'stanza_tur',
                 'ota': 'stanza_ota',
                 'ukr': 'spacy_dependency_parser_ukr',
@@ -1515,7 +1516,8 @@ def init_settings_default(main):
                 'tel': 'stanza_tel',
                 'tdt': 'sacremoses_moses',
                 'tha': 'pythainlp_max_matching_tcc',
-                'bod': 'botok_bod',
+                'xct': 'botok_xct',
+                'bod': 'modern_botok_bod',
                 'tir': 'spacy_tir',
                 'tsn': 'spacy_tsn',
                 'tur': 'stanza_tur',
@@ -1567,7 +1569,7 @@ def init_settings_default(main):
                 'ita': 'pyphen_ita',
                 'lav': 'pyphen_lav',
                 'lit': 'pyphen_lit',
-                'mon': 'pyphen_mon',
+                'mon_cyrl': 'pyphen_mon_cyrl',
                 'nob': 'pyphen_nob',
                 'nno': 'pyphen_nno',
                 'pol': 'pyphen_pol',
@@ -1684,7 +1686,8 @@ def init_settings_default(main):
                     'tam': 'stanza_tam',
                     'tel': 'stanza_tel',
                     'tha': 'pythainlp_perceptron_pud',
-                    'bod': 'botok_bod',
+                    'xct': 'botok_xct',
+                    'bod': 'modern_botok_bod',
                     'tur': 'stanza_tur',
                     'ota': 'stanza_ota',
                     'ukr': 'spacy_ukr',
@@ -1859,8 +1862,11 @@ def init_settings_default(main):
                         'pythainlp_perceptron_pud': copy.deepcopy(wl_tagset_eng_universal.tagset_mapping)
                     },
 
+                    'xct': {
+                        'botok_xct': copy.deepcopy(wl_tagset_xct_botok.tagset_mapping)
+                    },
                     'bod': {
-                        'botok_bod': wl_tagset_bod_botok.tagset_mapping
+                        'modern_botok_bod': copy.deepcopy(wl_tagset_eng_universal.tagset_mapping)
                     },
 
                     'ukr': {
@@ -1965,7 +1971,8 @@ def init_settings_default(main):
                 'swe': 'spacy_swe',
                 'tgl': 'simplemma_tgl',
                 'tam': 'stanza_tam',
-                'bod': 'botok_bod',
+                'xct': 'botok_xct',
+                'bod': 'modern_botok_bod',
                 'tur': 'stanza_tur',
                 'ota': 'stanza_ota',
                 'ukr': 'spacy_ukr',
@@ -2259,7 +2266,7 @@ def init_settings_default(main):
                 'mlt': 'vader_mlt',
                 'mni_mtei': 'vader_mni_mtei',
                 'mar': 'stanza_mar',
-                'mon': 'vader_mon',
+                'mon_cyrl': 'vader_mon_cyrl',
                 'nep': 'vader_nep',
                 'nob': 'vader_nob',
                 'ori': 'vader_ori',

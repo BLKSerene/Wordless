@@ -53,7 +53,7 @@ def test_wl_settings_pos_tagging_tagsets_universal_tagsets():
 
     for mappings in main.settings_default['pos_tagging']['tagsets']['mapping_settings'].values():
         for pos_tagger in mappings:
-            if pos_tagger.startswith('spacy_'):
+            if pos_tagger.startswith('spacy_') or pos_tagger == 'modern_botok_bod':
                 universal_tagsets_spacy.add(pos_tagger)
             elif pos_tagger.startswith('stanza_'):
                 universal_tagsets_stanza.add(pos_tagger)

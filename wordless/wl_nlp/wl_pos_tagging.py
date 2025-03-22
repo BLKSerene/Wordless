@@ -33,7 +33,8 @@ _tr = QtCore.QCoreApplication.translate
 
 UNIVERSAL_TAGSETS_SPACY = {
     'spacy_cat', 'spacy_dan', 'spacy_fra', 'spacy_ell', 'spacy_mkd',
-    'spacy_nob', 'spacy_por', 'spacy_rus', 'spacy_spa', 'spacy_ukr'
+    'spacy_nob', 'spacy_por', 'spacy_rus', 'spacy_spa', 'spacy_ukr',
+    'modern_botok_bod'
 }
 UNIVERSAL_TAGSETS_STANZA = {
     'stanza_sqi', 'stanza_xcl', 'stanza_hye', 'stanza_hyw', 'stanza_eus',
@@ -44,18 +45,13 @@ UNIVERSAL_TAGSETS_STANZA = {
 }
 
 def to_content_function(universal_pos_tag):
-    if universal_pos_tag in (
-        'ADJ', 'ADV', 'INTJ', 'NOUN', 'PROPN', 'NUM', 'VERB', 'SYM', 'X',
-        'NOUN/NUM', 'SYM/X'
-    ):
-        return _tr('wl_pos_tagging', 'Content words')
-    elif universal_pos_tag in (
-        'ADP', 'AUX', 'CONJ', 'CCONJ', 'SCONJ', 'DET', 'PART', 'PRON', 'PUNCT',
-        'ADP/SCONJ', 'PUNCT/SYM'
-    ):
-        return _tr('wl_pos_tagging', 'Function words')
-    else:
-        return None
+    match universal_pos_tag:
+        case 'ADJ' | 'ADV' | 'INTJ' | 'NOUN' | 'PROPN' | 'NUM' | 'VERB' | 'SYM' | 'X' | 'NOUN/NUM' | 'SYM/X':
+            return _tr('wl_pos_tagging', 'Content words')
+        case 'ADP' | 'AUX' | 'CONJ' | 'CCONJ' | 'SCONJ' | 'DET' | 'PART' | 'PRON' | 'PUNCT' | 'ADP/SCONJ' | 'PUNCT/SYM':
+            return _tr('wl_pos_tagging', 'Function words')
+        case _:
+            return None
 
 def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', force = False):
     if (
@@ -94,8 +90,8 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', f
         tags_universal = []
 
         if isinstance(inputs, str):
-            # spaCy
-            if pos_tagger.startswith('spacy_'):
+            # spaCy and modern-botok
+            if pos_tagger.startswith('spacy_') or pos_tagger == 'modern_botok_bod':
                 lang_spacy = wl_conversion.remove_lang_code_suffixes(main, lang)
                 nlp = main.__dict__[f'spacy_nlp_{lang_spacy}']
                 lines = (line.strip() for line in inputs.splitlines() if line.strip())
@@ -109,13 +105,18 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', f
                         for token in doc:
                             texts_tagged.append(token.text)
 
-                            match tagset:
-                                case 'default' | 'raw':
-                                    tags.append(token.tag_)
-                                # Convert empty universal POS tags to "X" (e.g. those for numbers in the Romanian model)
-                                case 'universal':
-                                    tags.append(token.pos_.strip() if token.pos_.strip() else 'X')
+                            # modern-botok's model has no fine-grained POS tags
+                            if pos_tagger == 'modern_botok_bod':
+                                tags.append(token.pos_)
+                            else:
+                                match tagset:
+                                    case 'default' | 'raw':
+                                        tags.append(token.tag_)
+                                    # Convert empty universal POS tags to "X" (e.g. those for numbers in the Romanian model)
+                                    case 'universal':
+                                        tags.append(token.pos_.strip() if token.pos_.strip() else 'X')
 
+                            # Apply custom mappings only to spaCy's models not adopting the Universal Dependencies tagset
                             if pos_tagger not in UNIVERSAL_TAGSETS_SPACY:
                                 # Convert empty universal POS tags to "X" (e.g. those for numbers in the Romanian model)
                                 tags_universal.append(token.pos_.strip() if token.pos_.strip() else 'X')
@@ -140,6 +141,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', f
                                 case 'universal':
                                     tags.append(token.upos)
 
+                            # Apply custom mappings only to Stanza's models not adopting the Universal Dependencies tagset
                             if pos_tagger not in UNIVERSAL_TAGSETS_STANZA:
                                 tags_universal.append(token.upos)
             else:
@@ -151,8 +153,8 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', f
         else:
             texts, token_properties = wl_texts.split_texts_properties(inputs)
 
-            # spaCy
-            if pos_tagger.startswith('spacy_'):
+            # spaCy and modern-botok
+            if pos_tagger.startswith('spacy_') or pos_tagger == 'modern_botok_bod':
                 lang_spacy = wl_conversion.remove_lang_code_suffixes(main, lang)
                 nlp = main.__dict__[f'spacy_nlp_{lang_spacy}']
 
@@ -175,13 +177,18 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', f
                         for token in doc:
                             texts_tagged.append(token.text)
 
-                            match tagset:
-                                case 'default' | 'raw':
-                                    tags.append(token.tag_)
-                                # Convert empty universal POS tags to "X" (e.g. those for numbers in the Romanian model)
-                                case 'universal':
-                                    tags.append(token.pos_.strip() if token.pos_.strip() else 'X')
+                            # modern-botok's model has no fine-grained POS tags
+                            if pos_tagger == 'modern_botok_bod':
+                                tags.append(token.pos_)
+                            else:
+                                match tagset:
+                                    case 'default' | 'raw':
+                                        tags.append(token.tag_)
+                                    # Convert empty universal POS tags to "X" (e.g. those for numbers in the Romanian model)
+                                    case 'universal':
+                                        tags.append(token.pos_.strip() if token.pos_.strip() else 'X')
 
+                            # Apply custom mappings only to spaCy's models not adopting the Universal Dependencies tagset
                             if pos_tagger not in UNIVERSAL_TAGSETS_SPACY:
                                 # Convert empty universal POS tags to "X" (e.g. those for numbers in the Romanian model)
                                 tags_universal.append(token.pos_.strip() if token.pos_.strip() else 'X')
@@ -208,6 +215,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', f
                                 case 'universal':
                                     tags.append(token.upos)
 
+                            # Apply custom mappings only to Stanza's models not adopting the Universal Dependencies tagset
                             if pos_tagger not in UNIVERSAL_TAGSETS_STANZA:
                                 tags_universal.append(token.upos)
             else:
@@ -217,6 +225,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', f
                     texts_tagged.extend(results[0])
                     tags.extend(results[1])
 
+        # Custom mapping is available only for spaCy's and Stanza's models adopting the Universal Dependencies tagset and other POS taggers
         if (
             not pos_tagger.startswith(('spacy_', 'stanza_'))
             or pos_tagger in UNIVERSAL_TAGSETS_SPACY | UNIVERSAL_TAGSETS_STANZA
@@ -242,12 +251,13 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', f
             tags = wl_nlp_utils.align_tokens(texts, texts_tagged, tags)
             tags_universal = wl_nlp_utils.align_tokens(texts, texts_tagged, tags_universal)
 
-        # Convert to content/function words
+        # Convert to content/function words using universal POS tags for spaCy's and Stanza's models not adopting the Universal Dependencies tagset
         if (
             pos_tagger.startswith(('spacy_', 'stanza_'))
             and pos_tagger not in UNIVERSAL_TAGSETS_SPACY | UNIVERSAL_TAGSETS_STANZA
         ):
             content_functions = [to_content_function(tag) for tag in tags_universal]
+        # Convert to content/function words using raw POS tags for spaCy's and Stanza's models adopting the Universal Dependencies tagsets and other POS taggers
         else:
             mappings = {
                 tag: content_function
@@ -256,7 +266,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', f
 
             content_functions = [mappings[tag] for tag in tags]
 
-        # Convert to universal POS tags
+        # Convert to universal POS tags for spaCy's and Stanza's models adopting the Universal Dependencies tagset and other POS taggers
         if (
             tagset == 'universal'
             and (
@@ -319,82 +329,81 @@ def wl_pos_tag_text(main, text, lang, pos_tagger):
     tokens_tagged = []
     tags = []
 
-    # English & Russian
-    if pos_tagger.startswith('nltk_perceptron_'):
-        tokens = wl_word_tokenization.wl_word_tokenize_flat(main, text, lang = lang)
-        tokens = wl_texts.to_token_texts(tokens)
-        lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+    match pos_tagger:
+        # English & Russian
+        case 'nltk_perceptron_eng' | 'nltk_perceptron_rus':
+            tokens = wl_word_tokenization.wl_word_tokenize_flat(main, text, lang = lang)
+            tokens = wl_texts.to_token_texts(tokens)
+            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
-        for token, tag in nltk.pos_tag(tokens, lang = lang):
-            tokens_tagged.append(token)
-            tags.append(tag)
-    # Japanese
-    elif pos_tagger == 'sudachipy_jpn':
-        for token in main.sudachipy_word_tokenizer.tokenize(text):
-            tokens_tagged.append(token.surface())
-            tags.append('-'.join((pos for pos in token.part_of_speech()[:4] if pos != '*')))
-    # Khmer
-    elif pos_tagger == 'khmer_nltk_khm':
-        for token, tag in khmernltk.pos_tag(text):
-            tokens_tagged.append(token)
-            tags.append(tag)
-    # Korean
-    elif pos_tagger == 'python_mecab_ko_mecab':
-        for token, tag in main.python_mecab_ko_mecab.pos(text):
-            tokens_tagged.append(token)
-            tags.append(tag)
-    # Lao
-    elif pos_tagger.startswith('laonlp_'):
-        tokens = wl_word_tokenization.wl_word_tokenize_flat(main, text, lang = lang)
-        tokens = wl_texts.to_token_texts(tokens)
+            for token, tag in nltk.pos_tag(tokens, lang = lang):
+                tokens_tagged.append(token)
+                tags.append(tag)
+        # Japanese
+        case 'sudachipy_jpn':
+            for token in main.sudachipy_word_tokenizer.tokenize(text):
+                tokens_tagged.append(token.surface())
+                tags.append('-'.join((pos for pos in token.part_of_speech()[:4] if pos != '*')))
+        # Khmer
+        case 'khmer_nltk_khm':
+            for token, tag in khmernltk.pos_tag(text):
+                tokens_tagged.append(token)
+                tags.append(tag)
+        # Korean
+        case 'python_mecab_ko_mecab':
+            for token, tag in main.python_mecab_ko_mecab.pos(text):
+                tokens_tagged.append(token)
+                tags.append(tag)
+        # Lao
+        case 'laonlp_seqlabeling' | 'laonlp_yunshan_cup_2020':
+            tokens = wl_word_tokenization.wl_word_tokenize_flat(main, text, lang = lang)
+            tokens = wl_texts.to_token_texts(tokens)
 
-        if pos_tagger == 'laonlp_seqlabeling':
-            results = laonlp.pos_tag(tokens, corpus = 'SeqLabeling')
-        if pos_tagger == 'laonlp_yunshan_cup_2020':
-            results = laonlp.pos_tag(tokens, corpus = 'yunshan_cup_2020')
+            if pos_tagger == 'laonlp_seqlabeling':
+                results = laonlp.pos_tag(tokens, corpus = 'SeqLabeling')
+            if pos_tagger == 'laonlp_yunshan_cup_2020':
+                results = laonlp.pos_tag(tokens, corpus = 'yunshan_cup_2020')
 
-        tokens_tagged = [token for token, _ in results]
-        tags = [tag for _, tag in results]
-    # Russian & Ukrainian
-    elif pos_tagger == 'pymorphy3_morphological_analyzer':
-        match lang:
-            case 'rus':
-                morphological_analyzer = main.pymorphy3_morphological_analyzer_rus
-            case 'ukr':
-                morphological_analyzer = main.pymorphy3_morphological_analyzer_ukr
+            tokens_tagged = [token for token, _ in results]
+            tags = [tag for _, tag in results]
+        # Russian & Ukrainian
+        case 'pymorphy3_morphological_analyzer':
+            match lang:
+                case 'rus':
+                    morphological_analyzer = main.pymorphy3_morphological_analyzer_rus
+                case 'ukr':
+                    morphological_analyzer = main.pymorphy3_morphological_analyzer_ukr
 
-        tokens = wl_word_tokenization.wl_word_tokenize_flat(main, text, lang = lang)
+            tokens = wl_word_tokenization.wl_word_tokenize_flat(main, text, lang = lang)
 
-        for token in tokens:
-            tokens_tagged.append(token)
-            tags.append(morphological_analyzer.parse(token)[0].tag._POS)
-    # Thai
-    elif pos_tagger.startswith('pythainlp_'):
-        tokens = wl_word_tokenization.wl_word_tokenize_flat(main, text, lang = lang)
-        tokens = wl_texts.to_token_texts(tokens)
+            for token in tokens:
+                tokens_tagged.append(token)
+                tags.append(morphological_analyzer.parse(token)[0].tag._POS)
+        # Thai
+        case 'pythainlp_perceptron_blackboard' | 'pythainlp_perceptron_orchid' | 'pythainlp_perceptron_pud':
+            tokens = wl_word_tokenization.wl_word_tokenize_flat(main, text, lang = lang)
+            tokens = wl_texts.to_token_texts(tokens)
 
-        match pos_tagger:
-            case 'pythainlp_perceptron_blackboard':
-                results = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'blackboard')
-            case 'pythainlp_perceptron_orchid':
-                results = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'orchid')
-            case 'pythainlp_perceptron_pud':
-                results = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'pud')
+            match pos_tagger:
+                case 'pythainlp_perceptron_blackboard':
+                    results = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'blackboard')
+                case 'pythainlp_perceptron_orchid':
+                    results = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'orchid')
+                case 'pythainlp_perceptron_pud':
+                    results = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'pud')
 
-        tokens_tagged = [token for token, _ in results]
-        tags = [tag for _, tag in results]
-    # Tibetan
-    elif pos_tagger == 'botok_bod':
-        tokens = main.botok_word_tokenizer.tokenize(text)
-
-        for token in tokens:
-            tokens_tagged.append(token.text)
-            tags.append(token.pos if token.pos else token.chunk_type)
-    # Vietnamese
-    elif pos_tagger == 'underthesea_vie':
-        for token, tag in underthesea.pos_tag(text):
-            tokens_tagged.append(token)
-            tags.append(tag)
+            tokens_tagged = [token for token, _ in results]
+            tags = [tag for _, tag in results]
+        # Tibetan
+        case 'botok_xct':
+            for token in main.__dict__['botok_word_tokenizer'].tokenize(text):
+                tokens_tagged.append(token.text)
+                tags.append(token.pos if token.pos else token.chunk_type)
+        # Vietnamese
+        case 'underthesea_vie':
+            for token, tag in underthesea.pos_tag(text):
+                tokens_tagged.append(token)
+                tags.append(tag)
 
     return tokens_tagged, tags
 
@@ -404,76 +413,77 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger):
 
     lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
-    # English & Russian
-    if pos_tagger.startswith('nltk_perceptron_'):
-        lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+    match pos_tagger:
+        # English & Russian
+        case 'nltk_perceptron_eng' | 'nltk_perceptron_rus':
+            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
-        for token, tag in nltk.pos_tag(tokens, lang = lang):
-            tokens_tagged.append(token)
-            tags.append(tag)
-    # Japanese
-    elif pos_tagger == 'sudachipy_jpn':
-        for token in main.sudachipy_word_tokenizer.tokenize(''.join(tokens)):
-            tokens_tagged.append(token.surface())
-            tags.append('-'.join((
-                pos
-                for pos in token.part_of_speech()[:4]
-                if pos != '*'
-            )))
-    # Khmer
-    elif pos_tagger == 'khmer_nltk_khm':
-        for token, tag in khmernltk.pos_tag(''.join(tokens)):
-            tokens_tagged.append(token)
-            tags.append(tag)
-    # Korean
-    elif pos_tagger == 'python_mecab_ko_mecab':
-        tokens_tagged, tags = wl_pos_tag_text(
-            main,
-            ' '.join(tokens),
-            lang = 'kor',
-            pos_tagger = 'python_mecab_ko_mecab'
-        )
-    # Lao
-    elif pos_tagger.startswith('laonlp_'):
-        if pos_tagger == 'laonlp_seqlabeling':
-            results = laonlp.pos_tag(tokens, corpus = 'SeqLabeling')
-        if pos_tagger == 'laonlp_yunshan_cup_2020':
-            results = laonlp.pos_tag(tokens, corpus = 'yunshan_cup_2020')
+            for token, tag in nltk.pos_tag(tokens, lang = lang):
+                tokens_tagged.append(token)
+                tags.append(tag)
+        # Japanese
+        case 'sudachipy_jpn':
+            for token in main.sudachipy_word_tokenizer.tokenize(''.join(tokens)):
+                tokens_tagged.append(token.surface())
+                tags.append('-'.join((
+                    pos
+                    for pos in token.part_of_speech()[:4]
+                    if pos != '*'
+                )))
+        # Khmer
+        case 'khmer_nltk_khm':
+            for token, tag in khmernltk.pos_tag(''.join(tokens)):
+                tokens_tagged.append(token)
+                tags.append(tag)
+        # Korean
+        case 'python_mecab_ko_mecab':
+            tokens_tagged, tags = wl_pos_tag_text(
+                main,
+                ' '.join(tokens),
+                lang = 'kor',
+                pos_tagger = 'python_mecab_ko_mecab'
+            )
+        # Lao
+        case 'laonlp_seqlabeling' | 'laonlp_yunshan_cup_2020':
+            if pos_tagger == 'laonlp_seqlabeling':
+                results = laonlp.pos_tag(tokens, corpus = 'SeqLabeling')
+            if pos_tagger == 'laonlp_yunshan_cup_2020':
+                results = laonlp.pos_tag(tokens, corpus = 'yunshan_cup_2020')
 
-        tokens_tagged = [token for token, _ in results]
-        tags = [tag for _, tag in results]
-    # Russian & Ukrainian
-    elif pos_tagger == 'pymorphy3_morphological_analyzer':
-        match lang:
-            case 'rus':
-                morphological_analyzer = main.pymorphy3_morphological_analyzer_rus
-            case 'ukr':
-                morphological_analyzer = main.pymorphy3_morphological_analyzer_ukr
+            tokens_tagged = [token for token, _ in results]
+            tags = [tag for _, tag in results]
+        # Russian & Ukrainian
+        case 'pymorphy3_morphological_analyzer':
+            match lang:
+                case 'rus':
+                    morphological_analyzer = main.pymorphy3_morphological_analyzer_rus
+                case 'ukr':
+                    morphological_analyzer = main.pymorphy3_morphological_analyzer_ukr
 
-        for token in tokens:
-            tokens_tagged.append(token)
-            tags.append(morphological_analyzer.parse(token)[0].tag._POS)
-    # Thai
-    elif pos_tagger.startswith('pythainlp_'):
-        match pos_tagger:
-            case 'pythainlp_perceptron_blackboard':
-                results = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'blackboard')
-            case 'pythainlp_perceptron_orchid':
-                results = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'orchid')
-            case 'pythainlp_perceptron_pud':
-                results = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'pud')
+            for token in tokens:
+                tokens_tagged.append(token)
+                tags.append(morphological_analyzer.parse(token)[0].tag._POS)
+        # Thai
+        case 'pythainlp_perceptron_blackboard' | 'pythainlp_perceptron_orchid' | 'pythainlp_perceptron_pud':
+            match pos_tagger:
+                case 'pythainlp_perceptron_blackboard':
+                    results = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'blackboard')
+                case 'pythainlp_perceptron_orchid':
+                    results = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'orchid')
+                case 'pythainlp_perceptron_pud':
+                    results = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'pud')
 
-        tokens_tagged = [token for token, _ in results]
-        tags = [tag for _, tag in results]
-    # Tibetan
-    elif pos_tagger == 'botok_bod':
-        for token in main.botok_word_tokenizer.tokenize(''.join(tokens)):
-            tokens_tagged.append(token.text)
-            tags.append(token.pos if token.pos else token.chunk_type)
-    # Vietnamese
-    elif pos_tagger == 'underthesea_vie':
-        for token, tag in underthesea.pos_tag(' '.join(tokens)):
-            tokens_tagged.append(token)
-            tags.append(tag)
+            tokens_tagged = [token for token, _ in results]
+            tags = [tag for _, tag in results]
+        # Tibetan
+        case 'botok_xct':
+            for token in main.__dict__['botok_word_tokenizer'].tokenize(''.join(tokens)):
+                tokens_tagged.append(token.text)
+                tags.append(token.pos if token.pos else token.chunk_type)
+        # Vietnamese
+        case 'underthesea_vie':
+            for token, tag in underthesea.pos_tag(' '.join(tokens)):
+                tokens_tagged.append(token)
+                tags.append(tag)
 
     return tokens_tagged, tags

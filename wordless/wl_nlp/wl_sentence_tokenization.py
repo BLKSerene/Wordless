@@ -127,10 +127,14 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
             elif sentence_tokenizer == 'pythainlp_thaisumcut':
                 sentences.extend(pythainlp.sent_tokenize(line, engine = 'thaisum'))
             # Tibetan
-            elif sentence_tokenizer == 'botok_bod':
-                wl_nlp_utils.init_word_tokenizers(main, lang = 'bod')
+            elif sentence_tokenizer in ('botok_xct', 'modern_botok_bod'):
+                wl_nlp_utils.init_word_tokenizers(main, lang = lang)
 
-                tokens = main.botok_word_tokenizer.tokenize(line)
+                match lang:
+                    case 'xct':
+                        tokens = main.botok_word_tokenizer.tokenize(line)
+                    case 'bod':
+                        tokens = main.modern_botok_word_tokenizer.tokenize(line)
 
                 for sentence_tokens in botok.sentence_tokenizer(tokens):
                     sentences.append(''.join([

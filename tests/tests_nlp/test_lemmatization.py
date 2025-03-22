@@ -30,7 +30,7 @@ test_lemmatizers_local = []
 
 for lang, lemmatizers in main.settings_global['lemmatizers'].items():
     for lemmatizer in lemmatizers:
-        if lemmatizer == 'botok_bod':
+        if lemmatizer in ('botok_xct', 'modern_botok_bod'):
             test_lemmatizers.append(pytest.param(
                 lang, lemmatizer,
                 marks = pytest.mark.xfail(
@@ -221,8 +221,10 @@ def test_lemmatize(lang, lemmatizer):
                     results = ['Ang', 'wikang', 'Tagalog[1', ']', '(', 'Baybayin:ᜏᜒᜃᜅ᜔', 'ᜆᜄᜎᜓᜄ᜔', ')', ',', 'o', 'ang', 'Tagalog', ',', 'ay', 'isa', 'sa', 'mga', 'pinakaginagamit', 'na', 'wika', 'ng', 'Pilipinas', '.']
                 case _:
                     tests_lang_util_skipped = True
-        case 'bod':
+        case 'xct':
             results = ['བོད་', 'གི་', 'སྐད་ཡིག་', 'ནི་', 'བོད་ཡུལ་', 'དང་', 'ཉེ་འཁོར་', 'གི་', 'ས་ཁུལ་', 'བལ་ཡུལ་', '།', 'འབྲུག་', 'དང་', 'འབྲས་ལྗོངས་', '།', 'ལ་དྭགས་', 'ནས་', 'ལྷོ་', 'མོན་', 'རོང་', 'སོགས་', 'སུ་', 'བེད་སྤྱོད་', 'བྱེད་པ་', 'གི་', 'སྐད་ཡིག་', 'དེ་', '།']
+        case 'bod':
+            results = ['བོད་', 'གི་', 'སྐད་ཡིག་', 'ནི་', 'བོད་ཡུལ་', 'དང་ཉེ་', 'འཁོ་', 'གི་', 'ས་ཁུལ་', 'བལ་ཡུལ་', '།', 'འབྲུག་', 'དང་', 'འབྲས་ལྗོངས་', '།', 'ལ་དྭགས་', 'ནས་', 'ལྷོ་', 'མོན་', 'རོང་', 'སོགས་', 'སུ་', 'བེད་སྤྱོད་', 'བྱེད་པ་', 'གི་', 'སྐད་ཡིག་', 'དེ་', '།']
         case 'tur':
             match lemmatizer:
                 case 'simplemma_tur':

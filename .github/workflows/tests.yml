@@ -43,7 +43,8 @@ jobs:
           # For Codecov
           pip install pytest-cov
           # Download models and data files
-          python utils/wl_downloader_ci.py
+          python utils/wl_download_ci.py
+          python utils/wl_download_modern_botok.py
 
       - name: Run Tests and collect coverage
         run: |
@@ -104,7 +105,8 @@ jobs:
           # Install spacy-pkuseg separately with "--no-deps" to avoid depending on NumPy 2
           pip install --no-deps spacy-pkuseg
           # Download models and data files
-          python utils/wl_downloader_ci.py
+          python utils/wl_download_ci.py
+          python utils/wl_download_modern_botok.py
 
       - name: Run Tests
         run: |
@@ -158,7 +160,8 @@ jobs:
           python -m pip install --upgrade pip setuptools
           pip install --requirement requirements/requirements_tests.txt
           # Download models and data files
-          python utils/wl_downloader_ci.py
+          python utils/wl_download_ci.py
+          python utils/wl_download_modern_botok.py
 
       - name: Run Tests
         run: |

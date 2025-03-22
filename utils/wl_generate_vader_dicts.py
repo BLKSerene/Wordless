@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Utilities: Generate multilingual sentiment dictionaries for VADER
+# Utilities: Generate - Multilingual sentiment dictionaries for VADER
 # Copyright (C) 2018-2025  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify

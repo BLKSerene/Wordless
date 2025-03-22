@@ -33,134 +33,135 @@ def init_settings_global():
     SETTINGS_GLOBAL = {
         # Language names should be always capitalized
         'langs': {
-            _tr('wl_settings_global', 'Afrikaans'): ['afr', 'af'],
-            _tr('wl_settings_global', 'Albanian'): ['sqi', 'sq'],
-            _tr('wl_settings_global', 'Amharic'): ['amh', 'am'],
-            _tr('wl_settings_global', 'Arabic'): ['ara', 'ar'],
-            _tr('wl_settings_global', 'Armenian (Classical)'): ['xcl', 'xcl'],
-            _tr('wl_settings_global', 'Armenian (Eastern)'): ['hye', 'hy'],
-            _tr('wl_settings_global', 'Armenian (Western)'): ['hyw', 'hyw'],
-            _tr('wl_settings_global', 'Assamese'): ['asm', 'as'],
-            _tr('wl_settings_global', 'Asturian'): ['ast', 'ast'],
-            _tr('wl_settings_global', 'Azerbaijani'): ['aze', 'az'],
-            _tr('wl_settings_global', 'Basque'): ['eus', 'eu'],
-            _tr('wl_settings_global', 'Belarusian'): ['bel', 'be'],
-            _tr('wl_settings_global', 'Bengali'): ['ben', 'bn'],
-            _tr('wl_settings_global', 'Bulgarian'): ['bul', 'bg'],
-            _tr('wl_settings_global', 'Burmese'): ['mya', 'my'],
-            _tr('wl_settings_global', 'Buryat (Russia)'): ['bxr', 'bxr'],
-            _tr('wl_settings_global', 'Catalan'): ['cat', 'ca'],
-            _tr('wl_settings_global', 'Chinese (Classical)'): ['lzh', 'lzh'],
-            _tr('wl_settings_global', 'Chinese (Simplified)'): ['zho_cn', 'zh_cn'],
-            _tr('wl_settings_global', 'Chinese (Traditional)'): ['zho_tw', 'zh_tw'],
-            _tr('wl_settings_global', 'Church Slavonic (Old)'): ['chu', 'cu'],
-            _tr('wl_settings_global', 'Coptic'): ['cop', 'cop'],
-            _tr('wl_settings_global', 'Croatian'): ['hrv', 'hr'],
-            _tr('wl_settings_global', 'Czech'): ['ces', 'cs'],
-            _tr('wl_settings_global', 'Danish'): ['dan', 'da'],
-            _tr('wl_settings_global', 'Dutch'): ['nld', 'nl'],
-            _tr('wl_settings_global', 'English (Middle)'): ['enm', 'enm'],
-            _tr('wl_settings_global', 'English (Old)'): ['ang', 'ang'],
-            _tr('wl_settings_global', 'English (United Kingdom)'): ['eng_gb', 'en_gb'],
-            _tr('wl_settings_global', 'English (United States)'): ['eng_us', 'en_us'],
-            _tr('wl_settings_global', 'Erzya'): ['myv', 'myv'],
-            _tr('wl_settings_global', 'Esperanto'): ['epo', 'eo'],
-            _tr('wl_settings_global', 'Estonian'): ['est', 'et'],
-            _tr('wl_settings_global', 'Faroese'): ['fao', 'fo'],
-            _tr('wl_settings_global', 'Finnish'): ['fin', 'fi'],
-            _tr('wl_settings_global', 'French'): ['fra', 'fr'],
-            _tr('wl_settings_global', 'French (Old)'): ['fro', 'fro'],
-            _tr('wl_settings_global', 'Galician'): ['glg', 'gl'],
-            _tr('wl_settings_global', 'Ganda'): ['lug', 'lg'],
-            _tr('wl_settings_global', 'Georgian'): ['kat', 'ka'],
-            _tr('wl_settings_global', 'German (Austria)'): ['deu_at', 'de_at'],
-            _tr('wl_settings_global', 'German (Germany)'): ['deu_de', 'de_de'],
-            _tr('wl_settings_global', 'German (Low)'): ['nds', 'nds'],
-            _tr('wl_settings_global', 'German (Switzerland)'): ['deu_ch', 'de_ch'],
-            _tr('wl_settings_global', 'Gothic'): ['got', 'got'],
-            _tr('wl_settings_global', 'Greek (Ancient)'): ['grc', 'grc'],
-            _tr('wl_settings_global', 'Greek (Modern)'): ['ell', 'el'],
-            _tr('wl_settings_global', 'Gujarati'): ['guj', 'gu'],
-            _tr('wl_settings_global', 'Hebrew (Ancient)'): ['hbo', 'hbo'],
-            _tr('wl_settings_global', 'Hebrew (Modern)'): ['heb', 'he'],
-            _tr('wl_settings_global', 'Hindi'): ['hin', 'hi'],
-            _tr('wl_settings_global', 'Hungarian'): ['hun', 'hu'],
-            _tr('wl_settings_global', 'Icelandic'): ['isl', 'is'],
-            _tr('wl_settings_global', 'Indonesian'): ['ind', 'id'],
-            _tr('wl_settings_global', 'Irish'): ['gle', 'ga'],
-            _tr('wl_settings_global', 'Italian'): ['ita', 'it'],
-            _tr('wl_settings_global', 'Japanese'): ['jpn', 'ja'],
-            _tr('wl_settings_global', 'Kannada'): ['kan', 'kn'],
-            _tr('wl_settings_global', 'Kazakh'): ['kaz', 'kk'],
-            _tr('wl_settings_global', 'Khmer'): ['khm', 'km'],
-            _tr('wl_settings_global', 'Komi (Zyrian)'): ['kpv', 'kpv'],
-            _tr('wl_settings_global', 'Korean'): ['kor', 'ko'],
-            _tr('wl_settings_global', 'Kurdish (Kurmanji)'): ['kmr', 'kmr'],
-            _tr('wl_settings_global', 'Kyrgyz'): ['kir', 'ky'],
-            _tr('wl_settings_global', 'Lao'): ['lao', 'lo'],
-            _tr('wl_settings_global', 'Latin'): ['lat', 'la'],
-            _tr('wl_settings_global', 'Latvian'): ['lav', 'lv'],
-            _tr('wl_settings_global', 'Ligurian'): ['lij', 'lij'],
-            _tr('wl_settings_global', 'Lithuanian'): ['lit', 'lt'],
-            _tr('wl_settings_global', 'Luxembourgish'): ['ltz', 'lb'],
-            _tr('wl_settings_global', 'Macedonian'): ['mkd', 'mk'],
-            _tr('wl_settings_global', 'Malay'): ['msa', 'ms'],
-            _tr('wl_settings_global', 'Malayalam'): ['mal', 'ml'],
-            _tr('wl_settings_global', 'Maltese'): ['mlt', 'mt'],
-            _tr('wl_settings_global', 'Manipuri (Meitei Mayek script)'): ['mni_mtei', 'mni_mtei'],
-            _tr('wl_settings_global', 'Manx'): ['glv', 'gv'],
-            _tr('wl_settings_global', 'Marathi'): ['mar', 'mr'],
-            _tr('wl_settings_global', 'Mongolian'): ['mon', 'mn'],
-            _tr('wl_settings_global', 'Nepali'): ['nep', 'ne'],
-            _tr('wl_settings_global', 'Nigerian Pidgin'): ['pcm', 'pcm'],
-            _tr('wl_settings_global', 'Norwegian (Bokmål)'): ['nob', 'nb'],
-            _tr('wl_settings_global', 'Norwegian (Nynorsk)'): ['nno', 'nn'],
-            _tr('wl_settings_global', 'Oriya'): ['ori', 'or'],
-            _tr('wl_settings_global', 'Panjabi (Gurmukhi script)'): ['pan_guru', 'pa_guru'],
-            _tr('wl_settings_global', 'Persian'): ['fas', 'fa'],
-            _tr('wl_settings_global', 'Polish'): ['pol', 'pl'],
-            _tr('wl_settings_global', 'Pomak'): ['qpm', 'qpm'],
-            _tr('wl_settings_global', 'Portuguese (Brazil)'): ['por_br', 'pt_br'],
-            _tr('wl_settings_global', 'Portuguese (Portugal)'): ['por_pt', 'pt_pt'],
-            _tr('wl_settings_global', 'Romanian'): ['ron', 'ro'],
-            _tr('wl_settings_global', 'Russian'): ['rus', 'ru'],
-            _tr('wl_settings_global', 'Russian (Old)'): ['orv', 'orv'],
-            _tr('wl_settings_global', 'Sámi (Northern)'): ['sme', 'se'],
-            _tr('wl_settings_global', 'Sanskrit'): ['san', 'sa'],
-            _tr('wl_settings_global', 'Scottish Gaelic'): ['gla', 'gd'],
-            _tr('wl_settings_global', 'Serbian (Cyrillic script)'): ['srp_cyrl', 'sr_cyrl'],
-            _tr('wl_settings_global', 'Serbian (Latin script)'): ['srp_latn', 'sr_latn'],
-            _tr('wl_settings_global', 'Sindhi'): ['snd', 'sd'],
-            _tr('wl_settings_global', 'Sinhala'): ['sin', 'si'],
-            _tr('wl_settings_global', 'Slovak'): ['slk', 'sk'],
-            _tr('wl_settings_global', 'Slovenian'): ['slv', 'sl'],
-            _tr('wl_settings_global', 'Sorbian (Lower)'): ['dsb', 'dsb'],
-            _tr('wl_settings_global', 'Sorbian (Upper)'): ['hsb', 'hsb'],
-            _tr('wl_settings_global', 'Spanish'): ['spa', 'es'],
-            _tr('wl_settings_global', 'Swahili'): ['swa', 'sw'],
-            _tr('wl_settings_global', 'Swedish'): ['swe', 'sv'],
-            _tr('wl_settings_global', 'Tagalog'): ['tgl', 'tl'],
-            _tr('wl_settings_global', 'Tajik'): ['tgk', 'tg'],
-            _tr('wl_settings_global', 'Tamil'): ['tam', 'ta'],
-            _tr('wl_settings_global', 'Tatar'): ['tat', 'tt'],
-            _tr('wl_settings_global', 'Telugu'): ['tel', 'te'],
-            _tr('wl_settings_global', 'Tetun (Dili)'): ['tdt', 'tdt'],
-            _tr('wl_settings_global', 'Thai'): ['tha', 'th'],
-            _tr('wl_settings_global', 'Tibetan'): ['bod', 'bo'],
-            _tr('wl_settings_global', 'Tigrinya'): ['tir', 'ti'],
-            _tr('wl_settings_global', 'Tswana'): ['tsn', 'tn'],
-            _tr('wl_settings_global', 'Turkish'): ['tur', 'tr'],
-            _tr('wl_settings_global', 'Turkish (Ottoman)'): ['ota', 'ota'],
-            _tr('wl_settings_global', 'Ukrainian'): ['ukr', 'uk'],
-            _tr('wl_settings_global', 'Urdu'): ['urd', 'ur'],
-            _tr('wl_settings_global', 'Uyghur'): ['uig', 'ug'],
-            _tr('wl_settings_global', 'Vietnamese'): ['vie', 'vi'],
-            _tr('wl_settings_global', 'Welsh'): ['cym', 'cy'],
-            _tr('wl_settings_global', 'Wolof'): ['wol', 'wo'],
-            _tr('wl_settings_global', 'Yoruba'): ['yor', 'yo'],
-            _tr('wl_settings_global', 'Zulu'): ['zul', 'zu'],
+            _tr('wl_settings_global', 'Afrikaans'): ('afr', 'af'),
+            _tr('wl_settings_global', 'Albanian'): ('sqi', 'sq'),
+            _tr('wl_settings_global', 'Amharic'): ('amh', 'am'),
+            _tr('wl_settings_global', 'Arabic'): ('ara', 'ar'),
+            _tr('wl_settings_global', 'Armenian (Classical)'): ('xcl', 'xcl'),
+            _tr('wl_settings_global', 'Armenian (Eastern)'): ('hye', 'hy'),
+            _tr('wl_settings_global', 'Armenian (Western)'): ('hyw', 'hyw'),
+            _tr('wl_settings_global', 'Assamese'): ('asm', 'as'),
+            _tr('wl_settings_global', 'Asturian'): ('ast', 'ast'),
+            _tr('wl_settings_global', 'Azerbaijani'): ('aze', 'az'),
+            _tr('wl_settings_global', 'Basque'): ('eus', 'eu'),
+            _tr('wl_settings_global', 'Belarusian'): ('bel', 'be'),
+            _tr('wl_settings_global', 'Bengali'): ('ben', 'bn'),
+            _tr('wl_settings_global', 'Bulgarian'): ('bul', 'bg'),
+            _tr('wl_settings_global', 'Burmese'): ('mya', 'my'),
+            _tr('wl_settings_global', 'Buryat (Russia)'): ('bxr', 'bxr'),
+            _tr('wl_settings_global', 'Catalan'): ('cat', 'ca'),
+            _tr('wl_settings_global', 'Chinese (Classical)'): ('lzh', 'lzh'),
+            _tr('wl_settings_global', 'Chinese (Simplified)'): ('zho_cn', 'zh_cn'),
+            _tr('wl_settings_global', 'Chinese (Traditional)'): ('zho_tw', 'zh_tw'),
+            _tr('wl_settings_global', 'Church Slavonic (Old)'): ('chu', 'cu'),
+            _tr('wl_settings_global', 'Coptic'): ('cop', 'cop'),
+            _tr('wl_settings_global', 'Croatian'): ('hrv', 'hr'),
+            _tr('wl_settings_global', 'Czech'): ('ces', 'cs'),
+            _tr('wl_settings_global', 'Danish'): ('dan', 'da'),
+            _tr('wl_settings_global', 'Dutch'): ('nld', 'nl'),
+            _tr('wl_settings_global', 'English (Middle)'): ('enm', 'enm'),
+            _tr('wl_settings_global', 'English (Old)'): ('ang', 'ang'),
+            _tr('wl_settings_global', 'English (United Kingdom)'): ('eng_gb', 'en_gb'),
+            _tr('wl_settings_global', 'English (United States)'): ('eng_us', 'en_us'),
+            _tr('wl_settings_global', 'Erzya'): ('myv', 'myv'),
+            _tr('wl_settings_global', 'Esperanto'): ('epo', 'eo'),
+            _tr('wl_settings_global', 'Estonian'): ('est', 'et'),
+            _tr('wl_settings_global', 'Faroese'): ('fao', 'fo'),
+            _tr('wl_settings_global', 'Finnish'): ('fin', 'fi'),
+            _tr('wl_settings_global', 'French'): ('fra', 'fr'),
+            _tr('wl_settings_global', 'French (Old)'): ('fro', 'fro'),
+            _tr('wl_settings_global', 'Galician'): ('glg', 'gl'),
+            _tr('wl_settings_global', 'Ganda'): ('lug', 'lg'),
+            _tr('wl_settings_global', 'Georgian'): ('kat', 'ka'),
+            _tr('wl_settings_global', 'German (Austria)'): ('deu_at', 'de_at'),
+            _tr('wl_settings_global', 'German (Germany)'): ('deu_de', 'de_de'),
+            _tr('wl_settings_global', 'German (Low)'): ('nds', 'nds'),
+            _tr('wl_settings_global', 'German (Switzerland)'): ('deu_ch', 'de_ch'),
+            _tr('wl_settings_global', 'Gothic'): ('got', 'got'),
+            _tr('wl_settings_global', 'Greek (Ancient)'): ('grc', 'grc'),
+            _tr('wl_settings_global', 'Greek (Modern)'): ('ell', 'el'),
+            _tr('wl_settings_global', 'Gujarati'): ('guj', 'gu'),
+            _tr('wl_settings_global', 'Hebrew (Ancient)'): ('hbo', 'hbo'),
+            _tr('wl_settings_global', 'Hebrew (Modern)'): ('heb', 'he'),
+            _tr('wl_settings_global', 'Hindi'): ('hin', 'hi'),
+            _tr('wl_settings_global', 'Hungarian'): ('hun', 'hu'),
+            _tr('wl_settings_global', 'Icelandic'): ('isl', 'is'),
+            _tr('wl_settings_global', 'Indonesian'): ('ind', 'id'),
+            _tr('wl_settings_global', 'Irish'): ('gle', 'ga'),
+            _tr('wl_settings_global', 'Italian'): ('ita', 'it'),
+            _tr('wl_settings_global', 'Japanese'): ('jpn', 'ja'),
+            _tr('wl_settings_global', 'Kannada'): ('kan', 'kn'),
+            _tr('wl_settings_global', 'Kazakh'): ('kaz', 'kk'),
+            _tr('wl_settings_global', 'Khmer'): ('khm', 'km'),
+            _tr('wl_settings_global', 'Komi (Zyrian)'): ('kpv', 'kpv'),
+            _tr('wl_settings_global', 'Korean'): ('kor', 'ko'),
+            _tr('wl_settings_global', 'Kurdish (Kurmanji)'): ('kmr', 'kmr'),
+            _tr('wl_settings_global', 'Kyrgyz'): ('kir', 'ky'),
+            _tr('wl_settings_global', 'Lao'): ('lao', 'lo'),
+            _tr('wl_settings_global', 'Latin'): ('lat', 'la'),
+            _tr('wl_settings_global', 'Latvian'): ('lav', 'lv'),
+            _tr('wl_settings_global', 'Ligurian'): ('lij', 'lij'),
+            _tr('wl_settings_global', 'Lithuanian'): ('lit', 'lt'),
+            _tr('wl_settings_global', 'Luxembourgish'): ('ltz', 'lb'),
+            _tr('wl_settings_global', 'Macedonian'): ('mkd', 'mk'),
+            _tr('wl_settings_global', 'Malay'): ('msa', 'ms'),
+            _tr('wl_settings_global', 'Malayalam'): ('mal', 'ml'),
+            _tr('wl_settings_global', 'Maltese'): ('mlt', 'mt'),
+            _tr('wl_settings_global', 'Manipuri (Meitei Mayek script)'): ('mni_mtei', 'mni_mtei'),
+            _tr('wl_settings_global', 'Manx'): ('glv', 'gv'),
+            _tr('wl_settings_global', 'Marathi'): ('mar', 'mr'),
+            _tr('wl_settings_global', 'Mongolian (Cyrillic script)'): ('mon_cyrl', 'mn_cyrl'),
+            _tr('wl_settings_global', 'Nepali'): ('nep', 'ne'),
+            _tr('wl_settings_global', 'Nigerian Pidgin'): ('pcm', 'pcm'),
+            _tr('wl_settings_global', 'Norwegian (Bokmål)'): ('nob', 'nb'),
+            _tr('wl_settings_global', 'Norwegian (Nynorsk)'): ('nno', 'nn'),
+            _tr('wl_settings_global', 'Oriya'): ('ori', 'or'),
+            _tr('wl_settings_global', 'Panjabi (Gurmukhi script)'): ('pan_guru', 'pa_guru'),
+            _tr('wl_settings_global', 'Persian'): ('fas', 'fa'),
+            _tr('wl_settings_global', 'Polish'): ('pol', 'pl'),
+            _tr('wl_settings_global', 'Pomak'): ('qpm', 'qpm'),
+            _tr('wl_settings_global', 'Portuguese (Brazil)'): ('por_br', 'pt_br'),
+            _tr('wl_settings_global', 'Portuguese (Portugal)'): ('por_pt', 'pt_pt'),
+            _tr('wl_settings_global', 'Romanian'): ('ron', 'ro'),
+            _tr('wl_settings_global', 'Russian'): ('rus', 'ru'),
+            _tr('wl_settings_global', 'Russian (Old)'): ('orv', 'orv'),
+            _tr('wl_settings_global', 'Sámi (Northern)'): ('sme', 'se'),
+            _tr('wl_settings_global', 'Sanskrit'): ('san', 'sa'),
+            _tr('wl_settings_global', 'Scottish Gaelic'): ('gla', 'gd'),
+            _tr('wl_settings_global', 'Serbian (Cyrillic script)'): ('srp_cyrl', 'sr_cyrl'),
+            _tr('wl_settings_global', 'Serbian (Latin script)'): ('srp_latn', 'sr_latn'),
+            _tr('wl_settings_global', 'Sindhi'): ('snd', 'sd'),
+            _tr('wl_settings_global', 'Sinhala'): ('sin', 'si'),
+            _tr('wl_settings_global', 'Slovak'): ('slk', 'sk'),
+            _tr('wl_settings_global', 'Slovenian'): ('slv', 'sl'),
+            _tr('wl_settings_global', 'Sorbian (Lower)'): ('dsb', 'dsb'),
+            _tr('wl_settings_global', 'Sorbian (Upper)'): ('hsb', 'hsb'),
+            _tr('wl_settings_global', 'Spanish'): ('spa', 'es'),
+            _tr('wl_settings_global', 'Swahili'): ('swa', 'sw'),
+            _tr('wl_settings_global', 'Swedish'): ('swe', 'sv'),
+            _tr('wl_settings_global', 'Tagalog'): ('tgl', 'tl'),
+            _tr('wl_settings_global', 'Tajik'): ('tgk', 'tg'),
+            _tr('wl_settings_global', 'Tamil'): ('tam', 'ta'),
+            _tr('wl_settings_global', 'Tatar'): ('tat', 'tt'),
+            _tr('wl_settings_global', 'Telugu'): ('tel', 'te'),
+            _tr('wl_settings_global', 'Tetun (Dili)'): ('tdt', 'tdt'),
+            _tr('wl_settings_global', 'Thai'): ('tha', 'th'),
+            _tr('wl_settings_global', 'Tibetan (Classical)'): ('xct', 'xct'),
+            _tr('wl_settings_global', 'Tibetan (Modern)'): ('bod', 'bo'),
+            _tr('wl_settings_global', 'Tigrinya'): ('tir', 'ti'),
+            _tr('wl_settings_global', 'Tswana'): ('tsn', 'tn'),
+            _tr('wl_settings_global', 'Turkish'): ('tur', 'tr'),
+            _tr('wl_settings_global', 'Turkish (Ottoman)'): ('ota', 'ota'),
+            _tr('wl_settings_global', 'Ukrainian'): ('ukr', 'uk'),
+            _tr('wl_settings_global', 'Urdu'): ('urd', 'ur'),
+            _tr('wl_settings_global', 'Uyghur'): ('uig', 'ug'),
+            _tr('wl_settings_global', 'Vietnamese'): ('vie', 'vi'),
+            _tr('wl_settings_global', 'Welsh'): ('cym', 'cy'),
+            _tr('wl_settings_global', 'Wolof'): ('wol', 'wo'),
+            _tr('wl_settings_global', 'Yoruba'): ('yor', 'yo'),
+            _tr('wl_settings_global', 'Zulu'): ('zul', 'zu'),
 
-            _tr('wl_settings_global', 'Other languages'): ['other', 'other']
+            _tr('wl_settings_global', 'Other languages'): ('other', 'other')
         },
 
         # Language and geographical names should be always capitalized
@@ -307,7 +308,7 @@ def init_settings_global():
 
         # Names of file types are always pluralized but not capitalized
         'file_types': {
-            'files': [
+            'files': (
                 _tr('wl_settings_global', 'CSV files (*.csv)'),
                 _tr('wl_settings_global', 'Excel workbooks (*.xlsx)'),
                 _tr('wl_settings_global', 'HTML pages (*.htm; *.html)'),
@@ -319,30 +320,30 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Word documents (*.docx)'),
                 _tr('wl_settings_global', 'XML files (*.xml)'),
                 _tr('wl_settings_global', 'All files (*.*)')
-            ],
+            ),
 
-            'exp_tables': [
+            'exp_tables': (
                 _tr('wl_settings_global', 'CSV files (*.csv)'),
                 _tr('wl_settings_global', 'Excel workbooks (*.xlsx)')
-            ],
-            'exp_tables_concordancer': [
+            ),
+            'exp_tables_concordancer': (
                 _tr('wl_settings_global', 'CSV files (*.csv)'),
                 _tr('wl_settings_global', 'Excel workbooks (*.xlsx)'),
                 _tr('wl_settings_global', 'Word documents (*.docx)')
-            ],
-            'exp_tables_concordancer_zapping': [
-                _tr('wl_settings_global', 'Word documents (*.docx)')
-            ],
+            ),
+            'exp_tables_concordancer_zapping': (
+                _tr('wl_settings_global', 'Word documents (*.docx)'),
+            ),
 
-            'fonts': [
+            'fonts': (
                 _tr('wl_settings_global', 'OpenType fonts (*.otf)'),
                 _tr('wl_settings_global', 'TrueType fonts (*.ttf)'),
                 _tr('wl_settings_global', 'All files (*.*)')
-            ],
+            ),
 
             # All image formats supported by Pillow
             # Reference: https://stackoverflow.com/questions/71112986/retrieve-a-list-of-supported-read-file-extensions-formats
-            'masks': [
+            'masks': (
                 _tr('wl_settings_global', 'Blizzard mipmap format (*.blp)'),
                 _tr('wl_settings_global', 'Windows bitmaps (*.bmp)'),
                 _tr('wl_settings_global', 'Window cursor files (*.cur)'),
@@ -381,15 +382,17 @@ def init_settings_global():
                 _tr('wl_settings_global', 'X pixmaps (*.xpm)'),
                 _tr('wl_settings_global', 'XV thumbnails (*)'),
                 _tr('wl_settings_global', 'All files (*.*)')
-            ],
+            )
         },
 
         # Only language names and proper nouns are capitalized in names of language utilities
         'mapping_lang_utils': {
             'sentence_tokenizers': {
-                _tr('wl_settings_global', 'botok - Tibetan sentence tokenizer'): 'botok_bod',
+                _tr('wl_settings_global', 'Botok - Tibetan (Classical) sentence tokenizer'): 'botok_xct',
                 _tr('wl_settings_global', 'khmer-nltk - Khmer sentence tokenizer'): 'khmer_nltk_khm',
                 _tr('wl_settings_global', 'LaoNLP - Lao sentence tokenizer'): 'laonlp_lao',
+
+                _tr('wl_settings_global', 'modern-botok - Tibetan (Modern) sentence tokenizer'): 'modern_botok_bod',
 
                 _tr('wl_settings_global', 'NLTK - Czech Punkt sentence tokenizer'): 'nltk_punkt_ces',
                 _tr('wl_settings_global', 'NLTK - Danish Punkt sentence tokenizer'): 'nltk_punkt_dan',
@@ -550,9 +553,11 @@ def init_settings_global():
             },
 
             'word_tokenizers': {
-                _tr('wl_settings_global', 'botok - Tibetan word tokenizer'): 'botok_bod',
+                _tr('wl_settings_global', 'Botok - Tibetan (Classical) word tokenizer'): 'botok_xct',
                 _tr('wl_settings_global', 'khmer-nltk - Khmer word tokenizer'): 'khmer_nltk_khm',
                 _tr('wl_settings_global', 'LaoNLP - Lao word tokenizer'): 'laonlp_lao',
+
+                _tr('wl_settings_global', 'modern-botok - Tibetan (Modern) word tokenizer'): 'modern_botok_bod',
 
                 _tr('wl_settings_global', 'NLTK - NIST tokenizer'): 'nltk_nist',
                 _tr('wl_settings_global', 'NLTK - NLTK tokenizer'): 'nltk_nltk',
@@ -775,7 +780,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Pyphen - Italian syllable tokenizer'): 'pyphen_ita',
                 _tr('wl_settings_global', 'Pyphen - Lithuanian syllable tokenizer'): 'pyphen_lit',
                 _tr('wl_settings_global', 'Pyphen - Latvian syllable tokenizer'): 'pyphen_lav',
-                _tr('wl_settings_global', 'Pyphen - Mongolian syllable tokenizer'): 'pyphen_mon',
+                _tr('wl_settings_global', 'Pyphen - Mongolian (Cyrillic) syllable tokenizer'): 'pyphen_mon_cyrl',
                 _tr('wl_settings_global', 'Pyphen - Norwegian (Bokmål) syllable tokenizer'): 'pyphen_nob',
                 _tr('wl_settings_global', 'Pyphen - Norwegian (Nynorsk) syllable tokenizer'): 'pyphen_nno',
                 _tr('wl_settings_global', 'Pyphen - Polish syllable tokenizer'): 'pyphen_pol',
@@ -799,8 +804,10 @@ def init_settings_global():
             },
 
             'pos_taggers': {
-                _tr('wl_settings_global', 'botok - Tibetan part-of-speech tagger'): 'botok_bod',
+                _tr('wl_settings_global', 'Botok - Tibetan (Classical) part-of-speech tagger'): 'botok_xct',
                 _tr('wl_settings_global', 'khmer-nltk - Khmer part-of-speech tagger'): 'khmer_nltk_khm',
+
+                _tr('wl_settings_global', 'modern-botok - Tibetan (Modern) part-of-speech tagger'): 'modern_botok_bod',
 
                 'LaoNLP - SeqLabeling': 'laonlp_seqlabeling',
                 _tr('wl_settings_global', 'LaoNLP - Yunshan Cup 2020'): 'laonlp_yunshan_cup_2020',
@@ -932,9 +939,11 @@ def init_settings_global():
             },
 
             'lemmatizers': {
-                _tr('wl_settings_global', 'botok - Tibetan lemmatizer'): 'botok_bod',
+                _tr('wl_settings_global', 'Botok - Tibetan (Classical) lemmatizer'): 'botok_xct',
                 _tr('wl_settings_global', 'NLTK - WordNet lemmatizer'): 'nltk_wordnet',
                 _tr('wl_settings_global', 'pymorphy3 - Morphological analyzer'): 'pymorphy3_morphological_analyzer',
+
+                _tr('wl_settings_global', 'modern-botok - Tibetan (Modern) lemmatizer'): 'modern_botok_bod',
 
                 _tr('wl_settings_global', 'simplemma - Albanian lemmatizer'): 'simplemma_sqi',
                 _tr('wl_settings_global', 'simplemma - Armenian lemmatizer'): 'simplemma_hye',
@@ -1220,7 +1229,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Custom stop word list'): 'custom',
             },
 
-            'dependency_parsers':{
+            'dependency_parsers': {
                 _tr('wl_settings_global', 'spaCy - Catalan dependency parser'): 'spacy_cat',
                 _tr('wl_settings_global', 'spaCy - Chinese dependency parser'): 'spacy_zho',
                 _tr('wl_settings_global', 'spaCy - Croatian dependency parser'): 'spacy_hrv',
@@ -1399,7 +1408,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'VADER - Maltese sentiment analyzer'): 'vader_mlt',
                 _tr('wl_settings_global', 'VADER - Manipuri (Meitei Mayek script) sentiment analyzer'): 'vader_mni_mtei',
                 _tr('wl_settings_global', 'VADER - Marathi sentiment analyzer'): 'vader_mar',
-                _tr('wl_settings_global', 'VADER - Mongolian sentiment analyzer'): 'vader_mon',
+                _tr('wl_settings_global', 'VADER - Mongolian (Cyrillic) sentiment analyzer'): 'vader_mon_cyrl',
                 _tr('wl_settings_global', 'VADER - Nepali sentiment analyzer'): 'vader_nep',
                 # References:
                 #     https://support.google.com/translate/thread/1818911/norwegin-translate-is-in-bokm%C3%A5l-or-nynorsk?hl=en
@@ -1440,2477 +1449,2485 @@ def init_settings_global():
         },
 
         'sentence_tokenizers': {
-            'afr': [
+            'afr': (
                 'spacy_sentencizer',
                 'stanza_afr'
-            ],
+            ),
 
-            'sqi': [
+            'sqi': (
                 'spacy_sentencizer',
                 'stanza_sqi'
-            ],
+            ),
 
-            'ara': [
+            'ara': (
                 'spacy_sentencizer',
                 'stanza_ara'
-            ],
+            ),
 
-            'xcl': [
+            'xcl': (
                 'spacy_sentencizer',
                 'stanza_xcl'
-            ],
-            'hye': [
+            ),
+            'hye': (
                 'spacy_sentencizer',
                 'stanza_hye'
-            ],
-            'hyw': [
+            ),
+            'hyw': (
                 'spacy_sentencizer',
                 'stanza_hyw'
-            ],
+            ),
 
-            'eus': [
+            'eus': (
                 'spacy_sentencizer',
                 'stanza_eus'
-            ],
+            ),
 
-            'bel': [
+            'bel': (
                 'spacy_sentencizer',
                 'stanza_bel'
-            ],
+            ),
 
-            'bul': [
+            'bul': (
                 'spacy_sentencizer',
                 'stanza_bul'
-            ],
+            ),
 
-            'mya': [
+            'mya': (
                 'spacy_sentencizer',
                 'stanza_mya'
-            ],
+            ),
 
-            'bxr': [
+            'bxr': (
                 'spacy_sentencizer',
                 'stanza_bxr'
-            ],
+            ),
 
-            'cat': [
+            'cat': (
                 'spacy_dependency_parser_cat',
                 'spacy_sentencizer',
                 'stanza_cat'
-            ],
+            ),
 
-            'lzh': [
+            'lzh': (
                 'spacy_sentencizer',
                 'stanza_lzh'
-            ],
-            'zho_cn': [
+            ),
+            'zho_cn': (
                 'spacy_dependency_parser_zho',
                 'spacy_sentencizer',
                 'stanza_zho_cn'
-            ],
-            'zho_tw': [
+            ),
+            'zho_tw': (
                 'spacy_dependency_parser_zho',
                 'spacy_sentencizer',
                 'stanza_zho_tw'
-            ],
+            ),
 
-            'chu': [
+            'chu': (
                 'spacy_sentencizer',
                 'stanza_chu'
-            ],
+            ),
 
-            'cop': [
+            'cop': (
                 'spacy_sentencizer',
                 'stanza_cop'
-            ],
+            ),
 
-            'hrv': [
+            'hrv': (
                 'spacy_dependency_parser_hrv',
                 'spacy_sentence_recognizer_hrv',
                 'spacy_sentencizer',
                 'stanza_hrv'
-            ],
+            ),
 
-            'ces': [
+            'ces': (
                 'nltk_punkt_ces',
                 'spacy_sentencizer',
                 'stanza_ces'
-            ],
+            ),
 
-            'dan': [
+            'dan': (
                 'nltk_punkt_dan',
                 'spacy_dependency_parser_dan',
                 'spacy_sentencizer',
                 'stanza_dan'
-            ],
+            ),
 
-            'nld': [
+            'nld': (
                 'nltk_punkt_nld',
                 'spacy_dependency_parser_nld',
                 'spacy_sentence_recognizer_nld',
                 'spacy_sentencizer',
                 'stanza_nld'
-            ],
+            ),
 
-            'ang': [
+            'ang': (
                 'spacy_sentencizer',
                 'stanza_ang'
-            ],
-            'eng_gb': [
+            ),
+            'eng_gb': (
                 'nltk_punkt_eng',
                 'spacy_dependency_parser_eng',
                 'spacy_sentencizer',
                 'stanza_eng'
-            ],
-            'eng_us': [
+            ),
+            'eng_us': (
                 'nltk_punkt_eng',
                 'spacy_dependency_parser_eng',
                 'spacy_sentencizer',
                 'stanza_eng'
-            ],
+            ),
 
-            'myv': [
+            'myv': (
                 'spacy_sentencizer',
                 'stanza_myv'
-            ],
+            ),
 
-            'est': [
+            'est': (
                 'nltk_punkt_est',
                 'spacy_sentencizer',
                 'stanza_est'
-            ],
+            ),
 
-            'fao': [
+            'fao': (
                 'spacy_sentencizer',
                 'stanza_fao'
-            ],
+            ),
 
-            'fin': [
+            'fin': (
                 'nltk_punkt_fin',
                 'spacy_dependency_parser_fin',
                 'spacy_sentence_recognizer_fin',
                 'spacy_sentencizer',
                 'stanza_fin'
-            ],
+            ),
 
-            'fra': [
+            'fra': (
                 'nltk_punkt_fra',
                 'spacy_dependency_parser_fra',
                 'spacy_sentencizer',
                 'stanza_fra'
-            ],
-            'fro': [
+            ),
+            'fro': (
                 'spacy_sentencizer',
                 'stanza_fro'
-            ],
+            ),
 
-            'glg': [
+            'glg': (
                 'spacy_sentencizer',
                 'stanza_glg'
-            ],
+            ),
 
-            'kat': [
+            'kat': (
                 'spacy_sentencizer',
                 'stanza_kat'
-            ],
+            ),
 
-            'deu_at': [
+            'deu_at': (
                 'nltk_punkt_deu',
                 'spacy_dependency_parser_deu',
                 'spacy_sentencizer',
                 'stanza_deu'
-            ],
-            'deu_de': [
+            ),
+            'deu_de': (
                 'nltk_punkt_deu',
                 'spacy_dependency_parser_deu',
                 'spacy_sentencizer',
                 'stanza_deu'
-            ],
-            'nds': [
+            ),
+            'nds': (
                 'spacy_sentencizer',
                 'stanza_nds'
-            ],
-            'deu_ch': [
+            ),
+            'deu_ch': (
                 'nltk_punkt_deu',
                 'spacy_dependency_parser_deu',
                 'spacy_sentencizer',
                 'stanza_deu'
-            ],
+            ),
 
-            'got': [
+            'got': (
                 'spacy_sentencizer',
                 'stanza_got'
-            ],
+            ),
 
-            'grc': [
+            'grc': (
                 'spacy_sentencizer',
                 'stanza_grc'
-            ],
-            'ell': [
+            ),
+            'ell': (
                 'nltk_punkt_ell',
                 'spacy_dependency_parser_ell',
                 'spacy_sentence_recognizer_ell',
                 'spacy_sentencizer',
                 'stanza_ell'
-            ],
+            ),
 
-            'hbo': [
+            'hbo': (
                 'spacy_sentencizer',
                 'stanza_hbo'
-            ],
-            'heb': [
+            ),
+            'heb': (
                 'spacy_sentencizer',
                 'stanza_heb'
-            ],
+            ),
 
-            'hin': [
+            'hin': (
                 'spacy_sentencizer',
                 'stanza_hin'
-            ],
+            ),
 
-            'hun': [
+            'hun': (
                 'spacy_sentencizer',
                 'stanza_hun'
-            ],
+            ),
 
-            'isl': [
+            'isl': (
                 'spacy_sentencizer',
                 'stanza_isl'
-            ],
+            ),
 
-            'ind': [
+            'ind': (
                 'spacy_sentencizer',
                 'stanza_ind'
-            ],
+            ),
 
-            'gle': [
+            'gle': (
                 'spacy_sentencizer',
                 'stanza_gle'
-            ],
+            ),
 
-            'ita': [
+            'ita': (
                 'nltk_punkt_ita',
                 'spacy_dependency_parser_ita',
                 'spacy_sentence_recognizer_ita',
                 'spacy_sentencizer',
                 'stanza_ita'
-            ],
+            ),
 
-            'jpn': [
+            'jpn': (
                 'spacy_dependency_parser_jpn',
                 'spacy_sentencizer',
                 'stanza_jpn'
-            ],
+            ),
 
-            'kaz': [
+            'kaz': (
                 'spacy_sentencizer',
                 'stanza_kaz'
-            ],
+            ),
 
-            'khm': ['khmer_nltk_khm'],
+            'khm': ('khmer_nltk_khm',),
 
-            'kpv': [
+            'kpv': (
                 'spacy_sentencizer',
                 'stanza_kpv'
-            ],
+            ),
 
-            'kor': [
+            'kor': (
                 'spacy_dependency_parser_kor',
                 'spacy_sentence_recognizer_kor',
                 'spacy_sentencizer',
                 'stanza_kor'
-            ],
+            ),
 
-            'kmr': [
+            'kmr': (
                 'spacy_sentencizer',
                 'stanza_kmr'
-            ],
+            ),
 
-            'kir': [
+            'kir': (
                 'spacy_sentencizer',
                 'stanza_kir'
-            ],
+            ),
 
-            'lao': [
+            'lao': (
                 'laonlp_lao',
                 'spacy_sentencizer'
-            ],
+            ),
 
-            'lat': [
+            'lat': (
                 'spacy_sentencizer',
                 'stanza_lat'
-            ],
+            ),
 
-            'lav': [
+            'lav': (
                 'spacy_sentencizer',
                 'stanza_lav'
-            ],
+            ),
 
-            'lij': [
+            'lij': (
                 'spacy_sentencizer',
                 'stanza_lij'
-            ],
+            ),
 
-            'lit': [
+            'lit': (
                 'spacy_dependency_parser_lit',
                 'spacy_sentence_recognizer_lit',
                 'spacy_sentencizer',
                 'stanza_lit'
-            ],
+            ),
 
-            'mkd': [
+            'mkd': (
                 'spacy_dependency_parser_mkd',
                 'spacy_sentence_recognizer_mkd',
                 'spacy_sentencizer'
-            ],
+            ),
 
-            'mal': [
+            'mal': (
                 'nltk_punkt_mal',
                 'spacy_sentencizer'
-            ],
+            ),
 
-            'mlt': [
+            'mlt': (
                 'spacy_sentencizer',
                 'stanza_mlt'
-            ],
+            ),
 
-            'glv': [
+            'glv': (
                 'spacy_sentencizer',
                 'stanza_glv'
-            ],
+            ),
 
-            'mar': [
+            'mar': (
                 'spacy_sentencizer',
                 'stanza_mar'
-            ],
+            ),
 
-            'pcm': [
+            'pcm': (
                 'spacy_sentencizer',
                 'stanza_pcm'
-            ],
+            ),
 
-            'nob': [
+            'nob': (
                 'nltk_punkt_nob',
                 'spacy_dependency_parser_nob',
                 'spacy_sentence_recognizer_nob',
                 'spacy_sentencizer',
                 'stanza_nob'
-            ],
+            ),
 
-            'nno': [
+            'nno': (
                 'spacy_sentencizer',
                 'stanza_nno'
-            ],
+            ),
 
-            'fas': [
+            'fas': (
                 'spacy_sentencizer',
                 'stanza_fas'
-            ],
+            ),
 
-            'pol': [
+            'pol': (
                 'nltk_punkt_pol',
                 'spacy_dependency_parser_pol',
                 'spacy_sentence_recognizer_pol',
                 'spacy_sentencizer',
                 'stanza_pol'
-            ],
+            ),
 
-            'qpm': [
+            'qpm': (
                 'spacy_sentencizer',
                 'stanza_qpm'
-            ],
+            ),
 
-            'por_br': [
+            'por_br': (
                 'nltk_punkt_por',
                 'spacy_dependency_parser_por',
                 'spacy_sentence_recognizer_por',
                 'spacy_sentencizer',
                 'stanza_por'
-            ],
-            'por_pt': [
+            ),
+            'por_pt': (
                 'nltk_punkt_por',
                 'spacy_dependency_parser_por',
                 'spacy_sentence_recognizer_por',
                 'spacy_sentencizer',
                 'stanza_por'
-            ],
+            ),
 
-            'ron': [
+            'ron': (
                 'spacy_dependency_parser_ron',
                 'spacy_sentence_recognizer_ron',
                 'spacy_sentencizer',
                 'stanza_ron'
-            ],
+            ),
 
-            'rus': [
+            'rus': (
                 'nltk_punkt_rus',
                 'spacy_dependency_parser_rus',
                 'spacy_sentence_recognizer_rus',
                 'spacy_sentencizer',
                 'stanza_rus'
-            ],
-            'orv': [
+            ),
+            'orv': (
                 'spacy_sentencizer',
                 'stanza_orv'
-            ],
+            ),
 
-            'sme': [
+            'sme': (
                 'spacy_sentencizer',
                 'stanza_sme'
-            ],
+            ),
 
-            'san': [
+            'san': (
                 'spacy_sentencizer',
                 'stanza_san'
-            ],
+            ),
 
-            'gla': [
+            'gla': (
                 'spacy_sentencizer',
                 'stanza_gla'
-            ],
+            ),
 
-            'srp_latn': [
+            'srp_latn': (
                 'spacy_sentencizer',
                 'stanza_srp_latn'
-            ],
+            ),
 
-            'snd': [
+            'snd': (
                 'spacy_sentencizer',
                 'stanza_snd'
-            ],
+            ),
 
-            'slk': [
+            'slk': (
                 'spacy_sentencizer',
                 'stanza_slk'
-            ],
+            ),
 
-            'slv': [
+            'slv': (
                 'nltk_punkt_slv',
                 'spacy_dependency_parser_slv',
                 'spacy_sentencizer',
                 'stanza_slv'
-            ],
+            ),
 
-            'hsb': [
+            'hsb': (
                 'spacy_sentencizer',
                 'stanza_hsb'
-            ],
+            ),
 
-            'spa': [
+            'spa': (
                 'nltk_punkt_spa',
                 'spacy_dependency_parser_spa',
                 'spacy_sentencizer',
                 'stanza_spa'
-            ],
+            ),
 
-            'swe': [
+            'swe': (
                 'nltk_punkt_swe',
                 'spacy_dependency_parser_swe',
                 'spacy_sentence_recognizer_swe',
                 'spacy_sentencizer',
                 'stanza_swe'
-            ],
+            ),
 
-            'tam': [
+            'tam': (
                 'spacy_sentencizer',
                 'stanza_tam'
-            ],
+            ),
 
-            'tel': [
+            'tel': (
                 'spacy_sentencizer',
                 'stanza_tel'
-            ],
+            ),
 
-            'tha': [
+            'tha': (
                 'pythainlp_crfcut',
                 'pythainlp_thaisumcut',
                 'stanza_tha'
-            ],
+            ),
 
-            'bod': ['botok_bod'],
+            'xct': ('botok_xct',),
+            'bod': ('modern_botok_bod',),
 
-            'tur': [
+            'tur': (
                 'nltk_punkt_tur',
                 'spacy_sentencizer',
                 'stanza_tur'
-            ],
-            'ota': [
+            ),
+            'ota': (
                 'spacy_sentencizer',
                 'stanza_ota'
-            ],
+            ),
 
-            'ukr': [
+            'ukr': (
                 'spacy_dependency_parser_ukr',
                 'spacy_sentencizer',
                 'stanza_ukr'
-            ],
+            ),
 
-            'urd': [
+            'urd': (
                 'spacy_sentencizer',
                 'stanza_urd'
-            ],
+            ),
 
-            'uig': [
+            'uig': (
                 'spacy_sentencizer',
                 'stanza_uig'
-            ],
+            ),
 
-            'vie': [
+            'vie': (
                 'underthesea_vie',
                 'stanza_vie'
-            ],
+            ),
 
-            'cym': [
+            'cym': (
                 'spacy_sentencizer',
                 'stanza_cym'
-            ],
+            ),
 
-            'wol': [
+            'wol': (
                 'spacy_sentencizer',
                 'stanza_wol'
-            ],
+            ),
 
-            'other': [
+            'other': (
                 'nltk_punkt_eng',
                 'spacy_sentencizer',
                 'stanza_eng'
-            ]
+            )
         },
 
         'word_tokenizers': {
-            'afr': [
+            'afr': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_afr',
                 'stanza_afr'
-            ],
+            ),
 
-            'sqi': [
+            'sqi': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_sqi',
                 'stanza_sqi'
-            ],
+            ),
 
-            'amh': ['spacy_amh'],
+            'amh': (
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'spacy_amh'
+            ),
 
-            'ara': [
+            'ara': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_ara',
                 'stanza_ara'
-            ],
+            ),
 
-            'xcl': [
+            'xcl': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_xcl'
-            ],
-            'hye': [
+            ),
+            'hye': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_hye',
                 'stanza_hye'
-            ],
-            'hyw': [
+            ),
+            'hyw': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_hye',
                 'stanza_hyw'
-            ],
+            ),
 
-            'asm': [
+            'asm': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses'
-            ],
+            ),
 
-            'aze': [
+            'aze': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_aze'
-            ],
+            ),
 
-            'eus': [
+            'eus': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_eus',
                 'stanza_eus'
-            ],
+            ),
 
-            'bel': [
+            'bel': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_bel'
-            ],
+            ),
 
-            'ben': [
+            'ben': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_ben'
-            ],
+            ),
 
-            'bul': [
+            'bul': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_bul',
                 'stanza_bul'
-            ],
+            ),
 
-            'mya': ['stanza_mya'],
+            'mya': ('stanza_mya',),
 
-            'bxr': [
+            'bxr': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_bxr'
-            ],
+            ),
 
-            'cat': [
+            'cat': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_cat',
                 'stanza_cat'
-            ],
+            ),
 
-            'lzh': ['stanza_lzh'],
-            'zho_cn': [
+            'lzh': ('stanza_lzh',),
+            'zho_cn': (
                 'pkuseg_zho',
                 'spacy_zho',
                 'stanza_zho_cn',
                 'wordless_zho_char'
-            ],
-            'zho_tw': [
+            ),
+            'zho_tw': (
                 'pkuseg_zho',
                 'spacy_zho',
                 'stanza_zho_tw',
                 'wordless_zho_char'
-            ],
+            ),
 
-            'chu': [
+            'chu': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_chu'
-            ],
+            ),
 
-            'cop': [
+            'cop': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_cop'
-            ],
+            ),
 
-            'hrv': [
+            'hrv': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_hrv',
                 'stanza_hrv'
-            ],
+            ),
 
-            'ces': [
+            'ces': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_ces',
                 'stanza_ces'
-            ],
+            ),
 
-            'dan': [
+            'dan': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_dan',
                 'stanza_dan'
-            ],
+            ),
 
-            'nld': [
+            'nld': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_nld',
                 'stanza_nld'
-            ],
+            ),
 
-            'ang': [
+            'ang': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_ang'
-            ],
-            'eng_gb': [
+            ),
+            'eng_gb': (
                 'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_eng',
                 'stanza_eng'
-            ],
-            'eng_us': [
+            ),
+            'eng_us': (
                 'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_eng',
                 'stanza_eng'
-            ],
+            ),
 
-            'myv': [
+            'myv': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_myv'
-            ],
+            ),
 
-            'est': [
+            'est': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_est',
                 'stanza_est'
-            ],
+            ),
 
-            'fao': [
+            'fao': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_fao',
                 'stanza_fao'
-            ],
+            ),
 
-            'fin': [
+            'fin': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_fin',
                 'stanza_fin'
-            ],
+            ),
 
-            'fra': [
+            'fra': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_fra',
                 'stanza_fra'
-            ],
-            'fro': [
+            ),
+            'fro': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_fro'
-            ],
+            ),
 
-            'glg': [
+            'glg': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_glg'
-            ],
+            ),
 
-            'lug': [
+            'lug': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_lug'
-            ],
+            ),
 
-            'kat': [
+            'kat': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_kat'
-            ],
+            ),
 
-            'deu_at': [
+            'deu_at': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_deu',
                 'stanza_deu'
-            ],
-            'deu_de': [
+            ),
+            'deu_de': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_deu',
                 'stanza_deu'
-            ],
-            'nds': [
+            ),
+            'nds': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_nds'
-            ],
-            'deu_ch': [
+            ),
+            'deu_ch': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_deu',
                 'stanza_deu'
-            ],
+            ),
 
-            'got': [
+            'got': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_got'
-            ],
+            ),
 
-            'grc': [
+            'grc': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_grc',
                 'stanza_grc'
-            ],
-            'ell': [
+            ),
+            'ell': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_ell',
                 'stanza_ell'
-            ],
+            ),
 
-            'guj': [
+            'guj': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_guj'
-            ],
+            ),
 
-            'hbo': [
+            'hbo': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_hbo'
-            ],
-            'heb': [
+            ),
+            'heb': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_heb',
                 'stanza_heb'
-            ],
+            ),
 
-            'hin': [
+            'hin': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_hin',
                 'stanza_hin'
-            ],
+            ),
 
-            'hun': [
+            'hun': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_hun',
                 'stanza_hun'
-            ],
+            ),
 
-            'isl': [
+            'isl': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_isl',
                 'stanza_isl'
-            ],
+            ),
 
-            'ind': [
+            'ind': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_ind',
                 'stanza_ind'
-            ],
+            ),
 
-            'gle': [
+            'gle': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_gle',
                 'stanza_gle'
-            ],
+            ),
 
-            'ita': [
+            'ita': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_ita',
                 'stanza_ita'
-            ],
+            ),
 
-            'jpn': [
+            'jpn': (
                 'spacy_jpn',
                 'stanza_jpn',
                 'sudachipy_jpn_split_mode_a', 'sudachipy_jpn_split_mode_b', 'sudachipy_jpn_split_mode_c',
                 'wordless_jpn_kanji'
-            ],
+            ),
 
-            'kan': [
+            'kan': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_kan'
-            ],
+            ),
 
-            'kaz': [
+            'kaz': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_kaz'
-            ],
+            ),
 
-            'khm': ['khmer_nltk_khm'],
+            'khm': ('khmer_nltk_khm',),
 
-            'kpv': [
+            'kpv': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_kpv'
-            ],
+            ),
 
-            'kor': [
+            'kor': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'python_mecab_ko_mecab',
                 'spacy_kor',
                 'stanza_kor'
-            ],
+            ),
 
-            'kmr': [
+            'kmr': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_kmr',
                 'stanza_kmr'
-            ],
+            ),
 
-            'kir': [
+            'kir': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_kir',
                 'stanza_kir'
-            ],
+            ),
 
-            'lao': ['laonlp_lao'],
+            'lao': ('laonlp_lao',),
 
-            'lat': [
+            'lat': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_lat',
                 'stanza_lat'
-            ],
+            ),
 
-            'lav': [
+            'lav': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_lav',
                 'stanza_lav'
-            ],
+            ),
 
-            'lij': [
+            'lij': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_lij',
                 'stanza_lij'
-            ],
+            ),
 
-            'lit': [
+            'lit': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_lit',
                 'stanza_lit'
-            ],
+            ),
 
-            'ltz': [
+            'ltz': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_ltz'
-            ],
+            ),
 
-            'mkd': [
+            'mkd': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_mkd'
-            ],
+            ),
 
-            'msa': [
+            'msa': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_msa'
-            ],
+            ),
 
-            'mal': [
+            'mal': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_mal'
-            ],
+            ),
 
-            'mlt': [
+            'mlt': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_mlt'
-            ],
+            ),
 
-            'mni_mtei': [
+            'mni_mtei': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses'
-            ],
+            ),
 
-            'glv': [
+            'glv': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_glv'
-            ],
+            ),
 
-            'mar': [
+            'mar': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_mar',
                 'stanza_mar'
-            ],
+            ),
 
-            'nep': [
+            'nep': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_nep'
-            ],
+            ),
 
-            'pcm': [
+            'pcm': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_pcm'
-            ],
+            ),
 
-            'nob': [
+            'nob': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_nob',
                 'stanza_nob'
-            ],
-            'nno': [
+            ),
+            'nno': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_nno',
                 'stanza_nno'
-            ],
+            ),
 
-            'ori': [
+            'ori': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses'
-            ],
+            ),
 
-            'pan_guru': [
+            'pan_guru': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses'
-            ],
+            ),
 
-            'fas': [
+            'fas': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'spacy_fas',
                 'stanza_fas'
-            ],
+            ),
 
-            'pol': [
+            'pol': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_pol',
                 'stanza_pol'
-            ],
+            ),
 
-            'qpm': [
+            'qpm': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_qpm'
-            ],
+            ),
 
-            'por_br': [
+            'por_br': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_por',
                 'stanza_por'
-            ],
-            'por_pt': [
+            ),
+            'por_pt': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_por',
                 'stanza_por'
-            ],
+            ),
 
-            'ron': [
+            'ron': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_ron',
                 'stanza_ron'
-            ],
+            ),
 
-            'rus': [
+            'rus': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_rus',
                 'stanza_rus'
-            ],
-            'orv': [
+            ),
+            'orv': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_orv'
-            ],
+            ),
 
-            'sme': [
+            'sme': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_sme'
-            ],
+            ),
 
-            'san': [
+            'san': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_san',
                 'stanza_san'
-            ],
+            ),
 
-            'gla': [
+            'gla': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_gla',
                 'stanza_gla'
-            ],
+            ),
 
-            'srp_cyrl': [
+            'srp_cyrl': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_srp_cyrl'
-            ],
+            ),
 
-            'srp_latn': [
+            'srp_latn': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_srp_latn'
-            ],
+            ),
 
-            'snd': [
+            'snd': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_snd'
-            ],
+            ),
 
-            'sin': [
+            'sin': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_sin'
-            ],
+            ),
 
-            'slk': [
+            'slk': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_slk',
                 'stanza_slk'
-            ],
+            ),
 
-            'slv': [
+            'slv': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_slv',
                 'stanza_slv'
-            ],
+            ),
 
-            'dsb': [
+            'dsb': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_dsb'
-            ],
+            ),
 
-            'hsb': [
+            'hsb': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_hsb',
                 'stanza_hsb'
-            ],
+            ),
 
-            'spa': [
+            'spa': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_spa',
                 'stanza_spa'
-            ],
+            ),
 
-            'swe': [
+            'swe': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_swe',
                 'stanza_swe'
-            ],
+            ),
 
-            'tgl': [
+            'tgl': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_tgl'
-            ],
+            ),
 
-            'tgk': ['nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter'],
+            'tgk': ('nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter'),
 
-            'tam': [
+            'tam': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_tam',
                 'stanza_tam'
-            ],
+            ),
 
-            'tat': [
+            'tat': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_tat'
-            ],
+            ),
 
-            'tel': [
+            'tel': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_tel',
                 'stanza_tel'
-            ],
+            ),
 
-            'tdt': [
+            'tdt': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses'
-            ],
+            ),
 
-            'tha': [
+            'tha': (
                 'pythainlp_longest_matching',
                 'pythainlp_max_matching',
                 'pythainlp_max_matching_tcc',
                 'pythainlp_nercut',
                 'stanza_tha'
-            ],
+            ),
 
-            'bod': ['botok_bod'],
+            'xct': ('botok_xct',),
+            'bod': ('modern_botok_bod',),
 
-            'tir': [
+            'tir': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_tir'
-            ],
+            ),
 
-            'tsn': [
+            'tsn': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_tsn'
-            ],
+            ),
 
-            'tur': [
+            'tur': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_tur',
                 'stanza_tur'
-            ],
-            'ota': [
+            ),
+            'ota': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_ota'
-            ],
+            ),
 
-            'ukr': [
+            'ukr': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_ukr',
                 'stanza_ukr'
-            ],
+            ),
 
-            'urd': [
+            'urd': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_urd',
                 'stanza_urd'
-            ],
+            ),
 
-            'uig': [
+            'uig': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_uig'
-            ],
+            ),
 
-            'vie': [
+            'vie': (
                 'nltk_tok_tok',
                 'underthesea_vie',
                 'stanza_vie'
-            ],
+            ),
 
-            'cym': [
+            'cym': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_cym'
-            ],
+            ),
 
-            'wol': [
+            'wol': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'stanza_wol'
-            ],
+            ),
 
-            'yor': [
+            'yor': (
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_yor'
-            ],
+            ),
 
-            'other': [
+            'other': (
                 'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_eng',
                 'stanza_eng'
-            ]
+            )
         },
 
         'syl_tokenizers': {
-            'afr': ['pyphen_afr'],
-            'sqi': ['pyphen_sqi'],
-            'eus': ['pyphen_eus'],
-            'bel': ['pyphen_bel'],
-            'bul': ['pyphen_bul'],
-            'cat': ['pyphen_cat'],
-            'hrv': ['pyphen_hrv'],
-            'ces': ['pyphen_ces'],
-            'dan': ['pyphen_dan'],
-            'nld': ['pyphen_nld'],
+            'afr': ('pyphen_afr',),
+            'sqi': ('pyphen_sqi',),
+            'eus': ('pyphen_eus',),
+            'bel': ('pyphen_bel',),
+            'bul': ('pyphen_bul',),
+            'cat': ('pyphen_cat',),
+            'hrv': ('pyphen_hrv',),
+            'ces': ('pyphen_ces',),
+            'dan': ('pyphen_dan',),
+            'nld': ('pyphen_nld',),
 
-            'eng_gb': [
+            'eng_gb': (
                 'nltk_legality',
                 'nltk_sonority_sequencing',
                 'pyphen_eng_gb'
-            ],
+            ),
 
-            'eng_us': [
+            'eng_us': (
                 'nltk_legality',
                 'nltk_sonority_sequencing',
                 'pyphen_eng_us'
-            ],
+            ),
 
-            'epo': ['pyphen_epo'],
-            'est': ['pyphen_est'],
-            'fra': ['pyphen_fra'],
-            'glg': ['pyphen_glg'],
-            'deu_at': ['pyphen_deu_at'],
-            'deu_de': ['pyphen_deu_de'],
-            'deu_ch': ['pyphen_deu_ch'],
-            'ell': ['pyphen_ell'],
-            'hun': ['pyphen_hun'],
-            'isl': ['pyphen_isl'],
-            'ind': ['pyphen_ind'],
-            'ita': ['pyphen_ita'],
-            'lav': ['pyphen_lav'],
-            'lit': ['pyphen_lit'],
-            'mon': ['pyphen_mon'],
-            'nob': ['pyphen_nob'],
-            'nno': ['pyphen_nno'],
-            'pol': ['pyphen_pol'],
-            'por_br': ['pyphen_por_br'],
-            'por_pt': ['pyphen_por_pt'],
-            'ron': ['pyphen_ron'],
-            'rus': ['pyphen_rus'],
-            'srp_cyrl': ['pyphen_srp_cyrl'],
-            'srp_latn': ['pyphen_srp_latn'],
-            'slk': ['pyphen_slk'],
-            'slv': ['pyphen_slv'],
-            'spa': ['pyphen_spa'],
-            'swe': ['pyphen_swe'],
-            'tel': ['pyphen_tel'],
+            'epo': ('pyphen_epo',),
+            'est': ('pyphen_est',),
+            'fra': ('pyphen_fra',),
+            'glg': ('pyphen_glg',),
+            'deu_at': ('pyphen_deu_at',),
+            'deu_de': ('pyphen_deu_de',),
+            'deu_ch': ('pyphen_deu_ch',),
+            'ell': ('pyphen_ell',),
+            'hun': ('pyphen_hun',),
+            'isl': ('pyphen_isl',),
+            'ind': ('pyphen_ind',),
+            'ita': ('pyphen_ita',),
+            'lav': ('pyphen_lav',),
+            'lit': ('pyphen_lit',),
+            'mon_cyrl': ('pyphen_mon_cyrl',),
+            'nob': ('pyphen_nob',),
+            'nno': ('pyphen_nno',),
+            'pol': ('pyphen_pol',),
+            'por_br': ('pyphen_por_br',),
+            'por_pt': ('pyphen_por_pt',),
+            'ron': ('pyphen_ron',),
+            'rus': ('pyphen_rus',),
+            'srp_cyrl': ('pyphen_srp_cyrl',),
+            'srp_latn': ('pyphen_srp_latn',),
+            'slk': ('pyphen_slk',),
+            'slv': ('pyphen_slv',),
+            'spa': ('pyphen_spa',),
+            'swe': ('pyphen_swe',),
+            'tel': ('pyphen_tel',),
 
-            'tha': [
+            'tha': (
                 'pyphen_tha',
                 'pythainlp_han_solo',
                 'pythainlp_syl_dict'
-            ],
+            ),
 
-            'ukr': ['pyphen_ukr'],
-            'zul': ['pyphen_zul']
+            'ukr': ('pyphen_ukr',),
+            'zul': ('pyphen_zul',)
         },
 
         'pos_taggers': {
-            'afr': ['stanza_afr'],
-            'sqi': ['stanza_sqi'],
-            'ara': ['stanza_ara'],
-            'xcl': ['stanza_xcl'],
-            'hye': ['stanza_hye'],
-            'hyw': ['stanza_hyw'],
-            'eus': ['stanza_eus'],
-            'bel': ['stanza_bel'],
-            'bul': ['stanza_bul'],
-            'bxr': ['stanza_bxr'],
+            'afr': ('stanza_afr',),
+            'sqi': ('stanza_sqi',),
+            'ara': ('stanza_ara',),
+            'xcl': ('stanza_xcl',),
+            'hye': ('stanza_hye',),
+            'hyw': ('stanza_hyw',),
+            'eus': ('stanza_eus',),
+            'bel': ('stanza_bel',),
+            'bul': ('stanza_bul',),
+            'bxr': ('stanza_bxr',),
 
-            'cat': [
+            'cat': (
                 'spacy_cat',
                 'stanza_cat'
-            ],
+            ),
 
-            'lzh': ['stanza_lzh'],
-            'zho_cn': [
+            'lzh': ('stanza_lzh',),
+            'zho_cn': (
                 'spacy_zho',
                 'stanza_zho_cn'
-            ],
-            'zho_tw': [
+            ),
+            'zho_tw': (
                 'spacy_zho',
                 'stanza_zho_tw'
-            ],
+            ),
 
-            'chu': ['stanza_chu'],
-            'cop': ['stanza_cop'],
+            'chu': ('stanza_chu',),
+            'cop': ('stanza_cop',),
 
-            'hrv': [
+            'hrv': (
                 'spacy_hrv',
                 'stanza_hrv'
-            ],
+            ),
 
-            'ces': ['stanza_ces'],
+            'ces': ('stanza_ces',),
 
-            'dan': [
+            'dan': (
                 'spacy_dan',
                 'stanza_dan'
-            ],
+            ),
 
-            'nld': [
+            'nld': (
                 'spacy_nld',
                 'stanza_nld'
-            ],
+            ),
 
-            'ang': ['stanza_ang'],
-            'eng_gb': [
+            'ang': ('stanza_ang',),
+            'eng_gb': (
                 'nltk_perceptron_eng',
                 'spacy_eng',
                 'stanza_eng'
-            ],
-            'eng_us': [
+            ),
+            'eng_us': (
                 'nltk_perceptron_eng',
                 'spacy_eng',
                 'stanza_eng'
-            ],
+            ),
 
-            'myv': ['stanza_myv'],
-            'est': ['stanza_est'],
-            'fao': ['stanza_fao'],
+            'myv': ('stanza_myv',),
+            'est': ('stanza_est',),
+            'fao': ('stanza_fao',),
 
-            'fin': [
+            'fin': (
                 'spacy_fin',
                 'stanza_fin'
-            ],
+            ),
 
-            'fra': [
+            'fra': (
                 'spacy_fra',
                 'stanza_fra'
-            ],
-            'fro': ['stanza_fro'],
+            ),
+            'fro': ('stanza_fro',),
 
-            'glg': ['stanza_glg'],
-            'kat': ['stanza_kat'],
+            'glg': ('stanza_glg',),
+            'kat': ('stanza_kat',),
 
-            'deu_at': [
+            'deu_at': (
                 'spacy_deu',
                 'stanza_deu'
-            ],
-            'deu_de': [
+            ),
+            'deu_de': (
                 'spacy_deu',
                 'stanza_deu'
-            ],
-            'nds': ['stanza_nds'],
-            'deu_ch': [
+            ),
+            'nds': ('stanza_nds',),
+            'deu_ch': (
                 'spacy_deu',
                 'stanza_deu'
-            ],
+            ),
 
-            'got': ['stanza_got'],
+            'got': ('stanza_got',),
 
-            'grc': ['stanza_grc'],
-            'ell': [
+            'grc': ('stanza_grc',),
+            'ell': (
                 'spacy_ell',
                 'stanza_ell'
-            ],
+            ),
 
-            'hbo': ['stanza_hbo'],
-            'heb': ['stanza_heb'],
-            'hin': ['stanza_hin'],
-            'hun': ['stanza_hun'],
-            'isl': ['stanza_isl'],
-            'ind': ['stanza_ind'],
-            'gle': ['stanza_gle'],
+            'hbo': ('stanza_hbo',),
+            'heb': ('stanza_heb',),
+            'hin': ('stanza_hin',),
+            'hun': ('stanza_hun',),
+            'isl': ('stanza_isl',),
+            'ind': ('stanza_ind',),
+            'gle': ('stanza_gle',),
 
-            'ita': [
+            'ita': (
                 'spacy_ita',
                 'stanza_ita'
-            ],
+            ),
 
-            'jpn': [
+            'jpn': (
                 'spacy_jpn',
                 'stanza_jpn',
                 'sudachipy_jpn'
-            ],
+            ),
 
-            'kaz': ['stanza_kaz'],
-            'khm': ['khmer_nltk_khm'],
-            'kpv': ['stanza_kpv'],
+            'kaz': ('stanza_kaz',),
+            'khm': ('khmer_nltk_khm',),
+            'kpv': ('stanza_kpv',),
 
-            'kor': [
+            'kor': (
                 'python_mecab_ko_mecab',
                 'spacy_kor',
                 'stanza_kor'
-            ],
+            ),
 
-            'kmr': ['stanza_kmr'],
-            'kir': ['stanza_kir'],
+            'kmr': ('stanza_kmr',),
+            'kir': ('stanza_kir',),
 
-            'lao': [
+            'lao': (
                 'laonlp_seqlabeling',
                 'laonlp_yunshan_cup_2020'
-            ],
+            ),
 
-            'lat': ['stanza_lat'],
-            'lav': ['stanza_lav'],
-            'lij': ['stanza_lij'],
+            'lat': ('stanza_lat',),
+            'lav': ('stanza_lav',),
+            'lij': ('stanza_lij',),
 
-            'lit': [
+            'lit': (
                 'spacy_lit',
                 'stanza_lit'
-            ],
+            ),
 
-            'mkd': ['spacy_mkd'],
-            'mlt': ['stanza_mlt'],
-            'glv': ['stanza_glv'],
-            'mar': ['stanza_mar'],
-            'pcm': ['stanza_pcm'],
+            'mkd': ('spacy_mkd',),
+            'mlt': ('stanza_mlt',),
+            'glv': ('stanza_glv',),
+            'mar': ('stanza_mar',),
+            'pcm': ('stanza_pcm',),
 
-            'nob': [
+            'nob': (
                 'spacy_nob',
                 'stanza_nob'
-            ],
+            ),
 
-            'nno': ['stanza_nno'],
-            'fas': ['stanza_fas'],
+            'nno': ('stanza_nno',),
+            'fas': ('stanza_fas',),
 
-            'pol': [
+            'pol': (
                 'spacy_pol',
                 'stanza_pol'
-            ],
+            ),
 
-            'qpm': ['stanza_qpm'],
+            'qpm': ('stanza_qpm',),
 
-            'por_br': [
+            'por_br': (
                 'spacy_por',
                 'stanza_por'
-            ],
-            'por_pt': [
+            ),
+            'por_pt': (
                 'spacy_por',
                 'stanza_por'
-            ],
+            ),
 
-            'ron': [
+            'ron': (
                 'spacy_ron',
                 'stanza_ron'
-            ],
+            ),
 
 
-            'rus': [
+            'rus': (
                 'nltk_perceptron_rus',
                 'pymorphy3_morphological_analyzer',
                 'spacy_rus',
                 'stanza_rus'
-            ],
-            'orv': ['stanza_orv'],
+            ),
+            'orv': ('stanza_orv',),
 
-            'sme': ['stanza_sme'],
-            'san': ['stanza_san'],
-            'gla': ['stanza_gla'],
-            'srp_latn': ['stanza_srp_latn'],
-            'snd': ['stanza_snd'],
-            'slk': ['stanza_slk'],
+            'sme': ('stanza_sme',),
+            'san': ('stanza_san',),
+            'gla': ('stanza_gla',),
+            'srp_latn': ('stanza_srp_latn',),
+            'snd': ('stanza_snd',),
+            'slk': ('stanza_slk',),
 
-            'slv': [
+            'slv': (
                 'spacy_slv',
-                'stanza_slv']
+                'stanza_slv',)
             ,
 
-            'hsb': ['stanza_hsb'],
+            'hsb': ('stanza_hsb',),
 
-            'spa': [
+            'spa': (
                 'spacy_spa',
                 'stanza_spa'
-            ],
+            ),
 
-            'swe': [
+            'swe': (
                 'spacy_swe',
                 'stanza_swe'
-            ],
+            ),
 
-            'tam': ['stanza_tam'],
-            'tel': ['stanza_tel'],
+            'tam': ('stanza_tam',),
+            'tel': ('stanza_tel',),
 
-            'tha': [
+            'tha': (
                 'pythainlp_perceptron_blackboard',
                 'pythainlp_perceptron_orchid',
                 'pythainlp_perceptron_pud'
-            ],
+            ),
 
-            'bod': ['botok_bod'],
+            'xct': ('botok_xct',),
+            'bod': ('modern_botok_bod',),
 
-            'tur': ['stanza_tur'],
-            'ota': ['stanza_ota'],
+            'tur': ('stanza_tur',),
+            'ota': ('stanza_ota',),
 
-            'ukr': [
+            'ukr': (
                 'pymorphy3_morphological_analyzer',
                 'spacy_ukr',
                 'stanza_ukr'
-            ],
+            ),
 
-            'urd': ['stanza_urd'],
-            'uig': ['stanza_uig'],
+            'urd': ('stanza_urd',),
+            'uig': ('stanza_uig',),
 
-            'vie': [
+            'vie': (
                 'stanza_vie',
                 'underthesea_vie'
-            ],
+            ),
 
-            'cym': ['stanza_cym'],
-            'wol': ['stanza_wol']
+            'cym': ('stanza_cym',),
+            'wol': ('stanza_wol',)
         },
 
         'lemmatizers': {
-            'afr': ['stanza_afr'],
+            'afr': ('stanza_afr',),
 
-            'sqi': [
+            'sqi': (
                 'simplemma_sqi',
                 'stanza_sqi'
-            ],
+            ),
 
-            'ara': ['stanza_ara'],
+            'ara': ('stanza_ara',),
 
-            'xcl': ['stanza_xcl'],
-            'hye': [
+            'xcl': ('stanza_xcl',),
+            'hye': (
                 'simplemma_hye',
                 'stanza_hye'
-            ],
-            'hyw': [
+            ),
+            'hyw': (
                 'simplemma_hye',
                 'stanza_hyw'
-            ],
+            ),
 
-            'ast': ['simplemma_ast'],
-            'eus': ['stanza_eus'],
-            'bel': ['stanza_bel'],
-            'ben': ['spacy_ben'],
+            'ast': ('simplemma_ast',),
+            'eus': ('stanza_eus',),
+            'bel': ('stanza_bel',),
+            'ben': ('spacy_ben',),
 
-            'bul': [
+            'bul': (
                 'simplemma_bul',
                 'stanza_bul'
-            ],
+            ),
 
-            'bxr': ['stanza_bxr'],
+            'bxr': ('stanza_bxr',),
 
-            'cat': [
+            'cat': (
                 'simplemma_cat',
                 'spacy_cat',
                 'stanza_cat'
-            ],
+            ),
 
-            'lzh': ['stanza_lzh'],
-            'zho_cn': ['stanza_zho_cn'],
-            'zho_tw': ['stanza_zho_tw'],
-            'chu': ['stanza_chu'],
-            'cop': ['stanza_cop'],
+            'lzh': ('stanza_lzh',),
+            'zho_cn': ('stanza_zho_cn',),
+            'zho_tw': ('stanza_zho_tw',),
+            'chu': ('stanza_chu',),
+            'cop': ('stanza_cop',),
 
-            'hrv': [
+            'hrv': (
                 'simplemma_hbs',
                 'spacy_hrv',
                 'stanza_hrv'
-            ],
+            ),
 
-            'ces': [
+            'ces': (
                 'simplemma_ces',
                 'spacy_ces',
                 'stanza_ces'
-            ],
+            ),
 
-            'dan': [
+            'dan': (
                 'simplemma_dan',
                 'spacy_dan',
                 'stanza_dan'
-            ],
+            ),
 
-            'nld': [
+            'nld': (
                 'simplemma_nld',
                 'spacy_nld',
                 'stanza_nld'
-            ],
+            ),
 
-            'enm': ['simplemma_enm'],
-            'ang': ['stanza_ang'],
-            'eng_gb': [
+            'enm': ('simplemma_enm',),
+            'ang': ('stanza_ang',),
+            'eng_gb': (
                 'nltk_wordnet',
                 'simplemma_eng',
                 'spacy_eng',
                 'stanza_eng'
-            ],
-            'eng_us': [
+            ),
+            'eng_us': (
                 'nltk_wordnet',
                 'simplemma_eng',
                 'spacy_eng',
                 'stanza_eng'
-            ],
+            ),
 
-            'myv': ['stanza_myv'],
+            'myv': ('stanza_myv',),
 
-            'est': [
+            'est': (
                 'simplemma_est',
                 'stanza_est'
-            ],
+            ),
 
-            'fin': [
+            'fin': (
                 'simplemma_fin',
                 'spacy_fin',
                 'stanza_fin'
-            ],
+            ),
 
-            'fra': [
+            'fra': (
                 'simplemma_fra',
                 'spacy_fra',
                 'stanza_fra'
-            ],
-            'fro': ['stanza_fro'],
+            ),
+            'fro': ('stanza_fro',),
 
-            'glg': [
+            'glg': (
                 'simplemma_glg',
                 'stanza_glg'
-            ],
+            ),
 
-            'kat': [
+            'kat': (
                 'simplemma_kat',
                 'stanza_kat'
-            ],
+            ),
 
-            'deu_at': [
+            'deu_at': (
                 'simplemma_deu',
                 'spacy_deu',
                 'stanza_deu'
-            ],
-            'deu_de': [
+            ),
+            'deu_de': (
                 'simplemma_deu',
                 'spacy_deu',
                 'stanza_deu'
-            ],
-            'nds': ['stanza_nds'],
-            'deu_ch': [
+            ),
+            'nds': ('stanza_nds',),
+            'deu_ch': (
                 'simplemma_deu',
                 'spacy_deu',
                 'stanza_deu'
-            ],
+            ),
 
-            'got': ['stanza_got'],
+            'got': ('stanza_got',),
 
-            'grc': [
+            'grc': (
                 'spacy_grc',
                 'stanza_grc'
-            ],
-            'ell': [
+            ),
+            'ell': (
                 'simplemma_ell',
                 'spacy_ell',
                 'stanza_ell'
-            ],
+            ),
 
-            'hbo': ['stanza_hbo'],
-            'heb': ['stanza_heb'],
+            'hbo': ('stanza_hbo',),
+            'heb': ('stanza_heb',),
 
-            'hin': [
+            'hin': (
                 'simplemma_hin',
                 'stanza_hin'
-            ],
+            ),
 
-            'hun': [
+            'hun': (
                 'simplemma_hun',
                 'spacy_hun',
                 'stanza_hun'
-            ],
+            ),
 
-            'isl': [
+            'isl': (
                 'simplemma_isl',
                 'stanza_isl'
-            ],
+            ),
 
-            'ind': [
+            'ind': (
                 'simplemma_ind',
                 'spacy_ind',
                 'stanza_ind'
-            ],
+            ),
 
-            'gle': [
+            'gle': (
                 'simplemma_gle',
                 'spacy_gle',
                 'stanza_gle'
-            ],
+            ),
 
-            'ita': [
+            'ita': (
                 'simplemma_ita',
                 'spacy_ita',
                 'stanza_ita'
-            ],
+            ),
 
-            'jpn': [
+            'jpn': (
                 'spacy_jpn',
                 'stanza_jpn',
                 'sudachipy_jpn'
-            ],
+            ),
 
-            'kaz': ['stanza_kaz'],
-            'kpv': ['stanza_kpv'],
+            'kaz': ('stanza_kaz',),
+            'kpv': ('stanza_kpv',),
 
-            'kor': [
+            'kor': (
                 'spacy_kor',
                 'stanza_kor'
-            ],
+            ),
 
-            'kmr': ['stanza_kmr'],
-            'kir': ['stanza_kir'],
+            'kmr': ('stanza_kmr',),
+            'kir': ('stanza_kir',),
 
-            'lat': [
+            'lat': (
                 'simplemma_lat',
                 'stanza_lat'
-            ],
+            ),
 
-            'lav': [
+            'lav': (
                 'simplemma_lav',
                 'stanza_lav'
-            ],
+            ),
 
-            'lij': ['stanza_lij'],
+            'lij': ('stanza_lij',),
 
-            'lit': [
+            'lit': (
                 'simplemma_lit',
                 'spacy_lit',
                 'stanza_lit'
-            ],
+            ),
 
-            'ltz': [
+            'ltz': (
                 'simplemma_ltz',
                 'spacy_ltz'
-            ],
+            ),
 
-            'mkd': [
+            'mkd': (
                 'simplemma_mkd',
                 'spacy_mkd'
-            ],
+            ),
 
-            'msa': ['simplemma_msa'],
+            'msa': ('simplemma_msa',),
 
-            'glv': [
+            'glv': (
                 'simplemma_glv',
                 'stanza_glv'
-            ],
+            ),
 
-            'mar': ['stanza_mar'],
-            'pcm': ['stanza_pcm'],
+            'mar': ('stanza_mar',),
+            'pcm': ('stanza_pcm',),
 
-            'nob': [
+            'nob': (
                 'simplemma_nob',
                 'spacy_nob',
                 'stanza_nob'
-            ],
-            'nno': [
+            ),
+            'nno': (
                 'simplemma_nno',
                 'stanza_nno'
-            ],
+            ),
 
-            'fas': [
+            'fas': (
                 'simplemma_fas',
                 'spacy_fas',
                 'stanza_fas'
-            ],
+            ),
 
-            'pol': [
+            'pol': (
                 'simplemma_pol',
                 'spacy_pol',
                 'stanza_pol'
-            ],
+            ),
 
-            'qpm': ['stanza_qpm'],
+            'qpm': ('stanza_qpm',),
 
-            'por_br': [
+            'por_br': (
                 'simplemma_por',
                 'spacy_por',
                 'stanza_por'
-            ],
-            'por_pt': [
+            ),
+            'por_pt': (
                 'simplemma_por',
                 'spacy_por',
                 'stanza_por'
-            ],
+            ),
 
-            'ron': [
+            'ron': (
                 'simplemma_ron',
                 'spacy_ron',
                 'stanza_ron'
-            ],
+            ),
 
-            'rus': [
+            'rus': (
                 'simplemma_rus',
                 'pymorphy3_morphological_analyzer',
                 'spacy_rus',
                 'stanza_rus'
-            ],
-            'orv': ['stanza_orv'],
+            ),
+            'orv': ('stanza_orv',),
 
-            'sme': [
+            'sme': (
                 'simplemma_sme',
                 'stanza_sme'
-            ],
+            ),
 
-            'san': ['stanza_san'],
+            'san': ('stanza_san',),
 
-            'gla': [
+            'gla': (
                 'simplemma_gla',
                 'stanza_gla'
-            ],
+            ),
 
-            'srp_cyrl': ['spacy_srp_cyrl'],
-            'srp_latn': [
+            'srp_cyrl': ('spacy_srp_cyrl',),
+            'srp_latn': (
                 'simplemma_hbs',
                 'stanza_srp_latn'
-            ],
+            ),
 
-            'slk': [
+            'slk': (
                 'simplemma_slk',
                 'stanza_slk'
-            ],
+            ),
 
-            'slv': [
+            'slv': (
                 'simplemma_slv',
                 'spacy_slv',
                 'stanza_slv'
-            ],
+            ),
 
-            'hsb': ['stanza_hsb'],
+            'hsb': ('stanza_hsb',),
 
-            'spa': [
+            'spa': (
                 'simplemma_spa',
                 'spacy_spa',
                 'stanza_spa'
-            ],
+            ),
 
-            'swa': ['simplemma_swa'],
+            'swa': ('simplemma_swa',),
 
-            'swe': [
+            'swe': (
                 'simplemma_swe',
                 'spacy_swe',
                 'stanza_swe'
-            ],
+            ),
 
-            'tgl': [
+            'tgl': (
                 'simplemma_tgl',
                 'spacy_tgl'
-            ],
+            ),
 
-            'tam': ['stanza_tam'],
-            'bod': ['botok_bod'],
+            'tam': ('stanza_tam',),
 
-            'tur': [
+            'xct': ('botok_xct',),
+            'bod': ('modern_botok_bod',),
+
+            'tur': (
                 'simplemma_tur',
                 'spacy_tur',
                 'stanza_tur'
-            ],
-            'ota': ['stanza_ota'],
+            ),
+            'ota': ('stanza_ota',),
 
-            'ukr': [
+            'ukr': (
                 'pymorphy3_morphological_analyzer',
                 'simplemma_ukr',
                 'spacy_ukr',
                 'stanza_ukr'
-            ],
+            ),
 
-            'urd': [
+            'urd': (
                 'spacy_urd',
                 'stanza_urd'
-            ],
+            ),
 
-            'uig': ['stanza_uig'],
+            'uig': ('stanza_uig',),
 
-            'cym': [
+            'cym': (
                 'simplemma_cym',
                 'stanza_cym'
-            ],
+            ),
 
-            'wol': ['stanza_wol']
+            'wol': ('stanza_wol',)
         },
 
         'stop_word_lists': {
-            'afr': ['spacy_afr'],
-            'sqi': ['spacy_sqi'],
-            'amh': ['spacy_amh'],
+            'afr': ('spacy_afr',),
+            'sqi': ('spacy_sqi',),
+            'amh': ('spacy_amh',),
 
-            'ara': [
+            'ara': (
                 'nltk_ara',
                 'spacy_ara'
-            ],
+            ),
 
-            'hye': ['spacy_hye'],
-            'hyw': ['spacy_hye'],
+            'hye': ('spacy_hye',),
+            'hyw': ('spacy_hye',),
 
-            'aze': [
+            'aze': (
                 'nltk_aze',
                 'spacy_aze'
-            ],
+            ),
 
-            'eus': [
+            'eus': (
                 'nltk_eus',
                 'spacy_eus'
-            ],
+            ),
 
-            'ben': [
+            'ben': (
                 'nltk_ben',
                 'spacy_ben'
-            ],
+            ),
 
-            'bul': ['spacy_bul'],
+            'bul': ('spacy_bul',),
 
-            'cat': [
+            'cat': (
                 'nltk_cat',
                 'spacy_cat'
-            ],
+            ),
 
-            'zho_cn': [
+            'zho_cn': (
                 'nltk_zho_cn',
                 'spacy_zho_cn'
-            ],
-            'zho_tw': [
+            ),
+            'zho_tw': (
                 'nltk_zho_cn',
                 'spacy_zho_cn'
-            ],
+            ),
 
-            'hrv': ['spacy_hrv'],
-            'ces': ['spacy_ces'],
+            'hrv': ('spacy_hrv',),
+            'ces': ('spacy_ces',),
 
-            'dan': [
+            'dan': (
                 'nltk_dan',
                 'spacy_dan'
-            ],
+            ),
 
-            'nld': [
+            'nld': (
                 'nltk_nld',
                 'spacy_nld'
-            ],
+            ),
 
-            'eng_gb': [
+            'eng_gb': (
                 'nltk_eng',
                 'spacy_eng'
-            ],
-            'eng_us': [
+            ),
+            'eng_us': (
                 'nltk_eng',
                 'spacy_eng'
-            ],
+            ),
 
-            'est': ['spacy_est'],
+            'est': ('spacy_est',),
 
-            'fin': [
+            'fin': (
                 'nltk_fin',
                 'spacy_fin'
-            ],
+            ),
 
-            'fra': [
+            'fra': (
                 'nltk_fra',
                 'spacy_fra'
-            ],
+            ),
 
-            'lug': ['spacy_lug'],
+            'lug': ('spacy_lug',),
 
-            'deu_at': [
+            'deu_at': (
                 'nltk_deu',
                 'spacy_deu'
-            ],
-            'deu_de': [
+            ),
+            'deu_de': (
                 'nltk_deu',
                 'spacy_deu'
-            ],
-            'deu_ch': [
+            ),
+            'deu_ch': (
                 'nltk_deu',
                 'spacy_deu'
-            ],
+            ),
 
-            'grc': ['spacy_grc'],
-            'ell': [
+            'grc': ('spacy_grc',),
+            'ell': (
                 'nltk_ell',
                 'spacy_ell'
-            ],
+            ),
 
-            'guj': ['spacy_guj'],
+            'guj': ('spacy_guj',),
 
-            'heb': [
+            'heb': (
                 'nltk_heb',
                 'spacy_heb'
-            ],
+            ),
 
-            'hin': ['spacy_hin'],
+            'hin': ('spacy_hin',),
 
-            'hun': [
+            'hun': (
                 'nltk_hun',
                 'spacy_hun'
-            ],
+            ),
 
-            'isl': ['spacy_isl'],
+            'isl': ('spacy_isl',),
 
-            'ind': [
+            'ind': (
                 'nltk_ind',
                 'spacy_ind'
-            ],
+            ),
 
-            'gle': ['spacy_gle'],
+            'gle': ('spacy_gle',),
 
-            'ita': [
+            'ita': (
                 'nltk_ita',
                 'spacy_ita'
-            ],
+            ),
 
-            'jpn': ['spacy_jpn'],
-            'kan': ['spacy_kan'],
-            'kaz': ['nltk_kaz'],
-            'kor': ['spacy_kor'],
-            'kmr': ['spacy_kmr'],
-            'kir': ['spacy_kir'],
-            'lao': ['laonlp_lao'],
-            'lat': ['spacy_lat'],
-            'lav': ['spacy_lav'],
-            'lij': ['spacy_lij'],
-            'lit': ['spacy_lit'],
-            'ltz': ['spacy_ltz'],
-            'mkd': ['spacy_mkd'],
-            'msa': ['spacy_msa'],
-            'mal': ['spacy_mal'],
-            'mar': ['spacy_mar'],
+            'jpn': ('spacy_jpn',),
+            'kan': ('spacy_kan',),
+            'kaz': ('nltk_kaz',),
+            'kor': ('spacy_kor',),
+            'kmr': ('spacy_kmr',),
+            'kir': ('spacy_kir',),
+            'lao': ('laonlp_lao',),
+            'lat': ('spacy_lat',),
+            'lav': ('spacy_lav',),
+            'lij': ('spacy_lij',),
+            'lit': ('spacy_lit',),
+            'ltz': ('spacy_ltz',),
+            'mkd': ('spacy_mkd',),
+            'msa': ('spacy_msa',),
+            'mal': ('spacy_mal',),
+            'mar': ('spacy_mar',),
 
-            'nep': [
+            'nep': (
                 'nltk_nep',
                 'spacy_nep'
-            ],
+            ),
 
-            'nob': [
+            'nob': (
                 'nltk_nob',
                 'spacy_nob'
-            ],
+            ),
 
-            'fas': ['spacy_fas'],
-            'pol': ['spacy_pol'],
+            'fas': ('spacy_fas',),
+            'pol': ('spacy_pol',),
 
-            'por_br': [
+            'por_br': (
                 'nltk_por',
                 'spacy_por'
-            ],
-            'por_pt': [
+            ),
+            'por_pt': (
                 'nltk_por',
                 'spacy_por'
-            ],
+            ),
 
-            'ron': [
+            'ron': (
                 'nltk_ron',
                 'spacy_ron'
-            ],
+            ),
 
-            'rus': [
+            'rus': (
                 'nltk_rus',
                 'spacy_rus'
-            ],
+            ),
 
-            'san': ['spacy_san'],
-            'gla': ['spacy_gla'],
+            'san': ('spacy_san',),
+            'gla': ('spacy_gla',),
 
-            'srp_cyrl': ['spacy_srp_cyrl'],
-            'srp_latn': ['spacy_srp_cyrl'],
+            'srp_cyrl': ('spacy_srp_cyrl',),
+            'srp_latn': ('spacy_srp_cyrl',),
 
-            'sin': ['spacy_sin'],
-            'slk': ['spacy_slk'],
+            'sin': ('spacy_sin',),
+            'slk': ('spacy_slk',),
 
-            'slv': [
+            'slv': (
                 'nltk_slv',
                 'spacy_slv'
-            ],
+            ),
 
-            'dsb': ['spacy_dsb'],
-            'hsb': ['spacy_hsb'],
+            'dsb': ('spacy_dsb',),
+            'hsb': ('spacy_hsb',),
 
-            'spa': [
+            'spa': (
                 'nltk_spa',
                 'spacy_spa'
-            ],
+            ),
 
-            'swe': [
+            'swe': (
                 'nltk_swe',
                 'spacy_swe'
-            ],
+            ),
 
-            'tgk': ['nltk_tgk'],
-            'tgl': ['spacy_tgl'],
-            'tam': ['spacy_tam'],
-            'tat': ['spacy_tat'],
-            'tel': ['spacy_tel'],
+            'tgk': ('nltk_tgk',),
+            'tgl': ('spacy_tgl',),
+            'tam': ('spacy_tam',),
+            'tat': ('spacy_tat',),
+            'tel': ('spacy_tel',),
 
-            'tha': [
+            'tha': (
                 'pythainlp_tha',
                 'spacy_tha'
-            ],
+            ),
 
-            'bod': ['spacy_bod'],
-            'tir': ['spacy_tir'],
-            'tsn': ['spacy_tsn'],
+            'bod': ('spacy_bod',),
+            'tir': ('spacy_tir',),
+            'tsn': ('spacy_tsn',),
 
-            'tur': [
+            'tur': (
                 'nltk_tur',
                 'spacy_tur'
-            ],
+            ),
 
-            'ukr': ['spacy_ukr'],
-            'urd': ['spacy_urd'],
-            'vie': ['spacy_vie'],
-            'yor': ['spacy_yor'],
+            'ukr': ('spacy_ukr',),
+            'urd': ('spacy_urd',),
+            'vie': ('spacy_vie',),
+            'yor': ('spacy_yor',),
 
-            'other': []
+            'other': ()
         },
 
         'dependency_parsers': {
-            'afr': ['stanza_afr'],
-            'sqi': ['stanza_sqi'],
-            'ara': ['stanza_ara'],
-            'xcl': ['stanza_xcl'],
-            'hye': ['stanza_hye'],
-            'hyw': ['stanza_hyw'],
-            'eus': ['stanza_eus'],
-            'bel': ['stanza_bel'],
-            'bul': ['stanza_bul'],
-            'bxr': ['stanza_bxr'],
+            'afr': ('stanza_afr',),
+            'sqi': ('stanza_sqi',),
+            'ara': ('stanza_ara',),
+            'xcl': ('stanza_xcl',),
+            'hye': ('stanza_hye',),
+            'hyw': ('stanza_hyw',),
+            'eus': ('stanza_eus',),
+            'bel': ('stanza_bel',),
+            'bul': ('stanza_bul',),
+            'bxr': ('stanza_bxr',),
 
-            'cat': [
+            'cat': (
                 'spacy_cat',
                 'stanza_cat'
-            ],
+            ),
 
-            'lzh': ['stanza_lzh'],
-            'zho_cn': [
+            'lzh': ('stanza_lzh',),
+            'zho_cn': (
                 'spacy_zho',
                 'stanza_zho_cn'
-            ],
-            'zho_tw': [
+            ),
+            'zho_tw': (
                 'spacy_zho',
                 'stanza_zho_tw'
-            ],
+            ),
 
-            'chu': ['stanza_chu'],
-            'cop': ['stanza_cop'],
+            'chu': ('stanza_chu',),
+            'cop': ('stanza_cop',),
 
-            'hrv': [
+            'hrv': (
                 'spacy_hrv',
                 'stanza_hrv'
-            ],
+            ),
 
-            'ces': ['stanza_ces'],
+            'ces': ('stanza_ces',),
 
-            'dan': [
+            'dan': (
                 'spacy_dan',
                 'stanza_dan'
-            ],
+            ),
 
-            'nld': [
+            'nld': (
                 'spacy_nld',
                 'stanza_nld'
-            ],
+            ),
 
-            'ang': ['stanza_ang'],
-            'eng_gb': [
+            'ang': ('stanza_ang',),
+            'eng_gb': (
                 'spacy_eng',
                 'stanza_eng'
-            ],
-            'eng_us': [
+            ),
+            'eng_us': (
                 'spacy_eng',
                 'stanza_eng'
-            ],
+            ),
 
-            'myv': ['stanza_myv'],
-            'est': ['stanza_est'],
-            'fao': ['stanza_fao'],
+            'myv': ('stanza_myv',),
+            'est': ('stanza_est',),
+            'fao': ('stanza_fao',),
 
-            'fin': [
+            'fin': (
                 'spacy_fin',
                 'stanza_fin'
-            ],
+            ),
 
-            'fra': [
+            'fra': (
                 'spacy_fra',
                 'stanza_fra'
-            ],
-            'fro': ['stanza_fro'],
+            ),
+            'fro': ('stanza_fro',),
 
-            'glg': ['stanza_glg'],
-            'kat': ['stanza_kat'],
+            'glg': ('stanza_glg',),
+            'kat': ('stanza_kat',),
 
-            'deu_at': [
+            'deu_at': (
                 'spacy_deu',
                 'stanza_deu'
-            ],
-            'deu_de': [
+            ),
+            'deu_de': (
                 'spacy_deu',
                 'stanza_deu'
-            ],
-            'nds': ['stanza_nds'],
-            'deu_ch': [
+            ),
+            'nds': ('stanza_nds',),
+            'deu_ch': (
                 'spacy_deu',
                 'stanza_deu'
-            ],
+            ),
 
-            'got': ['stanza_got'],
+            'got': ('stanza_got',),
 
-            'grc': ['stanza_grc'],
-            'ell': [
+            'grc': ('stanza_grc',),
+            'ell': (
                 'spacy_ell',
                 'stanza_ell'
-            ],
+            ),
 
-            'hbo': ['stanza_hbo'],
-            'heb': ['stanza_heb'],
-            'hin': ['stanza_hin'],
-            'hun': ['stanza_hun'],
-            'isl': ['stanza_isl'],
-            'ind': ['stanza_ind'],
-            'gle': ['stanza_gle'],
+            'hbo': ('stanza_hbo',),
+            'heb': ('stanza_heb',),
+            'hin': ('stanza_hin',),
+            'hun': ('stanza_hun',),
+            'isl': ('stanza_isl',),
+            'ind': ('stanza_ind',),
+            'gle': ('stanza_gle',),
 
-            'ita': [
+            'ita': (
                 'spacy_ita',
                 'stanza_ita'
-            ],
+            ),
 
-            'jpn': [
+            'jpn': (
                 'spacy_jpn',
                 'stanza_jpn'
-            ],
+            ),
 
-            'kaz': ['stanza_kaz'],
-            'kpv': ['stanza_kpv'],
+            'kaz': ('stanza_kaz',),
+            'kpv': ('stanza_kpv',),
 
-            'kor': [
+            'kor': (
                 'spacy_kor',
                 'stanza_kor'
-            ],
+            ),
 
-            'kmr': ['stanza_kmr'],
-            'kir': ['stanza_kir'],
-            'lat': ['stanza_lat'],
-            'lav': ['stanza_lav'],
-            'lij': ['stanza_lij'],
+            'kmr': ('stanza_kmr',),
+            'kir': ('stanza_kir',),
+            'lat': ('stanza_lat',),
+            'lav': ('stanza_lav',),
+            'lij': ('stanza_lij',),
 
-            'lit': [
+            'lit': (
                 'spacy_lit',
                 'stanza_lit'
-            ],
+            ),
 
-            'mkd': ['spacy_mkd'],
-            'mlt': ['stanza_mlt'],
-            'glv': ['stanza_glv'],
-            'mar': ['stanza_mar'],
-            'pcm': ['stanza_pcm'],
+            'mkd': ('spacy_mkd',),
+            'mlt': ('stanza_mlt',),
+            'glv': ('stanza_glv',),
+            'mar': ('stanza_mar',),
+            'pcm': ('stanza_pcm',),
 
-            'nob': [
+            'nob': (
                 'spacy_nob',
                 'stanza_nob'
-            ],
+            ),
 
-            'nno': ['stanza_nno'],
-            'fas': ['stanza_fas'],
+            'nno': ('stanza_nno',),
+            'fas': ('stanza_fas',),
 
-            'pol': [
+            'pol': (
                 'spacy_pol',
                 'stanza_pol'
-            ],
+            ),
 
-            'qpm': ['stanza_qpm'],
+            'qpm': ('stanza_qpm',),
 
-            'por_br': [
+            'por_br': (
                 'spacy_por',
                 'stanza_por'
-            ],
-            'por_pt': [
+            ),
+            'por_pt': (
                 'spacy_por',
                 'stanza_por'
-            ],
+            ),
 
-            'ron': [
+            'ron': (
                 'spacy_ron',
                 'stanza_ron'
-            ],
+            ),
 
-            'rus': [
+            'rus': (
                 'spacy_rus',
                 'stanza_rus'
-            ],
-            'orv': ['stanza_orv'],
+            ),
+            'orv': ('stanza_orv',),
 
-            'sme': ['stanza_sme'],
-            'san': ['stanza_san'],
-            'gla': ['stanza_gla'],
-            'srp_latn': ['stanza_srp_latn'],
-            'snd': ['stanza_snd'],
-            'slk': ['stanza_slk'],
+            'sme': ('stanza_sme',),
+            'san': ('stanza_san',),
+            'gla': ('stanza_gla',),
+            'srp_latn': ('stanza_srp_latn',),
+            'snd': ('stanza_snd',),
+            'slk': ('stanza_slk',),
 
-            'slv': [
+            'slv': (
                 'spacy_slv',
                 'stanza_slv'
-            ],
+            ),
 
-            'hsb': ['stanza_hsb'],
+            'hsb': ('stanza_hsb',),
 
-            'spa': [
+            'spa': (
                 'spacy_spa',
                 'stanza_spa'
-            ],
+            ),
 
-            'swe': [
+            'swe': (
                 'spacy_swe',
                 'stanza_swe'
-            ],
+            ),
 
-            'tam': ['stanza_tam'],
-            'tel': ['stanza_tel'],
+            'tam': ('stanza_tam',),
+            'tel': ('stanza_tel',),
 
-            'tur': ['stanza_tur'],
-            'ota': ['stanza_ota'],
+            'tur': ('stanza_tur',),
+            'ota': ('stanza_ota',),
 
-            'ukr': [
+            'ukr': (
                 'spacy_ukr',
                 'stanza_ukr'
-            ],
+            ),
 
-            'urd': ['stanza_urd'],
-            'uig': ['stanza_uig'],
-            'vie': ['stanza_vie'],
-            'cym': ['stanza_cym'],
-            'wol': ['stanza_wol']
+            'urd': ('stanza_urd',),
+            'uig': ('stanza_uig',),
+            'vie': ('stanza_vie',),
+            'cym': ('stanza_cym',),
+            'wol': ('stanza_wol',)
         },
 
         'sentiment_analyzers': {
-            'afr': ['vader_afr'],
-            'sqi': ['vader_sqi'],
-            'amh': ['vader_amh'],
-            'ara': ['vader_ara'],
-            'hye': ['vader_hye'],
-            'hyw': ['vader_hye'],
-            'asm': ['vader_asm'],
-            'aze': ['vader_aze'],
-            'eus': ['vader_eus'],
-            'bel': ['vader_bel'],
-            'ben': ['vader_ben'],
-            'bul': ['vader_bul'],
-            'mya': ['vader_mya'],
-            'cat': ['vader_cat'],
+            'afr': ('vader_afr',),
+            'sqi': ('vader_sqi',),
+            'amh': ('vader_amh',),
+            'ara': ('vader_ara',),
+            'hye': ('vader_hye',),
+            'hyw': ('vader_hye',),
+            'asm': ('vader_asm',),
+            'aze': ('vader_aze',),
+            'eus': ('vader_eus',),
+            'bel': ('vader_bel',),
+            'ben': ('vader_ben',),
+            'bul': ('vader_bul',),
+            'mya': ('vader_mya',),
+            'cat': ('vader_cat',),
 
-            'zho_cn': [
+            'zho_cn': (
                 'stanza_zho_cn',
                 'vader_zho_cn'
-            ],
+            ),
 
-            'zho_tw': ['vader_zho_tw'],
-            'hrv': ['vader_hrv'],
-            'ces': ['vader_ces'],
-            'dan': ['vader_dan'],
-            'nld': ['vader_nld'],
+            'zho_tw': ('vader_zho_tw',),
+            'hrv': ('vader_hrv',),
+            'ces': ('vader_ces',),
+            'dan': ('vader_dan',),
+            'nld': ('vader_nld',),
 
-            'eng_gb': [
+            'eng_gb': (
                 'stanza_eng',
                 'vader_eng'
-            ],
-            'eng_us': [
+            ),
+            'eng_us': (
                 'stanza_eng',
                 'vader_eng'
-            ],
+            ),
 
-            'epo': ['vader_epo'],
-            'est': ['vader_est'],
-            'fin': ['vader_fin'],
-            'fra': ['vader_fra'],
-            'glg': ['vader_glg'],
-            'lug': ['vader_lug'],
-            'kat': ['vader_kat'],
+            'epo': ('vader_epo',),
+            'est': ('vader_est',),
+            'fin': ('vader_fin',),
+            'fra': ('vader_fra',),
+            'glg': ('vader_glg',),
+            'lug': ('vader_lug',),
+            'kat': ('vader_kat',),
 
-            'deu_at': [
+            'deu_at': (
                 'stanza_deu',
                 'vader_deu'
-            ],
-            'deu_de': [
+            ),
+            'deu_de': (
                 'stanza_deu',
                 'vader_deu'
-            ],
-            'deu_ch': [
+            ),
+            'deu_ch': (
                 'stanza_deu',
                 'vader_deu'
-            ],
+            ),
 
-            'ell': ['vader_ell'],
-            'guj': ['vader_guj'],
-            'heb': ['vader_heb'],
-            'hin': ['vader_hin'],
-            'hun': ['vader_hun'],
-            'isl': ['vader_isl'],
-            'ind': ['vader_ind'],
-            'gle': ['vader_gle'],
-            'ita': ['vader_ita'],
-            'jpn': ['vader_jpn'],
-            'kan': ['vader_kan'],
-            'kaz': ['vader_kaz'],
-            'khm': ['vader_khm'],
-            'kor': ['vader_kor'],
-            'kmr': ['vader_kmr'],
-            'kir': ['vader_kir'],
-            'lao': ['vader_lao'],
-            'lat': ['vader_lat'],
-            'lav': ['vader_lav'],
-            'lit': ['vader_lit'],
-            'ltz': ['vader_ltz'],
-            'mkd': ['vader_mkd'],
-            'msa': ['vader_msa'],
-            'mal': ['vader_mal'],
-            'mlt': ['vader_mlt'],
-            'mni_mtei': ['vader_mni_mtei'],
+            'ell': ('vader_ell',),
+            'guj': ('vader_guj',),
+            'heb': ('vader_heb',),
+            'hin': ('vader_hin',),
+            'hun': ('vader_hun',),
+            'isl': ('vader_isl',),
+            'ind': ('vader_ind',),
+            'gle': ('vader_gle',),
+            'ita': ('vader_ita',),
+            'jpn': ('vader_jpn',),
+            'kan': ('vader_kan',),
+            'kaz': ('vader_kaz',),
+            'khm': ('vader_khm',),
+            'kor': ('vader_kor',),
+            'kmr': ('vader_kmr',),
+            'kir': ('vader_kir',),
+            'lao': ('vader_lao',),
+            'lat': ('vader_lat',),
+            'lav': ('vader_lav',),
+            'lit': ('vader_lit',),
+            'ltz': ('vader_ltz',),
+            'mkd': ('vader_mkd',),
+            'msa': ('vader_msa',),
+            'mal': ('vader_mal',),
+            'mlt': ('vader_mlt',),
+            'mni_mtei': ('vader_mni_mtei',),
 
-            'mar': [
+            'mar': (
                 'stanza_mar',
                 'vader_mar'
-            ],
+            ),
 
-            'mon': ['vader_mon'],
-            'nep': ['vader_nep'],
-            'nob': ['vader_nob'],
-            'ori': ['vader_ori'],
-            'pan_guru': ['vader_pan_guru'],
-            'fas': ['vader_fas'],
-            'pol': ['vader_pol'],
-            'por_br': ['vader_por'],
-            'por_pt': ['vader_por'],
-            'ron': ['vader_ron'],
-            'rus': ['vader_rus'],
-            'san': ['vader_san'],
-            'gla': ['vader_gla'],
-            'srp_cyrl': ['vader_srp_cyrl'],
-            'srp_latn': ['vader_srp_cyrl'],
-            'snd': ['vader_snd'],
-            'sin': ['vader_sin'],
-            'slk': ['vader_slk'],
-            'slv': ['vader_slv'],
+            'mon_cyrl': ('vader_mon_cyrl',),
+            'nep': ('vader_nep',),
+            'nob': ('vader_nob',),
+            'ori': ('vader_ori',),
+            'pan_guru': ('vader_pan_guru',),
+            'fas': ('vader_fas',),
+            'pol': ('vader_pol',),
+            'por_br': ('vader_por',),
+            'por_pt': ('vader_por',),
+            'ron': ('vader_ron',),
+            'rus': ('vader_rus',),
+            'san': ('vader_san',),
+            'gla': ('vader_gla',),
+            'srp_cyrl': ('vader_srp_cyrl',),
+            'srp_latn': ('vader_srp_cyrl',),
+            'snd': ('vader_snd',),
+            'sin': ('vader_sin',),
+            'slk': ('vader_slk',),
+            'slv': ('vader_slv',),
 
-            'spa': [
+            'spa': (
                 'stanza_spa',
                 'vader_spa'
-            ],
+            ),
 
-            'swa': ['vader_swa'],
-            'swe': ['vader_swe'],
-            'tgl': ['vader_tgl'],
-            'tgk': ['vader_tgk'],
-            'tam': ['vader_tam'],
-            'tat': ['vader_tat'],
-            'tel': ['vader_tel'],
-            'tha': ['vader_tha'],
-            'tir': ['vader_tir'],
-            'tur': ['vader_tur'],
-            'ukr': ['vader_ukr'],
-            'urd': ['vader_urd'],
-            'uig': ['vader_uig'],
+            'swa': ('vader_swa',),
+            'swe': ('vader_swe',),
+            'tgl': ('vader_tgl',),
+            'tgk': ('vader_tgk',),
+            'tam': ('vader_tam',),
+            'tat': ('vader_tat',),
+            'tel': ('vader_tel',),
+            'tha': ('vader_tha',),
+            'tir': ('vader_tir',),
+            'tur': ('vader_tur',),
+            'ukr': ('vader_ukr',),
+            'urd': ('vader_urd',),
+            'uig': ('vader_uig',),
 
-            'vie': [
+            'vie': (
                 'stanza_vie',
                 'underthesea_vie'
-            ],
+            ),
 
-            'cym': ['vader_cym'],
-            'yor': ['vader_yor'],
-            'zul': ['vader_zul']
+            'cym': ('vader_cym',),
+            'yor': ('vader_yor',),
+            'zul': ('vader_zul',)
         },
 
         # Only people's names are capitalized and case of measure names are preserved as in original papers
@@ -4383,6 +4400,6 @@ def init_settings_global():
     for lang in SETTINGS_GLOBAL['langs'].values():
         lang_code = lang[0]
 
-        SETTINGS_GLOBAL['stop_word_lists'][lang_code] = stop_word_lists.get(lang_code, []) + ['custom']
+        SETTINGS_GLOBAL['stop_word_lists'][lang_code] = stop_word_lists.get(lang_code, ()) + ('custom',)
 
     return SETTINGS_GLOBAL

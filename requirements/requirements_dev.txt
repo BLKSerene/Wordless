@@ -72,6 +72,3 @@ wordcloud
 --index-url=https://download.pytorch.org/whl/cpu
 --extra-index-url=https://pypi.org/simple
 torch
-
-# spaCy's English model
-en_core_web_trf-3.8.0-py3-none-any.whl

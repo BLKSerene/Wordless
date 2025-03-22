@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Tagsets - Botok
+# Wordless: Tagsets - Botok (Classical)
 # Copyright (C) 2018-2025  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -29,7 +29,6 @@ tagset_mapping = [
     ['INTJ', 'INTJ', 'Interjection', ''],
     ['NOUN', 'NOUN', 'Noun', ''],
     ['PROPN', 'PROPN', 'Proper noun', ''],
-    ['NUM', 'NUM', 'Numeral', ''],
     ['PART', 'PART', 'Particle', ''],
     ['PRON', 'PRON', 'Pronoun', ''],
     ['VERB', 'VERB', 'Verb', ''],
