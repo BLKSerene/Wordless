@@ -54,6 +54,7 @@
 - Dependencies: Upgrade Beautiful Soup to 4.13.3
 - Dependencies: Upgrade Botok to 0.9.0
 - Dependencies: Upgrade Charset Normalizer to 3.4.1
+- Dependencies: Upgrade Lingua to 2.1.0
 - Dependencies: Upgrade NLTK to 3.9.1
 - Dependencies: Upgrade Pyphen to 0.17.0
 - Dependencies: Upgrade python-mecab-ko to 1.3.7

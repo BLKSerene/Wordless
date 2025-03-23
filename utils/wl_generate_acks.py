@@ -58,7 +58,7 @@ ACKS = (
         'Apache-2.0', 'https://github.com/wannaphong/LaoNLP/blob/master/LICENSE'
     ), (
         'Lingua', 'https://github.com/pemistahl/lingua-py',
-        '2.0.2', 'Peter M. Stahl',
+        '2.1.0', 'Peter M. Stahl',
         'Apache-2.0', 'https://github.com/pemistahl/lingua-py/blob/main/LICENSE.txt'
     ), (
         'Matplotlib', 'https://matplotlib.org/',

@@ -1119,6 +1119,7 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
 
                         if new_file_src['lang'] is None:
                             new_file_src['lang'] = 'other'
+
                         if new_file_tgt['lang'] is None:
                             new_file_tgt['lang'] = 'other'
                     else:
