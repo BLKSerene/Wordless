@@ -24,6 +24,7 @@
 - Measures: Add effect size - conditional probability / ΔP / mutual information (normalized) / μ-value / pointwise mutual information (squared) / pointwise mutual information (normalized) / relative risk
 - Menu: Add Edit
 - Settings: Add Settings - Measures - Effect Size - Mutual Information / Pointwise Mutual Information / Pointwise Mutual Information (Cubic) / Pointwise Mutual Information (Squared)
+- Settings: Add Settings - Part-of-speech Tagging - Part-of-speech Tagger Settings - Separator between tokens and part-of-speech tags
 - Utils: Add modern-botok's Tibetan (Modern) sentence tokenizer, word tokenizer, part-of-speech tagger, and lemmatizer
 - Utils: Add spaCy's Kurdish (Kurmanji) and Scottish Gaelic word tokenizers
 - Utils: Add spaCy's stop word lists

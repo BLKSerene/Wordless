@@ -16,8 +16,6 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import platform
-
 from PyQt5 import QtCore
 from PyQt5 import QtGui
 from PyQt5 import QtWidgets
@@ -25,14 +23,14 @@ from PyQt5 import QtWidgets
 from wordless.wl_utils import wl_misc
 from wordless.wl_widgets import wl_buttons
 
-is_windows, is_macos, is_linux = wl_misc.check_os()
+is_macos = wl_misc.check_os()[1]
 
 class Wl_Layout(QtWidgets.QGridLayout):
     def __init__(self):
         super().__init__()
 
-        if platform.system() == 'Darwin':
-            self.setSpacing(5)
+        if is_macos:
+            self.setSpacing(8)
 
 class Wl_Wrapper(QtWidgets.QWidget):
     def __init__(self, parent):
@@ -97,23 +95,12 @@ class Wl_Tab_Widget(QtWidgets.QTabWidget):
 
         self.tabBar().installEventFilter(self)
 
-        # Fix invisible white text color in selected tabs on newer macOSes
-        if is_macos:
-            self.setStyleSheet('''
-                QTabBar::tab:selected {
-                    border: 1px solid #D9D9D9;
-                    padding: 0 5px;
-                    background-color: #469AFC;
-                    color: #FFF;
-                }
-            ''')
-
     # Disable mouse wheel events for tabs
     def eventFilter(self, obj, event):
         if obj == self.tabBar() and event.type() == QtCore.QEvent.Wheel:
             return True
-
-        return super().eventFilter(obj, event)
+        else:
+            return super().eventFilter(obj, event)
 
 class Wl_Splitter(QtWidgets.QSplitter):
     def __init__(self, orientation, parent):
@@ -162,9 +149,10 @@ class Wl_Separator(QtWidgets.QFrame):
 
         self.main = wl_misc.find_wl_main(parent)
 
-        if orientation == 'hor':
-            self.setFrameShape(QtWidgets.QFrame.HLine)
-        elif orientation == 'vert':
-            self.setFrameShape(QtWidgets.QFrame.VLine)
+        match orientation:
+            case 'hor':
+                self.setFrameShape(QtWidgets.QFrame.HLine)
+            case 'vert':
+                self.setFrameShape(QtWidgets.QFrame.VLine)
 
         self.setStyleSheet('color: #D0D0D0;')

@@ -281,6 +281,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
                     item.setText(file_name_old)
 
                     if file_name in file_names_old:
+                        # Use exec_() instead of open() here to allow editing to be started
                         wl_dialogs.Wl_Dialog_Info_Simple(
                             self.main,
                             title = self.tr('Duplicate File Names'),
@@ -292,9 +293,10 @@ class Wl_Table_Files(wl_tables.Wl_Table):
                             icon = 'warning'
                         ).exec_()
 
+                        # Allow the editor to be closed properly after editing is started
                         self.setCurrentIndex(item.index())
 
-                        self.closeEditor(self.findChild(QtWidgets.QLineEdit), QtWidgets.QAbstractItemDelegate.NoHint)
+                        self.closePersistentEditor(item.index())
                         self.edit(item.index())
 
                     return
@@ -444,7 +446,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
     @wl_misc.log_time
     def _open_files(self, files_to_open):
         if wl_nlp_utils.check_models(
-            self.main,
+            self.dialog_open_corpora,
             langs = set((file['lang'] for file in files_to_open)),
         ):
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Checking files...'))
@@ -458,7 +460,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
             )).start_worker()
 
     def update_gui(self, err_msg, new_files):
-        if wl_checks_files.check_err_file_area(self.main, err_msg):
+        if wl_checks_files.check_err_file_area(self.dialog_open_corpora, err_msg):
             len_files_old = len(self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}'])
 
             self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}'].extend(new_files)
@@ -502,9 +504,9 @@ class Wl_Table_Files(wl_tables.Wl_Table):
         self._close_files(list(range(len(self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}']))))
 
 class Wl_Dialog_Open_Corpora(wl_dialogs.Wl_Dialog):
-    def __init__(self, main):
+    def __init__(self, parent):
         super().__init__(
-            main,
+            parent,
             title = _tr('Wl_Dialog_Open_Corpora', 'Open Corpora'),
             width = 800,
             height = 320
@@ -615,6 +617,7 @@ class Wl_Dialog_Open_Corpora(wl_dialogs.Wl_Dialog):
         settings['auto_detect_langs'] = self.checkbox_auto_detect_langs.isChecked()
         settings['include_files_in_subfolders'] = self.checkbox_include_files_in_subfolders.isChecked()
 
+    @wl_misc.log_time
     def _add_files(self, file_paths):
         dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Checking files...'))
 
@@ -654,7 +657,7 @@ class Wl_Dialog_Open_Corpora(wl_dialogs.Wl_Dialog):
             )).start_worker()
 
     def update_gui(self, err_msg, new_files):
-        if wl_checks_files.check_err_file_area(self.main, err_msg):
+        if wl_checks_files.check_err_file_area(self, err_msg):
             self.table_files.files_to_open.extend(new_files)
 
             self.table_files.update_table()

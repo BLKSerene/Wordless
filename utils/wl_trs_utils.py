@@ -56,7 +56,7 @@ def del_obsolete_trans(ts_file):
 
 def release_trs():
     for ts_file in glob.glob('trs/*.ts'):
-        subprocess.run(['lrelease', ts_file], check = True)
+        subprocess.run(('lrelease', ts_file), check = True)
 
 if __name__ == '__main__':
     release_trs()

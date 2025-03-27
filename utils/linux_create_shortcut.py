@@ -44,4 +44,4 @@ with open(path_desktop, 'w', encoding = 'utf_8') as f:
     ''')
 
 # Allow excuting file as program
-subprocess.run(['chmod', '+x', path_desktop], check = True)
+subprocess.run(('chmod', '+x', path_desktop), check = True)

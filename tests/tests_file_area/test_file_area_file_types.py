@@ -93,18 +93,18 @@ def test_file_area_file_types():
         match i:
             case 0 | 3 | 4:
                 main.settings_custom['files']['tags']['xml_tag_settings'] = [
-                    ['Non-embedded', 'Paragraph', '<p>', '</p>'],
-                    ['Non-embedded', 'Paragraph', '<head>', '</head>'],
-                    ['Non-embedded', 'Sentence', '<s>', '</s>'],
-                    ['Non-embedded', 'Word', '<w>', '</w>'],
-                    ['Non-embedded', 'Word', '<c>', '</c>']
+                    ['Nonembedded', 'Paragraph', '<p>', '</p>'],
+                    ['Nonembedded', 'Paragraph', '<head>', '</head>'],
+                    ['Nonembedded', 'Sentence', '<s>', '</s>'],
+                    ['Nonembedded', 'Word', '<w>', '</w>'],
+                    ['Nonembedded', 'Word', '<c>', '</c>']
                 ]
             # XML tags unfound
             case 1:
                 main.settings_custom['files']['tags']['xml_tag_settings'] = [
-                    ['Non-embedded', 'Paragraph', '<pp>', '</pp>'],
-                    ['Non-embedded', 'Sentence', '<ss>', '</ss>'],
-                    ['Non-embedded', 'Word', '<ww>', '</ww>'],
+                    ['Nonembedded', 'Paragraph', '<pp>', '</pp>'],
+                    ['Nonembedded', 'Sentence', '<ss>', '</ss>'],
+                    ['Nonembedded', 'Word', '<ww>', '</ww>'],
                 ]
             # XML tags unspecified
             case 2:

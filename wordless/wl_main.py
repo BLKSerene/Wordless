@@ -612,7 +612,7 @@ class Wl_Main(QtWidgets.QMainWindow):
 
     def prefs_reset_layouts(self):
         if wl_dialogs.Wl_Dialog_Question(
-            main = self,
+            self,
             title = self.tr('Reset Layouts'),
             text = self.tr('''
                 <div>Do you want to reset all layouts to their default settings?</div>
@@ -1348,7 +1348,7 @@ if __name__ == '__main__':
     wl_app = QtWidgets.QApplication(sys.argv)
 
     # Translations
-    if not first_startup:
+    if os.path.exists(file_settings_display_lang):
         with open(file_settings_display_lang, 'rb') as f:
             display_lang = pickle.load(f)
     else:

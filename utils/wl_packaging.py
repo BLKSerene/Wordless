@@ -35,11 +35,15 @@ time_start = time.time()
 print_with_elapsed_time('Start packaging...')
 
 if is_windows:
-    subprocess.run(['python', '-m', 'PyInstaller', '-y', '--clean', 'utils/wl_packaging.spec'], check = True)
+    subprocess.run(('python', '-m', 'PyInstaller', '-y', '--clean', 'utils/wl_packaging.spec'), check = True)
 elif is_macos:
-    subprocess.run(['python3', '-m', 'PyInstaller', '-y', '--clean', 'utils/wl_packaging.spec'], check = True)
+    # Clean cache to avoid code signature error
+    shutil.rmtree('build', ignore_errors = True)
+    shutil.rmtree('dist', ignore_errors = True)
+
+    subprocess.run(('python3', '-m', 'PyInstaller', '-y', '--clean', 'utils/wl_packaging.spec'), check = True)
 elif is_linux:
-    subprocess.run(['python3.11', '-m', 'PyInstaller', '-y', '--clean', 'utils/wl_packaging.spec'], check = True)
+    subprocess.run(('python3.11', '-m', 'PyInstaller', '-y', '--clean', 'utils/wl_packaging.spec'), check = True)
 
 # Create folders
 if is_windows or is_linux:
@@ -56,9 +60,9 @@ if is_linux:
     os.remove('dist/Wordless/libs/libstdc++.so.6')
 
     # Generate .desktop file
-    subprocess.run(['python3.11', '-m', 'PyInstaller', '-y', '--clean', 'utils/linux_create_shortcut.py', '--contents-directory', 'libs'], check = True)
+    subprocess.run(('python3.11', '-m', 'PyInstaller', '-y', '--clean', 'utils/linux_create_shortcut.py', '--contents-directory', 'libs'), check = True)
     shutil.copyfile('dist/linux_create_shortcut/linux_create_shortcut', 'dist/Wordless/Wordless - Create Shortcut')
-    subprocess.run(['chmod', '+x', 'dist/Wordless/Wordless - Create Shortcut'], check = True)
+    subprocess.run(('chmod', '+x', 'dist/Wordless/Wordless - Create Shortcut'), check = True)
 
 print_with_elapsed_time('Packaging done!')
 
@@ -71,11 +75,11 @@ elif is_macos:
     os.chdir('dist')
 
 if is_windows:
-    subprocess.run([os.path.join(os.getcwd(), 'Wordless.exe')], check = True)
+    subprocess.run((os.path.join(os.getcwd(), 'Wordless.exe')), check = True)
 elif is_macos:
-    subprocess.run([os.path.join(os.getcwd(), 'Wordless.app/Contents/MacOS/Wordless')], check = True)
+    subprocess.run((os.path.join(os.getcwd(), 'Wordless.app/Contents/MacOS/Wordless')), check = True)
 elif is_linux:
-    subprocess.run(['./Wordless'], check = True)
+    subprocess.run(('./Wordless'), check = True)
 
 # Remove custom settings file
 if is_windows or is_linux:
@@ -113,11 +117,11 @@ if os.path.exists(zip_file_name):
     os.remove(zip_file_name)
 
 if is_windows:
-    # Requires 7-Zip
-    subprocess.run(['7z', 'a', '-tzip', '-mx9', zip_file_name, 'Wordless'], check = True)
+    # Require 7-Zip
+    subprocess.run(('7z', 'a', '-tzip', '-mx9', zip_file_name, 'Wordless'), check = True)
 elif is_macos:
-    subprocess.run(['ditto', '-c', '-k', '--sequesterRsrc', '--keepParent', 'Wordless.app/', zip_file_name], check = True)
+    subprocess.run(('ditto', '-c', '-k', '--sequesterRsrc', '--keepParent', 'Wordless.app/', zip_file_name), check = True)
 elif is_linux:
-    subprocess.run(['tar', '-czvf', zip_file_name, 'Wordless/'], check = True)
+    subprocess.run(('tar', '-czvf', zip_file_name, 'Wordless/'), check = True)
 
 print_with_elapsed_time('Compressing done!')

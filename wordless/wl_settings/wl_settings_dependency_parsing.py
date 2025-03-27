@@ -147,7 +147,7 @@ class Wl_Settings_Dependency_Parsing(wl_settings.Wl_Settings_Node):
             )
 
             if wl_nlp_utils.check_models(
-                self.main,
+                self,
                 langs = [self.settings_custom['preview']['preview_lang']],
                 lang_utils = [[dependency_parser]]
             ):

@@ -26,87 +26,113 @@ from wordless.wl_nlp import wl_lemmatization, wl_texts
 
 _tr = QtCore.QCoreApplication.translate
 
+# Asterisks * are always treated as part of the tag name since embedded tags are only allowed for body tags
+RE_TAG_EMBEDDED = re.compile(r'^(([^\w\s*]|_)+)(\S*)$')
+# Whitespace is allowed within nonembedded tags
+RE_TAG_NONEMBEDDED = re.compile(r'^(([^\w\s]|_)+)(.*?)(([^\w\s]|_)+)$')
+# Asterisks * are always treated as part of the tag name for body tags
+RE_TAG_NONEMBEDDED_BODY = re.compile(r'^(([^\w\s*]|_)+)(.*?)(([^\w\s*]|_)+)$')
+RE_ALL_PUNC_MARKS = re.compile(r'^([^\w\s*]|_)+$')
+
 # Tags
 def split_tag_embedded(tag):
-    # e.g. _*
-    if (re_tag := re.search(r'^(([^\w\s]|_)+)(\*)$', tag)) is None:
-        re_tag = re.search(r'^(([^\w\s]|_)+)(\S*)$', tag)
+    # Empty tag name
+    if len(tag) == 1:
+        tag_start = tag
+        tag_name = ''
+    # If the tag consists only of punctuation marks, the first character is treated as the tag and the remaining characters are treated as the tag name, e.g. _,
+    elif RE_ALL_PUNC_MARKS.search(tag):
+        tag_start = tag[0]
+        tag_name = tag[1:]
+    else:
+        re_tag = RE_TAG_EMBEDDED.search(tag)
 
-    tag_start = re_tag.group(1)
-    tag_name = re_tag.group(3)
+        tag_start = re_tag.group(1)
+        tag_name = re_tag.group(3)
 
     return tag_start, tag_name
 
-def split_tag_non_embedded(tag):
-    # e.g. <*>
-    if (re_tag := re.search(r'^(([^\w\s]|_)+)(\*)(([^\w\s]|_)+)$', tag)) is None:
-        re_tag = re.search(r'^(([^\w\s]|_)+)(.*?)(([^\w\s]|_)+)$', tag)
-
-    if (tag_name := re_tag.group(3)):
-        tag_start = re_tag.group(1)
-        tag_end = re_tag.group(4)
-    # Empty tag
+def split_tag_nonembedded(tag, tag_type):
+    # Empty tag name
+    if len(tag) == 2:
+        tag_start = tag[0]
+        tag_name = ''
+        tag_end = tag[1]
+    # If the tag consists only of punctuation marks, the first and last character are treated as the tag and the remaining characters are treated as the tag name
+    elif RE_ALL_PUNC_MARKS.search(tag):
+        tag_start = tag[0]
+        tag_name = tag[1:-1]
+        tag_end = tag[-1]
     else:
-        tag_start = tag[:len(tag) // 2]
-        tag_end = tag[len(tag) // 2:]
+        if tag_type == 'body':
+            re_tag = RE_TAG_NONEMBEDDED_BODY.search(tag)
+        else:
+            re_tag = RE_TAG_NONEMBEDDED.search(tag)
+
+        tag_start = re_tag.group(1)
+        tag_name = re_tag.group(3)
+        tag_end = re_tag.group(4)
 
     return tag_start, tag_name, tag_end
 
+def replace_wildcards_in_tag_name(tag_name, re_wildcard, tag_type, escape = True):
+    if tag_type == 'body' and '*' in tag_name:
+        # Use re.split to prevent escaping asterisks *
+        # Successive asterisks are treated as one asterisk
+        if escape:
+            tag_name = re_wildcard.join((re.escape(part) for part in re.split(r'\*+', tag_name)))
+        else:
+            tag_name = re_wildcard.join((part for part in re.split(r'\*+', tag_name)))
+    elif escape:
+        tag_name = re.escape(tag_name)
+
+    return tag_name
+
 def get_re_tags(main, tag_type):
     tags_embedded = []
-    tags_non_embedded = []
+    tags_nonembedded = []
 
     for type_, _, opening_tag, _ in main.settings_custom['files']['tags'][f'{tag_type}_tag_settings']:
         if type_ == _tr('wl_matching', 'Embedded'):
-            tag_start, tag_name = split_tag_embedded(opening_tag)
-            tag_start = re.escape(tag_start)
+            tag_separator, tag_name = split_tag_embedded(opening_tag)
 
-            # Wilcards
-            if tag_type == 'body' and tag_name == '*':
-                tags_embedded.append(fr'{tag_start}\S*(?=\s|$)')
-            else:
-                tags_embedded.append(fr'{tag_start}{re.escape(tag_name)}(?=\s|$)')
-        elif type_ == _tr('wl_matching', 'Non-embedded'):
-            tag_start, tag_name, tag_end = split_tag_non_embedded(opening_tag)
+            tag_separator = re.escape(tag_separator)
+            tag_name = replace_wildcards_in_tag_name(tag_name, r'\S+', tag_type)
+
+            tags_embedded.append(fr'{tag_separator}{tag_name}(?=\s|$)')
+        elif type_ == _tr('wl_matching', 'Nonembedded'):
+            tag_start, tag_name, tag_end = split_tag_nonembedded(opening_tag, tag_type)
+
             tag_start = re.escape(tag_start)
+            tag_name = replace_wildcards_in_tag_name(tag_name, r'.+?', tag_type)
             tag_end = re.escape(tag_end)
 
-            # Wilcards
-            if tag_type == 'body' and tag_name == '*':
-                tags_non_embedded.append(fr'{tag_start}/?.*?{tag_end}')
-            else:
-                tags_non_embedded.append(fr'{tag_start}/?{re.escape(tag_name)}{tag_end}')
+            tags_nonembedded.append(fr'{tag_start}/?{tag_name}{tag_end}')
 
-    return '|'.join(tags_embedded + tags_non_embedded)
+    return '|'.join(tags_embedded + tags_nonembedded)
 
 def get_re_tags_with_tokens(main, tag_type):
     tags_embedded = []
-    tags_non_embedded = []
+    tags_nonembedded = []
 
-    for type_, _, opening_tag, closing_tag in main.settings_custom['files']['tags'][f'{tag_type}_tag_settings']:
+    for type_, _, opening_tag, _ in main.settings_custom['files']['tags'][f'{tag_type}_tag_settings']:
         if type_ == _tr('wl_matching', 'Embedded'):
-            tag_start, tag_name = split_tag_embedded(opening_tag)
-            tag_start = re.escape(tag_start)
+            tag_separator, tag_name = split_tag_embedded(opening_tag)
 
-            # Wilcards
-            if tag_type == 'body' and tag_name == '*':
-                tags_embedded.append(fr'\S*{tag_start}\S*(?=\s|$)')
-            else:
-                tags_embedded.append(fr'\S*{tag_start}{re.escape(tag_name)}(?=\s|$)')
-        elif type_ == _tr('wl_matching', 'Non-embedded'):
-            tag_start, tag_name, tag_end = split_tag_non_embedded(opening_tag)
+            tag_separator = re.escape(tag_separator)
+            tag_name = replace_wildcards_in_tag_name(tag_name, r'\S+', tag_type)
+
+            tags_embedded.append(fr'\S*{tag_separator}{tag_name}(?=\s|$)')
+        elif type_ == _tr('wl_matching', 'Nonembedded'):
+            tag_start, tag_name, tag_end = split_tag_nonembedded(opening_tag, tag_type)
+
             tag_start = re.escape(tag_start)
+            tag_name = replace_wildcards_in_tag_name(tag_name, r'.+?', tag_type)
             tag_end = re.escape(tag_end)
-            opening_tag = re.escape(opening_tag)
-            closing_tag = re.escape(closing_tag)
 
-            # Wilcards
-            if tag_type == 'body' and tag_name == '*':
-                tags_non_embedded.append(fr'{tag_start}.*?{tag_end}.*?{tag_start}/.*?{tag_end}')
-            else:
-                tags_non_embedded.append(fr'{opening_tag}.*{closing_tag}')
+            tags_nonembedded.append(fr'{tag_start}{tag_name}{tag_end}.*?{tag_start}/{tag_name}{tag_end}')
 
-    return '|'.join(tags_embedded + tags_non_embedded)
+    return '|'.join(tags_embedded + tags_nonembedded)
 
 # Search Terms
 def check_search_terms(search_settings, search_enabled):

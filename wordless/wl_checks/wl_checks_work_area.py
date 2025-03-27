@@ -23,41 +23,17 @@ from PyQt5 import QtCore
 from PyQt5 import QtGui
 
 from wordless.wl_dialogs import wl_dialogs, wl_dialogs_errs
-from wordless.wl_utils import wl_conversion
+from wordless.wl_utils import wl_conversion, wl_excs, wl_misc
 
 _tr = QtCore.QCoreApplication.translate
 
-def wl_status_bar_msg_lang_support_unavailable(main):
-    main.statusBar().showMessage(_tr('wl_checks_work_area', 'Language support unavailable!'))
+def wl_status_bar_missing_search_terms(main):
+    main.statusBar().showMessage(_tr('wl_checks_work_area', 'The search term is missing.'))
 
-def wl_status_bar_msg_missing_search_terms(main):
-    main.statusBar().showMessage(_tr('wl_checks_work_area', 'Missing search terms!'))
+def wl_status_bar_err_fatal(main):
+    main.statusBar().showMessage(_tr('wl_checks_work_area', 'A fatal error has just occurred.'))
 
-def wl_status_bar_msg_success_download_model(main):
-    main.statusBar().showMessage(_tr('wl_checks_work_area', 'Model downloaded successfully.'))
-
-def wl_status_bar_msg_success_generate_table(main):
-    main.statusBar().showMessage(_tr('wl_checks_work_area', 'Table generated successfully.'))
-
-def wl_status_bar_msg_success_generate_fig(main):
-    main.statusBar().showMessage(_tr('wl_checks_work_area', 'Figure generated successfully.'))
-
-def wl_status_bar_msg_success_exp_table(main):
-    main.statusBar().showMessage(_tr('wl_checks_work_area', 'Table exported successfully.'))
-
-def wl_status_bar_msg_success_no_results(main):
-    main.statusBar().showMessage(_tr('wl_checks_work_area', 'No results to display.'))
-
-def wl_status_bar_msg_err_download_model(main):
-    main.statusBar().showMessage(_tr('wl_checks_work_area', 'A network error occurred while downloading the model!'))
-
-def wl_status_bar_msg_err_fatal(main):
-    main.statusBar().showMessage(_tr('wl_checks_work_area', 'A fatal error has just occurred!'))
-
-def wl_status_bar_msg_file_access_denied(main):
-    main.statusBar().showMessage(_tr('wl_checks_work_area', 'File access denied!'))
-
-def check_search_terms(main, search_settings, show_warning = True):
+def check_search_terms(parent, search_settings, show_warning = True):
     if (
         (
             not search_settings['multi_search_mode']
@@ -73,7 +49,7 @@ def check_search_terms(main, search_settings, show_warning = True):
 
         if show_warning:
             wl_dialogs.Wl_Dialog_Info_Simple(
-                main,
+                parent,
                 title = _tr('wl_checks_work_area', 'Missing Search Term'),
                 text = _tr('wl_checks_work_area', '''
                     <div>You have not specified any search term yet.</div>
@@ -83,7 +59,7 @@ def check_search_terms(main, search_settings, show_warning = True):
                 icon = 'warning'
             ).open()
 
-            wl_status_bar_msg_missing_search_terms(main)
+            wl_status_bar_missing_search_terms(wl_misc.find_wl_main(parent))
 
     return search_terms_ok
 
@@ -94,18 +70,19 @@ NLP_UTILS = {
     'dependency_parsers': _tr('wl_checks_work_area', 'Dependency parsing')
 }
 
-def check_nlp_support(main, nlp_utils, files = None, ref = False):
+def check_nlp_support(parent, nlp_utils, files = None, ref = False):
     support_ok = True
     nlp_utils_no_support = []
+    main = wl_misc.find_wl_main(parent)
 
     if files is None:
         if ref:
-            files = list(main.wl_file_area_ref.get_selected_files())
+            files = tuple(main.wl_file_area_ref.get_selected_files())
         else:
-            files = list(main.wl_file_area.get_selected_files())
+            files = tuple(main.wl_file_area.get_selected_files())
 
     for nlp_util in nlp_utils:
-        # Check pos tagging support for untagged files only
+        # Check POS tagging support for untagged files only
         if nlp_util == 'pos_taggers':
             for file in files:
                 if not file['tagged'] and file['lang'] not in main.settings_global[nlp_util]:
@@ -116,12 +93,12 @@ def check_nlp_support(main, nlp_utils, files = None, ref = False):
                     nlp_utils_no_support.append([nlp_util, file])
 
     if nlp_utils_no_support:
-        dialog_err_files = wl_dialogs_errs.Wl_Dialog_Err_Files(main, title = _tr('wl_checks_work_area', 'No Language Support'))
-        dialog_err_files.table_err_files.model().setHorizontalHeaderLabels([
+        dialog_err_files = wl_dialogs_errs.Wl_Dialog_Err_Files(parent, title = _tr('wl_checks_work_area', 'No Language Support'))
+        dialog_err_files.table_err_files.model().setHorizontalHeaderLabels((
             _tr('wl_checks_work_area', 'Type of Language Support'),
             _tr('wl_checks_work_area', 'File Name'),
             _tr('wl_checks_work_area', 'Language')
-        ])
+        ))
 
         dialog_err_files.label_err.set_text(_tr('wl_checks_work_area', '''
             <div>Data analysis cannot be carried out because language support is unavailable for the following corpora. Please check your language settings or use another corpus.</div>
@@ -147,25 +124,26 @@ def check_nlp_support(main, nlp_utils, files = None, ref = False):
         dialog_err_files.table_err_files.enable_updates()
         dialog_err_files.open()
 
-        wl_status_bar_msg_lang_support_unavailable(main)
+        main.statusBar().showMessage(_tr('wl_checks_work_area', 'Language support is unavailable.'))
 
         support_ok = False
 
     return support_ok
 
-def check_results(main, err_msg, results):
+def check_results(parent, err_msg, results):
     results_ok = True
+    main = wl_misc.find_wl_main(parent)
 
     if err_msg:
         results_ok = False
 
-        wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
-        wl_status_bar_msg_err_fatal(main)
+        wl_dialogs_errs.Wl_Dialog_Err_Fatal(parent, err_msg).open()
+        wl_status_bar_err_fatal(main)
     elif not any(results):
         results_ok = False
 
         wl_dialogs.Wl_Dialog_Info_Simple(
-            main,
+            parent,
             title = _tr('wl_checks_work_area', 'No Results'),
             text = _tr('wl_checks_work_area', '''
                 <div>Data processing has completed successfully, but there are no results to display.</div>
@@ -175,11 +153,11 @@ def check_results(main, err_msg, results):
             icon = 'warning'
         ).open()
 
-        wl_status_bar_msg_success_no_results(main)
+        main.statusBar().showMessage(_tr('wl_checks_work_area', 'No results to display.'))
 
     return results_ok
 
-def check_results_download_model(main, err_msg, model_name = ''):
+def check_results_download_model(parent, err_msg, model_name = ''):
     results_ok = True
 
     try:
@@ -193,65 +171,79 @@ def check_results_download_model(main, err_msg, model_name = ''):
             err_msg = traceback.format_exc()
 
     if err_msg:
-        # Use exec_() instead of open() here to prevent the error dialog from being hidden on macOS
-        wl_dialogs_errs.Wl_Dialog_Err_Download_Model(main, err_msg).exec_()
-        wl_status_bar_msg_err_download_model(main)
+        wl_dialogs_errs.Wl_Dialog_Err_Download_Model(parent, err_msg).open()
+        wl_misc.find_wl_main(parent).statusBar().showMessage(_tr('wl_checks_work_area', 'A network error occurred while downloading the model.'))
 
         results_ok = False
 
     return results_ok
 
-def check_postprocessing(main, err_msg):
+def check_postprocessing(parent, err_msg):
     results_ok = True
 
     if err_msg:
         results_ok = False
 
-        wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
-        wl_status_bar_msg_err_fatal(main)
+        wl_dialogs_errs.Wl_Dialog_Err_Fatal(parent, err_msg).open()
+        wl_status_bar_err_fatal(wl_misc.find_wl_main(parent))
 
     return results_ok
 
-def check_err(main, err_msg):
+def check_err(parent, err_msg):
     if err_msg:
-        wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
-        wl_status_bar_msg_err_fatal(main)
+        wl_dialogs_errs.Wl_Dialog_Err_Fatal(parent, err_msg).open()
+        wl_status_bar_err_fatal(wl_misc.find_wl_main(parent))
 
 def check_err_table(main, err_msg):
     check_err(main, err_msg)
 
     if not err_msg:
-        wl_status_bar_msg_success_generate_table(main)
+        main.statusBar().showMessage(_tr('wl_checks_work_area', 'Table generated successfully.'))
 
 def check_err_fig(main, err_msg):
     check_err(main, err_msg)
 
     if not err_msg:
-        wl_status_bar_msg_success_generate_fig(main)
+        main.statusBar().showMessage(_tr('wl_checks_work_area', 'Figure generated successfully.'))
 
-def check_err_exp_table(main, err_msg, file_path):
-    # Use exec_() instead of open() here to prevent the error dialog from being hidden on macOS
+def check_err_fig_word_cloud(main, err):
+    if isinstance(err, wl_excs.Wl_Exc_Word_Cloud_Mask_Nonexistent):
+        main.statusBar().showMessage(_tr('wl_checks_work_area', 'The mask image for generating the word cloud cannot be found.'))
+    elif isinstance(err, wl_excs.Wl_Exc_Word_Cloud_Mask_Is_Dir):
+        main.statusBar().showMessage(_tr('wl_checks_work_area', 'The mask image for generating the word cloud is a folder rather than a file.'))
+    elif isinstance(err, wl_excs.Wl_Exc_Word_Cloud_Mask_Unsupported):
+        main.statusBar().showMessage(_tr('wl_checks_work_area', 'The mask image for generating the word cloud is not supported.'))
+    elif isinstance(err, wl_excs.Wl_Exc_Word_Cloud_Font_Nonexistent):
+        main.statusBar().showMessage(_tr('wl_checks_work_area', 'The font file for generating the word cloud cannot be found.'))
+    elif isinstance(err, wl_excs.Wl_Exc_Word_Cloud_Font_Is_Dir):
+        main.statusBar().showMessage(_tr('wl_checks_work_area', 'The font file for generating the word cloud is a folder rather than a file.'))
+    elif isinstance(err, wl_excs.Wl_Exc_Word_Cloud_Font_Unsupported):
+        main.statusBar().showMessage(_tr('wl_checks_work_area', 'The font file for generating the word cloud is not supported.'))
+
+def check_err_exp_table(parent, err_msg, file_path):
+    main = wl_misc.find_wl_main(parent)
+
     if err_msg:
         if err_msg == 'permission_err':
             wl_dialogs.Wl_Dialog_Info_Simple(
-                main,
+                parent,
                 title = _tr('wl_checks_work_area', 'File Access Denied'),
                 text = _tr('wl_checks_work_area', '''
                     <div>Access to "{}" is denied, please specify another location or close the file and try again.</div>
                 ''').format(file_path),
                 icon = 'critical'
-            ).exec_()
+            ).open()
         else:
-            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).exec_()
+            wl_dialogs_errs.Wl_Dialog_Err_Fatal(parent, err_msg).open()
 
-        wl_status_bar_msg_file_access_denied(main)
+        main.statusBar().showMessage(_tr('wl_checks_work_area', 'File access denied.'))
     else:
         wl_dialogs.Wl_Dialog_Info_Simple(
-            main,
+            parent,
             title = _tr('wl_checks_work_area', 'Export Completed'),
             text = _tr('wl_checks_work_area', '''
                 <div>The table has been successfully exported to "{}".</div>
             ''').format(file_path)
-        ).exec_()
+        ).open()
 
-        wl_status_bar_msg_success_exp_table(main)
+        main.statusBar().showMessage(_tr('wl_checks_work_area', 'Table exported successfully.'))

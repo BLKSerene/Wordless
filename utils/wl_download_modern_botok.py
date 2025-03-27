@@ -38,7 +38,10 @@ def download_modern_botok():
 
     shutil.copytree(path_dict_default, path_dict_custom)
 
-    r = requests.get('https://raw.githubusercontent.com/Divergent-Discourses/modern-botok/refs/heads/main/dictionary/tsikchen.tsv', timeout = 10)
+    r = requests.get(
+        'https://raw.githubusercontent.com/Divergent-Discourses/modern-botok/refs/heads/main/dictionary/tsikchen.tsv',
+        timeout = 10
+    )
 
     with open(os.path.join(path_dict_custom, 'dictionary', 'words', 'tsikchen.tsv'), 'wb') as f:
         f.write(r.content)
@@ -56,7 +59,10 @@ def download_modern_botok():
     shutil.rmtree(path_zh_bo_tagger, ignore_errors = True)
     shutil.rmtree(path_zh_bo_tagger_egg_info, ignore_errors = True)
 
-    r = requests.get('https://github.com/Divergent-Discourses/Tibetan_SpaCy-Model/archive/refs/heads/main.zip', timeout = 10)
+    r = requests.get(
+        'https://github.com/Divergent-Discourses/Tibetan_SpaCy-Model/archive/refs/heads/main.zip',
+        timeout = 10
+    )
 
     with open(f'{path_zh_bo_tagger}.zip', 'wb') as f:
         f.write(r.content)

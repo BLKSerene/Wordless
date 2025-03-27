@@ -16,18 +16,21 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import os
 import re
 
 import matplotlib
 import matplotlib.pyplot
 import networkx
 import numpy
+import PIL
 import PIL.Image
 from PyQt5 import QtCore
 from PyQt5 import QtWidgets
 import wordcloud
 
-from wordless.wl_utils import wl_paths, wl_misc
+from wordless.wl_dialogs import wl_dialogs
+from wordless.wl_utils import wl_excs, wl_paths, wl_misc
 
 _tr = QtCore.QCoreApplication.translate
 
@@ -162,36 +165,95 @@ def generate_word_cloud(main, data_file_items, fig_settings):
         bg_color = settings['bg_settings']['bg_color']
         mode = 'RGB'
 
-    if settings['mask_settings']['mask_settings']:
-        mask = numpy.array(PIL.Image.open(settings['mask_settings']['mask_path']))
-    else:
-        mask = None
+    try:
+        if settings['mask_settings']['mask_settings']:
+            mask = numpy.array(PIL.Image.open(settings['mask_settings']['mask_path']))
+        else:
+            mask = None
 
-    word_cloud = wordcloud.WordCloud(
-        width = desktop_widget.width(),
-        height = desktop_widget.height(),
-        font_path = font_path,
-        min_font_size = settings['font_settings']['font_size_min'],
-        max_font_size = settings['font_settings']['font_size_max'],
-        relative_scaling = relative_scaling,
-        color_func = color_func,
-        colormap = settings['font_settings']['font_color_colormap'],
-        background_color = bg_color,
-        mode = mode,
-        mask = mask,
-        # Known issue: Error when background is transparent and contour width > 0
-        # Reference: https://github.com/amueller/word_cloud/issues/501
-        contour_width = settings['mask_settings']['contour_width'],
-        contour_color = settings['mask_settings']['contour_color'],
-        # The ratio of times to try horizontal fitting as opposed to vertical, ranging from 0 to 1 inclusive
-        prefer_horizontal = settings['advanced_settings']['prefer_hor'] / 100,
-        repeat = settings['advanced_settings']['allow_repeated_words']
-    )
+        word_cloud = wordcloud.WordCloud(
+            width = desktop_widget.width(),
+            height = desktop_widget.height(),
+            font_path = font_path,
+            min_font_size = settings['font_settings']['font_size_min'],
+            max_font_size = settings['font_settings']['font_size_max'],
+            relative_scaling = relative_scaling,
+            color_func = color_func,
+            colormap = settings['font_settings']['font_color_colormap'],
+            background_color = bg_color,
+            mode = mode,
+            mask = mask,
+            # Known issue: Error when background is transparent and contour width > 0
+            # Reference: https://github.com/amueller/word_cloud/issues/501
+            contour_width = settings['mask_settings']['contour_width'],
+            contour_color = settings['mask_settings']['contour_color'],
+            # The ratio of times to try horizontal fitting as opposed to vertical, ranging from 0 to 1 inclusive
+            prefer_horizontal = settings['advanced_settings']['prefer_hor'] / 100,
+            repeat = settings['advanced_settings']['allow_repeated_words']
+        )
 
-    word_cloud.generate_from_frequencies(dict(zip(items, vals)))
+        word_cloud.generate_from_frequencies(dict(zip(items, vals)))
 
-    matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
-    matplotlib.pyplot.axis('off')
+        matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
+        matplotlib.pyplot.axis('off')
+    # Invalid mask image
+    except (FileNotFoundError, PermissionError, PIL.UnidentifiedImageError) as exc:
+        mask_path = settings['mask_settings']['mask_path']
+
+        if not os.path.exists(mask_path):
+            err_title = _tr('wl_figs', 'Mask Image Not Found')
+            err_msg = _tr('wl_figs', 'The specified mask image "{}" for generating the word cloud cannot be found.').format(mask_path)
+            err_exc = wl_excs.Wl_Exc_Word_Cloud_Mask_Nonexistent()
+        elif os.path.isdir(mask_path):
+            err_title = _tr('wl_figs', 'Mask Image Is a Folder')
+            err_msg = _tr('wl_figs', 'The specified mask image "{}" for generating the word cloud is a folder rather than a file.').format(mask_path)
+            err_exc = wl_excs.Wl_Exc_Word_Cloud_Mask_Is_Dir()
+        else:
+            err_title = _tr('wl_figs', 'Mask Image Not Supported')
+            err_msg = _tr('wl_figs', 'The specified mask image "{}" for generating the word cloud is not supported.').format(mask_path)
+            err_exc = wl_excs.Wl_Exc_Word_Cloud_Mask_Unsupported()
+
+        wl_dialogs.Wl_Dialog_Info_Simple(
+            main,
+            title = err_title,
+            text = _tr('wl_figs', f'''
+                <div>{err_msg}</div>
+                <br>
+                <div>Please check your mask image or specify another one in <b>Menu → Preferences → Settings → Figures → Word Clouds → Mask Settings → Mask Path</b>.</div>
+            '''),
+            icon = 'critical'
+        ).open()
+
+        raise err_exc from exc
+    # Invalid font file
+    except OSError as exc:
+        font_path = settings['font_settings']['font_path']
+
+        if not os.path.exists(font_path):
+            err_title = _tr('wl_figs', 'Font File Not Found')
+            err_msg = _tr('wl_figs', 'The specified font file "{}" for generating the word cloud cannot be found.').format(font_path)
+            err_exc = wl_excs.Wl_Exc_Word_Cloud_Font_Nonexistent()
+        elif os.path.isdir(font_path):
+            err_title = _tr('wl_figs', 'Font File Is a Folder')
+            err_msg = _tr('wl_figs', 'The specified font file "{}" for generating the word cloud is a folder rather than a file.').format(font_path)
+            err_exc = wl_excs.Wl_Exc_Word_Cloud_Font_Is_Dir()
+        else:
+            err_title = _tr('wl_figs', 'Font File Not Supported')
+            err_msg = _tr('wl_figs', 'The specified font file "{}" for generating the word cloud is not supported.').format(font_path)
+            err_exc = wl_excs.Wl_Exc_Word_Cloud_Font_Unsupported()
+
+        wl_dialogs.Wl_Dialog_Info_Simple(
+            main,
+            title = err_title,
+            text = _tr('wl_figs', f'''
+                <div>{err_msg}</div>
+                <br>
+                <div>Please check your font file or specify another one in <b>Menu → Preferences → Settings → Figures → Word Clouds → Font Settings → Font</b>.</div>
+            '''),
+            icon = 'critical'
+        ).open()
+
+        raise err_exc from exc
 
 def generate_network_graph(main, data_file_items, fig_settings):
     restore_matplotlib_rcparams()

@@ -32,6 +32,7 @@ is_windows, is_macos, is_linux = wl_misc.check_os()
 
 # botok
 datas.extend(PyInstaller.utils.hooks.collect_data_files('botok'))
+
 # spaCy
 datas.extend(PyInstaller.utils.hooks.copy_metadata('spacy'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy.lang', include_py_files = True))
@@ -41,6 +42,12 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy_pkuseg'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('en_core_web_trf'))
 datas.extend(PyInstaller.utils.hooks.copy_metadata('spacy_curated_transformers'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('curated_transformers', include_py_files = True))
+# modern-botok's Tibetan (Modern) model
+datas.extend(PyInstaller.utils.hooks.collect_data_files('zh_bo_tagger', include_py_files = True))
+datas.extend(PyInstaller.utils.hooks.copy_metadata('zh_bo_tagger'))
+
+# Stanza
+datas.extend(PyInstaller.utils.hooks.collect_data_files('emoji'))
 
 # Underthesea
 datas.extend(PyInstaller.utils.hooks.collect_data_files('underthesea'))
@@ -83,12 +90,6 @@ hiddenimports = [
     'sentencepiece',
     # Required by the Ukrainian model
     'transformers',
-    # modern-botok's Tibetan (Modern) model
-    'zh_bo_tagger',
-
-    # SciPy
-    'scipy._lib.array_api_compat.numpy.fft',
-    'scipy.special._special_ufuncs',
 
     # Underthesea
     'sklearn.pipeline',
@@ -123,7 +124,8 @@ a = Analysis(
     hooksconfig = {},
     runtime_hooks = [],
     excludes = [],
-    noarchive = False
+    noarchive = False,
+    optimize = 0,
 )
 
 pyz = PYZ(a.pure)

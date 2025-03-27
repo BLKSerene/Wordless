@@ -121,7 +121,7 @@ class Wl_Button_Restore_Default_Vals(Wl_Button):
 
     def restore_default_vals(self):
         if wl_dialogs.Wl_Dialog_Question(
-            main = self.main,
+            self.main,
             title = self.tr('Restore Default Values'),
             text = self.tr('''
                 <div>Do you want to reset all settings to their default values?</div>

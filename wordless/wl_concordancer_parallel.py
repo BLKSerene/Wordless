@@ -301,7 +301,7 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data_Search):
 
                 wl_threading.Wl_Thread(worker_concordancer_parallel_table).start_worker()
         else:
-            wl_checks_work_area.wl_status_bar_msg_missing_search_terms(self.main)
+            wl_checks_work_area.wl_status_bar_missing_search_terms(self.main)
 
     def update_gui_table(self, err_msg, concordance_lines):
         if wl_checks_work_area.check_results(self.main, err_msg, concordance_lines):

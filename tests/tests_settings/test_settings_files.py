@@ -37,7 +37,7 @@ def test_wl_table_tags():
     table_tags = wl_settings_files.Wl_Table_Tags(
         main,
         settings_tags = 'header_tag_settings',
-        defaults_row = ['Non-embedded', 'Header', '<TAG>', '']
+        defaults_row = ['Nonembedded', 'Header', '<TAG>', '']
     )
 
     table_tags.item_changed()

@@ -503,7 +503,7 @@ def wl_widgets_search_settings(parent, tab):
     checkbox_multi_search_mode = QtWidgets.QCheckBox(_tr('wl_widgets', 'Multi-search mode'), parent)
     line_edit_search_term = QtWidgets.QLineEdit(parent)
     list_search_terms = wl_lists.Wl_List_Search_Terms(parent)
-    label_delimiter = wl_labels.Wl_Label_Hint(_tr('wl_widgets', '* Use whitespace to delimit multiple tokens'), parent)
+    label_delimiter = wl_labels.Wl_Label_Hint(_tr('wl_widgets', 'Tip: Use whitespace to delimit multiple tokens'), parent)
 
     checkbox_match_case = QtWidgets.QCheckBox(_tr('wl_widgets', 'Match case'), parent)
     checkbox_match_whole_words = QtWidgets.QCheckBox(_tr('wl_widgets', 'Match whole words'), parent)

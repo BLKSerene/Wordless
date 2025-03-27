@@ -104,7 +104,6 @@ def wl_fig_freqs(main, freq_files_items, tab):
         # Word Cloud
         if fig_settings['graph_type'] == _tr('wl_figs_freqs', 'Word cloud'):
             wl_figs.generate_word_cloud(main, items_freq_file, fig_settings = fig_settings)
-
         # Network Graph
         elif fig_settings['graph_type'] == _tr('wl_figs_freqs', 'Network graph'):
             wl_figs.generate_network_graph(main, items_freq_file, fig_settings = fig_settings)

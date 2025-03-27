@@ -29,8 +29,8 @@ _tr = QtCore.QCoreApplication.translate
 
 # self.tr() does not work in inherited classes
 class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
-    def __init__(self, main, text):
-        super().__init__(main, width = 500)
+    def __init__(self, parent, text):
+        super().__init__(parent, width = 500)
 
         self.time_start = time.time()
 
@@ -63,17 +63,17 @@ class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
         self.label_progress.set_text(text)
 
 class Wl_Dialog_Progress_Process_Data(Wl_Dialog_Progress):
-    def __init__(self, main):
-        super().__init__(main, text = _tr('wl_dialogs_misc', 'Processing data...'))
+    def __init__(self, parent):
+        super().__init__(parent, text = _tr('wl_dialogs_misc', 'Processing data...'))
 
 class Wl_Dialog_Progress_Download_Model(Wl_Dialog_Progress):
-    def __init__(self, main):
-        super().__init__(main, text = _tr('wl_dialogs_misc', 'Downloading model...'))
+    def __init__(self, parent):
+        super().__init__(parent, text = _tr('wl_dialogs_misc', 'Downloading model...'))
 
 class Wl_Dialog_Restart_Required(wl_dialogs.Wl_Dialog_Info):
-    def __init__(self, main):
+    def __init__(self, parent):
         super().__init__(
-            main,
+            parent,
             title = _tr('Wl_Dialog_Restart_Required', 'Restart Wordless'),
             width = 450,
             icon = 'question',

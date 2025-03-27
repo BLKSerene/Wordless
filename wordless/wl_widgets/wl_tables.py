@@ -62,10 +62,11 @@ class Wl_Table(QtWidgets.QTableView):
 
         self.setModel(model)
 
-        if self.header_orientation == 'hor':
-            self.model().setHorizontalHeaderLabels(self.headers)
-        elif self.header_orientation == 'vert':
-            self.model().setVerticalHeaderLabels(self.headers)
+        match header_orientation:
+            case 'hor':
+                self.model().setHorizontalHeaderLabels(self.headers)
+            case 'vert':
+                self.model().setVerticalHeaderLabels(self.headers)
 
         self.verticalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeToContents)
 
@@ -76,7 +77,7 @@ class Wl_Table(QtWidgets.QTableView):
         self.setHorizontalScrollMode(QtWidgets.QAbstractItemView.ScrollPerPixel)
 
         if editable:
-            self.setEditTriggers(QtWidgets.QAbstractItemView.DoubleClicked | QtWidgets.QAbstractItemView.SelectedClicked)
+            self.setEditTriggers(QtWidgets.QAbstractItemView.DoubleClicked | QtWidgets.QAbstractItemView.SelectedClicked | QtWidgets.QAbstractItemView.EditKeyPressed)
         else:
             self.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
 
@@ -110,50 +111,51 @@ class Wl_Table(QtWidgets.QTableView):
             }}
         '''
 
-        if self.header_orientation == 'hor':
-            self.setStyleSheet(stylesheet_items + '''
-                QHeaderView::section:horizontal {
-                    background-color: #5C88C5;
-                }
-                QHeaderView::section:horizontal:hover {
-                    background-color: #3265B2;
-                }
-                QHeaderView::section:horizontal:pressed {
-                    background-color: #264E8C;
-                }
+        match header_orientation:
+            case 'hor':
+                self.setStyleSheet(stylesheet_items + '''
+                    QHeaderView::section:horizontal {
+                        background-color: #5C88C5;
+                    }
+                    QHeaderView::section:horizontal:hover {
+                        background-color: #3265B2;
+                    }
+                    QHeaderView::section:horizontal:pressed {
+                        background-color: #264E8C;
+                    }
 
-                QHeaderView::section:vertical {
-                    background-color: #888;
-                }
-                QHeaderView::section:vertical:hover {
-                    background-color: #777;
-                }
-                QHeaderView::section:vertical:pressed {
-                    background-color: #666;
-                }
-            ''')
-        elif self.header_orientation == 'vert':
-            self.setStyleSheet(stylesheet_items + '''
-                QHeaderView::section:horizontal {
-                    background-color: #888;
-                }
-                QHeaderView::section:horizontal:hover {
-                    background-color: #777;
-                }
-                QHeaderView::section:horizontal:pressed {
-                    background-color: #666;
-                }
+                    QHeaderView::section:vertical {
+                        background-color: #888;
+                    }
+                    QHeaderView::section:vertical:hover {
+                        background-color: #777;
+                    }
+                    QHeaderView::section:vertical:pressed {
+                        background-color: #666;
+                    }
+                ''')
+            case 'vert':
+                self.setStyleSheet(stylesheet_items + '''
+                    QHeaderView::section:horizontal {
+                        background-color: #888;
+                    }
+                    QHeaderView::section:horizontal:hover {
+                        background-color: #777;
+                    }
+                    QHeaderView::section:horizontal:pressed {
+                        background-color: #666;
+                    }
 
-                QHeaderView::section:vertical {
-                    background-color: #5C88C5;
-                }
-                QHeaderView::section:vertical:hover {
-                    background-color: #3265B2;
-                }
-                QHeaderView::section:vertical:pressed {
-                    background-color: #264E8C;
-                }
-            ''')
+                    QHeaderView::section:vertical {
+                        background-color: #5C88C5;
+                    }
+                    QHeaderView::section:vertical:hover {
+                        background-color: #3265B2;
+                    }
+                    QHeaderView::section:vertical:pressed {
+                        background-color: #264E8C;
+                    }
+                ''')
 
         self.model().itemChanged.connect(self.item_changed)
         self.selectionModel().selectionChanged.connect(self.selection_changed)
@@ -254,16 +256,17 @@ class Wl_Table(QtWidgets.QTableView):
             self.selectionModel().selectionChanged.emit(QtCore.QItemSelection(), QtCore.QItemSelection())
 
     def is_empty(self):
-        if self.header_orientation == 'hor':
-            return not any((
-                self.model().item(0, i) or self.indexWidget(self.model().index(0, i))
-                for i in range(self.model().columnCount())
-            ))
-        else:
-            return not any((
-                self.model().item(i, 0) or self.indexWidget(self.model().index(i, 0))
-                for i in range(self.model().rowCount())
-            ))
+        match self.header_orientation:
+            case 'hor':
+                return not any((
+                    self.model().item(0, i) or self.indexWidget(self.model().index(0, i))
+                    for i in range(self.model().columnCount())
+                ))
+            case 'vert':
+                return not any((
+                    self.model().item(i, 0) or self.indexWidget(self.model().index(i, 0))
+                    for i in range(self.model().rowCount())
+                ))
 
     def is_visible(self):
         return any((
@@ -307,16 +310,18 @@ class Wl_Table(QtWidgets.QTableView):
         ]
 
     def find_header(self, text):
-        if self.header_orientation == 'hor':
-            return self.find_header_hor(text = text)
-        else:
-            return self.find_header_vert(text = text)
+        match self.header_orientation:
+            case 'hor':
+                return self.find_header_hor(text = text)
+            case 'vert':
+                return self.find_header_vert(text = text)
 
     def find_headers(self, text):
-        if self.header_orientation == 'hor':
-            return self.find_headers_hor(text = text)
-        else:
-            return self.find_headers_vert(text = text)
+        match self.header_orientation:
+            case 'hor':
+                return self.find_headers_hor(text = text)
+            case 'vert':
+                return self.find_headers_vert(text = text)
 
     def add_header_hor(self, label):
         self.add_headers_hor(labels = [label])
@@ -397,12 +402,13 @@ class Wl_Table(QtWidgets.QTableView):
     def clr_table(self, num_headers = 1):
         self.model().clear()
 
-        if self.header_orientation == 'hor':
-            self.model().setHorizontalHeaderLabels(self.headers)
-            self.model().setRowCount(num_headers)
-        else:
-            self.model().setVerticalHeaderLabels(self.headers)
-            self.model().setColumnCount(num_headers)
+        match self.header_orientation:
+            case 'hor':
+                self.model().setHorizontalHeaderLabels(self.headers)
+                self.model().setRowCount(num_headers)
+            case 'vert':
+                self.model().setVerticalHeaderLabels(self.headers)
+                self.model().setColumnCount(num_headers)
 
         self.model().itemChanged.emit(QtGui.QStandardItem())
 
@@ -767,18 +773,19 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
     def style_header_hor(self, cell):
         self.style_header(cell)
 
-        # Headers
-        if self.table.header_orientation == 'hor':
-            cell.fill = openpyxl.styles.PatternFill(
-                fill_type = 'solid',
-                fgColor = '5C88C5'
-            )
-        # File names
-        elif self.table.header_orientation == 'vert':
-            cell.fill = openpyxl.styles.PatternFill(
-                fill_type = 'solid',
-                fgColor = '888888'
-            )
+        match self.table.header_orientation:
+            # Headers
+            case 'hor':
+                cell.fill = openpyxl.styles.PatternFill(
+                    fill_type = 'solid',
+                    fgColor = '5C88C5'
+                )
+            # File names
+            case 'vert':
+                cell.fill = openpyxl.styles.PatternFill(
+                    fill_type = 'solid',
+                    fgColor = '888888'
+                )
 
         cell.alignment = openpyxl.styles.Alignment(
             horizontal = 'center',
@@ -789,28 +796,29 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
     def style_header_vert(self, cell):
         self.style_header(cell)
 
-        # Line numbers
-        if self.table.header_orientation == 'hor':
-            cell.fill = openpyxl.styles.PatternFill(
-                fill_type = 'solid',
-                fgColor = '888888'
-            )
-            cell.alignment = openpyxl.styles.Alignment(
-                horizontal = 'right',
-                vertical = 'center',
-                wrap_text = True
-            )
-        # Headers
-        elif self.table.header_orientation == 'vert':
-            cell.fill = openpyxl.styles.PatternFill(
-                fill_type = 'solid',
-                fgColor = '5C88C5'
-            )
-            cell.alignment = openpyxl.styles.Alignment(
-                horizontal = 'left',
-                vertical = 'center',
-                wrap_text = True
-            )
+        match self.table.header_orientation:
+            # Line numbers
+            case 'hor':
+                cell.fill = openpyxl.styles.PatternFill(
+                    fill_type = 'solid',
+                    fgColor = '888888'
+                )
+                cell.alignment = openpyxl.styles.Alignment(
+                    horizontal = 'right',
+                    vertical = 'center',
+                    wrap_text = True
+                )
+            # Headers
+            case 'vert':
+                cell.fill = openpyxl.styles.PatternFill(
+                    fill_type = 'solid',
+                    fgColor = '5C88C5'
+                )
+                cell.alignment = openpyxl.styles.Alignment(
+                    horizontal = 'left',
+                    vertical = 'center',
+                    wrap_text = True
+                )
 
     def style_cell_alignment(self, cell, item):
         if isinstance(item, QtGui.QStandardItem):
@@ -1121,10 +1129,11 @@ class Wl_Table_Data(Wl_Table):
         if enable_sorting:
             self.setSortingEnabled(True)
 
-            if header_orientation == 'hor':
-                self.horizontalHeader().sortIndicatorChanged.connect(self.sorting_changed)
-            else:
-                self.verticalHeader().sortIndicatorChanged.connect(self.sorting_changed)
+            match header_orientation:
+                case 'hor':
+                    self.horizontalHeader().sortIndicatorChanged.connect(self.sorting_changed)
+                case 'vert':
+                    self.verticalHeader().sortIndicatorChanged.connect(self.sorting_changed)
 
         self.model().itemChanged.connect(self.item_changed)
         self.selectionModel().selectionChanged.connect(self.selection_changed)
@@ -1352,10 +1361,11 @@ class Wl_Table_Data(Wl_Table):
         self.headers_cum = {self.find_header_vert(header) for header in headers_cum}
 
     def set_item_num(self, row, col, val, total = -1):
-        if self.header_orientation == 'hor':
-            header = col
-        else:
-            header = row
+        match self.header_orientation:
+            case 'hor':
+                header = col
+            case 'vert':
+                header = row
 
         # Integers
         if header in self.headers_int:
@@ -1391,10 +1401,11 @@ class Wl_Table_Data(Wl_Table):
         self.model().setItem(row, col, item)
 
     def set_item_num_val(self, row, col, val):
-        if self.header_orientation == 'hor':
-            header = col
-        else:
-            header = row
+        match self.header_orientation:
+            case 'hor':
+                header = col
+            case 'vert':
+                header = row
 
         item = self.model().item(row, col)
 
@@ -1429,12 +1440,13 @@ class Wl_Table_Data(Wl_Table):
     def set_item_err(self, row, col, text, alignment_hor = 'center'):
         item = Wl_Table_Item_Err(text)
 
-        if alignment_hor == 'center':
-            alignment_hor = QtCore.Qt.AlignHCenter
-        elif alignment_hor == 'left':
-            alignment_hor = QtCore.Qt.AlignLeft
-        elif alignment_hor == 'right':
-            alignment_hor = QtCore.Qt.AlignRight
+        match alignment_hor:
+            case 'center':
+                alignment_hor = QtCore.Qt.AlignHCenter
+            case 'left':
+                alignment_hor = QtCore.Qt.AlignLeft
+            case 'right':
+                alignment_hor = QtCore.Qt.AlignRight
 
         item_font = QtGui.QFont(self.main.settings_custom['general']['ui_settings']['font_family'])
         item_font.setItalic(True)
@@ -1493,53 +1505,55 @@ class Wl_Table_Data(Wl_Table):
     def toggle_pct_data(self):
         self.disable_updates()
 
-        if self.header_orientation == 'hor':
-            if self.table_settings['show_pct_data']:
-                for col in self.headers_pct:
-                    if (
-                        col not in self.cols_breakdown_file
-                        or self.table_settings['show_breakdown_file']
-                    ):
-                        self.showColumn(col)
-            else:
-                for col in self.headers_pct:
-                    self.hideColumn(col)
-        elif self.header_orientation == 'vert':
-            if self.table_settings['show_pct_data']:
-                for row in self.headers_pct:
-                    self.showRow(row)
-            else:
-                for row in self.headers_pct:
-                    self.hideRow(row)
+        match self.header_orientation:
+            case 'hor':
+                if self.table_settings['show_pct_data']:
+                    for col in self.headers_pct:
+                        if (
+                            col not in self.cols_breakdown_file
+                            or self.table_settings['show_breakdown_file']
+                        ):
+                            self.showColumn(col)
+                else:
+                    for col in self.headers_pct:
+                        self.hideColumn(col)
+            case 'vert':
+                if self.table_settings['show_pct_data']:
+                    for row in self.headers_pct:
+                        self.showRow(row)
+                else:
+                    for row in self.headers_pct:
+                        self.hideRow(row)
 
         self.enable_updates()
 
     def toggle_pct_data_span_position(self):
         self.disable_updates()
 
-        if self.header_orientation == 'hor':
-            if self.table_settings['show_pct_data']:
-                for col in self.headers_pct:
-                    if (
-                        (
-                            col not in self.cols_breakdown_file
-                            or self.table_settings['show_breakdown_file']
-                        ) and (
-                            col not in self.cols_breakdown_span_position
-                            or self.table_settings['show_breakdown_span_position']
-                        )
-                    ):
-                        self.showColumn(col)
-            else:
-                for col in self.headers_pct:
-                    self.hideColumn(col)
-        elif self.header_orientation == 'vert':
-            if self.table_settings['show_pct_data']:
-                for row in self.headers_pct:
-                    self.showRow(row)
-            else:
-                for row in self.headers_pct:
-                    self.hideRow(row)
+        match self.header_orientation:
+            case 'hor':
+                if self.table_settings['show_pct_data']:
+                    for col in self.headers_pct:
+                        if (
+                            (
+                                col not in self.cols_breakdown_file
+                                or self.table_settings['show_breakdown_file']
+                            ) and (
+                                col not in self.cols_breakdown_span_position
+                                or self.table_settings['show_breakdown_span_position']
+                            )
+                        ):
+                            self.showColumn(col)
+                else:
+                    for col in self.headers_pct:
+                        self.hideColumn(col)
+            case 'vert':
+                if self.table_settings['show_pct_data']:
+                    for row in self.headers_pct:
+                        self.showRow(row)
+                else:
+                    for row in self.headers_pct:
+                        self.hideRow(row)
 
         self.enable_updates()
 
@@ -1554,93 +1568,94 @@ class Wl_Table_Data(Wl_Table):
         self.disable_updates()
         self.setSortingEnabled(False)
 
-        if self.header_orientation == 'hor':
-            if self.table_settings['show_cum_data']:
-                for col in self.headers_cum:
-                    val_cum = 0
+        match self.header_orientation:
+            case 'hor':
+                if self.table_settings['show_cum_data']:
+                    for col in self.headers_cum:
+                        val_cum = 0
 
-                    # Integers
-                    if col in self.headers_int:
-                        for row in range(self.model().rowCount()):
-                            if not self.isRowHidden(row):
-                                item = self.model().item(row, col)
+                        # Integers
+                        if col in self.headers_int:
+                            for row in range(self.model().rowCount()):
+                                if not self.isRowHidden(row):
+                                    item = self.model().item(row, col)
 
+                                    val_cum += item.val
+                                    item.setText(str(val_cum))
+                        # Floats
+                        elif col in self.headers_float:
+                            for row in range(self.model().rowCount()):
+                                if not self.isRowHidden(row):
+                                    item = self.model().item(row, col)
+
+                                    val_cum += item.val
+                                    item.setText(f'{val_cum:.{precision_decimals}}')
+                        # Percentages
+                        elif col in self.headers_pct:
+                            for row in range(self.model().rowCount()):
+                                if not self.isRowHidden(row):
+                                    item = self.model().item(row, col)
+
+                                    val_cum += item.val
+                                    item.setText(f'{val_cum:.{precision_pcts}%}')
+                else:
+                    for col in self.headers_cum:
+                        # Integers
+                        if col in self.headers_int:
+                            for row in range(self.model().rowCount()):
+                                if not self.isRowHidden(row):
+                                    item = self.model().item(row, col)
+
+                                    item.setText(str(item.val))
+                        # Floats
+                        elif col in self.headers_float:
+                            for row in range(self.model().rowCount()):
+                                if not self.isRowHidden(row):
+                                    item = self.model().item(row, col)
+
+                                    item.setText(f'{item.val:.{precision_decimals}}')
+                        # Percentages
+                        elif col in self.headers_pct:
+                            for row in range(self.model().rowCount()):
+                                if not self.isRowHidden(row):
+                                    item = self.model().item(row, col)
+
+                                    item.setText(f'{item.val:.{precision_pcts}%}')
+            case 'vert':
+                if self.table_settings['show_cum_data']:
+                    for row in self.headers_cum:
+                        val_cum = 0
+
+                        for col in range(self.model().columnCount() - 1):
+                            item = self.model().item(row, col)
+
+                            if not self.isColumnHidden(col) and not isinstance(item, Wl_Table_Item_Err):
                                 val_cum += item.val
-                                item.setText(str(val_cum))
-                    # Floats
-                    elif col in self.headers_float:
-                        for row in range(self.model().rowCount()):
-                            if not self.isRowHidden(row):
-                                item = self.model().item(row, col)
 
-                                val_cum += item.val
-                                item.setText(f'{val_cum:.{precision_decimals}}')
-                    # Percentages
-                    elif col in self.headers_pct:
-                        for row in range(self.model().rowCount()):
-                            if not self.isRowHidden(row):
-                                item = self.model().item(row, col)
+                                # Integers
+                                if row in self.headers_int:
+                                    item.setText(str(val_cum))
+                                # Floats
+                                elif row in self.headers_float:
+                                    item.setText(f'{val_cum:.{precision_decimals}}')
+                                # Percentages
+                                elif row in self.headers_pct:
+                                    item.setText(f'{val_cum:.{precision_pcts}%}')
+                else:
+                    for row in self.headers_cum:
+                        for col in range(self.model().columnCount() - 1):
+                            item = self.model().item(row, col)
 
-                                val_cum += item.val
-                                item.setText(f'{val_cum:.{precision_pcts}%}')
-            else:
-                for col in self.headers_cum:
-                    # Integers
-                    if col in self.headers_int:
-                        for row in range(self.model().rowCount()):
-                            if not self.isRowHidden(row):
-                                item = self.model().item(row, col)
-
-                                item.setText(str(item.val))
-                    # Floats
-                    elif col in self.headers_float:
-                        for row in range(self.model().rowCount()):
-                            if not self.isRowHidden(row):
-                                item = self.model().item(row, col)
-
-                                item.setText(f'{item.val:.{precision_decimals}}')
-                    # Percentages
-                    elif col in self.headers_pct:
-                        for row in range(self.model().rowCount()):
-                            if not self.isRowHidden(row):
-                                item = self.model().item(row, col)
-
-                                item.setText(f'{item.val:.{precision_pcts}%}')
-        elif self.header_orientation == 'vert':
-            if self.table_settings['show_cum_data']:
-                for row in self.headers_cum:
-                    val_cum = 0
-
-                    for col in range(self.model().columnCount() - 1):
-                        item = self.model().item(row, col)
-
-                        if not self.isColumnHidden(col) and not isinstance(item, Wl_Table_Item_Err):
-                            val_cum += item.val
-
-                            # Integers
-                            if row in self.headers_int:
-                                item.setText(str(val_cum))
-                            # Floats
-                            elif row in self.headers_float:
-                                item.setText(f'{val_cum:.{precision_decimals}}')
-                            # Percentages
-                            elif row in self.headers_pct:
-                                item.setText(f'{val_cum:.{precision_pcts}%}')
-            else:
-                for row in self.headers_cum:
-                    for col in range(self.model().columnCount() - 1):
-                        item = self.model().item(row, col)
-
-                        if not self.isColumnHidden(col) and not isinstance(item, Wl_Table_Item_Err):
-                            # Integers
-                            if row in self.headers_int:
-                                item.setText(str(item.val))
-                            # Floats
-                            elif row in self.headers_float:
-                                item.setText(f'{item.val:.{precision_decimals}}')
-                            # Percentages
-                            elif row in self.headers_pct:
-                                item.setText(f'{item.val:.{precision_pcts}%}')
+                            if not self.isColumnHidden(col) and not isinstance(item, Wl_Table_Item_Err):
+                                # Integers
+                                if row in self.headers_int:
+                                    item.setText(str(item.val))
+                                # Floats
+                                elif row in self.headers_float:
+                                    item.setText(f'{item.val:.{precision_decimals}}')
+                                # Percentages
+                                elif row in self.headers_pct:
+                                    item.setText(f'{item.val:.{precision_pcts}%}')
 
         self.enable_updates()
 
@@ -1750,28 +1765,29 @@ class Wl_Table_Data(Wl_Table):
         if confirmed:
             self.model().clear()
 
-            if self.header_orientation == 'hor':
-                self.horizontalHeader().blockSignals(True)
+            match self.header_orientation:
+                case 'hor':
+                    self.horizontalHeader().blockSignals(True)
 
-                self.model().setColumnCount(len(self.headers))
-                self.model().setRowCount(num_headers)
+                    self.model().setColumnCount(len(self.headers))
+                    self.model().setRowCount(num_headers)
 
-                self.model().setHorizontalHeaderLabels(self.headers)
+                    self.model().setHorizontalHeaderLabels(self.headers)
 
-                self.horizontalHeader().blockSignals(False)
+                    self.horizontalHeader().blockSignals(False)
 
-                self.horizontalHeader().sectionCountChanged.emit(0, num_headers)
-            else:
-                self.verticalHeader().blockSignals(True)
+                    self.horizontalHeader().sectionCountChanged.emit(0, num_headers)
+                case 'vert':
+                    self.verticalHeader().blockSignals(True)
 
-                self.model().setRowCount(len(self.headers))
-                self.model().setColumnCount(num_headers)
+                    self.model().setRowCount(len(self.headers))
+                    self.model().setColumnCount(num_headers)
 
-                self.model().setVerticalHeaderLabels(self.headers)
+                    self.model().setVerticalHeaderLabels(self.headers)
 
-                self.verticalHeader().blockSignals(False)
+                    self.verticalHeader().blockSignals(False)
 
-                self.verticalHeader().sectionCountChanged.emit(0, num_headers)
+                    self.verticalHeader().sectionCountChanged.emit(0, num_headers)
 
             for i in range(self.model().rowCount()):
                 self.showRow(i)

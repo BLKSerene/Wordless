@@ -23,119 +23,154 @@ from wordless.wl_nlp import wl_matching, wl_texts
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
-main.settings_custom['files']['tags']['header_tag_settings'].extend([
-    ['Non-embedded', 'Header', '< tei Header >', '</ tei Header >'],
-    ['Non-embedded', 'Header', '<>', '</>'],
-    ['Non-embedded', 'Header', '< >', '</ >']
-])
-main.settings_custom['files']['tags']['body_tag_settings'].extend([
+main.settings_custom['files']['tags']['header_tag_settings'] = [
+    ['Nonembedded', 'Header', '<teiHeader>', '</teiHeader>'],
+    ['Nonembedded', 'Header', '<[ tei <[Header ]>', '<[/ tei <[Header ]>'],
+
+    ['Nonembedded', 'Header', '<>', '</>'],
+    ['Nonembedded', 'Header', '< >', '</ >'],
+    ['Nonembedded', 'Header', '<_?>', '</_?>']
+]
+main.settings_custom['files']['tags']['body_tag_settings'] = [
+    ['Embedded', 'Part of Speech', '_*', 'N/A'],
     ['Embedded', 'Part of Speech', '_', 'N/A'],
-    ['Non-embedded', 'Others', '< * >', '</ * >'],
-    ['Non-embedded', 'Others', '< T AG >', '</ T AG >'],
-    ['Non-embedded', 'Others', '<>', '</>'],
-    ['Non-embedded', 'Others', '< >', '</ >']
-])
-main.settings_custom['files']['tags']['xml_tag_settings'].extend([
-    ['Non-embedded', 'Paragraph', '< p p >', '</ p p >'],
-    ['Non-embedded', 'Paragraph', '<>', '</>'],
-    ['Non-embedded', 'Paragraph', '< >', '</ >']
-])
+    ['Embedded', 'Part of Speech', '/_,', 'N/A'],
+
+    ['Nonembedded', 'Others', '<*>', '</*>'],
+    ['Nonembedded', 'Others', '[( **T **AG** )]', '[(/ **T **AG** )]'],
+
+    ['Nonembedded', 'Others', '[]', '[/]'],
+    ['Nonembedded', 'Others', '[ ]', '[/ ]'],
+    ['Nonembedded', 'Others', '<_?>', '</_?>']
+]
+main.settings_custom['files']['tags']['xml_tag_settings'] = [
+    ['Nonembedded', 'Paragraph', '<p>', '</p>'],
+    ['Nonembedded', 'Paragraph', '<_ p p _>', '<_/ p p _>'],
+
+    ['Nonembedded', 'Paragraph', '<>', '</>'],
+    ['Nonembedded', 'Paragraph', '< >', '</ >'],
+    ['Nonembedded', 'Paragraph', '<_?>', '</_?>']
+]
 
 def test_split_tag_embedded():
+    assert wl_matching.split_tag_embedded(r'_') == ('_', '')
+
+    assert wl_matching.split_tag_embedded(r'_*') == ('_', '*')
+    assert wl_matching.split_tag_embedded(r'_/*') == ('_/', '*')
+    assert wl_matching.split_tag_embedded(r'_**') == ('_', '**')
+    assert wl_matching.split_tag_embedded(r'_*T*AG*') == ('_', '*T*AG*')
+
     assert wl_matching.split_tag_embedded(r'_TAG') == ('_', 'TAG')
     assert wl_matching.split_tag_embedded(r'_/TAG') == ('_/', 'TAG')
     assert wl_matching.split_tag_embedded(r'_/T_AG') == ('_/', 'T_AG')
-    assert wl_matching.split_tag_embedded(r'_/') == ('_/', '')
 
-def test_split_tag_non_embedded():
-    assert wl_matching.split_tag_non_embedded(r'<TAG>') == ('<', 'TAG', '>')
-    assert wl_matching.split_tag_non_embedded(r'<_TAG_>') == ('<_', 'TAG', '_>')
-    assert wl_matching.split_tag_non_embedded(r'<_T<A_G_>') == ('<_', 'T<A_G', '_>')
-    assert wl_matching.split_tag_non_embedded(r'<_ TAG_>') == ('<_', ' TAG', '_>')
-    assert wl_matching.split_tag_non_embedded(r'<_T AG_>') == ('<_', 'T AG', '_>')
-    assert wl_matching.split_tag_non_embedded(r'<_TAG _>') == ('<_', 'TAG ', '_>')
-    assert wl_matching.split_tag_non_embedded(r'<_ _>') == ('<_', ' ', '_>')
-    assert wl_matching.split_tag_non_embedded(r'<__>') == ('<_', '', '_>')
-    assert wl_matching.split_tag_non_embedded(r'<__?>') == ('<_', '', '_?>')
+    assert wl_matching.split_tag_embedded(r'_') == ('_', '')
+    assert wl_matching.split_tag_embedded(r'_/,') == ('_', '/,')
 
-    # Wildcards
-    assert wl_matching.split_tag_non_embedded(r'<*TAG*>') == ('<*', 'TAG', '*>')
-    assert wl_matching.split_tag_non_embedded(r'<*>') == ('<', '*', '>')
-    assert wl_matching.split_tag_non_embedded(r'< * >') == ('<', ' * ', '>')
-    assert wl_matching.split_tag_non_embedded(r'<T*AG>') == ('<', 'T*AG', '>')
+def test_split_tag_nonembedded():
+    assert wl_matching.split_tag_nonembedded(r'<>', tag_type = 'body') == ('<', '', '>')
+
+    assert wl_matching.split_tag_nonembedded(r'<*>', tag_type = 'body') == ('<', '*', '>')
+    assert wl_matching.split_tag_nonembedded(r'< **T **AG** >', tag_type = 'body') == ('<', ' **T **AG** ', '>')
+    assert wl_matching.split_tag_nonembedded(r'<*TAG*>', tag_type = 'body') == ('<', '*TAG*', '>')
+    assert wl_matching.split_tag_nonembedded(r'<*TAG*>', tag_type = 'header') == ('<*', 'TAG', '*>')
+
+    assert wl_matching.split_tag_nonembedded(r'<TAG>', tag_type = 'body') == ('<', 'TAG', '>')
+    assert wl_matching.split_tag_nonembedded(r'<[ _T <[AG? ]>', tag_type = 'body') == ('<[', ' _T <[AG? ', ']>')
+
+    assert wl_matching.split_tag_nonembedded(r'<>', tag_type = 'body') == ('<', '', '>')
+    assert wl_matching.split_tag_nonembedded(r'< >', tag_type = 'body') == ('<', ' ', '>')
+    assert wl_matching.split_tag_nonembedded(r'<_?>', tag_type = 'body') == ('<', '_?', '>')
+
+def test_replace_wildcards_in_tag_name():
+    assert wl_matching.replace_wildcards_in_tag_name('*', '.+?', 'body') == '.+?'
+    assert wl_matching.replace_wildcards_in_tag_name('**T**AG**', '.+?', 'body') == '.+?T.+?AG.+?'
+    assert wl_matching.replace_wildcards_in_tag_name('*', '.+?', 'header') == r'\*'
+
+    assert wl_matching.replace_wildcards_in_tag_name(' *', '.+?', 'body', escape = True) == r'\ .+?'
+    assert wl_matching.replace_wildcards_in_tag_name(' *', '.+?', 'body', escape = False) == r' .+?'
 
 def test_get_re_tags():
     re_tags_header = wl_matching.get_re_tags(main, tag_type = 'header')
     re_tags_body = wl_matching.get_re_tags(main, tag_type = 'body')
     re_tags_xml = wl_matching.get_re_tags(main, tag_type = 'xml')
 
-    assert re_tags_header == r'</?teiHeader>|</?\ tei\ Header\ >|</?>|</?\ >'
-    assert re_tags_body == r'_\S*(?=\s|$)|/\S*(?=\s|$)|_(?=\s|$)|</?.*?>|</?\ \*\ >|</?\ T\ AG\ >|</?>|</?\ >'
-    assert re_tags_xml == r'</?p>|</?s>|</?w>|</?c>|</?\ p\ p\ >|</?>|</?\ >'
+    assert re_tags_header == r'</?teiHeader>|<\[/?\ tei\ <\[Header\ \]>|</?>|</?\ >|</?_\?>'
+    assert re_tags_body == r'_\S+(?=\s|$)|_(?=\s|$)|/_,(?=\s|$)|</?.+?>|\[\(/?\ .+?T\ .+?AG.+?\ \)\]|\[/?\]|\[/?\ \]|</?_\?>'
+    assert re_tags_xml == r'</?p>|<_/?\ p\ p\ _>|</?>|</?\ >|</?_\?>'
 
     re_tags_header = re.compile(re_tags_header)
     re_tags_body = re.compile(re_tags_body)
     re_tags_xml = re.compile(re_tags_xml)
 
-    assert re_tags_header.search(r'token<teiHeader>').group() == '<teiHeader>'
-    assert re_tags_header.search(r'</teiHeader>token').group() == '</teiHeader>'
-    assert re_tags_header.search(r'<teiHeader>token</teiHeader>').group() == '<teiHeader>'
-    assert re_tags_header.search(r'< tei Header >token</ tei Header >').group() == '< tei Header >'
-    assert re_tags_header.search(r'<>token</>').group() == '<>'
-    assert re_tags_header.search(r'< >token</ >').group() == '< >'
+    assert re_tags_header.findall(r'<teiHeader>token</teiHeader>') == ['<teiHeader>', '</teiHeader>']
+    assert re_tags_header.findall(r'<[ tei <[Header ]>token<[/ tei <[Header ]>') == ['<[ tei <[Header ]>', '<[/ tei <[Header ]>']
 
-    assert re_tags_body.search(r'token_TAG').group() == '_TAG'
-    assert re_tags_body.search(r'token_T_AG').group() == '_T_AG'
-    assert re_tags_body.search(r'token_').group() == '_'
-    assert re_tags_body.search(r'token/TAG').group() == '/TAG'
-    assert re_tags_body.search(r'token<TAG>').group() == '<TAG>'
-    assert re_tags_body.search(r'</TAG>token').group() == '</TAG>'
-    assert re_tags_body.search(r'< T AG >token</ T AG >').group() == '< T AG >'
-    assert re_tags_body.search(r'<TAG>token</TAG>').group() == '<TAG>'
-    assert re_tags_body.search(r'<>token</>').group() == '<>'
-    assert re_tags_body.search(r'< >token</ >').group() == '< >'
-    assert re_tags_body.search(r'< * >token</ * >').group() == '< * >'
+    assert re_tags_header.findall(r'<>token</>') == ['<>', '</>']
+    assert re_tags_header.findall(r'< >token</ >') == ['< >', '</ >']
+    assert re_tags_header.findall(r'<_?>token</_?>') == ['<_?>', '</_?>']
 
-    assert re_tags_xml.search(r'token<p>').group() == '<p>'
-    assert re_tags_xml.search(r'</p>token').group() == '</p>'
-    assert re_tags_xml.search(r'<p>token</p>').group() == '<p>'
-    assert re_tags_xml.search(r'< p p >token</ p p >').group() == '< p p >'
-    assert re_tags_xml.search(r'<>token</>').group() == '<>'
-    assert re_tags_xml.search(r'< >token</ >').group() == '< >'
+    assert re_tags_body.findall(r'token_TAG') == ['_TAG']
+    assert re_tags_body.findall(r'token_/T_AG') == ['_/T_AG']
+    assert re_tags_body.findall(r'token_') == ['_']
+    assert re_tags_body.findall(r'token/_,') == ['/_,']
+
+    assert re_tags_body.findall(r'<TAG>token</TAG>') == ['<TAG>', '</TAG>']
+    assert re_tags_body.findall(r'[( *T [(AG? )]token[(/ *T [(AG? )]') == ['[( *T [(AG? )]', '[(/ *T [(AG? )]']
+
+    assert re_tags_body.findall(r'[]token[/]') == ['[]', '[/]']
+    assert re_tags_body.findall(r'[ ]token[/ ]') == ['[ ]', '[/ ]']
+    assert re_tags_body.findall(r'<_?>token</_?>') == ['<_?>', '</_?>']
+
+    assert re_tags_xml.findall(r'<p>token</p>') == ['<p>', '</p>']
+    assert re_tags_xml.findall(r'<_ p p _>token<_/ p p _>') == ['<_ p p _>', '<_/ p p _>']
+
+    assert re_tags_xml.findall(r'<>token</>') == ['<>', '</>']
+    assert re_tags_xml.findall(r'< >token</ >') == ['< >', '</ >']
+    assert re_tags_xml.findall(r'<_?>token</_?>') == ['<_?>', '</_?>']
 
 def test_get_re_tags_with_tokens():
     re_tags_header = wl_matching.get_re_tags_with_tokens(main, tag_type = 'header')
     re_tags_body = wl_matching.get_re_tags_with_tokens(main, tag_type = 'body')
     re_tags_xml = wl_matching.get_re_tags_with_tokens(main, tag_type = 'xml')
 
-    assert re_tags_header == r'<teiHeader>.*</teiHeader>|<\ tei\ Header\ >.*</\ tei\ Header\ >|<>.*</>|<\ >.*</\ >'
-    assert re_tags_body == r'\S*_\S*(?=\s|$)|\S*/\S*(?=\s|$)|\S*_(?=\s|$)|<.*?>.*?</.*?>|<\ \*\ >.*</\ \*\ >|<\ T\ AG\ >.*</\ T\ AG\ >|<>.*</>|<\ >.*</\ >'
-    assert re_tags_xml == r'<p>.*</p>|<s>.*</s>|<w>.*</w>|<c>.*</c>|<\ p\ p\ >.*</\ p\ p\ >|<>.*</>|<\ >.*</\ >'
+    print(re_tags_header)
+    print(re_tags_body)
+    print(re_tags_xml)
+
+    assert re_tags_header == r'<teiHeader>.*?</teiHeader>|<\[\ tei\ <\[Header\ \]>.*?<\[/\ tei\ <\[Header\ \]>|<>.*?</>|<\ >.*?</\ >|<_\?>.*?</_\?>'
+    assert re_tags_body == r'\S*_\S+(?=\s|$)|\S*_(?=\s|$)|\S*/_,(?=\s|$)|<.+?>.*?</.+?>|\[\(\ .+?T\ .+?AG.+?\ \)\].*?\[\(/\ .+?T\ .+?AG.+?\ \)\]|\[\].*?\[/\]|\[\ \].*?\[/\ \]|<_\?>.*?</_\?>'
+    assert re_tags_xml == r'<p>.*?</p>|<_\ p\ p\ _>.*?<_/\ p\ p\ _>|<>.*?</>|<\ >.*?</\ >|<_\?>.*?</_\?>'
 
     re_tags_header = re.compile(re_tags_header)
     re_tags_body = re.compile(re_tags_body)
     re_tags_xml = re.compile(re_tags_xml)
 
-    assert re_tags_header.search(r'token <teiHeader>token</teiHeader> token').group() == '<teiHeader>token</teiHeader>'
-    assert re_tags_header.search(r'token <teiHeader>token</teiHeader> token').group() == '<teiHeader>token</teiHeader>'
-    assert re_tags_header.search(r'token < tei Header >token</ tei Header > token').group() == '< tei Header >token</ tei Header >'
-    assert re_tags_header.search(r'token <>token</> token').group() == '<>token</>'
-    assert re_tags_header.search(r'token < >token</ > token').group() == '< >token</ >'
+    assert re_tags_header.findall(r'token <teiHeader>token</teiHeader> token') == ['<teiHeader>token</teiHeader>']
+    assert re_tags_header.findall(r'token <[ tei <[Header ]>token<[/ tei <[Header ]> token') == ['<[ tei <[Header ]>token<[/ tei <[Header ]>']
 
-    assert re_tags_body.search(r'token token_TAG token').group() == 'token_TAG'
-    assert re_tags_body.search(r'token token/TAG token').group() == 'token/TAG'
-    assert re_tags_body.search(r'token token_T_AG token').group() == 'token_T_AG'
-    assert re_tags_body.search(r'token token_ token').group() == 'token_'
-    assert re_tags_body.search(r'token <TAG>token</TAG> token').group() == '<TAG>token</TAG>'
-    assert re_tags_body.search(r'token < T AG >token</ T AG > token').group() == '< T AG >token</ T AG >'
-    assert re_tags_body.search(r'token <>token</> token').group() == '<>token</>'
-    assert re_tags_body.search(r'token < >token</ > token').group() == '< >token</ >'
-    assert re_tags_body.search(r'token < * >token</ * > token').group() == '< * >token</ * >'
+    assert re_tags_header.findall(r'token <>token</> token') == ['<>token</>']
+    assert re_tags_header.findall(r'token < >token</ > token') == ['< >token</ >']
+    assert re_tags_header.findall(r'token <_?>token</_?> token') == ['<_?>token</_?>']
 
-    assert re_tags_xml.search(r'token <p>token</p> token').group() == '<p>token</p>'
-    assert re_tags_xml.search(r'token < p p >token</ p p > token').group() == '< p p >token</ p p >'
-    assert re_tags_xml.search(r'token <>token</> token').group() == '<>token</>'
-    assert re_tags_xml.search(r'token < >token</ > token').group() == '< >token</ >'
+    assert re_tags_body.findall(r'token token_TAG token') == ['token_TAG']
+    assert re_tags_body.findall(r'token token/T_AG token') == ['token/T_AG']
+    assert re_tags_body.findall(r'token token_ token') == ['token_']
+    assert re_tags_body.findall(r'token token/_, token') == ['token/_,']
+
+    assert re_tags_body.findall(r'token <TAG>token</TAG> token') == ['<TAG>token</TAG>']
+    assert re_tags_body.findall(r'token [( *T [(AG? )]token[(/ *T [(AG? )] token') == ['[( *T [(AG? )]token[(/ *T [(AG? )]']
+
+    assert re_tags_body.findall(r'token []token[/] token') == ['[]token[/]']
+    assert re_tags_body.findall(r'token [ ]token[/ ] token') == ['[ ]token[/ ]']
+    assert re_tags_body.findall(r'token <_?>token</_?> token') == ['<_?>token</_?>']
+
+    assert re_tags_xml.findall(r'token <p>token</p> token') == ['<p>token</p>']
+    assert re_tags_xml.findall(r'token <_ p p _>token<_/ p p _> token') == ['<_ p p _>token<_/ p p _>']
+
+    assert re_tags_xml.findall(r'token <>token</> token') == ['<>token</>']
+    assert re_tags_xml.findall(r'token < >token</ > token') == ['< >token</ >']
+    assert re_tags_xml.findall(r'token <_?>token</_?> token') == ['<_?>token</_?>']
 
 def init_token_settings(assign_pos_tags = False, ignore_tags = False, use_tags = False):
     return {
@@ -663,7 +698,8 @@ def test_check_context():
 
 if __name__ == '__main__':
     test_split_tag_embedded()
-    test_split_tag_non_embedded()
+    test_split_tag_nonembedded()
+    test_replace_wildcards_in_tag_name()
     test_get_re_tags()
     test_get_re_tags_with_tokens()
 

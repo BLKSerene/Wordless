@@ -29,7 +29,7 @@ import spacy_lookups_data
 
 from tests import wl_test_init
 from wordless.wl_nlp import wl_nlp_utils
-from wordless.wl_utils import wl_conversion
+from wordless.wl_utils import wl_conversion, wl_misc
 
 main = wl_test_init.Wl_Test_Main()
 
@@ -340,7 +340,7 @@ def test_settings_global():
 
     r = requests.get(
         f'https://raw.githubusercontent.com/stanfordnlp/stanza-resources/main/resources_{ver_stanza}.json',
-        timeout = 10
+        timeout = wl_misc.REQUESTS_TIMEOUT
     )
 
     for lang, lang_resources in r.json().items():

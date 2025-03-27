@@ -114,7 +114,7 @@ class Wl_List_Add_Ins_Del_Clr(QtWidgets.QListView):
                     super().keyPressEvent(event)
 
                     # No need to start editing if the previously selected item is the first or last item
-                    if editing and row_selected_prev != self.get_selected_rows()[-1]:
+                    if editing and self.get_selected_rows() and row_selected_prev != self.get_selected_rows()[-1]:
                         self.edit(self.model().index(self.get_selected_rows()[-1]))
                 # On macOS, home and end keys always jump to the first or last item
                 else:
@@ -168,6 +168,7 @@ class Wl_List_Add_Ins_Del_Clr(QtWidgets.QListView):
                 else:
                     for i, text in enumerate(self.model().stringList()):
                         if i != item_row and item_text == text:
+                            # Use exec_() instead of open() here to allow editing to be started
                             wl_dialogs.Wl_Dialog_Info_Simple(
                                 self.main,
                                 title = _tr('wl_lists', 'Duplicate Items'),
@@ -184,9 +185,6 @@ class Wl_List_Add_Ins_Del_Clr(QtWidgets.QListView):
 
                             self.model().setStringList(data)
 
-                            self.setCurrentIndex(topLeft)
-
-                            self.closeEditor(self.findChild(QtWidgets.QLineEdit), QtWidgets.QAbstractItemDelegate.NoHint)
                             self.edit(topLeft)
 
                             break

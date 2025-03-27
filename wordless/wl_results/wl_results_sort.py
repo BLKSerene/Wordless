@@ -297,27 +297,31 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         self.table.model().itemChanged.connect(self.table_item_changed)
 
     def item_changed(self, item): # pylint: disable=arguments-differ
+        super().item_changed()
+
         # Check for duplicates
         if item.column() == 0:
             for i in range(self.model().rowCount()):
                 if i != item.row() and self.model().item(i, 0).text() == item.text():
+                    # Use exec_() instead of open() here to allow editing to be started
                     wl_dialogs.Wl_Dialog_Info_Simple(
                         self.main,
-                        self.tr('Column Sorted More Than Once'),
-                        self.tr('''
+                        title = self.tr('Column Sorted More Than Once'),
+                        text = self.tr('''
                             <div>Please refrain from sorting the same column more than once.</div>
                         '''),
                         icon = 'warning'
-                    ).open()
+                    ).exec_()
 
                     item.setText(item.text_old)
 
+                    # Allow the editor to be closed properly after editing is started
                     self.setCurrentIndex(item.index())
 
-                    self.closeEditor(self.findChild(QtWidgets.QComboBox), QtWidgets.QAbstractItemDelegate.NoHint)
+                    self.closePersistentEditor(item.index())
                     self.edit(item.index())
 
-                    break
+                    return
 
             item.text_old = item.text()
 
@@ -338,8 +342,6 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
             self.button_add.setEnabled(True)
         else:
             self.button_add.setEnabled(False)
-
-        super().item_changed()
 
     def selection_changed(self):
         if self.selectionModel().selectedIndexes() and self.model().rowCount() < len(self.cols_to_sort):

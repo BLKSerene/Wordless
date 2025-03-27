@@ -21,7 +21,7 @@ import re
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_errs
-from wordless.wl_utils import wl_paths
+from wordless.wl_utils import wl_paths, wl_misc
 
 def check_file_paths_unsupported(main, file_paths):
     file_paths_ok = []
@@ -75,10 +75,11 @@ def check_file_paths_dup(main, new_file_paths, file_paths = None):
 
     return file_paths_ok, file_paths_dup
 
-def check_err_file_area(main, err_msg):
+def check_err_file_area(parent, err_msg):
     if err_msg:
-        # Use exec_() instead of open() here to prevent the error dialog from being hidden on macOS
-        wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).exec_()
-        wl_checks_work_area.wl_status_bar_msg_err_fatal(main)
+        wl_dialogs_errs.Wl_Dialog_Err_Fatal(parent, err_msg).open()
+        wl_checks_work_area.wl_status_bar_err_fatal(wl_misc.find_wl_main(parent))
 
-    return not err_msg
+        return False
+    else:
+        return True

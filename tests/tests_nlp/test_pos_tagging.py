@@ -246,9 +246,23 @@ def test_pos_tag_universal(lang, pos_tagger):
         assert token.tag_universal == 'TAG'
         assert token.content_function == 'CONTENT_FUNCTION'
 
+def test_pos_tag_separator():
+    main.settings_custom['pos_tagging']['pos_tagger_settings']['separator_between_tokens_pos_tags'] = '/'
+
+    tokens_tagged = wl_pos_tagging.wl_pos_tag(
+        main,
+        inputs = getattr(wl_test_lang_examples, 'SENTENCE_ENG_US'),
+        lang = 'eng_us',
+    )
+
+    for token in tokens_tagged:
+        assert token.tag.startswith('/')
+
 if __name__ == '__main__':
     test_to_content_function()
 
     for lang, pos_tagger in test_pos_taggers_local:
         test_pos_tag(lang, pos_tagger)
         test_pos_tag_universal(lang, pos_tagger)
+
+    test_pos_tag_separator()

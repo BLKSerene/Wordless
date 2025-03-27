@@ -55,6 +55,7 @@ from wordless.wl_utils import (
 
 LANGS_WITHOUT_SPACES = ('mya', 'lzh', 'zho_cn', 'zho_tw', 'khm', 'lao', 'jpn', 'tha', 'xct', 'bod')
 
+_tr = QtCore.QCoreApplication.translate
 is_windows = wl_misc.check_os()[0]
 
 def to_lang_util_code(main, util_type, util_text):
@@ -115,17 +116,19 @@ def get_langs_stanza(main, util_type):
     langs_stanza = set()
 
     for lang_code, lang_utils in main.settings_global[util_type].items():
-        if any(('stanza' in lang_util for lang_util in lang_utils)):
+        if any((lang_util.startswith('stanza_') for lang_util in lang_utils)):
             langs_stanza.add(lang_code)
 
     return langs_stanza
 
 @wl_misc.log_time
-def check_models(main, langs, lang_utils = None):
-    def update_gui_stanza(main, err_msg):
+def check_models(parent, langs, lang_utils = None):
+    def update_gui_stanza(parent, err_msg):
         nonlocal models_ok
 
-        models_ok = wl_checks_work_area.check_results_download_model(main, err_msg)
+        models_ok = wl_checks_work_area.check_results_download_model(parent, err_msg)
+
+    main = wl_misc.find_wl_main(parent)
 
     models_ok = True
     langs = list(langs)
@@ -195,7 +198,7 @@ def check_models(main, langs, lang_utils = None):
                     worker_download_model = Wl_Worker_Download_Model_Spacy(
                         main,
                         dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Download_Model(main),
-                        update_gui = lambda err_msg, model_name = model_name: wl_checks_work_area.check_results_download_model(main, err_msg, model_name),
+                        update_gui = lambda err_msg, model_name = model_name: wl_checks_work_area.check_results_download_model(parent, err_msg, model_name),
                         model_name = model_name
                     )
 
@@ -216,14 +219,14 @@ def check_models(main, langs, lang_utils = None):
             worker_download_model = Wl_Worker_Download_Model_Stanza(
                 main,
                 dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Download_Model(main),
-                update_gui = lambda err_msg: update_gui_stanza(main, err_msg),
+                update_gui = lambda err_msg: update_gui_stanza(parent, err_msg),
                 lang = lang
             )
 
             wl_threading.Wl_Thread(worker_download_model).start_worker()
 
     if models_ok:
-        wl_checks_work_area.wl_status_bar_msg_success_download_model(main)
+        main.statusBar().showMessage(_tr('wl_nlp_utils', 'Model downloaded successfully.'))
 
     return models_ok
 

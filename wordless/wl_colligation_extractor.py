@@ -38,7 +38,12 @@ from wordless.wl_nlp import (
     wl_texts,
     wl_token_processing
 )
-from wordless.wl_utils import wl_misc, wl_sorting, wl_threading
+from wordless.wl_utils import (
+    wl_excs,
+    wl_misc,
+    wl_sorting,
+    wl_threading
+)
 from wordless.wl_widgets import (
     wl_boxes,
     wl_layouts,
@@ -814,6 +819,8 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
 
     def update_gui_fig(self, err_msg, colligations_freqs_file, colligations_stats_files):
         if wl_checks_work_area.check_results(self.main, err_msg, colligations_freqs_file):
+            hide_dialog_err_fatal = False
+
             try:
                 settings = self.main.settings_custom['colligation_extractor']
 
@@ -883,10 +890,15 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                 # Hide the progress dialog early so that the main window will not obscure the generated figure
                 self.worker_colligation_extractor_fig.dialog_progress.accept()
                 wl_figs.show_fig()
+            except wl_excs.Wl_Exc_Word_Cloud as exc:
+                wl_checks_work_area.check_err_fig_word_cloud(self.main, exc)
+
+                hide_dialog_err_fatal = True
             except Exception:
                 err_msg = traceback.format_exc()
             finally:
-                wl_checks_work_area.check_err_fig(self.main, err_msg)
+                if not hide_dialog_err_fatal:
+                    wl_checks_work_area.check_err_fig(self.main, err_msg)
 
 # self.tr() does not work in inherited classes
 class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):

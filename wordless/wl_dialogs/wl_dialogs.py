@@ -25,7 +25,7 @@ from wordless.wl_widgets import wl_buttons, wl_labels
 
 _tr = QtCore.QCoreApplication.translate
 
-is_windows, is_macos, is_linux = wl_misc.check_os()
+is_macos = wl_misc.check_os()[1]
 
 def get_msg_box_icon(icon_type = 'info'):
     style = QtWidgets.QApplication.style()
@@ -47,10 +47,10 @@ def get_msg_box_icon(icon_type = 'info'):
     return label
 
 class Wl_Dialog(QtWidgets.QDialog):
-    def __init__(self, main, title, width = 0, height = 0, resizable = True, beep = False):
-        super().__init__(main)
+    def __init__(self, parent, title, width = 0, height = 0, resizable = True, beep = False):
+        super().__init__(parent)
 
-        self.main = main
+        self.main = wl_misc.find_wl_main(parent)
         self.fixed_width = width
         self.beep = beep
 
@@ -104,7 +104,7 @@ class Wl_Dialog(QtWidgets.QDialog):
         else:
             self.resize(self.width(), self.heightForWidth(self.width()))
 
-        if is_windows or is_linux:
+        if not is_macos:
             self.move_to_center()
 
     def move_to_center(self):
@@ -126,9 +126,9 @@ class Wl_Dialog(QtWidgets.QDialog):
         return super().open()
 
 class Wl_Dialog_Frameless(Wl_Dialog):
-    def __init__(self, main, width = 0, height = 0, beep = False):
+    def __init__(self, parent, width = 0, height = 0, beep = False):
         super().__init__(
-            main,
+            parent,
             title = '',
             width = width, height = height,
             resizable = False, beep = beep
@@ -145,7 +145,7 @@ class Wl_Dialog_Frameless(Wl_Dialog):
 # self.tr() does not work in inherited classes
 class Wl_Dialog_Info(Wl_Dialog):
     def __init__(
-        self, main,
+        self, parent,
         title,
         width = 0, height = 0,
         resizable = True, icon = '', no_buttons = False
@@ -155,7 +155,7 @@ class Wl_Dialog_Info(Wl_Dialog):
 
         beep = icon in ('warning', 'critical', 'question')
 
-        super().__init__(main, title, width, height, resizable, beep)
+        super().__init__(parent, title, width, height, resizable, beep)
 
         self.wrapper_info = QtWidgets.QWidget(self)
 
@@ -212,12 +212,12 @@ class Wl_Dialog_Info(Wl_Dialog):
 
 class Wl_Dialog_Info_Simple(Wl_Dialog_Info):
     def __init__(
-        self, main,
+        self, parent,
         title, text,
         width = 500, height = 0,
         resizable = True, icon = 'info'
     ):
-        super().__init__(main, title, width, height, resizable, icon)
+        super().__init__(parent, title, width, height, resizable, icon)
 
         self.label_info = wl_labels.Wl_Label_Dialog(text, self)
 
@@ -225,13 +225,13 @@ class Wl_Dialog_Info_Simple(Wl_Dialog_Info):
 
 class Wl_Dialog_Info_Copy(Wl_Dialog_Info):
     def __init__(
-        self, main,
+        self, parent,
         title,
         width = 0, height = 0,
         resizable = True, icon = '', is_plain_text = False
     ):
         super().__init__(
-            main, title,
+            parent, title,
             width, height,
             resizable, no_buttons = True, icon = icon
         )
@@ -277,13 +277,13 @@ class Wl_Dialog_Info_Copy(Wl_Dialog_Info):
 
 class Wl_Dialog_Question(Wl_Dialog_Info):
     def __init__(
-        self, main,
+        self, parent,
         title, text,
         width = 500, height = 0,
         resizable = True, default_to_yes = False
     ):
         super().__init__(
-            main, title, width, height, resizable,
+            parent, title, width, height, resizable,
             icon = 'question', no_buttons = True
         )
 
@@ -308,9 +308,9 @@ class Wl_Dialog_Question(Wl_Dialog_Info):
             self.button_no.setFocus(True)
 
 class Wl_Dialog_Settings(Wl_Dialog_Info):
-    def __init__(self, main, title, width = 0, height = 0, resizable = True):
+    def __init__(self, parent, title, width = 0, height = 0, resizable = True):
         super().__init__(
-            main, title, width, height, resizable,
+            parent, title, width, height, resizable,
             icon = '', no_buttons = True
         )
 

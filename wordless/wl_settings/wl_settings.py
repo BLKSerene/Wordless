@@ -16,14 +16,13 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import os
 import traceback
 
 from PyQt5 import QtCore
 from PyQt5 import QtGui
 from PyQt5 import QtWidgets
 
-from wordless.wl_checks import wl_checks_misc, wl_checks_work_area
+from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs
 from wordless.wl_widgets import wl_buttons, wl_layouts
 
@@ -274,7 +273,7 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
 
     def reset_all_settings(self):
         if wl_dialogs.Wl_Dialog_Question(
-            main = self.main,
+            self.main,
             title = self.tr('Reset All Settings'),
             text = self.tr('''
                 <div>Do you want to reset all settings to their default values?</div>
@@ -331,133 +330,6 @@ class Wl_Settings_Node(QtWidgets.QWidget):
         super().__init__()
 
         self.main = main
-
-    def wl_dialog_path_empty(self):
-        wl_dialogs.Wl_Dialog_Info_Simple(
-            self.main,
-            title = _tr('Wl_Settings_Node', 'Empty Path'),
-            text = _tr('Wl_Settings_Node', '''
-                <div>The path should not be left empty.</div>
-            '''),
-            icon = 'warning'
-        ).open()
-
-    def wl_dialog_path_not_found(self, path):
-        wl_dialogs.Wl_Dialog_Info_Simple(
-            self.main,
-            title = _tr('Wl_Settings_Node', 'Path not Found'),
-            text = _tr('Wl_Settings_Node', '''
-                <div>The specified path "{}" could not be found.</div>
-                <br>
-                <div>Please check your settings or specify another path.</div>
-            ''').format(path),
-            icon = 'warning'
-        ).open()
-
-    def wl_dialog_path_is_dir(self, path):
-        wl_dialogs.Wl_Dialog_Info_Simple(
-            self.main,
-            title = _tr('Wl_Settings_Node', 'Invalid File Path'),
-            text = _tr('Wl_Settings_Node', '''
-                <div>The specified path "{}" should be a file rather than a directory.</div>
-                <br>
-                <div>Please check your settings or specify another path.</div>
-            ''').format(path),
-            icon = 'warning'
-        ).open()
-
-    def wl_dialog_path_not_dir(self, path):
-        wl_dialogs.Wl_Dialog_Info_Simple(
-            self.main,
-            title = _tr('Wl_Settings_Node', 'Invalid Directory Path'),
-            text = _tr('Wl_Settings_Node', '''
-                <div>The specified path "{}" should be a directory rather than a file.</div>
-                <br>
-                <div>Please check your settings or specify another path.</div>
-            ''').format(path),
-            icon = 'warning'
-        ).open()
-
-    def validate_path_file(self, line_edit):
-        path = line_edit.text().strip()
-        path_ok = True
-
-        if path:
-            if not os.path.exists(path):
-                self.wl_dialog_path_not_found(path)
-
-                path_ok = False
-            elif os.path.isdir(path):
-                self.wl_dialog_path_is_dir(path)
-
-                path_ok = False
-        else:
-            self.wl_dialog_path_empty()
-
-            path_ok = False
-
-        if not path_ok:
-            line_edit.setFocus()
-            line_edit.selectAll()
-
-        return path_ok
-
-    def validate_path_dir(self, line_edit):
-        path = line_edit.text().strip()
-        path_ok = True
-
-        if path:
-            if not os.path.exists(path):
-                self.wl_dialog_path_not_found(path)
-
-                path_ok = False
-            elif not os.path.isdir(path):
-                self.wl_dialog_path_not_dir(path)
-
-                path_ok = False
-        else:
-            self.wl_dialog_path_empty()
-
-            path_ok = False
-
-        if not path_ok:
-            line_edit.setFocus()
-            line_edit.selectAll()
-
-        return path_ok
-
-    def confirm_path(self, line_edit):
-        path = line_edit.text().strip()
-        path_ok = True
-
-        if path:
-            if not os.path.exists(path):
-                if wl_dialogs.Wl_Dialog_Question(
-                    self.main,
-                    _tr('Wl_Settings_Node', 'Path Not Exist'),
-                    _tr('Wl_Settings_Node', '''
-                        <div>The specified path "{}" does not exist.</div>
-                        <br>
-                        <div>Do you want to create the directory?</div>
-                    ''').format(path),
-                ).exec_():
-                    wl_checks_misc.check_dir(path)
-                else:
-                    path_ok = False
-            elif not os.path.isdir(path):
-                self.wl_dialog_path_not_dir(path)
-
-                path_ok = False
-        else:
-            self.wl_dialog_path_empty()
-
-            path_ok = False
-
-        if not path_ok:
-            line_edit.setFocus()
-            line_edit.selectAll()
-
-        return path_ok
 
     def validate_settings(self):
         return True

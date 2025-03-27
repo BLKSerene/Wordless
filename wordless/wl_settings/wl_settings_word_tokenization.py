@@ -146,7 +146,7 @@ class Wl_Settings_Word_Tokenization(wl_settings.Wl_Settings_Node):
             )
 
             if wl_nlp_utils.check_models(
-                self.main,
+                self,
                 langs = [self.settings_custom['preview']['preview_lang']],
                 lang_utils = [['default_sentence_tokenizer', word_tokenizer]]
             ):
@@ -229,7 +229,7 @@ class Wl_Worker_Preview_Word_Tokenizer(wl_threading.Wl_Worker_No_Progress):
         preview_samples = self.main.settings_custom['word_tokenization']['preview']['preview_samples']
 
         tokens_multilevel = wl_word_tokenization.wl_word_tokenize(
-            main = self.main,
+            self.main,
             text = preview_samples,
             lang = preview_lang,
             word_tokenizer = self.word_tokenizer

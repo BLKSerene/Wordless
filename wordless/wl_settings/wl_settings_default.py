@@ -1275,20 +1275,20 @@ def init_settings_default(main):
             # Settings - Files - Tags
             'tags': {
                 'header_tag_settings': [
-                    [_tr('wl_settings_default', 'Non-embedded'), _tr('wl_settings_default', 'Header'), '<teiHeader>', '</teiHeader>']
+                    [_tr('wl_settings_default', 'Nonembedded'), _tr('wl_settings_default', 'Header'), '<teiHeader>', '</teiHeader>']
                 ],
 
                 'body_tag_settings': [
                     [_tr('wl_settings_default', 'Embedded'), _tr('wl_settings_default', 'Part of speech'), '_*', 'N/A'],
                     [_tr('wl_settings_default', 'Embedded'), _tr('wl_settings_default', 'Part of speech'), '/*', 'N/A'],
-                    [_tr('wl_settings_default', 'Non-embedded'), _tr('wl_settings_default', 'Others'), '<*>', 'N/A']
+                    [_tr('wl_settings_default', 'Nonembedded'), _tr('wl_settings_default', 'Others'), '<*>', 'N/A']
                 ],
 
                 'xml_tag_settings': [
-                    [_tr('wl_settings_default', 'Non-embedded'), _tr('wl_settings_default', 'Paragraph'), '<p>', '</p>'],
-                    [_tr('wl_settings_default', 'Non-embedded'), _tr('wl_settings_default', 'Sentence'), '<s>', '</s>'],
-                    [_tr('wl_settings_default', 'Non-embedded'), _tr('wl_settings_default', 'Word'), '<w>', '</w>'],
-                    [_tr('wl_settings_default', 'Non-embedded'), _tr('wl_settings_default', 'Word'), '<c>', '</c>']
+                    [_tr('wl_settings_default', 'Nonembedded'), _tr('wl_settings_default', 'Paragraph'), '<p>', '</p>'],
+                    [_tr('wl_settings_default', 'Nonembedded'), _tr('wl_settings_default', 'Sentence'), '<s>', '</s>'],
+                    [_tr('wl_settings_default', 'Nonembedded'), _tr('wl_settings_default', 'Word'), '<w>', '</w>'],
+                    [_tr('wl_settings_default', 'Nonembedded'), _tr('wl_settings_default', 'Word'), '<c>', '</c>']
                 ]
             }
         },
@@ -1698,6 +1698,7 @@ def init_settings_default(main):
                     'wol': 'stanza_wol'
                 },
 
+                'separator_between_tokens_pos_tags': '_',
                 'to_universal_pos_tags': False
             },
 

@@ -29,7 +29,7 @@ from PyQt5 import QtWidgets
 
 from wordless.wl_settings import wl_settings
 from wordless.wl_utils import wl_paths
-from wordless.wl_widgets import wl_boxes, wl_buttons, wl_layouts
+from wordless.wl_widgets import wl_boxes, wl_buttons, wl_editors, wl_layouts
 
 _tr = QtCore.QCoreApplication.translate
 
@@ -149,7 +149,7 @@ class Wl_Settings_Figs_Word_Clouds(wl_settings.Wl_Settings_Node):
 
         self.label_font = QtWidgets.QLabel(self.tr('Font:'), self)
         self.combo_box_font = wl_boxes.Wl_Combo_Box(self)
-        self.line_edit_font_path = QtWidgets.QLineEdit(self)
+        self.line_edit_font_path = wl_editors.Wl_Line_Edit_Path_File(self)
         self.button_font_path_browse = wl_buttons.Wl_Button_Browse(
             parent = self,
             line_edit = self.line_edit_font_path,
@@ -251,7 +251,7 @@ class Wl_Settings_Figs_Word_Clouds(wl_settings.Wl_Settings_Node):
         self.group_box_mask_settings.setCheckable(True)
 
         self.label_mask_path = QtWidgets.QLabel(self.tr('Mask path:'), self)
-        self.line_edit_mask_path = QtWidgets.QLineEdit(self)
+        self.line_edit_mask_path = wl_editors.Wl_Line_Edit_Path_File(self)
         self.button_mask_path_browse = wl_buttons.Wl_Button_Browse(
             parent = self,
             line_edit = self.line_edit_mask_path,
@@ -380,21 +380,20 @@ class Wl_Settings_Figs_Word_Clouds(wl_settings.Wl_Settings_Node):
                 self.combo_box_font.currentText() != self.settings_custom['font_settings']['font']
                 or self.line_edit_font_path.text() != self.settings_custom['font_settings']['font_path']
             )
-            and not self.validate_path_file(self.line_edit_font_path)
+            and not self.line_edit_font_path.validate(self.settings_custom['font_settings']['font_path'])
         ):
             return False
-
-        if (
+        elif (
             self.group_box_mask_settings.isChecked()
             and (
                 self.group_box_mask_settings.isChecked() != self.settings_custom['mask_settings']['mask_settings']
                 or self.line_edit_mask_path.text() != self.settings_custom['mask_settings']['mask_path']
             )
-            and not self.validate_path_file(self.line_edit_mask_path)
+            and not self.line_edit_mask_path.validate(self.settings_custom['mask_settings']['mask_path'])
         ):
             return False
-
-        return True
+        else:
+            return True
 
     def apply_settings(self):
         # Font Settings

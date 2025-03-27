@@ -17,6 +17,7 @@
 # ----------------------------------------------------------------------
 
 import copy
+import re
 
 from PyQt5 import QtCore
 from PyQt5 import QtGui
@@ -28,6 +29,7 @@ from wordless.wl_settings import wl_settings
 from wordless.wl_utils import wl_conversion, wl_threading
 from wordless.wl_widgets import (
     wl_boxes,
+    wl_editors,
     wl_item_delegates,
     wl_labels,
     wl_layouts,
@@ -55,6 +57,15 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
             editable = True
         )
 
+        self.label_separator_between_tokens_pos_tags = QtWidgets.QLabel(self.tr('Separator between tokens and part-of-speech tags:'), self)
+        self.line_edit_separator_between_tokens_pos_tags = wl_editors.Wl_Line_Edit_Re(
+            self,
+            re_validation = re.compile(r'^([^\w\s]|_)+$'),
+            warning_title = self.tr('Invalid Separator'),
+            warning_text = self.tr('''
+                <div>The separator should consist only of punctuation marks, e.g. underscores _ or slashes /.</div>
+            '''),
+        )
         self.checkbox_to_universal_pos_tags = QtWidgets.QCheckBox(self.tr('Convert all part-of-speech tags to universal part-of-speech tags'))
 
         self.table_pos_taggers.setFixedHeight(370)
@@ -80,8 +91,12 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
         self.table_pos_taggers.enable_updates()
 
         self.group_box_pos_tagger_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_pos_tagger_settings.layout().addWidget(self.table_pos_taggers, 0, 0)
-        self.group_box_pos_tagger_settings.layout().addWidget(self.checkbox_to_universal_pos_tags, 1, 0)
+        self.group_box_pos_tagger_settings.layout().addWidget(self.table_pos_taggers, 0, 0, 1, 3)
+        self.group_box_pos_tagger_settings.layout().addWidget(self.label_separator_between_tokens_pos_tags, 1, 0)
+        self.group_box_pos_tagger_settings.layout().addWidget(self.line_edit_separator_between_tokens_pos_tags, 1, 1)
+        self.group_box_pos_tagger_settings.layout().addWidget(self.checkbox_to_universal_pos_tags, 2, 0, 1, 3)
+
+        self.group_box_pos_tagger_settings.layout().setColumnStretch(2, 1)
 
         # Preview
         self.group_box_preview = QtWidgets.QGroupBox(self.tr('Preview'), self)
@@ -137,6 +152,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
             row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
 
             self.table_pos_taggers.itemDelegateForRow(row).set_enabled(False)
+            self.line_edit_separator_between_tokens_pos_tags.setEnabled(False)
             self.checkbox_to_universal_pos_tags.setEnabled(False)
             self.combo_box_preview_lang.setEnabled(False)
             self.button_show_preview.setEnabled(False)
@@ -152,7 +168,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
             )
 
             if wl_nlp_utils.check_models(
-                self.main,
+                self,
                 langs = [self.settings_custom['preview']['preview_lang']],
                 lang_utils = [['default_word_tokenizer', pos_tagger]]
             ):
@@ -165,7 +181,8 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
                     self.main,
                     update_gui = self.update_gui,
                     pos_tagger = pos_tagger,
-                    tagset = tagset
+                    tagset = tagset,
+                    separator = self.line_edit_separator_between_tokens_pos_tags.text(),
                 )
 
                 self.thread_preview_pos_tagger = wl_threading.Wl_Thread_No_Progress(worker_preview_pos_tagger)
@@ -184,6 +201,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
         row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
 
         self.table_pos_taggers.itemDelegateForRow(row).set_enabled(True)
+        self.line_edit_separator_between_tokens_pos_tags.setEnabled(True)
         self.checkbox_to_universal_pos_tags.setEnabled(True)
         self.combo_box_preview_lang.setEnabled(True)
         self.button_show_preview.setEnabled(True)
@@ -208,11 +226,8 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
 
         self.table_pos_taggers.enable_updates()
 
-        self.checkbox_to_universal_pos_tags.blockSignals(True)
-
+        self.line_edit_separator_between_tokens_pos_tags.setText(settings['pos_tagger_settings']['separator_between_tokens_pos_tags'])
         self.checkbox_to_universal_pos_tags.setChecked(settings['pos_tagger_settings']['to_universal_pos_tags'])
-
-        self.checkbox_to_universal_pos_tags.blockSignals(False)
 
         # Preview
         if not defaults:
@@ -237,6 +252,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
                 util_text = self.table_pos_taggers.model().item(i, 1).text()
             )
 
+        self.settings_custom['pos_tagger_settings']['separator_between_tokens_pos_tags'] = self.line_edit_separator_between_tokens_pos_tags.text()
         self.settings_custom['pos_tagger_settings']['to_universal_pos_tags'] = self.checkbox_to_universal_pos_tags.isChecked()
 
         return True
@@ -256,7 +272,8 @@ class Wl_Worker_Preview_Pos_Tagger(wl_threading.Wl_Worker_No_Progress):
                     self.main, line,
                     lang = preview_lang,
                     pos_tagger = self.pos_tagger,
-                    tagset = self.tagset
+                    tagset = self.tagset,
+                    separator = self.separator
                 )
 
                 preview_results.append(' '.join([f'{str(token)}{token.tag}' for token in tokens]))
@@ -494,7 +511,7 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
 
     def reset_mappings(self):
         if wl_dialogs.Wl_Dialog_Question(
-            main = self.main,
+            self.main,
             title = self.tr('Reset Mappings'),
             text = self.tr('''
                 <div>Do you want to reset all mappings to their default settings?</div>
@@ -506,7 +523,7 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
 
     def reset_all_mappings(self):
         if wl_dialogs.Wl_Dialog_Question(
-            main = self.main,
+            self.main,
             title = self.tr('Reset All Mappings'),
             text = self.tr('''
                 <div>Do you want to reset all mappings to their default settings?</div>

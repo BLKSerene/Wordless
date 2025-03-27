@@ -25,7 +25,7 @@ from PyQt5 import QtWidgets
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_settings import wl_settings
 from wordless.wl_utils import wl_conversion, wl_paths
-from wordless.wl_widgets import wl_boxes, wl_layouts
+from wordless.wl_widgets import wl_boxes, wl_editors, wl_layouts
 
 # General
 class Wl_Settings_General(wl_settings.Wl_Settings_Node):
@@ -219,7 +219,7 @@ class Wl_Settings_General_Imp(wl_settings.Wl_Settings_Node):
         self.group_box_files = QtWidgets.QGroupBox(self.tr('Files'), self)
 
         self.label_files_default_path = QtWidgets.QLabel(self.tr('Default path:'), self)
-        self.line_edit_files_default_path = QtWidgets.QLineEdit(self)
+        self.line_edit_files_default_path = wl_editors.Wl_Line_Edit_Path_Dir(self)
         self.button_files_browse = QtWidgets.QPushButton(self.tr('Browse...'), self)
 
         self.button_files_browse.clicked.connect(self.browse_files)
@@ -233,7 +233,7 @@ class Wl_Settings_General_Imp(wl_settings.Wl_Settings_Node):
         self.group_box_search_terms = QtWidgets.QGroupBox(self.tr('Search Terms'), self)
 
         self.label_search_terms_default_path = QtWidgets.QLabel(self.tr('Default path:'), self)
-        self.line_edit_search_terms_default_path = QtWidgets.QLineEdit(self)
+        self.line_edit_search_terms_default_path = wl_editors.Wl_Line_Edit_Path_Dir(self)
         self.button_search_terms_browse = QtWidgets.QPushButton(self.tr('Browse...'), self)
         self.label_search_terms_default_encoding = QtWidgets.QLabel(self.tr('Default encoding:'), self)
         self.combo_box_search_terms_default_encoding = wl_boxes.Wl_Combo_Box_Encoding(self)
@@ -254,7 +254,7 @@ class Wl_Settings_General_Imp(wl_settings.Wl_Settings_Node):
         self.group_box_stop_words = QtWidgets.QGroupBox(self.tr('Stop Words'), self)
 
         self.label_stop_words_default_path = QtWidgets.QLabel(self.tr('Default path:'), self)
-        self.line_edit_stop_words_default_path = QtWidgets.QLineEdit(self)
+        self.line_edit_stop_words_default_path = wl_editors.Wl_Line_Edit_Path_Dir(self)
         self.button_stop_words_browse = QtWidgets.QPushButton(self.tr('Browse...'), self)
         self.label_stop_words_default_encoding = QtWidgets.QLabel(self.tr('Default encoding:'), self)
         self.combo_box_stop_words_default_encoding = wl_boxes.Wl_Combo_Box_Encoding(self)
@@ -275,7 +275,7 @@ class Wl_Settings_General_Imp(wl_settings.Wl_Settings_Node):
         self.group_box_temp_files = QtWidgets.QGroupBox(self.tr('Temporary Files'), self)
 
         self.label_temp_files_default_path = QtWidgets.QLabel(self.tr('Default path:'), self)
-        self.line_edit_temp_files_default_path = QtWidgets.QLineEdit(self)
+        self.line_edit_temp_files_default_path = wl_editors.Wl_Line_Edit_Path_Dir_Confirm(self)
         self.button_temp_files_browse = QtWidgets.QPushButton(self.tr('Browse...'), self)
 
         self.button_temp_files_browse.clicked.connect(self.browse_temp_files)
@@ -346,15 +346,18 @@ class Wl_Settings_General_Imp(wl_settings.Wl_Settings_Node):
             self.combo_box_stop_words_default_encoding.setEnabled(True)
 
     def check_path(self, settings):
-        if os.path.exists(self.settings_custom[settings]['default_path']):
-            return self.settings_custom[settings]['default_path']
+        path_custom = self.settings_custom[settings]['default_path']
+        path_default = self.settings_default[settings]['default_path']
+
+        if os.path.exists(path_custom):
+            return path_custom
         # Fall back to default settings if the path does not exist
         else:
             # If the default path does not exist, create it
-            if not os.path.exists(self.settings_default[settings]['default_path']):
-                os.makedirs(self.settings_default[settings]['default_path'], exist_ok = True)
+            if not os.path.exists(path_default):
+                os.makedirs(path_default, exist_ok = True)
 
-            return self.settings_default[settings]['default_path']
+            return path_default
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -382,10 +385,10 @@ class Wl_Settings_General_Imp(wl_settings.Wl_Settings_Node):
 
     def validate_settings(self):
         return bool(
-            self.validate_path_dir(self.line_edit_files_default_path)
-            and self.validate_path_dir(self.line_edit_search_terms_default_path)
-            and self.validate_path_dir(self.line_edit_stop_words_default_path)
-            and self.confirm_path(self.line_edit_temp_files_default_path)
+            self.line_edit_files_default_path.validate(self.settings_custom['files']['default_path'])
+            and self.line_edit_search_terms_default_path.validate(self.settings_custom['search_terms']['default_path'])
+            and self.line_edit_stop_words_default_path.validate(self.settings_custom['stop_words']['default_path'])
+            and self.line_edit_temp_files_default_path.validate(self.settings_custom['temp_files']['default_path'])
         )
 
     def apply_settings(self):
@@ -419,7 +422,7 @@ class Wl_Settings_General_Exp(wl_settings.Wl_Settings_Node):
         self.group_box_tables = QtWidgets.QGroupBox(self.tr('Tables'), self)
 
         self.label_tables_default_path = QtWidgets.QLabel(self.tr('Default path:'), self)
-        self.line_edit_tables_default_path = QtWidgets.QLineEdit(self)
+        self.line_edit_tables_default_path = wl_editors.Wl_Line_Edit_Path_Dir_Confirm(self)
         self.button_tables_default_path = QtWidgets.QPushButton(self.tr('Browse...'), self)
         self.label_tables_default_type = QtWidgets.QLabel(self.tr('Default type:'), self)
         self.combo_box_tables_default_type = wl_boxes.Wl_Combo_Box(self)
@@ -444,7 +447,7 @@ class Wl_Settings_General_Exp(wl_settings.Wl_Settings_Node):
         self.group_box_search_terms = QtWidgets.QGroupBox(self.tr('Search Terms'), self)
 
         self.label_search_terms_default_path = QtWidgets.QLabel(self.tr('Default path:'), self)
-        self.line_edit_search_terms_default_path = QtWidgets.QLineEdit(self)
+        self.line_edit_search_terms_default_path = wl_editors.Wl_Line_Edit_Path_Dir_Confirm(self)
         self.button_search_terms_default_path = QtWidgets.QPushButton(self.tr('Browse...'), self)
         self.label_search_terms_default_encoding = QtWidgets.QLabel(self.tr('Default encoding:'), self)
         self.combo_box_search_terms_default_encoding = wl_boxes.Wl_Combo_Box_Encoding(self)
@@ -462,7 +465,7 @@ class Wl_Settings_General_Exp(wl_settings.Wl_Settings_Node):
         self.group_box_stop_words = QtWidgets.QGroupBox(self.tr('Stop Words'), self)
 
         self.label_stop_words_default_path = QtWidgets.QLabel(self.tr('Default path:'), self)
-        self.line_edit_stop_words_default_path = QtWidgets.QLineEdit(self)
+        self.line_edit_stop_words_default_path = wl_editors.Wl_Line_Edit_Path_Dir_Confirm(self)
         self.button_stop_words_default_path = QtWidgets.QPushButton(self.tr('Browse...'), self)
         self.label_stop_words_default_encoding = QtWidgets.QLabel(self.tr('Default encoding:'), self)
         self.combo_box_stop_words_default_encoding = wl_boxes.Wl_Combo_Box_Encoding(self)
@@ -523,15 +526,18 @@ class Wl_Settings_General_Exp(wl_settings.Wl_Settings_Node):
             self.line_edit_stop_words_default_path.setText(wl_paths.get_normalized_path(path_file))
 
     def check_path(self, settings):
-        if os.path.exists(self.settings_custom[settings]['default_path']):
-            return self.settings_custom[settings]['default_path']
+        settings_custom = self.settings_custom[settings]['default_path']
+        settings_default = self.settings_default[settings]['default_path']
+
+        if os.path.exists(settings_custom):
+            return settings_custom
         # Fall back to default settings if the path does not exist
         else:
             # If the default path does not exist, create it
-            if not os.path.exists(self.settings_default[settings]['default_path']):
-                os.makedirs(self.settings_default[settings]['default_path'], exist_ok = True)
+            if not os.path.exists(settings_default):
+                os.makedirs(settings_default, exist_ok = True)
 
-            return self.settings_default[settings]['default_path']
+            return settings_default
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -554,9 +560,9 @@ class Wl_Settings_General_Exp(wl_settings.Wl_Settings_Node):
 
     def validate_settings(self):
         return bool(
-            self.confirm_path(self.line_edit_tables_default_path)
-            and self.confirm_path(self.line_edit_search_terms_default_path)
-            and self.confirm_path(self.line_edit_stop_words_default_path)
+            self.line_edit_tables_default_path.validate(self.settings_custom['tables']['default_path'])
+            and self.line_edit_search_terms_default_path.validate(self.settings_custom['search_terms']['default_path'])
+            and self.line_edit_stop_words_default_path.validate(self.settings_custom['stop_words']['default_path'])
         )
 
     def apply_settings(self):

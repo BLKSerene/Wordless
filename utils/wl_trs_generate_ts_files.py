@@ -26,7 +26,7 @@ for file in pathlib.Path('wordless').rglob('*.py'):
     files.append(str(file))
 
 # Use "_tr" as a shortcut of QCoreApplication.translate
-subprocess.run(['pylupdate5' ,'-verbose' ,'-translate-function', '_tr', *files, '-ts', 'trs/zho_cn.ts'], check = True)
+subprocess.run(('pylupdate5' ,'-verbose' ,'-translate-function', '_tr', *files, '-ts', 'trs/zho_cn.ts'), check = True)
 
 # Fix HTML entities
 with open(r'trs/zho_cn.ts', 'r', encoding = 'utf_8') as f:

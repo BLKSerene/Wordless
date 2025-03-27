@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Tests: Settings - Settings
+# Wordless: Utilities - Exceptions
 # Copyright (C) 2018-2025  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -16,26 +16,32 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from tests import wl_test_init
-from wordless.wl_settings import wl_settings
+class Wl_Exc(Exception):
+    pass
 
-main = wl_test_init.Wl_Test_Main()
+class Wl_Exc_Word_Cloud(Wl_Exc):
+    pass
 
-def test_wl_settings():
-    settings = wl_settings.Wl_Settings(main)
-    settings.open()
-    settings.selection_changed(None, None)
-    settings.load_settings()
-    settings.load_settings(defaults = True)
-    settings.validate_settings()
-    settings.save_settings()
-    settings.apply_settings()
+class Wl_Exc_Word_Cloud_Font(Wl_Exc_Word_Cloud):
+    pass
 
-def test_wl_settings_node():
-    settings_node = wl_settings.Wl_Settings_Node(main)
-    settings_node.validate_settings()
-    settings_node.apply_settings()
+class Wl_Exc_Word_Cloud_Font_Nonexistent(Wl_Exc_Word_Cloud_Font):
+    pass
 
-if __name__ == '__main__':
-    test_wl_settings()
-    test_wl_settings_node()
+class Wl_Exc_Word_Cloud_Font_Is_Dir(Wl_Exc_Word_Cloud_Font):
+    pass
+
+class Wl_Exc_Word_Cloud_Font_Unsupported(Wl_Exc_Word_Cloud_Font):
+    pass
+
+class Wl_Exc_Word_Cloud_Mask(Wl_Exc_Word_Cloud):
+    pass
+
+class Wl_Exc_Word_Cloud_Mask_Nonexistent(Wl_Exc_Word_Cloud_Mask):
+    pass
+
+class Wl_Exc_Word_Cloud_Mask_Is_Dir(Wl_Exc_Word_Cloud_Mask):
+    pass
+
+class Wl_Exc_Word_Cloud_Mask_Unsupported(Wl_Exc_Word_Cloud_Mask):
+    pass

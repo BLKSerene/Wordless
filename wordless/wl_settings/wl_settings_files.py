@@ -178,7 +178,7 @@ class Wl_Settings_Files_Tags(wl_settings.Wl_Settings_Node):
         self.group_box_body_tag_settings = QtWidgets.QGroupBox(self.tr('Body Tag Settings'), self)
 
         self.table_tags_body = Wl_Table_Tags_Body(self)
-        self.label_tags_body_wildcard = wl_labels.Wl_Label_Hint(self.tr('* Use asterisk character (*) to indicate any number of characters'), self)
+        self.label_tags_body_wildcard = wl_labels.Wl_Label_Hint(self.tr('Tip: Use the asterisk character * to indicate any number of characters'), self)
 
         self.group_box_body_tag_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_body_tag_settings.layout().addWidget(self.table_tags_body, 0, 0, 1, 5)
@@ -235,12 +235,18 @@ class Wl_Settings_Files_Tags(wl_settings.Wl_Settings_Node):
 
         return True
 
-# self.tr() does not work in inherited classes
-RE_TAG_EMBEDDED = re.compile(r'^([^\w\s]|_)+\S*$')
-RE_TAG_NON_EMBEDDED = re.compile(r'^([^\w\s]|_)+\S*([^\w\s]|_)+$')
+RE_TAG_EMBEDDED = re.compile(r'^([^\w\s*]|_)+\S*$')
+RE_TAG_NONEMBEDDED = re.compile(r'^([^\w\s]|_)+\S*([^\w\s]|_)+$')
+RE_TAG_NONEMBEDDED_BODY = re.compile(r'^([^\w\s*]|_)+\S*([^\w\s*]|_)+$')
 RE_TAG_HTML_BRACKETS = re.compile(r'(^<)|(>$)')
 RE_TAG_HTML_PARENTHESES = re.compile(r'\s\((\d+)\)')
 
+# Reference: https://www.w3.org/TR/REC-xml/#NT-NameStartChar
+NameStartChar = r'[A-Za-z:_\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\u10000-\uEFFFF]'
+NameChar = fr'{NameStartChar[:-1]}0-9\-.\u00B7\u0300-\u036F\u203F-\u2040]'
+RE_TAG_XML = re.compile(fr'^<{NameStartChar}{NameChar}*>$')
+
+# self.tr() does not work in inherited classes
 class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
     def __init__(self, parent, settings_tags, defaults_row):
         super().__init__(
@@ -256,13 +262,14 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         )
 
         self.settings_tags = settings_tags
+        self.tag_type = self.settings_tags.split('_', 1)[0]
         self.defaults_row = defaults_row
 
         self.setItemDelegateForColumn(0, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
             parent = self,
             items = [
                 _tr('Wl_Table_Tags', 'Embedded'),
-                _tr('Wl_Table_Tags', 'Non-embedded')
+                _tr('Wl_Table_Tags', 'Nonembedded')
             ]
         ))
         self.setItemDelegateForColumn(3, wl_item_delegates.Wl_Item_Delegate_Uneditable(self))
@@ -280,13 +287,12 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
             if wl_misc.RE_EMPTY_ITEM.search(item.text()):
                 item.setText(item.text_old)
 
-                return  False
+                return False
 
             # Check duplicate tags
             for row in range(self.model().rowCount()):
                 if row != item.row() and self.model().item(row, 2).text() == item.text():
-                    item.setText(item.text_old)
-
+                    # Use exec_() instead of open() here to allow editing
                     wl_dialogs.Wl_Dialog_Info_Simple(
                         self.main,
                         title = _tr('Wl_Table_Tags', 'Duplicate Tags'),
@@ -298,9 +304,13 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                         icon = 'warning'
                     ).exec_()
 
+                    item.setText(item.text_old)
+
+                    # Allow the editor to be closed properly after editing is started
                     self.setCurrentIndex(item.index())
 
-                    self.closeEditor(self.findChild(QtWidgets.QLineEdit), QtWidgets.QAbstractItemDelegate.NoHint)
+                    # Only work when the editor is closed by clicking areas outside the table
+                    self.closePersistentEditor(item.index())
                     self.edit(item.index())
 
                     return False
@@ -313,15 +323,20 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
             if self.model().item(item.row(), 0).text() == _tr('Wl_Table_Tags', 'Embedded'):
                 re_validation = RE_TAG_EMBEDDED.search(item.text())
                 warning_text = _tr('Wl_Table_Tags', '''
-                    <div>Embedded tags must begin with a punctuation mark, e.g. an underscore or a slash.</div>
+                    <div>Embedded tags must begin with punctuation marks, e.g. an underscore _ or a slash /.</div>
                 ''')
             else:
-                re_validation = RE_TAG_NON_EMBEDDED.search(item.text())
+                if self.tag_type == 'body':
+                    re_validation = RE_TAG_NONEMBEDDED_BODY.search(item.text())
+                else:
+                    re_validation = RE_TAG_NONEMBEDDED.search(item.text())
+
                 warning_text = _tr('Wl_Table_Tags', '''
-                    <div>Non-embedded tags must begin and end with a punctuation mark, e.g. brackets.</div>
+                    <div>Nonembedded tags must begin and end with punctuation marks, e.g. angle brackets <>.</div>
                 ''')
 
             if re_validation is None:
+                # Use exec_() instead of open() here to allow editing to be started
                 wl_dialogs.Wl_Dialog_Info_Simple(
                     self.main,
                     title = _tr('Wl_Table_Tags', 'Invalid Opening Tag'),
@@ -331,6 +346,7 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
 
                 item.setText(item.text_old)
 
+                # Allow the editor to be closed properly after editing is started
                 self.setCurrentIndex(item.index())
 
                 self.closeEditor(self.findChild(QtWidgets.QLineEdit), QtWidgets.QAbstractItemDelegate.NoHint)
@@ -341,33 +357,28 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         return True
 
     def check_invalid_tags_xml(self, item):
-        if not self.is_empty() and item.column() == 2:
-            # Reference: https://www.w3.org/TR/REC-xml/#NT-NameStartChar
-            NameStartChar = r'[A-Za-z:_\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\u10000-\uEFFFF]'
-            NameChar = fr'{NameStartChar[:-1]}0-9\-.\u00B7\u0300-\u036F\u203F-\u2040]'
+        if not self.is_empty() and item.column() == 2 and not RE_TAG_XML.search(item.text()):
+            wl_dialogs.Wl_Dialog_Info_Simple(
+                self.main,
+                title = self.tr('Invalid XML Tag'),
+                text = self.tr('''
+                    <div>The specified XML tag is invalid.</div>
+                    <br>
+                    <div>Please check your settings or specify another XML tag.</div>
+                '''),
+                icon = 'warning'
+            ).exec_()
 
-            if not re.search(fr'^<{NameStartChar}{NameChar}*>$', item.text()):
-                wl_dialogs.Wl_Dialog_Info_Simple(
-                    self.main,
-                    title = self.tr('Invalid XML Tag'),
-                    text = self.tr('''
-                        <div>The specified XML tag is invalid.</div>
-                        <br>
-                        <div>Please check your settings or specify another XML tag.</div>
-                    '''),
-                    icon = 'warning'
-                ).exec_()
+            item.setText(item.text_old)
 
-                item.setText(item.text_old)
+            self.setCurrentIndex(item.index())
 
-                self.setCurrentIndex(item.index())
+            self.closeEditor(self.findChild(QtWidgets.QLineEdit), QtWidgets.QAbstractItemDelegate.NoHint)
+            self.edit(item.index())
 
-                self.closeEditor(self.findChild(QtWidgets.QLineEdit), QtWidgets.QAbstractItemDelegate.NoHint)
-                self.edit(item.index())
-
-                return False
-
-        return True
+            return False
+        else:
+            return True
 
     def update_tags(self, item):
         if not self.is_empty():
@@ -379,29 +390,39 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                 self.disable_updates()
 
                 for row in range(self.model().rowCount()):
-                    type_text = self.model().item(row, 0).text()
-                    opening_tag_text = self.model().item(row, 2).text()
-                    closing_tag = self.model().item(row, 3)
-                    preview = self.model().item(row, 4)
+                    tag_type = self.model().item(row, 0).text()
+                    tag_opening = self.model().item(row, 2).text()
 
-                    if type_text == _tr('Wl_Table_Tags', 'Embedded'):
-                        if wl_matching.split_tag_embedded(opening_tag_text)[1] == '*':
-                            opening_tag_text = opening_tag_text.replace('*', self.tr('TAG'))
+                    item_tag_closing = self.model().item(row, 3)
+                    item_preview = self.model().item(row, 4)
 
-                        closing_tag.setText(_tr('Wl_Table_Tags', 'N/A'))
-                        preview.setText(_tr('Wl_Table_Tags', 'token') + opening_tag_text)
-                    elif type_text == _tr('Wl_Table_Tags', 'Non-embedded'):
-                        # Add a "/" before the first non-punctuation character
-                        tag_start, tag_name, tag_end = wl_matching.split_tag_non_embedded(opening_tag_text)
+                    if tag_type == _tr('Wl_Table_Tags', 'Embedded'):
+                        tag_separator, tag_name = wl_matching.split_tag_embedded(tag_opening)
+                        tag_name = wl_matching.replace_wildcards_in_tag_name(
+                            tag_name,
+                            _tr('Wl_Table_Tags', 'TAG'),
+                            self.tag_type,
+                            escape = False
+                        )
 
-                        closing_tag.setText(f'{tag_start}/{tag_name}{tag_end}')
+                        item_tag_closing.setText(_tr('Wl_Table_Tags', 'N/A'))
+                        item_preview.setText(_tr('Wl_Table_Tags', 'token') + tag_separator + tag_name)
+                    elif tag_type == _tr('Wl_Table_Tags', 'Nonembedded'):
+                        # Add a slash / before the tag name
+                        tag_start, tag_name, tag_end = wl_matching.split_tag_nonembedded(tag_opening, self.tag_type)
+                        item_tag_closing.setText(f'{tag_start}/{tag_name}{tag_end}')
 
-                        if self.settings_tags == 'body_tag_settings' and tag_name == '*':
-                            opening_tag_text = opening_tag_text.replace('*', _tr('Wl_Table_Tags', 'TAG'))
-                            closing_tag_text = self.model().item(row, 3).text().replace('*', _tr('Wl_Table_Tags', 'TAG'))
-                            preview.setText(opening_tag_text + _tr('Wl_Table_Tags', 'token') + closing_tag_text)
-                        else:
-                            preview.setText(opening_tag_text + _tr('Wl_Table_Tags', 'token') + self.model().item(row, 3).text())
+                        tag_name = wl_matching.replace_wildcards_in_tag_name(
+                            tag_name,
+                            _tr('Wl_Table_Tags', 'TAG'),
+                            self.tag_type,
+                            escape = False)
+
+                        item_preview.setText(
+                            f'{tag_start}{tag_name}{tag_end}'
+                            + _tr('Wl_Table_Tags', 'token')
+                            + f'{tag_start}/{tag_name}{tag_end}'
+                        )
 
                 self.enable_updates()
 
@@ -472,7 +493,7 @@ class Wl_Table_Tags_Header(Wl_Table_Tags):
             parent,
             settings_tags = 'header_tag_settings',
             defaults_row = [
-                _tr('Wl_Table_Tags_Header', 'Non-embedded'),
+                _tr('Wl_Table_Tags_Header', 'Nonembedded'),
                 _tr('Wl_Table_Tags_Header', 'Header'),
                 _tr('Wl_Table_Tags_Header', '<TAG>'),
                 ''
@@ -503,7 +524,7 @@ class Wl_Table_Tags_Body(Wl_Table_Tags):
             parent,
             settings_tags = 'body_tag_settings',
             defaults_row = [
-                _tr('Wl_Table_Tags_Body', 'Non-embedded'),
+                _tr('Wl_Table_Tags_Body', 'Nonembedded'),
                 _tr('Wl_Table_Tags_Body', 'Others'),
                 _tr('Wl_Table_Tags_Body', '<TAG>'),
                 ''
@@ -535,7 +556,7 @@ class Wl_Table_Tags_Xml(Wl_Table_Tags):
             parent,
             settings_tags = 'xml_tag_settings',
             defaults_row = [
-                _tr('Wl_Table_Tags_Xml', 'Non-embedded'),
+                _tr('Wl_Table_Tags_Xml', 'Nonembedded'),
                 _tr('Wl_Table_Tags_Xml', 'Paragraph'),
                 _tr('Wl_Table_Tags_Xml', '<TAG>'),
                 ''
@@ -545,7 +566,7 @@ class Wl_Table_Tags_Xml(Wl_Table_Tags):
         self.setItemDelegateForColumn(0, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
             parent = self,
             items = [
-                self.tr('Non-embedded')
+                self.tr('Nonembedded')
             ]
         ))
         self.setItemDelegateForColumn(1, wl_item_delegates.Wl_Item_Delegate_Combo_Box(

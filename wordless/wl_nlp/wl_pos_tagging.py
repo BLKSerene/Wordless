@@ -53,7 +53,7 @@ def to_content_function(universal_pos_tag):
         case _:
             return None
 
-def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', force = False):
+def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', separator = 'default', force = False):
     if (
         not isinstance(inputs, str)
         and inputs
@@ -75,6 +75,9 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', f
 
         if tagset == 'default' and settings['pos_tagger_settings']['to_universal_pos_tags']:
             tagset = 'universal'
+
+        if separator == 'default':
+            separator = main.settings_custom['pos_tagging']['pos_tagger_settings']['separator_between_tokens_pos_tags']
 
         wl_nlp_utils.init_word_tokenizers(
             main,
@@ -276,8 +279,8 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', f
         ):
             tags = tags_universal.copy()
 
-        # Add separators between tokens and tags
-        tags = [f'_{tag}' for tag in tags]
+        # Add separators between tokens and POS tags
+        tags = [f'{separator}{tag}' for tag in tags]
 
         if isinstance(inputs, str):
             return wl_texts.to_tokens(

@@ -18,38 +18,15 @@
 
 from tests import wl_test_init
 from wordless.wl_checks import wl_checks_work_area
+from wordless.wl_utils import wl_excs
 
 main = wl_test_init.Wl_Test_Main()
 
-def test_wl_status_bar_msg_lang_support_unavailable():
-    wl_checks_work_area.wl_status_bar_msg_lang_support_unavailable(main)
+def test_wl_status_bar_missing_search_terms():
+    wl_checks_work_area.wl_status_bar_missing_search_terms(main)
 
-def test_wl_status_bar_msg_missing_search_terms():
-    wl_checks_work_area.wl_status_bar_msg_missing_search_terms(main)
-
-def test_wl_status_bar_msg_success_download_model():
-    wl_checks_work_area.wl_status_bar_msg_success_download_model(main)
-
-def test_wl_status_bar_msg_success_generate_table():
-    wl_checks_work_area.wl_status_bar_msg_success_generate_table(main)
-
-def test_wl_status_bar_msg_success_generate_fig():
-    wl_checks_work_area.wl_status_bar_msg_success_generate_fig(main)
-
-def test_wl_status_bar_msg_success_exp_table():
-    wl_checks_work_area.wl_status_bar_msg_success_exp_table(main)
-
-def test_wl_status_bar_msg_success_no_results():
-    wl_checks_work_area.wl_status_bar_msg_success_no_results(main)
-
-def test_wl_status_bar_msg_err_download_model():
-    wl_checks_work_area.wl_status_bar_msg_err_download_model(main)
-
-def test_wl_status_bar_msg_err_fatal():
-    wl_checks_work_area.wl_status_bar_msg_err_fatal(main)
-
-def test_wl_status_bar_msg_file_access_denied():
-    wl_checks_work_area.wl_status_bar_msg_file_access_denied(main)
+def test_wl_status_bar_err_fatal():
+    wl_checks_work_area.wl_status_bar_err_fatal(main)
 
 def test_check_search_terms():
     assert wl_checks_work_area.check_search_terms(main, {
@@ -80,23 +57,23 @@ def test_check_nlp_support():
 
     assert wl_checks_work_area.check_nlp_support(
         main,
-        nlp_utils = ['pos_taggers'],
-        files = [file_eng_us]
+        nlp_utils = ('pos_taggers',),
+        files = (file_eng_us,)
     )
     assert wl_checks_work_area.check_nlp_support(
         main,
-        nlp_utils = ['lemmatizers'],
-        files = [file_eng_us]
+        nlp_utils = ('lemmatizers',),
+        files = (file_eng_us,)
     )
     assert not wl_checks_work_area.check_nlp_support(
         main,
-        nlp_utils = ['pos_taggers'],
-        files = [file_other]
+        nlp_utils = ('pos_taggers',),
+        files = (file_other,)
     )
     assert not wl_checks_work_area.check_nlp_support(
         main,
-        nlp_utils = ['lemmatizers'],
-        files = [file_other]
+        nlp_utils = ('lemmatizers',),
+        files = (file_other,)
     )
 
     main.settings_custom['file_area']['files_open'] = [file_eng_us]
@@ -111,11 +88,17 @@ def test_check_results():
     assert not wl_checks_work_area.check_results(main, '', '')
 
 def test_check_results_download_model():
-    assert wl_checks_work_area.check_results_download_model(main, '', 'test')
+    assert wl_checks_work_area.check_results_download_model(main, '', 'os')
+    assert not wl_checks_work_area.check_results_download_model(main, '', 'modulenotfound')
+    assert not wl_checks_work_area.check_results_download_model(main, 'test', '')
 
 def test_check_postprocessing():
     assert wl_checks_work_area.check_postprocessing(main, '')
     assert not wl_checks_work_area.check_postprocessing(main, 'test')
+
+def test_check_err():
+    wl_checks_work_area.check_err(main, '')
+    wl_checks_work_area.check_err(main, 'test')
 
 def test_check_err_table():
     wl_checks_work_area.check_err_table(main, '')
@@ -125,22 +108,30 @@ def test_check_err_fig():
     wl_checks_work_area.check_err_fig(main, '')
     wl_checks_work_area.check_err_fig(main, 'test')
 
+def test_check_err_fig_word_cloud():
+    wl_checks_work_area.check_err_fig_word_cloud(main, wl_excs.Wl_Exc_Word_Cloud_Mask_Nonexistent())
+    wl_checks_work_area.check_err_fig_word_cloud(main, wl_excs.Wl_Exc_Word_Cloud_Mask_Is_Dir())
+    wl_checks_work_area.check_err_fig_word_cloud(main, wl_excs.Wl_Exc_Word_Cloud_Mask_Unsupported())
+    wl_checks_work_area.check_err_fig_word_cloud(main, wl_excs.Wl_Exc_Word_Cloud_Font_Nonexistent())
+    wl_checks_work_area.check_err_fig_word_cloud(main, wl_excs.Wl_Exc_Word_Cloud_Font_Is_Dir())
+    wl_checks_work_area.check_err_fig_word_cloud(main, wl_excs.Wl_Exc_Word_Cloud_Font_Unsupported())
+
+def test_check_err_exp_table():
+    wl_checks_work_area.check_err_exp_table(main, 'permission_err', 'test')
+    wl_checks_work_area.check_err_exp_table(main, 'test', 'test')
+    wl_checks_work_area.check_err_exp_table(main, '', 'test')
+
 if __name__ == '__main__':
-    test_wl_status_bar_msg_lang_support_unavailable()
-    test_wl_status_bar_msg_lang_support_unavailable()
-    test_wl_status_bar_msg_missing_search_terms()
-    test_wl_status_bar_msg_success_generate_table()
-    test_wl_status_bar_msg_success_generate_fig()
-    test_wl_status_bar_msg_success_exp_table()
-    test_wl_status_bar_msg_success_no_results()
-    test_wl_status_bar_msg_err_download_model()
-    test_wl_status_bar_msg_err_fatal()
-    test_wl_status_bar_msg_file_access_denied()
+    test_wl_status_bar_missing_search_terms()
+    test_wl_status_bar_err_fatal()
 
     test_check_search_terms()
     test_check_nlp_support()
     test_check_results()
     test_check_results_download_model()
     test_check_postprocessing()
+    test_check_err()
     test_check_err_table()
     test_check_err_fig()
+    test_check_err_fig_word_cloud()
+    test_check_err_exp_table()
