@@ -38,7 +38,7 @@ As *Wordless* stands on the shoulders of giants, I hereby extend my sincere grat
 14|[PyInstaller](https://pyinstaller.org/)|6.8.0|Hartmut Goebel, Jasper Harrison, Bryan A. Jones,<br>Brénainn Woodsend, Rok Mandeljc|[Bootloader-exception](https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt)
 15|[pymorphy3](https://github.com/no-plagiarism/pymorphy3)|2.0.2|Mikhail Korobov, Danylo Halaiko|[MIT](https://github.com/no-plagiarism/pymorphy3/blob/master/LICENSE.txt)
 16|[pypdf](https://github.com/py-pdf/pypdf)|4.2.0|Mathieu Fenniak, Ashish Kulkarni, Steve Witham,<br>Martin Thoma|[BSD-3-Clause](https://github.com/py-pdf/pypdf/blob/main/LICENSE)
-17|[Pyphen](https://www.courtbouillon.org/pyphen/)|0.17.0|Guillaume Ayoub|[GPL-2.0-or-later/LGPL-2.1-or-later/MPL-1.1](https://github.com/Kozea/Pyphen/blob/main/LICENSE)
+17|[Pyphen](https://www.courtbouillon.org/pyphen/)|0.17.2|Guillaume Ayoub|[GPL-2.0-or-later/LGPL-2.1-or-later/MPL-1.1](https://github.com/Kozea/Pyphen/blob/main/LICENSE)
 18|[PyQt](https://riverbankcomputing.com/software/pyqt/)|5.15.10|Riverbank Computing|[Commercial-License/GPL-3.0-only](https://www.riverbankcomputing.com/static/Docs/PyQt5/introduction.html#license)
 19|[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)|5.0.4|Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)|[Apache-2.0](https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE)
 20|[python-docx](https://github.com/python-openxml/python-docx)|1.1.2|Steve Canny|[MIT](https://github.com/python-openxml/python-docx/blob/master/LICENSE)

@@ -24,7 +24,7 @@ khmer-nltk == 1.6
 laonlp == 1.2.0
 lingua-language-detector == 2.1.0
 nltk == 3.9.1
-pyphen == 0.17.0
+pyphen == 0.17.2
 pythainlp == 5.0.4
 sacremoses == 0.1.1
 simplemma == 1.1.2

@@ -376,8 +376,8 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                 ))
 
             # List right context before left context
-            self.cols_to_sort.extend([self.tr('R{}').format(i + 1) for i in range(context_len_right)])
-            self.cols_to_sort.extend([self.tr('L{}').format(i + 1) for i in range(context_len_left)])
+            self.cols_to_sort.extend((self.tr('R{}').format(i + 1) for i in range(context_len_right)))
+            self.cols_to_sort.extend((self.tr('L{}').format(i + 1) for i in range(context_len_left)))
 
             self.setItemDelegateForColumn(0, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
                 parent = self,
@@ -521,7 +521,7 @@ class Wl_Worker_Results_Sort_Concordancer(wl_threading.Wl_Worker):
                 if len(left_old.tokens_raw) < max_left:
                     left_old.tokens_raw = [''] * (max_left - len(left_old.tokens_raw)) + left_old.tokens_raw
                 if len(right_old.tokens_raw) < max_right:
-                    right_old.tokens_raw.extend([''] * (max_right - len(right_old.tokens_raw)))
+                    right_old.tokens_raw.extend(('',) * (max_right - len(right_old.tokens_raw)))
 
                 if calc_sentiment_scores:
                     sentiment = self.dialog.table.model().item(row, 3).read_data()

@@ -670,7 +670,7 @@ def align_tokens(tokens_raw, tokens_processed, results, prefer_raw = False):
                         # Extend results if many-to-one
                         elif len_raw_temp_tokens > len_processed_temp_tokens:
                             results_modified.extend(results_temp)
-                            results_modified.extend([results_temp[-1]] * (len_raw_temp_tokens - len_processed_temp_tokens))
+                            results_modified.extend((results_temp[-1],) * (len_raw_temp_tokens - len_processed_temp_tokens))
 
                     tokens_raw_temp.clear()
                     tokens_processed_temp.clear()
@@ -692,7 +692,7 @@ def align_tokens(tokens_raw, tokens_processed, results, prefer_raw = False):
                         results_modified.extend(results_temp[:len_raw_temp_tokens])
                     elif len_raw_temp_tokens > len_processed_temp_tokens:
                         results_modified.extend(results_temp)
-                        results_modified.extend([results_temp[-1]] * (len_raw_temp_tokens - len_processed_temp_tokens))
+                        results_modified.extend((results_temp[-1],) * (len_raw_temp_tokens - len_processed_temp_tokens))
         else:
             results_modified.append(results[i_processed])
 

@@ -68,14 +68,13 @@ elif is_macos:
     # SF Pro is the system font on macOS >= 10.11 but is not installed by default
     DEFAULT_FONT_FAMILY = 'Helvetica Neue'
 elif is_linux:
-    linux_distro = wl_misc.get_linux_distro()
-
-    if linux_distro == 'ubuntu':
-        DEFAULT_FONT_FAMILY = 'Ubuntu'
-    elif linux_distro == 'debian':
-        DEFAULT_FONT_FAMILY = 'DejaVu'
-    elif linux_distro == 'arch':
-        DEFAULT_FONT_FAMILY = 'Noto Sans'
+    match wl_misc.get_linux_distro():
+        case 'ubuntu':
+            DEFAULT_FONT_FAMILY = 'Ubuntu'
+        case 'debian':
+            DEFAULT_FONT_FAMILY = 'DejaVu'
+        case 'arch':
+            DEFAULT_FONT_FAMILY = 'Noto Sans'
 
 # Font size
 if is_windows:
@@ -1545,6 +1544,7 @@ def init_settings_default(main):
             'syl_tokenizer_settings': {
                 'afr': 'pyphen_afr',
                 'sqi': 'pyphen_sqi',
+                'asm': 'pyphen_asm',
                 'eus': 'pyphen_eus',
                 'bel': 'pyphen_bel',
                 'bul': 'pyphen_bul',
@@ -1567,16 +1567,21 @@ def init_settings_default(main):
                 'isl': 'pyphen_isl',
                 'ind': 'pyphen_ind',
                 'ita': 'pyphen_ita',
+                'kan': 'pyphen_kan',
                 'lav': 'pyphen_lav',
                 'lit': 'pyphen_lit',
+                'mar': 'pyphen_mar',
                 'mon_cyrl': 'pyphen_mon_cyrl',
                 'nob': 'pyphen_nob',
                 'nno': 'pyphen_nno',
+                'ori': 'pyphen_ori',
+                'pan_guru': 'pyphen_pan_guru',
                 'pol': 'pyphen_pol',
                 'por_br': 'pyphen_por_br',
                 'por_pt': 'pyphen_por_pt',
                 'ron': 'pyphen_ron',
                 'rus': 'pyphen_rus',
+                'san': 'pyphen_san',
                 'srp_cyrl': 'pyphen_srp_cyrl',
                 'srp_latn': 'pyphen_srp_latn',
                 'slk': 'pyphen_slk',

@@ -26,6 +26,7 @@
 - Settings: Add Settings - Measures - Effect Size - Mutual Information / Pointwise Mutual Information / Pointwise Mutual Information (Cubic) / Pointwise Mutual Information (Squared)
 - Settings: Add Settings - Part-of-speech Tagging - Part-of-speech Tagger Settings - Separator between tokens and part-of-speech tags
 - Utils: Add modern-botok's Tibetan (Modern) sentence tokenizer, word tokenizer, part-of-speech tagger, and lemmatizer
+- Utils: Add Pyphen's Assamese, Kannada, Marathi, Oriya, Panjabi (Gurmukhi script), and Sanskrit syllable tokenizer
 - Utils: Add spaCy's Kurdish (Kurmanji) and Scottish Gaelic word tokenizers
 - Utils: Add spaCy's stop word lists
 - Utils: Add Stanza's Albanian, Georgian, German (Old), Komi (Zyrian), and Turkish (Ottoman) sentence tokenizers / word tokenizers / part-of-speech taggers / lemmatizers / dependency parsers
@@ -57,7 +58,7 @@
 - Dependencies: Upgrade Charset Normalizer to 3.4.1
 - Dependencies: Upgrade Lingua to 2.1.0
 - Dependencies: Upgrade NLTK to 3.9.1
-- Dependencies: Upgrade Pyphen to 0.17.0
+- Dependencies: Upgrade Pyphen to 0.17.2
 - Dependencies: Upgrade python-mecab-ko to 1.3.7
 - Dependencies: Upgrade python-pptx to 1.0.2
 - Dependencies: Upgrade simplemma to 1.1.2

@@ -21,6 +21,7 @@ import pkgutil
 import re
 
 import nltk
+import pyphen
 import requests
 import sacremoses
 import simplemma
@@ -69,13 +70,16 @@ def add_lang_suffixes(lang_codes):
 
     return lang_codes
 
-def check_missing_extra_langs(langs_supported, langs_global, util_type):
+def check_missing_extra_langs(langs_supported, langs_settings, util_type):
+    langs_supported = set(langs_supported)
+    langs_settings = set(langs_settings)
+
     for lang_code in langs_supported:
         lang_code_639_3 = wl_conversion.to_iso_639_3(main, lang_code)
 
-        assert lang_code_639_3 in langs_global, f'Missing language code for {util_type}: {lang_code_639_3}/{lang_code}!'
+        assert lang_code_639_3 in langs_settings, f'Missing language code for {util_type}: {lang_code_639_3}/{lang_code}!'
 
-    for lang_code in langs_global:
+    for lang_code in langs_settings:
         lang_code_639_1 = wl_conversion.to_iso_639_1(main, lang_code)
 
         assert lang_code_639_1 in langs_supported, f'Extra language code for {util_type}: {lang_code}/{lang_code_639_1}!'
@@ -119,28 +123,27 @@ def test_settings_global():
     settings_sentiment_analyzers_default = settings_default['sentiment_analysis']['sentiment_analyzer_settings']
 
     # NLTK
-    langs_nltk_sentence_tokenizers_supported = []
-    langs_nltk_punkt_sentence_tokenizers = []
-    langs_nltk_word_tokenizers = []
+    langs_nltk_supported = []
+    langs_nltk_settings = []
 
     for lang in os.listdir(nltk.data.find('tokenizers/punkt_tab/')):
         match lang:
             case 'english':
-                langs_nltk_sentence_tokenizers_supported.extend(['en_gb', 'en_us'])
+                langs_nltk_supported.extend(('en_gb', 'en_us'))
             case 'german':
-                langs_nltk_sentence_tokenizers_supported.extend(['de_at', 'de_de', 'de_ch'])
+                langs_nltk_supported.extend(('de_at', 'de_de', 'de_ch'))
             case 'greek':
-                langs_nltk_sentence_tokenizers_supported.append('el')
+                langs_nltk_supported.append('el')
             case 'norwegian':
-                langs_nltk_sentence_tokenizers_supported.append('nb')
+                langs_nltk_supported.append('nb')
             case 'portuguese':
-                langs_nltk_sentence_tokenizers_supported.extend(['pt_br', 'pt_pt'])
+                langs_nltk_supported.extend(('pt_br', 'pt_pt'))
             case 'slovene':
-                langs_nltk_sentence_tokenizers_supported.append('sl')
+                langs_nltk_supported.append('sl')
             case 'README':
                 pass
             case _:
-                langs_nltk_sentence_tokenizers_supported.append(wl_conversion.to_lang_code(
+                langs_nltk_supported.append(wl_conversion.to_lang_code(
                     main,
                     lang.capitalize(),
                     iso_639_3 = False
@@ -154,35 +157,31 @@ def test_settings_global():
                 for sentence_tokenizer in sentence_tokenizers
             ))
         ):
-            langs_nltk_punkt_sentence_tokenizers.append(lang_code)
+            langs_nltk_settings.append(lang_code)
 
     check_missing_extra_langs(
-        langs_nltk_sentence_tokenizers_supported,
-        langs_nltk_punkt_sentence_tokenizers,
+        langs_nltk_supported,
+        langs_nltk_settings,
         "NLTK's Punkt sentence tokenizer"
     )
 
     for lang_code, word_tokenizers in settings_word_tokenizers.items():
-        if (
-            lang_code != 'other'
-            and any((
-                'nltk_nltk' in word_tokenizer
-                for word_tokenizer in word_tokenizers
-            ))
-        ):
-            langs_nltk_word_tokenizers.append(lang_code)
-
-    for lang_code in settings_word_tokenizers:
         if lang_code != 'other':
             # Exclude languages without spaces between words and Vietnamese where spaces indicate boundaries of syllables instead of words
             if lang_code not in wl_nlp_utils.LANGS_WITHOUT_SPACES + ('vie',):
-                assert lang_code in langs_nltk_word_tokenizers, f"Missing language code for NLTK's tokenizers: {lang_code}!"
+                assert all((
+                    nltk_word_tokenizer in word_tokenizers
+                    for nltk_word_tokenizer in ('nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter')
+                )), f"Missing language code for NLTK's tokenizers: {lang_code}!"
             else:
-                assert lang_code not in langs_nltk_word_tokenizers, f"Extra language code for NLTK's tokenizers: {lang_code}!"
+                assert not any((
+                    nltk_word_tokenizer in word_tokenizers
+                    for nltk_word_tokenizer in ('nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter')
+                )), f"Extra language code for NLTK's tokenizers: {lang_code}!"
 
     # Sacremoses
     langs_sacremoses_supported = []
-    langs_sacremoses_moses_tokenizer = []
+    langs_sacremoses_settings = []
 
     for file in os.listdir(os.path.split(sacremoses.__file__)[0] + '/data/nonbreaking_prefixes/'):
         file_ext = os.path.splitext(file)[1][1:]
@@ -195,27 +194,60 @@ def test_settings_global():
     for lang_code, word_tokenizers in settings_word_tokenizers.items():
         if (
             lang_code != 'other'
-            and any((
-                'sacremoses' in word_tokenizer
-                for word_tokenizer in word_tokenizers
-            ))
+            and 'sacremoses_moses' in word_tokenizers
         ):
-            langs_sacremoses_moses_tokenizer.append(lang_code)
+            langs_sacremoses_settings.append(lang_code)
 
     check_missing_extra_langs(
         langs_sacremoses_supported,
-        langs_sacremoses_moses_tokenizer,
+        langs_sacremoses_settings,
         "Sacremoses's Moses tokenizer"
+    )
+
+    # Pyphen
+    langs_pyphen_supported = []
+    langs_pyphen_settings = []
+
+    for lang in pyphen.LANGUAGES:
+        match lang:
+            case 'de' | 'en' | 'pt':
+                pass
+            case 'de_AT' | 'de_DE' | 'de_CH' | 'en_GB' | 'en_US' | 'pt_BR' | 'pt_PT':
+                langs_pyphen_supported.append(lang.lower())
+            case 'mn' | 'mn_MN':
+                langs_pyphen_supported.append('mn_cyrl')
+            case 'pa':
+                langs_pyphen_supported.append('pa_guru')
+            case 'sr':
+                langs_pyphen_supported.append('sr_cyrl')
+            case 'sr_Latn':
+                langs_pyphen_supported.append('sr_latn')
+            case _:
+                langs_pyphen_supported.append(lang.split('_')[0])
+
+    for lang_code, syl_tokenizers in settings_syl_tokenizers.items():
+        if (
+            lang_code != 'other'
+            and any((
+                syl_tokenizer.startswith('pyphen_')
+                for syl_tokenizer in syl_tokenizers
+            ))
+        ):
+            langs_pyphen_settings.append(lang_code)
+
+    check_missing_extra_langs(
+        langs_pyphen_supported,
+        langs_pyphen_settings,
+        "Pyphen's syllable tokenizer"
     )
 
     # simplemma
     langs_simplemma_supported = []
-    langs_simplemma_lemmatizers = []
+    langs_simplemma_settings = []
 
     for lang in simplemma.strategies.dictionaries.dictionary_factory.SUPPORTED_LANGUAGES:
-
         if lang == 'hbs':
-            langs_simplemma_supported.extend(['hr', 'sr_latn'])
+            langs_simplemma_supported.extend(('hr', 'sr_latn'))
         else:
             langs_simplemma_supported.append(lang)
 
@@ -226,11 +258,11 @@ def test_settings_global():
             lemmatizer.startswith('simplemma_')
             for lemmatizer in lemmatizers
         )):
-            langs_simplemma_lemmatizers.append(lang_code)
+            langs_simplemma_settings.append(lang_code)
 
     check_missing_extra_langs(
         langs_simplemma_supported,
-        langs_simplemma_lemmatizers,
+        langs_simplemma_settings,
         "simplemma's lemmatizers"
     )
 
@@ -239,9 +271,9 @@ def test_settings_global():
     langs_spacy_supported_lemmatizers = []
     langs_spacy_supported_stop_word_lists = []
 
-    langs_spacy_word_tokenizers = []
-    langs_spacy_lemmatizers = []
-    langs_spacy_stop_word_lists = []
+    langs_spacy_settings_word_tokenizers = []
+    langs_spacy_settings_lemmatizers = []
+    langs_spacy_settings_stop_word_lists = []
 
     for lang in pkgutil.iter_modules(spacy.lang.__path__):
         # Tibetan tokenizer is not funtional
@@ -258,13 +290,13 @@ def test_settings_global():
             langs_spacy_supported_lemmatizers.append(lang_code)
 
     # Languages without data files for lemmatizers
-    langs_spacy_supported_lemmatizers.extend(['fi', 'ja', 'ko', 'sl', 'uk'])
+    langs_spacy_supported_lemmatizers.extend(('fi', 'ja', 'ko', 'sl', 'uk'))
     langs_spacy_supported_lemmatizers = add_lang_suffixes(langs_spacy_supported_lemmatizers)
 
     for lang in pkgutil.iter_modules(spacy.lang.__path__):
         if lang.ispkg and 'stop_words.py' in os.listdir(f'{spacy.lang.__path__[0]}/{lang.name}/'):
             if lang.name == 'sr':
-                langs_spacy_supported_stop_word_lists.extend(['sr_cyrl', 'sr_latn'])
+                langs_spacy_supported_stop_word_lists.extend(('sr_cyrl', 'sr_latn'))
             elif lang.name != 'xx':
                 langs_spacy_supported_stop_word_lists.append(lang.name)
 
@@ -283,37 +315,49 @@ def test_settings_global():
         if (
             lang_code != 'other'
             and any((
-                'spacy' in word_tokenizer
+                word_tokenizer.startswith('spacy_')
                 for word_tokenizer in word_tokenizers
             ))
         ):
-            langs_spacy_word_tokenizers.append(lang_code)
+            langs_spacy_settings_word_tokenizers.append(lang_code)
 
-    check_missing_extra_langs(langs_spacy_supported_word_tokenizers, langs_spacy_word_tokenizers, "spaCy's word tokenizers")
+    check_missing_extra_langs(
+        langs_spacy_supported_word_tokenizers,
+        langs_spacy_settings_word_tokenizers,
+        "spaCy's word tokenizers"
+    )
 
     for lang_code, lemmatizers in settings_lemmatizers.items():
         if (
             lang_code != 'other'
             and any((
-                'spacy' in lemmatizer
+                lemmatizer.startswith('spacy_')
                 for lemmatizer in lemmatizers
             ))
         ):
-            langs_spacy_lemmatizers.append(lang_code)
+            langs_spacy_settings_lemmatizers.append(lang_code)
 
-    check_missing_extra_langs(langs_spacy_supported_lemmatizers, langs_spacy_lemmatizers, "spaCy's lemmatizers")
+    check_missing_extra_langs(
+        langs_spacy_supported_lemmatizers,
+        langs_spacy_settings_lemmatizers,
+        "spaCy's lemmatizers"
+    )
 
     for lang_code, stop_word_lists in settings_stop_word_lists.items():
         if (
             lang_code != 'other'
             and any((
-                'spacy' in stop_word_list
+                stop_word_list.startswith('spacy_')
                 for stop_word_list in stop_word_lists
             ))
         ):
-            langs_spacy_stop_word_lists.append(lang_code)
+            langs_spacy_settings_stop_word_lists.append(lang_code)
 
-    check_missing_extra_langs(langs_spacy_supported_stop_word_lists, langs_spacy_stop_word_lists, "spaCy's stop word lists")
+    check_missing_extra_langs(
+        langs_spacy_supported_stop_word_lists,
+        langs_spacy_settings_stop_word_lists,
+        "spaCy's stop word lists"
+    )
 
     # Stanza
     langs_stanza_supported_tokenizers = []
@@ -322,12 +366,12 @@ def test_settings_global():
     langs_stanza_supported_dependency_parsers = []
     langs_stanza_supported_sentiment_analyzers = []
 
-    langs_stanza_sentence_tokenizers = []
-    langs_stanza_word_tokenizers = []
-    langs_stanza_pos_taggers = []
-    langs_stanza_lemmatizers = []
-    langs_stanza_dependency_parsers = []
-    langs_stanza_sentiment_analyzers = []
+    langs_stanza_settings_sentence_tokenizers = []
+    langs_stanza_settings_word_tokenizers = []
+    langs_stanza_settings_pos_taggers = []
+    langs_stanza_settings_lemmatizers = []
+    langs_stanza_settings_dependency_parsers = []
+    langs_stanza_settings_sentiment_analyzers = []
 
     with open('requirements/requirements_tests.txt', 'r', encoding = 'utf_8') as f:
         for line in f:
@@ -395,32 +439,32 @@ def test_settings_global():
     for settings_lang_utils, langs, langs_supported, util_type in (
         (
             settings_sentence_tokenizers,
-            langs_stanza_sentence_tokenizers,
+            langs_stanza_settings_sentence_tokenizers,
             langs_stanza_supported_tokenizers,
             'sentence tokenizer'
         ), (
             settings_word_tokenizers,
-            langs_stanza_word_tokenizers,
+            langs_stanza_settings_word_tokenizers,
             langs_stanza_supported_tokenizers,
             'word tokenizer'
         ), (
             settings_pos_taggers,
-            langs_stanza_pos_taggers,
+            langs_stanza_settings_pos_taggers,
             langs_stanza_supported_pos_taggers,
             'POS tagger'
         ), (
             settings_lemmatizers,
-            langs_stanza_lemmatizers,
+            langs_stanza_settings_lemmatizers,
             langs_stanza_supported_lemmatizers,
             'lemmatizer'
         ), (
             settings_dependency_parsers,
-            langs_stanza_dependency_parsers,
+            langs_stanza_settings_dependency_parsers,
             langs_stanza_supported_dependency_parsers,
             'dependency parser'
         ), (
             settings_sentiment_analyzers,
-            langs_stanza_sentiment_analyzers,
+            langs_stanza_settings_sentiment_analyzers,
             langs_stanza_supported_sentiment_analyzers,
             'sentiment analyzer'
         )
@@ -429,7 +473,7 @@ def test_settings_global():
             if (
                 lang_code != 'other'
                 and any((
-                    'stanza' in lang_util
+                    lang_util.startswith('stanza_')
                     for lang_util in lang_utils
                 ))
             ):
@@ -437,12 +481,23 @@ def test_settings_global():
 
         check_missing_extra_langs(langs_supported, langs, f"Stanza's {util_type}")
 
-    assert set(langs_stanza_sentence_tokenizers) | {'other'} == wl_nlp_utils.get_langs_stanza(main, util_type = 'sentence_tokenizers')
-    assert set(langs_stanza_word_tokenizers) | {'other'} == wl_nlp_utils.get_langs_stanza(main, util_type = 'word_tokenizers')
-    assert set(langs_stanza_pos_taggers) == wl_nlp_utils.get_langs_stanza(main, util_type = 'pos_taggers')
-    assert set(langs_stanza_lemmatizers) == wl_nlp_utils.get_langs_stanza(main, util_type = 'lemmatizers')
-    assert set(langs_stanza_dependency_parsers) == wl_nlp_utils.get_langs_stanza(main, util_type = 'dependency_parsers')
-    assert set(langs_stanza_sentiment_analyzers) == wl_nlp_utils.get_langs_stanza(main, util_type = 'sentiment_analyzers')
+    for langs_stanza_settings, util_type in (
+        (langs_stanza_settings_sentence_tokenizers, 'sentence_tokenizers'),
+        (langs_stanza_settings_word_tokenizers, 'word_tokenizers'),
+        (langs_stanza_settings_pos_taggers, 'pos_taggers'),
+        (langs_stanza_settings_lemmatizers, 'lemmatizers'),
+        (langs_stanza_settings_dependency_parsers, 'dependency_parsers'),
+        (langs_stanza_settings_sentiment_analyzers, 'sentiment_analyzers'),
+    ):
+        if langs_stanza_settings in (
+            langs_stanza_settings_sentence_tokenizers,
+            langs_stanza_settings_word_tokenizers
+        ):
+            langs_stanza_settings = set(langs_stanza_settings) | {'other'}
+        else:
+            langs_stanza_settings = set(langs_stanza_settings)
+
+        assert langs_stanza_settings == wl_nlp_utils.get_langs_stanza(main, util_type)
 
     # Check for missing and extra languages
     settings_langs = [lang[0] for lang in settings_global['langs'].values()]

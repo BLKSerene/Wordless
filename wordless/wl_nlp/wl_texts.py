@@ -310,7 +310,7 @@ class Wl_Text:
 
             # Add empty tags for untagged files
             if not self.tagged:
-                tags_tokens.extend([None] * len(self.get_tokens_flat()))
+                tags_tokens.extend((None,) * len(self.get_tokens_flat()))
         elif file_ext == '.xml' and self.tagged:
             tags_para = []
             tags_sentence = []
@@ -356,7 +356,7 @@ class Wl_Text:
                 self.tokens_multilevel.extend(tokens)
 
             # Add empty tags
-            tags_tokens.extend([None] * len(self.get_tokens_flat()))
+            tags_tokens.extend((None,) * len(self.get_tokens_flat()))
 
         # Remove underscores in tokenized Vietnamese files
         if self.lang == 'vie' and self.tokenized:
@@ -415,7 +415,7 @@ class Wl_Text:
                 lang = self.lang
             )
 
-            tags.extend([[] for _ in tokens])
+            tags.extend(([] for _ in tokens))
 
         return tags
 
@@ -423,7 +423,7 @@ class Wl_Text:
         if (text := text.strip()):
             tokens = text.split()
 
-            tags.extend([[] for _ in tokens])
+            tags.extend(([] for _ in tokens))
 
         return tags
 

@@ -53,7 +53,7 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('emoji'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('underthesea'))
 
 # Custom data files
-datas.extend([
+datas.extend((
     # botok
     (botok.config.DEFAULT_BASE_PATH, 'pybo/dialect_packs'),
     # PyThaiNLP
@@ -79,7 +79,7 @@ datas.extend([
     ('../CHANGELOG.md', '.'),
     ('../LICENSE', '.'),
     ('../VERSION', '.')
-])
+))
 
 # Hidden imports
 hiddenimports = [

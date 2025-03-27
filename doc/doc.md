@@ -665,7 +665,7 @@ Arabic                        |✔|✔|✖️|✔|✔|✔|✔|✔
 Armenian (Classical)          |✔|✔|✖️|✔|✔|✔|✔|✖️
 Armenian (Eastern)            |✔|✔|✖️|✔|✔|✔|✔|✔
 Armenian (Western)            |✔|✔|✖️|✔|✔|✔|✔|✔
-Assamese                      |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
+Assamese                      |⭕️|✔|✔|✖️|✖️|✔|✖️|✔
 Asturian                      |⭕️|⭕️|✖️|✖️|✔|✔|✖️|✖️
 Azerbaijani                   |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
 Basque                        |✔|✔|✔|✔|✔|✔|✔|✔
@@ -715,7 +715,7 @@ Indonesian                    |✔|✔|✔|✔|✔|✔|✔|✔
 Irish                         |✔|✔|✖️|✔|✔|✔|✔|✔
 Italian                       |✔|✔|✔|✔|✔|✔|✔|✔
 Japanese                      |✔|✔|✖️|✔|✔|✔|✔|✔
-Kannada                       |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
+Kannada                       |⭕️|✔|✔|✖️|✖️|✔|✖️|✔
 Kazakh                        |✔|✔|✖️|✔|✔|✔|✔|✔
 Khmer                         |✔|✔|✖️|✔|✖️|✔|✖️|✔
 Komi (Zyrian)                 |✔|✔|✖️|✔|✔|✔|✔|✖️
@@ -734,14 +734,14 @@ Malayalam                     |✔|✔|✖️|✖️|✖️|✔|✖️|✔
 Maltese                       |✔|✔|✖️|✔|✖️|✔|✔|✔
 Manipuri (Meitei Mayek script)|⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
 Manx                          |✔|✔|✖️|✔|✔|✔|✔|✖️
-Marathi                       |✔|✔|✖️|✔|✔|✔|✔|✔
+Marathi                       |✔|✔|✔|✔|✔|✔|✔|✔
 Mongolian (Cyrillic script)   |⭕️|⭕️|✔|✖️|✖️|✔|✖️|✔
 Nepali                        |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
 Nigerian Pidgin               |✔|✔|✖️|✔|✔|✔|✔|✖️
 Norwegian (Bokmål)            |✔|✔|✔|✔|✔|✔|✔|✔
 Norwegian (Nynorsk)           |✔|✔|✔|✔|✔|✔|✔|✖️
-Oriya                         |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
-Panjabi (Gurmukhi script)     |⭕️|✔|✖️|✖️|✖️|✔|✖️|✔
+Oriya                         |⭕️|✔|✔|✖️|✖️|✔|✖️|✔
+Panjabi (Gurmukhi script)     |⭕️|✔|✔|✖️|✖️|✔|✖️|✔
 Persian                       |✔|✔|✖️|✔|✔|✔|✔|✔
 Polish                        |✔|✔|✔|✔|✔|✔|✔|✔
 Pomak                         |✔|✔|✖️|✔|✔|✔|✔|✖️
@@ -751,7 +751,7 @@ Romanian                      |✔|✔|✔|✔|✔|✔|✔|✔
 Russian                       |✔|✔|✔|✔|✔|✔|✔|✔
 Russian (Old)                 |✔|✔|✖️|✔|✔|✔|✔|✖️
 Sámi (Northern)               |✔|✔|✖️|✔|✔|✔|✔|✖️
-Sanskrit                      |✔|✔|✖️|✔|✔|✔|✔|✔
+Sanskrit                      |✔|✔|✔|✔|✔|✔|✔|✔
 Scottish Gaelic               |✔|✔|✖️|✔|✔|✔|✔|✔
 Serbian (Cyrillic script)     |⭕️|✔|✔|✖️|✔|✔|✖️|✔
 Serbian (Latin script)        |✔|✔|✔|✔|✔|✔|✔|✔

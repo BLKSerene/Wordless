@@ -632,9 +632,9 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                                 # Dependency Length
                                 results[-1].append(i_head - i_dependent)
                                 # Sentence
-                                results[-1].extend([sentence_tokens_raw, sentence_tokens_fig, sentence_tokens_search])
+                                results[-1].extend((sentence_tokens_raw, sentence_tokens_fig, sentence_tokens_search))
                                 # Sentence No.
-                                results[-1].extend([no_sentence, len_sentences])
+                                results[-1].extend((no_sentence, len_sentences))
                                 # File
                                 results[-1].append(file['name'])
 

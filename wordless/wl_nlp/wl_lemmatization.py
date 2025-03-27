@@ -232,7 +232,7 @@ def wl_lemmatize_tokens(main, inputs, lang, lemmatizer):
                     else:
                         lemmas.append(token.text)
 
-                lemma_tokens.extend([token.text for token in doc])
+                lemma_tokens.extend((token.text for token in doc))
     # Stanza
     elif lemmatizer.startswith('stanza_'):
         if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
@@ -268,7 +268,7 @@ def wl_lemmatize_tokens(main, inputs, lang, lemmatizer):
                         lang_simplemma = wl_conversion.to_iso_639_1(main, lang, no_suffix = True)
 
                 lemma_tokens.extend(tokens.copy())
-                lemmas.extend([simplemma.lemmatize(token, lang = lang_simplemma) for token in tokens])
+                lemmas.extend((simplemma.lemmatize(token, lang = lang_simplemma) for token in tokens))
             # English
             elif lemmatizer == 'nltk_wordnet':
                 word_net_lemmatizer = nltk.WordNetLemmatizer()

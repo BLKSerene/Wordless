@@ -102,7 +102,7 @@ ACKS = (
         'BSD-3-Clause', 'https://github.com/py-pdf/pypdf/blob/main/LICENSE'
     ), (
         'Pyphen', 'https://www.courtbouillon.org/pyphen/',
-        '0.17.0', 'Guillaume Ayoub',
+        '0.17.2', 'Guillaume Ayoub',
         'GPL-2.0-or-later/LGPL-2.1-or-later/MPL-1.1', 'https://github.com/Kozea/Pyphen/blob/main/LICENSE'
     ), (
         'PyQt', 'https://riverbankcomputing.com/software/pyqt/',
