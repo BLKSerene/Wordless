@@ -53,7 +53,7 @@ class Wl_Wrapper(QtWidgets.QWidget):
         self.scroll_area_settings = Wl_Scroll_Area(self)
         self.button_restore_default_vals = wl_buttons.Wl_Button_Restore_Default_Vals(self, load_settings = self.load_settings)
 
-        self.scroll_area_settings.setFixedWidth(400)
+        self.scroll_area_settings.resize(400, self.scroll_area_settings.size().height())
 
         self.wrapper_settings_outer = QtWidgets.QWidget(self)
         self.wrapper_settings_outer.setLayout(Wl_Layout())
@@ -71,9 +71,22 @@ class Wl_Wrapper(QtWidgets.QWidget):
 
         self.scroll_area_settings.setWidget(self.wrapper_settings_outer)
 
+        self.splitter = Wl_Splitter(QtCore.Qt.Horizontal, self)
+        self.splitter.addWidget(self.wrapper_table)
+        self.splitter.addWidget(self.scroll_area_settings)
+
+        self.splitter.setHandleWidth(5)
+        self.splitter.setStretchFactor(0, 1)
+
+        self.splitter.setObjectName('wl-splitter-work-area')
+        self.splitter.setStyleSheet('''
+            QSplitter#wl-splitter-work-area::handle {
+                background-color: #FFF;
+            }
+        ''')
+
         self.setLayout(Wl_Layout())
-        self.layout().addWidget(self.wrapper_table, 0, 0)
-        self.layout().addWidget(self.scroll_area_settings, 0, 1)
+        self.layout().addWidget(self.splitter, 0, 0)
 
         self.layout().setContentsMargins(8, 6, 8, 6)
 
@@ -108,7 +121,11 @@ class Wl_Splitter(QtWidgets.QSplitter):
 
         self.main = wl_misc.find_wl_main(parent)
 
-        self.setHandleWidth(0)
+        if is_macos:
+            self.setHandleWidth(2)
+        else:
+            self.setHandleWidth(1)
+
         self.setChildrenCollapsible(False)
 
 class Wl_Scroll_Area(QtWidgets.QScrollArea):

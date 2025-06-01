@@ -402,18 +402,6 @@ class Wl_Main(QtWidgets.QMainWindow):
         self.splitter_central_widget.addWidget(self.wl_work_area)
         self.splitter_central_widget.addWidget(self.tabs_file_area)
 
-        if is_macos:
-            self.splitter_central_widget.setHandleWidth(2)
-        else:
-            self.splitter_central_widget.setHandleWidth(1)
-
-        self.splitter_central_widget.setObjectName('splitter-central-widget')
-        self.splitter_central_widget.setStyleSheet('''
-            QSplitter#splitter-central-widget {
-                padding: 4px 6px;
-            }
-        ''')
-
         self.splitter_central_widget.setStretchFactor(0, 1)
 
         self.setCentralWidget(self.splitter_central_widget)
@@ -471,7 +459,16 @@ class Wl_Main(QtWidgets.QMainWindow):
         self.prefs_show_status_bar()
 
         # Layouts
-        self.centralWidget().setSizes(settings['menu']['prefs']['layouts']['central_widget'])
+        self.centralWidget().setSizes(settings['menu']['prefs']['layouts']['main_window'])
+        self.wl_work_area.widget(0).splitter.setSizes(settings['menu']['prefs']['layouts']['profiler'])
+        self.wl_work_area.widget(1).splitter.setSizes(settings['menu']['prefs']['layouts']['concordancer'])
+        self.wl_work_area.widget(2).splitter.setSizes(settings['menu']['prefs']['layouts']['concordancer_parallel'])
+        self.wl_work_area.widget(3).splitter.setSizes(settings['menu']['prefs']['layouts']['dependency_parser'])
+        self.wl_work_area.widget(4).splitter.setSizes(settings['menu']['prefs']['layouts']['wordlist_generator'])
+        self.wl_work_area.widget(5).splitter.setSizes(settings['menu']['prefs']['layouts']['ngram_generator'])
+        self.wl_work_area.widget(6).splitter.setSizes(settings['menu']['prefs']['layouts']['collocation_extractor'])
+        self.wl_work_area.widget(7).splitter.setSizes(settings['menu']['prefs']['layouts']['colligation_extractor'])
+        self.wl_work_area.widget(8).splitter.setSizes(settings['menu']['prefs']['layouts']['keyword_extractor'])
 
         # File Area
         for i in range(self.tabs_file_area.count()):
@@ -618,7 +615,18 @@ class Wl_Main(QtWidgets.QMainWindow):
                 <div>Do you want to reset all layouts to their default settings?</div>
             ''')
         ).exec_():
-            self.centralWidget().setSizes(self.settings_default['menu']['prefs']['layouts']['central_widget'])
+            settings = self.settings_default['menu']['prefs']['layouts']
+
+            self.centralWidget().setSizes(settings['main_window'])
+            self.wl_work_area.widget(0).splitter.setSizes(settings['profiler'])
+            self.wl_work_area.widget(1).splitter.setSizes(settings['concordancer'])
+            self.wl_work_area.widget(2).splitter.setSizes(settings['concordancer_parallel'])
+            self.wl_work_area.widget(3).splitter.setSizes(settings['dependency_parser'])
+            self.wl_work_area.widget(4).splitter.setSizes(settings['wordlist_generator'])
+            self.wl_work_area.widget(5).splitter.setSizes(settings['ngram_generator'])
+            self.wl_work_area.widget(6).splitter.setSizes(settings['collocation_extractor'])
+            self.wl_work_area.widget(7).splitter.setSizes(settings['colligation_extractor'])
+            self.wl_work_area.widget(8).splitter.setSizes(settings['keyword_extractor'])
 
     def prefs_show_status_bar(self):
         self.settings_custom['menu']['prefs']['show_status_bar'] = self.action_prefs_show_status_bar.isChecked()
@@ -658,7 +666,16 @@ class Wl_Main(QtWidgets.QMainWindow):
         self.settings_custom['file_area']['files_closed_ref'].clear()
 
         # Layouts
-        self.settings_custom['menu']['prefs']['layouts']['central_widget'] = self.centralWidget().sizes()
+        self.settings_custom['menu']['prefs']['layouts']['main_window'] = self.centralWidget().sizes()
+        self.settings_custom['menu']['prefs']['layouts']['profiler'] = self.wl_work_area.widget(0).splitter.sizes()
+        self.settings_custom['menu']['prefs']['layouts']['concordancer'] = self.wl_work_area.widget(1).splitter.sizes()
+        self.settings_custom['menu']['prefs']['layouts']['concordancer_parallel'] = self.wl_work_area.widget(2).splitter.sizes()
+        self.settings_custom['menu']['prefs']['layouts']['dependency_parser'] = self.wl_work_area.widget(3).splitter.sizes()
+        self.settings_custom['menu']['prefs']['layouts']['wordlist_generator'] = self.wl_work_area.widget(4).splitter.sizes()
+        self.settings_custom['menu']['prefs']['layouts']['ngram_generator'] = self.wl_work_area.widget(5).splitter.sizes()
+        self.settings_custom['menu']['prefs']['layouts']['collocation_extractor'] = self.wl_work_area.widget(6).splitter.sizes()
+        self.settings_custom['menu']['prefs']['layouts']['colligation_extractor'] = self.wl_work_area.widget(7).splitter.sizes()
+        self.settings_custom['menu']['prefs']['layouts']['keyword_extractor'] = self.wl_work_area.widget(8).splitter.sizes()
 
         with open(file_settings, 'wb') as f:
             pickle.dump(self.settings_custom, f)
@@ -1081,22 +1098,22 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
             self.button_cancel.disconnect()
             self.button_cancel.clicked.connect(self.stop_checking)
         else:
-            if status in ('updates_available', 'no_updates'):
-                if status == 'updates_available':
+            match status:
+                case 'updates_available':
                     self.label_checking_status.set_text(self.tr('''
                         <div><i>Wordless</i> {} is out. Click <a href="https://github.com/BLKSerene/Wordless#download"><b>HERE</b></a> to download the latest version of <i>Wordless</i>.</div>
                     ''').format(ver_new))
                     self.label_latest_ver.set_text(self.tr('<div>Latest version: </div>') + ver_new)
-                elif status == 'no_updates':
+                case 'no_updates':
                     self.label_checking_status.set_text(self.tr('''
                         <div>Hooray! You are using the latest version of <i>Wordless</i>!</div>
                     '''))
                     self.label_latest_ver.set_text(self.tr('<div>Latest version: </div>') + str(self.main.ver))
-            elif status == 'network_err':
-                self.label_checking_status.set_text(self.tr('''
-                    <div>A network error has occurred. Please check your network settings and try again or <a href="https://github.com/BLKSerene/Wordless/releases">check for updates manually</a>.</div>
-                '''))
-                self.label_latest_ver.set_text(self.tr('<div>Latest version: Network error</div>'))
+                case 'network_err':
+                    self.label_checking_status.set_text(self.tr('''
+                        <div>A network error has occurred. Please check your network settings and try again or <a href="https://github.com/BLKSerene/Wordless/releases">check for updates manually</a>.</div>
+                    '''))
+                    self.label_latest_ver.set_text(self.tr('<div>Latest version: Network error</div>'))
 
             self.button_cancel.setText(self.tr('OK'))
             self.button_cancel.disconnect()

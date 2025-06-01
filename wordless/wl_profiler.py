@@ -84,6 +84,13 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
 
         self.tabs_profiler.currentChanged.connect(self.tabs_changed)
 
+        self.tabs_profiler.setObjectName('tab_widget_profiler')
+        self.tabs_profiler.setStyleSheet('''
+            QTabWidget#tab_widget_profiler::pane {
+                border: 0;
+            }
+        ''')
+
         self.wrapper_table.layout().addWidget(self.tabs_profiler, 0, 0, 1, 6)
         self.wrapper_table.layout().addWidget(self.stacked_widget_button_generate_table, 1, 0)
         self.wrapper_table.layout().addWidget(self.button_generate_all_tables, 1, 1)

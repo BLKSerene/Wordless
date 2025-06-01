@@ -84,6 +84,10 @@ elif is_macos:
 elif is_linux:
     DEFAULT_FONT_SIZE = 11
 
+# Layouts
+DEFAULT_HEIGHT_FILE_AREA = 210
+DEFAULT_WIDHT_SETTINGS = 410
+
 # Directories for imports and exports
 DEFAULT_DIR_WORDLESS = wl_paths.get_path_file('', internal = False)
 DEFAULT_DIR_IMPS = wl_paths.get_path_file('imports', internal = False)
@@ -100,7 +104,16 @@ def init_settings_default(main):
             'prefs': {
                 'display_lang': 'eng_us',
                 'layouts': {
-                    'central_widget': [main.height() - 210, 210]
+                    'main_window': [main.height() - DEFAULT_HEIGHT_FILE_AREA, DEFAULT_HEIGHT_FILE_AREA],
+                    'profiler': [main.width() - DEFAULT_WIDHT_SETTINGS, DEFAULT_WIDHT_SETTINGS],
+                    'concordancer': [main.width() - DEFAULT_WIDHT_SETTINGS, DEFAULT_WIDHT_SETTINGS],
+                    'concordancer_parallel': [main.width() - DEFAULT_WIDHT_SETTINGS, DEFAULT_WIDHT_SETTINGS],
+                    'dependency_parser': [main.width() - DEFAULT_WIDHT_SETTINGS, DEFAULT_WIDHT_SETTINGS],
+                    'wordlist_generator': [main.width() - DEFAULT_WIDHT_SETTINGS, DEFAULT_WIDHT_SETTINGS],
+                    'ngram_generator': [main.width() - DEFAULT_WIDHT_SETTINGS, DEFAULT_WIDHT_SETTINGS],
+                    'collocation_extractor': [main.width() - DEFAULT_WIDHT_SETTINGS, DEFAULT_WIDHT_SETTINGS],
+                    'colligation_extractor': [main.width() - DEFAULT_WIDHT_SETTINGS, DEFAULT_WIDHT_SETTINGS],
+                    'keyword_extractor': [main.width() - DEFAULT_WIDHT_SETTINGS, DEFAULT_WIDHT_SETTINGS]
                 },
                 'show_status_bar': True
             },
