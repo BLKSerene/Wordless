@@ -931,6 +931,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Stanza - Swedish part-of-speech tagger'): 'stanza_swe',
                 _tr('wl_settings_global', 'Stanza - Tamil part-of-speech tagger'): 'stanza_tam',
                 _tr('wl_settings_global', 'Stanza - Telugu part-of-speech tagger'): 'stanza_tel',
+                _tr('wl_settings_global', 'Stanza - Thai part-of-speech tagger'): 'stanza_tha',
                 _tr('wl_settings_global', 'Stanza - Turkish part-of-speech tagger'): 'stanza_tur',
                 _tr('wl_settings_global', 'Stanza - Turkish (Ottoman) part-of-speech tagger'): 'stanza_ota',
                 _tr('wl_settings_global', 'Stanza - Ukrainian part-of-speech tagger'): 'stanza_ukr',
@@ -1339,6 +1340,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Stanza - Swedish dependency parser'): 'stanza_swe',
                 _tr('wl_settings_global', 'Stanza - Tamil dependency parser'): 'stanza_tam',
                 _tr('wl_settings_global', 'Stanza - Telugu dependency parser'): 'stanza_tel',
+                _tr('wl_settings_global', 'Stanza - Thai dependency parser'): 'stanza_tha',
                 _tr('wl_settings_global', 'Stanza - Turkish dependency parser'): 'stanza_tur',
                 _tr('wl_settings_global', 'Stanza - Turkish (Ottoman) dependency parser'): 'stanza_ota',
                 _tr('wl_settings_global', 'Stanza - Ukrainian dependency parser'): 'stanza_ukr',
@@ -2962,7 +2964,8 @@ def init_settings_global():
             'tha': (
                 'pythainlp_perceptron_blackboard',
                 'pythainlp_perceptron_orchid',
-                'pythainlp_perceptron_pud'
+                'pythainlp_perceptron_pud',
+                'stanza_tha'
             ),
 
             'xct': ('botok_xct',),
@@ -3788,7 +3791,7 @@ def init_settings_global():
 
             'tam': ('stanza_tam',),
             'tel': ('stanza_tel',),
-
+            'tha': ('stanza_tha',),
             'tur': ('stanza_tur',),
             'ota': ('stanza_ota',),
 

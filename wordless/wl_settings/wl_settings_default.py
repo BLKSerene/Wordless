@@ -2197,6 +2197,7 @@ def init_settings_default(main):
                 'swe': 'spacy_swe',
                 'tam': 'stanza_tam',
                 'tel': 'stanza_tel',
+                'tha': 'stanza_tha',
                 'tur': 'stanza_tur',
                 'ota': 'stanza_ota',
                 'ukr': 'spacy_ukr',

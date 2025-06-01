@@ -30,6 +30,7 @@
 - Utils: Add spaCy's Kurdish (Kurmanji) and Scottish Gaelic word tokenizers
 - Utils: Add spaCy's stop word lists
 - Utils: Add Stanza's Albanian, Georgian, German (Old), Komi (Zyrian), and Turkish (Ottoman) sentence tokenizers / word tokenizers / part-of-speech taggers / lemmatizers / dependency parsers
+- Utils: Add Stanza's Thai part-of-speech tagger and dependency parser
 - Utils: Add Stanza's Sindhi dependency parser
 - Work Area: Add Concordancer - Generation Settings - Calculate sentiment scores
 - Work Area: Add Concordancer - Sort results - Column - Sentence Segment / Sentence / Paragraph No.

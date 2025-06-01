@@ -335,14 +335,25 @@ class Wl_Worker_Download_Model_Stanza(wl_threading.Wl_Worker):
                 case _:
                     lang_stanza = wl_conversion.to_iso_639_1(self.main, self.lang, no_suffix = True)
 
-            stanza.download(
-                lang = lang_stanza,
-                model_dir = model_dir,
-                package = 'default',
-                processors = processors,
-                proxies = wl_misc.wl_get_proxies(self.main),
-                download_json = False
-            )
+            # Using existing resources.json if network error occurs
+            try:
+                stanza.download(
+                    lang = lang_stanza,
+                    model_dir = model_dir,
+                    package = 'default',
+                    processors = processors,
+                    proxies = wl_misc.wl_get_proxies(self.main),
+                    download_json = True
+                )
+            except Exception: # pylint: disable=broad-exception-caught
+                stanza.download(
+                    lang = lang_stanza,
+                    model_dir = model_dir,
+                    package = 'default',
+                    processors = processors,
+                    proxies = wl_misc.wl_get_proxies(self.main),
+                    download_json = False
+                )
         except Exception: # pylint: disable=broad-exception-caught
             self.err_msg = traceback.format_exc()
 
