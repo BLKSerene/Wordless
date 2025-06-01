@@ -33,7 +33,7 @@ underthesea
 vaderSentiment
 
 ## pymorphy3
-pymorphy3
+pymorphy3[fast]
 pymorphy3-dicts-ru
 pymorphy3-dicts-uk
 

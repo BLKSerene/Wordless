@@ -60,6 +60,7 @@
 - Dependencies: Upgrade Charset Normalizer to 3.4.1
 - Dependencies: Upgrade Lingua to 2.1.0
 - Dependencies: Upgrade NLTK to 3.9.1
+- Dependencies: Upgrade pymorphy3 to 2.0.3
 - Dependencies: Upgrade Pyphen to 0.17.2
 - Dependencies: Upgrade python-mecab-ko to 1.3.7
 - Dependencies: Upgrade python-pptx to 1.0.2
