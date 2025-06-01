@@ -27,10 +27,7 @@ test_sentiment_analyzers = []
 
 for lang, sentiment_analyzers in main.settings_global['sentiment_analyzers'].items():
     for sentiment_analyzer in sentiment_analyzers:
-        if (
-            lang not in ('mya')
-            and not sentiment_analyzer.startswith('stanza_')
-        ):
+        if not sentiment_analyzer.startswith('stanza_'):
             test_sentiment_analyzers.append((lang, sentiment_analyzer))
 
 @pytest.mark.parametrize('lang, sentiment_analyzer', test_sentiment_analyzers)

@@ -51,6 +51,7 @@
 
 ### 🚫 Removals
 - Measures: Remove effect size - Log-frequency biased MD / Mutual Dependency
+- Utils: Remove VADER's non-English sentiment analyzers
 
 ### ⏫ Dependency Changes
 - Dependencies: Add modern-botok
