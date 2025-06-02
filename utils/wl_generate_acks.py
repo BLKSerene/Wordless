@@ -38,7 +38,7 @@ COL_HEADERS = (
 ACKS = (
     (
         'Beautiful Soup', 'https://www.crummy.com/software/BeautifulSoup/',
-        '4.13.3', 'Leonard Richardson',
+        '4.13.4', 'Leonard Richardson',
         'MIT', 'https://git.launchpad.net/beautifulsoup/tree/LICENSE'
     ), (
         'Botok', 'https://github.com/OpenPecha/Botok',
