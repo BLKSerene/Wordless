@@ -57,7 +57,7 @@
 - Dependencies: Add modern-botok
 - Dependencies: Upgrade Beautiful Soup to 4.13.4
 - Dependencies: Upgrade Botok to 0.9.0
-- Dependencies: Upgrade Charset Normalizer to 3.4.1
+- Dependencies: Upgrade Charset Normalizer to 3.4.2
 - Dependencies: Upgrade Lingua to 2.1.0
 - Dependencies: Upgrade NLTK to 3.9.1
 - Dependencies: Upgrade pymorphy3 to 2.0.3

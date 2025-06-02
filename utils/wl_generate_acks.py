@@ -46,7 +46,7 @@ ACKS = (
         'Apache-2.0', 'https://github.com/OpenPecha/Botok/blob/master/LICENSE'
     ), (
         'Charset Normalizer', 'https://github.com/Ousret/charset_normalizer',
-        '3.4.1', 'TAHRI Ahmed R.',
+        '3.4.2', 'TAHRI Ahmed R.',
         'MIT', 'https://github.com/Ousret/charset_normalizer/blob/master/LICENSE'
     ), (
         'khmer-nltk', 'https://github.com/VietHoang1512/khmer-nltk',
