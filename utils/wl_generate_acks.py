@@ -106,7 +106,7 @@ ACKS = (
         'GPL-2.0-or-later/LGPL-2.1-or-later/MPL-1.1', 'https://github.com/Kozea/Pyphen/blob/main/LICENSE'
     ), (
         'PyQt', 'https://riverbankcomputing.com/software/pyqt/',
-        '5.15.10', 'Riverbank Computing',
+        '5.15.11', 'Riverbank Computing',
         'Commercial-License/GPL-3.0-only', 'https://www.riverbankcomputing.com/static/Docs/PyQt5/introduction.html#license'
     ), (
         'PyThaiNLP', 'https://github.com/PyThaiNLP/pythainlp',
