@@ -88,7 +88,7 @@ def wl_word_detokenize(main, tokens, lang):
             )
     # Thai
     elif lang == 'tha':
-        text = pythainlp.tokenize.word_detokenize(pythainlp.tokenize.clause_tokenize(tokens))
+        text = pythainlp.tokenize.word_detokenize(tokens)
     # Tibetan
     elif lang == 'bod':
         text_temp = []
