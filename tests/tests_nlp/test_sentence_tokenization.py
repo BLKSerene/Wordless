@@ -19,7 +19,10 @@
 
 import pytest
 
-from tests import wl_test_init, wl_test_lang_examples
+from tests import (
+    wl_test_init,
+    wl_test_lang_examples
+)
 from wordless.wl_nlp import wl_sentence_tokenization
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')

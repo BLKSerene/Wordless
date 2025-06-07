@@ -66,8 +66,8 @@ ACKS = (
         'Matplotlib', 'https://matplotlib.org/stable/users/project/license.html'
     ), (
         'modern-botok', 'https://github.com/Divergent-Discourses/modern-botok',
-        '1.1.3', 'Robert Barnett, Franz Xaver Erhard, Yuki Kyogoku',
-        'Apache-2.0', 'https://github.com/OpenPecha/Botok/blob/master/LICENSE'
+        '1.2.1', 'Robert Barnett, Franz Xaver Erhard, Yuki Kyogoku',
+        'Apache-2.0', 'https://github.com/Divergent-Discourses/modern-botok/blob/main/LICENSE'
     ), (
         'NetworkX', 'https://networkx.org/',
         '3.3', 'NetworkX Developers, Aric Hagberg, Dan Schult,<br>Pieter Swart',

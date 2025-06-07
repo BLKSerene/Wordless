@@ -26,9 +26,16 @@ import spacy
 
 from wordless.wl_checks import wl_checks_misc
 from wordless.wl_dialogs import wl_dialogs
-from wordless.wl_nlp import wl_nlp_utils, wl_texts
+from wordless.wl_nlp import (
+    wl_nlp_utils,
+    wl_texts
+)
 from wordless.wl_settings import wl_settings_default
-from wordless.wl_utils import wl_conversion, wl_misc, wl_paths
+from wordless.wl_utils import (
+    wl_conversion,
+    wl_misc,
+    wl_paths
+)
 
 _tr = QtCore.QCoreApplication.translate
 

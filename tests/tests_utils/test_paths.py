@@ -19,7 +19,10 @@
 import os
 import sys
 
-from wordless.wl_utils import wl_paths, wl_misc
+from wordless.wl_utils import (
+    wl_paths,
+    wl_misc
+)
 
 def test_get_normalized_path():
     assert wl_paths.get_normalized_path('.') != '.'

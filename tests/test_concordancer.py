@@ -16,9 +16,10 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import glob
-
-from tests import wl_test_init
+from tests import (
+    wl_test_file_area,
+    wl_test_init
+)
 from wordless import wl_concordancer
 from wordless.wl_dialogs import wl_dialogs_misc
 
@@ -32,23 +33,21 @@ def test_concordancer():
     settings['search_settings']['multi_search_mode'] = True
     settings['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
 
-    for i in range(2 + len(glob.glob('tests/files/file_area/misc/*.txt'))):
+    for i in range(2 + wl_test_file_area.LEN_FILES_TESTS_OTHERS):
         match i:
             # Single file
             case 0:
-                settings['generation_settings']['calc_sentiment_scores'] = False
+                wl_test_init.select_test_files(main, no_files = (0,))
 
-                wl_test_init.select_test_files(main, no_files = [0])
+                settings['generation_settings']['calc_sentiment_scores'] = False
             # Multiple files
             case 1:
-                settings['generation_settings']['calc_sentiment_scores'] = True
+                wl_test_init.select_test_files(main, no_files = (1, 2))
 
-                wl_test_init.select_test_files(main, no_files = [1, 2])
+                settings['generation_settings']['calc_sentiment_scores'] = True
             # Miscellaneous
             case _:
-                settings['generation_settings']['calc_sentiment_scores'] = True
-
-                wl_test_init.select_test_files(main, no_files = [i + 1])
+                wl_test_init.select_test_files(main, no_files = (i + 1,))
 
         global main_global
         main_global = main
@@ -101,7 +100,11 @@ def update_gui_table(err_msg, concordance_lines):
 
         # Sentiment
         if main_global.settings_custom['concordancer']['generation_settings']['calc_sentiment_scores']:
-            if file_name == '[other] No language support':
+            if file_name in (
+                '[bod] Tibetan tshegs',
+                '[xct] Tibetan tshegs',
+                '[other] No language support'
+            ):
                 assert sentiment == 'No language support'
             else:
                 assert -1 <= sentiment <= 1

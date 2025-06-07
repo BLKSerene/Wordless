@@ -38,7 +38,10 @@ from wordless.wl_nlp import (
     wl_token_processing,
     wl_sentiment_analysis
 )
-from wordless.wl_utils import wl_misc, wl_threading
+from wordless.wl_utils import (
+    wl_misc,
+    wl_threading
+)
 from wordless.wl_widgets import (
     wl_boxes,
     wl_labels,
@@ -462,7 +465,7 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
         super().__init__(
             parent,
             tab = 'concordancer',
-            headers = [
+            headers = (
                 _tr('Wl_Table_Concordancer', 'Left'),
                 _tr('Wl_Table_Concordancer', 'Node'),
                 _tr('Wl_Table_Concordancer', 'Right'),
@@ -475,19 +478,19 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
                 _tr('Wl_Table_Concordancer', 'Paragraph No.'),
                 _tr('Wl_Table_Concordancer', 'Paragraph No. %'),
                 _tr('Wl_Table_Concordancer', 'File')
-            ],
-            headers_int = [
+            ),
+            headers_int = {
                 _tr('Wl_Table_Concordancer', 'Token No.'),
                 _tr('Wl_Table_Concordancer', 'Sentence Segment No.'),
                 _tr('Wl_Table_Concordancer', 'Sentence No.'),
                 _tr('Wl_Table_Concordancer', 'Paragraph No.')
-            ],
-            headers_pct = [
+            },
+            headers_pct = {
                 _tr('Wl_Table_Concordancer', 'Token No. %'),
                 _tr('Wl_Table_Concordancer', 'Sentence Segment No. %'),
                 _tr('Wl_Table_Concordancer', 'Sentence No. %'),
                 _tr('Wl_Table_Concordancer', 'Paragraph No. %')
-            ]
+            }
         )
 
     @wl_misc.log_time

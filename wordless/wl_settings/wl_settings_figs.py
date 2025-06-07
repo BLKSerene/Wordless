@@ -29,7 +29,12 @@ from PyQt5 import QtWidgets
 
 from wordless.wl_settings import wl_settings
 from wordless.wl_utils import wl_paths
-from wordless.wl_widgets import wl_boxes, wl_buttons, wl_editors, wl_layouts
+from wordless.wl_widgets import (
+    wl_boxes,
+    wl_buttons,
+    wl_editors,
+    wl_layouts
+)
 
 _tr = QtCore.QCoreApplication.translate
 
@@ -106,10 +111,8 @@ class Wl_Settings_Figs_Line_Charts(wl_settings.Wl_Settings_Node):
 
         self.group_box_general_settings.layout().setColumnStretch(2, 1)
 
-        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_general_settings, 0, 0)
 
-        self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(1, 1)
 
     def change_fonts(self):
@@ -296,13 +299,11 @@ class Wl_Settings_Figs_Word_Clouds(wl_settings.Wl_Settings_Node):
 
         self.group_box_advanced_settings.layout().setColumnStretch(2, 1)
 
-        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_font_settings, 0, 0)
         self.layout().addWidget(self.group_box_bg_settings, 1, 0)
         self.layout().addWidget(self.group_box_mask_settings, 2, 0)
         self.layout().addWidget(self.group_box_advanced_settings, 3, 0)
 
-        self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(4, 1)
 
     def font_settings_changed(self):
@@ -586,14 +587,12 @@ class Wl_Settings_Figs_Network_Graphs(wl_settings.Wl_Settings_Node):
 
         self.group_box_advanced_settings.layout().setColumnStretch(2, 1)
 
-        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_node_settings, 0, 0)
         self.layout().addWidget(self.group_box_node_label_settings, 1, 0)
         self.layout().addWidget(self.group_box_edge_settings, 2, 0)
         self.layout().addWidget(self.group_box_edge_label_settings, 3, 0)
         self.layout().addWidget(self.group_box_advanced_settings, 4, 0)
 
-        self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(5, 1)
 
     def load_settings(self, defaults = False):

@@ -16,10 +16,12 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import glob
 import random
 
-from tests import wl_test_init
+from tests import (
+    wl_test_file_area,
+    wl_test_init
+)
 from wordless import wl_wordlist_generator
 from wordless.wl_dialogs import wl_dialogs_misc
 
@@ -29,27 +31,35 @@ def test_wordlist_generator():
     main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
     settings = main.settings_custom['wordlist_generator']
+    settings_table = main.settings_custom['tables']['wordlist_generator']['lang_specific_settings']
 
     measures_dispersion = list(main.settings_global['measures_dispersion'].keys())
     measures_adjusted_freq = list(main.settings_global['measures_adjusted_freq'].keys())
 
-    for i in range(2 + len(glob.glob('tests/files/file_area/misc/*.txt'))):
+    for i in range(2 + wl_test_file_area.LEN_FILES_TESTS_OTHERS):
         match i:
             # Single file
             case 0:
-                wl_test_init.select_test_files(main, no_files = [0])
+                wl_test_init.select_test_files(main, no_files = (0,))
 
                 settings['generation_settings']['show_syllabified_forms'] = False
             # Multiple files
             case 1:
-                wl_test_init.select_test_files(main, no_files = [1, 2])
+                wl_test_init.select_test_files(main, no_files = (1, 2))
 
                 settings['generation_settings']['show_syllabified_forms'] = True
+            # Tibetan
+            case 2:
+                wl_test_init.select_test_files(main, no_files = (3,))
+
+                settings_table['add_missing_ending_tshegs'] = True
+            case 3:
+                wl_test_init.select_test_files(main, no_files = (4,))
+
+                settings_table['add_missing_ending_tshegs'] = False
             # Miscellaneous
             case _:
-                settings['generation_settings']['show_syllabified_forms'] = True
-
-                wl_test_init.select_test_files(main, no_files = [i + 1])
+                wl_test_init.select_test_files(main, no_files = (i + 1,))
 
         global main_global
         main_global = main
@@ -90,15 +100,26 @@ def update_gui(err_msg, tokens_freq_files, tokens_stats_files, syls_tokens):
         if show_syllabified_forms:
             token_syllabified_form = list(syls_tokens[token].values())[0]
 
-            if list(main_global.wl_file_area.get_selected_file_names())[0] == '[other] No language support':
+            if list(main_global.wl_file_area.get_selected_file_names())[0] in (
+                '[bod] Tibetan tshegs',
+                '[xct] Tibetan tshegs',
+                '[other] No language support'
+            ):
                 assert token_syllabified_form == 'No language support'
             else:
-                assert token_syllabified_form
+                assert token_syllabified_form and token_syllabified_form != 'No language support'
         else:
             assert not syls_tokens
 
         # Frequency
+        match list(main_global.wl_file_area.get_selected_file_names())[0]:
+            case '[bod] Tibetan tshegs':
+                freq_files = [2, 2]
+            case '[xct] Tibetan tshegs':
+                freq_files = [1, 1]
+
         assert len(freq_files) == num_files_selected + 1
+        assert freq_files[-1] == sum(freq_files[:-1])
 
         # Dispersion & Adjusted Frequency
         assert len(stats_files) == num_files_selected + 1

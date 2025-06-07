@@ -53,7 +53,10 @@ from wordless.wl_tagsets import (
     wl_tagset_vie_underthesea,
     wl_tagset_xcl_universal
 )
-from wordless.wl_utils import wl_misc, wl_paths
+from wordless.wl_utils import (
+    wl_misc,
+    wl_paths
+)
 
 _tr = QtCore.QCoreApplication.translate
 is_windows, is_macos, is_linux = wl_misc.check_os()
@@ -2256,6 +2259,13 @@ def init_settings_default(main):
                 'precision_p_vals': 5
             },
 
+            # Settings - Tables - Profiler
+            'profiler': {
+                'lang_specific_settings': {
+                    'add_missing_ending_tshegs': False
+                }
+            },
+
             # Settings - Tables - Concordancer
             'concordancer': {
                 'sorting_settings': {
@@ -2282,6 +2292,41 @@ def init_settings_default(main):
                 'highlight_color_settings': {
                     'head_color': '#FF0000', # Red
                     'dependent_color': '#3F864C', # Green
+                }
+            },
+
+            # Settings - Tables - Wordlist Generator
+            'wordlist_generator': {
+                'lang_specific_settings': {
+                    'add_missing_ending_tshegs': True
+                }
+            },
+
+            # Settings - Tables - N-gram Generator
+            'ngram_generator': {
+                'lang_specific_settings': {
+                    'add_missing_ending_tshegs': True
+                }
+            },
+
+            # Settings - Tables - Collocation Extractor
+            'collocation_extractor': {
+                'lang_specific_settings': {
+                    'add_missing_ending_tshegs': True
+                }
+            },
+
+            # Settings - Tables - Colligation Extractor
+            'colligation_extractor': {
+                'lang_specific_settings': {
+                    'add_missing_ending_tshegs': True
+                }
+            },
+
+            # Settings - Tables - Keyword Extractor
+            'keyword_extractor': {
+                'lang_specific_settings': {
+                    'add_missing_ending_tshegs': True
                 }
             }
         },

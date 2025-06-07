@@ -33,7 +33,10 @@ from wordless.wl_nlp import (
     wl_syl_tokenization,
     wl_texts
 )
-from wordless.wl_utils import wl_misc, wl_paths
+from wordless.wl_utils import (
+    wl_misc,
+    wl_paths
+)
 
 _tr = QtCore.QCoreApplication.translate
 

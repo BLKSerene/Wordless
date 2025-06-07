@@ -77,11 +77,11 @@ def awt(main, tokens, search_term):
 def carrolls_d2(main, freqs):
     freqs = numpy.array(freqs)
 
-    if (freq_total := numpy.sum(freqs)) == 0:
+    if (freq_total := numpy.sum(freqs)) == 0 or len(freqs) == 1:
         d2 = 0
     else:
-        h = numpy.sum(freqs * numpy.log(freqs, out = numpy.zeros_like(freqs, dtype = numpy.float64), where = freqs != 0))
-        h = numpy.log(freq_total) - h / freq_total
+        h_sum = numpy.sum(freqs * numpy.log(freqs, out = numpy.zeros_like(freqs, dtype = numpy.float64), where = freqs != 0))
+        h = numpy.log(freq_total) - h_sum / freq_total
         d2 = h / numpy.log(len(freqs))
 
     return d2
@@ -94,7 +94,7 @@ def griess_dp(main, freqs):
     freqs = numpy.array(freqs)
     apply_normalization = main.settings_custom['measures']['dispersion']['griess_dp']['apply_normalization']
 
-    if (freq_total := numpy.sum(freqs)) == 0:
+    if (freq_total := numpy.sum(freqs)) == 0 or len(freqs) == 1:
         dp = 0
     else:
         num_sections = len(freqs)

@@ -43,8 +43,8 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('en_core_web_trf'))
 datas.extend(PyInstaller.utils.hooks.copy_metadata('spacy_curated_transformers'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('curated_transformers', include_py_files = True))
 # modern-botok's Tibetan (Modern) model
-datas.extend(PyInstaller.utils.hooks.collect_data_files('zh_bo_tagger', include_py_files = True))
-datas.extend(PyInstaller.utils.hooks.copy_metadata('zh_bo_tagger'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('xx_bo_tagger', include_py_files = True))
+datas.extend(PyInstaller.utils.hooks.copy_metadata('xx_bo_tagger'))
 
 # Stanza
 datas.extend(PyInstaller.utils.hooks.collect_data_files('emoji'))

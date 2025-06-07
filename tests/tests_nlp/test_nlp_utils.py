@@ -16,7 +16,10 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from tests import wl_test_init, wl_test_lang_examples
+from tests import (
+    wl_test_init,
+    wl_test_lang_examples
+)
 from wordless.wl_nlp import wl_nlp_utils
 from wordless.wl_utils import wl_misc
 

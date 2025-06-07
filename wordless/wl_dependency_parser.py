@@ -36,7 +36,10 @@ from wordless.wl_nlp import (
     wl_token_processing,
     wl_nlp_utils
 )
-from wordless.wl_utils import wl_misc, wl_threading
+from wordless.wl_utils import (
+    wl_misc,
+    wl_threading
+)
 from wordless.wl_widgets import (
     wl_labels,
     wl_layouts,
@@ -331,7 +334,7 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Filter_Search):
         super().__init__(
             parent,
             tab = 'dependency_parser',
-            headers = [
+            headers = (
                 _tr('Wl_Table_Dependency_Parser', 'Head'),
                 _tr('Wl_Table_Dependency_Parser', 'Dependent'),
                 _tr('Wl_Table_Dependency_Parser', 'Dependency Relation'),
@@ -341,15 +344,15 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Filter_Search):
                 _tr('Wl_Table_Dependency_Parser', 'Sentence No.'),
                 _tr('Wl_Table_Dependency_Parser', 'Sentence No. %'),
                 _tr('Wl_Table_Dependency_Parser', 'File')
-            ],
-            headers_int = [
+            ),
+            headers_int = {
                 _tr('Wl_Table_Dependency_Parser', 'Dependency Length'),
                 _tr('Wl_Table_Dependency_Parser', 'Dependency Length (Absolute)'),
                 _tr('Wl_Table_Dependency_Parser', 'Sentence No.')
-            ],
-            headers_pct = [
+            },
+            headers_pct = {
                 _tr('Wl_Table_Dependency_Parser', 'Sentence No. %')
-            ],
+            },
             enable_sorting = True
         )
 

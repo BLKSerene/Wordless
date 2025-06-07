@@ -21,7 +21,10 @@ import re
 import pythainlp
 
 from wordless.wl_checks import wl_checks_tokens
-from wordless.wl_nlp import wl_nlp_utils, wl_texts
+from wordless.wl_nlp import (
+    wl_nlp_utils,
+    wl_texts
+)
 from wordless.wl_utils import wl_conversion
 
 def wl_word_detokenize(main, tokens, lang):

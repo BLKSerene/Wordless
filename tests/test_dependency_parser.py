@@ -16,9 +16,10 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import glob
-
-from tests import wl_test_init
+from tests import (
+    wl_test_file_area,
+    wl_test_init
+)
 from wordless import wl_dependency_parser
 from wordless.wl_dialogs import wl_dialogs_misc
 
@@ -32,14 +33,14 @@ def test_dependency_parser():
     settings['search_settings']['multi_search_mode'] = True
     settings['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
 
-    for i in range(2 + len(glob.glob('tests/files/file_area/misc/*.txt'))):
+    for i in range(2 + wl_test_file_area.LEN_FILES_TESTS_OTHERS):
         match i:
             # Single file
             case 0:
-                wl_test_init.select_test_files(main, no_files = [0])
+                wl_test_init.select_test_files(main, no_files = (0,))
             # Multiple files
             case 1:
-                wl_test_init.select_test_files(main, no_files = [1, 2])
+                wl_test_init.select_test_files(main, no_files = (1, 2))
             # Miscellaneous
             case _:
                 # Excluding files without dependency parsing support

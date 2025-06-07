@@ -27,7 +27,10 @@ import nltk
 import pythainlp
 import underthesea
 
-from wordless.wl_nlp import wl_nlp_utils, wl_texts
+from wordless.wl_nlp import (
+    wl_nlp_utils,
+    wl_texts
+)
 from wordless.wl_utils import wl_conversion
 
 LANG_TEXTS_NLTK = {

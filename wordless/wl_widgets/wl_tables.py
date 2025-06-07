@@ -29,10 +29,20 @@ from PyQt5 import QtCore
 from PyQt5 import QtGui
 from PyQt5 import QtWidgets
 
-from wordless.wl_checks import wl_checks_misc, wl_checks_work_area
-from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc
+from wordless.wl_checks import (
+    wl_checks_misc,
+    wl_checks_work_area
+)
+from wordless.wl_dialogs import (
+    wl_dialogs,
+    wl_dialogs_misc
+)
 from wordless.wl_nlp import wl_nlp_utils
-from wordless.wl_utils import wl_misc, wl_paths, wl_threading
+from wordless.wl_utils import (
+    wl_misc,
+    wl_paths,
+    wl_threading
+)
 from wordless.wl_widgets import wl_buttons
 
 _tr = QtCore.QCoreApplication.translate
@@ -503,11 +513,11 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
     def run(self):
         try:
             if 'headers_int' not in self.table.__dict__:
-                self.table.headers_int = []
+                self.table.headers_int = set()
             if 'headers_float' not in self.table.__dict__:
-                self.table.headers_float = []
+                self.table.headers_float = set()
             if 'headers_pct' not in self.table.__dict__:
-                self.table.headers_pct = []
+                self.table.headers_pct = set()
 
             settings_concordancer = self.main.settings_custom['concordancer']['zapping_settings']
 
@@ -1117,12 +1127,12 @@ class Wl_Table_Data(Wl_Table):
 
         self.tab = tab
 
-        self.headers_int_old = headers_int or {}
-        self.headers_float_old = headers_float or {}
-        self.headers_pct_old = headers_pct or {}
-        self.headers_cum_old = headers_cum or {}
-        self.cols_breakdown_file_old = cols_breakdown_file or {}
-        self.cols_breakdown_span_position_old = cols_breakdown_span_position or {}
+        self.headers_int_old = headers_int or set()
+        self.headers_float_old = headers_float or set()
+        self.headers_pct_old = headers_pct or set()
+        self.headers_cum_old = headers_cum or set()
+        self.cols_breakdown_file_old = cols_breakdown_file or set()
+        self.cols_breakdown_span_position_old = cols_breakdown_span_position or set()
 
         self.enable_sorting = enable_sorting
 

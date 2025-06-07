@@ -27,7 +27,10 @@ from wordless.wl_checks import wl_checks_misc
 from wordless.wl_dialogs import wl_dialogs
 from wordless.wl_nlp import wl_matching
 from wordless.wl_settings import wl_settings
-from wordless.wl_utils import wl_conversion, wl_misc
+from wordless.wl_utils import (
+    wl_conversion,
+    wl_misc
+)
 from wordless.wl_widgets import (
     wl_boxes,
     wl_item_delegates,
@@ -106,12 +109,10 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
 
         self.group_box_misc_settings.layout().setColumnStretch(3, 1)
 
-        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_default_settings, 0, 0)
         self.layout().addWidget(self.group_box_auto_detection_settings, 1, 0)
         self.layout().addWidget(self.group_box_misc_settings, 2, 0)
 
-        self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(3, 1)
 
     def load_settings(self, defaults = False):
@@ -202,12 +203,9 @@ class Wl_Settings_Files_Tags(wl_settings.Wl_Settings_Node):
         self.group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_clr, 1, 3)
         self.group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_reset, 1, 4)
 
-        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_header_tag_settings, 0, 0)
         self.layout().addWidget(self.group_box_body_tag_settings, 1, 0)
         self.layout().addWidget(self.group_box_xml_tag_settings, 2, 0)
-
-        self.layout().setContentsMargins(6, 4, 6, 4)
 
     def load_settings(self, defaults = False):
         if defaults:

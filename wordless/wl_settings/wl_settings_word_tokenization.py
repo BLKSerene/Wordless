@@ -23,9 +23,16 @@ from PyQt5 import QtCore
 from PyQt5 import QtGui
 from PyQt5 import QtWidgets
 
-from wordless.wl_nlp import wl_nlp_utils, wl_word_tokenization
+from wordless.wl_nlp import (
+    wl_nlp_utils,
+    wl_word_tokenization
+)
 from wordless.wl_settings import wl_settings
-from wordless.wl_utils import wl_conversion, wl_misc, wl_threading
+from wordless.wl_utils import (
+    wl_conversion,
+    wl_misc,
+    wl_threading
+)
 from wordless.wl_widgets import (
     wl_boxes,
     wl_item_delegates,
@@ -110,11 +117,9 @@ class Wl_Settings_Word_Tokenization(wl_settings.Wl_Settings_Node):
         self.group_box_preview.layout().addWidget(self.text_edit_preview_samples, 1, 0)
         self.group_box_preview.layout().addWidget(self.text_edit_preview_results, 1, 1)
 
-        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_word_tokenizer_settings, 0, 0,)
         self.layout().addWidget(self.group_box_preview, 1, 0)
 
-        self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(1, 1)
 
     def preview_changed(self):

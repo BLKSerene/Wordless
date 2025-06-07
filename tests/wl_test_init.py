@@ -31,12 +31,16 @@ from tests import wl_test_file_area
 from wordless import wl_file_area
 from wordless.wl_checks import wl_checks_misc
 from wordless.wl_nlp import wl_texts
-from wordless.wl_settings import wl_settings, wl_settings_default, wl_settings_global
+from wordless.wl_settings import (
+    wl_settings,
+    wl_settings_default,
+    wl_settings_global
+)
 from wordless.wl_utils import wl_misc
 from wordless.wl_widgets import wl_tables
 
 # English
-SEARCH_TERMS = ['take']
+SEARCH_TERMS = ['take', 'ལ་']
 
 # An instance of QApplication must be created before any instance of QWidget
 wl_app = QtWidgets.QApplication(sys.argv)

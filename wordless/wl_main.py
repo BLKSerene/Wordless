@@ -66,9 +66,20 @@ from wordless import (
     wl_keyword_extractor
 )
 from wordless.wl_checks import wl_checks_misc
-from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc
-from wordless.wl_settings import wl_settings, wl_settings_default, wl_settings_global
-from wordless.wl_utils import wl_misc, wl_paths, wl_threading
+from wordless.wl_dialogs import (
+    wl_dialogs,
+    wl_dialogs_misc
+)
+from wordless.wl_settings import (
+    wl_settings,
+    wl_settings_default,
+    wl_settings_global
+)
+from wordless.wl_utils import (
+    wl_misc,
+    wl_paths,
+    wl_threading
+)
 from wordless.wl_widgets import (
     wl_boxes,
     wl_editors,
@@ -665,6 +676,14 @@ class Wl_Main(QtWidgets.QMainWindow):
         self.settings_custom['file_area']['files_closed'].clear()
         self.settings_custom['file_area']['files_closed_ref'].clear()
 
+        # Activate each tab to save layouts
+        tab_work_area = self.settings_custom['tab_work_area']
+
+        for i in range(self.wl_work_area.count()):
+            self.wl_work_area.setCurrentIndex(i)
+
+        self.settings_custom['tab_work_area'] = tab_work_area
+
         # Layouts
         self.settings_custom['menu']['prefs']['layouts']['main_window'] = self.centralWidget().sizes()
         self.settings_custom['menu']['prefs']['layouts']['profiler'] = self.wl_work_area.widget(0).splitter.sizes()
@@ -720,10 +739,10 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
 
         self.table_need_help = wl_tables.Wl_Table(
             self,
-            headers = [
+            headers = (
                 self.tr('Support Channel'),
                 self.tr('Information')
-            ]
+            )
         )
 
         self.table_need_help.verticalHeader().setHidden(True)
@@ -1006,12 +1025,12 @@ class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
         )
         self.table_acks = wl_tables.Wl_Table(
             self,
-            headers = [
+            headers = (
                 self.tr('Name'),
                 self.tr('Version'),
                 self.tr('Authors'),
                 self.tr('License')
-            ]
+            )
         )
 
         self.table_acks.model().setRowCount(len(acks))

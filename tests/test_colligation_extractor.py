@@ -16,10 +16,12 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import glob
 import random
 
-from tests import wl_test_init
+from tests import (
+    wl_test_file_area,
+    wl_test_init
+)
 from wordless import wl_colligation_extractor
 from wordless.wl_dialogs import wl_dialogs_misc
 
@@ -29,6 +31,7 @@ def test_colligation_extractor():
     main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
     settings = main.settings_custom['colligation_extractor']
+    settings_table = main.settings_custom['tables']['colligation_extractor']['lang_specific_settings']
 
     settings['search_settings']['multi_search_mode'] = True
     settings['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
@@ -45,14 +48,23 @@ def test_colligation_extractor():
     ]
     measures_effect_size = list(main.settings_global['measures_effect_size'].keys())
 
-    for i in range(2 + len(glob.glob('tests/files/file_area/misc/*.txt'))):
+    for i in range(2 + wl_test_file_area.LEN_FILES_TESTS_OTHERS):
         match i:
             # Single file
             case 0:
-                wl_test_init.select_test_files(main, no_files = [0])
+                wl_test_init.select_test_files(main, no_files = (0,))
             # Multiple files
             case 1:
-                wl_test_init.select_test_files(main, no_files = [1, 2])
+                wl_test_init.select_test_files(main, no_files = (1, 2))
+            # Tibetan
+            case 2:
+                wl_test_init.select_test_files(main, no_files = (3,))
+
+                settings_table['add_missing_ending_tshegs'] = True
+            case 3:
+                wl_test_init.select_test_files(main, no_files = (4,))
+
+                settings_table['add_missing_ending_tshegs'] = False
             # Miscellaneous
             case _:
                 # Excluding files without POS tagging support and tagged files without POS tags
@@ -105,11 +117,17 @@ def update_gui(err_msg, colligations_freqs_files, colligations_stats_files):
 
         # Frequency (span positions)
         for freqs_file in freqs_files:
-            assert len(freqs_file) == 10
+            match list(main_global.wl_file_area.get_selected_file_names())[0]:
+                case '[bod] Tibetan tshegs':
+                    assert sum(freqs_file) == 2
+                case '[xct] Tibetan tshegs':
+                    assert sum(freqs_file) == 1
+                case _:
+                    assert len(freqs_file) == 10
 
         # Frequency (total)
         assert len(freqs_files) == num_files_selected + 1
-        assert sum((sum(freqs_file) for freqs_file in freqs_files)) >= 0
+        assert sum((sum(freqs_file) for freqs_file in freqs_files[:-1])) == sum(freqs_files[-1])
 
         # Test Statistic & p-value
         assert len(stats_files) == num_files_selected + 1

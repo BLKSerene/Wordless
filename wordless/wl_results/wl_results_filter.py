@@ -26,9 +26,19 @@ from PyQt5 import QtCore
 from PyQt5 import QtWidgets
 
 from wordless.wl_checks import wl_checks_work_area
-from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc
-from wordless.wl_utils import wl_misc, wl_threading
-from wordless.wl_widgets import wl_boxes, wl_buttons, wl_layouts
+from wordless.wl_dialogs import (
+    wl_dialogs,
+    wl_dialogs_misc
+)
+from wordless.wl_utils import (
+    wl_misc,
+    wl_threading
+)
+from wordless.wl_widgets import (
+    wl_boxes,
+    wl_buttons,
+    wl_layouts
+)
 
 _tr = QtCore.QCoreApplication.translate
 

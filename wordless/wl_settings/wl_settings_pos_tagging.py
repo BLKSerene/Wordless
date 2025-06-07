@@ -23,10 +23,19 @@ from PyQt5 import QtCore
 from PyQt5 import QtGui
 from PyQt5 import QtWidgets
 
-from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc
-from wordless.wl_nlp import wl_nlp_utils, wl_pos_tagging
+from wordless.wl_dialogs import (
+    wl_dialogs,
+    wl_dialogs_misc
+)
+from wordless.wl_nlp import (
+    wl_nlp_utils,
+    wl_pos_tagging
+)
 from wordless.wl_settings import wl_settings
-from wordless.wl_utils import wl_conversion, wl_threading
+from wordless.wl_utils import (
+    wl_conversion,
+    wl_threading
+)
 from wordless.wl_widgets import (
     wl_boxes,
     wl_editors,
@@ -130,11 +139,9 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
         self.group_box_preview.layout().addWidget(self.text_edit_preview_samples, 1, 0)
         self.group_box_preview.layout().addWidget(self.text_edit_preview_results, 1, 1)
 
-        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_pos_tagger_settings, 0, 0)
         self.layout().addWidget(self.group_box_preview, 1, 0)
 
-        self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(1, 1)
 
     def preview_changed(self):
@@ -387,11 +394,10 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
         self.group_box_mapping_settings.layout().setRowStretch(1, 1)
         self.group_box_mapping_settings.layout().setColumnStretch(1, 1)
 
-        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_preview_settings, 0, 0)
         self.layout().addWidget(self.group_box_mapping_settings, 1, 0)
 
-        self.layout().setContentsMargins(6, 4, 6, 4)
+        self.layout().setRowStretch(1, 1)
 
     def preview_lang_changed(self):
         self.settings_custom['preview_settings']['preview_lang'] = wl_conversion.to_lang_code(

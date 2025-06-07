@@ -21,7 +21,10 @@ from PyQt5 import QtWidgets
 
 from wordless.wl_dialogs import wl_dialogs
 from wordless.wl_utils import wl_misc
-from wordless.wl_widgets import wl_labels, wl_tables
+from wordless.wl_widgets import (
+    wl_labels,
+    wl_tables
+)
 
 _tr = QtCore.QCoreApplication.translate
 

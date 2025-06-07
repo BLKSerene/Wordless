@@ -21,7 +21,10 @@ import re
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_errs
-from wordless.wl_utils import wl_paths, wl_misc
+from wordless.wl_utils import (
+    wl_paths,
+    wl_misc
+)
 
 def check_file_paths_unsupported(main, file_paths):
     file_paths_ok = []

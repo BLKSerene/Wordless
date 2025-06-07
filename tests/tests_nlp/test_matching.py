@@ -19,7 +19,10 @@
 import re
 
 from tests import wl_test_init
-from wordless.wl_nlp import wl_matching, wl_texts
+from wordless.wl_nlp import (
+    wl_matching,
+    wl_texts
+)
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 

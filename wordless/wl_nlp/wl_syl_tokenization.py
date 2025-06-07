@@ -20,7 +20,11 @@ import re
 
 import pythainlp
 
-from wordless.wl_nlp import wl_nlp_utils, wl_texts, wl_word_tokenization
+from wordless.wl_nlp import (
+    wl_nlp_utils,
+    wl_texts,
+    wl_word_tokenization
+)
 
 def wl_syl_tokenize(main, inputs, lang, syl_tokenizer = 'default', force = False):
     if (
