@@ -33,13 +33,20 @@ from PyQt5 import QtCore
 from PyQt5 import QtGui
 from PyQt5 import QtWidgets
 
-from wordless.wl_checks import wl_checks_files, wl_checks_misc
+from wordless.wl_checks import (
+    wl_checks_files,
+    wl_checks_misc
+)
 from wordless.wl_dialogs import (
     wl_dialogs,
     wl_dialogs_errs,
     wl_dialogs_misc
 )
-from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_texts
+from wordless.wl_nlp import (
+    wl_matching,
+    wl_nlp_utils,
+    wl_texts
+)
 from wordless.wl_utils import (
     wl_conversion,
     wl_detection,
@@ -67,12 +74,13 @@ class Wrapper_File_Area(wl_layouts.Wl_Wrapper):
         self.file_type = file_type
 
         # Suffix for settings
-        if self.file_type == 'observed':
-            self.tab = 'corpora_observed'
-            self.settings_suffix = ''
-        elif self.file_type == 'ref':
-            self.tab = 'corpora_ref'
-            self.settings_suffix = '_ref'
+        match self.file_type:
+            case 'observed':
+                self.tab = 'corpora_observed'
+                self.settings_suffix = ''
+            case 'ref':
+                self.tab = 'corpora_ref'
+                self.settings_suffix = '_ref'
 
         self.label_num_corpora = QtWidgets.QLabel('', self)
         self.label_num_tokens = QtWidgets.QLabel('', self)
@@ -204,7 +212,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
     def __init__(self, parent):
         super().__init__(
             parent,
-            headers = [
+            headers = (
                 # Padding for the checkbox
                 _tr('Wl_Table_Files', '  Name'),
                 _tr('Wl_Table_Files', 'Path'),
@@ -212,7 +220,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
                 _tr('Wl_Table_Files', 'Language'),
                 _tr('Wl_Table_Files', 'Tokenized'),
                 _tr('Wl_Table_Files', 'Tagged')
-            ],
+            ),
             editable = True,
             drag_drop = True
         )
@@ -271,7 +279,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
                 file_name = item.text()
                 file_name_old = item.wl_file['name_old']
 
-                file_names_old = list(self.main.wl_file_area.get_file_names())
+                file_names_old = list(self.file_area.get_file_names())
                 file_names_old.remove(file_name_old)
 
                 if (
@@ -472,13 +480,13 @@ class Wl_Table_Files(wl_tables.Wl_Table):
             self.main.statusBar().showMessage(self.tr('{} {} has been successfully opened.').format(len_files_opened, msg_file))
 
     def open_corpora(self):
-        self.dialog_open_corpora = Wl_Dialog_Open_Corpora(self.main)
+        self.dialog_open_corpora = Wl_Dialog_Open_Corpora(self.main, self.file_area)
         self.dialog_open_corpora.open()
 
     def reopen(self):
         files = self.main.settings_custom['file_area'][f'files_closed{self.settings_suffix}'].pop()
 
-        dialog_open_corpora = Wl_Dialog_Open_Corpora(self.main)
+        dialog_open_corpora = Wl_Dialog_Open_Corpora(self.main, self.file_area)
         dialog_open_corpora._add_files(list(dict.fromkeys([file['path_orig'] for file in files])))
 
         self._open_files(files_to_open = dialog_open_corpora.table_files.files_to_open)
@@ -504,7 +512,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
         self._close_files(list(range(len(self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}']))))
 
 class Wl_Dialog_Open_Corpora(wl_dialogs.Wl_Dialog):
-    def __init__(self, parent):
+    def __init__(self, parent, file_area):
         super().__init__(
             parent,
             title = _tr('Wl_Dialog_Open_Corpora', 'Open Corpora'),
@@ -512,6 +520,7 @@ class Wl_Dialog_Open_Corpora(wl_dialogs.Wl_Dialog):
             height = 320
         )
 
+        self.file_area = file_area
         self.table_files = Table_Open_Files(self)
 
         self.table_files.model().itemChanged.connect(self.table_files_changed)
@@ -653,7 +662,8 @@ class Wl_Dialog_Open_Corpora(wl_dialogs.Wl_Dialog):
                 dialog_progress = dialog_progress,
                 update_gui = self.update_gui,
                 file_paths = file_paths,
-                table = self.table_files
+                table = self.table_files,
+                file_area = self.file_area
             )).start_worker()
 
     def update_gui(self, err_msg, new_files):
@@ -744,13 +754,13 @@ class Table_Open_Files(wl_tables.Wl_Table_Add_Ins_Del_Clr):
     def __init__(self, parent):
         super().__init__(
             parent = parent,
-            headers = [
+            headers = (
                 _tr('Table_Open_Files', 'Path'),
                 _tr('Table_Open_Files', 'Encoding'),
                 _tr('Table_Open_Files', 'Language'),
                 _tr('Table_Open_Files', 'Tokenized'),
                 _tr('Table_Open_Files', 'Tagged')
-            ],
+            ),
             col_edit = 2
         )
 
@@ -1040,11 +1050,11 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                 new_file = {'selected': True, 'path_orig': file_path}
 
                 # Check for duplicate file names
-                file_names = [
-                    *self.main.wl_file_area.get_file_names(),
+                file_names = (
+                    *self.file_area.get_file_names(),
                     *[file['name'] for file in self.table.files_to_open],
                     *[new_file['name'] for new_file in new_files]
-                ]
+                )
 
                 new_file['name'] = new_file['name_old'] = wl_checks_misc.check_new_name(file_name, file_names)
 

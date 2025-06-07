@@ -22,7 +22,10 @@ import re
 
 from PyQt5 import QtCore
 
-from wordless.wl_nlp import wl_lemmatization, wl_texts
+from wordless.wl_nlp import (
+    wl_lemmatization,
+    wl_texts
+)
 
 _tr = QtCore.QCoreApplication.translate
 

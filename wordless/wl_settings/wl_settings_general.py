@@ -24,8 +24,15 @@ from PyQt5 import QtWidgets
 
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_settings import wl_settings
-from wordless.wl_utils import wl_conversion, wl_paths
-from wordless.wl_widgets import wl_boxes, wl_editors, wl_layouts
+from wordless.wl_utils import (
+    wl_conversion,
+    wl_paths
+)
+from wordless.wl_widgets import (
+    wl_boxes,
+    wl_editors,
+    wl_layouts
+)
 
 # General
 class Wl_Settings_General(wl_settings.Wl_Settings_Node):
@@ -106,13 +113,11 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
         self.group_box_misc_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_misc_settings.layout().addWidget(self.checkbox_always_confirm_on_exit, 0, 0)
 
-        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_ui_settings, 0, 0)
         self.layout().addWidget(self.group_box_proxy_settings, 1, 0)
         self.layout().addWidget(self.group_box_update_settings, 2, 0)
         self.layout().addWidget(self.group_box_misc_settings, 3, 0)
 
-        self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(4, 1)
 
     def proxy_settings_changed(self):
@@ -285,13 +290,11 @@ class Wl_Settings_General_Imp(wl_settings.Wl_Settings_Node):
         self.group_box_temp_files.layout().addWidget(self.line_edit_temp_files_default_path, 0, 1)
         self.group_box_temp_files.layout().addWidget(self.button_temp_files_browse, 0, 2)
 
-        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_files, 0, 0)
         self.layout().addWidget(self.group_box_search_terms, 1, 0)
         self.layout().addWidget(self.group_box_stop_words, 2, 0)
         self.layout().addWidget(self.group_box_temp_files, 3, 0)
 
-        self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(4, 1)
 
     def browse_files(self):
@@ -479,12 +482,10 @@ class Wl_Settings_General_Exp(wl_settings.Wl_Settings_Node):
         self.group_box_stop_words.layout().addWidget(self.label_stop_words_default_encoding, 1, 0)
         self.group_box_stop_words.layout().addWidget(self.combo_box_stop_words_default_encoding, 1, 1, 1, 2)
 
-        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_tables, 0, 0)
         self.layout().addWidget(self.group_box_search_terms, 1, 0)
         self.layout().addWidget(self.group_box_stop_words, 2, 0)
 
-        self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(3, 1)
 
         self.tables_default_type_changed()

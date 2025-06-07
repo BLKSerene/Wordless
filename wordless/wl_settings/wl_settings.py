@@ -24,7 +24,10 @@ from PyQt5 import QtWidgets
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs
-from wordless.wl_widgets import wl_buttons, wl_layouts
+from wordless.wl_widgets import (
+    wl_buttons,
+    wl_layouts
+)
 
 _tr = QtCore.QCoreApplication.translate
 
@@ -93,9 +96,15 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
         self.tree_settings.model().item(10).appendRow(QtGui.QStandardItem(self.tr('Effect Size')))
 
         self.tree_settings.model().appendRow(QtGui.QStandardItem(self.tr('Tables')))
+        self.tree_settings.model().item(11).appendRow(QtGui.QStandardItem(self.tr('Profiler')))
         self.tree_settings.model().item(11).appendRow(QtGui.QStandardItem(self.tr('Concordancer')))
         self.tree_settings.model().item(11).appendRow(QtGui.QStandardItem(self.tr('Parallel Concordancer')))
         self.tree_settings.model().item(11).appendRow(QtGui.QStandardItem(self.tr('Dependency Parser')))
+        self.tree_settings.model().item(11).appendRow(QtGui.QStandardItem(self.tr('Wordlist Generator')))
+        self.tree_settings.model().item(11).appendRow(QtGui.QStandardItem(self.tr('N-gram Generator')))
+        self.tree_settings.model().item(11).appendRow(QtGui.QStandardItem(self.tr('Collocation Extractor')))
+        self.tree_settings.model().item(11).appendRow(QtGui.QStandardItem(self.tr('Colligation Extractor')))
+        self.tree_settings.model().item(11).appendRow(QtGui.QStandardItem(self.tr('Keyword Extractor')))
 
         self.tree_settings.model().appendRow(QtGui.QStandardItem(self.tr('Figures')))
         self.tree_settings.model().item(12).appendRow(QtGui.QStandardItem(self.tr('Line Charts')))
@@ -148,9 +157,15 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
 
         # Tables
         self.settings_tables = wl_settings_tables.Wl_Settings_Tables(self.main)
+        self.settings_tables_profiler = wl_settings_tables.Wl_Settings_Tables_Profiler(self.main)
         self.settings_tables_concordancer = wl_settings_tables.Wl_Settings_Tables_Concordancer(self.main)
         self.settings_tables_parallel_concordancer = wl_settings_tables.Wl_Settings_Tables_Parallel_Concordancer(self.main)
         self.settings_tables_dependency_parser = wl_settings_tables.Wl_Settings_Tables_Dependency_Parser(self.main)
+        self.settings_tables_wordlist_generator = wl_settings_tables.Wl_Settings_Tables_Wordlist_Generator(self.main)
+        self.settings_tables_ngram_generator = wl_settings_tables.Wl_Settings_Tables_Ngram_Generator(self.main)
+        self.settings_tables_collocation_extractor = wl_settings_tables.Wl_Settings_Tables_Collocation_Extractor(self.main)
+        self.settings_tables_colligation_extractor = wl_settings_tables.Wl_Settings_Tables_Colligation_Extractor(self.main)
+        self.settings_tables_keyword_extractor = wl_settings_tables.Wl_Settings_Tables_Keyword_Extractor(self.main)
 
         # Figures
         self.settings_figs_line_charts = wl_settings_figs.Wl_Settings_Figs_Line_Charts(self.main)
@@ -186,9 +201,15 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
             self.tr('Effect Size'): self.settings_measures_effect_size,
 
             self.tr('Tables'): self.settings_tables,
+            self.tr('Profiler'): self.settings_tables_profiler,
             self.tr('Concordancer'): self.settings_tables_concordancer,
             self.tr('Parallel Concordancer'): self.settings_tables_parallel_concordancer,
             self.tr('Dependency Parser'): self.settings_tables_dependency_parser,
+            self.tr('Wordlist Generator'): self.settings_tables_wordlist_generator,
+            self.tr('N-gram Generator'): self.settings_tables_ngram_generator,
+            self.tr('Collocation Extractor'): self.settings_tables_collocation_extractor,
+            self.tr('Colligation Extractor'): self.settings_tables_colligation_extractor,
+            self.tr('Keyword Extractor'): self.settings_tables_keyword_extractor,
 
             self.tr('Line Charts'): self.settings_figs_line_charts,
             self.tr('Word Clouds'): self.settings_figs_word_clouds,
@@ -308,9 +329,13 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
             self.tree_settings.clearSelection()
 
             if node:
-                self.tree_settings.setCurrentIndex(self.tree_settings.model().findItems(node, QtCore.Qt.MatchRecursive)[0].index())
+                self.tree_settings.setCurrentIndex(
+                    self.tree_settings.model().findItems(node, QtCore.Qt.MatchRecursive)[0].index()
+                )
             else:
-                self.tree_settings.setCurrentIndex(self.tree_settings.model().findItems(self.main.settings_custom['settings']['node_cur'], QtCore.Qt.MatchRecursive)[0].index())
+                self.tree_settings.setCurrentIndex(
+                    self.tree_settings.model().findItems(self.main.settings_custom['settings']['node_cur'], QtCore.Qt.MatchRecursive)[0].index()
+                )
 
             # Expand current node
             node_cur = self.tree_settings.model().itemFromIndex(self.tree_settings.selectionModel().currentIndex())
@@ -330,6 +355,9 @@ class Wl_Settings_Node(QtWidgets.QWidget):
         super().__init__()
 
         self.main = main
+
+        self.setLayout(wl_layouts.Wl_Layout())
+        self.layout().setContentsMargins(6, 4, 6, 4)
 
     def validate_settings(self):
         return True

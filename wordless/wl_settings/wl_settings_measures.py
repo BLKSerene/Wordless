@@ -23,7 +23,11 @@ from PyQt5 import QtCore
 from PyQt5 import QtWidgets
 
 from wordless.wl_settings import wl_settings
-from wordless.wl_widgets import wl_boxes, wl_layouts, wl_widgets
+from wordless.wl_widgets import (
+    wl_boxes,
+    wl_layouts,
+    wl_widgets
+)
 
 _tr = QtCore.QCoreApplication.translate
 
@@ -233,7 +237,6 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
 
         self.group_box_trankle_bailers_readability_formula.layout().setColumnStretch(2, 1)
 
-        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_rd, 0, 0)
         self.layout().addWidget(self.group_box_ari, 1, 0)
         self.layout().addWidget(self.group_box_bormuths_gp, 2, 0)
@@ -249,7 +252,6 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.layout().addWidget(self.group_box_spache_readability_formula, 12, 0)
         self.layout().addWidget(self.group_box_trankle_bailers_readability_formula, 13, 0)
 
-        self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(14, 1)
 
     def re_changed(self):
@@ -476,7 +478,6 @@ class Wl_Settings_Measures_Lexical_Density_Diversity(wl_settings.Wl_Settings_Nod
 
         self.group_box_shannon_entropy.layout().setColumnStretch(2, 1)
 
-        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_hdd, 0, 0)
         self.layout().addWidget(self.group_box_logttr, 1, 0)
         self.layout().addWidget(self.group_box_msttr, 2, 0)
@@ -485,7 +486,6 @@ class Wl_Settings_Measures_Lexical_Density_Diversity(wl_settings.Wl_Settings_Nod
         self.layout().addWidget(self.group_box_repeat_rate, 5, 0)
         self.layout().addWidget(self.group_box_shannon_entropy, 6, 0)
 
-        self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(7, 1)
 
     def load_settings(self, defaults = False):
@@ -570,11 +570,9 @@ class Wl_Settings_Measures_Dispersion(wl_settings.Wl_Settings_Node):
         self.group_box_griess_dp.setLayout(wl_layouts.Wl_Layout())
         self.group_box_griess_dp.layout().addWidget(self.checkbox_griess_dp_apply_normalization, 0, 0)
 
-        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_general_settings, 0, 0)
         self.layout().addWidget(self.group_box_griess_dp, 1, 0)
 
-        self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(2, 1)
 
     def load_settings(self, defaults = False):
@@ -622,10 +620,8 @@ class Wl_Settings_Measures_Adjusted_Freq(wl_settings.Wl_Settings_Node):
 
         self.group_box_general_settings.layout().setColumnStretch(3, 1)
 
-        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_general_settings, 0, 0)
 
-        self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(1, 1)
 
     def load_settings(self, defaults = False):
@@ -792,7 +788,6 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
 
         self.group_box_z_test_berry_rogghe.layout().setColumnStretch(2, 1)
 
-        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_fishers_exact_test, 0, 0)
         self.layout().addWidget(self.group_box_log_likelihood_ratio_test, 1, 0)
         self.layout().addWidget(self.group_box_mann_whitney_u_test, 2, 0)
@@ -802,7 +797,6 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
         self.layout().addWidget(self.group_box_z_test, 6, 0)
         self.layout().addWidget(self.group_box_z_test_berry_rogghe, 7, 0)
 
-        self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(8, 1)
 
     def load_settings(self, defaults = False):
@@ -921,11 +915,9 @@ class Wl_Settings_Measures_Bayes_Factor(wl_settings.Wl_Settings_Node):
 
         self.group_box_students_t_test_2_sample.layout().setColumnStretch(2, 1)
 
-        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_log_likelihood_ratio_test, 0, 0)
         self.layout().addWidget(self.group_box_students_t_test_2_sample, 1, 0)
 
-        self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(2, 1)
 
     def load_settings(self, defaults = False):
@@ -1075,7 +1067,6 @@ class Wl_Settings_Measures_Effect_Size(wl_settings.Wl_Settings_Node):
 
         self.group_box_im2.layout().setColumnStretch(2, 1)
 
-        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_kilgarriffs_ratio, 0, 0)
         self.layout().addWidget(self.group_box_mi, 1, 0)
         self.layout().addWidget(self.group_box_nmi, 2, 0)
@@ -1084,7 +1075,6 @@ class Wl_Settings_Measures_Effect_Size(wl_settings.Wl_Settings_Node):
         self.layout().addWidget(self.group_box_npmi, 5, 0)
         self.layout().addWidget(self.group_box_im2, 6, 0)
 
-        self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(7, 1)
 
     def load_settings(self, defaults = False):

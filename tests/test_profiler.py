@@ -17,30 +17,48 @@
 # ----------------------------------------------------------------------
 
 import collections
-import glob
 
 import numpy
 import scipy
 
-from tests import wl_test_init
+from tests import (
+    wl_test_file_area,
+    wl_test_init
+)
 from wordless import wl_profiler
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_utils import wl_misc
 
+main_global = None
+
 def test_profiler():
     main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
-    for i in range(2 + len(glob.glob('tests/files/file_area/misc/*.txt'))):
+    settings_table = main.settings_custom['tables']['profiler']['lang_specific_settings']
+
+    for i in range(2 + wl_test_file_area.LEN_FILES_TESTS_OTHERS):
         match i:
             # Single file
             case 0:
-                wl_test_init.select_test_files(main, no_files = [0])
+                wl_test_init.select_test_files(main, no_files = (0,))
             # Multiple files
             case 1:
-                wl_test_init.select_test_files(main, no_files = [1, 2])
+                wl_test_init.select_test_files(main, no_files = (1, 2))
+            # Tibetan
+            case 2:
+                wl_test_init.select_test_files(main, no_files = (3,))
+
+                settings_table['add_missing_ending_tshegs'] = True
+            case 3:
+                wl_test_init.select_test_files(main, no_files = (4,))
+
+                settings_table['add_missing_ending_tshegs'] = False
             # Miscellaneous
             case _:
-                wl_test_init.select_test_files(main, no_files = [i + 1])
+                wl_test_init.select_test_files(main, no_files = (i + 1,))
+
+        global main_global
+        main_global = main
 
         print(f"Files: {' | '.join(wl_test_init.get_test_file_names(main))}")
 
@@ -108,9 +126,22 @@ def update_gui(err_msg, texts_stats_files):
         assert count_sentence_segs
         assert count_tokens
         assert count_types
-        assert count_chars
 
-        if count_syls is not None:
+        match list(main_global.wl_file_area.get_selected_file_names())[0]:
+            case '[bod] Tibetan tshegs':
+                assert count_chars == 4
+            case '[xct] Tibetan tshegs':
+                assert count_chars == 3
+            case _:
+                assert count_chars
+
+        if list(main_global.wl_file_area.get_selected_file_names())[0] in (
+            '[bod] Tibetan tshegs',
+            '[xct] Tibetan tshegs',
+            '[other] No language support'
+        ):
+            assert count_syls is None
+        else:
             assert count_syls
 
         # Lengths
@@ -119,10 +150,23 @@ def update_gui(err_msg, texts_stats_files):
         assert len_paras_tokens.size
         assert len_sentences.size
         assert len_sentence_segs.size
-        assert len_tokens_chars.size
         assert len_types_chars.size
 
-        if len_syls is not None:
+        match list(main_global.wl_file_area.get_selected_file_names())[0]:
+            case '[bod] Tibetan tshegs':
+                assert list(len_tokens_chars) == [2, 2]
+            case '[xct] Tibetan tshegs':
+                assert list(len_tokens_chars) == [2, 1]
+            case _:
+                assert len_tokens_chars.size
+
+        if list(main_global.wl_file_area.get_selected_file_names())[0] in (
+            '[bod] Tibetan tshegs',
+            '[xct] Tibetan tshegs',
+            '[other] No language support'
+        ):
+            assert len_syls is None
+        else:
             assert len_tokens_syls.size
             assert len_types_syls.size
             assert len_syls.size
@@ -147,7 +191,13 @@ def update_gui(err_msg, texts_stats_files):
         assert numpy.mean(len_sentence_segs) == count_tokens / count_sentence_segs
         assert numpy.mean(len_tokens_chars) == count_chars / count_tokens
 
-        if count_syls is not None:
+        if list(main_global.wl_file_area.get_selected_file_names())[0] in (
+            '[bod] Tibetan tshegs',
+            '[xct] Tibetan tshegs',
+            '[other] No language support'
+        ):
+            assert count_syls is None
+        else:
             assert numpy.mean(len_tokens_syls) == count_syls / count_tokens
 
         # Range and interquartile range
@@ -157,12 +207,20 @@ def update_gui(err_msg, texts_stats_files):
             len_paras_tokens,
             len_sentences,
             len_sentence_segs,
-            len_tokens_syls,
             len_tokens_chars
         ):
-            if lens is not None:
-                assert numpy.ptp(lens) == max(lens) - min(lens)
-                assert scipy.stats.iqr(lens) == numpy.percentile(lens, 75) - numpy.percentile(lens, 25)
+            assert numpy.ptp(lens) == max(lens) - min(lens)
+            assert scipy.stats.iqr(lens) == numpy.percentile(lens, 75) - numpy.percentile(lens, 25)
+
+        if list(main_global.wl_file_area.get_selected_file_names())[0] in (
+            '[bod] Tibetan tshegs',
+            '[xct] Tibetan tshegs',
+            '[other] No language support'
+        ):
+            assert len_tokens_syls is None
+        else:
+            assert numpy.ptp(len_tokens_syls) == max(len_tokens_syls) - min(len_tokens_syls)
+            assert scipy.stats.iqr(len_tokens_syls) == numpy.percentile(len_tokens_syls, 75) - numpy.percentile(len_tokens_syls, 25)
 
     # Count of n-token-long Sentences
     if any(count_sentences_lens):
@@ -193,7 +251,13 @@ def update_gui(err_msg, texts_stats_files):
             assert len_sentence_segs_total == numpy.sum(stats[3])
 
     # Count of n-syllable-long Tokens
-    if len_tokens_syls is not None:
+    if list(main_global.wl_file_area.get_selected_file_names())[0] in (
+        '[bod] Tibetan tshegs',
+        '[xct] Tibetan tshegs',
+        '[other] No language support'
+    ):
+        assert len_tokens_syls is None
+    else:
         count_tokens_lens_files = wl_misc.merge_dicts(count_tokens_lens_syls)
         count_tokens_lens_syls = sorted(count_tokens_lens_files.keys())
 

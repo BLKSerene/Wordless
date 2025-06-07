@@ -33,19 +33,30 @@ NUM_FILES_OBSERVED = 3
 NUM_FILES_REF = 3
 NUM_FILES_ALL = NUM_FILES_OBSERVED + NUM_FILES_REF
 
+FILES_TESTS = glob.glob('tests/files/file_area/*.txt')
+FILES_XCT_BOD = glob.glob('tests/files/file_area/xct_bod/*.txt')
+FILES_MISC = glob.glob('tests/files/file_area/misc/*.txt')
+
+LEN_FILES_TESTS_OTHERS = len(FILES_XCT_BOD) + len(FILES_MISC)
+
 def wl_test_file_area(main):
     def open_file(err_msg, files_to_open):
         assert not err_msg
 
-        if files_to_open[-1]['name'] == '[other] No language support':
-            files_to_open[-1]['lang'] = 'other'
-
-        if files_to_open[-1]['name'] == '[eng_gb] Tagged':
-            files_to_open[-1]['tokenized'] = True
-            files_to_open[-1]['tagged'] = True
-
-        if files_to_open[-1]['name'] == '[eng_us] Tags at start of text':
-            files_to_open[-1]['tagged'] = True
+        match files_to_open[-1]['name']:
+            case '[other] No language support':
+                files_to_open[-1]['lang'] = 'other'
+            case '[eng_gb] Tagged':
+                files_to_open[-1]['tokenized'] = True
+                files_to_open[-1]['tagged'] = True
+            case '[eng_us] Tags at start of text':
+                files_to_open[-1]['tagged'] = True
+            case '[xct] Tibetan tshegs':
+                files_to_open[-1]['encoding'] = 'utf_8'
+                files_to_open[-1]['lang'] = 'xct'
+            case '[bod] Tibetan tshegs':
+                files_to_open[-1]['encoding'] = 'utf_8'
+                files_to_open[-1]['lang'] = 'bod'
 
         wl_file_area.Wl_Worker_Open_Files(
             main,
@@ -81,10 +92,9 @@ def wl_test_file_area(main):
     main.settings_custom['file_area']['files_open'].clear()
     main.settings_custom['file_area']['files_open_ref'].clear()
 
-    files = glob.glob('tests/files/file_area/*.txt')
-    random.shuffle(files)
+    random.shuffle(FILES_TESTS)
 
-    for i, file_path in enumerate(files + glob.glob('tests/files/file_area/misc/*.txt')):
+    for i, file_path in enumerate(FILES_TESTS + FILES_XCT_BOD + FILES_MISC):
         time_start = time.time()
 
         print(f'Loading file "{os.path.split(file_path)[1]}"... ', end = '')
@@ -103,8 +113,9 @@ def wl_test_file_area(main):
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = ''),
             update_gui = worker_update_gui,
-            file_paths = [file_path],
-            table = table
+            file_paths = (file_path,),
+            table = table,
+            file_area = main.wl_file_area
         ).run()
 
         if i < NUM_FILES_OBSERVED or i >= NUM_FILES_ALL:
@@ -120,6 +131,11 @@ def wl_test_file_area(main):
                 os.path.join('tests', 'files', 'file_area'),
                 'imports'
             )
+        elif i < NUM_FILES_ALL + 2:
+            assert new_file['path'] == wl_paths.get_normalized_path(file_path).replace(
+                os.path.join('tests', 'files', 'file_area', 'xct_bod'),
+                'imports'
+            )
         else:
             assert new_file['path'] == wl_paths.get_normalized_path(file_path).replace(
                 os.path.join('tests', 'files', 'file_area', 'misc'),
@@ -128,15 +144,20 @@ def wl_test_file_area(main):
 
         assert new_file['path_orig'] == wl_paths.get_normalized_path(file_path)
 
-        if i < NUM_FILES_ALL or new_file['name'] in ('[eng_gb] Tagged'):
-            assert new_file['encoding'] == 'utf_8'
+        if i < NUM_FILES_ALL or new_file['name'] in ('[eng_gb] Tagged', '[xct] Tibetan tshegs', '[bod] Tibetan tshegs'):
+            assert new_file['encoding'] == 'utf_8', new_file['encoding']
         else:
-            assert new_file['encoding'] == 'ascii'
+            assert new_file['encoding'] == 'ascii', new_file['encoding']
 
-        if new_file['name'] == '[other] No language support':
-            assert new_file['lang'] == 'other'
-        else:
-            assert new_file['lang'] == 'eng_us'
+        match new_file['name']:
+            case '[xct] Tibetan tshegs':
+                assert new_file['lang'] == 'xct', new_file['lang']
+            case '[bod] Tibetan tshegs':
+                assert new_file['lang'] == 'bod', new_file['lang']
+            case '[other] No language support':
+                assert new_file['lang'] == 'other', new_file['lang']
+            case _:
+                assert new_file['lang'] == 'eng_us', new_file['lang']
 
         if new_file['name'] == '[eng_gb] Tagged':
             assert new_file['tokenized']

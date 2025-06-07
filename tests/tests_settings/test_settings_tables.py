@@ -27,6 +27,12 @@ def test_wl_settings_tables():
     settings_tables.load_settings(defaults = True)
     settings_tables.apply_settings()
 
+def test_wl_settings_tables_profiler():
+    settings_tables_profiler = wl_settings_tables.Wl_Settings_Tables_Profiler(main)
+    settings_tables_profiler.load_settings()
+    settings_tables_profiler.load_settings(defaults = True)
+    settings_tables_profiler.apply_settings()
+
 def test_wl_settings_tables_concordancer():
     settings_tables_concordancer = wl_settings_tables.Wl_Settings_Tables_Concordancer(main)
     settings_tables_concordancer.load_settings()
@@ -45,8 +51,44 @@ def test_wl_settings_tables_dependency_parser():
     settings_tables_dependency_parser.load_settings(defaults = True)
     settings_tables_dependency_parser.apply_settings()
 
+def test_wl_settings_tables_wordlist_generator():
+    settings_tables_wordlist_generator = wl_settings_tables.Wl_Settings_Tables_Wordlist_Generator(main)
+    settings_tables_wordlist_generator.load_settings()
+    settings_tables_wordlist_generator.load_settings(defaults = True)
+    settings_tables_wordlist_generator.apply_settings()
+
+def test_wl_settings_tables_ngram_generator():
+    settings_tables_ngram_generator = wl_settings_tables.Wl_Settings_Tables_Ngram_Generator(main)
+    settings_tables_ngram_generator.load_settings()
+    settings_tables_ngram_generator.load_settings(defaults = True)
+    settings_tables_ngram_generator.apply_settings()
+
+def test_wl_settings_tables_collocation_extractor():
+    settings_tables_collocation_extractor = wl_settings_tables.Wl_Settings_Tables_Collocation_Extractor(main)
+    settings_tables_collocation_extractor.load_settings()
+    settings_tables_collocation_extractor.load_settings(defaults = True)
+    settings_tables_collocation_extractor.apply_settings()
+
+def test_wl_settings_tables_colligation_extractor():
+    settings_tables_colligation_extractor = wl_settings_tables.Wl_Settings_Tables_Colligation_Extractor(main)
+    settings_tables_colligation_extractor.load_settings()
+    settings_tables_colligation_extractor.load_settings(defaults = True)
+    settings_tables_colligation_extractor.apply_settings()
+
+def test_wl_settings_tables_keyword_extractor():
+    settings_tables_keyword_extractor = wl_settings_tables.Wl_Settings_Tables_Keyword_Extractor(main)
+    settings_tables_keyword_extractor.load_settings()
+    settings_tables_keyword_extractor.load_settings(defaults = True)
+    settings_tables_keyword_extractor.apply_settings()
+
 if __name__ == '__main__':
     test_wl_settings_tables()
+    test_wl_settings_tables_profiler()
     test_wl_settings_tables_concordancer()
     test_wl_settings_tables_parallel_concordancer()
     test_wl_settings_tables_dependency_parser()
+    test_wl_settings_tables_wordlist_generator()
+    test_wl_settings_tables_ngram_generator()
+    test_wl_settings_tables_collocation_extractor()
+    test_wl_settings_tables_colligation_extractor()
+    test_wl_settings_tables_keyword_extractor()

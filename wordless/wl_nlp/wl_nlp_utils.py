@@ -45,7 +45,10 @@ import sudachipy
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
-from wordless.wl_nlp import wl_sentence_tokenization
+from wordless.wl_nlp import (
+    wl_sentence_tokenization,
+    wl_texts
+)
 from wordless.wl_utils import (
     wl_conversion,
     wl_misc,
@@ -280,10 +283,10 @@ class Wl_Worker_Download_Model_Spacy(wl_threading.Wl_Worker):
                 else:
                     import pip # pylint: disable=import-outside-toplevel
 
-                    pip.main(('install', '--no-deps', model_url))
+                    pip.main(['install', '--no-deps', model_url])
 
                     # Clear cache
-                    pip.main(('cache', 'purge'))
+                    pip.main(['cache', 'purge'])
             else:
                 self.err_msg = err_msg
         except Exception: # pylint: disable=broad-exception-caught
@@ -388,7 +391,7 @@ def init_model_spacy(main, lang, sentencizer_only = False):
                     temp = pathlib.PosixPath
                     pathlib.PosixPath = pathlib.WindowsPath
 
-                main.__dict__[f'spacy_nlp_{lang}'] = spacy.load('zh_bo_tagger')
+                main.__dict__[f'spacy_nlp_{lang}'] = spacy.load('xx_bo_tagger')
 
                 if is_windows:
                     pathlib.PosixPath = temp
@@ -764,6 +767,70 @@ def split_token_list(main, inputs, nlp_util):
 
     return texts
 
+# N-grams
+# Reference: https://more-itertools.readthedocs.io/en/stable/_modules/more_itertools/recipes.html#sliding_window
+def ngrams(tokens, ngram_size):
+    if ngram_size == 1:
+        for token in tokens:
+            yield (token,)
+    else:
+        it = iter(tokens)
+        window = collections.deque(itertools.islice(it, ngram_size), maxlen = ngram_size)
+
+        if len(window) == ngram_size:
+            yield tuple(window)
+
+        for x in it:
+            window.append(x)
+
+            yield tuple(window)
+
+# Reference: https://www.nltk.org/_modules/nltk/util.html#everygrams
+def everygrams(tokens, ngram_size_min, ngram_size_max):
+    if ngram_size_min == ngram_size_max:
+        yield from ngrams(tokens, ngram_size_min)
+    else:
+        # Pad token list to the right
+        SENTINEL = object()
+        tokens = itertools.chain(tokens, (SENTINEL,) * (ngram_size_max - 1))
+
+        for ngram in ngrams(tokens, ngram_size_max):
+            for i in range(ngram_size_min, ngram_size_max + 1):
+                if ngram[i - 1] is not SENTINEL:
+                    yield ngram[:i]
+
+# Reference: https://www.nltk.org/_modules/nltk/util.html#skipgrams
+def skipgrams(tokens, ngram_size, num_skipped_tokens):
+    if ngram_size == 1:
+        yield from ngrams(tokens, ngram_size = 1)
+    else:
+        # Pad token list to the right
+        SENTINEL = object()
+        tokens = itertools.chain(tokens, (SENTINEL,) * (ngram_size - 1))
+
+        for ngram in ngrams(tokens, ngram_size + num_skipped_tokens):
+            head = ngram[:1]
+            tail = ngram[1:]
+
+            for skip_tail in itertools.combinations(tail, ngram_size - 1):
+                if skip_tail[-1] is not SENTINEL:
+                    yield head + skip_tail
+
+# HTML
+def escape_token(token):
+    return html.escape(token).strip()
+
+def escape_tokens(tokens):
+    return [html.escape(token).strip() for token in tokens]
+
+def html_to_text(text):
+    # Remove tags and unescape character entities
+    text = bs4.BeautifulSoup(text, features = 'lxml').get_text()
+    text = text.replace('\n', ' ')
+    text = re.sub(r'\s+', ' ', text)
+
+    return text.strip()
+
 # Serbian
 SRP_CYRL_TO_LATN = {
     # Uppercase
@@ -937,66 +1004,17 @@ def to_srp_cyrl(tokens):
 
     return tokens_cyrl
 
-# N-grams
-# Reference: https://more-itertools.readthedocs.io/en/stable/_modules/more_itertools/recipes.html#sliding_window
-def ngrams(tokens, ngram_size):
-    if ngram_size == 1:
-        for token in tokens:
-            yield (token,)
-    else:
-        it = iter(tokens)
-        window = collections.deque(itertools.islice(it, ngram_size), maxlen = ngram_size)
+# Tibetan
+TSHEG = '་'
 
-        if len(window) == ngram_size:
-            yield tuple(window)
+def add_missing_ending_tshegs(main, tokens, tab):
+    if (
+        tokens
+        and tokens[0].lang in ('xct', 'bod')
+        and main.settings_custom['tables'][tab]['lang_specific_settings']['add_missing_ending_tshegs']
+    ):
+        for i, token in enumerate(tokens):
+            if not token.endswith(TSHEG):
+                tokens[i] = wl_texts.set_token_text(token, str(token) + TSHEG)
 
-        for x in it:
-            window.append(x)
-
-            yield tuple(window)
-
-# Reference: https://www.nltk.org/_modules/nltk/util.html#everygrams
-def everygrams(tokens, ngram_size_min, ngram_size_max):
-    if ngram_size_min == ngram_size_max:
-        yield from ngrams(tokens, ngram_size_min)
-    else:
-        # Pad token list to the right
-        SENTINEL = object()
-        tokens = itertools.chain(tokens, (SENTINEL,) * (ngram_size_max - 1))
-
-        for ngram in ngrams(tokens, ngram_size_max):
-            for i in range(ngram_size_min, ngram_size_max + 1):
-                if ngram[i - 1] is not SENTINEL:
-                    yield ngram[:i]
-
-# Reference: https://www.nltk.org/_modules/nltk/util.html#skipgrams
-def skipgrams(tokens, ngram_size, num_skipped_tokens):
-    if ngram_size == 1:
-        yield from ngrams(tokens, ngram_size = 1)
-    else:
-        # Pad token list to the right
-        SENTINEL = object()
-        tokens = itertools.chain(tokens, (SENTINEL,) * (ngram_size - 1))
-
-        for ngram in ngrams(tokens, ngram_size + num_skipped_tokens):
-            head = ngram[:1]
-            tail = ngram[1:]
-
-            for skip_tail in itertools.combinations(tail, ngram_size - 1):
-                if skip_tail[-1] is not SENTINEL:
-                    yield head + skip_tail
-
-# HTML
-def escape_token(token):
-    return html.escape(token).strip()
-
-def escape_tokens(tokens):
-    return [html.escape(token).strip() for token in tokens]
-
-def html_to_text(text):
-    # Remove tags and unescape character entities
-    text = bs4.BeautifulSoup(text, features = 'lxml').get_text()
-    text = text.replace('\n', ' ')
-    text = re.sub(r'\s+', ' ', text)
-
-    return text.strip()
+    return tokens

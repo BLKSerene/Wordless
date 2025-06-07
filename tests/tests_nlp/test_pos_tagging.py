@@ -18,8 +18,15 @@
 
 import pytest
 
-from tests import wl_test_init, wl_test_lang_examples
-from wordless.wl_nlp import wl_pos_tagging, wl_texts, wl_word_tokenization
+from tests import (
+    wl_test_init,
+    wl_test_lang_examples
+)
+from wordless.wl_nlp import (
+    wl_pos_tagging,
+    wl_texts,
+    wl_word_tokenization
+)
 from wordless.wl_utils import wl_misc
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
@@ -109,7 +116,7 @@ def test_pos_tag(lang, pos_tagger):
             results = [('བོད་', 'PROPN'), ('ཀྱི་', 'PART'), ('སྐད་ཡིག་', 'NOUN'), ('ནི་', 'NO_POS'), ('བོད་ཡུལ་', 'PROPN'), ('དང་', 'NO_POS'), ('ཉེ་འཁོར་', 'NOUN'), ('གྱི་', 'PART'), ('ས་ཁུལ་', 'OTHER'), ('བལ་ཡུལ', 'PROPN'), ('།', 'PUNCT'), ('འབྲུག་', 'NOUN'), ('དང་', 'NO_POS'), ('འབྲས་ལྗོངས', 'OTHER'), ('།', 'PUNCT'), ('ལ་དྭགས་', 'PROPN'), ('ནས་', 'PART'), ('ལྷོ་', 'NOUN'), ('མོན་', 'PROPN'), ('རོང་', 'PROPN'), ('སོགས་', 'DET'), ('སུ་', 'ADP'), ('བེད་སྤྱོད་', 'OTHER'), ('བྱེད་པ', 'VERB'), ('འི་', 'PART'), ('སྐད་ཡིག་', 'NOUN'), ('དེ', 'DET'), ('།', 'PUNCT')]
             results_universal = [('བོད་', 'PROPN'), ('ཀྱི་', 'PART'), ('སྐད་ཡིག་', 'NOUN'), ('ནི་', 'X'), ('བོད་ཡུལ་', 'PROPN'), ('དང་', 'X'), ('ཉེ་འཁོར་', 'NOUN'), ('གྱི་', 'PART'), ('ས་ཁུལ་', 'X'), ('བལ་ཡུལ', 'PROPN'), ('།', 'PUNCT'), ('འབྲུག་', 'NOUN'), ('དང་', 'X'), ('འབྲས་ལྗོངས', 'X'), ('།', 'PUNCT'), ('ལ་དྭགས་', 'PROPN'), ('ནས་', 'PART'), ('ལྷོ་', 'NOUN'), ('མོན་', 'PROPN'), ('རོང་', 'PROPN'), ('སོགས་', 'DET'), ('སུ་', 'ADP'), ('བེད་སྤྱོད་', 'X'), ('བྱེད་པ', 'VERB'), ('འི་', 'PART'), ('སྐད་ཡིག་', 'NOUN'), ('དེ', 'DET'), ('།', 'PUNCT')]
         case 'bod':
-            results = results_universal = [('བོད་', 'NOUN'), ('ཀྱི་', 'ADP'), ('སྐད་ཡིག་', 'NOUN'), ('ནི་', 'PART'), ('བོད་ཡུལ་', 'PROPN'), ('དང་ཉེ་', 'NOUN'), ('འཁོར་', 'NOUN'), ('གྱི་', 'ADP'), ('ས་ཁུལ་', 'NOUN'), ('བལ་ཡུལ', 'PROPN'), ('།', 'PUNCT'), ('འབྲུག་', 'NOUN'), ('དང་', 'CCONJ'), ('འབྲས་ལྗོངས', 'NOUN'), ('།', 'PUNCT'), ('ལ་དྭགས་', 'PROPN'), ('ནས་', 'ADP'), ('ལྷོ་', 'NOUN'), ('མོན་', 'PROPN'), ('རོང་', 'NOUN'), ('སོགས་', 'NOUN'), ('སུ་', 'ADP'), ('བེད་སྤྱོད་བྱེད་པ', 'VERB'), ('འི་', 'ADP'), ('སྐད་ཡིག་', 'NOUN'), ('དེ', 'PRON'), ('།', 'PUNCT')]
+            results = results_universal = [('བོད་', 'NOUN'), ('ཀྱི་', 'ADP'), ('སྐད་ཡིག་', 'NOUN'), ('ནི་', 'PART'), ('བོད་ཡུལ་', 'PROPN'), ('དང་ཉེ་', 'PROPN'), ('འཁོར་', 'NOUN'), ('གྱི་', 'ADP'), ('ས་ཁུལ་', 'NOUN'), ('བལ་ཡུལ', 'ADJ'), ('།', 'PUNCT'), ('འབྲུག་', 'NOUN'), ('དང་', 'CCONJ'), ('འབྲས་ལྗོངས', 'NOUN'), ('།', 'PUNCT'), ('ལ་དྭགས་', 'PROPN'), ('ནས་', 'ADP'), ('ལྷོ་', 'NOUN'), ('མོན་', 'PROPN'), ('རོང་', 'NOUN'), ('སོགས་', 'NOUN'), ('སུ་', 'ADP'), ('བེད་སྤྱོད་བྱེད་པ', 'VERB'), ('འི་', 'ADP'), ('སྐད་ཡིག་', 'NOUN'), ('དེ', 'PRON'), ('།', 'PUNCT')]
         case 'ukr':
             results = [('Украї́нська', 'ADJF'), ('мо́ва', 'ADJF'), ('(', 'PNCT'), ('МФА', 'UNKN'), (':', 'PNCT'), ('[', 'PNCT'), ('ʊkrɐˈjinʲsʲkɐ', 'UNKN'), ('ˈmɔʋɐ', 'UNKN'), (']', 'PNCT'), (',', 'PNCT'), ('історична', 'ADJF'), ('назва', 'NOUN'), ('—', 'PNCT'), ('ру́ська', 'ADJF'), ('[', 'PNCT'), ('10', 'NUMB'), (']', 'PNCT'), ('[', 'PNCT'), ('11', 'NUMB'), (']', 'PNCT'), ('[', 'PNCT'), ('12', 'NUMB'), (']', 'PNCT'), ('[', 'PNCT'), ('*', 'PNCT'), ('1', 'NUMB'), (']', 'PNCT'), (')', 'PNCT'), ('—', 'PNCT'), ('національна', 'ADJF'), ('мова', 'NOUN'), ('українців', 'NOUN'), ('.', 'PNCT')]
             results_universal = [('Украї́нська', 'ADJ'), ('мо́ва', 'ADJ'), ('(', 'PUNCT'), ('МФА', 'SYM/X'), (':', 'PUNCT'), ('[', 'PUNCT'), ('ʊkrɐˈjinʲsʲkɐ', 'SYM/X'), ('ˈmɔʋɐ', 'SYM/X'), (']', 'PUNCT'), (',', 'PUNCT'), ('історична', 'ADJ'), ('назва', 'NOUN'), ('—', 'PUNCT'), ('ру́ська', 'ADJ'), ('[', 'PUNCT'), ('10', 'NUM'), (']', 'PUNCT'), ('[', 'PUNCT'), ('11', 'NUM'), (']', 'PUNCT'), ('[', 'PUNCT'), ('12', 'NUM'), (']', 'PUNCT'), ('[', 'PUNCT'), ('*', 'PUNCT'), ('1', 'NUM'), (']', 'PUNCT'), (')', 'PUNCT'), ('—', 'PUNCT'), ('національна', 'ADJ'), ('мова', 'NOUN'), ('українців', 'NOUN'), ('.', 'PUNCT')]

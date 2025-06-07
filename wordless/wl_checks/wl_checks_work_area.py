@@ -22,8 +22,14 @@ import traceback
 from PyQt5 import QtCore
 from PyQt5 import QtGui
 
-from wordless.wl_dialogs import wl_dialogs, wl_dialogs_errs
-from wordless.wl_utils import wl_conversion, wl_excs, wl_misc
+from wordless.wl_dialogs import (
+    wl_dialogs,
+    wl_dialogs_errs
+)
+from wordless.wl_utils import (
+    wl_conversion,
+    wl_excs, wl_misc
+)
 
 _tr = QtCore.QCoreApplication.translate
 

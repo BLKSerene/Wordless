@@ -26,8 +26,15 @@ import sudachipy
 import underthesea
 
 from wordless.wl_checks import wl_checks_tokens
-from wordless.wl_nlp import wl_nlp_utils, wl_sentence_tokenization, wl_texts
-from wordless.wl_utils import wl_conversion, wl_misc
+from wordless.wl_nlp import (
+    wl_nlp_utils,
+    wl_sentence_tokenization,
+    wl_texts
+)
+from wordless.wl_utils import (
+    wl_conversion,
+    wl_misc
+)
 
 RE_CHAR_HAN_OTHER = re.compile(r'^h+|^o+')
 RE_CHAR_HAN_KANJI_OTHER = re.compile(r'^h+|^k+|^o+')

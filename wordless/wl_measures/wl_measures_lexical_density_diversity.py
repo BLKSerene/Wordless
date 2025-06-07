@@ -25,7 +25,10 @@ import numpy
 from PyQt5 import QtCore
 import scipy
 
-from wordless.wl_nlp import wl_nlp_utils, wl_pos_tagging
+from wordless.wl_nlp import (
+    wl_nlp_utils,
+    wl_pos_tagging
+)
 
 _tr = QtCore.QCoreApplication.translate
 

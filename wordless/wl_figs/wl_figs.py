@@ -30,7 +30,11 @@ from PyQt5 import QtWidgets
 import wordcloud
 
 from wordless.wl_dialogs import wl_dialogs
-from wordless.wl_utils import wl_excs, wl_paths, wl_misc
+from wordless.wl_utils import (
+    wl_excs,
+    wl_misc,
+    wl_paths
+)
 
 _tr = QtCore.QCoreApplication.translate
 

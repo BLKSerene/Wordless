@@ -16,10 +16,12 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import glob
 import random
 
-from tests import wl_test_init
+from tests import (
+    wl_test_file_area,
+    wl_test_init
+)
 from wordless import wl_keyword_extractor
 from wordless.wl_dialogs import wl_dialogs_misc
 
@@ -29,6 +31,7 @@ def test_keyword_extractor():
     main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
     settings = main.settings_custom['keyword_extractor']
+    settings_table = main.settings_custom['tables']['keyword_extractor']['lang_specific_settings']
 
     tests_statistical_significance = [
         test_statistical_significance
@@ -42,28 +45,37 @@ def test_keyword_extractor():
     ]
     measures_effect_size = list(main.settings_global['measures_effect_size'].keys())
 
-    for i in range(4 + len(glob.glob('tests/files/file_area/misc/*.txt'))):
+    for i in range(4 + wl_test_file_area.LEN_FILES_TESTS_OTHERS):
         match i:
             # Single observed file & single reference file
             case 0:
-                wl_test_init.select_test_files(main, no_files = [0])
-                wl_test_init.select_test_files(main, no_files = [0], ref = True)
+                wl_test_init.select_test_files(main, no_files = (0,))
+                wl_test_init.select_test_files(main, no_files = (0,), ref = True)
             # Single observed file & multiple reference files
             case 1:
-                wl_test_init.select_test_files(main, no_files = [0])
-                wl_test_init.select_test_files(main, no_files = [1, 2], ref = True)
+                wl_test_init.select_test_files(main, no_files = (0,))
+                wl_test_init.select_test_files(main, no_files = (1, 2), ref = True)
             # Multiple observed files & single reference file
             case 2:
-                wl_test_init.select_test_files(main, no_files = [1, 2])
-                wl_test_init.select_test_files(main, no_files = [0], ref = True)
+                wl_test_init.select_test_files(main, no_files = (1, 2))
+                wl_test_init.select_test_files(main, no_files = (0,), ref = True)
             # Multiple observed files & multiple reference files
             case 3:
-                wl_test_init.select_test_files(main, no_files = [1, 2])
-                wl_test_init.select_test_files(main, no_files = [1, 2], ref = True)
+                wl_test_init.select_test_files(main, no_files = (1, 2))
+                wl_test_init.select_test_files(main, no_files = (1, 2), ref = True)
+            # Tibetan
+            case 4:
+                wl_test_init.select_test_files(main, no_files = (3,))
+
+                settings_table['add_missing_ending_tshegs'] = True
+            case 5:
+                wl_test_init.select_test_files(main, no_files = (4,))
+
+                settings_table['add_missing_ending_tshegs'] = False
             # Miscellaneous
             case _:
-                wl_test_init.select_test_files(main, no_files = [i - 1])
-                wl_test_init.select_test_files(main, no_files = [0], ref = True)
+                wl_test_init.select_test_files(main, no_files = (i - 1,))
+                wl_test_init.select_test_files(main, no_files = (0,), ref = True)
 
         settings['generation_settings']['test_statistical_significance'] = random.choice(tests_statistical_significance)
         settings['generation_settings']['measure_bayes_factor'] = random.choice(measures_bayes_factor)
@@ -103,9 +115,15 @@ def update_gui(err_msg, keywords_freq_files, keywords_stats_files):
         # Keyword
         assert keyword
 
-        # Frequency (observed files)
-        assert any((freq_file for freq_file in freq_files[1:-1]))
-        # Frequency (total)
+        # Frequency
+        match list(main_global.wl_file_area.get_selected_file_names())[0]:
+            case '[bod] Tibetan tshegs':
+                assert freq_files == [0, 2, 2]
+            case '[xct] Tibetan tshegs':
+                assert freq_files == [0, 1, 1]
+            case _:
+                assert any((freq_file for freq_file in freq_files[1:-1]))
+
         assert len(freq_files) == num_files_selected + 2
         assert freq_files[-1] == sum(freq_files[1:-1])
 

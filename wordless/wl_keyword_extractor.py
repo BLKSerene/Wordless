@@ -27,10 +27,21 @@ from PyQt5 import QtCore
 from PyQt5 import QtWidgets
 
 from wordless.wl_checks import wl_checks_work_area
-from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc
-from wordless.wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
+from wordless.wl_dialogs import (
+    wl_dialogs,
+    wl_dialogs_misc
+)
+from wordless.wl_figs import (
+    wl_figs,
+    wl_figs_freqs,
+    wl_figs_stats
+)
 from wordless.wl_measures import wl_measure_utils
-from wordless.wl_nlp import wl_texts, wl_token_processing
+from wordless.wl_nlp import (
+    wl_nlp_utils,
+    wl_texts,
+    wl_token_processing
+)
 from wordless.wl_utils import (
     wl_excs,
     wl_misc,
@@ -351,19 +362,19 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
         super().__init__(
             parent,
             tab = 'keyword_extractor',
-            headers = [
+            headers = (
                 _tr('Wl_Table_Keyword_Extractor', 'Rank'),
                 _tr('Wl_Table_Keyword_Extractor', 'Keyword'),
                 _tr('Wl_Table_Keyword_Extractor', 'Number of\nFiles Found'),
                 _tr('Wl_Table_Keyword_Extractor', 'Number of\nFiles Found %')
-            ],
-            headers_int = [
+            ),
+            headers_int = {
                 _tr('Wl_Table_Keyword_Extractor', 'Rank'),
                 _tr('Wl_Table_Keyword_Extractor', 'Number of\nFiles Found')
-            ],
-            headers_pct = [
+            },
+            headers_pct = {
                 _tr('Wl_Table_Keyword_Extractor', 'Number of\nFiles Found %')
-            ],
+            },
             enable_sorting = True
         )
 
@@ -725,6 +736,7 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
                 )
 
                 tokens = text.get_tokens_flat()
+                tokens = wl_nlp_utils.add_missing_ending_tshegs(self.main, tokens, tab = 'keyword_extractor')
 
                 # Remove empty tokens
                 self.keywords_freq_files[0] += collections.Counter([token for token in tokens if token])
@@ -742,6 +754,7 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
                 )
 
                 tokens = text.get_tokens_flat()
+                tokens = wl_nlp_utils.add_missing_ending_tshegs(self.main, tokens, tab = 'keyword_extractor')
 
                 # Remove empty tokens
                 self.keywords_freq_files.append(collections.Counter([token for token in tokens if token]))
@@ -784,6 +797,7 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
 
                     keywords_freq_file_observed = self.keywords_freq_files[i + 1]
                     tokens_observed = text.get_tokens_flat()
+                    tokens_observed = wl_nlp_utils.add_missing_ending_tshegs(self.main, tokens, tab = 'keyword_extractor')
 
                     if to_sections_statistical_significance:
                         freqs_sections_tokens_statistical_significance = wl_measure_utils.to_freqs_sections_statistical_significance(

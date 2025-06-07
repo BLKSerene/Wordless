@@ -18,8 +18,14 @@
 
 import pytest
 
-from tests import wl_test_init, wl_test_lang_examples
-from wordless.wl_nlp import wl_word_detokenization, wl_word_tokenization
+from tests import (
+    wl_test_init,
+    wl_test_lang_examples
+)
+from wordless.wl_nlp import (
+    wl_word_detokenization,
+    wl_word_tokenization
+)
 from wordless.wl_utils import wl_misc
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')

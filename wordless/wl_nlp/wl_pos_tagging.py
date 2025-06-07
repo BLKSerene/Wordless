@@ -26,7 +26,11 @@ import pythainlp
 import spacy
 import underthesea
 
-from wordless.wl_nlp import wl_nlp_utils, wl_texts, wl_word_tokenization
+from wordless.wl_nlp import (
+    wl_nlp_utils,
+    wl_texts,
+    wl_word_tokenization
+)
 from wordless.wl_utils import wl_conversion
 
 _tr = QtCore.QCoreApplication.translate

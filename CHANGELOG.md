@@ -25,6 +25,7 @@
 - Menu: Add Edit
 - Settings: Add Settings - Measures - Effect Size - Mutual Information / Pointwise Mutual Information / Pointwise Mutual Information (Cubic) / Pointwise Mutual Information (Squared)
 - Settings: Add Settings - Part-of-speech Tagging - Part-of-speech Tagger Settings - Separator between tokens and part-of-speech tags
+- Settings: Add Settings - Tables - Profiler / Wordlist Generator / N-gram Generator / Collocation Extractor / Colligation Extractor / Keyword Extractor
 - Utils: Add modern-botok's Tibetan (Modern) sentence tokenizer, word tokenizer, part-of-speech tagger, and lemmatizer
 - Utils: Add Pyphen's Assamese, Kannada, Marathi, Oriya, Panjabi (Gurmukhi script), and Sanskrit syllable tokenizer
 - Utils: Add spaCy's Kurdish (Kurmanji) and Scottish Gaelic word tokenizers

@@ -24,15 +24,22 @@ import importlib
 import underthesea
 import vaderSentiment.vaderSentiment
 
-from wordless.wl_nlp import wl_nlp_utils, wl_texts, wl_word_tokenization
-from wordless.wl_utils import wl_conversion, wl_paths
+from wordless.wl_nlp import (
+    wl_nlp_utils,
+    wl_texts,
+    wl_word_tokenization
+)
+from wordless.wl_utils import (
+    wl_conversion,
+    wl_paths
+)
 
-VADER_EXCS_ENG = [
+VADER_EXCS_ENG = (
     vaderSentiment.vaderSentiment.NEGATE,
     vaderSentiment.vaderSentiment.BOOSTER_DICT,
     vaderSentiment.vaderSentiment.SENTIMENT_LADEN_IDIOMS,
     vaderSentiment.vaderSentiment.SPECIAL_CASES
-]
+)
 
 def wl_sentiment_analyze(main, inputs, lang, sentiment_analyzer = 'default'):
     if sentiment_analyzer == 'default':

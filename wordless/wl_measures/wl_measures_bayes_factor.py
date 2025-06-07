@@ -18,7 +18,10 @@
 
 import numpy
 
-from wordless.wl_measures import wl_measures_statistical_significance, wl_measure_utils
+from wordless.wl_measures import (
+    wl_measures_statistical_significance,
+    wl_measure_utils
+)
 
 # Log-likelihood ratio test
 # Reference: Wilson, A. (2013). Embracing Bayes factors for key item analysis in corpus linguistics. In M. Bieswanger & A. Koll-Stobbe (Eds.), New approaches to the study of linguistic variability (pp. 3–11). Peter Lang.

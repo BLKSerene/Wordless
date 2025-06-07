@@ -20,8 +20,14 @@ from PyQt5 import QtCore
 from PyQt5 import QtGui
 from PyQt5 import QtWidgets
 
-from wordless.wl_utils import wl_paths, wl_misc
-from wordless.wl_widgets import wl_buttons, wl_labels
+from wordless.wl_utils import (
+    wl_paths,
+    wl_misc
+)
+from wordless.wl_widgets import (
+    wl_buttons,
+    wl_labels
+)
 
 _tr = QtCore.QCoreApplication.translate
 

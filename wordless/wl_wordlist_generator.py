@@ -28,9 +28,17 @@ from PyQt5 import QtWidgets
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
-from wordless.wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
+from wordless.wl_figs import (
+    wl_figs,
+    wl_figs_freqs,
+    wl_figs_stats
+)
 from wordless.wl_measures import wl_measure_utils
-from wordless.wl_nlp import wl_texts, wl_token_processing
+from wordless.wl_nlp import (
+    wl_nlp_utils,
+    wl_texts,
+    wl_token_processing
+)
 from wordless.wl_utils import (
     wl_conversion,
     wl_excs,
@@ -349,19 +357,19 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
         super().__init__(
             parent,
             tab = 'wordlist_generator',
-            headers = [
+            headers = (
                 _tr('Wl_Table_Wordlist_Generator', 'Rank'),
                 _tr('Wl_Table_Wordlist_Generator', 'Token'),
                 _tr('Wl_Table_Wordlist_Generator', 'Number of\nFiles Found'),
                 _tr('Wl_Table_Wordlist_Generator', 'Number of\nFiles Found %')
-            ],
-            headers_int = [
+            ),
+            headers_int = {
                 _tr('Wl_Table_Wordlist_Generator', 'Rank'),
                 _tr('Wl_Table_Wordlist_Generator', 'Number of\nFiles Found')
-            ],
-            headers_pct = [
+            },
+            headers_pct = {
                 _tr('Wl_Table_Wordlist_Generator', 'Number of\nFiles Found %')
-            ],
+            },
             enable_sorting = True
         )
 
@@ -624,7 +632,9 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
                     token_settings = settings['token_settings'],
                     generation_settings = settings['generation_settings']
                 )
+
                 tokens = text.get_tokens_flat()
+                tokens = wl_nlp_utils.add_missing_ending_tshegs(self.main, tokens, tab = 'wordlist_generator')
 
                 # Frequency
                 self.tokens_freq_files.append(collections.Counter(tokens))
@@ -666,6 +676,7 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
                 tokens_stats_file = {}
 
                 tokens = text.get_tokens_flat()
+                tokens = wl_nlp_utils.add_missing_ending_tshegs(self.main, tokens, tab = 'wordlist_generator')
 
                 # Dispersion
                 if measure_dispersion == 'none':

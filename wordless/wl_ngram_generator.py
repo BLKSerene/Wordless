@@ -28,7 +28,11 @@ from PyQt5 import QtWidgets
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
-from wordless.wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
+from wordless.wl_figs import (
+    wl_figs,
+    wl_figs_freqs,
+    wl_figs_stats
+)
 from wordless.wl_measures import wl_measure_utils
 from wordless.wl_nlp import (
     wl_matching,
@@ -555,19 +559,19 @@ class Wl_Table_Ngram_Generator(wl_tables.Wl_Table_Data_Filter_Search):
         super().__init__(
             parent,
             tab = 'ngram_generator',
-            headers = [
+            headers = (
                 _tr('Wl_Table_Ngram_Generator', 'Rank'),
                 _tr('Wl_Table_Ngram_Generator', 'N-gram'),
                 _tr('Wl_Table_Ngram_Generator', 'Number of\nFiles Found'),
                 _tr('Wl_Table_Ngram_Generator', 'Number of\nFiles Found %'),
-            ],
-            headers_int = [
+            ),
+            headers_int = {
                 _tr('Wl_Table_Ngram_Generator', 'Rank'),
                 _tr('Wl_Table_Ngram_Generator', 'Number of\nFiles Found')
-            ],
-            headers_pct = [
+            },
+            headers_pct = {
                 _tr('Wl_Table_Ngram_Generator', 'Number of\nFiles Found %')
-            ],
+            },
             enable_sorting = True
         )
 
@@ -809,7 +813,9 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                     token_settings = settings['token_settings'],
                     search_settings = settings['search_settings']
                 )
+
                 tokens = text.get_tokens_flat()
+                tokens = wl_nlp_utils.add_missing_ending_tshegs(self.main, tokens, tab = 'ngram_generator')
 
                 # Generate all possible n-grams/skip-grams with the index of their first token
                 if allow_skipped_tokens:
@@ -911,6 +917,7 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                 ngrams_stats_file = {}
 
                 tokens = text.get_tokens_flat()
+                tokens = wl_nlp_utils.add_missing_ending_tshegs(self.main, tokens, tab = 'ngram_generator')
 
                 if allow_skipped_tokens:
                     for ngram_size in range(ngram_size_min, ngram_size_max + 1):

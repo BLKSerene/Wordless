@@ -26,14 +26,20 @@ from PyQt5 import QtCore
 from PyQt5 import QtWidgets
 
 from wordless.wl_checks import wl_checks_work_area
-from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc
+from wordless.wl_dialogs import (
+    wl_dialogs,
+    wl_dialogs_misc
+)
 from wordless.wl_nlp import (
     wl_matching,
     wl_nlp_utils,
     wl_texts,
     wl_token_processing
 )
-from wordless.wl_utils import wl_misc, wl_threading
+from wordless.wl_utils import (
+    wl_misc,
+    wl_threading
+)
 from wordless.wl_widgets import (
     wl_labels,
     wl_layouts,
@@ -251,16 +257,16 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data_Search):
         super().__init__(
             parent,
             tab = 'concordancer_parallel',
-            headers = [
+            headers = (
                 _tr('Wl_Table_Concordancer_Parallel', 'Parallel Unit No.'),
                 _tr('Wl_Table_Concordancer_Parallel', 'Parallel Unit No. %')
-            ],
-            headers_int = [
+            ),
+            headers_int = {
                 _tr('Wl_Table_Concordancer_Parallel', 'Parallel Unit No.')
-            ],
-            headers_pct = [
+            },
+            headers_pct = {
                 _tr('Wl_Table_Concordancer_Parallel', 'Parallel Unit No. %')
-            ],
+            },
             generate_fig = False
         )
 

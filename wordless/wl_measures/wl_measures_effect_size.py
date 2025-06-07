@@ -22,7 +22,10 @@ import math
 
 import numpy
 
-from wordless.wl_measures import wl_measures_statistical_significance, wl_measure_utils
+from wordless.wl_measures import (
+    wl_measures_statistical_significance,
+    wl_measure_utils
+)
 
 def get_numpy_log(main, measure_code):
     match main.settings_custom['measures']['effect_size'][measure_code]['base_log']:

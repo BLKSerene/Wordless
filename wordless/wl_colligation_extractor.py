@@ -31,7 +31,11 @@ from PyQt5 import QtWidgets
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
-from wordless.wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
+from wordless.wl_figs import (
+    wl_figs,
+    wl_figs_freqs,
+    wl_figs_stats
+)
 from wordless.wl_nlp import (
     wl_matching,
     wl_nlp_utils,
@@ -536,20 +540,20 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
         super().__init__(
             parent,
             tab = 'colligation_extractor',
-            headers = [
+            headers = (
                 _tr('Wl_Table_Colligation_Extractor', 'Rank'),
                 _tr('Wl_Table_Colligation_Extractor', 'Node'),
                 _tr('Wl_Table_Colligation_Extractor', 'Collocate'),
                 _tr('Wl_Table_Colligation_Extractor', 'Number of\nFiles Found'),
                 _tr('Wl_Table_Colligation_Extractor', 'Number of\nFiles Found %')
-            ],
-            headers_int = [
+            ),
+            headers_int = {
                 _tr('Wl_Table_Colligation_Extractor', 'Rank'),
                 _tr('Wl_Table_Colligation_Extractor', 'Number of\nFiles Found')
-            ],
-            headers_pct = [
+            },
+            headers_pct = {
                 _tr('Wl_Table_Colligation_Extractor', 'Number of\nFiles Found %')
-            ],
+            },
             enable_sorting = True
         )
 
@@ -764,7 +768,7 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                             self.set_item_num(i, cols_freq_pct[j], 0)
 
                     for j, (test_stat, p_val, bayes_factor, effect_size) in enumerate(stats_files):
-                            # Test Statistic
+                        # Test Statistic
                         if test_stat is not None:
                             self.set_item_num(i, cols_test_stat[j], test_stat)
 
@@ -939,6 +943,8 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                 )
 
                 tokens = text.get_tokens_flat()
+                tokens = wl_nlp_utils.add_missing_ending_tshegs(self.main, tokens, tab = 'colligation_extractor')
+
                 (
                     offsets_paras,
                     offsets_sentences,

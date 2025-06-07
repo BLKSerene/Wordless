@@ -30,7 +30,10 @@ import spacy_lookups_data
 
 from tests import wl_test_init
 from wordless.wl_nlp import wl_nlp_utils
-from wordless.wl_utils import wl_conversion, wl_misc
+from wordless.wl_utils import (
+    wl_conversion,
+    wl_misc
+)
 
 main = wl_test_init.Wl_Test_Main()
 

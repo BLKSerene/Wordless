@@ -65,7 +65,8 @@ def add_file(file_paths, update_gui, file_type = 'observed'):
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = ''),
             update_gui = open_file,
             file_paths = [file_path],
-            table = table
+            table = table,
+            file_area = main.wl_file_area
         ).run()
 
 def test_file_area_file_types():

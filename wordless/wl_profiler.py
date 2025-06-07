@@ -27,12 +27,33 @@ from PyQt5 import QtCore
 from PyQt5 import QtWidgets
 import scipy
 
-from wordless.wl_checks import wl_checks_tokens, wl_checks_work_area
-from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc
-from wordless.wl_measures import wl_measures_lexical_density_diversity, wl_measures_misc, wl_measures_readability
-from wordless.wl_nlp import wl_texts, wl_token_processing
-from wordless.wl_utils import wl_misc, wl_threading
-from wordless.wl_widgets import wl_layouts, wl_tables, wl_widgets
+from wordless.wl_checks import (
+    wl_checks_tokens,
+    wl_checks_work_area
+)
+from wordless.wl_dialogs import (
+    wl_dialogs,
+    wl_dialogs_misc
+)
+from wordless.wl_measures import (
+    wl_measures_lexical_density_diversity,
+    wl_measures_misc,
+    wl_measures_readability
+)
+from wordless.wl_nlp import (
+    wl_nlp_utils,
+    wl_texts,
+    wl_token_processing
+)
+from wordless.wl_utils import (
+    wl_misc,
+    wl_threading
+)
+from wordless.wl_widgets import (
+    wl_layouts,
+    wl_tables,
+    wl_widgets
+)
 
 _tr = QtCore.QCoreApplication.translate
 
@@ -49,13 +70,13 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         self.table_profiler_lens = Wl_Table_Profiler_Lens(self)
         self.table_profiler_len_breakdown = Wl_Table_Profiler_Len_Breakdown(self)
 
-        self.tables = [
+        self.tables = (
             self.table_profiler_readability,
             self.table_profiler_counts,
             self.table_profiler_lexical_density_diversity,
             self.table_profiler_lens,
             self.table_profiler_len_breakdown
-        ]
+        )
 
         self.stacked_widget_button_generate_table = QtWidgets.QStackedWidget(self)
         self.button_generate_all_tables = QtWidgets.QPushButton(self.tr('Generate all tables'), self)
@@ -373,7 +394,7 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
 
 class Wl_Table_Profiler_Readability(Wl_Table_Profiler):
     def __init__(self, parent):
-        HEADERS_READABILITY = [
+        HEADERS_READABILITY = (
             _tr('Wl_Table_Profiler_Readability', "Al-Heeti's Readability Formula"),
             _tr('Wl_Table_Profiler_Readability', 'Automated Arabic Readability Index'),
             _tr('Wl_Table_Profiler_Readability', 'Automated Readability Index'),
@@ -413,12 +434,12 @@ class Wl_Table_Profiler_Readability(Wl_Table_Profiler):
             _tr('Wl_Table_Profiler_Readability', "Tränkle-Bailer's Readability Formula"),
             _tr('Wl_Table_Profiler_Readability', "Tuldava's Readability Formula"),
             _tr('Wl_Table_Profiler_Readability', "Wheeler-Smith's Readability Formula")
-        ]
+        )
 
         super().__init__(
             parent,
             headers = HEADERS_READABILITY,
-            headers_float = HEADERS_READABILITY,
+            headers_float = set(HEADERS_READABILITY),
             tab = 'readability'
         )
 
@@ -465,7 +486,7 @@ class Wl_Table_Profiler_Readability(Wl_Table_Profiler):
 
 class Wl_Table_Profiler_Counts(Wl_Table_Profiler):
     def __init__(self, parent):
-        HEADERS_COUNTS = [
+        HEADERS_COUNTS = (
             _tr('Wl_Table_Profiler_Counts', 'Count of Paragraphs'),
             _tr('Wl_Table_Profiler_Counts', 'Count of Paragraphs %'),
             _tr('Wl_Table_Profiler_Counts', 'Count of Sentences'),
@@ -480,21 +501,21 @@ class Wl_Table_Profiler_Counts(Wl_Table_Profiler):
             _tr('Wl_Table_Profiler_Counts', 'Count of Syllables %'),
             _tr('Wl_Table_Profiler_Counts', 'Count of Characters'),
             _tr('Wl_Table_Profiler_Counts', 'Count of Characters %')
-        ]
+        )
 
         super().__init__(
             parent,
             headers = HEADERS_COUNTS,
-            headers_int = [
+            headers_int = {
                 HEADERS_COUNTS[i]
                 for i in range(0, len(HEADERS_COUNTS), 2)
-            ],
-            headers_pct = [
+            },
+            headers_pct = {
                 HEADERS_COUNTS[i]
                 for i in range(1, len(HEADERS_COUNTS), 2)
-            ],
+            },
             # Excluding count of types
-            headers_cum = HEADERS_COUNTS[:8] + HEADERS_COUNTS[10:],
+            headers_cum = {*HEADERS_COUNTS[:8], *HEADERS_COUNTS[10:]},
             tab = 'counts'
         )
 
@@ -593,7 +614,7 @@ class Wl_Table_Profiler_Counts(Wl_Table_Profiler):
 
 class Wl_Table_Profiler_Lexical_Density_Diversity(Wl_Table_Profiler):
     def __init__(self, parent):
-        HEADERS_LEXICAL_DENSITY_DIVERSITY = [
+        HEADERS_LEXICAL_DENSITY_DIVERSITY = (
             _tr('Wl_Table_Profiler_Lexical_Density_Diversity', "Brunet's Index"),
             _tr('Wl_Table_Profiler_Lexical_Density_Diversity', 'Corrected TTR'),
             _tr('Wl_Table_Profiler_Lexical_Density_Diversity', "Fisher's Index of Diversity"),
@@ -622,12 +643,12 @@ class Wl_Table_Profiler_Lexical_Density_Diversity(Wl_Table_Profiler):
             'vocd-D',
             _tr('Wl_Table_Profiler_Lexical_Density_Diversity', "Yule's Characteristic K"),
             _tr('Wl_Table_Profiler_Lexical_Density_Diversity', "Yule's Index of Diversity")
-        ]
+        )
 
         super().__init__(
             parent,
             headers = HEADERS_LEXICAL_DENSITY_DIVERSITY,
-            headers_float = HEADERS_LEXICAL_DENSITY_DIVERSITY,
+            headers_float = set(HEADERS_LEXICAL_DENSITY_DIVERSITY),
             tab = 'lexical_density_diversity'
         )
 
@@ -673,7 +694,7 @@ class Wl_Table_Profiler_Lexical_Density_Diversity(Wl_Table_Profiler):
 
 class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
     def __init__(self, parent):
-        HEADERS_LEN_PARAS_SENTENCES = [
+        HEADERS_LEN_PARAS_SENTENCES = (
             _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentences (Mean)'),
             _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentences (Standard Deviation)'),
             _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentences (Variance)'),
@@ -685,9 +706,9 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
             _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentences (Range)'),
             _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentences (Interquartile Range)'),
             _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentences (Modes)')
-        ]
+        )
 
-        HEADERS_LEN_PARAS_SENTENCE_SEGS = [
+        HEADERS_LEN_PARAS_SENTENCE_SEGS = (
             _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentence Segments (Mean)'),
             _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentence Segments (Standard Deviation)'),
             _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentence Segments (Variance)'),
@@ -699,9 +720,9 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
             _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentence Segments (Range)'),
             _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentence Segments (Interquartile Range)'),
             _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Sentence Segments (Modes)')
-        ]
+        )
 
-        HEADERS_LEN_PARAS_TOKENS = [
+        HEADERS_LEN_PARAS_TOKENS = (
             _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Tokens (Mean)'),
             _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Tokens (Standard Deviation)'),
             _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Tokens (Variance)'),
@@ -713,9 +734,9 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
             _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Tokens (Range)'),
             _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Tokens (Interquartile Range)'),
             _tr('Wl_Table_Profiler_Lens', 'Paragraph Length in Tokens (Modes)')
-        ]
+        )
 
-        HEADERS_LEN_SENTENCES_TOKENS = [
+        HEADERS_LEN_SENTENCES_TOKENS = (
             _tr('Wl_Table_Profiler_Lens', 'Sentence Length in Tokens (Mean)'),
             _tr('Wl_Table_Profiler_Lens', 'Sentence Length in Tokens (Standard Deviation)'),
             _tr('Wl_Table_Profiler_Lens', 'Sentence Length in Tokens (Variance)'),
@@ -727,9 +748,9 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
             _tr('Wl_Table_Profiler_Lens', 'Sentence Length in Tokens (Range)'),
             _tr('Wl_Table_Profiler_Lens', 'Sentence Length in Tokens (Interquartile Range)'),
             _tr('Wl_Table_Profiler_Lens', 'Sentence Length in Tokens (Modes)')
-        ]
+        )
 
-        HEADERS_LEN_SENTENCE_SEGS_TOKENS = [
+        HEADERS_LEN_SENTENCE_SEGS_TOKENS = (
             _tr('Wl_Table_Profiler_Lens', 'Sentence Segment Length in Tokens (Mean)'),
             _tr('Wl_Table_Profiler_Lens', 'Sentence Segment Length in Tokens (Standard Deviation)'),
             _tr('Wl_Table_Profiler_Lens', 'Sentence Segment Length in Tokens (Variance)'),
@@ -741,9 +762,9 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
             _tr('Wl_Table_Profiler_Lens', 'Sentence Segment Length in Tokens (Range)'),
             _tr('Wl_Table_Profiler_Lens', 'Sentence Segment Length in Tokens (Interquartile Range)'),
             _tr('Wl_Table_Profiler_Lens', 'Sentence Segment Length in Tokens (Modes)')
-        ]
+        )
 
-        HEADERS_LEN_TOKENS_SYLS = [
+        HEADERS_LEN_TOKENS_SYLS = (
             _tr('Wl_Table_Profiler_Lens', 'Token Length in Syllables (Mean)'),
             _tr('Wl_Table_Profiler_Lens', 'Token Length in Syllables (Standard Deviation)'),
             _tr('Wl_Table_Profiler_Lens', 'Token Length in Syllables (Variance)'),
@@ -755,9 +776,9 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
             _tr('Wl_Table_Profiler_Lens', 'Token Length in Syllables (Range)'),
             _tr('Wl_Table_Profiler_Lens', 'Token Length in Syllables (Interquartile Range)'),
             _tr('Wl_Table_Profiler_Lens', 'Token Length in Syllables (Modes)')
-        ]
+        )
 
-        HEADERS_LEN_TOKENS_CHARS = [
+        HEADERS_LEN_TOKENS_CHARS = (
             _tr('Wl_Table_Profiler_Lens', 'Token Length in Characters (Mean)'),
             _tr('Wl_Table_Profiler_Lens', 'Token Length in Characters (Standard Deviation)'),
             _tr('Wl_Table_Profiler_Lens', 'Token Length in Characters (Variance)'),
@@ -769,9 +790,9 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
             _tr('Wl_Table_Profiler_Lens', 'Token Length in Characters (Range)'),
             _tr('Wl_Table_Profiler_Lens', 'Token Length in Characters (Interquartile Range)'),
             _tr('Wl_Table_Profiler_Lens', 'Token Length in Characters (Modes)')
-        ]
+        )
 
-        HEADERS_LEN_TYPES_SYLS = [
+        HEADERS_LEN_TYPES_SYLS = (
             _tr('Wl_Table_Profiler_Lens', 'Type Length in Syllables (Mean)'),
             _tr('Wl_Table_Profiler_Lens', 'Type Length in Syllables (Standard Deviation)'),
             _tr('Wl_Table_Profiler_Lens', 'Type Length in Syllables (Variance)'),
@@ -783,9 +804,9 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
             _tr('Wl_Table_Profiler_Lens', 'Type Length in Syllables (Range)'),
             _tr('Wl_Table_Profiler_Lens', 'Type Length in Syllables (Interquartile Range)'),
             _tr('Wl_Table_Profiler_Lens', 'Type Length in Syllables (Modes)')
-        ]
+        )
 
-        HEADERS_LEN_TYPES_CHARS = [
+        HEADERS_LEN_TYPES_CHARS = (
             _tr('Wl_Table_Profiler_Lens', 'Type Length in Characters (Mean)'),
             _tr('Wl_Table_Profiler_Lens', 'Type Length in Characters (Standard Deviation)'),
             _tr('Wl_Table_Profiler_Lens', 'Type Length in Characters (Variance)'),
@@ -797,9 +818,9 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
             _tr('Wl_Table_Profiler_Lens', 'Type Length in Characters (Range)'),
             _tr('Wl_Table_Profiler_Lens', 'Type Length in Characters (Interquartile Range)'),
             _tr('Wl_Table_Profiler_Lens', 'Type Length in Characters (Modes)')
-        ]
+        )
 
-        HEADERS_LEN_SYLS_CHARS = [
+        HEADERS_LEN_SYLS_CHARS = (
             _tr('Wl_Table_Profiler_Lens', 'Syllable Length in Characters (Mean)'),
             _tr('Wl_Table_Profiler_Lens', 'Syllable Length in Characters (Standard Deviation)'),
             _tr('Wl_Table_Profiler_Lens', 'Syllable Length in Characters (Variance)'),
@@ -811,29 +832,29 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
             _tr('Wl_Table_Profiler_Lens', 'Syllable Length in Characters (Range)'),
             _tr('Wl_Table_Profiler_Lens', 'Syllable Length in Characters (Interquartile Range)'),
             _tr('Wl_Table_Profiler_Lens', 'Syllable Length in Characters (Modes)')
-        ]
+        )
 
-        HEADERS_LENS = [
+        HEADERS_LENS = (
             HEADERS_LEN_PARAS_SENTENCES, HEADERS_LEN_PARAS_SENTENCE_SEGS, HEADERS_LEN_PARAS_TOKENS,
             HEADERS_LEN_SENTENCES_TOKENS, HEADERS_LEN_SENTENCE_SEGS_TOKENS,
             HEADERS_LEN_TOKENS_SYLS, HEADERS_LEN_TOKENS_CHARS,
             HEADERS_LEN_TYPES_SYLS, HEADERS_LEN_TYPES_CHARS,
             HEADERS_LEN_SYLS_CHARS
-        ]
+        )
 
         super().__init__(
             parent,
-            headers = [header for headers in HEADERS_LENS for header in headers],
+            headers = tuple((header for headers in HEADERS_LENS for header in headers)),
             # Minimum, Maximum, and Range
-            headers_int = sum((
-                [HEADERS[3], HEADERS[7], HEADERS[8]]
+            headers_int = set(sum((
+                (HEADERS[3], HEADERS[7], HEADERS[8])
                 for HEADERS in HEADERS_LENS
-            ), start = []),
+            ), start = ())),
             # Mean, Standard Deviation, Variance, 25th Percentile, Median, 75th Percentile, and Interquartile Range
-            headers_float = sum((
-                [*HEADERS[0:3], *HEADERS[4:7], HEADERS[9]]
+            headers_float = set(sum((
+                (*HEADERS[0:3], *HEADERS[4:7], HEADERS[9])
                 for HEADERS in HEADERS_LENS
-            ), start = []),
+            ), start = ())),
             tab = 'lens'
         )
 
@@ -954,7 +975,7 @@ class Wl_Table_Profiler_Len_Breakdown(Wl_Table_Profiler):
     def __init__(self, parent):
         super().__init__(
             parent,
-            headers = [],
+            headers = (),
             tab = 'len_breakdown'
         )
 
@@ -1182,6 +1203,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
 
             for text in texts:
                 tokens = text.get_tokens_flat()
+                tokens = wl_nlp_utils.add_missing_ending_tshegs(self.main, tokens, tab = 'profiler')
 
                 # Readability
                 if self.tab in ('readability', 'all'):

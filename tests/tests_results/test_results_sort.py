@@ -19,7 +19,10 @@
 from PyQt5 import QtCore
 
 from tests import wl_test_init
-from wordless.wl_results import wl_results_search, wl_results_sort
+from wordless.wl_results import (
+    wl_results_search,
+    wl_results_sort
+)
 
 main = wl_test_init.Wl_Test_Main()
 table = wl_test_init.Wl_Test_Table(main, tab = 'concordancer')

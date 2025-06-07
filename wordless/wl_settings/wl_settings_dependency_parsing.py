@@ -23,9 +23,15 @@ from PyQt5 import QtGui
 from PyQt5 import QtWidgets
 
 from wordless.wl_dialogs import wl_dialogs
-from wordless.wl_nlp import wl_dependency_parsing, wl_nlp_utils
+from wordless.wl_nlp import (
+    wl_dependency_parsing,
+    wl_nlp_utils
+)
 from wordless.wl_settings import wl_settings
-from wordless.wl_utils import wl_conversion, wl_threading
+from wordless.wl_utils import (
+    wl_conversion,
+    wl_threading
+)
 from wordless.wl_widgets import (
     wl_boxes,
     wl_item_delegates,
@@ -112,11 +118,9 @@ class Wl_Settings_Dependency_Parsing(wl_settings.Wl_Settings_Node):
         self.group_box_preview.layout().addLayout(layout_preview_settings, 0, 0)
         self.group_box_preview.layout().addWidget(self.text_edit_preview_samples, 1, 0)
 
-        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_dependency_parser_settings, 0, 0)
         self.layout().addWidget(self.group_box_preview, 1, 0)
 
-        self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(1, 1)
 
     def preview_changed(self):

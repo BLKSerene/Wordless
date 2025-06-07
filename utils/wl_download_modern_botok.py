@@ -18,9 +18,9 @@
 
 import os
 import shutil
-import zipfile
 
 import botok
+import pip
 import requests
 
 def download_modern_botok():
@@ -49,35 +49,25 @@ def download_modern_botok():
     # spaCy model
     print("Downloading modern-botok's spaCy model...")
 
-    path_site_packages = os.path.dirname(botok.__path__[0])
-    path_zh_bo_tagger = os.path.join(path_site_packages, 'zh_bo_tagger')
-    path_zh_bo_tagger_egg_info = os.path.join(path_site_packages, 'zh_bo_tagger.egg-info')
-    path_zh_bo_tagger_zip = os.path.join('Tibetan_SpaCy-Model-main', 'packages', 'zh_bo_tagger-1.1.3')
-    path_site_packages_zip = os.path.join(path_site_packages, path_zh_bo_tagger_zip)
+    SPACY_MODEL_NAME = 'xx_bo_tagger'
+    SPACY_MODEL_GZIP = f'{SPACY_MODEL_NAME}.tar.gz'
+    SPACY_MODEL_VER = '1.2.1'
 
     # Remove old versions
-    shutil.rmtree(path_zh_bo_tagger, ignore_errors = True)
-    shutil.rmtree(path_zh_bo_tagger_egg_info, ignore_errors = True)
+    pip.main(['uninstall', '-y', SPACY_MODEL_NAME])
 
     r = requests.get(
-        'https://github.com/Divergent-Discourses/Tibetan_SpaCy-Model/archive/refs/heads/main.zip',
+        f'https://github.com/Divergent-Discourses/Tibetan_SpaCy-Model/raw/refs/heads/main/packages/{SPACY_MODEL_NAME}-{SPACY_MODEL_VER}/dist/{SPACY_MODEL_NAME}-{SPACY_MODEL_VER}.tar.gz',
         timeout = 10
     )
 
-    with open(f'{path_zh_bo_tagger}.zip', 'wb') as f:
+    with open(SPACY_MODEL_GZIP, 'wb') as f:
         f.write(r.content)
 
-    with zipfile.ZipFile(f'{path_zh_bo_tagger}.zip', 'r') as f:
-        for file in f.namelist():
-            if os.path.normpath(file).startswith(os.path.join(path_zh_bo_tagger_zip, 'zh_bo_tagger')):
-                f.extract(file, path_site_packages)
-
-    shutil.copytree(os.path.join(path_site_packages_zip, 'zh_bo_tagger'), path_zh_bo_tagger)
-    shutil.copytree(os.path.join(path_site_packages_zip, 'zh_bo_tagger.egg-info'), path_zh_bo_tagger_egg_info)
+    pip.main(['install', '--no-deps', SPACY_MODEL_GZIP])
 
     # Clean cache
-    shutil.rmtree(os.path.join(path_site_packages, 'Tibetan_SpaCy-Model-main'), ignore_errors = True)
-    os.remove(os.path.join(path_site_packages, 'zh_bo_tagger.zip'))
+    os.remove(SPACY_MODEL_GZIP)
 
 if __name__ == '__main__':
     download_modern_botok()

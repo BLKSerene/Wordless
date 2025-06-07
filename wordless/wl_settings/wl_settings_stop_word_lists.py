@@ -21,7 +21,10 @@ import copy
 from PyQt5 import QtGui
 from PyQt5 import QtWidgets
 
-from wordless.wl_nlp import wl_nlp_utils, wl_stop_word_lists
+from wordless.wl_nlp import (
+    wl_nlp_utils,
+    wl_stop_word_lists
+)
 from wordless.wl_settings import wl_settings
 from wordless.wl_utils import wl_conversion
 from wordless.wl_widgets import (
@@ -111,11 +114,9 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
         self.group_box_preview.layout().addWidget(self.list_preview_results.button_imp, 2, 4)
         self.group_box_preview.layout().addWidget(self.list_preview_results.button_exp, 2, 5)
 
-        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_stop_word_list_settings, 0, 0)
         self.layout().addWidget(self.group_box_preview, 1, 0)
 
-        self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(1, 1)
 
         self.load_settings()

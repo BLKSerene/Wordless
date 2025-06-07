@@ -21,7 +21,11 @@ import copy
 from PyQt5 import QtWidgets
 
 from wordless.wl_settings import wl_settings
-from wordless.wl_widgets import wl_boxes, wl_buttons, wl_layouts
+from wordless.wl_widgets import (
+    wl_boxes,
+    wl_buttons,
+    wl_layouts
+)
 
 # Tables
 class Wl_Settings_Tables(wl_settings.Wl_Settings_Node):
@@ -63,11 +67,9 @@ class Wl_Settings_Tables(wl_settings.Wl_Settings_Node):
 
         self.group_box_precision_settings.layout().setColumnStretch(2, 1)
 
-        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_rank_settings, 0, 0)
         self.layout().addWidget(self.group_box_precision_settings, 1, 0)
 
-        self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(2, 1)
 
     def load_settings(self, defaults = False):
@@ -92,6 +94,41 @@ class Wl_Settings_Tables(wl_settings.Wl_Settings_Node):
         self.settings_custom['precision_settings']['precision_decimals'] = self.spin_box_precision_decimals.value()
         self.settings_custom['precision_settings']['precision_pcts'] = self.spin_box_precision_pcts.value()
         self.settings_custom['precision_settings']['precision_p_vals'] = self.spin_box_precision_p_vals.value()
+
+        return True
+
+# Tables - Profiler
+class Wl_Settings_Tables_Profiler(wl_settings.Wl_Settings_Node):
+    def __init__(self, main):
+        super().__init__(main)
+
+        self.settings_default = self.main.settings_default['tables']['profiler']
+        self.settings_custom = self.main.settings_custom['tables']['profiler']
+
+        # Language-specific Settings
+        self.group_box_lang_specific_settings = QtWidgets.QGroupBox(self.tr('Language-specific Settings'), self)
+
+        self.checkbox_add_missing_ending_tshegs = QtWidgets.QCheckBox(self.tr('Add missing ending tshegs to tokens in Tibetan (Classical) and Tibetan (Modern) texts'), self)
+
+        self.group_box_lang_specific_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_lang_specific_settings.layout().addWidget(self.checkbox_add_missing_ending_tshegs, 0, 0)
+
+        self.layout().addWidget(self.group_box_lang_specific_settings, 0, 0)
+
+        self.layout().setRowStretch(1, 1)
+
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = copy.deepcopy(self.settings_default)
+        else:
+            settings = copy.deepcopy(self.settings_custom)
+
+        # Language-specific Settings
+        self.checkbox_add_missing_ending_tshegs.setChecked(settings['lang_specific_settings']['add_missing_ending_tshegs'])
+
+    def apply_settings(self):
+        # Language-specific Settings
+        self.settings_custom['lang_specific_settings']['add_missing_ending_tshegs'] = self.checkbox_add_missing_ending_tshegs.isChecked()
 
         return True
 
@@ -137,10 +174,8 @@ class Wl_Settings_Tables_Concordancer(wl_settings.Wl_Settings_Node):
 
         self.group_box_sorting_settings.layout().setColumnStretch(2, 1)
 
-        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_sorting_settings, 0, 0)
 
-        self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(1, 1)
 
     def load_settings(self, defaults = False):
@@ -188,10 +223,8 @@ class Wl_Settings_Tables_Parallel_Concordancer(wl_settings.Wl_Settings_Node):
 
         self.group_box_highlight_color_settings.layout().setColumnStretch(2, 1)
 
-        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_highlight_color_settings, 0, 0)
 
-        self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(1, 1)
 
     def load_settings(self, defaults = False):
@@ -233,10 +266,8 @@ class Wl_Settings_Tables_Dependency_Parser(wl_settings.Wl_Settings_Node):
 
         self.group_box_highlight_color_settings.layout().setColumnStretch(2, 1)
 
-        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_highlight_color_settings, 0, 0)
 
-        self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(1, 1)
 
     def load_settings(self, defaults = False):
@@ -253,5 +284,180 @@ class Wl_Settings_Tables_Dependency_Parser(wl_settings.Wl_Settings_Node):
         # Color Settings
         self.settings_custom['highlight_color_settings']['head_color'] = self.button_head_color.get_color()
         self.settings_custom['highlight_color_settings']['dependent_color'] = self.button_dependent_color.get_color()
+
+        return True
+
+# Tables - Wordlist Generator
+class Wl_Settings_Tables_Wordlist_Generator(wl_settings.Wl_Settings_Node):
+    def __init__(self, main):
+        super().__init__(main)
+
+        self.settings_default = self.main.settings_default['tables']['wordlist_generator']
+        self.settings_custom = self.main.settings_custom['tables']['wordlist_generator']
+
+        # Language-specific Settings
+        self.group_box_lang_specific_settings = QtWidgets.QGroupBox(self.tr('Language-specific Settings'), self)
+
+        self.checkbox_add_missing_ending_tshegs = QtWidgets.QCheckBox(self.tr('Add missing ending tshegs to tokens in Tibetan (Classical) and Tibetan (Modern) texts'), self)
+
+        self.group_box_lang_specific_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_lang_specific_settings.layout().addWidget(self.checkbox_add_missing_ending_tshegs, 0, 0)
+
+        self.layout().addWidget(self.group_box_lang_specific_settings, 0, 0)
+
+        self.layout().setRowStretch(1, 1)
+
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = copy.deepcopy(self.settings_default)
+        else:
+            settings = copy.deepcopy(self.settings_custom)
+
+        # Language-specific Settings
+        self.checkbox_add_missing_ending_tshegs.setChecked(settings['lang_specific_settings']['add_missing_ending_tshegs'])
+
+    def apply_settings(self):
+        # Language-specific Settings
+        self.settings_custom['lang_specific_settings']['add_missing_ending_tshegs'] = self.checkbox_add_missing_ending_tshegs.isChecked()
+
+        return True
+
+# Tables - N-gram Generator
+class Wl_Settings_Tables_Ngram_Generator(wl_settings.Wl_Settings_Node):
+    def __init__(self, main):
+        super().__init__(main)
+
+        self.settings_default = self.main.settings_default['tables']['ngram_generator']
+        self.settings_custom = self.main.settings_custom['tables']['ngram_generator']
+
+        # Language-specific Settings
+        self.group_box_lang_specific_settings = QtWidgets.QGroupBox(self.tr('Language-specific Settings'), self)
+
+        self.checkbox_add_missing_ending_tshegs = QtWidgets.QCheckBox(self.tr('Add missing ending tshegs to tokens in Tibetan (Classical) and Tibetan (Modern) texts'), self)
+
+        self.group_box_lang_specific_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_lang_specific_settings.layout().addWidget(self.checkbox_add_missing_ending_tshegs, 0, 0)
+
+        self.layout().addWidget(self.group_box_lang_specific_settings, 0, 0)
+
+        self.layout().setRowStretch(1, 1)
+
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = copy.deepcopy(self.settings_default)
+        else:
+            settings = copy.deepcopy(self.settings_custom)
+
+        # Language-specific Settings
+        self.checkbox_add_missing_ending_tshegs.setChecked(settings['lang_specific_settings']['add_missing_ending_tshegs'])
+
+    def apply_settings(self):
+        # Language-specific Settings
+        self.settings_custom['lang_specific_settings']['add_missing_ending_tshegs'] = self.checkbox_add_missing_ending_tshegs.isChecked()
+
+        return True
+
+# Tables - Collocation Extractor
+class Wl_Settings_Tables_Collocation_Extractor(wl_settings.Wl_Settings_Node):
+    def __init__(self, main):
+        super().__init__(main)
+
+        self.settings_default = self.main.settings_default['tables']['collocation_extractor']
+        self.settings_custom = self.main.settings_custom['tables']['collocation_extractor']
+
+        # Language-specific Settings
+        self.group_box_lang_specific_settings = QtWidgets.QGroupBox(self.tr('Language-specific Settings'), self)
+
+        self.checkbox_add_missing_ending_tshegs = QtWidgets.QCheckBox(self.tr('Add missing ending tshegs to tokens in Tibetan (Classical) and Tibetan (Modern) texts'), self)
+
+        self.group_box_lang_specific_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_lang_specific_settings.layout().addWidget(self.checkbox_add_missing_ending_tshegs, 0, 0)
+
+        self.layout().addWidget(self.group_box_lang_specific_settings, 0, 0)
+
+        self.layout().setRowStretch(1, 1)
+
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = copy.deepcopy(self.settings_default)
+        else:
+            settings = copy.deepcopy(self.settings_custom)
+
+        # Language-specific Settings
+        self.checkbox_add_missing_ending_tshegs.setChecked(settings['lang_specific_settings']['add_missing_ending_tshegs'])
+
+    def apply_settings(self):
+        # Language-specific Settings
+        self.settings_custom['lang_specific_settings']['add_missing_ending_tshegs'] = self.checkbox_add_missing_ending_tshegs.isChecked()
+
+        return True
+
+# Tables - Colligation Extractor
+class Wl_Settings_Tables_Colligation_Extractor(wl_settings.Wl_Settings_Node):
+    def __init__(self, main):
+        super().__init__(main)
+
+        self.settings_default = self.main.settings_default['tables']['colligation_extractor']
+        self.settings_custom = self.main.settings_custom['tables']['colligation_extractor']
+
+        # Language-specific Settings
+        self.group_box_lang_specific_settings = QtWidgets.QGroupBox(self.tr('Language-specific Settings'), self)
+
+        self.checkbox_add_missing_ending_tshegs = QtWidgets.QCheckBox(self.tr('Add missing ending tshegs to tokens in Tibetan (Classical) and Tibetan (Modern) texts'), self)
+
+        self.group_box_lang_specific_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_lang_specific_settings.layout().addWidget(self.checkbox_add_missing_ending_tshegs, 0, 0)
+
+        self.layout().addWidget(self.group_box_lang_specific_settings, 0, 0)
+
+        self.layout().setRowStretch(1, 1)
+
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = copy.deepcopy(self.settings_default)
+        else:
+            settings = copy.deepcopy(self.settings_custom)
+
+        # Language-specific Settings
+        self.checkbox_add_missing_ending_tshegs.setChecked(settings['lang_specific_settings']['add_missing_ending_tshegs'])
+
+    def apply_settings(self):
+        # Language-specific Settings
+        self.settings_custom['lang_specific_settings']['add_missing_ending_tshegs'] = self.checkbox_add_missing_ending_tshegs.isChecked()
+
+        return True
+
+# Tables - Keyword Extractor
+class Wl_Settings_Tables_Keyword_Extractor(wl_settings.Wl_Settings_Node):
+    def __init__(self, main):
+        super().__init__(main)
+
+        self.settings_default = self.main.settings_default['tables']['keyword_extractor']
+        self.settings_custom = self.main.settings_custom['tables']['keyword_extractor']
+
+        # Language-specific Settings
+        self.group_box_lang_specific_settings = QtWidgets.QGroupBox(self.tr('Language-specific Settings'), self)
+
+        self.checkbox_add_missing_ending_tshegs = QtWidgets.QCheckBox(self.tr('Add missing ending tshegs to tokens in Tibetan (Classical) and Tibetan (Modern) texts'), self)
+
+        self.group_box_lang_specific_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_lang_specific_settings.layout().addWidget(self.checkbox_add_missing_ending_tshegs, 0, 0)
+
+        self.layout().addWidget(self.group_box_lang_specific_settings, 0, 0)
+
+        self.layout().setRowStretch(1, 1)
+
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = copy.deepcopy(self.settings_default)
+        else:
+            settings = copy.deepcopy(self.settings_custom)
+
+        # Language-specific Settings
+        self.checkbox_add_missing_ending_tshegs.setChecked(settings['lang_specific_settings']['add_missing_ending_tshegs'])
+
+    def apply_settings(self):
+        # Language-specific Settings
+        self.settings_custom['lang_specific_settings']['add_missing_ending_tshegs'] = self.checkbox_add_missing_ending_tshegs.isChecked()
 
         return True
