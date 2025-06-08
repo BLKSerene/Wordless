@@ -145,17 +145,17 @@ class Wl_Settings_Tables_Concordancer(wl_settings.Wl_Settings_Node):
 
         self.label_highlight_colors = QtWidgets.QLabel(self.tr('Highlight colors:'), self)
         self.label_lvl_1 = QtWidgets.QLabel(self.tr('Level 1 / Node:'), self)
-        self.button_lvl_1 = wl_buttons.wl_button_color(self)
+        self.button_lvl_1 = wl_buttons.Wl_Button_Color(self)
         self.label_lvl_2 = QtWidgets.QLabel(self.tr('Level 2:'), self)
-        self.button_lvl_2 = wl_buttons.wl_button_color(self)
+        self.button_lvl_2 = wl_buttons.Wl_Button_Color(self)
         self.label_lvl_3 = QtWidgets.QLabel(self.tr('Level 3:'), self)
-        self.button_lvl_3 = wl_buttons.wl_button_color(self)
+        self.button_lvl_3 = wl_buttons.Wl_Button_Color(self)
         self.label_lvl_4 = QtWidgets.QLabel(self.tr('Level 4:'), self)
-        self.button_lvl_4 = wl_buttons.wl_button_color(self)
+        self.button_lvl_4 = wl_buttons.Wl_Button_Color(self)
         self.label_lvl_5 = QtWidgets.QLabel(self.tr('Level 5:'), self)
-        self.button_lvl_5 = wl_buttons.wl_button_color(self)
+        self.button_lvl_5 = wl_buttons.Wl_Button_Color(self)
         self.label_lvl_6 = QtWidgets.QLabel(self.tr('Level 6:'), self)
-        self.button_lvl_6 = wl_buttons.wl_button_color(self)
+        self.button_lvl_6 = wl_buttons.Wl_Button_Color(self)
 
         self.group_box_sorting_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_sorting_settings.layout().addWidget(self.label_highlight_colors, 0, 0, 1, 3)
@@ -215,7 +215,7 @@ class Wl_Settings_Tables_Parallel_Concordancer(wl_settings.Wl_Settings_Node):
         self.group_box_highlight_color_settings = QtWidgets.QGroupBox(self.tr('Highlight Color Settings'), self)
 
         self.label_search_term_color = QtWidgets.QLabel(self.tr('Search term color:'), self)
-        self.button_search_term_color = wl_buttons.wl_button_color(self)
+        self.button_search_term_color = wl_buttons.Wl_Button_Color(self)
 
         self.group_box_highlight_color_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_highlight_color_settings.layout().addWidget(self.label_search_term_color, 0, 0)
@@ -254,9 +254,9 @@ class Wl_Settings_Tables_Dependency_Parser(wl_settings.Wl_Settings_Node):
         self.group_box_highlight_color_settings = QtWidgets.QGroupBox(self.tr('Highlight Color Settings'), self)
 
         self.label_head_color = QtWidgets.QLabel(self.tr('Head color:'), self)
-        self.button_head_color = wl_buttons.wl_button_color(self)
+        self.button_head_color = wl_buttons.Wl_Button_Color(self)
         self.label_dependent_color = QtWidgets.QLabel(self.tr('Dependent color:'), self)
-        self.button_dependent_color = wl_buttons.wl_button_color(self)
+        self.button_dependent_color = wl_buttons.Wl_Button_Color(self)
 
         self.group_box_highlight_color_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_highlight_color_settings.layout().addWidget(self.label_head_color, 0, 0)

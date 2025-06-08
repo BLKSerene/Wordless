@@ -39,7 +39,7 @@ def test_get_data_ranks():
 
 def test_generate_line_chart():
     main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
-    wl_test_init.select_test_files(main, no_files = [0, 1])
+    wl_test_init.select_test_files(main, no_files = (0, 1))
 
     global main_global
     main_global = main

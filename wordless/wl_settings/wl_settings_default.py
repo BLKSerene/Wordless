@@ -2578,15 +2578,20 @@ def init_settings_default(main):
                     'node_size': 100,
                     # The color of horizontal headers in tables (#5C88C5) with 80% opacity
                     'node_color': '#7DA0D1',
-                    'node_opacity': 1.0
+                    'node_opacity': 1.0,
+                    'border_width': 1,
+                    'border_color': '#7DA0D1',
+                    'same_as_node_color': True
                 },
 
                 'node_label_settings': {
-                    'label_font': DEFAULT_FONT_FAMILY,
-                    'label_font_size': DEFAULT_FONT_SIZE,
-                    'label_font_weight': 400,
-                    'label_font_color': '#000000',
-                    'label_opacity': 1.0
+                    'font_family': DEFAULT_FONT_FAMILY,
+                    'font_size': DEFAULT_FONT_SIZE,
+                    'font_weight': 400,
+                    'font_color': '#000000',
+                    'label_opacity': 1.0,
+                    'hor_alignment': 'center',
+                    'vert_alignment': 'center'
                 },
 
                 'edge_settings': {
@@ -2604,11 +2609,13 @@ def init_settings_default(main):
                 'edge_label_settings': {
                     'label_position': 0.5,
                     'rotate_labels': True,
-                    'label_font': DEFAULT_FONT_FAMILY,
-                    'label_font_size': DEFAULT_FONT_SIZE,
-                    'label_font_weight': 400,
-                    'label_font_color': '#000000',
-                    'label_opacity': 1.0
+                    'font_family': DEFAULT_FONT_FAMILY,
+                    'font_size': DEFAULT_FONT_SIZE,
+                    'font_weight': 400,
+                    'font_color': '#000000',
+                    'label_opacity': 1.0,
+                    'hor_alignment': 'center',
+                    'vert_alignment': 'center'
                 },
 
                 'advanced_settings': {

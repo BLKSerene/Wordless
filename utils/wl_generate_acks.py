@@ -70,7 +70,7 @@ ACKS = (
         'Apache-2.0', 'https://github.com/Divergent-Discourses/modern-botok/blob/main/LICENSE'
     ), (
         'NetworkX', 'https://networkx.org/',
-        '3.3', 'NetworkX Developers, Aric Hagberg, Dan Schult,<br>Pieter Swart',
+        '3.5', 'NetworkX Developers, Aric Hagberg, Dan Schult,<br>Pieter Swart',
         'BSD-3-Clause', 'https://github.com/networkx/networkx/blob/main/LICENSE.txt'
     ), (
         'NLTK', 'https://www.nltk.org/',

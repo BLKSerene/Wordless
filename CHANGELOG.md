@@ -23,6 +23,8 @@
 - File Area: Add Number of corpora / tokens / types (selected)
 - Measures: Add effect size - conditional probability / ΔP / mutual information (normalized) / μ-value / pointwise mutual information (squared) / pointwise mutual information (normalized) / relative risk
 - Menu: Add Edit
+- Settings: Add Settings - Figures - Network Graphs - Edge/Node Label Settings - Horizontal/Vertical alignment
+- Settings: Add Settings - Figures - Network Graphs - Node Settings - Border width/color
 - Settings: Add Settings - Measures - Effect Size - Mutual Information / Pointwise Mutual Information / Pointwise Mutual Information (Cubic) / Pointwise Mutual Information (Squared)
 - Settings: Add Settings - Part-of-speech Tagging - Part-of-speech Tagger Settings - Separator between tokens and part-of-speech tags
 - Settings: Add Settings - Tables - Profiler / Wordlist Generator / N-gram Generator / Collocation Extractor / Colligation Extractor / Keyword Extractor
@@ -60,6 +62,7 @@
 - Dependencies: Upgrade Botok to 0.9.0
 - Dependencies: Upgrade Charset Normalizer to 3.4.2
 - Dependencies: Upgrade Lingua to 2.1.1
+- Dependencies: Upgrade NetworkX to 3.5
 - Dependencies: Upgrade NLTK to 3.9.1
 - Dependencies: Upgrade pymorphy3 to 2.0.3
 - Dependencies: Upgrade Pyphen to 0.17.2

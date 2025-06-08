@@ -29,16 +29,14 @@ def test_wl_button():
 def test_wl_button_browse():
     wl_buttons.Wl_Button_Browse(main, 'test', QtWidgets.QLineEdit(), 'test', ['test'])
 
-def test_wl_button_color():
+def test_wl_button_color_transparent():
     button = wl_buttons.Wl_Button_Color(main)
     button.get_color()
     button.set_color('test')
 
-    _, checkbox_transparent = wl_buttons.wl_button_color(main, allow_transparent = True)
+    _, checkbox_transparent = wl_buttons.wl_button_color_transparent(main)
     checkbox_transparent.setChecked(True)
     checkbox_transparent.setChecked(False)
-
-    wl_buttons.wl_button_color(main, allow_transparent = False)
 
 def test_wl_button_restore_default_vals():
     wl_buttons.Wl_Button_Restore_Default_Vals(main, 'test')
@@ -46,5 +44,5 @@ def test_wl_button_restore_default_vals():
 if __name__ == '__main__':
     test_wl_button()
     test_wl_button_browse()
-    test_wl_button_color()
+    test_wl_button_color_transparent()
     test_wl_button_restore_default_vals()

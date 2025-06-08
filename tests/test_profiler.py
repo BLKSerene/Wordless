@@ -44,9 +44,10 @@ def test_profiler():
             # Multiple files
             case 1:
                 wl_test_init.select_test_files(main, no_files = (1, 2))
-            # Tibetan
+            # Tibetan (Classical)
             case 2:
-                wl_test_init.select_test_files(main, no_files = (3,))
+                # Avoid loading modern-botok's spaCy model
+                wl_test_init.select_test_files(main, no_files = (4,))
 
                 settings_table['add_missing_ending_tshegs'] = True
             case 3:
@@ -72,6 +73,8 @@ def test_profiler():
 def update_gui(err_msg, texts_stats_files):
     print(err_msg)
     assert not err_msg
+
+    settings_table = main_global.settings_custom['tables']['profiler']['lang_specific_settings']
 
     assert len(texts_stats_files) >= 1
 
@@ -128,15 +131,15 @@ def update_gui(err_msg, texts_stats_files):
         assert count_types
 
         match list(main_global.wl_file_area.get_selected_file_names())[0]:
-            case '[bod] Tibetan tshegs':
-                assert count_chars == 4
             case '[xct] Tibetan tshegs':
-                assert count_chars == 3
+                if settings_table['add_missing_ending_tshegs']:
+                    assert count_chars == 4
+                else:
+                    assert count_chars == 3
             case _:
                 assert count_chars
 
         if list(main_global.wl_file_area.get_selected_file_names())[0] in (
-            '[bod] Tibetan tshegs',
             '[xct] Tibetan tshegs',
             '[other] No language support'
         ):
@@ -153,15 +156,15 @@ def update_gui(err_msg, texts_stats_files):
         assert len_types_chars.size
 
         match list(main_global.wl_file_area.get_selected_file_names())[0]:
-            case '[bod] Tibetan tshegs':
-                assert list(len_tokens_chars) == [2, 2]
             case '[xct] Tibetan tshegs':
-                assert list(len_tokens_chars) == [2, 1]
+                if settings_table['add_missing_ending_tshegs']:
+                    assert list(len_tokens_chars) == [2, 2]
+                else:
+                    assert list(len_tokens_chars) == [2, 1]
             case _:
                 assert len_tokens_chars.size
 
         if list(main_global.wl_file_area.get_selected_file_names())[0] in (
-            '[bod] Tibetan tshegs',
             '[xct] Tibetan tshegs',
             '[other] No language support'
         ):
@@ -192,7 +195,6 @@ def update_gui(err_msg, texts_stats_files):
         assert numpy.mean(len_tokens_chars) == count_chars / count_tokens
 
         if list(main_global.wl_file_area.get_selected_file_names())[0] in (
-            '[bod] Tibetan tshegs',
             '[xct] Tibetan tshegs',
             '[other] No language support'
         ):
@@ -213,7 +215,6 @@ def update_gui(err_msg, texts_stats_files):
             assert scipy.stats.iqr(lens) == numpy.percentile(lens, 75) - numpy.percentile(lens, 25)
 
         if list(main_global.wl_file_area.get_selected_file_names())[0] in (
-            '[bod] Tibetan tshegs',
             '[xct] Tibetan tshegs',
             '[other] No language support'
         ):
@@ -252,7 +253,6 @@ def update_gui(err_msg, texts_stats_files):
 
     # Count of n-syllable-long Tokens
     if list(main_global.wl_file_area.get_selected_file_names())[0] in (
-        '[bod] Tibetan tshegs',
         '[xct] Tibetan tshegs',
         '[other] No language support'
     ):

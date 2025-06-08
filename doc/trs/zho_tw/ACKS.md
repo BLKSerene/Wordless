@@ -30,7 +30,7 @@
 6|[Lingua](https://github.com/pemistahl/lingua-py)|2.1.1|Peter M. Stahl|[Apache-2.0](https://github.com/pemistahl/lingua-py/blob/main/LICENSE.txt)
 7|[Matplotlib](https://matplotlib.org/)|3.9.0|Matplotlib 開發團隊|[Matplotlib](https://matplotlib.org/stable/users/project/license.html)
 8|[modern-botok](https://github.com/Divergent-Discourses/modern-botok)|1.2.1|Robert Barnett, Franz Xaver Erhard, Yuki Kyogoku|[Apache-2.0](https://github.com/Divergent-Discourses/modern-botok/blob/main/LICENSE)
-9|[NetworkX](https://networkx.org/)|3.3|NetworkX 開發人員, Aric Hagberg, Dan Schult,<br>Pieter Swart|[BSD-3-Clause](https://github.com/networkx/networkx/blob/main/LICENSE.txt)
+9|[NetworkX](https://networkx.org/)|3.5|NetworkX 開發人員, Aric Hagberg, Dan Schult,<br>Pieter Swart|[BSD-3-Clause](https://github.com/networkx/networkx/blob/main/LICENSE.txt)
 10|[NLTK](https://www.nltk.org/)|3.9.1|Steven Bird, Edward Loper, Ewan Klein|[Apache-2.0](https://github.com/nltk/nltk/blob/develop/LICENSE.txt)
 11|[NumPy](https://www.numpy.org/)|1.26.4|NumPy 開發人員|[BSD-3-Clause](https://github.com/numpy/numpy/blob/main/LICENSE.txt)
 12|[opencc-python](https://github.com/yichen0831/opencc-python)|0.1.7|郭家寶, Yicheng Huang|[Apache-2.0](https://github.com/yichen0831/opencc-python/blob/master/LICENSE.txt)

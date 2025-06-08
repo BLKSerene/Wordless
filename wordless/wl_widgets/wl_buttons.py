@@ -93,7 +93,7 @@ class Wl_Button_Color(Wl_Button):
 
         self.update()
 
-def wl_button_color(parent, allow_transparent = False):
+def wl_button_color_transparent(parent):
     def transparent_changed():
         if checkbox_transparent.isChecked():
             button_color.setEnabled(False)
@@ -101,15 +101,11 @@ def wl_button_color(parent, allow_transparent = False):
             button_color.setEnabled(True)
 
     button_color = Wl_Button_Color(parent)
+    checkbox_transparent = QtWidgets.QCheckBox(_tr('wl_buttons', 'Transparent'))
 
-    if allow_transparent:
-        checkbox_transparent = QtWidgets.QCheckBox(_tr('wl_buttons', 'Transparent'))
+    checkbox_transparent.stateChanged.connect(transparent_changed)
 
-        checkbox_transparent.stateChanged.connect(transparent_changed)
-
-        return button_color, checkbox_transparent
-    else:
-        return button_color
+    return button_color, checkbox_transparent
 
 class Wl_Button_Restore_Default_Vals(Wl_Button):
     def __init__(self, parent, load_settings):

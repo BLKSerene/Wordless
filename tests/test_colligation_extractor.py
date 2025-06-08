@@ -56,9 +56,10 @@ def test_colligation_extractor():
             # Multiple files
             case 1:
                 wl_test_init.select_test_files(main, no_files = (1, 2))
-            # Tibetan
+            # Tibetan (Classical)
             case 2:
-                wl_test_init.select_test_files(main, no_files = (3,))
+                # Avoid loading modern-botok's spaCy model
+                wl_test_init.select_test_files(main, no_files = (4,))
 
                 settings_table['add_missing_ending_tshegs'] = True
             case 3:
@@ -118,10 +119,11 @@ def update_gui(err_msg, colligations_freqs_files, colligations_stats_files):
         # Frequency (span positions)
         for freqs_file in freqs_files:
             match list(main_global.wl_file_area.get_selected_file_names())[0]:
-                case '[bod] Tibetan tshegs':
-                    assert sum(freqs_file) == 2
                 case '[xct] Tibetan tshegs':
-                    assert sum(freqs_file) == 1
+                    if main_global.settings_custom['tables']['colligation_extractor']['lang_specific_settings']['add_missing_ending_tshegs']:
+                        assert sum(freqs_file) == 2
+                    else:
+                        assert sum(freqs_file) == 1
                 case _:
                     assert len(freqs_file) == 10
 

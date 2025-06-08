@@ -270,23 +270,32 @@ def generate_network_graph(main, data_file_items, fig_settings):
 
     pos = settings['advanced_settings']['layout'](graph)
 
+    if settings['node_settings']['same_as_node_color']:
+        border_color = None
+    else:
+        border_color = settings['node_settings']['border_color']
+
     networkx.draw_networkx_nodes(
         graph,
         pos = pos,
         node_shape = settings['node_settings']['node_shape'],
         node_size = settings['node_settings']['node_size'],
         node_color = settings['node_settings']['node_color'],
-        alpha = settings['node_settings']['node_opacity']
+        alpha = settings['node_settings']['node_opacity'],
+        linewidths = settings['node_settings']['border_width'],
+        edgecolors = border_color
     )
 
     networkx.draw_networkx_labels(
         graph,
         pos = {node: (x, y + 0.05) for node, (x, y) in pos.items()},
-        font_family = settings['node_label_settings']['label_font'],
-        font_size = settings['node_label_settings']['label_font_size'],
-        font_weight = settings['node_label_settings']['label_font_weight'],
-        font_color = settings['node_label_settings']['label_font_color'],
-        alpha = settings['node_label_settings']['label_opacity']
+        font_family = settings['node_label_settings']['font_family'],
+        font_size = settings['node_label_settings']['font_size'],
+        font_weight = settings['node_label_settings']['font_weight'],
+        font_color = settings['node_label_settings']['font_color'],
+        alpha = settings['node_label_settings']['label_opacity'],
+        horizontalalignment = settings['node_label_settings']['hor_alignment'],
+        verticalalignment = settings['node_label_settings']['vert_alignment']
     )
 
     if fig_settings['use_data'] == _tr('wl_figs', 'p-value'):
@@ -328,11 +337,15 @@ def generate_network_graph(main, data_file_items, fig_settings):
         edge_labels = data_file_items,
         label_pos = settings['edge_label_settings']['label_position'],
         rotate = settings['edge_label_settings']['rotate_labels'],
-        font_family = settings['edge_label_settings']['label_font'],
-        font_size = settings['edge_label_settings']['label_font_size'],
-        font_weight = settings['edge_label_settings']['label_font_weight'],
-        font_color = settings['edge_label_settings']['label_font_color'],
-        alpha = settings['edge_label_settings']['label_opacity']
+        font_family = settings['edge_label_settings']['font_family'],
+        font_size = settings['edge_label_settings']['font_size'],
+        font_weight = settings['edge_label_settings']['font_weight'],
+        font_color = settings['edge_label_settings']['font_color'],
+        alpha = settings['edge_label_settings']['label_opacity'],
+        horizontalalignment = settings['edge_label_settings']['hor_alignment'],
+        verticalalignment = settings['edge_label_settings']['vert_alignment'],
+        # Used to determine edge label positions
+        connectionstyle = settings['edge_settings']['connection_style']
     )
 
 def show_fig():
