@@ -92,7 +92,7 @@ def wl_dependency_parse_text(main, inputs, lang, dependency_parser):
 
     # spaCy
     if dependency_parser.startswith('spacy_'):
-        lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+        lang = wl_conversion.remove_lang_code_suffixes(lang)
         nlp = main.__dict__[f'spacy_nlp_{lang}']
 
         with nlp.select_pipes(disable = (
@@ -116,7 +116,7 @@ def wl_dependency_parse_text(main, inputs, lang, dependency_parser):
     # Stanza
     elif dependency_parser.startswith('stanza_'):
         if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
-            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+            lang = wl_conversion.remove_lang_code_suffixes(lang)
 
         nlp = main.__dict__[f'stanza_nlp_{lang}']
         lines = [line.strip() for line in inputs.splitlines() if line.strip()]
@@ -142,7 +142,7 @@ def wl_dependency_parse_tokens(main, inputs, lang, dependency_parser):
 
     # spaCy
     if dependency_parser.startswith('spacy_'):
-        lang_spacy = wl_conversion.remove_lang_code_suffixes(main, lang)
+        lang_spacy = wl_conversion.remove_lang_code_suffixes(lang)
         nlp = main.__dict__[f'spacy_nlp_{lang_spacy}']
 
         with nlp.select_pipes(disable = (
@@ -168,7 +168,7 @@ def wl_dependency_parse_tokens(main, inputs, lang, dependency_parser):
     # Stanza
     elif dependency_parser.startswith('stanza_'):
         if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
-            lang_stanza = wl_conversion.remove_lang_code_suffixes(main, lang)
+            lang_stanza = wl_conversion.remove_lang_code_suffixes(lang)
         else:
             lang_stanza = lang
 
@@ -339,7 +339,7 @@ def wl_dependency_parse_fig_text(
 
     # spaCy
     if dependency_parser.startswith('spacy_'):
-        lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+        lang = wl_conversion.remove_lang_code_suffixes(lang)
         nlp = main.__dict__[f'spacy_nlp_{lang}']
 
         with nlp.select_pipes(disable = (
@@ -373,7 +373,7 @@ def wl_dependency_parse_fig_text(
     # Reference: https://github.com/stanfordnlp/stanza/pull/1069/files
     elif dependency_parser.startswith('stanza_'):
         if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
-            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+            lang = wl_conversion.remove_lang_code_suffixes(lang)
 
         nlp = main.__dict__[f'stanza_nlp_{lang}']
 
@@ -422,7 +422,7 @@ def wl_dependency_parse_fig_tokens(
 
     # spaCy
     if dependency_parser.startswith('spacy_'):
-        lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+        lang = wl_conversion.remove_lang_code_suffixes(lang)
         nlp = main.__dict__[f'spacy_nlp_{lang}']
 
         with nlp.select_pipes(disable = (
@@ -485,7 +485,7 @@ def wl_dependency_parse_fig_tokens(
     # Stanza
     elif dependency_parser.startswith('stanza_'):
         if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
-            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+            lang = wl_conversion.remove_lang_code_suffixes(lang)
 
         nlp = main.__dict__[f'stanza_nlp_{lang}']
 

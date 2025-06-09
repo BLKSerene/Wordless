@@ -72,6 +72,15 @@ def test_to_iso_639_3():
 
         assert lang_code_639_3 == TO_ISO_639_3[lang_code]
 
+    # Fuzzy matching without code suffixes
+    assert wl_conversion.to_iso_639_3(main, 'es_ES') == 'spa'
+    assert wl_conversion.to_iso_639_3(main, 'en_Latn') == 'eng_gb'
+    assert wl_conversion.to_iso_639_3(main, 'en') == 'eng_gb'
+    assert wl_conversion.to_iso_639_3(main, 'mni') == 'mni_mtei'
+
+    assert wl_conversion.to_iso_639_3(main, 'en_us', no_suffix = False) == 'eng_us'
+    assert wl_conversion.to_iso_639_3(main, 'en_us', no_suffix = True) == 'eng'
+
     with pytest.raises(Exception):
         wl_conversion.to_iso_639_3(main, 'test')
 
@@ -79,15 +88,27 @@ def test_to_iso_639_1():
     for lang_code_639_3, lang_code_639_1 in TO_ISO_639_1.items():
         assert wl_conversion.to_iso_639_1(main, lang_code_639_3) == lang_code_639_1
 
+    # Fuzzy matching without code suffixes
+    assert wl_conversion.to_iso_639_1(main, 'spa_ESP') == 'es'
+    assert wl_conversion.to_iso_639_1(main, 'eng_Latn') == 'en_gb'
+    assert wl_conversion.to_iso_639_1(main, 'eng') == 'en_gb'
+    assert wl_conversion.to_iso_639_1(main, 'mni') == 'mni_mtei'
+
+    assert wl_conversion.to_iso_639_1(main, 'eng_us', no_suffix = False) == 'en_us'
+    assert wl_conversion.to_iso_639_1(main, 'eng_us', no_suffix = True) == 'en'
+
+    with pytest.raises(Exception):
+        wl_conversion.to_iso_639_1(main, 'test')
+
 def test_remove_lang_code_suffixes():
     for lang_code_639_3, lang_code_639_1 in TO_ISO_639_1.items():
         if lang_code_639_3.find('_') > -1:
-            lang_code_639_3 = wl_conversion.remove_lang_code_suffixes(main, lang_code_639_3)
+            lang_code_639_3 = wl_conversion.remove_lang_code_suffixes(lang_code_639_3)
 
             assert lang_code_639_3.find('_') == -1
 
         if lang_code_639_1.find('_') > -1:
-            lang_code_639_1 = wl_conversion.remove_lang_code_suffixes(main, lang_code_639_1)
+            lang_code_639_1 = wl_conversion.remove_lang_code_suffixes(lang_code_639_1)
 
             assert lang_code_639_1.find('_') == -1
 

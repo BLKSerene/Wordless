@@ -99,7 +99,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', s
         if isinstance(inputs, str):
             # spaCy and modern-botok
             if pos_tagger.startswith('spacy_') or pos_tagger == 'modern_botok_bod':
-                lang_spacy = wl_conversion.remove_lang_code_suffixes(main, lang)
+                lang_spacy = wl_conversion.remove_lang_code_suffixes(lang)
                 nlp = main.__dict__[f'spacy_nlp_{lang_spacy}']
                 lines = (line.strip() for line in inputs.splitlines() if line.strip())
 
@@ -130,7 +130,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', s
             # Stanza
             elif pos_tagger.startswith('stanza_'):
                 if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
-                    lang_stanza = wl_conversion.remove_lang_code_suffixes(main, lang)
+                    lang_stanza = wl_conversion.remove_lang_code_suffixes(lang)
                 else:
                     lang_stanza = lang
 
@@ -162,7 +162,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', s
 
             # spaCy and modern-botok
             if pos_tagger.startswith('spacy_') or pos_tagger == 'modern_botok_bod':
-                lang_spacy = wl_conversion.remove_lang_code_suffixes(main, lang)
+                lang_spacy = wl_conversion.remove_lang_code_suffixes(lang)
                 nlp = main.__dict__[f'spacy_nlp_{lang_spacy}']
 
                 with nlp.select_pipes(disable = (
@@ -202,7 +202,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', s
             # Stanza
             elif pos_tagger.startswith('stanza_'):
                 if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
-                    lang_stanza = wl_conversion.remove_lang_code_suffixes(main, lang)
+                    lang_stanza = wl_conversion.remove_lang_code_suffixes(lang)
                 else:
                     lang_stanza = lang
 
@@ -341,7 +341,7 @@ def wl_pos_tag_text(main, text, lang, pos_tagger):
         case 'nltk_perceptron_eng' | 'nltk_perceptron_rus':
             tokens = wl_word_tokenization.wl_word_tokenize_flat(main, text, lang = lang)
             tokens = wl_texts.to_token_texts(tokens)
-            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+            lang = wl_conversion.remove_lang_code_suffixes(lang)
 
             for token, tag in nltk.pos_tag(tokens, lang = lang):
                 tokens_tagged.append(token)
@@ -418,12 +418,12 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger):
     tokens_tagged = []
     tags = []
 
-    lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+    lang = wl_conversion.remove_lang_code_suffixes(lang)
 
     match pos_tagger:
         # English & Russian
         case 'nltk_perceptron_eng' | 'nltk_perceptron_rus':
-            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+            lang = wl_conversion.remove_lang_code_suffixes(lang)
 
             for token, tag in nltk.pos_tag(tokens, lang = lang):
                 tokens_tagged.append(token)

@@ -87,7 +87,7 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
         else:
             pipelines_disabled = ('tagger', 'morphologizer', 'parser', 'lemmatizer', 'attribute_ruler')
 
-        lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+        lang = wl_conversion.remove_lang_code_suffixes(lang)
 
         if sentence_tokenizer == 'spacy_sentencizer':
             nlp = main.__dict__['spacy_nlp_sentencizer']
@@ -107,7 +107,7 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
     # Stanza
     elif sentence_tokenizer.startswith('stanza_'):
         if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
-            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+            lang = wl_conversion.remove_lang_code_suffixes(lang)
 
         nlp = main.__dict__[f'stanza_nlp_{lang}']
 

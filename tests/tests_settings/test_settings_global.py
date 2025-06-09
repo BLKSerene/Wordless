@@ -44,7 +44,7 @@ def add_lang_suffixes(lang_codes):
         if lang_code == 'hy':
             lang_codes.append('hyw')
 
-        if lang_code in ('zh', 'en', 'de', 'pt', 'pa', 'sr'):
+        if lang_code in ('zh', 'en', 'de', 'pt', 'sr'):
             lang_codes.remove(lang_code)
 
             if lang_code == 'zh':
@@ -55,8 +55,6 @@ def add_lang_suffixes(lang_codes):
                 lang_codes.extend(('de_at', 'de_de', 'de_ch'))
             elif lang_code == 'pt':
                 lang_codes.extend(('pt_br', 'pt_pt'))
-            elif lang_code == 'pa':
-                lang_codes.append('pa_guru')
             elif lang_code == 'sr':
                 lang_codes.append('sr_cyrl')
 

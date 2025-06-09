@@ -190,7 +190,7 @@ def check_models(parent, langs, lang_utils = None):
             if lang == 'nno':
                 lang_spacy = 'nob'
             else:
-                lang_spacy = wl_conversion.remove_lang_code_suffixes(main, lang)
+                lang_spacy = wl_conversion.remove_lang_code_suffixes(lang)
 
             if lang_spacy in LANGS_SPACY:
                 model_name = LANGS_SPACY[lang_spacy]
@@ -377,7 +377,7 @@ def init_model_spacy(main, lang, sentencizer_only = False):
             main.__dict__['spacy_nlp_sentencizer'] = spacy.blank('en')
             main.__dict__['spacy_nlp_sentencizer'].add_pipe('sentencizer', config = sentencizer_config)
     else:
-        lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+        lang = wl_conversion.remove_lang_code_suffixes(lang)
 
         if f'spacy_nlp_{lang}' not in main.__dict__:
             if lang == 'hyw':
@@ -435,7 +435,7 @@ def init_model_stanza(main, lang, lang_util, tokenized = False):
 
     if lang in get_langs_stanza(main, util_type = 'word_tokenizers'):
         if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
-            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+            lang = wl_conversion.remove_lang_code_suffixes(lang)
 
         if (
             f'stanza_nlp_{lang}' not in main.__dict__
@@ -514,8 +514,8 @@ def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
                     main.nltk_tweet_tokenizer = nltk.TweetTokenizer()
     # Sacremoses
     elif word_tokenizer == 'sacremoses_moses':
-        lang_sacremoses = wl_conversion.remove_lang_code_suffixes(main, wl_conversion.to_iso_639_1(main, lang))
-        lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+        lang_sacremoses = wl_conversion.remove_lang_code_suffixes(wl_conversion.to_iso_639_1(main, lang))
+        lang = wl_conversion.remove_lang_code_suffixes(lang)
 
         if f'sacremoses_moses_tokenizer_{lang}' not in main.__dict__:
             main.__dict__[f'sacremoses_moses_tokenizer_{lang}'] = sacremoses.MosesTokenizer(lang = lang_sacremoses)
@@ -568,8 +568,8 @@ def init_syl_tokenizers(main, lang, syl_tokenizer):
 def init_word_detokenizers(main, lang):
     if lang not in ('zho_cn', 'zho_tw', 'jpn', 'tha', 'bod'):
         # Sacremoses
-        lang_sacremoses = wl_conversion.remove_lang_code_suffixes(main, wl_conversion.to_iso_639_1(main, lang))
-        lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+        lang_sacremoses = wl_conversion.remove_lang_code_suffixes(wl_conversion.to_iso_639_1(main, lang))
+        lang = wl_conversion.remove_lang_code_suffixes(lang)
 
         if f'sacremoses_moses_detokenizer_{lang}' not in main.__dict__:
             main.__dict__[f'sacremoses_moses_detokenizer_{lang}'] = sacremoses.MosesDetokenizer(lang = lang_sacremoses)

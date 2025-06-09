@@ -58,7 +58,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
 
     # spaCy
     if word_tokenizer.startswith('spacy_'):
-        lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+        lang = wl_conversion.remove_lang_code_suffixes(lang)
         nlp = main.__dict__[f'spacy_nlp_{lang}']
 
         with nlp.select_pipes(disable = (
@@ -74,7 +74,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
     # Stanza
     elif word_tokenizer.startswith('stanza_'):
         if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
-            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+            lang = wl_conversion.remove_lang_code_suffixes(lang)
 
         nlp = main.__dict__[f'stanza_nlp_{lang}']
 
@@ -114,7 +114,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                                     tokens_multilevel[-1].append(main.nltk_tweet_tokenizer.tokenize(sentence))
                     # Sacremoses
                     case 'sacremoses_moses':
-                        lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+                        lang = wl_conversion.remove_lang_code_suffixes(lang)
                         sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, line, lang)
 
                         for sentence in sentences:

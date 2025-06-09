@@ -68,7 +68,7 @@ def wl_sentiment_analyze_text(main, inputs, lang, sentiment_analyzer):
     # Stanza
     if sentiment_analyzer.startswith('stanza_'):
         if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
-            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+            lang = wl_conversion.remove_lang_code_suffixes(lang)
 
         nlp = main.__dict__[f'stanza_nlp_{lang}']
 
@@ -141,7 +141,7 @@ def wl_sentiment_analyze_tokens(main, inputs, lang, sentiment_analyzer):
     # Stanza
     if sentiment_analyzer.startswith('stanza_'):
         if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
-            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+            lang = wl_conversion.remove_lang_code_suffixes(lang)
 
         nlp = main.__dict__[f'stanza_nlp_{lang}']
 

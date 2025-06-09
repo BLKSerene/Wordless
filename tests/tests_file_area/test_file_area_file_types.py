@@ -207,8 +207,8 @@ def update_gui_file_types(err_msg, new_files):
         print(tokens_src)
 
         assert file_text_src.lang == 'eng_us'
-        assert tokens_src == [[[['Hello', 'world', '!']]]]
-        assert tags_src == [None] * 3
+        assert tokens_src == [[[['Hello', ','], ['world', '!']]]]
+        assert tags_src == [None] * 4
 
         # Target files
         tokens_tgt = file_text_tgt.to_token_texts()
@@ -217,10 +217,9 @@ def update_gui_file_types(err_msg, new_files):
         print(file_text_tgt.lang)
         print(tokens_tgt)
 
-        # Avoid loading spaCy's French model
-        assert file_text_tgt.lang == 'eng_gb'
-        assert tokens_tgt == [[[['Bonjour', 'tout', 'le', 'monde', '!']]]]
-        assert tags_tgt == [None] * 5
+        assert file_text_tgt.lang == 'spa'
+        assert tokens_tgt == [[[['¡Hola', ','], ['mundo', '!']]]]
+        assert tags_tgt == [None] * 4
 
 def update_gui_unicode_decode_error(err_msg, new_files):
     assert not err_msg

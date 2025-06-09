@@ -7,10 +7,10 @@
   <body>
     <tu>
       <tuv xml:lang="en-US">
-        <seg>Hello world!</seg>
+        <seg>Hello, world!</seg>
       </tuv>
-      <tuv xml:lang="en-GB">
-        <seg>Bonjour tout le monde!</seg>
+      <tuv xml:lang="es-ES">
+        <seg>¡Hola, mundo!</seg>
       </tuv>
     </tu>
   </body>

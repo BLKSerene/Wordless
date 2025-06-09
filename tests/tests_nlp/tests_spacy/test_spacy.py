@@ -43,7 +43,7 @@ def wl_test_spacy(
     results_lemmatize = None,
     results_dependency_parse = None
 ):
-    lang_no_suffix = wl_conversion.remove_lang_code_suffixes(main, lang)
+    lang_no_suffix = wl_conversion.remove_lang_code_suffixes(lang)
     wl_nlp_utils.check_models(main, langs = [lang], lang_utils = [[f'spacy_{lang_no_suffix}']])
 
     test_sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
@@ -64,7 +64,7 @@ def wl_test_spacy(
         wl_test_dependency_parse(lang, test_sentence, tokens, results_dependency_parse)
 
 def wl_test_sentence_tokenize(lang, results_trf, results_lg):
-    lang_no_suffix = wl_conversion.remove_lang_code_suffixes(main, lang)
+    lang_no_suffix = wl_conversion.remove_lang_code_suffixes(lang)
     test_text = ''.join(getattr(wl_test_lang_examples, f'TEXT_{lang.upper()}'))
 
     if lang == 'other':
@@ -120,7 +120,7 @@ def wl_test_sentence_tokenize(lang, results_trf, results_lg):
         assert sentences_lg == results_lg
 
 def wl_test_word_tokenize(lang, test_sentence, results):
-    lang_no_suffix = wl_conversion.remove_lang_code_suffixes(main, lang)
+    lang_no_suffix = wl_conversion.remove_lang_code_suffixes(lang)
     word_tokenizer = f'spacy_{lang_no_suffix}'
 
     tokens = wl_word_tokenization.wl_word_tokenize_flat(
@@ -141,13 +141,13 @@ def wl_test_word_tokenize(lang, test_sentence, results):
     assert wl_texts.to_display_texts(tokens) == results
 
 def wl_test_pos_tag(lang, test_sentence, tokens, results, results_universal):
-    lang_no_suffix = wl_conversion.remove_lang_code_suffixes(main, lang)
+    lang_no_suffix = wl_conversion.remove_lang_code_suffixes(lang)
     pos_tagger = f'spacy_{lang_no_suffix}'
 
     test_pos_tagging.wl_test_pos_tag_models(lang, pos_tagger, test_sentence, tokens, results, results_universal)
 
 def wl_test_lemmatize(lang, test_sentence, tokens, results):
-    lang_no_suffix = wl_conversion.remove_lang_code_suffixes(main, lang)
+    lang_no_suffix = wl_conversion.remove_lang_code_suffixes(lang)
     lemmatizer = f'spacy_{lang_no_suffix}'
 
     test_lemmatization.wl_test_lemmatize_models(
@@ -156,7 +156,7 @@ def wl_test_lemmatize(lang, test_sentence, tokens, results):
     )
 
 def wl_test_dependency_parse(lang, test_sentence, tokens, results):
-    lang_no_suffix = wl_conversion.remove_lang_code_suffixes(main, lang)
+    lang_no_suffix = wl_conversion.remove_lang_code_suffixes(lang)
     dependency_parser = f'spacy_{lang_no_suffix}'
 
     test_dependency_parsing.wl_test_dependency_parse_models(lang, dependency_parser, test_sentence, tokens, results)

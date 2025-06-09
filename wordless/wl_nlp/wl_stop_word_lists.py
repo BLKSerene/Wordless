@@ -84,7 +84,7 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
             stop_words = laonlp.corpus.lao_stopwords()
         # NLTK
         elif stop_word_list.startswith('nltk_'):
-            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+            lang = wl_conversion.remove_lang_code_suffixes(lang)
             stop_words = nltk.corpus.stopwords.words(LANG_TEXTS_NLTK[lang])
         # PyThaiNLP
         elif stop_word_list == 'pythainlp_tha':
@@ -102,7 +102,7 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
                     lang = 'hye'
 
                 lang = wl_conversion.to_iso_639_1(main, lang)
-                lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+                lang = wl_conversion.remove_lang_code_suffixes(lang)
 
                 spacy_lang = importlib.import_module(f'spacy.lang.{lang}')
                 stop_words = spacy_lang.STOP_WORDS

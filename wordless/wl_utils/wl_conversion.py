@@ -56,16 +56,22 @@ def to_lang_text(main, lang_code):
 def to_lang_texts(main, lang_codes):
     return (to_lang_text(main, lang_code) for lang_code in lang_codes)
 
-def to_iso_639_3(main, lang_code):
+def to_iso_639_3(main, lang_code, no_suffix = False):
     lang_code = normalize_lang_code(lang_code)
 
     for lang_code_639_3, lang_code_639_1 in main.settings_global['langs'].values():
         if lang_code_639_1 == lang_code:
+            if no_suffix:
+                lang_code_639_3 = remove_lang_code_suffixes(lang_code_639_3)
+
             return lang_code_639_3
 
-    # ISO 639-1 codes without country codes
+    # Fuzzy matching without code suffixes
     for lang_code_639_3, lang_code_639_1 in main.settings_global['langs'].values():
-        if lang_code_639_1.startswith(f'{lang_code}_'):
+        if remove_lang_code_suffixes(lang_code_639_1) == remove_lang_code_suffixes(lang_code):
+            if no_suffix:
+                lang_code_639_3 = remove_lang_code_suffixes(lang_code_639_3)
+
             return lang_code_639_3
 
     raise Exception(f'Failed to convert ISO 639-1 code "{lang_code}" to ISO 639-3 code!')
@@ -73,22 +79,24 @@ def to_iso_639_3(main, lang_code):
 def to_iso_639_1(main, lang_code, no_suffix = False):
     lang_code = normalize_lang_code(lang_code)
 
+    for lang_code_639_3, lang_code_639_1 in main.settings_global['langs'].values():
+        if lang_code_639_3 == lang_code:
+            if no_suffix:
+                lang_code_639_1 = remove_lang_code_suffixes(lang_code_639_1)
+
+            return lang_code_639_1
+
     # Fuzzy matching without code suffixes
-    if '_' in lang_code:
-        for lang_code_639_3, lang_code_639_1 in main.settings_global['langs'].values():
-            if lang_code_639_3 == lang_code:
-                lang_code_converted = lang_code_639_1
-    else:
-        for lang_code_639_3, lang_code_639_1 in main.settings_global['langs'].values():
-            if remove_lang_code_suffixes(main, lang_code_639_3) == remove_lang_code_suffixes(main, lang_code):
-                lang_code_converted = lang_code_639_1
+    for lang_code_639_3, lang_code_639_1 in main.settings_global['langs'].values():
+        if remove_lang_code_suffixes(lang_code_639_3) == remove_lang_code_suffixes(lang_code):
+            if no_suffix:
+                lang_code_639_1 = remove_lang_code_suffixes(lang_code_639_1)
 
-    if no_suffix:
-        return remove_lang_code_suffixes(main, lang_code_converted)
-    else:
-        return lang_code_converted
+            return lang_code_639_1
 
-def remove_lang_code_suffixes(main, lang_code): # pylint: disable=unused-argument
+    raise Exception(f'Failed to convert ISO 639-3 code "{lang_code}" to ISO 639-1 code!')
+
+def remove_lang_code_suffixes(lang_code):
     lang_code = normalize_lang_code(lang_code)
 
     if '_' in lang_code:

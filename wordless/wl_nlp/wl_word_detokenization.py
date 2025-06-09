@@ -133,7 +133,7 @@ def wl_word_detokenize(main, tokens, lang):
             )
     # Other languages
     else:
-        lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+        lang = wl_conversion.remove_lang_code_suffixes(lang)
         text = main.__dict__[f'sacremoses_moses_detokenizer_{lang}'].detokenize(tokens)
 
     text = re.sub(r'\s{2,}', ' ', text).strip()
