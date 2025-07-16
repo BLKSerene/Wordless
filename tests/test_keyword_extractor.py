@@ -104,7 +104,8 @@ def update_gui(err_msg, keywords_freq_files, keywords_stats_files):
     assert keywords_stats_files
     assert len(keywords_freq_files) == len(keywords_stats_files)
 
-    num_files_selected = len(list(main_global.wl_file_area.get_selected_files()))
+    files_selected = list(main_global.wl_file_area.get_selected_files())
+    num_files_selected = len(files_selected)
     test_statistical_significance = main_global.settings_custom['keyword_extractor']['generation_settings']['test_statistical_significance']
 
     for keyword, stats_files in keywords_stats_files.items():
@@ -116,14 +117,13 @@ def update_gui(err_msg, keywords_freq_files, keywords_stats_files):
         assert keyword
 
         # Frequency
-        match list(main_global.wl_file_area.get_selected_file_names())[0]:
+        match files_selected[0]['name']:
             case '[bod] Tibetan tshegs':
                 assert freq_files == [0, 2, 2]
             case '[xct] Tibetan tshegs':
                 assert freq_files == [0, 1, 1]
-            case _:
-                assert any((freq_file for freq_file in freq_files[1:-1]))
 
+        assert any((freq_file for freq_file in freq_files[1:-1]))
         assert len(freq_files) == num_files_selected + 2
         assert freq_files[-1] == sum(freq_files[1:-1])
 

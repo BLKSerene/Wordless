@@ -98,7 +98,7 @@ if getattr(sys, '_MEIPASS', False):
     PYTHAINLP_DEFAULT_DATA_DIR = os.path.realpath(pythainlp.tools.PYTHAINLP_DEFAULT_DATA_DIR)
     pythainlp.corpus._CORPUS_DB_PATH = wl_paths.get_path_file(pythainlp.tools.PYTHAINLP_DEFAULT_DATA_DIR, pythainlp.corpus._CORPUS_DB_FILENAME)
     pythainlp.tools.path.get_pythainlp_data_path = lambda: PYTHAINLP_DEFAULT_DATA_DIR
-    # spaCy-pkuseg
+    # spacy-pkuseg
     spacy_pkuseg.config.pkuseg_home = wl_paths.get_path_file('.pkuseg')
     # Underthesea
     underthesea.file_utils.UNDERTHESEA_FOLDER = wl_paths.get_path_file('.underthesea')

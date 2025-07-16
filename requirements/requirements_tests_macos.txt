@@ -44,7 +44,7 @@ pymorphy3-dicts-uk == 2.4.1.1.1663094765
 ## spaCy
 spacy == 3.8.4
 spacy-lookups-data == 1.0.5
-# Install spacy-pkuseg separately with "--no-deps" to avoid depending on NumPy 2
+spacy-pkuseg == 1.0.1
 
 ## SudachiPy
 sudachipy == 0.6.10

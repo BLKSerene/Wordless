@@ -60,11 +60,11 @@ def test_ngram_generator():
             case _:
                 wl_test_init.select_test_files(main, no_files = (i + 1,))
 
-        global main_global
-        main_global = main
-
         settings['generation_settings']['measure_dispersion'] = random.choice(measures_dispersion)
         settings['generation_settings']['measure_adjusted_freq'] = random.choice(measures_adjusted_freq)
+
+        global main_global
+        main_global = main
 
         print(f"Files: {' | '.join(wl_test_init.get_test_file_names(main))}")
         print(f"Measure of dispersion: {settings['generation_settings']['measure_dispersion']}")
@@ -82,7 +82,8 @@ def update_gui(err_msg, ngrams_freq_files, ngrams_stats_files):
 
     assert len(ngrams_freq_files) == len(ngrams_stats_files) >= 1
 
-    num_files_selected = len(list(main_global.wl_file_area.get_selected_files()))
+    files_selected = list(main_global.wl_file_area.get_selected_files())
+    num_files_selected = len(files_selected)
     settings = main_global.settings_custom['ngram_generator']['generation_settings']
 
     measure_dispersion = settings['measure_dispersion']
@@ -95,7 +96,7 @@ def update_gui(err_msg, ngrams_freq_files, ngrams_stats_files):
         assert ngram
 
         # Frequency
-        match list(main_global.wl_file_area.get_selected_file_names())[0]:
+        match files_selected[0]['name']:
             case '[bod] Tibetan tshegs':
                 assert freq_files == [2, 2]
             case '[xct] Tibetan tshegs':

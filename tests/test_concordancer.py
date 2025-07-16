@@ -70,8 +70,6 @@ def update_gui_table(err_msg, concordance_lines):
     assert not err_msg
     assert concordance_lines
 
-    file_names_selected = list(main_global.wl_file_area.get_selected_file_names())
-
     for concordance_line in concordance_lines:
         assert len(concordance_line) == 9
 
@@ -85,6 +83,8 @@ def update_gui_table(err_msg, concordance_lines):
         no_sentence, len_sentences = concordance_line[6]
         no_para, len_paras = concordance_line[7]
         file_name = concordance_line[8]
+
+        file_names_selected = list(main_global.wl_file_area.get_selected_file_names())
 
         # Node
         assert node_tokens_raw

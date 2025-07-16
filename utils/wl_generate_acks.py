@@ -146,7 +146,7 @@ ACKS = (
         'MIT', 'https://github.com/explosion/spaCy/blob/master/LICENSE'
     ), (
         'spacy-pkuseg', 'https://github.com/explosion/spacy-pkuseg',
-        '1.0.0', 'Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶), Xuancheng Ren (任宣丞),<br>Yi Zhang (张艺), Zhiyuan Zhang (张之远), Bingzhen Wei (位冰镇),<br>Xu Sun (孙栩), Adriane Boyd, Ines Montani',
+        '1.0.1', 'Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶), Xuancheng Ren (任宣丞),<br>Yi Zhang (张艺), Zhiyuan Zhang (张之远), Bingzhen Wei (位冰镇),<br>Xu Sun (孙栩), Matthew Honnibal',
         'MIT', 'https://github.com/explosion/spacy-pkuseg/blob/master/LICENSE'
     ), (
         'Stanza', 'https://github.com/stanfordnlp/stanza',
@@ -192,11 +192,11 @@ ACKS_TRS = {
         'SciPy 开发人员',
         'SciPy 開發人員'
     ),
-    'Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶),<br>Xuancheng Ren (任宣丞), Yi Zhang (张艺),<br>Zhiyuan Zhang (张之远), Bingzhen Wei (位冰镇),<br>Xu Sun (孙栩)<br>Adriane Boyd, Ines Montani': (
-        '罗睿轩, 许晶晶, 任宣丞, 张艺, 张之远, 位冰镇, 孙栩<br>Adriane Boyd, Ines Montani',
-        '羅睿軒, 許晶晶, 任宣丞, 張藝, 張之遠, 位冰鎮, 孫栩<br>Adriane Boyd, Ines Montani'
+    'Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶), Xuancheng Ren (任宣丞),<br>Yi Zhang (张艺), Zhiyuan Zhang (张之远), Bingzhen Wei (位冰镇),<br>Xu Sun (孙栩), Matthew Honnibal': (
+        '罗睿轩, 许晶晶, 任宣丞, 张艺, 张之远, 位冰镇, 孙栩<br>Matthew Honnibal',
+        '羅睿軒, 許晶晶, 任宣丞, 張藝, 張之遠, 位冰鎮, 孫栩<br>Matthew Honnibal'
     ),
-    'Peng Qi (齐鹏), Yuhao Zhang (张宇浩),<br>Yuhui Zhang (张钰晖), Jason Bolton,<br>Tim Dozat, John Bauer': (
+    'Peng Qi (齐鹏), Yuhao Zhang (张宇浩), Yuhui Zhang (张钰晖),<br>Jason Bolton, Tim Dozat, John Bauer': (
         '齐鹏, 张宇浩, 张钰晖,<br>Jason Bolton, Tim Dozat, John Bauer',
         '齊鵬, 張宇浩, 張鈺暉,<br>Jason Bolton, Tim Dozat, John Bauer'
     )

@@ -40,13 +40,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip setuptools
           pip install --requirement requirements/requirements_tests.txt
-          # Install spacy-pkuseg separately with "--no-deps" to avoid depending on NumPy 2.x
-          pip install --no-deps spacy-pkuseg==1.0.0
           # For Codecov
           pip install pytest-cov
           # Download models and data files
           python utils/wl_download_ci.py
           python utils/wl_download_modern_botok.py
+          python utils/wl_download_pkuseg.py
 
       - name: Run Tests and collect coverage
         run: |
@@ -104,11 +103,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip setuptools
           pip install --requirement requirements/requirements_tests_macos.txt
-          # Install spacy-pkuseg separately with "--no-deps" to avoid depending on NumPy 2.x
-          pip install --no-deps spacy-pkuseg==1.0.0
           # Download models and data files
           python utils/wl_download_ci.py
           python utils/wl_download_modern_botok.py
+          python utils/wl_download_pkuseg.py
 
       - name: Run Tests
         run: |
@@ -161,11 +159,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip setuptools
           pip install --requirement requirements/requirements_tests.txt
-          # Install spacy-pkuseg separately with "--no-deps" to avoid depending on NumPy 2.x
-          pip install --no-deps spacy-pkuseg==1.0.0
           # Download models and data files
           python utils/wl_download_ci.py
           python utils/wl_download_modern_botok.py
+          python utils/wl_download_pkuseg.py
 
       - name: Run Tests
         run: |

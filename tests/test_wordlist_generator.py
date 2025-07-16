@@ -61,11 +61,11 @@ def test_wordlist_generator():
             case _:
                 wl_test_init.select_test_files(main, no_files = (i + 1,))
 
-        global main_global
-        main_global = main
-
         settings['generation_settings']['measure_dispersion'] = random.choice(measures_dispersion)
         settings['generation_settings']['measure_adjusted_freq'] = random.choice(measures_adjusted_freq)
+
+        global main_global
+        main_global = main
 
         print(f"Files: {' | '.join(wl_test_init.get_test_file_names(main))}")
         print(f"Measure of dispersion: {settings['generation_settings']['measure_dispersion']}")
@@ -83,7 +83,8 @@ def update_gui(err_msg, tokens_freq_files, tokens_stats_files, syls_tokens):
 
     assert len(tokens_freq_files) == len(tokens_stats_files) >= 1
 
-    num_files_selected = len(list(main_global.wl_file_area.get_selected_files()))
+    files_selected = list(main_global.wl_file_area.get_selected_files())
+    num_files_selected = len(files_selected)
     settings = main_global.settings_custom['wordlist_generator']['generation_settings']
 
     show_syllabified_forms = settings['show_syllabified_forms']
@@ -100,7 +101,7 @@ def update_gui(err_msg, tokens_freq_files, tokens_stats_files, syls_tokens):
         if show_syllabified_forms:
             token_syllabified_form = list(syls_tokens[token].values())[0]
 
-            if list(main_global.wl_file_area.get_selected_file_names())[0] in (
+            if files_selected[0]['name'] in (
                 '[bod] Tibetan tshegs',
                 '[xct] Tibetan tshegs',
                 '[other] No language support'
@@ -112,7 +113,7 @@ def update_gui(err_msg, tokens_freq_files, tokens_stats_files, syls_tokens):
             assert not syls_tokens
 
         # Frequency
-        match list(main_global.wl_file_area.get_selected_file_names())[0]:
+        match files_selected[0]['name']:
             case '[bod] Tibetan tshegs':
                 freq_files = [2, 2]
             case '[xct] Tibetan tshegs':

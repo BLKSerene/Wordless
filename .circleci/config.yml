@@ -40,11 +40,10 @@ jobs:
           command: |
             pip install --upgrade pip setuptools
             pip install --requirement requirements/requirements_tests.txt
-            # Install spacy-pkuseg separately with "--no-deps" to avoid depending on NumPy 2.x
-            pip install --no-deps spacy-pkuseg==1.0.0
             # Download models and data files
             python utils/wl_download_ci.py
             python utils/wl_download_modern_botok.py
+            python utils/wl_download_pkuseg.py
           name: Install dependencies
 
       # Run tests
@@ -109,11 +108,10 @@ jobs:
           command: |
             pip3 install --upgrade pip setuptools
             pip3 install --requirement requirements/requirements_tests_macos.txt
-            # Install spacy-pkuseg separately with "--no-deps" to avoid depending on NumPy 2.x
-            pip3 install --no-deps spacy-pkuseg==1.0.0
             # Download models and data files
             python3 utils/wl_download_ci.py
             python3 utils/wl_download_modern_botok.py
+            python3 utils/wl_download_pkuseg.py
           name: Install dependencies
 
       # Run tests
@@ -178,11 +176,10 @@ jobs:
           command: |
             pip3.11 install --upgrade pip setuptools
             pip3.11 install --requirement requirements/requirements_tests.txt
-            # Install spacy-pkuseg separately with "--no-deps" to avoid depending on NumPy 2.x
-            pip3.11 install --no-deps spacy-pkuseg==1.0.0
             # Download models and data files
             python3.11 utils/wl_download_ci.py
             python3.11 utils/wl_download_modern_botok.py
+            python3.11 utils/wl_download_pkuseg.py
           name: Install dependencies
 
       # Run tests

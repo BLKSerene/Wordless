@@ -33,9 +33,9 @@ NUM_FILES_OBSERVED = 3
 NUM_FILES_REF = 3
 NUM_FILES_ALL = NUM_FILES_OBSERVED + NUM_FILES_REF
 
-FILES_TESTS = glob.glob('tests/files/file_area/*.txt')
-FILES_XCT_BOD = glob.glob('tests/files/file_area/xct_bod/*.txt')
-FILES_MISC = glob.glob('tests/files/file_area/misc/*.txt')
+FILES_TESTS = sorted(glob.glob('tests/files/file_area/*.txt'))
+FILES_XCT_BOD = sorted(glob.glob('tests/files/file_area/xct_bod/*.txt'))
+FILES_MISC = sorted(glob.glob('tests/files/file_area/misc/*.txt'))
 
 LEN_FILES_TESTS_OTHERS = len(FILES_XCT_BOD) + len(FILES_MISC)
 
