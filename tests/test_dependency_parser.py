@@ -68,7 +68,7 @@ def update_gui(err_msg, results):
     file_names_selected = list(main_global.wl_file_area.get_selected_file_names())
 
     for (
-        head, dependent, dependency_relation, dependency_len,
+        head, dependent, dependency_relation, dd,
         sentence_tokens_raw, sentence_tokens_fig, sentence_tokens_search,
         no_sentence, len_sentences, file
     ) in results:
@@ -79,8 +79,8 @@ def update_gui(err_msg, results):
 
         # Dependency Relation
         assert dependency_relation
-        # Dependency Length
-        assert isinstance(dependency_len, int)
+        # Dependency Distance
+        assert isinstance(dd, int)
 
         # Sentence
         assert all(sentence_tokens_raw)

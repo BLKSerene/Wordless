@@ -458,17 +458,17 @@ def init_settings_default(main):
                 'len_dependent_max': 20,
                 'len_dependent_max_no_limit': True,
 
-                'dependency_len_sync': False,
-                'dependency_len_min': -10,
-                'dependency_len_min_no_limit': True,
-                'dependency_len_max': 10,
-                'dependency_len_max_no_limit': True,
+                'dd_sync': False,
+                'dd_min': -10,
+                'dd_min_no_limit': True,
+                'dd_max': 10,
+                'dd_max_no_limit': True,
 
-                'dependency_len_abs_sync': False,
-                'dependency_len_abs_min': 0,
-                'dependency_len_abs_min_no_limit': True,
-                'dependency_len_abs_max': 10,
-                'dependency_len_abs_max_no_limit': True,
+                'add_sync': False,
+                'add_min': 0,
+                'add_min_no_limit': True,
+                'add_max': 10,
+                'add_max_no_limit': True,
             },
 
             'search_results': {
@@ -2405,7 +2405,7 @@ def init_settings_default(main):
                 },
 
                 'msttr': {
-                    'num_tokens_in_each_seg': 100
+                    'num_tokens_in_each_seg': 1000
                 },
 
                 'mtld': {

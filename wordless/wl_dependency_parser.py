@@ -338,16 +338,16 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Filter_Search):
                 _tr('Wl_Table_Dependency_Parser', 'Head'),
                 _tr('Wl_Table_Dependency_Parser', 'Dependent'),
                 _tr('Wl_Table_Dependency_Parser', 'Dependency Relation'),
-                _tr('Wl_Table_Dependency_Parser', 'Dependency Length'),
-                _tr('Wl_Table_Dependency_Parser', 'Dependency Length (Absolute)'),
+                _tr('Wl_Table_Dependency_Parser', 'Dependency Distance'),
+                _tr('Wl_Table_Dependency_Parser', 'Dependency Distance (Absolute)'),
                 _tr('Wl_Table_Dependency_Parser', 'Sentence'),
                 _tr('Wl_Table_Dependency_Parser', 'Sentence No.'),
                 _tr('Wl_Table_Dependency_Parser', 'Sentence No. %'),
                 _tr('Wl_Table_Dependency_Parser', 'File')
             ),
             headers_int = {
-                _tr('Wl_Table_Dependency_Parser', 'Dependency Length'),
-                _tr('Wl_Table_Dependency_Parser', 'Dependency Length (Absolute)'),
+                _tr('Wl_Table_Dependency_Parser', 'Dependency Distance'),
+                _tr('Wl_Table_Dependency_Parser', 'Dependency Distance (Absolute)'),
                 _tr('Wl_Table_Dependency_Parser', 'Sentence No.')
             },
             headers_pct = {
@@ -408,7 +408,7 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Filter_Search):
                 self.disable_updates()
 
                 for i, (
-                    head, dependent, dependency_relation, dependency_len,
+                    head, dependent, dependency_relation, dd,
                     sentence_tokens_raw, sentence_tokens_fig, sentence_tokens_search,
                     no_sentence, len_sentences, file
                 ) in enumerate(results):
@@ -423,9 +423,9 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Filter_Search):
                     # Dependency Relation
                     self.model().setItem(i, 2, wl_tables.Wl_Table_Item(dependency_relation))
 
-                    # Dependency Length
-                    self.set_item_num(i, 3, dependency_len)
-                    self.set_item_num(i, 4, numpy.abs(dependency_len))
+                    # Dependency Distance
+                    self.set_item_num(i, 3, dd)
+                    self.set_item_num(i, 4, numpy.abs(dd))
 
                     # Sentence
                     self.setIndexWidget(
@@ -541,22 +541,17 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                     for sentence in para:
                         sentence = list(wl_misc.flatten_list(sentence))
 
-                        dependencies = [
-                            (token, token.head, token.dependency_relation)
-                            for token in sentence
-                        ]
-
-                        for i, (token, head, dependency_relation) in enumerate(dependencies):
+                        for i, token in enumerate(sentence):
                             j = i_token + i
 
                             if (
                                 (
                                     (
                                         not settings['search_settings']['match_dependency_relations']
-                                        and (token in search_terms or head in search_terms)
+                                        and (token in search_terms or token.head in search_terms)
                                     ) or (
                                         settings['search_settings']['match_dependency_relations']
-                                        and dependency_relation in wl_texts.to_display_texts(search_terms)
+                                        and token.dependency_relation in wl_texts.to_display_texts(search_terms)
                                     )
                                 ) and (
                                     # Ignore cases where heads are punctuation marks
@@ -577,32 +572,21 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                                 # Sentence
                                 sentence_tokens_raw = []
                                 sentence_tokens_fig = []
-                                # Calculate dependency length based on modified tokens
-                                i_head = -1
-                                i_dependent = -1
 
                                 # Highlight heads and dependents
-                                for i, sentence_token in enumerate(sentence):
-                                    if sentence_token is head:
+                                for sentence_token in sentence:
+                                    if sentence_token is token.head:
                                         sentence_tokens_raw.append(f'''
                                             <span style="color: {head_color}; font-weight: bold;">
                                                 {wl_nlp_utils.escape_token(sentence_token.display_text(punc_mark = True))}
                                             </span>
                                         ''')
-
-                                        i_head = i
-
-                                        # Roots are both the head and the dependent
-                                        if sentence_token is token:
-                                            i_dependent = i
                                     elif sentence_token is token:
                                         sentence_tokens_raw.append(f'''
                                             <span style="color: {dependent_color}; font-weight: bold;">
                                                 {wl_nlp_utils.escape_token(sentence_token.display_text(punc_mark = True))}
                                             </span>
                                         ''')
-
-                                        i_dependent = i
                                     else:
                                         sentence_tokens_raw.append(
                                             wl_nlp_utils.escape_token(sentence_token.display_text(punc_mark = True))
@@ -627,13 +611,18 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                                             ))
 
                                 # Head
-                                results[-1].append(head)
+                                results[-1].append(token.head)
                                 # Dependent
                                 results[-1].append(token)
                                 # Dependency Relation
-                                results[-1].append(dependency_relation)
-                                # Dependency Length
-                                results[-1].append(i_head - i_dependent)
+                                results[-1].append(token.dependency_relation)
+
+                                # Dependency Distance
+                                if settings['token_settings']['punc_marks']:
+                                    results[-1].append(token.dd)
+                                else:
+                                    results[-1].append(token.dd_no_punc)
+
                                 # Sentence
                                 results[-1].extend((sentence_tokens_raw, sentence_tokens_fig, sentence_tokens_search))
                                 # Sentence No.

@@ -38,8 +38,9 @@
   - [12.4 Supported Measures](#doc-12-4)
     - [12.4.1 Readability Formulas](#doc-12-4-1)
     - [12.4.2 Indicators of Lexical Density/Diversity](#doc-12-4-2)
-    - [12.4.3 Measures of Dispersion and Adjusted Frequency](#doc-12-4-3)
-    - [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, and Measures of Effect Size](#doc-12-4-4)
+    - [12.4.3 Indicators of Syntactic Complexity](#doc-12-4-3)
+    - [12.4.4 Measures of Dispersion and Adjusted Frequency](#doc-12-4-4)
+    - [12.4.5 Tests of Statistical Significance, Measures of Bayes Factor, and Measures of Effect Size](#doc-12-4-4)
 - [13 References](#doc-13)
 
 <span id="doc-1"></span>
@@ -134,207 +135,272 @@ In *Profiler*, you can check and compare general linguistic features of differen
 
 All statistics are grouped into 5 tables for better readability: Readability, Counts, Lexical Density/Diversity, Lengths, Length Breakdown.
 
-- **3.1.1 Readability**<br>
-  Readability statistics of each file calculated according to the different readability tests used. See [Section 12.4.1](#doc-12-4-1) for more details.
+- **3.1 Readability**<br>
+  Measures of readability of each file calculated according to the different readability tests used. See [Section 12.4.1](#doc-12-4-1) for more details.
 
-- **3.1.2 Counts**<br>
-  - **3.1.2.1 Count of Paragraphs**<br>
+- **3.2 Counts**<br>
+  - **3.2.1 Count of Paragraphs**<br>
     The number of paragraphs in each file. Each line in the file is counted as one paragraph. Blank lines and lines containing only spaces, tabs and other invisible characters are not counted.
 
-  - **3.1.2.2 Count of Paragraphs %**<br>
+  - **3.2.2 Count of Paragraphs %**<br>
     The percentage of the number of paragraphs in each file out of the total number of paragraphs in all files.
 
-  - **3.1.2.3 Count of Sentences**<br>
+  - **3.2.3 Count of Sentences**<br>
     The number of sentences in each file. *Wordless* automatically applies the built-in sentence tokenizer according to the language of each file to calculate the number of sentences in each file. You can modify sentence tokenizer settings via **Menu Bar → Preferences → Settings → Sentence Tokenization → Sentence Tokenizer Settings**.
 
-  - **3.1.2.4 Count of Sentences %**<br>
+  - **3.2.4 Count of Sentences %**<br>
     The percentage of the number of sentences in each file out of the total number of sentences in all files.
 
-  - **3.1.2.5 Count of Sentence Segments**<br>
+  - **3.2.5 Count of Sentence Segments**<br>
     The number of sentence segments in each file. Each part of sentence ending with one or more consecutive [terminal punctuation marks](https://en.wikipedia.org/wiki/Terminal_punctuation) (as per the [Unicode Standard](https://en.wikipedia.org/wiki/Unicode)) is counted as one sentence segment. See [here](https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=[:Terminal_Punctuation=Yes:]) for the full list of terminal punctuation marks.
 
-  - **3.1.2.6 Count of Sentence Segments %**<br>
+  - **3.2.6 Count of Sentence Segments %**<br>
     The percentage of the number of sentence segments in each file out of the total number of sentence segments in all files.
 
-  - **3.1.2.7 Count of Tokens**<br>
+  - **3.2.7 Count of Tokens**<br>
     The number of tokens in each file. *Wordless* automatically applies the built-in word tokenizer according to the language of each file to calculate the number of tokens in each file. You can modify word tokenizer settings via **Menu Bar → Preferences → Settings → Word Tokenization → Word Tokenizer Settings**.
 
     You can specify what should be counted as a "token" via **Token Settings** in the *Settings Area*
 
-  - **3.1.2.8 Count of Tokens %**<br>
+  - **3.2.8 Count of Tokens %**<br>
     The percentage of the number of tokens in each file out of the total number of tokens in all files.
 
-  - **3.1.2.9 Count of Types**<br>
+  - **3.2.9 Count of Types**<br>
     The number of token types in each file.
 
-  - **3.1.2.10 Count of Types %**<br>
+  - **3.2.10 Count of Types %**<br>
     The percentage of the number of token types in each file out of the total number of token types in all files.
 
-  - **3.1.2.11 Count of Syllables**<br>
+  - **3.2.11 Count of Syllables**<br>
     The number of syllables in each files. *Wordless* automatically applies the built-in syllable tokenizer according to the language of each file to calculate the number of syllable in each file. You can modify syllable tokenizer settings via **Menu Bar → Preferences → Settings → Syllable Tokenization → Syllable Tokenizer Settings**.
 
-  - **3.1.2.12 Count of Syllables %**<br>
+  - **3.2.12 Count of Syllables %**<br>
     The percentage of the number of syllables in each file out of the total number of syllable in all files.
 
-  - **3.1.2.13 Count of Characters**<br>
+  - **3.2.13 Count of Characters**<br>
     The number of single characters in each file. Spaces, tabs and all other invisible characters are not counted.
 
-  - **3.1.2.14 Count of Characters %**<br>
+  - **3.2.14 Count of Characters %**<br>
     The percentage of the number of characters in each file out of the total number of characters in all files.
 
-- **3.1.3 Lexical Density/Diversity**<br>
-  Statistics of lexical density/diversity which reflect the the extend to which the vocabulary used in each file varies. See [Section 12.4.2](#doc-12-4-2) for more details.
+- **3.3 Lexical Density/Diversity**<br>
+  Indicators of lexical density/diversity which measure the the extent to which the vocabulary used in each corpus varies. See [Section 12.4.2](#doc-12-4-2) for more details.
 
-- **3.1.4 Lengths**<br>
-  - **3.1.4.1 Paragraph Length in Sentences / Sentence Segments / Tokens (Mean)**<br>
+- **3.4 Syntactic Complexity**<br>
+  Indicators of syntactic complexity which measure the syntactic complexity of each corpus. See [Section 12.4.3](#doc-12-4-3) for more details.
+  - **3.4.1 (Absolute) Dependency Distance (Mean)**<br>
+    The average value of (absolute) dependency distance of all dependency relations in the corpus, excluding root relations.
+
+  - **3.4.2 (Absolute) Dependency Distance (Standard Deviation)**<br>
+    The standard deviation of (absolute) dependency distance of all dependency relations in the corpus, excluding root relations.
+
+  - **3.4.3 (Absolute) Dependency Distance (Variance)**<br>
+    The variance of (absolute) dependency distance of all dependency relations in the corpus, excluding root relations.
+
+  - **3.4.4 (Absolute) Dependency Distance (Minimum)**<br>
+    The minimum of (absolute) dependency distance of all dependency relations in the corpus, excluding root relations.
+
+  - **3.4.5 (Absolute) Dependency Distance (25th Percentile)**<br>
+    The 25th percentile of (absolute) dependency distance of all dependency relations in the corpus, excluding root relations.
+
+  - **3.4.6 (Absolute) Dependency Distance (Median)**<br>
+    The median of (absolute) dependency distance of all dependency relations in the corpus, excluding root relations.
+
+  - **3.4.7 (Absolute) Dependency Distance (75th Percentile)**<br>
+    The 75th percentile of (absolute) dependency distance of all dependency relations in the corpus, excluding root relations.
+
+  - **3.4.8 (Absolute) Dependency Distance (Maximum)**<br>
+    The maximum of (absolute) dependency distance of all dependency relations in the corpus, excluding root relations.
+
+  - **3.4.9 (Absolute) Dependency Distance (Range)**<br>
+    The range of (absolute) dependency distance of all dependency relations in the corpus, excluding root relations.
+
+  - **3.4.10 (Absolute) Dependency Distance (Interquartile Range)**<br>
+    The interquartile range of (absolute) dependency distance of all dependency relations in the corpus, excluding root relations.
+
+  - **3.4.11 (Absolute) Dependency Distance (Modes)**<br>
+    The mode(s) of (absolute) dependency distance of all dependency relations in the corpus, excluding root relations.
+
+  - **3.4.12 Mean/Normalized Dependency Distance (Mean)**<br>
+    The average value of mean/normalized dependency distance of all sentences in the corpus.
+
+  - **3.4.13 Mean/Normalized Dependency Distance (Standard Deviation)**<br>
+    The standard deviation of mean/normalized dependency distance of all sentences in the corpus.
+
+  - **3.4.14 Mean/Normalized Dependency Distance (Variance)**<br>
+    The variance of mean/normalized dependency distance of all sentences in the corpus.
+
+  - **3.4.15 Mean/Normalized Dependency Distance (Minimum)**<br>
+    The minimum of mean/normalized dependency distance of all sentences in the corpus.
+
+  - **3.4.16 Mean/Normalized Dependency Distance (25th Percentile)**<br>
+    The 25th percentile of mean/normalized dependency distance of all sentences in the corpus.
+
+  - **3.4.17 Mean/Normalized Dependency Distance (Median)**<br>
+    The median of mean/normalized dependency distance of all sentences in the corpus.
+
+  - **3.4.18 Mean/Normalized Dependency Distance (75th Percentile)**<br>
+    The 75th percentile of mean/normalized dependency distance of all sentences in the corpus.
+
+  - **3.4.19 Mean/Normalized Dependency Distance (Maximum)**<br>
+    The maximum of mean/normalized dependency distance of all sentences in the corpus.
+
+  - **3.4.20 Mean/Normalized Dependency Distance (Range)**<br>
+    The range of mean/normalized dependency distance of all sentences in the corpus.
+
+  - **3.4.21 Mean/Normalized Dependency Distance (Interquartile Range)**<br>
+    The interquartile range of mean/normalized dependency distance of all sentences in the corpus.
+
+- **3.5 Lengths**<br>
+  - **3.5.1 Paragraph Length in Sentences / Sentence Segments / Tokens (Mean)**<br>
     The average value of paragraph lengths expressed in sentences / sentence segments / tokens.
 
-  - **3.1.4.2 Paragraph Length in Sentences / Sentence Segments / Tokens (Standard Deviation)**<br>
+  - **3.5.2 Paragraph Length in Sentences / Sentence Segments / Tokens (Standard Deviation)**<br>
     The standard deviation of paragraph lengths expressed in sentences / sentence segments / tokens.
 
-  - **3.1.4.3 Paragraph Length in Sentences / Sentence Segments / Tokens (Variance)**<br>
+  - **3.5.3 Paragraph Length in Sentences / Sentence Segments / Tokens (Variance)**<br>
     The variance of paragraph lengths expressed in sentences / sentence segments / tokens.
 
-  - **3.1.4.4 Paragraph Length in Sentences / Sentence Segments / Tokens (Minimum)**<br>
+  - **3.5.4 Paragraph Length in Sentences / Sentence Segments / Tokens (Minimum)**<br>
     The minimum of paragraph lengths expressed in sentences / sentence segments / tokens.
 
-  - **3.1.4.5 Paragraph Length in Sentences / Sentence Segments / Tokens (25th Percentile)**<br>
+  - **3.5.5 Paragraph Length in Sentences / Sentence Segments / Tokens (25th Percentile)**<br>
     The 25th percentile of paragraph lengths expressed in sentences / sentence segments / tokens.
 
-  - **3.1.4.6 Paragraph Length in Sentences / Sentence Segments / Tokens (Median)**<br>
+  - **3.5.6 Paragraph Length in Sentences / Sentence Segments / Tokens (Median)**<br>
     The median of paragraph lengths expressed in sentences / sentence segments / tokens.
 
-  - **3.1.4.7 Paragraph Length in Sentences / Sentence Segments / Tokens (75th Percentile)**<br>
+  - **3.5.7 Paragraph Length in Sentences / Sentence Segments / Tokens (75th Percentile)**<br>
     The 75th percentile of paragraph lengths expressed in sentences / sentence segments / tokens.
 
-  - **3.1.4.8 Paragraph Length in Sentences / Sentence Segments / Tokens (Maximum)**<br>
+  - **3.5.8 Paragraph Length in Sentences / Sentence Segments / Tokens (Maximum)**<br>
     The maximum of paragraph lengths expressed in sentences / sentence segments / tokens.
 
-  - **3.1.4.9 Paragraph Length in Sentences / Sentence Segments / Tokens (Range)**<br>
+  - **3.5.9 Paragraph Length in Sentences / Sentence Segments / Tokens (Range)**<br>
     The range of paragraph lengths expressed in sentences / sentence segments / tokens.
 
-  - **3.1.4.10 Paragraph Length in Sentences / Sentence Segments / Tokens (Interquartile Range)**<br>
+  - **3.5.10 Paragraph Length in Sentences / Sentence Segments / Tokens (Interquartile Range)**<br>
     The interquartile range of paragraph lengths expressed in sentences / sentence segments / tokens.
 
-  - **3.1.4.11 Paragraph Length in Sentences / Sentence Segments / Tokens (Modes)**<br>
+  - **3.5.11 Paragraph Length in Sentences / Sentence Segments / Tokens (Modes)**<br>
     The mode(s) of paragraph lengths expressed in sentences / sentence segments / tokens.
 
-  - **3.1.4.12 Sentence / Sentence Segment Length in Tokens (Mean)**<br>
+  - **3.5.12 Sentence / Sentence Segment Length in Tokens (Mean)**<br>
     The average value of sentence / sentence segment lengths expressed in tokens.
 
-  - **3.1.4.13 Sentence / Sentence Segment Length in Tokens (Standard Deviation)**<br>
+  - **3.5.13 Sentence / Sentence Segment Length in Tokens (Standard Deviation)**<br>
     The standard deviation of sentence / sentence segment lengths expressed in tokens.
 
-  - **3.1.4.14 Sentence / Sentence Segment Length in Tokens (Variance)**<br>
+  - **3.5.14 Sentence / Sentence Segment Length in Tokens (Variance)**<br>
     The variance of sentence / sentence segment lengths expressed in tokens.
 
-  - **3.1.4.15 Sentence / Sentence Segment Length in Tokens (Minimum)**<br>
+  - **3.5.15 Sentence / Sentence Segment Length in Tokens (Minimum)**<br>
     The minimum of sentence / sentence segment lengths expressed in tokens.
 
-  - **3.1.4.16 Sentence / Sentence Segment Length in Tokens (25th Percentile)**<br>
+  - **3.5.16 Sentence / Sentence Segment Length in Tokens (25th Percentile)**<br>
     The 25th percentile of sentence / sentence segment lengths expressed in tokens.
 
-  - **3.1.4.17 Sentence / Sentence Segment Length in Tokens (Median)**<br>
+  - **3.5.17 Sentence / Sentence Segment Length in Tokens (Median)**<br>
     The median of sentence / sentence segment lengths expressed in tokens.
 
-  - **3.1.4.18 Sentence / Sentence Segment Length in Tokens (75th Percentile)**<br>
+  - **3.5.18 Sentence / Sentence Segment Length in Tokens (75th Percentile)**<br>
     The 75th percentile of sentence / sentence segment lengths expressed in tokens.
 
-  - **3.1.4.19 Sentence / Sentence Segment Length in Tokens (Maximum)**<br>
+  - **3.5.19 Sentence / Sentence Segment Length in Tokens (Maximum)**<br>
     The maximum of sentence / sentence segment lengths expressed in tokens.
 
-  - **3.1.4.20 Sentence / Sentence Segment Length in Tokens (Range)**<br>
+  - **3.5.20 Sentence / Sentence Segment Length in Tokens (Range)**<br>
     The range of sentence / sentence segment lengths expressed in tokens.
 
-  - **3.1.4.21 Sentence / Sentence Segment Length in Tokens (Interquartile Range)**<br>
+  - **3.5.21 Sentence / Sentence Segment Length in Tokens (Interquartile Range)**<br>
     The interquartile range of sentence / sentence segment lengths expressed in tokens.
 
-  - **3.1.4.22 Sentence / Sentence Segment Length in Tokens (Modes)**<br>
+  - **3.5.22 Sentence / Sentence Segment Length in Tokens (Modes)**<br>
     The mode(s) of sentence / sentence segment lengths expressed in tokens.
 
-  - **3.1.4.23 Token/Type Length in Syllables/Characters (Mean)**<br>
+  - **3.5.23 Token/Type Length in Syllables/Characters (Mean)**<br>
     The average value of token / token type lengths expressed in syllables/characters.
 
-  - **3.1.4.24 Token/Type Length in Syllables/Characters (Standard Deviation)**<br>
+  - **3.5.24 Token/Type Length in Syllables/Characters (Standard Deviation)**<br>
     The standard deviation of token / token type lengths expressed in syllables/characters.
 
-  - **3.1.4.25 Token/Type Length in Syllables/Characters (Variance)**<br>
+  - **3.5.25 Token/Type Length in Syllables/Characters (Variance)**<br>
     The variance of token / token type lengths expressed in syllables/characters.
 
-  - **3.1.4.26 Token/Type Length in Syllables/Characters (Minimum)**<br>
+  - **3.5.26 Token/Type Length in Syllables/Characters (Minimum)**<br>
     The minimum of token / token type lengths expressed in syllables/characters.
 
-  - **3.1.4.27 Token/Type Length in Syllables/Characters (25th Percentile)**<br>
+  - **3.5.27 Token/Type Length in Syllables/Characters (25th Percentile)**<br>
     The 25th percentile of token / token type lengths expressed in syllables/characters.
 
-  - **3.1.4.28 Token/Type Length in Syllables/Characters (Median)**<br>
+  - **3.5.28 Token/Type Length in Syllables/Characters (Median)**<br>
     The median of token / token type lengths expressed in syllables/characters.
 
-  - **3.1.4.29 Token/Type Length in Syllables/Characters (75th Percentile)**<br>
+  - **3.5.29 Token/Type Length in Syllables/Characters (75th Percentile)**<br>
     The 75th percentile of token / token type lengths expressed in syllables/characters.
 
-  - **3.1.4.30 Token/Type Length in Syllables/Characters (Maximum)**<br>
+  - **3.5.30 Token/Type Length in Syllables/Characters (Maximum)**<br>
     The maximum of token / token type lengths expressed in syllables/characters.
 
-  - **3.1.4.31 Token/Type Length in Syllables/Characters (Range)**<br>
+  - **3.5.31 Token/Type Length in Syllables/Characters (Range)**<br>
     The range of token / token type lengths expressed in syllables/characters.
 
-  - **3.1.4.32 Token/Type Length in Syllables/Characters (Interquartile Range)**<br>
+  - **3.5.32 Token/Type Length in Syllables/Characters (Interquartile Range)**<br>
     The interquartile range of token / token type lengths expressed in syllables/characters.
 
-  - **3.1.4.33 Token/Type Length in Syllables/Characters (Modes)**<br>
+  - **3.5.33 Token/Type Length in Syllables/Characters (Modes)**<br>
     The mode(s) of token / token type lengths expressed in syllables/characters.
 
-  - **3.1.4.34 Syllable Length in Characters (Mean)**<br>
+  - **3.5.34 Syllable Length in Characters (Mean)**<br>
     The average value of syllable lengths expressed in characters.
 
-  - **3.1.4.35 Syllable Length in Characters (Standard Deviation)**<br>
+  - **3.5.35 Syllable Length in Characters (Standard Deviation)**<br>
     The standard deviation of syllable lengths expressed in characters.
 
-  - **3.1.4.36 Syllable Length in Characters (Variance)**<br>
+  - **3.5.36 Syllable Length in Characters (Variance)**<br>
     The variance of syllable lengths expressed in characters.
 
-  - **3.1.4.37 Syllable Length in Characters (Minimum)**<br>
+  - **3.5.37 Syllable Length in Characters (Minimum)**<br>
     The minimum of syllable lengths expressed in characters.
 
-  - **3.1.4.38 Syllable Length in Characters (25th Percentile)**<br>
+  - **3.5.38 Syllable Length in Characters (25th Percentile)**<br>
     The 25th percentile of syllable lengths expressed in characters.
 
-  - **3.1.4.39 Syllable Length in Characters (Median)**<br>
+  - **3.5.39 Syllable Length in Characters (Median)**<br>
     The median of syllable lengths expressed in characters.
 
-  - **3.1.4.40 Syllable Length in Characters (75th Percentile)**<br>
+  - **3.5.40 Syllable Length in Characters (75th Percentile)**<br>
     The 75th percentile of syllable lengths expressed in characters.
 
-  - **3.1.4.41 Syllable Length in Characters (Maximum)**<br>
+  - **3.5.41 Syllable Length in Characters (Maximum)**<br>
     The maximum of syllable lengths expressed in characters.
 
-  - **3.1.4.42 Syllable Length in Characters (Range)**<br>
+  - **3.5.42 Syllable Length in Characters (Range)**<br>
     The range of syllable lengths expressed in characters.
 
-  - **3.1.4.43 Syllable Length in Characters (Interquartile Range)**<br>
+  - **3.5.43 Syllable Length in Characters (Interquartile Range)**<br>
     The interquartile range of Syllable lengths expressed in characters.
 
-  - **3.1.4.44 Syllable Length in Characters (Modes)**<br>
+  - **3.5.44 Syllable Length in Characters (Modes)**<br>
     The mode(s) of syllable lengths expressed in characters.
 
-- **3.1.5 Length Breakdown**<br>
-  - **3.1.5.1 Count of n-token-long Sentences / Sentence Segments**<br>
+- **3.6 Length Breakdown**<br>
+  - **3.6.1 Count of n-token-long Sentences / Sentence Segments**<br>
     The number of n-token-long sentences / sentence segments, where n = 1, 2, 3, etc.
 
-  - **3.1.5.2 Count of n-token-long Sentences / Sentence Segments %**<br>
+  - **3.6.2 Count of n-token-long Sentences / Sentence Segments %**<br>
     The percentage of the number of n-token-long sentences / sentence segments in each file out of the total number of n-token-long sentences / sentence segments in all files, where n = 1, 2, 3, etc.
 
-  - **3.1.5.3 Count of n-syllable-long Tokens**<br>
+  - **3.6.3 Count of n-syllable-long Tokens**<br>
     The number of n-syllable-long tokens, where n = 1, 2, 3, etc.
 
-  - **3.1.5.4 Count of n-syllable-long Tokens %**<br>
+  - **3.6.4 Count of n-syllable-long Tokens %**<br>
     The percentage of the number of n-syllable-long tokens in each file out of the total number of n-syllable-long tokens in all files, where n = 1, 2, 3, etc.
 
-  - **3.1.5.5 Count of n-character-long Tokens**<br>
+  - **3.6.5 Count of n-character-long Tokens**<br>
     The number of n-character-long tokens, where n = 1, 2, 3, etc.
 
-  - **3.1.5.6 Count of n-character-long Tokens %**<br>
+  - **3.6.6 Count of n-character-long Tokens %**<br>
     The percentage of the number of n-character-long tokens in each file out of the total number of n-character-long tokens in all files, where n = 1, 2, 3, etc.
 
 <span id="doc-4"></span>
@@ -410,7 +476,7 @@ You can search in *Data Table* for parts that might be of interest to you by cli
 > [!NOTE]
 > Added in *Wordless* 3.0.0.
 
-In *Dependency Parser*, you can search for all dependency relations associated with different tokens and calculate their dependency lengths (distances).
+In *Dependency Parser*, you can search for all dependency relations associated with different tokens and calculate their dependency distances.
 
 You can filter the results by clicking **Filter results** or search in *Data Table* for parts that might be of interest to you by clicking **Search in results**.
 
@@ -422,11 +488,11 @@ You can select lines in the *Results Area* and then click *Generate Figure* to s
 - **6.2 Dependent**<br>
   The token functioning as the dependent in the dependency structure.
 
-- **6.3 Dependency Length**<br>
-  The dependency length (distance) between the head and dependent in the dependency structure. The dependency length is positive when the head follows the dependent and would be negative if the head precedes the dependent.
+- **6.3 Dependency Distance**<br>
+  The dependency distance between the head and dependent in the dependency structure. The dependency distance is positive when the head follows the dependent and would be negative if the head precedes the dependent.
 
-- **6.4 Dependency Length (Absolute)**<br>
-  The absolute value of the dependency length (distance) between the head and dependent in the dependency structure. The absolute dependency length is always positive.
+- **6.4 Dependency Distance (Absolute)**<br>
+  The absolute value of the dependency distance between the head and dependent in the dependency structure. The absolute dependency distance is always positive.
 
 - **6.5 Sentence**<br>
   The sentence where the dependency structure is found.
@@ -470,10 +536,10 @@ You can generate line charts or word clouds for wordlists using any statistics. 
   The number of occurrences of the token in each file.
 
 - **7.5 Dispersion**<br>
-  The dispersion of the token in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See [Section 12.4.3](#doc-12-4-3) for more details.
+  The dispersion of the token in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See [Section 12.4.4](#doc-12-4-4) for more details.
 
 - **7.6 Adjusted Frequency**<br>
-  The adjusted frequency of the token in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See [Section 12.4.3](#doc-12-4-3) for more details.
+  The adjusted frequency of the token in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See [Section 12.4.4](#doc-12-4-4) for more details.
 
 - **7.7 Number of Files Found**<br>
   The number of files in which the token appears at least once.
@@ -502,10 +568,10 @@ You can generate line charts or word clouds for n-grams using any statistics. Yo
   The number of occurrences of the n-gram in each file.
 
 - **8.4 Dispersion**<br>
-  The dispersion of the n-gram in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See [Section 12.4.3](#doc-12-4-3) for more details.
+  The dispersion of the n-gram in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See [Section 12.4.4](#doc-12-4-4) for more details.
 
 - **8.5 Adjusted Frequency**<br>
-  The adjusted frequency of the n-gram in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See [Section 12.4.3](#doc-12-4-3) for more details.
+  The adjusted frequency of the n-gram in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See [Section 12.4.4](#doc-12-4-4) for more details.
 
 - **8.6 Number of Files Found**<br>
   The number of files in which the n-gram appears at least once.
@@ -540,18 +606,18 @@ You can generate line charts, word clouds, and network graphs for patterns of co
   The total number of co-occurrences of the node and the collocating token with the collocating token at all possible positions in each file.
 
 - **9.6 Test Statistic**<br>
-  The test statistic of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Section 12.4.4](#doc-12-4-4) for more details.
+  The test statistic of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Section 12.4.5](#doc-12-4-5) for more details.
 
   Please note that test statistic is not available for some tests of statistical significance.
 
 - **9.7 p-value**<br>
-  The p-value of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Section 12.4.4](#doc-12-4-4) for more details.
+  The p-value of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Section 12.4.5](#doc-12-4-5) for more details.
 
 - **9.8 Bayes Factor**<br>
-  The Bayes factor the node and the collocating token in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See [Section 12.4.4](#doc-12-4-4) for more details.
+  The Bayes factor the node and the collocating token in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See [Section 12.4.5](#doc-12-4-5) for more details.
 
 - **9.9 Effect Size**<br>
-  The effect size of the node and the collocating token in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Section 12.4.4](#doc-12-4-4) for more details.
+  The effect size of the node and the collocating token in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Section 12.4.5](#doc-12-4-5) for more details.
 
 - **9.10 Number of Files Found**<br>
   The number of files in which the node and the collocating token co-occur at least once.
@@ -588,18 +654,18 @@ You can generate line charts or word clouds for patterns of colligation using an
   The total number of co-occurrences of the node and the collocating part of speech with the collocating part of speech at all possible positions in each file.
 
 - **10.6 Test Statistic**<br>
-  The test statistic of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Section 12.4.4](#doc-12-4-4) for more details.
+  The test statistic of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Section 12.4.5](#doc-12-4-5) for more details.
 
   Please note that test statistic is not available for some tests of statistical significance.
 
 - **10.7 p-value**<br>
-  The p-value of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Section 12.4.4](#doc-12-4-4) for more details.
+  The p-value of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Section 12.4.5](#doc-12-4-5) for more details.
 
 - **10.8 Bayes Factor**<br>
-  The Bayes factor of the node and the collocating part of speech in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See [Section 12.4.4](#doc-12-4-4) for more details.
+  The Bayes factor of the node and the collocating part of speech in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See [Section 12.4.5](#doc-12-4-5) for more details.
   
 - **10.9 Effect Size**<br>
-  The effect size of the node and the collocating part of speech in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Section 12.4.4](#doc-12-4-4) for more details.
+  The effect size of the node and the collocating part of speech in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Section 12.4.5](#doc-12-4-5) for more details.
 
 - **10.10 Number of Files Found**<br>
   The number of files in which the node and the collocating part of speech co-occur at least once.
@@ -631,18 +697,18 @@ You can generate line charts or word clouds for keywords using any statistics. Y
   The number of occurrences of the keyword in each observed corpus.
 
 - **11.5 Test Statistic**<br>
-  The test statistic of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Section 12.4.4](#doc-12-4-4) for more details.
+  The test statistic of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Section 12.4.5](#doc-12-4-5) for more details.
 
   Please note that test statistic is not available for some tests of statistical significance.
 
 - **11.6 p-value**<br>
-  The p-value of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Section 12.4.4](#doc-12-4-4) for more details.
+  The p-value of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Section 12.4.5](#doc-12-4-5) for more details.
 
 - **11.7 Bayes Factor**<br>
-  The Bayes factor of the keyword in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See [Section 12.4.4](#doc-12-4-4) for more details.
+  The Bayes factor of the keyword in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See [Section 12.4.5](#doc-12-4-5) for more details.
 
 - **11.8 Effect Size**<br>
-  The effect size of on the keyword in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Section 12.4.4](#doc-12-4-4) for more details.
+  The effect size of on the keyword in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Section 12.4.5](#doc-12-4-5) for more details.
 
 - **11.9 Number of Files Found**<br>
   The number of files in which the keyword appears at least once.
@@ -929,15 +995,15 @@ Vietnamese             |CP1258                 |✔
 #### [12.4.1 Readability Formulas](#doc)
 The readability of a text depends on several variables including the average sentence length, average word length in characters, average word length in syllables, number of monosyllabic words, number of polysyllabic words, number of difficult words, etc.
 
-It should be noted that some readability measures are **language-specific**, or applicable only to texts in languages for which *Wordless* have **built-in syllable tokenization support** (check [12.1](#doc-12-1) for reference), while others can be applied to texts in all languages.
+Some readability measures are **language-specific** or applicable only to texts in languages for which *Wordless* have **built-in syllable tokenization support** (check [12.1](#doc-12-1) for reference) while others can be applied to texts in all languages.
 
 The following variables would be used in formulas:<br>
 **NumSentences**: Number of sentences<br>
 **NumWords**: Number of words<br>
 **NumWordsSyl₁**: Number of monosyllabic words<br>
-**NumWordsSylsₙ₊**: Number of words with n or more syllables<br>
-**NumWordsLtrsₙ₊**: Number of words with n or more letters<br>
-**NumWordsLtrsₙ₋**: Number of words with n or fewer letters<br>
+**NumWordsSylsₙ₊**: Number of words with *n* or more syllables<br>
+**NumWordsLtrsₙ₊**: Number of words with *n* or more letters<br>
+**NumWordsLtrsₙ₋**: Number of words with *n* or fewer letters<br>
 **NumConjs**: Number of conjunctions<br>
 **NumPreps**: Number of prepositions<br>
 **NumProns**: Number of pronouns<br>
@@ -1153,7 +1219,7 @@ Readability Formula|Formula|Supported Languages
 <span id="ref-x-c50"></span>Dale-Chall readability formula¹<br>([Dale & Chall, 1948a](#ref-dale-chall-1948a); [Dale & Chall, 1948b](#ref-dale-chall-1948b)<br>Powers-Sumner-Kearl: [Powers et al., 1958](#ref-powers-et-al-1958)<br>New: [Chall & Dale, 1995, p. 66](#ref-chall-dale-1995))|![Formula](/doc/measures/readability/x_c50.svg)|**English**
 <span id="ref-danielson-bryans-readability-formula"></span>Danielson-Bryan's readability formula¹<br>([Danielson & Bryan, 1963](#ref-danielson-bryan-1963))|![Formula](/doc/measures/readability/danielson_bryans_readability_formula.svg)|All languages
 <span id="ref-dawoods-readability-formula"></span>Dawood's readability formula<br>([Dawood, 1977](#ref-dawood-1977))|![Formula](/doc/measures/readability/dawoods_readability_formula.svg)|**Arabic**
-<span id="ref-drp"></span>Degrees of Reading Power<br>([College Entrance Examination Board, 1981](#ref-college-entrance-examination-board-1981))|![Formula](/doc/measures/readability/drp.svg)<br>where **M** is *Bormuth's cloze mean*.|**English**
+<span id="ref-drp"></span>Degrees of Reading Power<br>([College Entrance Examination Board, 1981](#ref-college-entrance-examination-board-1981))|![Formula](/doc/measures/readability/drp.svg)<br>where **M** is [*Bormuth's cloze mean*](#ref-bormuths-cloze-mean-gp).|**English**
 <span id="ref-devereux-readability-index"></span>Devereux Readability Index<br>([Smith, 1961](#ref-smith-1961))|![Formula](/doc/measures/readability/devereux_readability_index.svg)|All languages
 <span id="ref-dickes-steiwer-handformel"></span>Dickes-Steiwer Handformel<br>([Dickes & Steiwer, 1977](#ref-dickes-steiwer-1977))|![Formula](/doc/measures/readability/dickes_steiwer_handformel.svg)|All languages
 <span id="ref-elf"></span>Easy Listening Formula<br>([Fang, 1966](#ref-fang-1966))|![Formula](/doc/measures/readability/elf.svg)|All languages²
@@ -1189,13 +1255,11 @@ Readability Formula|Formula|Supported Languages
 
 <span id="doc-12-4-2"></span>
 #### [12.4.2 Indicators of Lexical Density/Diversity](#doc)
-Lexical density/diversity is the measurement of the extent to which the vocabulary used in the text varies.
-
-The following variables would be used in formulas:<br>
-**fᵢ**: Frequency of the i-th token type ranked descendingly by frequencies<br>
+The following variables are used in the calculation of lexical density/diversity:<br>
+**fᵢ**: Frequency of the *i*-th token type ranked descendingly by frequencies<br>
 **fₘₐₓ**: Maximum frequency among all token types<br>
 **NumTypes**: Number of token types<br>
-**NumTypes<sub>f</sub>**: Number of token types whose frequencies equal **f**<br>
+**NumTypes<sub>f</sub>**: Number of token types whose frequencies equal *f*<br>
 **NumTokens**: Number of tokens<br>
 
 <!--
@@ -1276,7 +1340,7 @@ Indicator of Lexical Density/Diversity|Formula
 --------------------------------------|-------
 <span id="ref-brunets-index"></span>Brunet's index<br>([Brunet, 1978, p. 57](#ref-brunet-1978))|![Formula](/doc/measures/lexical_density_diversity/brunets_index.svg)
 <span id="ref-cttr"></span>Corrected TTR<br>([Carroll, 1964, p. 54](#ref-carroll-1964))|![Formula](/doc/measures/lexical_density_diversity/cttr.svg)
-<span id="ref-fishers-index-of-diversity"></span>Fisher's Index of Diversity<br>([Fisher et al., 1943](#ref-fisher-et-al-1943))|![Formula](/doc/measures/lexical_density_diversity/fishers_index_of_diversity.svg)<br>where *W*₋₁ is the *W*₋₁ branch of the [Lambert W function](https://en.wikipedia.org/wiki/Lambert_W_function).
+<span id="ref-fishers-index-of-diversity"></span>Fisher's Index of Diversity<br>([Fisher et al., 1943](#ref-fisher-et-al-1943))|![Formula](/doc/measures/lexical_density_diversity/fishers_index_of_diversity.svg)<br>where ***W*₋₁** is the *W*₋₁ branch of the [Lambert W function](https://en.wikipedia.org/wiki/Lambert_W_function).
 <span id="ref-herdans-vm"></span>Herdan's vₘ<br>([Herdan, 1955](#ref-herdan-1955))|![Formula](/doc/measures/lexical_density_diversity/herdans_vm.svg)
 <span id="ref-hdd"></span>HD-D<br>([McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see reference.<br><br>The sample size could be modified via **Menu Bar → Preferences → Settings → Measures → Lexical Density/Diversity → HD-D → Sample size**.
 <span id="ref-honores-stat"></span>Honoré's statistic<br>([Honoré, 1979](#ref-honore-1979))|![Formula](/doc/measures/lexical_density_diversity/honores_stat.svg)
@@ -1304,13 +1368,34 @@ Indicator of Lexical Density/Diversity|Formula
 > 1. Known as **STTR** (standardized type-token ratio) in some corpus tools.
 
 <span id="doc-12-4-3"></span>
-#### [12.4.3 Measures of Dispersion and Adjusted Frequency](#doc)
+#### [12.4.3 Indicators of Syntactic Complexity](#doc)
+Root relations are disregarded in the calculation of the following indicators of syntactic complexity. If a sentence consists of only a root node, the sentence is removed from the corpus during the calculation.
 
+The following variables are used in the calculation:<br>
+**DDᵢ**: Dependency distance of the dependency relation where the *i*-th token serving as the dependent, excluding root relations<br>
+**RootDist**: Position of the root node in the sentence, staring with 1<br>
+**NumTokens**: Number of tokens in the sentence, excluding root nodes<br>
+
+<!--
+Mean dependency distance:
+    \text{MDD} = \frac{\sum_{i = 1}^{\text{NumTokens}}\text{DD}_i}{\text{NumTokens}}
+
+Normalized dependency distance:
+    \text{NDD} = \left |\ln{\frac{\text{MDD}}{\sqrt{\text{RootDist} \times \text{NumTokens}}}}\right |
+-->
+
+Indicator of Syntactic Complexity|Formula
+---------------------------------|-------
+<span id="ref-mdd"></span>Mean dependency distance<br>([Liu et al., 2009, p. 166](#liu-et-al-2009))|![Formula](/doc/measures/syntactic_complexity/mdd.svg)
+<span id="ref-ndd"></span>Normalized dependency distance<br>([Lei & Jockers, 2018, p. 67](#ref-lei-jockers-2018))|![Formula](/doc/measures/syntactic_complexity/ndd.svg)<br>where **MDD** is [*mean dependency distance*](#ref-mdd).
+
+<span id="doc-12-4-4"></span>
+#### [12.4.4 Measures of Dispersion and Adjusted Frequency](#doc)
 For parts-based measures, each file is divided into **n** (whose value you could modify via **Menu Bar → Preferences → Settings → Measures → Dispersion / Adjusted Frequency → General Settings → Divide each file into subsections**) sub-sections and the frequency of the word in each part is counted and denoted by **F₁**, **F₂**, **F₃**, ..., **Fₙ** respectively. The total frequency of the word in each file is denoted by **F** and the mean value of the frequencies over all sub-sections is denoted by **F̅**.
 
 For distance-based measures, the distance between each pair of subsequent occurrences of the word is calculated and denoted by **d₁**, **d₂**, **d₃**, ..., **d<sub>F</sub>** respectively. The total number of tokens in each file is denoted by **N**.
 
-Then, the dispersion and adjusted frequency of the word are calculated as follows:
+The dispersion and adjusted frequency of the word are calculated as follows:
 
 <!--
 Average logarithmic distance:
@@ -1388,8 +1473,8 @@ Measure of Dispersion (Distance-based)|Measure of Adjusted Frequency (Distance-b
 <span id="ref-arf"></span>Average reduced frequency<br>([Savický & Hlaváčová, 2002](#ref-savicky-hlavacova-2002))|<span id="ref-farf"></span>Average reduced frequency<br>([Savický & Hlaváčová, 2002](#ref-savicky-hlavacova-2002))|![Formula](/doc/measures/dispersion_adjusted_frequency/arf.svg)
 <span id="ref-awt"></span>Average waiting time<br>([Savický & Hlaváčová, 2002](#ref-savicky-hlavacova-2002))|<span id="ref-fawt"></span>Average waiting time<br>([Savický & Hlaváčová, 2002](#ref-savicky-hlavacova-2002))|![Formula](/doc/measures/dispersion_adjusted_frequency/awt.svg)
 
-<span id="doc-12-4-4"></span>
-#### [12.4.4 Tests of Statistical Significance, Measures of Bayes Factor, and Measures of Effect Size](#doc)
+<span id="doc-12-4-5"></span>
+#### [12.4.5 Tests of Statistical Significance, Measures of Bayes Factor, and Measures of Effect Size](#doc)
 
 In order to calculate the test statistics of tests of statistical significance, Bayes factors, and effect sizes (except **Mann-Whitney U test** and **Student's t-test (2-sample)**) for potential collocations in *Collocation Extractor* and *Colligation Extractor* and potential keywords in *Keyword Extractor*, two contingency tables must be constructed first. One for observed values and the other for expected values.
 
@@ -1614,7 +1699,7 @@ Measure of Effect Size|Formula|Collocation/Colligation Extraction|Keyword Extrac
 <span id="ref-carroll-1964"></span>
 1. [**^**](#ref-cttr) Carroll, J. B. (1964). *Language and thought*. Prentice-Hall.
 <span id="ref-carroll-1970"></span>
-1. [**^**](#ref-carrolls-d2) [**^**](#ref-carrolls-um) Carroll, J. B. (1970). An alternative to Juillands's usage coefficient for lexical frequencies. *ETS Research Bulletin Series*, *1970*(2), i–15. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x
+1. [**^**](#ref-carrolls-d2) [**^**](#ref-carrolls-um) Carroll, J. B. (1970). An alternative to Juillands's usage coefficient for lexical frequencies. *ETS Research Bulletin Series*, *23*(2), i–15. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x
 <span id="ref-caylor-sticht-1973"></span>
 1. [**^**](#ref-rgl) Caylor, J. S., & Sticht, T. G. (1973). *Development of a simple readability index for job reading material*. Human Resource Research Organization. https://ia902703.us.archive.org/31/items/ERIC_ED076707/ERIC_ED076707.pdf
 <span id="ref-chall-dale-1995"></span>
@@ -1692,7 +1777,7 @@ Measure of Effect Size|Formula|Collocation/Colligation Extraction|Keyword Extrac
 <span id="ref-gries-2008"></span>
 1. [**^**](#ref-griess-dp) Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. *International Journal of Corpus Linguistics*, *13*(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri
 <span id="ref-gries-2010"></span>
-1. [**^**](#ref-rr) Gries, S. T. (2010). Useful statistics for corpus linguistics. In A. Sánchez Pérez & M. Almela Sánchez (Eds.), A mosaic of corpus linguistics: Selected papers (pp. 269–291). Peter Lang.
+1. [**^**](#ref-rr) Gries, S. T. (2010). Useful statistics for corpus linguistics. In A. Sánchez Pérez & M. Almela Sánchez (Eds.), *A mosaic of corpus linguistics: Selected papers* (pp. 269–291). Peter Lang.
 <span id="ref-gries-2013"></span>
 1. [**^**](#ref-delta-p) Gries, S. T. (2013). 50-something years of work on collocations: What is or should be next …. *International Journal of Corpus Linguistics*, *18*(1), 137–165. https://doi.org/10.1075/ijcl.18.1.09gri
 <span id="ref-guiraud-1954"></span>
@@ -1730,12 +1815,16 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 1. [**^**](#ref-ari) [**^**](#ref-gl) [**^**](#ref-fog-index) Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). *Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel* (Report No. RBR 8-75). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
 <span id="ref-kromer-2003"></span>
 1. [**^**](#ref-kromers-ur) Kromer, V. (2003). A usage measure based on psychophysical relations. *Journal of Quantitative Linguistics*, *10*(2), 177–186. https://doi.org/10.1076/jqul.10.2.177.16718
+<span id="ref-lei-jockers-2018"></span>
+1. [**^**](#ref-ndd) Lei, L., & Jockers, M. L. (2018). Normalized dependency distance: Proposing a new measure. *Quantitative Linguistics*, *27*(1), 62–79. https://doi.org/10.1080/09296174.2018.1504615
 <span id="ref-lexical-computing-ltd-2015"></span>
 1. [**^**](#ref-mi-log-f) Lexical Computing. (2015, July 8). *Statistics used in Sketch Engine*. Sketch Engine. https://www.sketchengine.eu/documentation/statistics-used-in-sketch-engine/
 <span id="ref-liau-et-al-1976"></span>
 1. [**^**](#ref-colemans-readability-formula) Liau, T. L., Bassin, C. B., Martin, C. J., & Coleman, E. B. (1976). Modification of the Coleman readability formulas. *Journal of Reading Behavior*, *8*(4), 381–386. https://journals.sagepub.com/doi/pdf/10.1080/10862967609547193
 <span id="ref-lijffijt-gries-2012"></span>
 1. [**^**](#ref-griess-dp) Lijffijt, J., & Gries, S. T. (2012). Correction to Stefan Th. Gries’ “dispersions and adjusted frequencies in corpora”. *International Journal of Corpus Linguistics*, *17*(1), 147–149. https://doi.org/10.1075/ijcl.17.1.08lij
+<span id="liu-et-al-2009"></span>
+1. [**^**](#ref-mdd) Liu, H., Hudson, R., & Feng, Z. (2009). Using a Chinese treebank to measure dependency distance. *Corpus Linguistics and Linguistic Theory*, *5*(2), 161–175. https://doi.org/10.1515/CLLT.2009.007
 <span id="ref-lorge-1944"></span>
 1. [**^**](#ref-lorge-readability-index) Lorge, I. (1944). Predicting readability. *Teachers College Record*, *45*, 404–419.
 <span id="ref-lorge-1948"></span>
@@ -1769,7 +1858,7 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 <span id="ref-paquot-bestgen-2009"></span>
 1. [**^**](#ref-students-t-test-2-sample) Paquot, M., & Bestgen, Y. (2009). Distinctive words in academic writing: A comparison of three statistical tests for keyword extraction. *Language and Computers*, *68*, 247–269.
 <span id="ref-partiko-2001"></span>
-1. [**^**](#ref-re) Partiko, Z. V. (2001). *Zagal’ne redaguvannja. Normativni osnovi.* Afiša.
+1. [**^**](#ref-re) Partiko, Z. V. (2001). *Zagal’ne redaguvannja. Normativni osnovi*. Afiša.
 <span id="ref-pedersen-1996"></span>
 1. [**^**](#ref-fishers-exact-test) Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), *Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference* (pp. 188–200). The South–Central Regional SAS Users' Group.
 <span id="ref-pedersen-bruce-1996"></span>
@@ -1787,7 +1876,7 @@ Linguistic Computing Bulletin*, *7*(2), 172–177.
 <span id="ref-powers-et-al-1958"></span>
 1. [**^**](#ref-x-c50) [**^**](#ref-re) [**^**](#ref-re-farr-jenkins-paterson) [**^**](#ref-fog-index) Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. *Journal of Educational Psychology*, *49*(2), 99–105. https://doi.org/10.1037/h0043254
 <span id="ref-quasthoff-wolff-2002"></span>
-1. [**^**](#ref-poisson-collocation-measure) Quasthoff, U., & Wolff, C. (2002). The poisson collocation measure and its applications. *Proceedings of 2nd International Workshop on Computational Approaches to Collocations*. IEEE.
+1. [**^**](#ref-poisson-collocation-measure) Quasthoff, U., & Wolff, C. (2002). The poisson collocation measure and its applications. In *Proceedings of 2nd International Workshop on Computational Approaches to Collocations*. IEEE.
 <span id="ref-rosengren-1971"></span>
 1. [**^**](#ref-rosengrens-s) [**^**](#ref-rosengrens-kf) Rosengren, I. (1971). The quantitative concept of language and its relation to the structure of frequency dictionaries. *Études de linguistique appliquée*, *1*, 103–127.
 <span id="ref-rychly-2008"></span>

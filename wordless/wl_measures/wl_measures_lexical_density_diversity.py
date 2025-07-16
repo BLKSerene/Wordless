@@ -51,6 +51,8 @@ def fishers_index_of_diversity(main, text):
         / text.num_tokens
     )
 
+    # The domain of W₋₁(x) is -(1/e) < x < 0
+    # Reference: https://en.wikipedia.org/wiki/Lambert_W_function
     if lambertw_x > -numpy.exp(-1):
         alpha = -(
             (text.num_tokens * text.num_types)

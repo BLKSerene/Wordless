@@ -16,6 +16,8 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import copy
+
 import pytest
 
 from tests import (
@@ -158,14 +160,14 @@ def wl_test_pos_tag_models(lang, pos_tagger, test_sentence, tokens, results, res
     # Tokenized
     tokens_tokenized = wl_pos_tagging.wl_pos_tag(
         main,
-        inputs = tokens,
+        inputs = copy.deepcopy(tokens),
         lang = lang,
         pos_tagger = pos_tagger,
         force = True
     )
     tokens_tokenized_universal = wl_pos_tagging.wl_pos_tag(
         main,
-        inputs = tokens,
+        inputs = copy.deepcopy(tokens),
         lang = lang,
         pos_tagger = pos_tagger,
         tagset = 'universal',
@@ -179,10 +181,6 @@ def wl_test_pos_tag_models(lang, pos_tagger, test_sentence, tokens, results, res
     assert tokens_tags_untokenized_universal == results_universal
 
     # Check for empty tags
-    assert tokens_tags_untokenized
-    assert tokens_tags_untokenized_universal
-    assert tokens_tags_tokenized
-    assert tokens_tags_tokenized_universal
     assert all((tag for _, tag in tokens_tags_untokenized))
     assert all((tag for _, tag in tokens_tags_untokenized_universal))
     assert all((tag for _, tag in tokens_tags_tokenized))

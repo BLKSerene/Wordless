@@ -41,7 +41,7 @@ def test_awt():
     assert wl_measures_dispersion.awt(main, TOKENS, 'a') == 3.18
     assert wl_measures_dispersion.awt(main, TOKENS, 'aa') == 0
 
-# Reference: Carroll, J. B. (1970). An alternative to Juillands's usage coefficient for lexical frequencies. ETS Research Bulletin Series, 1970(2), i–15. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x | p. 13
+# Reference: Carroll, J. B. (1970). An alternative to Juillands's usage coefficient for lexical frequencies. ETS Research Bulletin Series, 23(2), i–15. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x | p. 13
 def test_carrolls_d2():
     assert round(wl_measures_dispersion.carrolls_d2(main, [2, 1, 1, 1, 0]), 4) == 0.8277
     assert wl_measures_dispersion.carrolls_d2(main, [0, 0, 0, 0]) == 0
@@ -60,7 +60,7 @@ def test_griess_dp():
     assert round(wl_measures_dispersion.griess_dp(main, [2, 1, 0]), 1) == 0.5
     assert wl_measures_dispersion.griess_dp(main, [0, 0, 0, 0]) == 0
 
-# Reference: Carroll, J. B. (1970). An alternative to Juillands's usage coefficient for lexical frequencies. ETS Research Bulletin Series, 1970(2), i–15. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x | p. 14
+# Reference: Carroll, J. B. (1970). An alternative to Juillands's usage coefficient for lexical frequencies. ETS Research Bulletin Series, 23(2), i–15. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x | p. 14
 def test_juillands_d():
     assert round(wl_measures_dispersion.juillands_d(main, [0, 4, 3, 2, 1]), 4) == 0.6464
     assert wl_measures_dispersion.juillands_d(main, [0, 0, 0, 0]) == 0

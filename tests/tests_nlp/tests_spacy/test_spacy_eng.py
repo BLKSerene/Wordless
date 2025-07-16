@@ -17,6 +17,13 @@
 # ----------------------------------------------------------------------
 
 from tests.tests_nlp.tests_spacy import test_spacy
+from tests import wl_test_init
+from wordless.wl_nlp import (
+    wl_dependency_parsing,
+    wl_word_tokenization
+)
+
+main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'spacy')
 
 results_word_tokenize = ['English', 'is', 'a', 'West', 'Germanic', 'language', 'in', 'the', 'Indo', '-', 'European', 'language', 'family', ',', 'whose', 'speakers', ',', 'called', 'Anglophones', ',', 'originated', 'in', 'early', 'medieval', 'England', 'on', 'the', 'island', 'of', 'Great', 'Britain.[4][5][6', ']']
 
@@ -38,6 +45,44 @@ def test_spacy_other():
         results_word_tokenize = results_word_tokenize
     )
 
+def test_spacy_punc_marks():
+    test_sentence = 'Hi, take it!'
+
+    tokens_untokenized = wl_dependency_parsing.wl_dependency_parse(
+        main,
+        inputs = test_sentence,
+        lang = 'eng_us'
+    )
+
+    dds_untokenized = [
+        (str(token), str(token.head), token.dependency_relation, token.dd, token.dd_no_punc)
+        for token in tokens_untokenized
+    ]
+
+    tokens = wl_word_tokenization.wl_word_tokenize_flat(
+        main,
+        text = test_sentence,
+        lang = 'eng_us'
+    )
+
+    tokens_tokenized = wl_dependency_parsing.wl_dependency_parse(
+        main,
+        inputs = tokens,
+        lang = 'eng_us'
+    )
+
+    dds_tokenized = [
+        (str(token), str(token.head), token.dependency_relation, token.dd, token.dd_no_punc)
+        for token in tokens_tokenized
+    ]
+
+    print('eng_us / spacy_eng:')
+    print(dds_untokenized)
+    print(dds_tokenized)
+
+    assert dds_untokenized == dds_tokenized == [('Hi', 'take', 'intj', 2, 1), (',', 'take', 'punct', 1, 1), ('take', 'take', 'ROOT', 0, 0), ('it', 'take', 'dobj', -1, -1), ('!', 'take', 'punct', -2, -1)]
+
 if __name__ == '__main__':
     test_spacy_eng()
     test_spacy_other()
+    test_spacy_punc_marks()

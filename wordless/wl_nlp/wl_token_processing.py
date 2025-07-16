@@ -269,8 +269,50 @@ def wl_process_tokens_profiler(main, text, token_settings, tab):
             wl_lemmatization.wl_lemmatize(main, text.get_tokens_flat(), lang = text.lang)
 
     # Lexical density
-    if tab in ('lexical_density_diversity', 'all') and text.lang in main.settings_global['pos_taggers']:
+    if (
+        tab in ('lexical_density_diversity', 'all')
+        and text.lang in main.settings_global['pos_taggers']
+    ):
         wl_pos_tagging.wl_pos_tag_universal(main, text.get_tokens_flat(), lang = text.lang, tagged = text.tagged)
+
+    # Syntactic complexity
+    if (
+        tab in ('syntactic_complexity', 'all')
+        and text.lang in main.settings_global['dependency_parsers']
+    ):
+        # Do not modify original sentence tokenization during dependency parsing
+        for para in text.tokens_multilevel:
+            for sentence in para:
+                wl_dependency_parsing.wl_dependency_parse(
+                    main,
+                    inputs = list(wl_misc.flatten_list(sentence)),
+                    lang = text.lang,
+                )
+
+        # For calculating Normalized Dependency Distance
+        if not hasattr(text, 'dds_sentences'):
+            text.dds_sentences = [
+                [token.dd for token in list(wl_misc.flatten_list(sentence))]
+                for para in text.tokens_multilevel
+                for sentence in para
+            ]
+
+            text.dds_sentences_no_punc = [
+                [token.dd_no_punc for token in list(wl_misc.flatten_list(sentence))]
+                for para in text.tokens_multilevel
+                for sentence in para
+            ]
+
+            # Root distances start with 1
+            text.root_dists = [
+                dds.index(0) + 1
+                for dds in text.dds_sentences
+            ]
+
+            text.root_dists_no_punc = [
+                dds.index(0) + 1
+                for dds in text.dds_sentences_no_punc
+            ]
 
     text_modified = wl_process_tokens_ngram_generator(main, text, token_settings)
     text_modified.tokens_multilevel = remove_empty_tokens(text_modified.tokens_multilevel)

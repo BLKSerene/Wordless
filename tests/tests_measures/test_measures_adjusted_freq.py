@@ -36,7 +36,7 @@ def test_fawt():
     assert wl_measures_adjusted_freq.fawt(main, test_measures_dispersion.TOKENS, 'aa') == 0
 
 # References:
-#     Carroll, J. B. (1970). An alternative to Juillands's usage coefficient for lexical frequencies. ETS Research Bulletin Series, 1970(2), i–15. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x | p. 13
+#     Carroll, J. B. (1970). An alternative to Juillands's usage coefficient for lexical frequencies. ETS Research Bulletin Series, 23(2), i–15. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x | p. 13
 #     Engwall, G. (1974). Fréquence et distribution du vocabulaire dans un choix de romans français [Unpublished doctoral dissertation]. Stockholm University. | p. 122
 #     Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. International Journal of Corpus Linguistics, 13(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri | p. 409
 def test_carrolls_um():
@@ -46,7 +46,7 @@ def test_carrolls_um():
     assert wl_measures_adjusted_freq.carrolls_um(main, [0, 0, 0, 0, 0]) == 0
 
 # References
-#     Carroll, J. B. (1970). An alternative to Juillands's usage coefficient for lexical frequencies. ETS Research Bulletin Series, 1970(2), i–15. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x | p. 14
+#     Carroll, J. B. (1970). An alternative to Juillands's usage coefficient for lexical frequencies. ETS Research Bulletin Series, 23(2), i–15. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x | p. 14
 #     Rosengren, I. (1971). The quantitative concept of language and its relation to the structure of frequency dictionaries. Études de linguistique appliquée, 1, 103–127. | p. 115
 #     Engwall, G. (1974). Fréquence et distribution du vocabulaire dans un choix de romans français [Unpublished doctoral dissertation]. Stockholm University. | p. 122
 def test_juillands_u():

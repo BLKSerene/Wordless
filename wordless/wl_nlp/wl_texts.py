@@ -46,11 +46,18 @@ class Wl_Token(str):
         return str.__new__(cls, text)
 
     def __init__(
-        self, text, lang = 'eng_us',
+        self,
+        text,
+        lang = 'eng_us',
         syls = None,
-        tag = None, tag_universal = None, content_function = None,
+        tag = None,
+        tag_universal = None,
+        content_function = None,
         lemma = None,
-        head = None, dependency_relation = None, dependency_len = None,
+        head = None,
+        dependency_relation = None,
+        dd = None,
+        dd_no_punc = None,
         punc_mark = None
     ): # pylint: disable=unused-argument
         self.lang = lang
@@ -61,7 +68,8 @@ class Wl_Token(str):
         self.lemma = lemma
         self.head = head
         self.dependency_relation = dependency_relation
-        self.dependency_len = dependency_len
+        self.dd = dd
+        self.dd_no_punc = dd_no_punc
         self.punc_mark = punc_mark
 
     def __hash__(self):
@@ -85,15 +93,22 @@ class Wl_Token(str):
         self.lemma = token.lemma
         self.head = token.head
         self.dependency_relation = token.dependency_relation
-        self.dependency_len = token.dependency_len
+        self.dd = token.dd
+        self.dd_no_punc = token.dd_no_punc
         self.punc_mark = token.punc_mark
 
 def to_tokens(
-    texts, lang = 'eng_us',
+    texts,
+    lang = 'eng_us',
     syls_tokens = None,
-    tags = None, tags_universal = None, content_functions = None,
+    tags = None,
+    tags_universal = None,
+    content_functions = None,
     lemmas = None,
-    heads = None, dependency_relations = None, dependency_lens = None,
+    heads = None,
+    dependency_relations = None,
+    dds = None,
+    dds_no_punc = None,
     punc_marks = None
 ):
     num_tokens = len(texts)
@@ -106,16 +121,23 @@ def to_tokens(
     lemmas = lemmas or [None] * num_tokens
     heads = heads or [None] * num_tokens
     dependency_relations = dependency_relations or [None] * num_tokens
-    dependency_lens = dependency_lens or [None] * num_tokens
+    dds = dds or [None] * num_tokens
+    dds_no_punc = dds_no_punc or [None] * num_tokens
     punc_marks = punc_marks or [None] * num_tokens
 
     return [
         Wl_Token(
-            text, lang = lang,
+            text,
+            lang = lang,
             syls = syls_tokens[i],
-            tag = tags[i], tag_universal = tags_universal[i], content_function = content_functions[i],
+            tag = tags[i],
+            tag_universal = tags_universal[i],
+            content_function = content_functions[i],
             lemma = lemmas[i],
-            head = heads[i], dependency_relation = dependency_relations[i], dependency_len = dependency_lens[i],
+            head = heads[i],
+            dependency_relation = dependency_relations[i],
+            dd = dds[i],
+            dd_no_punc = dds_no_punc[i],
             punc_mark = punc_marks[i]
         )
         for i, text in enumerate(texts)
@@ -144,7 +166,7 @@ def split_texts_properties(tokens):
             'lemma': token.lemma,
             'head': token.head,
             'dependency_relation': token.dependency_relation,
-            'dependency_len': token.dependency_len,
+            'dd': token.dd,
             'punc_mark': token.punc_mark
         })
 
@@ -691,10 +713,17 @@ class Wl_Text_Total(Wl_Text):
             for text in texts
             for para in text.tokens_multilevel
         ]
+
         self.tokens_multilevel_with_puncs = [
             copy.deepcopy(para)
             for text in texts
             for para in text.tokens_multilevel_with_puncs
         ]
+
+        if hasattr(texts[0], 'dds_sentences'):
+            self.dds_sentences = sum((text.dds_sentences for text in texts), [])
+            self.dds_sentences_no_punc = sum((text.dds_sentences_no_punc for text in texts), [])
+            self.root_dists = sum((text.root_dists for text in texts), [])
+            self.root_dists_no_punc = sum((text.root_dists_no_punc for text in texts), [])
 
         self.update_num_tokens()

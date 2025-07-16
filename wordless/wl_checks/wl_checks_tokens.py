@@ -19,7 +19,6 @@
 # References:
 #     https://www.unicode.org/charts/nameslist/
 #     https://en.wikipedia.org/wiki/Unicode_block
-#     https://www.unicode.org/charts/index.html
 UNICODE_HAN = [
     # CJK Radicals Supplement
     (0x2E80, 0x2E99), (0x2E9B, 0x2EF3),
@@ -31,12 +30,10 @@ UNICODE_HAN = [
     (0x3000, 0x3003), (0x3005, 0x302D), (0x3030, 0x3030), (0x3036, 0x303F),
     # Bopomofo
     (0x3105, 0x312F),
-    # Kanbun
-    (0x3190, 0x319F),
     # Bopomofo Extended
     (0x31A0, 0x31BF),
     # CJK Strokes
-    (0x31C0, 0x31E3), (0x31EF, 0x31EF),
+    (0x31C0, 0x31E5), (0x31EF, 0x31EF),
     # Enclosed CJK Letters and Months
     (0x3220, 0x325F), (0x3280, 0x32CF), (0x32FF, 0x32FF),
     # CJK Compatibility
@@ -47,12 +44,6 @@ UNICODE_HAN = [
     (0x4DC0, 0x4DFF),
     # CJK Unified Ideographs
     (0x4E00, 0x9FFF),
-    # Yi Syllables
-    (0xA000, 0xA48C),
-    # Yi Radicals
-    (0xA490, 0xA4C6),
-    # Phags-pa
-    (0xA840, 0xA877),
     # CJK Compatibility Ideographs
     (0xF900, 0xFA6D), (0xFA70, 0xFAD9),
     # CJK Compatibility Forms
@@ -62,16 +53,6 @@ UNICODE_HAN = [
 
     # Ideographic Symbols and Punctuation
     (0x16FE0, 0x16FE4), (0x16FF0, 0x16FF1),
-    # Tangut
-    (0x17000, 0x187F7),
-    # Tangut Components
-    (0x18800, 0x18AFF),
-    # Khitan Small Script
-    (0x18B00, 0x18CD5),
-    # Tangut Supplement
-    (0x18D00, 0x18D08),
-    # Nushu
-    (0x1B170, 0x1B2FB),
     # Enclosed Ideographic Supplement
     (0x1F210, 0x1F23B), (0x1F240, 0x1F248), (0x1F250, 0x1F251), (0x1F260, 0x1F265),
 
@@ -103,6 +84,8 @@ UNICODE_KANA = [
     (0x3041, 0x3096), (0x3099, 0x309F),
     # Katakana
     (0x30A0, 0x30FF),
+    # Kanbun
+    (0x3190, 0x319F),
     # Katakana Phonetic Extensions
     (0x31F0, 0x31FF),
     # Enclosed CJK Letters and Months

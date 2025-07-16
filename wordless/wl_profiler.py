@@ -38,7 +38,8 @@ from wordless.wl_dialogs import (
 from wordless.wl_measures import (
     wl_measures_lexical_density_diversity,
     wl_measures_misc,
-    wl_measures_readability
+    wl_measures_readability,
+    wl_measures_syntactic_complexity
 )
 from wordless.wl_nlp import (
     wl_nlp_utils,
@@ -67,6 +68,7 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         self.table_profiler_readability = Wl_Table_Profiler_Readability(self)
         self.table_profiler_counts = Wl_Table_Profiler_Counts(self)
         self.table_profiler_lexical_density_diversity = Wl_Table_Profiler_Lexical_Density_Diversity(self)
+        self.table_profiler_syntactic_complexity = Wl_Table_Profiler_Syntactic_Complexity(self)
         self.table_profiler_lens = Wl_Table_Profiler_Lens(self)
         self.table_profiler_len_breakdown = Wl_Table_Profiler_Len_Breakdown(self)
 
@@ -74,6 +76,7 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
             self.table_profiler_readability,
             self.table_profiler_counts,
             self.table_profiler_lexical_density_diversity,
+            self.table_profiler_syntactic_complexity,
             self.table_profiler_lens,
             self.table_profiler_len_breakdown
         )
@@ -100,6 +103,7 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         self.tabs_profiler.addTab(self.table_profiler_readability, self.tr('Readability'))
         self.tabs_profiler.addTab(self.table_profiler_counts, self.tr('Counts'))
         self.tabs_profiler.addTab(self.table_profiler_lexical_density_diversity, self.tr('Lexical Density/Diversity'))
+        self.tabs_profiler.addTab(self.table_profiler_syntactic_complexity, self.tr('Syntactic Complexity'))
         self.tabs_profiler.addTab(self.table_profiler_lens, self.tr('Lengths'))
         self.tabs_profiler.addTab(self.table_profiler_len_breakdown, self.tr('Length Breakdown'))
 
@@ -315,9 +319,10 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
             wl_threading.Wl_Thread(worker_profiler_table).start_worker()
 
     def update_gui_table(self, err_msg, text_stats_files):
-        text_stats = [stat for text_stats in text_stats_files for stat in text_stats]
+        # Skip if the text is empty
+        len_tokens = text_stats_files[-1][7] if text_stats_files else []
 
-        if wl_checks_work_area.check_results(self.main, err_msg, text_stats_files):
+        if wl_checks_work_area.check_results(self.main, err_msg, len_tokens):
             for table in self.tables:
                 err_msg = table.update_gui_table(err_msg, text_stats_files)
 
@@ -444,9 +449,10 @@ class Wl_Table_Profiler_Readability(Wl_Table_Profiler):
         )
 
     def update_gui_table(self, err_msg, text_stats_files):
-        text_stats = [stat for text_stats in text_stats_files for stat in text_stats]
+        # Skip if the text is empty
+        len_tokens = text_stats_files[-1][7] if text_stats_files else []
 
-        if wl_checks_work_area.check_results(self.main, err_msg, text_stats_files):
+        if wl_checks_work_area.check_results(self.main, err_msg, len_tokens):
             try:
                 self.settings = copy.deepcopy(self.main.settings_custom)
 
@@ -520,10 +526,10 @@ class Wl_Table_Profiler_Counts(Wl_Table_Profiler):
         )
 
     def update_gui_table(self, err_msg, text_stats_files):
-        # Skip if all statistics except readability measures are 0 or empty
-        text_stats = [stat for text_stats in text_stats_files for stat in text_stats[1:]]
+        # Skip if the text is empty
+        len_tokens = text_stats_files[-1][7] if text_stats_files else []
 
-        if wl_checks_work_area.check_results(self.main, err_msg, text_stats):
+        if wl_checks_work_area.check_results(self.main, err_msg, len_tokens):
             try:
                 self.settings = copy.deepcopy(self.main.settings_custom)
 
@@ -653,10 +659,10 @@ class Wl_Table_Profiler_Lexical_Density_Diversity(Wl_Table_Profiler):
         )
 
     def update_gui_table(self, err_msg, text_stats_files):
-        # Skip if all statistics except readability measures are 0 or empty
-        text_stats = [stat for text_stats in text_stats_files for stat in text_stats[1:]]
+        # Skip if the text is empty
+        len_tokens = text_stats_files[-1][7] if text_stats_files else []
 
-        if wl_checks_work_area.check_results(self.main, err_msg, text_stats):
+        if wl_checks_work_area.check_results(self.main, err_msg, len_tokens):
             try:
                 self.settings = copy.deepcopy(self.main.settings_custom)
 
@@ -679,6 +685,181 @@ class Wl_Table_Profiler_Lexical_Density_Diversity(Wl_Table_Profiler):
                             self.set_item_err(j, i, self.tr('No language support'), alignment_hor = 'right')
                         else:
                             self.set_item_num(j, i, stat)
+
+                self.enable_updates()
+
+                self.toggle_pct_data()
+                self.toggle_cum_data()
+                self.toggle_breakdown_file()
+            except Exception:
+                err_msg = traceback.format_exc()
+            finally:
+                wl_checks_work_area.check_err_table(self.main, err_msg)
+
+        return err_msg
+
+class Wl_Table_Profiler_Syntactic_Complexity(Wl_Table_Profiler):
+    def __init__(self, parent):
+        HEADERS_DD = (
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Dependency Distance (Mean)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Dependency Distance (Standard Deviation)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Dependency Distance (Variance)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Dependency Distance (Minimum)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Dependency Distance (25th Percentile)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Dependency Distance (Median)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Dependency Distance (75th Percentile)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Dependency Distance (Maximum)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Dependency Distance (Range)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Dependency Distance (Interquartile Range)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Dependency Distance (Modes)')
+        )
+
+        HEADERS_ADD = (
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Absolute Dependency Distance (Mean)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Absolute Dependency Distance (Standard Deviation)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Absolute Dependency Distance (Variance)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Absolute Dependency Distance (Minimum)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Absolute Dependency Distance (25th Percentile)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Absolute Dependency Distance (Median)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Absolute Dependency Distance (75th Percentile)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Absolute Dependency Distance (Maximum)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Absolute Dependency Distance (Range)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Absolute Dependency Distance (Interquartile Range)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Absolute Dependency Distance (Modes)')
+        )
+
+        HEADERS_MDD = (
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Mean Dependency Distance (Mean)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Mean Dependency Distance (Standard Deviation)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Mean Dependency Distance (Variance)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Mean Dependency Distance (Minimum)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Mean Dependency Distance (25th Percentile)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Mean Dependency Distance (Median)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Mean Dependency Distance (75th Percentile)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Mean Dependency Distance (Maximum)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Mean Dependency Distance (Range)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Mean Dependency Distance (Interquartile Range)')
+        )
+
+        HEADERS_NDD = (
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Normalized Dependency Distance (Mean)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Normalized Dependency Distance (Standard Deviation)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Normalized Dependency Distance (Variance)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Normalized Dependency Distance (Minimum)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Normalized Dependency Distance (25th Percentile)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Normalized Dependency Distance (Median)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Normalized Dependency Distance (75th Percentile)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Normalized Dependency Distance (Maximum)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Normalized Dependency Distance (Range)'),
+            _tr('Wl_Table_Profiler_Syntactic_Complexity', 'Normalized Dependency Distance (Interquartile Range)')
+        )
+
+        HEADERS_SYNTACTIC_COMPLEXITY = (HEADERS_DD, HEADERS_ADD, HEADERS_MDD, HEADERS_NDD)
+
+        super().__init__(
+            parent,
+            headers = tuple((header for headers in HEADERS_SYNTACTIC_COMPLEXITY for header in headers)),
+            # Minimum, Maximum, and Range
+            headers_int = set(sum((
+                (HEADERS[3], HEADERS[7], HEADERS[8])
+                for HEADERS in HEADERS_SYNTACTIC_COMPLEXITY
+            ), start = ())),
+            # Mean, Standard Deviation, Variance, 25th Percentile, Median, 75th Percentile, and Interquartile Range
+            headers_float = set(sum((
+                (*HEADERS[0:3], *HEADERS[4:7], HEADERS[9])
+                for HEADERS in HEADERS_SYNTACTIC_COMPLEXITY
+            ), start = ())),
+            tab = 'syntactic_complexity'
+        )
+
+    def update_gui_table(self, err_msg, text_stats_files):
+        # Skip if the text is empty
+        len_tokens = text_stats_files[-1][7] if text_stats_files else []
+
+        if wl_checks_work_area.check_results(self.main, err_msg, len_tokens):
+            try:
+                self.settings = copy.deepcopy(self.main.settings_custom)
+
+                self.clr_table()
+
+                # Insert columns
+                files = list(self.main.wl_file_area.get_selected_files())
+
+                for i, file in enumerate(files):
+                    self.ins_header_hor(
+                        self.find_header_hor(self.tr('Total')), file['name'],
+                        is_breakdown_file = True
+                    )
+
+                self.disable_updates()
+
+                for i, stats in enumerate(text_stats_files):
+                    dds_sentences = stats[12]
+                    mdds = stats[13]
+                    ndds = stats[14]
+
+                    if dds_sentences == 'no_support':
+                        for j in range(40):
+                            self.set_item_err(j, i, text = self.tr('No language support'), alignment_hor = 'right')
+                    else:
+                        # Dependency Distance
+                        dds_sentences = numpy.array(list(wl_misc.flatten_list(dds_sentences)))
+                        dds_sentences = dds_sentences[dds_sentences != 0]
+
+                        self.set_item_num(0, i, numpy.mean(dds_sentences))
+                        self.set_item_num(1, i, numpy.std(dds_sentences))
+                        self.set_item_num(2, i, numpy.var(dds_sentences))
+                        self.set_item_num(3, i, numpy.min(dds_sentences))
+                        self.set_item_num(4, i, numpy.percentile(dds_sentences, 25))
+                        self.set_item_num(5, i, numpy.median(dds_sentences))
+                        self.set_item_num(6, i, numpy.percentile(dds_sentences, 75))
+                        self.set_item_num(7, i, numpy.max(dds_sentences))
+                        self.set_item_num(8, i, numpy.ptp(dds_sentences))
+                        self.set_item_num(9, i, scipy.stats.iqr(dds_sentences))
+                        self.model().setItem(10, i, wl_tables.Wl_Table_Item(', '.join([
+                            str(mode) for mode in wl_measures_misc.modes(dds_sentences)
+                        ])))
+
+                        # Absolute Dependency Distance
+                        adds = numpy.absolute(dds_sentences)
+
+                        self.set_item_num(11, i, numpy.mean(adds))
+                        self.set_item_num(12, i, numpy.std(adds))
+                        self.set_item_num(13, i, numpy.var(adds))
+                        self.set_item_num(14, i, numpy.min(adds))
+                        self.set_item_num(15, i, numpy.percentile(adds, 25))
+                        self.set_item_num(16, i, numpy.median(adds))
+                        self.set_item_num(17, i, numpy.percentile(adds, 75))
+                        self.set_item_num(18, i, numpy.max(adds))
+                        self.set_item_num(19, i, numpy.ptp(adds))
+                        self.set_item_num(20, i, scipy.stats.iqr(adds))
+                        self.model().setItem(21, i, wl_tables.Wl_Table_Item(', '.join([
+                            str(mode) for mode in wl_measures_misc.modes(adds)
+                        ])))
+
+                        # Mean Dependency Distance
+                        self.set_item_num(22, i, numpy.mean(mdds))
+                        self.set_item_num(23, i, numpy.std(mdds))
+                        self.set_item_num(24, i, numpy.var(mdds))
+                        self.set_item_num(25, i, numpy.min(mdds))
+                        self.set_item_num(26, i, numpy.percentile(mdds, 25))
+                        self.set_item_num(27, i, numpy.median(mdds))
+                        self.set_item_num(28, i, numpy.percentile(mdds, 75))
+                        self.set_item_num(29, i, numpy.max(mdds))
+                        self.set_item_num(30, i, numpy.ptp(mdds))
+                        self.set_item_num(31, i, scipy.stats.iqr(mdds))
+
+                        # Normalized Dependency Distance
+                        self.set_item_num(32, i, numpy.mean(ndds))
+                        self.set_item_num(33, i, numpy.std(ndds))
+                        self.set_item_num(34, i, numpy.var(ndds))
+                        self.set_item_num(35, i, numpy.min(ndds))
+                        self.set_item_num(36, i, numpy.percentile(ndds, 25))
+                        self.set_item_num(37, i, numpy.median(ndds))
+                        self.set_item_num(38, i, numpy.percentile(ndds, 75))
+                        self.set_item_num(39, i, numpy.max(ndds))
+                        self.set_item_num(40, i, numpy.ptp(ndds))
+                        self.set_item_num(41, i, scipy.stats.iqr(ndds))
 
                 self.enable_updates()
 
@@ -859,10 +1040,10 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
         )
 
     def update_gui_table(self, err_msg, text_stats_files):
-        # Skip if all statistics except readability measures are 0 or empty
-        text_stats = [stat for text_stats in text_stats_files for stat in text_stats[1:]]
+        # Skip if the text is empty
+        len_tokens = text_stats_files[-1][7] if text_stats_files else []
 
-        if wl_checks_work_area.check_results(self.main, err_msg, text_stats):
+        if wl_checks_work_area.check_results(self.main, err_msg, len_tokens):
             try:
                 self.settings = copy.deepcopy(self.main.settings_custom)
 
@@ -895,15 +1076,15 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
                     # Sentence / Sentence Segment Length in Tokens
                     # Token/Type Length in Characters
                     for row, lens in zip(
-                        [
+                        (
                             0, 11, 22,
                             33, 44,
                             66, 88
-                        ], [
+                        ), (
                             len_paras_sentences, len_paras_sentence_segs, len_paras_tokens,
                             len_sentences, len_sentence_segs,
                             len_tokens_chars, len_types_chars
-                        ]
+                        )
                     ):
                         if lens.any():
                             self.set_item_num(row, i, numpy.mean(lens))
@@ -930,8 +1111,8 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
                     # Token/Type Length in Syllables
                     # Syllable Length in Characters
                     for row, lens in zip(
-                        [55, 77, 99],
-                        [len_tokens_syls, len_types_syls, len_syls]
+                        (55, 77, 99),
+                        (len_tokens_syls, len_types_syls, len_syls)
                     ):
                         if lens is not None:
                             if lens.any():
@@ -980,10 +1161,10 @@ class Wl_Table_Profiler_Len_Breakdown(Wl_Table_Profiler):
         )
 
     def update_gui_table(self, err_msg, text_stats_files):
-        # Skip if all statistics except readability measures are 0 or empty
-        text_stats = [stat for text_stats in text_stats_files for stat in text_stats[1:]]
+        # Skip if the text is empty
+        len_tokens = text_stats_files[-1][7] if text_stats_files else []
 
-        if wl_checks_work_area.check_results(self.main, err_msg, text_stats):
+        if wl_checks_work_area.check_results(self.main, err_msg, len_tokens):
             try:
                 self.settings = copy.deepcopy(self.main.settings_custom)
 
@@ -1251,16 +1432,18 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 else:
                     stats_readability = None
 
-                if self.tab in ('lexical_density_diversity', 'counts', 'lens', 'len_breakdown', 'all'):
+                if self.tab in ('counts', 'lens', 'len_breakdown', 'all'):
                     # Paragraph length
                     len_paras_sentences = [
                         len(para)
                         for para in text.tokens_multilevel
                     ]
+
                     len_paras_sentence_segs = [
                         sum((len(sentence) for sentence in para))
                         for para in text.tokens_multilevel
                     ]
+
                     len_paras_tokens = [
                         sum((len(sentence_seg) for sentence in para for sentence_seg in sentence))
                         for para in text.tokens_multilevel
@@ -1272,6 +1455,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                         for para in text.tokens_multilevel
                         for sentence in para
                     ]
+
                     len_sentence_segs = [
                         len(sentence_seg)
                         for para in text.tokens_multilevel
@@ -1307,10 +1491,16 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                     # Type length
                     len_types_chars = [len(token_type) for token_type in set(tokens)]
                 else:
-                    len_paras_sentences = len_paras_sentence_segs = len_paras_tokens = None
-                    len_sentences = len_sentence_segs = None
-                    len_tokens_syls = len_tokens_chars = None
-                    len_types_syls = len_types_chars = None
+                    len_paras_sentences = None
+                    len_paras_sentence_segs = None
+                    len_paras_tokens = None
+                    len_sentences = None
+                    len_sentence_segs = None
+                    len_tokens_syls = None
+                    # For testing if the text is empty
+                    len_tokens_chars = [-1] * len(tokens)
+                    len_types_syls = None
+                    len_types_chars = None
                     len_syls = None
 
                 # Lexical Density/Diversity
@@ -1347,6 +1537,27 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 else:
                     stats_lexical_density_diversity = None
 
+                # Syntactic Complexity
+                if self.tab in ('syntactic_complexity', 'all'):
+                    if text.lang in self.main.settings_global['dependency_parsers']:
+                        if settings['token_settings']['punc_marks']:
+                            dds_sentences = text.dds_sentences.copy()
+                            root_dists = text.root_dists.copy()
+                        else:
+                            dds_sentences = text.dds_sentences_no_punc.copy()
+                            root_dists = text.root_dists_no_punc.copy()
+
+                        mdds = wl_measures_syntactic_complexity.mdd(dds_sentences)
+                        ndds = wl_measures_syntactic_complexity.ndd(dds_sentences, root_dists)
+                    else:
+                        dds_sentences = 'no_support'
+                        mdds = 'no_support'
+                        ndds = 'no_support'
+                else:
+                    dds_sentences = None
+                    mdds = None
+                    ndds = None
+
                 self.text_stats_files.append([
                     stats_readability,
                     len_paras_sentences,
@@ -1359,7 +1570,10 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                     len_types_syls,
                     len_types_chars,
                     len_syls,
-                    stats_lexical_density_diversity
+                    stats_lexical_density_diversity,
+                    dds_sentences,
+                    mdds,
+                    ndds
                 ])
 
             if len(files) == 1:

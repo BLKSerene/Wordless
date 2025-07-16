@@ -26,35 +26,35 @@
 
 <div align="center"><h2>期刊论文</h2></div>
 
-1. 毕玉德, & 谭华. (2024). 基于语料库的中译外国家翻译实践英译文本可读性研究. *翻译研究与教学*, *2024*(3), 45–53.
+1. 毕玉德, & 谭华. (2024). 基于语料库的中译外国家翻译实践英译文本可读性研究. *翻译研究与教学*, *7*(3), 45–53.
 1. Chang, Y. (2020). A corpus-based comparative study of translation universals in two English translations of Li Sao. *Journal of Literature and Art Studies*, *10*(10), 916–922. https://doi.org/10.17265/2159-5836/2020.10.007
 1. Dai, Z., & Liu, H. (2024). Part-of-speech features in Bob Dylan’s song lyrics: A stylometric analysis. *International Journal of Humanities and Arts Computing*, *18*(2), 249–264. https://doi.org/10.3366/ijhac.2024.0335
 1. Du, M. (2025). A quantitative study on academic texts from an interdisciplinary perspective. *International Journal of Linguistics Studies*, *5*(1), 40–56. https://doi.org/10.32996/ijls.2025.5.1.4
 1. Fu, L., & Liu, L. (2024). What are the differences? A comparative study of generative artificial intelligence translation and human translation of scientific texts. *Humanities and Social Sciences Communications*, *11*, Article 1236. https://doi.org/10.1057/s41599-024-03726-7
 1. Li, A., Li, Y., Zhang, J., & Fan, L. (2024). Multimodal discourse of corporate public service advertisements: A case study of China UnionPay’s “The Fairy Tale of Poetry”. *International Journal of English Linguistics*, *14*(3), 108–121. https://doi.org/10.5539/ijel.v14n3p108
-1. 李国强, 王辉, & 王精诚. (2023). 基于语料库的《红星照耀中国》译者风格研究: 语言与非语言表征考察. *文化学刊*, *2023*(8), 179–183.
+1. 李国强, 王辉, & 王精诚. (2023). 基于语料库的《红星照耀中国》译者风格研究: 语言与非语言表征考察. *文化学刊*, *18*(8), 179–183.
 1. Liu, J., Yang, N., & Wu, M. (2025). A quantitative and comparative study of syntactic complexity of subclasses of English nominal clauses. *Journal of Quantitative Linguistics*, 1-34. https://doi.org/10.1080/09296174.2025.2498797
 1. 吕荣, & 马文丽. (2020). 《文心雕龙》三个英译本可接受度对比研究. *湖北第二师范学院学报*, *37*(3), 17–22. https://doi.org/10.3969/j.issn.1674-344X.2020.03.005
-1. 邵克金. (2022). 义务教育统编语文教科书收词分析: 基于与《义务教育常用词表（草案）》的比较. *现代语文*, *2022*(12), 67–75.
+1. 邵克金. (2022). 义务教育统编语文教科书收词分析: 基于与《义务教育常用词表（草案）》的比较. *现代语文*, *19*(12), 67–75.
 1. 石红燕. (2022). 语料库语言学视角下的《蜀道难》英译研究. *现代语言学*, *10*(6), 1347–1355. https://doi.org/10.12677/ml.2022.106180
 1. 宋祝, 李玲, & 梁渊. (2021). “构式驱动”读写教学模式下的构式习得研究. *成都师范学院学报*, *37*(3), 51–58. https://doi.org/10.3969/j.issn.2095-5642.2021.03.008
 1. Sun, Y., Kong, D., & Zhou, C. (2023). Economy or ecology: Metaphor use over time in China’s government work reports. *Language and Cognition*, *15*(3), 551–573. https://doi.org/10.1017/langcog.2023.18
 1. 陶源. (2021). 基于俄媒语料库的新冠肺炎主题词与疫情变迁研究. *南昌航空大学学报：社会科学*, *23*(1), 114–124.
-1. 汪蓝玉, & 朱玉彬. (2024). 数字人文视域下二十四史论赞引语的言据性研究. *数字人文*, *2024*(1), 59–76. https://kns.cnki.net/kcms2/article/abstract?v=kjkRiloLuecXY-PxJpGJ-S31a9ZqOl-jEYFzJXzbCtsF7fweFAQ-pz3Fl-bZSsP2R6Jp_c4KTPAI_XhC9RaVoUBDMbHImNcd7oTOftahrn3kiqR8tCC7nbM9yK97vZBjESDYX0XwhyLdm0sRMYMzBOQW7rALA4S2wgqXCZ0wgqqcSZ64QJkifpu-fL1PoVLU&uniplatform=NZKPT&language=CHS
+1. 汪蓝玉, & 朱玉彬. (2024). 数字人文视域下二十四史论赞引语的言据性研究. *数字人文*, *5*(1), 59–76. https://kns.cnki.net/kcms2/article/abstract?v=kjkRiloLuecXY-PxJpGJ-S31a9ZqOl-jEYFzJXzbCtsF7fweFAQ-pz3Fl-bZSsP2R6Jp_c4KTPAI_XhC9RaVoUBDMbHImNcd7oTOftahrn3kiqR8tCC7nbM9yK97vZBjESDYX0XwhyLdm0sRMYMzBOQW7rALA4S2wgqXCZ0wgqqcSZ64QJkifpu-fL1PoVLU&uniplatform=NZKPT&language=CHS
 1. Wang, S. (2023). Cómo fomentar la incorporación de agendas políticas feministas en el discurso político: Estrategias para la construcción del espacio discursivo en respuesta a las crisis de género. *Comunicación y Género*, *6*(2), 147–157. https://doi.org/10.5209/cgen.91079
 1. Xiong, L. (2023). Audio description for educational videos on COVID-19 response: A corpus-based study on linguistic and textual idiosyncrasies. *Journal of Literature and Art Studies*, *13*(4), 276–285. https://doi.org/10.17265/2159-5836/2023.04.008
 1. Xu, B., & Tao, Y. (2023). National identity in media discourses from Russia and Ukraine: Amid the 2022 Russo-Ukranian War. *Zeitschrift für Slawistik*, *68*(3), 419–439. https://doi.org/10.1515/slaw-2023-0021
-1. Yang, Y., & Yang, K. (2022). Оценка в китайском и русском официальных политических дискурсах в эпоху пандемии COVID-19 (на материале выступлений глав КНР и РФ на Всемирном экономическом форуме 2021 г.). *Политическая Лингвистика*, *2022*(1), 135–142. https://doi.org/10.26170/1999-2629_2022_01_15
+1. Yang, Y., & Yang, K. (2022). Оценка в китайском и русском официальных политических дискурсах в эпоху пандемии COVID-19 (на материале выступлений глав КНР и РФ на Всемирном экономическом форуме 2021 г.). *Политическая Лингвистика*, *23*(1), 135–142. https://doi.org/10.26170/1999-2629_2022_01_15
 1. Yao, M., Tian, S., & Zhong, W. (2024). Readable and neutral: Reliability of crowdsourced misinformation debunking through linguistic and psycholinguistic cues. *Frontiers in Psychology*, *15*, Article 1478176. https://doi.org/10.3389/fpsyg.2024.1478176
 1. Yi, W., & DeKeyser, R. (2022). Incidental learning of semantically transparent and opaque Chinese compounds from reading: An eye-tracking approach. *System*, *107*, Article 102825. https://doi.org/10.1016/j.system.2022.102825
 1. Yih, T., & Liu, H. (2023). The meaning distributions on different levels of granularity. *Glottometrics*, *54*, 13–38. https://doi.org/10.53482/2023_54_405
 1. Zhang, H., & Hou, Y. (2024). The construction of interpersonal meanings in Jiaqi Li’s e-commerce live streams: Integrating verbal and visual semiotics. *Journal of Business and Technical Communication*, *38*(4), 371–409. https://doi.org/10.1177/10506519241258445
 1. 张武江. (2022). 基于语料库的《密码法》英译研究. *北京电子科技学院学报*, *30*(3), 152–160. https://doi.org/10.3969/j.issn.1672-464X.2022.03.019
 1. Zhang, Y. (2024). Enhancing vocabulary acquisition and reading comprehension in intermediate Chinese: A corpus-driven approach for international students. *Journal of e-learning Research*, *3*(1), 45–20. https://doi.org/10.33422/jelr.v3i1.755
-1. 张园园, & 余晋. (2025). 基于语料库的译者风格研究: 以《小王子》两个汉译本为例. *英语广场*, *2025*(7), 3–6. https://doi.org/10.16723/j.cnki.yygc.2025.07.010
+1. 张园园, & 余晋. (2025). 基于语料库的译者风格研究: 以《小王子》两个汉译本为例. *英语广场*, *15*(7), 3–6. https://doi.org/10.16723/j.cnki.yygc.2025.07.010
 1. 赵慧芳. (2024). 美国主流媒体对“一带一路”报道的话语建构研究. *重庆邮电大学学报（社会科学版）*, *36*(4), 177–186. https://doi.org/10.3979/1673-8268.20230913002
 1. Zhao, L., & Luo, B. (2024). The reception of Giles’ and Minford’s English translation of Liaozhai Zhiyi: A sentiment analysis perspective. *International Journal of Chinese and English Translation & Interpreting*, *5*, 1–21. https://doi.org/10.56395/ijceti.v3i1.105
-1. 赵宇霞. (2022). 基于语料库的傅雷翻译风格新探: 语言与情感的融合. *外语电化教学*, *2022*(2), 96–103.
+1. 赵宇霞. (2022). 基于语料库的傅雷翻译风格新探: 语言与情感的融合. *外语电化教学*, *44*(2), 96–103.
 1. Zhou, Y., Jiang, J., & Liu, H. (2024). Modifying language for a higher goal: Investigating quantitative features of Apple’s launch event speech from 2016 to 2022. *Journal of Quantitative Linguistics*, *31*(2), 139–160. https://doi.org/10.1080/09296174.2024.2345969
 
 <div align="center"><h2>硕士论文</h2></div>
@@ -83,7 +83,7 @@
 <div align="center"><h2>博士论文</h2></div>
 
 1. 黄广哲. (2024). *多模态外宣翻译中的中国军人形象塑造研究: 以《中国军队》（中英文版）故事栏目图文新闻为例* [Doctoral dissertation, 上海外国语大学]. CNKI. https://doi.org/10.27316/d.cnki.gswyu.2024.000039
-1. 戴哲远. (2023). *当代华语流行歌词词汇计量研究（1978-2021）* [Unpublished doctoral dissertation]. 浙江大学.
+1. 戴哲远. (2023). *当代华语流行歌词词汇计量研究（1978-2021）* [Doctoral dissertation, 浙江大学]. CNKI. https://doi.org/10.27461/d.cnki.gzjdx.2023.003322
 
 <div align="center"><h2>会议论文</h2></div>
 

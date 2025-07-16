@@ -16,10 +16,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from tests import (
-    wl_test_file_area,
-    wl_test_init
-)
+from tests import wl_test_init
 from wordless import wl_concordancer_parallel
 from wordless.wl_dialogs import wl_dialogs_misc
 
@@ -36,10 +33,7 @@ def test_concordancer_parallel():
             case 0:
                 wl_test_init.select_test_files(main, no_files = (0, 1, 2))
             case 1:
-                wl_test_init.select_test_files(
-                    main,
-                    no_files = list(range(1, 3 + wl_test_file_area.LEN_FILES_TESTS_OTHERS))
-                )
+                wl_test_init.select_test_files(main, no_files = (1, 2, 5))
 
         print(f"Files: {' | '.join(wl_test_init.get_test_file_names(main))}")
 

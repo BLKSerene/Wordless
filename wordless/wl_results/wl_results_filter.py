@@ -295,16 +295,16 @@ class Wl_Dialog_Results_Filter_Dependency_Parser(Wl_Dialog_Results_Filter):
 
         self.layouts_filters.append(widgets_filter(
             self,
-            label = self.tr('Dependency length:'),
+            label = self.tr('Dependency distance:'),
             val_min = -1000, val_max = 1000,
-            settings = self.settings, filter_name = 'dependency_len'
+            settings = self.settings, filter_name = 'dd'
         ))
 
         self.layouts_filters.append(widgets_filter(
             self,
-            label = self.tr('Dependency length (absolute):'),
+            label = self.tr('Dependency distance (absolute):'),
             val_min = -1000, val_max = 1000,
-            settings = self.settings, filter_name = 'dependency_len_abs'
+            settings = self.settings, filter_name = 'add'
         ))
 
         # Close the dialog when data in the table are re-generated
@@ -338,8 +338,8 @@ class Wl_Worker_Results_Filter_Dependency_Parser(wl_threading.Wl_Worker):
         try:
             col_head = self.dialog.table.find_header_hor(self.tr('Head'))
             col_dependent = self.dialog.table.find_header_hor(self.tr('Dependent'))
-            col_dependency_len = self.dialog.table.find_header_hor(self.tr('Dependency Length'))
-            col_dependency_len_abs = self.dialog.table.find_header_hor(self.tr('Dependency Length (Absolute)'))
+            col_dd = self.dialog.table.find_header_hor(self.tr('Dependency Distance'))
+            col_add = self.dialog.table.find_header_hor(self.tr('Dependency Distance (Absolute)'))
             col_file = self.dialog.table.find_header_hor(self.tr('File'))
 
             len_head_min, len_head_max = get_filter_min_max(
@@ -350,13 +350,13 @@ class Wl_Worker_Results_Filter_Dependency_Parser(wl_threading.Wl_Worker):
                 settings = self.dialog.settings,
                 filter_name = 'len_dependent'
             )
-            dependency_len_min, dependency_len_max = get_filter_min_max(
+            dd_min, dd_max = get_filter_min_max(
                 settings = self.dialog.settings,
-                filter_name = 'dependency_len'
+                filter_name = 'dd'
             )
-            dependency_len_abs_min, dependency_len_abs_max = get_filter_min_max(
+            add_min, add_max = get_filter_min_max(
                 settings = self.dialog.settings,
-                filter_name = 'dependency_len_abs'
+                filter_name = 'add'
             )
 
             self.dialog.table.row_filters = []
@@ -382,11 +382,11 @@ class Wl_Worker_Results_Filter_Dependency_Parser(wl_threading.Wl_Worker):
                     filters.append(len_dependent_min <= len_dependent <= len_dependent_max)
 
                     filters.append(
-                        dependency_len_min <= self.dialog.table.model().item(i, col_dependency_len).val <= dependency_len_max
+                        dd_min <= self.dialog.table.model().item(i, col_dd).val <= dd_max
                     )
 
                     filters.append(
-                        dependency_len_abs_min <= self.dialog.table.model().item(i, col_dependency_len_abs).val <= dependency_len_abs_max
+                        add_min <= self.dialog.table.model().item(i, col_add).val <= add_max
                     )
 
                     self.dialog.table.row_filters.append(all(filters))

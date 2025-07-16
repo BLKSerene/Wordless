@@ -71,7 +71,7 @@ def test_colligation_extractor():
                 # Excluding files without POS tagging support and tagged files without POS tags
                 if (
                     main.settings_custom['file_area']['files_open'][i + 1]['lang'] == 'eng_us'
-                    and main.settings_custom['file_area']['files_open'][i + 1]['name'] != '[eng_us] Tags at start of text'
+                    and main.settings_custom['file_area']['files_open'][i + 1]['name'] != '[eng_us] Starting with tags'
                 ):
                     wl_test_init.select_test_files(main, no_files = [i + 1])
                 else:

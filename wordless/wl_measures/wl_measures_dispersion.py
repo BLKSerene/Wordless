@@ -73,7 +73,7 @@ def awt(main, tokens, search_term):
     return awt
 
 # Carroll's D₂
-# Reference: Carroll, J. B. (1970). An alternative to Juillands's usage coefficient for lexical frequencies. ETS Research Bulletin Series, 1970(2), i–15. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x
+# Reference: Carroll, J. B. (1970). An alternative to Juillands's usage coefficient for lexical frequencies. ETS Research Bulletin Series, 23(2), i–15. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x
 def carrolls_d2(main, freqs):
     freqs = numpy.array(freqs)
 

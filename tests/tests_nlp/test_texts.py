@@ -60,7 +60,7 @@ def test_split_texts_properties():
         'lemma': None,
         'head': None,
         'dependency_relation': None,
-        'dependency_len': None,
+        'dd': None,
         'punc_mark': None
     }]
 

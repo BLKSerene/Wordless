@@ -58,7 +58,7 @@ def wl_test_dependency_parse_models(lang, dependency_parser, test_sentence, toke
         dependency_parser = dependency_parser
     )
     dependencies_untokenized = [
-        (str(token), str(token.head), token.dependency_relation, token.dependency_len)
+        (str(token), str(token.head), token.dependency_relation, token.dd)
         for token in tokens_untokenized
     ]
 
@@ -73,7 +73,7 @@ def wl_test_dependency_parse_models(lang, dependency_parser, test_sentence, toke
         dependency_parser = dependency_parser
     )
     dependencies_tokenized = [
-        (str(token), str(token.head), token.dependency_relation, token.dependency_len)
+        (str(token), str(token.head), token.dependency_relation, token.dd)
         for token in tokens_tokenized
     ]
 
@@ -101,7 +101,7 @@ def wl_test_dependency_parse_models(lang, dependency_parser, test_sentence, toke
         dependency_parser = dependency_parser
     )
     dependencies_tagged = [
-        (str(token), str(token.head), token.dependency_relation, token.dependency_len)
+        (str(token), str(token.head), token.dependency_relation, token.dd)
         for token in tokens_tagged
     ]
 

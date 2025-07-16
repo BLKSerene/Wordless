@@ -238,9 +238,9 @@ def z_test_berry_rogghe(main, o11s, o12s, o21s, o22s, span):
     o1xs, o2xs, ox1s, _ = get_freqs_marginal(o11s, o12s, o21s, o22s)
 
     zs = o1xs + o2xs
-    ps = wl_measure_utils.numpy_divide(ox1s, zs - o1xs, default = 1)
+    # p must be smaller than or equal to 1 to make the square root valid
+    ps = numpy.clip(wl_measure_utils.numpy_divide(ox1s, zs - o1xs, default = 1), None, 1)
     es = ps * o1xs * span
-
     z_scores = wl_measure_utils.numpy_divide(o11s - es, numpy.sqrt(es * (1 - ps)))
     p_vals = _z_test_p_val(z_scores, settings['direction'])
 

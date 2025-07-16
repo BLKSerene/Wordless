@@ -56,8 +56,11 @@ def test_cttr():
 def test_fishers_index_of_diversity():
     tokens = [str(i) for i in range(240)] + ['0'] * (15609 - 240)
     alpha = wl_measures_lexical_density_diversity.fishers_index_of_diversity(main, get_test_text(tokens))
+    # TTR = 1
+    alpha_ttr_1 = wl_measures_lexical_density_diversity.fishers_index_of_diversity(main, get_test_text(['test']))
 
     assert round(alpha, 3) == 40.247
+    assert alpha_ttr_1 == 0
 
 def test_herdans_vm():
     vm = wl_measures_lexical_density_diversity.herdans_vm(main, text_tokens_100)
@@ -101,6 +104,7 @@ def test_logttr():
     assert logttr_dugast == (numpy.log(num_tokens) ** 2) / (numpy.log(num_tokens) - numpy.log(num_types))
 
 def test_msttr():
+    settings['msttr']['num_tokens_in_each_seg'] = 100
     msttr_100 = wl_measures_lexical_density_diversity.msttr(main, text_tokens_101)
     settings['msttr']['num_tokens_in_each_seg'] = 1000
     msttr_1000 = wl_measures_lexical_density_diversity.msttr(main, text_tokens_101)

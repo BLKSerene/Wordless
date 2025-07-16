@@ -46,10 +46,7 @@ def wl_test_file_area(main):
         match files_to_open[-1]['name']:
             case '[other] No language support':
                 files_to_open[-1]['lang'] = 'other'
-            case '[eng_gb] Tagged':
-                files_to_open[-1]['tokenized'] = True
-                files_to_open[-1]['tagged'] = True
-            case '[eng_us] Tags at start of text':
+            case '[eng_us] Starting with tags':
                 files_to_open[-1]['tagged'] = True
             case '[xct] Tibetan tshegs':
                 files_to_open[-1]['encoding'] = 'utf_8'
@@ -93,6 +90,7 @@ def wl_test_file_area(main):
     main.settings_custom['file_area']['files_open_ref'].clear()
 
     random.shuffle(FILES_TESTS)
+    random.shuffle(FILES_MISC)
 
     for i, file_path in enumerate(FILES_TESTS + FILES_XCT_BOD + FILES_MISC):
         time_start = time.time()
@@ -144,7 +142,7 @@ def wl_test_file_area(main):
 
         assert new_file['path_orig'] == wl_paths.get_normalized_path(file_path)
 
-        if i < NUM_FILES_ALL or new_file['name'] in ('[eng_gb] Tagged', '[xct] Tibetan tshegs', '[bod] Tibetan tshegs'):
+        if i < NUM_FILES_ALL or new_file['name'] in ('[xct] Tibetan tshegs', '[bod] Tibetan tshegs'):
             assert new_file['encoding'] == 'utf_8', new_file['encoding']
         else:
             assert new_file['encoding'] == 'ascii', new_file['encoding']
@@ -159,12 +157,7 @@ def wl_test_file_area(main):
             case _:
                 assert new_file['lang'] == 'eng_us', new_file['lang']
 
-        if new_file['name'] == '[eng_gb] Tagged':
-            assert new_file['tokenized']
-        else:
-            assert not new_file['tokenized']
-
-        if new_file['name'] in ('[eng_gb] Tagged', '[eng_us] Tags at start of text'):
+        if new_file['name'] == '[eng_us] Starting with tags':
             assert new_file['tagged']
         else:
             assert not new_file['tagged']

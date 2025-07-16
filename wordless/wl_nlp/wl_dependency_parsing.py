@@ -16,6 +16,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import bisect
 import os
 import shutil
 import subprocess
@@ -24,7 +25,10 @@ import webbrowser
 from PyQt5 import QtCore
 import spacy
 
-from wordless.wl_checks import wl_checks_misc
+from wordless.wl_checks import (
+    wl_checks_tokens,
+    wl_checks_misc
+)
 from wordless.wl_dialogs import wl_dialogs
 from wordless.wl_nlp import (
     wl_nlp_utils,
@@ -64,10 +68,11 @@ def wl_dependency_parse(main, inputs, lang, dependency_parser = 'default', force
             texts, dependencies = wl_dependency_parse_text(main, inputs, lang, dependency_parser)
             tokens = wl_texts.to_tokens(texts, lang = lang)
 
-            for token, (_, head_i, dependency_relation, dependency_len) in zip(tokens, dependencies):
+            for token, (_, head_i, dependency_relation, dd, dd_no_punc) in zip(tokens, dependencies):
                 token.head = tokens[head_i]
                 token.dependency_relation = dependency_relation
-                token.dependency_len = dependency_len
+                token.dd = dd
+                token.dd_no_punc = dd_no_punc
 
             return tokens
         else:
@@ -77,10 +82,11 @@ def wl_dependency_parse(main, inputs, lang, dependency_parser = 'default', force
 
             tokens = wl_texts.combine_texts_properties(texts, token_properties)
 
-            for token, (_, head_i, dependency_relation, dependency_len) in zip(tokens, dependencies):
+            for token, (_, head_i, dependency_relation, dd, dd_no_punc) in zip(tokens, dependencies):
                 token.head = inputs[head_i]
                 token.dependency_relation = dependency_relation
-                token.dependency_len = dependency_len
+                token.dd = dd
+                token.dd_no_punc = dd_no_punc
 
             wl_texts.update_token_properties(inputs, tokens)
 
@@ -103,14 +109,38 @@ def wl_dependency_parse_text(main, inputs, lang, dependency_parser):
             i_head_start = 0
 
             for doc in nlp.pipe(inputs.splitlines()):
-                for token in doc:
-                    tokens.append(token.text)
-                    dependencies.append((
-                        token.head.text,
-                        i_head_start + token.head.i,
-                        token.dep_,
-                        token.head.i - token.i
-                    ))
+                for sentence in doc.sents:
+                    i_punc_marks = [
+                        i
+                        for i, token in enumerate(sentence)
+                        if wl_checks_tokens.is_punc(token.text)
+                    ]
+
+                    for i, token in enumerate(sentence):
+                        dd = token.head.i - token.i
+
+                        tokens.append(token.text)
+
+                        # Calculate dependency distances with and without punctuation marks
+                        if i_punc_marks and (dd < -1 or dd > 1):
+                            dependencies.append((
+                                token.head.text,
+                                i_head_start + token.head.i,
+                                token.dep_,
+                                dd,
+                                dd - (
+                                    bisect.bisect(i_punc_marks, token.head.i)
+                                    - bisect.bisect(i_punc_marks, token.i)
+                                )
+                            ))
+                        else:
+                            dependencies.append((
+                                token.head.text,
+                                i_head_start + token.head.i,
+                                token.dep_,
+                                dd,
+                                dd
+                            ))
 
                 i_head_start += len(doc)
     # Stanza
@@ -124,14 +154,37 @@ def wl_dependency_parse_text(main, inputs, lang, dependency_parser):
 
         for doc in nlp.bulk_process(lines):
             for sentence in doc.sentences:
+                i_punc_marks = [
+                    i
+                    for i, token in enumerate(sentence.words)
+                    if wl_checks_tokens.is_punc(token.text)
+                ]
+
                 for i, token in enumerate(sentence.words):
+                    dd = token.head - token.id if token.head > 0 else 0
+
                     tokens.append(token.text)
-                    dependencies.append((
-                        sentence.words[token.head - 1].text if token.head > 0 else token.text,
-                        i_head_start + token.head - 1 if token.head > 0 else i_head_start + i,
-                        token.deprel,
-                        token.head - token.id if token.head > 0 else 0
-                    ))
+
+                    # Calculate dependency distances with and without punctuation marks
+                    if i_punc_marks and (dd < -1 or dd > 1):
+                        dependencies.append((
+                            sentence.words[token.head - 1].text if token.head > 0 else token.text,
+                            i_head_start + token.head - 1 if token.head > 0 else i_head_start + i,
+                            token.deprel,
+                            dd,
+                            dd - (
+                                bisect.bisect(i_punc_marks, token.head - 1)
+                                - bisect.bisect(i_punc_marks, token.id - 1)
+                            )
+                        ))
+                    else:
+                        dependencies.append((
+                            sentence.words[token.head - 1].text if token.head > 0 else token.text,
+                            i_head_start + token.head - 1 if token.head > 0 else i_head_start + i,
+                            token.deprel,
+                            dd,
+                            dd
+                        ))
 
                 i_head_start += len(sentence.words)
 
@@ -156,13 +209,36 @@ def wl_dependency_parse_tokens(main, inputs, lang, dependency_parser):
                 spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [True] * len(tokens))
                 for tokens in wl_nlp_utils.split_token_list(main, inputs, dependency_parser)
             )):
-                for token in doc:
-                    dependencies.append((
-                        token.head.text,
-                        i_head_start + token.head.i,
-                        token.dep_,
-                        token.head.i - token.i
-                    ))
+                for sentence in doc.sents:
+                    i_punc_marks = [
+                        i
+                        for i, token in enumerate(sentence)
+                        if wl_checks_tokens.is_punc(token.text)
+                    ]
+
+                    for i, token in enumerate(sentence):
+                        dd = token.head.i - token.i
+
+                        # Calculate dependency distances with and without punctuation marks
+                        if i_punc_marks and (dd < -1 or dd > 1):
+                            dependencies.append((
+                                token.head.text,
+                                i_head_start + token.head.i,
+                                token.dep_,
+                                dd,
+                                dd - (
+                                    bisect.bisect(i_punc_marks, token.head.i)
+                                    - bisect.bisect(i_punc_marks, token.i)
+                                )
+                            ))
+                        else:
+                            dependencies.append((
+                                token.head.text,
+                                i_head_start + token.head.i,
+                                token.dep_,
+                                dd,
+                                dd
+                            ))
 
                 i_head_start += len(doc)
     # Stanza
@@ -180,13 +256,35 @@ def wl_dependency_parse_tokens(main, inputs, lang, dependency_parser):
             for tokens in wl_nlp_utils.split_token_list(main, inputs, dependency_parser)
         ]):
             for sentence in doc.sentences:
+                i_punc_marks = [
+                    i
+                    for i, token in enumerate(sentence.words)
+                    if wl_checks_tokens.is_punc(token.text)
+                ]
+
                 for i, token in enumerate(sentence.words):
-                    dependencies.append((
-                        sentence.words[token.head - 1].text if token.head > 0 else token.text,
-                        i_head_start + token.head - 1 if token.head > 0 else i_head_start + i,
-                        token.deprel,
-                        token.head - token.id if token.head > 0 else 0
-                    ))
+                    dd = token.head - token.id if token.head > 0 else 0
+
+                    # Calculate dependency distances with and without punctuation marks
+                    if i_punc_marks and (dd < -1 or dd > 1):
+                        dependencies.append((
+                            sentence.words[token.head - 1].text if token.head > 0 else token.text,
+                            i_head_start + token.head - 1 if token.head > 0 else i_head_start + i,
+                            token.deprel,
+                            dd,
+                            dd - (
+                                bisect.bisect(i_punc_marks, token.head - 1)
+                                - bisect.bisect(i_punc_marks, token.id - 1)
+                            )
+                        ))
+                    else:
+                        dependencies.append((
+                            sentence.words[token.head - 1].text if token.head > 0 else token.text,
+                            i_head_start + token.head - 1 if token.head > 0 else i_head_start + i,
+                            token.deprel,
+                            dd,
+                            dd
+                        ))
 
                 i_head_start += len(sentence.words)
 

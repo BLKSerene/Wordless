@@ -265,7 +265,7 @@ def im2(main, o11s, o12s, o21s, o22s):
     return numpy_log(wl_measure_utils.numpy_divide(o11s ** 2, e11s))
 
 # Poisson collocation measure
-# Reference: Quasthoff, U., & Wolff, C. (2002). The poisson collocation measure and its applications. Proceedings of 2nd International Workshop on Computational Approaches to Collocations. IEEE.
+# Reference: Quasthoff, U., & Wolff, C. (2002). In The poisson collocation measure and its applications. Proceedings of 2nd International Workshop on Computational Approaches to Collocations. IEEE.
 def poisson_collocation_measure(main, o11s, o12s, o21s, o22s):
     oxxs = o11s + o12s + o21s + o22s
     e11s, _, _, _ = wl_measures_statistical_significance.get_freqs_expected(o11s, o12s, o21s, o22s)

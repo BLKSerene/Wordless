@@ -96,6 +96,9 @@ def update_gui(err_msg, texts_stats_files):
         len_types_chars = numpy.array(stats[9])
         len_syls = numpy.array(stats[10]) if stats[10] is not None else None
         stats_lexical_density_diversity = stats[11]
+        dds_sentences = stats[12]
+        mdds = stats[13]
+        ndds = stats[14]
 
         count_paras = len(len_paras_sentences)
         count_sentences = len(len_sentences)
@@ -112,6 +115,7 @@ def update_gui(err_msg, texts_stats_files):
         )
         count_tokens_lens_chars.append(collections.Counter(len_tokens_chars))
 
+        # Readability
         assert len(stats_readability) == 39
 
         for stat in stats_readability:
@@ -185,6 +189,11 @@ def update_gui(err_msg, texts_stats_files):
                 )
                 or stat == 'no_support'
             )
+
+        # Syntactic Complexity
+        assert isinstance(dds_sentences, list) or dds_sentences == 'no_support'
+        assert isinstance(mdds, numpy.ndarray) or mdds == 'no_support'
+        assert isinstance(ndds, numpy.ndarray) or ndds == 'no_support'
 
         # Mean
         assert numpy.mean(len_paras_sentences) == count_sentences / count_paras
