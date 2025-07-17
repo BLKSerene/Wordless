@@ -114,7 +114,7 @@ ACKS = (
         'Apache-2.0', 'https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE'
     ), (
         'python-docx', 'https://github.com/python-openxml/python-docx',
-        '1.1.2', 'Steve Canny',
+        '1.2.0', 'Steve Canny',
         'MIT', 'https://github.com/python-openxml/python-docx/blob/master/LICENSE'
     ), (
         'python-mecab-ko', 'https://github.com/jonghwanhyeon/python-mecab-ko',
