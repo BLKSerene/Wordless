@@ -44,7 +44,7 @@
 20|[python-docx](https://github.com/python-openxml/python-docx)|1.2.0|Steve Canny|[MIT](https://github.com/python-openxml/python-docx/blob/master/LICENSE)
 21|[python-mecab-ko](https://github.com/jonghwanhyeon/python-mecab-ko)|1.3.7|Jonghwan Hyeon|[BSD-3-Clause](https://github.com/jonghwanhyeon/python-mecab-ko/blob/main/LICENSE)
 22|[python-pptx](https://github.com/scanny/python-pptx)|1.0.2|Steve Canny|[MIT](https://github.com/scanny/python-pptx/blob/master/LICENSE)
-23|[Requests](https://github.com/psf/requests)|2.32.3|Kenneth Reitz|[Apache-2.0](https://github.com/psf/requests/blob/main/LICENSE)
+23|[Requests](https://github.com/psf/requests)|2.32.4|Kenneth Reitz|[Apache-2.0](https://github.com/psf/requests/blob/main/LICENSE)
 24|[Sacremoses](https://github.com/hplt-project/sacremoses)|0.1.1|Liling Tan, Jelmer van der Linde|[MIT](https://github.com/hplt-project/sacremoses/blob/master/LICENSE)
 25|[SciPy](https://scipy.org/scipylib/)|1.14.0|SciPy 開發人員|[BSD-3-Clause](https://github.com/scipy/scipy/blob/main/LICENSE.txt)
 26|[simplemma](https://github.com/adbar/simplemma)|1.1.2|Adrien Barbaresi|[MIT](https://github.com/adbar/simplemma/blob/main/LICENSE)

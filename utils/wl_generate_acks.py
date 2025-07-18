@@ -126,7 +126,7 @@ ACKS = (
         'MIT', 'https://github.com/scanny/python-pptx/blob/master/LICENSE'
     ), (
         'Requests', 'https://github.com/psf/requests',
-        '2.32.3', 'Kenneth Reitz',
+        '2.32.4', 'Kenneth Reitz',
         'Apache-2.0', 'https://github.com/psf/requests/blob/main/LICENSE'
     ), (
         'Sacremoses', 'https://github.com/hplt-project/sacremoses',
