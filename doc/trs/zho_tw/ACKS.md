@@ -48,7 +48,7 @@
 24|[Sacremoses](https://github.com/hplt-project/sacremoses)|0.1.1|Liling Tan, Jelmer van der Linde|[MIT](https://github.com/hplt-project/sacremoses/blob/master/LICENSE)
 25|[SciPy](https://scipy.org/scipylib/)|1.16.0|SciPy 開發人員|[BSD-3-Clause](https://github.com/scipy/scipy/blob/main/LICENSE.txt)
 26|[simplemma](https://github.com/adbar/simplemma)|1.1.2|Adrien Barbaresi|[MIT](https://github.com/adbar/simplemma/blob/main/LICENSE)
-27|[spaCy](https://spacy.io/)|3.8.4|Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann|[MIT](https://github.com/explosion/spaCy/blob/master/LICENSE)
+27|[spaCy](https://spacy.io/)|3.8.7|Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann|[MIT](https://github.com/explosion/spaCy/blob/master/LICENSE)
 28|[spacy-pkuseg](https://github.com/explosion/spacy-pkuseg)|1.0.1|羅睿軒, 許晶晶, 任宣丞, 張藝, 張之遠, 位冰鎮, 孫栩<br>Matthew Honnibal|[MIT](https://github.com/explosion/spacy-pkuseg/blob/master/LICENSE)
 29|[Stanza](https://github.com/stanfordnlp/stanza)|1.10.1|齊鵬, 張宇浩, 張鈺暉,<br>Jason Bolton, Tim Dozat, John Bauer|[Apache-2.0](https://github.com/stanfordnlp/stanza/blob/main/LICENSE)
 30|[SudachiPy](https://github.com/WorksApplications/sudachi.rs/tree/develop/python)|0.6.10|WAP Tokushima Laboratory of AI and NLP|[Apache-2.0](https://github.com/WorksApplications/sudachi.rs/blob/develop/LICENSE)

@@ -78,7 +78,7 @@
 - Dependencies: Upgrade Requests to 2.32.4
 - Dependencies: Upgrade SciPy to 1.16.0
 - Dependencies: Upgrade simplemma to 1.1.2
-- Dependencies: Upgrade spaCy to 3.8.4
+- Dependencies: Upgrade spaCy to 3.8.7
 - Dependencies: Upgrade spacy-pkuseg to 1.0.1
 - Dependencies: Upgrade Stanza to 1.10.1
 - Dependencies: Upgrade SudachiPy to 0.6.10
