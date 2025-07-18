@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Tests: CI - SonarQube Cloud
+# Tests: CI - Qlty
 # Copyright (C) 2018-2025  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -16,21 +16,41 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-# Path to sources
-sonar.sources=.circleci, .github, utils, wordless
-# sonar.exclusions=
-# sonar.inclusions=
+config_version = "0"
 
-# Path to tests
-sonar.tests=tests
-sonar.test.exclusions=tests/files/*
-# sonar.test.inclusions=
+exclude_patterns = [
+  "data/**",
+  "doc/**",
+  "imgs/**",
+  "tests/files/**",
+  "trs/**",
+]
 
-# Source encoding
-sonar.sourceEncoding=UTF-8
+[smells]
+mode = "monitor"
 
-# Exclusions for copy-paste detection
-# sonar.cpd.exclusions=
+[smells.boolean_logic]
+threshold = 5
 
-# Python version (for python projects only)
-sonar.python.version=3.11
+[smells.nested_control_flow]
+threshold = 5
+
+[smells.function_parameters]
+enabled = false
+
+[smells.return_statements]
+threshold = 6
+
+[smells.file_complexity]
+enabled = false
+
+[smells.function_complexity]
+enabled = false
+
+[smells.duplication]
+threshold = 12
+nodes_threshold = 50
+
+[[source]]
+name = "default"
+default = true
