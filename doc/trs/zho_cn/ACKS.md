@@ -28,7 +28,7 @@
 4|[khmer-nltk](https://github.com/VietHoang1512/khmer-nltk)|1.6|Phan Viet Hoang|[Apache-2.0](https://github.com/VietHoang1512/khmer-nltk/blob/main/LICENSE)
 5|[LaoNLP](https://github.com/wannaphong/LaoNLP)|1.2.0|Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)|[Apache-2.0](https://github.com/wannaphong/LaoNLP/blob/master/LICENSE)
 6|[Lingua](https://github.com/pemistahl/lingua-py)|2.1.1|Peter M. Stahl|[Apache-2.0](https://github.com/pemistahl/lingua-py/blob/main/LICENSE.txt)
-7|[Matplotlib](https://matplotlib.org/)|3.9.0|Matplotlib 开发团队|[Matplotlib](https://matplotlib.org/stable/users/project/license.html)
+7|[Matplotlib](https://matplotlib.org/)|3.10.3|Matplotlib 开发团队|[Matplotlib](https://matplotlib.org/stable/users/project/license.html)
 8|[modern-botok](https://github.com/Divergent-Discourses/modern-botok)|1.2.1|Robert Barnett, Franz Xaver Erhard, Yuki Kyogoku|[Apache-2.0](https://github.com/Divergent-Discourses/modern-botok/blob/main/LICENSE)
 9|[NetworkX](https://networkx.org/)|3.5|NetworkX 开发人员, Aric Hagberg, Dan Schult,<br>Pieter Swart|[BSD-3-Clause](https://github.com/networkx/networkx/blob/main/LICENSE.txt)
 10|[NLTK](https://www.nltk.org/)|3.9.1|Steven Bird, Edward Loper, Ewan Klein|[Apache-2.0](https://github.com/nltk/nltk/blob/develop/LICENSE.txt)

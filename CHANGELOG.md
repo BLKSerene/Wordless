@@ -64,6 +64,7 @@
 - Dependencies: Upgrade Botok to 0.9.0
 - Dependencies: Upgrade Charset Normalizer to 3.4.2
 - Dependencies: Upgrade Lingua to 2.1.1
+- Dependencies: Upgrade Matplotlib to 3.10.3
 - Dependencies: Upgrade NetworkX to 3.5
 - Dependencies: Upgrade NLTK to 3.9.1
 - Dependencies: Upgrade pymorphy3 to 2.0.3
