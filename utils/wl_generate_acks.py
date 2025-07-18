@@ -134,7 +134,7 @@ ACKS = (
         'MIT', 'https://github.com/hplt-project/sacremoses/blob/master/LICENSE'
     ), (
         'SciPy', 'https://scipy.org/scipylib/',
-        '1.14.0', 'SciPy Developers',
+        '1.16.0', 'SciPy Developers',
         'BSD-3-Clause', 'https://github.com/scipy/scipy/blob/main/LICENSE.txt'
     ), (
         'simplemma', 'https://github.com/adbar/simplemma',

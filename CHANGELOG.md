@@ -76,6 +76,7 @@
 - Dependencies: Upgrade python-mecab-ko to 1.3.7
 - Dependencies: Upgrade python-pptx to 1.0.2
 - Dependencies: Upgrade Requests to 2.32.4
+- Dependencies: Upgrade SciPy to 1.16.0
 - Dependencies: Upgrade simplemma to 1.1.2
 - Dependencies: Upgrade spaCy to 3.8.4
 - Dependencies: Upgrade spacy-pkuseg to 1.0.1
