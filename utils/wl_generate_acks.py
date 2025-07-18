@@ -94,7 +94,7 @@ ACKS = (
         'Bootloader-exception', 'https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt'
     ), (
         'pymorphy3', 'https://github.com/no-plagiarism/pymorphy3',
-        '2.0.3', 'Mikhail Korobov, Danylo Halaiko, Mike Manturov',
+        '2.0.4', 'Mikhail Korobov, Danylo Halaiko, Mike Manturov',
         'MIT', 'https://github.com/no-plagiarism/pymorphy3/blob/master/LICENSE.txt'
     ), (
         'pypdf', 'https://github.com/py-pdf/pypdf',

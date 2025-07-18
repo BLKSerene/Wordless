@@ -36,7 +36,7 @@ As *Wordless* stands on the shoulders of giants, I hereby extend my sincere grat
 12|[opencc-python](https://github.com/yichen0831/opencc-python)|0.1.7|Carbo Kuo (郭家宝), Yicheng Huang|[Apache-2.0](https://github.com/yichen0831/opencc-python/blob/master/LICENSE.txt)
 13|[openpyxl](https://foss.heptapod.net/openpyxl/openpyxl)|3.1.5|Eric Gazoni, Charlie Clark|[MIT](https://foss.heptapod.net/openpyxl/openpyxl/-/blob/branch/3.1/LICENCE.rst)
 14|[PyInstaller](https://pyinstaller.org/)|6.8.0|Hartmut Goebel, Jasper Harrison, Bryan A. Jones,<br>Brénainn Woodsend, Rok Mandeljc|[Bootloader-exception](https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt)
-15|[pymorphy3](https://github.com/no-plagiarism/pymorphy3)|2.0.3|Mikhail Korobov, Danylo Halaiko, Mike Manturov|[MIT](https://github.com/no-plagiarism/pymorphy3/blob/master/LICENSE.txt)
+15|[pymorphy3](https://github.com/no-plagiarism/pymorphy3)|2.0.4|Mikhail Korobov, Danylo Halaiko, Mike Manturov|[MIT](https://github.com/no-plagiarism/pymorphy3/blob/master/LICENSE.txt)
 16|[pypdf](https://github.com/py-pdf/pypdf)|4.2.0|Mathieu Fenniak, Ashish Kulkarni, Steve Witham,<br>Martin Thoma|[BSD-3-Clause](https://github.com/py-pdf/pypdf/blob/main/LICENSE)
 17|[Pyphen](https://www.courtbouillon.org/pyphen/)|0.17.2|Guillaume Ayoub|[GPL-2.0-or-later/LGPL-2.1-or-later/MPL-1.1](https://github.com/Kozea/Pyphen/blob/main/LICENSE)
 18|[PyQt](https://riverbankcomputing.com/software/pyqt/)|5.15.11|Riverbank Computing|[Commercial-License/GPL-3.0-only](https://www.riverbankcomputing.com/static/Docs/PyQt5/introduction.html#license)
