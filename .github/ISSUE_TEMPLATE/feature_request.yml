@@ -1,0 +1,72 @@
+# ----------------------------------------------------------------------
+# GitHub: Issue template - Feature requests
+# Copyright (C) 2018-2025  Ye Lei (叶磊)
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+# ----------------------------------------------------------------------
+
+name: Feature request
+description: Suggest an idea for this project
+title: "[Feature Request] "
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+
+  - type: textarea
+    attributes:
+      label: Is your feature request related to a problem? Please describe.
+      description: A clear and concise description of what the problem is.
+      placeholder: E.g. I'm always frustrated when …
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Describe the solution you would like
+      description: A clear and concise description of what you want to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Alternatives you have considered
+      description: A clear and concise description of any alternative solutions or features you've considered.
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: Add any other context or screenshots about the feature request here.
+    validations:
+      required: false
+
+  - type: checkboxes
+    attributes:
+      label: Is there an existing issue for this?
+      description: Please search to see if an issue already exists for your feature request.
+      options:
+      - label: I have searched the existing issues
+        required: true
+
+  - type: checkboxes
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/BLKSerene/Wordless/blob/main/CODE_OF_CONDUCT.md). 
+      options:
+        - label: I agree to follow this Wordless's Code of Conduct
+          required: true
