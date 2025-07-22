@@ -155,14 +155,17 @@ class Wl_Settings_Word_Tokenization(wl_settings.Wl_Settings_Node):
                 langs = [self.settings_custom['preview']['preview_lang']],
                 lang_utils = [['default_sentence_tokenizer', word_tokenizer]]
             ):
-                worker_preview_word_tokenizer = Wl_Worker_Preview_Word_Tokenizer(
+                self.worker_preview_word_tokenizer = Wl_Worker_Preview_Word_Tokenizer(
                     self.main,
-                    update_gui = self.update_gui,
                     word_tokenizer = word_tokenizer
                 )
 
-                self.thread_preview_word_tokenizer = wl_threading.Wl_Thread_No_Progress(worker_preview_word_tokenizer)
-                self.thread_preview_word_tokenizer.start_worker()
+                self.thread_preview_word_tokenizer = QtCore.QThread()
+                wl_threading.start_worker_in_thread(
+                    self.worker_preview_word_tokenizer,
+                    self.thread_preview_word_tokenizer,
+                    self.update_gui
+                )
             else:
                 self.update_gui_err()
 
@@ -225,7 +228,7 @@ class Wl_Settings_Word_Tokenization(wl_settings.Wl_Settings_Node):
 RE_VIE_SPECES_UNDERSCORES = re.compile(r'\s+')
 
 class Wl_Worker_Preview_Word_Tokenizer(wl_threading.Wl_Worker_No_Progress):
-    worker_done = QtCore.pyqtSignal(list)
+    finished = QtCore.pyqtSignal(list)
 
     def run(self):
         preview_results = []
@@ -249,4 +252,4 @@ class Wl_Worker_Preview_Word_Tokenizer(wl_threading.Wl_Worker_No_Progress):
 
             preview_results.append(' '.join(tokens))
 
-        self.worker_done.emit(preview_results)
+        self.finished.emit(preview_results)

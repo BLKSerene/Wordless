@@ -175,7 +175,7 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
         if ui_settings_new == ui_settings_old:
             result = 'skip'
         else:
-            if wl_dialogs_misc.Wl_Dialog_Restart_Required(self.main).exec_():
+            if wl_dialogs_misc.Wl_Dialog_Restart_Required(self.main).exec():
                 result = 'restart'
             else:
                 result = 'cancel'

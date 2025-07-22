@@ -17,7 +17,6 @@
 # ----------------------------------------------------------------------
 
 # pylint: disable=broad-exception-caught
-
 import copy
 import traceback
 
@@ -36,6 +35,7 @@ from wordless.wl_nlp import (
     wl_texts
 )
 from wordless.wl_utils import (
+    wl_excs,
     wl_misc,
     wl_threading
 )
@@ -290,16 +290,21 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         if not self.items_found or self.last_search_settings != copy.deepcopy(self.settings):
             self.clr_highlights()
 
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Searching in results...'))
-
-            worker_results_search = Wl_Worker_Results_Search(
+            self.worker_results_search = Wl_Worker_Results_Search(
                 self.main,
-                dialog_progress = dialog_progress,
-                update_gui = self.update_gui,
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(
+                    self.main,
+                    text = self.tr('Searching in results...')
+                ),
                 dialog = self
             )
 
-            wl_threading.Wl_Thread(worker_results_search).start_worker()
+            self.thread_results_search = QtCore.QThread()
+            wl_threading.start_worker_in_thread(
+                self.worker_results_search,
+                self.thread_results_search,
+                self.update_gui
+            )
 
     def update_gui(self, err_msg):
         if wl_checks_work_area.check_postprocessing(self.main, err_msg):
@@ -335,10 +340,9 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
                 # Save search settings
                 self.last_search_settings = copy.deepcopy(self.settings)
 
-                len_items_found = len(self.items_found)
-                msg_item = self.tr('item') if len_items_found == 1 else self.tr('items')
-
-                self.main.statusBar().showMessage(self.tr('Found {} {}.').format(len_items_found, msg_item))
+                self.main.statusBar().showMessage(self.tr('Found {}.').format(wl_misc.check_noun_number(
+                    len(self.items_found), self.tr('item')
+                )))
             except Exception:
                 wl_checks_work_area.check_err(self.main, traceback.format_exc())
 
@@ -372,7 +376,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.button_clr_hightlights.setEnabled(False)
 
 class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
-    worker_done = QtCore.pyqtSignal(str)
+    finished = QtCore.pyqtSignal(str)
 
     def run(self):
         err_msg = ''
@@ -398,9 +402,15 @@ class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
                     # Concordancer - Left, Node, Right / Parallel Concordancer - Parallel Unit / Dependency Parser - Sentence
                     if table.indexWidget(table.model().index(0, col)):
                         for row in rows_to_search:
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
                             results[(row, col)] = table.indexWidget(table.model().index(row, col)).tokens_search
                     else:
                         for row in rows_to_search:
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
                             # Dependency Parser - Sentence / N-gram Generator - N-gram
                             try:
                                 results[(row, col)] = table.model().item(row, col).tokens_search
@@ -413,6 +423,9 @@ class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
                 items = [token for text in results.values() for token in text]
 
                 for file in table.settings['file_area']['files_open']:
+                    if not self._running:
+                        raise wl_excs.Wl_Exc_Aborted(self.main)
+
                     if file['selected']:
                         search_terms_file = wl_matching.match_search_terms_ngrams(
                             self.main, items,
@@ -423,13 +436,19 @@ class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
 
                         search_terms |= set(search_terms_file)
 
-                lens_search_terms = [len(search_term) for search_term in search_terms]
+                num_results = len(results)
+                len_search_terms = [len(search_term) for search_term in search_terms]
 
-                for (row, col), text in results.items():
+                for i, ((row, col), text) in enumerate(results.items()):
                     matched = False
 
-                    for search_term, len_search_term in zip(search_terms, lens_search_terms):
+                    self.progress_updated.emit(self.tr('Searching in results... ({} / {})').format(i + 1, num_results))
+
+                    for search_term, len_search_term in zip(search_terms, len_search_terms):
                         for ngram in wl_nlp_utils.ngrams(text, len_search_term):
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
                             if ngram == tuple(search_term):
                                 self.dialog.items_found.append([table, row, col])
 
@@ -446,7 +465,9 @@ class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
             )
 
             self.progress_updated.emit(self.tr('Highlighting found items...'))
+        except wl_excs.Wl_Exc_Aborted:
+            err_msg = 'aborted'
         except Exception:
             err_msg = traceback.format_exc()
         finally:
-            self.worker_done.emit(err_msg)
+            self.finished.emit(err_msg)

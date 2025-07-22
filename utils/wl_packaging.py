@@ -37,10 +37,6 @@ print_with_elapsed_time('Start packaging...')
 if is_windows:
     subprocess.run(('python', '-m', 'PyInstaller', '-y', '--clean', 'utils/wl_packaging.spec'), check = True)
 elif is_macos:
-    # Clean cache to avoid code signature error
-    shutil.rmtree('build', ignore_errors = True)
-    shutil.rmtree('dist', ignore_errors = True)
-
     subprocess.run(('python3', '-m', 'PyInstaller', '-y', '--clean', 'utils/wl_packaging.spec'), check = True)
 elif is_linux:
     subprocess.run(('python3.11', '-m', 'PyInstaller', '-y', '--clean', 'utils/wl_packaging.spec'), check = True)
@@ -54,11 +50,6 @@ elif is_macos:
     os.makedirs('dist/Wordless.app/Contents/MacOS/exports')
 
 if is_linux:
-    # Fix GLib-GIO-ERROR, Gtk-WARNING, and many other errors/warnings on Linux
-    # See: https://github.com/pyinstaller/pyinstaller/issues/7506
-    os.remove('dist/Wordless/libs/libgtk-3.so.0')
-    os.remove('dist/Wordless/libs/libstdc++.so.6')
-
     # Generate .desktop file
     subprocess.run(('python3.11', '-m', 'PyInstaller', '-y', '--clean', 'utils/linux_create_shortcut.py', '--contents-directory', 'libs'), check = True)
     shutil.copyfile('dist/linux_create_shortcut/linux_create_shortcut', 'dist/Wordless/Wordless - Create Shortcut')

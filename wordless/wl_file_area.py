@@ -17,7 +17,6 @@
 # ----------------------------------------------------------------------
 
 # pylint: disable=broad-exception-caught
-
 import copy
 import csv
 import os
@@ -50,6 +49,7 @@ from wordless.wl_nlp import (
 from wordless.wl_utils import (
     wl_conversion,
     wl_detection,
+    wl_excs,
     wl_misc,
     wl_paths,
     wl_threading
@@ -289,7 +289,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
                     item.setText(file_name_old)
 
                     if file_name in file_names_old:
-                        # Use exec_() instead of open() here to allow editing to be started
+                        # Use exec() instead of open() here to allow editing to be started
                         wl_dialogs.Wl_Dialog_Info_Simple(
                             self.main,
                             title = self.tr('Duplicate File Names'),
@@ -299,7 +299,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
                                 <div>Please specify a different file name.</div>
                             '''),
                             icon = 'warning'
-                        ).exec_()
+                        ).exec()
 
                         # Allow the editor to be closed properly after editing is started
                         self.setCurrentIndex(item.index())
@@ -457,15 +457,18 @@ class Wl_Table_Files(wl_tables.Wl_Table):
             self.dialog_open_corpora,
             langs = set((file['lang'] for file in files_to_open)),
         ):
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Checking files...'))
-
-            wl_threading.Wl_Thread(Wl_Worker_Open_Files(
+            self.worker_open_files = Wl_Worker_Open_Files(
                 self.main,
-                dialog_progress = dialog_progress,
-                update_gui = self.update_gui,
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(
+                    self.main,
+                    text = self.tr('Checking files...')
+                ),
                 files_to_open = files_to_open,
                 file_type = self.file_type
-            )).start_worker()
+            )
+
+            self.thread_open_files = QtCore.QThread()
+            wl_threading.start_worker_in_thread(self.worker_open_files, self.thread_open_files, self.update_gui)
 
     def update_gui(self, err_msg, new_files):
         if wl_checks_files.check_err_file_area(self.dialog_open_corpora, err_msg):
@@ -474,14 +477,16 @@ class Wl_Table_Files(wl_tables.Wl_Table):
             self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}'].extend(new_files)
             self.update_table()
 
-            len_files_opened = len(self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}']) - len_files_old
-            msg_file = self.tr('file') if len_files_opened == 1 else self.tr('files')
+            self.dialog_open_corpora.accept()
 
-            self.main.statusBar().showMessage(self.tr('{} {} has been successfully opened.').format(len_files_opened, msg_file))
+            self.main.statusBar().showMessage(self.tr('{} has been successfully opened.').format(wl_misc.check_noun_number(
+                len(self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}'])
+                - len_files_old, self.tr('file')
+            )))
 
     def open_corpora(self):
         self.dialog_open_corpora = Wl_Dialog_Open_Corpora(self.main, self.file_area)
-        self.dialog_open_corpora.open()
+        self.dialog_open_corpora.exec()
 
     def reopen(self):
         files = self.main.settings_custom['file_area'][f'files_closed{self.settings_suffix}'].pop()
@@ -567,7 +572,9 @@ class Wl_Dialog_Open_Corpora(wl_dialogs.Wl_Dialog):
         self.button_open = QtWidgets.QPushButton(self.tr('Open'), self)
         self.button_cancel = QtWidgets.QPushButton(self.tr('Cancel'), self)
 
-        self.button_open.clicked.connect(self.accept)
+        self.button_open.clicked.connect(lambda: self.main.tabs_file_area.currentWidget().table_files._open_files(
+            files_to_open = self.table_files.files_to_open
+        ))
         self.button_cancel.clicked.connect(self.reject)
 
         self.setLayout(wl_layouts.Wl_Layout())
@@ -583,14 +590,6 @@ class Wl_Dialog_Open_Corpora(wl_dialogs.Wl_Dialog):
         self.layout().setColumnStretch(1, 1)
 
         self.load_settings()
-
-    def accept(self):
-        num_files = len(self.main.settings_custom['file_area']['files_open'] + self.main.settings_custom['file_area']['files_open_ref'])
-
-        self.main.tabs_file_area.currentWidget().table_files._open_files(files_to_open = self.table_files.files_to_open)
-
-        if num_files < len(self.main.settings_custom['file_area']['files_open'] + self.main.settings_custom['file_area']['files_open_ref']):
-            super().accept()
 
     def reject(self):
         # Remove placeholders for new paths
@@ -628,8 +627,6 @@ class Wl_Dialog_Open_Corpora(wl_dialogs.Wl_Dialog):
 
     @wl_misc.log_time
     def _add_files(self, file_paths):
-        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Checking files...'))
-
         file_paths, self.file_paths_unsupported = wl_checks_files.check_file_paths_unsupported(self.main, file_paths)
         file_paths, self.file_paths_empty = wl_checks_files.check_file_paths_empty(self.main, file_paths)
         file_paths, self.file_paths_dup = wl_checks_files.check_file_paths_dup(
@@ -652,19 +649,24 @@ class Wl_Dialog_Open_Corpora(wl_dialogs.Wl_Dialog):
             ))
             and self.main.settings_custom['files']['misc_settings']['display_warning_when_opening_nontext_files']
         ):
-            non_text_files_ok = Wl_Dialog_Opening_Nontext_Files(self.main).exec_()
+            non_text_files_ok = Wl_Dialog_Opening_Nontext_Files(self.main).exec()
         else:
             non_text_files_ok = True
 
         if non_text_files_ok:
-            wl_threading.Wl_Thread(Wl_Worker_Add_Files(
+            self.worker_add_files = Wl_Worker_Add_Files(
                 self.main,
-                dialog_progress = dialog_progress,
-                update_gui = self.update_gui,
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(
+                    self.main,
+                    text = self.tr('Checking files...')
+                ),
                 file_paths = file_paths,
                 table = self.table_files,
                 file_area = self.file_area
-            )).start_worker()
+            )
+
+            self.thread_add_files = QtCore.QThread()
+            wl_threading.start_worker_in_thread(self.worker_add_files, self.thread_add_files, self.update_gui)
 
     def update_gui(self, err_msg, new_files):
         if wl_checks_files.check_err_file_area(self, err_msg):
@@ -709,7 +711,11 @@ class Wl_Dialog_Open_Corpora(wl_dialogs.Wl_Dialog):
                     )
 
                 dialog_err_files.table_err_files.enable_updates()
-                dialog_err_files.exec_()
+                dialog_err_files.exec()
+            else:
+                self.main.statusBar().showMessage(self.tr('{} has been successfully added.').format(wl_misc.check_noun_number(
+                    len(new_files), self.tr('file')
+                )))
 
     def add_files(self):
         if os.path.exists(self.main.settings_custom['general']['imp']['files']['default_path']):
@@ -1031,7 +1037,7 @@ def get_text_non_tmx(file):
     return text
 
 class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
-    worker_done = QtCore.pyqtSignal(str, list)
+    finished = QtCore.pyqtSignal(str, list)
 
     def run(self):
         err_msg = ''
@@ -1041,6 +1047,9 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
             len_file_paths = len(self.file_paths)
 
             for i, file_path in enumerate(self.file_paths):
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
                 self.progress_updated.emit(self.tr('Adding files... ({}/{})').format(i + 1, len_file_paths))
 
                 file_path = wl_paths.get_normalized_path(file_path)
@@ -1142,6 +1151,9 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                         soup = bs4.BeautifulSoup(f.read(), 'lxml-xml')
 
                     for elements_tu in soup.select('tu'):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         seg_src, seg_tgt = elements_tu.select('seg')
 
                         lines_src.append(seg_src.get_text().replace(r'\n', ' ').strip())
@@ -1153,16 +1165,19 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                     new_files.append(new_file_src)
                     new_files.append(new_file_tgt)
 
-            if self.file_paths:
-                self.main.settings_custom['general']['imp']['files']['default_path'] = wl_paths.get_normalized_dir(self.file_paths[0])
+        except wl_excs.Wl_Exc_Aborted:
+            err_msg = 'aborted'
         except Exception:
             err_msg = traceback.format_exc()
 
+        if self.file_paths:
+            self.main.settings_custom['general']['imp']['files']['default_path'] = wl_paths.get_normalized_dir(self.file_paths[0])
+
         self.progress_updated.emit(self.tr('Updating table...'))
-        self.worker_done.emit(err_msg, new_files)
+        self.finished.emit(err_msg, new_files)
 
 class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
-    worker_done = QtCore.pyqtSignal(str, list)
+    finished = QtCore.pyqtSignal(str, list)
 
     def run(self):
         err_msg = ''
@@ -1175,6 +1190,9 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
             RE_TAGS_HEADER = re.compile(tags_header)
 
             for i, file in enumerate(self.files_to_open):
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
                 self.progress_updated.emit(self.tr('Opening files... ({}/{})').format(i + 1, len_files))
 
                 # Re-decode texts in case encoding settings are manually changed
@@ -1189,6 +1207,9 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                         soup = bs4.BeautifulSoup(f.read(), 'lxml-xml')
 
                     for elements_tu in soup.select('tu'):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         seg_src, seg_tgt = elements_tu.select('seg')
 
                         if file['tmx_type'] == 'src':
@@ -1216,8 +1237,10 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                     file['text'] = wl_texts.Wl_Text_Ref(self.main, file)
 
                 new_files.append(file)
+        except wl_excs.Wl_Exc_Aborted:
+            err_msg = 'aborted'
         except Exception:
             err_msg = traceback.format_exc()
 
         self.progress_updated.emit(self.tr('Updating table...'))
-        self.worker_done.emit(err_msg, new_files)
+        self.finished.emit(err_msg, new_files)

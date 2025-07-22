@@ -624,7 +624,7 @@ def wl_dependency_parse_fig_tokens(
 
     return htmls
 
-def wl_show_dependency_graphs(main, htmls, show_in_separate_tab):
+def wl_show_dependency_graphs(parent, htmls, show_in_separate_tab):
     # pylint: disable=consider-using-with
 
     DIR_PATH = os.path.join(wl_settings_default.DEFAULT_DIR_EXPS, '_dependency_parsing_figs')
@@ -635,7 +635,7 @@ def wl_show_dependency_graphs(main, htmls, show_in_separate_tab):
 
     # Inform users of figures' save location in case the browser does not start successfully
     wl_dialogs.Wl_Dialog_Info_Simple(
-        main,
+        parent,
         title = _tr('wl_dependency_parsing', 'Dependency Graphs Generated Successfully'),
         text = _tr('wl_dependency_parsing', '''
             <div>Dependency graphs has been successfully generated and exported under folder: {}</div>

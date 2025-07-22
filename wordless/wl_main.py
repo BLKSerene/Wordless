@@ -16,6 +16,12 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import multiprocessing
+
+# Prevent Wordless from relaunching itself on macOS
+multiprocessing.freeze_support()
+
+# pylint: disable=wrong-import-position
 import copy
 import glob
 import os
@@ -36,8 +42,6 @@ if sys.stdout is None:
     sys.stdout = open(os.devnull, 'w') # pylint: disable=unspecified-encoding, consider-using-with
 if sys.stderr is None:
     sys.stderr = open(os.devnull, 'w') # pylint: disable=unspecified-encoding, consider-using-with
-
-# pylint: disable=wrong-import-position
 
 import botok
 import matplotlib
@@ -263,7 +267,7 @@ class Wl_Main(QtWidgets.QMainWindow):
 
     def closeEvent(self, event):
         if self.settings_custom['general']['misc_settings']['always_confirm_on_exit']:
-            if Wl_Dialog_Confirm_Exit(self).exec_():
+            if Wl_Dialog_Confirm_Exit(self).exec():
                 self.save_settings()
 
                 event.accept()
@@ -598,7 +602,7 @@ class Wl_Main(QtWidgets.QMainWindow):
         for action in self.action_group_prefs_display_lang.actions():
             if action.isChecked():
                 if action.lang != self.settings_custom['menu']['prefs']['display_lang']:
-                    if wl_dialogs_misc.Wl_Dialog_Restart_Required(self).exec_():
+                    if wl_dialogs_misc.Wl_Dialog_Restart_Required(self).exec():
                         with open(file_settings_display_lang, 'wb') as f:
                             pickle.dump(action.lang, f)
 
@@ -625,7 +629,7 @@ class Wl_Main(QtWidgets.QMainWindow):
             text = self.tr('''
                 <div>Do you want to reset all layouts to their default settings?</div>
             ''')
-        ).exec_():
+        ).exec():
             settings = self.settings_default['menu']['prefs']['layouts']
 
             self.centralWidget().setSizes(settings['main_window'])
@@ -1085,17 +1089,17 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
         self.checking_status_changed('checking')
 
         self.main.worker_check_updates = Worker_Check_Updates(self.main)
-        thread_check_updates = wl_threading.Wl_Thread(self.main.worker_check_updates)
+        thread_check_updates = QtCore.QThread()
 
         self.main.threads_check_updates.append(thread_check_updates)
 
         thread_check_updates.destroyed.connect(lambda: self.main.threads_check_updates.remove(thread_check_updates))
 
-        self.main.worker_check_updates.worker_done.connect(self.checking_status_changed)
-        self.main.worker_check_updates.worker_done.connect(thread_check_updates.quit)
-        self.main.worker_check_updates.worker_done.connect(self.main.worker_check_updates.deleteLater)
-
-        thread_check_updates.start()
+        wl_threading.start_worker_in_thread(
+            self.main.worker_check_updates,
+            thread_check_updates,
+            self.checking_status_changed
+        )
 
     def stop_checking(self):
         self.main.worker_check_updates.stop()
@@ -1141,7 +1145,7 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
         # On startup
         if self.on_startup:
             if status == 'updates_available':
-                self.exec_()
+                self.exec()
             else:
                 self.accept()
 
@@ -1158,7 +1162,7 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
         settings['check_updates_on_startup'] = self.checkbox_check_updates_on_startup.isChecked()
 
 class Worker_Check_Updates(QtCore.QObject):
-    worker_done = QtCore.pyqtSignal(str, str)
+    finished = QtCore.pyqtSignal(str, str)
 
     def __init__(self, main):
         super().__init__()
@@ -1186,7 +1190,7 @@ class Worker_Check_Updates(QtCore.QObject):
         if self.stopped:
             updates_status = ''
 
-        self.worker_done.emit(updates_status, ver_new)
+        self.finished.emit(updates_status, ver_new)
 
     def stop(self):
         self.stopped = True
@@ -1429,10 +1433,10 @@ if __name__ == '__main__':
         )
 
         dialog_corrupt_settings_file.move_to_center()
-        dialog_corrupt_settings_file.exec_()
+        dialog_corrupt_settings_file.exec()
 
     # Check for updates on startup
     if wl_main.settings_custom['general']['update_settings']['check_updates_on_startup']:
         wl_main.help_check_updates(on_startup = True)
 
-    sys.exit(wl_app.exec_())
+    sys.exit(wl_app.exec())

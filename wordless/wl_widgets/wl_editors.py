@@ -220,7 +220,7 @@ class Wl_Line_Edit_Path_Dir_Confirm(Wl_Line_Edit_Path_Dir):
                 <br>
                 <div>Do you want to create the folder?</div>
             ''').format(self.text()),
-        ).exec_()
+        ).exec()
 
     def text_changed(self):
         # Empty text

@@ -17,7 +17,6 @@
 # ----------------------------------------------------------------------
 
 # pylint: disable=broad-exception-caught
-
 import copy
 import re
 import traceback
@@ -32,6 +31,7 @@ from wordless.wl_dialogs import (
     wl_dialogs_misc
 )
 from wordless.wl_utils import (
+    wl_excs,
     wl_misc,
     wl_threading
 )
@@ -104,17 +104,21 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
     @wl_misc.log_time
     def sort_results(self):
         if not self.table.is_empty():
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Sorting results...'))
-
-            worker_results_sort_concordancer = Wl_Worker_Results_Sort_Concordancer(
+            self.worker_results_sort_concordancer = Wl_Worker_Results_Sort_Concordancer(
                 self.main,
-                dialog_progress = dialog_progress,
-                update_gui = self.update_gui,
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(
+                    self.main,
+                    text = self.tr('Sorting results...')
+                ),
                 dialog = self
             )
 
-            thread_results_sort_concordancer = wl_threading.Wl_Thread(worker_results_sort_concordancer)
-            thread_results_sort_concordancer.start_worker()
+            self.thread_results_sort_concordancer = QtCore.QThread()
+            wl_threading.start_worker_in_thread(
+                self.worker_results_sort_concordancer,
+                self.thread_results_sort_concordancer,
+                self.update_gui
+            )
 
     def update_gui(self, err_msg, results):
         if wl_checks_work_area.check_postprocessing(self.main, err_msg):
@@ -309,7 +313,7 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         if item.column() == 0:
             for i in range(self.model().rowCount()):
                 if i != item.row() and self.model().item(i, 0).text() == item.text():
-                    # Use exec_() instead of open() here to allow editing to be started
+                    # Use exec() instead of open() here to allow editing to be started
                     wl_dialogs.Wl_Dialog_Info_Simple(
                         self.main,
                         title = self.tr('Column Sorted More Than Once'),
@@ -317,7 +321,7 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                             <div>Please refrain from sorting the same column more than once.</div>
                         '''),
                         icon = 'warning'
-                    ).exec_()
+                    ).exec()
 
                     item.setText(item.text_old)
 
@@ -507,19 +511,25 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
             self._add_row(texts = sorting_rule)
 
 class Wl_Worker_Results_Sort_Concordancer(wl_threading.Wl_Worker):
-    worker_done = QtCore.pyqtSignal(str, list)
+    finished = QtCore.pyqtSignal(str, list)
 
     def run(self):
         err_msg = ''
         results = []
 
         try:
+            num_rows = self.dialog.table.model().rowCount()
             max_left = self.dialog.table_sort.max_left()
             max_right = self.dialog.table_sort.max_right()
 
             calc_sentiment_scores = self.dialog.table.settings['concordancer']['generation_settings']['calc_sentiment_scores']
 
-            for row in range(self.dialog.table.model().rowCount()):
+            for i, row in enumerate(range(num_rows)):
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                self.progress_updated.emit(self.tr('Sorting results... ({} / {})').format(i + 1, num_rows))
+
                 left_old = self.dialog.table.indexWidget(self.dialog.table.model().index(row, 0))
                 node_old = self.dialog.table.indexWidget(self.dialog.table.model().index(row, 1))
                 right_old = self.dialog.table.indexWidget(self.dialog.table.model().index(row, 2))
@@ -557,8 +567,10 @@ class Wl_Worker_Results_Sort_Concordancer(wl_threading.Wl_Worker):
                     file
                 ])
 
-                self.progress_updated.emit(self.tr('Updating table...'))
+            self.progress_updated.emit(self.tr('Updating table...'))
+        except wl_excs.Wl_Exc_Aborted:
+            err_msg = 'aborted'
         except Exception:
             err_msg = traceback.format_exc()
         finally:
-            self.worker_done.emit(err_msg, results)
+            self.finished.emit(err_msg, results)

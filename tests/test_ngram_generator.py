@@ -70,11 +70,13 @@ def test_ngram_generator():
         print(f"Measure of dispersion: {settings['generation_settings']['measure_dispersion']}")
         print(f"Measure of adjusted frequency: {settings['generation_settings']['measure_adjusted_freq']}")
 
-        wl_ngram_generator.Wl_Worker_Ngram_Generator_Table(
+        worker_ngram_generator = wl_ngram_generator.Wl_Worker_Ngram_Generator_Table(
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
-            update_gui = update_gui
-        ).run()
+        )
+
+        worker_ngram_generator.finished.connect(update_gui)
+        worker_ngram_generator.run()
 
 def update_gui(err_msg, ngrams_freq_files, ngrams_stats_files):
     print(err_msg)

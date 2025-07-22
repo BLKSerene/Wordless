@@ -18,7 +18,7 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
-## [3.6.0](https://github.com/BLKSerene/Wordless/releases/tag/3.6.0) - ??/??/2025
+## [3.6.0](https://github.com/BLKSerene/Wordless/releases/tag/3.6.0) - 07/??/2025
 ### 🎉 New Features
 - File Area: Add Number of corpora / tokens / types (selected)
 - Measures: Add effect size - conditional probability / ΔP / mutual information (normalized) / μ-value / pointwise mutual information (squared) / pointwise mutual information (normalized) / relative risk
@@ -41,6 +41,7 @@
 
 ### ✨ Improvements
 - Measures: Update lexical density/diversity - Brunet's index
+- Misc: Allow operations to be aborted
 - Misc: Disable mouse wheel events for tabs
 
 ### 🔧 Bugfixes
@@ -68,6 +69,7 @@
 - Dependencies: Upgrade NetworkX to 3.5
 - Dependencies: Upgrade NLTK to 3.9.1
 - Dependencies: Upgrade pymorphy3 to 2.0.4
+- Dependencies: Upgrade PyInstaller to 6.14.2
 - Dependencies: Upgrade pypdf to 5.8.0
 - Dependencies: Upgrade Pyphen to 0.17.2
 - Dependencies: Upgrade PyQt to 5.15.11

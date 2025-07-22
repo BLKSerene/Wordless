@@ -71,11 +71,13 @@ def test_wordlist_generator():
         print(f"Measure of dispersion: {settings['generation_settings']['measure_dispersion']}")
         print(f"Measure of adjusted frequency: {settings['generation_settings']['measure_adjusted_freq']}")
 
-        wl_wordlist_generator.Wl_Worker_Wordlist_Generator_Table(
+        worker_wordlist_generator = wl_wordlist_generator.Wl_Worker_Wordlist_Generator_Table(
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
-            update_gui = update_gui
-        ).run()
+        )
+
+        worker_wordlist_generator.finished.connect(update_gui)
+        worker_wordlist_generator.run()
 
 def update_gui(err_msg, tokens_freq_files, tokens_stats_files, syls_tokens):
     print(err_msg)

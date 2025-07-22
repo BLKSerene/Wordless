@@ -119,11 +119,11 @@ class Wl_Dialog(QtWidgets.QDialog):
             int((QtWidgets.QApplication.primaryScreen().size().height() - self.height()) / 2)
         )
 
-    def exec_(self):
+    def exec(self):
         if self.beep:
             QtWidgets.QApplication.beep()
 
-        return super().exec_()
+        return super().exec()
 
     def open(self):
         if self.beep:
@@ -346,4 +346,4 @@ class Wl_Dialog_Settings(Wl_Dialog_Info):
 
     def load(self):
         self.load_settings()
-        self.exec_()
+        self.exec()

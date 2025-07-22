@@ -89,11 +89,13 @@ def test_colligation_extractor():
         print(f"Measure of Bayes factor: {settings['generation_settings']['measure_bayes_factor']}")
         print(f"Measure of effect size: {settings['generation_settings']['measure_effect_size']}")
 
-        wl_colligation_extractor.Wl_Worker_Colligation_Extractor_Table(
+        worker_colligation_extractor = wl_colligation_extractor.Wl_Worker_Colligation_Extractor_Table(
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
-            update_gui = update_gui
-        ).run()
+        )
+
+        worker_colligation_extractor.finished.connect(update_gui)
+        worker_colligation_extractor.run()
 
 def update_gui(err_msg, colligations_freqs_files, colligations_stats_files):
     print(err_msg)

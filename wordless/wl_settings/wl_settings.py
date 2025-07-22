@@ -294,17 +294,15 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
 
     def reset_all_settings(self):
         if wl_dialogs.Wl_Dialog_Question(
-            self.main,
+            self,
             title = self.tr('Reset All Settings'),
             text = self.tr('''
                 <div>Do you want to reset all settings to their default values?</div>
                 <br>
                 <div><b>Warning:</b> This will affect settings on all pages.</div>
             ''')
-        ).exec_():
+        ).exec():
             self.load_settings(defaults = True)
-
-        self.activateWindow()
 
     def save_settings(self):
         if self.apply_settings():
@@ -345,7 +343,7 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
             if node_cur.parent():
                 self.tree_settings.setExpanded(node_cur.parent().index(), True)
 
-            self.exec_()
+            self.exec()
         except Exception: # pylint: disable=broad-exception-caught
             wl_checks_work_area.check_err(self.main, traceback.format_exc())
 

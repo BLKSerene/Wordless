@@ -345,7 +345,6 @@ class Wl_Settings_Figs_Word_Clouds(wl_settings.Wl_Settings_Node):
             )
 
             path_colormap_temp = wl_paths.get_path_img('_matplotlib_colormap.png')
-            # Does not work for Pillow >= 11.1 on macOS 10.13
             fig.savefig(path_colormap_temp, bbox_inches = 'tight', pad_inches = 0)
             matplotlib.pyplot.close()
 

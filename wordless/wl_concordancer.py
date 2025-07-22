@@ -17,7 +17,6 @@
 # ----------------------------------------------------------------------
 
 # pylint: disable=broad-exception-caught
-
 import bisect
 import copy
 import traceback
@@ -39,6 +38,7 @@ from wordless.wl_nlp import (
     wl_sentiment_analysis
 )
 from wordless.wl_utils import (
+    wl_excs,
     wl_misc,
     wl_threading
 )
@@ -505,13 +505,17 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
                 nlp_support_ok = True
 
             if nlp_support_ok:
-                worker_concordancer_table = Wl_Worker_Concordancer_Table(
+                self.worker_concordancer_table = Wl_Worker_Concordancer_Table(
                     self.main,
                     dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                    update_gui = self.update_gui_table
                 )
 
-                wl_threading.Wl_Thread(worker_concordancer_table).start_worker()
+                self.thread_concordancer_table = QtCore.QThread()
+                wl_threading.start_worker_in_thread(
+                    self.worker_concordancer_table,
+                    self.thread_concordancer_table,
+                    self.update_gui_table
+                )
 
     def update_gui_table(self, err_msg, concordance_lines):
         if wl_checks_work_area.check_results(self.main, err_msg, concordance_lines):
@@ -633,10 +637,14 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
                 self.worker_concordancer_fig = Wl_Worker_Concordancer_Fig(
                     self.main,
                     dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                    update_gui = self.update_gui_fig
                 )
 
-                wl_threading.Wl_Thread(self.worker_concordancer_fig).start_worker()
+                self.thread_concordancer_fig = QtCore.QThread()
+                wl_threading.start_worker_in_thread(
+                    self.worker_concordancer_fig,
+                    self.thread_concordancer_fig,
+                    self.update_gui_fig
+                )
 
     def update_gui_fig(self, err_msg, points, labels):
         if wl_checks_work_area.check_results(self.main, err_msg, points):
@@ -689,7 +697,7 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
                 wl_checks_work_area.check_err_fig(self.main, err_msg)
 
 class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
-    worker_done = QtCore.pyqtSignal(str, list)
+    finished = QtCore.pyqtSignal(str, list)
 
     def run(self):
         err_msg = ''
@@ -699,6 +707,9 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
             settings = self.main.settings_custom['concordancer']
 
             for file in self.main.wl_file_area.get_selected_files():
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
                 concordance_lines_file = []
 
                 text = wl_token_processing.wl_process_tokens_concordancer(
@@ -746,6 +757,9 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
 
                 for len_search_term in range(len_search_term_min, len_search_term_max + 1):
                     for i, ngram in enumerate(wl_nlp_utils.ngrams(tokens, len_search_term)):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         if (
                             ngram in search_terms
                             and wl_matching.check_context(
@@ -935,14 +949,16 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                         concordance_line.insert(3, None)
 
                 concordance_lines.extend(concordance_lines_file)
+        except wl_excs.Wl_Exc_Aborted:
+            err_msg = 'aborted'
         except Exception:
             err_msg = traceback.format_exc()
 
         self.progress_updated.emit(self.tr('Rendering table...'))
-        self.worker_done.emit(err_msg, concordance_lines)
+        self.finished.emit(err_msg, concordance_lines)
 
 class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
-    worker_done = QtCore.pyqtSignal(str, list, list)
+    finished = QtCore.pyqtSignal(str, list, list)
 
     def run(self):
         err_msg = ''
@@ -959,6 +975,9 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
             files = sorted(self.main.wl_file_area.get_selected_files(), key = lambda item: item['name'])
 
             for file in files:
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
                 text = wl_token_processing.wl_process_tokens_concordancer(
                     self.main, file['text'],
                     token_settings = settings['token_settings'],
@@ -994,6 +1013,9 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                     y_start = len_files
 
                     for j, text in enumerate(texts):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         tokens = text.get_tokens_flat()
 
                         if search_term in search_terms_files[j]:
@@ -1004,6 +1026,9 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                             ))
 
                             for k, ngram in enumerate(wl_nlp_utils.ngrams(tokens, len_search_term)):
+                                if not self._running:
+                                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
                                 if ngram == search_term:
                                     points.append([x_start + k / text.num_tokens * len_tokens_total, y_start - j])
                                     # Total
@@ -1016,6 +1041,9 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                     len_search_term = len(search_term)
 
                     for j, text in enumerate(texts):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         if search_term in search_terms_files[j]:
                             x_start = sum((
                                 text.num_tokens
@@ -1024,6 +1052,9 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                             )) + j + 2
 
                             for k, ngram in enumerate(wl_nlp_utils.ngrams(text.get_tokens_flat(), len_search_term)):
+                                if not self._running:
+                                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
                                 if ngram == search_term:
                                     points.append([x_start + k, i])
 
@@ -1035,6 +1066,9 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                     len_tokens_total = sum((text.num_tokens for text in texts))
 
                     for i, search_term in enumerate(search_terms_total):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         x_tick_start = len_tokens_total * i + i + 1
 
                         # 1/2
@@ -1043,6 +1077,9 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                         x_ticks.append(x_tick_start + len_tokens_total + 1)
 
                     for search_term in search_terms_labels:
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         # 1/2
                         x_tick_labels.append(search_term)
                         # Divider
@@ -1057,6 +1094,9 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                     len_search_terms_total = len(search_terms_total)
 
                     for i, text in enumerate(texts):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         tokens = text.get_tokens_flat()
 
                         x_tick_start = sum((
@@ -1071,6 +1111,9 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                         x_ticks.append(x_tick_start + text.num_tokens + 1)
 
                     for file in files:
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         # 1/2
                         x_tick_labels.append(file['name'])
                         # Divider
@@ -1081,8 +1124,10 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                     labels.append(list(range(len_search_terms_total)))
                     labels.append(search_terms_labels)
                     labels.append(len_search_terms_total)
+        except wl_excs.Wl_Exc_Aborted:
+            err_msg = 'aborted'
         except Exception:
             err_msg = traceback.format_exc()
 
         self.progress_updated.emit(self.tr('Rendering figure...'))
-        self.worker_done.emit(err_msg, points, labels)
+        self.finished.emit(err_msg, points, labels)

@@ -18,11 +18,18 @@
 
 import pytest
 
+from tests import wl_test_init
 from wordless.wl_utils import wl_excs
+
+main = wl_test_init.Wl_Test_Main()
 
 def test_wl_exc():
     with pytest.raises(wl_excs.Wl_Exc):
         raise wl_excs.Wl_Exc()
+
+def test_wl_exc_aborted():
+    with pytest.raises(wl_excs.Wl_Exc_Aborted):
+        raise wl_excs.Wl_Exc_Aborted(main)
 
 def test_wl_exc_word_cloud():
     with pytest.raises(wl_excs.Wl_Exc_Word_Cloud):
@@ -62,6 +69,7 @@ def test_wl_exc_word_cloud_mask_unsupported():
 
 if __name__ == '__main__':
     test_wl_exc()
+    test_wl_exc_aborted()
 
     test_wl_exc_word_cloud()
     test_wl_exc_word_cloud_font()

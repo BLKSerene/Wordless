@@ -155,20 +155,23 @@ class Wl_Settings_Dependency_Parsing(wl_settings.Wl_Settings_Node):
                 langs = [self.settings_custom['preview']['preview_lang']],
                 lang_utils = [[dependency_parser]]
             ):
-                worker_preview_dependency_parser = Wl_Worker_Preview_Dependency_Parser(
+                self.worker_preview_dependency_parser = Wl_Worker_Preview_Dependency_Parser(
                     self.main,
-                    update_gui = self.update_gui,
                     dependency_parser = dependency_parser
                 )
 
-                self.thread_preview_dependency_parser = wl_threading.Wl_Thread_No_Progress(worker_preview_dependency_parser)
-                self.thread_preview_dependency_parser.start_worker()
+                self.thread_preview_dependency_parser = QtCore.QThread()
+                wl_threading.start_worker_in_thread(
+                    self.worker_preview_dependency_parser,
+                    self.thread_preview_dependency_parser,
+                    self.update_gui
+                )
             else:
                 self.update_gui_err()
 
     def update_gui(self, htmls):
         wl_dependency_parsing.wl_show_dependency_graphs(
-            self.main,
+            self,
             htmls = htmls,
             show_in_separate_tab = self.settings_custom['preview']['preview_settings']['show_in_separate_tab']
         )
@@ -286,7 +289,7 @@ class Wl_Dialog_Preview_Settings(wl_dialogs.Wl_Dialog_Settings):
         self.settings_custom['show_in_separate_tab'] = self.checkbox_show_in_separate_tab.isChecked()
 
 class Wl_Worker_Preview_Dependency_Parser(wl_threading.Wl_Worker_No_Progress):
-    worker_done = QtCore.pyqtSignal(list)
+    finished = QtCore.pyqtSignal(list)
 
     def run(self):
         settings = self.main.settings_custom['dependency_parsing']['preview']
@@ -307,4 +310,4 @@ class Wl_Worker_Preview_Dependency_Parser(wl_threading.Wl_Worker_No_Progress):
             show_in_separate_tab = settings['preview_settings']['show_in_separate_tab']
         )
 
-        self.worker_done.emit(htmls)
+        self.finished.emit(htmls)

@@ -16,8 +16,18 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+from PyQt5 import QtCore
+
+_tr = QtCore.QCoreApplication.translate
+
 class Wl_Exc(Exception):
     pass
+
+class Wl_Exc_Aborted(Wl_Exc):
+    def __init__(self, main):
+        super().__init__()
+
+        main.statusBar().showMessage(_tr('wl_checks_work_area', 'Operation successfully aborted.'))
 
 class Wl_Exc_Word_Cloud(Wl_Exc):
     pass

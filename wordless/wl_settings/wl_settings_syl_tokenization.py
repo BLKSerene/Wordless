@@ -91,12 +91,15 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
         self.label_preview_lang = QtWidgets.QLabel(self.tr('Select language:'), self)
         self.combo_box_preview_lang = wl_boxes.Wl_Combo_Box(self)
         self.button_show_preview = QtWidgets.QPushButton(self.tr('Show preview'), self)
+        self.button_abort = QtWidgets.QPushButton(self.tr('Abort'), self)
         self.text_edit_preview_samples = QtWidgets.QTextEdit(self)
         self.text_edit_preview_results = QtWidgets.QTextEdit(self)
 
         self.combo_box_preview_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
 
         self.button_show_preview.setMinimumWidth(140)
+        self.button_abort.setMinimumWidth(140)
+        self.button_abort.hide()
         self.text_edit_preview_samples.setAcceptRichText(False)
         self.text_edit_preview_results.setReadOnly(True)
 
@@ -109,6 +112,7 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
         layout_preview_settings.addWidget(self.label_preview_lang, 0, 0)
         layout_preview_settings.addWidget(self.combo_box_preview_lang, 0, 1)
         layout_preview_settings.addWidget(self.button_show_preview, 0, 3)
+        layout_preview_settings.addWidget(self.button_abort, 0, 4)
 
         layout_preview_settings.setColumnStretch(2, 1)
 
@@ -142,7 +146,8 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
             self.text_edit_preview_samples.setEnabled(False)
             self.text_edit_preview_results.setEnabled(False)
 
-            self.button_show_preview.setText(self.tr('Processing...'))
+            self.button_show_preview.hide()
+            self.button_abort.show()
 
             if wl_nlp_utils.check_models(
                 self,
@@ -155,24 +160,39 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
                     util_text = self.table_syl_tokenizers.model().item(row, 1).text()
                 )
 
-                worker_preview_syl_tokenizer = Wl_Worker_Preview_Syl_Tokenizer(
+                self.worker_preview_syl_tokenizer = Wl_Worker_Preview_Syl_Tokenizer(
                     self.main,
-                    update_gui = self.update_gui,
                     syl_tokenizer = syl_tokenizer
                 )
 
-                self.thread_preview_syl_tokenizer = wl_threading.Wl_Thread_No_Progress(worker_preview_syl_tokenizer)
-                self.thread_preview_syl_tokenizer.start_worker()
+                self.button_abort.disconnect()
+                self.button_abort.clicked.connect(self.worker_preview_syl_tokenizer.stop)
+                self.button_abort.clicked.connect(self.abort)
+
+                self.thread_preview_syl_tokenizer = QtCore.QThread()
+                wl_threading.start_worker_in_thread(
+                    self.worker_preview_syl_tokenizer,
+                    self.thread_preview_syl_tokenizer,
+                    self.update_gui
+                )
             else:
                 self.update_gui_err()
 
+    def abort(self):
+        self.button_abort.setText(self.tr('Aborting...'))
+        self.button_abort.setEnabled(False)
+
     def update_gui(self, preview_results):
-        self.text_edit_preview_results.setPlainText('\n'.join(preview_results))
+        if preview_results != [None]:
+            self.text_edit_preview_results.setPlainText('\n'.join(preview_results))
 
         self.update_gui_err()
 
     def update_gui_err(self):
-        self.button_show_preview.setText(self.tr('Show preview'))
+        self.button_show_preview.show()
+        self.button_abort.hide()
+        self.button_abort.setText(self.tr('Abort'))
+        self.button_abort.setEnabled(True)
 
         row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
 
@@ -223,7 +243,7 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
         return True
 
 class Wl_Worker_Preview_Syl_Tokenizer(wl_threading.Wl_Worker_No_Progress):
-    worker_done = QtCore.pyqtSignal(list)
+    finished = QtCore.pyqtSignal(list)
 
     def run(self):
         preview_results = []
@@ -232,6 +252,11 @@ class Wl_Worker_Preview_Syl_Tokenizer(wl_threading.Wl_Worker_No_Progress):
         preview_samples = self.main.settings_custom['syl_tokenization']['preview']['preview_samples']
 
         for line in preview_samples.split('\n'):
+            if not self._running:
+                preview_results = [None]
+
+                break
+
             if (line := line.strip()):
                 tokens = wl_syl_tokenization.wl_syl_tokenize(
                     self.main, line,
@@ -252,4 +277,4 @@ class Wl_Worker_Preview_Syl_Tokenizer(wl_threading.Wl_Worker_No_Progress):
             else:
                 preview_results.append('')
 
-        self.worker_done.emit(preview_results)
+        self.finished.emit(preview_results)

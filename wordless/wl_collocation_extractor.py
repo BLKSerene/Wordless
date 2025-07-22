@@ -17,7 +17,6 @@
 # ----------------------------------------------------------------------
 
 # pylint: disable=broad-exception-caught
-
 import bisect
 import collections
 import copy
@@ -572,13 +571,17 @@ class Wl_Table_Collocation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                 nlp_support_ok = True
 
             if nlp_support_ok:
-                worker_collocation_extractor_table = Wl_Worker_Collocation_Extractor_Table(
+                self.worker_collocation_extractor_table = Wl_Worker_Collocation_Extractor_Table(
                     self.main,
                     dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                    update_gui = self.update_gui_table
                 )
 
-                wl_threading.Wl_Thread(worker_collocation_extractor_table).start_worker()
+                self.thread_collocation_extractor_table = QtCore.QThread()
+                wl_threading.start_worker_in_thread(
+                    self.worker_collocation_extractor_table,
+                    self.thread_collocation_extractor_table,
+                    self.update_gui_table
+                )
 
     def update_gui_table(self, err_msg, collocations_freqs_files, collocations_stats_files):
         if wl_checks_work_area.check_results(self.main, err_msg, collocations_freqs_files):
@@ -814,10 +817,14 @@ class Wl_Table_Collocation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                 self.worker_collocation_extractor_fig = Wl_Worker_Collocation_Extractor_Fig(
                     self.main,
                     dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                    update_gui = self.update_gui_fig
                 )
 
-                wl_threading.Wl_Thread(self.worker_collocation_extractor_fig).start_worker()
+                self.thread_collocation_extractor_fig = QtCore.QThread()
+                wl_threading.start_worker_in_thread(
+                    self.worker_collocation_extractor_fig,
+                    self.thread_collocation_extractor_fig,
+                    self.update_gui_fig
+                )
 
     def update_gui_fig(self, err_msg, collocations_freqs_files, collocations_stats_files):
         if wl_checks_work_area.check_results(self.main, err_msg, collocations_freqs_files):
@@ -904,10 +911,10 @@ class Wl_Table_Collocation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
 
 # self.tr() does not work in inherited classes
 class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
-    worker_done = QtCore.pyqtSignal(str, dict, dict)
+    finished = QtCore.pyqtSignal(str, dict, dict)
 
-    def __init__(self, main, dialog_progress, update_gui):
-        super().__init__(main, dialog_progress, update_gui)
+    def __init__(self, main, dialog_progress):
+        super().__init__(main, dialog_progress)
 
         self.err_msg = ''
         self.collocations_freqs_files = []
@@ -931,6 +938,9 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
 
             # Frequency
             for i, file in enumerate(files):
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
                 collocations_freqs_file = {}
                 collocations_freqs_file_all = {}
 
@@ -983,6 +993,9 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                     collocations_freqs_file_all[ngram_size] = collections.Counter()
 
                     for i, ngram in enumerate(wl_nlp_utils.ngrams(tokens, ngram_size)):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         # Limit Searching
                         if settings_limit_searching != _tr('Wl_Worker_Collocation_Extractor', 'None'):
                             if settings_limit_searching == _tr('Wl_Worker_Collocation_Extractor', 'Within sentence segments'):
@@ -1108,6 +1121,9 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
 
                     for (node, collocate), freqs in collocations_freqs_file.items():
                         for ngram in wl_nlp_utils.ngrams(node, len_search_term):
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
                             if ngram == search_term:
                                 collocations_freqs_file_filtered[(node, collocate)] = freqs
 
@@ -1124,6 +1140,9 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                 # Frequency
                 for collocations_freqs_file in self.collocations_freqs_files:
                     for collocation, freqs in collocations_freqs_file.items():
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         if collocation not in collocations_freqs_total:
                             collocations_freqs_total[collocation] = freqs
                         else:
@@ -1132,6 +1151,9 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                 # Frequency (All)
                 for collocations_freqs_file_all in collocations_freqs_files_all:
                     for ngram_size, collocations_freqs in collocations_freqs_file_all.items():
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         if ngram_size not in collocations_freqs_total_all:
                             collocations_freqs_total_all[ngram_size] = collections.Counter()
 
@@ -1170,6 +1192,9 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                         ox1s[ngram_size] = collections.Counter()
 
                         for (node, collocate), freq in collocations_freqs.items():
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
                             o1xs[ngram_size][node] += freq
                             ox1s[ngram_size][collocate] += freq
 
@@ -1182,6 +1207,9 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                     o22s = numpy.empty(shape = num_collocations_all, dtype = float)
 
                     for i, (node, collocate) in enumerate(collocations_all):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         len_node = len(node)
 
                         o11s[i] = sum(collocations_freqs_file.get((node, collocate), [0]))
@@ -1212,6 +1240,9 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                         effect_sizes = func_effect_size(self.main, o11s, o12s, o21s, o22s)
 
                     for i, (node, collocate) in enumerate(collocations_all):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         collocates_stats_file[(node, collocate)] = [
                             test_stats[i],
                             p_vals[i],
@@ -1229,6 +1260,8 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
             if len(files) == 1:
                 self.collocations_freqs_files *= 2
                 self.collocations_stats_files *= 2
+        except wl_excs.Wl_Exc_Aborted:
+            self.err_msg = 'aborted'
         except Exception:
             self.err_msg = traceback.format_exc()
 
@@ -1237,7 +1270,7 @@ class Wl_Worker_Collocation_Extractor_Table(Wl_Worker_Collocation_Extractor):
         super().run()
 
         self.progress_updated.emit(self.tr('Rendering table...'))
-        self.worker_done.emit(
+        self.finished.emit(
             self.err_msg,
             wl_misc.merge_dicts(self.collocations_freqs_files),
             wl_misc.merge_dicts(self.collocations_stats_files)
@@ -1248,7 +1281,7 @@ class Wl_Worker_Collocation_Extractor_Fig(Wl_Worker_Collocation_Extractor):
         super().run()
 
         self.progress_updated.emit(self.tr('Rendering figure...'))
-        self.worker_done.emit(
+        self.finished.emit(
             self.err_msg,
             wl_misc.merge_dicts(self.collocations_freqs_files),
             wl_misc.merge_dicts(self.collocations_stats_files)

@@ -113,12 +113,15 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
         self.label_preview_lang = QtWidgets.QLabel(self.tr('Select language:'), self)
         self.combo_box_preview_lang = wl_boxes.Wl_Combo_Box(self)
         self.button_show_preview = QtWidgets.QPushButton(self.tr('Show preview'), self)
+        self.button_abort = QtWidgets.QPushButton(self.tr('Abort'), self)
         self.text_edit_preview_samples = QtWidgets.QTextEdit(self)
         self.text_edit_preview_results = QtWidgets.QTextEdit(self)
 
         self.combo_box_preview_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
 
         self.button_show_preview.setMinimumWidth(140)
+        self.button_abort.setMinimumWidth(140)
+        self.button_abort.hide()
         self.text_edit_preview_samples.setAcceptRichText(False)
         self.text_edit_preview_results.setReadOnly(True)
 
@@ -131,6 +134,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
         layout_preview_settings.addWidget(self.label_preview_lang, 0, 0)
         layout_preview_settings.addWidget(self.combo_box_preview_lang, 0, 1)
         layout_preview_settings.addWidget(self.button_show_preview, 0, 3)
+        layout_preview_settings.addWidget(self.button_abort, 0, 4)
 
         layout_preview_settings.setColumnStretch(2, 1)
 
@@ -166,7 +170,8 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
             self.text_edit_preview_samples.setEnabled(False)
             self.text_edit_preview_results.setEnabled(False)
 
-            self.button_show_preview.setText(self.tr('Processing...'))
+            self.button_show_preview.hide()
+            self.button_abort.show()
 
             pos_tagger = wl_nlp_utils.to_lang_util_code(
                 self.main,
@@ -184,26 +189,41 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
                 else:
                     tagset = 'raw'
 
-                worker_preview_pos_tagger = Wl_Worker_Preview_Pos_Tagger(
+                self.worker_preview_pos_tagger = Wl_Worker_Preview_Pos_Tagger(
                     self.main,
-                    update_gui = self.update_gui,
                     pos_tagger = pos_tagger,
                     tagset = tagset,
                     separator = self.line_edit_separator_between_tokens_pos_tags.text(),
                 )
 
-                self.thread_preview_pos_tagger = wl_threading.Wl_Thread_No_Progress(worker_preview_pos_tagger)
-                self.thread_preview_pos_tagger.start_worker()
+                self.button_abort.disconnect()
+                self.button_abort.clicked.connect(self.worker_preview_pos_tagger.stop)
+                self.button_abort.clicked.connect(self.abort)
+
+                self.thread_preview_pos_tagger = QtCore.QThread()
+                wl_threading.start_worker_in_thread(
+                    self.worker_preview_pos_tagger,
+                    self.thread_preview_pos_tagger,
+                    self.update_gui
+                )
             else:
                 self.update_gui_err()
 
+    def abort(self):
+        self.button_abort.setText(self.tr('Aborting...'))
+        self.button_abort.setEnabled(False)
+
     def update_gui(self, preview_results):
-        self.text_edit_preview_results.setPlainText('\n'.join(preview_results))
+        if preview_results != [None]:
+            self.text_edit_preview_results.setPlainText('\n'.join(preview_results))
 
         self.update_gui_err()
 
     def update_gui_err(self):
-        self.button_show_preview.setText(self.tr('Show preview'))
+        self.button_show_preview.show()
+        self.button_abort.hide()
+        self.button_abort.setText(self.tr('Abort'))
+        self.button_abort.setEnabled(True)
 
         row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
 
@@ -265,7 +285,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
         return True
 
 class Wl_Worker_Preview_Pos_Tagger(wl_threading.Wl_Worker_No_Progress):
-    worker_done = QtCore.pyqtSignal(list)
+    finished = QtCore.pyqtSignal(list)
 
     def run(self):
         preview_results = []
@@ -274,6 +294,11 @@ class Wl_Worker_Preview_Pos_Tagger(wl_threading.Wl_Worker_No_Progress):
         preview_samples = self.main.settings_custom['pos_tagging']['preview']['preview_samples']
 
         for line in preview_samples.split('\n'):
+            if not self._running:
+                preview_results = [None]
+
+                break
+
             if (line := line.strip()):
                 tokens = wl_pos_tagging.wl_pos_tag(
                     self.main, line,
@@ -287,7 +312,7 @@ class Wl_Worker_Preview_Pos_Tagger(wl_threading.Wl_Worker_No_Progress):
             else:
                 preview_results.append('')
 
-        self.worker_done.emit(preview_results)
+        self.finished.emit(preview_results)
 
 # Part-of-speech Tagging - Tagsets
 class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
@@ -449,22 +474,20 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
             self.button_tagsets_reset_all.setEnabled(False)
             self.table_mappings.setEnabled(True)
 
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Fetching data...'))
-
-            worker_fetch_data = Wl_Worker_Fetch_Data_Tagsets(
+            self.worker_fetch_data = Wl_Worker_Fetch_Data_Tagsets(
                 self.main,
-                dialog_progress = dialog_progress,
-                update_gui = self.update_gui
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(
+                    self.main,
+                    text = self.tr('Fetching data...')
+                )
             )
 
-            thread_fetch_data = wl_threading.Wl_Thread(worker_fetch_data)
-            thread_fetch_data.start()
-
-            dialog_progress.show()
-            dialog_progress.raise_()
-
-            thread_fetch_data.quit()
-            thread_fetch_data.wait()
+            self.thread_fetch_data = QtCore.QThread()
+            wl_threading.start_worker_in_thread(
+                self.worker_fetch_data,
+                self.thread_fetch_data,
+                self.update_gui
+            )
         else:
             self.stacked_widget_num_pos_tags.setCurrentIndex(1)
 
@@ -524,7 +547,7 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
                 <br>
                 <div><b>Note:</b> This will only affect the mapping settings in the currently shown table.</div>
             ''')
-        ).exec_():
+        ).exec():
             self.reset_currently_shown_table()
 
     def reset_all_mappings(self):
@@ -536,7 +559,7 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
                 <br>
                 <div><b>Warning:</b> This will affect the mapping settings in all tables.</div>
             ''')
-        ).exec_():
+        ).exec():
             self.settings_custom['mapping_settings'] = copy.deepcopy(self.settings_default['mapping_settings'])
 
             self.reset_currently_shown_table()
@@ -578,7 +601,7 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
         return True
 
 class Wl_Worker_Fetch_Data_Tagsets(wl_threading.Wl_Worker):
-    worker_done = QtCore.pyqtSignal(list)
+    finished = QtCore.pyqtSignal(list)
 
     def run(self):
         settings_custom = self.main.settings_custom['pos_tagging']['tagsets']
@@ -588,4 +611,4 @@ class Wl_Worker_Fetch_Data_Tagsets(wl_threading.Wl_Worker):
         mappings = settings_custom['mapping_settings'][preview_lang][preview_pos_tagger]
 
         self.progress_updated.emit(self.tr('Updating table...'))
-        self.worker_done.emit(mappings)
+        self.finished.emit(mappings)

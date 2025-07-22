@@ -17,7 +17,6 @@
 # ----------------------------------------------------------------------
 
 # pylint: disable=broad-exception-caught
-
 import bisect
 import collections
 import copy
@@ -570,13 +569,17 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                 nlp_utils = ['pos_taggers']
             )
         ):
-            worker_colligation_extractor_table = Wl_Worker_Colligation_Extractor_Table(
+            self.worker_colligation_extractor_table = Wl_Worker_Colligation_Extractor_Table(
                 self.main,
                 dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                update_gui = self.update_gui_table
             )
 
-            wl_threading.Wl_Thread(worker_colligation_extractor_table).start_worker()
+            self.thread_colligation_extractor_table = QtCore.QThread()
+            wl_threading.start_worker_in_thread(
+                self.worker_colligation_extractor_table,
+                self.thread_colligation_extractor_table,
+                self.update_gui_table
+            )
 
     def update_gui_table(self, err_msg, colligations_freqs_files, colligations_stats_files):
         if wl_checks_work_area.check_results(self.main, err_msg, colligations_freqs_files):
@@ -815,11 +818,15 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
         ):
             self.worker_colligation_extractor_fig = Wl_Worker_Colligation_Extractor_Fig(
                 self.main,
-                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                update_gui = self.update_gui_fig
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main)
             )
 
-            wl_threading.Wl_Thread(self.worker_colligation_extractor_fig).start_worker()
+            self.thread_colligation_extractor_fig = QtCore.QThread()
+            wl_threading.start_worker_in_thread(
+                self.worker_colligation_extractor_fig,
+                self.thread_colligation_extractor_fig,
+                self.update_gui_fig
+            )
 
     def update_gui_fig(self, err_msg, colligations_freqs_file, colligations_stats_files):
         if wl_checks_work_area.check_results(self.main, err_msg, colligations_freqs_file):
@@ -906,10 +913,10 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
 
 # self.tr() does not work in inherited classes
 class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
-    worker_done = QtCore.pyqtSignal(str, dict, dict)
+    finished = QtCore.pyqtSignal(str, dict, dict)
 
-    def __init__(self, main, dialog_progress, update_gui):
-        super().__init__(main, dialog_progress, update_gui)
+    def __init__(self, main, dialog_progress):
+        super().__init__(main, dialog_progress)
 
         self.err_msg = ''
         self.colligations_freqs_files = []
@@ -933,6 +940,9 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
 
             # Frequency
             for i, file in enumerate(files):
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
                 colligations_freqs_file = {}
                 colligations_freqs_file_all = {}
 
@@ -985,6 +995,9 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                     colligations_freqs_file_all[ngram_size] = collections.Counter()
 
                     for i, ngram in enumerate(wl_nlp_utils.ngrams(tokens, ngram_size)):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         # Limit Searching
                         if settings_limit_searching != _tr('Wl_Worker_Colligation_Extractor', 'None'):
                             if settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'Within sentence segments'):
@@ -1110,6 +1123,9 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
 
                     for (node, collocate), freqs in colligations_freqs_file.items():
                         for ngram in wl_nlp_utils.ngrams(node, len_search_term):
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
                             if ngram == search_term:
                                 colligations_freqs_file_filtered[(node, collocate)] = freqs
 
@@ -1126,6 +1142,9 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                 # Frequency
                 for colligations_freqs_file in self.colligations_freqs_files:
                     for colligation, freqs in colligations_freqs_file.items():
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         if colligation not in colligations_freqs_total:
                             colligations_freqs_total[colligation] = freqs
                         else:
@@ -1134,6 +1153,9 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                 # Frequency (All)
                 for colligations_freqs_file_all in colligations_freqs_files_all:
                     for ngram_size, colligations_freqs in colligations_freqs_file_all.items():
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         if ngram_size not in colligations_freqs_total_all:
                             colligations_freqs_total_all[ngram_size] = collections.Counter()
 
@@ -1171,6 +1193,9 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                         ox1s[ngram_size] = collections.Counter()
 
                         for (node, collocate), freq in colligations_freqs.items():
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
                             o1xs[ngram_size][node] += freq
                             ox1s[ngram_size][collocate] += freq
 
@@ -1183,6 +1208,9 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                     o22s = numpy.empty(shape = num_colligations_all, dtype = float)
 
                     for i, (node, collocate) in enumerate(colligations_all):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         len_node = len(node)
 
                         o11s[i] = sum(colligations_freqs_file.get((node, collocate), [0]))
@@ -1213,6 +1241,9 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                         effect_sizes = func_effect_size(self.main, o11s, o12s, o21s, o22s)
 
                     for i, (node, collocate) in enumerate(colligations_all):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         colligations_stats_file[(node, collocate)] = [
                             test_stats[i],
                             p_vals[i],
@@ -1230,6 +1261,8 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
             if len(files) == 1:
                 self.colligations_freqs_files *= 2
                 self.colligations_stats_files *= 2
+        except wl_excs.Wl_Exc_Aborted:
+            self.err_msg = 'aborted'
         except Exception:
             self.err_msg = traceback.format_exc()
 
@@ -1238,7 +1271,7 @@ class Wl_Worker_Colligation_Extractor_Table(Wl_Worker_Colligation_Extractor):
         super().run()
 
         self.progress_updated.emit(self.tr('Rendering table...'))
-        self.worker_done.emit(
+        self.finished.emit(
             self.err_msg,
             wl_misc.merge_dicts(self.colligations_freqs_files),
             wl_misc.merge_dicts(self.colligations_stats_files)
@@ -1249,7 +1282,7 @@ class Wl_Worker_Colligation_Extractor_Fig(Wl_Worker_Colligation_Extractor):
         super().run()
 
         self.progress_updated.emit(self.tr('Rendering figure...'))
-        self.worker_done.emit(
+        self.finished.emit(
             self.err_msg,
             wl_misc.merge_dicts(self.colligations_freqs_files),
             wl_misc.merge_dicts(self.colligations_stats_files)

@@ -90,7 +90,7 @@ ACKS = (
         'MIT', 'https://foss.heptapod.net/openpyxl/openpyxl/-/blob/branch/3.1/LICENCE.rst'
     ), (
         'PyInstaller', 'https://pyinstaller.org/',
-        '6.8.0', 'Hartmut Goebel, Jasper Harrison, Bryan A. Jones,<br>Brénainn Woodsend, Rok Mandeljc',
+        '6.14.2', 'Hartmut Goebel, Jasper Harrison, Bryan A. Jones,<br>Brénainn Woodsend, Rok Mandeljc',
         'Bootloader-exception', 'https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt'
     ), (
         'pymorphy3', 'https://github.com/no-plagiarism/pymorphy3',

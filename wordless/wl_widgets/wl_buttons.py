@@ -111,7 +111,6 @@ class Wl_Button_Restore_Default_Vals(Wl_Button):
     def __init__(self, parent, load_settings):
         super().__init__(_tr('Wl_Button_Restore_Default_Vals', 'Restore default values'), parent)
 
-        self.parent = parent
         self.load_settings = load_settings
 
         self.setMinimumWidth(170)
@@ -120,12 +119,10 @@ class Wl_Button_Restore_Default_Vals(Wl_Button):
 
     def restore_default_vals(self):
         if wl_dialogs.Wl_Dialog_Question(
-            self.main,
+            self.parent(),
             title = self.tr('Restore Default Values'),
             text = self.tr('''
                 <div>Do you want to reset all settings to their default values?</div>
             ''')
-        ).exec_():
+        ).exec():
             self.load_settings(defaults = True)
-
-        self.parent.activateWindow()

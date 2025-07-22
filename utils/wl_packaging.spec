@@ -46,9 +46,6 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('curated_transformers', 
 datas.extend(PyInstaller.utils.hooks.collect_data_files('xx_bo_tagger', include_py_files = True))
 datas.extend(PyInstaller.utils.hooks.copy_metadata('xx_bo_tagger'))
 
-# Stanza
-datas.extend(PyInstaller.utils.hooks.collect_data_files('emoji'))
-
 # Underthesea
 datas.extend(PyInstaller.utils.hooks.collect_data_files('underthesea'))
 

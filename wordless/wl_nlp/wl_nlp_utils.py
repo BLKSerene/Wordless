@@ -198,14 +198,20 @@ def check_models(parent, langs, lang_utils = None):
                 try:
                     importlib.import_module(model_name)
                 except ModuleNotFoundError:
-                    worker_download_model = Wl_Worker_Download_Model_Spacy(
+                    parent.worker_download_model = Wl_Worker_Download_Model_Spacy(
                         main,
                         dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Download_Model(main),
-                        update_gui = lambda err_msg, model_name = model_name: wl_checks_work_area.check_results_download_model(parent, err_msg, model_name),
                         model_name = model_name
                     )
 
-                    wl_threading.Wl_Thread(worker_download_model).start_worker()
+                    parent.thread_download_model = QtCore.QThread()
+                    wl_threading.start_worker_in_thread(
+                        parent.worker_download_model,
+                        parent.thread_download_model,
+                        lambda err_msg, model_name = model_name: wl_checks_work_area.check_results_download_model(
+                            parent, err_msg, model_name
+                        )
+                    )
 
                     try:
                         importlib.import_module(model_name)
@@ -219,14 +225,18 @@ def check_models(parent, langs, lang_utils = None):
             any((util.startswith('stanza_') for util in utils))
             and lang in get_langs_stanza(main, util_type = 'word_tokenizers')
         ):
-            worker_download_model = Wl_Worker_Download_Model_Stanza(
+            parent.worker_download_model = Wl_Worker_Download_Model_Stanza(
                 main,
                 dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Download_Model(main),
-                update_gui = lambda err_msg: update_gui_stanza(parent, err_msg),
                 lang = lang
             )
 
-            wl_threading.Wl_Thread(worker_download_model).start_worker()
+            parent.thread_download_model = QtCore.QThread()
+            wl_threading.start_worker_in_thread(
+                parent.worker_download_model,
+                parent.thread_download_model,
+                lambda err_msg: update_gui_stanza(parent, err_msg)
+            )
 
     if models_ok:
         main.statusBar().showMessage(_tr('wl_nlp_utils', 'Model downloaded successfully.'))
@@ -234,14 +244,14 @@ def check_models(parent, langs, lang_utils = None):
     return models_ok
 
 class Wl_Worker_Download_Model_Spacy(wl_threading.Wl_Worker):
-    worker_done = QtCore.pyqtSignal(str)
+    finished = QtCore.pyqtSignal(str)
 
-    def __init__(self, main, dialog_progress, update_gui, model_name):
-        super().__init__(main, dialog_progress, update_gui, model_name = model_name)
-
-        self.err_msg = ''
+    def __init__(self, main, dialog_progress, model_name):
+        super().__init__(main, dialog_progress, model_name = model_name)
 
     def run(self):
+        err_msg = ''
+
         try:
             self.progress_updated.emit(self.tr('Fetching model information...'))
 
@@ -253,9 +263,9 @@ class Wl_Worker_Download_Model_Spacy(wl_threading.Wl_Worker):
             spacy_ver = packaging.version.Version(spacy.about.__version__)
             model_ver = f'{spacy_ver.major}.{spacy_ver.minor}'
 
-            r, err_msg = wl_misc.wl_download(self.main, spacy.about.__compatibility__)
+            r, err_msg_download = wl_misc.wl_download(self.main, spacy.about.__compatibility__)
 
-            if not err_msg:
+            if not err_msg_download:
                 model_ver = r.json()['spacy'][model_ver][self.model_name][0]
                 model_file = f'{self.model_name}-{model_ver}{spacy.cli._util.WHEEL_SUFFIX}'
                 model_url = f'{spacy.about.__download_url__}/{self.model_name}-{model_ver}/{model_file}'
@@ -269,9 +279,9 @@ class Wl_Worker_Download_Model_Spacy(wl_threading.Wl_Worker):
                     self.progress_updated.emit(self.tr('Downloading model...'))
 
                 if getattr(sys, '_MEIPASS', False):
-                    r, err_msg = wl_misc.wl_download(self.main, model_url)
+                    r, err_msg_download = wl_misc.wl_download(self.main, model_url)
 
-                    if not err_msg:
+                    if not err_msg_download:
                         with open(model_file, 'wb') as f:
                             f.write(r.content)
 
@@ -288,22 +298,22 @@ class Wl_Worker_Download_Model_Spacy(wl_threading.Wl_Worker):
                     # Clear cache
                     pip.main(['cache', 'purge'])
             else:
-                self.err_msg = err_msg
+                err_msg = err_msg_download
         except Exception: # pylint: disable=broad-exception-caught
-            self.err_msg = traceback.format_exc()
+            err_msg = traceback.format_exc()
 
         self.progress_updated.emit(self.tr('Download completed successfully.'))
-        self.worker_done.emit(self.err_msg)
+        self.finished.emit(err_msg)
 
 class Wl_Worker_Download_Model_Stanza(wl_threading.Wl_Worker):
-    worker_done = QtCore.pyqtSignal(str)
+    finished = QtCore.pyqtSignal(str)
 
-    def __init__(self, main, dialog_progress, update_gui, lang):
-        super().__init__(main, dialog_progress, update_gui, lang = lang)
-
-        self.err_msg = ''
+    def __init__(self, main, dialog_progress, lang):
+        super().__init__(main, dialog_progress, lang = lang)
 
     def run(self):
+        err_msg = ''
+
         try:
             self.progress_updated.emit(self.tr('Downloading model...'))
 
@@ -358,10 +368,10 @@ class Wl_Worker_Download_Model_Stanza(wl_threading.Wl_Worker):
                     download_json = False
                 )
         except Exception: # pylint: disable=broad-exception-caught
-            self.err_msg = traceback.format_exc()
+            err_msg = traceback.format_exc()
 
         self.progress_updated.emit(self.tr('Download completed successfully.'))
-        self.worker_done.emit(self.err_msg)
+        self.finished.emit(err_msg)
 
 LANGS_SPACY_LEMMATIZERS = (
     'ben', 'ces', 'grc', 'hun', 'ind', 'gle', 'ltz', 'fas', 'srp', 'tgl',

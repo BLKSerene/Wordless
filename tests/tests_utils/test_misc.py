@@ -118,6 +118,12 @@ def test_normalize_nums():
     assert wl_misc.normalize_nums([1, 1, 1, 1, 1], 0, 100) == [50] * 5
     assert wl_misc.normalize_nums([1, 2, 3, 4, 5], 0, 0) == [0] * 5
 
+def test_check_noun_number():
+    assert wl_misc.check_noun_number(0, 'test') == '0 tests'
+    assert wl_misc.check_noun_number(0.5, 'test') == '0.5 tests'
+    assert wl_misc.check_noun_number(1, 'test') == '1 test'
+    assert wl_misc.check_noun_number(10, 'test') == '10 tests'
+
 if __name__ == '__main__':
     test_check_os()
     test_get_linux_distro()
@@ -132,3 +138,4 @@ if __name__ == '__main__':
     test_flatten_list()
     test_merge_dicts()
     test_normalize_nums()
+    test_check_noun_number()

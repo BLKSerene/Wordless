@@ -54,16 +54,21 @@ def test_concordancer():
 
         print(f"Files: {' | '.join(wl_test_init.get_test_file_names(main))}")
 
-        wl_concordancer.Wl_Worker_Concordancer_Table(
+        worker_concordancer_table = wl_concordancer.Wl_Worker_Concordancer_Table(
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
-            update_gui = update_gui_table
-        ).run()
-        wl_concordancer.Wl_Worker_Concordancer_Fig(
+        )
+
+        worker_concordancer_table.finished.connect(update_gui_table)
+        worker_concordancer_table.run()
+
+        worker_concordancer_fig = wl_concordancer.Wl_Worker_Concordancer_Fig(
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
-            update_gui = update_gui_fig
-        ).run()
+        )
+
+        worker_concordancer_fig.finished.connect(update_gui_fig)
+        worker_concordancer_fig.run()
 
 def update_gui_table(err_msg, concordance_lines):
     print(err_msg)

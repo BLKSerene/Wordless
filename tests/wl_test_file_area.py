@@ -55,24 +55,28 @@ def wl_test_file_area(main):
                 files_to_open[-1]['encoding'] = 'utf_8'
                 files_to_open[-1]['lang'] = 'bod'
 
-        wl_file_area.Wl_Worker_Open_Files(
+        worker_open_files = wl_file_area.Wl_Worker_Open_Files(
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = ''),
-            update_gui = update_gui,
             files_to_open = files_to_open,
             file_type = 'observed'
-        ).run()
+        )
+
+        worker_open_files.finished.connect(update_gui)
+        worker_open_files.run()
 
     def open_file_ref(err_msg, files_to_open):
         assert not err_msg
 
-        wl_file_area.Wl_Worker_Open_Files(
+        worker_open_files = wl_file_area.Wl_Worker_Open_Files(
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = ''),
-            update_gui = update_gui_ref,
             files_to_open = files_to_open,
             file_type = 'ref'
-        ).run()
+        )
+
+        worker_open_files.finished.connect(update_gui_ref)
+        worker_open_files.run()
 
     def update_gui(err_msg, new_files):
         assert not err_msg
@@ -107,14 +111,16 @@ def wl_test_file_area(main):
         table = QtCore.QObject()
         table.files_to_open = []
 
-        wl_file_area.Wl_Worker_Add_Files(
+        worker_add_files = wl_file_area.Wl_Worker_Add_Files(
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = ''),
-            update_gui = worker_update_gui,
             file_paths = (file_path,),
             table = table,
             file_area = main.wl_file_area
-        ).run()
+        )
+
+        worker_add_files.finished.connect(worker_update_gui)
+        worker_add_files.run()
 
         if i < NUM_FILES_OBSERVED or i >= NUM_FILES_ALL:
             new_file = main.settings_custom['file_area']['files_open'][-1]

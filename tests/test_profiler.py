@@ -63,12 +63,14 @@ def test_profiler():
 
         print(f"Files: {' | '.join(wl_test_init.get_test_file_names(main))}")
 
-        wl_profiler.Wl_Worker_Profiler_Table(
+        worker_profiler = wl_profiler.Wl_Worker_Profiler_Table(
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
-            update_gui = update_gui,
             tab = 'all'
-        ).run()
+        )
+
+        worker_profiler.finished.connect(update_gui)
+        worker_profiler.run()
 
 def update_gui(err_msg, texts_stats_files):
     print(err_msg)

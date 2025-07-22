@@ -17,7 +17,6 @@
 # ----------------------------------------------------------------------
 
 # pylint: disable=broad-exception-caught
-
 import collections
 import copy
 import traceback
@@ -587,13 +586,17 @@ class Wl_Table_Ngram_Generator(wl_tables.Wl_Table_Data_Filter_Search):
                 nlp_support_ok = True
 
             if nlp_support_ok:
-                worker_ngram_generator_table = Wl_Worker_Ngram_Generator_Table(
+                self.worker_ngram_generator_table = Wl_Worker_Ngram_Generator_Table(
                     self.main,
                     dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                    update_gui = self.update_gui_table
                 )
 
-                wl_threading.Wl_Thread(worker_ngram_generator_table).start_worker()
+                self.thread_ngram_generator_table = QtCore.QThread()
+                wl_threading.start_worker_in_thread(
+                    self.worker_ngram_generator_table,
+                    self.thread_ngram_generator_table,
+                    self.update_gui_table
+                )
 
     def update_gui_table(self, err_msg, ngrams_freq_files, ngrams_stats_files):
         if wl_checks_work_area.check_results(self.main, err_msg, ngrams_freq_files):
@@ -728,10 +731,14 @@ class Wl_Table_Ngram_Generator(wl_tables.Wl_Table_Data_Filter_Search):
                 self.worker_ngram_generator_fig = Wl_Worker_Ngram_Generator_Fig(
                     self.main,
                     dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                    update_gui = self.update_gui_fig
                 )
 
-                wl_threading.Wl_Thread(self.worker_ngram_generator_fig).start_worker()
+                self.thread_ngram_generator_fig = QtCore.QThread()
+                wl_threading.start_worker_in_thread(
+                    self.worker_ngram_generator_fig,
+                    self.thread_ngram_generator_fig,
+                    self.update_gui_fig
+                )
 
     def update_gui_fig(self, err_msg, ngrams_freq_files, ngrams_stats_files):
         if wl_checks_work_area.check_results(self.main, err_msg, ngrams_freq_files):
@@ -782,10 +789,10 @@ class Wl_Table_Ngram_Generator(wl_tables.Wl_Table_Data_Filter_Search):
                     wl_checks_work_area.check_err_fig(self.main, err_msg)
 
 class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
-    worker_done = QtCore.pyqtSignal(str, dict, dict)
+    finished = QtCore.pyqtSignal(str, dict, dict)
 
-    def __init__(self, main, dialog_progress, update_gui):
-        super().__init__(main, dialog_progress, update_gui)
+    def __init__(self, main, dialog_progress):
+        super().__init__(main, dialog_progress)
 
         self.err_msg = ''
         self.ngrams_freq_files = []
@@ -806,6 +813,9 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
 
             # Frequency
             for file in files:
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
                 ngrams_is = []
 
                 text = wl_token_processing.wl_process_tokens_ngram_generator(
@@ -820,6 +830,9 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                 # Generate all possible n-grams/skip-grams with the index of their first token
                 if allow_skipped_tokens:
                     for ngram_size in range(ngram_size_min, ngram_size_max + 1):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         ngrams = wl_nlp_utils.skipgrams(tokens, ngram_size, allow_skipped_tokens_num)
                         ngrams_is.extend(self.get_ngrams_is(ngrams, tokens))
 
@@ -869,6 +882,9 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
 
                     for ngram, ngram_i in ngrams_is:
                         for i in range(search_term_position_min, search_term_position_max + 1):
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
                             if ngram[i : i + len_search_term] == search_term:
                                 ngrams_is_filtered.append((ngram, ngram_i))
 
@@ -921,9 +937,15 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
 
                 if allow_skipped_tokens:
                     for ngram_size in range(ngram_size_min, ngram_size_max + 1):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         ngrams_lens[ngram_size] = list(wl_nlp_utils.skipgrams(tokens, ngram_size, allow_skipped_tokens_num))
                 else:
                     for ngram_size in range(ngram_size_min, ngram_size_max + 1):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         ngrams_lens[ngram_size] = list(wl_nlp_utils.ngrams(tokens, ngram_size))
 
                 # Dispersion
@@ -936,6 +958,9 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                     freqs_sections_ngrams = {}
 
                     for ngram_size, ngram_list in ngrams_lens.items():
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         ngrams_total_len = [ngram for ngram in ngrams_total if len(ngram) == ngram_size]
 
                         freqs_sections_ngrams.update(wl_measure_utils.to_freqs_sections_dispersion(
@@ -945,12 +970,18 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                         ))
 
                     for ngram, freqs in freqs_sections_ngrams.items():
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         ngrams_stats_file[ngram] = [func_dispersion(self.main, freqs)]
                 elif type_dispersion == 'dist_based':
                     for ngram_size, ngram_list in ngrams_lens.items():
                         ngrams_total_len = [ngram for ngram in ngrams_total if len(ngram) == ngram_size]
 
                         for ngram in ngrams_total_len:
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
                             ngrams_stats_file[ngram] = [func_dispersion(self.main, ngram_list, ngram)]
 
                 # Adjusted Frequency
@@ -963,6 +994,9 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                     freqs_sections_ngrams = {}
 
                     for ngram_size, ngram_list in ngrams_lens.items():
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         ngrams_total_len = [ngram for ngram in ngrams_total if len(ngram) == ngram_size]
 
                         freqs_sections_ngrams.update(wl_measure_utils.to_freqs_sections_adjusted_freq(
@@ -972,12 +1006,18 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                         ))
 
                     for ngram, freqs in freqs_sections_ngrams.items():
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         ngrams_stats_file[ngram].append(func_adjusted_freq(self.main, freqs))
                 elif type_adjusted_freq == 'dist_based':
                     for ngram_size, ngram_list in ngrams_lens.items():
                         ngrams_total_len = [ngram for ngram in ngrams_total if len(ngram) == ngram_size]
 
                         for ngram in ngrams_total_len:
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
                             ngrams_stats_file[ngram].append(func_adjusted_freq(self.main, ngram_list, ngram))
 
                 self.ngrams_stats_files.append(ngrams_stats_file)
@@ -985,6 +1025,8 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
             if len(files) == 1:
                 self.ngrams_freq_files *= 2
                 self.ngrams_stats_files *= 2
+        except wl_excs.Wl_Exc_Aborted:
+            self.err_msg = 'aborted'
         except Exception:
             self.err_msg = traceback.format_exc()
 
@@ -1005,7 +1047,7 @@ class Wl_Worker_Ngram_Generator_Table(Wl_Worker_Ngram_Generator):
         super().run()
 
         self.progress_updated.emit(self.tr('Rendering table...'))
-        self.worker_done.emit(
+        self.finished.emit(
             self.err_msg,
             wl_misc.merge_dicts(self.ngrams_freq_files),
             wl_misc.merge_dicts(self.ngrams_stats_files)
@@ -1016,7 +1058,7 @@ class Wl_Worker_Ngram_Generator_Fig(Wl_Worker_Ngram_Generator):
         super().run()
 
         self.progress_updated.emit(self.tr('Rendering figure...'))
-        self.worker_done.emit(
+        self.finished.emit(
             self.err_msg,
             wl_misc.merge_dicts(self.ngrams_freq_files),
             wl_misc.merge_dicts(self.ngrams_stats_files)

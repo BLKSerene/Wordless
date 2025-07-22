@@ -326,7 +326,7 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog_Settings):
     def load(self):
         self.load_settings()
 
-        self.exec_()
+        self.exec()
 
 # Token Settings
 def wl_widgets_token_settings(parent):

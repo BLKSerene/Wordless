@@ -37,11 +37,13 @@ def test_concordancer_parallel():
 
         print(f"Files: {' | '.join(wl_test_init.get_test_file_names(main))}")
 
-        wl_concordancer_parallel.Wl_Worker_Concordancer_Parallel_Table(
+        worker_concordancer_parallel = wl_concordancer_parallel.Wl_Worker_Concordancer_Parallel_Table(
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
-            update_gui = update_gui
-        ).run()
+        )
+
+        worker_concordancer_parallel.finished.connect(update_gui)
+        worker_concordancer_parallel.run()
 
 def update_gui(err_msg, concordance_lines):
     print(err_msg)

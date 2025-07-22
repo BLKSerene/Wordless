@@ -17,7 +17,6 @@
 # ----------------------------------------------------------------------
 
 # pylint: disable=broad-exception-caught
-
 import bisect
 import copy
 import traceback
@@ -37,6 +36,7 @@ from wordless.wl_nlp import (
     wl_token_processing
 )
 from wordless.wl_utils import (
+    wl_excs,
     wl_misc,
     wl_threading
 )
@@ -288,7 +288,7 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data_Search):
                     <div>Do you want to search for additions and deletions?</div>
                 '''),
                 default_to_yes = True
-            ).exec_()
+            ).exec()
         ):
             if self.main.settings_custom['concordancer_parallel']['token_settings']['assign_pos_tags']:
                 nlp_support_ok = wl_checks_work_area.check_nlp_support(
@@ -299,13 +299,17 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data_Search):
                 nlp_support_ok = True
 
             if nlp_support_ok:
-                worker_concordancer_parallel_table = Wl_Worker_Concordancer_Parallel_Table(
+                self.worker_concordancer_parallel_table = Wl_Worker_Concordancer_Parallel_Table(
                     self.main,
                     dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                    update_gui = self.update_gui_table
                 )
 
-                wl_threading.Wl_Thread(worker_concordancer_parallel_table).start_worker()
+                self.thread_concordancer_parallel_table = QtCore.QThread()
+                wl_threading.start_worker_in_thread(
+                    self.worker_concordancer_parallel_table,
+                    self.thread_concordancer_parallel_table,
+                    self.update_gui_table
+                )
         else:
             wl_checks_work_area.wl_status_bar_missing_search_terms(self.main)
 
@@ -349,7 +353,7 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data_Search):
                 wl_checks_work_area.check_err_table(self.main, err_msg)
 
 class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
-    worker_done = QtCore.pyqtSignal(str, list)
+    finished = QtCore.pyqtSignal(str, list)
 
     def run(self):
         err_msg = ''
@@ -366,6 +370,9 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
 
             # Parallel Unit No.
             for file in files:
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
                 text = wl_token_processing.wl_process_tokens_concordancer(
                     self.main, file['text'],
                     token_settings = settings['token_settings'],
@@ -380,6 +387,9 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
             len_max_parallel_units = max((len(offsets) for offsets in offsets_paras_files))
 
             for i, (text, offsets_paras) in enumerate(zip(texts, offsets_paras_files)):
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
                 tokens = text.get_tokens_flat()
 
                 if wl_checks_work_area.check_search_terms(self.main, settings['search_settings'], show_warning = False):
@@ -409,6 +419,9 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
 
                     for len_search_term in range(len_search_term_min, len_search_term_max + 1):
                         for j, ngram in enumerate(wl_nlp_utils.ngrams(tokens, len_search_term)):
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
                             if (
                                 ngram in search_terms
                                 and wl_matching.check_context(
@@ -428,12 +441,18 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                 # Search for additions & deletions
                 else:
                     for j, para in enumerate(text.tokens_multilevel):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         if para == []:
                             parallel_units[j + 1] = [[] for _ in range(len_files)]
 
                     # Empty lines at the end of files
                     if len(offsets_paras) < len_max_parallel_units:
                         for j in range(len(offsets_paras) + 1, len_max_parallel_units + 1):
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
                             parallel_units[j] = [[] for _ in range(len_files)]
 
             node_color = self.main.settings_custom['tables']['parallel_concordancer']['highlight_color_settings']['search_term_color']
@@ -442,6 +461,9 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                 len_parallel_units = len(offsets_paras)
 
                 for parallel_unit_no, parallel_unit_nodes in parallel_units.items():
+                    if not self._running:
+                        raise wl_excs.Wl_Exc_Aborted(self.main)
+
                     nodes = parallel_unit_nodes[i]
 
                     if parallel_unit_no <= len_parallel_units:
@@ -481,6 +503,9 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
 
             # Remove empty concordance lines
             for parallel_unit_no, parallel_units_files in parallel_units.copy().items():
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
                 if not any(wl_misc.flatten_list(parallel_units_files)):
                     del parallel_units[parallel_unit_no]
 
@@ -488,12 +513,17 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
             concordance_lines = sorted(parallel_units.items())
 
             for i, concordance_line in enumerate(concordance_lines):
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
                 concordance_line = list(concordance_line)
                 concordance_line[0] = [concordance_line[0], len_max_parallel_units]
 
                 concordance_lines[i] = concordance_line
+        except wl_excs.Wl_Exc_Aborted:
+            err_msg = 'aborted'
         except Exception:
             err_msg = traceback.format_exc()
 
         self.progress_updated.emit(self.tr('Rendering table...'))
-        self.worker_done.emit(err_msg, concordance_lines)
+        self.finished.emit(err_msg, concordance_lines)

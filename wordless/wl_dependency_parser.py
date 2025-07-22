@@ -17,7 +17,6 @@
 # ----------------------------------------------------------------------
 
 # pylint: disable=broad-exception-caught
-
 import bisect
 import copy
 import traceback
@@ -37,6 +36,7 @@ from wordless.wl_nlp import (
     wl_nlp_utils
 )
 from wordless.wl_utils import (
+    wl_excs,
     wl_misc,
     wl_threading
 )
@@ -389,13 +389,17 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Filter_Search):
                 )
 
             if nlp_support_ok:
-                worker_dependency_parser_table = Wl_Worker_Dependency_Parser(
+                self.worker_dependency_parser_table = Wl_Worker_Dependency_Parser(
                     self.main,
                     dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                    update_gui = self.update_gui_table
                 )
 
-                wl_threading.Wl_Thread(worker_dependency_parser_table).start_worker()
+                self.thread_dependency_parser_table = QtCore.QThread()
+                wl_threading.start_worker_in_thread(
+                    self.worker_dependency_parser_table,
+                    self.thread_dependency_parser_table,
+                    self.update_gui_table
+                )
 
     def update_gui_table(self, err_msg, results):
         if wl_checks_work_area.check_results(self.main, err_msg, results):
@@ -495,7 +499,7 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Filter_Search):
             wl_checks_work_area.check_err_fig(self.main, err_msg)
 
 class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
-    worker_done = QtCore.pyqtSignal(str, list)
+    finished = QtCore.pyqtSignal(str, list)
 
     def run(self):
         err_msg = ''
@@ -505,6 +509,9 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
             settings = self.main.settings_custom['dependency_parser']
 
             for file in self.main.wl_file_area.get_selected_files():
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
                 text = wl_token_processing.wl_process_tokens_dependency_parser(
                     self.main, file['text'],
                     token_settings = settings['token_settings'],
@@ -542,6 +549,9 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                         sentence = list(wl_misc.flatten_list(sentence))
 
                         for i, token in enumerate(sentence):
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
                             j = i_token + i
 
                             if (
@@ -596,7 +606,11 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
 
                                 if settings['token_settings']['punc_marks']:
                                     # Remove empty tokens for searching in results
-                                    sentence_tokens_search = [token for token in copy.deepcopy(sentence) if token]
+                                    sentence_tokens_search = [
+                                        sentence_token
+                                        for sentence_token in copy.deepcopy(sentence)
+                                        if sentence_token
+                                    ]
                                 # Convert trailing punctuation marks, if any, to separate tokens for searching
                                 else:
                                     sentence_tokens_search = []
@@ -631,8 +645,10 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                                 results[-1].append(file['name'])
 
                         i_token += len(sentence)
+        except wl_excs.Wl_Exc_Aborted:
+            err_msg = 'aborted'
         except Exception:
             err_msg = traceback.format_exc()
 
         self.progress_updated.emit(self.tr('Rendering table...'))
-        self.worker_done.emit(err_msg, results)
+        self.finished.emit(err_msg, results)

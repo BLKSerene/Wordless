@@ -23,47 +23,13 @@ from PyQt5 import QtCore
 # Workers
 class Wl_Worker(QtCore.QObject):
     progress_updated = QtCore.pyqtSignal(str)
-    worker_done = QtCore.pyqtSignal()
-
-    def __init__(self, main, dialog_progress, update_gui, **kwargs):
-        super().__init__()
-
-        self.main = main
-        self.dialog_progress = dialog_progress
-
-        # Additional arguments
-        for key, val in kwargs.items():
-            self.__dict__[key] = val
-
-        self.progress_updated.connect(self.dialog_progress.update_progress)
-
-        # Wait for updating of the progress label
-        self.worker_done.connect(lambda: time.sleep(.01), QtCore.Qt.DirectConnection)
-        self.worker_done.connect(update_gui)
-        self.worker_done.connect(self.dialog_progress.accept)
-
-class Wl_Worker_No_Progress(QtCore.QObject):
-    worker_done = QtCore.pyqtSignal()
-
-    def __init__(self, main, update_gui, **kwargs):
-        super().__init__()
-
-        self.main = main
-
-        # Additional arguments
-        for key, val in kwargs.items():
-            self.__dict__[key] = val
-
-        self.worker_done.connect(update_gui)
-
-class Wl_Worker_No_Callback(QtCore.QObject):
-    progress_updated = QtCore.pyqtSignal(str)
-    worker_done = QtCore.pyqtSignal()
+    finished = QtCore.pyqtSignal()
 
     def __init__(self, main, dialog_progress, **kwargs):
         super().__init__()
 
         self.main = main
+        self._running = True
         self.dialog_progress = dialog_progress
 
         # Additional arguments
@@ -72,32 +38,45 @@ class Wl_Worker_No_Callback(QtCore.QObject):
 
         self.progress_updated.connect(self.dialog_progress.update_progress)
 
-        # Wait for updating of the progress label
-        self.worker_done.connect(lambda: time.sleep(.01), QtCore.Qt.DirectConnection)
-        self.worker_done.connect(self.dialog_progress.accept)
+        if hasattr(self.dialog_progress, 'button_abort'):
+            self.dialog_progress.button_abort.clicked.connect(self.stop)
 
-# Threads
-class Wl_Thread(QtCore.QThread):
-    def __init__(self, worker):
+    def stop(self):
+        self._running = False
+
+class Wl_Worker_No_Progress(QtCore.QObject):
+    finished = QtCore.pyqtSignal()
+
+    def __init__(self, main, **kwargs):
         super().__init__()
 
-        self.worker = worker
+        self.main = main
+        self._running = True
 
-        self.worker.moveToThread(self)
+        # Additional arguments
+        for key, val in kwargs.items():
+            self.__dict__[key] = val
 
-        self.started.connect(worker.run)
-        self.finished.connect(worker.deleteLater)
+    def stop(self):
+        self._running = False
 
-    def start_worker(self):
-        self.start()
+def start_worker_in_thread(worker, thread, update_gui):
+    worker.moveToThread(thread)
 
-        self.worker.dialog_progress.exec_()
+    thread.started.connect(worker.run)
 
-        self.quit()
-        self.wait()
+    worker.finished.connect(thread.quit)
+    worker.finished.connect(worker.deleteLater)
+    # Wait for updating of the progress label
+    worker.finished.connect(lambda: time.sleep(.01), QtCore.Qt.DirectConnection)
+    worker.finished.connect(update_gui)
 
-class Wl_Thread_No_Progress(Wl_Thread):
-    def start_worker(self):
-        self.start()
+    if hasattr(worker, 'dialog_progress'):
+        worker.finished.connect(worker.dialog_progress.accept)
 
-        self.quit()
+    thread.finished.connect(thread.deleteLater)
+
+    thread.start()
+
+    if hasattr(worker, 'dialog_progress'):
+        worker.dialog_progress.exec()

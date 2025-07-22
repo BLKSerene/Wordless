@@ -703,6 +703,12 @@ class Wl_Text_Total(Wl_Text):
         # Set language for the combined text only if all texts are in the same language
         if len({text.lang for text in texts}) == 1:
             self.lang = texts[0].lang
+
+            if hasattr(texts[0], 'dds_sentences'):
+                self.dds_sentences = sum((text.dds_sentences for text in texts), [])
+                self.dds_sentences_no_punc = sum((text.dds_sentences_no_punc for text in texts), [])
+                self.root_dists = sum((text.root_dists for text in texts), [])
+                self.root_dists_no_punc = sum((text.root_dists_no_punc for text in texts), [])
         else:
             self.lang = 'other'
 
@@ -719,11 +725,5 @@ class Wl_Text_Total(Wl_Text):
             for text in texts
             for para in text.tokens_multilevel_with_puncs
         ]
-
-        if hasattr(texts[0], 'dds_sentences'):
-            self.dds_sentences = sum((text.dds_sentences for text in texts), [])
-            self.dds_sentences_no_punc = sum((text.dds_sentences_no_punc for text in texts), [])
-            self.root_dists = sum((text.root_dists for text in texts), [])
-            self.root_dists_no_punc = sum((text.root_dists_no_punc for text in texts), [])
 
         self.update_num_tokens()

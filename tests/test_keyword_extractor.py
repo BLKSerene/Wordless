@@ -90,11 +90,13 @@ def test_keyword_extractor():
         print(f"Measure of Bayes factor: {settings['generation_settings']['measure_bayes_factor']}")
         print(f"Measure of effect size: {settings['generation_settings']['measure_effect_size']}")
 
-        wl_keyword_extractor.Wl_Worker_Keyword_Extractor_Table(
+        worker_keyword_extractor = wl_keyword_extractor.Wl_Worker_Keyword_Extractor_Table(
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
-            update_gui = update_gui
-        ).run()
+        )
+
+        worker_keyword_extractor.finished.connect(update_gui)
+        worker_keyword_extractor.run()
 
 def update_gui(err_msg, keywords_freq_files, keywords_stats_files):
     print(err_msg)

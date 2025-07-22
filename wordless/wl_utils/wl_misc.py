@@ -73,7 +73,7 @@ def change_file_owner_to_user(file_path):
         os.chown(file_path, uid, gid)
 
 def find_wl_main(widget):
-    if 'main' in widget.__dict__:
+    if hasattr(widget, 'main'):
         main = widget.main
     else:
         main = widget
@@ -160,8 +160,8 @@ def log_time(func):
             time_elapsed_mins = int(time_elapsed // 60)
             time_elapsed_secs = time_elapsed % 60
 
-            msg_min = _tr('wl_misc', 'minute') if time_elapsed_mins == 1 else _tr('wl_misc', 'minutes')
-            msg_time = _tr('wl_misc', '(In {} {} {:.2f} seconds)').format(time_elapsed_mins, msg_min, time_elapsed_secs)
+            msg_min = check_noun_number(time_elapsed_mins, _tr('wl_misc', 'minute'))
+            msg_time = _tr('wl_misc', '(In {} {:.2f} seconds)').format(msg_min, time_elapsed_secs)
 
             if (msg_cur := main.statusBar().currentMessage()):
                 if _tr('wl_misc', '(In') in msg_cur:
@@ -231,3 +231,6 @@ def normalize_nums(nums, normalized_min, normalized_max, reverse = False):
             ]
 
     return nums_normalized
+
+def check_noun_number(number, noun):
+    return f'{number} {noun}' if number == 1 else f'{number} {noun}s'

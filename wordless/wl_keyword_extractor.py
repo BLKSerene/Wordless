@@ -17,7 +17,6 @@
 # ----------------------------------------------------------------------
 
 # pylint: disable=broad-exception-caught
-
 import collections
 import copy
 import traceback
@@ -430,13 +429,17 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                 nlp_support_ok = True
 
             if nlp_support_ok:
-                worker_keyword_extractor_table = Wl_Worker_Keyword_Extractor_Table(
+                self.worker_keyword_extractor_table = Wl_Worker_Keyword_Extractor_Table(
                     self.main,
                     dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                    update_gui = self.update_gui_table
                 )
 
-                wl_threading.Wl_Thread(worker_keyword_extractor_table).start_worker()
+                self.thread_keyword_extractor_table = QtCore.QThread()
+                wl_threading.start_worker_in_thread(
+                    self.worker_keyword_extractor_table,
+                    self.thread_keyword_extractor_table,
+                    self.update_gui_table
+                )
         else:
             if not files_observed:
                 self.wl_dialog_missing_corpus_observed()
@@ -636,10 +639,14 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                 self.worker_keyword_extractor_fig = Wl_Worker_Keyword_Extractor_Fig(
                     self.main,
                     dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                    update_gui = self.update_gui_fig
                 )
 
-                wl_threading.Wl_Thread(self.worker_keyword_extractor_fig).start_worker()
+                self.thread_keyword_extractor_fig = QtCore.QThread()
+                wl_threading.start_worker_in_thread(
+                    self.worker_keyword_extractor_fig,
+                    self.thread_keyword_extractor_fig,
+                    self.update_gui_fig
+                )
         else:
             if not files_observed:
                 self.wl_dialog_missing_corpus_observed()
@@ -707,10 +714,10 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                     wl_checks_work_area.check_err_fig(self.main, err_msg)
 
 class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
-    worker_done = QtCore.pyqtSignal(str, dict, dict)
+    finished = QtCore.pyqtSignal(str, dict, dict)
 
-    def __init__(self, main, dialog_progress, update_gui):
-        super().__init__(main, dialog_progress, update_gui)
+    def __init__(self, main, dialog_progress):
+        super().__init__(main, dialog_progress)
 
         self.err_msg = ''
         self.keywords_freq_files = []
@@ -730,6 +737,9 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
             tokens_ref = []
 
             for file_ref in files_ref:
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
                 text = wl_token_processing.wl_process_tokens_ngram_generator(
                     self.main, file_ref['text'],
                     token_settings = settings['token_settings']
@@ -748,6 +758,9 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
 
             # Frequency (Observed Corpus)
             for file_observed in files_observed:
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
                 text = wl_token_processing.wl_process_tokens_ngram_generator(
                     self.main, file_observed['text'],
                     token_settings = settings['token_settings']
@@ -825,6 +838,9 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
                     len_tokens_observed = text.num_tokens
 
                     for i, token in enumerate(keywords_all):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         o11s[i] = keywords_freq_file_observed.get(token, 0)
                         o12s[i] = keywords_freq_file_ref.get(token, 0)
                         o21s[i] = len_tokens_observed - o11s[i]
@@ -835,6 +851,9 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
                         freqs_x2s_statistical_significance = []
 
                         for token in keywords_all:
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
                             freqs_x1, freqs_x2 = freqs_sections_tokens_statistical_significance[token]
 
                             freqs_x1s_statistical_significance.append(freqs_x1)
@@ -848,6 +867,9 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
                         freqs_x2s_bayes_factor = []
 
                         for token in keywords_all:
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
                             freqs_x1, freqs_x2 = freqs_sections_tokens_bayes_factor[token]
 
                             freqs_x1s_bayes_factor.append(freqs_x1)
@@ -882,6 +904,9 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
                         effect_sizes = func_effect_size(self.main, o11s, o12s, o21s, o22s)
 
                     for i, token in enumerate(keywords_all):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         keywords_stats_file[token] = [
                             test_stats[i],
                             p_vals[i],
@@ -899,6 +924,8 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
             if len(files_observed) == 1:
                 self.keywords_freq_files.append(self.keywords_freq_files[1])
                 self.keywords_stats_files *= 2
+        except wl_excs.Wl_Exc_Aborted:
+            self.err_msg = 'aborted'
         except Exception:
             self.err_msg = traceback.format_exc()
 
@@ -907,7 +934,7 @@ class Wl_Worker_Keyword_Extractor_Table(Wl_Worker_Keyword_Extractor):
         super().run()
 
         self.progress_updated.emit(self.tr('Rendering table...'))
-        self.worker_done.emit(
+        self.finished.emit(
             self.err_msg,
             wl_misc.merge_dicts(self.keywords_freq_files),
             wl_misc.merge_dicts(self.keywords_stats_files)
@@ -918,7 +945,7 @@ class Wl_Worker_Keyword_Extractor_Fig(Wl_Worker_Keyword_Extractor):
         super().run()
 
         self.progress_updated.emit(self.tr('Rendering figure...'))
-        self.worker_done.emit(
+        self.finished.emit(
             self.err_msg,
             wl_misc.merge_dicts(self.keywords_freq_files),
             wl_misc.merge_dicts(self.keywords_stats_files)

@@ -140,26 +140,30 @@ def check_results(parent, err_msg, results):
     results_ok = True
     main = wl_misc.find_wl_main(parent)
 
-    if err_msg:
-        results_ok = False
+    match err_msg:
+        case '':
+            if not any(results):
+                wl_dialogs.Wl_Dialog_Info_Simple(
+                    parent,
+                    title = _tr('wl_checks_work_area', 'No Results'),
+                    text = _tr('wl_checks_work_area', '''
+                        <div>Data processing has completed successfully, but there are no results to display.</div>
+                        <br>
+                        <div>You may change your settings and try again.</div>
+                    '''),
+                    icon = 'warning'
+                ).open()
 
-        wl_dialogs_errs.Wl_Dialog_Err_Fatal(parent, err_msg).open()
-        wl_status_bar_err_fatal(main)
-    elif not any(results):
-        results_ok = False
+                main.statusBar().showMessage(_tr('wl_checks_work_area', 'No results to display.'))
 
-        wl_dialogs.Wl_Dialog_Info_Simple(
-            parent,
-            title = _tr('wl_checks_work_area', 'No Results'),
-            text = _tr('wl_checks_work_area', '''
-                <div>Data processing has completed successfully, but there are no results to display.</div>
-                <br>
-                <div>You may change your settings and try again.</div>
-            '''),
-            icon = 'warning'
-        ).open()
+                results_ok = False
+        case 'aborted':
+            results_ok = False
+        case _:
+            wl_dialogs_errs.Wl_Dialog_Err_Fatal(parent, err_msg).open()
+            wl_status_bar_err_fatal(main)
 
-        main.statusBar().showMessage(_tr('wl_checks_work_area', 'No results to display.'))
+            results_ok = False
 
     return results_ok
 
@@ -187,7 +191,9 @@ def check_results_download_model(parent, err_msg, model_name = ''):
 def check_postprocessing(parent, err_msg):
     results_ok = True
 
-    if err_msg:
+    if err_msg == 'aborted':
+        results_ok = False
+    elif err_msg:
         results_ok = False
 
         wl_dialogs_errs.Wl_Dialog_Err_Fatal(parent, err_msg).open()
@@ -229,8 +235,18 @@ def check_err_fig_word_cloud(main, err):
 def check_err_exp_table(parent, err_msg, file_path):
     main = wl_misc.find_wl_main(parent)
 
-    if err_msg:
-        if err_msg == 'permission_err':
+    match err_msg:
+        case '':
+            wl_dialogs.Wl_Dialog_Info_Simple(
+                parent,
+                title = _tr('wl_checks_work_area', 'Export Completed'),
+                text = _tr('wl_checks_work_area', '''
+                    <div>The table has been successfully exported to "{}".</div>
+                ''').format(file_path)
+            ).open()
+
+            main.statusBar().showMessage(_tr('wl_checks_work_area', 'Table exported successfully.'))
+        case 'permission_err':
             wl_dialogs.Wl_Dialog_Info_Simple(
                 parent,
                 title = _tr('wl_checks_work_area', 'File Access Denied'),
@@ -239,17 +255,11 @@ def check_err_exp_table(parent, err_msg, file_path):
                 ''').format(file_path),
                 icon = 'critical'
             ).open()
-        else:
+
+            main.statusBar().showMessage(_tr('wl_checks_work_area', 'File access denied.'))
+        case 'aborted':
+            pass
+        case _:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(parent, err_msg).open()
 
-        main.statusBar().showMessage(_tr('wl_checks_work_area', 'File access denied.'))
-    else:
-        wl_dialogs.Wl_Dialog_Info_Simple(
-            parent,
-            title = _tr('wl_checks_work_area', 'Export Completed'),
-            text = _tr('wl_checks_work_area', '''
-                <div>The table has been successfully exported to "{}".</div>
-            ''').format(file_path)
-        ).open()
-
-        main.statusBar().showMessage(_tr('wl_checks_work_area', 'Table exported successfully.'))
+            wl_status_bar_err_fatal(main)

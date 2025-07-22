@@ -148,14 +148,17 @@ class Wl_Settings_Sentiment_Analysis(wl_settings.Wl_Settings_Node):
                 langs = [self.settings_custom['preview']['preview_lang']],
                 lang_utils = [['default_word_tokenizer', sentiment_analyzer]]
             ):
-                worker_preview_sentiment_analyzer = Wl_Worker_Preview_Sentiment_Analyzer(
+                self.worker_preview_sentiment_analyzer = Wl_Worker_Preview_Sentiment_Analyzer(
                     self.main,
-                    update_gui = self.update_gui,
                     sentiment_analyzer = sentiment_analyzer
                 )
 
-                self.thread_preview_sentiment_analyzer = wl_threading.Wl_Thread_No_Progress(worker_preview_sentiment_analyzer)
-                self.thread_preview_sentiment_analyzer.start_worker()
+                self.thread_preview_sentiment_analyzer = QtCore.QThread()
+                wl_threading.start_worker_in_thread(
+                    self.worker_preview_sentiment_analyzer,
+                    self.thread_preview_sentiment_analyzer,
+                    self.update_gui
+                )
             else:
                 self.update_gui_err()
 
@@ -217,7 +220,7 @@ class Wl_Settings_Sentiment_Analysis(wl_settings.Wl_Settings_Node):
         return True
 
 class Wl_Worker_Preview_Sentiment_Analyzer(wl_threading.Wl_Worker_No_Progress):
-    worker_done = QtCore.pyqtSignal(float)
+    finished = QtCore.pyqtSignal(float)
 
     def run(self):
         preview_lang = self.main.settings_custom['sentiment_analysis']['preview']['preview_lang']
@@ -230,4 +233,4 @@ class Wl_Worker_Preview_Sentiment_Analyzer(wl_threading.Wl_Worker_No_Progress):
             sentiment_analyzer = self.sentiment_analyzer
         )
 
-        self.worker_done.emit(sentiment_scores[0])
+        self.finished.emit(sentiment_scores[0])

@@ -17,7 +17,6 @@
 # ----------------------------------------------------------------------
 
 # pylint: disable=broad-exception-caught
-
 import copy
 import math
 import traceback
@@ -31,6 +30,7 @@ from wordless.wl_dialogs import (
     wl_dialogs_misc
 )
 from wordless.wl_utils import (
+    wl_excs,
     wl_misc,
     wl_threading
 )
@@ -235,16 +235,21 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
 
     @wl_misc.log_time
     def filter_results(self):
-        worker_filter_results = self.Worker_Filter_Results(
+        self.worker_filter_results = self.Worker_Filter_Results(
             self.main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(
                 self.main,
                 text = _tr('Wl_Dialog_Results_Filter', 'Filtering results...')
             ),
-            update_gui = self.update_gui,
             dialog = self
         )
-        wl_threading.Wl_Thread(worker_filter_results).start_worker()
+
+        self.thread_filter_results = QtCore.QThread()
+        wl_threading.start_worker_in_thread(
+            self.worker_filter_results,
+            self.thread_filter_results,
+            self.update_gui
+        )
 
     def update_gui(self, err_msg):
         if wl_checks_work_area.check_postprocessing(self.main, err_msg):
@@ -330,7 +335,7 @@ class Wl_Dialog_Results_Filter_Dependency_Parser(Wl_Dialog_Results_Filter):
             layout.load_settings(settings)
 
 class Wl_Worker_Results_Filter_Dependency_Parser(wl_threading.Wl_Worker):
-    worker_done = QtCore.pyqtSignal(str)
+    finished = QtCore.pyqtSignal(str)
 
     def run(self):
         err_msg = ''
@@ -359,9 +364,15 @@ class Wl_Worker_Results_Filter_Dependency_Parser(wl_threading.Wl_Worker):
                 filter_name = 'add'
             )
 
+            num_rows = self.dialog.table.model().rowCount()
             self.dialog.table.row_filters = []
 
-            for i in range(self.dialog.table.model().rowCount()):
+            for i in range(num_rows):
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                self.progress_updated.emit(self.tr('Filtering results... ({} / {})').format(i + 1, num_rows))
+
                 if (
                     self.dialog.settings['file_to_filter'] == self.tr('Total')
                     or self.dialog.table.model().item(i, col_file).text() == self.dialog.settings['file_to_filter']
@@ -394,10 +405,12 @@ class Wl_Worker_Results_Filter_Dependency_Parser(wl_threading.Wl_Worker):
                     self.dialog.table.row_filters.append(True)
 
             self.progress_updated.emit(self.tr('Updating table...'))
+        except wl_excs.Wl_Exc_Aborted:
+            err_msg = 'aborted'
         except Exception:
             err_msg = traceback.format_exc()
         finally:
-            self.worker_done.emit(err_msg)
+            self.finished.emit(err_msg)
 
 class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
     def __init__(self, main, table):
@@ -496,7 +509,7 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
             layout.load_settings(settings)
 
 class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
-    worker_done = QtCore.pyqtSignal(str)
+    finished = QtCore.pyqtSignal(str)
 
     def run(self):
         err_msg = ''
@@ -559,9 +572,15 @@ class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
                 filter_name = 'num_files_found'
             )
 
+            num_rows = self.dialog.table.model().rowCount()
             self.dialog.table.row_filters = []
 
-            for i in range(self.dialog.table.model().rowCount()):
+            for i in range(num_rows):
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                self.progress_updated.emit(self.tr('Filtering results... ({} / {})').format(i + 1, num_rows))
+
                 filters = []
 
                 # Only count the length of token texts when filtering tagged tokens
@@ -607,10 +626,12 @@ class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
                 self.dialog.table.row_filters.append(all(filters))
 
             self.progress_updated.emit(self.tr('Updating table...'))
+        except wl_excs.Wl_Exc_Aborted:
+            err_msg = 'aborted'
         except Exception:
             err_msg = traceback.format_exc()
         finally:
-            self.worker_done.emit(err_msg)
+            self.finished.emit(err_msg)
 
 class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
     def __init__(self, main, table):
@@ -771,7 +792,7 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
             self.settings['freq_position'] = self.combo_box_freq_position.currentText()
 
 class Wl_Worker_Results_Filter_Collocation_Extractor(wl_threading.Wl_Worker):
-    worker_done = QtCore.pyqtSignal(str)
+    finished = QtCore.pyqtSignal(str)
 
     def run(self):
         err_msg = ''
@@ -871,9 +892,15 @@ class Wl_Worker_Results_Filter_Collocation_Extractor(wl_threading.Wl_Worker):
                 filter_name = 'num_files_found'
             )
 
+            num_rows = self.dialog.table.model().rowCount()
             self.dialog.table.row_filters = []
 
-            for i in range(self.dialog.table.model().rowCount()):
+            for i in range(num_rows):
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                self.progress_updated.emit(self.tr('Filtering results... ({} / {})').format(i + 1, num_rows))
+
                 filters = []
 
                 # Only count the length of token texts when filtering tagged tokens
@@ -928,7 +955,9 @@ class Wl_Worker_Results_Filter_Collocation_Extractor(wl_threading.Wl_Worker):
                 self.dialog.table.row_filters.append(all(filters))
 
             self.progress_updated.emit(self.tr('Updating table...'))
+        except wl_excs.Wl_Exc_Aborted:
+            err_msg = 'aborted'
         except Exception:
             err_msg = traceback.format_exc()
         finally:
-            self.worker_done.emit(err_msg)
+            self.finished.emit(err_msg)

@@ -32,7 +32,7 @@ _tr = QtCore.QCoreApplication.translate
 
 # self.tr() does not work in inherited classes
 class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
-    def __init__(self, parent, text):
+    def __init__(self, parent, text, abort = True):
         super().__init__(parent, width = 500)
 
         self.time_start = time.time()
@@ -47,15 +47,28 @@ class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
             self
         )
 
+        if abort:
+            self.button_abort = QtWidgets.QPushButton(self.tr('Abort'), self)
+
+            self.button_abort.clicked.connect(self.abort_clicked)
+
         self.timer_time_elapsed.timeout.connect(self.update_elapsed_time)
         self.timer_time_elapsed.start(1000)
 
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.label_progress, 0, 0)
-        self.layout().addWidget(self.label_time_elapsed, 0, 1, QtCore.Qt.AlignRight)
+        self.layout().addWidget(self.label_time_elapsed, 0, 1)
         self.layout().addWidget(self.label_processing, 1, 0, 1, 2)
+        self.layout().setColumnStretch(0, 1)
+
+        if abort:
+            self.layout().addWidget(self.button_abort, 2, 1)
 
         self.layout().setContentsMargins(20, 15, 20, 15)
+
+    def abort_clicked(self):
+        self.button_abort.setText(self.tr('Aborting...'))
+        self.button_abort.setEnabled(False)
 
     def update_elapsed_time(self):
         elapsed_time = datetime.timedelta(seconds = round(time.time() - self.time_start))
@@ -71,7 +84,7 @@ class Wl_Dialog_Progress_Process_Data(Wl_Dialog_Progress):
 
 class Wl_Dialog_Progress_Download_Model(Wl_Dialog_Progress):
     def __init__(self, parent):
-        super().__init__(parent, text = _tr('wl_dialogs_misc', 'Downloading model...'))
+        super().__init__(parent, text = _tr('wl_dialogs_misc', 'Downloading model...'), abort = False)
 
 class Wl_Dialog_Restart_Required(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, parent):

@@ -81,11 +81,13 @@ def test_collocation_extractor():
         print(f"Measure of Bayes factor: {settings['generation_settings']['measure_bayes_factor']}")
         print(f"Measure of effect size: {settings['generation_settings']['measure_effect_size']}")
 
-        wl_collocation_extractor.Wl_Worker_Collocation_Extractor_Table(
+        worker_collocation_extractor = wl_collocation_extractor.Wl_Worker_Collocation_Extractor_Table(
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
-            update_gui = update_gui
-        ).run()
+        )
+
+        worker_collocation_extractor.finished.connect(update_gui)
+        worker_collocation_extractor.run()
 
 def update_gui(err_msg, collocations_freqs_files, collocations_stats_files):
     print(err_msg)

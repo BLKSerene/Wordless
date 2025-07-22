@@ -17,7 +17,6 @@
 # ----------------------------------------------------------------------
 
 # pylint: disable=broad-exception-caught
-
 import collections
 import copy
 import traceback
@@ -47,6 +46,7 @@ from wordless.wl_nlp import (
     wl_token_processing
 )
 from wordless.wl_utils import (
+    wl_excs,
     wl_misc,
     wl_threading
 )
@@ -309,14 +309,18 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
             nlp_support = True
 
         if nlp_support:
-            worker_profiler_table = Wl_Worker_Profiler_Table(
+            self.worker_profiler_table = Wl_Worker_Profiler_Table(
                 self.main,
                 dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                update_gui = self.update_gui_table,
                 tab = 'all'
             )
 
-            wl_threading.Wl_Thread(worker_profiler_table).start_worker()
+            self.thread_profiler_table = QtCore.QThread()
+            wl_threading.start_worker_in_thread(
+                self.worker_profiler_table,
+                self.thread_profiler_table,
+                self.update_gui_table
+            )
 
     def update_gui_table(self, err_msg, text_stats_files):
         # Skip if the text is empty
@@ -344,7 +348,7 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
                     <br>
                     <div>Do you want to clear the results displayed in all tables?</div>
                 ''')
-            ).exec_()
+            ).exec()
         else:
             confirmed = True
 
@@ -385,14 +389,18 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
             nlp_support = True
 
         if nlp_support:
-            worker_profiler_table = Wl_Worker_Profiler_Table(
+            self.worker_profiler_table = Wl_Worker_Profiler_Table(
                 self.main,
                 dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                update_gui = self.update_gui_table,
                 tab = self.tab
             )
 
-            wl_threading.Wl_Thread(worker_profiler_table).start_worker()
+            self.thread_profiler_table = QtCore.QThread()
+            wl_threading.start_worker_in_thread(
+                self.worker_profiler_table,
+                self.thread_profiler_table,
+                self.update_gui_table
+            )
 
     def update_gui_table(self, err_msg, text_stats_files):
         raise NotImplementedError
@@ -799,7 +807,7 @@ class Wl_Table_Profiler_Syntactic_Complexity(Wl_Table_Profiler):
                     ndds = stats[14]
 
                     if dds_sentences == 'no_support':
-                        for j in range(40):
+                        for j in range(42):
                             self.set_item_err(j, i, text = self.tr('No language support'), alignment_hor = 'right')
                     else:
                         # Dependency Distance
@@ -1354,10 +1362,10 @@ class Wl_Table_Profiler_Len_Breakdown(Wl_Table_Profiler):
         return err_msg
 
 class Wl_Worker_Profiler(wl_threading.Wl_Worker):
-    worker_done = QtCore.pyqtSignal(str, list)
+    finished = QtCore.pyqtSignal(str, list)
 
-    def __init__(self, main, dialog_progress, update_gui, tab):
-        super().__init__(main, dialog_progress, update_gui, tab = tab)
+    def __init__(self, main, dialog_progress, tab):
+        super().__init__(main, dialog_progress, tab = tab)
 
         self.err_msg = ''
         self.text_stats_files = []
@@ -1370,6 +1378,9 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
             files = list(self.main.wl_file_area.get_selected_files())
 
             for file in files:
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
                 text = wl_token_processing.wl_process_tokens_profiler(
                     self.main, file['text'],
                     token_settings = settings['token_settings'],
@@ -1379,12 +1390,12 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 texts.append(text)
 
             # Total
-            if len(files) > 1:
+            if self._running and len(files) > 1:
                 texts.append(wl_texts.Wl_Text_Total(texts))
 
             for text in texts:
-                tokens = text.get_tokens_flat()
-                tokens = wl_nlp_utils.add_missing_ending_tshegs(self.main, tokens, tab = 'profiler')
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
 
                 # Readability
                 if self.tab in ('readability', 'all'):
@@ -1431,6 +1442,12 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                     ]
                 else:
                     stats_readability = None
+
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                tokens = text.get_tokens_flat()
+                tokens = wl_nlp_utils.add_missing_ending_tshegs(self.main, tokens, tab = 'profiler')
 
                 if self.tab in ('counts', 'lens', 'len_breakdown', 'all'):
                     # Paragraph length
@@ -1503,6 +1520,9 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                     len_types_chars = None
                     len_syls = None
 
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
                 # Lexical Density/Diversity
                 if self.tab in ('lexical_density_diversity', 'all'):
                     if tokens:
@@ -1536,6 +1556,9 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                         stats_lexical_density_diversity = [0] * 28
                 else:
                     stats_lexical_density_diversity = None
+
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
 
                 # Syntactic Complexity
                 if self.tab in ('syntactic_complexity', 'all'):
@@ -1578,6 +1601,8 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
 
             if len(files) == 1:
                 self.text_stats_files *= 2
+        except wl_excs.Wl_Exc_Aborted:
+            self.err_msg = 'aborted'
         except Exception:
             self.err_msg = traceback.format_exc()
 
@@ -1586,4 +1611,4 @@ class Wl_Worker_Profiler_Table(Wl_Worker_Profiler):
         super().run()
 
         self.progress_updated.emit(self.tr('Rendering table...'))
-        self.worker_done.emit(self.err_msg, self.text_stats_files)
+        self.finished.emit(self.err_msg, self.text_stats_files)

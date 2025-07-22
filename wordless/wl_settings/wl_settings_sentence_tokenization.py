@@ -153,14 +153,17 @@ class Wl_Settings_Sentence_Tokenization(wl_settings.Wl_Settings_Node):
                 langs = [self.settings_custom['preview']['preview_lang']],
                 lang_utils = [[sentence_tokenizer]]
             ):
-                worker_preview_sentence_tokenizer = Wl_Worker_Preview_Sentence_Tokenizer(
+                self.worker_preview_sentence_tokenizer = Wl_Worker_Preview_Sentence_Tokenizer(
                     self.main,
-                    update_gui = self.update_gui,
                     sentence_tokenizer = sentence_tokenizer
                 )
 
-                self.thread_preview_sentence_tokenizer = wl_threading.Wl_Thread_No_Progress(worker_preview_sentence_tokenizer)
-                self.thread_preview_sentence_tokenizer.start_worker()
+                self.thread_preview_sentence_tokenizer = QtCore.QThread()
+                wl_threading.start_worker_in_thread(
+                    self.worker_preview_sentence_tokenizer,
+                    self.thread_preview_sentence_tokenizer,
+                    self.update_gui
+                )
             else:
                 self.update_gui_err()
 
@@ -221,7 +224,7 @@ class Wl_Settings_Sentence_Tokenization(wl_settings.Wl_Settings_Node):
         return True
 
 class Wl_Worker_Preview_Sentence_Tokenizer(wl_threading.Wl_Worker_No_Progress):
-    worker_done = QtCore.pyqtSignal(list)
+    finished = QtCore.pyqtSignal(list)
 
     def run(self):
         preview_lang = self.main.settings_custom['sentence_tokenization']['preview']['preview_lang']
@@ -234,4 +237,4 @@ class Wl_Worker_Preview_Sentence_Tokenizer(wl_threading.Wl_Worker_No_Progress):
             sentence_tokenizer = self.sentence_tokenizer
         )
 
-        self.worker_done.emit(preview_results)
+        self.finished.emit(preview_results)

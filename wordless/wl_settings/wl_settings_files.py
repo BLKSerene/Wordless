@@ -290,7 +290,7 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
             # Check duplicate tags
             for row in range(self.model().rowCount()):
                 if row != item.row() and self.model().item(row, 2).text() == item.text():
-                    # Use exec_() instead of open() here to allow editing
+                    # Use exec() instead of open() here to allow editing
                     wl_dialogs.Wl_Dialog_Info_Simple(
                         self.main,
                         title = _tr('Wl_Table_Tags', 'Duplicate Tags'),
@@ -300,7 +300,7 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                             <div>Please specify another tag.</div>
                         '''),
                         icon = 'warning'
-                    ).exec_()
+                    ).exec()
 
                     item.setText(item.text_old)
 
@@ -334,13 +334,13 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                 ''')
 
             if re_validation is None:
-                # Use exec_() instead of open() here to allow editing to be started
+                # Use exec() instead of open() here to allow editing to be started
                 wl_dialogs.Wl_Dialog_Info_Simple(
                     self.main,
                     title = _tr('Wl_Table_Tags', 'Invalid Opening Tag'),
                     text = warning_text,
                     icon = 'warning'
-                ).exec_()
+                ).exec()
 
                 item.setText(item.text_old)
 
@@ -365,7 +365,7 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                     <div>Please check your settings or specify another XML tag.</div>
                 '''),
                 icon = 'warning'
-            ).exec_()
+            ).exec()
 
             item.setText(item.text_old)
 

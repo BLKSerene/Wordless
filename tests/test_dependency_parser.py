@@ -54,11 +54,13 @@ def test_dependency_parser():
 
         print(f"Files: {' | '.join(wl_test_init.get_test_file_names(main))}")
 
-        wl_dependency_parser.Wl_Worker_Dependency_Parser(
+        worker_dependency_parser = wl_dependency_parser.Wl_Worker_Dependency_Parser(
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
-            update_gui = update_gui
-        ).run()
+        )
+
+        worker_dependency_parser.finished.connect(update_gui)
+        worker_dependency_parser.run()
 
 def update_gui(err_msg, results):
     print(err_msg)

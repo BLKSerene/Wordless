@@ -39,6 +39,7 @@ from wordless.wl_dialogs import (
 )
 from wordless.wl_nlp import wl_nlp_utils
 from wordless.wl_utils import (
+    wl_excs,
     wl_misc,
     wl_paths,
     wl_threading
@@ -473,12 +474,12 @@ class Wl_Table(QtWidgets.QTableView):
                 )
 
         if file_path:
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = _tr('wl_tables', 'Exporting table...'))
-
-            worker_exp_table = Wl_Worker_Exp_Table(
+            self.worker_exp_table = Wl_Worker_Exp_Table(
                 self.main,
-                dialog_progress = dialog_progress,
-                update_gui = self.update_gui_exp,
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(
+                    self.main,
+                    text = _tr('wl_tables', 'Exporting table...')
+                ),
                 table = self,
                 file_path = file_path,
                 file_type = file_type,
@@ -489,8 +490,12 @@ class Wl_Table(QtWidgets.QTableView):
                 )
             )
 
-            thread_exp_table = wl_threading.Wl_Thread(worker_exp_table)
-            thread_exp_table.start_worker()
+            self.thread_exp_table = QtCore.QThread()
+            wl_threading.start_worker_in_thread(
+                self.worker_exp_table,
+                self.thread_exp_table,
+                self.update_gui_exp
+            )
 
             return ''
         # Do not log time if the export dialog is closed
@@ -501,16 +506,18 @@ class Wl_Table(QtWidgets.QTableView):
         if not err_msg:
             self.results_saved = True
 
-        wl_checks_work_area.check_err_exp_table(self.main, err_msg, file_path)
+        wl_checks_work_area.check_err_exp_table(self.parent(), err_msg, file_path)
 
 RE_REDUNDANT_SPACES = re.compile(r'\s+')
 RE_INVALID_XML_CHARS = re.compile(r'[^\u0009\u000A\u000D\u0020-\uD7FF\uE000-\uFFFD\U00010000-\U0010FFFF]+')
 RE_COLOR = re.compile(r'(?<=color: #)([0-9a-fA-F]{3}|[0-9a-fA-F]{6})(?=;)')
 
 class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
-    worker_done = QtCore.pyqtSignal(str, str)
+    finished = QtCore.pyqtSignal(str, str)
 
     def run(self):
+        err_msg = ''
+
         try:
             if 'headers_int' not in self.table.__dict__:
                 self.table.headers_int = set()
@@ -521,7 +528,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
             settings_concordancer = self.main.settings_custom['concordancer']['zapping_settings']
 
-            len_rows = len(self.rows_to_exp)
+            num_rows = len(self.rows_to_exp)
             # Export visible columns only
             cols = [col for col in range(self.table.model().columnCount()) if not self.table.isColumnHidden(col)]
 
@@ -542,9 +549,14 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                         # Cells
                         for i, row in enumerate(self.rows_to_exp):
+                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, num_rows))
+
                             row_to_exp = []
 
                             for col in cols:
+                                if not self._running:
+                                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
                                 if self.table.model().item(row, col):
                                     cell_text = self.table.model().item(row, col).text()
                                 else:
@@ -554,8 +566,6 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                                 row_to_exp.append(cell_text)
 
                             csv_writer.writerow(self.clean_text_csv(row_to_exp))
-
-                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
                     # Profiler
                     else:
                         # Horizontal headers
@@ -567,14 +577,17 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                         # Vertical headers and cells
                         for i, row in enumerate(self.rows_to_exp):
+                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, num_rows))
+
                             row_to_exp = [self.table.model().verticalHeaderItem(row).text()]
 
                             for col in cols:
+                                if not self._running:
+                                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
                                 row_to_exp.append(self.table.model().item(row, col).text())
 
                             csv_writer.writerow(self.clean_text_csv(row_to_exp))
-
-                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
             # Excel workbooks
             elif '*.xlsx' in self.file_type:
                 workbook = openpyxl.Workbook()
@@ -613,6 +626,9 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                 if self.table.header_orientation == 'hor':
                     # Horizontal headers
                     for col_cell, col_item in enumerate(cols):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         cell = worksheet.cell(1, 1 + col_cell)
                         cell.value = self.table.model().horizontalHeaderItem(col_item).text()
 
@@ -622,7 +638,12 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                     # Cells
                     for row_cell, row_item in enumerate(self.rows_to_exp):
+                        self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(row_cell + 1, num_rows))
+
                         for col_cell, col_item in enumerate(cols):
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
                             cell = worksheet.cell(2 + row_cell, 1 + col_cell)
 
                             if (
@@ -647,12 +668,13 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                                 cell.value = cell_val
 
                                 self.style_cell(cell, self.table.model().item(row_item, col_item))
-
-                        self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(row_cell + 1, len_rows))
                 # Profiler
                 else:
                     # Horizontal headers
                     for col_cell, col_item in enumerate(cols):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         cell = worksheet.cell(1, 2 + col_cell)
                         cell.value = self.table.model().horizontalHeaderItem(col_item).text()
 
@@ -664,6 +686,9 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                     # Vertical headers
                     for row_cell, row_item in enumerate(self.rows_to_exp):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
                         cell = worksheet.cell(2 + row_cell, 1)
                         cell.value = self.table.model().verticalHeaderItem(row_item).text()
 
@@ -671,16 +696,18 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                     # Cells
                     for row_cell, row_item in enumerate(self.rows_to_exp):
-                        for col_cell, col_item in enumerate(cols):
-                            cell = worksheet.cell(2 + row_cell, 2 + col_cell)
+                        self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(row_cell + 1, num_rows))
 
+                        for col_cell, col_item in enumerate(cols):
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                            cell = worksheet.cell(2 + row_cell, 2 + col_cell)
                             cell_val = self.table.model().item(row_item, col_item).text()
                             cell_val = self.remove_invalid_xml_chars(cell_val)
                             cell.value = cell_val
 
                             self.style_cell(cell, self.table.model().item(row_item, col_item))
-
-                        self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(row_cell + 1, len_rows))
 
                 # Row height
                 worksheet.row_dimensions[1].height = self.table.horizontalHeader().height() / dpi_vertical * 72
@@ -699,6 +726,11 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                     outputs = []
 
                     for i, row in enumerate(self.rows_to_exp):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                        self.progress_updated.emit(self.tr('Processing data... ({} / {})').format(i + 1, num_rows))
+
                         para_text = []
 
                         for col in range(3):
@@ -719,43 +751,57 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                         # Assign line numbers
                         if settings_concordancer['add_line_nums']:
                             for i, _ in enumerate(outputs):
+                                if not self._running:
+                                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
                                 outputs[i][0] = f'{i + 1}. ' + outputs[i][0]
 
                     for i, (para_text, item) in enumerate(outputs):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                        self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, num_rows))
+
                         para = self.add_para(doc)
                         self.style_para_rich_text(para, para_text, item)
-
-                        self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
-
-                    self.progress_updated.emit(self.tr('Saving file...'))
                 # Parallel Concordancer
                 elif self.table.tab == 'concordancer_parallel':
                     for i, row in enumerate(self.rows_to_exp):
+                        self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, num_rows))
+
                         if i > 0:
                             self.add_para(doc)
 
                         for col in range(2, self.table.model().columnCount()):
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
                             para_text = self.table.indexWidget(self.table.model().index(row, col)).text().strip()
 
                             para = self.add_para(doc)
                             self.style_para_rich_text(para, para_text, self.table.indexWidget(self.table.model().index(row, col)))
 
-                        self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
-
                 # Add the last empty paragraph
                 self.add_para(doc)
+
+                self.progress_updated.emit(self.tr('Saving file...'))
+
                 doc.save(self.file_path)
+        except wl_excs.Wl_Exc_Aborted:
+            if '*.csv' in self.file_type:
+                if os.path.exists(self.file_path):
+                    os.remove(self.file_path)
 
-            self.main.settings_custom['general']['exp']['tables']['default_path'] = wl_paths.get_normalized_dir(self.file_path)
-            self.main.settings_custom['general']['exp']['tables']['default_type'] = self.file_type
-
-            err_msg = ''
+            err_msg = 'aborted'
         except PermissionError:
             err_msg = 'permission_err'
         except Exception: # pylint: disable=broad-exception-caught
             err_msg = traceback.format_exc()
 
-        self.worker_done.emit(err_msg, self.file_path)
+        self.main.settings_custom['general']['exp']['tables']['default_path'] = wl_paths.get_normalized_dir(self.file_path)
+        self.main.settings_custom['general']['exp']['tables']['default_type'] = self.file_type
+
+        self.finished.emit(err_msg, self.file_path)
 
     # Clean text before writing to CSV files
     def clean_text_csv(self, items):
@@ -916,8 +962,8 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
         if font_family != 'Consolas':
             font_family = self.main.settings_custom['general']['ui_settings']['font_family']
 
-        # Trick the parser to force it to always wrap HTML with <html><body><p></p></body></html>
-        soup = bs4.BeautifulSoup('&nbsp;' + cell.value, features = 'lxml')
+        # Wrap HTML with <html><body><p></p></body></html>
+        soup = bs4.BeautifulSoup(f'<html><body><p>{cell.value}</p></body></html>', features = 'lxml')
 
         for html in soup.body.p.contents:
             if isinstance(html, bs4.element.Tag):
@@ -994,8 +1040,8 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
         if font_family != 'Consolas':
             font_family = self.main.settings_custom['general']['ui_settings']['font_family']
 
-        # Trick the parser to force it always wrap HTML with <html><body><p></p></body></html>
-        soup = bs4.BeautifulSoup('&nbsp;' + para_text, features = 'lxml')
+        # Wrap HTML with <html><body><p></p></body></html>
+        soup = bs4.BeautifulSoup(f'<html><body><p>{para_text}</p></body></html>', features = 'lxml')
 
         for html in soup.body.p.contents:
             if isinstance(html, bs4.element.Tag):
@@ -1770,7 +1816,7 @@ class Wl_Table_Data(Wl_Table):
                         <br>
                         <div>Do you want to clear all results in the table?</div>
                     ''')
-                ).exec_()
+                ).exec()
 
         if confirmed:
             self.model().clear()

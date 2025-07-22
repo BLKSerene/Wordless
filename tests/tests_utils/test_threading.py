@@ -23,33 +23,11 @@ from wordless.wl_utils import wl_threading
 main = wl_test_init.Wl_Test_Main()
 
 def test_wl_worker():
-    dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, 'test')
-    wl_threading.Wl_Worker(main, dialog_progress, lambda: None)
+    wl_threading.Wl_Worker(main, wl_dialogs_misc.Wl_Dialog_Progress(main, 'test'))
 
 def test_wl_worker_no_progress():
-    wl_threading.Wl_Worker_No_Progress(main, lambda: None)
-
-def test_wl_worker_no_callback():
-    dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, 'test')
-    wl_threading.Wl_Worker_No_Callback(main, dialog_progress)
-
-def test_wl_thread():
-    dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, 'test')
-    worker = wl_threading.Wl_Worker(main, dialog_progress, lambda: None)
-    worker.run = lambda: None
-
-    wl_threading.Wl_Thread(worker)
-
-def test_wl_thread_no_progress():
-    worker = wl_threading.Wl_Worker_No_Progress(main, lambda: None)
-    worker.run = lambda: None
-
-    wl_threading.Wl_Thread_No_Progress(worker)
+    wl_threading.Wl_Worker_No_Progress(main)
 
 if __name__ == '__main__':
     test_wl_worker()
     test_wl_worker_no_progress()
-    test_wl_worker_no_callback()
-
-    test_wl_thread()
-    test_wl_thread_no_progress()

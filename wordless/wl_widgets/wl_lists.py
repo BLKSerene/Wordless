@@ -177,7 +177,7 @@ class Wl_List_Add_Ins_Del_Clr(QtWidgets.QListView):
                 else:
                     for i, text in enumerate(self.model().stringList()):
                         if i != item_row and item_text == text:
-                            # Use exec_() instead of open() here to allow editing to be started
+                            # Use exec() instead of open() here to allow editing to be started
                             wl_dialogs.Wl_Dialog_Info_Simple(
                                 self.main,
                                 title = _tr('wl_lists', 'Duplicate Items'),
@@ -187,7 +187,7 @@ class Wl_List_Add_Ins_Del_Clr(QtWidgets.QListView):
                                     <div>Please specify another item.</div>
                                 '''),
                                 icon = 'warning'
-                            ).exec_()
+                            ).exec()
 
                             data = self.model().stringList()
                             data[item_row] = self.items_old[item_row]
@@ -360,7 +360,7 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
 
                 dialog_err_files.table_err_files.enable_updates()
 
-                dialog_err_files.exec_()
+                dialog_err_files.exec()
 
                 self.main.statusBar().showMessage(_tr('wl_lists', 'An error occurred during import!'))
             else:
@@ -411,7 +411,7 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
                     f.write(item + '\n')
 
             wl_dialogs.Wl_Dialog_Info_Simple(
-                self.main,
+                self.parent(),
                 title = _tr('wl_lists', 'Export Completed'),
                 text = _tr('wl_lists', '''
                     <div>The list has been successfully exported to "{}".</div>
