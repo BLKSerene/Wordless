@@ -1391,7 +1391,7 @@ Indicator of Syntactic Complexity|Formula
 
 <span id="doc-12-4-4"></span>
 #### [12.4.4 Measures of Dispersion and Adjusted Frequency](#doc)
-For parts-based measures, each file is divided into **n** (whose value you could modify via **Menu Bar → Preferences → Settings → Measures → Dispersion / Adjusted Frequency → General Settings → Divide each file into subsections**) sub-sections and the frequency of the word in each part is counted and denoted by **F₁**, **F₂**, **F₃**, ..., **Fₙ** respectively. The total frequency of the word in each file is denoted by **F** and the mean value of the frequencies over all sub-sections is denoted by **F̅**.
+For parts-based measures, each file is divided into **n** (whose value you could modify via **Menu Bar → Preferences → Settings → Measures → Dispersion / Adjusted Frequency → General Settings → Divide each file into subsections**) subsections and the frequency of the word in each part is counted and denoted by **F₁**, **F₂**, **F₃**, ..., **Fₙ** respectively. The total frequency of the word in each file is denoted by **F** and the mean value of the frequencies over all subsections is denoted by **F̅**.
 
 For distance-based measures, the distance between each pair of subsequent occurrences of the word is calculated and denoted by **d₁**, **d₂**, **d₃**, ..., **d<sub>F</sub>** respectively. The total number of tokens in each file is denoted by **N**.
 
@@ -1459,7 +1459,7 @@ Zhang's Distributional Consistency:
 Measure of Dispersion (Parts-based)|Measure of Adjusted Frequency (Parts-based)|Formula
 -----------------------------------|-------------------------------------------|-------
 <span id="ref-carrolls-d2"></span>Carroll's D₂<br>([Carroll, 1970](#ref-carroll-1970))|<span id="ref-carrolls-um"></span>Carroll's Uₘ<br>([Carroll, 1970](#ref-carroll-1970))|![Formula](/doc/measures/dispersion_adjusted_frequency/carrolls_um.svg)
-&nbsp;|<span id="ref-engwalls-fm"></span>Engwall's FM<br>([Engwall, 1974, p. 53](#ref-engwall-1974))|![Formula](/doc/measures/dispersion_adjusted_frequency/engwalls_fm.svg)<br>where **R** is the number of sub-sections in which the word appears at least once.
+&nbsp;|<span id="ref-engwalls-fm"></span>Engwall's FM<br>([Engwall, 1974, p. 53](#ref-engwall-1974))|![Formula](/doc/measures/dispersion_adjusted_frequency/engwalls_fm.svg)<br>where **R** is the number of subsections in which the word appears at least once.
 <span id="ref-griess-dp"></span>Gries's DP<br>([Gries, 2008](#ref-gries-2008); [Lijffijt & Gries, 2012](#ref-lijffijt-gries-2012))||![Formula](/doc/measures/dispersion_adjusted_frequency/griess_dp.svg)<br><br>* Normalization is applied by default, which behavior could be modified via **Menu Bar → Preferences → Settings → Measures → Dispersion → Gries's DP → Apply normalization**.
 <span id="ref-juillands-d"></span>Juilland's D<br>([Juilland & Chang-Rodrigues, 1964, p. LIII](#ref-juilland-chang-rodrigues-1964))|<span id="ref-juillands-u"></span>Juilland's U<br>([Juilland & Chang-Rodrigues, 1964, p. LXVIII](#ref-juilland-chang-rodrigues-1964))|![Formula](/doc/measures/dispersion_adjusted_frequency/juillands_u.svg)
 &nbsp;|<span id="ref-kromers-ur"></span>Kromer's U<sub>R</sub><br>([Kromer, 2003](#ref-kromer-2003))|![Formula](/doc/measures/dispersion_adjusted_frequency/kromers_ur.svg)<br>where **ψ** is the [digamma function](https://en.wikipedia.org/wiki/Digamma_function) and **C** is the [Euler–Mascheroni constant](https://en.wikipedia.org/wiki/Euler%E2%80%93Mascheroni_constant).
@@ -1519,7 +1519,7 @@ O₂₂: Number of occurrences of all words except the *Word w* in the reference
 Oₓ₁: Size of the observed corpus.<br>
 Oₓ₂: Size of the reference corpus.
 
-To conduct **Mann-Whitney U test** and **Student's t-test (2-sample)** on a potential keyword, all tokens in the observed corpus and reference corpus are equally divided into **n** parts respectively. The frequencies of the *Word w* in the **n** sub-sections in the observed corpus and reference corpus are counted and denoted by **F₁₁**, **F₂₁**, **F₃₁**, ..., **Fₙ₁** and **F₁₂**, **F₂₂**, **F₃₂**, ..., **Fₙ₂** respectively. The total frequencies of the *Word w* in the observed corpus and reference corpus are denoted by **Fₓ₁** and **Fₓ₂** respectively. The mean values of the frequencies of the *Word w* over the **n** sub-sections in the observed corpus and reference corpus are denoted by ![f_x1_bar](/doc/measures/f_x1_bar.svg) and ![f_x2_bar](/doc/measures/f_x2_bar.svg) respectively.
+To conduct **Mann-Whitney U test** and **Student's t-test (2-sample)** on a potential keyword, all tokens in the observed corpus and reference corpus are equally divided into **n** parts respectively. The frequencies of the *Word w* in the **n** subsections in the observed corpus and reference corpus are counted and denoted by **F₁₁**, **F₂₁**, **F₃₁**, ..., **Fₙ₁** and **F₁₂**, **F₂₂**, **F₃₂**, ..., **Fₙ₂** respectively. The total frequencies of the *Word w* in the observed corpus and reference corpus are denoted by **Fₓ₁** and **Fₓ₂** respectively. The mean values of the frequencies of the *Word w* over the **n** subsections in the observed corpus and reference corpus are denoted by ![f_x1_bar](/doc/measures/f_x1_bar.svg) and ![f_x2_bar](/doc/measures/f_x2_bar.svg) respectively.
 
 Then the test statistics, Bayes factors, and effect sizes are calculated as follows:
 

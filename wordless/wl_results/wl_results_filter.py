@@ -172,7 +172,8 @@ def get_filter_min_max(settings, filter_name):
 
     return filter_min, filter_max
 
-# self.tr() does not work in inherited classes
+# self.tr() may not work in inherited classes
+# See: https://www.riverbankcomputing.com/static/Docs/PyQt5/i18n.html#differences-between-pyqt5-and-qt
 class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
     def __init__(self, main, table):
         super().__init__(main, _tr('Wl_Dialog_Results_Filter', 'Filter Results'))
@@ -256,7 +257,7 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
             try:
                 self.table.filter_table()
 
-                self.main.statusBar().showMessage(_tr('Wl_Dialog_Results_Filter', 'The results in the data table has been successfully filtered.'))
+                self.main.statusBar().showMessage(_tr('Wl_Dialog_Results_Filter', 'The results in the table has been successfully filtered.'))
             except Exception:
                 wl_checks_work_area.check_err(self.main, traceback.format_exc())
 
@@ -308,7 +309,7 @@ class Wl_Dialog_Results_Filter_Dependency_Parser(Wl_Dialog_Results_Filter):
         self.layouts_filters.append(widgets_filter(
             self,
             label = self.tr('Dependency distance (absolute):'),
-            val_min = -1000, val_max = 1000,
+            val_min = 0, val_max = 1000,
             settings = self.settings, filter_name = 'add'
         ))
 
@@ -468,7 +469,8 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
                 self,
                 label = self.col_text_dispersion,
                 val_min = 0, val_max = 1,
-                settings = self.settings, filter_name = 'dispersion'
+                settings = self.settings, filter_name = 'dispersion',
+                double = True
             ))
 
         if self.has_adjusted_freq:

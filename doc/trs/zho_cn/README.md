@@ -121,7 +121,7 @@ Bug 提交|[GitHub Issues](https://github.com/BLKSerene/Wordless/issues)
 
 ## 引用
 
-如果你打算发表使用了 *Wordless* 的成果，请根据期刊论文或计算机软件的格式对 *Wordless* 进行引用。
+如果你正准备发布使用了 *Wordless* 的成果，请按期刊论文或计算机软件的格式对 *Wordless* 进行引用。
 
 1. 根据期刊论文的格式进行引用
 

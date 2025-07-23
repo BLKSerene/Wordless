@@ -34,7 +34,7 @@ def fix_ts_format(ts_file):
 
 def del_obsolete_trans(ts_file):
     with open(ts_file, 'r', encoding = 'utf_8') as f:
-        soup = bs4.BeautifulSoup(f.read(), features = 'lxml')
+        soup = bs4.BeautifulSoup(f.read(), features = 'xml')
 
     for element_context in soup.select('context'):
         for element_message in element_context.select('message'):

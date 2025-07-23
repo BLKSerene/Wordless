@@ -24,10 +24,10 @@ from utils import wl_trs_utils
 
 # eng_us: [zho_cn]
 TRS_LANGS = {
-    ' (Cyrillic script)': (' (西里尔文)',),
-    ' (Gurmukhi script)': (' (古木基文)',),
-    ' (Latin script)': (' (拉丁文)',),
-    ' (Meitei Mayek script)': (' (曼尼普尔文)',),
+    ' (Cyrillic script)': ('（西里尔文）',),
+    ' (Gurmukhi script)': ('（古木基文）',),
+    ' (Latin script)': ('（拉丁文）',),
+    ' (Meitei Mayek script)': ('（曼尼普尔文）',),
 
     'Afrikaans': ('南非语',),
     'Albanian': ('阿尔巴尼亚语',),
@@ -52,7 +52,7 @@ TRS_LANGS = {
     'Church Slavonic (Old)': ('教会斯拉夫语（古）',),
     'Coptic': ('科普特语',),
 
-    # In names of some language utils (eg. simplemma)
+    # In names of some language utils (e.g. simplemma)
     'Serbo-Croatian': ('塞尔维亚-克罗地亚语',),
     'Croatian': ('克罗地亚语',),
 
@@ -151,6 +151,8 @@ TRS_LANGS = {
     'Tetun (Dili)': ('德顿语（帝力）',),
     'Thai': ('泰语',),
 
+    # spaCy's stop word list
+    'Tibetan': ('藏语',),
     'Tibetan (Classical)': ('藏语（古典）',),
     'Tibetan (Modern)': ('藏语（现代）',),
 
@@ -195,6 +197,7 @@ TRS_LANGS = {
     # NLP utils
     'Armenian': ('亚美尼亚语',)
 }
+
 TRS_ENCODINGS = {
     # "with/without BOM" contained in "BE/LE with/without BOM"
     'BE with BOM': (' 大端带签名',),
@@ -204,6 +207,7 @@ TRS_ENCODINGS = {
     'with BOM': ('带签名',),
     'without BOM': ('无签名',)
 }
+
 TRS_FILE_TYPES = {
     'CSV files (*.csv)': ('CSV 文件 (*.csv)',),
     'Excel workbooks (*.xlsx)': ('Excel 工作簿 (*.xlsx)',),
@@ -215,6 +219,7 @@ TRS_FILE_TYPES = {
     'XML files (*.xml)': ('XML 文件 (*.xml)',),
     'All files (*.*)': ('所有文件 (*.*)',)
 }
+
 TRS_NLP_UTILS = {
     # Settings
     'Sentence Tokenizer Settings': ('分句器设置',),
@@ -268,6 +273,40 @@ TRS_NLP_UTILS = {
     'dependency parser': ('依存分析器',),
     'sentiment analyzer': ('情感分析器',)
 }
+
+TRS_PROFILER = {
+    ' (Mean)': ('（均值）',),
+    ' (Standard Deviation)': ('（标准差）',),
+    ' (Variance)': ('（方差）',),
+    ' (Minimum)': ('（最小值）',),
+    ' (25th Percentile)': ('（25分位数）',),
+    ' (Median)': ('（中位数）',),
+    ' (75th Percentile)': ('（75分位数）',),
+    ' (Maximum)': ('（最大值）',),
+    ' (Range)': ('（极差）',),
+    ' (Interquartile Range)': ('（四分位差）',),
+    ' (Modes)': ('（众数）',),
+
+    ' (Absolute)': ('（绝对）',),
+
+    # Lengths
+    'Paragraph Length in Sentences': ('段落长（以句子为单位）',),
+    'Paragraph Length in Tokens': ('段落长（以形符为单位）',),
+    'Sentence Length in Tokens': ('句长（以形符为单位）',),
+    'Sentence Segment Length in Tokens': ('句段长（以形符为单位）',),
+    'Token Length in Syllables': ('形符长（以音节为单位）',),
+    'Token Length in Characters': ('形符长（以字符为单位）',),
+    'Type Length in Syllables': ('类符长（以音节为单位）',),
+    'Type Length in Characters': ('类符长（以字符为单位）',),
+    'Syllable Length in Characters': ('音节长（以字符为单位）',),
+
+    # Syntactic Complexity
+    'Absolute Dependency Distance': ('绝对依存距离',),
+    'Mean Dependency Distance': ('平均依存距离',),
+    'Normalized Dependency Distance': ('标准化依存距离',),
+    'Dependency Distance': ('依存距离',)
+}
+
 TRS_MISC = {
     # Lists
     'Add': ('添加',),
@@ -311,6 +350,7 @@ TRS_MISC = {
     'Total': ('合计',),
 
     'Generate table': ('生成表格',),
+    'Generate all tables': ('生成所有表格',),
     'Generate figure': ('生成图表',),
     'Clear table': ('清空表格',),
 
@@ -321,13 +361,21 @@ TRS_MISC = {
     'Table Settings': ('表格设置',),
     'Figure Settings': ('图表设置',),
 
+    'Search in results': ('在结果中查找',),
+    'Filter results': ('筛选结果',),
+    'Sort results': ('对结果进行排序',),
+
+    # Tags
+    'Embedded': ('嵌入式',),
+    'Nonembedded': ('非嵌入式',),
+
     # Language-specific files
     'ACKS.md': ('doc/trs/zho_cn/ACKS.md',)
 }
 
 if __name__ == '__main__':
     with open('trs/zho_cn.ts', 'r', encoding = 'utf_8') as f:
-        soup = bs4.BeautifulSoup(f.read(), features = 'lxml')
+        soup = bs4.BeautifulSoup(f.read(), features = 'xml')
 
     for element_context in soup.select('context'):
         for element_message in element_context.select('message'):
@@ -350,8 +398,8 @@ if __name__ == '__main__':
                     # Language names
                     if tr == lang:
                         tr = trs[0]
-                    elif f'{lang} (' in tr:
-                        tr = tr.replace(f'{lang} (', f'{trs[0]} (', 1)
+                    elif f'{lang}（' in tr:
+                        tr = tr.replace(f'{lang}（', f'{trs[0]}（', 1)
                     # Script names
                     elif 'script)' in lang and lang in tr:
                         tr = tr.replace(lang, trs[0])
@@ -387,9 +435,14 @@ if __name__ == '__main__':
 
                         break
 
+                # Profiler
+                for item, trs in TRS_PROFILER.items():
+                    if item in tr:
+                        tr = tr.replace(item, trs[0])
+
                 # Misc
                 for item, trs in TRS_MISC.items():
-                    if tr == item:
+                    if re.search(fr'^{item}$', tr, re.I):
                         tr = trs[0]
 
                         break

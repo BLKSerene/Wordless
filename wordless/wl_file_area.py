@@ -678,7 +678,7 @@ class Wl_Dialog_Open_Corpora(wl_dialogs.Wl_Dialog):
                 dialog_err_files = wl_dialogs_errs.Wl_Dialog_Err_Files(self.main, title = self.tr('Error Adding Files'))
 
                 dialog_err_files.label_err.set_text(self.tr('''
-                    <div>An error occurred while adding files, and the following files are not added to the table.</div>
+                    <div>An error occurred while adding files, so the following files are not added to the table.</div>
                 '''))
                 dialog_err_files.table_err_files.model().setRowCount(
                     len(self.file_paths_empty)

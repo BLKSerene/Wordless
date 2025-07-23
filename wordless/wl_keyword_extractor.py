@@ -409,10 +409,10 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
         ).open()
 
     def wl_status_bar_msg_missing_corpus_observed(self):
-        self.main.statusBar().showMessage(self.tr('Missing observed corpus!'))
+        self.main.statusBar().showMessage(self.tr('The observed corpus is missing.'))
 
     def wl_status_bar_msg_missing_corpus_ref(self):
-        self.main.statusBar().showMessage(self.tr('Missing reference corpus!'))
+        self.main.statusBar().showMessage(self.tr('The reference corpus is missing.'))
 
     @wl_misc.log_time
     def generate_table(self):

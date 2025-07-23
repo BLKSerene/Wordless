@@ -156,7 +156,7 @@ class Wl_Dialog_Confirm_Exit(wl_dialogs.Wl_Dialog_Info):
             self.tr('''
                 <div>Do you want to exit <i>Wordless</i>?</div>
                 <br>
-                <div><b>Warning:</b> All unsaved data and figures will be lost.</div>
+                <div><b>Note:</b> All unsaved data and figures will be lost.</div>
             '''),
             self
         )
@@ -853,12 +853,12 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info_Copy):
             self
         )
 
-        self.label_citation_sys = QtWidgets.QLabel(self.tr('Citation system:'), self)
-        self.combo_box_citation_sys = wl_boxes.Wl_Combo_Box(self)
+        self.label_citation_style = QtWidgets.QLabel(self.tr('Citation style:'), self)
+        self.combo_box_citation_style = wl_boxes.Wl_Combo_Box(self)
         self.label_cite_as = QtWidgets.QLabel(self.tr('Cite as:'), self)
         self.combo_box_cite_as = wl_boxes.Wl_Combo_Box(self)
 
-        self.combo_box_citation_sys.addItems([
+        self.combo_box_citation_style.addItems([
             self.tr('APA (7th edition)'),
             self.tr('Chicago (18th edition)'),
             self.tr('MLA (9th edition)')
@@ -868,12 +868,12 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info_Copy):
             self.tr('A piece of computer software')
         ])
 
-        self.combo_box_citation_sys.currentTextChanged.connect(self.citation_changed)
+        self.combo_box_citation_style.currentTextChanged.connect(self.citation_changed)
         self.combo_box_cite_as.currentTextChanged.connect(self.citation_changed)
 
         layout_citation = wl_layouts.Wl_Layout()
-        layout_citation.addWidget(self.label_citation_sys, 0, 0)
-        layout_citation.addWidget(self.combo_box_citation_sys, 0, 1)
+        layout_citation.addWidget(self.label_citation_style, 0, 0)
+        layout_citation.addWidget(self.combo_box_citation_style, 0, 1)
         layout_citation.addWidget(self.label_cite_as, 1, 0)
         layout_citation.addWidget(self.combo_box_cite_as, 1, 1)
         layout_citation.addWidget(self.text_edit_info, 2, 0, 1, 2)
@@ -888,7 +888,7 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info_Copy):
     def load_settings(self):
         settings = copy.deepcopy(self.main.settings_custom['menu']['help']['citing'])
 
-        self.combo_box_citation_sys.setCurrentText(settings['citation_sys'])
+        self.combo_box_citation_style.setCurrentText(settings['citation_style'])
         self.combo_box_cite_as.setCurrentText(settings['cite_as'])
 
         self.citation_changed()
@@ -896,10 +896,10 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info_Copy):
     def citation_changed(self):
         settings = self.main.settings_custom['menu']['help']['citing']
 
-        settings['citation_sys'] = self.combo_box_citation_sys.currentText()
+        settings['citation_style'] = self.combo_box_citation_style.currentText()
         settings['cite_as'] = self.combo_box_cite_as.currentText()
 
-        if settings['citation_sys'].startswith('APA'):
+        if settings['citation_style'].startswith('APA'):
             if settings['cite_as'] == self.tr('A journal article'):
                 self.set_info(
                     'Ye, L. (2024). Wordless: An integrated corpus tool with multilingual support for the study of language, literature, and translation. <i>SoftwareX</i>, <i>28</i>, Article 101931. https://doi.org/10.1016/j.softx.2024.101931'
@@ -908,23 +908,23 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info_Copy):
                 self.set_info(
                     f'Ye, L. ({self.main.copyright_year}). <i>Wordless</i> (Version {self.main.ver}) [Computer software]. GitHub. https://github.com/BLKSerene/Wordless'
                 )
-        elif settings['citation_sys'].startswith('Chicago'):
+        elif settings['citation_style'].startswith(self.tr('Chicago')):
             if settings['cite_as'] == self.tr('A journal article'):
                 self.set_info(
                     'Ye, Lei. “Wordless: An Integrated Corpus Tool with Multilingual Support for the Study of Language, Literature, and Translation.” <i>SoftwareX</i> 28 (December 2024): 101931. https://doi.org/10.1016/j.softx.2024.101931.'
                 )
             elif settings['cite_as'] == self.tr('A piece of computer software'):
                 self.set_info(
-                    f'Ye, Lei. <i>Wordless</i>. V. {self.main.ver}. Released July 1, {self.main.copyright_year}. PC. https://github.com/BLKSerene/Wordless.'
+                    f'Ye, Lei. <i>Wordless</i>. V. {self.main.ver}. Released July 27, {self.main.copyright_year}. PC. https://github.com/BLKSerene/Wordless.'
                 )
-        elif settings['citation_sys'].startswith('MLA'):
+        elif settings['citation_style'].startswith('MLA'):
             if settings['cite_as'] == self.tr('A journal article'):
                 self.set_info(
                     'Ye Lei. “Wordless: An Integrated Corpus Tool with Multilingual Support for the Study of Language, Literature, and Translation.” <i>SoftwareX</i>, vol. 28, Dec. 2024, https://doi.org/10.1016/j.softx.2024.101931.'
                 )
             elif settings['cite_as'] == self.tr('A piece of computer software'):
                 self.set_info(
-                    f'Ye Lei. <i>Wordless</i>. Version {self.main.ver}, <i>GitHub</i>, 1 Jul. {self.main.copyright_year}, https://github.com/BLKSerene/Wordless.'
+                    f'Ye Lei. <i>Wordless</i>. Version {self.main.ver}, <i>GitHub</i>, 27 Jul. {self.main.copyright_year}, https://github.com/BLKSerene/Wordless.'
                 )
 
 class Wl_Dialog_Donating(wl_dialogs.Wl_Dialog_Info):
@@ -1357,6 +1357,9 @@ if __name__ == '__main__':
 
     first_startup = not os.path.exists(file_settings)
     corrupt_settings_file = False
+    ui_scaling = wl_settings_default.DEFAULT_INTERFACE_SCALING
+    global_font_family = wl_settings_default.DEFAULT_FONT_FAMILY
+    global_font_size = wl_settings_default.DEFAULT_FONT_SIZE
 
     if not first_startup:
         with open(file_settings, 'rb') as f:
@@ -1369,14 +1372,6 @@ if __name__ == '__main__':
             # Empty pickle file
             except EOFError:
                 corrupt_settings_file = True
-
-                ui_scaling = wl_settings_default.DEFAULT_INTERFACE_SCALING
-                global_font_family = wl_settings_default.DEFAULT_FONT_FAMILY
-                global_font_size = wl_settings_default.DEFAULT_FONT_SIZE
-    else:
-        ui_scaling = wl_settings_default.DEFAULT_INTERFACE_SCALING
-        global_font_family = wl_settings_default.DEFAULT_FONT_FAMILY
-        global_font_size = wl_settings_default.DEFAULT_FONT_SIZE
 
     # Remove the empty pickle file
     if corrupt_settings_file:

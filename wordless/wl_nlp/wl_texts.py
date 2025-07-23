@@ -167,6 +167,7 @@ def split_texts_properties(tokens):
             'head': token.head,
             'dependency_relation': token.dependency_relation,
             'dd': token.dd,
+            'dd_no_punc': token.dd_no_punc,
             'punc_mark': token.punc_mark
         })
 

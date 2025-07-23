@@ -299,7 +299,7 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
             text = self.tr('''
                 <div>Do you want to reset all settings to their default values?</div>
                 <br>
-                <div><b>Warning:</b> This will affect settings on all pages.</div>
+                <div><b>Note:</b> This will affect settings on all pages.</div>
             ''')
         ).exec():
             self.load_settings(defaults = True)
@@ -347,7 +347,6 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
         except Exception: # pylint: disable=broad-exception-caught
             wl_checks_work_area.check_err(self.main, traceback.format_exc())
 
-# self.tr() does not work in inherited classes
 class Wl_Settings_Node(QtWidgets.QWidget):
     def __init__(self, main):
         super().__init__()

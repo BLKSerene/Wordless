@@ -101,6 +101,9 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
                 if lang == 'hyw':
                     lang = 'hye'
 
+                if lang == 'xct':
+                    lang = 'bod'
+
                 lang = wl_conversion.to_iso_639_1(main, lang)
                 lang = wl_conversion.remove_lang_code_suffixes(lang)
 

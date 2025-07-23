@@ -296,10 +296,15 @@ def test_settings_global():
 
     for lang in pkgutil.iter_modules(spacy.lang.__path__):
         if lang.ispkg and 'stop_words.py' in os.listdir(f'{spacy.lang.__path__[0]}/{lang.name}/'):
-            if lang.name == 'sr':
-                langs_spacy_supported_stop_word_lists.extend(('sr_cyrl', 'sr_latn'))
-            elif lang.name != 'xx':
-                langs_spacy_supported_stop_word_lists.append(lang.name)
+            match lang.name:
+                case 'sr':
+                    langs_spacy_supported_stop_word_lists.extend(('sr_cyrl', 'sr_latn'))
+                case 'bo':
+                    langs_spacy_supported_stop_word_lists.extend(('xct', 'bo'))
+                case 'xx':
+                    continue
+                case _:
+                    langs_spacy_supported_stop_word_lists.append(lang.name)
 
     langs_spacy_supported_stop_word_lists = add_lang_suffixes(langs_spacy_supported_stop_word_lists)
 

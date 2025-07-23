@@ -45,9 +45,6 @@ from wordless.wl_widgets import (
 
 _tr = QtCore.QCoreApplication.translate
 
-RE_SORTING_COL_L = re.compile(_tr('Wl_Dialog_Results_Sort_Concordancer', r'^L[1-9][0-9]*$'))
-RE_SORTING_COL_R = re.compile(_tr('Wl_Dialog_Results_Sort_Concordancer', r'^R[1-9][0-9]*$'))
-
 class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
     def __init__(self, main, table):
         super().__init__(
@@ -60,6 +57,10 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
         self.tab = table.tab
         self.table = table
         self.settings = self.main.settings_custom[self.tab]['sort_results']
+
+        # Global constants do not work for translations
+        self.RE_SORTING_COL_L = re.compile(self.tr(r'^L[1-9][0-9]*$'))
+        self.RE_SORTING_COL_R = re.compile(self.tr(r'^R[1-9][0-9]*$'))
 
         self.main.wl_work_area.currentChanged.connect(self.reject)
 
@@ -166,9 +167,9 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
                     else:
                         span = int(sorting_col[1:])
 
-                        if RE_SORTING_COL_L.search(sorting_col):
+                        if self.RE_SORTING_COL_L.search(sorting_col):
                             results.sort(key = lambda item, span = span: item[0].tokens_raw[-span], reverse = reverse)
-                        elif RE_SORTING_COL_R.search(sorting_col):
+                        elif self.RE_SORTING_COL_R.search(sorting_col):
                             results.sort(key = lambda item, span = span: item[2].tokens_raw[span - 1], reverse = reverse)
 
                 # Clear highlights before sorting the results
@@ -208,7 +209,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
                     i_highlight_color_right = 1
 
                     for sorting_col, _ in self.settings['sorting_rules']:
-                        if RE_SORTING_COL_L.search(sorting_col) and int(sorting_col[1:]) <= len(text_left):
+                        if self.RE_SORTING_COL_L.search(sorting_col) and int(sorting_col[1:]) <= len(text_left):
                             hightlight_color = highlight_colors[i_highlight_color_left % len(highlight_colors)]
 
                             text_left[-int(sorting_col[1:])] = f'''
@@ -218,7 +219,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
                             '''
 
                             i_highlight_color_left += 1
-                        elif RE_SORTING_COL_R.search(sorting_col) and int(sorting_col[1:]) - 1 < len(text_right):
+                        elif self.RE_SORTING_COL_R.search(sorting_col) and int(sorting_col[1:]) - 1 < len(text_right):
                             hightlight_color = highlight_colors[i_highlight_color_right % len(highlight_colors)]
 
                             text_right[int(sorting_col[1:]) - 1] = f'''
@@ -264,7 +265,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
 
                 self.table.enable_updates(emit_signals = False)
 
-                self.main.statusBar().showMessage(self.tr('The results in the data table has been successfully sorted.'))
+                self.main.statusBar().showMessage(self.tr('The results in the table has been successfully sorted.'))
             except Exception:
                 wl_checks_work_area.check_err(self.main, traceback.format_exc())
 
@@ -282,6 +283,10 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         self.tab = table.tab
         self.table = table
         self.settings = self.table.settings[self.tab]
+
+        # Global constants do not work for translations
+        self.RE_SORTING_COL_L = re.compile(self.tr(r'^L[1-9][0-9]*$'))
+        self.RE_SORTING_COL_R = re.compile(self.tr(r'^R[1-9][0-9]*$'))
 
         self.cols_to_sort_default = [
             self.tr('Node'),
@@ -413,7 +418,7 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
             max_left = max((
                 int(col[1:])
                 for col in self.cols_to_sort
-                if RE_SORTING_COL_L.search(col)
+                if self.RE_SORTING_COL_L.search(col)
             ))
         else:
             max_left = 0
@@ -425,7 +430,7 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
             max_right = max((
                 int(col[1:])
                 for col in self.cols_to_sort
-                if RE_SORTING_COL_R.search(col)
+                if self.RE_SORTING_COL_R.search(col)
             ))
         else:
             max_right = 0
@@ -449,12 +454,12 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         cols_left = sorted([
             int(self.model().item(i, 0).text()[1:])
             for i in range(self.model().rowCount())
-            if RE_SORTING_COL_L.search(self.model().item(i, 0).text())
+            if self.RE_SORTING_COL_L.search(self.model().item(i, 0).text())
         ])
         cols_right = sorted([
             int(self.model().item(i, 0).text()[1:])
             for i in range(self.model().rowCount())
-            if RE_SORTING_COL_R.search(self.model().item(i, 0).text())
+            if self.RE_SORTING_COL_R.search(self.model().item(i, 0).text())
         ])
 
         if sorting_col:

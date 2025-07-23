@@ -61,6 +61,7 @@ def test_split_texts_properties():
         'head': None,
         'dependency_relation': None,
         'dd': None,
+        'dd_no_punc': None,
         'punc_mark': None
     }]
 

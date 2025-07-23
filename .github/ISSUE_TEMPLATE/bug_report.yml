@@ -65,6 +65,7 @@ body:
       label: Wordless version
       description: What version of Wordless are you using?
       options:
+        - 3.6.0
         - 3.5.0
         - 3.4.0
         - 3.3.0
@@ -83,7 +84,6 @@ body:
         - 1.0.0
         - Development
         - Other
-      default: 0
     validations:
       required: true
 

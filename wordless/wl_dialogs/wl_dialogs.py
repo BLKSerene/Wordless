@@ -148,7 +148,8 @@ class Wl_Dialog_Frameless(Wl_Dialog):
             }
         ''')
 
-# self.tr() does not work in inherited classes
+# self.tr() may not work in inherited classes
+# See: https://www.riverbankcomputing.com/static/Docs/PyQt5/i18n.html#differences-between-pyqt5-and-qt
 class Wl_Dialog_Info(Wl_Dialog):
     def __init__(
         self, parent,
@@ -295,8 +296,8 @@ class Wl_Dialog_Question(Wl_Dialog_Info):
 
         self.label_info = wl_labels.Wl_Label_Dialog(text, self)
 
-        self.button_yes = QtWidgets.QPushButton(self.tr('Yes'), self)
-        self.button_no = QtWidgets.QPushButton(self.tr('No'), self)
+        self.button_yes = QtWidgets.QPushButton(_tr('wl_dialogs', 'Yes'), self)
+        self.button_no = QtWidgets.QPushButton(_tr('wl_dialogs', 'No'), self)
 
         self.button_yes.clicked.connect(self.accept)
         self.button_no.clicked.connect(self.reject)
