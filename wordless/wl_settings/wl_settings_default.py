@@ -123,8 +123,8 @@ def init_settings_default(main):
 
             'help': {
                 'citing': {
-                    'citation_sys': _tr('wl_settings_default', 'APA (7th edition)'),
-                    'cite_as': _tr('wl_settings_default', 'As a journal article')
+                    'citation_style': _tr('wl_settings_default', 'APA (7th edition)'),
+                    'cite_as': _tr('wl_settings_default', 'A journal article')
                 },
 
                 'donating': {
@@ -552,9 +552,9 @@ def init_settings_default(main):
                 'freq_max_no_limit': True,
 
                 'dispersion_sync': False,
-                'dispersion_min': -100,
+                'dispersion_min': 0,
                 'dispersion_min_no_limit': True,
-                'dispersion_max': 100,
+                'dispersion_max': 1,
                 'dispersion_max_no_limit': True,
 
                 'adjusted_freq_sync': False,
@@ -708,9 +708,9 @@ def init_settings_default(main):
                 'freq_max_no_limit': True,
 
                 'dispersion_sync': False,
-                'dispersion_min': -100,
+                'dispersion_min': 0,
                 'dispersion_min_no_limit': True,
-                'dispersion_max': 100,
+                'dispersion_max': 1,
                 'dispersion_max_no_limit': True,
 
                 'adjusted_freq_sync': False,
@@ -860,9 +860,9 @@ def init_settings_default(main):
                 'len_collocate_max_no_limit': True,
 
                 'len_collocation_sync': False,
-                'len_collocation_min': 1,
+                'len_collocation_min': 2,
                 'len_collocation_min_no_limit': True,
-                'len_collocation_max': 20,
+                'len_collocation_max': 40,
                 'len_collocation_max_no_limit': True,
 
                 'freq_position': _tr('wl_settings_default', 'Total'),
@@ -1036,9 +1036,9 @@ def init_settings_default(main):
                 'len_collocate_max_no_limit': True,
 
                 'len_colligation_sync': False,
-                'len_colligation_min': 1,
+                'len_colligation_min': 2,
                 'len_colligation_min_no_limit': True,
-                'len_colligation_max': 20,
+                'len_colligation_max': 40,
                 'len_colligation_max_no_limit': True,
 
                 'freq_position': _tr('wl_settings_default', 'Total'),
@@ -2092,6 +2092,7 @@ def init_settings_default(main):
                     'tat': 'spacy_tat',
                     'tel': 'spacy_tel',
                     'tha': 'pythainlp_tha',
+                    'xct': 'spacy_bod',
                     'bod': 'spacy_bod',
                     'tir': 'spacy_tir',
                     'tsn': 'spacy_tsn',
@@ -2428,7 +2429,7 @@ def init_settings_default(main):
             # Settings - Measures - Dispersion
             'dispersion': {
                 'general_settings': {
-                    'num_sub_sections': 5
+                    'num_subsections': 5
                 },
 
                 'griess_dp': {
@@ -2439,7 +2440,7 @@ def init_settings_default(main):
             # Settings - Measures - Adjusted Frequency
             'adjusted_freq': {
                 'general_settings': {
-                    'num_sub_sections': 5
+                    'num_subsections': 5
                 }
             },
 
@@ -2454,7 +2455,7 @@ def init_settings_default(main):
                 },
 
                 'mann_whitney_u_test': {
-                    'num_sub_sections': 5,
+                    'num_subsections': 5,
                     'use_data': _tr('wl_settings_default', 'Relative frequency'),
                     'direction': _tr('wl_settings_default', 'Two-tailed'),
                     'apply_correction': True
@@ -2469,7 +2470,7 @@ def init_settings_default(main):
                 },
 
                 'students_t_test_2_sample': {
-                    'num_sub_sections': 5,
+                    'num_subsections': 5,
                     'use_data': _tr('wl_settings_default', 'Relative frequency'),
                     'direction': _tr('wl_settings_default', 'Two-tailed')
                 },
@@ -2490,7 +2491,7 @@ def init_settings_default(main):
                 },
 
                 'students_t_test_2_sample': {
-                    'num_sub_sections': 5,
+                    'num_subsections': 5,
                     'use_data': _tr('wl_settings_default', 'Relative frequency'),
                     'direction': _tr('wl_settings_default', 'Two-tailed')
                 }
@@ -2540,7 +2541,7 @@ def init_settings_default(main):
             # Settings - Figures - Word Clouds
             'word_clouds': {
                 'font_settings': {
-                    'font': 'GNU Unifont',
+                    'font': 'Droid Sans Mono',
                     'font_path': '',
 
                     'font_size_min': 4,

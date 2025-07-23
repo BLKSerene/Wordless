@@ -30,7 +30,8 @@ from wordless.wl_widgets import (
 
 _tr = QtCore.QCoreApplication.translate
 
-# self.tr() does not work in inherited classes
+# self.tr() may not work in inherited classes
+# See: https://www.riverbankcomputing.com/static/Docs/PyQt5/i18n.html#differences-between-pyqt5-and-qt
 class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
     def __init__(self, parent, text, abort = True):
         super().__init__(parent, width = 500)
@@ -40,15 +41,17 @@ class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
         self.timer_time_elapsed = QtCore.QTimer(self)
 
         self.label_progress = wl_labels.Wl_Label_Dialog(text, self, word_wrap = False)
-        self.label_time_elapsed = wl_labels.Wl_Label_Dialog(_tr('Wl_Dialog_Progress', '<div>Elapsed time: 0:00:00</div>'), self, word_wrap = False)
-        self.label_processing = wl_labels.Wl_Label_Dialog(_tr('Wl_Dialog_Progress', '''
+        self.label_time_elapsed = wl_labels.Wl_Label_Dialog(_tr('wl_dialogs_misc', '<div>Elapsed time: 0:00:00</div>'), self, word_wrap = False)
+        self.label_processing = wl_labels.Wl_Label_Dialog(_tr('wl_dialogs_misc', '''
                 <div>Please wait. It may take a few seconds to several minutes for the operation to be completed.</div>
             '''),
             self
         )
 
         if abort:
-            self.button_abort = QtWidgets.QPushButton(self.tr('Abort'), self)
+            self.button_abort = QtWidgets.QPushButton(_tr('wl_dialogs_misc', 'Abort'), self)
+
+            self.button_abort.setAutoDefault(False)
 
             self.button_abort.clicked.connect(self.abort_clicked)
 
@@ -67,13 +70,13 @@ class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
         self.layout().setContentsMargins(20, 15, 20, 15)
 
     def abort_clicked(self):
-        self.button_abort.setText(self.tr('Aborting...'))
+        self.button_abort.setText(_tr('wl_dialogs_misc', 'Aborting...'))
         self.button_abort.setEnabled(False)
 
     def update_elapsed_time(self):
         elapsed_time = datetime.timedelta(seconds = round(time.time() - self.time_start))
 
-        self.label_time_elapsed.set_text(_tr('Wl_Dialog_Progress', '<div>Elapsed time: {}</div>').format(elapsed_time))
+        self.label_time_elapsed.set_text(_tr('wl_dialogs_misc', '<div>Elapsed time: {}</div>').format(elapsed_time))
 
     def update_progress(self, text):
         self.label_progress.set_text(text)
@@ -90,14 +93,14 @@ class Wl_Dialog_Restart_Required(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, parent):
         super().__init__(
             parent,
-            title = _tr('Wl_Dialog_Restart_Required', 'Restart Wordless'),
+            title = _tr('wl_dialogs_misc', 'Restart Wordless'),
             width = 450,
             icon = 'question',
             no_buttons = True
         )
 
         self.label_restart_exit = wl_labels.Wl_Label_Dialog(
-            self.tr('''
+            _tr('wl_dialogs_misc', '''
                 <div>Restart is required for the settings to take effect. Do you want to restart <i>Wordless</i> now?</div>
                 <br>
                 <div><b>Note:</b> All unsaved data and figures will be lost.</div>
@@ -105,8 +108,8 @@ class Wl_Dialog_Restart_Required(wl_dialogs.Wl_Dialog_Info):
             self
         )
 
-        self.button_restart = QtWidgets.QPushButton(self.tr('Restart'), self)
-        self.button_cancel = QtWidgets.QPushButton(self.tr('Cancel'), self)
+        self.button_restart = QtWidgets.QPushButton(_tr('wl_dialogs_misc', 'Restart'), self)
+        self.button_cancel = QtWidgets.QPushButton(_tr('wl_dialogs_misc', 'Cancel'), self)
 
         self.button_restart.clicked.connect(self.accept)
         self.button_cancel.clicked.connect(self.reject)

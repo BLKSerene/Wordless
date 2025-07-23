@@ -614,7 +614,8 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
                 if not hide_dialog_err_fatal:
                     wl_checks_work_area.check_err_fig(self.main, err_msg)
 
-# self.tr() does not work in inherited classes
+# self.tr() may not work in inherited classes
+# See: https://www.riverbankcomputing.com/static/Docs/PyQt5/i18n.html#differences-between-pyqt5-and-qt
 class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
     finished = QtCore.pyqtSignal(str, dict, dict, dict)
 

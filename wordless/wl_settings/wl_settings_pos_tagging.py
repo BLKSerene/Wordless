@@ -543,7 +543,7 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
             self.main,
             title = self.tr('Reset Mappings'),
             text = self.tr('''
-                <div>Do you want to reset all mappings to their default settings?</div>
+                <div>Do you want to reset the mappings to their default values?</div>
                 <br>
                 <div><b>Note:</b> This will only affect the mapping settings in the currently shown table.</div>
             ''')
@@ -555,9 +555,9 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
             self.main,
             title = self.tr('Reset All Mappings'),
             text = self.tr('''
-                <div>Do you want to reset all mappings to their default settings?</div>
+                <div>Do you want to reset all mappings to their default values?</div>
                 <br>
-                <div><b>Warning:</b> This will affect the mapping settings in all tables.</div>
+                <div><b>Note:</b> This will affect the mapping settings in all tables.</div>
             ''')
         ).exec():
             self.settings_custom['mapping_settings'] = copy.deepcopy(self.settings_default['mapping_settings'])

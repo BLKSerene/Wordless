@@ -23,7 +23,7 @@ from utils import wl_trs_utils
 
 with open('trs/zho_cn.ts', 'r', encoding = 'utf_8') as f:
     trs_zho_cn = f.read()
-    soup = bs4.BeautifulSoup(trs_zho_cn, features = 'lxml')
+    soup = bs4.BeautifulSoup(trs_zho_cn, features = 'xml')
 
 # Convert Unix line endings to Windows ones
 with open('trs/zho_cn.ts', 'w', encoding = 'utf_8') as f:
@@ -32,7 +32,8 @@ with open('trs/zho_cn.ts', 'w', encoding = 'utf_8') as f:
 cc = opencc.OpenCC('s2twp')
 
 # Change language
-soup.ts['language'] = 'zh_TW'
+soup.TS['language'] = 'zh_TW'
+
 # Translate Simplified Chinese into Traditional Chinese
 for element_context in soup.select('context'):
     for element_message in element_context.select('message'):

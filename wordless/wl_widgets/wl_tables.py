@@ -50,7 +50,8 @@ _tr = QtCore.QCoreApplication.translate
 
 # pylint: disable=unnecessary-lambda
 
-# self.tr() does not work in inherited classes
+# self.tr() may not work in inherited classes
+# See: https://www.riverbankcomputing.com/static/Docs/PyQt5/i18n.html#differences-between-pyqt5-and-qt
 class Wl_Table(QtWidgets.QTableView):
     def __init__(
         self, parent,

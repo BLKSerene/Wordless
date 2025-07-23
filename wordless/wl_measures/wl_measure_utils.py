@@ -35,12 +35,12 @@ def to_measure_text(main, measure_type, measure_code):
 
     return None
 
-def to_freqs_sections_1_sample(items_to_search, items, num_sub_sections):
+def to_freqs_sections_1_sample(items_to_search, items, num_subsections):
     freq_sections_items = {}
 
     freq_items_sections = [
         collections.Counter(section)
-        for section in wl_nlp_utils.to_sections(items, num_sub_sections)
+        for section in wl_nlp_utils.to_sections(items, num_subsections)
     ]
 
     for item in items_to_search:
@@ -52,20 +52,20 @@ def to_freqs_sections_1_sample(items_to_search, items, num_sub_sections):
     return freq_sections_items
 
 def to_freqs_sections_dispersion(main, items_to_search, items):
-    num_sub_sections = main.settings_custom['measures']['dispersion']['general_settings']['num_sub_sections']
+    num_subsections = main.settings_custom['measures']['dispersion']['general_settings']['num_subsections']
 
-    return to_freqs_sections_1_sample(items_to_search, items, num_sub_sections)
+    return to_freqs_sections_1_sample(items_to_search, items, num_subsections)
 
 def to_freqs_sections_adjusted_freq(main, items_to_search, items):
-    num_sub_sections = main.settings_custom['measures']['adjusted_freq']['general_settings']['num_sub_sections']
+    num_subsections = main.settings_custom['measures']['adjusted_freq']['general_settings']['num_subsections']
 
-    return to_freqs_sections_1_sample(items_to_search, items, num_sub_sections)
+    return to_freqs_sections_1_sample(items_to_search, items, num_subsections)
 
-def to_freqs_sections_2_sample(items_to_search, items_x1, items_x2, num_sub_sections, use_data):
+def to_freqs_sections_2_sample(items_to_search, items_x1, items_x2, num_subsections, use_data):
     freq_sections_items = {}
 
-    sections_x1 = wl_nlp_utils.to_sections(items_x1, num_sub_sections)
-    sections_x2 = wl_nlp_utils.to_sections(items_x2, num_sub_sections)
+    sections_x1 = wl_nlp_utils.to_sections(items_x1, num_subsections)
+    sections_x2 = wl_nlp_utils.to_sections(items_x2, num_subsections)
 
     freq_items_sections_x1 = [collections.Counter(section) for section in sections_x1]
     freq_items_sections_x2 = [collections.Counter(section) for section in sections_x2]
@@ -102,20 +102,20 @@ def to_freqs_sections_2_sample(items_to_search, items_x1, items_x2, num_sub_sect
 
 def to_freqs_sections_statistical_significance(main, items_to_search, items_x1, items_x2, test_statistical_significance):
     if test_statistical_significance == 'mann_whitney_u_test':
-        num_sub_sections = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['num_sub_sections']
+        num_subsections = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['num_subsections']
         use_data = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['use_data']
     elif test_statistical_significance == 'students_t_test_2_sample':
-        num_sub_sections = main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['num_sub_sections']
+        num_subsections = main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['num_subsections']
         use_data = main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['use_data']
 
-    return to_freqs_sections_2_sample(items_to_search, items_x1, items_x2, num_sub_sections, use_data)
+    return to_freqs_sections_2_sample(items_to_search, items_x1, items_x2, num_subsections, use_data)
 
 def to_freqs_sections_bayes_factor(main, items_to_search, items_x1, items_x2, measure_bayes_factor):
     if measure_bayes_factor == 'students_t_test_2_sample':
-        num_sub_sections = main.settings_custom['measures']['bayes_factor']['students_t_test_2_sample']['num_sub_sections']
+        num_subsections = main.settings_custom['measures']['bayes_factor']['students_t_test_2_sample']['num_subsections']
         use_data = main.settings_custom['measures']['bayes_factor']['students_t_test_2_sample']['use_data']
 
-    return to_freqs_sections_2_sample(items_to_search, items_x1, items_x2, num_sub_sections, use_data)
+    return to_freqs_sections_2_sample(items_to_search, items_x1, items_x2, num_subsections, use_data)
 
 def numpy_divide(a, b, default = 0):
     if default:

@@ -19,11 +19,14 @@
 import os
 import re
 
+from PyQt5 import QtCore
 from PyQt5 import QtWidgets
 
 from wordless.wl_checks import wl_checks_misc
 from wordless.wl_dialogs import wl_dialogs
 from wordless.wl_utils import wl_misc
+
+_tr = QtCore.QCoreApplication.translate
 
 # Line edits
 class Wl_Line_Edit_Nonempty(QtWidgets.QLineEdit):
@@ -77,12 +80,14 @@ class Wl_Line_Edit_Re(Wl_Line_Edit_Nonempty):
         else:
             self.text_old = self.text()
 
+# self.tr() may not work in inherited classes
+# See: https://www.riverbankcomputing.com/static/Docs/PyQt5/i18n.html#differences-between-pyqt5-and-qt
 class Wl_Line_Edit_Path(Wl_Line_Edit_Nonempty):
     def dialog_path_empty(self):
         wl_dialogs.Wl_Dialog_Info_Simple(
             self,
-            title = self.tr('Empty Path'),
-            text = self.tr('''
+            title = _tr('wl_editors', 'Empty Path'),
+            text = _tr('wl_editors', '''
                 <div>The path should not be left empty.</div>
             '''),
             icon = 'critical'
@@ -91,8 +96,8 @@ class Wl_Line_Edit_Path(Wl_Line_Edit_Nonempty):
     def dialog_path_not_found(self):
         wl_dialogs.Wl_Dialog_Info_Simple(
             self,
-            title = self.tr('Path Not Found'),
-            text = self.tr('''
+            title = _tr('wl_editors', 'Path Not Found'),
+            text = _tr('wl_editors', '''
                 <div>The specified path "{}" cannot be found.</div>
                 <br>
                 <div>Please check your settings or specify another path.</div>
@@ -104,8 +109,8 @@ class Wl_Line_Edit_Path_File(Wl_Line_Edit_Path):
     def dialog_path_not_file(self):
         wl_dialogs.Wl_Dialog_Info_Simple(
             self,
-            title = self.tr('Path Is Not a File'),
-            text = self.tr('''
+            title = _tr('wl_editors', 'Path Is Not a File'),
+            text = _tr('wl_editors', '''
                 <div>The specified path "{}" should be a file rather than a folder.</div>
                 <br>
                 <div>Please check your settings or specify another path.</div>
@@ -159,8 +164,8 @@ class Wl_Line_Edit_Path_Dir(Wl_Line_Edit_Path):
     def dialog_path_not_dir(self):
         wl_dialogs.Wl_Dialog_Info_Simple(
             self,
-            title = self.tr('Path Is Not a Folder'),
-            text = self.tr('''
+            title = _tr('wl_editors', 'Path Is Not a Folder'),
+            text = _tr('wl_editors', '''
                 <div>The specified path "{}" should be a folder rather than a file.</div>
                 <br>
                 <div>Please check your settings or specify another path.</div>
@@ -214,8 +219,8 @@ class Wl_Line_Edit_Path_Dir_Confirm(Wl_Line_Edit_Path_Dir):
     def dialog_path_confirm(self):
         return wl_dialogs.Wl_Dialog_Question(
             self,
-            self.tr('Nonexistent Path'),
-            self.tr('''
+            _tr('wl_editors', 'Nonexistent Path'),
+            _tr('wl_editors', '''
                 <div>The specified path "{}" does not exist.</div>
                 <br>
                 <div>Do you want to create the folder?</div>

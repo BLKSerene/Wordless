@@ -127,7 +127,7 @@ def test_detection_encoding():
             lang = 'hrv'
         )
         # Cyrillic
-        # e.g. Belarusian, Bulgarian, Macedonian, Russian, Serbian (Cyrillic)
+        # e.g. Belarusian, Bulgarian, Macedonian, Russian, Serbian (Cyrillic script)
         check_encodings_detected(
             test_file_dir = test_file_dir,
             encodings = ('cp855', 'cp1251', 'iso8859_5', 'mac_cyrillic'), # 'cp866'

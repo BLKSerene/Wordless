@@ -39,7 +39,8 @@ _tr = QtCore.QCoreApplication.translate
 
 is_macos = wl_misc.check_os()[1]
 
-# self.tr() does not work in inherited classes
+# self.tr() may not work in inherited classes
+# See: https://www.riverbankcomputing.com/static/Docs/PyQt5/i18n.html#differences-between-pyqt5-and-qt
 class Wl_List_Add_Ins_Del_Clr(QtWidgets.QListView):
     enter_pressed = QtCore.pyqtSignal()
 

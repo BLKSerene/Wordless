@@ -57,7 +57,7 @@ def test_to_measure_text():
 def test_to_freqs_sections_1_sample():
     assert wl_measure_utils.to_freqs_sections_1_sample(
         ITEMS_TO_SEARCH, ITEMS,
-        num_sub_sections = 5
+        num_subsections = 5
     ) == FREQS_SECTIONS_1_SAMPLE
 
 def test_to_freqs_sections_dispersion():
@@ -69,12 +69,12 @@ def test_to_freqs_sections_adjusted_freq():
 def test_to_freqs_sections_2_sample():
     assert wl_measure_utils.to_freqs_sections_2_sample(
         ITEMS_TO_SEARCH, ITEMS_X1, ITEMS_X2,
-        num_sub_sections = 5,
+        num_subsections = 5,
         use_data = 'Absolute frequency'
     ) == FREQS_SECTIONS_2_SAMPLE_ABS
     assert wl_measure_utils.to_freqs_sections_2_sample(
         ITEMS_TO_SEARCH, ITEMS_X1, ITEMS_X2,
-        num_sub_sections = 5,
+        num_subsections = 5,
         use_data = 'Relative frequency'
     ) == FREQS_SECTIONS_2_SAMPLE_RELATIVE
 

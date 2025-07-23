@@ -18,7 +18,7 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
-## [3.6.0](https://github.com/BLKSerene/Wordless/releases/tag/3.6.0) - 07/??/2025
+## [3.6.0](https://github.com/BLKSerene/Wordless/releases/tag/3.6.0) - 07/27/2025
 ### 🎉 New Features
 - File Area: Add Number of corpora / tokens / types (selected)
 - Measures: Add effect size - conditional probability / ΔP / mutual information (normalized) / μ-value / pointwise mutual information (squared) / pointwise mutual information (normalized) / relative risk
@@ -32,7 +32,7 @@
 - Utils: Add Pyphen's Assamese, Kannada, Marathi, Oriya, Panjabi (Gurmukhi script), and Sanskrit syllable tokenizer
 - Utils: Add spaCy's Kurdish (Kurmanji) and Scottish Gaelic word tokenizers
 - Utils: Add spaCy's stop word lists
-- Utils: Add Stanza's Albanian, Georgian, German (Old), Komi (Zyrian), and Turkish (Ottoman) sentence tokenizers / word tokenizers / part-of-speech taggers / lemmatizers / dependency parsers
+- Utils: Add Stanza's Albanian, Georgian, German (Low), Komi (Zyrian), and Turkish (Ottoman) sentence tokenizers / word tokenizers / part-of-speech taggers / lemmatizers / dependency parsers
 - Utils: Add Stanza's Thai part-of-speech tagger and dependency parser
 - Utils: Add Stanza's Sindhi dependency parser
 - Work Area: Add Concordancer - Generation Settings - Calculate sentiment scores

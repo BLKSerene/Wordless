@@ -963,14 +963,14 @@ def wl_widgets_fig_settings_dependency_parsing(parent):
     )
 
 # Settings -> Measures
-def wl_widgets_num_sub_sections(parent):
+def wl_widgets_num_subsections(parent):
     label_divide_each_file_into = QtWidgets.QLabel(_tr('wl_widgets', 'Divide each file into'), parent)
-    spin_box_num_sub_sections = wl_boxes.Wl_Spin_Box(parent)
-    label_sub_sections = QtWidgets.QLabel(_tr('wl_widgets', 'sub-sections'), parent)
+    spin_box_num_subsections = wl_boxes.Wl_Spin_Box(parent)
+    label_subsections = QtWidgets.QLabel(_tr('wl_widgets', 'subsections'), parent)
 
-    spin_box_num_sub_sections.setRange(2, 1000)
+    spin_box_num_subsections.setRange(2, 1000)
 
-    return label_divide_each_file_into, spin_box_num_sub_sections, label_sub_sections
+    return label_divide_each_file_into, spin_box_num_subsections, label_subsections
 
 def wl_widgets_use_data_freq(parent):
     label_use_data = QtWidgets.QLabel(_tr('wl_widgets', 'Use data:'), parent)

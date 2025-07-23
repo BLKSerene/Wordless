@@ -49,8 +49,8 @@ def bayes_factor_students_t_test_2_sample(main, freqs_x1s, freqs_x2s):
     main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample'] = main.settings_custom['measures']['bayes_factor']['students_t_test_2_sample'].copy()
 
     t_stats, _ = wl_measures_statistical_significance.students_t_test_2_sample(main, freqs_x1s, freqs_x2s)
-    num_sub_sections = main.settings_custom['measures']['bayes_factor']['students_t_test_2_sample']['num_sub_sections']
-    bics = t_stats ** 2 - numpy.log(2 * num_sub_sections)
+    num_subsections = main.settings_custom['measures']['bayes_factor']['students_t_test_2_sample']['num_subsections']
+    bics = t_stats ** 2 - numpy.log(2 * num_subsections)
 
     # Restore settings
     main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample'] = settings_backup.copy()

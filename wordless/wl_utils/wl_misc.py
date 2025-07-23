@@ -233,4 +233,4 @@ def normalize_nums(nums, normalized_min, normalized_max, reverse = False):
     return nums_normalized
 
 def check_noun_number(number, noun):
-    return f'{number} {noun}' if number == 1 else f'{number} {noun}s'
+    return f'{number} {noun}' if number == 1 else _tr('wl_misc', '{} {}s').format(number, noun)

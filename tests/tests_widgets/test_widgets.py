@@ -206,8 +206,8 @@ def test_wl_widgets_fig_settings_dependency_parsing():
     checkbox_show_pos_tags.setChecked(True)
     checkbox_show_pos_tags.setChecked(False)
 
-def test_wl_widgets_num_sub_sections():
-    wl_widgets.wl_widgets_num_sub_sections(main)
+def test_wl_widgets_num_subsections():
+    wl_widgets.wl_widgets_num_subsections(main)
 
 def test_wl_widgets_use_data_freq():
     wl_widgets.wl_widgets_use_data_freq(main)
@@ -234,6 +234,6 @@ if __name__ == '__main__':
     test_wl_widgets_fig_settings()
     test_wl_widgets_fig_settings_dependency_parsing()
 
-    test_wl_widgets_num_sub_sections()
+    test_wl_widgets_num_subsections()
     test_wl_widgets_use_data_freq()
     test_wl_widgets_direction()

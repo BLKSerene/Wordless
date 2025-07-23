@@ -382,7 +382,7 @@ class Wl_Settings_Measures_Lexical_Density_Diversity(wl_settings.Wl_Settings_Nod
         self.group_box_hdd.layout().setColumnStretch(2, 1)
 
         # LogTTR
-        self.group_box_logttr = QtWidgets.QGroupBox(self.tr('LogTTR'), self)
+        self.group_box_logttr = QtWidgets.QGroupBox('LogTTR', self)
 
         self.label_variant = QtWidgets.QLabel(self.tr('Sample size:'), self)
         self.combo_box_variant = wl_boxes.Wl_Combo_Box(self)
@@ -552,14 +552,14 @@ class Wl_Settings_Measures_Dispersion(wl_settings.Wl_Settings_Node):
 
         (
             self.label_dispersion_divide_each_file_into,
-            self.spin_box_dispersion_num_sub_sections,
-            self.label_dispersion_sub_sections
-        ) = wl_widgets.wl_widgets_num_sub_sections(self)
+            self.spin_box_dispersion_num_subsections,
+            self.label_dispersion_subsections
+        ) = wl_widgets.wl_widgets_num_subsections(self)
 
         self.group_box_general_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_general_settings.layout().addWidget(self.label_dispersion_divide_each_file_into, 0, 0)
-        self.group_box_general_settings.layout().addWidget(self.spin_box_dispersion_num_sub_sections, 0, 1)
-        self.group_box_general_settings.layout().addWidget(self.label_dispersion_sub_sections, 0, 2)
+        self.group_box_general_settings.layout().addWidget(self.spin_box_dispersion_num_subsections, 0, 1)
+        self.group_box_general_settings.layout().addWidget(self.label_dispersion_subsections, 0, 2)
 
         self.group_box_general_settings.layout().setColumnStretch(3, 1)
 
@@ -582,14 +582,14 @@ class Wl_Settings_Measures_Dispersion(wl_settings.Wl_Settings_Node):
             settings = copy.deepcopy(self.settings_custom)
 
         # General Settings
-        self.spin_box_dispersion_num_sub_sections.setValue(settings['general_settings']['num_sub_sections'])
+        self.spin_box_dispersion_num_subsections.setValue(settings['general_settings']['num_subsections'])
 
         # Gries's DP
         self.checkbox_griess_dp_apply_normalization.setChecked(settings['griess_dp']['apply_normalization'])
 
     def apply_settings(self):
         # General Settings
-        self.settings_custom['general_settings']['num_sub_sections'] = self.spin_box_dispersion_num_sub_sections.value()
+        self.settings_custom['general_settings']['num_subsections'] = self.spin_box_dispersion_num_subsections.value()
 
         # Gries's DP
         self.settings_custom['griess_dp']['apply_normalization'] = self.checkbox_griess_dp_apply_normalization.isChecked()
@@ -609,14 +609,14 @@ class Wl_Settings_Measures_Adjusted_Freq(wl_settings.Wl_Settings_Node):
 
         (
             self.label_adjusted_freq_divide_each_file_into,
-            self.spin_box_adjusted_freq_num_sub_sections,
-            self.label_adjusted_freq_sub_sections
-        ) = wl_widgets.wl_widgets_num_sub_sections(self)
+            self.spin_box_adjusted_freq_num_subsections,
+            self.label_adjusted_freq_subsections
+        ) = wl_widgets.wl_widgets_num_subsections(self)
 
         self.group_box_general_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_general_settings.layout().addWidget(self.label_adjusted_freq_divide_each_file_into, 0, 0)
-        self.group_box_general_settings.layout().addWidget(self.spin_box_adjusted_freq_num_sub_sections, 0, 1)
-        self.group_box_general_settings.layout().addWidget(self.label_adjusted_freq_sub_sections, 0, 2)
+        self.group_box_general_settings.layout().addWidget(self.spin_box_adjusted_freq_num_subsections, 0, 1)
+        self.group_box_general_settings.layout().addWidget(self.label_adjusted_freq_subsections, 0, 2)
 
         self.group_box_general_settings.layout().setColumnStretch(3, 1)
 
@@ -631,11 +631,11 @@ class Wl_Settings_Measures_Adjusted_Freq(wl_settings.Wl_Settings_Node):
             settings = copy.deepcopy(self.settings_custom)
 
         # General Settings
-        self.spin_box_adjusted_freq_num_sub_sections.setValue(settings['general_settings']['num_sub_sections'])
+        self.spin_box_adjusted_freq_num_subsections.setValue(settings['general_settings']['num_subsections'])
 
     def apply_settings(self):
         # General Settings
-        self.settings_custom['general_settings']['num_sub_sections'] = self.spin_box_adjusted_freq_num_sub_sections.value()
+        self.settings_custom['general_settings']['num_subsections'] = self.spin_box_adjusted_freq_num_subsections.value()
 
         return True
 
@@ -674,9 +674,9 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
 
         (
             self.label_mann_whitney_u_test_divide_each_file_into,
-            self.spin_box_mann_whitney_u_test_num_sub_sections,
-            self.label_mann_whitney_u_test_sub_sections
-        ) = wl_widgets.wl_widgets_num_sub_sections(self)
+            self.spin_box_mann_whitney_u_test_num_subsections,
+            self.label_mann_whitney_u_test_subsections
+        ) = wl_widgets.wl_widgets_num_subsections(self)
 
         (
             self.label_mann_whitney_u_test_use_data,
@@ -688,15 +688,15 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
         ) = wl_widgets.wl_widgets_direction(self)
         self.checkbox_mann_whitney_u_test_apply_correction = QtWidgets.QCheckBox(self.tr('Apply continuity correction'), self)
 
-        layout_mann_whitney_u_test_num_sub_sections = wl_layouts.Wl_Layout()
-        layout_mann_whitney_u_test_num_sub_sections.addWidget(self.label_mann_whitney_u_test_divide_each_file_into, 0, 0)
-        layout_mann_whitney_u_test_num_sub_sections.addWidget(self.spin_box_mann_whitney_u_test_num_sub_sections, 0, 1)
-        layout_mann_whitney_u_test_num_sub_sections.addWidget(self.label_mann_whitney_u_test_sub_sections, 0, 2)
+        layout_mann_whitney_u_test_num_subsections = wl_layouts.Wl_Layout()
+        layout_mann_whitney_u_test_num_subsections.addWidget(self.label_mann_whitney_u_test_divide_each_file_into, 0, 0)
+        layout_mann_whitney_u_test_num_subsections.addWidget(self.spin_box_mann_whitney_u_test_num_subsections, 0, 1)
+        layout_mann_whitney_u_test_num_subsections.addWidget(self.label_mann_whitney_u_test_subsections, 0, 2)
 
-        layout_mann_whitney_u_test_num_sub_sections.setColumnStretch(3, 1)
+        layout_mann_whitney_u_test_num_subsections.setColumnStretch(3, 1)
 
         self.group_box_mann_whitney_u_test.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_mann_whitney_u_test.layout().addLayout(layout_mann_whitney_u_test_num_sub_sections, 0, 0, 1, 3)
+        self.group_box_mann_whitney_u_test.layout().addLayout(layout_mann_whitney_u_test_num_subsections, 0, 0, 1, 3)
         self.group_box_mann_whitney_u_test.layout().addWidget(self.label_mann_whitney_u_test_use_data, 1, 0)
         self.group_box_mann_whitney_u_test.layout().addWidget(self.combo_box_mann_whitney_u_test_use_data, 1, 1)
         self.group_box_mann_whitney_u_test.layout().addWidget(self.label_mann_whitney_u_test_direction, 2, 0)
@@ -732,9 +732,9 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
 
         (
             self.label_students_t_test_2_sample_divide_each_file_into,
-            self.spin_box_students_t_test_2_sample_num_sub_sections,
-            self.label_students_t_test_2_sample_sub_sections
-        ) = wl_widgets.wl_widgets_num_sub_sections(self)
+            self.spin_box_students_t_test_2_sample_num_subsections,
+            self.label_students_t_test_2_sample_subsections
+        ) = wl_widgets.wl_widgets_num_subsections(self)
         (
             self.label_students_t_test_2_sample_use_data,
             self.combo_box_students_t_test_2_sample_use_data
@@ -744,15 +744,15 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
             self.combo_box_students_t_test_2_sample_direction
         ) = wl_widgets.wl_widgets_direction(self)
 
-        layout_students_t_test_2_sample_num_sub_sections = wl_layouts.Wl_Layout()
-        layout_students_t_test_2_sample_num_sub_sections.addWidget(self.label_students_t_test_2_sample_divide_each_file_into, 0, 0)
-        layout_students_t_test_2_sample_num_sub_sections.addWidget(self.spin_box_students_t_test_2_sample_num_sub_sections, 0, 1)
-        layout_students_t_test_2_sample_num_sub_sections.addWidget(self.label_students_t_test_2_sample_sub_sections, 0, 2)
+        layout_students_t_test_2_sample_num_subsections = wl_layouts.Wl_Layout()
+        layout_students_t_test_2_sample_num_subsections.addWidget(self.label_students_t_test_2_sample_divide_each_file_into, 0, 0)
+        layout_students_t_test_2_sample_num_subsections.addWidget(self.spin_box_students_t_test_2_sample_num_subsections, 0, 1)
+        layout_students_t_test_2_sample_num_subsections.addWidget(self.label_students_t_test_2_sample_subsections, 0, 2)
 
-        layout_students_t_test_2_sample_num_sub_sections.setColumnStretch(3, 1)
+        layout_students_t_test_2_sample_num_subsections.setColumnStretch(3, 1)
 
         self.group_box_students_t_test_2_sample.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_students_t_test_2_sample.layout().addLayout(layout_students_t_test_2_sample_num_sub_sections, 0, 0, 1, 3)
+        self.group_box_students_t_test_2_sample.layout().addLayout(layout_students_t_test_2_sample_num_subsections, 0, 0, 1, 3)
         self.group_box_students_t_test_2_sample.layout().addWidget(self.label_students_t_test_2_sample_use_data, 1, 0)
         self.group_box_students_t_test_2_sample.layout().addWidget(self.combo_box_students_t_test_2_sample_use_data, 1, 1)
         self.group_box_students_t_test_2_sample.layout().addWidget(self.label_students_t_test_2_sample_direction, 2, 0)
@@ -812,7 +812,7 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
         self.checkbox_log_likelihood_ratio_test_apply_correction.setChecked(settings['log_likelihood_ratio_test']['apply_correction'])
 
         # Mann-Whitney U Test
-        self.spin_box_mann_whitney_u_test_num_sub_sections.setValue(settings['mann_whitney_u_test']['num_sub_sections'])
+        self.spin_box_mann_whitney_u_test_num_subsections.setValue(settings['mann_whitney_u_test']['num_subsections'])
         self.combo_box_mann_whitney_u_test_use_data.setCurrentText(settings['mann_whitney_u_test']['use_data'])
         self.combo_box_mann_whitney_u_test_direction.setCurrentText(settings['mann_whitney_u_test']['direction'])
         self.checkbox_mann_whitney_u_test_apply_correction.setChecked(settings['mann_whitney_u_test']['apply_correction'])
@@ -824,7 +824,7 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
         self.combo_box_students_t_test_1_sample_direction.setCurrentText(settings['students_t_test_1_sample']['direction'])
 
         # Student's t-test (2-sample)
-        self.spin_box_students_t_test_2_sample_num_sub_sections.setValue(settings['students_t_test_2_sample']['num_sub_sections'])
+        self.spin_box_students_t_test_2_sample_num_subsections.setValue(settings['students_t_test_2_sample']['num_subsections'])
         self.combo_box_students_t_test_2_sample_use_data.setCurrentText(settings['students_t_test_2_sample']['use_data'])
         self.combo_box_students_t_test_2_sample_direction.setCurrentText(settings['students_t_test_2_sample']['direction'])
 
@@ -842,7 +842,7 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
         self.settings_custom['log_likelihood_ratio_test']['apply_correction'] = self.checkbox_log_likelihood_ratio_test_apply_correction.isChecked()
 
         # Mann-Whitney U Test
-        self.settings_custom['mann_whitney_u_test']['num_sub_sections'] = self.spin_box_mann_whitney_u_test_num_sub_sections.value()
+        self.settings_custom['mann_whitney_u_test']['num_subsections'] = self.spin_box_mann_whitney_u_test_num_subsections.value()
         self.settings_custom['mann_whitney_u_test']['use_data'] = self.combo_box_mann_whitney_u_test_use_data.currentText()
         self.settings_custom['mann_whitney_u_test']['direction'] = self.combo_box_mann_whitney_u_test_direction.currentText()
         self.settings_custom['mann_whitney_u_test']['apply_correction'] = self.checkbox_mann_whitney_u_test_apply_correction.isChecked()
@@ -854,7 +854,7 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
         self.settings_custom['students_t_test_1_sample']['direction'] = self.combo_box_students_t_test_1_sample_direction.currentText()
 
         # Student's t-test (2-sample)
-        self.settings_custom['students_t_test_2_sample']['num_sub_sections'] = self.spin_box_students_t_test_2_sample_num_sub_sections.value()
+        self.settings_custom['students_t_test_2_sample']['num_subsections'] = self.spin_box_students_t_test_2_sample_num_subsections.value()
         self.settings_custom['students_t_test_2_sample']['use_data'] = self.combo_box_students_t_test_2_sample_use_data.currentText()
         self.settings_custom['students_t_test_2_sample']['direction'] = self.combo_box_students_t_test_2_sample_direction.currentText()
 
@@ -887,9 +887,9 @@ class Wl_Settings_Measures_Bayes_Factor(wl_settings.Wl_Settings_Node):
 
         (
             self.label_students_t_test_2_sample_divide_each_file_into,
-            self.spin_box_students_t_test_2_sample_num_sub_sections,
-            self.label_students_t_test_2_sample_sub_sections
-        ) = wl_widgets.wl_widgets_num_sub_sections(self)
+            self.spin_box_students_t_test_2_sample_num_subsections,
+            self.label_students_t_test_2_sample_subsections
+        ) = wl_widgets.wl_widgets_num_subsections(self)
         (
             self.label_students_t_test_2_sample_use_data,
             self.combo_box_students_t_test_2_sample_use_data
@@ -899,15 +899,15 @@ class Wl_Settings_Measures_Bayes_Factor(wl_settings.Wl_Settings_Node):
             self.combo_box_students_t_test_2_sample_direction
         ) = wl_widgets.wl_widgets_direction(self)
 
-        layout_students_t_test_2_sample_num_sub_sections = wl_layouts.Wl_Layout()
-        layout_students_t_test_2_sample_num_sub_sections.addWidget(self.label_students_t_test_2_sample_divide_each_file_into, 0, 0)
-        layout_students_t_test_2_sample_num_sub_sections.addWidget(self.spin_box_students_t_test_2_sample_num_sub_sections, 0, 1)
-        layout_students_t_test_2_sample_num_sub_sections.addWidget(self.label_students_t_test_2_sample_sub_sections, 0, 2)
+        layout_students_t_test_2_sample_num_subsections = wl_layouts.Wl_Layout()
+        layout_students_t_test_2_sample_num_subsections.addWidget(self.label_students_t_test_2_sample_divide_each_file_into, 0, 0)
+        layout_students_t_test_2_sample_num_subsections.addWidget(self.spin_box_students_t_test_2_sample_num_subsections, 0, 1)
+        layout_students_t_test_2_sample_num_subsections.addWidget(self.label_students_t_test_2_sample_subsections, 0, 2)
 
-        layout_students_t_test_2_sample_num_sub_sections.setColumnStretch(3, 1)
+        layout_students_t_test_2_sample_num_subsections.setColumnStretch(3, 1)
 
         self.group_box_students_t_test_2_sample.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_students_t_test_2_sample.layout().addLayout(layout_students_t_test_2_sample_num_sub_sections, 0, 0, 1, 3)
+        self.group_box_students_t_test_2_sample.layout().addLayout(layout_students_t_test_2_sample_num_subsections, 0, 0, 1, 3)
         self.group_box_students_t_test_2_sample.layout().addWidget(self.label_students_t_test_2_sample_use_data, 1, 0)
         self.group_box_students_t_test_2_sample.layout().addWidget(self.combo_box_students_t_test_2_sample_use_data, 1, 1)
         self.group_box_students_t_test_2_sample.layout().addWidget(self.label_students_t_test_2_sample_direction, 2, 0)
@@ -930,7 +930,7 @@ class Wl_Settings_Measures_Bayes_Factor(wl_settings.Wl_Settings_Node):
         self.checkbox_log_likelihood_ratio_test_apply_correction.setChecked(settings['log_likelihood_ratio_test']['apply_correction'])
 
         # Student's t-test (2-sample)
-        self.spin_box_students_t_test_2_sample_num_sub_sections.setValue(settings['students_t_test_2_sample']['num_sub_sections'])
+        self.spin_box_students_t_test_2_sample_num_subsections.setValue(settings['students_t_test_2_sample']['num_subsections'])
         self.combo_box_students_t_test_2_sample_use_data.setCurrentText(settings['students_t_test_2_sample']['use_data'])
         self.combo_box_students_t_test_2_sample_direction.setCurrentText(settings['students_t_test_2_sample']['direction'])
 
@@ -939,7 +939,7 @@ class Wl_Settings_Measures_Bayes_Factor(wl_settings.Wl_Settings_Node):
         self.settings_custom['log_likelihood_ratio_test']['apply_correction'] = self.checkbox_log_likelihood_ratio_test_apply_correction.isChecked()
 
         # Student's t-test (2-sample)
-        self.settings_custom['students_t_test_2_sample']['num_sub_sections'] = self.spin_box_students_t_test_2_sample_num_sub_sections.value()
+        self.settings_custom['students_t_test_2_sample']['num_subsections'] = self.spin_box_students_t_test_2_sample_num_subsections.value()
         self.settings_custom['students_t_test_2_sample']['use_data'] = self.combo_box_students_t_test_2_sample_use_data.currentText()
         self.settings_custom['students_t_test_2_sample']['direction'] = self.combo_box_students_t_test_2_sample_direction.currentText()
 

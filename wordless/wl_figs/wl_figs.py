@@ -220,11 +220,11 @@ def generate_word_cloud(main, data_file_items, fig_settings):
         wl_dialogs.Wl_Dialog_Info_Simple(
             main,
             title = err_title,
-            text = _tr('wl_figs', f'''
-                <div>{err_msg}</div>
+            text = _tr('wl_figs', '''
+                <div>{}</div>
                 <br>
                 <div>Please check your mask image or specify another one in <b>Menu → Preferences → Settings → Figures → Word Clouds → Mask Settings → Mask Path</b>.</div>
-            '''),
+            ''').format(err_msg),
             icon = 'critical'
         ).open()
 
@@ -249,11 +249,11 @@ def generate_word_cloud(main, data_file_items, fig_settings):
         wl_dialogs.Wl_Dialog_Info_Simple(
             main,
             title = err_title,
-            text = _tr('wl_figs', f'''
-                <div>{err_msg}</div>
+            text = _tr('wl_figs', '''
+                <div>{}</div>
                 <br>
                 <div>Please check your font file or specify another one in <b>Menu → Preferences → Settings → Figures → Word Clouds → Font Settings → Font</b>.</div>
-            '''),
+            ''').format(err_msg),
             icon = 'critical'
         ).open()
 

@@ -244,7 +244,8 @@ NameStartChar = r'[A-Za-z:_\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\
 NameChar = fr'{NameStartChar[:-1]}0-9\-.\u00B7\u0300-\u036F\u203F-\u2040]'
 RE_TAG_XML = re.compile(fr'^<{NameStartChar}{NameChar}*>$')
 
-# self.tr() does not work in inherited classes
+# self.tr() may not work in inherited classes
+# See: https://www.riverbankcomputing.com/static/Docs/PyQt5/i18n.html#differences-between-pyqt5-and-qt
 class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
     def __init__(self, parent, settings_tags, defaults_row):
         super().__init__(
@@ -358,8 +359,8 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         if not self.is_empty() and item.column() == 2 and not RE_TAG_XML.search(item.text()):
             wl_dialogs.Wl_Dialog_Info_Simple(
                 self.main,
-                title = self.tr('Invalid XML Tag'),
-                text = self.tr('''
+                title = _tr('Wl_Table_Tags', 'Invalid XML Tag'),
+                text = _tr('Wl_Table_Tags', '''
                     <div>The specified XML tag is invalid.</div>
                     <br>
                     <div>Please check your settings or specify another XML tag.</div>
