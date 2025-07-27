@@ -73,17 +73,17 @@ Recipient of the [Excellent Paper Award of the 3rd Vorobyovy Gory International 
 
 ## Download
 
-The latest version (**3.5.0**) of *Wordless* supports **Windows 7/8/8.1/10/11**, **macOS 10.11 or later**, **Ubuntu 18.04 or later**, **Debian 10 or later**, and **Arch Linux**, all **64-bit only**. Both Intel-based and Apple Silicon-based Macs are supported.
+The latest version (**3.6.0**) of *Wordless* supports **Windows 8/8.1/10/11**, **macOS 10.13 or later**, **Ubuntu 18.04 or later**, **Debian 10 or later**, and **Arch Linux**, all **64-bit only**. Both Intel-based and Apple Silicon-based Macs are supported.
 
 For a detailed changelog, please see [CHANGELOG.md](/CHANGELOG.md).
 
 Release|Remarks
 -------|-------
-[Latest Release for Windows](https://github.com/BLKSerene/Wordless/releases/download/3.5.0/wordless_3.5.0_windows.zip)|1. Extract all files<br>2. Double-click **Wordless/Wordless.exe** to run
-[Latest Release for macOS](https://github.com/BLKSerene/Wordless/releases/download/3.5.0/wordless_3.5.0_macos.zip)|1. Extract all files<br>2. Double-click **Wordless.app** to run
-[Latest Release for Linux](https://github.com/BLKSerene/Wordless/releases/download/3.5.0/wordless_3.5.0_linux.tar.gz)|1. Extract all files<br>2. Double-click **Wordless/Wordless** to run<br>3. [Optional] Double-click **Wordless/Wordless - Create Shortucut** to create a shortcut in **Show Applications**
+[Latest Release for Windows](https://github.com/BLKSerene/Wordless/releases/download/3.6.0/wordless_3.6.0_windows.zip)|1. Extract all files<br>2. Double-click **Wordless/Wordless.exe** to run
+[Latest Release for macOS](https://github.com/BLKSerene/Wordless/releases/download/3.6.0/wordless_3.6.0_macos.zip)|1. Extract all files<br>2. Double-click **Wordless.app** to run
+[Latest Release for Linux](https://github.com/BLKSerene/Wordless/releases/download/3.6.0/wordless_3.6.0_linux.tar.gz)|1. Extract all files<br>2. Double-click **Wordless/Wordless** to run<br>3. [Optional] Double-click **Wordless/Wordless - Create Shortucut** to create a shortcut in **Show Applications**
 [Past Releases](https://github.com/BLKSerene/Wordless/releases)|Not recommended
-[Baidu Netdisk](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2FWordless%203.5.0&parentPath=%2F)|For Chinese users with unstable connections to GitHub (**PASSWORD: wdls**)
+[Baidu Netdisk](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2FWordless%203.6.0&parentPath=%2F)|For Chinese users with unstable connections to GitHub (**PASSWORD: wdls**)
 
 > [!IMPORTANT]
 > **Note 1:** It is recommended that the path to *Wordless* **not contain any non-ASCII chatacters, such as Chinese characters and letters with diacritics**.
@@ -112,7 +112,7 @@ If you have any questions, find software bugs, need to provide feedback, or want
 
 Support Channel       |Information
 ----------------------|-----------
-Official documentation|[Stable Version](https://github.com/BLKSerene/Wordless/blob/3.5.0/doc/doc.md) \| [Development Version](/doc/doc.md)
+Official documentation|[Stable Version](https://github.com/BLKSerene/Wordless/blob/3.6.0/doc/doc.md) \| [Development Version](/doc/doc.md)
 Tutorial videos       |[YouTube](https://www.youtube.com/@BLKSerene) \| [bilibili](https://space.bilibili.com/34963752/video)
 Bug reports           |[GitHub Issues](https://github.com/BLKSerene/Wordless/issues)
 Usage questions       |[GitHub Discussions](https://github.com/BLKSerene/Wordless/discussions)
@@ -137,13 +137,13 @@ MLA (9th edition):
 2. Cite as a piece of computer software
 
 APA (7th edition):
-<pre><code>Ye, L. (2024). <i>Wordless</i> (Version 3.5.0) [Computer software]. GitHub. https://github.com/BLKSerene/Wordless</code></pre>
+<pre><code>Ye, L. (2025). <i>Wordless</i> (Version 3.6.0) [Computer software]. GitHub. https://github.com/BLKSerene/Wordless</code></pre>
 
 Chicago (18th edition):
-<pre><code>Ye, Lei. <i>Wordless</i>. V. 3.5.0. Released July 1, 2024. PC. https://github.com/BLKSerene/Wordless.</code></pre>
+<pre><code>Ye, Lei. <i>Wordless</i>. V. 3.6.0. Released July 27, 2025. PC. https://github.com/BLKSerene/Wordless.</code></pre>
 
 MLA (9th edition):
-<pre><code>Ye Lei. <i>Wordless</i>. Version 3.5.0, <i>GitHub</i>, 1 Jul. 2024, https://github.com/BLKSerene/Wordless.</code></pre>
+<pre><code>Ye Lei. <i>Wordless</i>. Version 3.6.0, <i>GitHub</i>, 27 Jul. 2025, https://github.com/BLKSerene/Wordless.</code></pre>
 
 ## Works Using *Wordless*
 For details, please click [HERE](/WORKS_USING_WORDLESS.md).

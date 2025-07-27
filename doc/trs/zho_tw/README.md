@@ -73,17 +73,17 @@
 
 ## 下載
 
-最新版 *Wordless*（**3.5.0**）支援 **Windows 7/8/8.1/10/11**、**macOS 10.11 或更高版本**、**Ubuntu 18.04 或更高版本**、**Debian 10 或更高版本**以及 **Arch Linux**，均僅支援**64位作業系統**。英特爾和 Apple 晶片的蘋果電腦均有支援。
+最新版 *Wordless*（**3.6.0**）支援 **Windows 8/8.1/10/11**、**macOS 10.13 或更高版本**、**Ubuntu 18.04 或更高版本**、**Debian 10 或更高版本**以及 **Arch Linux**，均僅支援**64位作業系統**。英特爾和 Apple 晶片的蘋果電腦均有支援。
 
 如需完整的更新日誌，請參閱 [CHANGELOG.md](/CHANGELOG.md)（待翻譯）。
 
 版本|備註
 ----|---
-[Windows 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.5.0/wordless_3.5.0_windows.zip)|1. 解壓縮所有檔案<br>2. 雙擊執行 **Wordless/Wordless.exe**
-[macOS 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.5.0/wordless_3.5.0_macos.zip)|1. 解壓縮所有檔案<br>2. 雙擊執行 **Wordless.app**
-[Linux 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.5.0/wordless_3.5.0_linux.tar.gz)|1. 解壓縮所有檔案<br>2. 雙擊執行**Wordless/Wordless**<br>3. [可選] 雙擊 **Wordless/Wordless - Create Shortucut** 在**顯示應用程式**中建立一個快捷方式
+[Windows 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.6.0/wordless_3.6.0_windows.zip)|1. 解壓縮所有檔案<br>2. 雙擊執行 **Wordless/Wordless.exe**
+[macOS 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.6.0/wordless_3.6.0_macos.zip)|1. 解壓縮所有檔案<br>2. 雙擊執行 **Wordless.app**
+[Linux 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.6.0/wordless_3.6.0_linux.tar.gz)|1. 解壓縮所有檔案<br>2. 雙擊執行**Wordless/Wordless**<br>3. [可選] 雙擊 **Wordless/Wordless - Create Shortucut** 在**顯示應用程式**中建立一個快捷方式
 [歷史版本](https://github.com/BLKSerene/Wordless/releases)|不推薦
-[百度網盤](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2FWordless%203.5.0&parentPath=%2F)|中國大陸地區使用者若 GitHub 連線不穩定可嘗試該下載連結（**提取碼：wdls**）
+[百度網盤](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2FWordless%203.6.0&parentPath=%2F)|中國大陸地區使用者若 GitHub 連線不穩定可嘗試該下載連結（**提取碼：wdls**）
 
 > [!IMPORTANT]
 > **備註 1：***Wordless* 的路徑中**不建議包含任何非 ASCII 字元，如漢字和帶變音記號的字母等**。
@@ -111,7 +111,7 @@
 
 支援渠道|資訊
 -------|----
-官方文檔|[穩定版](https://github.com/BLKSerene/Wordless/blob/3.5.0/doc/doc.md) \| [開發版](/doc/doc.md)
+官方文檔|[穩定版](https://github.com/BLKSerene/Wordless/blob/3.6.0/doc/doc.md) \| [開發版](/doc/doc.md)
 影片教程|[YouTube](https://www.youtube.com/@BLKSerene) \| [B 站](https://space.bilibili.com/34963752/video)
 Bug 提交|[GitHub Issues](https://github.com/BLKSerene/Wordless/issues)
 使用疑問|[GitHub Discussions](https://github.com/BLKSerene/Wordless/discussions)
@@ -136,13 +136,13 @@ MLA（第 9 版）：
 2. 根據計算機軟體的格式進行引用
 
 APA（第 7 版）：
-<pre><code>Ye, L. (2024). <i>Wordless</i> (Version 3.5.0) [Computer software]. GitHub. https://github.com/BLKSerene/Wordless</code></pre>
+<pre><code>Ye, L. (2025). <i>Wordless</i> (Version 3.6.0) [Computer software]. GitHub. https://github.com/BLKSerene/Wordless</code></pre>
 
 Chicago（第 18 版）：
-<pre><code>Ye, Lei. <i>Wordless</i>. V. 3.5.0. Released July 1, 2024. PC. https://github.com/BLKSerene/Wordless.</code></pre>
+<pre><code>Ye, Lei. <i>Wordless</i>. V. 3.6.0. Released July 27, 2025. PC. https://github.com/BLKSerene/Wordless.</code></pre>
 
 MLA（第 9 版）：
-<pre><code>Ye Lei. <i>Wordless</i>. Version 3.5.0, <i>GitHub</i>, 1 Jul. 2024, https://github.com/BLKSerene/Wordless.</code></pre>
+<pre><code>Ye Lei. <i>Wordless</i>. Version 3.6.0, <i>GitHub</i>, 27 Jul. 2025, https://github.com/BLKSerene/Wordless.</code></pre>
 
 ## 使用 *Wordless* 的成果
 
