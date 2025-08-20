@@ -18,6 +18,10 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
+## [3.7.0](https://github.com/BLKSerene/Wordless/releases/tag/3.7.0) - ??/??/2025
+### 🔧 Bugfixes
+- Work Area: Fix Profiler - Syntactic Complexity
+
 ## [3.6.0](https://github.com/BLKSerene/Wordless/releases/tag/3.6.0) - 07/27/2025
 ### 🎉 New Features
 - File Area: Add Number of corpora / tokens / types (selected)
