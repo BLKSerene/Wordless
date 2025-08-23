@@ -2260,6 +2260,10 @@ def init_settings_default(main):
                 'precision_p_vals': 5
             },
 
+            'misc_settings': {
+                'show_thousand_separators': True
+            },
+
             # Settings - Tables - Profiler
             'profiler': {
                 'lang_specific_settings': {

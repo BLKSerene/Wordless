@@ -251,7 +251,7 @@ def check_err_exp_table(parent, err_msg, file_path):
                 parent,
                 title = _tr('wl_checks_work_area', 'File Access Denied'),
                 text = _tr('wl_checks_work_area', '''
-                    <div>Access to "{}" is denied, please specify another location or close the file and try again.</div>
+                    <div>Access to "{}" is denied. Please specify another location or close the file and try again.</div>
                 ''').format(file_path),
                 icon = 'critical'
             ).open()

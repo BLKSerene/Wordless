@@ -67,10 +67,21 @@ class Wl_Settings_Tables(wl_settings.Wl_Settings_Node):
 
         self.group_box_precision_settings.layout().setColumnStretch(2, 1)
 
+        # Miscellaneous Settings
+        self.group_box_misc_settings = QtWidgets.QGroupBox(self.tr('Miscellaneous Settings'), self)
+
+        self.checkbox_show_thousand_separators = QtWidgets.QCheckBox(self.tr('Show thousand separators (,)'), self)
+
+        self.group_box_misc_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_misc_settings.layout().addWidget(self.checkbox_show_thousand_separators, 0, 0)
+
+        self.group_box_misc_settings.layout().setColumnStretch(1, 1)
+
         self.layout().addWidget(self.group_box_rank_settings, 0, 0)
         self.layout().addWidget(self.group_box_precision_settings, 1, 0)
+        self.layout().addWidget(self.group_box_misc_settings, 2, 0)
 
-        self.layout().setRowStretch(2, 1)
+        self.layout().setRowStretch(3, 1)
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -86,6 +97,9 @@ class Wl_Settings_Tables(wl_settings.Wl_Settings_Node):
         self.spin_box_precision_pcts.setValue(settings['precision_settings']['precision_pcts'])
         self.spin_box_precision_p_vals.setValue(settings['precision_settings']['precision_p_vals'])
 
+        # Miscellaneous Settings
+        self.checkbox_show_thousand_separators.setChecked(settings['misc_settings']['show_thousand_separators'])
+
     def apply_settings(self):
         # Rank Settings
         self.settings_custom['rank_settings']['continue_numbering_after_ties'] = self.checkbox_continue_numbering_after_ties.isChecked()
@@ -94,6 +108,9 @@ class Wl_Settings_Tables(wl_settings.Wl_Settings_Node):
         self.settings_custom['precision_settings']['precision_decimals'] = self.spin_box_precision_decimals.value()
         self.settings_custom['precision_settings']['precision_pcts'] = self.spin_box_precision_pcts.value()
         self.settings_custom['precision_settings']['precision_p_vals'] = self.spin_box_precision_p_vals.value()
+
+        # Miscellaneous Settings
+        self.settings_custom['misc_settings']['show_thousand_separators'] = self.checkbox_show_thousand_separators.isChecked()
 
         return True
 

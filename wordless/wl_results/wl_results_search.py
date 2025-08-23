@@ -406,6 +406,18 @@ class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
                                 raise wl_excs.Wl_Exc_Aborted(self.main)
 
                             results[(row, col)] = table.indexWidget(table.model().index(row, col)).tokens_search
+                    # Numerals
+                    elif col in (
+                        table.headers_int
+                        | table.headers_float
+                        | table.headers_pct
+                        | table.headers_p_val
+                    ):
+                        for row in rows_to_search:
+                            results[(row, col)] = wl_texts.display_texts_to_tokens(
+                                self.main,
+                                [str(table.model().item(row, col).val)]
+                            )
                     else:
                         for row in rows_to_search:
                             if not self._running:

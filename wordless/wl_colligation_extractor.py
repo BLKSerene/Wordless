@@ -664,7 +664,7 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                         self.ins_header_hor(
                             self.model().columnCount() - 2,
                             self.tr('[{}]\np-value').format(file['name']),
-                            is_float = True,
+                            is_p_val = True,
                             is_breakdown_file = is_breakdown_file
                         )
 
@@ -777,7 +777,7 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
 
                         # p-value
                         if p_val is not None:
-                            self.set_item_p_val(i, cols_p_val[j], p_val)
+                            self.set_item_num(i, cols_p_val[j], p_val)
 
                         # Bayes Factor
                         if bayes_factor is not None:

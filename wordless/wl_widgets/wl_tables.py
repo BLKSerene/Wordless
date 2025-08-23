@@ -321,50 +321,6 @@ class Wl_Table(QtWidgets.QTableView):
             if text in header
         ]
 
-    def find_header(self, text):
-        match self.header_orientation:
-            case 'hor':
-                return self.find_header_hor(text = text)
-            case 'vert':
-                return self.find_header_vert(text = text)
-
-    def find_headers(self, text):
-        match self.header_orientation:
-            case 'hor':
-                return self.find_headers_hor(text = text)
-            case 'vert':
-                return self.find_headers_vert(text = text)
-
-    def add_header_hor(self, label):
-        self.add_headers_hor(labels = [label])
-
-    def add_header_vert(self, label):
-        self.add_headers_vert(labels = [label])
-
-    def add_headers_hor(self, labels):
-        self.ins_headers_hor(i = self.model().columnCount(), labels = labels)
-
-    def add_headers_vert(self, labels):
-        self.ins_headers_vert(i = self.model().rowCount(), labels = labels)
-
-    def ins_header_hor(self, i, label):
-        self.ins_headers_hor(i = i, labels = [label])
-
-    def ins_header_vert(self, i, label):
-        self.ins_headers_vert(i = i, labels = [label])
-
-    def ins_headers_hor(self, i, labels):
-        headers = list(self.get_header_labels_hor())
-        headers[i:i] = labels
-
-        self.model().setHorizontalHeaderLabels(headers)
-
-    def ins_headers_vert(self, i, labels):
-        headers = list(self.get_header_labels_vert())
-        headers[i:i] = labels
-
-        self.model().setVerticalHeaderLabels(headers)
-
     def get_selected_rows(self, visible_only = False):
         selected_rows = sorted({index.row() for index in self.selectionModel().selectedIndexes()})
 
@@ -526,6 +482,8 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                 self.table.headers_float = set()
             if 'headers_pct' not in self.table.__dict__:
                 self.table.headers_pct = set()
+            if 'headers_p_val' not in self.table.__dict__:
+                self.table.headers_p_val = set()
 
             settings_concordancer = self.main.settings_custom['concordancer']['zapping_settings']
 
@@ -540,55 +498,56 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                 with open(self.file_path, 'w', encoding = encoding, newline = '') as f:
                     csv_writer = csv.writer(f)
 
-                    if self.table.header_orientation == 'hor':
-                        # Horizontal headers
-                        headers_hor = [
-                            self.table.model().horizontalHeaderItem(col).text()
-                            for col in cols
-                        ]
-                        csv_writer.writerow(self.clean_text_csv(headers_hor))
+                    match self.table.header_orientation:
+                        case 'hor':
+                            # Horizontal headers
+                            headers_hor = [
+                                self.table.model().horizontalHeaderItem(col).text()
+                                for col in cols
+                            ]
+                            csv_writer.writerow(self.clean_text_csv(headers_hor))
 
-                        # Cells
-                        for i, row in enumerate(self.rows_to_exp):
-                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, num_rows))
+                            # Cells
+                            for i, row in enumerate(self.rows_to_exp):
+                                self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, num_rows))
 
-                            row_to_exp = []
+                                row_to_exp = []
 
-                            for col in cols:
-                                if not self._running:
-                                    raise wl_excs.Wl_Exc_Aborted(self.main)
+                                for col in cols:
+                                    if not self._running:
+                                        raise wl_excs.Wl_Exc_Aborted(self.main)
 
-                                if self.table.model().item(row, col):
-                                    cell_text = self.table.model().item(row, col).text()
-                                else:
-                                    cell_text = self.table.indexWidget(self.table.model().index(row, col)).text()
-                                    cell_text = wl_nlp_utils.html_to_text(cell_text)
+                                    if self.table.model().item(row, col):
+                                        cell_text = self.table.model().item(row, col).text()
+                                    else:
+                                        cell_text = self.table.indexWidget(self.table.model().index(row, col)).text()
+                                        cell_text = wl_nlp_utils.html_to_text(cell_text)
 
-                                row_to_exp.append(cell_text)
+                                    row_to_exp.append(cell_text)
 
-                            csv_writer.writerow(self.clean_text_csv(row_to_exp))
-                    # Profiler
-                    else:
-                        # Horizontal headers
-                        headers_hor = [
-                            self.table.model().horizontalHeaderItem(col).text()
-                            for col in cols
-                        ]
-                        csv_writer.writerow([''] + self.clean_text_csv(headers_hor))
+                                csv_writer.writerow(self.clean_text_csv(row_to_exp))
+                        # Profiler
+                        case 'vert':
+                            # Horizontal headers
+                            headers_hor = [
+                                self.table.model().horizontalHeaderItem(col).text()
+                                for col in cols
+                            ]
+                            csv_writer.writerow([''] + self.clean_text_csv(headers_hor))
 
-                        # Vertical headers and cells
-                        for i, row in enumerate(self.rows_to_exp):
-                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, num_rows))
+                            # Vertical headers and cells
+                            for i, row in enumerate(self.rows_to_exp):
+                                self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, num_rows))
 
-                            row_to_exp = [self.table.model().verticalHeaderItem(row).text()]
+                                row_to_exp = [self.table.model().verticalHeaderItem(row).text()]
 
-                            for col in cols:
-                                if not self._running:
-                                    raise wl_excs.Wl_Exc_Aborted(self.main)
+                                for col in cols:
+                                    if not self._running:
+                                        raise wl_excs.Wl_Exc_Aborted(self.main)
 
-                                row_to_exp.append(self.table.model().item(row, col).text())
+                                    row_to_exp.append(self.table.model().item(row, col).text())
 
-                            csv_writer.writerow(self.clean_text_csv(row_to_exp))
+                                csv_writer.writerow(self.clean_text_csv(row_to_exp))
             # Excel workbooks
             elif '*.xlsx' in self.file_type:
                 workbook = openpyxl.Workbook()
@@ -602,113 +561,128 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                         freeze_panes = 'A2'
 
                         # Left, Node, Right
-                        cols_labels = [0, 1, 2]
+                        cols_table_widgets = [0, 1, 2]
                         cols_table_items = []
                     case 'concordancer_parallel':
                         freeze_panes = 'A2'
 
-                        cols_labels = []
+                        cols_table_widgets = []
                         # Parallel Unit No. (%)
                         cols_table_items = [0, 1]
                     case 'dependency_parser':
                         freeze_panes = 'A2'
 
                         # Sentence
-                        cols_labels = [5]
+                        cols_table_widgets = [5]
                         cols_table_items = []
                     case _:
                         freeze_panes = 'B2'
 
-                        cols_labels = []
+                        cols_table_widgets = []
                         cols_table_items = []
 
                 worksheet.freeze_panes = freeze_panes
 
-                if self.table.header_orientation == 'hor':
-                    # Horizontal headers
-                    for col_cell, col_item in enumerate(cols):
-                        if not self._running:
-                            raise wl_excs.Wl_Exc_Aborted(self.main)
-
-                        cell = worksheet.cell(1, 1 + col_cell)
-                        cell.value = self.table.model().horizontalHeaderItem(col_item).text()
-
-                        self.style_header_hor(cell)
-
-                        worksheet.column_dimensions[openpyxl.utils.get_column_letter(1 + col_cell)].width = self.table.horizontalHeader().sectionSize(col_item) / dpi_horizontal * 13 + 3
-
-                    # Cells
-                    for row_cell, row_item in enumerate(self.rows_to_exp):
-                        self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(row_cell + 1, num_rows))
-
+                match self.table.header_orientation:
+                    case 'hor':
+                        # Horizontal headers
                         for col_cell, col_item in enumerate(cols):
                             if not self._running:
                                 raise wl_excs.Wl_Exc_Aborted(self.main)
 
-                            cell = worksheet.cell(2 + row_cell, 1 + col_cell)
+                            cell = worksheet.cell(1, 1 + col_cell)
+                            cell.value = self.table.model().horizontalHeaderItem(col_item).text()
 
-                            if (
-                                (
-                                    cols_labels
-                                    and not cols_table_items
-                                    and col_item in cols_labels
-                                ) or (
-                                    not cols_labels
-                                    and cols_table_items
-                                    and col_item not in cols_table_items
-                                )
-                            ):
-                                cell_val = self.table.indexWidget(self.table.model().index(row_item, col_item)).text()
-                                cell_val = self.remove_invalid_xml_chars(cell_val)
-                                cell.value = cell_val
+                            self.style_header_hor(cell)
 
-                                self.style_cell_rich_text(cell, self.table.indexWidget(self.table.model().index(row_item, col_item)))
-                            else:
-                                cell_val = self.table.model().item(row_item, col_item).text()
-                                cell_val = self.remove_invalid_xml_chars(cell_val)
-                                cell.value = cell_val
+                            worksheet.column_dimensions[openpyxl.utils.get_column_letter(1 + col_cell)].width = self.table.horizontalHeader().sectionSize(col_item) / dpi_horizontal * 13 + 3
+
+                        # Cells
+                        for row_cell, row_item in enumerate(self.rows_to_exp):
+                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(row_cell + 1, num_rows))
+
+                            for col_cell, col_item in enumerate(cols):
+                                if not self._running:
+                                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                                cell = worksheet.cell(2 + row_cell, 1 + col_cell)
+
+                                if (
+                                    (
+                                        cols_table_widgets
+                                        and not cols_table_items
+                                        and col_item in cols_table_widgets
+                                    ) or (
+                                        not cols_table_widgets
+                                        and cols_table_items
+                                        and col_item not in cols_table_items
+                                    )
+                                ):
+                                    cell_val = self.table.indexWidget(self.table.model().index(row_item, col_item)).text()
+                                    cell.value = self.remove_invalid_xml_chars(cell_val)
+
+                                    self.style_cell_rich_text(cell, self.table.indexWidget(self.table.model().index(row_item, col_item)))
+                                else:
+                                    if col_item in (
+                                        self.table.headers_int
+                                        | self.table.headers_float
+                                        | self.table.headers_pct
+                                        | self.table.headers_p_val
+                                    ):
+                                        cell.value = self.table.model().item(row_item, col_item).val
+                                    else:
+                                        cell_val = self.table.model().item(row_item, col_item).text()
+                                        cell.value = self.remove_invalid_xml_chars(cell_val)
+
+                                    self.style_cell(cell, self.table.model().item(row_item, col_item))
+                    # Profiler
+                    case 'vert':
+                        # Horizontal headers
+                        for col_cell, col_item in enumerate(cols):
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                            cell = worksheet.cell(1, 2 + col_cell)
+                            cell.value = self.table.model().horizontalHeaderItem(col_item).text()
+
+                            self.style_header_hor(cell)
+
+                            worksheet.column_dimensions[openpyxl.utils.get_column_letter(2 + col_cell)].width = self.table.horizontalHeader().sectionSize(col_item) / dpi_horizontal * 13 + 3
+
+                        worksheet.column_dimensions[openpyxl.utils.get_column_letter(1)].width = self.table.verticalHeader().width() / dpi_horizontal * 13 + 3
+
+                        # Vertical headers
+                        for row_cell, row_item in enumerate(self.rows_to_exp):
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                            cell = worksheet.cell(2 + row_cell, 1)
+                            cell.value = self.table.model().verticalHeaderItem(row_item).text()
+
+                            self.style_header_vert(cell)
+
+                        # Cells
+                        for row_cell, row_item in enumerate(self.rows_to_exp):
+                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(row_cell + 1, num_rows))
+
+                            for col_cell, col_item in enumerate(cols):
+                                if not self._running:
+                                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                                cell = worksheet.cell(2 + row_cell, 2 + col_cell)
+
+                                if col_item in (
+                                        self.table.headers_int
+                                        | self.table.headers_float
+                                        | self.table.headers_pct
+                                        | self.table.headers_p_val
+                                    ):
+                                    cell.value = self.table.model().item(row_item, col_item).val
+                                else:
+                                    cell_val = self.table.model().item(row_item, col_item).text()
+                                    cell.value = self.remove_invalid_xml_chars(cell_val)
 
                                 self.style_cell(cell, self.table.model().item(row_item, col_item))
-                # Profiler
-                else:
-                    # Horizontal headers
-                    for col_cell, col_item in enumerate(cols):
-                        if not self._running:
-                            raise wl_excs.Wl_Exc_Aborted(self.main)
-
-                        cell = worksheet.cell(1, 2 + col_cell)
-                        cell.value = self.table.model().horizontalHeaderItem(col_item).text()
-
-                        self.style_header_hor(cell)
-
-                        worksheet.column_dimensions[openpyxl.utils.get_column_letter(2 + col_cell)].width = self.table.horizontalHeader().sectionSize(col_item) / dpi_horizontal * 13 + 3
-
-                    worksheet.column_dimensions[openpyxl.utils.get_column_letter(1)].width = self.table.verticalHeader().width() / dpi_horizontal * 13 + 3
-
-                    # Vertical headers
-                    for row_cell, row_item in enumerate(self.rows_to_exp):
-                        if not self._running:
-                            raise wl_excs.Wl_Exc_Aborted(self.main)
-
-                        cell = worksheet.cell(2 + row_cell, 1)
-                        cell.value = self.table.model().verticalHeaderItem(row_item).text()
-
-                        self.style_header_vert(cell)
-
-                    # Cells
-                    for row_cell, row_item in enumerate(self.rows_to_exp):
-                        self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(row_cell + 1, num_rows))
-
-                        for col_cell, col_item in enumerate(cols):
-                            if not self._running:
-                                raise wl_excs.Wl_Exc_Aborted(self.main)
-
-                            cell = worksheet.cell(2 + row_cell, 2 + col_cell)
-                            cell_val = self.table.model().item(row_item, col_item).text()
-                            cell_val = self.remove_invalid_xml_chars(cell_val)
-                            cell.value = cell_val
-
-                            self.style_cell(cell, self.table.model().item(row_item, col_item))
 
                 # Row height
                 worksheet.row_dimensions[1].height = self.table.horizontalHeader().height() / dpi_vertical * 72
@@ -722,65 +696,66 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
             elif '*.docx' in self.file_type:
                 doc = docx.Document()
 
-                # Concordancer
-                if self.table.tab == 'concordancer':
-                    outputs = []
+                match self.table.tab:
+                    # Concordancer
+                    case 'concordancer':
+                        outputs = []
 
-                    for i, row in enumerate(self.rows_to_exp):
-                        if not self._running:
-                            raise wl_excs.Wl_Exc_Aborted(self.main)
-
-                        self.progress_updated.emit(self.tr('Processing data... ({} / {})').format(i + 1, num_rows))
-
-                        para_text = []
-
-                        for col in range(3):
-                            para_text.append(self.table.indexWidget(self.table.model().index(row, col)).text().strip())
-
-                        # Zapping
-                        if settings_concordancer['zapping']:
-                            # Node
-                            para_text[1] = settings_concordancer['placeholder'] * settings_concordancer['replace_keywords_with']
-
-                        outputs.append([' '.join(para_text), self.table.indexWidget(self.table.model().index(row, col))])
-
-                    if settings_concordancer['zapping']:
-                        # Randomize outputs
-                        if settings_concordancer['randomize_outputs']:
-                            random.shuffle(outputs)
-
-                        # Assign line numbers
-                        if settings_concordancer['add_line_nums']:
-                            for i, _ in enumerate(outputs):
-                                if not self._running:
-                                    raise wl_excs.Wl_Exc_Aborted(self.main)
-
-                                outputs[i][0] = f'{i + 1}. ' + outputs[i][0]
-
-                    for i, (para_text, item) in enumerate(outputs):
-                        if not self._running:
-                            raise wl_excs.Wl_Exc_Aborted(self.main)
-
-                        self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, num_rows))
-
-                        para = self.add_para(doc)
-                        self.style_para_rich_text(para, para_text, item)
-                # Parallel Concordancer
-                elif self.table.tab == 'concordancer_parallel':
-                    for i, row in enumerate(self.rows_to_exp):
-                        self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, num_rows))
-
-                        if i > 0:
-                            self.add_para(doc)
-
-                        for col in range(2, self.table.model().columnCount()):
+                        for i, row in enumerate(self.rows_to_exp):
                             if not self._running:
                                 raise wl_excs.Wl_Exc_Aborted(self.main)
 
-                            para_text = self.table.indexWidget(self.table.model().index(row, col)).text().strip()
+                            self.progress_updated.emit(self.tr('Processing data... ({} / {})').format(i + 1, num_rows))
+
+                            para_text = []
+
+                            for col in range(3):
+                                para_text.append(self.table.indexWidget(self.table.model().index(row, col)).text().strip())
+
+                            # Zapping
+                            if settings_concordancer['zapping']:
+                                # Node
+                                para_text[1] = settings_concordancer['placeholder'] * settings_concordancer['replace_keywords_with']
+
+                            outputs.append([' '.join(para_text), self.table.indexWidget(self.table.model().index(row, col))])
+
+                        if settings_concordancer['zapping']:
+                            # Randomize outputs
+                            if settings_concordancer['randomize_outputs']:
+                                random.shuffle(outputs)
+
+                            # Assign line numbers
+                            if settings_concordancer['add_line_nums']:
+                                for i, _ in enumerate(outputs):
+                                    if not self._running:
+                                        raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                                    outputs[i][0] = f'{i + 1}. ' + outputs[i][0]
+
+                        for i, (para_text, item) in enumerate(outputs):
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, num_rows))
 
                             para = self.add_para(doc)
-                            self.style_para_rich_text(para, para_text, self.table.indexWidget(self.table.model().index(row, col)))
+                            self.style_para_rich_text(para, para_text, item)
+                    # Parallel Concordancer
+                    case 'concordancer_parallel':
+                        for i, row in enumerate(self.rows_to_exp):
+                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, num_rows))
+
+                            if i > 0:
+                                self.add_para(doc)
+
+                            for col in range(2, self.table.model().columnCount()):
+                                if not self._running:
+                                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                                para_text = self.table.indexWidget(self.table.model().index(row, col)).text().strip()
+
+                                para = self.add_para(doc)
+                                self.style_para_rich_text(para, para_text, self.table.indexWidget(self.table.model().index(row, col)))
 
                 # Add the last empty paragraph
                 self.add_para(doc)
@@ -854,7 +829,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
         self.style_header(cell)
 
         match self.table.header_orientation:
-            # Line numbers
+            # Ranks
             case 'hor':
                 cell.fill = openpyxl.styles.PatternFill(
                     fill_type = 'solid',
@@ -901,7 +876,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
             alignment_vert = 'bottom'
         elif alignment & QtCore.Qt.AlignVCenter == QtCore.Qt.AlignVCenter:
             alignment_vert = 'center'
-        # Not sure
+        # Unsure
         elif alignment & QtCore.Qt.AlignBaseline == QtCore.Qt.AlignBaseline:
             alignment_vert = 'justify'
         # Default
@@ -915,32 +890,36 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
         )
 
     def style_cell(self, cell, item):
+        match self.table.header_orientation:
+            case 'hor':
+                i_header = item.column()
+            case 'vert':
+                i_header = item.row()
+
         # Modify number format
-        val = cell.value
-
-        try:
-            if val[-1] == '%':
-                cell.value = float(val[:-1]) / 100
+        if i_header in self.table.headers_int:
+            if self.table.settings['tables']['misc_settings']['show_thousand_separators']:
+                cell.number_format = '#,##0'
             else:
-                cell.value = float(val)
-
-            if val[-1] == '%':
-                precision_pcts = self.main.settings_custom['tables']['precision_settings']['precision_pcts']
-
-                if precision_pcts:
-                    cell.number_format = '0.' + '0' * precision_pcts + '%'
-                else:
-                    cell.number_format = '0%'
+                cell.number_format = '0'
+        elif i_header in self.table.headers_float:
+            if self.table.settings['tables']['misc_settings']['show_thousand_separators']:
+                cell.number_format = '#,##0'
             else:
-                i_decimal_point = val.find('.')
+                cell.number_format = '0'
 
-                if i_decimal_point > -1:
-                    cell.number_format = '0.' + '0' * (len(val) - i_decimal_point - 1)
-                else:
-                    cell.number_format = '0'
-        # Skip text
-        except ValueError:
-            pass
+            if (precision := self.table.settings['tables']['precision_settings']['precision_decimals']):
+                cell.number_format += '.' + '0' * precision
+        elif i_header in self.table.headers_pct:
+            if (precision := self.table.settings['tables']['precision_settings']['precision_pcts']):
+                cell.number_format = '0.' + '0' * precision + '%'
+            else:
+                cell.number_format = '0%'
+        elif i_header in self.table.headers_p_val:
+            if (precision := self.table.settings['tables']['precision_settings']['precision_p_vals']):
+                cell.number_format = '0.' + '0' * precision
+            else:
+                cell.number_format = '0'
 
         font_family = item.font().family()
 
@@ -1014,16 +993,6 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
             rich_texts[-1].text = rich_texts[-1].text.strip()
 
         cell.value = openpyxl.cell.rich_text.CellRichText(rich_texts)
-
-        self.style_cell_alignment(cell, item)
-
-    def style_cell_concordancer_node(self, cell, item):
-        cell.font = openpyxl.styles.Font(
-            name = item.font().family(),
-            size = self.main.settings_custom['general']['ui_settings']['font_size'],
-            bold = True,
-            color = 'FF0000'
-        )
 
         self.style_cell_alignment(cell, item)
 
@@ -1138,10 +1107,11 @@ class Wl_Table_Add_Ins_Del_Clr(Wl_Table):
 
 class Wl_Table_Item(QtGui.QStandardItem):
     def read_data(self):
-        if (
-            self.column() in self.model().table.headers_int
-            or self.column() in self.model().table.headers_float
-            or self.column() in self.model().table.headers_pct
+        if self.column() in (
+            self.model().table.headers_int
+            | self.model().table.headers_float
+            | self.model().table.headers_pct
+            | self.model().table.headers_p_val
         ):
             return self.val
         else:
@@ -1162,7 +1132,8 @@ class Wl_Table_Data(Wl_Table):
         self, main, tab,
         headers, header_orientation = 'hor',
         headers_int = None, headers_float = None,
-        headers_pct = None, headers_cum = None,
+        headers_pct = None, headers_p_val = None,
+        headers_cum = None,
         cols_breakdown_file = None, cols_breakdown_span_position = None,
         enable_sorting = False, generate_fig = True
     ):
@@ -1177,6 +1148,7 @@ class Wl_Table_Data(Wl_Table):
         self.headers_int_old = headers_int or set()
         self.headers_float_old = headers_float or set()
         self.headers_pct_old = headers_pct or set()
+        self.headers_p_val_old = headers_p_val or set()
         self.headers_cum_old = headers_cum or set()
         self.cols_breakdown_file_old = cols_breakdown_file or set()
         self.cols_breakdown_span_position_old = cols_breakdown_span_position or set()
@@ -1256,99 +1228,45 @@ class Wl_Table_Data(Wl_Table):
     def add_header_hor(
         self, label,
         is_int = False, is_float = False,
-        is_pct = False, is_cum = False,
+        is_pct = False, is_p_val = False,
+        is_cum = False,
         is_breakdown_file = False, is_breakdown_span_position = False
     ):
-        self.add_headers_hor(
-            labels = [label],
+        self.ins_header_hor(
+            i = self.model().columnCount(), label = label,
             is_int = is_int, is_float = is_float,
-            is_pct = is_pct, is_cum = is_cum,
+            is_pct = is_pct, is_p_val = is_p_val,
+            is_cum = is_cum,
             is_breakdown_file = is_breakdown_file, is_breakdown_span_position = is_breakdown_span_position
         )
 
     def add_header_vert(
         self, label,
         is_int = False, is_float = False,
-        is_pct = False, is_cum = False
+        is_pct = False, is_p_val = False,
+        is_cum = False
     ):
-        self.add_headers_vert(
-            labels = [label],
+        self.ins_header_vert(
+            i = self.model().rowCount(), label = label,
             is_int = is_int, is_float = is_float,
-            is_pct = is_pct, is_cum = is_cum
-        )
-
-    def add_headers_hor(
-        self, labels,
-        is_int = False, is_float = False,
-        is_pct = False, is_cum = False,
-        is_breakdown_file = False, is_breakdown_span_position = False
-    ):
-        self.ins_headers_hor(
-            i = self.model().columnCount(), labels = labels,
-            is_int = is_int, is_float = is_float,
-            is_pct = is_pct, is_cum = is_cum,
-            is_breakdown_file = is_breakdown_file, is_breakdown_span_position = is_breakdown_span_position
-        )
-
-    def add_headers_vert(
-        self, labels,
-        is_int = False, is_float = False,
-        is_pct = False, is_cum = False
-    ):
-        self.ins_headers_vert(
-            i = self.model().rowCount(), labels = labels,
-            is_int = is_int, is_float = is_float,
-            is_pct = is_pct, is_cum = is_cum,
+            is_pct = is_pct, is_p_val = is_p_val,
+            is_cum = is_cum,
         )
 
     def ins_header_hor(
         self, i, label,
         is_int = False, is_float = False,
-        is_pct = False, is_cum = False,
-        is_breakdown_file = False, is_breakdown_span_position = False
-    ):
-        self.ins_headers_hor(
-            i = i, labels = [label],
-            is_int = is_int, is_float = is_float,
-            is_pct = is_pct, is_cum = is_cum,
-            is_breakdown_file = is_breakdown_file, is_breakdown_span_position = is_breakdown_span_position
-        )
-
-    def ins_header_vert(
-        self, i, label,
-        is_int = False, is_float = False,
-        is_pct = False, is_cum = False
-    ):
-        self.ins_headers_vert(
-            i = i, labels = [label],
-            is_int = is_int, is_float = is_float,
-            is_pct = is_pct, is_cum = is_cum
-        )
-
-    def ins_headers_hor(
-        self, i, labels,
-        is_int = False, is_float = False,
-        is_pct = False, is_cum = False,
+        is_pct = False, is_p_val = False,
+        is_cum = False,
         is_breakdown_file = False, is_breakdown_span_position = False
     ):
         # Re-calculate column indexes
         if self.header_orientation == 'hor':
-            headers_int = [
-                self.model().horizontalHeaderItem(col).text()
-                for col in self.headers_int
-            ]
-            headers_float = [
-                self.model().horizontalHeaderItem(col).text()
-                for col in self.headers_float
-            ]
-            headers_pct = [
-                self.model().horizontalHeaderItem(col).text()
-                for col in self.headers_pct
-            ]
-            headers_cum = [
-                self.model().horizontalHeaderItem(col).text()
-                for col in self.headers_cum
-            ]
+            headers_int = [self.model().horizontalHeaderItem(col).text() for col in self.headers_int]
+            headers_float = [self.model().horizontalHeaderItem(col).text() for col in self.headers_float]
+            headers_pct = [self.model().horizontalHeaderItem(col).text() for col in self.headers_pct]
+            headers_p_val = [self.model().horizontalHeaderItem(col).text() for col in self.headers_p_val]
+            headers_cum = [self.model().horizontalHeaderItem(col).text() for col in self.headers_cum]
 
         cols_breakdown_file = [
             self.model().horizontalHeaderItem(col).text()
@@ -1359,27 +1277,33 @@ class Wl_Table_Data(Wl_Table):
             for col in self.cols_breakdown_span_position
         ]
 
-        super().ins_headers_hor(i, labels)
+        headers = list(self.get_header_labels_hor())
+        headers.insert(i, label)
+
+        self.model().setHorizontalHeaderLabels(headers)
 
         if self.header_orientation == 'hor':
             if is_int:
-                headers_int.extend(labels)
+                headers_int.append(label)
             if is_float:
-                headers_float.extend(labels)
+                headers_float.append(label)
             if is_pct:
-                headers_pct.extend(labels)
+                headers_pct.append(label)
+            if is_p_val:
+                headers_p_val.append(label)
             if is_cum:
-                headers_cum.extend(labels)
+                headers_cum.append(label)
 
             self.headers_int = {self.find_header_hor(header) for header in headers_int}
             self.headers_float = {self.find_header_hor(header) for header in headers_float}
             self.headers_pct = {self.find_header_hor(header) for header in headers_pct}
+            self.headers_p_val = {self.find_header_hor(header) for header in headers_p_val}
             self.headers_cum = {self.find_header_hor(header) for header in headers_cum}
 
         if is_breakdown_file:
-            cols_breakdown_file.extend(labels)
+            cols_breakdown_file.append(label)
         if is_breakdown_span_position:
-            cols_breakdown_span_position.extend(labels)
+            cols_breakdown_span_position.append(label)
 
         self.cols_breakdown_file = {
             self.find_header_hor(header)
@@ -1390,32 +1314,55 @@ class Wl_Table_Data(Wl_Table):
             for header in cols_breakdown_span_position
         }
 
-    def ins_headers_vert(
-        self, i, labels,
+    def ins_header_vert(
+        self, i, label,
         is_int = False, is_float = False,
-        is_pct = False, is_cum = False
+        is_pct = False, is_p_val = False,
+        is_cum = False
     ):
         # Re-calculate row indexes
         headers_int = [self.model().verticalHeaderItem(row).text() for row in self.headers_int]
         headers_float = [self.model().verticalHeaderItem(row).text() for row in self.headers_float]
         headers_pct = [self.model().verticalHeaderItem(row).text() for row in self.headers_pct]
+        headers_p_val = [self.model().verticalHeaderItem(row).text() for row in self.headers_p_val]
         headers_cum = [self.model().verticalHeaderItem(row).text() for row in self.headers_cum]
 
-        super().ins_headers_vert(i, labels)
+        headers = list(self.get_header_labels_vert())
+        headers.insert(i, label)
+
+        self.model().setVerticalHeaderLabels(headers)
 
         if is_int:
-            headers_int.extend(labels)
+            headers_int.append(label)
         if is_float:
-            headers_float.extend(labels)
+            headers_float.append(label)
         if is_pct:
-            headers_pct.extend(labels)
+            headers_pct.append(label)
+        if is_p_val:
+            headers_p_val.append(label)
         if is_cum:
-            headers_cum.extend(labels)
+            headers_cum.append(label)
 
         self.headers_int = {self.find_header_vert(header) for header in headers_int}
         self.headers_float = {self.find_header_vert(header) for header in headers_float}
         self.headers_pct = {self.find_header_vert(header) for header in headers_pct}
+        self.headers_p_val = {self.find_header_vert(header) for header in headers_p_val}
         self.headers_cum = {self.find_header_vert(header) for header in headers_cum}
+
+    def format_int(self, val):
+        if self.settings['tables']['misc_settings']['show_thousand_separators']:
+            return f'{val:,}'
+        else:
+            return str(val)
+
+    def format_float(self, val, precision):
+        if self.settings['tables']['misc_settings']['show_thousand_separators']:
+            return f'{val:,.{precision}f}'
+        else:
+            return f'{val:.{precision}f}'
+
+    def format_pct(self, val, precision):
+        return f'{val:.{precision}%}'
 
     def set_item_num(self, row, col, val, total = -1):
         match self.header_orientation:
@@ -1426,29 +1373,32 @@ class Wl_Table_Data(Wl_Table):
 
         # Integers
         if header in self.headers_int:
-            val = int(val)
-
-            item = Wl_Table_Item(str(val))
+            item = Wl_Table_Item(self.format_int(val))
         # Floats
         elif header in self.headers_float:
-            val = float(val)
             precision = self.main.settings_custom['tables']['precision_settings']['precision_decimals']
 
-            item = Wl_Table_Item(f'{val:.{precision}f}')
+            item = Wl_Table_Item(self.format_float(val, precision))
         # Percentages
         elif header in self.headers_pct:
-            if total > 0:
-                val = val / total
-            # Handle zero division error
-            elif total == 0:
-                val = 0
-            # Set values directly
-            elif total == -1:
-                val = float(val)
+            match total:
+                # ZeroDivisionError
+                case 0:
+                    val = 0
+                # Set values directly
+                case -1:
+                    pass
+                case _:
+                    val = val / total
 
             precision = self.main.settings_custom['tables']['precision_settings']['precision_pcts']
 
-            item = Wl_Table_Item(f'{val:.{precision}%}')
+            item = Wl_Table_Item(self.format_pct(val, precision))
+        # p-values
+        elif header in self.headers_p_val:
+            precision = self.main.settings_custom['tables']['precision_settings']['precision_p_vals']
+
+            item = Wl_Table_Item(self.format_float(val, precision))
 
         item.val = val
 
@@ -1468,31 +1418,14 @@ class Wl_Table_Data(Wl_Table):
 
         # Integers
         if header in self.headers_int:
-            item.setText(str(val))
-        # Floats
-        elif header in self.headers_float:
-            val = float(val)
-            precision = self.main.settings_custom['tables']['precision_settings']['precision_decimals']
-
-            item.setText(f'{val:.{precision}f}')
+            item.setText(self.format_int(val))
         # Percentages
         elif header in self.headers_pct:
             precision = self.main.settings_custom['tables']['precision_settings']['precision_pcts']
 
-            item.setText(f'{val:.{precision}%}')
+            item.setText(self.format_pct(val, precision))
 
         item.val = val
-
-    def set_item_p_val(self, row, col, val):
-        precision = self.main.settings_custom['tables']['precision_settings']['precision_p_vals']
-        item = Wl_Table_Item(f'{val:.{precision}f}')
-
-        item.val = val
-
-        item.setFont(QtGui.QFont('Consolas'))
-        item.setTextAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
-
-        self.model().setItem(row, col, item)
 
     def set_item_err(self, row, col, text, alignment_hor = 'center'):
         item = Wl_Table_Item_Err(text)
@@ -1562,55 +1495,51 @@ class Wl_Table_Data(Wl_Table):
     def toggle_pct_data(self):
         self.disable_updates()
 
-        match self.header_orientation:
-            case 'hor':
-                if self.table_settings['show_pct_data']:
-                    for col in self.headers_pct:
-                        if (
-                            col not in self.cols_breakdown_file
-                            or self.table_settings['show_breakdown_file']
-                        ):
-                            self.showColumn(col)
-                else:
-                    for col in self.headers_pct:
-                        self.hideColumn(col)
-            case 'vert':
-                if self.table_settings['show_pct_data']:
-                    for row in self.headers_pct:
-                        self.showRow(row)
-                else:
-                    for row in self.headers_pct:
-                        self.hideRow(row)
+        match (self.header_orientation, self.table_settings['show_pct_data']):
+            case ('hor', True):
+                for col in self.headers_pct:
+                    if (
+                        col not in self.cols_breakdown_file
+                        or self.table_settings['show_breakdown_file']
+                    ):
+                        self.showColumn(col)
+            case ('hor', False):
+                for col in self.headers_pct:
+                    self.hideColumn(col)
+            case ('vert', True):
+                for row in self.headers_pct:
+                    self.showRow(row)
+            case ('vert', False):
+                for row in self.headers_pct:
+                    self.hideRow(row)
 
         self.enable_updates()
 
     def toggle_pct_data_span_position(self):
         self.disable_updates()
 
-        match self.header_orientation:
-            case 'hor':
-                if self.table_settings['show_pct_data']:
-                    for col in self.headers_pct:
-                        if (
-                            (
-                                col not in self.cols_breakdown_file
-                                or self.table_settings['show_breakdown_file']
-                            ) and (
-                                col not in self.cols_breakdown_span_position
-                                or self.table_settings['show_breakdown_span_position']
-                            )
-                        ):
-                            self.showColumn(col)
-                else:
-                    for col in self.headers_pct:
-                        self.hideColumn(col)
-            case 'vert':
-                if self.table_settings['show_pct_data']:
-                    for row in self.headers_pct:
-                        self.showRow(row)
-                else:
-                    for row in self.headers_pct:
-                        self.hideRow(row)
+        match (self.header_orientation, self.table_settings['show_pct_data']):
+            case ('hor', True):
+                for col in self.headers_pct:
+                    if (
+                        (
+                            col not in self.cols_breakdown_file
+                            or self.table_settings['show_breakdown_file']
+                        ) and (
+                            col not in self.cols_breakdown_span_position
+                            or self.table_settings['show_breakdown_span_position']
+                        )
+                    ):
+                        self.showColumn(col)
+            case ('hor', False):
+                for col in self.headers_pct:
+                    self.hideColumn(col)
+            case ('vert', True):
+                for row in self.headers_pct:
+                    self.showRow(row)
+            case ('vert', False):
+                for row in self.headers_pct:
+                    self.hideRow(row)
 
         self.enable_updates()
 
@@ -1620,99 +1549,100 @@ class Wl_Table_Data(Wl_Table):
 
         # Boost performance
         if self.enable_sorting:
-            self.sortByColumn(self.horizontalHeader().sortIndicatorSection(), self.horizontalHeader().sortIndicatorOrder())
+            self.sortByColumn(
+                self.horizontalHeader().sortIndicatorSection(),
+                self.horizontalHeader().sortIndicatorOrder()
+            )
 
         self.disable_updates()
         self.setSortingEnabled(False)
 
-        match self.header_orientation:
-            case 'hor':
-                if self.table_settings['show_cum_data']:
-                    for col in self.headers_cum:
-                        val_cum = 0
+        match (self.header_orientation, self.table_settings['show_cum_data']):
+            case ('hor', True):
+                for col in self.headers_cum:
+                    val_cum = 0
 
-                        # Integers
-                        if col in self.headers_int:
-                            for row in range(self.model().rowCount()):
-                                if not self.isRowHidden(row):
-                                    item = self.model().item(row, col)
+                    # Integers
+                    if col in self.headers_int:
+                        for row in range(self.model().rowCount()):
+                            if not self.isRowHidden(row):
+                                item = self.model().item(row, col)
 
-                                    val_cum += item.val
-                                    item.setText(str(val_cum))
-                        # Floats
-                        elif col in self.headers_float:
-                            for row in range(self.model().rowCount()):
-                                if not self.isRowHidden(row):
-                                    item = self.model().item(row, col)
-
-                                    val_cum += item.val
-                                    item.setText(f'{val_cum:.{precision_decimals}}')
-                        # Percentages
-                        elif col in self.headers_pct:
-                            for row in range(self.model().rowCount()):
-                                if not self.isRowHidden(row):
-                                    item = self.model().item(row, col)
-
-                                    val_cum += item.val
-                                    item.setText(f'{val_cum:.{precision_pcts}%}')
-                else:
-                    for col in self.headers_cum:
-                        # Integers
-                        if col in self.headers_int:
-                            for row in range(self.model().rowCount()):
-                                if not self.isRowHidden(row):
-                                    item = self.model().item(row, col)
-
-                                    item.setText(str(item.val))
-                        # Floats
-                        elif col in self.headers_float:
-                            for row in range(self.model().rowCount()):
-                                if not self.isRowHidden(row):
-                                    item = self.model().item(row, col)
-
-                                    item.setText(f'{item.val:.{precision_decimals}}')
-                        # Percentages
-                        elif col in self.headers_pct:
-                            for row in range(self.model().rowCount()):
-                                if not self.isRowHidden(row):
-                                    item = self.model().item(row, col)
-
-                                    item.setText(f'{item.val:.{precision_pcts}%}')
-            case 'vert':
-                if self.table_settings['show_cum_data']:
-                    for row in self.headers_cum:
-                        val_cum = 0
-
-                        for col in range(self.model().columnCount() - 1):
-                            item = self.model().item(row, col)
-
-                            if not self.isColumnHidden(col) and not isinstance(item, Wl_Table_Item_Err):
                                 val_cum += item.val
+                                item.setText(self.format_int(val_cum))
+                    # Floats
+                    elif col in self.headers_float:
+                        for row in range(self.model().rowCount()):
+                            if not self.isRowHidden(row):
+                                item = self.model().item(row, col)
 
-                                # Integers
-                                if row in self.headers_int:
-                                    item.setText(str(val_cum))
-                                # Floats
-                                elif row in self.headers_float:
-                                    item.setText(f'{val_cum:.{precision_decimals}}')
-                                # Percentages
-                                elif row in self.headers_pct:
-                                    item.setText(f'{val_cum:.{precision_pcts}%}')
-                else:
-                    for row in self.headers_cum:
-                        for col in range(self.model().columnCount() - 1):
-                            item = self.model().item(row, col)
+                                val_cum += item.val
+                                item.setText(self.format_float(val_cum, precision_decimals))
+                    # Percentages
+                    elif col in self.headers_pct:
+                        for row in range(self.model().rowCount()):
+                            if not self.isRowHidden(row):
+                                item = self.model().item(row, col)
 
-                            if not self.isColumnHidden(col) and not isinstance(item, Wl_Table_Item_Err):
-                                # Integers
-                                if row in self.headers_int:
-                                    item.setText(str(item.val))
-                                # Floats
-                                elif row in self.headers_float:
-                                    item.setText(f'{item.val:.{precision_decimals}}')
-                                # Percentages
-                                elif row in self.headers_pct:
-                                    item.setText(f'{item.val:.{precision_pcts}%}')
+                                val_cum += item.val
+                                item.setText(self.format_pct(val_cum, precision_pcts))
+            case ('hor', False):
+                for col in self.headers_cum:
+                    # Integers
+                    if col in self.headers_int:
+                        for row in range(self.model().rowCount()):
+                            if not self.isRowHidden(row):
+                                item = self.model().item(row, col)
+
+                                item.setText(self.format_int(item.val))
+                    # Floats
+                    elif col in self.headers_float:
+                        for row in range(self.model().rowCount()):
+                            if not self.isRowHidden(row):
+                                item = self.model().item(row, col)
+
+                                item.setText(self.format_float(item.val, precision_decimals))
+                    # Percentages
+                    elif col in self.headers_pct:
+                        for row in range(self.model().rowCount()):
+                            if not self.isRowHidden(row):
+                                item = self.model().item(row, col)
+
+                                item.setText(self.format_pct(item.val, precision_pcts))
+            case ('vert', True):
+                for row in self.headers_cum:
+                    val_cum = 0
+
+                    for col in range(self.model().columnCount() - 1):
+                        item = self.model().item(row, col)
+
+                        if not self.isColumnHidden(col) and not isinstance(item, Wl_Table_Item_Err):
+                            val_cum += item.val
+
+                            # Integers
+                            if row in self.headers_int:
+                                item.setText(self.format_int(val_cum))
+                            # Floats
+                            elif row in self.headers_float:
+                                item.setText(self.format_float(val_cum, precision_decimals))
+                            # Percentages
+                            elif row in self.headers_pct:
+                                item.setText(self.format_pct(val_cum, precision_pcts))
+            case ('vert', False):
+                for row in self.headers_cum:
+                    for col in range(self.model().columnCount() - 1):
+                        item = self.model().item(row, col)
+
+                        if not self.isColumnHidden(col) and not isinstance(item, Wl_Table_Item_Err):
+                            # Integers
+                            if row in self.headers_int:
+                                item.setText(self.format_int(item.val))
+                            # Floats
+                            elif row in self.headers_float:
+                                item.setText(self.format_float(item.val, precision_decimals))
+                            # Percentages
+                            elif row in self.headers_pct:
+                                item.setText(self.format_pct(item.val, precision_pcts))
 
         self.enable_updates()
 
@@ -1852,10 +1782,19 @@ class Wl_Table_Data(Wl_Table):
             for i in range(self.model().columnCount()):
                 self.showColumn(i)
 
-            self.headers_int = {self.find_header(header) for header in self.headers_int_old}
-            self.headers_float = {self.find_header(header) for header in self.headers_float_old}
-            self.headers_pct = {self.find_header(header) for header in self.headers_pct_old}
-            self.headers_cum = {self.find_header(header) for header in self.headers_cum_old}
+            match self.header_orientation:
+                case 'hor':
+                    self.headers_int = {self.find_header_hor(header) for header in self.headers_int_old}
+                    self.headers_float = {self.find_header_hor(header) for header in self.headers_float_old}
+                    self.headers_pct = {self.find_header_hor(header) for header in self.headers_pct_old}
+                    self.headers_p_val = {self.find_header_hor(header) for header in self.headers_p_val_old}
+                    self.headers_cum = {self.find_header_hor(header) for header in self.headers_cum_old}
+                case 'vert':
+                    self.headers_int = {self.find_header_vert(header) for header in self.headers_int_old}
+                    self.headers_float = {self.find_header_vert(header) for header in self.headers_float_old}
+                    self.headers_pct = {self.find_header_vert(header) for header in self.headers_pct_old}
+                    self.headers_p_val = {self.find_header_vert(header) for header in self.headers_p_val_old}
+                    self.headers_cum = {self.find_header_vert(header) for header in self.headers_cum_old}
 
             self.cols_breakdown_file = {
                 self.find_header_hor(col)
@@ -1880,7 +1819,8 @@ class Wl_Table_Data_Search(Wl_Table_Data):
         self, main, tab,
         headers, header_orientation = 'hor',
         headers_int = None, headers_float = None,
-        headers_pct = None, headers_cum = None,
+        headers_pct = None, headers_p_val = None,
+        headers_cum = None,
         cols_breakdown_file = None, cols_breakdown_span_position = None,
         enable_sorting = False, generate_fig = True
     ):
@@ -1888,7 +1828,8 @@ class Wl_Table_Data_Search(Wl_Table_Data):
             main, tab,
             headers, header_orientation,
             headers_int, headers_float,
-            headers_pct, headers_cum,
+            headers_pct, headers_p_val,
+            headers_cum,
             cols_breakdown_file, cols_breakdown_span_position,
             enable_sorting, generate_fig
         )
@@ -1934,7 +1875,8 @@ class Wl_Table_Data_Sort_Search(Wl_Table_Data):
         self, main, tab,
         headers, header_orientation = 'hor',
         headers_int = None, headers_float = None,
-        headers_pct = None, headers_cum = None,
+        headers_pct = None, headers_p_val = None,
+        headers_cum = None,
         cols_breakdown_file = None, cols_breakdown_span_position = None,
         enable_sorting = False, generate_fig = True
     ):
@@ -1942,7 +1884,8 @@ class Wl_Table_Data_Sort_Search(Wl_Table_Data):
             main, tab,
             headers, header_orientation,
             headers_int, headers_float,
-            headers_pct, headers_cum,
+            headers_pct, headers_p_val,
+            headers_cum,
             cols_breakdown_file, cols_breakdown_span_position,
             enable_sorting, generate_fig
         )
@@ -1999,7 +1942,8 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
         self, main, tab,
         headers, header_orientation = 'hor',
         headers_int = None, headers_float = None,
-        headers_pct = None, headers_cum = None,
+        headers_pct = None, headers_p_val = None,
+        headers_cum = None,
         cols_breakdown_file = None, cols_breakdown_span_position = None,
         enable_sorting = False, generate_fig = True
     ):
@@ -2007,7 +1951,8 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
             main, tab,
             headers, header_orientation,
             headers_int, headers_float,
-            headers_pct, headers_cum,
+            headers_pct, headers_p_val,
+            headers_cum,
             cols_breakdown_file, cols_breakdown_span_position,
             enable_sorting, generate_fig
         )
