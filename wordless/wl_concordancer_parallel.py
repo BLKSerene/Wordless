@@ -161,17 +161,10 @@ class Wrapper_Concordancer_Parallel(wl_layouts.Wl_Wrapper):
         # Table Settings
         self.group_box_table_settings = QtWidgets.QGroupBox(self.tr('Table Settings'), self)
 
-        (
-            self.checkbox_show_pct_data,
-            self.checkbox_show_cum_data,
-            self.checkbox_show_breakdown_file
-        ) = wl_widgets.wl_widgets_table_settings(
+        self.checkbox_show_pct_data = wl_widgets.wl_widgets_table_settings(
             self,
-            tables = [self.table_concordancer_parallel]
+            tables = (self.table_concordancer_parallel,)
         )
-
-        self.checkbox_show_cum_data.hide()
-        self.checkbox_show_breakdown_file.hide()
 
         self.checkbox_show_pct_data.stateChanged.connect(self.table_settings_changed)
 
@@ -291,10 +284,7 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data_Search):
             ).exec()
         ):
             if self.main.settings_custom['concordancer_parallel']['token_settings']['assign_pos_tags']:
-                nlp_support_ok = wl_checks_work_area.check_nlp_support(
-                    self.main,
-                    nlp_utils = ['pos_taggers']
-                )
+                nlp_support_ok = wl_checks_work_area.check_nlp_support(self.main, nlp_utils = ('pos_taggers',))
             else:
                 nlp_support_ok = True
 
@@ -346,7 +336,7 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data_Search):
 
                 self.enable_updates()
 
-                self.toggle_pct_data()
+                self.toggle_headers()
             except Exception:
                 err_msg = traceback.format_exc()
             finally:

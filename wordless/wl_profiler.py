@@ -197,7 +197,8 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         (
             self.checkbox_show_pct_data,
             self.checkbox_show_cum_data,
-            self.checkbox_show_breakdown_file
+            self.checkbox_show_breakdown_file,
+            self.checkbox_show_total
         ) = wl_widgets.wl_widgets_table_settings(
             self,
             tables = self.tables
@@ -206,11 +207,13 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         self.checkbox_show_pct_data.stateChanged.connect(self.table_settings_changed)
         self.checkbox_show_cum_data.stateChanged.connect(self.table_settings_changed)
         self.checkbox_show_breakdown_file.stateChanged.connect(self.table_settings_changed)
+        self.checkbox_show_total.stateChanged.connect(self.table_settings_changed)
 
         self.group_box_table_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct_data, 0, 0)
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_cum_data, 1, 0)
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown_file, 2, 0)
+        self.group_box_table_settings.layout().addWidget(self.checkbox_show_total, 3, 0)
 
         self.wrapper_settings.layout().addWidget(self.group_box_token_settings, 0, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_table_settings, 1, 0)
@@ -248,6 +251,7 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         self.checkbox_show_pct_data.setChecked(settings['table_settings']['show_pct_data'])
         self.checkbox_show_cum_data.setChecked(settings['table_settings']['show_cum_data'])
         self.checkbox_show_breakdown_file.setChecked(settings['table_settings']['show_breakdown_file'])
+        self.checkbox_show_total.setChecked(settings['table_settings']['show_total'])
 
         self.tabs_changed()
         self.item_changed()
@@ -294,6 +298,7 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         settings['show_pct_data'] = self.checkbox_show_pct_data.isChecked()
         settings['show_cum_data'] = self.checkbox_show_cum_data.isChecked()
         settings['show_breakdown_file'] = self.checkbox_show_breakdown_file.isChecked()
+        settings['show_total'] = self.checkbox_show_total.isChecked()
 
     def file_changed(self):
         if list(self.main.wl_file_area.get_selected_files()):
@@ -304,7 +309,7 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
     @wl_misc.log_time
     def generate_all_tables(self):
         if self.main.settings_custom['profiler']['token_settings']['assign_pos_tags']:
-            nlp_support = wl_checks_work_area.check_nlp_support(self.main, nlp_utils = ['pos_taggers'])
+            nlp_support = wl_checks_work_area.check_nlp_support(self.main, nlp_utils = ('pos_taggers',))
         else:
             nlp_support = True
 
@@ -379,12 +384,12 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
 
     def clr_table(self, confirm = False): # pylint: disable=arguments-differ
         if super().clr_table(num_headers = 0, confirm = confirm):
-            self.ins_header_hor(0, self.tr('Total'))
+            self.ins_header_hor(0, self.tr('Total'), is_total = True)
 
     @wl_misc.log_time
     def generate_table(self):
         if self.main.settings_custom['profiler']['token_settings']['assign_pos_tags']:
-            nlp_support = wl_checks_work_area.check_nlp_support(self.main, nlp_utils = ['pos_taggers'])
+            nlp_support = wl_checks_work_area.check_nlp_support(self.main, nlp_utils = ('pos_taggers',))
         else:
             nlp_support = True
 
@@ -488,9 +493,8 @@ class Wl_Table_Profiler_Readability(Wl_Table_Profiler):
 
                 self.enable_updates()
 
-                self.toggle_pct_data()
+                self.toggle_headers()
                 self.toggle_cum_data()
-                self.toggle_breakdown_file()
             except Exception:
                 err_msg = traceback.format_exc()
             finally:
@@ -616,9 +620,8 @@ class Wl_Table_Profiler_Counts(Wl_Table_Profiler):
 
                 self.enable_updates()
 
-                self.toggle_pct_data()
+                self.toggle_headers()
                 self.toggle_cum_data()
-                self.toggle_breakdown_file()
             except Exception:
                 err_msg = traceback.format_exc()
             finally:
@@ -696,9 +699,8 @@ class Wl_Table_Profiler_Lexical_Density_Diversity(Wl_Table_Profiler):
 
                 self.enable_updates()
 
-                self.toggle_pct_data()
+                self.toggle_headers()
                 self.toggle_cum_data()
-                self.toggle_breakdown_file()
             except Exception:
                 err_msg = traceback.format_exc()
             finally:
@@ -871,9 +873,8 @@ class Wl_Table_Profiler_Syntactic_Complexity(Wl_Table_Profiler):
 
                 self.enable_updates()
 
-                self.toggle_pct_data()
+                self.toggle_headers()
                 self.toggle_cum_data()
-                self.toggle_breakdown_file()
             except Exception:
                 err_msg = traceback.format_exc()
             finally:
@@ -1150,9 +1151,8 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
 
                 self.enable_updates()
 
-                self.toggle_pct_data()
+                self.toggle_headers()
                 self.toggle_cum_data()
-                self.toggle_breakdown_file()
             except Exception:
                 err_msg = traceback.format_exc()
             finally:
@@ -1351,9 +1351,8 @@ class Wl_Table_Profiler_Len_Breakdown(Wl_Table_Profiler):
 
                 self.enable_updates()
 
-                self.toggle_pct_data()
+                self.toggle_headers()
                 self.toggle_cum_data()
-                self.toggle_breakdown_file()
             except Exception:
                 err_msg = traceback.format_exc()
             finally:

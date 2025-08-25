@@ -663,45 +663,7 @@ def wl_widgets_table_settings(parent, tables):
         for table in tables:
             table.table_settings['show_pct_data'] = checkbox_show_pct_data.isChecked()
 
-            table.toggle_pct_data()
-
-    def show_cum_data_changed():
-        for table in tables:
-            table.table_settings['show_cum_data'] = checkbox_show_cum_data.isChecked()
-
-            if not table.is_empty():
-                table.toggle_cum_data()
-
-    def show_breakdown_file_changed():
-        for table in tables:
-            table.table_settings['show_breakdown_file'] = checkbox_show_breakdown_file.isChecked()
-
-            table.toggle_breakdown_file()
-
-    checkbox_show_pct_data = QtWidgets.QCheckBox(_tr('wl_widgets', 'Show percentage data'), parent)
-    checkbox_show_cum_data = QtWidgets.QCheckBox(_tr('wl_widgets', 'Show cumulative data'), parent)
-    checkbox_show_breakdown_file = QtWidgets.QCheckBox(_tr('wl_widgets', 'Show breakdown by file'), parent)
-
-    checkbox_show_pct_data.stateChanged.connect(show_pct_data_changed)
-    checkbox_show_cum_data.stateChanged.connect(show_cum_data_changed)
-    checkbox_show_breakdown_file.stateChanged.connect(show_breakdown_file_changed)
-
-    show_pct_data_changed()
-    show_cum_data_changed()
-    show_breakdown_file_changed()
-
-    return (
-        checkbox_show_pct_data,
-        checkbox_show_cum_data,
-        checkbox_show_breakdown_file
-    )
-
-def wl_widgets_table_settings_span_position(parent, tables):
-    def show_pct_data_changed():
-        for table in tables:
-            table.table_settings['show_pct_data'] = checkbox_show_pct_data.isChecked()
-
-            table.toggle_pct_data_span_position()
+            table.toggle_headers()
 
     def show_cum_data_changed():
         for table in tables:
@@ -714,34 +676,84 @@ def wl_widgets_table_settings_span_position(parent, tables):
         for table in tables:
             table.table_settings['show_breakdown_span_position'] = checkbox_show_breakdown_span_position.isChecked()
 
-            table.toggle_breakdown_span_position()
+            table.toggle_headers()
 
     def show_breakdown_file_changed():
+        if checkbox_show_breakdown_file.isChecked():
+            checkbox_show_total.setEnabled(True)
+        else:
+            checkbox_show_total.setEnabled(False)
+
         for table in tables:
             table.table_settings['show_breakdown_file'] = checkbox_show_breakdown_file.isChecked()
 
-            table.toggle_breakdown_file_span_position()
+            table.toggle_headers()
+
+    def show_total_changed():
+        if checkbox_show_total.isChecked():
+            checkbox_show_breakdown_file.setEnabled(True)
+        else:
+            checkbox_show_breakdown_file.setEnabled(False)
+
+        for table in tables:
+            table.table_settings['show_total'] = checkbox_show_total.isChecked()
+
+            table.toggle_headers()
 
     checkbox_show_pct_data = QtWidgets.QCheckBox(_tr('wl_widgets', 'Show percentage data'), parent)
-    checkbox_show_cum_data = QtWidgets.QCheckBox(_tr('wl_widgets', 'Show cumulative data'), parent)
-    checkbox_show_breakdown_span_position = QtWidgets.QCheckBox(_tr('wl_widgets', 'Show breakdown by span position'), parent)
-    checkbox_show_breakdown_file = QtWidgets.QCheckBox(_tr('wl_widgets', 'Show breakdown by file'), parent)
 
     checkbox_show_pct_data.stateChanged.connect(show_pct_data_changed)
-    checkbox_show_cum_data.stateChanged.connect(show_cum_data_changed)
-    checkbox_show_breakdown_span_position.stateChanged.connect(show_breakdown_span_position_changed)
-    checkbox_show_breakdown_file.stateChanged.connect(show_breakdown_file_changed)
 
     show_pct_data_changed()
-    show_cum_data_changed()
-    show_breakdown_span_position_changed()
-    show_breakdown_file_changed()
 
-    return (
-        checkbox_show_pct_data,
-        checkbox_show_cum_data,
-        checkbox_show_breakdown_span_position, checkbox_show_breakdown_file
-    )
+    if tables[0].tab in (
+        'readability',
+        'wordlist_generator',
+        'ngram_generator',
+        'collocation_extractor',
+        'colligation_extractor',
+        'keyword_extractor'
+    ):
+        checkbox_show_cum_data = QtWidgets.QCheckBox(_tr('wl_widgets', 'Show cumulative data'), parent)
+        checkbox_show_breakdown_file = QtWidgets.QCheckBox(_tr('wl_widgets', 'Show breakdown by file'), parent)
+        checkbox_show_total = QtWidgets.QCheckBox(_tr('wl_widgets', 'Show total'), parent)
+
+        checkbox_show_cum_data.stateChanged.connect(show_cum_data_changed)
+        checkbox_show_breakdown_file.stateChanged.connect(show_breakdown_file_changed)
+        checkbox_show_total.stateChanged.connect(show_total_changed)
+
+        show_cum_data_changed()
+        show_breakdown_file_changed()
+        show_total_changed()
+
+    if tables[0].tab in (
+        'collocation_extractor',
+        'colligation_extractor'
+    ):
+        checkbox_show_breakdown_span_position = QtWidgets.QCheckBox(_tr('wl_widgets', 'Show breakdown by span position'), parent)
+
+        checkbox_show_breakdown_span_position.stateChanged.connect(show_breakdown_span_position_changed)
+
+        show_breakdown_span_position_changed()
+
+    match tables[0].tab:
+        case 'readability' | 'wordlist_generator' | 'ngram_generator' | 'keyword_extractor':
+            return (
+                checkbox_show_pct_data,
+                checkbox_show_cum_data,
+                checkbox_show_breakdown_file,
+                checkbox_show_total
+            )
+        case 'concordancer' | 'concordancer_parallel' | 'dependency_parser':
+            return checkbox_show_pct_data
+        case 'collocation_extractor' | 'colligation_extractor':
+            return (
+                checkbox_show_pct_data,
+                checkbox_show_cum_data,
+                checkbox_show_breakdown_span_position,
+                checkbox_show_breakdown_file,
+                checkbox_show_total
+            )
 
 # Figure Settings
 class Wl_Combo_Box_File_Fig_Settings(wl_boxes.Wl_Combo_Box_File):

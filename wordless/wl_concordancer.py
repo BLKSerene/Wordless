@@ -244,17 +244,10 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         # Table Settings
         self.group_box_table_settings = QtWidgets.QGroupBox(self.tr('Table Settings'), self)
 
-        (
-            self.checkbox_show_pct_data,
-            self.checkbox_show_cum_data,
-            self.checkbox_show_breakdown_file
-        ) = wl_widgets.wl_widgets_table_settings(
+        self.checkbox_show_pct_data = wl_widgets.wl_widgets_table_settings(
             self,
-            tables = [self.table_concordancer]
+            tables = (self.table_concordancer,)
         )
-
-        self.checkbox_show_cum_data.hide()
-        self.checkbox_show_breakdown_file.hide()
 
         self.checkbox_show_pct_data.stateChanged.connect(self.table_settings_changed)
 
@@ -500,7 +493,7 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
             search_settings = self.main.settings_custom['concordancer']['search_settings']
         ):
             if self.main.settings_custom['concordancer']['token_settings']['assign_pos_tags']:
-                nlp_support_ok = wl_checks_work_area.check_nlp_support(self.main, nlp_utils = ['pos_taggers'])
+                nlp_support_ok = wl_checks_work_area.check_nlp_support(self.main, nlp_utils = ('pos_taggers',))
             else:
                 nlp_support_ok = True
 
@@ -616,7 +609,7 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
 
                 self.enable_updates()
 
-                self.toggle_pct_data()
+                self.toggle_headers()
             except Exception:
                 err_msg = traceback.format_exc()
             finally:
@@ -629,7 +622,7 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
             search_settings = self.main.settings_custom['concordancer']['search_settings']
         ):
             if self.main.settings_custom['concordancer']['token_settings']['assign_pos_tags']:
-                nlp_support_ok = wl_checks_work_area.check_nlp_support(self.main, nlp_utils = ['pos_taggers'])
+                nlp_support_ok = wl_checks_work_area.check_nlp_support(self.main, nlp_utils = ('pos_taggers',))
             else:
                 nlp_support_ok = True
 

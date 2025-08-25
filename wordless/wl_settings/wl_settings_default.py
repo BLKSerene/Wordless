@@ -169,7 +169,8 @@ def init_settings_default(main):
             'table_settings': {
                 'show_pct_data': True,
                 'show_cum_data': False,
-                'show_breakdown_file': True
+                'show_breakdown_file': True,
+                'show_total': True
             }
         },
 
@@ -513,7 +514,8 @@ def init_settings_default(main):
             'table_settings': {
                 'show_pct_data': True,
                 'show_cum_data': False,
-                'show_breakdown_file': True
+                'show_breakdown_file': True,
+                'show_total': True
             },
 
             'fig_settings': {
@@ -675,7 +677,8 @@ def init_settings_default(main):
             'table_settings': {
                 'show_pct_data': True,
                 'show_cum_data': False,
-                'show_breakdown_file': True
+                'show_breakdown_file': True,
+                'show_total': True
             },
 
             'fig_settings': {
@@ -827,7 +830,8 @@ def init_settings_default(main):
                 'show_pct_data': True,
                 'show_cum_data': False,
                 'show_breakdown_span_position': True,
-                'show_breakdown_file': True
+                'show_breakdown_file': True,
+                'show_total': True
             },
 
             'fig_settings': {
@@ -1003,7 +1007,8 @@ def init_settings_default(main):
                 'show_pct_data': True,
                 'show_cum_data': False,
                 'show_breakdown_span_position': True,
-                'show_breakdown_file': True
+                'show_breakdown_file': True,
+                'show_total': True
             },
 
             'fig_settings': {
@@ -1120,7 +1125,8 @@ def init_settings_default(main):
             'table_settings': {
                 'show_pct_data': True,
                 'show_cum_data': False,
-                'show_breakdown_file': True
+                'show_breakdown_file': True,
+                'show_total': True
             },
 
             'fig_settings': {

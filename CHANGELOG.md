@@ -20,7 +20,8 @@
 
 ## [3.7.0](https://github.com/BLKSerene/Wordless/releases/tag/3.7.0) - ??/??/2025
 ### 🎉 New Features
-- Settings: Add Tables - Miscellaneous Settings
+- Settings: Add Settings - Tables - Miscellaneous Settings
+- Work Area: Add Work Area - Table Settings - Show total
 
 ### 🔧 Bugfixes
 - Work Area: Fix Profiler - Syntactic Complexity

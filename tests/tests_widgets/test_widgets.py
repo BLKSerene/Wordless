@@ -134,29 +134,20 @@ def test_wl_widgets_measures_collocation_keyword_extraction():
 
 def test_wl_widgets_table_settings():
     table = QtWidgets.QTableView()
-    table.table_settings = {'show_pct_data': True, 'show_cum_data': True, 'show_breakdown_file': True}
-    table.is_empty = lambda: False
-    table.toggle_pct_data = lambda: None
-    table.toggle_cum_data = lambda: None
-    table.toggle_breakdown_file = lambda: None
 
-    wl_widgets.wl_widgets_table_settings(main, tables = [table])
-
-def test_wl_widgets_table_settings_span_position():
-    table = QtWidgets.QTableView()
+    table.tab = 'test'
     table.table_settings = {
         'show_pct_data': True,
         'show_cum_data': True,
-        'show_breakdown_span_position': True,
-        'show_breakdown_file': True
+        'show_breakdown_file': True,
+        'show_total': True
     }
-    table.is_empty = lambda: False
-    table.toggle_pct_data_span_position = lambda: None
-    table.toggle_cum_data = lambda: None
-    table.toggle_breakdown_span_position = lambda: None
-    table.toggle_breakdown_file_span_position = lambda: None
 
-    wl_widgets.wl_widgets_table_settings_span_position(main, tables = [table])
+    table.is_empty = lambda: False
+    table.toggle_headers = lambda: None
+    table.toggle_cum_data = lambda: None
+
+    wl_widgets.wl_widgets_table_settings(main, tables = (table,))
 
 def test_wl_combo_box_file_fig_settings():
     main.settings_custom['file_area']['files_open'] = [{'selected': True, 'name': 'test'}]
@@ -228,7 +219,6 @@ if __name__ == '__main__':
     test_wl_widgets_measures_collocation_keyword_extraction()
 
     test_wl_widgets_table_settings()
-    test_wl_widgets_table_settings_span_position()
 
     test_wl_combo_box_file_fig_settings()
     test_wl_widgets_fig_settings()

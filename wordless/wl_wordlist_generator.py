@@ -161,20 +161,23 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
         (
             self.checkbox_show_pct_data,
             self.checkbox_show_cum_data,
-            self.checkbox_show_breakdown_file
+            self.checkbox_show_breakdown_file,
+            self.checkbox_show_total
         ) = wl_widgets.wl_widgets_table_settings(
             self,
-            tables = [self.table_wordlist_generator]
+            tables = (self.table_wordlist_generator,)
         )
 
         self.checkbox_show_pct_data.stateChanged.connect(self.table_settings_changed)
         self.checkbox_show_cum_data.stateChanged.connect(self.table_settings_changed)
         self.checkbox_show_breakdown_file.stateChanged.connect(self.table_settings_changed)
+        self.checkbox_show_total.stateChanged.connect(self.table_settings_changed)
 
         self.group_box_table_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct_data, 0, 0)
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_cum_data, 1, 0)
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown_file, 2, 0)
+        self.group_box_table_settings.layout().addWidget(self.checkbox_show_total, 3, 0)
 
         # Figure Settings
         self.group_box_fig_settings = QtWidgets.QGroupBox(self.tr('Figure Settings'), self)
@@ -283,6 +286,7 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
         self.checkbox_show_pct_data.setChecked(settings['table_settings']['show_pct_data'])
         self.checkbox_show_cum_data.setChecked(settings['table_settings']['show_cum_data'])
         self.checkbox_show_breakdown_file.setChecked(settings['table_settings']['show_breakdown_file'])
+        self.checkbox_show_total.setChecked(settings['table_settings']['show_total'])
 
         # Figure Settings
         self.combo_box_graph_type.setCurrentText(settings['fig_settings']['graph_type'])
@@ -336,6 +340,7 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
         settings['show_pct_data'] = self.checkbox_show_pct_data.isChecked()
         settings['show_cum_data'] = self.checkbox_show_cum_data.isChecked()
         settings['show_breakdown_file'] = self.checkbox_show_breakdown_file.isChecked()
+        settings['show_total'] = self.checkbox_show_total.isChecked()
 
     def fig_settings_changed(self):
         settings = self.main.settings_custom['wordlist_generator']['fig_settings']
@@ -375,7 +380,7 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
     @wl_misc.log_time
     def generate_table(self):
         if self.main.settings_custom['wordlist_generator']['token_settings']['assign_pos_tags']:
-            nlp_support = wl_checks_work_area.check_nlp_support(self.main, nlp_utils = ['pos_taggers'])
+            nlp_support = wl_checks_work_area.check_nlp_support(self.main, nlp_utils = ('pos_taggers',))
         else:
             nlp_support = True
 
@@ -420,20 +425,22 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
                 for file in files + [{'name': self.tr('Total')}]:
                     if file['name'] == self.tr('Total'):
                         is_breakdown_file = False
+                        is_total = True
                     else:
                         is_breakdown_file = True
+                        is_total = False
 
                     self.ins_header_hor(
                         self.model().columnCount() - 2,
                         self.tr('[{}]\nFrequency').format(file['name']),
                         is_int = True, is_cum = True,
-                        is_breakdown_file = is_breakdown_file
+                        is_breakdown_file = is_breakdown_file, is_total = is_total
                     )
                     self.ins_header_hor(
                         self.model().columnCount() - 2,
                         self.tr('[{}]\nFrequency %').format(file['name']),
                         is_pct = True, is_cum = True,
-                        is_breakdown_file = is_breakdown_file
+                        is_breakdown_file = is_breakdown_file, is_total = is_total
                     )
 
                     if measure_dispersion != 'none':
@@ -441,7 +448,7 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
                             self.model().columnCount() - 2,
                             f'[{file["name"]}]\n{col_text_dispersion}',
                             is_float = True,
-                            is_breakdown_file = is_breakdown_file
+                            is_breakdown_file = is_breakdown_file, is_total = is_total
                         )
 
                     if measure_adjusted_freq != 'none':
@@ -449,14 +456,20 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
                             self.model().columnCount() - 2,
                             f'[{file["name"]}]\n{col_text_adjusted_freq}',
                             is_float = True,
-                            is_breakdown_file = is_breakdown_file
+                            is_breakdown_file = is_breakdown_file, is_total = is_total
                         )
 
-                # Sort by frequency of the first file
-                self.horizontalHeader().setSortIndicator(
-                    self.find_header_hor(self.tr('[{}]\nFrequency').format(files[0]['name'])),
-                    QtCore.Qt.DescendingOrder
-                )
+                # Default sorting
+                if settings['table_settings']['show_breakdown_file']:
+                    self.horizontalHeader().setSortIndicator(
+                        self.find_header_hor(self.tr('[{}]\nFrequency').format(files[0]['name'])),
+                        QtCore.Qt.DescendingOrder
+                    )
+                else:
+                    self.horizontalHeader().setSortIndicator(
+                        self.find_header_hor(self.tr('[Total]\nFrequency')),
+                        QtCore.Qt.DescendingOrder
+                    )
 
                 cols_freq = self.find_headers_hor(self.tr('\nFrequency'))
                 cols_freq_pct = self.find_headers_hor(self.tr('\nFrequency %'))
@@ -537,9 +550,8 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
 
                 self.enable_updates()
 
-                self.toggle_pct_data()
+                self.toggle_headers()
                 self.toggle_cum_data()
-                self.toggle_breakdown_file()
                 self.update_ranks()
             except Exception:
                 err_msg = traceback.format_exc()
@@ -549,7 +561,7 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
     @wl_misc.log_time
     def generate_fig(self):
         if self.main.settings_custom['wordlist_generator']['token_settings']['assign_pos_tags']:
-            nlp_support = wl_checks_work_area.check_nlp_support(self.main, nlp_utils = ['pos_taggers'])
+            nlp_support = wl_checks_work_area.check_nlp_support(self.main, nlp_utils = ('pos_taggers',))
         else:
             nlp_support = True
 

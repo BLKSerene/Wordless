@@ -167,17 +167,10 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
         # Table Settings
         self.group_box_table_settings = QtWidgets.QGroupBox(self.tr('Table Settings'), self)
 
-        (
-            self.checkbox_show_pct_data,
-            self.checkbox_show_cum_data,
-            self.checkbox_show_breakdown_file
-        ) = wl_widgets.wl_widgets_table_settings(
+        self.checkbox_show_pct_data = wl_widgets.wl_widgets_table_settings(
             self,
-            tables = [self.table_dependency_parser]
+            tables = (self.table_dependency_parser,)
         )
-
-        self.checkbox_show_cum_data.hide()
-        self.checkbox_show_breakdown_file.hide()
 
         self.checkbox_show_pct_data.stateChanged.connect(self.table_settings_changed)
 
@@ -378,15 +371,11 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Filter_Search):
             search_settings = self.main.settings_custom['dependency_parser']['search_settings']
         ):
             if self.main.settings_custom['dependency_parser']['token_settings']['assign_pos_tags']:
-                nlp_support_ok = wl_checks_work_area.check_nlp_support(
-                    self.main,
-                    nlp_utils = ['pos_taggers', 'dependency_parsers']
-                )
+                nlp_utils = ('pos_taggers', 'dependency_parsers')
             else:
-                nlp_support_ok = wl_checks_work_area.check_nlp_support(
-                    self.main,
-                    nlp_utils = ['dependency_parsers']
-                )
+                nlp_utils = ('dependency_parsers',)
+
+            nlp_support_ok = wl_checks_work_area.check_nlp_support(self.main, nlp_utils = nlp_utils)
 
             if nlp_support_ok:
                 self.worker_dependency_parser_table = Wl_Worker_Dependency_Parser(
@@ -449,7 +438,7 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Filter_Search):
 
                 self.enable_updates()
 
-                self.toggle_pct_data()
+                self.toggle_headers()
             except Exception:
                 err_msg = traceback.format_exc()
             finally:

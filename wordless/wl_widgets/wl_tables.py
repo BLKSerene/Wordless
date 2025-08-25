@@ -67,7 +67,13 @@ class Wl_Table(QtWidgets.QTableView):
         self.header_orientation = header_orientation
 
         self.settings = self.main.settings_custom
-        self.table_settings = {}
+        self.table_settings = {
+            'show_pct_data': True,
+            'show_cum_data': False,
+            'show_breakdown_span_position': True,
+            'show_breakdown_file': True,
+            'show_total': True
+        }
 
         model = QtGui.QStandardItemModel()
         model.table = self
@@ -1134,7 +1140,8 @@ class Wl_Table_Data(Wl_Table):
         headers_int = None, headers_float = None,
         headers_pct = None, headers_p_val = None,
         headers_cum = None,
-        cols_breakdown_file = None, cols_breakdown_span_position = None,
+        cols_breakdown_span_position = None,
+        cols_breakdown_file = None, cols_total = None,
         enable_sorting = False, generate_fig = True
     ):
         super().__init__(
@@ -1150,8 +1157,9 @@ class Wl_Table_Data(Wl_Table):
         self.headers_pct_old = headers_pct or set()
         self.headers_p_val_old = headers_p_val or set()
         self.headers_cum_old = headers_cum or set()
-        self.cols_breakdown_file_old = cols_breakdown_file or set()
         self.cols_breakdown_span_position_old = cols_breakdown_span_position or set()
+        self.cols_breakdown_file_old = cols_breakdown_file or set()
+        self.cols_total_old = cols_total or set()
 
         self.enable_sorting = enable_sorting
 
@@ -1230,14 +1238,16 @@ class Wl_Table_Data(Wl_Table):
         is_int = False, is_float = False,
         is_pct = False, is_p_val = False,
         is_cum = False,
-        is_breakdown_file = False, is_breakdown_span_position = False
+        is_breakdown_span_position = False,
+        is_breakdown_file = False, is_total = False
     ):
         self.ins_header_hor(
             i = self.model().columnCount(), label = label,
             is_int = is_int, is_float = is_float,
             is_pct = is_pct, is_p_val = is_p_val,
             is_cum = is_cum,
-            is_breakdown_file = is_breakdown_file, is_breakdown_span_position = is_breakdown_span_position
+            is_breakdown_span_position = is_breakdown_span_position,
+            is_breakdown_file = is_breakdown_file, is_total = is_total
         )
 
     def add_header_vert(
@@ -1258,7 +1268,8 @@ class Wl_Table_Data(Wl_Table):
         is_int = False, is_float = False,
         is_pct = False, is_p_val = False,
         is_cum = False,
-        is_breakdown_file = False, is_breakdown_span_position = False
+        is_breakdown_span_position = False,
+        is_breakdown_file = False, is_total = False
     ):
         # Re-calculate column indexes
         if self.header_orientation == 'hor':
@@ -1268,13 +1279,17 @@ class Wl_Table_Data(Wl_Table):
             headers_p_val = [self.model().horizontalHeaderItem(col).text() for col in self.headers_p_val]
             headers_cum = [self.model().horizontalHeaderItem(col).text() for col in self.headers_cum]
 
+        cols_breakdown_span_position = [
+            self.model().horizontalHeaderItem(col).text()
+            for col in self.cols_breakdown_span_position
+        ]
         cols_breakdown_file = [
             self.model().horizontalHeaderItem(col).text()
             for col in self.cols_breakdown_file
         ]
-        cols_breakdown_span_position = [
+        cols_total = [
             self.model().horizontalHeaderItem(col).text()
-            for col in self.cols_breakdown_span_position
+            for col in self.cols_total
         ]
 
         headers = list(self.get_header_labels_hor())
@@ -1300,18 +1315,24 @@ class Wl_Table_Data(Wl_Table):
             self.headers_p_val = {self.find_header_hor(header) for header in headers_p_val}
             self.headers_cum = {self.find_header_hor(header) for header in headers_cum}
 
-        if is_breakdown_file:
-            cols_breakdown_file.append(label)
         if is_breakdown_span_position:
             cols_breakdown_span_position.append(label)
+        if is_breakdown_file:
+            cols_breakdown_file.append(label)
+        if is_total:
+            cols_total.append(label)
 
+        self.cols_breakdown_span_position = {
+            self.find_header_hor(header)
+            for header in cols_breakdown_span_position
+        }
         self.cols_breakdown_file = {
             self.find_header_hor(header)
             for header in cols_breakdown_file
         }
-        self.cols_breakdown_span_position = {
+        self.cols_total = {
             self.find_header_hor(header)
-            for header in cols_breakdown_span_position
+            for header in cols_total
         }
 
     def ins_header_vert(
@@ -1492,54 +1513,53 @@ class Wl_Table_Data(Wl_Table):
 
             self.enable_updates()
 
-    def toggle_pct_data(self):
+    def toggle_headers(self):
         self.disable_updates()
 
-        match (self.header_orientation, self.table_settings['show_pct_data']):
-            case ('hor', True):
-                for col in self.headers_pct:
-                    if (
-                        col not in self.cols_breakdown_file
-                        or self.table_settings['show_breakdown_file']
-                    ):
-                        self.showColumn(col)
-            case ('hor', False):
-                for col in self.headers_pct:
+        cols_hide = set()
+
+        match self.header_orientation:
+            case 'hor':
+                if not self.table_settings['show_pct_data']:
+                    cols_hide |= self.headers_pct
+
+                if not self.table_settings['show_breakdown_span_position']:
+                    cols_hide |= self.cols_breakdown_span_position
+
+                if not self.table_settings['show_breakdown_file']:
+                    cols_hide |= self.cols_breakdown_file
+
+                if not self.table_settings['show_total']:
+                    cols_hide |= self.cols_total
+
+                for col in cols_hide:
                     self.hideColumn(col)
-            case ('vert', True):
-                for row in self.headers_pct:
-                    self.showRow(row)
-            case ('vert', False):
-                for row in self.headers_pct:
+
+                for col in set(range(self.model().columnCount())) - cols_hide:
+                    self.showColumn(col)
+            case 'vert':
+                rows_hide = set()
+
+                if not self.table_settings['show_pct_data']:
+                    rows_hide |= self.headers_pct
+
+                if not self.table_settings['show_breakdown_file']:
+                    cols_hide |= self.cols_breakdown_file
+
+                if not self.table_settings['show_total']:
+                    cols_hide |= self.cols_total
+
+                for row in rows_hide:
                     self.hideRow(row)
 
-        self.enable_updates()
-
-    def toggle_pct_data_span_position(self):
-        self.disable_updates()
-
-        match (self.header_orientation, self.table_settings['show_pct_data']):
-            case ('hor', True):
-                for col in self.headers_pct:
-                    if (
-                        (
-                            col not in self.cols_breakdown_file
-                            or self.table_settings['show_breakdown_file']
-                        ) and (
-                            col not in self.cols_breakdown_span_position
-                            or self.table_settings['show_breakdown_span_position']
-                        )
-                    ):
-                        self.showColumn(col)
-            case ('hor', False):
-                for col in self.headers_pct:
-                    self.hideColumn(col)
-            case ('vert', True):
-                for row in self.headers_pct:
+                for row in set(range(self.model().rowCount())) - rows_hide:
                     self.showRow(row)
-            case ('vert', False):
-                for row in self.headers_pct:
-                    self.hideRow(row)
+
+                for col in cols_hide:
+                    self.hideColumn(col)
+
+                for col in set(range(self.model().columnCount())) - cols_hide:
+                    self.showColumn(col)
 
         self.enable_updates()
 
@@ -1649,67 +1669,6 @@ class Wl_Table_Data(Wl_Table):
         if self.enable_sorting:
             self.setSortingEnabled(True)
 
-    def toggle_breakdown_file(self):
-        self.disable_updates()
-
-        if self.table_settings['show_breakdown_file']:
-            for col in self.cols_breakdown_file:
-                if (
-                    self.header_orientation == 'vert'
-                    or col not in self.headers_pct
-                    or self.table_settings['show_pct_data']
-                ):
-                    self.showColumn(col)
-        else:
-            for col in self.cols_breakdown_file:
-                self.hideColumn(col)
-
-        self.enable_updates()
-
-    def toggle_breakdown_file_span_position(self):
-        self.disable_updates()
-
-        if self.table_settings['show_breakdown_file']:
-            for col in self.cols_breakdown_file:
-                if (
-                    (
-                        self.header_orientation == 'vert'
-                        or col not in self.headers_pct
-                        or self.table_settings['show_pct_data']
-                    ) and (
-                        col not in self.cols_breakdown_span_position
-                        or self.table_settings['show_breakdown_span_position']
-                    )
-                ):
-                    self.showColumn(col)
-        else:
-            for col in self.cols_breakdown_file:
-                self.hideColumn(col)
-
-        self.enable_updates()
-
-    def toggle_breakdown_span_position(self):
-        self.disable_updates()
-
-        if self.table_settings['show_breakdown_span_position']:
-            for col in self.cols_breakdown_span_position:
-                if (
-                    (
-                        self.header_orientation == 'vert'
-                        or col not in self.headers_pct
-                        or self.table_settings['show_pct_data']
-                    ) and (
-                        col not in self.cols_breakdown_file
-                        or self.table_settings['show_breakdown_file']
-                    )
-                ):
-                    self.showColumn(col)
-        else:
-            for col in self.cols_breakdown_span_position:
-                self.hideColumn(col)
-
-        self.enable_updates()
-
     def filter_table(self):
         self.disable_updates()
 
@@ -1796,13 +1755,17 @@ class Wl_Table_Data(Wl_Table):
                     self.headers_p_val = {self.find_header_vert(header) for header in self.headers_p_val_old}
                     self.headers_cum = {self.find_header_vert(header) for header in self.headers_cum_old}
 
+            self.cols_breakdown_span_position = {
+                self.find_header_hor(col)
+                for col in self.cols_breakdown_span_position_old
+            }
             self.cols_breakdown_file = {
                 self.find_header_hor(col)
                 for col in self.cols_breakdown_file_old
             }
-            self.cols_breakdown_span_position = {
+            self.cols_total = {
                 self.find_header_hor(col)
-                for col in self.cols_breakdown_span_position_old
+                for col in self.cols_total_old
             }
 
             self.results_saved = False
@@ -1821,7 +1784,8 @@ class Wl_Table_Data_Search(Wl_Table_Data):
         headers_int = None, headers_float = None,
         headers_pct = None, headers_p_val = None,
         headers_cum = None,
-        cols_breakdown_file = None, cols_breakdown_span_position = None,
+        cols_breakdown_span_position = None,
+        cols_breakdown_file = None, cols_total = None,
         enable_sorting = False, generate_fig = True
     ):
         super().__init__(
@@ -1830,7 +1794,8 @@ class Wl_Table_Data_Search(Wl_Table_Data):
             headers_int, headers_float,
             headers_pct, headers_p_val,
             headers_cum,
-            cols_breakdown_file, cols_breakdown_span_position,
+            cols_breakdown_span_position,
+            cols_breakdown_file, cols_total,
             enable_sorting, generate_fig
         )
 
@@ -1877,7 +1842,8 @@ class Wl_Table_Data_Sort_Search(Wl_Table_Data):
         headers_int = None, headers_float = None,
         headers_pct = None, headers_p_val = None,
         headers_cum = None,
-        cols_breakdown_file = None, cols_breakdown_span_position = None,
+        cols_breakdown_span_position = None,
+        cols_breakdown_file = None, cols_total = None,
         enable_sorting = False, generate_fig = True
     ):
         super().__init__(
@@ -1886,7 +1852,8 @@ class Wl_Table_Data_Sort_Search(Wl_Table_Data):
             headers_int, headers_float,
             headers_pct, headers_p_val,
             headers_cum,
-            cols_breakdown_file, cols_breakdown_span_position,
+            cols_breakdown_span_position,
+            cols_breakdown_file, cols_total,
             enable_sorting, generate_fig
         )
 
@@ -1944,7 +1911,8 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
         headers_int = None, headers_float = None,
         headers_pct = None, headers_p_val = None,
         headers_cum = None,
-        cols_breakdown_file = None, cols_breakdown_span_position = None,
+        cols_breakdown_span_position = None,
+        cols_breakdown_file = None, cols_total = None,
         enable_sorting = False, generate_fig = True
     ):
         super().__init__(
@@ -1953,7 +1921,8 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
             headers_int, headers_float,
             headers_pct, headers_p_val,
             headers_cum,
-            cols_breakdown_file, cols_breakdown_span_position,
+            cols_breakdown_span_position,
+            cols_breakdown_file, cols_total,
             enable_sorting, generate_fig
         )
 
