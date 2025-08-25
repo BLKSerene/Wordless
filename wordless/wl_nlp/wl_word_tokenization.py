@@ -257,6 +257,15 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
 
                         for sentence in sentences:
                             tokens_multilevel[-1].append(underthesea.word_tokenize(str(sentence)))
+                    # Other languages
+                    case 'wordless_other_char':
+                        sentences = wl_sentence_tokenization.wl_sentence_tokenize(
+                            main, line,
+                            lang = 'other'
+                        )
+
+                        for sentence in sentences:
+                            tokens_multilevel[-1].append(list(''.join(line.split())))
 
     # Tokenize as sentence segments
     for para in tokens_multilevel:

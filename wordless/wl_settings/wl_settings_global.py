@@ -746,8 +746,9 @@ def init_settings_global():
 
                 _tr('wl_settings_global', 'Underthesea - Vietnamese word tokenizer'): 'underthesea_vie',
 
+                _tr('wl_settings_global', 'Wordless - character tokenizer'): 'wordless_other_char',
                 _tr('wl_settings_global', 'Wordless - Chinese character tokenizer'): 'wordless_zho_char',
-                _tr('wl_settings_global', 'Wordless - Japanese kanji tokenizer'): 'wordless_jpn_kanji'
+                _tr('wl_settings_global', 'Wordless - Japanese kanji tokenizer'): 'wordless_jpn_kanji',
             },
 
             'syl_tokenizers': {
@@ -2579,7 +2580,8 @@ def init_settings_global():
                 'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_eng',
-                'stanza_eng'
+                'stanza_eng',
+                'wordless_other_char'
             )
         },
 
