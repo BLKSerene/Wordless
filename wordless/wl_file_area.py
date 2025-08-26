@@ -644,7 +644,7 @@ class Wl_Dialog_Open_Corpora(wl_dialogs.Wl_Dialog):
         # Display warning when opening non-text files
         if (
             any((
-                os.path.splitext(file_path)[1].lower() not in ('.csv', '.lrc', '.txt', '.tmx', '.xml')
+                os.path.splitext(file_path)[1].lower() not in ('.csv', '.lrc', '.srt', '.txt', '.tmx', '.xml')
                 for file_path in file_paths
             ))
             and self.main.settings_custom['files']['misc_settings']['display_warning_when_opening_nontext_files']
@@ -930,8 +930,10 @@ LRC_TIME_TAGS_VALID = r'[0-9]{2}:[0-5][0-9][\.:][0-9]{2,3}'
 RE_LRC_TIME_TAGS_LINE_START = re.compile(r'^\[[^\]]+?\]')
 RE_LRC_TIME_TAGS_VALID = re.compile(fr'^\[{LRC_TIME_TAGS_VALID}\]$')
 RE_LRC_TIME_TAGS_WORDS = re.compile(fr'\<{LRC_TIME_TAGS_VALID}\>')
+RE_SRT_BLOCK_NO = re.compile(r'[1-9][0-9]*')
+RE_SRT_TIMESTAMP = re.compile(r'[0-9]{2}:[0-9]{2}:[0-9]{2},[0-9]{3} --> [0-9]{2}:[0-9]{2}:[0-9]{2},[0-9]{3}')
 
-def get_text_non_tmx(file):
+def get_text_non_tmx(worker, file):
     file_path = file['path_orig']
     file_ext = os.path.splitext(os.path.basename(file_path))[1].lower()
 
@@ -949,6 +951,9 @@ def get_text_non_tmx(file):
                 csv_reader = csv.reader([line.replace('\0', '') for line in f])
 
                 for row in csv_reader:
+                    if not worker._running:
+                        raise wl_excs.Wl_Exc_Aborted(worker.main)
+
                     lines.append('\t'.join(row))
 
             text = '\n'.join(lines)
@@ -961,6 +966,9 @@ def get_text_non_tmx(file):
                 worksheet = workbook[worksheet_name]
 
                 for row in worksheet.rows:
+                    if not worker._running:
+                        raise wl_excs.Wl_Exc_Aborted(worker.main)
+
                     cells = [
                         # Numbers need to be converted to strings
                         (str(cell.value) if cell.value is not None else '')
@@ -982,6 +990,9 @@ def get_text_non_tmx(file):
 
             with open(file_path, 'r', encoding = file['encoding'], errors = 'replace') as f:
                 for line in f:
+                    if not worker._running:
+                        raise wl_excs.Wl_Exc_Aborted(worker.main)
+
                     time_tags = []
 
                     line = line.strip()
@@ -1011,9 +1022,39 @@ def get_text_non_tmx(file):
             prs = pptx.Presentation(file_path)
 
             for slide in prs.slides:
+                if not worker._running:
+                    raise wl_excs.Wl_Exc_Aborted(worker.main)
+
                 texts.extend(iter_slide_shapes(slide.shapes))
 
             text = '\n'.join(texts)
+        # SubRip subtitle files
+        case '.srt':
+            block_part = 'no'
+            subtitles = []
+
+            with open(file_path, 'r', encoding = file['encoding'], errors = 'replace') as f:
+                for line in f:
+                    if not worker._running:
+                        raise wl_excs.Wl_Exc_Aborted(worker.main)
+
+                    line = line.strip()
+
+                    match block_part:
+                        case 'no':
+                            if re.search(RE_SRT_BLOCK_NO, line):
+                                block_part = 'timestamp'
+                        case 'timestamp':
+                            if re.search(RE_SRT_TIMESTAMP, line):
+                                block_part = 'subtitle'
+                        case 'subtitle':
+                            if line:
+                                subtitles.append(line)
+                            # Blank lines
+                            else:
+                                block_part = 'no'
+
+            text = '\n'.join(subtitles)
         # Word documents
         # Reference: https://github.com/python-openxml/python-docx/issues/40#issuecomment-1793226714
         case '.docx':
@@ -1021,6 +1062,9 @@ def get_text_non_tmx(file):
             doc = docx.Document(file_path)
 
             for item in doc.iter_inner_content():
+                if not worker._running:
+                    raise wl_excs.Wl_Exc_Aborted(worker.main)
+
                 if isinstance(item, docx.text.paragraph.Paragraph):
                     lines.append(item.text)
                 elif isinstance(item, docx.table.Table):
@@ -1095,16 +1139,16 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                 default_encoding = self.main.settings_custom['files']['default_settings']['encoding']
 
                 if file_ext in ('.docx', '.xlsx'):
-                    new_file['encoding'] = default_encoding
+                    new_file['encoding'] = new_file['encoding_detect'] = default_encoding
                 else:
                     if self.main.settings_custom['file_area']['dialog_open_corpora']['auto_detect_encodings']:
-                        new_file['encoding'] = wl_detection.detect_encoding(self.main, file_path)
+                        new_file['encoding'] = new_file['encoding_detect'] = wl_detection.detect_encoding(self.main, file_path)
                     else:
-                        new_file['encoding'] = default_encoding
+                        new_file['encoding'] = new_file['encoding_detect'] = default_encoding
 
                 # Cleanse contents before language detection
                 if file_ext != '.tmx':
-                    new_file['text'] = get_text_non_tmx(new_file)
+                    new_file['text'] = get_text_non_tmx(self, new_file)
 
                     if self.main.settings_custom['file_area']['dialog_open_corpora']['auto_detect_langs']:
                         new_file['lang'] = wl_detection.detect_lang_text(self.main, new_file['text'])
@@ -1195,29 +1239,30 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
 
                 self.progress_updated.emit(self.tr('Opening files... ({}/{})').format(i + 1, len_files))
 
-                # Re-decode texts in case encoding settings are manually changed
-                file_ext = os.path.splitext(os.path.basename(file['path_orig']))[1].lower()
+                # Re-decode texts if encoding settings are manually changed
+                if file['encoding'] != file['encoding_detect']:
+                    file_ext = os.path.splitext(os.path.basename(file['path_orig']))[1].lower()
 
-                if file_ext != '.tmx':
-                    file['text'] = get_text_non_tmx(file)
-                else:
-                    lines = []
+                    if file_ext != '.tmx':
+                        file['text'] = get_text_non_tmx(self, file)
+                    else:
+                        lines = []
 
-                    with open(file['path_orig'], 'r', encoding = file['encoding'], errors = 'replace') as f:
-                        soup = bs4.BeautifulSoup(f.read(), 'lxml-xml')
+                        with open(file['path_orig'], 'r', encoding = file['encoding'], errors = 'replace') as f:
+                            soup = bs4.BeautifulSoup(f.read(), 'lxml-xml')
 
-                    for elements_tu in soup.select('tu'):
-                        if not self._running:
-                            raise wl_excs.Wl_Exc_Aborted(self.main)
+                        for elements_tu in soup.select('tu'):
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
 
-                        seg_src, seg_tgt = elements_tu.select('seg')
+                            seg_src, seg_tgt = elements_tu.select('seg')
 
-                        if file['tmx_type'] == 'src':
-                            lines.append(seg_src.get_text().replace(r'\n', ' ').strip())
-                        elif file['tmx_type'] == 'tgt':
-                            lines.append(seg_tgt.get_text().replace(r'\n', ' ').strip())
+                            if file['tmx_type'] == 'src':
+                                lines.append(seg_src.get_text().replace(r'\n', ' ').strip())
+                            elif file['tmx_type'] == 'tgt':
+                                lines.append(seg_tgt.get_text().replace(r'\n', ' ').strip())
 
-                    file['text'] = '\n'.join(lines)
+                        file['text'] = '\n'.join(lines)
 
                 # Remove header tags
                 with open(file['path'], 'w', encoding = file['encoding']) as f:

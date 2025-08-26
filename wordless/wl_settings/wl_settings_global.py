@@ -315,6 +315,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Lyrics files (*.lrc)'),
                 _tr('wl_settings_global', 'PDF files (*.pdf)'),
                 _tr('wl_settings_global', 'PowerPoint presentations (*.pptx)'),
+                _tr('wl_settings_global', 'SubRip subtitle files (*.srt)'),
                 _tr('wl_settings_global', 'Text files (*.txt)'),
                 _tr('wl_settings_global', 'Translation memory files (*.tmx)'),
                 _tr('wl_settings_global', 'Word documents (*.docx)'),

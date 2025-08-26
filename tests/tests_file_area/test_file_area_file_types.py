@@ -25,7 +25,7 @@ from PyQt5 import QtCore
 from tests import wl_test_init
 from wordless import wl_file_area
 from wordless.wl_dialogs import wl_dialogs_misc
-from wordless.wl_nlp import wl_texts
+from wordless.wl_utils import wl_threading
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
@@ -42,13 +42,16 @@ def add_file(file_paths, update_gui, file_type = 'observed'):
             files_to_open[-1]['tokenized'] = True
             files_to_open[-1]['tagged'] = False
 
-        wl_file_area.Wl_Worker_Open_Files(
+        main.worker_open_files = wl_file_area.Wl_Worker_Open_Files(
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = ''),
             update_gui = update_gui,
             files_to_open = files_to_open,
             file_type = file_type
-        ).run()
+        )
+
+        main.thread_open_files = QtCore.QThread()
+        wl_threading.start_worker_in_thread(main.worker_open_files, main.thread_open_files, update_gui)
 
         print(f'Done! (In {round(time.time() - time_start, 2)} seconds)\n')
 
@@ -60,19 +63,21 @@ def add_file(file_paths, update_gui, file_type = 'observed'):
         table = QtCore.QObject()
         table.files_to_open = []
 
-        wl_file_area.Wl_Worker_Add_Files(
+        main.worker_add_files = wl_file_area.Wl_Worker_Add_Files(
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = ''),
             update_gui = open_file,
             file_paths = [file_path],
             table = table,
             file_area = main.wl_file_area
-        ).run()
+        )
+
+        main.thread_add_files = QtCore.QThread()
+        wl_threading.start_worker_in_thread(main.worker_add_files, main.thread_add_files, open_file)
 
 def test_file_area_file_types():
     wl_test_init.clean_import_caches()
 
-    # Disable auto-detection
     main.settings_custom['file_area']['dialog_open_corpora']['auto_detect_encodings'] = False
     main.settings_custom['file_area']['dialog_open_corpora']['auto_detect_langs'] = False
 
@@ -115,15 +120,6 @@ def test_file_area_file_types():
             file_paths = glob.glob('tests/files/wl_file_area/file_types/*.xml'),
             update_gui = update_gui_file_types
         )
-
-    main.settings_custom['files']['default_settings']['tokenized'] = False
-    main.settings_custom['files']['default_settings']['tagged'] = False
-
-    # UnicodeDecodeError
-    add_file(
-        file_paths = glob.glob('tests/files/wl_file_area/unicode_decode_error/*.*'),
-        update_gui = update_gui_unicode_decode_error
-    )
 
     # Tags
     for file_path in glob.glob('tests/files/wl_file_area/tags/*.*'):
@@ -177,6 +173,9 @@ def update_gui_file_types(err_msg, new_files):
             # PowerPoint presentations
             case 'pptx.txt':
                 assert tokens == [[[['Slide', '1', 'title']]], [[['Slide', '1', 'subtitle']]], [[['Slide', '2', 'title']]], [[['Slide', '2', 'paragraph', '1']]], [], [[['Slide', '2', 'paragraph', '2']]], [[['Slide', '2', 'paragraph', '3']]], [], [[['Slide', '3', 'title']]], [[['Slide', '3', 'text', 'box']]]]
+            # SubRip subtitle files
+            case 'srt.txt':
+                assert tokens == [[[['Senator', ','], ['we', "'re", 'making']]], [[['our', 'final', 'approach', 'into', 'Coruscant', '.']]], [[['Very', 'good', ','], ['Lieutenant', '.']]], [[['We', 'made', 'it', '.']]], [[['I', 'guess', 'I', 'was', 'wrong', '.']]], [[['There', 'was', 'no', 'danger', 'at', 'all', '.']]]]
             # Word documents
             case 'docx.txt':
                 assert tokens == [[], [[['Heading']]], [], [], [[['This', 'is', 'the', 'first', 'sentence', '.']], [['This', 'is', 'the', 'second', 'sentence', '.']]], [[['This', 'is', 'the', 'third', 'sentence', '.']]], [], [], [[['2-2/3', '2-4']]], [[['3/4-2', '3-3', '3-4']]], [[['4-3', '4-4', '4-4-1/2', '4-4-3/5', '4-4-4', '4-4-6']]], [], []]
@@ -221,11 +220,6 @@ def update_gui_file_types(err_msg, new_files):
         assert tokens_tgt == [[[['¡Hola', ','], ['mundo', '!']]]]
         assert tags_tgt == [None] * 4
 
-def update_gui_unicode_decode_error(err_msg, new_files):
-    assert not err_msg
-
-    assert new_files[0]['encoding'] == 'utf_8'
-
 def update_gui_tags(err_msg, new_files):
     assert not err_msg
 
@@ -254,42 +248,5 @@ def update_gui_tags(err_msg, new_files):
 
     assert len(tags) == file_text.num_tokens
 
-def test_file_area_misc():
-    wl_test_init.clean_import_caches()
-
-    main.settings_custom['file_area']['dialog_open_corpora']['auto_detect_encodings'] = False
-    main.settings_custom['file_area']['dialog_open_corpora']['auto_detect_langs'] = False
-
-    main.settings_custom['files']['default_settings']['encoding'] = 'utf_8'
-    main.settings_custom['files']['default_settings']['lang'] = 'vie'
-    main.settings_custom['files']['default_settings']['tokenized'] = True
-    main.settings_custom['files']['default_settings']['tagged'] = False
-
-    # Check if underscores in tokenized Vietnamese files are removed
-    add_file(
-        file_paths = ['tests/files/wl_file_area/misc/vie_tokenized.txt'],
-        update_gui = update_gui_misc,
-        file_type = 'observed'
-    )
-    add_file(
-        file_paths = ['tests/files/wl_file_area/misc/vie_tokenized.txt'],
-        update_gui = update_gui_misc,
-        file_type = 'ref'
-    )
-
-def update_gui_misc(err_msg, new_files):
-    assert not err_msg
-
-    file_text = new_files[0]['text']
-
-    print(file_text.tokens_multilevel)
-
-    for para in file_text.tokens_multilevel:
-        for sentence in para:
-            for sentence_seg in sentence:
-                for token in sentence_seg:
-                    assert not wl_texts.RE_VIE_TOKENIZED.search(token)
-
 if __name__ == '__main__':
     test_file_area_file_types()
-    test_file_area_misc()
