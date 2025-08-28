@@ -63,12 +63,20 @@ LANG_TEXTS_NLTK = {
 
 def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
     sentences = []
+    convert_srp_script = False
 
     if lang not in main.settings_global['sentence_tokenizers']:
         lang = 'other'
 
     if sentence_tokenizer == 'default':
         sentence_tokenizer = main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings'][lang]
+
+    # Modify the language after the default sentence tokenizer is loaded and before the sentence tokenizer is initialized
+    if lang == 'srp_cyrl' and sentence_tokenizer == 'stanza_srp_latn':
+        lang = 'srp_latn'
+        convert_srp_script = True
+
+        text = wl_nlp_utils.to_srp_latn((text,))[0]
 
     wl_nlp_utils.init_sentence_tokenizers(
         main,
@@ -147,6 +155,9 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
             # Vietnamese
             elif sentence_tokenizer == 'underthesea_vie':
                 sentences.extend(underthesea.sent_tokenize(line))
+
+    if convert_srp_script:
+        sentences = wl_nlp_utils.to_srp_cyrl(sentences)
 
     return wl_texts.clean_texts(sentences)
 

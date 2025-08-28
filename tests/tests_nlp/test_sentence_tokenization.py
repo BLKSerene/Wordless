@@ -31,10 +31,17 @@ langs_sentence_tokenize = []
 
 for lang, sentence_tokenizers in main.settings_global['sentence_tokenizers'].items():
     for sentence_tokenizer in sentence_tokenizers:
-        if not sentence_tokenizer.startswith(('spacy_', 'stanza_')):
+        if (
+            not sentence_tokenizer.startswith(('spacy_', 'stanza_'))
+            # Skip tests of spaCy's and Stanza's sentence tokenizers for most languages
+            or (
+                lang in ('eng_gb', 'eng_us', 'srp_cyrl', 'srp_latn', 'other')
+                and not sentence_tokenizer.startswith(('spacy_dependency_parser_', 'stanza_'))
+            )
+        ):
             langs_sentence_tokenize.append((lang, sentence_tokenizer))
 
-langs_sentence_split = list(main.settings_global['sentence_tokenizers'].keys())
+langs_sentence_split = list(main.settings_global['sentence_tokenizers'])
 
 @pytest.mark.parametrize('lang, sentence_tokenizer', langs_sentence_tokenize)
 def test_sentence_tokenize(lang, sentence_tokenizer):
@@ -52,6 +59,9 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
     match lang:
         case 'dan' | 'ita' | 'nob' | 'por_br' | 'por_pt':
             assert len(sentences) == 3
+        case 'eng_gb' | 'eng_us' | 'srp_cyrl' | 'srp_latn' | 'other':
+            if sentence_tokenizer == 'spacy_sentencizer':
+                assert len(sentences) == 1
         case 'tha':
             match sentence_tokenizer:
                 case 'pythainlp_crfcut':
@@ -71,7 +81,13 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
         case 'nld':
             assert sentences == ['Het Nederlands is een West-Germaanse taal, de meest gebruikte taal in Nederland en België, de officiële taal van Suriname en een van de drie officiële talen van België.', 'Binnen het Koninkrijk der Nederlanden is het Nederlands ook een officiële taal van Aruba, Curaçao en Sint-Maarten.']
         case 'eng_gb' | 'eng_us' | 'other':
-            assert sentences == ['English is a West Germanic language in the Indo-European language family, whose speakers, called Anglophones, originated in early medieval England on the island of Great Britain.', '[4][5][6] The namesake of the language is the Angles, one of the Germanic peoples that migrated to Britain after its Roman occupiers left.']
+            match sentence_tokenizer:
+                case 'nltk_punkt_eng':
+                    assert sentences == ['English is a West Germanic language in the Indo-European language family, whose speakers, called Anglophones, originated in early medieval England on the island of Great Britain.', '[4][5][6] The namesake of the language is the Angles, one of the Germanic peoples that migrated to Britain after its Roman occupiers left.']
+                case 'spacy_sentencizer':
+                    assert sentences == ['English is a West Germanic language in the Indo-European language family, whose speakers, called Anglophones, originated in early medieval England on the island of Great Britain.[4][5][6] The namesake of the language is the Angles, one of the Germanic peoples that migrated to Britain after its Roman occupiers left.']
+                case _:
+                    tests_lang_util_skipped = True
         case 'est':
             assert sentences == ['Eesti keel (varasem nimetus maakeel) on läänemeresoome lõunarühma kuuluv keel.', 'Eesti keel on Eesti riigikeel ja 2004. aastast ka üks Euroopa Liidu ametlikke keeli.']
         case 'fin':
@@ -98,6 +114,10 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
             assert sentences == ['A língua portuguesa, também designada português, é uma língua indo-europeia românica flexiva ocidental originada no galego-português falado no Reino da Galiza e no norte de Portugal.', 'Com a criação do Reino de Portugal em 1139 e a expansão para o sul na sequência da Reconquista, deu-se a difusão da língua pelas terras conquistadas e, mais tarde, com as descobertas portuguesas, para o Brasil, África e outras partes do mundo.', '[9]']
         case 'rus':
             assert sentences == ['Русский язык (МФА: [ˈruskʲɪɪ̯ ɪ̯ɪˈzɨk]о файле)[~ 3] — язык восточнославянской группы славянской ветви индоевропейской языковой семьи, национальный язык русского народа.', 'Является одним из наиболее распространённых языков мира — восьмым среди всех языков мира по общей численности говорящих[5] и седьмым по численности владеющих им как родным (2022)[2].']
+        case 'srp_cyrl':
+            assert sentences == ['Српски језик припада словенској групи језика породице индоевропских језика.[12] Српски језик је званичан у Србији, Босни и Херцеговини и Црној Гори и говори га око 12 милиона људи.[13]']
+        case 'srp_latn':
+            assert sentences == ['Srpski jezik pripada slovenskoj grupi jezika porodice indoevropskih jezika.[12] Srpski jezik je zvaničan u Srbiji, Bosni i Hercegovini i Crnoj Gori i govori ga oko 12 miliona ljudi.[13]']
         case 'slv':
             assert sentences == ['Slovenščina [sloˈʋenʃtʃina] je združeni naziv za uradni knjižni jezik Slovencev in skupno ime za narečja in govore, ki jih govorijo ali so jih nekoč govorili Slovenci.', 'Govori ga okoli 2,5 (dva in pol) milijona govorcev po svetu, od katerih jih večina živi v Sloveniji.']
         case 'spa':
@@ -140,7 +160,7 @@ def test_sentence_split(lang):
     assert all(sentences_split)
 
     match lang:
-        case 'ara' | 'eus' | 'chu' | 'cop' | 'hrv' | 'eng_gb' | 'eng_us' | 'hbo' | 'isl' | 'ind' | 'orv' | 'srp_latn' | 'tha' | 'xct' | 'bod' | 'tur' | 'other':
+        case 'ara' | 'eus' | 'chu' | 'cop' | 'hrv' | 'eng_gb' | 'eng_us' | 'hbo' | 'isl' | 'ind' | 'orv' | 'srp_cyrl' | 'srp_latn' | 'tha' | 'xct' | 'bod' | 'tur' | 'other':
             assert len(sentences_split) == 1
         case 'xcl' | 'dan' | 'est' | 'grc' | 'kaz' | 'kpv' | 'pcm' | 'nno' | 'slk':
             assert len(sentences_split) == 3
@@ -313,6 +333,8 @@ def test_sentence_seg_tokenize(lang):
             assert sentence_segs == ['संस्कृतं जगत एकतमातिप्राचीना समृद्धा शास्त्रीया च भाषासु वर्तते।', 'संस्कृतं भारतस्य जगतो वा भाषास्वेकतमा\u200c प्राचीनतमा।']
         case 'gla':
             assert sentence_segs == ["'S i cànan dùthchasach na h-Alba a th' anns a' Ghàidhlig.", "'S i ball den teaghlach de chànanan Ceilteach dhen mheur Ghoidhealach a tha anns a' Ghàidhlig."]
+        case 'srp_cyrl':
+            assert sentence_segs == ['Српски језик припада словенској групи језика породице индоевропских језика.', '[12] Српски језик је званичан у Србији,', 'Босни и Херцеговини и Црној Гори и говори га око 12 милиона људи.', '[13]']
         case 'srp_latn':
             assert sentence_segs == ['Srpski jezik pripada slovenskoj grupi jezika porodice indoevropskih jezika.', '[12] Srpski jezik je zvaničan u Srbiji,', 'Bosni i Hercegovini i Crnoj Gori i govori ga oko 12 miliona ljudi.', '[13]']
         case 'snd':

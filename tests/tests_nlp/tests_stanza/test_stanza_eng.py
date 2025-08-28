@@ -86,4 +86,5 @@ def test_stanza_punc_marks():
 if __name__ == '__main__':
     test_stanza_eng()
     test_stanza_other()
+
     test_stanza_punc_marks()

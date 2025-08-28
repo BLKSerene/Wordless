@@ -1796,6 +1796,10 @@ def init_settings_global():
                 'stanza_gla'
             ),
 
+            'srp_cyrl': (
+                'spacy_sentencizer',
+                'stanza_srp_latn'
+            ),
             'srp_latn': (
                 'spacy_sentencizer',
                 'stanza_srp_latn'
@@ -2848,14 +2852,15 @@ def init_settings_global():
             'sme': ('stanza_sme',),
             'san': ('stanza_san',),
             'gla': ('stanza_gla',),
+            'srp_cyrl': ('stanza_srp_latn',),
             'srp_latn': ('stanza_srp_latn',),
             'snd': ('stanza_snd',),
             'slk': ('stanza_slk',),
 
             'slv': (
                 'spacy_slv',
-                'stanza_slv',)
-            ,
+                'stanza_slv',
+            ),
 
             'hsb': ('stanza_hsb',),
 
@@ -3680,6 +3685,7 @@ def init_settings_global():
             'sme': ('stanza_sme',),
             'san': ('stanza_san',),
             'gla': ('stanza_gla',),
+            'srp_cyrl': ('stanza_srp_latn',),
             'srp_latn': ('stanza_srp_latn',),
             'snd': ('stanza_snd',),
             'slk': ('stanza_slk',),

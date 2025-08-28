@@ -48,7 +48,9 @@ def wl_test_spacy(
 
     test_sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
 
-    wl_test_sentence_tokenize(lang, results_sentence_tokenize_trf, results_sentence_tokenize_lg)
+    if lang != 'other':
+        wl_test_sentence_tokenize(lang, results_sentence_tokenize_trf, results_sentence_tokenize_lg)
+
     wl_test_word_tokenize(lang, test_sentence, results_word_tokenize)
 
     # Tokenized
@@ -66,11 +68,7 @@ def wl_test_spacy(
 def wl_test_sentence_tokenize(lang, results_trf, results_lg):
     lang_no_suffix = wl_conversion.remove_lang_code_suffixes(lang)
     test_text = ''.join(getattr(wl_test_lang_examples, f'TEXT_{lang.upper()}'))
-
-    if lang == 'other':
-        sentence_tokenizer_trf = 'spacy_sentencizer'
-    else:
-        sentence_tokenizer_trf = f'spacy_dependency_parser_{lang_no_suffix}'
+    sentence_tokenizer_trf = f'spacy_dependency_parser_{lang_no_suffix}'
 
     sentences_trf = wl_sentence_tokenization.wl_sentence_tokenize(
         main,
@@ -84,8 +82,6 @@ def wl_test_sentence_tokenize(lang, results_trf, results_lg):
 
     # The count of sentences should be exactly 2
     match lang:
-        case 'other':
-            assert len(sentences_trf) == 1
         case 'swe':
             assert len(sentences_trf) == 3
         case 'ell':
@@ -120,6 +116,9 @@ def wl_test_sentence_tokenize(lang, results_trf, results_lg):
         assert sentences_lg == results_lg
 
 def wl_test_word_tokenize(lang, test_sentence, results):
+    if lang == 'other':
+        lang = 'eng'
+
     lang_no_suffix = wl_conversion.remove_lang_code_suffixes(lang)
     word_tokenizer = f'spacy_{lang_no_suffix}'
 

@@ -44,13 +44,10 @@ for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
                 'spacy_slv', 'spacy_spa', 'spacy_swe', 'spacy_ukr'
             )
             and not word_tokenizer.startswith('stanza_')
+            # Skip tests of NLTK's tokenizers for languages except English and Other languages
             and (
-                lang.startswith('eng_')
-                # Skip tests of NLTK's tokenizers for languages other than English
-                or (
-                    not lang.startswith('eng_')
-                    and word_tokenizer not in ('nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter')
-                )
+                lang in ('eng_gb', 'eng_us', 'other')
+                or word_tokenizer not in ('nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter')
             )
         ):
             test_word_tokenizers.append((lang, word_tokenizer))

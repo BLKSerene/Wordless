@@ -25,6 +25,9 @@
 - Utils: Add Wordless's character tokenizer
 - Work Area: Add Work Area - Table Settings - Show total
 
+### ✨ Improvements
+- Utils: Update Stanza's Serbian (Latin script) sentence tokenizer, part-of-speech tagger, and dependency parser
+
 ### 🔧 Bugfixes
 - Work Area: Fix Profiler - Syntactic Complexity
 

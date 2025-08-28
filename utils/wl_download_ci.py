@@ -31,4 +31,5 @@ nltk.download('words')
 
 # Download spaCy's and Stanza's models
 spacy.cli.download('en_core_web_trf')
-stanza.download('en', processors = ['tokenize', 'pos', 'lemma', 'depparse', 'sentiment'])
+stanza.download('en', processors = ('tokenize', 'pos', 'lemma', 'depparse', 'sentiment'))
+stanza.download('sr', processors = ('tokenize', 'pos', 'lemma', 'depparse'))

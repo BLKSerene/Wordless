@@ -41,8 +41,7 @@ def test_spacy_eng():
 def test_spacy_other():
     test_spacy.wl_test_spacy(
         lang = 'other',
-        results_sentence_tokenize_trf = ['English is a West Germanic language in the Indo-European language family, whose speakers, called Anglophones, originated in early medieval England on the island of Great Britain.[4][5][6] The namesake of the language is the Angles, one of the Germanic peoples that migrated to Britain after its Roman occupiers left.'],
-        results_word_tokenize = results_word_tokenize
+        results_word_tokenize = results_word_tokenize,
     )
 
 def test_spacy_punc_marks():
@@ -85,4 +84,5 @@ def test_spacy_punc_marks():
 if __name__ == '__main__':
     test_spacy_eng()
     test_spacy_other()
+
     test_spacy_punc_marks()

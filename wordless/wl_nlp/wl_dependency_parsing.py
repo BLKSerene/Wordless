@@ -54,8 +54,15 @@ def wl_dependency_parse(main, inputs, lang, dependency_parser = 'default', force
     ):
         return inputs
     else:
+        convert_srp_script = False
+
         if dependency_parser == 'default':
             dependency_parser = main.settings_custom['dependency_parsing']['dependency_parser_settings'][lang]
+
+        # Modify the language after the default dependency parser is loaded and before the dependency parser is initialized
+        if lang == 'srp_cyrl' and dependency_parser == 'stanza_srp_latn':
+            lang = 'srp_latn'
+            convert_srp_script = True
 
         wl_nlp_utils.init_dependency_parsers(
             main,
@@ -65,7 +72,14 @@ def wl_dependency_parse(main, inputs, lang, dependency_parser = 'default', force
         )
 
         if isinstance(inputs, str):
+            if convert_srp_script:
+                inputs = wl_nlp_utils.to_srp_latn((inputs,))[0]
+
             texts, dependencies = wl_dependency_parse_text(main, inputs, lang, dependency_parser)
+
+            if convert_srp_script:
+                texts = wl_nlp_utils.to_srp_cyrl(texts)
+
             tokens = wl_texts.to_tokens(texts, lang = lang)
 
             for token, (_, head_i, dependency_relation, dd, dd_no_punc) in zip(tokens, dependencies):
@@ -77,6 +91,9 @@ def wl_dependency_parse(main, inputs, lang, dependency_parser = 'default', force
             return tokens
         else:
             texts, token_properties = wl_texts.split_texts_properties(inputs)
+
+            if convert_srp_script:
+                texts = wl_nlp_utils.to_srp_latn(texts)
 
             dependencies = wl_dependency_parse_tokens(main, texts, lang, dependency_parser)
 

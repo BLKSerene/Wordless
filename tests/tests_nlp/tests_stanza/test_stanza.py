@@ -49,8 +49,10 @@ def wl_test_stanza(
 
     test_sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
 
-    if lang in wl_nlp_utils.get_langs_stanza(main, util_type = 'word_tokenizers'):
+    if lang in wl_nlp_utils.get_langs_stanza(main, util_type = 'sentence_tokenizers'):
         wl_test_sentence_tokenize(lang, results_sentence_tokenize)
+
+    if lang in wl_nlp_utils.get_langs_stanza(main, util_type = 'word_tokenizers'):
         wl_test_word_tokenize(lang, test_sentence, results_word_tokenize)
 
     # Tokenized
@@ -73,10 +75,15 @@ def wl_test_stanza(
         wl_test_sentiment_analyze(lang, test_sentence, tokens, results_sentiment_analayze)
 
 def wl_test_get_lang_util(lang):
-    if lang in ('zho_cn', 'zho_tw', 'srp_latn'):
-        lang_util = f'stanza_{lang}'
-    else:
-        lang_util = f'stanza_{wl_conversion.remove_lang_code_suffixes(lang)}'
+    match lang:
+        case 'zho_cn' | 'zho_tw' | 'srp_latn':
+            lang_util = f'stanza_{lang}'
+        case 'srp_cyrl':
+            lang_util = 'stanza_srp_latn'
+        case 'other':
+            lang_util = 'stanza_eng'
+        case _:
+            lang_util = f'stanza_{wl_conversion.remove_lang_code_suffixes(lang)}'
 
     return lang_util
 

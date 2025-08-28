@@ -21,13 +21,23 @@ from tests.tests_nlp.tests_stanza import test_stanza
 def test_stanza_srp_latn():
     test_stanza.wl_test_stanza(
         lang = 'srp_latn',
-        results_sentence_tokenize = ['Srpski jezik je zvaničan u Srbiji, Bosni i Hercegovini i Crnoj Gori i govori ga oko 12 miliona ljudi.[13]', 'Takođe je manjinski jezik u državama centralne i istočne Evrope.[13]'],
-        results_word_tokenize = ['Srpski', 'jezik', 'je', 'zvaničan', 'u', 'Srbiji', ',', 'Bosni', 'i', 'Hercegovini', 'i', 'Crnoj', 'Gori', 'i', 'govori', 'ga', 'oko', '12', 'miliona', 'ljudi', '.[', '13]'],
-        results_pos_tag = [('Srpski', 'Agpmsny'), ('jezik', 'Ncmsn'), ('je', 'Var3s'), ('zvaničan', 'Agpmsnn'), ('u', 'Sl'), ('Srbiji', 'Npfsl'), (',', 'Z'), ('Bosni', 'Npfsl'), ('i', 'Cc'), ('Hercegovini', 'Npfsl'), ('i', 'Cc'), ('Crnoj', 'Agpfsly'), ('Gori', 'Ncfsl'), ('i', 'Cc'), ('govori', 'Vmr3s'), ('ga', 'Pp3msa'), ('oko', 'Rgp'), ('12', 'Mdc'), ('miliona', 'Ncmpg'), ('ljudi', 'Ncmpg'), ('.[', 'Z'), ('13]', 'Mdm')],
-        results_pos_tag_universal = [('Srpski', 'ADJ'), ('jezik', 'NOUN'), ('je', 'AUX'), ('zvaničan', 'ADJ'), ('u', 'ADP'), ('Srbiji', 'PROPN'), (',', 'PUNCT'), ('Bosni', 'PROPN'), ('i', 'CCONJ'), ('Hercegovini', 'PROPN'), ('i', 'CCONJ'), ('Crnoj', 'ADJ'), ('Gori', 'NOUN'), ('i', 'CCONJ'), ('govori', 'VERB'), ('ga', 'PRON'), ('oko', 'ADV'), ('12', 'NUM'), ('miliona', 'NOUN'), ('ljudi', 'NOUN'), ('.[', 'PUNCT'), ('13]', 'NUM')],
-        results_lemmatize = ['srpski', 'jezik', 'biti', 'zvaničan', 'u', 'Srbija', ',', 'Bosna', 'i', 'Hercegovina', 'i', 'crn', 'gora', 'i', 'govoriti', 'on', 'oko', '12', 'milion', 'čovek', '.[', '13]'],
-        results_dependency_parse = [('Srpski', 'jezik', 'amod', 1), ('jezik', 'zvaničan', 'nsubj', 2), ('je', 'zvaničan', 'cop', 1), ('zvaničan', 'zvaničan', 'root', 0), ('u', 'Srbiji', 'case', 1), ('Srbiji', 'zvaničan', 'obl', -2), (',', 'Bosni', 'punct', 1), ('Bosni', 'Srbiji', 'conj', -2), ('i', 'Bosni', 'flat', -1), ('Hercegovini', 'Bosni', 'flat', -2), ('i', 'Crnoj', 'cc', 1), ('Crnoj', 'Gori', 'amod', 1), ('Gori', 'Srbiji', 'conj', -7), ('i', 'govori', 'cc', 1), ('govori', 'zvaničan', 'conj', -11), ('ga', 'govori', 'obj', -1), ('oko', '12', 'advmod', 1), ('12', 'ljudi', 'nummod:gov', 2), ('miliona', '12', 'flat', -1), ('ljudi', 'govori', 'obl', -5), ('.[', '13]', 'case', 1), ('13]', 'govori', 'obl', -7)]
+        results_sentence_tokenize = ['Srpski jezik pripada slovenskoj grupi jezika porodice indoevropskih jezika.[12]', 'Srpski jezik je zvaničan u Srbiji, Bosni i Hercegovini i Crnoj Gori i govori ga oko 12 miliona ljudi.[13]'],
+        results_word_tokenize = ['Srpski', 'jezik', 'pripada', 'slovenskoj', 'grupi', 'jezika', 'porodice', 'indoevropskih', 'jezika', '.[', '12', ']'],
+        results_pos_tag = [('Srpski', 'Agpmsny'), ('jezik', 'Ncmsn'), ('pripada', 'Vmr3s'), ('slovenskoj', 'Agpfsdy'), ('grupi', 'Ncfsd'), ('jezika', 'Ncmsg'), ('porodice', 'Ncfsg'), ('indoevropskih', 'Agpmpgy'), ('jezika', 'Ncmpg'), ('.[', 'Sg'), ('12', 'Mdc'), (']', 'Z')],
+        results_pos_tag_universal = [('Srpski', 'ADJ'), ('jezik', 'NOUN'), ('pripada', 'VERB'), ('slovenskoj', 'ADJ'), ('grupi', 'NOUN'), ('jezika', 'NOUN'), ('porodice', 'NOUN'), ('indoevropskih', 'ADJ'), ('jezika', 'NOUN'), ('.[', 'ADP'), ('12', 'NUM'), (']', 'PUNCT')],
+        results_lemmatize = ['srpski', 'jezik', 'pripadati', 'slovenski', 'grupa', 'jezik', 'porodica', 'indoevropski', 'jezik', '.[', '12', ']'],
+        results_dependency_parse = [('Srpski', 'jezik', 'amod', 1), ('jezik', 'pripada', 'nsubj', 1), ('pripada', 'pripada', 'root', 0), ('slovenskoj', 'grupi', 'amod', 1), ('grupi', 'pripada', 'obl', -2), ('jezika', 'grupi', 'nmod', -1), ('porodice', 'jezika', 'nmod', -1), ('indoevropskih', 'jezika', 'amod', 1), ('jezika', 'porodice', 'nmod', -2), ('.[', '12', 'case', 1), ('12', 'pripada', 'obl', -8), (']', '12', 'punct', -1)]
+    )
+
+def test_stanza_srp_cyrl():
+    test_stanza.wl_test_stanza(
+        lang = 'srp_cyrl',
+        results_sentence_tokenize = ['Српски језик припада словенској групи језика породице индоевропских језика.[12]', 'Српски језик је званичан у Србији, Босни и Херцеговини и Црној Гори и говори га око 12 милиона људи.[13]'],
+        results_pos_tag = [('Српски', 'Agpmsny'), ('језик', 'Ncmsn'), ('припада', 'Vmr3s'), ('словенској', 'Agpfsdy'), ('групи', 'Ncfsd'), ('језика', 'Ncmsg'), ('породице', 'Ncfsg'), ('индоевропских', 'Agpmpgy'), ('језика', 'Ncmpg'), ('.[', 'Sg'), ('12', 'Mdc'), (']', 'Z')],
+        results_pos_tag_universal = [('Српски', 'ADJ'), ('језик', 'NOUN'), ('припада', 'VERB'), ('словенској', 'ADJ'), ('групи', 'NOUN'), ('језика', 'NOUN'), ('породице', 'NOUN'), ('индоевропских', 'ADJ'), ('језика', 'NOUN'), ('.[', 'ADP'), ('12', 'NUM'), (']', 'PUNCT')],
+        results_dependency_parse = [('Српски', 'језик', 'amod', 1), ('језик', 'припада', 'nsubj', 1), ('припада', 'припада', 'root', 0), ('словенској', 'групи', 'amod', 1), ('групи', 'припада', 'obl', -2), ('језика', 'групи', 'nmod', -1), ('породице', 'језика', 'nmod', -1), ('индоевропских', 'језика', 'amod', 1), ('језика', 'породице', 'nmod', -2), ('.[', '12', 'case', 1), ('12', 'припада', 'obl', -8), (']', '12', 'punct', -1)]
     )
 
 if __name__ == '__main__':
     test_stanza_srp_latn()
+    test_stanza_srp_cyrl()

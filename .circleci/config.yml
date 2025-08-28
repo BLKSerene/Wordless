@@ -53,6 +53,7 @@ jobs:
             # Run some tests separately to reduce memory usage
             pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
             pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
+            pytest tests/tests_nlp/tests_stanza/test_stanza_srp_latn.py
 
             pytest tests/tests_nlp/test_dependency_parsing.py
             pytest tests/tests_nlp/test_lemmatization.py
@@ -121,6 +122,7 @@ jobs:
             # Run some tests separately to reduce memory usage
             pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
             pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
+            pytest tests/tests_nlp/tests_stanza/test_stanza_srp_latn.py
 
             pytest tests/tests_nlp/test_dependency_parsing.py
             pytest tests/tests_nlp/test_lemmatization.py
@@ -193,6 +195,7 @@ jobs:
             # Run some tests separately to reduce memory usage
             python3.11 -m pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
             python3.11 -m pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
+            python3.11 -m pytest tests/tests_nlp/tests_stanza/test_stanza_srp_latn.py
 
             python3.11 -m pytest tests/tests_nlp/test_dependency_parsing.py
             python3.11 -m pytest tests/tests_nlp/test_lemmatization.py

@@ -819,7 +819,7 @@ Russian (Old)                 |✔|✔|✖️|✔|✔|✔|✔|✖️
 Sámi (Northern)               |✔|✔|✖️|✔|✔|✔|✔|✖️
 Sanskrit                      |✔|✔|✔|✔|✔|✔|✔|✖️
 Scottish Gaelic               |✔|✔|✖️|✔|✔|✔|✔|✖️
-Serbian (Cyrillic script)     |⭕️|✔|✔|✖️|✔|✔|✖️|✖️
+Serbian (Cyrillic script)     |✔|✔|✔|✔|✔|✔|✔|✖️
 Serbian (Latin script)        |✔|✔|✔|✔|✔|✔|✔|✖️
 Sindhi                        |✔|✔|✖️|✔|✖️|✔|✔|✖️
 Sinhala                       |⭕️|✔|✖️|✖️|✖️|✔|✖️|✖️
@@ -866,7 +866,7 @@ File Type                 |File Extensions|Remarks
 CSV files¹                |\*.csv         |
 Excel workbooks¹²         |\*.xlsx        |Legacy Microsoft 97-2003 Excel Workbooks (\*.xls) are not supported.
 HTML pages¹²              |\*.htm, \*.html|
-Lyrics files¹              |\*.lrc         |[Simple LRC](https://en.wikipedia.org/wiki/LRC_(file_format)#Core_format) and [enhanced LRC](https://en.wikipedia.org/wiki/LRC_(file_format)#A2_extension_(Enhanced_LRC_format)) formats are supported.
+Lyrics files¹             |\*.lrc         |[Simple LRC](https://en.wikipedia.org/wiki/LRC_(file_format)#Core_format) and [enhanced LRC](https://en.wikipedia.org/wiki/LRC_(file_format)#A2_extension_(Enhanced_LRC_format)) formats are supported.
 PDF files¹²               |\*.pdf         |Text could only be extracted from **text-searchable PDF files**. There is no support for automatically converting scanned PDF files into text-searchable ones.
 PowerPoint presentations¹²|\*.pptx        |Legacy Microsoft 97-2003 PowerPoint presentations (\*.ppt) are not supported.
 SubRip subtitle files¹    |\*.srt         |

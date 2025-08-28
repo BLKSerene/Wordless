@@ -366,7 +366,8 @@ def test_settings_global():
     )
 
     # Stanza
-    langs_stanza_supported_tokenizers = []
+    langs_stanza_supported_sentence_tokenizers = []
+    langs_stanza_supported_word_tokenizers = []
     langs_stanza_supported_pos_taggers = []
     langs_stanza_supported_lemmatizers = []
     langs_stanza_supported_dependency_parsers = []
@@ -396,7 +397,8 @@ def test_settings_global():
     for lang, lang_resources in r.json().items():
         if lang != 'multilingual' and 'default_processors' in lang_resources:
             if 'tokenize' in lang_resources['default_processors']:
-                langs_stanza_supported_tokenizers.append(lang)
+                langs_stanza_supported_sentence_tokenizers.append(lang)
+                langs_stanza_supported_word_tokenizers.append(lang)
 
             if 'pos' in lang_resources['default_processors']:
                 langs_stanza_supported_pos_taggers.append(lang)
@@ -413,13 +415,14 @@ def test_settings_global():
             if 'sentiment' in lang_resources['default_processors']:
                 langs_stanza_supported_sentiment_analyzers.append(lang)
 
-    for i, langs in enumerate([
-        langs_stanza_supported_tokenizers,
+    for i, langs in enumerate((
+        langs_stanza_supported_sentence_tokenizers,
+        langs_stanza_supported_word_tokenizers,
         langs_stanza_supported_pos_taggers,
         langs_stanza_supported_lemmatizers,
         langs_stanza_supported_dependency_parsers,
         langs_stanza_supported_sentiment_analyzers
-    ]):
+    )):
         for i, lang in enumerate(langs):
             match lang:
                 case 'zh-hans':
@@ -436,7 +439,12 @@ def test_settings_global():
             if lang in langs:
                 langs.remove(lang)
 
-    langs_stanza_supported_tokenizers = add_lang_suffixes(langs_stanza_supported_tokenizers)
+    langs_stanza_supported_sentence_tokenizers.append('sr_cyrl')
+    langs_stanza_supported_pos_taggers.append('sr_cyrl')
+    langs_stanza_supported_dependency_parsers.append('sr_cyrl')
+
+    langs_stanza_supported_sentence_tokenizers = add_lang_suffixes(langs_stanza_supported_sentence_tokenizers)
+    langs_stanza_supported_word_tokenizers = add_lang_suffixes(langs_stanza_supported_word_tokenizers)
     langs_stanza_supported_pos_taggers = add_lang_suffixes(langs_stanza_supported_pos_taggers)
     langs_stanza_supported_lemmatizers = add_lang_suffixes(langs_stanza_supported_lemmatizers)
     langs_stanza_supported_dependency_parsers = add_lang_suffixes(langs_stanza_supported_dependency_parsers)
@@ -446,12 +454,12 @@ def test_settings_global():
         (
             settings_sentence_tokenizers,
             langs_stanza_settings_sentence_tokenizers,
-            langs_stanza_supported_tokenizers,
+            langs_stanza_supported_sentence_tokenizers,
             'sentence tokenizer'
         ), (
             settings_word_tokenizers,
             langs_stanza_settings_word_tokenizers,
-            langs_stanza_supported_tokenizers,
+            langs_stanza_supported_word_tokenizers,
             'word tokenizer'
         ), (
             settings_pos_taggers,
