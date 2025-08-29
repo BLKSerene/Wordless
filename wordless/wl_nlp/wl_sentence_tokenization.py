@@ -164,7 +164,7 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
 # References:
 #     https://stackoverflow.com/questions/9506869/are-there-character-collections-for-all-international-full-stop-punctuations/9508766#9508766
 #     https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=[:Terminal_Punctuation=Yes:]%26[:Sentence_Break=/[AS]Term/:]
-SENTENCE_TERMINATORS = ''.join(list(dict.fromkeys((
+SENTENCE_TERMINATORS = (
     '\u0021', '\u002E', '\u003F',
     '\u0589',
     '\u061D', '\u061E', '\u061F', '\u06D4',
@@ -180,11 +180,12 @@ SENTENCE_TERMINATORS = ''.join(list(dict.fromkeys((
     '\u1803', '\u1809',
     '\u1944', '\u1945',
     '\u1AA8', '\u1AA9', '\u1AAA', '\u1AAB',
-    '\u1B5A', '\u1B5B', '\u1B5E', '\u1B5F', '\u1B7D', '\u1B7E',
+    '\u1B4E', '\u1B4F', '\u1B5A', '\u1B5B', '\u1B5E', '\u1B5F', '\u1B7D', '\u1B7E', '\u1B7F',
     '\u1C3B', '\u1C3C',
     '\u1C7E', '\u1C7F',
-    '\u203C', '\u2047', '\u2048', '\u2049', '\u203D',
-    '\u2E2E', '\u2E53', '\u2E54', '\u2E3C',
+    '\u2024', '\u203C', '\u203D', '\u2047', '\u2048', '\u2049',
+    '\u2CF9', '\u2CFA', '\u2CFB',
+    '\u2E2E', '\u2E3C', '\u2E53', '\u2E54',
     '\u3002',
     '\uA4FF',
     '\uA60E', '\uA60F',
@@ -195,6 +196,7 @@ SENTENCE_TERMINATORS = ''.join(list(dict.fromkeys((
     '\uA9C8', '\uA9C9',
     '\uAA5D', '\uAA5E', '\uAA5F',
     '\uAAF0', '\uAAF1', '\uABEB',
+    '\uFE12', '\uFE15', '\uFE16',
     '\uFE52', '\uFE56', '\uFE57',
     '\uFF01', '\uFF0E', '\uFF1F', '\uFF61',
     '\U00010A56', '\U00010A57',
@@ -206,6 +208,7 @@ SENTENCE_TERMINATORS = ''.join(list(dict.fromkeys((
     '\U000111C5', '\U000111C6', '\U000111CD', '\U000111DE', '\U000111DF',
     '\U00011238', '\U00011239', '\U0001123B', '\U0001123C',
     '\U000112A9',
+    '\U000113D4', '\U000113D5',
     '\U0001144B', '\U0001144C',
     '\U000115C2', '\U000115C3', '\U000115C9', '\U000115CA', '\U000115CB', '\U000115CC', '\U000115CD', '\U000115CE', '\U000115CF', '\U000115D0', '\U000115D1', '\U000115D2', '\U000115D3', '\U000115D4', '\U000115D5', '\U000115D6', '\U000115D7',
     '\U00011641', '\U00011642',
@@ -219,17 +222,21 @@ SENTENCE_TERMINATORS = ''.join(list(dict.fromkeys((
     '\U00016A6E', '\U00016A6F',
     '\U00016AF5',
     '\U00016B37', '\U00016B38', '\U00016B44',
+    '\U00016D6E', '\U00016D6F',
     '\U00016E98',
     '\U0001BC9F',
     '\U0001DA88'
-))))
+)
 
-def wl_sentence_split(main, text, lang, terminators = SENTENCE_TERMINATORS):
+RE_SENTENCE_TERMINATORS = re.compile(fr".+?[{''.join(SENTENCE_TERMINATORS)}]+\s+|.+?$")
+RE_SENTENCE_TERMINATORS_NO_SPACES = re.compile(fr".+?[{''.join(SENTENCE_TERMINATORS)}]+|.+?$")
+
+def wl_sentence_split(main, text, lang):
     # There are no spaces between Chinese and Japanese sentences
     if lang in ('lzh', 'zho_cn', 'zho_tw', 'jpn'):
-        re_terminators = re.compile(fr'.+?[{terminators}]+|.+?$')
+        re_terminators = RE_SENTENCE_TERMINATORS_NO_SPACES
     else:
-        re_terminators = re.compile(fr'.+?[{terminators}]+\s+|.+?$')
+        re_terminators = RE_SENTENCE_TERMINATORS
 
     return [
         sentence.strip()
@@ -237,7 +244,7 @@ def wl_sentence_split(main, text, lang, terminators = SENTENCE_TERMINATORS):
     ]
 
 # Reference: https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=[:Terminal_Punctuation=Yes:]
-SENTENCE_SEG_TERMINATORS = ''.join(list(dict.fromkeys((
+SENTENCE_SEG_TERMINATORS = (
     '\u0021', '\u002C', '\u002E', '\u003A', '\u003B', '\u003F',
     '\u037E', '\u0387',
     '\u0589',
@@ -245,7 +252,7 @@ SENTENCE_SEG_TERMINATORS = ''.join(list(dict.fromkeys((
     '\u060C', '\u061B', '\u061D', '\u061E', '\u061F', '\u06D4',
     '\u0700', '\u0701', '\u0702', '\u0703', '\u0704', '\u0705', '\u0706', '\u0707', '\u0708', '\u0709', '\u070A', '\u070C',
     '\u07F8', '\u07F9',
-    '\u0830', '\u0831', '\u0832', '\u0833', '\u0834', '\u0835', '\u0836', '\u0837', '\u0838', '\u0839', '\u083A', '\u083B', '\u083C', '\u083D', '\u083E',
+    '\u0830', '\u0831', '\u0832', '\u0833', '\u0834', '\u0835', '\u0837', '\u0838', '\u0839', '\u083A', '\u083B', '\u083C', '\u083D', '\u083E',
     '\u085E',
     '\u0964', '\u0965',
     '\u0E5A', '\u0E5B',
@@ -259,11 +266,12 @@ SENTENCE_SEG_TERMINATORS = ''.join(list(dict.fromkeys((
     '\u1802', '\u1803', '\u1804', '\u1805', '\u1808', '\u1809',
     '\u1944', '\u1945',
     '\u1AA8', '\u1AA9', '\u1AAA', '\u1AAB',
-    '\u1B5A', '\u1B5B', '\u1B5D', '\u1B5E', '\u1B5F', '\u1B7D', '\u1B7E',
+    '\u1B4E', '\u1B4F', '\u1B5A', '\u1B5B', '\u1B5D', '\u1B5E', '\u1B5F', '\u1B7D', '\u1B7E', '\u1B7F',
     '\u1C3B', '\u1C3C', '\u1C3D', '\u1C3E', '\u1C3F',
     '\u1C7E', '\u1C7F',
-    '\u203C', '\u2047', '\u2048', '\u2049', '\u203D',
-    '\u2E2E', '\u2E4C', '\u2E4E', '\u2E4F', '\u2E53', '\u2E54', '\u2E3C', '\u2E41',
+    '\u2024', '\u203C', '\u203D', '\u2047', '\u2048', '\u2049',
+    '\u2CF9', '\u2CFA', '\u2CFB',
+    '\u2E2E', '\u2E3C', '\u2E41', '\u2E4C', '\u2E4E', '\u2E4F', '\u2E53', '\u2E54',
     '\u3001', '\u3002',
     '\uA4FE', '\uA4FF',
     '\uA60D', '\uA60E', '\uA60F',
@@ -275,6 +283,7 @@ SENTENCE_SEG_TERMINATORS = ''.join(list(dict.fromkeys((
     '\uAA5D', '\uAA5E', '\uAA5F',
     '\uAADF',
     '\uAAF0', '\uAAF1', '\uABEB',
+    '\uFE12', '\uFE15', '\uFE16',
     '\uFE50', '\uFE51', '\uFE52', '\uFE54', '\uFE55', '\uFE56', '\uFE57',
     '\uFF01', '\uFF0C', '\uFF0E', '\uFF1A', '\uFF1B', '\uFF1F', '\uFF61', '\uFF64',
     '\U0001039F',
@@ -293,6 +302,7 @@ SENTENCE_SEG_TERMINATORS = ''.join(list(dict.fromkeys((
     '\U000111C5', '\U000111C6', '\U000111CD', '\U000111DE', '\U000111DF',
     '\U00011238', '\U00011239', '\U0001123A', '\U0001123B', '\U0001123C',
     '\U000112A9',
+    '\U000113D4', '\U000113D5',
     '\U0001144B', '\U0001144C', '\U0001144D', '\U0001145A', '\U0001145B',
     '\U000115C2', '\U000115C3', '\U000115C4', '\U000115C5', '\U000115C9', '\U000115CA', '\U000115CB', '\U000115CC', '\U000115CD', '\U000115CE', '\U000115CF', '\U000115D0', '\U000115D1', '\U000115D2', '\U000115D3', '\U000115D4', '\U000115D5', '\U000115D6', '\U000115D7',
     '\U00011641', '\U00011642',
@@ -308,25 +318,25 @@ SENTENCE_SEG_TERMINATORS = ''.join(list(dict.fromkeys((
     '\U00016A6E', '\U00016A6F',
     '\U00016AF5',
     '\U00016B37', '\U00016B38', '\U00016B39', '\U00016B44',
+    '\U00016D6E', '\U00016D6F',
     '\U00016E97', '\U00016E98',
     '\U0001BC9F',
     '\U0001DA87', '\U0001DA88', '\U0001DA89', '\U0001DA8A'
-))))
-
-def wl_sentence_seg_tokenize(main, text, terminators = SENTENCE_SEG_TERMINATORS):
-    re_terminators = re.compile(fr'.+?[{terminators}]+|.+?$')
-
-    return [
-        sentence_seg.strip()
-        for sentence_seg in re_terminators.findall(text.strip())
-    ]
-
+)
 REPLACEMENT_CHAR = '\uFFFF'
 
-def wl_sentence_seg_tokenize_tokens(main, tokens, terminators = SENTENCE_SEG_TERMINATORS):
+RE_SENTENCE_SEG_TERMINATORS_TEXT = re.compile(fr".+?[{''.join(SENTENCE_SEG_TERMINATORS)}]+|.+?$")
+RE_SENTENCE_SEG_TERMINATORS_TOKENS = re.compile(fr".+?[{''.join(SENTENCE_SEG_TERMINATORS)}]+{REPLACEMENT_CHAR}|.+?$")
+
+def wl_sentence_seg_tokenize(main, text):
+    return [
+        sentence_seg.strip()
+        for sentence_seg in RE_SENTENCE_SEG_TERMINATORS_TEXT.findall(text.strip())
+    ]
+
+def wl_sentence_seg_tokenize_tokens(main, tokens, re_terminators = RE_SENTENCE_SEG_TERMINATORS_TOKENS):
     # Insert a replacement character between tokens to prevent text from being split within tokens
     text = REPLACEMENT_CHAR.join(tokens)
-    re_terminators = re.compile(fr'.+?[{terminators}]+{REPLACEMENT_CHAR}|.+?$')
 
     return [
         wl_texts.clean_texts(sentence_seg.split(REPLACEMENT_CHAR))

@@ -144,6 +144,17 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
     if tests_lang_util_skipped:
         raise wl_test_init.Wl_Exc_Tests_Lang_Util_Skipped(sentence_tokenizer)
 
+def test_sentence_terminators():
+    num_sentence_terminators = len(wl_sentence_tokenization.SENTENCE_TERMINATORS)
+
+    for i, char in enumerate(wl_sentence_tokenization.SENTENCE_TERMINATORS):
+        assert char < '\U00020000'
+
+        if i < num_sentence_terminators - 1:
+            char_next = wl_sentence_tokenization.SENTENCE_TERMINATORS[i + 1]
+
+            assert char < char_next, f'Wrong order for {hex(ord(char))} and {hex(ord(char_next))}!'
+
 @pytest.mark.parametrize('lang', langs_sentence_split)
 def test_sentence_split(lang):
     sentences_split = wl_sentence_tokenization.wl_sentence_split(
@@ -168,6 +179,17 @@ def test_sentence_split(lang):
             assert len(sentences_split) == 4
         case _:
             assert len(sentences_split) == 2
+
+def test_sentence_seg_terminators():
+    num_sentence_seg_terminators = len(wl_sentence_tokenization.SENTENCE_SEG_TERMINATORS)
+
+    for i, char in enumerate(wl_sentence_tokenization.SENTENCE_SEG_TERMINATORS):
+        assert char < '\U00020000'
+
+        if i < num_sentence_seg_terminators - 1:
+            char_next = wl_sentence_tokenization.SENTENCE_SEG_TERMINATORS[i + 1]
+
+            assert char < char_next, f'Wrong order for {hex(ord(char))} and {hex(ord(char_next))}!'
 
 @pytest.mark.parametrize('lang', langs_sentence_split)
 def test_sentence_seg_tokenize(lang):
@@ -405,8 +427,12 @@ if __name__ == '__main__':
     for lang, sentence_tokenizer in langs_sentence_tokenize:
         test_sentence_tokenize(lang, sentence_tokenizer)
 
+    test_sentence_terminators()
+
     for lang in langs_sentence_split:
         test_sentence_split(lang)
+
+    test_sentence_seg_terminators()
 
     for lang in langs_sentence_split:
         test_sentence_seg_tokenize(lang)

@@ -1348,8 +1348,8 @@ def td(main, text):
 
 # Wheeler-Smith's readability formula
 # Reference: Wheeler, L. R., & Smith, E. H. (1954). A practical readability formula for the classroom teacher in the primary grades. Elementary English, 31(7), 397–399.
-UNIT_TERMINATORS = ''.join(list(wl_sentence_tokenization.SENTENCE_TERMINATORS) + list(dict.fromkeys([
-    # Colons and semicolons: https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=[:name=/COLON/:]%26[:General_Category=/Punctuation/:]
+# Colons and semicolons: https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=[:name=/COLON/:]%26[:General_Category=/Punctuation/:]
+UNIT_TERMINATORS_COLONS_SEMICOLONS = (
     '\u003A', '\u003B',
     '\u061B',
     '\u0703', '\u0704', '\u0705', '\u0706', '\u0707', '\u0708', '\u0709',
@@ -1363,8 +1363,10 @@ UNIT_TERMINATORS = ''.join(list(wl_sentence_tokenization.SENTENCE_TERMINATORS) +
     '\uFF1A', '\uFF1B',
     '\U00012471', '\U00012472', '\U00012473', '\U00012474',
     '\U0001DA89', '\U0001DA8A',
+)
 
-    # Dashes: https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=[:Dash=Yes:]
+# Dashes: https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=[:Dash=Yes:]
+UNIT_TERMINATORS_DASHES = (
     '\\\u002D', # The hyphen character needs to be escaped in RegEx square brackets
     '\u058A',
     '\u05BE',
@@ -1379,8 +1381,17 @@ UNIT_TERMINATORS = ''.join(list(wl_sentence_tokenization.SENTENCE_TERMINATORS) +
     '\uFE31', '\uFE32',
     '\uFE58', '\uFE63',
     '\uFF0D',
+    '\U00010D6E',
     '\U00010EAD'
-])))
+)
+
+UNIT_TERMINATORS = (
+    wl_sentence_tokenization.SENTENCE_TERMINATORS
+    + UNIT_TERMINATORS_COLONS_SEMICOLONS
+    + UNIT_TERMINATORS_DASHES
+)
+
+RE_UNIT_TERMINATORS = re.compile(fr".+?[{''.join(UNIT_TERMINATORS)}]+{wl_sentence_tokenization.REPLACEMENT_CHAR}|.+?$")
 
 def wheeler_smiths_readability_formula(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
@@ -1390,7 +1401,7 @@ def wheeler_smiths_readability_formula(main, text):
             num_units = len(wl_sentence_tokenization.wl_sentence_seg_tokenize_tokens(
                 main,
                 tokens = wl_misc.flatten_list(text.tokens_multilevel_with_puncs),
-                terminators = UNIT_TERMINATORS
+                re_terminators = RE_UNIT_TERMINATORS
             ))
             num_words_2_syls = get_num_words_syls(text.words_flat, len_min = 2)
 

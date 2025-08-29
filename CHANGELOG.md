@@ -27,6 +27,7 @@
 
 ### ✨ Improvements
 - Utils: Update Stanza's Serbian (Latin script) sentence tokenizer, part-of-speech tagger, and dependency parser
+- Utils: Update Wordless's sentence splitter and sentence segment tokenizer
 
 ### 🔧 Bugfixes
 - Work Area: Fix Profiler - Syntactic Complexity

@@ -576,6 +576,28 @@ def test_td():
     assert td_spa_12 != 'no_support'
     assert td_other_12 == 'no_support'
 
+def test_unit_terminators():
+    for terminators in (
+        wl_measures_readability.UNIT_TERMINATORS_COLONS_SEMICOLONS,
+        wl_measures_readability.UNIT_TERMINATORS_DASHES
+    ):
+        num_terminators = len(terminators)
+
+        for i, char in enumerate(terminators):
+            assert char < '\U00020000'
+
+            if i < num_terminators - 1:
+                char_next = terminators[i + 1]
+
+                # Unescape the hyphen character which needs to be escaped in RegEx square brackets
+                if char == '\\\u002D':
+                    char = '\u002D'
+
+                if char_next == '\\\u002D':
+                    char_next = '\u002D'
+
+                assert char < char_next, f'Wrong order for {hex(ord(char))} and {hex(ord(char_next))}!'
+
 def test_wheeler_smiths_readability_formula():
     wheeler_smith_eng_0 = wl_measures_readability.wheeler_smiths_readability_formula(main, test_text_eng_0)
     wheeler_smith_eng_12 = wl_measures_readability.wheeler_smiths_readability_formula(main, test_text_eng_12_hyphen)
@@ -627,4 +649,6 @@ if __name__ == '__main__':
     test_strain_index()
     test_trankle_bailers_readability_formula()
     test_td()
+
+    test_unit_terminators()
     test_wheeler_smiths_readability_formula()
