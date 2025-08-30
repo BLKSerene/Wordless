@@ -60,7 +60,7 @@ class Wl_Worker_No_Progress(QtCore.QObject):
     def stop(self):
         self._running = False
 
-def start_worker_in_thread(worker, thread, update_gui):
+def start_worker_in_thread(worker, thread, update_gui = None):
     worker.moveToThread(thread)
 
     thread.started.connect(worker.run)
@@ -69,7 +69,9 @@ def start_worker_in_thread(worker, thread, update_gui):
     worker.finished.connect(worker.deleteLater)
     # Wait for updating of the progress label
     worker.finished.connect(lambda: time.sleep(.01), QtCore.Qt.DirectConnection)
-    worker.finished.connect(update_gui)
+
+    if update_gui:
+        worker.finished.connect(update_gui)
 
     if hasattr(worker, 'dialog_progress'):
         worker.finished.connect(worker.dialog_progress.accept)

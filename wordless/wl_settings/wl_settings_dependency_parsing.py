@@ -40,6 +40,8 @@ from wordless.wl_widgets import (
     wl_widgets
 )
 
+_tr = QtCore.QCoreApplication.translate
+
 class Wl_Settings_Dependency_Parsing(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
@@ -230,7 +232,10 @@ class Wl_Settings_Dependency_Parsing(wl_settings.Wl_Settings_Node):
 
 class Wl_Dialog_Preview_Settings(wl_dialogs.Wl_Dialog_Settings):
     def __init__(self, main):
-        super().__init__(main, title = 'Preview Settings')
+        super().__init__(
+            main,
+            title = _tr('Wl_Dialog_Preview_Settings', 'Preview Settings')
+        )
 
         self.setMinimumWidth(450)
 

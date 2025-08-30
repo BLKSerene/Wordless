@@ -796,6 +796,9 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
 
             # Total
             if len(files_observed) > 1:
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
                 texts.append(wl_texts.Wl_Text_Total(texts))
 
                 self.keywords_freq_files.append(sum(self.keywords_freq_files[1:], collections.Counter()))

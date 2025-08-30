@@ -213,6 +213,7 @@ TRS_FILE_TYPES = {
     'Excel workbooks (*.xlsx)': ('Excel 工作簿 (*.xlsx)',),
     'HTML pages (*.htm; *.html)': ('HTML 页面 (*.htm; *.html)',),
     'PDF files (*.pdf)': ('PDF 文件 (*.pdf)',),
+    'SubRip subtitle files (*.srt)': ('SubRip 字幕文件 (*.srt)',),
     'Text files (*.txt)': ('文本文件 (*.txt)',),
     'Translation memory files (*.tmx)': ('翻译记忆库文件 (*.tmx)',),
     'Word documents (*.docx)': ('Word 文档 (*.docx)',),

@@ -19,14 +19,19 @@
 # pylint: disable=broad-exception-caught
 import collections
 import copy
+import csv
+import os
+import re
 import traceback
 
 import numpy
+import openpyxl
 from PyQt5 import QtCore
 from PyQt5 import QtWidgets
 import scipy
 
 from wordless.wl_checks import (
+    wl_checks_misc,
     wl_checks_tokens,
     wl_checks_work_area
 )
@@ -85,6 +90,7 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         self.button_generate_all_tables = QtWidgets.QPushButton(self.tr('Generate all tables'), self)
         self.stacked_widget_button_exp_selected_cells = QtWidgets.QStackedWidget(self)
         self.stacked_widget_button_exp_all_cells = QtWidgets.QStackedWidget(self)
+        self.button_exp_all_tables = QtWidgets.QPushButton(self.tr('Export all tables...'), self)
         self.stacked_widget_button_clr_table = QtWidgets.QStackedWidget(self)
         self.button_clr_all_tables = QtWidgets.QPushButton(self.tr('Clear all tables'), self)
 
@@ -97,6 +103,7 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
             table.model().itemChanged.connect(self.item_changed)
 
         self.button_generate_all_tables.clicked.connect(lambda: self.generate_all_tables()) # pylint: disable=unnecessary-lambda
+        self.button_exp_all_tables.clicked.connect(lambda: self.exp_all_tables()) # pylint: disable=unnecessary-lambda
         self.button_clr_all_tables.clicked.connect(self.clr_all_tables)
 
         self.tabs_profiler = wl_layouts.Wl_Tab_Widget(self)
@@ -116,13 +123,14 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
             }
         ''')
 
-        self.wrapper_table.layout().addWidget(self.tabs_profiler, 0, 0, 1, 6)
+        self.wrapper_table.layout().addWidget(self.tabs_profiler, 0, 0, 1, 7)
         self.wrapper_table.layout().addWidget(self.stacked_widget_button_generate_table, 1, 0)
         self.wrapper_table.layout().addWidget(self.button_generate_all_tables, 1, 1)
         self.wrapper_table.layout().addWidget(self.stacked_widget_button_exp_selected_cells, 1, 2)
         self.wrapper_table.layout().addWidget(self.stacked_widget_button_exp_all_cells, 1, 3)
-        self.wrapper_table.layout().addWidget(self.stacked_widget_button_clr_table, 1, 4)
-        self.wrapper_table.layout().addWidget(self.button_clr_all_tables, 1, 5)
+        self.wrapper_table.layout().addWidget(self.button_exp_all_tables, 1, 4)
+        self.wrapper_table.layout().addWidget(self.stacked_widget_button_clr_table, 1, 5)
+        self.wrapper_table.layout().addWidget(self.button_clr_all_tables, 1, 6)
 
         self.wrapper_table.layout().setRowStretch(0, 1)
         self.wrapper_table.layout().setColumnStretch(0, 1)
@@ -131,6 +139,7 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         self.wrapper_table.layout().setColumnStretch(3, 1)
         self.wrapper_table.layout().setColumnStretch(4, 1)
         self.wrapper_table.layout().setColumnStretch(5, 1)
+        self.wrapper_table.layout().setColumnStretch(6, 1)
 
         self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
 
@@ -270,8 +279,10 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
 
     def item_changed(self):
         if any((not table.is_empty() for table in self.tables)):
+            self.button_exp_all_tables.setEnabled(True)
             self.button_clr_all_tables.setEnabled(True)
         else:
+            self.button_exp_all_tables.setEnabled(False)
             self.button_clr_all_tables.setEnabled(False)
 
     def token_settings_changed(self):
@@ -338,6 +349,149 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
                 # Stop if error occurs when generating any of the tables
                 if err_msg:
                     break
+
+    # Reference: https://stackoverflow.com/a/69308502
+    def copy_worksheet(self, sheet_src, sheet_tgt):
+        for i, row in enumerate(sheet_src.iter_rows()):
+            for j, cell in enumerate(row):
+                cel_tgt = sheet_tgt.cell(i + 1, j + 1)
+                cel_tgt.value = cell.value
+
+                if cell.has_style:
+                    cel_tgt.font = copy.copy(cell.font)
+                    cel_tgt.alignment = copy.copy(cell.alignment)
+                    cel_tgt.number_format = copy.copy(cell.number_format)
+                    cel_tgt.fill = copy.copy(cell.fill)
+
+        sheet_tgt.freeze_panes = sheet_src.freeze_panes
+
+        for row, dimensions in sheet_src.row_dimensions.items():
+            sheet_tgt.row_dimensions[row].height = dimensions.height
+
+        for col, dimensions in sheet_src.column_dimensions.items():
+            sheet_tgt.column_dimensions[col].width = dimensions.width
+
+    @wl_misc.log_time
+    def exp_all_tables(self):
+        self.exp_all_tables_err_msg = ''
+
+        default_dir = self.main.settings_custom['general']['exp']['tables']['default_path']
+        default_type = self.main.settings_custom['general']['exp']['tables']['default_type']
+        default_ext = re.search(r'(?<=\(\*\.)[a-zA-Z0-9]+(?=[;\)])', default_type).group()
+
+        file_path, file_type = QtWidgets.QFileDialog.getSaveFileName(
+            parent = self,
+            caption = _tr('wl_tables', 'Export Table'),
+            directory = os.path.join(wl_checks_misc.check_dir(default_dir), f'wordless_results_profiler.{default_ext}'),
+            filter = ';;'.join(self.main.settings_global['file_types']['exp_tables']),
+            initialFilter = default_type
+        )
+
+        if file_path:
+            try:
+                file_paths_tables = []
+
+                for i, table in enumerate(self.tables):
+                    if not table.is_empty():
+                        path, ext = os.path.splitext(file_path)
+                        file_paths_tables.append((f'{path}_{i}{ext}', table))
+
+                for file_path_table, table in file_paths_tables:
+                    if not self.exp_all_tables_err_msg:
+                        self.worker_exp_table = wl_tables.Wl_Worker_Exp_Table(
+                            self.main,
+                            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(
+                                self.main,
+                                text = _tr('wl_tables', 'Exporting table...')
+                            ),
+                            table = table,
+                            file_path = file_path_table,
+                            file_type = file_type,
+                            rows_to_exp = (
+                                # Export visible rows only
+                                [row for row in range(table.model().rowCount()) if not table.isRowHidden(row)]
+                            )
+                        )
+
+                        self.thread_exp_table = QtCore.QThread()
+                        wl_threading.start_worker_in_thread(
+                            self.worker_exp_table,
+                            self.thread_exp_table,
+                            self.update_gui_exp_all_tables
+                        )
+                    else:
+                        break
+
+                # Merge files
+                if not self.exp_all_tables_err_msg:
+                    if '.csv' in file_type:
+                        encoding = self.main.settings_custom['general']['exp']['tables']['default_encoding']
+
+                        with open(file_path, 'w', encoding = encoding, newline = '') as f_all:
+                            csv_writer = csv.writer(f_all)
+
+                            for i, (file_path_table, _) in enumerate(file_paths_tables):
+                                with open(file_path_table, 'r', encoding = encoding, newline = '') as f:
+                                    csv_reader = csv.reader(f)
+
+                                    for j, row in enumerate(csv_reader):
+                                        if i == 0 or j > 0:
+                                            csv_writer.writerow(row)
+                    elif '.xlsx' in file_type:
+                        workbook_tgt = openpyxl.Workbook()
+                        worksheet_tgt = workbook_tgt.active
+
+                        for i, (file_path_table, table) in enumerate(file_paths_tables):
+                            match table.tab:
+                                case 'readability':
+                                    title = _tr('wl_tables', 'Readability')
+                                case 'counts':
+                                    title = _tr('wl_tables', 'Counts')
+                                case 'lexical_density_diversity':
+                                    title = _tr('wl_tables', 'Lexical Density & Diversity')
+                                case 'syntactic_complexity':
+                                    title = _tr('wl_tables', 'Syntactic Complexity')
+                                case 'lens':
+                                    title = _tr('wl_tables', 'Lengths')
+                                case 'len_breakdown':
+                                    title = _tr('wl_tables', 'Length Breakdown')
+
+                            if i == 0:
+                                worksheet_tgt.title = title
+                            else:
+                                worksheet_tgt = workbook_tgt.create_sheet(title)
+
+                            workbook_src = openpyxl.load_workbook(file_path_table)
+                            worksheet_src = workbook_src.active
+
+                            self.copy_worksheet(worksheet_src, worksheet_tgt)
+
+                        workbook_tgt.save(file_path)
+
+                    for _, table in file_paths_tables:
+                        table.results_saved = True
+            except PermissionError:
+                self.exp_all_tables_err_msg = 'permission_err'
+            except Exception: # pylint: disable=broad-exception-caught
+                self.exp_all_tables_err_msg = traceback.format_exc()
+
+            # Clean temporary files
+            for file_path_table, _ in file_paths_tables:
+                if os.path.exists(file_path_table):
+                    try:
+                        os.remove(file_path_table)
+                    except PermissionError:
+                        pass
+
+            wl_checks_work_area.check_err_exp_table(self.parent(), self.exp_all_tables_err_msg, file_path)
+
+            return ''
+        # Do not log time if the export dialog is closed
+        else:
+            return 'skip_logging_time'
+
+    def update_gui_exp_all_tables(self, err_msg):
+        self.exp_all_tables_err_msg = err_msg
 
     def clr_all_tables(self):
         # Confirm if any of the tables are not empty and has yet to be exported
@@ -1389,12 +1543,19 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 texts.append(text)
 
             # Total
-            if self._running and len(files) > 1:
-                texts.append(wl_texts.Wl_Text_Total(texts))
-
-            for text in texts:
+            if len(files) > 1:
                 if not self._running:
                     raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                texts.append(wl_texts.Wl_Text_Total(texts))
+
+            num_texts = len(texts)
+
+            for i, text in enumerate(texts):
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                self.progress_updated.emit(self.tr('Processing data... ({} / {})').format(i + 1, num_texts))
 
                 # Readability
                 if self.tab in ('readability', 'all'):
@@ -1442,13 +1603,13 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 else:
                     stats_readability = None
 
-                if not self._running:
-                    raise wl_excs.Wl_Exc_Aborted(self.main)
-
-                tokens = text.get_tokens_flat()
-                tokens = wl_nlp_utils.add_missing_ending_tshegs(self.main, tokens, tab = 'profiler')
-
                 if self.tab in ('counts', 'lens', 'len_breakdown', 'all'):
+                    if not self._running:
+                        raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                    tokens = text.get_tokens_flat()
+                    tokens = wl_nlp_utils.add_missing_ending_tshegs(self.main, tokens, tab = 'profiler')
+
                     # Paragraph length
                     len_paras_sentences = [
                         len(para)
@@ -1519,12 +1680,12 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                     len_types_chars = None
                     len_syls = None
 
-                if not self._running:
-                    raise wl_excs.Wl_Exc_Aborted(self.main)
-
                 # Lexical Density/Diversity
                 if self.tab in ('lexical_density_diversity', 'all'):
-                    if tokens:
+                    if not self._running:
+                        raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                    if text.num_tokens:
                         stats_lexical_density_diversity = [
                             wl_measures_lexical_density_diversity.brunets_index(self.main, text),
                             wl_measures_lexical_density_diversity.cttr(self.main, text),
@@ -1556,11 +1717,11 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 else:
                     stats_lexical_density_diversity = None
 
-                if not self._running:
-                    raise wl_excs.Wl_Exc_Aborted(self.main)
-
                 # Syntactic Complexity
                 if self.tab in ('syntactic_complexity', 'all'):
+                    if not self._running:
+                        raise wl_excs.Wl_Exc_Aborted(self.main)
+
                     if text.lang in self.main.settings_global['dependency_parsers']:
                         if settings['token_settings']['punc_marks']:
                             dds_sentences = text.dds_sentences.copy()

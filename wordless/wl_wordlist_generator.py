@@ -681,6 +681,9 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
 
             # Total
             if len(files) > 1:
+                if not self._running:
+                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
                 texts.append(wl_texts.Wl_Text_Total(texts))
 
                 # Frequency

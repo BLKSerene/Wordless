@@ -491,7 +491,7 @@ class Wl_Settings_General_Exp(wl_settings.Wl_Settings_Node):
         self.tables_default_type_changed()
 
     def tables_default_type_changed(self):
-        if '*.xlsx' in self.combo_box_tables_default_type.currentText():
+        if '.xlsx' in self.combo_box_tables_default_type.currentText():
             self.combo_box_tables_default_encoding.setEnabled(False)
         else:
             self.combo_box_tables_default_encoding.setEnabled(True)

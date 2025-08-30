@@ -498,7 +498,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
             cols = [col for col in range(self.table.model().columnCount()) if not self.table.isColumnHidden(col)]
 
             # CSV files
-            if '*.csv' in self.file_type:
+            if '.csv' in self.file_type:
                 encoding = self.main.settings_custom['general']['exp']['tables']['default_encoding']
 
                 with open(self.file_path, 'w', encoding = encoding, newline = '') as f:
@@ -555,7 +555,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                                 csv_writer.writerow(self.clean_text_csv(row_to_exp))
             # Excel workbooks
-            elif '*.xlsx' in self.file_type:
+            elif '.xlsx' in self.file_type:
                 workbook = openpyxl.Workbook()
                 worksheet = workbook.active
 
@@ -624,21 +624,17 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                                         and col_item not in cols_table_items
                                     )
                                 ):
-                                    cell_val = self.table.indexWidget(self.table.model().index(row_item, col_item)).text()
-                                    cell.value = self.remove_invalid_xml_chars(cell_val)
+                                    item = self.table.indexWidget(self.table.model().index(row_item, col_item))
+                                    cell.value = self.remove_invalid_xml_chars(item.text())
 
-                                    self.style_cell_rich_text(cell, self.table.indexWidget(self.table.model().index(row_item, col_item)))
+                                    self.style_cell_rich_text(cell, item)
                                 else:
-                                    if col_item in (
-                                        self.table.headers_int
-                                        | self.table.headers_float
-                                        | self.table.headers_pct
-                                        | self.table.headers_p_val
-                                    ):
-                                        cell.value = self.table.model().item(row_item, col_item).val
+                                    item = self.table.model().item(row_item, col_item)
+
+                                    if hasattr(item, 'val'):
+                                        cell.value = item.val
                                     else:
-                                        cell_val = self.table.model().item(row_item, col_item).text()
-                                        cell.value = self.remove_invalid_xml_chars(cell_val)
+                                        cell.value = self.remove_invalid_xml_chars(item.text())
 
                                     self.style_cell(cell, self.table.model().item(row_item, col_item))
                     # Profiler
@@ -676,17 +672,12 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                                     raise wl_excs.Wl_Exc_Aborted(self.main)
 
                                 cell = worksheet.cell(2 + row_cell, 2 + col_cell)
+                                item = self.table.model().item(row_item, col_item)
 
-                                if col_item in (
-                                        self.table.headers_int
-                                        | self.table.headers_float
-                                        | self.table.headers_pct
-                                        | self.table.headers_p_val
-                                    ):
-                                    cell.value = self.table.model().item(row_item, col_item).val
+                                if hasattr(item, 'val'):
+                                    cell.value = item.val
                                 else:
-                                    cell_val = self.table.model().item(row_item, col_item).text()
-                                    cell.value = self.remove_invalid_xml_chars(cell_val)
+                                    cell.value = self.remove_invalid_xml_chars(item.text())
 
                                 self.style_cell(cell, self.table.model().item(row_item, col_item))
 
@@ -699,7 +690,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                 self.progress_updated.emit(self.tr('Saving file...'))
 
                 workbook.save(self.file_path)
-            elif '*.docx' in self.file_type:
+            elif '.docx' in self.file_type:
                 doc = docx.Document()
 
                 match self.table.tab:
@@ -770,7 +761,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                 doc.save(self.file_path)
         except wl_excs.Wl_Exc_Aborted:
-            if '*.csv' in self.file_type:
+            if '.csv' in self.file_type:
                 if os.path.exists(self.file_path):
                     os.remove(self.file_path)
 
