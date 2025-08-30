@@ -518,13 +518,15 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
 
 class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
     def __init__(
-        self, parent, headers,
-        headers_int = None, headers_float = None, headers_pct = None, headers_cum = None,
-        tab = 'all'
+        self, parent, tab,
+        headers,
+        headers_int = None, headers_float = None,
+        headers_pct = None,
+        headers_cum = None
     ):
         super().__init__(
             parent,
-            tab = 'profiler',
+            tab = tab,
             headers = headers,
             header_orientation = 'vert',
             headers_int = headers_int,
@@ -610,9 +612,9 @@ class Wl_Table_Profiler_Readability(Wl_Table_Profiler):
 
         super().__init__(
             parent,
+            tab = 'readability',
             headers = HEADERS_READABILITY,
             headers_float = set(HEADERS_READABILITY),
-            tab = 'readability'
         )
 
     def update_gui_table(self, err_msg, text_stats_files):
@@ -677,6 +679,7 @@ class Wl_Table_Profiler_Counts(Wl_Table_Profiler):
 
         super().__init__(
             parent,
+            tab = 'counts',
             headers = HEADERS_COUNTS,
             headers_int = {
                 HEADERS_COUNTS[i]
@@ -687,8 +690,7 @@ class Wl_Table_Profiler_Counts(Wl_Table_Profiler):
                 for i in range(1, len(HEADERS_COUNTS), 2)
             },
             # Excluding count of types
-            headers_cum = {*HEADERS_COUNTS[:8], *HEADERS_COUNTS[10:]},
-            tab = 'counts'
+            headers_cum = {*HEADERS_COUNTS[:8], *HEADERS_COUNTS[10:]}
         )
 
     def update_gui_table(self, err_msg, text_stats_files):
@@ -818,9 +820,9 @@ class Wl_Table_Profiler_Lexical_Density_Diversity(Wl_Table_Profiler):
 
         super().__init__(
             parent,
+            tab = 'lexical_density_diversity',
             headers = HEADERS_LEXICAL_DENSITY_DIVERSITY,
-            headers_float = set(HEADERS_LEXICAL_DENSITY_DIVERSITY),
-            tab = 'lexical_density_diversity'
+            headers_float = set(HEADERS_LEXICAL_DENSITY_DIVERSITY)
         )
 
     def update_gui_table(self, err_msg, text_stats_files):
@@ -922,6 +924,7 @@ class Wl_Table_Profiler_Syntactic_Complexity(Wl_Table_Profiler):
 
         super().__init__(
             parent,
+            tab = 'syntactic_complexity',
             headers = tuple((header for headers in HEADERS_SYNTACTIC_COMPLEXITY for header in headers)),
             # Minimum, Maximum, and Range
             headers_int = set(sum((
@@ -932,8 +935,7 @@ class Wl_Table_Profiler_Syntactic_Complexity(Wl_Table_Profiler):
             headers_float = set(sum((
                 (*HEADERS[0:3], *HEADERS[4:7], HEADERS[9])
                 for HEADERS in HEADERS_SYNTACTIC_COMPLEXITY
-            ), start = ())),
-            tab = 'syntactic_complexity'
+            ), start = ()))
         )
 
     def update_gui_table(self, err_msg, text_stats_files):
@@ -1188,6 +1190,7 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
 
         super().__init__(
             parent,
+            tab = 'lens',
             headers = tuple((header for headers in HEADERS_LENS for header in headers)),
             # Minimum, Maximum, and Range
             headers_int = set(sum((
@@ -1198,8 +1201,7 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
             headers_float = set(sum((
                 (*HEADERS[0:3], *HEADERS[4:7], HEADERS[9])
                 for HEADERS in HEADERS_LENS
-            ), start = ())),
-            tab = 'lens'
+            ), start = ()))
         )
 
     def update_gui_table(self, err_msg, text_stats_files):
@@ -1318,8 +1320,8 @@ class Wl_Table_Profiler_Len_Breakdown(Wl_Table_Profiler):
     def __init__(self, parent):
         super().__init__(
             parent,
-            headers = (),
-            tab = 'len_breakdown'
+            tab = 'len_breakdown',
+            headers = ()
         )
 
     def update_gui_table(self, err_msg, text_stats_files):

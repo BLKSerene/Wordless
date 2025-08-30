@@ -60,8 +60,9 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
 
         layout_results = wl_layouts.Wl_Layout()
         layout_results.addWidget(self.table_dependency_parser.label_num_results, 0, 0)
-        layout_results.addWidget(self.table_dependency_parser.button_results_filter, 0, 2)
-        layout_results.addWidget(self.table_dependency_parser.button_results_search, 0, 3)
+        layout_results.addWidget(self.table_dependency_parser.button_results_sample, 0, 2)
+        layout_results.addWidget(self.table_dependency_parser.button_results_filter, 0, 3)
+        layout_results.addWidget(self.table_dependency_parser.button_results_search, 0, 4)
 
         layout_results.setColumnStretch(1, 1)
 
@@ -322,7 +323,7 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
         settings['compact_mode'] = self.checkbox_compact_mode.isChecked()
         settings['show_in_separate_tab'] = self.checkbox_show_in_separate_tab.isChecked()
 
-class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Filter_Search):
+class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data):
     def __init__(self, parent):
         super().__init__(
             parent,
@@ -346,14 +347,17 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Filter_Search):
             headers_pct = {
                 _tr('Wl_Table_Dependency_Parser', 'Sentence No. %')
             },
-            enable_sorting = True
+            enable_sorting = True,
+            results_search = True,
+            results_filter = True,
+            results_sample = True
         )
 
         self.selectionModel().selectionChanged.connect(self.selection_changed_generate_fig)
 
     # Enable the button "Generate figure" when table cells are selected, not when there are files opened
     def selection_changed_generate_fig(self):
-        if not self.is_empty() and self.is_visible() and self.is_selected():
+        if self.is_visible() and self.is_selected():
             self.button_generate_fig.setEnabled(True)
         else:
             self.button_generate_fig.setEnabled(False)

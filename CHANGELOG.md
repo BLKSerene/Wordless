@@ -21,10 +21,12 @@
 ## [3.7.0](https://github.com/BLKSerene/Wordless/releases/tag/3.7.0) - ??/??/2025
 ### 🎉 New Features
 - File Area: Add support for .srt files
+- Menu: Add Edit - Sample
 - Settings: Add Settings - Tables - Miscellaneous Settings
 - Utils: Add Wordless's character tokenizer
 - Work Area: Add Profiler - Export all tables
 - Work Area: Add Work Area - Table Settings - Show total
+- Work Area: Add Work Area - Sample
 
 ### ✨ Improvements
 - Utils: Update Stanza's Serbian (Latin script) sentence tokenizer, part-of-speech tagger, and dependency parser

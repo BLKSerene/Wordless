@@ -268,14 +268,7 @@ def init_settings_default(main):
                 'randomize_outputs': True
             },
 
-            'sort_results': {
-                'sorting_rules': [
-                    [_tr('wl_settings_default', 'File'), _tr('wl_settings_default', 'Ascending')],
-                    [_tr('wl_settings_default', 'Token No.'), _tr('wl_settings_default', 'Ascending')]
-                ]
-            },
-
-            'search_results': {
+            'results_search': {
                 'multi_search_mode': False,
                 'search_term': '',
                 'search_terms': [],
@@ -286,6 +279,20 @@ def init_settings_default(main):
                 'use_regex': False,
                 'match_without_tags': False,
                 'match_tags': False
+            },
+
+            'results_sample': {
+                'sampling_method': _tr('wl_settings_default', 'None'),
+                'sample_size_random': 100,
+                'sample_size_systematic_interval': 10,
+                'sample_size_systematic_size': 100
+            },
+
+            'results_sort': {
+                'sorting_rules': [
+                    [_tr('wl_settings_default', 'File'), _tr('wl_settings_default', 'Ascending')],
+                    [_tr('wl_settings_default', 'Token No.'), _tr('wl_settings_default', 'Ascending')]
+                ]
             }
         },
 
@@ -355,7 +362,7 @@ def init_settings_default(main):
                 'show_pct_data': True
             },
 
-            'search_results': {
+            'results_search': {
                 'multi_search_mode': False,
                 'search_term': '',
                 'search_terms': [],
@@ -366,7 +373,14 @@ def init_settings_default(main):
                 'use_regex': False,
                 'match_without_tags': False,
                 'match_tags': False
-            }
+            },
+
+            'results_sample': {
+                'sampling_method': _tr('wl_settings_default', 'None'),
+                'sample_size_random': 100,
+                'sample_size_systematic_interval': 10,
+                'sample_size_systematic_size': 100
+            },
         },
 
         'dependency_parser': {
@@ -444,7 +458,20 @@ def init_settings_default(main):
                 'show_in_separate_tab': False
             },
 
-            'filter_results': {
+            'results_search': {
+                'multi_search_mode': False,
+                'search_term': '',
+                'search_terms': [],
+
+                'match_case': False,
+                'match_whole_words': False,
+                'match_inflected_forms': False,
+                'use_regex': False,
+                'match_without_tags': False,
+                'match_tags': False
+            },
+
+            'results_filter': {
                 'file_to_filter': _tr('wl_settings_default', 'Total'),
 
                 'len_head_sync': False,
@@ -472,17 +499,11 @@ def init_settings_default(main):
                 'add_max_no_limit': True,
             },
 
-            'search_results': {
-                'multi_search_mode': False,
-                'search_term': '',
-                'search_terms': [],
-
-                'match_case': False,
-                'match_whole_words': False,
-                'match_inflected_forms': False,
-                'use_regex': False,
-                'match_without_tags': False,
-                'match_tags': False
+            'results_sample': {
+                'sampling_method': _tr('wl_settings_default', 'None'),
+                'sample_size_random': 100,
+                'sample_size_systematic_interval': 10,
+                'sample_size_systematic_size': 100
             }
         },
 
@@ -532,7 +553,20 @@ def init_settings_default(main):
                 'rank_max_no_limit': False,
             },
 
-            'filter_results': {
+            'results_search': {
+                'multi_search_mode': False,
+                'search_term': '',
+                'search_terms': [],
+
+                'match_case': False,
+                'match_whole_words': False,
+                'match_inflected_forms': False,
+                'use_regex': False,
+                'match_without_tags': False,
+                'match_tags': False
+            },
+
+            'results_filter': {
                 'file_to_filter': _tr('wl_settings_default', 'Total'),
 
                 'len_token_sync': False,
@@ -572,17 +606,11 @@ def init_settings_default(main):
                 'num_files_found_max_no_limit': True
             },
 
-            'search_results': {
-                'multi_search_mode': False,
-                'search_term': '',
-                'search_terms': [],
-
-                'match_case': False,
-                'match_whole_words': False,
-                'match_inflected_forms': False,
-                'use_regex': False,
-                'match_without_tags': False,
-                'match_tags': False
+            'results_sample': {
+                'sampling_method': _tr('wl_settings_default', 'None'),
+                'sample_size_random': 100,
+                'sample_size_systematic_interval': 10,
+                'sample_size_systematic_size': 100
             }
         },
 
@@ -695,7 +723,20 @@ def init_settings_default(main):
                 'rank_max_no_limit': False,
             },
 
-            'filter_results': {
+            'results_search': {
+                'multi_search_mode': False,
+                'search_term': '',
+                'search_terms': [],
+
+                'match_case': False,
+                'match_whole_words': False,
+                'match_inflected_forms': False,
+                'use_regex': False,
+                'match_without_tags': False,
+                'match_tags': False
+            },
+
+            'results_filter': {
                 'file_to_filter': _tr('wl_settings_default', 'Total'),
 
                 'len_ngram_sync': False,
@@ -729,17 +770,11 @@ def init_settings_default(main):
                 'num_files_found_max_no_limit': True
             },
 
-            'search_results': {
-                'multi_search_mode': False,
-                'search_term': '',
-                'search_terms': [],
-
-                'match_case': False,
-                'match_whole_words': False,
-                'match_inflected_forms': False,
-                'use_regex': False,
-                'match_without_tags': False,
-                'match_tags': False
+            'results_sample': {
+                'sampling_method': _tr('wl_settings_default', 'None'),
+                'sample_size_random': 100,
+                'sample_size_systematic_interval': 10,
+                'sample_size_systematic_size': 100
             }
         },
 
@@ -848,7 +883,20 @@ def init_settings_default(main):
                 'rank_max_no_limit': False
             },
 
-            'filter_results': {
+            'results_search': {
+                'multi_search_mode': False,
+                'search_term': '',
+                'search_terms': [],
+
+                'match_case': False,
+                'match_whole_words': False,
+                'match_inflected_forms': False,
+                'use_regex': False,
+                'match_without_tags': False,
+                'match_tags': False
+            },
+
+            'results_filter': {
                 'file_to_filter': _tr('wl_settings_default', 'Total'),
 
                 'len_node_sync': False,
@@ -907,17 +955,11 @@ def init_settings_default(main):
                 'num_files_found_max_no_limit': True
             },
 
-            'search_results': {
-                'multi_search_mode': False,
-                'search_term': '',
-                'search_terms': [],
-
-                'match_case': False,
-                'match_whole_words': False,
-                'match_inflected_forms': False,
-                'use_regex': False,
-                'match_without_tags': False,
-                'match_tags': False
+            'results_sample': {
+                'sampling_method': _tr('wl_settings_default', 'None'),
+                'sample_size_random': 100,
+                'sample_size_systematic_interval': 10,
+                'sample_size_systematic_size': 100
             }
         },
 
@@ -1025,7 +1067,20 @@ def init_settings_default(main):
                 'rank_max_no_limit': False
             },
 
-            'filter_results': {
+            'results_search': {
+                'multi_search_mode': False,
+                'search_term': '',
+                'search_terms': [],
+
+                'match_case': False,
+                'match_whole_words': False,
+                'match_inflected_forms': False,
+                'use_regex': False,
+                'match_without_tags': False,
+                'match_tags': False
+            },
+
+            'results_filter': {
                 'file_to_filter': _tr('wl_settings_default', 'Total'),
 
                 'len_node_sync': False,
@@ -1084,18 +1139,12 @@ def init_settings_default(main):
                 'num_files_found_max_no_limit': True
             },
 
-            'search_results': {
-                'multi_search_mode': False,
-                'search_term': '',
-                'search_terms': [],
-
-                'match_case': False,
-                'match_whole_words': False,
-                'match_inflected_forms': False,
-                'use_regex': False,
-                'match_without_tags': False,
-                'match_tags': False
-            },
+            'results_sample': {
+                'sampling_method': _tr('wl_settings_default', 'None'),
+                'sample_size_random': 100,
+                'sample_size_systematic_interval': 10,
+                'sample_size_systematic_size': 100
+            }
         },
 
         'keyword_extractor': {
@@ -1143,7 +1192,20 @@ def init_settings_default(main):
                 'rank_max_no_limit': False
             },
 
-            'filter_results': {
+            'results_search': {
+                'multi_search_mode': False,
+                'search_term': '',
+                'search_terms': [],
+
+                'match_case': False,
+                'match_whole_words': False,
+                'match_inflected_forms': False,
+                'use_regex': False,
+                'match_without_tags': False,
+                'match_tags': False
+            },
+
+            'results_filter': {
                 'file_to_filter': _tr('wl_settings_default', 'Total'),
 
                 'len_keyword_sync': False,
@@ -1189,17 +1251,11 @@ def init_settings_default(main):
                 'num_files_found_max_no_limit': True
             },
 
-            'search_results': {
-                'multi_search_mode': False,
-                'search_term': '',
-                'search_terms': [],
-
-                'match_case': False,
-                'match_whole_words': False,
-                'match_inflected_forms': False,
-                'use_regex': False,
-                'match_without_tags': False,
-                'match_tags': False
+            'results_sample': {
+                'sampling_method': _tr('wl_settings_default', 'None'),
+                'sample_size_random': 100,
+                'sample_size_systematic_interval': 10,
+                'sample_size_systematic_size': 100
             }
         },
 

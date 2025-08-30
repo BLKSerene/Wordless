@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Tests: Results - Search
+# Tests: Results - Sample
 # Copyright (C) 2018-2025  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -17,35 +17,26 @@
 # ----------------------------------------------------------------------
 
 from tests import wl_test_init
-from wordless.wl_results import wl_results_search
+from wordless.wl_results import wl_results_sample
 
 main = wl_test_init.Wl_Test_Main()
 
-def test_wl_dialog_results_search():
+def test_wl_dialog_results_sample():
     table = wl_test_init.Wl_Test_Table(main, tab = 'dependency_parser')
     table.settings['file_area']['files_open'] = [{'selected': True, 'lang': 'test'}]
 
-    dialog_results_search = wl_results_search.Wl_Dialog_Results_Search(
+    dialog_results_sample = wl_results_sample.Wl_Dialog_Results_Sample(
         main,
         table = table
     )
 
-    dialog_results_search.load_settings(defaults = True)
-    dialog_results_search.load_settings(defaults = False)
+    dialog_results_sample.load_settings(defaults = True)
+    dialog_results_sample.load_settings(defaults = False)
 
-    dialog_results_search.line_edit_search_term.setText('')
-    dialog_results_search.settings_changed()
-    dialog_results_search.line_edit_search_term.setText('test')
-    dialog_results_search.settings_changed()
-
-    dialog_results_search.table_item_changed()
-
-    dialog_results_search.find_next()
-    dialog_results_search.find_prev()
-    dialog_results_search.find_all()
-    dialog_results_search.update_gui('')
-    dialog_results_search.clr_highlights()
-    dialog_results_search.clr_history()
+    for i in range(dialog_results_sample.combo_box_sampling_method.count()):
+        dialog_results_sample.combo_box_sampling_method.setCurrentIndex(i)
+        dialog_results_sample.settings_changed()
+        dialog_results_sample.sample()
 
 if __name__ == '__main__':
-    test_wl_dialog_results_search()
+    test_wl_dialog_results_sample()

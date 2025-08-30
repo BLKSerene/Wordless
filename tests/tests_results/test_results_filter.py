@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Tests: Results - Filter results
+# Tests: Results - Filter
 # Copyright (C) 2018-2025  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -97,7 +97,7 @@ def test_wl_dialog_results_filter_dependency_parser():
 
     dialog_results_filter_dependency_parser.load_settings(defaults = True)
     dialog_results_filter_dependency_parser.load_settings(defaults = False)
-    dialog_results_filter_dependency_parser.filter_results()
+    dialog_results_filter_dependency_parser.filter()
     dialog_results_filter_dependency_parser.update_gui('')
 
 def test_wl_dialog_results_filter_wordlist_generator():
@@ -108,7 +108,7 @@ def test_wl_dialog_results_filter_wordlist_generator():
 
     dialog_results_filter_wordlist_generator.load_settings(defaults = True)
     dialog_results_filter_wordlist_generator.load_settings(defaults = False)
-    dialog_results_filter_wordlist_generator.filter_results()
+    dialog_results_filter_wordlist_generator.filter()
     dialog_results_filter_wordlist_generator.update_gui('')
 
     dialog_results_filter_ngram_generator = wl_results_filter.Wl_Dialog_Results_Filter_Wordlist_Generator(
@@ -118,7 +118,7 @@ def test_wl_dialog_results_filter_wordlist_generator():
 
     dialog_results_filter_ngram_generator.load_settings(defaults = True)
     dialog_results_filter_ngram_generator.load_settings(defaults = False)
-    dialog_results_filter_ngram_generator.filter_results()
+    dialog_results_filter_ngram_generator.filter()
     dialog_results_filter_ngram_generator.update_gui('')
 
 def test_wl_dialog_results_filter_collocation_extractor():
@@ -129,7 +129,7 @@ def test_wl_dialog_results_filter_collocation_extractor():
 
     dialog_results_filter_collocation_extractor.load_settings(defaults = True)
     dialog_results_filter_collocation_extractor.load_settings(defaults = False)
-    dialog_results_filter_collocation_extractor.filter_results()
+    dialog_results_filter_collocation_extractor.filter()
     dialog_results_filter_collocation_extractor.update_gui('')
 
     dialog_results_filter_colligation_extractor = wl_results_filter.Wl_Dialog_Results_Filter_Collocation_Extractor(
@@ -139,7 +139,7 @@ def test_wl_dialog_results_filter_collocation_extractor():
 
     dialog_results_filter_colligation_extractor.load_settings(defaults = True)
     dialog_results_filter_colligation_extractor.load_settings(defaults = False)
-    dialog_results_filter_colligation_extractor.filter_results()
+    dialog_results_filter_colligation_extractor.filter()
     dialog_results_filter_colligation_extractor.update_gui('')
 
     dialog_results_filter_keyword_extractor = wl_results_filter.Wl_Dialog_Results_Filter_Collocation_Extractor(
@@ -149,7 +149,7 @@ def test_wl_dialog_results_filter_collocation_extractor():
 
     dialog_results_filter_keyword_extractor.load_settings(defaults = True)
     dialog_results_filter_keyword_extractor.load_settings(defaults = False)
-    dialog_results_filter_keyword_extractor.filter_results()
+    dialog_results_filter_keyword_extractor.filter()
     dialog_results_filter_keyword_extractor.update_gui('')
 
 if __name__ == '__main__':

@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Results - Sort results
+# Wordless: Results - Sort
 # Copyright (C) 2018-2025  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -49,14 +49,14 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
     def __init__(self, main, table):
         super().__init__(
             main,
-            title = _tr('Wl_Dialog_Results_Sort_Concordancer', 'Sort Results'),
+            title = _tr('Wl_Dialog_Results_Sort_Concordancer', 'Sort'),
             width = 550,
             height = 300
         )
 
         self.tab = table.tab
         self.table = table
-        self.settings = self.main.settings_custom[self.tab]['sort_results']
+        self.settings = self.main.settings_custom[self.tab]['results_sort']
 
         # Global constants do not work for translations
         self.RE_SORTING_COL_L = re.compile(self.tr(r'^L[1-9][0-9]*$'))
@@ -70,7 +70,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
         self.button_sort = QtWidgets.QPushButton(self.tr('Sort'), self)
         self.button_close = QtWidgets.QPushButton(self.tr('Close'), self)
 
-        self.button_sort.clicked.connect(lambda: self.sort_results()) # pylint: disable=unnecessary-lambda
+        self.button_sort.clicked.connect(lambda: self.sort()) # pylint: disable=unnecessary-lambda
         self.button_close.clicked.connect(self.reject)
 
         layout_table_sort = wl_layouts.Wl_Layout()
@@ -103,7 +103,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
         self.table_sort.load_settings(defaults = defaults)
 
     @wl_misc.log_time
-    def sort_results(self):
+    def sort(self):
         if not self.table.is_empty():
             self.worker_results_sort_concordancer = Wl_Worker_Results_Sort_Concordancer(
                 self.main,
@@ -351,7 +351,7 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         else:
             sorting_rules = []
 
-        self.main.settings_custom[self.tab]['sort_results']['sorting_rules'] = sorting_rules
+        self.main.settings_custom[self.tab]['results_sort']['sorting_rules'] = sorting_rules
 
         if self.model().rowCount() < len(self.cols_to_sort):
             self.button_add.setEnabled(True)
@@ -400,7 +400,7 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
             ))
 
             # Check sorting settings
-            sorting_rules_old = copy.deepcopy(self.main.settings_custom[self.tab]['sort_results']['sorting_rules'])
+            sorting_rules_old = copy.deepcopy(self.main.settings_custom[self.tab]['results_sort']['sorting_rules'])
 
             self.clr_table(0)
 
@@ -506,9 +506,9 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default[self.tab]['sort_results'])
+            settings = copy.deepcopy(self.main.settings_default[self.tab]['results_sort'])
         else:
-            settings = copy.deepcopy(self.main.settings_custom[self.tab]['sort_results'])
+            settings = copy.deepcopy(self.main.settings_custom[self.tab]['results_sort'])
 
         self.clr_table(0)
 

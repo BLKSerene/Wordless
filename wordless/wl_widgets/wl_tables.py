@@ -287,10 +287,13 @@ class Wl_Table(QtWidgets.QTableView):
                 ))
 
     def is_visible(self):
-        return any((
-            not self.isRowHidden(i)
-            for i in range(self.model().rowCount())
-        ))
+        return (
+            not self.is_empty()
+            and any((
+                not self.isRowHidden(i)
+                for i in range(self.model().rowCount())
+            ))
+        )
 
     def is_selected(self):
         return bool(self.selectionModel().selectedIndexes())
@@ -327,6 +330,12 @@ class Wl_Table(QtWidgets.QTableView):
             if text in header
         ]
 
+    def get_visible_rows(self):
+        if self.is_empty():
+            return []
+        else:
+            return [row for row in range(self.model().rowCount()) if not self.isRowHidden(row)]
+
     def get_selected_rows(self, visible_only = False):
         selected_rows = sorted({index.row() for index in self.selectionModel().selectedIndexes()})
 
@@ -334,14 +343,6 @@ class Wl_Table(QtWidgets.QTableView):
             return [row for row in selected_rows if not self.isRowHidden(row)]
         else:
             return selected_rows
-
-    def get_selected_cols(self, visible_only = False):
-        selected_col = sorted({index.column() for index in self.selectionModel().selectedIndexes()})
-
-        if visible_only:
-            return [col for col in selected_col if not self.isColumnHidden(col)]
-        else:
-            return selected_col
 
     def _add_row(self, row = None, texts = None):
         if texts is None:
@@ -1124,6 +1125,16 @@ class Wl_Table_Item_Err(QtGui.QStandardItem):
     def __lt__(self, other):
         return self.read_data() < other.read_data()
 
+# Avoid circular imports
+from wordless.wl_results import ( # pylint: disable=wrong-import-position
+    wl_results_filter,
+    wl_results_sample,
+    wl_results_search,
+    wl_results_sort
+)
+
+WIDTH_RESULTS_BUTTONS = 120
+
 class Wl_Table_Data(Wl_Table):
     def __init__(
         self, main, tab,
@@ -1133,7 +1144,8 @@ class Wl_Table_Data(Wl_Table):
         headers_cum = None,
         cols_breakdown_span_position = None,
         cols_breakdown_file = None, cols_total = None,
-        enable_sorting = False, generate_fig = True
+        enable_sorting = False, generate_fig = True,
+        results_search = False, results_filter = False, results_sample = False, results_sort = False
     ):
         super().__init__(
             main, headers, header_orientation,
@@ -1153,6 +1165,14 @@ class Wl_Table_Data(Wl_Table):
         self.cols_total_old = cols_total or set()
 
         self.enable_sorting = enable_sorting
+
+        self.results_search = results_search
+        self.results_filter = results_filter
+        self.results_sample = results_sample
+        self.results_sort = results_sort
+
+        self.rows_filter = set()
+        self.rows_sample = set()
 
         if enable_sorting:
             self.setSortingEnabled(True)
@@ -1183,11 +1203,50 @@ class Wl_Table_Data(Wl_Table):
 
         self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
 
+        if self.results_search:
+            self.button_results_search = wl_buttons.Wl_Button(_tr('wl_tables', 'Search...'), self)
+            self.dialog_results_search = wl_results_search.Wl_Dialog_Results_Search(self.main, table = self)
+
+            self.button_results_search.setMinimumWidth(WIDTH_RESULTS_BUTTONS)
+
+            self.button_generate_table.clicked.connect(self.dialog_results_search.clr_history)
+            self.button_results_search.clicked.connect(self.dialog_results_search.show)
+
+        if self.results_filter:
+            self.button_results_filter = wl_buttons.Wl_Button(_tr('wl_tables', 'Filter...'), self)
+
+            self.button_results_filter.setMinimumWidth(WIDTH_RESULTS_BUTTONS)
+
+            self.button_results_filter.clicked.connect(self.results_filter_clicked)
+
+        if self.results_sample:
+            self.button_results_sample = wl_buttons.Wl_Button(_tr('wl_tables', 'Sample...'), self)
+            self.dialog_results_sample = wl_results_sample.Wl_Dialog_Results_Sample(self.main, table = self)
+
+            self.button_results_sample.setMinimumWidth(WIDTH_RESULTS_BUTTONS)
+
+            self.button_results_sample.clicked.connect(self.dialog_results_sample.show)
+
+        if self.results_sort:
+            self.button_results_sort = wl_buttons.Wl_Button(_tr('wl_tables', 'Sort...'), self)
+            self.dialog_results_sort = wl_results_sort.Wl_Dialog_Results_Sort_Concordancer(self.main, table = self)
+
+            self.button_results_sort.setMinimumWidth(WIDTH_RESULTS_BUTTONS)
+
+            self.button_results_sort.clicked.connect(self.dialog_results_sort.show)
+
         self.clr_table()
         self.file_changed()
 
+        if self.results_search or self.results_filter or self.results_sample or self.results_sort:
+            self.label_num_results = QtWidgets.QLabel('', self)
+
+            self.model().itemChanged.connect(self.results_changed)
+
+            self.results_changed()
+
     def item_changed(self):
-        if not self.is_empty() and self.is_visible():
+        if self.is_visible():
             self.button_exp_all_cells.setEnabled(True)
         else:
             self.button_exp_all_cells.setEnabled(False)
@@ -1663,11 +1722,11 @@ class Wl_Table_Data(Wl_Table):
     def filter_table(self):
         self.disable_updates()
 
-        for i, row_filter in enumerate(self.row_filters):
-            if row_filter:
-                self.showRow(i)
+        for row in range(self.model().rowCount()):
+            if row in self.rows_filter or row in self.rows_sample:
+                self.hideRow(row)
             else:
-                self.hideRow(i)
+                self.showRow(row)
 
         self.enable_updates()
 
@@ -1685,6 +1744,9 @@ class Wl_Table_Data(Wl_Table):
 
     def clr_table(self, num_headers = 1, confirm = False):
         confirmed = True
+
+        self.rows_filter.clear()
+        self.rows_sample.clear()
 
         # Ask for confirmation if results have not been exported
         if confirm:
@@ -1765,206 +1827,59 @@ class Wl_Table_Data(Wl_Table):
 
         return confirmed
 
-# Avoid circular imports
-from wordless.wl_results import wl_results_filter, wl_results_search, wl_results_sort # pylint: disable=wrong-import-position
-
-class Wl_Table_Data_Search(Wl_Table_Data):
-    def __init__(
-        self, main, tab,
-        headers, header_orientation = 'hor',
-        headers_int = None, headers_float = None,
-        headers_pct = None, headers_p_val = None,
-        headers_cum = None,
-        cols_breakdown_span_position = None,
-        cols_breakdown_file = None, cols_total = None,
-        enable_sorting = False, generate_fig = True
-    ):
-        super().__init__(
-            main, tab,
-            headers, header_orientation,
-            headers_int, headers_float,
-            headers_pct, headers_p_val,
-            headers_cum,
-            cols_breakdown_span_position,
-            cols_breakdown_file, cols_total,
-            enable_sorting, generate_fig
-        )
-
-        self.model().itemChanged.connect(self.results_changed)
-
-        self.label_num_results = QtWidgets.QLabel('', self)
-        self.button_results_search = wl_buttons.Wl_Button(_tr('wl_tables', 'Search in results'), self)
-        self.dialog_results_search = wl_results_search.Wl_Dialog_Results_Search(self.main, table = self)
-
-        self.button_results_search.setMinimumWidth(140)
-
-        self.button_generate_table.clicked.connect(self.dialog_results_search.clr_history)
-        self.button_results_search.clicked.connect(self.dialog_results_search.show)
-
-        self.results_changed()
-
     def results_changed(self):
-        rows_visible = len([i for i in range(self.model().rowCount()) if not self.isRowHidden(i)])
+        self.label_num_results.setText(_tr('wl_tables', 'Number of results: ') + str(len(self.get_visible_rows())))
 
-        if not self.is_empty() and rows_visible:
-            self.label_num_results.setText(_tr('wl_tables', 'Number of results: ') + str(rows_visible))
+        if self.results_search:
+            if self.is_visible():
+                self.button_results_search.setEnabled(True)
+            else:
+                self.button_results_search.setEnabled(False)
 
-            self.button_results_search.setEnabled(True)
-        else:
-            self.label_num_results.setText(_tr('wl_tables', 'Number of results: 0'))
+        if self.results_filter:
+            if not self.is_empty():
+                self.button_results_filter.setEnabled(True)
+            else:
+                self.button_results_filter.setEnabled(False)
 
-            self.button_results_search.setEnabled(False)
+        if self.results_sample:
+            if self.is_visible():
+                self.button_results_sample.setEnabled(True)
+            else:
+                self.button_results_sample.setEnabled(False)
+
+        if self.results_sort:
+            if self.is_visible():
+                self.button_results_sort.setEnabled(True)
+            else:
+                self.button_results_sort.setEnabled(False)
 
         self.results_changed_menu_edit()
 
     def results_changed_menu_edit(self):
-        if self.button_results_search.isEnabled():
-            self.main.action_edit_results_search.setEnabled(True)
-        else:
-            self.main.action_edit_results_search.setEnabled(False)
+        if self.results_search:
+            if self.button_results_search.isEnabled():
+                self.main.action_edit_results_search.setEnabled(True)
+            else:
+                self.main.action_edit_results_search.setEnabled(False)
 
-        self.main.action_edit_results_filter.setEnabled(False)
-        self.main.action_edit_results_sort.setEnabled(False)
+        if self.results_filter:
+            if self.button_results_filter.isEnabled():
+                self.main.action_edit_results_filter.setEnabled(True)
+            else:
+                self.main.action_edit_results_filter.setEnabled(False)
 
-class Wl_Table_Data_Sort_Search(Wl_Table_Data):
-    def __init__(
-        self, main, tab,
-        headers, header_orientation = 'hor',
-        headers_int = None, headers_float = None,
-        headers_pct = None, headers_p_val = None,
-        headers_cum = None,
-        cols_breakdown_span_position = None,
-        cols_breakdown_file = None, cols_total = None,
-        enable_sorting = False, generate_fig = True
-    ):
-        super().__init__(
-            main, tab,
-            headers, header_orientation,
-            headers_int, headers_float,
-            headers_pct, headers_p_val,
-            headers_cum,
-            cols_breakdown_span_position,
-            cols_breakdown_file, cols_total,
-            enable_sorting, generate_fig
-        )
+        if self.results_sample:
+            if self.button_results_sample.isEnabled():
+                self.main.action_edit_results_sample.setEnabled(True)
+            else:
+                self.main.action_edit_results_sample.setEnabled(False)
 
-        self.model().itemChanged.connect(self.results_changed)
-
-        self.label_num_results = QtWidgets.QLabel('', self)
-        self.button_results_sort = wl_buttons.Wl_Button(_tr('wl_tables', 'Sort results'), self)
-        self.button_results_search = wl_buttons.Wl_Button(_tr('wl_tables', 'Search in results'), self)
-
-        self.dialog_results_sort = wl_results_sort.Wl_Dialog_Results_Sort_Concordancer(self.main, table = self)
-        self.dialog_results_search = wl_results_search.Wl_Dialog_Results_Search(self.main, table = self)
-
-        self.button_results_sort.setMinimumWidth(140)
-        self.button_results_search.setMinimumWidth(140)
-
-        self.button_generate_table.clicked.connect(self.dialog_results_search.clr_history)
-        self.button_results_sort.clicked.connect(self.dialog_results_sort.show)
-        self.button_results_search.clicked.connect(self.dialog_results_search.show)
-
-        self.results_changed()
-
-    def results_changed(self):
-        rows_visible = len([i for i in range(self.model().rowCount()) if not self.isRowHidden(i)])
-
-        if not self.is_empty() and rows_visible:
-            self.label_num_results.setText(_tr('wl_tables', 'Number of results: ') + str(rows_visible))
-
-            self.button_results_sort.setEnabled(True)
-            self.button_results_search.setEnabled(True)
-        else:
-            self.label_num_results.setText(_tr('wl_tables', 'Number of results: 0'))
-
-            self.button_results_sort.setEnabled(False)
-            self.button_results_search.setEnabled(False)
-
-        self.results_changed_menu_edit()
-
-    def results_changed_menu_edit(self):
-        if self.button_results_search.isEnabled():
-            self.main.action_edit_results_search.setEnabled(True)
-        else:
-            self.main.action_edit_results_search.setEnabled(False)
-
-        if self.button_results_sort.isEnabled():
-            self.main.action_edit_results_sort.setEnabled(True)
-        else:
-            self.main.action_edit_results_sort.setEnabled(False)
-
-        self.main.action_edit_results_filter.setEnabled(False)
-
-class Wl_Table_Data_Filter_Search(Wl_Table_Data):
-    def __init__(
-        self, main, tab,
-        headers, header_orientation = 'hor',
-        headers_int = None, headers_float = None,
-        headers_pct = None, headers_p_val = None,
-        headers_cum = None,
-        cols_breakdown_span_position = None,
-        cols_breakdown_file = None, cols_total = None,
-        enable_sorting = False, generate_fig = True
-    ):
-        super().__init__(
-            main, tab,
-            headers, header_orientation,
-            headers_int, headers_float,
-            headers_pct, headers_p_val,
-            headers_cum,
-            cols_breakdown_span_position,
-            cols_breakdown_file, cols_total,
-            enable_sorting, generate_fig
-        )
-
-        self.model().itemChanged.connect(self.results_changed)
-
-        self.label_num_results = QtWidgets.QLabel('', self)
-        self.button_results_filter = wl_buttons.Wl_Button(_tr('wl_tables', 'Filter results'), self)
-        self.button_results_search = wl_buttons.Wl_Button(_tr('wl_tables', 'Search in results'), self)
-
-        self.dialog_results_search = wl_results_search.Wl_Dialog_Results_Search(self.main, table = self)
-
-        self.button_results_filter.setMinimumWidth(140)
-        self.button_results_search.setMinimumWidth(140)
-
-        self.button_generate_table.clicked.connect(self.dialog_results_search.clr_history)
-        self.button_results_filter.clicked.connect(self.results_filter_clicked)
-        self.button_results_search.clicked.connect(self.dialog_results_search.show)
-
-        self.results_changed()
-
-    def results_changed(self):
-        rows_visible = len([i for i in range(self.model().rowCount()) if not self.isRowHidden(i)])
-
-        if not self.is_empty():
-            self.label_num_results.setText(_tr('wl_tables', 'Number of results: ') + str(rows_visible))
-
-            self.button_results_filter.setEnabled(True)
-        else:
-            self.label_num_results.setText(_tr('wl_tables', 'Number of results: 0'))
-
-            self.button_results_filter.setEnabled(False)
-
-        if not self.is_empty() and rows_visible:
-            self.button_results_search.setEnabled(True)
-        else:
-            self.button_results_search.setEnabled(False)
-
-        self.results_changed_menu_edit()
-
-    def results_changed_menu_edit(self):
-        if self.button_results_search.isEnabled():
-            self.main.action_edit_results_search.setEnabled(True)
-        else:
-            self.main.action_edit_results_search.setEnabled(False)
-
-        if self.button_results_filter.isEnabled():
-            self.main.action_edit_results_filter.setEnabled(True)
-        else:
-            self.main.action_edit_results_filter.setEnabled(False)
-
-        self.main.action_edit_results_sort.setEnabled(False)
+        if self.results_sort:
+            if self.button_results_sort.isEnabled():
+                self.main.action_edit_results_sort.setEnabled(True)
+            else:
+                self.main.action_edit_results_sort.setEnabled(False)
 
     def results_filter_clicked(self):
         match self.tab:

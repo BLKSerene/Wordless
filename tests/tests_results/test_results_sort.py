@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Tests: Results - Sort results
+# Tests: Results - Sort
 # Copyright (C) 2018-2025  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -40,7 +40,7 @@ def test_wl_dialog_results_sort_concordancer():
     dialog_results_sort_concordancer.load_settings(defaults = True)
     dialog_results_sort_concordancer.load_settings(defaults = False)
 
-    main.settings_custom['concordancer']['sort_results']['sorting_rules'] = [
+    main.settings_custom['concordancer']['results_sort']['sorting_rules'] = [
         ['Node', 'Ascending'],
         ['Sentiment', 'Ascending'],
         ['Token No.', 'Ascending'],
@@ -48,7 +48,7 @@ def test_wl_dialog_results_sort_concordancer():
         ['R1', 'Ascending'],
         ['L1', 'Ascending']
     ]
-    dialog_results_sort_concordancer.sort_results()
+    dialog_results_sort_concordancer.sort()
     dialog_results_sort_concordancer.update_gui([], '')
 
 def test_table_results_sort_concordancer():
@@ -76,7 +76,7 @@ def test_table_results_sort_concordancer():
     table.set_label(0, 0, 'test')
     table.set_label(0, 2, 'test')
 
-    main.settings_custom['concordancer']['sort_results']['sorting_rules'] = [['Node', 'Ascending']]
+    main.settings_custom['concordancer']['results_sort']['sorting_rules'] = [['Node', 'Ascending']]
     table.settings['concordancer']['generation_settings']['context_len_unit'] = 'Token'
     table_results_sort_concordancer.table_item_changed()
     table.settings['concordancer']['generation_settings']['context_len_unit'] = 'Sentence'

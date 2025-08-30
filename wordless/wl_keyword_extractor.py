@@ -67,8 +67,9 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
 
         layout_results = wl_layouts.Wl_Layout()
         layout_results.addWidget(self.table_keyword_extractor.label_num_results, 0, 0)
-        layout_results.addWidget(self.table_keyword_extractor.button_results_filter, 0, 2)
-        layout_results.addWidget(self.table_keyword_extractor.button_results_search, 0, 3)
+        layout_results.addWidget(self.table_keyword_extractor.button_results_sample, 0, 2)
+        layout_results.addWidget(self.table_keyword_extractor.button_results_filter, 0, 3)
+        layout_results.addWidget(self.table_keyword_extractor.button_results_search, 0, 4)
 
         layout_results.setColumnStretch(1, 1)
 
@@ -361,7 +362,7 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
         settings['rank_max'] = self.spin_box_rank_max.value()
         settings['rank_max_no_limit'] = self.checkbox_rank_max_no_limit.isChecked()
 
-class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
+class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data):
     def __init__(self, parent):
         super().__init__(
             parent,
@@ -379,7 +380,10 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
             headers_pct = {
                 _tr('Wl_Table_Keyword_Extractor', 'Number of\nFiles Found %')
             },
-            enable_sorting = True
+            enable_sorting = True,
+            results_search = True,
+            results_filter = True,
+            results_sample = True
         )
 
         self.main.wl_file_area_ref.table_files.model().itemChanged.connect(self.file_changed)

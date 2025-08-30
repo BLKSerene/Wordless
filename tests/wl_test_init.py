@@ -229,6 +229,9 @@ class Wl_Test_Table(QtWidgets.QTableView):
         self.tab = tab
         self.header_orientation = 'hor'
 
+        self.rows_filter = set()
+        self.rows_sample = set()
+
         self.settings_global = wl_settings_global.init_settings_global()
         self.settings = wl_settings_default.init_settings_default(self)
 
@@ -239,6 +242,7 @@ class Wl_Test_Table(QtWidgets.QTableView):
         self.disable_updates = lambda: wl_tables.Wl_Table.disable_updates(self)
         self.enable_updates = lambda emit_signals: wl_tables.Wl_Table.enable_updates(self, emit_signals)
         self.is_empty = lambda: wl_tables.Wl_Table.is_empty(self)
+        self.filter_table = lambda: None
 
     def set_item(self, row, col, text):
         self.model().setItem(row, col, QtGui.QStandardItem(text))

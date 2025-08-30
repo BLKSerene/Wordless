@@ -320,16 +320,19 @@ class Wl_Main(QtWidgets.QMainWindow):
         self.action_file_exit.triggered.connect(self.close)
 
         # Edit
-        self.action_edit_results_search = self.menu_edit.addAction(self.tr('&Search in Results...'))
+        self.action_edit_results_search = self.menu_edit.addAction(self.tr('&Search...'))
         self.action_edit_results_search.setShortcut(QtGui.QKeySequence('Ctrl+F'))
-        self.action_edit_results_search.setStatusTip(self.tr('Search in results displayed in the table'))
+        self.action_edit_results_search.setStatusTip(self.tr('Search within results in the table'))
         self.action_edit_results_search.triggered.connect(self.edit_results_search)
-        self.action_edit_results_filter = self.menu_edit.addAction(self.tr('&Filter Results...'))
+        self.action_edit_results_filter = self.menu_edit.addAction(self.tr('&Filter...'))
         self.action_edit_results_filter.setShortcut(QtGui.QKeySequence('Ctrl+Shift+L'))
-        self.action_edit_results_filter.setStatusTip(self.tr('Filter results displayed in the table'))
+        self.action_edit_results_filter.setStatusTip(self.tr('Filter results in the table'))
         self.action_edit_results_filter.triggered.connect(self.edit_results_filter)
-        self.action_edit_results_sort = self.menu_edit.addAction(self.tr('S&ort Results...'))
-        self.action_edit_results_sort.setStatusTip(self.tr('Sort results displayed in the table'))
+        self.action_edit_results_sample = self.menu_edit.addAction(self.tr('S&ample...'))
+        self.action_edit_results_sample.setStatusTip(self.tr('Sample results in the table'))
+        self.action_edit_results_sample.triggered.connect(self.edit_results_sample)
+        self.action_edit_results_sort = self.menu_edit.addAction(self.tr('S&ort...'))
+        self.action_edit_results_sort.setStatusTip(self.tr('Sort results in the table'))
         self.action_edit_results_sort.triggered.connect(self.edit_results_sort)
 
         # Preferences
@@ -521,23 +524,25 @@ class Wl_Main(QtWidgets.QMainWindow):
             self.tabs_file_area.tabBar().hide()
 
         # Menu - Edit
-        match self.wl_work_area.currentWidget().tab:
+        work_area_cur = self.wl_work_area.currentWidget()
+
+        match work_area_cur.tab:
             case 'concordancer':
-                table = self.wl_work_area.currentWidget().table_concordancer
+                table = work_area_cur.table_concordancer
             case 'concordancer_parallel':
-                table = self.wl_work_area.currentWidget().table_concordancer_parallel
+                table = work_area_cur.table_concordancer_parallel
             case 'dependency_parser':
-                table = self.wl_work_area.currentWidget().table_dependency_parser
+                table = work_area_cur.table_dependency_parser
             case 'wordlist_generator':
-                table = self.wl_work_area.currentWidget().table_wordlist_generator
+                table = work_area_cur.table_wordlist_generator
             case 'ngram_generator':
-                table = self.wl_work_area.currentWidget().table_ngram_generator
+                table = work_area_cur.table_ngram_generator
             case 'collocation_extractor':
-                table = self.wl_work_area.currentWidget().table_collocation_extractor
+                table = work_area_cur.table_collocation_extractor
             case 'colligation_extractor':
-                table = self.wl_work_area.currentWidget().table_colligation_extractor
+                table = work_area_cur.table_colligation_extractor
             case 'keyword_extractor':
-                table = self.wl_work_area.currentWidget().table_keyword_extractor
+                table = work_area_cur.table_keyword_extractor
             case _:
                 table = None
 
@@ -545,23 +550,25 @@ class Wl_Main(QtWidgets.QMainWindow):
             table.results_changed_menu_edit()
 
     def edit_results_search(self):
-        match self.wl_work_area.currentWidget().tab:
+        work_area_cur = self.wl_work_area.currentWidget()
+
+        match work_area_cur.tab:
             case 'concordancer':
-                button_results_search = self.wl_work_area.currentWidget().table_concordancer.button_results_search
+                button_results_search = work_area_cur.table_concordancer.button_results_search
             case 'concordancer_parallel':
-                button_results_search = self.wl_work_area.currentWidget().table_concordancer_parallel.button_results_search
+                button_results_search = work_area_cur.table_concordancer_parallel.button_results_search
             case 'dependency_parser':
-                button_results_search = self.wl_work_area.currentWidget().table_dependency_parser.button_results_search
+                button_results_search = work_area_cur.table_dependency_parser.button_results_search
             case 'wordlist_generator':
-                button_results_search = self.wl_work_area.currentWidget().table_wordlist_generator.button_results_search
+                button_results_search = work_area_cur.table_wordlist_generator.button_results_search
             case 'ngram_generator':
-                button_results_search = self.wl_work_area.currentWidget().table_ngram_generator.button_results_search
+                button_results_search = work_area_cur.table_ngram_generator.button_results_search
             case 'collocation_extractor':
-                button_results_search = self.wl_work_area.currentWidget().table_collocation_extractor.button_results_search
+                button_results_search = work_area_cur.table_collocation_extractor.button_results_search
             case 'colligation_extractor':
-                button_results_search = self.wl_work_area.currentWidget().table_colligation_extractor.button_results_search
+                button_results_search = work_area_cur.table_colligation_extractor.button_results_search
             case 'keyword_extractor':
-                button_results_search = self.wl_work_area.currentWidget().table_keyword_extractor.button_results_search
+                button_results_search = work_area_cur.table_keyword_extractor.button_results_search
             case _:
                 button_results_search = None
 
@@ -569,29 +576,59 @@ class Wl_Main(QtWidgets.QMainWindow):
             button_results_search.click()
 
     def edit_results_filter(self):
-        match self.wl_work_area.currentWidget().tab:
+        work_area_cur = self.wl_work_area.currentWidget()
+
+        match work_area_cur.tab:
             case 'dependency_parser':
-                button_results_filter = self.wl_work_area.currentWidget().table_dependency_parser.button_results_filter
+                button_results_filter = work_area_cur.table_dependency_parser.button_results_filter
             case 'wordlist_generator':
-                button_results_filter = self.wl_work_area.currentWidget().table_wordlist_generator.button_results_filter
+                button_results_filter = work_area_cur.table_wordlist_generator.button_results_filter
             case 'ngram_generator':
-                button_results_filter = self.wl_work_area.currentWidget().table_ngram_generator.button_results_filter
+                button_results_filter = work_area_cur.table_ngram_generator.button_results_filter
             case 'collocation_extractor':
-                button_results_filter = self.wl_work_area.currentWidget().table_collocation_extractor.button_results_filter
+                button_results_filter = work_area_cur.table_collocation_extractor.button_results_filter
             case 'colligation_extractor':
-                button_results_filter = self.wl_work_area.currentWidget().table_colligation_extractor.button_results_filter
+                button_results_filter = work_area_cur.table_colligation_extractor.button_results_filter
             case 'keyword_extractor':
-                button_results_filter = self.wl_work_area.currentWidget().table_keyword_extractor.button_results_filter
+                button_results_filter = work_area_cur.table_keyword_extractor.button_results_filter
             case _:
                 button_results_filter = None
 
         if button_results_filter and button_results_filter.isEnabled():
             button_results_filter.click()
 
-    def edit_results_sort(self):
-        match self.wl_work_area.currentWidget().tab:
+    def edit_results_sample(self):
+        work_area_cur = self.wl_work_area.currentWidget()
+
+        match work_area_cur.tab:
             case 'concordancer':
-                button_results_sort = self.wl_work_area.currentWidget().table_concordancer.button_results_sort
+                button_results_sample = work_area_cur.table_concordancer.button_results_sample
+            case 'concordancer_parallel':
+                button_results_sample = work_area_cur.table_concordancer_parallel.button_results_sample
+            case 'dependency_parser':
+                button_results_sample = work_area_cur.table_dependency_parser.button_results_sample
+            case 'wordlist_generator':
+                button_results_sample = work_area_cur.table_wordlist_generator.button_results_sample
+            case 'ngram_generator':
+                button_results_sample = work_area_cur.table_ngram_generator.button_results_sample
+            case 'collocation_extractor':
+                button_results_sample = work_area_cur.table_collocation_extractor.button_results_sample
+            case 'colligation_extractor':
+                button_results_sample = work_area_cur.table_colligation_extractor.button_results_sample
+            case 'keyword_extractor':
+                button_results_sample = work_area_cur.table_keyword_extractor.button_results_sample
+            case _:
+                button_results_sample = None
+
+        if button_results_sample and button_results_sample.isEnabled():
+            button_results_sample.click()
+
+    def edit_results_sort(self):
+        work_area_cur = self.wl_work_area.currentWidget()
+
+        match work_area_cur.tab:
+            case 'concordancer':
+                button_results_sort = work_area_cur.table_concordancer.button_results_sort
             case _:
                 button_results_sort = None
 

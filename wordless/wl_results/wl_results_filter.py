@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Results - Filter results
+# Wordless: Results - Filter
 # Copyright (C) 2018-2025  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -176,11 +176,11 @@ def get_filter_min_max(settings, filter_name):
 # See: https://www.riverbankcomputing.com/static/Docs/PyQt5/i18n.html#differences-between-pyqt5-and-qt
 class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
     def __init__(self, main, table):
-        super().__init__(main, _tr('Wl_Dialog_Results_Filter', 'Filter Results'))
+        super().__init__(main, _tr('Wl_Dialog_Results_Filter', 'Filter'))
 
         self.tab = table.tab
         self.table = table
-        self.settings = self.main.settings_custom[self.tab]['filter_results']
+        self.settings = self.main.settings_custom[self.tab]['results_filter']
         self.layouts_filters = []
 
         self.main.wl_work_area.currentChanged.connect(self.close)
@@ -193,7 +193,7 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
         self.button_close = QtWidgets.QPushButton(_tr('Wl_Dialog_Results_Filter', 'Close'), self)
 
         self.combo_box_file_to_filter.currentTextChanged.connect(self.file_to_filter_changed)
-        self.button_filter.clicked.connect(lambda checked: self.filter_results())
+        self.button_filter.clicked.connect(lambda checked: self.filter())
         self.button_close.clicked.connect(self.reject)
 
         layout_file_to_filter = wl_layouts.Wl_Layout()
@@ -222,7 +222,7 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = self.main.settings_default[self.tab]['filter_results']
+            settings = self.main.settings_default[self.tab]['results_filter']
         else:
             settings = self.settings
 
@@ -235,8 +235,11 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
         self.settings['file_to_filter'] = self.combo_box_file_to_filter.currentText()
 
     @wl_misc.log_time
-    def filter_results(self):
-        self.worker_filter_results = self.Worker_Filter_Results(
+    def filter(self):
+        # Reset sampling before filtering
+        self.table.rows_sample.clear()
+
+        self.worker_results_filter = self.Worker_Results_Filter(
             self.main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(
                 self.main,
@@ -245,10 +248,10 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
             dialog = self
         )
 
-        self.thread_filter_results = QtCore.QThread()
+        self.thread_results_filter = QtCore.QThread()
         wl_threading.start_worker_in_thread(
-            self.worker_filter_results,
-            self.thread_filter_results,
+            self.worker_results_filter,
+            self.thread_results_filter,
             self.update_gui
         )
 
@@ -283,7 +286,7 @@ class Wl_Dialog_Results_Filter_Dependency_Parser(Wl_Dialog_Results_Filter):
     def __init__(self, main, table):
         super().__init__(main, table)
 
-        self.Worker_Filter_Results = Wl_Worker_Results_Filter_Dependency_Parser
+        self.Worker_Results_Filter = Wl_Worker_Results_Filter_Dependency_Parser
 
         self.layouts_filters.append(widgets_filter(
             self,
@@ -328,7 +331,7 @@ class Wl_Dialog_Results_Filter_Dependency_Parser(Wl_Dialog_Results_Filter):
         super().load_settings(defaults)
 
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default[self.tab]['filter_results'])
+            settings = copy.deepcopy(self.main.settings_default[self.tab]['results_filter'])
         else:
             settings = copy.deepcopy(self.settings)
 
@@ -366,7 +369,7 @@ class Wl_Worker_Results_Filter_Dependency_Parser(wl_threading.Wl_Worker):
             )
 
             num_rows = self.dialog.table.model().rowCount()
-            self.dialog.table.row_filters = []
+            self.dialog.table.rows_filter.clear()
 
             for i in range(num_rows):
                 if not self._running:
@@ -401,9 +404,8 @@ class Wl_Worker_Results_Filter_Dependency_Parser(wl_threading.Wl_Worker):
                         add_min <= self.dialog.table.model().item(i, col_add).val <= add_max
                     )
 
-                    self.dialog.table.row_filters.append(all(filters))
-                else:
-                    self.dialog.table.row_filters.append(True)
+                    if not all(filters):
+                        self.dialog.table.rows_filter.add(i)
 
             self.progress_updated.emit(self.tr('Updating table...'))
         except wl_excs.Wl_Exc_Aborted:
@@ -417,7 +419,7 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
     def __init__(self, main, table):
         super().__init__(main, table)
 
-        self.Worker_Filter_Results = Wl_Worker_Results_Filter_Wordlist_Generator
+        self.Worker_Results_Filter = Wl_Worker_Results_Filter_Wordlist_Generator
 
         settings = self.table.settings[self.tab]
 
@@ -503,7 +505,7 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
         super().load_settings(defaults)
 
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default[self.tab]['filter_results'])
+            settings = copy.deepcopy(self.main.settings_default[self.tab]['results_filter'])
         else:
             settings = copy.deepcopy(self.settings)
 
@@ -575,7 +577,7 @@ class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
             )
 
             num_rows = self.dialog.table.model().rowCount()
-            self.dialog.table.row_filters = []
+            self.dialog.table.rows_filter.clear()
 
             for i in range(num_rows):
                 if not self._running:
@@ -625,7 +627,8 @@ class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
                     num_files_found_min <= self.dialog.table.model().item(i, col_num_files_found).val <= num_files_found_max
                 )
 
-                self.dialog.table.row_filters.append(all(filters))
+                if not all(filters):
+                    self.dialog.table.rows_filter.add(i)
 
             self.progress_updated.emit(self.tr('Updating table...'))
         except wl_excs.Wl_Exc_Aborted:
@@ -639,7 +642,7 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
     def __init__(self, main, table):
         super().__init__(main, table)
 
-        self.Worker_Filter_Results = Wl_Worker_Results_Filter_Collocation_Extractor
+        self.Worker_Results_Filter = Wl_Worker_Results_Filter_Collocation_Extractor
 
         settings = self.table.settings[self.tab]
 
@@ -779,7 +782,7 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
         super().load_settings(defaults)
 
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default[self.tab]['filter_results'])
+            settings = copy.deepcopy(self.main.settings_default[self.tab]['results_filter'])
         else:
             settings = copy.deepcopy(self.settings)
 
@@ -895,7 +898,7 @@ class Wl_Worker_Results_Filter_Collocation_Extractor(wl_threading.Wl_Worker):
             )
 
             num_rows = self.dialog.table.model().rowCount()
-            self.dialog.table.row_filters = []
+            self.dialog.table.rows_filter.clear()
 
             for i in range(num_rows):
                 if not self._running:
@@ -954,7 +957,8 @@ class Wl_Worker_Results_Filter_Collocation_Extractor(wl_threading.Wl_Worker):
                     num_files_found_min <= self.dialog.table.model().item(i, col_num_files_found).val <= num_files_found_max
                 )
 
-                self.dialog.table.row_filters.append(all(filters))
+                if not all(filters):
+                    self.dialog.table.rows_filter.add(i)
 
             self.progress_updated.emit(self.tr('Updating table...'))
         except wl_excs.Wl_Exc_Aborted:

@@ -60,7 +60,8 @@ class Wrapper_Concordancer_Parallel(wl_layouts.Wl_Wrapper):
 
         layout_results = wl_layouts.Wl_Layout()
         layout_results.addWidget(self.table_concordancer_parallel.label_num_results, 0, 0)
-        layout_results.addWidget(self.table_concordancer_parallel.button_results_search, 0, 4)
+        layout_results.addWidget(self.table_concordancer_parallel.button_results_sample, 0, 2)
+        layout_results.addWidget(self.table_concordancer_parallel.button_results_search, 0, 3)
 
         layout_results.setColumnStretch(1, 1)
 
@@ -245,7 +246,7 @@ class Wrapper_Concordancer_Parallel(wl_layouts.Wl_Wrapper):
 
         settings['show_pct_data'] = self.checkbox_show_pct_data.isChecked()
 
-class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data_Search):
+class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data):
     def __init__(self, parent):
         super().__init__(
             parent,
@@ -260,7 +261,9 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data_Search):
             headers_pct = {
                 _tr('Wl_Table_Concordancer_Parallel', 'Parallel Unit No. %')
             },
-            generate_fig = False
+            generate_fig = False,
+            results_search = True,
+            results_sample = True
         )
 
     @wl_misc.log_time

@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Results - Search in results
+# Wordless: Results - Search
 # Copyright (C) 2018-2025  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -50,12 +50,11 @@ _tr = QtCore.QCoreApplication.translate
 class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
     def __init__(self, main, table):
         # pylint: disable=unnecessary-lambda
-
-        super().__init__(main, _tr('Wl_Dialog_Results_Search', 'Search in Results'))
+        super().__init__(main, _tr('Wl_Dialog_Results_Search', 'Search'))
 
         self.tab = table.tab
         self.tables = [table]
-        self.settings = self.main.settings_custom[self.tab]['search_results']
+        self.settings = self.main.settings_custom[self.tab]['results_search']
         self.last_search_settings = []
         self.items_found = []
 
@@ -92,16 +91,16 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.button_close = QtWidgets.QPushButton(self.tr('Close'), self)
 
         self.checkbox_multi_search_mode.stateChanged.connect(self.multi_search_mode_changed)
-        self.line_edit_search_term.textChanged.connect(self.search_settings_changed)
+        self.line_edit_search_term.textChanged.connect(self.settings_changed)
         self.line_edit_search_term.returnPressed.connect(self.button_find_next.click)
-        self.list_search_terms.model().dataChanged.connect(self.search_settings_changed)
+        self.list_search_terms.model().dataChanged.connect(self.settings_changed)
 
-        self.checkbox_match_case.stateChanged.connect(self.search_settings_changed)
-        self.checkbox_match_whole_words.stateChanged.connect(self.search_settings_changed)
-        self.checkbox_match_inflected_forms.stateChanged.connect(self.search_settings_changed)
-        self.checkbox_use_regex.stateChanged.connect(self.search_settings_changed)
-        self.checkbox_match_without_tags.stateChanged.connect(self.search_settings_changed)
-        self.checkbox_match_tags.stateChanged.connect(self.search_settings_changed)
+        self.checkbox_match_case.stateChanged.connect(self.settings_changed)
+        self.checkbox_match_whole_words.stateChanged.connect(self.settings_changed)
+        self.checkbox_match_inflected_forms.stateChanged.connect(self.settings_changed)
+        self.checkbox_use_regex.stateChanged.connect(self.settings_changed)
+        self.checkbox_match_without_tags.stateChanged.connect(self.settings_changed)
+        self.checkbox_match_tags.stateChanged.connect(self.settings_changed)
 
         self.button_find_next.clicked.connect(lambda: self.find_next())
         self.button_find_prev.clicked.connect(lambda: self.find_prev())
@@ -152,7 +151,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default[self.tab]['search_results'])
+            settings = copy.deepcopy(self.main.settings_default[self.tab]['results_search'])
         else:
             settings = copy.deepcopy(self.settings)
 
@@ -169,9 +168,9 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.checkbox_match_without_tags.setChecked(settings['match_without_tags'])
         self.checkbox_match_tags.setChecked(settings['match_tags'])
 
-        self.search_settings_changed()
+        self.settings_changed()
 
-    def search_settings_changed(self):
+    def settings_changed(self):
         self.settings['multi_search_mode'] = self.checkbox_multi_search_mode.isChecked()
         self.settings['search_term'] = self.line_edit_search_term.text()
         self.settings['search_terms'] = self.list_search_terms.model().stringList()
@@ -199,7 +198,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
     def multi_search_mode_changed(self):
         self.adjust_size()
 
-        self.search_settings_changed()
+        self.settings_changed()
 
     def table_item_changed(self):
         self.checkbox_match_tags.token_settings_changed(
@@ -406,18 +405,6 @@ class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
                                 raise wl_excs.Wl_Exc_Aborted(self.main)
 
                             results[(row, col)] = table.indexWidget(table.model().index(row, col)).tokens_search
-                    # Numerals
-                    elif col in (
-                        table.headers_int
-                        | table.headers_float
-                        | table.headers_pct
-                        | table.headers_p_val
-                    ):
-                        for row in rows_to_search:
-                            results[(row, col)] = wl_texts.display_texts_to_tokens(
-                                self.main,
-                                [str(table.model().item(row, col).val)]
-                            )
                     else:
                         for row in rows_to_search:
                             if not self._running:
@@ -427,10 +414,25 @@ class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
                             try:
                                 results[(row, col)] = table.model().item(row, col).tokens_search
                             except AttributeError:
-                                results[(row, col)] = wl_texts.display_texts_to_tokens(
-                                    self.main,
-                                    [table.model().item(row, col).text()]
-                                )
+                                # Do not check the val attributes of numeric columns since they do not exist when, for example, "No language support" is displayed and only visible digits should be searched
+                                if (
+                                    table.settings['tables']['misc_settings']['show_thousand_separators']
+                                    and col in (
+                                        table.headers_int
+                                        | table.headers_float
+                                        | table.headers_pct
+                                        | table.headers_p_val
+                                    )
+                                ):
+                                    results[(row, col)] = wl_texts.display_texts_to_tokens(
+                                        self.main,
+                                        (table.model().item(row, col).text().replace(',', ''),)
+                                    )
+                                else:
+                                    results[(row, col)] = wl_texts.display_texts_to_tokens(
+                                        self.main,
+                                        (table.model().item(row, col).text(),)
+                                    )
 
                 items = [token for text in results.values() for token in text]
 

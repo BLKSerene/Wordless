@@ -64,7 +64,8 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         layout_results = wl_layouts.Wl_Layout()
         layout_results.addWidget(self.table_concordancer.label_num_results, 0, 0)
         layout_results.addWidget(self.table_concordancer.button_results_sort, 0, 2)
-        layout_results.addWidget(self.table_concordancer.button_results_search, 0, 3)
+        layout_results.addWidget(self.table_concordancer.button_results_sample, 0, 3)
+        layout_results.addWidget(self.table_concordancer.button_results_search, 0, 4)
 
         layout_results.setColumnStretch(1, 1)
 
@@ -453,7 +454,7 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         settings['add_line_nums'] = self.checkbox_add_line_nums.isChecked()
         settings['randomize_outputs'] = self.checkbox_randomize_outputs.isChecked()
 
-class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
+class Wl_Table_Concordancer(wl_tables.Wl_Table_Data):
     def __init__(self, parent):
         super().__init__(
             parent,
@@ -483,7 +484,10 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
                 _tr('Wl_Table_Concordancer', 'Sentence Segment No. %'),
                 _tr('Wl_Table_Concordancer', 'Sentence No. %'),
                 _tr('Wl_Table_Concordancer', 'Paragraph No. %')
-            }
+            },
+            results_search = True,
+            results_sample = True,
+            results_sort = True
         )
 
     @wl_misc.log_time
