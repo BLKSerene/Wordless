@@ -48,6 +48,7 @@ def test_dependency_parse(lang, dependency_parser):
     )
 
     wl_test_dependency_parse_models(lang, dependency_parser, test_sentence, tokens, '')
+    wl_test_dependency_parse_fig_models(lang, dependency_parser, test_sentence, tokens)
 
 def wl_test_dependency_parse_models(lang, dependency_parser, test_sentence, tokens, results):
     # Untokenized
@@ -128,14 +129,83 @@ def wl_test_dependency_parse_models(lang, dependency_parser, test_sentence, toke
 
     assert [str(token.head) for token in tokens_parsed] == heads_orig
 
+def wl_test_dependency_parse_fig_models(lang, dependency_parser, test_sentence, tokens):
+    print(f'{lang} / {dependency_parser} (figure)')
+
+    # Untokenized
+    html_untokenized = wl_dependency_parsing.wl_dependency_parse_fig(
+        main,
+        inputs = test_sentence,
+        lang = lang,
+        dependency_parser = dependency_parser,
+        show_in_separate_tabs = False
+    )
+    html_untokenized_separate_tabs = wl_dependency_parsing.wl_dependency_parse_fig(
+        main,
+        inputs = test_sentence,
+        lang = lang,
+        dependency_parser = dependency_parser,
+        show_in_separate_tabs = True
+    )
+
+    # Tokenized
+    html_tokenized = wl_dependency_parsing.wl_dependency_parse_fig(
+        main,
+        inputs = tokens,
+        lang = lang,
+        dependency_parser = dependency_parser,
+        show_in_separate_tabs = False
+    )
+    html_tokenized_separate_tabs = wl_dependency_parsing.wl_dependency_parse_fig(
+        main,
+        inputs = tokens,
+        lang = lang,
+        dependency_parser = dependency_parser,
+        show_in_separate_tabs = True
+    )
+
+    # Check for empty HTMLs
+    assert html_untokenized
+    assert html_untokenized_separate_tabs
+    assert html_tokenized
+    assert html_tokenized_separate_tabs
+
+# RTL languages
+def test_dependency_parse_fig_rtl_langs():
+    html = wl_dependency_parsing.wl_dependency_parse_fig(
+        main,
+        inputs = 'test',
+        lang = 'ara'
+    )
+    html = wl_dependency_parsing.wl_dependency_parse_fig(
+        main,
+        inputs = [wl_texts.Wl_Token('test')],
+        lang = 'ara'
+    )
+
+    assert html
+
 def test__get_pipelines_disabled():
     wl_dependency_parsing._get_pipelines_disabled(show_pos_tags = True, show_lemmas = True)
     wl_dependency_parsing._get_pipelines_disabled(show_pos_tags = True, show_lemmas = False)
     wl_dependency_parsing._get_pipelines_disabled(show_pos_tags = False, show_lemmas = True)
     wl_dependency_parsing._get_pipelines_disabled(show_pos_tags = False, show_lemmas = False)
 
+def test_wl_show_dependency_graphs():
+    htmls = wl_dependency_parsing.wl_dependency_parse_fig(
+        main,
+        inputs = 'test',
+        lang = 'eng_us',
+        dependency_parser = 'stanza_eng'
+    )
+
+    wl_dependency_parsing.wl_show_dependency_graphs(main, htmls, show_in_separate_tabs = False)
+    wl_dependency_parsing.wl_show_dependency_graphs(main, htmls, show_in_separate_tabs = True)
+
 if __name__ == '__main__':
     for lang, dependency_parser in test_dependency_parsers:
         test_dependency_parse(lang, dependency_parser)
 
+    test_dependency_parse_fig_rtl_langs()
     test__get_pipelines_disabled()
+    test_wl_show_dependency_graphs()

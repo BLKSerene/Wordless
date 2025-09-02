@@ -23,10 +23,12 @@ from wordless.wl_utils import wl_threading
 main = wl_test_init.Wl_Test_Main()
 
 def test_wl_worker():
-    wl_threading.Wl_Worker(main, wl_dialogs_misc.Wl_Dialog_Progress(main, 'test'))
+    worker = wl_threading.Wl_Worker(main, wl_dialogs_misc.Wl_Dialog_Progress(main, 'test'))
+    worker.stop()
 
 def test_wl_worker_no_progress():
-    wl_threading.Wl_Worker_No_Progress(main)
+    worker = wl_threading.Wl_Worker_No_Progress(main, additional_arguments = 'test')
+    worker.stop()
 
 if __name__ == '__main__':
     test_wl_worker()

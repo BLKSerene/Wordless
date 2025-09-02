@@ -201,7 +201,8 @@ def generate_word_cloud(main, data_file_items, fig_settings):
         matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
         matplotlib.pyplot.axis('off')
     # Invalid mask image
-    except (FileNotFoundError, PermissionError, PIL.UnidentifiedImageError) as exc:
+    # When the mask file is a directory, it triggers PermissionError on Windows and IsADirectoryError on macOS and Linux
+    except (FileNotFoundError, PermissionError, IsADirectoryError, PIL.UnidentifiedImageError) as exc:
         mask_path = settings['mask_settings']['mask_path']
 
         if not os.path.exists(mask_path):

@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Tests: Measures - Measure Utilities
+# Tests: Measures - Measure utilities
 # Copyright (C) 2018-2025  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -124,6 +124,16 @@ def test_numpy_log2():
         numpy.array([1] * 10)
     )
 
+def test_numpy_log10():
+    numpy.testing.assert_array_equal(
+        wl_measure_utils.numpy_log10(numpy.array([0] * 10)),
+        numpy.array([0] * 10)
+    )
+    numpy.testing.assert_array_equal(
+        wl_measure_utils.numpy_log10(numpy.array([0] * 10), default = 1),
+        numpy.array([1] * 10)
+    )
+
 if __name__ == '__main__':
     test_to_measure_code()
     test_to_measure_text()
@@ -139,3 +149,4 @@ if __name__ == '__main__':
     test_numpy_divide()
     test_numpy_log()
     test_numpy_log2()
+    test_numpy_log10()

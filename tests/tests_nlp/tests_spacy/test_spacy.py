@@ -159,3 +159,4 @@ def wl_test_dependency_parse(lang, test_sentence, tokens, results):
     dependency_parser = f'spacy_{lang_no_suffix}'
 
     test_dependency_parsing.wl_test_dependency_parse_models(lang, dependency_parser, test_sentence, tokens, results)
+    test_dependency_parsing.wl_test_dependency_parse_fig_models(lang, dependency_parser, test_sentence, tokens)

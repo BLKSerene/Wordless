@@ -158,6 +158,7 @@ def wl_test_dependency_parse(lang, test_sentence, tokens, results):
     dependency_parser = wl_test_get_lang_util(lang)
 
     test_dependency_parsing.wl_test_dependency_parse_models(lang, dependency_parser, test_sentence, tokens, results)
+    test_dependency_parsing.wl_test_dependency_parse_fig_models(lang, dependency_parser, test_sentence, tokens)
 
 def wl_test_sentiment_analyze(lang, test_sentence, tokens, results):
     sentiment_analyzer = wl_test_get_lang_util(lang)

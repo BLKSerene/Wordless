@@ -17,6 +17,7 @@
 # ----------------------------------------------------------------------
 
 from PyQt5 import QtCore
+from PyQt5 import QtGui
 
 from tests import wl_test_init
 from wordless.wl_widgets import wl_lists
@@ -24,13 +25,34 @@ from wordless.wl_widgets import wl_lists
 main = wl_test_init.Wl_Test_Main()
 
 def test_wl_list_add_ins_del_clr():
-    wl_lists.Wl_List_Add_Ins_Del_Clr(main, editable = True, drag_drop = True)
-    wl_lists.Wl_List_Add_Ins_Del_Clr(main, editable = False)
-
-    list_add_ins_del_clr = wl_lists.Wl_List_Add_Ins_Del_Clr(main)
+    list_add_ins_del_clr_editable = wl_lists.Wl_List_Add_Ins_Del_Clr(main, editable = True, drag_drop = True)
+    list_add_ins_del_clr = wl_lists.Wl_List_Add_Ins_Del_Clr(main, editable = False)
     list_add_ins_del_clr.items_old = ['test']
 
+    list_add_ins_del_clr.model().setStringList(('test', 'test'))
+    list_add_ins_del_clr.selectAll()
+    list_add_ins_del_clr.dropEvent(QtGui.QDropEvent(QtCore.QPointF(100, 100), QtCore.Qt.MoveAction, QtCore.QMimeData(), QtCore.Qt.LeftButton, QtCore.Qt.NoModifier))
+    list_add_ins_del_clr.dropEvent(QtGui.QDropEvent(QtCore.QPointF(10, 10), QtCore.Qt.MoveAction, QtCore.QMimeData(), QtCore.Qt.LeftButton, QtCore.Qt.NoModifier))
+
+    list_add_ins_del_clr.keyPressEvent(QtGui.QKeyEvent(QtCore.QEvent.KeyPress, QtCore.Qt.Key_Backspace, QtCore.Qt.NoModifier))
+    list_add_ins_del_clr.keyPressEvent(QtGui.QKeyEvent(QtCore.QEvent.KeyPress, QtCore.Qt.Key_Home, QtCore.Qt.NoModifier))
+    list_add_ins_del_clr.clearSelection()
+    list_add_ins_del_clr.keyPressEvent(QtGui.QKeyEvent(QtCore.QEvent.KeyPress, QtCore.Qt.Key_Insert, QtCore.Qt.NoModifier))
+    list_add_ins_del_clr.keyPressEvent(QtGui.QKeyEvent(QtCore.QEvent.KeyPress, QtCore.Qt.Key_Delete, QtCore.Qt.NoModifier))
+    list_add_ins_del_clr.keyPressEvent(QtGui.QKeyEvent(QtCore.QEvent.KeyPress, QtCore.Qt.Key_Clear, QtCore.Qt.NoModifier))
+    list_add_ins_del_clr.keyPressEvent(QtGui.QKeyEvent(QtCore.QEvent.KeyPress, QtCore.Qt.Key_Return, QtCore.Qt.NoModifier))
+    list_add_ins_del_clr.keyPressEvent(QtGui.QKeyEvent(QtCore.QEvent.KeyPress, QtCore.Qt.Key_A, QtCore.Qt.NoModifier))
+    list_add_ins_del_clr.selectAll()
+    list_add_ins_del_clr.keyPressEvent(QtGui.QKeyEvent(QtCore.QEvent.KeyPress, QtCore.Qt.Key_Insert, QtCore.Qt.NoModifier))
+    list_add_ins_del_clr.keyPressEvent(QtGui.QKeyEvent(QtCore.QEvent.KeyPress, QtCore.Qt.Key_Return, QtCore.Qt.NoModifier))
+
+    list_add_ins_del_clr_editable.model().setStringList(('test', 'test'))
+    list_add_ins_del_clr_editable.selectAll()
+    list_add_ins_del_clr_editable.keyPressEvent(QtGui.QKeyEvent(QtCore.QEvent.KeyPress, QtCore.Qt.Key_Backspace, QtCore.Qt.NoModifier))
+    list_add_ins_del_clr_editable.keyPressEvent(QtGui.QKeyEvent(QtCore.QEvent.KeyPress, QtCore.Qt.Key_Up, QtCore.Qt.NoModifier))
+
     list_add_ins_del_clr.model().setStringList([' '])
+    list_add_ins_del_clr.items_old = ['test']
     list_add_ins_del_clr.data_changed(topLeft = wl_test_init.wl_test_index(0, 0))
     list_add_ins_del_clr.model().setStringList(['test'])
     list_add_ins_del_clr.data_changed(topLeft = wl_test_init.wl_test_index(0, 0))

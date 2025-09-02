@@ -22,14 +22,37 @@ from wordless.wl_settings import wl_settings_syl_tokenization
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
 def test_wl_settings_syl_tokenization():
-    settings_syl_tokenization = wl_settings_syl_tokenization.Wl_Settings_Syl_Tokenization(main)
-    settings_syl_tokenization.load_settings()
-    settings_syl_tokenization.load_settings(defaults = True)
-    settings_syl_tokenization.apply_settings()
+    main.settings_syl_tokenization = wl_settings_syl_tokenization.Wl_Settings_Syl_Tokenization(main)
+    main.settings_syl_tokenization.load_settings(defaults = False)
+    main.settings_syl_tokenization.load_settings(defaults = True)
+    main.settings_syl_tokenization.apply_settings()
 
-    settings_syl_tokenization.preview_changed()
-    settings_syl_tokenization.update_gui('test')
-    settings_syl_tokenization.update_gui_err()
+    main.settings_syl_tokenization.text_edit_preview_samples.setPlainText('')
+    main.settings_syl_tokenization.preview_changed()
+    main.settings_syl_tokenization.text_edit_preview_samples.setPlainText('test\n')
+    main.settings_syl_tokenization.preview_changed()
+
+    main.settings_syl_tokenization.preview_results_changed()
+    main.settings_syl_tokenization.worker_preview_syl_tokenizer.stop()
+
+    main.settings_syl_tokenization.abort()
+    main.settings_syl_tokenization.update_gui('test')
+    main.settings_syl_tokenization.update_gui_err()
+
+def test_wl_worker_preview_syl_tokenizer():
+    preview_lang = main.settings_custom['syl_tokenization']['preview']['preview_lang']
+    syl_tokenizer = main.settings_custom['syl_tokenization']['syl_tokenizer_settings'][preview_lang]
+
+    worker = wl_settings_syl_tokenization.Wl_Worker_Preview_Syl_Tokenizer(
+        main,
+        syl_tokenizer = syl_tokenizer
+    )
+    worker.run()
+    main.settings_custom['syl_tokenization']['preview']['preview_lang'] = 'tha'
+    worker.run()
+    worker.stop()
+    worker.run()
 
 if __name__ == '__main__':
     test_wl_settings_syl_tokenization()
+    test_wl_worker_preview_syl_tokenizer()

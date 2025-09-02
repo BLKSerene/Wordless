@@ -23,13 +23,22 @@ main = wl_test_init.Wl_Test_Main()
 
 def test_wl_settings_stop_word_lists():
     settings_stop_word_lists = wl_settings_stop_word_lists.Wl_Settings_Stop_Word_Lists(main)
-    settings_stop_word_lists.load_settings()
-    settings_stop_word_lists.load_settings(defaults = True)
-    settings_stop_word_lists.apply_settings()
 
+    main.settings_custom['stop_word_lists']['preview']['preview_lang'] = list(main.settings_global['stop_word_lists'])[0]
     settings_stop_word_lists.stop_word_list_changed(settings_stop_word_lists.table_stop_word_lists.model().item(0, 0))
+
     settings_stop_word_lists.preview_settings_changed()
+
+    main.settings_custom['stop_word_lists']['preview']['preview_lang'] = list(main.settings_global['stop_word_lists'])[0]
     settings_stop_word_lists.preview_results_changed()
+    settings_stop_word_lists.table_stop_word_lists.model().item(0, 1).setText('Custom stop word list')
+    settings_stop_word_lists.preview_results_changed()
+
+    settings_stop_word_lists.load_settings(defaults = False)
+    settings_stop_word_lists.load_settings(defaults = True)
+
+    settings_stop_word_lists.table_stop_word_lists.model().item(0, 1).setText('Custom stop word list')
+    settings_stop_word_lists.apply_settings()
 
 if __name__ == '__main__':
     test_wl_settings_stop_word_lists()

@@ -16,6 +16,8 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import math
+
 from tests import wl_test_init
 from wordless.wl_settings import wl_settings_measures
 
@@ -23,8 +25,13 @@ main = wl_test_init.Wl_Test_Main()
 
 def test_wl_settings_measures_readability():
     settings_measures_readability = wl_settings_measures.Wl_Settings_Measures_Readability(main)
+
+    settings_measures_readability.checkbox_use_powers_sumner_kearl_variant_for_all_langs.setChecked(True)
     settings_measures_readability.re_changed()
-    settings_measures_readability.load_settings()
+    settings_measures_readability.checkbox_use_powers_sumner_kearl_variant_for_all_langs.setChecked(False)
+    settings_measures_readability.re_changed()
+
+    settings_measures_readability.load_settings(defaults = False)
     settings_measures_readability.load_settings(defaults = True)
     settings_measures_readability.apply_settings()
 
@@ -36,31 +43,41 @@ def test_wl_settings_measures_lexical_density_diversity():
 
 def test_wl_settings_measures_dispersion():
     settings_measures_dispersion = wl_settings_measures.Wl_Settings_Measures_Dispersion(main)
-    settings_measures_dispersion.load_settings()
+    settings_measures_dispersion.load_settings(defaults = False)
     settings_measures_dispersion.load_settings(defaults = True)
     settings_measures_dispersion.apply_settings()
 
 def test_wl_settings_measures_adjusted_freq():
     settings_measures_adjusted_freq = wl_settings_measures.Wl_Settings_Measures_Adjusted_Freq(main)
-    settings_measures_adjusted_freq.load_settings()
+    settings_measures_adjusted_freq.load_settings(defaults = False)
     settings_measures_adjusted_freq.load_settings(defaults = True)
     settings_measures_adjusted_freq.apply_settings()
 
 def test_wl_settings_measures_statistical_significance():
     settings_measures_statistical_significance = wl_settings_measures.Wl_Settings_Measures_Statistical_Significance(main)
-    settings_measures_statistical_significance.load_settings()
+    settings_measures_statistical_significance.load_settings(defaults = False)
     settings_measures_statistical_significance.load_settings(defaults = True)
     settings_measures_statistical_significance.apply_settings()
 
 def test_wl_settings_measures_bayes_factor():
     settings_measures_bayes_factor = wl_settings_measures.Wl_Settings_Measures_Bayes_Factor(main)
-    settings_measures_bayes_factor.load_settings()
+    settings_measures_bayes_factor.load_settings(defaults = False)
     settings_measures_bayes_factor.load_settings(defaults = True)
     settings_measures_bayes_factor.apply_settings()
 
+def test_wl_combo_box_base_log():
+    combo_box_base_log = wl_settings_measures.Wl_Combo_Box_Base_Log(main)
+
+    combo_box_base_log.set_base_log(2)
+    assert combo_box_base_log.get_base_log() == 2
+    combo_box_base_log.set_base_log(10)
+    assert combo_box_base_log.get_base_log() == 10
+    combo_box_base_log.set_base_log(math.e)
+    assert combo_box_base_log.get_base_log() == math.e
+
 def test_wl_settings_measures_effect_size():
     settings_measures_effect_size = wl_settings_measures.Wl_Settings_Measures_Effect_Size(main)
-    settings_measures_effect_size.load_settings()
+    settings_measures_effect_size.load_settings(defaults = False)
     settings_measures_effect_size.load_settings(defaults = True)
     settings_measures_effect_size.apply_settings()
 
@@ -71,4 +88,6 @@ if __name__ == '__main__':
     test_wl_settings_measures_adjusted_freq()
     test_wl_settings_measures_statistical_significance()
     test_wl_settings_measures_bayes_factor()
+
+    test_wl_combo_box_base_log()
     test_wl_settings_measures_effect_size()

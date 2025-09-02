@@ -16,10 +16,13 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import os
+
 from tests import (
     wl_test_init,
     wl_test_lang_examples
 )
+from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_nlp import wl_nlp_utils
 from wordless.wl_utils import wl_misc
 
@@ -75,10 +78,10 @@ def test_get_langs_stanza():
     assert wl_nlp_utils.get_langs_stanza(main, 'sentiment_analyzers')
 
 def test_check_models():
-    assert wl_nlp_utils.check_models(main, langs = ['eng_us', 'test'])
+    assert wl_nlp_utils.check_models(main, langs = ('eng_us', 'test'))
     assert wl_nlp_utils.check_models(
         main,
-        langs = ['eng_us', 'test'],
+        langs = ('eng_us', 'test'),
         lang_utils = [[
             'default_sentence_tokenizer',
             'default_word_tokenizer',
@@ -89,39 +92,65 @@ def test_check_models():
         ] for _ in range(2)]
     )
 
+def test_wl_worker_download_model_spacy():
+    model_name = 'it_core_news_lg'
+
+    if not os.path.exists(model_name):
+        os.mkdir(model_name)
+
+    wl_nlp_utils.Wl_Worker_Download_Model_Spacy(
+        main,
+        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Download_Model(main),
+        model_name = model_name
+    ).run()
+
+def test_wl_worker_download_model_stanza():
+    for lang in ('zho_cn', 'zho_tw', 'other', 'ara'):
+        wl_nlp_utils.Wl_Worker_Download_Model_Stanza(
+            main,
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Download_Model(main),
+            lang = lang
+        ).run()
+
 def test_init_model_spacy():
+    wl_nlp_utils.init_model_spacy(main, lang = 'afr')
     wl_nlp_utils.init_model_spacy(main, lang = 'eng_us')
     wl_nlp_utils.init_model_spacy(main, lang = 'eng_gb')
-    wl_nlp_utils.init_model_spacy(main, lang = 'other')
-    wl_nlp_utils.init_model_spacy(main, lang = 'afr')
     wl_nlp_utils.init_model_spacy(main, lang = 'srp_cyrl')
     wl_nlp_utils.init_model_spacy(main, lang = 'srp_latn')
+    wl_nlp_utils.init_model_spacy(main, lang = 'other')
 
     wl_nlp_utils.init_model_spacy(main, lang = 'afr', sentencizer_only = True)
 
+    assert 'spacy_nlp_afr' in main.__dict__
     assert 'spacy_nlp_eng' in main.__dict__
     assert 'spacy_nlp_eng_us' not in main.__dict__
     assert 'spacy_nlp_eng_gb' not in main.__dict__
-    assert 'spacy_nlp_other' in main.__dict__
-    assert 'spacy_nlp_afr' in main.__dict__
     assert 'spacy_nlp_srp' in main.__dict__
     assert 'spacy_nlp_srp_cyrl' not in main.__dict__
     assert 'spacy_nlp_srp_latn' not in main.__dict__
+    assert 'spacy_nlp_other' in main.__dict__
 
     assert 'spacy_nlp_sentencizer' in main.__dict__
 
 def test_init_model_stanza():
+    wl_nlp_utils.init_model_stanza(main, lang = 'zho_cn', lang_util = 'sentence_tokenizer')
+    wl_nlp_utils.init_model_stanza(main, lang = 'zho_tw', lang_util = 'sentence_tokenizer')
     wl_nlp_utils.init_model_stanza(main, lang = 'eng_us', lang_util = 'sentence_tokenizer')
     wl_nlp_utils.init_model_stanza(main, lang = 'eng_gb', lang_util = 'sentence_tokenizer')
-    wl_nlp_utils.init_model_stanza(main, lang = 'other', lang_util = 'sentence_tokenizer')
     wl_nlp_utils.init_model_stanza(main, lang = 'srp_cyrl', lang_util = 'sentence_tokenizer')
+    wl_nlp_utils.init_model_stanza(main, lang = 'srp_latn', lang_util = 'sentence_tokenizer')
+    wl_nlp_utils.init_model_stanza(main, lang = 'other', lang_util = 'sentence_tokenizer')
 
+    assert 'stanza_nlp_zho_cn' in main.__dict__
+    assert 'stanza_nlp_zho_tw' in main.__dict__
     assert 'stanza_nlp_eng' in main.__dict__
     assert 'stanza_nlp_eng_us' not in main.__dict__
     assert 'stanza_nlp_eng_gb' not in main.__dict__
-    assert 'stanza_nlp_other' in main.__dict__
-
+    assert 'stanza_nlp_srp' in main.__dict__
     assert 'stanza_nlp_srp_cyrl' not in main.__dict__
+    assert 'stanza_nlp_srp_latn' not in main.__dict__
+    assert 'stanza_nlp_other' in main.__dict__
 
 def test_init_sudachipy_word_tokenizer():
     wl_nlp_utils.init_sudachipy_word_tokenizer(main)
@@ -304,6 +333,8 @@ if __name__ == '__main__':
 
     test_get_langs_stanza()
     test_check_models()
+    test_wl_worker_download_model_spacy()
+    test_wl_worker_download_model_stanza()
     test_init_model_spacy()
     test_init_model_stanza()
     test_init_sudachipy_word_tokenizer()

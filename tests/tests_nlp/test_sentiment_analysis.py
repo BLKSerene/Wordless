@@ -93,6 +93,30 @@ def wl_test_sentiment_analyze_models(lang, sentiment_analyzer, test_sentence, to
     assert sentiment_scores_tagged == sentiment_scores_tokenized
 
 def test_sentiment_analyze_misc():
+    # Vietnamese
+    assert wl_sentiment_analysis.wl_sentiment_analyze(
+        main,
+        inputs = ['Tốt', 'buồn', 'ngày'],
+        lang = 'vie',
+        sentiment_analyzer = 'underthesea_vie'
+    ) == [1, -1, 0]
+
+    # Empty text or tokens
+    assert wl_sentiment_analysis.wl_sentiment_analyze(
+        main,
+        inputs = [''],
+        lang = 'eng_us',
+        sentiment_analyzer = 'stanza_eng'
+    ) == [0]
+
+    assert wl_sentiment_analysis.wl_sentiment_analyze(
+        main,
+        inputs = [[]],
+        lang = 'eng_us',
+        sentiment_analyzer = 'stanza_eng'
+    ) == [0]
+
+    # Empty input
     assert not wl_sentiment_analysis.wl_sentiment_analyze(
         main,
         inputs = '',

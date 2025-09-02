@@ -187,10 +187,7 @@ def check_models(parent, langs, lang_utils = None):
 
     for lang, utils in zip(langs, lang_utils):
         if any((util.startswith('spacy_') for util in utils)):
-            if lang == 'nno':
-                lang_spacy = 'nob'
-            else:
-                lang_spacy = wl_conversion.remove_lang_code_suffixes(lang)
+            lang_spacy = wl_conversion.remove_lang_code_suffixes(lang)
 
             if lang_spacy in LANGS_SPACY:
                 model_name = LANGS_SPACY[lang_spacy]
@@ -341,8 +338,6 @@ class Wl_Worker_Download_Model_Stanza(wl_threading.Wl_Worker):
                     lang_stanza = 'zh-hans'
                 case 'zho_tw':
                     lang_stanza = 'zh-hant'
-                case 'srp_latn':
-                    lang_stanza = 'sr'
                 case 'other':
                     lang_stanza = 'en'
                 case _:
@@ -379,7 +374,7 @@ LANGS_SPACY_LEMMATIZERS = (
 )
 
 def init_model_spacy(main, lang, sentencizer_only = False):
-    sentencizer_config = {'punct_chars': list(wl_sentence_tokenization.SENTENCE_TERMINATORS)}
+    sentencizer_config = {'punct_chars': wl_sentence_tokenization.SENTENCE_TERMINATORS}
 
     # Sentencizer
     if sentencizer_only:
@@ -443,8 +438,8 @@ def init_model_stanza(main, lang, lang_util, tokenized = False):
         case 'sentiment_analyzer':
             processors = ('tokenize', 'sentiment')
 
-    if lang in get_langs_stanza(main, util_type = 'word_tokenizers'):
-        if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
+    if lang in get_langs_stanza(main, util_type = 'word_tokenizers') or lang == 'srp_cyrl':
+        if lang not in ('zho_cn', 'zho_tw'):
             lang = wl_conversion.remove_lang_code_suffixes(lang)
 
         if (
@@ -458,8 +453,6 @@ def init_model_stanza(main, lang, lang_util, tokenized = False):
                     lang_stanza = 'zh-hans'
                 case 'zho_tw':
                     lang_stanza = 'zh-hant'
-                case 'srp_latn':
-                    lang_stanza = 'sr'
                 case 'other':
                     lang_stanza = 'en'
                 case _:

@@ -135,7 +135,6 @@ def test_wl_widgets_measures_collocation_keyword_extraction():
 def test_wl_widgets_table_settings():
     table = QtWidgets.QTableView()
 
-    table.tab = 'test'
     table.table_settings = {
         'show_pct_data': True,
         'show_cum_data': True,
@@ -147,6 +146,15 @@ def test_wl_widgets_table_settings():
     table.toggle_headers = lambda: None
     table.toggle_cum_data = lambda: None
 
+    table.tab = 'readability'
+    (_, _, checkbox_show_breakdown_file, checkbox_show_total) = wl_widgets.wl_widgets_table_settings(main, tables = (table,))
+    checkbox_show_breakdown_file.setChecked(True)
+    checkbox_show_total.setChecked(True)
+
+    table.tab = 'concordancer'
+    wl_widgets.wl_widgets_table_settings(main, tables = (table,))
+
+    table.tab = 'collocation_extractor'
     wl_widgets.wl_widgets_table_settings(main, tables = (table,))
 
 def test_wl_combo_box_file_fig_settings():

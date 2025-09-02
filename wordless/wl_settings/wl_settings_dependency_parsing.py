@@ -175,7 +175,7 @@ class Wl_Settings_Dependency_Parsing(wl_settings.Wl_Settings_Node):
         wl_dependency_parsing.wl_show_dependency_graphs(
             self,
             htmls = htmls,
-            show_in_separate_tab = self.settings_custom['preview']['preview_settings']['show_in_separate_tab']
+            show_in_separate_tabs = self.settings_custom['preview']['preview_settings']['show_in_separate_tabs']
         )
 
         self.update_gui_err()
@@ -247,7 +247,7 @@ class Wl_Dialog_Preview_Settings(wl_dialogs.Wl_Dialog_Settings):
             self.checkbox_show_lemmas,
             self.checkbox_collapse_punc_marks,
             self.checkbox_compact_mode,
-            self.checkbox_show_in_separate_tab
+            self.checkbox_show_in_separate_tabs
         ) = wl_widgets.wl_widgets_fig_settings_dependency_parsing(self)
 
         self.wrapper_settings.layout().addWidget(self.checkbox_show_pos_tags, 0, 0)
@@ -256,7 +256,7 @@ class Wl_Dialog_Preview_Settings(wl_dialogs.Wl_Dialog_Settings):
         self.wrapper_settings.layout().addWidget(self.checkbox_show_lemmas, 1, 0, 1, 4)
         self.wrapper_settings.layout().addWidget(self.checkbox_collapse_punc_marks, 2, 0, 1, 4)
         self.wrapper_settings.layout().addWidget(self.checkbox_compact_mode, 3, 0, 1, 4)
-        self.wrapper_settings.layout().addWidget(self.checkbox_show_in_separate_tab, 4, 0, 1, 4)
+        self.wrapper_settings.layout().addWidget(self.checkbox_show_in_separate_tabs, 4, 0, 1, 4)
 
         self.wrapper_settings.layout().setColumnStretch(3, 1)
 
@@ -276,7 +276,7 @@ class Wl_Dialog_Preview_Settings(wl_dialogs.Wl_Dialog_Settings):
         self.checkbox_show_lemmas.setChecked(settings['show_lemmas'])
         self.checkbox_collapse_punc_marks.setChecked(settings['collapse_punc_marks'])
         self.checkbox_compact_mode.setChecked(settings['compact_mode'])
-        self.checkbox_show_in_separate_tab.setChecked(settings['show_in_separate_tab'])
+        self.checkbox_show_in_separate_tabs.setChecked(settings['show_in_separate_tabs'])
 
         self.checkbox_show_pos_tags.stateChanged.emit(self.checkbox_show_pos_tags.checkState())
 
@@ -291,7 +291,7 @@ class Wl_Dialog_Preview_Settings(wl_dialogs.Wl_Dialog_Settings):
         self.settings_custom['show_lemmas'] = self.checkbox_show_lemmas.isChecked()
         self.settings_custom['collapse_punc_marks'] = self.checkbox_collapse_punc_marks.isChecked()
         self.settings_custom['compact_mode'] = self.checkbox_compact_mode.isChecked()
-        self.settings_custom['show_in_separate_tab'] = self.checkbox_show_in_separate_tab.isChecked()
+        self.settings_custom['show_in_separate_tabs'] = self.checkbox_show_in_separate_tabs.isChecked()
 
 class Wl_Worker_Preview_Dependency_Parser(wl_threading.Wl_Worker_No_Progress):
     finished = QtCore.pyqtSignal(list)
@@ -312,7 +312,7 @@ class Wl_Worker_Preview_Dependency_Parser(wl_threading.Wl_Worker_No_Progress):
             show_lemmas = settings['preview_settings']['show_pos_tags'] and settings['preview_settings']['show_lemmas'],
             collapse_punc_marks = settings['preview_settings']['collapse_punc_marks'],
             compact_mode = settings['preview_settings']['compact_mode'],
-            show_in_separate_tab = settings['preview_settings']['show_in_separate_tab']
+            show_in_separate_tabs = settings['preview_settings']['show_in_separate_tabs']
         )
 
         self.finished.emit(htmls)

@@ -16,12 +16,31 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import math
+
 import numpy
 
 from tests import wl_test_init
-from wordless.wl_measures import wl_measures_effect_size
+from wordless.wl_measures import (
+    wl_measures_effect_size,
+    wl_measure_utils
+)
 
 main = wl_test_init.Wl_Test_Main()
+
+def test_get_numpy_log():
+    default_val = main.settings_custom['measures']['effect_size']['mi']['base_log']
+
+    main.settings_custom['measures']['effect_size']['mi']['base_log'] = 2
+    assert wl_measures_effect_size.get_numpy_log(main, 'mi') == wl_measure_utils.numpy_log2
+
+    main.settings_custom['measures']['effect_size']['mi']['base_log'] = 10
+    assert wl_measures_effect_size.get_numpy_log(main, 'mi') == wl_measure_utils.numpy_log10
+
+    main.settings_custom['measures']['effect_size']['mi']['base_log'] = math.e
+    assert wl_measures_effect_size.get_numpy_log(main, 'mi') == wl_measure_utils.numpy_log
+
+    main.settings_custom['measures']['effect_size']['mi']['base_log'] = default_val
 
 def assert_zeros(func, result = 0):
     numpy.testing.assert_array_equal(
@@ -312,6 +331,8 @@ def test_squared_phi_coeff():
     assert_zeros(wl_measures_effect_size.squared_phi_coeff)
 
 if __name__ == '__main__':
+    test_get_numpy_log()
+
     test_conditional_probability()
     test_delta_p()
     test_dice_sorensen_coeff()

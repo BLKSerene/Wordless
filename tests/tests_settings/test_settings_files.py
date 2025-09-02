@@ -23,13 +23,13 @@ main = wl_test_init.Wl_Test_Main()
 
 def test_wl_settings_files():
     settings_files = wl_settings_files.Wl_Settings_Files(main)
-    settings_files.load_settings()
+    settings_files.load_settings(defaults = False)
     settings_files.load_settings(defaults = True)
     settings_files.apply_settings()
 
 def test_wl_settings_files_tags():
     settings_files_tags = wl_settings_files.Wl_Settings_Files_Tags(main)
-    settings_files_tags.load_settings()
+    settings_files_tags.load_settings(defaults = False)
     settings_files_tags.load_settings(defaults = True)
     settings_files_tags.apply_settings()
 
@@ -41,7 +41,12 @@ def test_wl_table_tags():
     )
 
     table_tags.item_changed()
-    table_tags._add_row()
+
+    table_tags.defaults_row = ['test', 'test', '<test>', '']
+    table_tags._add_row(row = None)
+    table_tags.defaults_row = ['test', 'test', 'test', '']
+    table_tags._add_row(row = 0)
+
     table_tags.reset_table()
     table_tags.get_tags()
 

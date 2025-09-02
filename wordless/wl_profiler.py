@@ -1677,7 +1677,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                     len_sentence_segs = None
                     len_tokens_syls = None
                     # For testing if the text is empty
-                    len_tokens_chars = [-1] * len(tokens)
+                    len_tokens_chars = [-1] * text.num_tokens
                     len_types_syls = None
                     len_types_chars = None
                     len_syls = None

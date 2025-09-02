@@ -54,15 +54,8 @@ def wl_dependency_parse(main, inputs, lang, dependency_parser = 'default', force
     ):
         return inputs
     else:
-        convert_srp_script = False
-
         if dependency_parser == 'default':
             dependency_parser = main.settings_custom['dependency_parsing']['dependency_parser_settings'][lang]
-
-        # Modify the language after the default dependency parser is loaded and before the dependency parser is initialized
-        if lang == 'srp_cyrl' and dependency_parser == 'stanza_srp_latn':
-            lang = 'srp_latn'
-            convert_srp_script = True
 
         wl_nlp_utils.init_dependency_parsers(
             main,
@@ -72,12 +65,12 @@ def wl_dependency_parse(main, inputs, lang, dependency_parser = 'default', force
         )
 
         if isinstance(inputs, str):
-            if convert_srp_script:
+            if lang == 'srp_cyrl' and dependency_parser == 'stanza_srp_latn':
                 inputs = wl_nlp_utils.to_srp_latn((inputs,))[0]
 
             texts, dependencies = wl_dependency_parse_text(main, inputs, lang, dependency_parser)
 
-            if convert_srp_script:
+            if lang == 'srp_cyrl' and dependency_parser == 'stanza_srp_latn':
                 texts = wl_nlp_utils.to_srp_cyrl(texts)
 
             tokens = wl_texts.to_tokens(texts, lang = lang)
@@ -92,7 +85,7 @@ def wl_dependency_parse(main, inputs, lang, dependency_parser = 'default', force
         else:
             texts, token_properties = wl_texts.split_texts_properties(inputs)
 
-            if convert_srp_script:
+            if lang == 'srp_cyrl' and dependency_parser == 'stanza_srp_latn':
                 texts = wl_nlp_utils.to_srp_latn(texts)
 
             dependencies = wl_dependency_parse_tokens(main, texts, lang, dependency_parser)
@@ -115,8 +108,7 @@ def wl_dependency_parse_text(main, inputs, lang, dependency_parser):
 
     # spaCy
     if dependency_parser.startswith('spacy_'):
-        lang = wl_conversion.remove_lang_code_suffixes(lang)
-        nlp = main.__dict__[f'spacy_nlp_{lang}']
+        nlp = main.__dict__[f'spacy_nlp_{wl_conversion.remove_lang_code_suffixes(lang)}']
 
         with nlp.select_pipes(disable = (
             pipeline
@@ -162,10 +154,12 @@ def wl_dependency_parse_text(main, inputs, lang, dependency_parser):
                 i_head_start += len(doc)
     # Stanza
     elif dependency_parser.startswith('stanza_'):
-        if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
-            lang = wl_conversion.remove_lang_code_suffixes(lang)
+        if lang not in ('zho_cn', 'zho_tw'):
+            lang_stanza = wl_conversion.remove_lang_code_suffixes(lang)
+        else:
+            lang_stanza = lang
 
-        nlp = main.__dict__[f'stanza_nlp_{lang}']
+        nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
         lines = [line.strip() for line in inputs.splitlines() if line.strip()]
         i_head_start = 0
 
@@ -212,8 +206,7 @@ def wl_dependency_parse_tokens(main, inputs, lang, dependency_parser):
 
     # spaCy
     if dependency_parser.startswith('spacy_'):
-        lang_spacy = wl_conversion.remove_lang_code_suffixes(lang)
-        nlp = main.__dict__[f'spacy_nlp_{lang_spacy}']
+        nlp = main.__dict__[f'spacy_nlp_{wl_conversion.remove_lang_code_suffixes(lang)}']
 
         with nlp.select_pipes(disable = (
             pipeline
@@ -260,7 +253,7 @@ def wl_dependency_parse_tokens(main, inputs, lang, dependency_parser):
                 i_head_start += len(doc)
     # Stanza
     elif dependency_parser.startswith('stanza_'):
-        if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
+        if lang not in ('zho_cn', 'zho_tw'):
             lang_stanza = wl_conversion.remove_lang_code_suffixes(lang)
         else:
             lang_stanza = lang
@@ -312,7 +305,7 @@ def wl_dependency_parse_fig(
     lang, dependency_parser = 'default',
     show_pos_tags = True, show_fine_grained_pos_tags = False,
     show_lemmas = False, collapse_punc_marks = True, compact_mode = False,
-    show_in_separate_tab = False
+    show_in_separate_tabs = False
 ):
     if dependency_parser == 'default':
         dependency_parser = main.settings_custom['dependency_parsing']['dependency_parser_settings'][lang]
@@ -330,7 +323,7 @@ def wl_dependency_parse_fig(
             lang, dependency_parser,
             show_pos_tags, show_fine_grained_pos_tags,
             show_lemmas, collapse_punc_marks, compact_mode,
-            show_in_separate_tab
+            show_in_separate_tabs
         )
     else:
         htmls = wl_dependency_parse_fig_tokens(
@@ -338,7 +331,7 @@ def wl_dependency_parse_fig(
             lang, dependency_parser,
             show_pos_tags, show_fine_grained_pos_tags,
             show_lemmas, collapse_punc_marks, compact_mode,
-            show_in_separate_tab
+            show_in_separate_tabs
         )
 
     return htmls
@@ -374,7 +367,7 @@ def to_displacy_sentence(lang, sentence, token_properties = None):
         len_sentence = len(sentence.words)
 
         if token_properties is not None:
-            token_properties = reversed(token_properties)
+            token_properties = list(reversed(token_properties))
 
         for i, word in enumerate(reversed(sentence.words)):
             if token_properties is None:
@@ -441,7 +434,7 @@ def wl_dependency_parse_fig_text(
     lang, dependency_parser,
     show_pos_tags, show_fine_grained_pos_tags,
     show_lemmas, collapse_punc_marks, compact_mode,
-    show_in_separate_tab
+    show_in_separate_tabs
 ):
     htmls = []
 
@@ -454,15 +447,14 @@ def wl_dependency_parse_fig_text(
 
     # spaCy
     if dependency_parser.startswith('spacy_'):
-        lang = wl_conversion.remove_lang_code_suffixes(lang)
-        nlp = main.__dict__[f'spacy_nlp_{lang}']
+        nlp = main.__dict__[f'spacy_nlp_{wl_conversion.remove_lang_code_suffixes(lang)}']
 
         with nlp.select_pipes(disable = (
             pipeline
             for pipeline in _get_pipelines_disabled(show_pos_tags, show_lemmas)
             if nlp.has_pipe(pipeline)
         )):
-            if show_in_separate_tab:
+            if show_in_separate_tabs:
                 for doc in nlp.pipe(inputs.splitlines()):
                     for sentence in doc.sents:
                         htmls.append(spacy.displacy.render(
@@ -487,12 +479,14 @@ def wl_dependency_parse_fig_text(
     # Stanza
     # Reference: https://github.com/stanfordnlp/stanza/pull/1069/files
     elif dependency_parser.startswith('stanza_'):
-        if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
-            lang = wl_conversion.remove_lang_code_suffixes(lang)
+        if lang not in ('zho_cn', 'zho_tw'):
+            lang_stanza = wl_conversion.remove_lang_code_suffixes(lang)
+        else:
+            lang_stanza = lang
 
-        nlp = main.__dict__[f'stanza_nlp_{lang}']
+        nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
 
-        if show_in_separate_tab:
+        if show_in_separate_tabs:
             for doc in nlp.bulk_process(inputs.splitlines()):
                 for sentence in doc.sentences:
                     htmls.append(spacy.displacy.render(
@@ -522,7 +516,7 @@ def wl_dependency_parse_fig_tokens(
     lang, dependency_parser,
     show_pos_tags, show_fine_grained_pos_tags,
     show_lemmas, collapse_punc_marks, compact_mode,
-    show_in_separate_tab
+    show_in_separate_tabs
 ):
     htmls = []
 
@@ -537,8 +531,7 @@ def wl_dependency_parse_fig_tokens(
 
     # spaCy
     if dependency_parser.startswith('spacy_'):
-        lang = wl_conversion.remove_lang_code_suffixes(lang)
-        nlp = main.__dict__[f'spacy_nlp_{lang}']
+        nlp = main.__dict__[f'spacy_nlp_{wl_conversion.remove_lang_code_suffixes(lang)}']
 
         with nlp.select_pipes(disable = (
             pipeline
@@ -550,18 +543,16 @@ def wl_dependency_parse_fig_tokens(
             for tokens in wl_nlp_utils.split_token_list(main, inputs, dependency_parser):
                 docs.append(spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [True] * len(tokens)))
 
-            if token_properties:
-                i_tag_start = 0
+            i_tag_start = 0
 
-            if show_in_separate_tab:
+            if show_in_separate_tabs:
                 for doc in nlp.pipe(docs):
                     for sentence in doc.sents:
                         displacy_dict = spacy.displacy.parse_deps(sentence, options = options)
 
-                        if token_properties:
-                            for token, word in zip(sentence, displacy_dict['words']):
-                                properties = token_properties[i_tag_start + token.i]
-                                word['text'] += (properties['punc_mark'] or '') + (properties['tag'] or '')
+                        for token, word in zip(sentence, displacy_dict['words']):
+                            properties = token_properties[i_tag_start + token.i]
+                            word['text'] += (properties['punc_mark'] or '') + (properties['tag'] or '')
 
                         htmls.append(spacy.displacy.render(
                             displacy_dict,
@@ -571,8 +562,7 @@ def wl_dependency_parse_fig_tokens(
                             manual = True
                         ))
 
-                    if token_properties:
-                        i_tag_start += len(doc)
+                    i_tag_start += len(doc)
             else:
                 sentences = []
 
@@ -580,15 +570,13 @@ def wl_dependency_parse_fig_tokens(
                     for sentence in doc.sents:
                         displacy_dict = spacy.displacy.parse_deps(sentence, options = options)
 
-                        if token_properties:
-                            for token, word in zip(sentence, displacy_dict['words']):
-                                properties = token_properties[i_tag_start + token.i]
-                                word['text'] += (properties['punc_mark'] or '') + (properties['tag'] or '')
+                        for token, word in zip(sentence, displacy_dict['words']):
+                            properties = token_properties[i_tag_start + token.i]
+                            word['text'] += (properties['punc_mark'] or '') + (properties['tag'] or '')
 
                         sentences.append(displacy_dict)
 
-                    if token_properties:
-                        i_tag_start += len(doc)
+                    i_tag_start += len(doc)
 
                 htmls.append(spacy.displacy.render(
                     sentences,
@@ -599,10 +587,12 @@ def wl_dependency_parse_fig_tokens(
                 ))
     # Stanza
     elif dependency_parser.startswith('stanza_'):
-        if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
-            lang = wl_conversion.remove_lang_code_suffixes(lang)
+        if lang not in ('zho_cn', 'zho_tw'):
+            lang_stanza = wl_conversion.remove_lang_code_suffixes(lang)
+        else:
+            lang_stanza = lang
 
-        nlp = main.__dict__[f'stanza_nlp_{lang}']
+        nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
 
         sentences = []
         i_tag = 0
@@ -612,18 +602,15 @@ def wl_dependency_parse_fig_tokens(
             for tokens in wl_nlp_utils.split_token_list(main, inputs, dependency_parser)
         ]):
             for sentence in doc.sentences:
-                if token_properties:
-                    num_words = len(sentence.words)
-                    sentences.append(to_displacy_sentence(
-                        lang, sentence,
-                        token_properties = token_properties[i_tag : i_tag + num_words]
-                    ))
+                num_words = len(sentence.words)
+                sentences.append(to_displacy_sentence(
+                    lang, sentence,
+                    token_properties = token_properties[i_tag : i_tag + num_words]
+                ))
 
-                    i_tag += num_words
-                else:
-                    sentences.append(to_displacy_sentence(lang, sentence))
+                i_tag += num_words
 
-        if show_in_separate_tab:
+        if show_in_separate_tabs:
             for sentence in sentences:
                 htmls.append(spacy.displacy.render(
                     sentence,
@@ -641,9 +628,8 @@ def wl_dependency_parse_fig_tokens(
 
     return htmls
 
-def wl_show_dependency_graphs(parent, htmls, show_in_separate_tab):
+def wl_show_dependency_graphs(parent, htmls, show_in_separate_tabs):
     # pylint: disable=consider-using-with
-
     DIR_PATH = os.path.join(wl_settings_default.DEFAULT_DIR_EXPS, '_dependency_parsing_figs')
 
     # Clean cache
@@ -668,7 +654,7 @@ def wl_show_dependency_graphs(parent, htmls, show_in_separate_tab):
     if is_linux:
         wl_misc.change_file_owner_to_user(fig_dir)
 
-    if show_in_separate_tab:
+    if show_in_separate_tabs:
         for html in htmls:
             fig_path = wl_checks_misc.check_new_path(os.path.join(fig_dir, 'fig.svg'))
             fig_path = wl_paths.get_normalized_path(fig_path)

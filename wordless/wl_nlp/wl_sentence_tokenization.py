@@ -63,7 +63,6 @@ LANG_TEXTS_NLTK = {
 
 def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
     sentences = []
-    convert_srp_script = False
 
     if lang not in main.settings_global['sentence_tokenizers']:
         lang = 'other'
@@ -73,9 +72,6 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
 
     # Modify the language after the default sentence tokenizer is loaded and before the sentence tokenizer is initialized
     if lang == 'srp_cyrl' and sentence_tokenizer == 'stanza_srp_latn':
-        lang = 'srp_latn'
-        convert_srp_script = True
-
         text = wl_nlp_utils.to_srp_latn((text,))[0]
 
     wl_nlp_utils.init_sentence_tokenizers(
@@ -95,15 +91,10 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
         else:
             pipelines_disabled = ('tagger', 'morphologizer', 'parser', 'lemmatizer', 'attribute_ruler')
 
-        lang = wl_conversion.remove_lang_code_suffixes(lang)
-
         if sentence_tokenizer == 'spacy_sentencizer':
             nlp = main.__dict__['spacy_nlp_sentencizer']
         else:
-            if lang == 'nno':
-                nlp = main.spacy_nlp_nob
-            else:
-                nlp = main.__dict__[f'spacy_nlp_{lang}']
+            nlp = main.__dict__[f'spacy_nlp_{wl_conversion.remove_lang_code_suffixes(lang)}']
 
         with nlp.select_pipes(disable = (
             pipeline
@@ -114,10 +105,12 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
                 sentences.extend((sentence.text for sentence in doc.sents))
     # Stanza
     elif sentence_tokenizer.startswith('stanza_'):
-        if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
-            lang = wl_conversion.remove_lang_code_suffixes(lang)
+        if lang not in ('zho_cn', 'zho_tw'):
+            lang_stanza = wl_conversion.remove_lang_code_suffixes(lang)
+        else:
+            lang_stanza = lang
 
-        nlp = main.__dict__[f'stanza_nlp_{lang}']
+        nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
 
         for doc in nlp.bulk_process(lines):
             sentences.extend((sentence.text for sentence in doc.sentences))
@@ -156,7 +149,7 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
             elif sentence_tokenizer == 'underthesea_vie':
                 sentences.extend(underthesea.sent_tokenize(line))
 
-    if convert_srp_script:
+    if lang == 'srp_cyrl' and sentence_tokenizer == 'stanza_srp_latn':
         sentences = wl_nlp_utils.to_srp_cyrl(sentences)
 
     return wl_texts.clean_texts(sentences)
@@ -233,7 +226,7 @@ RE_SENTENCE_TERMINATORS_NO_SPACES = re.compile(fr".+?[{''.join(SENTENCE_TERMINAT
 
 def wl_sentence_split(main, text, lang):
     # There are no spaces between Chinese and Japanese sentences
-    if lang in ('lzh', 'zho_cn', 'zho_tw', 'jpn'):
+    if lang in wl_nlp_utils.LANGS_WITHOUT_SPACES:
         re_terminators = RE_SENTENCE_TERMINATORS_NO_SPACES
     else:
         re_terminators = RE_SENTENCE_TERMINATORS

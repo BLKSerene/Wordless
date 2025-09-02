@@ -28,12 +28,13 @@ main = wl_test_init.Wl_Test_Main()
 def test_check_os():
     is_windows, is_macos, is_linux = wl_misc.check_os()
 
-    if platform.system() == 'Windows':
-        assert is_windows and not is_macos and not is_linux
-    elif platform.system() == 'Darwin':
-        assert not is_windows and is_macos and not is_linux
-    elif platform.system() == 'Linux':
-        assert not is_windows and not is_macos and is_linux
+    match platform.system():
+        case 'Windows':
+            assert is_windows and not is_macos and not is_linux
+        case 'Darwin':
+            assert not is_windows and is_macos and not is_linux
+        case 'Linux':
+            assert not is_windows and not is_macos and is_linux
 
 def test_get_linux_distro():
     assert wl_misc.get_linux_distro() == 'ubuntu'

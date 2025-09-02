@@ -22,14 +22,34 @@ from wordless.wl_settings import wl_settings_lemmatization
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
 def test_wl_settings_lemmatization():
-    settings_lemmatization = wl_settings_lemmatization.Wl_Settings_Lemmatization(main)
-    settings_lemmatization.load_settings()
-    settings_lemmatization.load_settings(defaults = True)
-    settings_lemmatization.apply_settings()
+    main.settings_lemmatization = wl_settings_lemmatization.Wl_Settings_Lemmatization(main)
+    main.settings_lemmatization.load_settings(defaults = False)
+    main.settings_lemmatization.load_settings(defaults = True)
+    main.settings_lemmatization.apply_settings()
 
-    settings_lemmatization.preview_changed()
-    settings_lemmatization.update_gui('test')
-    settings_lemmatization.update_gui_err()
+    main.settings_lemmatization.text_edit_preview_samples.setPlainText('')
+    main.settings_lemmatization.preview_changed()
+    main.settings_lemmatization.text_edit_preview_samples.setPlainText('test\n')
+    main.settings_lemmatization.preview_changed()
+
+    main.settings_lemmatization.preview_results_changed()
+    main.settings_lemmatization.worker_preview_lemmatizer.stop()
+    main.settings_lemmatization.abort()
+    main.settings_lemmatization.update_gui('test')
+    main.settings_lemmatization.update_gui_err()
+
+def test_wl_worker_preview_lemmatizer():
+    preview_lang = main.settings_custom['lemmatization']['preview']['preview_lang']
+    lemmatizer = main.settings_custom['lemmatization']['lemmatizer_settings'][preview_lang]
+
+    worker = wl_settings_lemmatization.Wl_Worker_Preview_Lemmatizer(
+        main,
+        lemmatizer = lemmatizer
+    )
+    worker.run()
+    worker.stop()
+    worker.run()
 
 if __name__ == '__main__':
     test_wl_settings_lemmatization()
+    test_wl_worker_preview_lemmatizer()

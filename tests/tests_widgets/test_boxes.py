@@ -16,13 +16,16 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+from PyQt5 import QtCore
+
 from tests import wl_test_init
 from wordless.wl_widgets import wl_boxes
 
 main = wl_test_init.Wl_Test_Main()
 
 def test_wl_combo_box():
-    wl_boxes.Wl_Combo_Box(main)
+    combo_box = wl_boxes.Wl_Combo_Box(main)
+    combo_box.wheelEvent(QtCore.QEvent(QtCore.QEvent.Wheel))
 
 def test_wl_combo_box_adjustable():
     wl_boxes.Wl_Combo_Box_Adjustable(main)
@@ -69,10 +72,12 @@ def test_wl_combo_box_file():
     combo_box_file.get_file()
 
 def test_wl_combo_box_font_family():
-    wl_boxes.Wl_Combo_Box_Font_Family(main)
+    combo_box_font_family = wl_boxes.Wl_Combo_Box_Font_Family(main)
+    combo_box_font_family.wheelEvent(QtCore.QEvent(QtCore.QEvent.Wheel))
 
 def test_wl_spin_box():
-    wl_boxes.Wl_Spin_Box(main)
+    spin_box = wl_boxes.Wl_Spin_Box(main)
+    spin_box.wheelEvent(QtCore.QEvent(QtCore.QEvent.Wheel))
 
 def test_wl_spin_box_window():
     spin_box_window = wl_boxes.Wl_Spin_Box_Window(main)
@@ -88,7 +93,8 @@ def test_wl_spin_box_font_weight():
     wl_boxes.Wl_Spin_Box_Font_Weight(main)
 
 def test_wl_double_spin_box():
-    wl_boxes.Wl_Double_Spin_Box(main)
+    double_spin_box = wl_boxes.Wl_Double_Spin_Box(main)
+    double_spin_box.wheelEvent(QtCore.QEvent(QtCore.QEvent.Wheel))
 
 def test_wl_double_spin_box_alpha():
     wl_boxes.Wl_Double_Spin_Box_Alpha(main)

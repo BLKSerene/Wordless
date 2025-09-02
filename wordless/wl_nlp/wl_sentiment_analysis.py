@@ -19,27 +19,15 @@
 # pylint: disable=unused-argument
 
 import collections
-import importlib
 
 import underthesea
 import vaderSentiment.vaderSentiment
 
 from wordless.wl_nlp import (
     wl_nlp_utils,
-    wl_texts,
-    wl_word_tokenization
+    wl_texts
 )
-from wordless.wl_utils import (
-    wl_conversion,
-    wl_paths
-)
-
-VADER_EXCS_ENG = (
-    vaderSentiment.vaderSentiment.NEGATE,
-    vaderSentiment.vaderSentiment.BOOSTER_DICT,
-    vaderSentiment.vaderSentiment.SENTIMENT_LADEN_IDIOMS,
-    vaderSentiment.vaderSentiment.SPECIAL_CASES
-)
+from wordless.wl_utils import wl_conversion
 
 def wl_sentiment_analyze(main, inputs, lang, sentiment_analyzer = 'default'):
     if sentiment_analyzer == 'default':
@@ -67,10 +55,12 @@ def wl_sentiment_analyze_text(main, inputs, lang, sentiment_analyzer):
 
     # Stanza
     if sentiment_analyzer.startswith('stanza_'):
-        if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
-            lang = wl_conversion.remove_lang_code_suffixes(lang)
+        if lang != 'zho_cn':
+            lang_stanza = wl_conversion.remove_lang_code_suffixes(lang)
+        else:
+            lang_stanza = lang
 
-        nlp = main.__dict__[f'stanza_nlp_{lang}']
+        nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
 
         for sentence_input in inputs:
             # If the input is split into multiple sentences, use the sentiment with the highest frequency as the sentiment score of the input
@@ -84,42 +74,10 @@ def wl_sentiment_analyze_text(main, inputs, lang, sentiment_analyzer):
             else:
                 sentiment_scores.append(0)
     # VADER
-    elif sentiment_analyzer.startswith('vader_'):
-        match lang:
-            case 'hyw':
-                lang_vader = 'hy'
-            case 'zho_cn' | 'zho_tw' | 'srp_cyrl' | 'srp_latn' | 'mni_mtei':
-                lang_vader = wl_conversion.to_iso_639_1(main, lang)
-            case _:
-                lang_vader = wl_conversion.to_iso_639_1(main, lang, no_suffix = True)
-
-        if lang.startswith('eng_'):
-            (
-                vaderSentiment.vaderSentiment.NEGATE,
-                vaderSentiment.vaderSentiment.BOOSTER_DICT,
-                vaderSentiment.vaderSentiment.SENTIMENT_LADEN_IDIOMS,
-                vaderSentiment.vaderSentiment.SPECIAL_CASES
-            ) = VADER_EXCS_ENG
-        else:
-            vader_excs = importlib.import_module(f'data.VADER.exceptions_{lang_vader}')
-
-            vaderSentiment.vaderSentiment.NEGATE = vader_excs.NEGATE
-            vaderSentiment.vaderSentiment.BOOSTER_DICT = vader_excs.BOOSTER_DICT
-            vaderSentiment.vaderSentiment.SENTIMENT_LADEN_IDIOMS = vader_excs.SENTIMENT_LADEN_IDIOMS
-            vaderSentiment.vaderSentiment.SPECIAL_CASES = vader_excs.SPECIAL_CASES
-
-        if lang.startswith('eng_'):
-            analyzer = vaderSentiment.vaderSentiment.SentimentIntensityAnalyzer()
-        else:
-            analyzer = vaderSentiment.vaderSentiment.SentimentIntensityAnalyzer(
-                lexicon_file = wl_paths.get_path_data('VADER', f'vader_lexicon_{lang_vader}.txt'),
-                emoji_lexicon = wl_paths.get_path_data('VADER', f'emoji_utf8_lexicon_{lang_vader}.txt')
-            )
+    elif sentiment_analyzer == 'vader_eng':
+        analyzer = vaderSentiment.vaderSentiment.SentimentIntensityAnalyzer()
 
         for sentence in inputs:
-            if lang in wl_nlp_utils.LANGS_WITHOUT_SPACES:
-                sentence = ' '.join(wl_word_tokenization.wl_word_tokenize_flat(main, sentence, lang))
-
             sentiment_scores.append(analyzer.polarity_scores(sentence)['compound'])
     # Vietnamese
     elif sentiment_analyzer == 'underthesea_vie':
@@ -140,10 +98,12 @@ def wl_sentiment_analyze_tokens(main, inputs, lang, sentiment_analyzer):
 
     # Stanza
     if sentiment_analyzer.startswith('stanza_'):
-        if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
-            lang = wl_conversion.remove_lang_code_suffixes(lang)
+        if lang != 'zho_cn':
+            lang_stanza = wl_conversion.remove_lang_code_suffixes(lang)
+        else:
+            lang_stanza = lang
 
-        nlp = main.__dict__[f'stanza_nlp_{lang}']
+        nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
 
         for tokens_input in inputs:
             # If the input is too long, use the sentiment with the highest frequency as the sentiment score of the input

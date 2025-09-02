@@ -22,14 +22,29 @@ from wordless.wl_settings import wl_settings_sentiment_analysis
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
 def test_wl_settings_sentiment_analysis():
-    settings_sentiment_analysis = wl_settings_sentiment_analysis.Wl_Settings_Sentiment_Analysis(main)
-    settings_sentiment_analysis.load_settings()
-    settings_sentiment_analysis.load_settings(defaults = True)
-    settings_sentiment_analysis.apply_settings()
+    main.settings_sentiment_analysis = wl_settings_sentiment_analysis.Wl_Settings_Sentiment_Analysis(main)
+    main.settings_sentiment_analysis.load_settings(defaults = False)
+    main.settings_sentiment_analysis.load_settings(defaults = True)
+    main.settings_sentiment_analysis.apply_settings()
 
-    settings_sentiment_analysis.preview_changed()
-    settings_sentiment_analysis.update_gui(0.123456789)
-    settings_sentiment_analysis.update_gui_err()
+    main.settings_sentiment_analysis.text_edit_preview_samples.setPlainText('')
+    main.settings_sentiment_analysis.preview_changed()
+    main.settings_sentiment_analysis.text_edit_preview_samples.setPlainText('test')
+    main.settings_sentiment_analysis.preview_changed()
+
+    main.settings_sentiment_analysis.preview_results_changed()
+    main.settings_sentiment_analysis.update_gui(0.123456789)
+    main.settings_sentiment_analysis.update_gui_err()
+
+def test_wl_worker_preview_sentiment_analyzer():
+    preview_lang = main.settings_custom['sentiment_analysis']['preview']['preview_lang']
+    sentiment_analyzer = main.settings_custom['sentiment_analysis']['sentiment_analyzer_settings'][preview_lang]
+
+    wl_settings_sentiment_analysis.Wl_Worker_Preview_Sentiment_Analyzer(
+        main,
+        sentiment_analyzer = sentiment_analyzer
+    ).run()
 
 if __name__ == '__main__':
     test_wl_settings_sentiment_analysis()
+    test_wl_worker_preview_sentiment_analyzer()

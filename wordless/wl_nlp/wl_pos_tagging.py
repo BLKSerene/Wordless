@@ -71,7 +71,6 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', s
     else:
         texts_tagged = []
         tags = []
-        convert_srp_script = False
 
         settings = main.settings_custom['pos_tagging']
 
@@ -83,11 +82,6 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', s
 
         if separator == 'default':
             separator = main.settings_custom['pos_tagging']['pos_tagger_settings']['separator_between_tokens_pos_tags']
-
-        # Modify the language after the default POS tagger is loaded and before the POS tagger is initialized
-        if lang == 'srp_cyrl' and pos_tagger == 'stanza_srp_latn':
-            lang = 'srp_latn'
-            convert_srp_script = True
 
         wl_nlp_utils.init_word_tokenizers(
             main,
@@ -103,7 +97,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', s
         tags_universal = []
 
         if isinstance(inputs, str):
-            if convert_srp_script:
+            if lang == 'srp_cyrl' and pos_tagger == 'stanza_srp_latn':
                 inputs = wl_nlp_utils.to_srp_latn((inputs,))[0]
 
             # spaCy and modern-botok
@@ -138,7 +132,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', s
                                 tags_universal.append(token.pos_.strip() if token.pos_.strip() else 'X')
             # Stanza
             elif pos_tagger.startswith('stanza_'):
-                if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
+                if lang not in ('zho_cn', 'zho_tw'):
                     lang_stanza = wl_conversion.remove_lang_code_suffixes(lang)
                 else:
                     lang_stanza = lang
@@ -169,7 +163,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', s
         else:
             texts, token_properties = wl_texts.split_texts_properties(inputs)
 
-            if convert_srp_script:
+            if lang == 'srp_cyrl' and pos_tagger == 'stanza_srp_latn':
                 texts = wl_nlp_utils.to_srp_latn(texts)
 
             # spaCy and modern-botok
@@ -213,7 +207,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', s
                                 tags_universal.append(token.pos_.strip() if token.pos_.strip() else 'X')
             # Stanza
             elif pos_tagger.startswith('stanza_'):
-                if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
+                if lang not in ('zho_cn', 'zho_tw'):
                     lang_stanza = wl_conversion.remove_lang_code_suffixes(lang)
                 else:
                     lang_stanza = lang
@@ -299,7 +293,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', s
         tags = [f'{separator}{tag}' for tag in tags]
 
         if isinstance(inputs, str):
-            if convert_srp_script:
+            if lang == 'srp_cyrl' and pos_tagger == 'stanza_srp_latn':
                 texts_tagged = wl_nlp_utils.to_srp_cyrl(texts_tagged)
 
             return wl_texts.to_tokens(

@@ -53,7 +53,6 @@ jobs:
           :: Run some tests separately to reduce memory usage
           pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
           pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
-          pytest tests/tests_nlp/tests_stanza/test_stanza_srp_latn.py
 
           pytest tests/tests_nlp/test_dependency_parsing.py
           pytest tests/tests_nlp/test_lemmatization.py
@@ -65,6 +64,7 @@ jobs:
           pytest tests/tests_nlp/test_stop_word_lists.py
           pytest tests/tests_nlp/test_syl_tokenization.py
           pytest tests/tests_nlp/test_texts.py
+          pytest tests/tests_nlp/test_token_processing.py
           pytest tests/tests_nlp/test_word_detokenization.py
           pytest tests/tests_nlp/test_word_tokenization.py
 
@@ -114,7 +114,6 @@ jobs:
           # Run some tests separately to reduce memory usage
           pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
           pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
-          pytest tests/tests_nlp/tests_stanza/test_stanza_srp_latn.py
 
           pytest tests/tests_nlp/test_dependency_parsing.py
           pytest tests/tests_nlp/test_lemmatization.py
@@ -126,6 +125,7 @@ jobs:
           pytest tests/tests_nlp/test_stop_word_lists.py
           pytest tests/tests_nlp/test_syl_tokenization.py
           pytest tests/tests_nlp/test_texts.py
+          pytest tests/tests_nlp/test_token_processing.py
           pytest tests/tests_nlp/test_word_detokenization.py
           pytest tests/tests_nlp/test_word_tokenization.py
 
@@ -178,7 +178,6 @@ jobs:
           # Run some tests separately to reduce memory usage
           pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
           pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
-          pytest tests/tests_nlp/tests_stanza/test_stanza_srp_latn.py
 
           pytest tests/tests_nlp/test_dependency_parsing.py
           pytest tests/tests_nlp/test_lemmatization.py
@@ -190,6 +189,7 @@ jobs:
           pytest tests/tests_nlp/test_stop_word_lists.py
           pytest tests/tests_nlp/test_syl_tokenization.py
           pytest tests/tests_nlp/test_texts.py
+          pytest tests/tests_nlp/test_token_processing.py
           pytest tests/tests_nlp/test_word_detokenization.py
           pytest tests/tests_nlp/test_word_tokenization.py
 

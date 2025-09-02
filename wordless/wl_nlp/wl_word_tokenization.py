@@ -58,8 +58,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
 
     # spaCy
     if word_tokenizer.startswith('spacy_'):
-        lang = wl_conversion.remove_lang_code_suffixes(lang)
-        nlp = main.__dict__[f'spacy_nlp_{lang}']
+        nlp = main.__dict__[f'spacy_nlp_{wl_conversion.remove_lang_code_suffixes(lang)}']
 
         with nlp.select_pipes(disable = (
             pipeline
@@ -73,10 +72,12 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                     tokens_multilevel[-1].append([token.text for token in sentence])
     # Stanza
     elif word_tokenizer.startswith('stanza_'):
-        if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
-            lang = wl_conversion.remove_lang_code_suffixes(lang)
+        if lang not in ('zho_cn', 'zho_tw'):
+            lang_stanza = wl_conversion.remove_lang_code_suffixes(lang)
+        else:
+            lang_stanza = lang
 
-        nlp = main.__dict__[f'stanza_nlp_{lang}']
+        nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
 
         for doc in nlp.bulk_process([line.strip() for line in lines]):
             tokens_multilevel.append([])

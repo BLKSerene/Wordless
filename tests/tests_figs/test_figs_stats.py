@@ -16,14 +16,16 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import random
-
-from tests import wl_test_init
+from tests import (
+    wl_test_file_area,
+    wl_test_init
+)
 from wordless.wl_figs import wl_figs_stats
 from wordless.wl_nlp import wl_texts
 
 def test_wl_fig_stats():
     main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
+    i_fig = 0
 
     for tab in (
         'wordlist_generator',
@@ -36,9 +38,9 @@ def test_wl_fig_stats():
 
         match tab:
             case 'wordlist_generator' | 'ngram_generator' | 'keyword_extractor':
-                graph_types = ['Line Chart', 'Word Cloud']
+                graph_types = ['Line chart', 'Word cloud']
             case 'collocation_extractor' | 'colligation_extractor':
-                graph_types = ['Line Chart', 'Word Cloud', 'Network Graph']
+                graph_types = ['Line chart', 'Word cloud', 'Network graph']
 
         match tab:
             case 'wordlist_generator' | 'ngram_generator':
@@ -49,41 +51,43 @@ def test_wl_fig_stats():
         for graph_type in graph_types:
             stat_files_items = {}
 
-            use_data = random.choice(use_datas)
+            for i in range(100):
+                item_1 = wl_texts.Wl_Token(str(i))
+                item_2 = wl_texts.Wl_Token(str(i + 1))
+                freq_1 = i # File 1
+                freq_2 = i * 2 # File 2
 
-            if use_data == 'p-value':
-                val_max = 1
-            else:
-                val_max = 100
-
-            if graph_type == 'Network Graph':
-                for node in range(10):
-                    node = wl_texts.Wl_Token(str(node))
-
-                    for collocate in range(10):
-                        collocate = wl_texts.Wl_Token(str(collocate))
-                        stat_files_items[(node, collocate)] = [
-                            random.uniform(0, val_max),
-                            random.uniform(0, val_max),
-                            random.uniform(0, val_max)
+                match tab:
+                    case 'wordlist_generator' | 'keyword_extractor':
+                        stat_files_items[item_1] = [
+                            freq_1,
+                            freq_2,
+                            freq_1 + freq_2
                         ]
-            else:
-                for item in range(100):
-                    item = wl_texts.Wl_Token(str(item))
-                    stat_files_items[item] = [
-                        random.uniform(0, val_max),
-                        random.uniform(0, val_max),
-                        random.uniform(0, val_max)
-                    ]
+                    case 'ngram_generator':
+                        stat_files_items[(item_1,)] = [
+                            freq_1,
+                            freq_2,
+                            freq_1 + freq_2
+                        ]
+                    case 'collocation_extractor' | 'colligation_extractor':
+                        stat_files_items[((item_1,), item_2)] = [
+                            freq_1,
+                            freq_2,
+                            freq_1 + freq_2
+                        ]
 
-            wl_test_init.select_test_files(main, no_files = [0, 1])
+            no_file_1 = i_fig % wl_test_file_area.NUM_FILES_OBSERVED
+            no_file_2 = (i_fig + 1) % wl_test_file_area.NUM_FILES_OBSERVED
+            wl_test_init.select_test_files(main, no_files = (no_file_1, no_file_2))
+            files_selected = [*main.wl_file_area.get_selected_file_names(), 'Total']
 
             fig_settings = main.settings_custom[tab]['fig_settings']
             fig_settings['graph_type'] = graph_type
-            fig_settings['sort_by_file'] = random.choice([*main.wl_file_area.get_selected_file_names(), 'Total'])
-            fig_settings['use_data'] = use_data
-            fig_settings['use_cumulative'] = random.choice([True, False])
-            fig_settings['use_pct'] = random.choice([True, False])
+            fig_settings['sort_by_file'] = files_selected[i_fig % 3]
+            fig_settings['use_data'] = use_datas[i_fig % len(use_datas)]
+            fig_settings['use_cumulative'] = (True, False)[i_fig % 2]
+            fig_settings['use_pct'] = (True, False)[i_fig % 2]
 
             print(f"Files: {' | '.join(wl_test_init.get_test_file_names(main))}")
             print(f"Graph type: {fig_settings['graph_type']}")
@@ -97,6 +101,8 @@ def test_wl_fig_stats():
                 stat_files_items = stat_files_items,
                 tab = tab
             )
+
+            i_fig += 1
 
 if __name__ == '__main__':
     test_wl_fig_stats()

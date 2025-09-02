@@ -34,6 +34,8 @@ def test_wl_line_edit_re():
     line_edit = wl_editors.Wl_Line_Edit_Re(main, 'test', 'test', 'test')
     line_edit.setText('test')
     line_edit.text_changed()
+    line_edit.setText('re')
+    line_edit.text_changed()
     line_edit.setText('')
     line_edit.text_changed()
 

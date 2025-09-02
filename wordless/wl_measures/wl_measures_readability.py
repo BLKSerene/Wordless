@@ -820,11 +820,12 @@ def fog_index(main, text):
                 pos_tag_words(main, text)
                 # Count number of syllables of word lemmas instead of original words
                 wl_lemmatization.wl_lemmatize(main, text.words_flat, lang = 'pol')
-                lemmas_syls = wl_syl_tokenization.wl_syl_tokenize(
+                lemmas = wl_syl_tokenization.wl_syl_tokenize(
                     main,
                     wl_texts.to_tokens(wl_texts.get_token_properties(text.words_flat, 'lemma'), lang = 'pol'),
                     lang = 'pol'
                 )
+                lemmas_syls = wl_texts.get_token_properties(lemmas, 'syls')
 
                 for word, syls in zip(text.words_flat, lemmas_syls):
                     if len(syls) > 4 and 'PROPN' not in word.tag_universal.split('/'):

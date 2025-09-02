@@ -93,8 +93,7 @@ def wl_lemmatize_text(main, inputs, lang, lemmatizer):
 
     # spaCy
     if lemmatizer.startswith('spacy_'):
-        lang = wl_conversion.remove_lang_code_suffixes(lang)
-        nlp = main.__dict__[f'spacy_nlp_{lang}']
+        nlp = main.__dict__[f'spacy_nlp_{wl_conversion.remove_lang_code_suffixes(lang)}']
 
         with nlp.select_pipes(disable = (
             pipeline
@@ -111,10 +110,12 @@ def wl_lemmatize_text(main, inputs, lang, lemmatizer):
                         lemmas.append(token.text)
     # Stanza
     elif lemmatizer.startswith('stanza_'):
-        if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
-            lang = wl_conversion.remove_lang_code_suffixes(lang)
+        if lang not in ('zho_cn', 'zho_tw'):
+            lang_stanza = wl_conversion.remove_lang_code_suffixes(lang)
+        else:
+            lang_stanza = lang
 
-        nlp = main.__dict__[f'stanza_nlp_{lang}']
+        nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
         lines = [line.strip() for line in inputs.splitlines() if line.strip()]
 
         for doc in nlp.bulk_process(lines):
@@ -207,8 +208,7 @@ def wl_lemmatize_tokens(main, inputs, lang, lemmatizer):
 
     # spaCy
     if lemmatizer.startswith('spacy_'):
-        lang_spacy = wl_conversion.remove_lang_code_suffixes(lang)
-        nlp = main.__dict__[f'spacy_nlp_{lang_spacy}']
+        nlp = main.__dict__[f'spacy_nlp_{wl_conversion.remove_lang_code_suffixes(lang)}']
 
         with nlp.select_pipes(disable = (
             pipeline
@@ -235,7 +235,7 @@ def wl_lemmatize_tokens(main, inputs, lang, lemmatizer):
                 lemma_tokens.extend((token.text for token in doc))
     # Stanza
     elif lemmatizer.startswith('stanza_'):
-        if lang not in ('zho_cn', 'zho_tw', 'srp_latn'):
+        if lang not in ('zho_cn', 'zho_tw'):
             lang_stanza = wl_conversion.remove_lang_code_suffixes(lang)
         else:
             lang_stanza = lang

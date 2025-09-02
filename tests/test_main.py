@@ -16,6 +16,8 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import packaging
+
 from tests import wl_test_init
 from wordless import wl_main
 
@@ -44,13 +46,24 @@ def test_wl_dialog_citing():
     wl_dialog_citing = wl_main.Wl_Dialog_Citing(main)
     wl_dialog_citing.open()
     wl_dialog_citing.load_settings()
-    wl_dialog_citing.citation_changed()
+
+    for citation_style in range(wl_dialog_citing.combo_box_citation_style.count()):
+        wl_dialog_citing.combo_box_citation_style.setCurrentIndex(citation_style)
+
+        for cite_as in range(wl_dialog_citing.combo_box_cite_as.count()):
+            wl_dialog_citing.combo_box_cite_as.setCurrentIndex(cite_as)
+
+            wl_dialog_citing.citation_changed()
 
 def test_wl_dialog_donating():
     wl_dialog_donating = wl_main.Wl_Dialog_Donating(main)
     wl_dialog_donating.open()
     wl_dialog_donating.load_settings()
-    wl_dialog_donating.donating_via_changed()
+
+    for donating_via in range(wl_dialog_donating.combo_box_donating_via.count()):
+        wl_dialog_donating.combo_box_donating_via.setCurrentIndex(donating_via)
+
+        wl_dialog_donating.donating_via_changed()
 
 def test_wl_dialog_acks():
     wl_dialog_acks = wl_main.Wl_Dialog_Acks(main)
@@ -72,6 +85,14 @@ def test_wl_dialog_check_updates():
     wl_dialog_check_updates.open()
     wl_dialog_check_updates.checking_status_changed('updates_available')
 
+def test_worker_check_updates():
+    worker = wl_main.Worker_Check_Updates(main)
+    worker.run()
+    main.ver = packaging.version.Version('1.0.0')
+    worker.run()
+    worker.stop()
+    worker.run()
+
 def test_wl_dialog_changelog():
     wl_dialog_changelog = wl_main.Wl_Dialog_Changelog(main)
     wl_dialog_changelog.open()
@@ -88,6 +109,9 @@ if __name__ == '__main__':
     test_wl_dialog_citing()
     test_wl_dialog_donating()
     test_wl_dialog_acks()
+
     test_wl_dialog_check_updates()
+    test_worker_check_updates()
+
     test_wl_dialog_changelog()
     test_wl_dialog_about()

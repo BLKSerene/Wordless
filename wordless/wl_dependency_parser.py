@@ -186,7 +186,7 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
             self.checkbox_show_lemmas,
             self.checkbox_collapse_punc_marks,
             self.checkbox_compact_mode,
-            self.checkbox_show_in_separate_tab
+            self.checkbox_show_in_separate_tabs
         ) = wl_widgets.wl_widgets_fig_settings_dependency_parsing(self)
 
         self.checkbox_collapse_punc_marks.hide()
@@ -196,7 +196,7 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
         self.checkbox_show_lemmas.stateChanged.connect(self.fig_settings_changed)
         self.checkbox_collapse_punc_marks.stateChanged.connect(self.fig_settings_changed)
         self.checkbox_compact_mode.stateChanged.connect(self.fig_settings_changed)
-        self.checkbox_show_in_separate_tab.stateChanged.connect(self.fig_settings_changed)
+        self.checkbox_show_in_separate_tabs.stateChanged.connect(self.fig_settings_changed)
 
         self.group_box_fig_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_fig_settings.layout().addWidget(self.checkbox_show_pos_tags, 0, 0)
@@ -205,7 +205,7 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
         self.group_box_fig_settings.layout().addWidget(self.checkbox_show_lemmas, 1, 0, 1, 4)
         self.group_box_fig_settings.layout().addWidget(self.checkbox_collapse_punc_marks, 2, 0, 1, 4)
         self.group_box_fig_settings.layout().addWidget(self.checkbox_compact_mode, 3, 0, 1, 4)
-        self.group_box_fig_settings.layout().addWidget(self.checkbox_show_in_separate_tab, 4, 0, 1, 4)
+        self.group_box_fig_settings.layout().addWidget(self.checkbox_show_in_separate_tabs, 4, 0, 1, 4)
 
         self.group_box_fig_settings.layout().setColumnStretch(3, 1)
 
@@ -261,7 +261,7 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
 
         self.checkbox_show_lemmas.setChecked(settings['fig_settings']['show_lemmas'])
         self.checkbox_compact_mode.setChecked(settings['fig_settings']['compact_mode'])
-        self.checkbox_show_in_separate_tab.setChecked(settings['fig_settings']['show_in_separate_tab'])
+        self.checkbox_show_in_separate_tabs.setChecked(settings['fig_settings']['show_in_separate_tabs'])
 
         self.token_settings_changed()
         self.search_settings_changed()
@@ -321,7 +321,7 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
 
         settings['show_lemmas'] = self.checkbox_show_lemmas.isChecked()
         settings['compact_mode'] = self.checkbox_compact_mode.isChecked()
-        settings['show_in_separate_tab'] = self.checkbox_show_in_separate_tab.isChecked()
+        settings['show_in_separate_tabs'] = self.checkbox_show_in_separate_tabs.isChecked()
 
 class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data):
     def __init__(self, parent):
@@ -476,7 +476,7 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data):
                         # Handled by Token Settings - Punctuation marks
                         collapse_punc_marks = False,
                         compact_mode = fig_settings['compact_mode'],
-                        show_in_separate_tab = fig_settings['show_in_separate_tab'],
+                        show_in_separate_tabs = fig_settings['show_in_separate_tabs'],
                     ))
 
                     sentences_rendered.add(sentence)
@@ -484,7 +484,7 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data):
             wl_dependency_parsing.wl_show_dependency_graphs(
                 self.main,
                 htmls = htmls,
-                show_in_separate_tab = fig_settings['show_in_separate_tab']
+                show_in_separate_tabs = fig_settings['show_in_separate_tabs']
             )
         except Exception:
             err_msg = traceback.format_exc()

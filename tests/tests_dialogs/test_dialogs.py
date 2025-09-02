@@ -28,7 +28,7 @@ def test_get_msg_box_icon():
     wl_dialogs.get_msg_box_icon('question')
 
 def test_wl_dialog():
-    wl_dialog = wl_dialogs.Wl_Dialog(main, 'test')
+    wl_dialog = wl_dialogs.Wl_Dialog(main, 'test', beep = True)
     wl_dialog.open()
     wl_dialog.adjust_size()
     wl_dialog.move_to_center()

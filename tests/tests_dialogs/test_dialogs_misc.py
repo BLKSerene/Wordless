@@ -24,6 +24,7 @@ main = wl_test_init.Wl_Test_Main()
 def test_wl_dialog_progress():
     wl_dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = 'test')
     wl_dialog_progress.open()
+    wl_dialog_progress.abort_clicked()
     wl_dialog_progress.update_elapsed_time()
     wl_dialog_progress.update_progress('test')
 

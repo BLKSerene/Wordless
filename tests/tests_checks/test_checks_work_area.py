@@ -84,6 +84,7 @@ def test_check_nlp_support():
 
 def test_check_results():
     assert wl_checks_work_area.check_results(main, '', 'test')
+    assert not wl_checks_work_area.check_results(main, 'aborted', '')
     assert not wl_checks_work_area.check_results(main, 'test', '')
     assert not wl_checks_work_area.check_results(main, '', '')
 
@@ -94,6 +95,7 @@ def test_check_results_download_model():
 
 def test_check_postprocessing():
     assert wl_checks_work_area.check_postprocessing(main, '')
+    assert not wl_checks_work_area.check_postprocessing(main, 'aborted')
     assert not wl_checks_work_area.check_postprocessing(main, 'test')
 
 def test_check_err():
@@ -117,9 +119,10 @@ def test_check_err_fig_word_cloud():
     wl_checks_work_area.check_err_fig_word_cloud(main, wl_excs.Wl_Exc_Word_Cloud_Font_Unsupported())
 
 def test_check_err_exp_table():
-    wl_checks_work_area.check_err_exp_table(main, 'permission_err', 'test')
-    wl_checks_work_area.check_err_exp_table(main, 'test', 'test')
     wl_checks_work_area.check_err_exp_table(main, '', 'test')
+    wl_checks_work_area.check_err_exp_table(main, 'permission_err', 'test')
+    wl_checks_work_area.check_err_exp_table(main, 'aborted', 'test')
+    wl_checks_work_area.check_err_exp_table(main, 'test', 'test')
 
 if __name__ == '__main__':
     test_wl_status_bar_missing_search_terms()

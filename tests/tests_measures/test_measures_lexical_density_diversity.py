@@ -143,8 +143,12 @@ def test_popescus_r1():
 # Reference: Popescu, I.-I. (2009). Word frequency studies. Mouton de Gruyter. | p. 39
 def test_popescus_r2():
     r2 = wl_measures_lexical_density_diversity.popescus_r2(main, text_tokens_225)
+    r2_k = wl_measures_lexical_density_diversity.popescus_r2(main, wl_test_init.Wl_Test_Text(main, [[[['test']]]]))
+    r2_0 = wl_measures_lexical_density_diversity.popescus_r2(main, wl_test_init.Wl_Test_Text(main, [[[['a', 'a', 'b', 'b', 'b', 'c', 'c', 'c']]]]))
 
     assert round(r2, 3) == 0.871
+    assert r2_k == 0.5
+    assert r2_0 == 0
 
 # Reference: Popescu, I.-I. (2009). Word frequency studies. Mouton de Gruyter. | p. 51
 def test_popescus_r3():

@@ -31,6 +31,11 @@ def test_wl_wrapper():
     wrapper = wl_layouts.Wl_Wrapper(main)
     wrapper.load_settings()
 
+def test_wl_tab_widget():
+    tab_widget = wl_layouts.Wl_Tab_Widget(main)
+    tab_widget.eventFilter(tab_widget.tabBar(), QtCore.QEvent(QtCore.QEvent.Wheel))
+    tab_widget.eventFilter(tab_widget, QtCore.QEvent(QtCore.QEvent.Wheel))
+
 def test_wl_splitter():
     wl_layouts.Wl_Splitter(QtCore.Qt.Vertical, main)
 
@@ -49,6 +54,7 @@ def test_wl_separator():
 if __name__ == '__main__':
     test_wl_layout()
     test_wl_wrapper()
+    test_wl_tab_widget()
     test_wl_splitter()
     test_wl_scroll_area()
     test_wl_stacked_widget_resizable()

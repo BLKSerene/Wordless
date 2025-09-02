@@ -68,7 +68,7 @@ DEFAULT_INTERFACE_SCALING = '100%'
 if is_windows:
     DEFAULT_FONT_FAMILY = 'Arial'
 elif is_macos:
-    # SF Pro is the system font on macOS >= 10.11 but is not installed by default
+    # SF Pro is the system font on macOS >= 10.13 but is not installed by default
     DEFAULT_FONT_FAMILY = 'Helvetica Neue'
 elif is_linux:
     match wl_misc.get_linux_distro():
@@ -455,7 +455,7 @@ def init_settings_default(main):
                 'show_fine_grained_pos_tags': False,
                 'show_lemmas': False,
                 'compact_mode': False,
-                'show_in_separate_tab': False
+                'show_in_separate_tabs': False
             },
 
             'results_search': {
@@ -2286,7 +2286,7 @@ def init_settings_default(main):
                     'show_lemmas': False,
                     'collapse_punc_marks': True,
                     'compact_mode': False,
-                    'show_in_separate_tab': False
+                    'show_in_separate_tabs': False
                 },
 
                 'preview_samples': ''

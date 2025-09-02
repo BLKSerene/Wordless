@@ -22,21 +22,27 @@ from wordless.wl_results import wl_results_sample
 main = wl_test_init.Wl_Test_Main()
 
 def test_wl_dialog_results_sample():
-    table = wl_test_init.Wl_Test_Table(main, tab = 'dependency_parser')
+    table = wl_test_init.Wl_Test_Table(main, tab = 'concordancer')
     table.settings['file_area']['files_open'] = [{'selected': True, 'lang': 'test'}]
 
-    dialog_results_sample = wl_results_sample.Wl_Dialog_Results_Sample(
+    dialog = wl_results_sample.Wl_Dialog_Results_Sample(
         main,
         table = table
     )
 
-    dialog_results_sample.load_settings(defaults = True)
-    dialog_results_sample.load_settings(defaults = False)
+    dialog.load_settings(defaults = True)
+    dialog.load_settings(defaults = False)
 
-    for i in range(dialog_results_sample.combo_box_sampling_method.count()):
-        dialog_results_sample.combo_box_sampling_method.setCurrentIndex(i)
-        dialog_results_sample.settings_changed()
-        dialog_results_sample.sample()
+    table.set_item(0, 0, 'test')
+    table.set_item(1, 0, 'test')
+
+    for i in range(dialog.combo_box_sampling_method.count()):
+        dialog.combo_box_sampling_method.setCurrentIndex(i)
+        dialog.settings_changed()
+
+        main.settings_custom['concordancer']['results_sample']['sample_size_random'] = 1
+        main.settings_custom['concordancer']['results_sample']['sample_size_systematic_size'] = 1
+        dialog.sample()
 
 if __name__ == '__main__':
     test_wl_dialog_results_sample()

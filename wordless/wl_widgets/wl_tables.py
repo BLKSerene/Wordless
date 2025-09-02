@@ -75,10 +75,8 @@ class Wl_Table(QtWidgets.QTableView):
             'show_total': True
         }
 
-        model = QtGui.QStandardItemModel()
-        model.table = self
-
-        self.setModel(model)
+        self.setModel(QtGui.QStandardItemModel())
+        self.model().table = self
 
         match header_orientation:
             case 'hor':

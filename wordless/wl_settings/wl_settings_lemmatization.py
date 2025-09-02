@@ -268,7 +268,6 @@ class Wl_Worker_Preview_Lemmatizer(wl_threading.Wl_Worker_No_Progress):
                     self.main, lemmas,
                     lang = preview_lang
                 )
-
                 preview_results.append(text)
             else:
                 preview_results.append('')

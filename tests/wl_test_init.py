@@ -28,7 +28,10 @@ from PyQt5 import QtGui
 from PyQt5 import QtWidgets
 
 from tests import wl_test_file_area
-from wordless import wl_file_area
+from wordless import (
+    wl_file_area,
+    wl_main
+)
 from wordless.wl_checks import wl_checks_misc
 from wordless.wl_nlp import wl_texts
 from wordless.wl_settings import (
@@ -45,9 +48,9 @@ SEARCH_TERMS = ['take', 'ལ་']
 # An instance of QApplication must be created before any instance of QWidget
 wl_app = QtWidgets.QApplication(sys.argv)
 
-class Wl_Test_Main(QtWidgets.QMainWindow):
+class Wl_Test_Main(wl_main.Wl_Main):
     def __init__(self, switch_lang_utils = 'default'):
-        super().__init__()
+        super(wl_main.Wl_Main, self).__init__()
 
         self.app = wl_app
 
@@ -81,9 +84,6 @@ class Wl_Test_Main(QtWidgets.QMainWindow):
             case 'stanza':
                 self.switch_lang_utils_stanza()
 
-        # Status bar
-        self.status_bar = QtWidgets.QStatusBar()
-
         # Work area
         self.wl_work_area = QtWidgets.QTabWidget()
 
@@ -112,14 +112,13 @@ class Wl_Test_Main(QtWidgets.QMainWindow):
         self.wl_file_area_ref.get_selected_files = lambda: wl_file_area.Wrapper_File_Area.get_selected_files(self.wl_file_area_ref)
         self.wl_file_area_ref.get_selected_file_names = lambda: wl_file_area.Wrapper_File_Area.get_selected_file_names(self.wl_file_area_ref)
 
-        # Settings
+        # Menu - Preferences - Settings
         self.wl_settings = wl_settings.Wl_Settings(self)
+        # Menu
+        self.init_menu()
 
     def height(self):
         return 1080
-
-    def statusBar(self):
-        return self.status_bar
 
     def switch_lang_utils_fast(self):
         settings_custom_sentence_tokenizers = self.settings_custom['sentence_tokenization']['sentence_tokenizer_settings']
@@ -222,12 +221,32 @@ class Wl_Test_Main(QtWidgets.QMainWindow):
 
                         break
 
-class Wl_Test_Table(QtWidgets.QTableView):
-    def __init__(self, parent, tab = ''):
-        super().__init__(parent)
+class Wl_Test_Table(wl_tables.Wl_Table_Data):
+    def __init__(
+        self, parent, tab = '',
+        headers = None, header_orientation = 'hor',
+        headers_int = None, headers_float = None,
+        headers_pct = None, headers_p_val = None,
+        headers_cum = None,
+        cols_breakdown_span_position = None,
+        cols_breakdown_file = None, cols_total = None,
+    ):
+        super(wl_tables.Wl_Table, self).__init__(parent)
+
+        self.main = wl_misc.find_wl_main(parent)
 
         self.tab = tab
-        self.header_orientation = 'hor'
+        self.headers = headers or ()
+        self.header_orientation = header_orientation
+
+        self.headers_int_old = headers_int or set()
+        self.headers_float_old = headers_float or set()
+        self.headers_pct_old = headers_pct or set()
+        self.headers_p_val_old = headers_p_val or set()
+        self.headers_cum_old = headers_cum or set()
+        self.cols_breakdown_span_position_old = cols_breakdown_span_position or set()
+        self.cols_breakdown_file_old = cols_breakdown_file or set()
+        self.cols_total_old = cols_total or set()
 
         self.rows_filter = set()
         self.rows_sample = set()
@@ -236,25 +255,33 @@ class Wl_Test_Table(QtWidgets.QTableView):
         self.settings = wl_settings_default.init_settings_default(self)
 
         self.setModel(QtGui.QStandardItemModel())
+        self.model().table = self
+
+        if headers is not None:
+            self.model().setHorizontalHeaderLabels(self.headers)
+
+        self.default_foreground = '#292929'
+        self.default_background = '#FFF'
 
         self.button_generate_table = QtWidgets.QPushButton(self)
 
-        self.disable_updates = lambda: wl_tables.Wl_Table.disable_updates(self)
-        self.enable_updates = lambda emit_signals: wl_tables.Wl_Table.enable_updates(self, emit_signals)
-        self.is_empty = lambda: wl_tables.Wl_Table.is_empty(self)
-        self.filter_table = lambda: None
+        self.clr_table()
 
-    def set_item(self, row, col, text):
-        self.model().setItem(row, col, QtGui.QStandardItem(text))
+    def set_item(self, row, col, text, val = 1):
+        self.model().setItem(row, col, wl_tables.Wl_Table_Item(text))
+        self.model().item(row, col).val = val
 
     def set_label(self, row, col, text):
-        self.set_item(row, col, QtGui.QStandardItem())
+        self.set_item(row, col, wl_tables.Wl_Table_Item())
         self.setIndexWidget(self.model().index(row, col), QtWidgets.QLabel(text))
-        self.indexWidget(self.model().index(row, col)).tokens_raw = [text]
+        self.indexWidget(self.model().index(row, col)).tokens_raw = [wl_texts.Wl_Token(text)]
+        self.indexWidget(self.model().index(row, col)).tokens_search = [wl_texts.Wl_Token(text)]
 
-class Wl_Test_Text:
-    def __init__(self, main, tokens_multilevel, lang = 'eng_us', tagged = False):
-        self.main = main
+    def filter_table(self):
+        pass
+
+class Wl_Test_Text(wl_texts.Wl_Text):
+    def __init__(self, main, tokens_multilevel, lang = 'eng_us', tagged = False): # pylint: disable=super-init-not-called
         self.lang = lang
         self.tagged = tagged
 
@@ -271,9 +298,6 @@ class Wl_Test_Text:
 
         self.tokens_multilevel_with_puncs = copy.deepcopy(tokens_multilevel)
 
-        self.get_tokens_flat = lambda: wl_texts.Wl_Text.get_tokens_flat(self)
-        self.update_num_tokens = lambda: wl_texts.Wl_Text.update_num_tokens(self)
-
         self.update_num_tokens()
 
 class Wl_Exc_Tests_Lang_Skipped(Exception):
@@ -289,8 +313,6 @@ def wl_test_index(row, col):
 
 # Select files randomly
 def select_test_files(main, no_files, ref = False):
-    no_files = set(no_files)
-
     if ref:
         files = main.settings_custom['file_area']['files_open_ref']
     else:

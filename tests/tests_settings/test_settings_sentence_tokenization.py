@@ -22,14 +22,29 @@ from wordless.wl_settings import wl_settings_sentence_tokenization
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
 def test_wl_settings_sentence_tokenization():
-    settings_sentence_tokenization = wl_settings_sentence_tokenization.Wl_Settings_Sentence_Tokenization(main)
-    settings_sentence_tokenization.load_settings()
-    settings_sentence_tokenization.load_settings(defaults = True)
-    settings_sentence_tokenization.apply_settings()
+    main.settings_sentence_tokenization = wl_settings_sentence_tokenization.Wl_Settings_Sentence_Tokenization(main)
+    main.settings_sentence_tokenization.load_settings(defaults = False)
+    main.settings_sentence_tokenization.load_settings(defaults = True)
+    main.settings_sentence_tokenization.apply_settings()
 
-    settings_sentence_tokenization.preview_changed()
-    settings_sentence_tokenization.update_gui('test')
-    settings_sentence_tokenization.update_gui_err()
+    main.settings_sentence_tokenization.text_edit_preview_samples.setPlainText('')
+    main.settings_sentence_tokenization.preview_changed()
+    main.settings_sentence_tokenization.text_edit_preview_samples.setPlainText('test')
+    main.settings_sentence_tokenization.preview_changed()
+
+    main.settings_sentence_tokenization.preview_results_changed()
+    main.settings_sentence_tokenization.update_gui('test')
+    main.settings_sentence_tokenization.update_gui_err()
+
+def test_wl_worker_preview_sentence_tokenizer():
+    preview_lang = main.settings_custom['sentence_tokenization']['preview']['preview_lang']
+    sentence_tokenizer = main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings'][preview_lang]
+
+    wl_settings_sentence_tokenization.Wl_Worker_Preview_Sentence_Tokenizer(
+        main,
+        sentence_tokenizer = sentence_tokenizer
+    ).run()
 
 if __name__ == '__main__':
     test_wl_settings_sentence_tokenization()
+    test_wl_worker_preview_sentence_tokenizer()

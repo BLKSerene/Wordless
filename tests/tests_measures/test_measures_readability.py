@@ -23,7 +23,7 @@ import numpy
 from tests import wl_test_init
 from wordless.wl_measures import wl_measures_readability
 
-main = wl_test_init.Wl_Test_Main()
+main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 settings = main.settings_custom['measures']['readability']
 
 TOKENS_MULTILEVEL_0 = []
@@ -74,7 +74,7 @@ test_text_vie_12 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12, lang = 
 test_text_afr_12 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12, lang = 'afr')
 test_text_nld_12 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12, lang = 'nld')
 test_text_fra_12 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12, lang = 'fra')
-test_text_pol_12 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12, lang = 'pol')
+test_text_pol_12 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12_PROPN, lang = 'pol')
 test_text_rus_12 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12, lang = 'rus')
 test_text_ukr_12 = wl_test_init.Wl_Test_Text(main, TOKENS_MULTILEVEL_12, lang = 'ukr')
 
@@ -359,6 +359,10 @@ def test_gulpease():
     assert gulpease_index_eng_12 == 'no_support'
 
 def test_fog_index():
+    # Skip POS tagging for Polish
+    for token in test_text_pol_12.get_tokens_flat():
+        token.tag_universal = 'test'
+
     fog_index_eng_0 = wl_measures_readability.fog_index(main, test_text_eng_0)
     settings['fog_index']['variant_eng'] = 'Original'
     fog_index_eng_12_propn_orig = wl_measures_readability.fog_index(main, test_text_eng_12_propn)
@@ -366,12 +370,14 @@ def test_fog_index():
     fog_index_eng_12_pron_psk = wl_measures_readability.fog_index(main, test_text_eng_12_propn)
     settings['fog_index']['variant_eng'] = 'Navy'
     fog_index_eng_12_navy = wl_measures_readability.fog_index(main, test_text_eng_12)
+    fog_index_pol_12 = wl_measures_readability.fog_index(main, test_text_pol_12)
     fog_index_spa_12 = wl_measures_readability.fog_index(main, test_text_spa_12)
 
     assert fog_index_eng_0 == 'text_too_short'
     assert fog_index_eng_12_propn_orig == 0.4 * (12 / 3 + 1 / 12 * 100)
     assert fog_index_eng_12_pron_psk == 3.0680 + 0.0877 * (12 / 3) + 0.0984 * (1 / 12 * 100)
     assert fog_index_eng_12_navy == ((12 + 2 * 0) / 3 - 3) / 2
+    assert fog_index_pol_12 == (numpy.sqrt((12 / 3) ** 2 + (1 / 12 * 100) ** 2) / 2)
     assert fog_index_spa_12 == 'no_support'
 
 def test_cp():
