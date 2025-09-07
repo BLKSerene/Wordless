@@ -116,7 +116,7 @@ Official documentation|[Stable Version](https://github.com/BLKSerene/Wordless/bl
 Tutorial videos       |[YouTube](https://www.youtube.com/@BLKSerene) \| [bilibili](https://space.bilibili.com/34963752/video)
 Bug reports           |[GitHub Issues](https://github.com/BLKSerene/Wordless/issues)
 Usage questions       |[GitHub Discussions](https://github.com/BLKSerene/Wordless/discussions)
-Email support         |[blkserene<i>@</i>gmail<i>.</i>com](mailto:blkserene@gmail.com)
+Email support         |[blkserene@gmail.com](mailto:blkserene@gmail.com)
 [WeChat](https://www.wechat.com/en/) official account|![WeChat official account](/imgs/wechat_official_account.jpg)
 
 ## Citing

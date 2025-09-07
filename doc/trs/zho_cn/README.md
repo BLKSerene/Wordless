@@ -116,7 +116,7 @@
 视频教程|[YouTube](https://www.youtube.com/@BLKSerene) \| [B 站](https://space.bilibili.com/34963752/video)
 Bug 提交|[GitHub Issues](https://github.com/BLKSerene/Wordless/issues)
 使用疑问|[GitHub Discussions](https://github.com/BLKSerene/Wordless/discussions)
-邮件咨询|[blkserene<i>@</i>gmail<i>.</i>com](mailto:blkserene@gmail.com)
+邮件咨询|[blkserene@gmail.com](mailto:blkserene@gmail.com)
 [微信](https://weixin.qq.com/)公众号|![微信公众号](/imgs/wechat_official_account.jpg)
 
 ## 引用
@@ -174,7 +174,7 @@ MLA（第 9 版）：
 
 ## 赞助
 
-如果你愿意支持 *Wordless* 的开发工作，你可以通过 [PayPal](https://www.paypal.com/)、[支付宝](https://www.alipay.com/)或[微信支付](https://pay.weixin.qq.com/)进行赞助。
+如果你想支持 *Wordless* 的开发工作，可以通过 [PayPal](https://www.paypal.com/)、[支付宝](https://www.alipay.com/)或[微信支付](https://pay.weixin.qq.com/)进行赞助。
 
 PayPal|支付宝|微信支付
 ------|-----|--------

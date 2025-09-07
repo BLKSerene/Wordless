@@ -16,6 +16,6 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # --------------------------------------------------------------------->
 
-如果你有意助力 *Wordless* 的開發工作，你可以在 GitHub 上提交 [pull requests](https://github.com/BLKSerene/Wordless/pulls) 來幫助修復程式錯誤、改善效能或實現新功能。
+如果你想助力 *Wordless* 的開發工作，可以在 GitHub 上提交 [pull requests](https://github.com/BLKSerene/Wordless/pulls) 來幫助修復程式 bug、改善效能或實現新功能。
 
-此外，你還可以在 GitHub 上撰寫[百科](https://github.com/BLKSerene/Wordless/wiki)、製作影片教程、或幫助將使用者介面及[文檔](/doc/doc_eng.md)翻譯為其他語言。
+此外，你還可以在 GitHub 上撰寫[百科](https://github.com/BLKSerene/Wordless/wiki)、製作影片教程、或幫助將使用者介面及[文件](/doc/doc_eng.md)翻譯為其他語言。

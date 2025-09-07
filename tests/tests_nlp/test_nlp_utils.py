@@ -113,21 +113,17 @@ def test_wl_worker_download_model_stanza():
         ).run()
 
 def test_init_model_spacy():
-    wl_nlp_utils.init_model_spacy(main, lang = 'afr')
-    wl_nlp_utils.init_model_spacy(main, lang = 'eng_us')
     wl_nlp_utils.init_model_spacy(main, lang = 'eng_gb')
-    wl_nlp_utils.init_model_spacy(main, lang = 'srp_cyrl')
+    wl_nlp_utils.init_model_spacy(main, lang = 'eng_us')
     wl_nlp_utils.init_model_spacy(main, lang = 'srp_latn')
     wl_nlp_utils.init_model_spacy(main, lang = 'other')
 
     wl_nlp_utils.init_model_spacy(main, lang = 'afr', sentencizer_only = True)
 
-    assert 'spacy_nlp_afr' in main.__dict__
     assert 'spacy_nlp_eng' in main.__dict__
-    assert 'spacy_nlp_eng_us' not in main.__dict__
     assert 'spacy_nlp_eng_gb' not in main.__dict__
+    assert 'spacy_nlp_eng_us' not in main.__dict__
     assert 'spacy_nlp_srp' in main.__dict__
-    assert 'spacy_nlp_srp_cyrl' not in main.__dict__
     assert 'spacy_nlp_srp_latn' not in main.__dict__
     assert 'spacy_nlp_other' in main.__dict__
 
@@ -136,20 +132,15 @@ def test_init_model_spacy():
 def test_init_model_stanza():
     wl_nlp_utils.init_model_stanza(main, lang = 'zho_cn', lang_util = 'sentence_tokenizer')
     wl_nlp_utils.init_model_stanza(main, lang = 'zho_tw', lang_util = 'sentence_tokenizer')
-    wl_nlp_utils.init_model_stanza(main, lang = 'eng_us', lang_util = 'sentence_tokenizer')
     wl_nlp_utils.init_model_stanza(main, lang = 'eng_gb', lang_util = 'sentence_tokenizer')
-    wl_nlp_utils.init_model_stanza(main, lang = 'srp_cyrl', lang_util = 'sentence_tokenizer')
-    wl_nlp_utils.init_model_stanza(main, lang = 'srp_latn', lang_util = 'sentence_tokenizer')
+    wl_nlp_utils.init_model_stanza(main, lang = 'eng_us', lang_util = 'sentence_tokenizer')
     wl_nlp_utils.init_model_stanza(main, lang = 'other', lang_util = 'sentence_tokenizer')
 
     assert 'stanza_nlp_zho_cn' in main.__dict__
     assert 'stanza_nlp_zho_tw' in main.__dict__
     assert 'stanza_nlp_eng' in main.__dict__
-    assert 'stanza_nlp_eng_us' not in main.__dict__
     assert 'stanza_nlp_eng_gb' not in main.__dict__
-    assert 'stanza_nlp_srp' in main.__dict__
-    assert 'stanza_nlp_srp_cyrl' not in main.__dict__
-    assert 'stanza_nlp_srp_latn' not in main.__dict__
+    assert 'stanza_nlp_eng_us' not in main.__dict__
     assert 'stanza_nlp_other' in main.__dict__
 
 def test_init_sudachipy_word_tokenizer():

@@ -50,9 +50,9 @@
     <a href="https://github.com/BLKSerene/Wordless/releases">
         <img src="https://img.shields.io/github/v/release/BLKSerene/Wordless?include_prereleases&label=%E7%89%88%E6%9C%AC&sort=semver" alt="版本"></a>
     <a href="#下載">
-        <img src="https://img.shields.io/github/downloads/BLKSerene/Wordless/total?label=%E4%B8%8B%E8%BC%89%E9%87%8F" alt="下載量"></a>
+        <img src="https://img.shields.io/github/downloads/BLKSerene/Wordless/total?label=%E4%B8%8B%E8%BD%BD%E9%87%8F" alt="下載量"></a>
     <a href="/LICENSE">
-        <img src="https://img.shields.io/github/license/BLKSerene/Wordless?label=%E8%A8%B1%E5%8F%AF" alt="許可"></a>
+        <img src="https://img.shields.io/github/license/BLKSerene/Wordless?label=%E8%AE%B8%E5%8F%AF" alt="許可"></a>
     <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FBLKSerene%2FWordless?ref=badge_shield">
         <img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FBLKSerene%2FWordless.svg?type=shield" alt="FOSSA Status"></a>
     <a href="https://doi.org/10.1016/j.softx.2024.101931">
@@ -81,28 +81,29 @@
 ----|---
 [Windows 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.6.0/wordless_3.6.0_windows.zip)|1. 解壓縮所有檔案<br>2. 雙擊執行 **Wordless/Wordless.exe**
 [macOS 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.6.0/wordless_3.6.0_macos.zip)|1. 解壓縮所有檔案<br>2. 雙擊執行 **Wordless.app**
-[Linux 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.6.0/wordless_3.6.0_linux.tar.gz)|1. 解壓縮所有檔案<br>2. 雙擊執行**Wordless/Wordless**<br>3. [可選] 雙擊 **Wordless/Wordless - Create Shortucut** 在**顯示應用程式**中建立一個快捷方式
+[Linux 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.6.0/wordless_3.6.0_linux.tar.gz)|1. 解壓縮所有檔案<br>2. 雙擊執行 **Wordless/Wordless**<br>3. [可選] 雙擊 **Wordless/Wordless - Create Shortucut** 在**顯示應用程式**中建立一個快捷方式
 [歷史版本](https://github.com/BLKSerene/Wordless/releases)|不推薦
-[百度網盤](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2FWordless%203.6.0&parentPath=%2F)|中國大陸地區使用者若 GitHub 連線不穩定可嘗試該下載連結（**提取碼：wdls**）
+[百度網盤](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2FWordless%203.6.0&parentPath=%2F)|國內使用者若 GitHub 連線不穩定可嘗試該下載連結（**提取碼：wdls**）
 
 > [!IMPORTANT]
 > **備註 1：***Wordless* 的路徑中**不建議包含任何非 ASCII 字元，如漢字和帶變音記號的字母等**。
-> 
-> **備註 2：**macOS 系統使用者如遇提示 **“Wordless”已損壞，無法開啟**，請開啟**終端**（啟動臺 → 其他）後執行：
-> 
+>
+> **備註 2：**蘋果電腦使用者如遇提示 **“Wordless”已損壞，無法開啟**，請開啟**終端**（啟動臺 → 其他）後執行：
+>
 > <code>xattr -rc /Applications/Wordless.app</code><br>
+>
 > 請注意將 **/Applications/Wordless.app** 替換為 *Wordless* 在電腦上的實際存放路徑（可直接拖拽 **Wordless.app** 檔案至**終端**中）。然後，**再次執行 *Wordless***（若程式可成功執行，終端中提示的警告可忽略）。
-> 
+>
 > **備註 3：**在 *Wordless* 中開啟除英語外語種的語料庫時，可能需要從網上下載額外的模型檔案。如果出現**網路錯誤**對話方塊，那麼大機率是字面意義上的網路錯誤，所以只需要按照錯誤資訊中的指示檢查網路連線，然後再次嘗試下載模型即可。
-> 
-> 中國大陸地區和 GitHub 以及 Hugging Face Hub 的連線不穩定，因此建議使用者建議使用代理並在**選單欄 → 偏好 → 設定 → 全域性 → 代理設定**処進行設定。或者也可以手動從[百度網盤](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2Fmodels&parentPath=%2F)下載模型檔案。模型的安裝步驟如下：
-> 
+>
+> 國內與 GitHub 以及 Hugging Face Hub 的連線不穩定，因此建議使用者使用代理並在**選單欄 → 偏好 → 設定 → 全域性 → 代理設定**處進行設定。或者也可以手動從[百度網盤](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2Fmodels&parentPath=%2F)下載模型檔案。模型的安裝步驟如下：
+>
 > 1. 檢視**網路錯誤**對話方塊中的錯誤資訊。如果錯誤資訊中能找到 **stanza** 的字樣，那麼你需要的是 *Stanza* 模型，否則你需要的是 *spaCy* 模型。
 > 2. 從上方連結中下載你的語料庫語種所對應的模型檔案然後**將所有檔案解壓出來**。
 > 3. Windows 以及 Linux 使用者需將 *spaCy* 模型置於 **Wordless/libs** 目錄下，將 *Stanza* 模型置於 **Wordless/libs/stanza_resources** 目錄下。 蘋果系統使用者需右鍵單擊 **Wordless.app** 圖示，選擇**顯示套件內容**，然後將 *spaCy* 模型置於 **Contents/Frameworks** 目錄下，將 *Stanza* 模型置於 **Contents/Frameworks/stanza_resources** 目錄下。
 > 4. 如果你的語料庫有多個語種或者 *spaCy* 和 *Stanza* 模型都需要，那麼重複步驟 1 ~ 3 直至**網路錯誤**的對話方塊不再出現為止。
 > 5. 再次嘗試在 *Wordless* 中開啟你的語料庫，此時應該會跳過模型下載過程。
-> 
+>
 > 如果問題仍然存在或者上述連結中沒有你需要的模型，請聯絡作者以尋求更多幫助。
 
 ## 需要幫助？
@@ -111,16 +112,16 @@
 
 支援渠道|資訊
 -------|----
-官方文檔|[穩定版](https://github.com/BLKSerene/Wordless/blob/3.6.0/doc/doc.md) \| [開發版](/doc/doc.md)
+官方文件|[穩定版](https://github.com/BLKSerene/Wordless/blob/3.6.0/doc/doc.md) \| [開發版](/doc/doc.md)
 影片教程|[YouTube](https://www.youtube.com/@BLKSerene) \| [B 站](https://space.bilibili.com/34963752/video)
 Bug 提交|[GitHub Issues](https://github.com/BLKSerene/Wordless/issues)
 使用疑問|[GitHub Discussions](https://github.com/BLKSerene/Wordless/discussions)
-郵件諮詢|[blkserene<i>@</i>gmail<i>.</i>com](mailto:blkserene@gmail.com)
+郵件諮詢|[blkserene@gmail.com](mailto:blkserene@gmail.com)
 [微信](https://weixin.qq.com/)公眾號|![微信公眾號](/imgs/wechat_official_account.jpg)
 
 ## 引用
 
-如果你正準備發表使用了 *Wordless* 的成果，請按期刊論文或計算機軟體的格式對 *Wordless* 進行引用。
+如果你正準備釋出使用了 *Wordless* 的成果，請按期刊論文或計算機軟體的格式對 *Wordless* 進行引用。
 
 1. 根據期刊論文的格式進行引用
 
@@ -146,22 +147,22 @@ MLA（第 9 版）：
 
 ## 使用 *Wordless* 的成果
 
-如需詳情，請點擊[此處](/doc/trs/zho_tw/WORKS_USING_WORDLESS.md).
+如需詳情，請點選[此處](/doc/trs/zho_tw/WORKS_USING_WORDLESS.md).
 
 ## 許可
 
     Copyright (C) 2018-2025  Ye Lei (葉磊)
-    
+
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
-    
+
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-    
+
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
@@ -169,16 +170,16 @@ MLA（第 9 版）：
 
 ## 貢獻
 
-如需詳情，請點擊[此處](/doc/trs/zho_tw/CONTRIBUTING.md)。
+如需詳情，請點選[此處](/doc/trs/zho_tw/CONTRIBUTING.md)。
 
 ## 贊助
 
-如果你願意支援 *Wordless* 的開發工作，你可以透過 [PayPal](https://www.paypal.com/)、[支付寶](https://www.alipay.com/)或[微信支付](https://pay.weixin.qq.com/)進行贊助。
+如果你想支援 *Wordless* 的開發工作，可以透過 [PayPal](https://www.paypal.com/)、[支付寶](https://www.alipay.com/)或[微信支付](https://pay.weixin.qq.com/)進行贊助。
 
 PayPal|支付寶|微信支付
-------|------|--------
+------|-----|--------
 [![PayPal](/imgs/donating_paypal.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V2V54NYE2YD32)|![支付寶](/imgs/donating_alipay.png)|![微信支付](/imgs/donating_wechat_pay.png)
 
 ## 致謝
 
-如需詳情，請點擊[此處](/doc/trs/zho_tw/ACKS.md)。
+如需詳情，請點選[此處](/doc/trs/zho_tw/ACKS.md)。

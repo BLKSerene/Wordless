@@ -18,7 +18,7 @@
 
 <div align="center"><h1>Acknowledgments</h1></div>
 
-As *Wordless* stands on the shoulders of giants, I hereby extend my sincere gratitude to the following open-source projects without which this project would not have been possible:
+As *Wordless* stands on the shoulders of giants, I hereby extend my sincere gratitude to the following open-source projects without which this project would not have been possible.
 
 &nbsp;|Name|Version|Authors|License
 -----:|----|:-----:|-------|:-----:

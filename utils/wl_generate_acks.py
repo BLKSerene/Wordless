@@ -16,22 +16,22 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+from utils import wl_generate_readme_zho_tw
+
 FILES = (
     'ACKS.md',
-    'doc/trs/zho_cn/ACKS.md',
-    'doc/trs/zho_tw/ACKS.md'
+    'doc/trs/zho_cn/ACKS.md'
 )
-HEADER_LANGS = ('English', 'Chinese (Simplified)', 'Chinese (Traditional)')
-TITLES = ('Acknowledgments', '致谢', '致謝')
+HEADER_LANGS = ('English', 'Chinese (Simplified)')
+TITLES = ('Acknowledgments', '致谢')
 DESCRIPTIONS = (
-    'As *Wordless* stands on the shoulders of giants, I hereby extend my sincere gratitude to the following open-source projects without which this project would not have been possible:',
-    '鉴于 *Wordless* 立于巨人的肩膀之上，我谨在此向下列开源项目致以本人诚挚的感谢，若没有它们，本项目将无法完成：',
-    '鑑於 *Wordless* 立於巨人的肩膀之上，我謹在此向下列開源專案致以本人誠摯的感謝，若沒有它們，本專案將無法完成：'
+    'As *Wordless* stands on the shoulders of giants, I hereby extend my sincere gratitude to the following open-source projects without which this project would not have been possible.',
+    # For auto-conversion to Chinese (Traditional)
+    '<div class="s2twp">鉴于 *Wordless* 立于巨人的肩膀之上，我谨在此向下列开源项目致以诚挚的感谢。若没有这些项目，本项目就不可能实现。</div>'
 )
 COL_HEADERS = (
     'Name|Version|Authors|License',
-    '名称|版本|作者|许可',
-    '名稱|版本|作者|許可'
+    '名称|版本|作者|许可'
 )
 
 # SPDX License List: https://spdx.org/licenses/
@@ -174,31 +174,24 @@ ACKS = (
 ACKS_TRS = {
     'Matplotlib Development Team': (
         'Matplotlib 开发团队',
-        'Matplotlib 開發團隊'
     ),
     'NetworkX Developers, Aric Hagberg, Dan Schult,<br>Pieter Swart': (
         'NetworkX 开发人员, Aric Hagberg, Dan Schult,<br>Pieter Swart',
-        'NetworkX 開發人員, Aric Hagberg, Dan Schult,<br>Pieter Swart'
     ),
     'NumPy Developers': (
         'NumPy 开发人员',
-        'NumPy 開發人員'
     ),
     'Carbo Kuo (郭家宝), Yicheng Huang': (
         '郭家宝, Yicheng Huang',
-        '郭家寶, Yicheng Huang'
     ),
     'SciPy Developers': (
         'SciPy 开发人员',
-        'SciPy 開發人員'
     ),
     'Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶), Xuancheng Ren (任宣丞),<br>Yi Zhang (张艺), Zhiyuan Zhang (张之远), Bingzhen Wei (位冰镇),<br>Xu Sun (孙栩), Matthew Honnibal': (
         '罗睿轩, 许晶晶, 任宣丞, 张艺, 张之远, 位冰镇, 孙栩<br>Matthew Honnibal',
-        '羅睿軒, 許晶晶, 任宣丞, 張藝, 張之遠, 位冰鎮, 孫栩<br>Matthew Honnibal'
     ),
     'Peng Qi (齐鹏), Yuhao Zhang (张宇浩), Yuhui Zhang (张钰晖),<br>Jason Bolton, Tim Dozat, John Bauer': (
         '齐鹏, 张宇浩, 张钰晖,<br>Jason Bolton, Tim Dozat, John Bauer',
-        '齊鵬, 張宇浩, 張鈺暉,<br>Jason Bolton, Tim Dozat, John Bauer'
     )
 }
 
@@ -243,3 +236,5 @@ for i, (file, header_lang, title, description, col_headers) in enumerate(zip(
                         proj_authors = trs[i - 1]
 
             f.write(f'{j + 1}|[{proj_name}]({proj_homepage})|{proj_ver}|{proj_authors}|[{proj_license}]({proj_license_file})\n')
+
+wl_generate_readme_zho_tw.convert_to_zho_tw('ACKS')

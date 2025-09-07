@@ -18,7 +18,7 @@
 
 <div align="center"><h1>使用 <i>Wordless</i> 的成果</h1></div>
 
-以下列表並非詳盡無遺，僅供參考。如果你知道其他使用了 *Wordless* 的作品沒有在下方列出，歡迎提供詳細的文獻資訊。<br>
+<div class="s2twp">以下列表並非詳盡無遺，僅供參考。如果你知道其他使用了 <i>Wordless</i> 的作品沒有在下方列出，歡迎提供詳細的文獻資訊。</div><br>
 
 <div align="center">
     <a href="https://github.com/BLKSerene/Wordless/blob/main/doc/trs/zho_tw/WORKS_USING_WORDLESS.md#期刊論文">期刊論文</a> | <a href="https://github.com/BLKSerene/Wordless/blob/main/doc/trs/zho_tw/WORKS_USING_WORDLESS.md#碩士論文">碩士論文</a> | <a href="https://github.com/BLKSerene/Wordless/blob/main/doc/trs/zho_tw/WORKS_USING_WORDLESS.md#博士論文">博士論文</a> | <a href="https://github.com/BLKSerene/Wordless/blob/main/doc/trs/zho_tw/WORKS_USING_WORDLESS.md#會議論文">會議論文</a>
@@ -39,7 +39,7 @@
 1. 石紅燕. (2022). 語料庫語言學視角下的《蜀道難》英譯研究. *現代語言學*, *10*(6), 1347–1355. https://doi.org/10.12677/ml.2022.106180
 1. 宋祝, 李玲, & 梁淵. (2021). “構式驅動”讀寫教學模式下的構式習得研究. *成都師範學院學報*, *37*(3), 51–58. https://doi.org/10.3969/j.issn.2095-5642.2021.03.008
 1. Sun, Y., Kong, D., & Zhou, C. (2023). Economy or ecology: Metaphor use over time in China’s government work reports. *Language and Cognition*, *15*(3), 551–573. https://doi.org/10.1017/langcog.2023.18
-1. 陶源. (2021). 基於俄媒語料庫的新冠肺炎主題詞與疫情變遷研究. *南昌航空大學學報：社會科學*, *23*(1), 114–124.
+1. 陶源. (2021). 基於俄媒語料庫的新冠肺炎主題詞與疫情變遷研究. *南昌航空大學學報：社會科學版*, *23*(1), 114–124.
 1. 汪藍玉, & 朱玉彬. (2024). 數字人文視域下二十四史論贊引語的言據性研究. *數字人文*, *5*(1), 59–76. https://kns.cnki.net/kcms2/article/abstract?v=kjkRiloLuecXY-PxJpGJ-S31a9ZqOl-jEYFzJXzbCtsF7fweFAQ-pz3Fl-bZSsP2R6Jp_c4KTPAI_XhC9RaVoUBDMbHImNcd7oTOftahrn3kiqR8tCC7nbM9yK97vZBjESDYX0XwhyLdm0sRMYMzBOQW7rALA4S2wgqXCZ0wgqqcSZ64QJkifpu-fL1PoVLU&uniplatform=NZKPT&language=CHS
 1. Wang, S. (2023). Cómo fomentar la incorporación de agendas políticas feministas en el discurso político: Estrategias para la construcción del espacio discursivo en respuesta a las crisis de género. *Comunicación y Género*, *6*(2), 147–157. https://doi.org/10.5209/cgen.91079
 1. Xiong, L. (2023). Audio description for educational videos on COVID-19 response: A corpus-based study on linguistic and textual idiosyncrasies. *Journal of Literature and Art Studies*, *13*(4), 276–285. https://doi.org/10.17265/2159-5836/2023.04.008
@@ -55,6 +55,7 @@
 1. 趙慧芳. (2024). 美國主流媒體對“一帶一路”報道的話語建構研究. *重慶郵電大學學報（社會科學版）*, *36*(4), 177–186. https://doi.org/10.3979/1673-8268.20230913002
 1. Zhao, L., & Luo, B. (2024). The reception of Giles’ and Minford’s English translation of Liaozhai Zhiyi: A sentiment analysis perspective. *International Journal of Chinese and English Translation & Interpreting*, *5*, 1–21. https://doi.org/10.56395/ijceti.v3i1.105
 1. 趙宇霞. (2022). 基於語料庫的傅雷翻譯風格新探: 語言與情感的融合. *外語電化教學*, *44*(2), 96–103.
+1. 周婉婷. (2024). 英語母語者不同學術文體的計量研究. *現代語言學*, *12*(2), 843–854. https://doi.org/10.12677/ml.2024.122115
 1. Zhou, Y., Jiang, J., & Liu, H. (2024). Modifying language for a higher goal: Investigating quantitative features of Apple’s launch event speech from 2016 to 2022. *Journal of Quantitative Linguistics*, *31*(2), 139–160. https://doi.org/10.1080/09296174.2024.2345969
 
 <div align="center"><h2>碩士論文</h2></div>
@@ -72,6 +73,7 @@
 1. 孟浩. (2022). *A report on C-E translation practice from the perspective of technical communication: A case study of Writing in the Techinical Fields: A Practical Guide (chapter 1 and chapter 4)* [Master’s thesis, 重慶郵電大學]. CNKI. https://doi.org/10.27675/d.cnki.gcydx.2022.000561
 1. 沈雅楠. (2020). *On the influence of translator's habitus on translation: A case study of the two English versions of Bian Cheng* [Master’s thesis, 上海外國語大學]. CNKI. https://doi.org/10.27316/d.cnki.gswyu.2020.000479
 1. 唐思瑤. (2024). *A corpus-based study of the dissemination and reception of the English translation of renmin zhanzheng (人民戰爭)* [Master’s thesis, 上海外國語大學]. 上海外國語大學論文管理系統. https://webvpn.shisu.edu.cn/http/77726476706e69737468656265737421a2a713d27662391e275ec7fdcb03/docinfo.action?id1=dcbed28177958feac9893d31e231523e&id2=femIqxJ4GWE%253D
+1. 王夢姣. (2024). *《巨龍凡凱》（節選）英漢翻譯實踐報告* [Master’s thesis, 南華大學]. CNKI. https://doi.org/10.27234/d.cnki.gnhuu.2024.001410
 1. 魏家豪. (2024). *基於關鍵詞提取的需求建模輔助方法及可視化研究* [Master’s thesis, 廣西師範大學]. CNKI. https://doi.org/10.27036/d.cnki.ggxsu.2024.001437
 1. 吳佳媚. (2024). *Comedic recharacterization in Hanan’s translation of Li Yu’s novels: A cognitive stylistic approach* [Master’s thesis, 上海外國語大學]. CNKI. https://link.cnki.net/doi/10.27316/d.cnki.gswyu.2024.000837
 1. 謝詩婧. (2024). *Marketing Higher Education: Understanding How to Build and Promote the University Brand（Chapters10-11）英漢翻譯實踐報告* [Master’s thesis, 黑龍江大學]. CNKI. https://doi.org/10.27123/d.cnki.ghlju.2024.001057
