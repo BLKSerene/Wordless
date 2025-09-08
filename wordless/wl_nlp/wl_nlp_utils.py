@@ -86,6 +86,15 @@ def to_lang_util_texts(main, util_type, util_codes):
         for util_code in util_codes
     )
 
+def get_langs_stanza(main, util_type):
+    langs_stanza = set()
+
+    for lang_code, lang_utils in main.settings_global[util_type].items():
+        if any((lang_util.startswith('stanza_') for lang_util in lang_utils)):
+            langs_stanza.add(lang_code)
+
+    return langs_stanza
+
 LANGS_SPACY = {
     'cat': 'ca_core_news_trf',
     'zho': 'zh_core_web_trf',
@@ -115,14 +124,17 @@ LANGS_SPACY = {
     'other': 'en_core_web_trf'
 }
 
-def get_langs_stanza(main, util_type):
-    langs_stanza = set()
+LANGS_SPACY_LEMMATIZERS = (
+    'ben', 'ces', 'grc', 'hun', 'ind', 'gle', 'ltz', 'fas', 'srp', 'tgl',
+    'tur', 'urd'
+)
 
-    for lang_code, lang_utils in main.settings_global[util_type].items():
-        if any((lang_util.startswith('stanza_') for lang_util in lang_utils)):
-            langs_stanza.add(lang_code)
+LANGS_STANZA = {
+    'zho_cn': 'zh-hans',
+    'zho_tw': 'zh-hant',
 
-    return langs_stanza
+    'other': 'en'
+}
 
 @wl_misc.log_time
 def check_models(parent, langs, lang_utils = None):
@@ -333,15 +345,7 @@ class Wl_Worker_Download_Model_Stanza(wl_threading.Wl_Worker):
             if self.lang in get_langs_stanza(self.main, util_type = 'sentiment_analyzers'):
                 processors.append('sentiment')
 
-            match self.lang:
-                case 'zho_cn':
-                    lang_stanza = 'zh-hans'
-                case 'zho_tw':
-                    lang_stanza = 'zh-hant'
-                case 'other':
-                    lang_stanza = 'en'
-                case _:
-                    lang_stanza = wl_conversion.to_iso_639_1(self.main, self.lang, no_suffix = True)
+            lang_stanza = LANGS_STANZA.get(self.lang, wl_conversion.to_iso_639_1(self.main, self.lang, no_suffix = True))
 
             # Using existing resources.json if network error occurs
             try:
@@ -367,11 +371,6 @@ class Wl_Worker_Download_Model_Stanza(wl_threading.Wl_Worker):
 
         self.progress_updated.emit(self.tr('Download completed successfully.'))
         self.finished.emit(err_msg)
-
-LANGS_SPACY_LEMMATIZERS = (
-    'ben', 'ces', 'grc', 'hun', 'ind', 'gle', 'ltz', 'fas', 'srp', 'tgl',
-    'tur', 'urd'
-)
 
 def init_model_spacy(main, lang, sentencizer_only = False):
     sentencizer_config = {'punct_chars': wl_sentence_tokenization.SENTENCE_TERMINATORS}
@@ -448,15 +447,7 @@ def init_model_stanza(main, lang, lang_util, tokenized = False):
             or set(processors) | {'mwt'} != set(main.__dict__[f'stanza_nlp_{lang}'].processors) | {'mwt'}
             or tokenized != main.__dict__[f'stanza_nlp_{lang}'].kwargs.get('tokenize_pretokenized', False)
         ):
-            match lang:
-                case 'zho_cn':
-                    lang_stanza = 'zh-hans'
-                case 'zho_tw':
-                    lang_stanza = 'zh-hant'
-                case 'other':
-                    lang_stanza = 'en'
-                case _:
-                    lang_stanza = wl_conversion.to_iso_639_1(main, lang, no_suffix = True)
+            lang_stanza = LANGS_STANZA.get(lang, wl_conversion.to_iso_639_1(main, lang, no_suffix = True))
 
             if getattr(sys, '_MEIPASS', False):
                 model_dir = wl_paths.get_path_file('stanza_resources')
@@ -569,7 +560,7 @@ def init_syl_tokenizers(main, lang, syl_tokenizer):
             main.__dict__[f'pyphen_syl_tokenizer_{lang}'] = pyphen.Pyphen(lang = lang_pyphen)
 
 def init_word_detokenizers(main, lang):
-    if lang not in ('zho_cn', 'zho_tw', 'jpn', 'tha', 'bod'):
+    if lang not in LANGS_WITHOUT_SPACES:
         # Sacremoses
         lang_sacremoses = wl_conversion.remove_lang_code_suffixes(wl_conversion.to_iso_639_1(main, lang))
         lang = wl_conversion.remove_lang_code_suffixes(lang)

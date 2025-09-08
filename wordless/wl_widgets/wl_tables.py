@@ -686,6 +686,10 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                 for i, _ in enumerate(worksheet.rows):
                     worksheet.row_dimensions[2 + i].height = self.table.verticalHeader().sectionSize(0) / dpi_vertical * 72
 
+                # Filter
+                if self.table.results_filter:
+                    worksheet.auto_filter.ref = worksheet.dimensions
+
                 self.progress_updated.emit(self.tr('Saving file...'))
 
                 workbook.save(self.file_path)

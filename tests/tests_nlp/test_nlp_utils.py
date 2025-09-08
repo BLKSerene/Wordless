@@ -105,7 +105,7 @@ def test_wl_worker_download_model_spacy():
     ).run()
 
 def test_wl_worker_download_model_stanza():
-    for lang in ('zho_cn', 'zho_tw', 'other', 'ara'):
+    for lang in ('ara', 'eng_us'):
         wl_nlp_utils.Wl_Worker_Download_Model_Stanza(
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Download_Model(main),
@@ -130,14 +130,10 @@ def test_init_model_spacy():
     assert 'spacy_nlp_sentencizer' in main.__dict__
 
 def test_init_model_stanza():
-    wl_nlp_utils.init_model_stanza(main, lang = 'zho_cn', lang_util = 'sentence_tokenizer')
-    wl_nlp_utils.init_model_stanza(main, lang = 'zho_tw', lang_util = 'sentence_tokenizer')
-    wl_nlp_utils.init_model_stanza(main, lang = 'eng_gb', lang_util = 'sentence_tokenizer')
-    wl_nlp_utils.init_model_stanza(main, lang = 'eng_us', lang_util = 'sentence_tokenizer')
+    wl_nlp_utils.init_model_stanza(main, lang = 'eng_gb', lang_util = 'sentence_tokenizer', tokenized = False)
+    wl_nlp_utils.init_model_stanza(main, lang = 'eng_us', lang_util = 'sentence_tokenizer', tokenized = True)
     wl_nlp_utils.init_model_stanza(main, lang = 'other', lang_util = 'sentence_tokenizer')
 
-    assert 'stanza_nlp_zho_cn' in main.__dict__
-    assert 'stanza_nlp_zho_tw' in main.__dict__
     assert 'stanza_nlp_eng' in main.__dict__
     assert 'stanza_nlp_eng_gb' not in main.__dict__
     assert 'stanza_nlp_eng_us' not in main.__dict__
@@ -182,7 +178,6 @@ def test_init_word_detokenizers():
 def test_init_pos_taggers():
     wl_nlp_utils.init_pos_taggers(main, 'eng_us', 'sapcy_eng')
     wl_nlp_utils.init_pos_taggers(main, 'eng_us', 'stanza_eng')
-    wl_nlp_utils.init_pos_taggers(main, 'eng_us', 'stanza_eng', tokenized = True)
 
     wl_nlp_utils.init_pos_taggers(main, 'jpn', 'sudachipy_jpn')
     wl_nlp_utils.init_pos_taggers(main, 'kor', 'python_mecab_ko_mecab')
@@ -193,7 +188,6 @@ def test_init_pos_taggers():
 def test_init_lemmatizers():
     wl_nlp_utils.init_lemmatizers(main, 'eng_us', 'sapcy_eng')
     wl_nlp_utils.init_lemmatizers(main, 'eng_us', 'stanza_eng')
-    wl_nlp_utils.init_lemmatizers(main, 'eng_us', 'stanza_eng', tokenized = True)
 
     wl_nlp_utils.init_lemmatizers(main, 'jpn', 'sudachipy_jpn')
 
@@ -203,11 +197,9 @@ def test_init_lemmatizers():
 def test_init_dependency_parsers():
     wl_nlp_utils.init_dependency_parsers(main, 'eng_us', 'spacy_eng')
     wl_nlp_utils.init_dependency_parsers(main, 'eng_us', 'stanza_eng')
-    wl_nlp_utils.init_dependency_parsers(main, 'eng_us', 'stanza_eng', tokenized = True)
 
 def test_init_sentiment_analyzers():
     wl_nlp_utils.init_sentiment_analyzers(main, 'eng_us', 'stanza_eng')
-    wl_nlp_utils.init_sentiment_analyzers(main, 'eng_us', 'stanza_eng', tokenized = True)
 
 def test_align_tokens():
     assert wl_nlp_utils.align_tokens(['a', 'b'], ['a', 'b'], ['1', '2']) == ['1', '2']

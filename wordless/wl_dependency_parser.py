@@ -41,6 +41,7 @@ from wordless.wl_utils import (
     wl_threading
 )
 from wordless.wl_widgets import (
+    wl_boxes,
     wl_labels,
     wl_layouts,
     wl_tables,
@@ -121,10 +122,19 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
         ) = wl_widgets.wl_widgets_search_settings_tokens(self, tab = self.tab)
         self.checkbox_match_dependency_relations = QtWidgets.QCheckBox(self.tr('Match dependency relations'), self)
 
+        self.label_search_term_position = QtWidgets.QLabel(self.tr('Search term position:'), self)
+        self.combo_box_search_term_position = wl_boxes.Wl_Combo_Box(self)
+
         (
             self.label_context_settings,
             self.button_context_settings
         ) = wl_widgets.wl_widgets_context_settings(self, tab = self.tab)
+
+        self.combo_box_search_term_position.addItems([
+            self.tr('Head/dependent'),
+            self.tr('Head'),
+            self.tr('Dependent')
+        ])
 
         self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
         self.line_edit_search_term.textChanged.connect(self.search_settings_changed)
@@ -140,6 +150,13 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
         self.checkbox_match_without_tags.stateChanged.connect(self.search_settings_changed)
         self.checkbox_match_tags.stateChanged.connect(self.search_settings_changed)
         self.checkbox_match_dependency_relations.stateChanged.connect(self.search_settings_changed)
+        self.combo_box_search_term_position.currentTextChanged.connect(self.search_settings_changed)
+
+        layout_search_term_position = wl_layouts.Wl_Layout()
+        layout_search_term_position.addWidget(self.label_search_term_position, 0, 0)
+        layout_search_term_position.addWidget(self.combo_box_search_term_position, 0, 1)
+
+        layout_search_term_position.setColumnStretch(1, 1)
 
         layout_context_settings = wl_layouts.Wl_Layout()
         layout_context_settings.addWidget(self.label_context_settings, 0, 0)
@@ -163,7 +180,11 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
 
         self.group_box_search_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 10, 0, 1, 2)
 
-        self.group_box_search_settings.layout().addLayout(layout_context_settings, 11, 0, 1, 2)
+        self.group_box_search_settings.layout().addLayout(layout_search_term_position, 11, 0, 1, 2)
+
+        self.group_box_search_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 12, 0, 1, 2)
+
+        self.group_box_search_settings.layout().addLayout(layout_context_settings, 13, 0, 1, 2)
 
         # Table Settings
         self.group_box_table_settings = QtWidgets.QGroupBox(self.tr('Table Settings'), self)
@@ -243,6 +264,7 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
         self.checkbox_match_without_tags.setChecked(settings['search_settings']['match_without_tags'])
         self.checkbox_match_tags.setChecked(settings['search_settings']['match_tags'])
         self.checkbox_match_dependency_relations.setChecked(settings['search_settings']['match_dependency_relations'])
+        self.combo_box_search_term_position.setCurrentText(settings['search_settings']['search_term_position'])
 
         # Context Settings
         if defaults:
@@ -295,6 +317,7 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
         settings['match_without_tags'] = self.checkbox_match_without_tags.isChecked()
         settings['match_tags'] = self.checkbox_match_tags.isChecked()
         settings['match_dependency_relations'] = self.checkbox_match_dependency_relations.isChecked()
+        settings['search_term_position'] = self.combo_box_search_term_position.currentText()
 
         # Match dependency relations
         if settings['match_dependency_relations']:
@@ -551,7 +574,19 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                                 (
                                     (
                                         not settings['search_settings']['match_dependency_relations']
-                                        and (token in search_terms or token.head in search_terms)
+                                        and settings['search_settings']['search_term_position'] == self.tr('Head/dependent')
+                                        and (
+                                            token in search_terms
+                                            or token.head in search_terms
+                                        )
+                                    ) or (
+                                        not settings['search_settings']['match_dependency_relations']
+                                        and settings['search_settings']['search_term_position'] == self.tr('Head')
+                                        and token.head in search_terms
+                                    ) or (
+                                        not settings['search_settings']['match_dependency_relations']
+                                        and settings['search_settings']['search_term_position'] == self.tr('Dependent')
+                                        and token in search_terms
                                     ) or (
                                         settings['search_settings']['match_dependency_relations']
                                         and token.dependency_relation in wl_texts.to_display_texts(search_terms)

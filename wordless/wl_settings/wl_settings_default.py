@@ -404,6 +404,7 @@ def init_settings_default(main):
                 'match_without_tags': False,
                 'match_tags': False,
                 'match_dependency_relations': False,
+                'search_term_position': _tr('wl_settings_default', 'Head/dependent'),
 
                 'context_settings': {
                     'incl': {

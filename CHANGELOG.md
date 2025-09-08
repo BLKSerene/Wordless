@@ -25,6 +25,7 @@
 - Settings: Add Settings - Tables - Miscellaneous Settings
 - Utils: Add Wordless's character tokenizer
 - Work Area: Add Profiler - Export all tables
+- Work Area: Add Dependency Parser - Search Settings - Search term position
 - Work Area: Add Work Area - Table Settings - Show total
 - Work Area: Add Work Area - Sample
 
