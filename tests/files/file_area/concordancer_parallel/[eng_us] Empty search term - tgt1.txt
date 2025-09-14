@@ -1,0 +1,6 @@
+The 1st alignment unit in the first target text.
+The 2nd alignment unit in the first target text.
+The 3rd alignment unit in the first target text.
+
+
+Added target text (without corresponding originals).

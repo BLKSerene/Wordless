@@ -1,0 +1,5 @@
+The 1st alignment unit in the source text.
+The 2nd alignment unit in the source text.
+The 3rd alignment unit in the source text.
+
+Omitted source text. (without corresponding translation).

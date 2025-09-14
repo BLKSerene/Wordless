@@ -39,7 +39,7 @@ def test_ngram_generator():
     measures_dispersion = list(main.settings_global['measures_dispersion'])
     measures_adjusted_freq = list(main.settings_global['measures_adjusted_freq'])
 
-    for i in range(2 + wl_test_file_area.LEN_FILES_TESTS_OTHERS):
+    for i in range(2 + wl_test_file_area.NUM_FILES_OTHERS):
         match i:
             # Single file
             case 0:
@@ -47,18 +47,21 @@ def test_ngram_generator():
             # Multiple files
             case 1:
                 wl_test_init.select_test_files(main, no_files = (1, 2))
-            # Tibetan
-            case 2:
-                wl_test_init.select_test_files(main, no_files = (3,))
-
-                settings_table['add_missing_ending_tshegs'] = True
-            case 3:
-                wl_test_init.select_test_files(main, no_files = (4,))
-
-                settings_table['add_missing_ending_tshegs'] = False
             # Miscellaneous
             case _:
                 wl_test_init.select_test_files(main, no_files = (i + 1,))
+
+                match main.settings_custom['file_area']['files_open'][i + 1]['name']:
+                    # Tibetan
+                    case '[bod] Tibetan tshegs':
+                        settings_table['add_missing_ending_tshegs'] = True
+                    case '[xct] Tibetan tshegs':
+                        settings_table['add_missing_ending_tshegs'] = False
+                    # Miscellaneous
+                    case '[eng_us] Starting with a punctuation mark' | '[eng_us] Starting with tags':
+                        pass
+                    case _:
+                        continue
 
         settings['generation_settings']['measure_dispersion'] = random.choice(measures_dispersion)
         settings['generation_settings']['measure_adjusted_freq'] = random.choice(measures_adjusted_freq)

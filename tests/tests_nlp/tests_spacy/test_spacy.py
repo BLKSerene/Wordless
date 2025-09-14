@@ -59,6 +59,7 @@ def wl_test_spacy(
         text = test_sentence,
         lang = lang
     )
+    print(tokens)
 
     if lang != 'other':
         wl_test_pos_tag(lang, test_sentence, tokens, results_pos_tag, results_pos_tag_universal)

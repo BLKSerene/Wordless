@@ -45,37 +45,32 @@ def test_keyword_extractor():
     ]
     measures_effect_size = list(main.settings_global['measures_effect_size'].keys())
 
-    for i in range(4 + wl_test_file_area.LEN_FILES_TESTS_OTHERS):
+    for i in range(2 + wl_test_file_area.NUM_FILES_OTHERS):
         match i:
             # Single observed file & single reference file
             case 0:
                 wl_test_init.select_test_files(main, no_files = (0,))
                 wl_test_init.select_test_files(main, no_files = (0,), ref = True)
-            # Single observed file & multiple reference files
-            case 1:
-                wl_test_init.select_test_files(main, no_files = (0,))
-                wl_test_init.select_test_files(main, no_files = (1, 2), ref = True)
-            # Multiple observed files & single reference file
-            case 2:
-                wl_test_init.select_test_files(main, no_files = (1, 2))
-                wl_test_init.select_test_files(main, no_files = (0,), ref = True)
             # Multiple observed files & multiple reference files
-            case 3:
+            case 1:
                 wl_test_init.select_test_files(main, no_files = (1, 2))
                 wl_test_init.select_test_files(main, no_files = (1, 2), ref = True)
-            # Tibetan
-            case 4:
-                wl_test_init.select_test_files(main, no_files = (3,))
-
-                settings_table['add_missing_ending_tshegs'] = True
-            case 5:
-                wl_test_init.select_test_files(main, no_files = (4,))
-
-                settings_table['add_missing_ending_tshegs'] = False
             # Miscellaneous
             case _:
-                wl_test_init.select_test_files(main, no_files = (i - 1,))
-                wl_test_init.select_test_files(main, no_files = (0,), ref = True)
+                wl_test_init.select_test_files(main, no_files = (i + 1,))
+                wl_test_init.select_test_files(main, no_files = (1,), ref = True)
+
+                match main.settings_custom['file_area']['files_open'][i + 1]['name']:
+                    # Tibetan
+                    case '[bod] Tibetan tshegs':
+                        settings_table['add_missing_ending_tshegs'] = True
+                    case '[xct] Tibetan tshegs':
+                        settings_table['add_missing_ending_tshegs'] = False
+                    # Miscellaneous
+                    case '[eng_us] Starting with a punctuation mark' | '[eng_us] Starting with tags':
+                        pass
+                    case _:
+                        continue
 
         settings['generation_settings']['test_statistical_significance'] = random.choice(tests_statistical_significance)
         settings['generation_settings']['measure_bayes_factor'] = random.choice(measures_bayes_factor)

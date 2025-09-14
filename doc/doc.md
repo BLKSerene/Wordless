@@ -461,10 +461,10 @@ In *Parallel Concordancer*, you can search for tokens in parallel corpora and ge
 You can search in *Data Table* for parts that might be of interest to you by clicking **Search in results**.
 
 - **5.1 Parallel Unit No.**<br>
-  The position of the alignment unit (paragraph) where the the search term is found.
+  The position of the alignment unit (paragraph) where the the search term is found. Empty parallel units are not counted.
 
 - **5.2 Parallel Unit No. %**<br>
-  The percentage of the position of the alignment unit (paragraph) where the the search term is found.
+  The percentage of the position of the alignment unit (paragraph) where the the search term is found. Empty parallel units are not counted.
 
 - **5.3 Parallel Units**<br>
   The parallel unit (paragraph) where the search term is found in each file.

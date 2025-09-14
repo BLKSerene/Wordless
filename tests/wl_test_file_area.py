@@ -20,6 +20,7 @@ import glob
 import os
 import pickle
 import random
+import re
 import time
 
 from PyQt5 import QtCore
@@ -36,8 +37,9 @@ NUM_FILES_ALL = NUM_FILES_OBSERVED + NUM_FILES_REF
 FILES_TESTS = sorted(glob.glob('tests/files/file_area/*.txt'))
 FILES_XCT_BOD = sorted(glob.glob('tests/files/file_area/xct_bod/*.txt'))
 FILES_MISC = sorted(glob.glob('tests/files/file_area/misc/*.txt'))
+FILES_CONCORDANCER_PARALLEL = sorted(glob.glob('tests/files/file_area/concordancer_parallel/*.txt'))
 
-LEN_FILES_TESTS_OTHERS = len(FILES_XCT_BOD) + len(FILES_MISC)
+NUM_FILES_OTHERS = len(FILES_XCT_BOD) + len(FILES_MISC) + len(FILES_CONCORDANCER_PARALLEL)
 
 def wl_test_file_area(main):
     def open_file(err_msg, files_to_open):
@@ -96,7 +98,7 @@ def wl_test_file_area(main):
     random.shuffle(FILES_TESTS)
     random.shuffle(FILES_MISC)
 
-    for i, file_path in enumerate(FILES_TESTS + FILES_XCT_BOD + FILES_MISC):
+    for i, file_path in enumerate(FILES_TESTS + FILES_XCT_BOD + FILES_MISC + FILES_CONCORDANCER_PARALLEL):
         time_start = time.time()
 
         print(f'Loading file "{os.path.split(file_path)[1]}"... ', end = '')
@@ -130,22 +132,7 @@ def wl_test_file_area(main):
         assert new_file['selected']
         assert new_file['name'] == new_file['name_old'] == os.path.splitext(os.path.split(file_path)[-1])[0]
 
-        if i < NUM_FILES_ALL:
-            assert new_file['path'] == wl_paths.get_normalized_path(file_path).replace(
-                os.path.join('tests', 'files', 'file_area'),
-                'imports'
-            )
-        elif i < NUM_FILES_ALL + 2:
-            assert new_file['path'] == wl_paths.get_normalized_path(file_path).replace(
-                os.path.join('tests', 'files', 'file_area', 'xct_bod'),
-                'imports'
-            )
-        else:
-            assert new_file['path'] == wl_paths.get_normalized_path(file_path).replace(
-                os.path.join('tests', 'files', 'file_area', 'misc'),
-                'imports'
-            )
-
+        assert new_file['path'] == re.sub(r'(\\|/)tests\1files\1file_area\1?[a-z_]*\1', r'\1imports\1', wl_paths.get_normalized_path(file_path))
         assert new_file['path_orig'] == wl_paths.get_normalized_path(file_path)
 
         if i < NUM_FILES_ALL or new_file['name'] in ('[xct] Tibetan tshegs', '[bod] Tibetan tshegs'):

@@ -19,6 +19,7 @@
 # pylint: disable=broad-exception-caught
 import bisect
 import copy
+import itertools
 import traceback
 
 from PyQt5 import QtCore
@@ -306,13 +307,13 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data):
         else:
             wl_checks_work_area.wl_status_bar_missing_search_terms(self.main)
 
-    def update_gui_table(self, err_msg, concordance_lines):
-        if wl_checks_work_area.check_results(self.main, err_msg, concordance_lines):
+    def update_gui_table(self, err_msg, parallel_units, num_paras_max):
+        if wl_checks_work_area.check_results(self.main, err_msg, parallel_units):
             try:
                 self.settings = copy.deepcopy(self.main.settings_custom)
 
                 self.clr_table(0)
-                self.model().setRowCount(len(concordance_lines))
+                self.model().setRowCount(len(parallel_units))
 
                 # Insert columns
                 for file_name in self.main.wl_file_area.get_selected_file_names():
@@ -323,13 +324,11 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data):
 
                 self.disable_updates()
 
-                for i, concordance_line in enumerate(concordance_lines):
-                    parallel_unit_no, len_parallel_units = concordance_line[0]
-
+                for i, (parallel_unit_no, parallel_units_files) in enumerate(parallel_units):
                     self.set_item_num(i, 0, parallel_unit_no)
-                    self.set_item_num(i, 1, parallel_unit_no, len_parallel_units)
+                    self.set_item_num(i, 1, parallel_unit_no, num_paras_max)
 
-                    for j, (parallel_unit_tokens_raw, parallel_unit_tokens_search) in enumerate(concordance_line[1]):
+                    for j, (parallel_unit_tokens_raw, parallel_unit_tokens_search) in enumerate(parallel_units_files):
                         label_parallel_unit = wl_labels.Wl_Label_Html(' '.join(parallel_unit_tokens_raw), self.main)
                         label_parallel_unit.tokens_raw = parallel_unit_tokens_raw
                         label_parallel_unit.tokens_search = parallel_unit_tokens_search
@@ -346,14 +345,13 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data):
                 wl_checks_work_area.check_err_table(self.main, err_msg)
 
 class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
-    finished = QtCore.pyqtSignal(str, list)
+    finished = QtCore.pyqtSignal(str, list, int)
 
     def run(self):
         err_msg = ''
         texts = []
         parallel_units = {}
         offsets_paras_files = []
-        concordance_lines = []
 
         try:
             settings = self.main.settings_custom['concordancer_parallel']
@@ -373,19 +371,26 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                     preserve_blank_lines = True
                 )
 
-                offsets_paras_files.append(text.get_offsets()[0])
-                # Save text
                 texts.append(text)
 
-            len_max_parallel_units = max((len(offsets) for offsets in offsets_paras_files))
+            # Remove parallel units which are empty in all files
+            for i, paras in reversed(list(enumerate(itertools.zip_longest(
+                *(text.tokens_multilevel for text in texts)
+            )))):
+                if not any(paras):
+                    for para, text in zip(paras, texts):
+                        if para is not None:
+                            del text.tokens_multilevel[i]
 
-            for i, (text, offsets_paras) in enumerate(zip(texts, offsets_paras_files)):
-                if not self._running:
-                    raise wl_excs.Wl_Exc_Aborted(self.main)
+            for text in texts:
+                offsets_paras_files.append(text.get_offsets()[0])
 
-                tokens = text.get_tokens_flat()
+            num_paras_max = max((len(offsets) for offsets in offsets_paras_files))
 
-                if wl_checks_work_area.check_search_terms(self.main, settings['search_settings'], show_warning = False):
+            if wl_checks_work_area.check_search_terms(self.main, settings['search_settings'], show_warning = False):
+                for i, (text, offsets_paras) in enumerate(zip(texts, offsets_paras_files)):
+                    tokens = text.get_tokens_flat()
+
                     search_terms = wl_matching.match_search_terms_ngrams(
                         self.main, tokens,
                         lang = text.lang,
@@ -424,6 +429,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                                     search_terms_excl = search_terms_excl
                                 )
                             ):
+                                # 1-based indexing
                                 parallel_unit_no = bisect.bisect(offsets_paras, j)
 
                                 if parallel_unit_no not in parallel_units:
@@ -431,8 +437,9 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                                     parallel_units[parallel_unit_no] = [[] for _ in range(len_files)]
 
                                 parallel_units[parallel_unit_no][i].append(ngram)
-                # Search for additions & deletions
-                else:
+            # Search for additions & deletions
+            else:
+                for i, (text, offsets_paras) in enumerate(zip(texts, offsets_paras_files)):
                     for j, para in enumerate(text.tokens_multilevel):
                         if not self._running:
                             raise wl_excs.Wl_Exc_Aborted(self.main)
@@ -441,17 +448,16 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                             parallel_units[j + 1] = [[] for _ in range(len_files)]
 
                     # Empty lines at the end of files
-                    if len(offsets_paras) < len_max_parallel_units:
-                        for j in range(len(offsets_paras) + 1, len_max_parallel_units + 1):
-                            if not self._running:
-                                raise wl_excs.Wl_Exc_Aborted(self.main)
+                    for j in range(len(offsets_paras) + 1, num_paras_max + 1):
+                        if not self._running:
+                            raise wl_excs.Wl_Exc_Aborted(self.main)
 
-                            parallel_units[j] = [[] for _ in range(len_files)]
+                        parallel_units[j] = [[] for _ in range(len_files)]
 
             node_color = self.main.settings_custom['tables']['parallel_concordancer']['highlight_color_settings']['search_term_color']
 
             for i, (text, offsets_paras) in enumerate(zip(texts, offsets_paras_files)):
-                len_parallel_units = len(offsets_paras)
+                num_paras = len(offsets_paras)
 
                 for parallel_unit_no, parallel_unit_nodes in parallel_units.items():
                     if not self._running:
@@ -459,7 +465,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
 
                     nodes = parallel_unit_nodes[i]
 
-                    if parallel_unit_no <= len_parallel_units:
+                    if parallel_unit_no <= num_paras:
                         parallel_unit = list(wl_misc.flatten_list(text.tokens_multilevel[parallel_unit_no - 1]))
 
                         if settings['token_settings']['punc_marks']:
@@ -494,29 +500,12 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
 
                     parallel_unit_nodes[i] = [parallel_unit_tokens_raw, parallel_unit_tokens_search]
 
-            # Remove empty concordance lines
-            for parallel_unit_no, parallel_units_files in parallel_units.copy().items():
-                if not self._running:
-                    raise wl_excs.Wl_Exc_Aborted(self.main)
-
-                if not any(wl_misc.flatten_list(parallel_units_files)):
-                    del parallel_units[parallel_unit_no]
-
             # Sort by Parallel Unit No.
-            concordance_lines = sorted(parallel_units.items())
-
-            for i, concordance_line in enumerate(concordance_lines):
-                if not self._running:
-                    raise wl_excs.Wl_Exc_Aborted(self.main)
-
-                concordance_line = list(concordance_line)
-                concordance_line[0] = [concordance_line[0], len_max_parallel_units]
-
-                concordance_lines[i] = concordance_line
+            parallel_units = sorted(parallel_units.items())
         except wl_excs.Wl_Exc_Aborted:
             err_msg = 'aborted'
         except Exception:
             err_msg = traceback.format_exc()
 
         self.progress_updated.emit(self.tr('Rendering table...'))
-        self.finished.emit(err_msg, concordance_lines)
+        self.finished.emit(err_msg, parallel_units, num_paras_max)

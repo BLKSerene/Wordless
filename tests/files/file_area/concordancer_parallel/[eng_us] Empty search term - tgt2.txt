@@ -1,0 +1,3 @@
+The 1st alignment unit in the second target text.
+The 2nd alignment unit in the second target text.
+The 3rd alignment unit in the second target text.

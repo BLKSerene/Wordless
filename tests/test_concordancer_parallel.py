@@ -19,21 +19,30 @@
 from tests import wl_test_init
 from wordless import wl_concordancer_parallel
 from wordless.wl_dialogs import wl_dialogs_misc
+from wordless.wl_nlp import wl_texts
+
+main_global = None
 
 def test_concordancer_parallel():
     main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
     settings = main.settings_custom['concordancer_parallel']
 
-    settings['search_settings']['multi_search_mode'] = True
-    settings['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
-
     for i in range(2):
         match i:
             case 0:
+                settings['search_settings']['multi_search_mode'] = True
+                settings['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
+
                 wl_test_init.select_test_files(main, no_files = (0, 1, 2))
             case 1:
-                wl_test_init.select_test_files(main, no_files = (1, 2, 5))
+                settings['search_settings']['multi_search_mode'] = False
+                settings['search_settings']['search_term'] = ''
+
+                wl_test_init.select_test_files(main, no_files = (8, 9, 10))
+
+        global main_global
+        main_global = main
 
         print(f"Files: {' | '.join(wl_test_init.get_test_file_names(main))}")
 
@@ -45,23 +54,41 @@ def test_concordancer_parallel():
         worker_concordancer_parallel.finished.connect(update_gui)
         worker_concordancer_parallel.run()
 
-def update_gui(err_msg, concordance_lines):
+def update_gui(err_msg, parallel_units, num_paras_max):
     print(err_msg)
     assert not err_msg
-    assert concordance_lines
+    assert parallel_units
 
-    for concordance_line in concordance_lines:
-        assert len(concordance_line) == 2
+    files_selected = list(main_global.wl_file_area.get_selected_files())
 
-        parallel_unit_no, len_parallel_units = concordance_line[0]
+    # Test whether empty parallel units are removed
+    if files_selected[0]['name'] == '[eng_us] Empty search term - src':
+        assert parallel_units == [
+            (4, [
+                [
+                    ['Omitted', 'source', 'text. (', 'without', 'corresponding', 'translation).'],
+                    wl_texts.to_tokens(['Omitted', 'source', 'text.', ' (', 'without', 'corresponding', 'translation', ').'])
+                ],
+                [[], []],
+                [[], []]
+            ]),
+            (5, [
+                [[], []],
+                [
+                    ['Added', 'target', 'text (', 'without', 'corresponding', 'originals).'],
+                    wl_texts.to_tokens(['Added', 'target', 'text', ' (', 'without', 'corresponding', 'originals', ').'])
+                ],
+                [[], []]
+            ])
+        ]
+    else:
+        for parallel_unit_no, parallel_units_files in parallel_units:
+            # Parallel Unit No.
+            assert 1 <= parallel_unit_no <= num_paras_max
 
-        # Parallel Unit No.
-        assert parallel_unit_no >= 1
-        assert len_parallel_units >= 1
-
-        # Parallel Units
-        for parallel_unit in concordance_line[1]:
-            assert len(parallel_unit) == 2
+            # Parallel Units
+            for parallel_unit in parallel_units_files:
+                assert len(parallel_unit) == 2
 
 if __name__ == '__main__':
     test_concordancer_parallel()

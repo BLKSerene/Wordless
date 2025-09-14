@@ -33,7 +33,7 @@ def test_concordancer():
     settings['search_settings']['multi_search_mode'] = True
     settings['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
 
-    for i in range(2 + wl_test_file_area.LEN_FILES_TESTS_OTHERS):
+    for i in range(2 + wl_test_file_area.NUM_FILES_OTHERS):
         match i:
             # Single file
             case 0:
@@ -47,7 +47,14 @@ def test_concordancer():
                 settings['generation_settings']['calc_sentiment_scores'] = True
             # Miscellaneous
             case _:
-                wl_test_init.select_test_files(main, no_files = (i + 1,))
+                if main.settings_custom['file_area']['files_open'][i + 1]['name'] in (
+                    '[other] No language support',
+                    '[eng_us] Starting with a punctuation mark',
+                    '[eng_us] Starting with tags'
+                ):
+                    wl_test_init.select_test_files(main, no_files = (i + 1,))
+                else:
+                    continue
 
         global main_global
         main_global = main

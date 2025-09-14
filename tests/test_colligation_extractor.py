@@ -48,7 +48,7 @@ def test_colligation_extractor():
     ]
     measures_effect_size = list(main.settings_global['measures_effect_size'].keys())
 
-    for i in range(2 + wl_test_file_area.LEN_FILES_TESTS_OTHERS):
+    for i in range(2 + wl_test_file_area.NUM_FILES_OTHERS):
         match i:
             # Single file
             case 0:
@@ -56,26 +56,24 @@ def test_colligation_extractor():
             # Multiple files
             case 1:
                 wl_test_init.select_test_files(main, no_files = (1, 2))
-            # Tibetan (Classical)
-            case 2:
-                # Avoid loading modern-botok's spaCy model
-                wl_test_init.select_test_files(main, no_files = (4,))
-
-                settings_table['add_missing_ending_tshegs'] = True
-            case 3:
-                wl_test_init.select_test_files(main, no_files = (4,))
-
-                settings_table['add_missing_ending_tshegs'] = False
             # Miscellaneous
             case _:
+                wl_test_init.select_test_files(main, no_files = (i + 1,))
+
                 # Excluding files without POS tagging support and tagged files without POS tags
-                if (
-                    main.settings_custom['file_area']['files_open'][i + 1]['lang'] == 'eng_us'
-                    and main.settings_custom['file_area']['files_open'][i + 1]['name'] != '[eng_us] Starting with tags'
-                ):
-                    wl_test_init.select_test_files(main, no_files = [i + 1])
-                else:
-                    continue
+                match main.settings_custom['file_area']['files_open'][i + 1]['name']:
+                    # Tibetan (Classical)
+                    case '[bod] Tibetan tshegs':
+                        # Avoid loading modern-botok's spaCy model
+                        wl_test_init.select_test_files(main, no_files = (4,))
+
+                        settings_table['add_missing_ending_tshegs'] = True
+                    case '[xct] Tibetan tshegs':
+                        settings_table['add_missing_ending_tshegs'] = False
+                    case '[eng_us] Starting with a punctuation mark':
+                        pass
+                    case _:
+                        continue
 
         settings['generation_settings']['test_statistical_significance'] = random.choice(tests_statistical_significance)
         settings['generation_settings']['measure_bayes_factor'] = random.choice(measures_bayes_factor)

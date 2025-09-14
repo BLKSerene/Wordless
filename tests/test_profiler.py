@@ -36,7 +36,7 @@ def test_profiler():
 
     settings_table = main.settings_custom['tables']['profiler']['lang_specific_settings']
 
-    for i in range(2 + wl_test_file_area.LEN_FILES_TESTS_OTHERS):
+    for i in range(2 + wl_test_file_area.NUM_FILES_OTHERS):
         match i:
             # Single file
             case 0:
@@ -44,19 +44,24 @@ def test_profiler():
             # Multiple files
             case 1:
                 wl_test_init.select_test_files(main, no_files = (1, 2))
-            # Tibetan (Classical)
-            case 2:
-                # Avoid loading modern-botok's spaCy model
-                wl_test_init.select_test_files(main, no_files = (4,))
-
-                settings_table['add_missing_ending_tshegs'] = True
-            case 3:
-                wl_test_init.select_test_files(main, no_files = (4,))
-
-                settings_table['add_missing_ending_tshegs'] = False
             # Miscellaneous
             case _:
                 wl_test_init.select_test_files(main, no_files = (i + 1,))
+
+                match main.settings_custom['file_area']['files_open'][i + 1]['name']:
+                    # Tibetan (Classical)
+                    case '[bod] Tibetan tshegs':
+                        # Avoid loading modern-botok's spaCy model
+                        wl_test_init.select_test_files(main, no_files = (4,))
+
+                        settings_table['add_missing_ending_tshegs'] = True
+                    case '[xct] Tibetan tshegs':
+                        settings_table['add_missing_ending_tshegs'] = False
+                    # Miscellaneous
+                    case '[other] No language support' | '[eng_us] Starting with a punctuation mark' | '[eng_us] Starting with tags':
+                        pass
+                    case _:
+                        continue
 
         global main_global
         main_global = main
