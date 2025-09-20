@@ -89,28 +89,31 @@ class Wl_Settings_Sentiment_Analysis(wl_settings.Wl_Settings_Node):
         self.label_preview_lang = QtWidgets.QLabel(self.tr('Select language:'), self)
         self.combo_box_preview_lang = wl_boxes.Wl_Combo_Box(self)
         self.button_show_preview = QtWidgets.QPushButton(self.tr('Show preview'), self)
-        self.label_preview_sentiment_score = QtWidgets.QLabel(self.tr('Sentiment score: '), self)
-        self.label_preview_sentiment_score_val = QtWidgets.QLabel('', self)
         self.text_edit_preview_samples = QtWidgets.QTextEdit(self)
+        self.text_edit_preview_results = QtWidgets.QTextEdit(self)
 
         self.combo_box_preview_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
 
         self.button_show_preview.setMinimumWidth(140)
         self.text_edit_preview_samples.setAcceptRichText(False)
+        self.text_edit_preview_results.setReadOnly(True)
 
         self.combo_box_preview_lang.currentTextChanged.connect(self.preview_changed)
         self.button_show_preview.clicked.connect(self.preview_results_changed)
         self.text_edit_preview_samples.textChanged.connect(self.preview_changed)
+        self.text_edit_preview_results.textChanged.connect(self.preview_changed)
+
+        layout_preview_settings = wl_layouts.Wl_Layout()
+        layout_preview_settings.addWidget(self.label_preview_lang, 0, 0)
+        layout_preview_settings.addWidget(self.combo_box_preview_lang, 0, 1)
+        layout_preview_settings.addWidget(self.button_show_preview, 0, 3)
+
+        layout_preview_settings.setColumnStretch(2, 1)
 
         self.group_box_preview.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_preview.layout().addWidget(self.label_preview_lang, 0, 0)
-        self.group_box_preview.layout().addWidget(self.combo_box_preview_lang, 0, 1)
-        self.group_box_preview.layout().addWidget(self.button_show_preview, 0, 2)
-        self.group_box_preview.layout().addWidget(self.label_preview_sentiment_score, 0, 4)
-        self.group_box_preview.layout().addWidget(self.label_preview_sentiment_score_val, 0, 5)
-        self.group_box_preview.layout().addWidget(self.text_edit_preview_samples, 1, 0, 1, 6)
-
-        self.group_box_preview.layout().setColumnStretch(3, 1)
+        self.group_box_preview.layout().addLayout(layout_preview_settings, 0, 0, 1, 2)
+        self.group_box_preview.layout().addWidget(self.text_edit_preview_samples, 1, 0)
+        self.group_box_preview.layout().addWidget(self.text_edit_preview_results, 1, 1)
 
         self.layout().addWidget(self.group_box_sentiment_analyzer_settings, 0, 0)
         self.layout().addWidget(self.group_box_preview, 1, 0)
@@ -120,6 +123,7 @@ class Wl_Settings_Sentiment_Analysis(wl_settings.Wl_Settings_Node):
     def preview_changed(self):
         self.settings_custom['preview']['preview_lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_preview_lang.currentText())
         self.settings_custom['preview']['preview_samples'] = self.text_edit_preview_samples.toPlainText()
+        self.settings_custom['preview']['preview_results'] = self.text_edit_preview_results.toPlainText()
 
         if self.settings_custom['preview']['preview_samples'].strip():
             self.button_show_preview.setEnabled(True)
@@ -134,6 +138,7 @@ class Wl_Settings_Sentiment_Analysis(wl_settings.Wl_Settings_Node):
             self.combo_box_preview_lang.setEnabled(False)
             self.button_show_preview.setEnabled(False)
             self.text_edit_preview_samples.setEnabled(False)
+            self.text_edit_preview_results.setEnabled(False)
 
             self.button_show_preview.setText(self.tr('Processing...'))
 
@@ -163,9 +168,7 @@ class Wl_Settings_Sentiment_Analysis(wl_settings.Wl_Settings_Node):
                 self.update_gui_err()
 
     def update_gui(self, preview_results):
-        precision = self.main.settings_custom['tables']['precision_settings']['precision_decimals']
-        self.label_preview_sentiment_score_val.setText(f'{preview_results:.{precision}f}')
-        self.settings_custom['preview']['preview_sentiment_score'] = self.label_preview_sentiment_score_val.text()
+        self.text_edit_preview_results.setPlainText(preview_results)
 
         self.update_gui_err()
 
@@ -178,6 +181,7 @@ class Wl_Settings_Sentiment_Analysis(wl_settings.Wl_Settings_Node):
         self.combo_box_preview_lang.setEnabled(True)
         self.button_show_preview.setEnabled(True)
         self.text_edit_preview_samples.setEnabled(True)
+        self.text_edit_preview_results.setEnabled(True)
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -202,7 +206,7 @@ class Wl_Settings_Sentiment_Analysis(wl_settings.Wl_Settings_Node):
 
             self.combo_box_preview_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['preview']['preview_lang']))
             self.text_edit_preview_samples.setText(settings['preview']['preview_samples'])
-            self.label_preview_sentiment_score_val.setText(settings['preview']['preview_sentiment_score'])
+            self.text_edit_preview_results.setText(settings['preview']['preview_results'])
 
             self.combo_box_preview_lang.blockSignals(False)
             self.text_edit_preview_samples.blockSignals(False)
@@ -220,17 +224,26 @@ class Wl_Settings_Sentiment_Analysis(wl_settings.Wl_Settings_Node):
         return True
 
 class Wl_Worker_Preview_Sentiment_Analyzer(wl_threading.Wl_Worker_No_Progress):
-    finished = QtCore.pyqtSignal(float)
+    finished = QtCore.pyqtSignal(str)
 
     def run(self):
         preview_lang = self.main.settings_custom['sentiment_analysis']['preview']['preview_lang']
         preview_samples = self.main.settings_custom['sentiment_analysis']['preview']['preview_samples']
+        precision = self.main.settings_custom['tables']['precision_settings']['precision_decimals']
 
         sentiment_scores = wl_sentiment_analysis.wl_sentiment_analyze(
             self.main,
-            inputs = [preview_samples.strip()],
+            inputs = preview_samples.splitlines(),
             lang = preview_lang,
             sentiment_analyzer = self.sentiment_analyzer
         )
 
-        self.finished.emit(sentiment_scores[0])
+        preview_results = '\n'.join((
+            f'{sentiment_score:.{precision}f}' if sentiment_score is not None else ''
+            for sentiment_score in sentiment_scores
+        ))
+
+        if preview_samples.endswith('\n'):
+            preview_results += '\n'
+
+        self.finished.emit(preview_results)

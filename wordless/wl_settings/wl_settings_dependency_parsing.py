@@ -311,8 +311,7 @@ class Wl_Worker_Preview_Dependency_Parser(wl_threading.Wl_Worker_No_Progress):
             # "Show lemmas" requires "Show part-of-speech tags"
             show_lemmas = settings['preview_settings']['show_pos_tags'] and settings['preview_settings']['show_lemmas'],
             collapse_punc_marks = settings['preview_settings']['collapse_punc_marks'],
-            compact_mode = settings['preview_settings']['compact_mode'],
-            show_in_separate_tabs = settings['preview_settings']['show_in_separate_tabs']
+            compact_mode = settings['preview_settings']['compact_mode']
         )
 
         self.finished.emit(htmls)

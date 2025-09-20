@@ -33,7 +33,7 @@ def test_wl_settings_dependency_parsing():
     main.settings_dependency_parsing.preview_changed()
 
     main.settings_dependency_parsing.preview_results_changed()
-    main.settings_dependency_parsing.update_gui('test')
+    main.settings_dependency_parsing.update_gui(['test'])
     main.settings_dependency_parsing.update_gui_err()
 
 def test_wl_dialog_preview_settings():

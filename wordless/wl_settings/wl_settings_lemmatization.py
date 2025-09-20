@@ -25,8 +25,7 @@ from PyQt5 import QtWidgets
 from wordless.wl_nlp import (
     wl_lemmatization,
     wl_nlp_utils,
-    wl_texts,
-    wl_word_detokenization
+    wl_texts
 )
 from wordless.wl_settings import wl_settings
 from wordless.wl_utils import (
@@ -91,15 +90,12 @@ class Wl_Settings_Lemmatization(wl_settings.Wl_Settings_Node):
         self.label_preview_lang = QtWidgets.QLabel(self.tr('Select language:'), self)
         self.combo_box_preview_lang = wl_boxes.Wl_Combo_Box(self)
         self.button_show_preview = QtWidgets.QPushButton(self.tr('Show preview'), self)
-        self.button_abort = QtWidgets.QPushButton(self.tr('Abort'), self)
         self.text_edit_preview_samples = QtWidgets.QTextEdit(self)
         self.text_edit_preview_results = QtWidgets.QTextEdit(self)
 
         self.combo_box_preview_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
 
         self.button_show_preview.setMinimumWidth(140)
-        self.button_abort.setMinimumWidth(140)
-        self.button_abort.hide()
         self.text_edit_preview_samples.setAcceptRichText(False)
         self.text_edit_preview_results.setReadOnly(True)
 
@@ -112,7 +108,6 @@ class Wl_Settings_Lemmatization(wl_settings.Wl_Settings_Node):
         layout_preview_settings.addWidget(self.label_preview_lang, 0, 0)
         layout_preview_settings.addWidget(self.combo_box_preview_lang, 0, 1)
         layout_preview_settings.addWidget(self.button_show_preview, 0, 3)
-        layout_preview_settings.addWidget(self.button_abort, 0, 4)
 
         layout_preview_settings.setColumnStretch(2, 1)
 
@@ -146,8 +141,7 @@ class Wl_Settings_Lemmatization(wl_settings.Wl_Settings_Node):
             self.text_edit_preview_samples.setEnabled(False)
             self.text_edit_preview_results.setEnabled(False)
 
-            self.button_show_preview.hide()
-            self.button_abort.show()
+            self.button_show_preview.setText(self.tr('Processing...'))
 
             lemmatizer = wl_nlp_utils.to_lang_util_code(
                 self.main,
@@ -165,10 +159,6 @@ class Wl_Settings_Lemmatization(wl_settings.Wl_Settings_Node):
                     lemmatizer = lemmatizer
                 )
 
-                self.button_abort.disconnect()
-                self.button_abort.clicked.connect(self.worker_preview_lemmatizer.stop)
-                self.button_abort.clicked.connect(self.abort)
-
                 self.thread_preview_lemmatizer = QtCore.QThread()
                 wl_threading.start_worker_in_thread(
                     self.worker_preview_lemmatizer,
@@ -178,21 +168,13 @@ class Wl_Settings_Lemmatization(wl_settings.Wl_Settings_Node):
             else:
                 self.update_gui_err()
 
-    def abort(self):
-        self.button_abort.setText(self.tr('Aborting...'))
-        self.button_abort.setEnabled(False)
-
     def update_gui(self, preview_results):
-        if preview_results != [None]:
-            self.text_edit_preview_results.setPlainText('\n'.join(preview_results))
+        self.text_edit_preview_results.setPlainText(preview_results)
 
         self.update_gui_err()
 
     def update_gui_err(self):
-        self.button_show_preview.show()
-        self.button_abort.hide()
-        self.button_abort.setText(self.tr('Abort'))
-        self.button_abort.setEnabled(True)
+        self.button_show_preview.setText(self.tr('Show preview'))
 
         row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
 
@@ -243,7 +225,7 @@ class Wl_Settings_Lemmatization(wl_settings.Wl_Settings_Node):
         return True
 
 class Wl_Worker_Preview_Lemmatizer(wl_threading.Wl_Worker_No_Progress):
-    finished = QtCore.pyqtSignal(list)
+    finished = QtCore.pyqtSignal(str)
 
     def run(self):
         preview_results = []
@@ -251,25 +233,13 @@ class Wl_Worker_Preview_Lemmatizer(wl_threading.Wl_Worker_No_Progress):
         preview_lang = self.main.settings_custom['lemmatization']['preview']['preview_lang']
         preview_samples = self.main.settings_custom['lemmatization']['preview']['preview_samples']
 
-        for line in preview_samples.split('\n'):
-            if not self._running:
-                preview_results = [None]
+        tokens = wl_lemmatization.wl_lemmatize(
+            self.main, preview_samples,
+            lang = preview_lang,
+            lemmatizer = self.lemmatizer
+        )
 
-                break
-
-            if (line := line.strip()):
-                tokens = wl_lemmatization.wl_lemmatize(
-                    self.main, line,
-                    lang = preview_lang,
-                    lemmatizer = self.lemmatizer
-                )
-                lemmas = wl_texts.get_token_properties(tokens, 'lemma')
-                text = wl_word_detokenization.wl_word_detokenize(
-                    self.main, lemmas,
-                    lang = preview_lang
-                )
-                preview_results.append(text)
-            else:
-                preview_results.append('')
+        preview_results = ' '.join(wl_texts.get_token_properties(tokens, 'lemma'))
+        preview_results = '\n'.join(part.strip() for part in preview_results.split('\n'))
 
         self.finished.emit(preview_results)

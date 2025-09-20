@@ -16,7 +16,10 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from tests import wl_test_init
+from tests import (
+    wl_test_init,
+    wl_test_lang_examples
+)
 from wordless.wl_settings import wl_settings_lemmatization
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
@@ -33,12 +36,11 @@ def test_wl_settings_lemmatization():
     main.settings_lemmatization.preview_changed()
 
     main.settings_lemmatization.preview_results_changed()
-    main.settings_lemmatization.worker_preview_lemmatizer.stop()
-    main.settings_lemmatization.abort()
     main.settings_lemmatization.update_gui('test')
     main.settings_lemmatization.update_gui_err()
 
 def test_wl_worker_preview_lemmatizer():
+    main.settings_custom['lemmatization']['preview']['preview_samples'] = wl_test_lang_examples.TEXT_NEWLINES
     preview_lang = main.settings_custom['lemmatization']['preview']['preview_lang']
     lemmatizer = main.settings_custom['lemmatization']['lemmatizer_settings'][preview_lang]
 
@@ -46,9 +48,11 @@ def test_wl_worker_preview_lemmatizer():
         main,
         lemmatizer = lemmatizer
     )
+    worker.finished.connect(update_gui_newlines)
     worker.run()
-    worker.stop()
-    worker.run()
+
+def update_gui_newlines(preview_results):
+    assert preview_results == wl_test_lang_examples.TEXT_NEWLINES
 
 if __name__ == '__main__':
     test_wl_settings_lemmatization()

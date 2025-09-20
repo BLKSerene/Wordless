@@ -16,7 +16,10 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from tests import wl_test_init
+from tests import (
+    wl_test_init,
+    wl_test_lang_examples
+)
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_nlp import wl_pos_tagging
 from wordless.wl_settings import wl_settings_pos_tagging
@@ -37,20 +40,18 @@ def test_wl_settings_pos_tagging():
 
     main.settings_pos_tagging.checkbox_to_universal_pos_tags.setChecked(False)
     main.settings_pos_tagging.preview_results_changed()
-    main.settings_pos_tagging.worker_preview_pos_tagger.stop()
 
     main.settings_pos_tagging_universal = wl_settings_pos_tagging.Wl_Settings_Pos_Tagging(main)
     main.settings_pos_tagging_universal.load_settings()
     main.settings_pos_tagging_universal.checkbox_to_universal_pos_tags.setChecked(True)
     main.settings_pos_tagging_universal.preview_results_changed()
-    main.settings_pos_tagging_universal.worker_preview_pos_tagger.stop()
 
-    main.settings_pos_tagging.abort()
     main.settings_pos_tagging.preview_changed()
     main.settings_pos_tagging.update_gui('test')
     main.settings_pos_tagging.update_gui_err()
 
 def test_wl_worker_preview_pos_tagger():
+    main.settings_custom['pos_tagging']['preview']['preview_samples'] = wl_test_lang_examples.TEXT_NEWLINES
     preview_lang = main.settings_custom['pos_tagging']['preview']['preview_lang']
     pos_tagger = main.settings_custom['pos_tagging']['pos_tagger_settings']['pos_taggers'][preview_lang]
 
@@ -60,9 +61,11 @@ def test_wl_worker_preview_pos_tagger():
         tagset = 'raw',
         separator = main.settings_custom['pos_tagging']['pos_tagger_settings']['separator_between_tokens_pos_tags']
     )
+    worker.finished.connect(update_gui_newlines)
     worker.run()
-    worker.stop()
-    worker.run()
+
+def update_gui_newlines(preview_results):
+    assert preview_results == wl_test_lang_examples.TEXT_NEWLINES.replace('0', '0_LS')
 
 def test_wl_settings_pos_tagging_tagsets():
     main.settings_pos_tagging_tagsets = wl_settings_pos_tagging.Wl_Settings_Pos_Tagging_Tagsets(main)

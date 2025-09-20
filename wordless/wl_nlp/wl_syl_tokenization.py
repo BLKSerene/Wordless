@@ -25,6 +25,7 @@ from wordless.wl_nlp import (
     wl_texts,
     wl_word_tokenization
 )
+from wordless.wl_utils import wl_misc
 
 def wl_syl_tokenize(main, inputs, lang, syl_tokenizer = 'default', force = False):
     if (
@@ -36,8 +37,6 @@ def wl_syl_tokenize(main, inputs, lang, syl_tokenizer = 'default', force = False
         return inputs
     else:
         if inputs and lang in main.settings_global['syl_tokenizers']:
-            syls_tokens = []
-
             if syl_tokenizer == 'default':
                 syl_tokenizer = main.settings_custom['syl_tokenization']['syl_tokenizer_settings'][lang]
 
@@ -47,21 +46,17 @@ def wl_syl_tokenize(main, inputs, lang, syl_tokenizer = 'default', force = False
                 syl_tokenizer = syl_tokenizer
             )
 
+            # Only for Settings - Syllable Tokenization - Preview
             if isinstance(inputs, str):
-                tokens = wl_word_tokenization.wl_word_tokenize_flat(main, inputs, lang = lang)
-                texts = wl_texts.to_token_texts(tokens)
+                tokens, syls_tokens = wl_syl_tokenize_text(main, inputs, lang, syl_tokenizer)
             else:
                 texts, token_properties = wl_texts.split_texts_properties(inputs)
 
-            section_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks']
-            texts_sections = wl_nlp_utils.to_sections_unequal(texts, section_size = section_size * 50)
-
-            for texts_section in texts_sections:
-                syls_tokens.extend(wl_syl_tokenize_tokens(main, texts_section, lang, syl_tokenizer))
+                syls_tokens = wl_syl_tokenize_tokens(main, texts, lang, syl_tokenizer)
 
             # Remove empty syllables and whitespace around syllables
             syls_tokens = [
-                tuple(wl_texts.clean_texts(syls))
+                tuple(wl_nlp_utils.clean_texts(syls)) if syls != ['\n'] else syls
                 for syls in syls_tokens
             ]
 
@@ -85,10 +80,35 @@ def wl_syl_tokenize(main, inputs, lang, syl_tokenizer = 'default', force = False
             else:
                 return inputs
 
+def wl_syl_tokenize_text(main, text, lang, syl_tokenizer):
+    tokens = []
+    syls_tokens = []
+
+    for para in wl_word_tokenization.wl_word_tokenize(main, text, lang = lang):
+        para = list(wl_misc.flatten_list(para))
+
+        if para:
+            tokens.extend(para)
+            syls_tokens.extend(wl_syl_tokenize_tokens(
+                main,
+                tokens = wl_texts.to_token_texts(para),
+                lang = lang,
+                syl_tokenizer = syl_tokenizer
+            ))
+
+        tokens.append(wl_texts.Wl_Token('\n'))
+        syls_tokens.append(['\n'])
+
+    if tokens:
+        del tokens[-1]
+        del syls_tokens[-1]
+
+    return tokens, syls_tokens
+
 def wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer):
     tokens_syls = {}
 
-    # Syllabify types only as context information is not needed
+    # Only syllabify types as context information is not needed
     for token in set(tokens):
         if token:
             # NLTK

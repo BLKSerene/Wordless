@@ -246,22 +246,26 @@ def test_to_sections_unequal():
     assert token_sections_1 == [[1], [2], [3], [4], [5], [6], [7], [8], [9], [10], [11], [12]]
     assert token_sections_1000 == [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]]
 
-def test_split_into_chunks_text():
-    text = '\n\n \n 1\n2 \n\n 3 \n \n\n'
+def test_clean_texts():
+    assert wl_nlp_utils.clean_texts([' test ', ' ']) == ['test']
 
-    sections_1 = list(wl_nlp_utils.split_into_chunks_text(text, section_size = 1))
-    sections_2 = list(wl_nlp_utils.split_into_chunks_text(text, section_size = 2))
-    sections_3 = list(wl_nlp_utils.split_into_chunks_text(text, section_size = 3))
+def test_split_text():
+    main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = 10
 
-    assert sections_1 == ['\n', '\n', ' \n', ' 1\n', '2 \n', '\n', ' 3 \n', ' \n', '\n']
-    assert sections_2 == ['\n\n', ' \n 1\n', '2 \n\n', ' 3 \n \n', '\n']
-    assert sections_3 == ['\n\n \n', ' 1\n2 \n\n', ' 3 \n \n\n']
+    assert list(wl_nlp_utils.split_text(main, '\n\ntest\n\n\ntest\n\n\n', nlp_util = 'spacy_jpn')) == ['\n\ntest\n\n\n', 'test\n\n\n']
+    assert list(wl_nlp_utils.split_text(main, '\n\ntest\n\n\ntest\n\n\n', nlp_util = 'test')) == ['\n\ntest\n\n\n', 'test\n\n\n']
+    assert not list(wl_nlp_utils.split_text(main, '', nlp_util = 'test'))
 
-def test_split_token_list():
-    tokens = ['test'] * 10000
+    main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = main.settings_default['files']['misc_settings']['read_files_in_chunks_chars']
 
-    assert len(list(wl_nlp_utils.split_token_list(main, tokens, nlp_util = 'sudachipy_jpn'))) == 5
-    assert len(list(wl_nlp_utils.split_token_list(main, tokens, nlp_util = 'test'))) == 10
+def test_split_tokens():
+    main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = 10
+
+    assert list(wl_nlp_utils.split_tokens(main, ['test', 'test', 'test'], nlp_util = 'spacy_jpn')) == [['test', 'test'], ['test']]
+    assert list(wl_nlp_utils.split_tokens(main, ['test', 'test', 'test'], nlp_util = 'test')) == [['test', 'test'], ['test']]
+    assert not list(wl_nlp_utils.split_tokens(main, [], nlp_util = 'test'))
+
+    main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = main.settings_default['files']['misc_settings']['read_files_in_chunks_chars']
 
 def test_to_srp_latn():
     tokens_srp_cyrl = wl_test_lang_examples.SENTENCE_SRP_CYRL.split()
@@ -335,8 +339,9 @@ if __name__ == '__main__':
 
     test_to_sections()
     test_to_sections_unequal()
-    test_split_token_list()
-    test_split_into_chunks_text()
+    test_clean_texts()
+    test_split_text()
+    test_split_tokens()
 
     test_to_srp_latn()
     test_to_srp_cyrl()

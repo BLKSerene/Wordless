@@ -16,7 +16,10 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from tests import wl_test_init
+from tests import (
+    wl_test_init,
+    wl_test_lang_examples
+)
 from wordless.wl_settings import wl_settings_syl_tokenization
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
@@ -33,13 +36,11 @@ def test_wl_settings_syl_tokenization():
     main.settings_syl_tokenization.preview_changed()
 
     main.settings_syl_tokenization.preview_results_changed()
-    main.settings_syl_tokenization.worker_preview_syl_tokenizer.stop()
-
-    main.settings_syl_tokenization.abort()
     main.settings_syl_tokenization.update_gui('test')
     main.settings_syl_tokenization.update_gui_err()
 
 def test_wl_worker_preview_syl_tokenizer():
+    main.settings_custom['syl_tokenization']['preview']['preview_samples'] = wl_test_lang_examples.TEXT_NEWLINES
     preview_lang = main.settings_custom['syl_tokenization']['preview']['preview_lang']
     syl_tokenizer = main.settings_custom['syl_tokenization']['syl_tokenizer_settings'][preview_lang]
 
@@ -47,11 +48,11 @@ def test_wl_worker_preview_syl_tokenizer():
         main,
         syl_tokenizer = syl_tokenizer
     )
+    worker.finished.connect(update_gui_newlines)
     worker.run()
-    main.settings_custom['syl_tokenization']['preview']['preview_lang'] = 'tha'
-    worker.run()
-    worker.stop()
-    worker.run()
+
+def update_gui_newlines(preview_results):
+    assert preview_results == wl_test_lang_examples.TEXT_NEWLINES
 
 if __name__ == '__main__':
     test_wl_settings_syl_tokenization()

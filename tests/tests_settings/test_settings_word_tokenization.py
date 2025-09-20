@@ -16,7 +16,12 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from tests import wl_test_init
+import time
+
+from tests import (
+    wl_test_init,
+    wl_test_lang_examples
+)
 from wordless.wl_settings import wl_settings_word_tokenization
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
@@ -34,6 +39,8 @@ def test_wl_settings_word_tokenization():
 
     main.settings_word_tokenization.preview_results_changed()
     main.settings_word_tokenization.worker_preview_word_tokenizer.stop()
+    # Prevent racing
+    time.sleep(5)
 
     main.settings_word_tokenization.abort()
     main.settings_word_tokenization.update_gui('test')
@@ -41,6 +48,7 @@ def test_wl_settings_word_tokenization():
 
 def test_wl_worker_preview_word_tokenizer():
     main.settings_custom['word_tokenization']['preview']['preview_lang'] = 'vie'
+    main.settings_custom['word_tokenization']['preview']['preview_samples'] = wl_test_lang_examples.TEXT_NEWLINES
     preview_lang = main.settings_custom['word_tokenization']['preview']['preview_lang']
     word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizer_settings'][preview_lang]
 
@@ -48,9 +56,15 @@ def test_wl_worker_preview_word_tokenizer():
         main,
         word_tokenizer = word_tokenizer
     )
+    worker.finished.connect(update_gui_newlines)
     worker.run()
+
+    worker.finished.disconnect()
     worker.stop()
     worker.run()
+
+def update_gui_newlines(preview_results):
+    assert preview_results == wl_test_lang_examples.TEXT_NEWLINES
 
 if __name__ == '__main__':
     test_wl_settings_word_tokenization()

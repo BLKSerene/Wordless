@@ -23,12 +23,12 @@ from tests import (
 from tests.tests_nlp import (
     test_dependency_parsing,
     test_lemmatization,
-    test_pos_tagging
+    test_pos_tagging,
+    test_sentence_tokenization,
+    test_word_tokenization
 )
 from wordless.wl_nlp import (
     wl_nlp_utils,
-    wl_sentence_tokenization,
-    wl_texts,
     wl_word_tokenization
 )
 from wordless.wl_utils import wl_conversion
@@ -46,12 +46,12 @@ def wl_test_spacy(
     lang_no_suffix = wl_conversion.remove_lang_code_suffixes(lang)
     wl_nlp_utils.check_models(main, langs = [lang], lang_utils = [[f'spacy_{lang_no_suffix}']])
 
-    test_sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
-
     if lang != 'other':
         wl_test_sentence_tokenize(lang, results_sentence_tokenize_trf, results_sentence_tokenize_lg)
 
-    wl_test_word_tokenize(lang, test_sentence, results_word_tokenize)
+    wl_test_word_tokenize(lang, results_word_tokenize)
+
+    test_sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
 
     # Tokenized
     tokens = wl_word_tokenization.wl_word_tokenize_flat(
@@ -59,105 +59,43 @@ def wl_test_spacy(
         text = test_sentence,
         lang = lang
     )
-    print(tokens)
 
     if lang != 'other':
-        wl_test_pos_tag(lang, test_sentence, tokens, results_pos_tag, results_pos_tag_universal)
-        wl_test_lemmatize(lang, test_sentence, tokens, results_lemmatize)
-        wl_test_dependency_parse(lang, test_sentence, tokens, results_dependency_parse)
+        wl_test_pos_tag(lang, tokens, results_pos_tag, results_pos_tag_universal)
+        wl_test_lemmatize(lang, tokens, results_lemmatize)
+        wl_test_dependency_parse(lang, tokens, results_dependency_parse)
 
 def wl_test_sentence_tokenize(lang, results_trf, results_lg):
     lang_no_suffix = wl_conversion.remove_lang_code_suffixes(lang)
-    test_text = ''.join(getattr(wl_test_lang_examples, f'TEXT_{lang.upper()}'))
     sentence_tokenizer_trf = f'spacy_dependency_parser_{lang_no_suffix}'
 
-    sentences_trf = wl_sentence_tokenization.wl_sentence_tokenize(
-        main,
-        text = test_text,
-        lang = lang,
-        sentence_tokenizer = sentence_tokenizer_trf
-    )
-
-    print(f'{lang} / {sentence_tokenizer_trf}:')
-    print(f'{sentences_trf}\n')
-
-    # The count of sentences should be exactly 2
-    match lang:
-        case 'swe':
-            assert len(sentences_trf) == 3
-        case 'ell':
-            assert len(sentences_trf) == 4
-        case _:
-            assert len(sentences_trf) == 2
-
-    assert sentences_trf == results_trf
+    test_sentence_tokenization.wl_test_sentence_tokenize_models(lang, sentence_tokenizer_trf, results_trf)
 
     if not wl_nlp_utils.LANGS_SPACY[lang_no_suffix].endswith('_trf'):
         sentence_tokenizer_lg = f'spacy_sentence_recognizer_{lang_no_suffix}'
 
-        sentences_lg = wl_sentence_tokenization.wl_sentence_tokenize(
-            main,
-            text = test_text,
-            lang = lang,
-            sentence_tokenizer = sentence_tokenizer_lg
-        )
+        test_sentence_tokenization.wl_test_sentence_tokenize_models(lang, sentence_tokenizer_lg, results_lg)
 
-        print(f'{lang} / {sentence_tokenizer_lg}:')
-        print(f'{sentences_lg}\n')
-
-        # The count of sentences should be exactly 2
-        match lang:
-            case 'hrv':
-                assert len(sentences_lg) == 1
-            case 'ell':
-                assert len(sentences_lg) == 3
-            case _:
-                assert len(sentences_lg) == 2
-
-        assert sentences_lg == results_lg
-
-def wl_test_word_tokenize(lang, test_sentence, results):
+def wl_test_word_tokenize(lang, results):
     if lang == 'other':
-        lang = 'eng'
+        lang = 'eng_us'
 
-    lang_no_suffix = wl_conversion.remove_lang_code_suffixes(lang)
-    word_tokenizer = f'spacy_{lang_no_suffix}'
+    word_tokenizer = f'spacy_{wl_conversion.remove_lang_code_suffixes(lang)}'
 
-    tokens = wl_word_tokenization.wl_word_tokenize_flat(
-        main,
-        text = test_sentence,
-        lang = lang,
-        word_tokenizer = word_tokenizer
-    )
+    test_word_tokenization.wl_test_word_tokenize_models(lang, word_tokenizer, results)
 
-    print(f'{lang} / {word_tokenizer}:')
-    print(f'{tokens}\n')
+def wl_test_pos_tag(lang, tokens, results, results_universal):
+    pos_tagger = f'spacy_{wl_conversion.remove_lang_code_suffixes(lang)}'
 
-    # The count of tokens should be more than 1
-    assert len(tokens) > 1
-    # The count of tokens should be more than the length of tokens split by space
-    assert len(tokens) > len(test_sentence.split())
+    test_pos_tagging.wl_test_pos_tag_models(lang, pos_tagger, tokens, results, results_universal)
 
-    assert wl_texts.to_display_texts(tokens) == results
+def wl_test_lemmatize(lang, tokens, results):
+    lemmatizer = f'spacy_{wl_conversion.remove_lang_code_suffixes(lang)}'
 
-def wl_test_pos_tag(lang, test_sentence, tokens, results, results_universal):
-    lang_no_suffix = wl_conversion.remove_lang_code_suffixes(lang)
-    pos_tagger = f'spacy_{lang_no_suffix}'
+    test_lemmatization.wl_test_lemmatize_models(lang, lemmatizer, tokens, results)
 
-    test_pos_tagging.wl_test_pos_tag_models(lang, pos_tagger, test_sentence, tokens, results, results_universal)
+def wl_test_dependency_parse(lang, tokens, results):
+    dependency_parser = f'spacy_{wl_conversion.remove_lang_code_suffixes(lang)}'
 
-def wl_test_lemmatize(lang, test_sentence, tokens, results):
-    lang_no_suffix = wl_conversion.remove_lang_code_suffixes(lang)
-    lemmatizer = f'spacy_{lang_no_suffix}'
-
-    test_lemmatization.wl_test_lemmatize_models(
-        lang, lemmatizer, test_sentence, tokens, results,
-        lang_excs = ('pol',)
-    )
-
-def wl_test_dependency_parse(lang, test_sentence, tokens, results):
-    lang_no_suffix = wl_conversion.remove_lang_code_suffixes(lang)
-    dependency_parser = f'spacy_{lang_no_suffix}'
-
-    test_dependency_parsing.wl_test_dependency_parse_models(lang, dependency_parser, test_sentence, tokens, results)
-    test_dependency_parsing.wl_test_dependency_parse_fig_models(lang, dependency_parser, test_sentence, tokens)
+    test_dependency_parsing.wl_test_dependency_parse_models(lang, dependency_parser, tokens, results)
+    test_dependency_parsing.wl_test_dependency_parse_fig_models(lang, dependency_parser, tokens)

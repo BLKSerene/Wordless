@@ -18,10 +18,6 @@
 
 from tests.tests_nlp.tests_spacy import test_spacy
 from tests import wl_test_init
-from wordless.wl_nlp import (
-    wl_dependency_parsing,
-    wl_word_tokenization
-)
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'spacy')
 
@@ -38,51 +34,5 @@ def test_spacy_eng():
         results_dependency_parse = [('English', 'is', 'nsubj', 1), ('is', 'is', 'ROOT', 0), ('a', 'language', 'det', 3), ('West', 'Germanic', 'amod', 1), ('Germanic', 'language', 'amod', 1), ('language', 'is', 'attr', -4), ('in', 'language', 'prep', -1), ('the', 'family', 'det', 5), ('Indo', 'family', 'amod', 4), ('-', 'family', 'amod', 3), ('European', 'family', 'amod', 2), ('language', 'family', 'compound', 1), ('family', 'in', 'pobj', -6), (',', 'family', 'punct', -1), ('whose', 'speakers', 'poss', 1), ('speakers', 'originated', 'nsubj', 5), (',', 'called', 'punct', 1), ('called', 'speakers', 'acl', -2), ('Anglophones', 'called', 'oprd', -1), (',', 'speakers', 'punct', -4), ('originated', 'family', 'relcl', -8), ('in', 'originated', 'prep', -1), ('early', 'England', 'amod', 2), ('medieval', 'England', 'amod', 1), ('England', 'in', 'pobj', -3), ('on', 'England', 'prep', -1), ('the', 'island', 'det', 1), ('island', 'on', 'pobj', -2), ('of', 'island', 'prep', -1), ('Great', 'of', 'pobj', -1), ('Britain.[4][5][6', 'of', 'pobj', -2), (']', 'is', 'punct', -30)]
     )
 
-def test_spacy_other():
-    test_spacy.wl_test_spacy(
-        lang = 'other',
-        results_word_tokenize = results_word_tokenize,
-    )
-
-def test_spacy_punc_marks():
-    test_sentence = 'Hi, take it!'
-
-    tokens_untokenized = wl_dependency_parsing.wl_dependency_parse(
-        main,
-        inputs = test_sentence,
-        lang = 'eng_us'
-    )
-
-    dds_untokenized = [
-        (str(token), str(token.head), token.dependency_relation, token.dd, token.dd_no_punc)
-        for token in tokens_untokenized
-    ]
-
-    tokens = wl_word_tokenization.wl_word_tokenize_flat(
-        main,
-        text = test_sentence,
-        lang = 'eng_us'
-    )
-
-    tokens_tokenized = wl_dependency_parsing.wl_dependency_parse(
-        main,
-        inputs = tokens,
-        lang = 'eng_us'
-    )
-
-    dds_tokenized = [
-        (str(token), str(token.head), token.dependency_relation, token.dd, token.dd_no_punc)
-        for token in tokens_tokenized
-    ]
-
-    print('eng_us / spacy_eng:')
-    print(dds_untokenized)
-    print(dds_tokenized)
-
-    assert dds_untokenized == dds_tokenized == [('Hi', 'take', 'intj', 2, 1), (',', 'take', 'punct', 1, 1), ('take', 'take', 'ROOT', 0, 0), ('it', 'take', 'dobj', -1, -1), ('!', 'take', 'punct', -2, -1)]
-
 if __name__ == '__main__':
     test_spacy_eng()
-    test_spacy_other()
-
-    test_spacy_punc_marks()

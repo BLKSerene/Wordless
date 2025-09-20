@@ -113,15 +113,12 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
         self.label_preview_lang = QtWidgets.QLabel(self.tr('Select language:'), self)
         self.combo_box_preview_lang = wl_boxes.Wl_Combo_Box(self)
         self.button_show_preview = QtWidgets.QPushButton(self.tr('Show preview'), self)
-        self.button_abort = QtWidgets.QPushButton(self.tr('Abort'), self)
         self.text_edit_preview_samples = QtWidgets.QTextEdit(self)
         self.text_edit_preview_results = QtWidgets.QTextEdit(self)
 
         self.combo_box_preview_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
 
         self.button_show_preview.setMinimumWidth(140)
-        self.button_abort.setMinimumWidth(140)
-        self.button_abort.hide()
         self.text_edit_preview_samples.setAcceptRichText(False)
         self.text_edit_preview_results.setReadOnly(True)
 
@@ -134,7 +131,6 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
         layout_preview_settings.addWidget(self.label_preview_lang, 0, 0)
         layout_preview_settings.addWidget(self.combo_box_preview_lang, 0, 1)
         layout_preview_settings.addWidget(self.button_show_preview, 0, 3)
-        layout_preview_settings.addWidget(self.button_abort, 0, 4)
 
         layout_preview_settings.setColumnStretch(2, 1)
 
@@ -170,8 +166,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
             self.text_edit_preview_samples.setEnabled(False)
             self.text_edit_preview_results.setEnabled(False)
 
-            self.button_show_preview.hide()
-            self.button_abort.show()
+            self.button_show_preview.setText(self.tr('Processing...'))
 
             pos_tagger = wl_nlp_utils.to_lang_util_code(
                 self.main,
@@ -196,10 +191,6 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
                     separator = self.line_edit_separator_between_tokens_pos_tags.text(),
                 )
 
-                self.button_abort.disconnect()
-                self.button_abort.clicked.connect(self.worker_preview_pos_tagger.stop)
-                self.button_abort.clicked.connect(self.abort)
-
                 self.thread_preview_pos_tagger = QtCore.QThread()
                 wl_threading.start_worker_in_thread(
                     self.worker_preview_pos_tagger,
@@ -209,21 +200,13 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
             else:
                 self.update_gui_err()
 
-    def abort(self):
-        self.button_abort.setText(self.tr('Aborting...'))
-        self.button_abort.setEnabled(False)
-
     def update_gui(self, preview_results):
-        if preview_results != [None]:
-            self.text_edit_preview_results.setPlainText('\n'.join(preview_results))
+        self.text_edit_preview_results.setPlainText(preview_results)
 
         self.update_gui_err()
 
     def update_gui_err(self):
-        self.button_show_preview.show()
-        self.button_abort.hide()
-        self.button_abort.setText(self.tr('Abort'))
-        self.button_abort.setEnabled(True)
+        self.button_show_preview.setText(self.tr('Show preview'))
 
         row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
 
@@ -284,33 +267,28 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
 
         return True
 
+RE_NEWLINES_WHITESPACE = re.compile(r'\s+\n+\s+|\s+\n+|\n+\s+')
+
 class Wl_Worker_Preview_Pos_Tagger(wl_threading.Wl_Worker_No_Progress):
-    finished = QtCore.pyqtSignal(list)
+    finished = QtCore.pyqtSignal(str)
 
     def run(self):
-        preview_results = []
-
         preview_lang = self.main.settings_custom['pos_tagging']['preview']['preview_lang']
         preview_samples = self.main.settings_custom['pos_tagging']['preview']['preview_samples']
 
-        for line in preview_samples.split('\n'):
-            if not self._running:
-                preview_results = [None]
+        tokens = wl_pos_tagging.wl_pos_tag(
+            self.main, preview_samples,
+            lang = preview_lang,
+            pos_tagger = self.pos_tagger,
+            tagset = self.tagset,
+            separator = self.separator
+        )
 
-                break
-
-            if (line := line.strip()):
-                tokens = wl_pos_tagging.wl_pos_tag(
-                    self.main, line,
-                    lang = preview_lang,
-                    pos_tagger = self.pos_tagger,
-                    tagset = self.tagset,
-                    separator = self.separator
-                )
-
-                preview_results.append(' '.join([f'{str(token)}{token.tag}' for token in tokens]))
-            else:
-                preview_results.append('')
+        preview_results = ' '.join((
+            f'{token}{token.tag}' if '\n' not in token else str(token)
+            for token in tokens
+        ))
+        preview_results = '\n'.join(part.strip() for part in preview_results.split('\n'))
 
         self.finished.emit(preview_results)
 

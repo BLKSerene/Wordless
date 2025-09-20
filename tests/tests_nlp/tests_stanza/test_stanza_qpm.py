@@ -19,7 +19,7 @@
 from tests.tests_nlp.tests_stanza import test_stanza
 
 def test_stanza_qpm():
-    results_pos_tag = [('Kážyjte', 'VERB'), ('nǽko', 'DET'), (',', 'PUNCT'), ('de', 'PART'), ('!', 'PUNCT')]
+    results_pos_tag = [('Kážyjte', 'VERB'), ('nǽko', 'DET'), (',', 'PUNCT'), ('de', 'VERB'), ('!', 'PUNCT')]
 
     test_stanza.wl_test_stanza(
         lang = 'qpm',
@@ -28,7 +28,7 @@ def test_stanza_qpm():
         results_pos_tag = results_pos_tag,
         results_pos_tag_universal = results_pos_tag,
         results_lemmatize = ['kážom', 'nǽko', ',', 'de', '!'],
-        results_dependency_parse = [('Kážyjte', 'Kážyjte', 'root', 0), ('nǽko', 'Kážyjte', 'det', -1), (',', 'de', 'punct', 1), ('de', 'Kážyjte', 'vocative', -3), ('!', 'Kážyjte', 'punct', -4)]
+        results_dependency_parse = [('Kážyjte', 'Kážyjte', 'root', 0), ('nǽko', 'Kážyjte', 'obj', -1), (',', 'Kážyjte', 'punct', -2), ('de', 'Kážyjte', 'conj', -3), ('!', 'Kážyjte', 'punct', -4)]
     )
 
 if __name__ == '__main__':

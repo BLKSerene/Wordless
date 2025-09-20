@@ -78,6 +78,16 @@ def test_syl_tokenize(lang, syl_tokenizer):
     # Tokenization should not be modified
     assert len(syls_tokens_tokenized) == len(tokens)
 
+    # Newlines
+    tokens_newlines = wl_syl_tokenization.wl_syl_tokenize(
+        main,
+        inputs = wl_test_lang_examples.TEXT_NEWLINES,
+        lang = lang,
+        syl_tokenizer = syl_tokenizer
+    )
+
+    assert wl_texts.to_token_texts(tokens_newlines) + ['\n'] == list(wl_test_lang_examples.TEXT_NEWLINES)
+
     # Tagged
     main.settings_custom['files']['tags']['body_tag_settings'] = [['Embedded', 'Part of speech', '_*', 'N/A']]
 

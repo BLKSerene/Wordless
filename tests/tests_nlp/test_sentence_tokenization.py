@@ -45,6 +45,84 @@ langs_sentence_split = list(main.settings_global['sentence_tokenizers'])
 
 @pytest.mark.parametrize('lang, sentence_tokenizer', langs_sentence_tokenize)
 def test_sentence_tokenize(lang, sentence_tokenizer):
+    tests_lang_util_skipped = False
+
+    match lang:
+        case 'ces':
+            results = ['Čeština neboli český jazyk je západoslovanský jazyk, nejbližší slovenštině, poté lužické srbštině a polštině.', 'Patří mezi slovanské jazyky, do rodiny jazyků indoevropských.']
+        case 'dan':
+            results = ['Dansk er et østnordisk sprog indenfor den germanske gren af den indoeuropæiske sprogfamilie.', 'Det danske sprog tales af ca. seks millioner mennesker, hovedsageligt i Danmark, men også i Sydslesvig, på Færøerne og Grønland.', '[1]']
+        case 'nld':
+            results = ['Het Nederlands is een West-Germaanse taal, de meest gebruikte taal in Nederland en België, de officiële taal van Suriname en een van de drie officiële talen van België.', 'Binnen het Koninkrijk der Nederlanden is het Nederlands ook een officiële taal van Aruba, Curaçao en Sint-Maarten.']
+        case 'eng_gb' | 'eng_us' | 'other':
+            match sentence_tokenizer:
+                case 'nltk_punkt_eng':
+                    results = ['English is a West Germanic language in the Indo-European language family, whose speakers, called Anglophones, originated in early medieval England on the island of Great Britain.', '[4][5][6] The namesake of the language is the Angles, one of the Germanic peoples that migrated to Britain after its Roman occupiers left.']
+                case 'spacy_sentencizer':
+                    results = ['English is a West Germanic language in the Indo-European language family, whose speakers, called Anglophones, originated in early medieval England on the island of Great Britain.[4][5][6] The namesake of the language is the Angles, one of the Germanic peoples that migrated to Britain after its Roman occupiers left.']
+                case _:
+                    tests_lang_util_skipped = True
+        case 'est':
+            results = ['Eesti keel (varasem nimetus maakeel) on läänemeresoome lõunarühma kuuluv keel.', 'Eesti keel on Eesti riigikeel ja 2004. aastast ka üks Euroopa Liidu ametlikke keeli.']
+        case 'fin':
+            results = ['Suomen kieli eli suomi on uralilaisten kielten itämerensuomalaiseen ryhmään kuuluva kieli, jota puhuvat pääosin suomalaiset.', 'Suomessa suomen kieltä puhuu äidinkielenään 4,8 miljoonaa ja toisena kielenään 0,5 miljoonaa ihmistä.']
+        case 'fra':
+            results = ['Le français est une langue indo-européenne de la famille des langues romanes dont les locuteurs sont appelés « francophones ».', "Il est la cinquième langue parlée au monde après l'anglais, le mandarin, le hindi et l'espagnol."]
+        case 'deu_at' | 'deu_de' | 'deu_ch':
+            results = ['Die deutsche Sprache oder Deutsch [dɔɪ̯tʃ][24] ist eine westgermanische Sprache, die weltweit etwa 90 bis 105 Millionen Menschen als Muttersprache und weiteren rund 80 Millionen als Zweit- oder Fremdsprache dient.', 'Das Deutsche ist eine plurizentrische Sprache, enthält also mehrere Standardvarietäten in verschiedenen Regionen.']
+        case 'ell':
+            results = ['Η ελληνική γλώσσα ανήκει στην ινδοευρωπαϊκή οικογένεια[9] secεπίσης στο βαλκανικό γλωσσικό δεσμό.', 'ελληνική γλώσσα, έχουμε γραπτά κείμενα ήδη από τον 15ο αιώνα π.Χ..']
+        case 'ita':
+            results = ["L'italiano è una lingua romanza parlata principalmente in Italia.", "Per ragioni storiche e geografiche, l'italiano è la lingua romanza meno divergente dal latino (complessivamente a pari merito, anche se in parametri diversi, con la lingua sarda).", '[2][3][4][5]']
+        case 'khm':
+            results = ['ភាសាខ្មែរ គឺជាភាសាកំណើតរបស់ជនជាតិខ្មែរនិងជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា។', 'ភាសាសំស្ក្រឹតនិងភាសាបាលីបានជួយបង្កើតខេមរភាសា ព្រោះភាសាខ្មែរបានខ្ចីពាក្យច្រើនពីភាសាទាំងពីរនេះ។']
+        case 'lao':
+            results = ['ພາສາລາວສືບທອດມາຈາກພາສາຕະກຸນໄຕ-ກະໄດ ຢູ່ພາກໃຕ້ຂອງປະເທດຈີນ ເຊິ່ງເປັນຈຸດເດີມຂອງຫຼາຍພາສາໃນຕະກຸນນີ້ທີ່ຍັງຖືກໃຊ້ ແລະ ຖືກເວົ້າຢູ່ໂດຍຫຼາຍຊົນເຜົ່າໃນປັດຈຸບັນ.', 'ເນື່ອງຈາກຖືກຄວາມກົດດັນຈາກການຂະຫຍາຍຕົວຂອງອານາຈັກຈີນ, ການບຸກຮຸກຮານຂອງຊາວມົງໂກລີ ແລະ ການປູກຝັງທຳມາຫາກິນ, ຄົນໄຕ (ໄທ) ໄດ້ຍົກຍ້າຍລົງມາທາງໃຕ້ກະຈາຍໄປຕາມແຫຼ່ງທໍາມາຫາກິນທີ່ເໝາະສົມກັບຕົນ.']
+        case 'mal':
+            results = ['ഇതു ദ്രാവിഡ ഭാഷാ കുടുംബത്തിൽപ്പെടുന്നു.', 'ഇന്ത്യയിൽ ശ്രേഷ്ഠഭാഷാ പദവി ലഭിക്കുന്ന അഞ്ചാമത്തെ ഭാഷയാണ് മലയാളം[5].']
+        case 'nob':
+            results = ['Bokmål er en av to offisielle målformer av norsk skriftspråk, hvorav den andre er nynorsk.', 'I skrift har 87,3 % bokmål som hovedmål i skolen.', '[3]']
+        case 'pol':
+            results = ['Język polski, polszczyzna – język lechicki z grupy zachodniosłowiańskiej (do której należą również czeski, kaszubski, słowacki, języki łużyckie czy wymarły język drzewiański), stanowiącej część rodziny indoeuropejskiej.', 'Jest językiem urzędowym w Polsce oraz należy do oficjalnych języków Unii Europejskiej.']
+        case 'por_br' | 'por_pt':
+            results = ['A língua portuguesa, também designada português, é uma língua indo-europeia românica flexiva ocidental originada no galego-português falado no Reino da Galiza e no norte de Portugal.', 'Com a criação do Reino de Portugal em 1139 e a expansão para o sul na sequência da Reconquista, deu-se a difusão da língua pelas terras conquistadas e, mais tarde, com as descobertas portuguesas, para o Brasil, África e outras partes do mundo.', '[9]']
+        case 'rus':
+            results = ['Русский язык (МФА: [ˈruskʲɪɪ̯ ɪ̯ɪˈzɨk]о файле)[~ 3] — язык восточнославянской группы славянской ветви индоевропейской языковой семьи, национальный язык русского народа.', 'Является одним из наиболее распространённых языков мира — восьмым среди всех языков мира по общей численности говорящих[5] и седьмым по численности владеющих им как родным (2022)[2].']
+        case 'srp_cyrl':
+            results = ['Српски језик припада словенској групи језика породице индоевропских језика.[12] Српски језик је званичан у Србији, Босни и Херцеговини и Црној Гори и говори га око 12 милиона људи.[13]']
+        case 'srp_latn':
+            results = ['Srpski jezik pripada slovenskoj grupi jezika porodice indoevropskih jezika.[12] Srpski jezik je zvaničan u Srbiji, Bosni i Hercegovini i Crnoj Gori i govori ga oko 12 miliona ljudi.[13]']
+        case 'slv':
+            results = ['Slovenščina [sloˈʋenʃtʃina] je združeni naziv za uradni knjižni jezik Slovencev in skupno ime za narečja in govore, ki jih govorijo ali so jih nekoč govorili Slovenci.', 'Govori ga okoli 2,5 (dva in pol) milijona govorcev po svetu, od katerih jih večina živi v Sloveniji.']
+        case 'spa':
+            results = ['El español o castellano es una lengua romance procedente del latín hablado, perteneciente a la familia de lenguas indoeuropeas.', 'Forma parte del grupo ibérico y es originaria de Castilla, reino medieval de la península ibérica.']
+        case 'swe':
+            results = ['Svenska (svenska\u2009(fil)) är ett östnordiskt språk som talas av ungefär tio miljoner personer, främst i Sverige där språket har en dominant ställning som huvudspråk, men även som det ena nationalspråket i Finland och som enda officiella språk på Åland.', 'I övriga Finland talas det som modersmål framförallt i de finlandssvenska kustområdena i Österbotten, Åboland och Nyland.']
+        case 'tha':
+            match sentence_tokenizer:
+                case 'pythainlp_crfcut':
+                    results = ['ภาษาไทย หรือ ภาษาไทยกลาง เป็นภาษาในกลุ่มภาษาไท สาขาย่อยเชียงแสน ซึ่งเป็นกลุ่มย่อยของตระกูลภาษาขร้า-ไท และเป็นภาษาราชการ และภาษาประจำชาติของประเทศไทย[3][4]', 'มีการสันนิษฐานว่าภาษาในตระกูลนี้มีถิ่นกำเนิดจากทางตอนใต้ของประเทศจีน และนักภาษาศาสตร์บางส่วนเสนอว่า ภาษาไทยน่าจะมีความเชื่อมโยงกับตระกูลภาษาออสโตร-เอเชียติก', 'ตระกูลภาษาออสโตรนีเซียน และตระกูลภาษาจีน-ทิเบต']
+                case 'pythainlp_thaisumcut':
+                    results = ['ภาษาไทย', 'หรือ ภาษาไทยกลาง เป็นภาษาในกลุ่มภาษาไท สาขาย่อยเชียงแสน', 'ซึ่งเป็นกลุ่มย่อยของตระกูลภาษาขร้า-ไท และเป็นภาษาราชการ', 'และภาษาประจำชาติของประเทศไทย[3][4] มีการสันนิษฐานว่าภาษาในตระกูลนี้มีถิ่นกำเนิดจากทางตอนใต้ของประเทศจีน', 'และนักภาษาศาสตร์บางส่วนเสนอว่า ภาษาไทยน่าจะมีความเชื่อมโยงกับตระกูลภาษาออสโตร-เอเชียติก ตระกูลภาษาออสโตรนีเซียน และตระกูลภาษาจีน-ทิเบต']
+                case _:
+                    tests_lang_util_skipped = True
+        case 'xct' | 'bod':
+            results = ['བོད་ཀྱི་སྐད་ཡིག་ནི་བོད་ཡུལ་དང་ཉེ་འཁོར་གྱི་ས་ཁུལ་བལ་ཡུལ། འབྲུག་དང་འབྲས་ལྗོངས། ལ་དྭགས་ནས་ལྷོ་མོན་རོང་སོགས་སུ་བེད་སྤྱོད་བྱེད་པའི་སྐད་ཡིག་དེ།', 'ད་ཆར་ཡོངས་གྲགས་སུ་བོད་ཀྱི་ཡུལ་གྲུ་སྟོད་སྨད་བར་གསུམ་ལ་ལྟོས་ཏེ་ནང་གསེས་རིགས་གསུམ་དུ་ཕྱེ་བ་སྟེ།']
+        case 'tur':
+            results = ["Türkçe ya da Türk dili, Güneydoğu Avrupa ve Batı Asya'da konuşulan, Türk dilleri dil ailesine ait sondan eklemeli bir dildir.", '[10] Türk dilleri ailesinin Oğuz dilleri grubundan bir Batı Oğuz dili olan Osmanlı Türkçesinin devamını oluşturur.']
+        case 'vie':
+            results = ['Tiếng Việt hay tiếng Kinh là một ngôn ngữ thuộc ngữ hệ Nam Á, được công nhận là ngôn ngữ chính thức tại Việt Nam.', 'Đây là tiếng mẹ đẻ của khoảng 85% dân cư Việt Nam cùng với hơn 4 triệu người Việt kiều.']
+        case _:
+            raise wl_test_init.Wl_Exc_Tests_Lang_Skipped(lang)
+
+    if tests_lang_util_skipped:
+        raise wl_test_init.Wl_Exc_Tests_Lang_Util_Skipped(sentence_tokenizer)
+
+    wl_test_sentence_tokenize_models(lang, sentence_tokenizer, results)
+
+def wl_test_sentence_tokenize_models(lang, sentence_tokenizer, results):
+    print(f'{lang} / {sentence_tokenizer}:')
+
     sentences = wl_sentence_tokenization.wl_sentence_tokenize(
         main,
         text = ''.join(getattr(wl_test_lang_examples, f'TEXT_{lang.upper()}')),
@@ -52,97 +130,74 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
         sentence_tokenizer = sentence_tokenizer
     )
 
-    print(f'{lang} / {sentence_tokenizer}:')
     print(f'{sentences}\n')
 
     # The count of sentences should be exactly 2
     match lang:
+        case 'ara' | 'chu' | 'cop' | 'fro' | 'pcm' | 'qpm':
+            assert len(sentences) == 1
+        case 'hrv':
+            if sentence_tokenizer == 'spacy_sentence_recognizer_hrv':
+                assert len(sentences) == 1
+            else:
+                assert len(sentences) == 2
         case 'dan' | 'ita' | 'nob' | 'por_br' | 'por_pt':
             assert len(sentences) == 3
         case 'eng_gb' | 'eng_us' | 'srp_cyrl' | 'srp_latn' | 'other':
             if sentence_tokenizer == 'spacy_sentencizer':
                 assert len(sentences) == 1
+            else:
+                assert len(sentences) == 2
+        case 'ell':
+            match sentence_tokenizer:
+                case 'spacy_dependency_parser_ell':
+                    assert len(sentences) == 4
+                case 'spacy_sentence_recognizer_ell':
+                    assert len(sentences) == 3
+                case _:
+                    assert len(sentences) == 2
+        case 'swe':
+            if sentence_tokenizer == 'spacy_dependency_parser_swe':
+                assert len(sentences) == 3
+            else:
+                assert len(sentences) == 2
         case 'tha':
             match sentence_tokenizer:
                 case 'pythainlp_crfcut':
                     assert len(sentences) == 3
                 case 'pythainlp_thaisumcut':
                     assert len(sentences) == 5
+                case _:
+                    assert len(sentences) == 2
         case _:
             assert len(sentences) == 2
 
-    tests_lang_util_skipped = False
+    assert sentences == results
 
-    match lang:
-        case 'ces':
-            assert sentences == ['Čeština neboli český jazyk je západoslovanský jazyk, nejbližší slovenštině, poté lužické srbštině a polštině.', 'Patří mezi slovanské jazyky, do rodiny jazyků indoevropských.']
-        case 'dan':
-            assert sentences == ['Dansk er et østnordisk sprog indenfor den germanske gren af den indoeuropæiske sprogfamilie.', 'Det danske sprog tales af ca. seks millioner mennesker, hovedsageligt i Danmark, men også i Sydslesvig, på Færøerne og Grønland.', '[1]']
-        case 'nld':
-            assert sentences == ['Het Nederlands is een West-Germaanse taal, de meest gebruikte taal in Nederland en België, de officiële taal van Suriname en een van de drie officiële talen van België.', 'Binnen het Koninkrijk der Nederlanden is het Nederlands ook een officiële taal van Aruba, Curaçao en Sint-Maarten.']
-        case 'eng_gb' | 'eng_us' | 'other':
-            match sentence_tokenizer:
-                case 'nltk_punkt_eng':
-                    assert sentences == ['English is a West Germanic language in the Indo-European language family, whose speakers, called Anglophones, originated in early medieval England on the island of Great Britain.', '[4][5][6] The namesake of the language is the Angles, one of the Germanic peoples that migrated to Britain after its Roman occupiers left.']
-                case 'spacy_sentencizer':
-                    assert sentences == ['English is a West Germanic language in the Indo-European language family, whose speakers, called Anglophones, originated in early medieval England on the island of Great Britain.[4][5][6] The namesake of the language is the Angles, one of the Germanic peoples that migrated to Britain after its Roman occupiers left.']
-                case _:
-                    tests_lang_util_skipped = True
-        case 'est':
-            assert sentences == ['Eesti keel (varasem nimetus maakeel) on läänemeresoome lõunarühma kuuluv keel.', 'Eesti keel on Eesti riigikeel ja 2004. aastast ka üks Euroopa Liidu ametlikke keeli.']
-        case 'fin':
-            assert sentences == ['Suomen kieli eli suomi on uralilaisten kielten itämerensuomalaiseen ryhmään kuuluva kieli, jota puhuvat pääosin suomalaiset.', 'Suomessa suomen kieltä puhuu äidinkielenään 4,8 miljoonaa ja toisena kielenään 0,5 miljoonaa ihmistä.']
-        case 'fra':
-            assert sentences == ['Le français est une langue indo-européenne de la famille des langues romanes dont les locuteurs sont appelés « francophones ».', "Il est la cinquième langue parlée au monde après l'anglais, le mandarin, le hindi et l'espagnol."]
-        case 'deu_at' | 'deu_de' | 'deu_ch':
-            assert sentences == ['Die deutsche Sprache oder Deutsch [dɔɪ̯tʃ][24] ist eine westgermanische Sprache, die weltweit etwa 90 bis 105 Millionen Menschen als Muttersprache und weiteren rund 80 Millionen als Zweit- oder Fremdsprache dient.', 'Das Deutsche ist eine plurizentrische Sprache, enthält also mehrere Standardvarietäten in verschiedenen Regionen.']
-        case 'ell':
-            assert sentences == ['Η ελληνική γλώσσα ανήκει στην ινδοευρωπαϊκή οικογένεια[9] secεπίσης στο βαλκανικό γλωσσικό δεσμό.', 'ελληνική γλώσσα, έχουμε γραπτά κείμενα ήδη από τον 15ο αιώνα π.Χ..']
-        case 'ita':
-            assert sentences == ["L'italiano è una lingua romanza parlata principalmente in Italia.", "Per ragioni storiche e geografiche, l'italiano è la lingua romanza meno divergente dal latino (complessivamente a pari merito, anche se in parametri diversi, con la lingua sarda).", '[2][3][4][5]']
-        case 'khm':
-            assert sentences == ['ភាសាខ្មែរ គឺជាភាសាកំណើតរបស់ជនជាតិខ្មែរនិងជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា។', 'ភាសាសំស្ក្រឹតនិងភាសាបាលីបានជួយបង្កើតខេមរភាសា ព្រោះភាសាខ្មែរបានខ្ចីពាក្យច្រើនពីភាសាទាំងពីរនេះ។']
-        case 'lao':
-            assert sentences == ['ພາສາລາວສືບທອດມາຈາກພາສາຕະກຸນໄຕ-ກະໄດ ຢູ່ພາກໃຕ້ຂອງປະເທດຈີນ ເຊິ່ງເປັນຈຸດເດີມຂອງຫຼາຍພາສາໃນຕະກຸນນີ້ທີ່ຍັງຖືກໃຊ້ ແລະ ຖືກເວົ້າຢູ່ໂດຍຫຼາຍຊົນເຜົ່າໃນປັດຈຸບັນ.', 'ເນື່ອງຈາກຖືກຄວາມກົດດັນຈາກການຂະຫຍາຍຕົວຂອງອານາຈັກຈີນ, ການບຸກຮຸກຮານຂອງຊາວມົງໂກລີ ແລະ ການປູກຝັງທຳມາຫາກິນ, ຄົນໄຕ (ໄທ) ໄດ້ຍົກຍ້າຍລົງມາທາງໃຕ້ກະຈາຍໄປຕາມແຫຼ່ງທໍາມາຫາກິນທີ່ເໝາະສົມກັບຕົນ.']
-        case 'mal':
-            assert sentences == ['ഇതു ദ്രാവിഡ ഭാഷാ കുടുംബത്തിൽപ്പെടുന്നു.', 'ഇന്ത്യയിൽ ശ്രേഷ്ഠഭാഷാ പദവി ലഭിക്കുന്ന അഞ്ചാമത്തെ ഭാഷയാണ് മലയാളം[5].']
-        case 'nob':
-            assert sentences == ['Bokmål er en av to offisielle målformer av norsk skriftspråk, hvorav den andre er nynorsk.', 'I skrift har 87,3 % bokmål som hovedmål i skolen.', '[3]']
-        case 'pol':
-            assert sentences == ['Język polski, polszczyzna – język lechicki z grupy zachodniosłowiańskiej (do której należą również czeski, kaszubski, słowacki, języki łużyckie czy wymarły język drzewiański), stanowiącej część rodziny indoeuropejskiej.', 'Jest językiem urzędowym w Polsce oraz należy do oficjalnych języków Unii Europejskiej.']
-        case 'por_br' | 'por_pt':
-            assert sentences == ['A língua portuguesa, também designada português, é uma língua indo-europeia românica flexiva ocidental originada no galego-português falado no Reino da Galiza e no norte de Portugal.', 'Com a criação do Reino de Portugal em 1139 e a expansão para o sul na sequência da Reconquista, deu-se a difusão da língua pelas terras conquistadas e, mais tarde, com as descobertas portuguesas, para o Brasil, África e outras partes do mundo.', '[9]']
-        case 'rus':
-            assert sentences == ['Русский язык (МФА: [ˈruskʲɪɪ̯ ɪ̯ɪˈzɨk]о файле)[~ 3] — язык восточнославянской группы славянской ветви индоевропейской языковой семьи, национальный язык русского народа.', 'Является одним из наиболее распространённых языков мира — восьмым среди всех языков мира по общей численности говорящих[5] и седьмым по численности владеющих им как родным (2022)[2].']
-        case 'srp_cyrl':
-            assert sentences == ['Српски језик припада словенској групи језика породице индоевропских језика.[12] Српски језик је званичан у Србији, Босни и Херцеговини и Црној Гори и говори га око 12 милиона људи.[13]']
-        case 'srp_latn':
-            assert sentences == ['Srpski jezik pripada slovenskoj grupi jezika porodice indoevropskih jezika.[12] Srpski jezik je zvaničan u Srbiji, Bosni i Hercegovini i Crnoj Gori i govori ga oko 12 miliona ljudi.[13]']
-        case 'slv':
-            assert sentences == ['Slovenščina [sloˈʋenʃtʃina] je združeni naziv za uradni knjižni jezik Slovencev in skupno ime za narečja in govore, ki jih govorijo ali so jih nekoč govorili Slovenci.', 'Govori ga okoli 2,5 (dva in pol) milijona govorcev po svetu, od katerih jih večina živi v Sloveniji.']
-        case 'spa':
-            assert sentences == ['El español o castellano es una lengua romance procedente del latín hablado, perteneciente a la familia de lenguas indoeuropeas.', 'Forma parte del grupo ibérico y es originaria de Castilla, reino medieval de la península ibérica.']
-        case 'swe':
-            assert sentences == ['Svenska (svenska\u2009(fil)) är ett östnordiskt språk som talas av ungefär tio miljoner personer, främst i Sverige där språket har en dominant ställning som huvudspråk, men även som det ena nationalspråket i Finland och som enda officiella språk på Åland.', 'I övriga Finland talas det som modersmål framförallt i de finlandssvenska kustområdena i Österbotten, Åboland och Nyland.']
-        case 'tha':
-            match sentence_tokenizer:
-                case 'pythainlp_crfcut':
-                    assert sentences == ['ภาษาไทย หรือ ภาษาไทยกลาง เป็นภาษาในกลุ่มภาษาไท สาขาย่อยเชียงแสน ซึ่งเป็นกลุ่มย่อยของตระกูลภาษาขร้า-ไท และเป็นภาษาราชการ และภาษาประจำชาติของประเทศไทย[3][4]', 'มีการสันนิษฐานว่าภาษาในตระกูลนี้มีถิ่นกำเนิดจากทางตอนใต้ของประเทศจีน และนักภาษาศาสตร์บางส่วนเสนอว่า ภาษาไทยน่าจะมีความเชื่อมโยงกับตระกูลภาษาออสโตร-เอเชียติก', 'ตระกูลภาษาออสโตรนีเซียน และตระกูลภาษาจีน-ทิเบต']
-                case 'pythainlp_thaisumcut':
-                    assert sentences == ['ภาษาไทย', 'หรือ ภาษาไทยกลาง เป็นภาษาในกลุ่มภาษาไท สาขาย่อยเชียงแสน', 'ซึ่งเป็นกลุ่มย่อยของตระกูลภาษาขร้า-ไท และเป็นภาษาราชการ', 'และภาษาประจำชาติของประเทศไทย[3][4] มีการสันนิษฐานว่าภาษาในตระกูลนี้มีถิ่นกำเนิดจากทางตอนใต้ของประเทศจีน', 'และนักภาษาศาสตร์บางส่วนเสนอว่า ภาษาไทยน่าจะมีความเชื่อมโยงกับตระกูลภาษาออสโตร-เอเชียติก ตระกูลภาษาออสโตรนีเซียน และตระกูลภาษาจีน-ทิเบต']
-                case _:
-                    tests_lang_util_skipped = True
-        case 'xct' | 'bod':
-            assert sentences == ['བོད་ཀྱི་སྐད་ཡིག་ནི་བོད་ཡུལ་དང་ཉེ་འཁོར་གྱི་ས་ཁུལ་བལ་ཡུལ། འབྲུག་དང་འབྲས་ལྗོངས། ལ་དྭགས་ནས་ལྷོ་མོན་རོང་སོགས་སུ་བེད་སྤྱོད་བྱེད་པའི་སྐད་ཡིག་དེ།', 'ད་ཆར་ཡོངས་གྲགས་སུ་བོད་ཀྱི་ཡུལ་གྲུ་སྟོད་སྨད་བར་གསུམ་ལ་ལྟོས་ཏེ་ནང་གསེས་རིགས་གསུམ་དུ་ཕྱེ་བ་སྟེ།']
-        case 'tur':
-            assert sentences == ["Türkçe ya da Türk dili, Güneydoğu Avrupa ve Batı Asya'da konuşulan, Türk dilleri dil ailesine ait sondan eklemeli bir dildir.", '[10] Türk dilleri ailesinin Oğuz dilleri grubundan bir Batı Oğuz dili olan Osmanlı Türkçesinin devamını oluşturur.']
-        case 'vie':
-            assert sentences == ['Tiếng Việt hay tiếng Kinh là một ngôn ngữ thuộc ngữ hệ Nam Á, được công nhận là ngôn ngữ chính thức tại Việt Nam.', 'Đây là tiếng mẹ đẻ của khoảng 85% dân cư Việt Nam cùng với hơn 4 triệu người Việt kiều.']
-        case _:
-            raise wl_test_init.Wl_Exc_Tests_Lang_Skipped(lang)
+    # Newlines
+    sentences = wl_sentence_tokenization.wl_sentence_tokenize(
+        main,
+        text = wl_test_lang_examples.TEXT_NEWLINES,
+        lang = lang,
+        sentence_tokenizer = sentence_tokenizer
+    )
 
-    if tests_lang_util_skipped:
-        raise wl_test_init.Wl_Exc_Tests_Lang_Util_Skipped(sentence_tokenizer)
+    assert sentences == list(wl_test_lang_examples.TEXT_NEWLINES.replace('\n', ''))
+
+    # Long
+    if sentence_tokenizer.startswith(('spacy_', 'stanza_')) or sentence_tokenizer in ('modern_botok_bod',):
+        main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = 99
+
+        tokens_long = wl_sentence_tokenization.wl_sentence_tokenize(
+            main,
+            text = '\n'.join(wl_test_lang_examples.TOKENS_LONG),
+            lang = lang,
+            sentence_tokenizer = sentence_tokenizer
+        )
+
+        assert tokens_long == list(wl_test_lang_examples.TOKENS_LONG)
+
+        main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = main.settings_default['files']['misc_settings']['read_files_in_chunks_chars']
 
 def test_sentence_terminators():
     num_sentence_terminators = len(wl_sentence_tokenization.SENTENCE_TERMINATORS)
