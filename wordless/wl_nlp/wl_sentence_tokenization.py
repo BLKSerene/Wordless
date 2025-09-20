@@ -27,10 +27,7 @@ import nltk
 import pythainlp
 import underthesea
 
-from wordless.wl_nlp import (
-    wl_nlp_utils,
-    wl_texts
-)
+from wordless.wl_nlp import wl_nlp_utils
 from wordless.wl_utils import wl_conversion
 
 LANG_TEXTS_NLTK = {
@@ -61,6 +58,7 @@ LANG_TEXTS_NLTK = {
     'other': 'english'
 }
 
+# No need to preserve newlines for word tokenization and Settings - Sentence Tokenization - Preview
 def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
     sentences = []
 
@@ -80,16 +78,16 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
         sentence_tokenizer = sentence_tokenizer
     )
 
-    lines = text.splitlines()
-
     # spaCy
     if sentence_tokenizer.startswith('spacy_'):
         # Dependency parsers
         if sentence_tokenizer.startswith('spacy_dependency_parser_'):
-            pipelines_disabled = ('tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler', 'senter')
+            pipelines_to_disable = ('senter', 'sentencizer', 'tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler')
         # Sentence recognizers and sentencizer
-        else:
-            pipelines_disabled = ('tagger', 'morphologizer', 'parser', 'lemmatizer', 'attribute_ruler')
+        elif sentence_tokenizer.startswith('spacy_sentence_recognizer_'):
+            pipelines_to_disable = ('sentencizer', 'tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler', 'parser')
+        elif sentence_tokenizer == 'spacy_sentencizer':
+            pipelines_to_disable = ('senter', 'tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler', 'parser')
 
         if sentence_tokenizer == 'spacy_sentencizer':
             nlp = main.__dict__['spacy_nlp_sentencizer']
@@ -98,11 +96,27 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
 
         with nlp.select_pipes(disable = (
             pipeline
-            for pipeline in pipelines_disabled
+            for pipeline in pipelines_to_disable
             if nlp.has_pipe(pipeline)
         )):
-            for doc in nlp.pipe(lines):
-                sentences.extend((sentence.text for sentence in doc.sents))
+            # Calling nlp.pipe on lists of lines is much slower
+            for doc in nlp.pipe(wl_nlp_utils.split_text(main, text, sentence_tokenizer)):
+                for sentence in doc.sents:
+                    sentence_tokens = []
+
+                    for token in sentence:
+                        # Split sentences by newlines
+                        for _ in range(token.text.count('\n')):
+                            if sentence_tokens:
+                                sentences.append(''.join(sentence_tokens))
+
+                            sentence_tokens.clear()
+
+                        if token.text.replace('\n', ''):
+                            sentence_tokens.append(token.text_with_ws)
+
+                    if sentence_tokens:
+                        sentences.append(''.join(sentence_tokens))
     # Stanza
     elif sentence_tokenizer.startswith('stanza_'):
         if lang not in ('zho_cn', 'zho_tw'):
@@ -112,10 +126,11 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
 
         nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
 
-        for doc in nlp.bulk_process(lines):
+        # Calling nlp.bulk_process on pre-split texts has no performance gains
+        for doc in nlp.bulk_process(wl_nlp_utils.clean_texts(text.splitlines())):
             sentences.extend((sentence.text for sentence in doc.sentences))
     else:
-        for line in lines:
+        for line in wl_nlp_utils.clean_texts(text.splitlines()):
             # NLTK
             if sentence_tokenizer.startswith('nltk_punkt'):
                 sentences.extend(nltk.sent_tokenize(line, language = LANG_TEXTS_NLTK[lang]))
@@ -152,7 +167,7 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
     if lang == 'srp_cyrl' and sentence_tokenizer == 'stanza_srp_latn':
         sentences = wl_nlp_utils.to_srp_cyrl(sentences)
 
-    return wl_texts.clean_texts(sentences)
+    return wl_nlp_utils.clean_texts(sentences)
 
 # References:
 #     https://stackoverflow.com/questions/9506869/are-there-character-collections-for-all-international-full-stop-punctuations/9508766#9508766
@@ -332,6 +347,6 @@ def wl_sentence_seg_tokenize_tokens(main, tokens, re_terminators = RE_SENTENCE_S
     text = REPLACEMENT_CHAR.join(tokens)
 
     return [
-        wl_texts.clean_texts(sentence_seg.split(REPLACEMENT_CHAR))
+        wl_nlp_utils.clean_texts(sentence_seg.split(REPLACEMENT_CHAR))
         for sentence_seg in re_terminators.findall(text.strip())
     ]

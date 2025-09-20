@@ -57,6 +57,7 @@ from wordless.wl_utils import (
 )
 
 LANGS_WITHOUT_SPACES = ('mya', 'lzh', 'zho_cn', 'zho_tw', 'khm', 'lao', 'jpn', 'tha', 'xct', 'bod')
+RE_SPLIT_NEWLINES = re.compile(r'(\n)')
 
 _tr = QtCore.QCoreApplication.translate
 is_windows = wl_misc.check_os()[0]
@@ -402,22 +403,20 @@ def init_model_spacy(main, lang, sentencizer_only = False):
             # Languages with models
             elif lang in LANGS_SPACY:
                 model_name = LANGS_SPACY[lang_spacy]
-                model = importlib.import_module(model_name)
 
                 # Exclude NER to boost speed
-                main.__dict__[f'spacy_nlp_{lang}'] = model.load(exclude = ['ner'])
+                main.__dict__[f'spacy_nlp_{lang}'] = spacy.load(model_name, exclude = ['ner'])
 
-                # Transformer-based models do not have sentence recognizer
+                # Transformer-based models do not have sentence recognizers
                 if not model_name.endswith('_trf'):
                     main.__dict__[f'spacy_nlp_{lang}'].enable_pipe('senter')
 
-                if lang == 'other':
-                    main.__dict__[f'spacy_nlp_{lang}'].add_pipe('sentencizer', config = sentencizer_config)
+                main.__dict__[f'spacy_nlp_{lang}'].add_pipe('sentencizer', config = sentencizer_config)
             # Languages without models
             else:
                 main.__dict__[f'spacy_nlp_{lang}'] = spacy.blank(wl_conversion.to_iso_639_1(main, lang_spacy))
 
-                # Add sentencizer and lemmatizer
+                # Add sentencizer and lemmatizer if available
                 main.__dict__[f'spacy_nlp_{lang}'].add_pipe('sentencizer', config = sentencizer_config)
 
                 if lang in LANGS_SPACY_LEMMATIZERS:
@@ -459,7 +458,7 @@ def init_model_stanza(main, lang, lang_util, tokenized = False):
                 dir = model_dir,
                 package = 'default',
                 processors = processors,
-                download_method = None,
+                download_method = stanza.DownloadMethod.REUSE_RESOURCES,
                 tokenize_pretokenized = tokenized
             )
 
@@ -740,26 +739,73 @@ def to_sections_unequal(tokens, section_size):
     for i in range(0, len(tokens), section_size):
         yield tokens[i : i + section_size]
 
-# Read text in chunks to avoid memory error
-def split_into_chunks_text(text, section_size):
-    # Split text into paragraphs excluding the last empty one
-    paras = text.splitlines(keepends = True)
-
-    for section in to_sections_unequal(paras, section_size):
-        yield ''.join(section)
-
-# Split long list of tokens
-def split_token_list(main, inputs, nlp_util):
-    section_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks']
-
-    # Split tokens into sub-lists as inputs of SudachiPy cannot be more than 49149 BYTES
-    if nlp_util in ('spacy_jpn', 'sudachipy_jpn') and sum((len(token) for token in inputs)) > 49149 // 4:
-        # Around 6 characters per token and 4 bytes per character (≈ 49149 / 4 / 6)
-        texts = to_sections_unequal(inputs, section_size = 2000)
+def clean_texts(texts,  remove_newlines_within = False):
+    if remove_newlines_within:
+        return [
+            text_clean
+            for text in texts
+            # Also replace newlines within text with whitespace
+            if (text_clean := re.sub(r'\s*\n\s*', ' ', text).strip())
+        ]
     else:
-        texts = to_sections_unequal(inputs, section_size = section_size * 100)
+        return [
+            text_clean
+            for text in texts
+            if (text_clean := text.strip())
+        ]
 
-    return texts
+# Split text by paragraphs to fit limit size of spaCy and avoid memory error
+def split_text(main, text, nlp_util):
+    num_chars = 0
+    text_section = []
+
+    # Inputs of SudachiPy cannot be more than 49149 bytes
+    if nlp_util in ('spacy_jpn', 'sudachipy_jpn'):
+        chunk_size = min(49149 // 4, main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'])
+    else:
+        chunk_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars']
+
+    for line in text.splitlines(keepends = True):
+        len_line = len(line)
+
+        if num_chars + len_line > chunk_size:
+            yield ''.join(text_section)
+
+            num_chars = 0
+            text_section.clear()
+
+        text_section.append(line)
+        num_chars += len_line
+
+    # Last section
+    if text_section:
+        yield ''.join(text_section)
+
+def split_tokens(main, tokens, nlp_util):
+    num_chars = 0
+    token_section = []
+
+    # Inputs of SudachiPy cannot be more than 49149 bytes
+    if nlp_util in ('spacy_jpn', 'sudachipy_jpn'):
+        chunk_size = min(49149 // 4, main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'])
+    else:
+        chunk_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars']
+
+    for token in tokens:
+        len_token = len(token)
+
+        if num_chars + len_token > chunk_size:
+            yield token_section.copy()
+
+            num_chars = 0
+            token_section.clear()
+
+        token_section.append(token)
+        num_chars += len_token
+
+    # Last section
+    if token_section:
+        yield token_section.copy()
 
 # N-grams
 # Reference: https://more-itertools.readthedocs.io/en/stable/_modules/more_itertools/recipes.html#sliding_window

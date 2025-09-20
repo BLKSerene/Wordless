@@ -78,18 +78,15 @@ def test_syl_tokenize(lang, syl_tokenizer):
     # Tokenization should not be modified
     assert len(syls_tokens_tokenized) == len(tokens)
 
-    # Tagged
-    main.settings_custom['files']['tags']['body_tag_settings'] = [['Embedded', 'Part of speech', '_*', 'N/A']]
-
-    tokens_tagged = wl_syl_tokenization.wl_syl_tokenize(
+    # Newlines
+    tokens_newlines = wl_syl_tokenization.wl_syl_tokenize(
         main,
-        inputs = [wl_texts.Wl_Token(token, tag = '_TEST') for token in tokens],
+        inputs = wl_test_lang_examples.TEXT_NEWLINES,
         lang = lang,
         syl_tokenizer = syl_tokenizer
     )
-    syls_tokens_tagged = [token.syls for token in tokens_tagged]
 
-    assert syls_tokens_tagged == syls_tokens_tokenized
+    assert wl_texts.to_token_texts(tokens_newlines) + ['\n'] == list(wl_test_lang_examples.TEXT_NEWLINES)
 
     # Long
     tokens_long = wl_syl_tokenization.wl_syl_tokenize(
@@ -101,18 +98,6 @@ def test_syl_tokenize(lang, syl_tokenizer):
     syls_tokens_long = [token.syls for token in tokens_long]
 
     assert syls_tokens_long == [(token,) for token in wl_test_lang_examples.TOKENS_LONG]
-
-    # Syllabified
-    syls_tokens_orig = [('te', 'st')]
-    tokens_syllabified = wl_syl_tokenization.wl_syl_tokenize(
-        main,
-        inputs = wl_texts.to_tokens(['test'], lang = lang, syls_tokens = syls_tokens_orig),
-        lang = lang,
-        syl_tokenizer = syl_tokenizer
-    )
-    syls_tokens_syllabified = [token.syls for token in tokens_syllabified]
-
-    assert syls_tokens_syllabified == syls_tokens_orig
 
     match lang:
         case 'afr':
@@ -230,6 +215,28 @@ def test_syl_tokenize(lang, syl_tokenizer):
         raise wl_test_init.Wl_Exc_Tests_Lang_Util_Skipped(syl_tokenizer)
 
 def test_syl_tokenize_misc():
+    # Lemmatized
+    lemmas = ['test'] * 10
+    tokens_lemmatized = wl_syl_tokenization.wl_syl_tokenize(
+        main,
+        inputs = wl_texts.to_tokens(['test'] * len(lemmas), lemmas = lemmas),
+        lang = 'eng_us'
+    )
+
+    # The preassigned lemmas should not be modified
+    assert wl_texts.get_token_properties(tokens_lemmatized, 'lemma') == lemmas
+    assert wl_texts.get_token_properties(tokens_lemmatized, 'syls') == [('test',) for _ in range(len(lemmas))]
+
+    # Syllabified
+    syls_tokens = [('te', 'st')] * 10
+    tokens_syllabified = wl_syl_tokenization.wl_syl_tokenize(
+        main,
+        inputs = wl_texts.to_tokens(['test'] * len(syls_tokens), syls_tokens = syls_tokens),
+        lang = 'eng_us'
+    )
+
+    assert wl_texts.get_token_properties(tokens_syllabified, 'syls') == syls_tokens
+
     # Unsupported languages
     wl_syl_tokenization.wl_syl_tokenize(
         main,
@@ -239,7 +246,7 @@ def test_syl_tokenize_misc():
 
     wl_syl_tokenization.wl_syl_tokenize(
         main,
-        inputs = [wl_texts.Wl_Token('test', lang = 'other')],
+        inputs = [wl_texts.Wl_Token('test')],
         lang = 'other'
     )
 

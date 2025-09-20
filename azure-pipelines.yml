@@ -51,9 +51,6 @@ jobs:
 
       - script: |
           :: Run some tests separately to reduce memory usage
-          pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
-          pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
-
           pytest tests/tests_nlp/test_dependency_parsing.py
           pytest tests/tests_nlp/test_lemmatization.py
           pytest tests/tests_nlp/test_matching.py
@@ -112,9 +109,6 @@ jobs:
 
       - script: |
           # Run some tests separately to reduce memory usage
-          pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
-          pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
-
           pytest tests/tests_nlp/test_dependency_parsing.py
           pytest tests/tests_nlp/test_lemmatization.py
           pytest tests/tests_nlp/test_matching.py
@@ -176,9 +170,6 @@ jobs:
           export QT_QPA_PLATFORM=offscreen
 
           # Run some tests separately to reduce memory usage
-          pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
-          pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
-
           pytest tests/tests_nlp/test_dependency_parsing.py
           pytest tests/tests_nlp/test_lemmatization.py
           pytest tests/tests_nlp/test_matching.py

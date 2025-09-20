@@ -16,7 +16,10 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from tests import wl_test_init
+from tests import (
+    wl_test_init,
+    wl_test_lang_examples
+)
 from wordless.wl_settings import wl_settings_sentiment_analysis
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
@@ -33,17 +36,25 @@ def test_wl_settings_sentiment_analysis():
     main.settings_sentiment_analysis.preview_changed()
 
     main.settings_sentiment_analysis.preview_results_changed()
-    main.settings_sentiment_analysis.update_gui(0.123456789)
+    main.settings_sentiment_analysis.update_gui('0.123456789')
     main.settings_sentiment_analysis.update_gui_err()
 
 def test_wl_worker_preview_sentiment_analyzer():
+    main.settings_custom['sentiment_analysis']['preview']['preview_samples'] = wl_test_lang_examples.TEXT_NEWLINES
     preview_lang = main.settings_custom['sentiment_analysis']['preview']['preview_lang']
     sentiment_analyzer = main.settings_custom['sentiment_analysis']['sentiment_analyzer_settings'][preview_lang]
 
-    wl_settings_sentiment_analysis.Wl_Worker_Preview_Sentiment_Analyzer(
+    worker = wl_settings_sentiment_analysis.Wl_Worker_Preview_Sentiment_Analyzer(
         main,
         sentiment_analyzer = sentiment_analyzer
-    ).run()
+    )
+    worker.finished.connect(update_gui_newlines)
+    worker.run()
+
+def update_gui_newlines(preview_results):
+    precision = main.settings_custom['tables']['precision_settings']['precision_decimals']
+
+    assert preview_results == wl_test_lang_examples.TEXT_NEWLINES.replace('0', f'{0:.{precision}f}')
 
 if __name__ == '__main__':
     test_wl_settings_sentiment_analysis()

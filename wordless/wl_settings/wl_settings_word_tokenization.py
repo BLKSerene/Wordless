@@ -183,8 +183,8 @@ class Wl_Settings_Word_Tokenization(wl_settings.Wl_Settings_Node):
         self.button_abort.setEnabled(False)
 
     def update_gui(self, preview_results):
-        if preview_results != [None]:
-            self.text_edit_preview_results.setPlainText('\n'.join(preview_results))
+        if preview_results:
+            self.text_edit_preview_results.setPlainText(preview_results)
 
         self.update_gui_err()
 
@@ -245,7 +245,7 @@ class Wl_Settings_Word_Tokenization(wl_settings.Wl_Settings_Node):
 RE_VIE_SPECES_UNDERSCORES = re.compile(r'\s+')
 
 class Wl_Worker_Preview_Word_Tokenizer(wl_threading.Wl_Worker_No_Progress):
-    finished = QtCore.pyqtSignal(list)
+    finished = QtCore.pyqtSignal(str)
 
     def run(self):
         preview_results = []
@@ -262,7 +262,7 @@ class Wl_Worker_Preview_Word_Tokenizer(wl_threading.Wl_Worker_No_Progress):
 
         for para in tokens_multilevel:
             if not self._running:
-                preview_results = [None]
+                preview_results = ''
 
                 break
 
@@ -273,5 +273,11 @@ class Wl_Worker_Preview_Word_Tokenizer(wl_threading.Wl_Worker_No_Progress):
                 tokens = [RE_VIE_SPECES_UNDERSCORES.sub(r'_', token) for token in tokens]
 
             preview_results.append(' '.join(tokens))
+
+        preview_results = '\n'.join(preview_results)
+
+        # Add a newline at the end
+        if preview_samples.endswith('\n'):
+            preview_results += '\n'
 
         self.finished.emit(preview_results)

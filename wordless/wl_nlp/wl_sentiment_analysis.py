@@ -41,8 +41,10 @@ def wl_sentiment_analyze(main, inputs, lang, sentiment_analyzer = 'default'):
             tokenized = not isinstance(inputs[0], str)
         )
 
+        # Only for Settings - Sentiment Analysis - Preview
         if isinstance(inputs[0], str):
             sentiment_scores = wl_sentiment_analyze_text(main, inputs, lang, sentiment_analyzer)
+        # Only for Concordancer - Sentiment Score
         else:
             sentiment_scores = wl_sentiment_analyze_tokens(main, inputs, lang, sentiment_analyzer)
     else:
@@ -50,7 +52,7 @@ def wl_sentiment_analyze(main, inputs, lang, sentiment_analyzer = 'default'):
 
     return sentiment_scores
 
-def wl_sentiment_analyze_text(main, inputs, lang, sentiment_analyzer):
+def wl_sentiment_analyze_text(main, sentences, lang, sentiment_analyzer):
     sentiment_scores = []
 
     # Stanza
@@ -62,38 +64,45 @@ def wl_sentiment_analyze_text(main, inputs, lang, sentiment_analyzer):
 
         nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
 
-        for sentence_input in inputs:
-            # If the input is split into multiple sentences, use the sentiment with the highest frequency as the sentiment score of the input
-            sentiments = []
+        for sentence in sentences:
+            if (sentence := sentence.strip()):
+                # If the input is split into multiple sentences, use the sentiment with the highest frequency as the sentiment score of the input
+                sentiments = []
 
-            for sentence in nlp(sentence_input).sentences:
-                sentiments.append(sentence.sentiment)
+                for sentenge_seg in nlp(sentence).sentences:
+                    sentiments.append(sentenge_seg.sentiment)
 
-            if sentiments:
                 sentiment_scores.append(collections.Counter(sentiments).most_common(1)[0][0] - 1)
             else:
-                sentiment_scores.append(0)
+                sentiment_scores.append(None)
     # VADER
     elif sentiment_analyzer == 'vader_eng':
         analyzer = vaderSentiment.vaderSentiment.SentimentIntensityAnalyzer()
 
-        for sentence in inputs:
-            sentiment_scores.append(analyzer.polarity_scores(sentence)['compound'])
+        for sentence in sentences:
+            if (sentence := sentence.strip()):
+                sentiment_scores.append(analyzer.polarity_scores(sentence)['compound'])
+            else:
+                sentiment_scores.append(None)
     # Vietnamese
     elif sentiment_analyzer == 'underthesea_vie':
-        for sentence in inputs:
-            sentiment = underthesea.sentiment(sentence) # pylint: disable=no-member
+        for sentence in sentences:
+            if (sentence := sentence.strip()):
+                sentiment = underthesea.sentiment(sentence) # pylint: disable=no-member
 
-            if sentiment == 'positive':
-                sentiment_scores.append(1)
-            elif sentiment == 'negative':
-                sentiment_scores.append(-1)
+                match sentiment:
+                    case 'positive':
+                        sentiment_scores.append(1)
+                    case 'negative':
+                        sentiment_scores.append(-1)
+                    case _:
+                        sentiment_scores.append(0)
             else:
-                sentiment_scores.append(0)
+                sentiment_scores.append(None)
 
     return sentiment_scores
 
-def wl_sentiment_analyze_tokens(main, inputs, lang, sentiment_analyzer):
+def wl_sentiment_analyze_tokens(main, sentences, lang, sentiment_analyzer):
     sentiment_scores = []
 
     # Stanza
@@ -105,13 +114,13 @@ def wl_sentiment_analyze_tokens(main, inputs, lang, sentiment_analyzer):
 
         nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
 
-        for tokens_input in inputs:
+        for sentence_tokens in sentences:
             # If the input is too long, use the sentiment with the highest frequency as the sentiment score of the input
             sentiments = []
 
             for doc in nlp.bulk_process([
                 [wl_texts.to_token_texts(tokens)]
-                for tokens in wl_nlp_utils.split_token_list(main, tokens_input, sentiment_analyzer)
+                for tokens in wl_nlp_utils.split_tokens(main, sentence_tokens, sentiment_analyzer)
             ]):
                 for sentence in doc.sentences:
                     sentiments.append(sentence.sentiment)
@@ -121,8 +130,8 @@ def wl_sentiment_analyze_tokens(main, inputs, lang, sentiment_analyzer):
             else:
                 sentiment_scores.append(0)
     else:
-        inputs = (' '.join(tokens) for tokens in inputs)
+        sentences = (' '.join(tokens) for tokens in sentences)
 
-        sentiment_scores = wl_sentiment_analyze_text(main, inputs, lang, sentiment_analyzer)
+        sentiment_scores = wl_sentiment_analyze_text(main, sentences, lang, sentiment_analyzer)
 
     return sentiment_scores

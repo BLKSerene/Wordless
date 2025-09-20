@@ -18,10 +18,6 @@
 
 from tests.tests_nlp.tests_stanza import test_stanza
 from tests import wl_test_init
-from wordless.wl_nlp import (
-    wl_dependency_parsing,
-    wl_word_tokenization
-)
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'stanza')
 
@@ -47,44 +43,6 @@ def test_stanza_other():
         results_word_tokenize = results_word_tokenize
     )
 
-def test_stanza_punc_marks():
-    test_sentence = 'Hi, take it!'
-
-    tokens_untokenized = wl_dependency_parsing.wl_dependency_parse(
-        main,
-        inputs = test_sentence,
-        lang = 'eng_us',
-    )
-    dds_untokenized = [
-        (str(token), str(token.head), token.dependency_relation, token.dd, token.dd_no_punc)
-        for token in tokens_untokenized
-    ]
-
-    tokens = wl_word_tokenization.wl_word_tokenize_flat(
-        main,
-        text = test_sentence,
-        lang = 'eng_us'
-    )
-
-    tokens_tokenized = wl_dependency_parsing.wl_dependency_parse(
-        main,
-        inputs = tokens,
-        lang = 'eng_us'
-    )
-
-    dds_tokenized = [
-        (str(token), str(token.head), token.dependency_relation, token.dd, token.dd_no_punc)
-        for token in tokens_tokenized
-    ]
-
-    print('eng_us / stanza_eng:')
-    print(dds_untokenized)
-    print(dds_tokenized)
-
-    assert dds_untokenized == dds_tokenized == [('Hi', 'take', 'discourse', 2, 1), (',', 'Hi', 'punct', -1, -1), ('take', 'take', 'root', 0, 0), ('it', 'take', 'obj', -1, -1), ('!', 'take', 'punct', -2, -1)]
-
 if __name__ == '__main__':
     test_stanza_eng()
     test_stanza_other()
-
-    test_stanza_punc_marks()

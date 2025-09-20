@@ -21,12 +21,12 @@ from tests.tests_nlp.tests_stanza import test_stanza
 def test_stanza_orv():
     test_stanza.wl_test_stanza(
         lang = 'orv',
-        results_sentence_tokenize = ['шаибатъ же ѿ бедерѧ г҃ мсци', 'а ѿ дабылѧ до шаибата в҃ мсца', 'моремъ итьти'],
+        results_sentence_tokenize = ['шаибатъ же ѿ бедерѧ г҃ мсци', 'а ѿ дабылѧ до шаибата в҃ мсца моремъ итьти'],
         results_word_tokenize = ['шаибатъ', 'же', 'ѿ', 'бедерѧ', 'г҃', 'мсци'],
         results_pos_tag = [('шаибатъ', 'Ne'), ('же', 'Df'), ('ѿ', 'R-'), ('бедерѧ', 'Ne'), ('г҃', 'Ma'), ('мсци', 'Nb')],
         results_pos_tag_universal = [('шаибатъ', 'PROPN'), ('же', 'ADV'), ('ѿ', 'ADP'), ('бедерѧ', 'PROPN'), ('г҃', 'NUM'), ('мсци', 'NOUN')],
         results_lemmatize = ['шаибатъ', 'же', 'отъ', 'бедерь', 'трие', 'мѣсяць'],
-        results_dependency_parse = [('шаибатъ', 'шаибатъ', 'root', 0), ('же', 'шаибатъ', 'discourse', -1), ('ѿ', 'бедерѧ', 'case', 1), ('бедерѧ', 'шаибатъ', 'nmod', -3), ('г҃', 'мсци', 'nummod', 1), ('мсци', 'шаибатъ', 'orphan', -5)]
+        results_dependency_parse = [('шаибатъ', 'шаибатъ', 'root', 0), ('же', 'шаибатъ', 'discourse', -1), ('ѿ', 'бедерѧ', 'case', 1), ('бедерѧ', 'шаибатъ', 'orphan', -3), ('г҃', 'мсци', 'nummod', 1), ('мсци', 'шаибатъ', 'orphan', -5)]
     )
 
 if __name__ == '__main__':

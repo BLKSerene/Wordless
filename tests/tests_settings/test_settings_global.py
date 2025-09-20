@@ -96,6 +96,16 @@ def check_invalid_default_lang_utils(lang_utils, lang_utils_default, util_type):
     for lang, lang_util in lang_utils_default.items():
         assert lang_util in lang_utils[lang], f'Invalid default value for default {util_type}: {lang} - {lang_util}!'
 
+        # Prefer Stanza over spaCy since their accuracy are comparable but spaCy's transformer models are much slower
+        if (
+            not (
+                lang in ('tha', 'vie', 'other')
+                and util_type in ('sentence tokenizers', 'word tokenizers', 'POS taggers', 'sentiment analyzers')
+            )
+            and any(('stanza_' in util for util in lang_utils[lang]))
+        ):
+            assert lang_util.startswith('stanza_'), f'Stanza not set as the default {util_type}: {lang} - {lang_util}!'
+
 def check_lang_order(main, langs, util_type):
     langs_global = [lang_code[0] for lang_code in main.settings_global['langs'].values()]
 

@@ -103,7 +103,7 @@ def test_lemmatize(lang, lemmatizer):
         case 'eng_gb' | 'eng_us':
             match lemmatizer:
                 case 'nltk_wordnet':
-                    results = ['English', 'be', 'a', 'West', 'Germanic', 'language', 'in', 'the', 'Indo', '-', 'European', 'language', 'family', ',', 'whose', 'speaker', ',', 'call', 'Anglophones', ',', 'originate', 'in', 'early', 'medieval', 'England', 'on', 'the', 'island', 'of', 'Great', 'Britain.[4][5][6', ']']
+                    results = ['English', 'be', 'a', 'West', 'Germanic', 'language', 'in', 'the', 'Indo', '-', 'European', 'language', 'family', ',', 'whose', 'speaker', ',', 'call', 'Anglophones', ',', 'originate', 'in', 'early', 'medieval', 'England', 'on', 'the', 'island', 'of', 'Great', 'Britain', '.', '[', '4', ']', '[', '5', ']', '[', '6', ']']
                 case 'simplemma_eng':
                     results = ['English', 'be', 'a', 'west', 'germanic', 'language', 'in', 'the', 'Indo-European', 'language', 'family', ',', 'whose', 'speaker', ',', 'call', 'anglophone', ',', 'originate', 'in', 'early', 'medieval', 'England', 'on', 'the', 'island', 'of', 'great', 'Britain.', '[', '4', ']', '[', '5', ']', '[', '6', ']']
                 case _:
@@ -258,9 +258,13 @@ def test_lemmatize(lang, lemmatizer):
     if tests_lang_util_skipped:
         raise wl_test_init.Wl_Exc_Tests_Lang_Util_Skipped(lemmatizer)
 
-    wl_test_lemmatize_models(lang, lemmatizer, test_sentence, tokens, results)
+    wl_test_lemmatize_models(lang, lemmatizer, tokens, results)
 
-def wl_test_lemmatize_models(lang, lemmatizer, test_sentence, tokens, results, lang_excs = ()):
+def wl_test_lemmatize_models(lang, lemmatizer, tokens, results):
+    print(f'{lang} / {lemmatizer}:')
+
+    test_sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
+
     # Untokenized
     tokens_untokenized = wl_lemmatization.wl_lemmatize(
         main,
@@ -268,9 +272,8 @@ def wl_test_lemmatize_models(lang, lemmatizer, test_sentence, tokens, results, l
         lang = lang,
         lemmatizer = lemmatizer
     )
-    lemmas_untokenized = [token.lemma for token in tokens_untokenized]
+    lemmas_untokenized = wl_texts.get_token_properties(tokens_untokenized, 'lemma')
 
-    print(f'{lang} / {lemmatizer}:')
     print(f'{lemmas_untokenized}\n')
 
     # Tokenized
@@ -280,7 +283,7 @@ def wl_test_lemmatize_models(lang, lemmatizer, test_sentence, tokens, results, l
         lang = lang,
         lemmatizer = lemmatizer
     )
-    lemmas_tokenized = [token.lemma for token in tokens_tokenized]
+    lemmas_tokenized = wl_texts.get_token_properties(tokens_tokenized, 'lemma')
 
     assert lemmas_untokenized == results
 
@@ -293,59 +296,46 @@ def wl_test_lemmatize_models(lang, lemmatizer, test_sentence, tokens, results, l
     # Tokenization should not be modified
     assert len(tokens) == len(lemmas_tokenized)
 
-    # Tagged
-    main.settings_custom['files']['tags']['body_tag_settings'] = [['Embedded', 'Part of speech', '_*', 'N/A']]
-
-    tokens_tagged = wl_lemmatization.wl_lemmatize(
+    # Newlines
+    tokens_newlines = wl_lemmatization.wl_lemmatize(
         main,
-        inputs = [wl_texts.Wl_Token(token, tag = '_TEST') for token in tokens],
+        inputs = wl_test_lang_examples.TEXT_NEWLINES,
         lang = lang,
         lemmatizer = lemmatizer
     )
-    lemmas_tagged = [token.lemma for token in tokens_tagged]
 
-    assert lemmas_tagged == lemmas_tokenized
+    assert wl_texts.to_token_texts(tokens_newlines) == list(wl_test_lang_examples.TEXT_NEWLINES)
 
     # Long
-    tokens_long = wl_lemmatization.wl_lemmatize(
-        main,
-        inputs = wl_texts.to_tokens(wl_test_lang_examples.TOKENS_LONG, lang = lang),
-        lang = lang,
-        lemmatizer = lemmatizer
-    )
-    lemmas_long = [token.lemma for token in tokens_long]
+    if lemmatizer.startswith(('spacy_', 'stanza_')) or lemmatizer in ('modern_botok_bod', 'sudachipy_jpn'):
+        main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = 99
 
-    if lang in lang_excs:
-        assert len(lemmas_long) == 101 * 10
-    else:
-        assert lemmas_long == wl_test_lang_examples.TOKENS_LONG
+        tokens_long = wl_lemmatization.wl_lemmatize(
+            main,
+            inputs = '\n'.join(wl_test_lang_examples.TOKENS_LONG),
+            lang = lang,
+            lemmatizer = lemmatizer
+        )
 
-    # Lemmatized
-    lemmas_orig = ['tests']
-    tokens_lemmatized = wl_lemmatization.wl_lemmatize(
-        main,
-        inputs = wl_texts.to_tokens(['test'], lang = lang, lemmas = lemmas_orig),
-        lang = lang,
-        lemmatizer = lemmatizer
-    )
-    lemmas_lemmatized = [token.lemma for token in tokens_lemmatized]
+        tokens_long_lemmatized = wl_test_lang_examples.TOKENS_LONG.copy()
 
-    assert lemmas_lemmatized == lemmas_orig
+        for i in reversed(range(1, len(tokens_long_lemmatized))):
+            tokens_long_lemmatized.insert(i, '\n')
+
+        assert wl_texts.to_token_texts(tokens_long) == tokens_long_lemmatized
+
+        tokens_long = wl_lemmatization.wl_lemmatize(
+            main,
+            inputs = wl_texts.to_tokens(wl_test_lang_examples.TOKENS_LONG, lang = lang),
+            lang = lang,
+            lemmatizer = lemmatizer
+        )
+
+        assert wl_texts.to_token_texts(tokens_long) == wl_test_lang_examples.TOKENS_LONG
+
+        main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = main.settings_default['files']['misc_settings']['read_files_in_chunks_chars']
 
 def test_lemmatize_misc():
-    # Unsupported languages
-    wl_lemmatization.wl_lemmatize(
-        main,
-        inputs = 'test',
-        lang = 'other'
-    )
-
-    wl_lemmatization.wl_lemmatize(
-        main,
-        inputs = [wl_texts.Wl_Token('test', lang = 'other')],
-        lang = 'other'
-    )
-
     # NLTK - WordNet lemmatizer
     wl_lemmatization.wl_lemmatize(
         main,
@@ -359,6 +349,44 @@ def test_lemmatize_misc():
         inputs = wl_texts.to_tokens(['happy', 'John', 'happily', 'take', 'a'], lang = 'eng_us'),
         lang = 'eng_us',
         lemmatizer = 'nltk_wordnet'
+    )
+
+    # Tagged
+    main.settings_custom['files']['tags']['body_tag_settings'] = [['Embedded', 'Part of speech', '_*', 'N/A']]
+    tags = ['_TEST'] * 10
+
+    tokens_tagged = wl_lemmatization.wl_lemmatize(
+        main,
+        inputs = wl_texts.to_tokens(['test'] * len(tags), tags = tags),
+        lang = 'eng_us'
+    )
+
+    # The preassigned tags should not be modified
+    assert wl_texts.get_token_properties(tokens_tagged, 'tag') == tags
+    assert wl_texts.get_token_properties(tokens_tagged, 'lemma') == ['test'] * len(tags)
+
+    # Lemmatized
+    lemmas_orig = ['lemma']
+    tokens_lemmatized = wl_lemmatization.wl_lemmatize(
+        main,
+        inputs = wl_texts.to_tokens(['test'], lemmas = lemmas_orig),
+        lang = 'eng_us'
+    )
+
+    # The preassigned lemmas should not be modified
+    assert wl_texts.get_token_properties(tokens_lemmatized, 'lemma') == lemmas_orig
+
+    # Unsupported languages
+    wl_lemmatization.wl_lemmatize(
+        main,
+        inputs = 'test',
+        lang = 'other'
+    )
+
+    wl_lemmatization.wl_lemmatize(
+        main,
+        inputs = [wl_texts.Wl_Token('test')],
+        lang = 'other'
     )
 
 if __name__ == '__main__':

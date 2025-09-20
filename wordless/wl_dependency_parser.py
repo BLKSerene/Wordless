@@ -491,15 +491,14 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data):
 
                     htmls.extend(wl_dependency_parsing.wl_dependency_parse_fig(
                         self.main,
-                        inputs = sentence,
+                        inputs = [sentence],
                         lang = file_selected['lang'],
                         show_pos_tags = fig_settings['show_pos_tags'],
                         show_fine_grained_pos_tags = fig_settings['show_fine_grained_pos_tags'],
                         show_lemmas = fig_settings['show_pos_tags'] and fig_settings['show_lemmas'],
                         # Handled by Token Settings - Punctuation marks
                         collapse_punc_marks = False,
-                        compact_mode = fig_settings['compact_mode'],
-                        show_in_separate_tabs = fig_settings['show_in_separate_tabs'],
+                        compact_mode = fig_settings['compact_mode']
                     ))
 
                     sentences_rendered.add(sentence)

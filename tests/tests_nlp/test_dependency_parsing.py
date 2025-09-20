@@ -24,6 +24,7 @@ from tests import (
 )
 from wordless.wl_nlp import (
     wl_dependency_parsing,
+    wl_nlp_utils,
     wl_texts,
     wl_word_tokenization
 )
@@ -39,6 +40,7 @@ for lang, dependency_parsers in main.settings_global['dependency_parsers'].items
 
 @pytest.mark.parametrize('lang, dependency_parser', test_dependency_parsers)
 def test_dependency_parse(lang, dependency_parser):
+    tests_lang_util_skipped = False
     test_sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
 
     tokens = wl_word_tokenization.wl_word_tokenize_flat(
@@ -47,10 +49,21 @@ def test_dependency_parse(lang, dependency_parser):
         lang = lang
     )
 
-    wl_test_dependency_parse_models(lang, dependency_parser, test_sentence, tokens, '')
-    wl_test_dependency_parse_fig_models(lang, dependency_parser, test_sentence, tokens)
+    match lang:
+        case _:
+            raise wl_test_init.Wl_Exc_Tests_Lang_Skipped(lang)
 
-def wl_test_dependency_parse_models(lang, dependency_parser, test_sentence, tokens, results):
+    if tests_lang_util_skipped:
+        raise wl_test_init.Wl_Exc_Tests_Lang_Util_Skipped(dependency_parser)
+
+    wl_test_dependency_parse_models(lang, dependency_parser, tokens, '')
+    wl_test_dependency_parse_fig_models(lang, dependency_parser, tokens)
+
+def wl_test_dependency_parse_models(lang, dependency_parser, tokens, results):
+    print(f'{lang} / {dependency_parser}:')
+
+    test_sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
+
     # Untokenized
     tokens_untokenized = wl_dependency_parsing.wl_dependency_parse(
         main,
@@ -63,7 +76,6 @@ def wl_test_dependency_parse_models(lang, dependency_parser, test_sentence, toke
         for token in tokens_untokenized
     ]
 
-    print(f'{lang} / {dependency_parser}:')
     print(f'{dependencies_untokenized}\n')
 
     # Tokenized
@@ -92,109 +104,83 @@ def wl_test_dependency_parse_models(lang, dependency_parser, test_sentence, toke
     # Tokenization should not be modified
     assert len(tokens) == len(dependencies_tokenized)
 
-    # Tagged
-    main.settings_custom['files']['tags']['body_tag_settings'] = [['Embedded', 'Part of speech', '_*', 'N/A']]
-
-    tokens_tagged = wl_dependency_parsing.wl_dependency_parse(
+    # Newlines
+    tokens_newlines = wl_dependency_parsing.wl_dependency_parse(
         main,
-        inputs = [wl_texts.Wl_Token(token, tag = '_TEST') for token in tokens],
+        inputs = wl_test_lang_examples.TEXT_NEWLINES,
         lang = lang,
         dependency_parser = dependency_parser
     )
-    dependencies_tagged = [
-        (str(token), str(token.head), token.dependency_relation, token.dd)
-        for token in tokens_tagged
-    ]
 
-    assert dependencies_tagged == dependencies_tokenized
+    assert wl_texts.to_token_texts(tokens_newlines) == wl_nlp_utils.clean_texts(wl_test_lang_examples.TEXT_NEWLINES)
 
     # Long
-    tokens_long = wl_dependency_parsing.wl_dependency_parse(
-        main,
-        inputs = wl_texts.to_tokens(wl_test_lang_examples.TOKENS_LONG, lang = lang),
-        lang = lang,
-        dependency_parser = dependency_parser
-    )
+    if dependency_parser.startswith(('spacy_', 'stanza_')):
+        main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = 99
 
-    assert [str(token) for token in tokens_long] == wl_test_lang_examples.TOKENS_LONG
+        tokens_long = wl_dependency_parsing.wl_dependency_parse(
+            main,
+            inputs = '\n'.join(wl_test_lang_examples.TOKENS_LONG),
+            lang = lang,
+            dependency_parser = dependency_parser
+        )
 
-    # Parsed
-    heads_orig = ['test_head']
-    tokens_parsed = wl_dependency_parsing.wl_dependency_parse(
-        main,
-        inputs = wl_texts.to_tokens(['test'], lang = lang, heads = heads_orig),
-        lang = lang,
-        dependency_parser = dependency_parser
-    )
+        assert wl_texts.to_token_texts(tokens_long) == wl_test_lang_examples.TOKENS_LONG
 
-    assert [str(token.head) for token in tokens_parsed] == heads_orig
+        tokens_long = wl_dependency_parsing.wl_dependency_parse(
+            main,
+            inputs = wl_texts.to_tokens(wl_test_lang_examples.TOKENS_LONG, lang = lang),
+            lang = lang,
+            dependency_parser = dependency_parser
+        )
 
-def wl_test_dependency_parse_fig_models(lang, dependency_parser, test_sentence, tokens):
-    print(f'{lang} / {dependency_parser} (figure)')
+        assert wl_texts.to_token_texts(tokens_long) == wl_test_lang_examples.TOKENS_LONG
+
+        main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = main.settings_default['files']['misc_settings']['read_files_in_chunks_chars']
+
+def wl_test_dependency_parse_fig_models(lang, dependency_parser, tokens):
+    test_sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
 
     # Untokenized
     html_untokenized = wl_dependency_parsing.wl_dependency_parse_fig(
         main,
         inputs = test_sentence,
         lang = lang,
-        dependency_parser = dependency_parser,
-        show_in_separate_tabs = False
-    )
-    html_untokenized_separate_tabs = wl_dependency_parsing.wl_dependency_parse_fig(
-        main,
-        inputs = test_sentence,
-        lang = lang,
-        dependency_parser = dependency_parser,
-        show_in_separate_tabs = True
+        dependency_parser = dependency_parser
     )
 
     # Tokenized
     html_tokenized = wl_dependency_parsing.wl_dependency_parse_fig(
         main,
-        inputs = tokens,
+        inputs = [tokens],
         lang = lang,
-        dependency_parser = dependency_parser,
-        show_in_separate_tabs = False
-    )
-    html_tokenized_separate_tabs = wl_dependency_parsing.wl_dependency_parse_fig(
-        main,
-        inputs = tokens,
-        lang = lang,
-        dependency_parser = dependency_parser,
-        show_in_separate_tabs = True
+        dependency_parser = dependency_parser
     )
 
     # Check for empty HTMLs
     assert html_untokenized
-    assert html_untokenized_separate_tabs
     assert html_tokenized
-    assert html_tokenized_separate_tabs
 
-# RTL languages
-def test_dependency_parse_fig_rtl_langs():
-    html = wl_dependency_parsing.wl_dependency_parse_fig(
+    # Newlines
+    html_newlines = wl_dependency_parsing.wl_dependency_parse_fig(
         main,
-        inputs = 'test',
-        lang = 'ara'
-    )
-    html = wl_dependency_parsing.wl_dependency_parse_fig(
-        main,
-        inputs = [wl_texts.Wl_Token('test')],
-        lang = 'ara'
+        inputs = wl_test_lang_examples.TEXT_NEWLINES,
+        lang = lang,
+        dependency_parser = dependency_parser
     )
 
-    assert html
+    assert html_newlines
 
-def test__get_pipelines_disabled():
-    wl_dependency_parsing._get_pipelines_disabled(show_pos_tags = True, show_lemmas = True)
-    wl_dependency_parsing._get_pipelines_disabled(show_pos_tags = True, show_lemmas = False)
-    wl_dependency_parsing._get_pipelines_disabled(show_pos_tags = False, show_lemmas = True)
-    wl_dependency_parsing._get_pipelines_disabled(show_pos_tags = False, show_lemmas = False)
+def test__get_pipelines_to_disable():
+    wl_dependency_parsing._get_pipelines_to_disable(show_pos_tags = True, show_lemmas = True)
+    wl_dependency_parsing._get_pipelines_to_disable(show_pos_tags = True, show_lemmas = False)
+    wl_dependency_parsing._get_pipelines_to_disable(show_pos_tags = False, show_lemmas = True)
+    wl_dependency_parsing._get_pipelines_to_disable(show_pos_tags = False, show_lemmas = False)
 
 def test_wl_show_dependency_graphs():
     htmls = wl_dependency_parsing.wl_dependency_parse_fig(
         main,
-        inputs = 'test',
+        inputs = wl_test_lang_examples.TEXT_NEWLINES,
         lang = 'eng_us',
         dependency_parser = 'stanza_eng'
     )
@@ -202,10 +188,98 @@ def test_wl_show_dependency_graphs():
     wl_dependency_parsing.wl_show_dependency_graphs(main, htmls, show_in_separate_tabs = False)
     wl_dependency_parsing.wl_show_dependency_graphs(main, htmls, show_in_separate_tabs = True)
 
+def wl_test_dependency_parse_misc():
+    # Punctuation marks
+    test_sentence = 'Hi, take it!'
+
+    for dependency_parser in ('spacy_eng', 'stanza_eng'):
+        tokens_untokenized = wl_dependency_parsing.wl_dependency_parse(
+            main,
+            inputs = test_sentence,
+            lang = 'eng_us',
+            dependency_parser = dependency_parser
+        )
+
+        dds_untokenized = [
+            (str(token), str(token.head), token.dependency_relation, token.dd, token.dd_no_punc)
+            for token in tokens_untokenized
+        ]
+
+        tokens = wl_word_tokenization.wl_word_tokenize_flat(
+            main,
+            text = test_sentence,
+            lang = 'eng_us',
+        )
+
+        tokens_tokenized = wl_dependency_parsing.wl_dependency_parse(
+            main,
+            inputs = tokens,
+            lang = 'eng_us',
+            dependency_parser = dependency_parser
+        )
+
+        dds_tokenized = [
+            (str(token), str(token.head), token.dependency_relation, token.dd, token.dd_no_punc)
+            for token in tokens_tokenized
+        ]
+
+        print(f'eng_us / {dependency_parser}:')
+        print(dds_untokenized)
+        print(dds_tokenized)
+
+        match dependency_parser:
+            case 'spacy_eng':
+                assert dds_untokenized == dds_tokenized == [('Hi', 'take', 'intj', 2, 1), (',', 'take', 'punct', 1, 1), ('take', 'take', 'ROOT', 0, 0), ('it', 'take', 'dobj', -1, -1), ('!', 'take', 'punct', -2, -1)]
+            case 'stanza_eng':
+                assert dds_untokenized == dds_tokenized == [('Hi', 'take', 'discourse', 2, 1), (',', 'Hi', 'punct', -1, -1), ('take', 'take', 'root', 0, 0), ('it', 'take', 'obj', -1, -1), ('!', 'take', 'punct', -2, -1)]
+
+    # RTL languages
+    html_untokenized = wl_dependency_parsing.wl_dependency_parse_fig(
+        main,
+        inputs = 'test',
+        lang = 'ara'
+    )
+
+    html_tokenized = wl_dependency_parsing.wl_dependency_parse_fig(
+        main,
+        inputs = [[wl_texts.Wl_Token('test', lang = 'ara')]],
+        lang = 'ara'
+    )
+
+    assert html_untokenized
+    assert html_tokenized
+
+    # Lemmatized
+    lemmas = ['test'] * 10
+    tokens_lemmatized = wl_dependency_parsing.wl_dependency_parse(
+        main,
+        inputs = wl_texts.to_tokens(['test'] * len(lemmas), lemmas = lemmas),
+        lang = 'eng_us'
+    )
+    dependencies_lemmatized = [
+        (str(token), str(token.head), token.dependency_relation, token.dd)
+        for token in tokens_lemmatized
+    ]
+
+    # The preassigned lemmas should not be modified
+    assert wl_texts.get_token_properties(tokens_lemmatized, 'lemma') == lemmas
+    assert dependencies_lemmatized == [('test', 'test', 'compound', 1), ('test', 'test', 'compound', 1), ('test', 'test', 'compound', 1), ('test', 'test', 'compound', 1), ('test', 'test', 'compound', 1), ('test', 'test', 'compound', 4), ('test', 'test', 'compound', 3), ('test', 'test', 'compound', 2), ('test', 'test', 'compound', 1), ('test', 'test', 'root', 0)]
+
+    # Parsed
+    heads = [wl_texts.Wl_Token('head')] * 10
+    tokens_parsed = wl_dependency_parsing.wl_dependency_parse(
+        main,
+        inputs = wl_texts.to_tokens(['test'] * len(heads), heads = heads),
+        lang = 'eng_us'
+    )
+
+    # The preassigned dependencies should not be modified
+    assert wl_texts.get_token_properties(tokens_parsed, 'head') == heads
+
 if __name__ == '__main__':
     for lang, dependency_parser in test_dependency_parsers:
         test_dependency_parse(lang, dependency_parser)
 
-    test_dependency_parse_fig_rtl_langs()
-    test__get_pipelines_disabled()
+    test__get_pipelines_to_disable()
     test_wl_show_dependency_graphs()
+    wl_test_dependency_parse_misc()

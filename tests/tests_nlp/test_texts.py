@@ -109,9 +109,6 @@ def test_update_token_properties():
 
     assert wl_tokens_copy[0].tag == '_NN'
 
-def test_clean_texts():
-    assert wl_texts.clean_texts([' test ', ' ']) == ['test']
-
 def test_wl_text_total():
     text_1 = wl_test_init.Wl_Test_Text(main, tokens_multilevel = [], lang = 'eng_us', tagged = False)
     text_2 = wl_test_init.Wl_Test_Text(main, tokens_multilevel = [], lang = 'eng_gb', tagged = True)
@@ -141,6 +138,5 @@ if __name__ == '__main__':
     test_get_token_properties()
     test_set_token_properties()
     test_update_token_properties()
-    test_clean_texts()
 
     test_wl_text_total()

@@ -25,6 +25,7 @@ from PyQt5 import QtCore
 
 from wordless.wl_nlp import (
     wl_matching,
+    wl_nlp_utils,
     wl_sentence_tokenization,
     wl_word_tokenization
 )
@@ -219,13 +220,6 @@ def set_token_properties(tokens, name, vals):
 def update_token_properties(tokens, tokens_src):
     for token, token_src in zip(tokens, tokens_src):
         token.update_properties(token_src)
-
-def clean_texts(texts):
-    return [
-        text_clean
-        for text in texts
-        if (text_clean := text.strip())
-    ]
 
 # Texts
 class Wl_Text:
@@ -690,7 +684,7 @@ class Wl_Text_Ref(Wl_Text):
                         ]
 
         # Remove empty tokens and whitespace around tokens
-        self.tokens_multilevel[0][0][0] = clean_texts(self.tokens_multilevel[0][0][0])
+        self.tokens_multilevel[0][0][0] = wl_nlp_utils.clean_texts(self.tokens_multilevel[0][0][0])
         self.tokens_multilevel[0][0][0] = to_tokens(self.tokens_multilevel[0][0][0], self.lang)
 
         # Record number of tokens and types

@@ -528,7 +528,7 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data):
                 if settings['generation_settings']['calc_sentiment_scores']:
                     self.ins_header_hor(
                         3,
-                        self.tr('Sentiment score'),
+                        self.tr('Sentiment Score'),
                         is_float = True
                     )
 
@@ -911,9 +911,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                 settings['generation_settings']['calc_sentiment_scores']
                                 and text.lang in self.main.settings_global['sentiment_analyzers']
                             ):
-                                sentiment_inputs.append(' '.join(
-                                    [*left_tokens_search, *node_tokens_search, *right_tokens_search]
-                                ))
+                                sentiment_inputs.append([*left_tokens_search, *node_tokens_search, *right_tokens_search])
 
                             # Token No.
                             concordance_line.append([i + 1, text.num_tokens])

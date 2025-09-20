@@ -64,6 +64,7 @@ def wl_dependency_parse(main, inputs, lang, dependency_parser = 'default', force
             tokenized = not isinstance(inputs, str)
         )
 
+        # Currently not used
         if isinstance(inputs, str):
             if lang == 'srp_cyrl' and dependency_parser == 'stanza_srp_latn':
                 inputs = wl_nlp_utils.to_srp_latn((inputs,))[0]
@@ -82,6 +83,7 @@ def wl_dependency_parse(main, inputs, lang, dependency_parser = 'default', force
                 token.dd_no_punc = dd_no_punc
 
             return tokens
+        # For Profiler - Syntactic Complexity and Dependency Parser
         else:
             texts, token_properties = wl_texts.split_texts_properties(inputs)
 
@@ -102,7 +104,8 @@ def wl_dependency_parse(main, inputs, lang, dependency_parser = 'default', force
 
             return inputs
 
-def wl_dependency_parse_text(main, inputs, lang, dependency_parser):
+# No need to preserve newlines
+def wl_dependency_parse_text(main, text, lang, dependency_parser):
     tokens = []
     dependencies = []
 
@@ -112,12 +115,16 @@ def wl_dependency_parse_text(main, inputs, lang, dependency_parser):
 
         with nlp.select_pipes(disable = (
             pipeline
-            for pipeline in ('tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler', 'senter', 'sentencizer')
+            for pipeline in ('senter', 'sentencizer', 'tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler')
             if nlp.has_pipe(pipeline)
         )):
             i_head_start = 0
 
-            for doc in nlp.pipe(inputs.splitlines()):
+            # Calling nlp.pipe on lists of lines is much slower
+            for doc in nlp.pipe(wl_nlp_utils.clean_texts(
+                wl_nlp_utils.split_text(main, text, dependency_parser),
+                remove_newlines_within = True
+            )):
                 for sentence in doc.sents:
                     i_punc_marks = [
                         i
@@ -160,10 +167,10 @@ def wl_dependency_parse_text(main, inputs, lang, dependency_parser):
             lang_stanza = lang
 
         nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
-        lines = [line.strip() for line in inputs.splitlines() if line.strip()]
         i_head_start = 0
 
-        for doc in nlp.bulk_process(lines):
+        # Calling nlp.bulk_process on pre-split texts has no performance gains
+        for doc in nlp.bulk_process(wl_nlp_utils.clean_texts(text.splitlines())):
             for sentence in doc.sentences:
                 i_punc_marks = [
                     i
@@ -201,7 +208,7 @@ def wl_dependency_parse_text(main, inputs, lang, dependency_parser):
 
     return tokens, dependencies
 
-def wl_dependency_parse_tokens(main, inputs, lang, dependency_parser):
+def wl_dependency_parse_tokens(main, tokens, lang, dependency_parser):
     dependencies = []
 
     # spaCy
@@ -217,7 +224,7 @@ def wl_dependency_parse_tokens(main, inputs, lang, dependency_parser):
 
             for doc in nlp.pipe((
                 spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [True] * len(tokens))
-                for tokens in wl_nlp_utils.split_token_list(main, inputs, dependency_parser)
+                for tokens in wl_nlp_utils.split_tokens(main, tokens, dependency_parser)
             )):
                 for sentence in doc.sents:
                     i_punc_marks = [
@@ -263,7 +270,7 @@ def wl_dependency_parse_tokens(main, inputs, lang, dependency_parser):
 
         for doc in nlp.bulk_process([
             [tokens]
-            for tokens in wl_nlp_utils.split_token_list(main, inputs, dependency_parser)
+            for tokens in wl_nlp_utils.split_tokens(main, tokens, dependency_parser)
         ]):
             for sentence in doc.sentences:
                 i_punc_marks = [
@@ -304,8 +311,7 @@ def wl_dependency_parse_fig(
     main, inputs,
     lang, dependency_parser = 'default',
     show_pos_tags = True, show_fine_grained_pos_tags = False,
-    show_lemmas = False, collapse_punc_marks = True, compact_mode = False,
-    show_in_separate_tabs = False
+    show_lemmas = False, collapse_punc_marks = True, compact_mode = False
 ):
     if dependency_parser == 'default':
         dependency_parser = main.settings_custom['dependency_parsing']['dependency_parser_settings'][lang]
@@ -317,36 +323,36 @@ def wl_dependency_parse_fig(
         tokenized = not isinstance(inputs, str)
     )
 
+    # Only for Settings - Dependency Parsing - Preview
     if isinstance(inputs, str):
         htmls = wl_dependency_parse_fig_text(
             main, inputs,
             lang, dependency_parser,
             show_pos_tags, show_fine_grained_pos_tags,
-            show_lemmas, collapse_punc_marks, compact_mode,
-            show_in_separate_tabs
+            show_lemmas, collapse_punc_marks, compact_mode
         )
+    # Only for Dependency Parser - Generate figure
     else:
         htmls = wl_dependency_parse_fig_tokens(
             main, inputs,
             lang, dependency_parser,
             show_pos_tags, show_fine_grained_pos_tags,
-            show_lemmas, collapse_punc_marks, compact_mode,
-            show_in_separate_tabs
+            show_lemmas, collapse_punc_marks, compact_mode
         )
 
     return htmls
 
-def _get_pipelines_disabled(show_pos_tags, show_lemmas):
+def _get_pipelines_to_disable(show_pos_tags, show_lemmas):
     if show_pos_tags and show_lemmas:
-        pipelines_disabled = ('senter', 'sentencizer')
+        pipelines_to_disable = ('senter', 'sentencizer')
     elif show_pos_tags and not show_lemmas:
-        pipelines_disabled = ('lemmatizer', 'senter', 'sentencizer')
+        pipelines_to_disable = ('senter', 'sentencizer', 'lemmatizer')
     elif not show_pos_tags and show_lemmas:
-        pipelines_disabled = ('senter', 'sentencizer')
+        pipelines_to_disable = ('senter', 'sentencizer')
     elif not show_pos_tags and not show_lemmas:
-        pipelines_disabled = ('tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler', 'senter', 'sentencizer')
+        pipelines_to_disable = ('senter', 'sentencizer', 'tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler')
 
-    return pipelines_disabled
+    return pipelines_to_disable
 
 def to_displacy_sentence(lang, sentence, token_properties = None):
     words = []
@@ -430,11 +436,10 @@ def to_displacy_sentence(lang, sentence, token_properties = None):
     return spacy.tokens.Doc(nlp.vocab, words = words, tags = tags, pos = pos, lemmas = lemmas, heads = heads, deps = deps)
 
 def wl_dependency_parse_fig_text(
-    main, inputs,
+    main, text,
     lang, dependency_parser,
     show_pos_tags, show_fine_grained_pos_tags,
-    show_lemmas, collapse_punc_marks, compact_mode,
-    show_in_separate_tabs
+    show_lemmas, collapse_punc_marks, compact_mode
 ):
     htmls = []
 
@@ -451,31 +456,33 @@ def wl_dependency_parse_fig_text(
 
         with nlp.select_pipes(disable = (
             pipeline
-            for pipeline in _get_pipelines_disabled(show_pos_tags, show_lemmas)
+            for pipeline in _get_pipelines_to_disable(show_pos_tags, show_lemmas)
             if nlp.has_pipe(pipeline)
         )):
-            if show_in_separate_tabs:
-                for doc in nlp.pipe(inputs.splitlines()):
-                    for sentence in doc.sents:
+            # Calling nlp.pipe on lists of lines is much slower
+            for doc in nlp.pipe(wl_nlp_utils.split_text(main, text, dependency_parser)):
+                for sentence in doc.sents:
+                    span_start = 0
+
+                    for i, token in enumerate(sentence):
+                        if '\n' in token.text:
+                            if i > span_start:
+                                htmls.append(spacy.displacy.render(
+                                    doc[sentence.start + span_start : sentence.start + i],
+                                    style = 'dep',
+                                    minify = True,
+                                    options = options
+                                ))
+
+                            span_start = i + 1
+
+                    if span_start < len(sentence):
                         htmls.append(spacy.displacy.render(
-                            sentence,
+                            doc[sentence.start + span_start: sentence.end],
                             style = 'dep',
                             minify = True,
                             options = options
                         ))
-            else:
-                sentences = (
-                    sentence
-                    for doc in nlp.pipe(inputs.splitlines())
-                    for sentence in doc.sents
-                )
-
-                htmls.append(spacy.displacy.render(
-                    sentences,
-                    style = 'dep',
-                    minify = True,
-                    options = options
-                ))
     # Stanza
     # Reference: https://github.com/stanfordnlp/stanza/pull/1069/files
     elif dependency_parser.startswith('stanza_'):
@@ -486,41 +493,25 @@ def wl_dependency_parse_fig_text(
 
         nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
 
-        if show_in_separate_tabs:
-            for doc in nlp.bulk_process(inputs.splitlines()):
-                for sentence in doc.sentences:
-                    htmls.append(spacy.displacy.render(
-                        to_displacy_sentence(lang, sentence),
-                        style = 'dep',
-                        minify = True,
-                        options = options
-                    ))
-        else:
-            sentences = (
-                to_displacy_sentence(lang, sentence)
-                for doc in nlp.bulk_process(inputs.splitlines())
-                for sentence in doc.sentences
-            )
-
-            htmls.append(spacy.displacy.render(
-                sentences,
-                style = 'dep',
-                minify = True,
-                options = options
-            ))
+        # Calling nlp.bulk_process on pre-split texts has no performance gains
+        for doc in nlp.bulk_process(text.splitlines()):
+            for sentence in doc.sentences:
+                htmls.append(spacy.displacy.render(
+                    to_displacy_sentence(lang, sentence),
+                    style = 'dep',
+                    minify = True,
+                    options = options
+                ))
 
     return htmls
 
 def wl_dependency_parse_fig_tokens(
-    main, inputs,
+    main, sentences,
     lang, dependency_parser,
     show_pos_tags, show_fine_grained_pos_tags,
-    show_lemmas, collapse_punc_marks, compact_mode,
-    show_in_separate_tabs
+    show_lemmas, collapse_punc_marks, compact_mode
 ):
     htmls = []
-
-    inputs, token_properties = wl_texts.split_texts_properties(inputs)
 
     options = {
         'fine_grained': show_fine_grained_pos_tags,
@@ -535,56 +526,39 @@ def wl_dependency_parse_fig_tokens(
 
         with nlp.select_pipes(disable = (
             pipeline
-            for pipeline in _get_pipelines_disabled(show_pos_tags, show_lemmas)
+            for pipeline in _get_pipelines_to_disable(show_pos_tags, show_lemmas)
             if nlp.has_pipe(pipeline)
         )):
             docs = []
+            token_properties = []
 
-            for tokens in wl_nlp_utils.split_token_list(main, inputs, dependency_parser):
-                docs.append(spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [True] * len(tokens)))
+            for tokens in sentences:
+                texts, token_properties_sentence = wl_texts.split_texts_properties(tokens)
 
-            i_tag_start = 0
+                for token_section in wl_nlp_utils.split_tokens(main, texts, dependency_parser):
+                    docs.append(spacy.tokens.Doc(nlp.vocab, words = token_section, spaces = [True] * len(token_section)))
 
-            if show_in_separate_tabs:
-                for doc in nlp.pipe(docs):
-                    for sentence in doc.sents:
-                        displacy_dict = spacy.displacy.parse_deps(sentence, options = options)
+                token_properties.extend(token_properties_sentence)
 
-                        for token, word in zip(sentence, displacy_dict['words']):
-                            properties = token_properties[i_tag_start + token.i]
-                            word['text'] += (properties['punc_mark'] or '') + (properties['tag'] or '')
+            i_tag = 0
 
-                        htmls.append(spacy.displacy.render(
-                            displacy_dict,
-                            style = 'dep',
-                            minify = True,
-                            options = options,
-                            manual = True
-                        ))
+            for doc in nlp.pipe(docs):
+                for sentence in doc.sents:
+                    displacy_dict = spacy.displacy.parse_deps(sentence, options = options)
 
-                    i_tag_start += len(doc)
-            else:
-                sentences = []
+                    for token, word in zip(sentence, displacy_dict['words']):
+                        properties = token_properties[i_tag + token.i]
+                        word['text'] += (properties['punc_mark'] or '') + (properties['tag'] or '')
 
-                for doc in nlp.pipe(docs):
-                    for sentence in doc.sents:
-                        displacy_dict = spacy.displacy.parse_deps(sentence, options = options)
+                    htmls.append(spacy.displacy.render(
+                        displacy_dict,
+                        style = 'dep',
+                        minify = True,
+                        options = options,
+                        manual = True
+                    ))
 
-                        for token, word in zip(sentence, displacy_dict['words']):
-                            properties = token_properties[i_tag_start + token.i]
-                            word['text'] += (properties['punc_mark'] or '') + (properties['tag'] or '')
-
-                        sentences.append(displacy_dict)
-
-                    i_tag_start += len(doc)
-
-                htmls.append(spacy.displacy.render(
-                    sentences,
-                    style = 'dep',
-                    minify = True,
-                    options = options,
-                    manual = True
-                ))
+                i_tag += len(doc)
     # Stanza
     elif dependency_parser.startswith('stanza_'):
         if lang not in ('zho_cn', 'zho_tw'):
@@ -592,39 +566,37 @@ def wl_dependency_parse_fig_tokens(
         else:
             lang_stanza = lang
 
-        nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
+        docs = []
+        token_properties = []
 
-        sentences = []
+        for tokens in sentences:
+            texts, token_properties_sentence = wl_texts.split_texts_properties(tokens)
+
+            for token_section in wl_nlp_utils.split_tokens(main, texts, dependency_parser):
+                docs.append([token_section])
+
+            token_properties.extend(token_properties_sentence)
+
+        nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
         i_tag = 0
 
-        for doc in nlp.bulk_process([
-            [tokens]
-            for tokens in wl_nlp_utils.split_token_list(main, inputs, dependency_parser)
-        ]):
+        for doc in nlp.bulk_process(docs):
             for sentence in doc.sentences:
                 num_words = len(sentence.words)
-                sentences.append(to_displacy_sentence(
+
+                displacy_dict = to_displacy_sentence(
                     lang, sentence,
                     token_properties = token_properties[i_tag : i_tag + num_words]
-                ))
+                )
 
-                i_tag += num_words
-
-        if show_in_separate_tabs:
-            for sentence in sentences:
                 htmls.append(spacy.displacy.render(
-                    sentence,
+                    displacy_dict,
                     style = 'dep',
                     minify = True,
                     options = options
                 ))
-        else:
-            htmls.append(spacy.displacy.render(
-                sentences,
-                style = 'dep',
-                minify = True,
-                options = options
-            ))
+
+                i_tag += num_words
 
     return htmls
 
@@ -673,7 +645,7 @@ def wl_show_dependency_graphs(parent, htmls, show_in_separate_tabs):
         fig_path = wl_paths.get_normalized_path(fig_path)
 
         with open(fig_path, 'w', encoding = 'utf_8') as f:
-            f.write('\n'.join(htmls))
+            f.write('<br>'.join(htmls))
 
         if is_windows or is_macos:
             webbrowser.open(f'file://{fig_path}')

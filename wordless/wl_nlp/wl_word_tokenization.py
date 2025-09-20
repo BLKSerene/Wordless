@@ -54,22 +54,51 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
         word_tokenizer = word_tokenizer
     )
 
-    lines = text.splitlines()
-
     # spaCy
     if word_tokenizer.startswith('spacy_'):
         nlp = main.__dict__[f'spacy_nlp_{wl_conversion.remove_lang_code_suffixes(lang)}']
+        tokens_multilevel.append([])
+
+        # Use dependency parser or sentencizer by default
+        pipelines_to_disable = ('senter', 'tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler')
+
+        if lang in main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings']:
+            sentence_tokenizer = main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings'][lang]
+
+            if sentence_tokenizer.startswith('spacy_dependency_parser_'):
+                pipelines_to_disable = ('senter', 'sentencizer', 'tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler')
+            elif sentence_tokenizer.startswith('spacy_sentence_recognizer_'):
+                pipelines_to_disable = ('sentencizer', 'tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler', 'parser')
+            elif sentence_tokenizer == 'spacy_sentencizer':
+                pipelines_to_disable = ('senter', 'tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler', 'parser')
 
         with nlp.select_pipes(disable = (
             pipeline
-            for pipeline in ('tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler')
+            for pipeline in pipelines_to_disable
             if nlp.has_pipe(pipeline)
         )):
-            for doc in nlp.pipe([line.strip() for line in lines]):
-                tokens_multilevel.append([])
-
+            # Calling nlp.pipe on lists of lines is much slower
+            for doc in nlp.pipe(wl_nlp_utils.split_text(main, text, word_tokenizer)):
                 for sentence in doc.sents:
-                    tokens_multilevel[-1].append([token.text for token in sentence])
+                    sentence_tokens = []
+
+                    for token in sentence:
+                        for _ in range(token.text.count('\n')):
+                            if sentence_tokens:
+                                tokens_multilevel[-1].append(sentence_tokens.copy())
+
+                            tokens_multilevel.append([])
+                            sentence_tokens.clear()
+
+                        if (token_clean := token.text.strip()):
+                            sentence_tokens.append(token_clean)
+
+                    if sentence_tokens:
+                        tokens_multilevel[-1].append(sentence_tokens.copy())
+
+            # Remove the newline at the end
+            if tokens_multilevel[-1] == []:
+                del tokens_multilevel[-1]
     # Stanza
     elif word_tokenizer.startswith('stanza_'):
         if lang not in ('zho_cn', 'zho_tw'):
@@ -79,13 +108,14 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
 
         nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
 
-        for doc in nlp.bulk_process([line.strip() for line in lines]):
+        # Calling nlp.bulk_process on pre-split texts has no performance gains
+        for doc in nlp.bulk_process((line.strip() for line in text.splitlines())):
             tokens_multilevel.append([])
 
             for sentence in doc.sentences:
                 tokens_multilevel[-1].append([token.text for token in sentence.tokens])
     else:
-        for line in lines:
+        for line in text.splitlines():
             tokens_multilevel.append([])
 
             if (line := line.strip()):
@@ -271,7 +301,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
     # Tokenize as sentence segments
     for para in tokens_multilevel:
         for i, sentence in enumerate(para):
-            para[i] = wl_sentence_tokenization.wl_sentence_seg_tokenize_tokens(main, wl_texts.clean_texts(sentence))
+            para[i] = wl_sentence_tokenization.wl_sentence_seg_tokenize_tokens(main, wl_nlp_utils.clean_texts(sentence))
 
     for para in tokens_multilevel:
         for sentence in para:

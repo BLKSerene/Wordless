@@ -19,16 +19,16 @@
 from tests.tests_nlp.tests_stanza import test_stanza
 
 def test_stanza_pcm():
-    results_pos_tag = [('Naijá', 'PROPN'), ('na', 'AUX'), ('pijin,', 'VERB'), ('a', 'DET'), ('langwej', 'NOUN'), ('for', 'ADP'), ('oda', 'ADJ'), ('langwej.', 'NOUN')]
+    results_pos_tag = [('Naijá', 'PROPN'), ('langwej', 'NOUN'), ('na', 'AUX'), ('popula', 'ADJ'), ('langwej', 'NOUN'), ('for', 'ADP'), ('Naija', 'PROPN'), ('an', 'NOUN'), ('pipul', 'NOUN'), ('wey', 'SCONJ'), ('dey', 'AUX'), ('spik', 'VERB'), ('am', 'PRON'), ('for', 'ADP'), ('Naijá', 'PROPN'), ('pas', 'NOUN'), ('75', 'X'), ('miliọn.', 'NOUN')]
 
     test_stanza.wl_test_stanza(
         lang = 'pcm',
-        results_sentence_tokenize = ['Naijá na pijin, a langwej for oda langwej. Naijá for Inglish an wey Afrikan langwej.'],
-        results_word_tokenize = ['Naijá', 'na', 'pijin,', 'a', 'langwej', 'for', 'oda', 'langwej.'],
+        results_sentence_tokenize = ['Naijá langwej na popula langwej for Naija an pipul wey dey spik am for Naijá pas 75 miliọn. Naijá na pijin, a langwej for oda langwej. Naijá for Inglish an wey Afrikan langwej.'],
+        results_word_tokenize = ['Naijá', 'langwej', 'na', 'popula', 'langwej', 'for', 'Naija', 'an', 'pipul', 'wey', 'dey', 'spik', 'am', 'for', 'Naijá', 'pas', '75', 'miliọn.'],
         results_pos_tag = results_pos_tag,
         results_pos_tag_universal = results_pos_tag,
-        results_lemmatize = ['Naijá', 'na', 'pijin,', 'a', 'langwej', 'for', 'oder', 'langwej.'],
-        results_dependency_parse = [('Naijá', 'pijin,', 'nsubj', 2), ('na', 'pijin,', 'cop', 1), ('pijin,', 'pijin,', 'root', 0), ('a', 'langwej', 'det', 1), ('langwej', 'pijin,', 'obj', -2), ('for', 'oda', 'case', 1), ('oda', 'pijin,', 'obl:arg', -4), ('langwej.', 'pijin,', 'dep', -5)]
+        results_lemmatize = ['Naijá', 'langwej', 'na', 'popula', 'langwej', 'for', 'Naija', 'a', 'pipul', 'wey', 'dey', 'spik', 'am', 'for', 'Naijá', 'pas', '75', 'miliọn.'],
+        results_dependency_parse = [('Naijá', 'langwej', 'compound', 1), ('langwej', 'langwej', 'nsubj', 3), ('na', 'langwej', 'cop', 2), ('popula', 'langwej', 'amod', 1), ('langwej', 'langwej', 'root', 0), ('for', 'pipul', 'case', 3), ('Naija', 'pipul', 'compound', 2), ('an', 'pipul', 'compound', 1), ('pipul', 'langwej', 'nmod', -4), ('wey', 'spik', 'mark', 2), ('dey', 'spik', 'aux', 1), ('spik', 'pipul', 'acl:relcl', -3), ('am', 'spik', 'obj', -1), ('for', 'pas', 'case', 2), ('Naijá', 'pas', 'compound', 1), ('pas', 'spik', 'obl:arg', -4), ('75', 'langwej', 'dep', -12), ('miliọn.', 'miliọn.', 'root', 0)]
     )
 
 if __name__ == '__main__':

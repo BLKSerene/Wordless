@@ -173,8 +173,8 @@ def test_colemans_readability_formula():
     assert cloze_pct_eng_0 == 'text_too_short'
     assert cloze_pct_eng_12_1 == 1.29 * (9 / 12 * 100) - 38.45
     assert cloze_pct_eng_12_2 == 1.16 * (9 / 12 * 100) + 1.48 * (3 / 12 * 100) - 37.95
-    assert cloze_pct_eng_12_3 == 1.07 * (9 / 12 * 100) + 1.18 * (3 / 12 * 100) + 0.76 * (0 / 12 * 100) - 34.02
-    assert cloze_pct_eng_12_4 == 1.04 * (9 / 12 * 100) + 1.06 * (3 / 12 * 100) + 0.56 * (0 / 12 * 100) - 0.36 * (0 / 12) - 26.01
+    assert cloze_pct_eng_12_3 == 1.07 * (9 / 12 * 100) + 1.18 * (3 / 12 * 100) + 0.76 * (3 / 12 * 100) - 34.02
+    assert cloze_pct_eng_12_4 == 1.04 * (9 / 12 * 100) + 1.06 * (3 / 12 * 100) + 0.56 * (3 / 12 * 100) - 0.36 * (0 / 12) - 26.01
     assert cloze_pct_tha_12 != 'no_support'
     assert cloze_pct_other_12 == 'no_support'
 
@@ -427,8 +427,8 @@ def test_lorge_readability_index():
     lorge_spa_12 = wl_measures_readability.lorge_readability_index(main, test_text_spa_12)
 
     assert lorge_eng_0 == 'text_too_short'
-    assert lorge_eng_12_corrected == 12 / 3 * 0.06 + 2 / 12 * 0.1 + 2 / 12 * 0.1 + 1.99
-    assert lorge_eng_12 == 12 / 3 * 0.07 + 2 / 12 * 13.01 + 2 / 12 * 10.73 + 1.6126
+    assert lorge_eng_12_corrected == 12 / 3 * 0.06 + 0 / 12 * 0.1 + 2 / 12 * 0.1 + 1.99
+    assert lorge_eng_12 == 12 / 3 * 0.07 + 0 / 12 * 13.01 + 2 / 12 * 10.73 + 1.6126
     assert lorge_spa_12 == 'no_support'
 
 def test_luong_nguyen_dinhs_readability_formula():

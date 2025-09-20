@@ -30,6 +30,8 @@
 - Work Area: Add Work Area - Sample
 
 ### ✨ Improvements
+- Settings: Update Settings - Files - Miscellaneous Settings - Read files in chunks of characters
+- Settings: Update Settings - Sentiment Analysis - Preview
 - Utils: Update Stanza's Serbian (Latin script) sentence tokenizer, part-of-speech tagger, and dependency parser
 - Utils: Update Wordless's sentence splitter and sentence segment tokenizer
 - Work Area: Parallel Concordancer - Parallel Unit No. - Empty parallel units are not counted

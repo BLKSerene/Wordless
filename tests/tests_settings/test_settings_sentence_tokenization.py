@@ -16,7 +16,11 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from tests import wl_test_init
+from tests import (
+    wl_test_init,
+    wl_test_lang_examples
+)
+from wordless.wl_nlp import wl_nlp_utils
 from wordless.wl_settings import wl_settings_sentence_tokenization
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
@@ -37,13 +41,19 @@ def test_wl_settings_sentence_tokenization():
     main.settings_sentence_tokenization.update_gui_err()
 
 def test_wl_worker_preview_sentence_tokenizer():
+    main.settings_custom['sentence_tokenization']['preview']['preview_samples'] = wl_test_lang_examples.TEXT_NEWLINES
     preview_lang = main.settings_custom['sentence_tokenization']['preview']['preview_lang']
     sentence_tokenizer = main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings'][preview_lang]
 
-    wl_settings_sentence_tokenization.Wl_Worker_Preview_Sentence_Tokenizer(
+    worker = wl_settings_sentence_tokenization.Wl_Worker_Preview_Sentence_Tokenizer(
         main,
         sentence_tokenizer = sentence_tokenizer
-    ).run()
+    )
+    worker.finished.connect(update_gui_newlines)
+    worker.run()
+
+def update_gui_newlines(preview_results):
+    assert preview_results == wl_nlp_utils.clean_texts(wl_test_lang_examples.TEXT_NEWLINES)
 
 if __name__ == '__main__':
     test_wl_settings_sentence_tokenization()

@@ -313,6 +313,8 @@ TEXT_CYM = ("Aelod o'r gangen Frythonaidd o'r ieithoedd Celtaidd a siaredir yn f
 TEXT_WOL = ('Wolof làkk la wu ñuy wax ci Gàmbi (Gàmbi Wolof), Gànnaar (Gànnaar Wolof), ak Senegaal (Senegaal Wolof).', ' ', 'Mi ngi bokk nag moom wolof ci bànqaasub atlas bu làkki Kongóo yu kojug nit ñu ñuul ñi.')
 TEXT_OTHER = TEXT_ENG_US
 
+TEXT_NEWLINES = '\n\n0\n\n\n0\n\n\n'
+
 # Sentences
 SENTENCE_AFR = TEXT_AFR[0]
 SENTENCE_SQI = TEXT_SQI[0]
@@ -442,7 +444,7 @@ SENTENCE_ZHO_TW_CHAR_TOKENIZER = '英國的全稱是United Kingdom of Great Brit
 SENTENCE_JPN_KANJI_TOKENIZER = '''The sentence "天気がいいから、散歩しましょう。" means: The weather is good so let's take a walk.'''
 SENTENCE_BOD_WORD_DETOKENIZER = 'Test this Tibetan string: དུང་དང་འོ་མར་འགྲན་པའི་ལྷག་བསམ་མཐུ། །དམན་ཡང་དཀར་པོའི་བྱས་འབྲས་ཅུང་ཟད་ཅིག །བློ་དང་འདུན་པ་བཟང་བའི་རང་རིགས་ཀུན། །རྒྱལ་ཁའི་འཕྲིན་བཟང་ལས་དོན་འགྲུབ་ཕྱིར་འབད།།. Does detokenization work as expected?'
 
-TOKENS_LONG = [str(i) for i in range(101) for j in range(10)]
+TOKENS_LONG = ['0'] * 100
 
 def check_lang_examples(main):
     settings_langs = [lang[0] for lang in main.settings_global['langs'].values()]
