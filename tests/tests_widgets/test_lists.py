@@ -89,19 +89,6 @@ def test_wl_list_add_ins_del_clr_imp_exp():
     list_add_ins_del_clr_imp_exp.model().setStringList(['test'])
     list_add_ins_del_clr_imp_exp.data_changed()
 
-def test_wl_list_search_terms():
-    wl_lists.Wl_List_Search_Terms(main)
-
-def test_wl_list_stop_words():
-    list_stop_words = wl_lists.Wl_List_Stop_Words(main)
-    list_stop_words.data_changed_default()
-    list_stop_words.selection_changed_default()
-    list_stop_words.switch_to_custom()
-    list_stop_words.switch_to_default()
-
 if __name__ == '__main__':
     test_wl_list_add_ins_del_clr()
     test_wl_list_add_ins_del_clr_imp_exp()
-
-    test_wl_list_search_terms()
-    test_wl_list_stop_words()

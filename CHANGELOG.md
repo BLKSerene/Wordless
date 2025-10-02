@@ -30,6 +30,7 @@
 - Work Area: Add Work Area - Sample
 
 ### ✨ Improvements
+- Settings: Settings - Stop Word Lists - Preview - Import - Allow importing from default stop word lists
 - Settings: Update Settings - Files - Miscellaneous Settings - Read files in chunks of characters
 - Settings: Update Settings - Sentiment Analysis - Preview
 - Utils: Update Stanza's Serbian (Latin script) sentence tokenizer, part-of-speech tagger, and dependency parser

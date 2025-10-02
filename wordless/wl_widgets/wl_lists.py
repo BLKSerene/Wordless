@@ -305,8 +305,8 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
         self.settings = settings
         self.exp_file_name = exp_file_name
 
-        self.button_imp = QtWidgets.QPushButton(_tr('wl_lists', 'Import'), self)
-        self.button_exp = QtWidgets.QPushButton(_tr('wl_lists', 'Export'), self)
+        self.button_imp = QtWidgets.QPushButton(_tr('wl_lists', 'Import...'), self)
+        self.button_exp = QtWidgets.QPushButton(_tr('wl_lists', 'Export...'), self)
 
         self.button_imp.clicked.connect(self.imp_list)
         self.button_exp.clicked.connect(self.exp_list)
@@ -421,15 +421,6 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
 
             # Modify default path
             self.main.settings_custom['general']['exp'][self.settings]['default_path'] = os.path.normpath(os.path.dirname(file_path))
-
-class Wl_List_Search_Terms(Wl_List_Add_Ins_Del_Clr_Imp_Exp):
-    def __init__(self, parent):
-        super().__init__(
-            parent,
-            new_item_text = _tr('wl_lists', 'New search term'),
-            settings = 'search_terms',
-            exp_file_name = 'wordless_search_terms.txt'
-        )
 
 class Wl_List_Stop_Words(Wl_List_Add_Ins_Del_Clr_Imp_Exp):
     def __init__(self, parent):

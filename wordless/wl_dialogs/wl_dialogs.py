@@ -347,4 +347,6 @@ class Wl_Dialog_Settings(Wl_Dialog_Info):
 
     def load(self):
         self.load_settings()
-        self.exec()
+
+        # Results code
+        return self.exec()

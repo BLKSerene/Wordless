@@ -18,9 +18,11 @@
 
 import copy
 
+from PyQt5 import QtCore
 from PyQt5 import QtGui
 from PyQt5 import QtWidgets
 
+from wordless.wl_dialogs import wl_dialogs
 from wordless.wl_nlp import (
     wl_nlp_utils,
     wl_stop_word_lists
@@ -34,6 +36,135 @@ from wordless.wl_widgets import (
     wl_lists,
     wl_tables
 )
+
+_tr = QtCore.QCoreApplication.translate
+
+class Dialog_Preview_Imp(wl_dialogs.Wl_Dialog_Settings):
+    def __init__(self, parent):
+        super().__init__(
+            parent,
+            title = _tr('Dialog_Imp', 'Import')
+        )
+
+        self.settings_custom = self.main.settings_custom['stop_word_lists']['preview']
+        self.settings_default = self.main.settings_default['stop_word_lists']['preview']
+        self.preview_lang = self.settings_custom['preview_lang']
+
+        self.radio_button_imp_from_default = QtWidgets.QRadioButton(self.tr('Import from default stop word list:'), self)
+        self.combo_box_imp_from_default = wl_boxes.Wl_Combo_Box(self)
+        self.radio_button_imp_from_files = QtWidgets.QRadioButton(self.tr('Import from files'), self)
+
+        # Exclude custom stop word lists
+        self.combo_box_imp_from_default.addItems(tuple(wl_nlp_utils.to_lang_util_texts(
+            self.main,
+            util_type = 'stop_word_lists',
+            util_codes = self.main.settings_global['stop_word_lists'][self.preview_lang][:-1]
+        )))
+
+        self.wrapper_settings.layout().addWidget(self.radio_button_imp_from_default, 0, 0)
+        self.wrapper_settings.layout().addWidget(self.combo_box_imp_from_default, 0, 1)
+        self.wrapper_settings.layout().addWidget(self.radio_button_imp_from_files, 1, 0, 1, 2)
+
+        self.button_save.setText(self.tr('Import'))
+
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = copy.deepcopy(self.settings_default)
+        else:
+            settings = copy.deepcopy(self.settings_custom)
+
+        if settings['imp'][self.preview_lang] == 'files':
+            self.radio_button_imp_from_files.setChecked(True)
+        else:
+            self.radio_button_imp_from_default.setChecked(True)
+            self.combo_box_imp_from_default.setCurrentText(wl_nlp_utils.to_lang_util_text(
+                self.main,
+                util_type = 'stop_word_lists',
+                util_code = settings['imp'][self.preview_lang]
+            ))
+
+    def save_settings(self):
+        if self.radio_button_imp_from_default.isChecked():
+            self.settings_custom['imp'][self.preview_lang] = wl_nlp_utils.to_lang_util_code(
+                self.main,
+                util_type = 'stop_word_lists',
+                util_text = self.combo_box_imp_from_default.currentText()
+            )
+        else:
+            self.settings_custom['imp'][self.preview_lang] = 'files'
+
+class Wl_List_Stop_Words(wl_lists.Wl_List_Add_Ins_Del_Clr_Imp_Exp):
+    def __init__(self, parent):
+        super().__init__(
+            parent,
+            new_item_text = _tr('Wl_Settings_Stop_Word_Lists', 'New stop word'),
+            settings = 'stop_words',
+            exp_file_name = 'wordless_stop_words.txt'
+        )
+
+    def data_changed_default(self):
+        super().data_changed()
+
+        self.button_clr.setEnabled(False)
+
+    def selection_changed_default(self):
+        super().selection_changed()
+
+        self.button_ins.setEnabled(False)
+        self.button_del.setEnabled(False)
+
+    def switch_to_custom(self):
+        self.setEditTriggers(QtWidgets.QAbstractItemView.DoubleClicked | QtWidgets.QAbstractItemView.SelectedClicked | QtWidgets.QAbstractItemView.EditKeyPressed)
+        self.setDragEnabled(True)
+
+        self.button_add.setEnabled(True)
+        self.button_imp.setEnabled(True)
+
+        self.model().dataChanged.disconnect()
+        self.selectionModel().selectionChanged.disconnect()
+
+        self.model().dataChanged.connect(self.data_changed)
+        self.selectionModel().selectionChanged.connect(self.selection_changed)
+
+        self.model().dataChanged.emit(QtCore.QModelIndex(), QtCore.QModelIndex())
+
+    def switch_to_default(self):
+        self.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.setDragEnabled(False)
+
+        self.button_add.setEnabled(False)
+        self.button_imp.setEnabled(False)
+
+        self.model().dataChanged.disconnect()
+        self.selectionModel().selectionChanged.disconnect()
+
+        self.model().dataChanged.connect(self.data_changed)
+        self.model().dataChanged.connect(self.data_changed_default)
+        self.selectionModel().selectionChanged.connect(self.selection_changed)
+        self.selectionModel().selectionChanged.connect(self.selection_changed_default)
+
+        self.model().dataChanged.emit(QtCore.QModelIndex(), QtCore.QModelIndex())
+
+    def imp_list(self):
+        preview_lang = self.main.settings_custom['stop_word_lists']['preview']['preview_lang']
+
+        if tuple(wl_nlp_utils.to_lang_util_texts(
+            self.main,
+            util_type = 'stop_word_lists',
+            util_codes = self.main.settings_global['stop_word_lists'][preview_lang][:-1]
+        )):
+            if Dialog_Preview_Imp(self).load():
+                preview_imp = self.main.settings_custom['stop_word_lists']['preview']['imp'][preview_lang]
+
+                if preview_imp == 'files':
+                    super().imp_list()
+                else:
+                    stop_words = wl_stop_word_lists.wl_get_stop_word_list(self.main, preview_lang, stop_word_list = preview_imp)
+
+                    self.load_items(sorted(stop_words))
+        # Do not show options if there are no default stop word lists to import from
+        else:
+            super().imp_list()
 
 class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
@@ -92,7 +223,7 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
         self.combo_box_preview_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
         self.label_preview_num = QtWidgets.QLabel('', self)
 
-        self.list_preview_results = wl_lists.Wl_List_Stop_Words(self)
+        self.list_preview_results = Wl_List_Stop_Words(self)
 
         self.combo_box_preview_lang.currentTextChanged.connect(self.preview_settings_changed)
         self.combo_box_preview_lang.currentTextChanged.connect(self.preview_results_changed)

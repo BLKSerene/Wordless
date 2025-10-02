@@ -21,6 +21,26 @@ from wordless.wl_settings import wl_settings_stop_word_lists
 
 main = wl_test_init.Wl_Test_Main()
 
+def test_dialog_preview_imp():
+    dialog = wl_settings_stop_word_lists.Dialog_Preview_Imp(main)
+
+    main.settings_custom['stop_word_lists']['preview']['preview_lang'] = 'eng_us'
+    main.settings_custom['stop_word_lists']['preview']['imp']['eng_us'] = 'spacy_eng'
+    dialog.load_settings(defaults = False)
+    dialog.load_settings(defaults = True)
+
+    dialog.radio_button_imp_from_default.setChecked(True)
+    dialog.save_settings()
+    dialog.radio_button_imp_from_files.setChecked(True)
+    dialog.save_settings()
+
+def test_wl_list_stop_words():
+    list_stop_words = wl_settings_stop_word_lists.Wl_List_Stop_Words(main)
+    list_stop_words.data_changed_default()
+    list_stop_words.selection_changed_default()
+    list_stop_words.switch_to_custom()
+    list_stop_words.switch_to_default()
+
 def test_wl_settings_stop_word_lists():
     settings_stop_word_lists = wl_settings_stop_word_lists.Wl_Settings_Stop_Word_Lists(main)
 
@@ -41,4 +61,6 @@ def test_wl_settings_stop_word_lists():
     settings_stop_word_lists.apply_settings()
 
 if __name__ == '__main__':
+    test_dialog_preview_imp()
+    test_wl_list_stop_words()
     test_wl_settings_stop_word_lists()

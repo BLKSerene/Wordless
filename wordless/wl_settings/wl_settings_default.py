@@ -2176,7 +2176,8 @@ def init_settings_default(main):
             'custom_lists': {},
 
             'preview': {
-                'preview_lang': 'eng_us'
+                'preview_lang': 'eng_us',
+                'imp': {}
             }
         },
 
@@ -2714,5 +2715,6 @@ def init_settings_default(main):
             settings_default['stop_word_lists']['stop_word_list_settings']['stop_word_lists'][lang_code] = 'custom'
 
         settings_default['stop_word_lists']['custom_lists'][lang_code] = []
+        settings_default['stop_word_lists']['preview']['imp'][lang_code] = 'files'
 
     return settings_default

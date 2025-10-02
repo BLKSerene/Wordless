@@ -323,11 +323,6 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog_Settings):
         else:
             self.settings_custom['excl']['context_window_right'] = self.excl_spin_box_context_window_right.value()
 
-    def load(self):
-        self.load_settings()
-
-        self.exec()
-
 # Token Settings
 def wl_widgets_token_settings(parent):
     def words_changed():
@@ -502,7 +497,12 @@ def wl_widgets_search_settings(parent, tab):
     label_search_term = QtWidgets.QLabel(_tr('wl_widgets', 'Search term:'), parent)
     checkbox_multi_search_mode = QtWidgets.QCheckBox(_tr('wl_widgets', 'Multi-search mode'), parent)
     line_edit_search_term = QtWidgets.QLineEdit(parent)
-    list_search_terms = wl_lists.Wl_List_Search_Terms(parent)
+    list_search_terms = wl_lists.Wl_List_Add_Ins_Del_Clr_Imp_Exp(
+        parent,
+        new_item_text = _tr('wl_widgets', 'New search term'),
+        settings = 'search_terms',
+        exp_file_name = 'wordless_search_terms.txt'
+    )
     label_delimiter = wl_labels.Wl_Label_Hint(_tr('wl_widgets', 'Tip: Use whitespace to delimit multiple tokens'), parent)
 
     checkbox_match_case = QtWidgets.QCheckBox(_tr('wl_widgets', 'Match case'), parent)
