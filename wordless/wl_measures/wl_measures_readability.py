@@ -285,7 +285,7 @@ def bormuths_cloze_mean(main, text):
 def bormuths_gp(main, text):
     m = bormuths_cloze_mean(main, text)
 
-    if m not in ('no_support', 'text_too_short'):
+    if m not in {'no_support', 'text_too_short'}:
         c = main.settings_custom['measures']['readability']['bormuths_gp']['cloze_criterion_score'] / 100
         gp = (
             4.275 + 12.881 * m - 34.934 * (m**2) + 20.388 * (m**3)
@@ -322,8 +322,8 @@ def colemans_readability_formula(main, text):
     if (
         text.lang in main.settings_global['syl_tokenizers']
         and (
-            variant in ('1', '2')
-            or (variant in ('3', '4') and text.lang in main.settings_global['pos_taggers'])
+            variant in {'1', '2'}
+            or (variant in {'3', '4'} and text.lang in main.settings_global['pos_taggers'])
         )
     ):
         text = get_nums(main, text)
@@ -491,7 +491,7 @@ def dawoods_readability_formula(main, text):
 def drp(main, text):
     m = bormuths_cloze_mean(main, text)
 
-    if m not in ('no_support', 'text_too_short'):
+    if m not in {'no_support', 'text_too_short'}:
         drp = 100 - math.floor(m * 100 + 0.5)
     else:
         drp = m
@@ -912,7 +912,7 @@ def lensear_write_formula(main, text):
             )
 
             for syls in sysl_sample:
-                if len(syls) == 1 and syls[0].lower() not in ('the', 'is', 'are', 'was', 'were'):
+                if len(syls) == 1 and syls[0].lower() not in {'the', 'is', 'are', 'was', 'were'}:
                     num_words_1_syl += 1
 
             num_sentences = get_num_sentences_sample(text, sample, sample_start)
@@ -1096,12 +1096,12 @@ def _get_num_syls_ara(word):
 
     for i, char in enumerate(word):
         # Tashkeel: fatha, damma, kasra
-        if char not in ('\u064E', '\u064F', '\u0650'):
+        if char not in {'\u064E', '\u064F', '\u0650'}:
             continue
 
         # Only if a character is a tashkeel, has a successor, and is followed by an alef, waw, or yeh
         if i + 1 < len(word):
-            if word[i + 1] in ('\u0627', '\u0648', '\u064A'):
+            if word[i + 1] in {'\u0627', '\u0648', '\u064A'}:
                 count_long += 1
             else:
                 count_short += 1

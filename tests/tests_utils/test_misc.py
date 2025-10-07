@@ -49,7 +49,7 @@ def test_change_file_owner_to_user():
 
 def test_find_wl_main():
     class Widget:
-        def parent(self):
+        def parent(self): # pylint: disable=no-self-use
             return main
 
     widget = Widget()

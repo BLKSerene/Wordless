@@ -36,18 +36,18 @@ test_word_tokenizers = []
 for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
     for word_tokenizer in word_tokenizers:
         if (
-            word_tokenizer not in (
+            word_tokenizer not in {
                 'spacy_cat', 'spacy_zho', 'spacy_hrv', 'spacy_dan', 'spacy_nld',
                 'spacy_eng', 'spacy_fin', 'spacy_fra', 'spacy_deu', 'spacy_ell',
                 'spacy_ita', 'spacy_jpn', 'spacy_kor', 'spacy_lit', 'spacy_mkd',
                 'spacy_nob', 'spacy_pol', 'spacy_por', 'spacy_ron', 'spacy_rus',
                 'spacy_slv', 'spacy_spa', 'spacy_swe', 'spacy_ukr'
-            )
+            }
             and not word_tokenizer.startswith('stanza_')
             # Skip tests of NLTK's tokenizers for languages except English and Other languages
             and (
-                lang in ('eng_gb', 'eng_us', 'other')
-                or word_tokenizer not in ('nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter')
+                lang in {'eng_gb', 'eng_us', 'other'}
+                or word_tokenizer not in {'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter'}
             )
         ):
             test_word_tokenizers.append((lang, word_tokenizer))
@@ -372,7 +372,10 @@ def wl_test_word_tokenize_models(lang, word_tokenizer, results):
     ]
 
     # Long
-    if word_tokenizer.startswith(('spacy_', 'stanza_')) or word_tokenizer in ('modern_botok_bod', 'sudachipy_jpn'):
+    if (
+        word_tokenizer.startswith(('spacy_', 'stanza_'))
+        or word_tokenizer in {'modern_botok_bod', 'sudachipy_jpn'}
+    ):
         main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = 99
 
         tokens_long = wl_word_tokenization.wl_word_tokenize(

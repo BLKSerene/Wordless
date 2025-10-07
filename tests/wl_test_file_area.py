@@ -132,10 +132,17 @@ def wl_test_file_area(main):
         assert new_file['selected']
         assert new_file['name'] == new_file['name_old'] == os.path.splitext(os.path.split(file_path)[-1])[0]
 
-        assert new_file['path'] == re.sub(r'(\\|/)tests\1files\1file_area\1?[a-z_]*\1', r'\1imports\1', wl_paths.get_normalized_path(file_path))
+        assert new_file['path'] == re.sub(
+            r'(\\|/)tests\1files\1file_area\1?[a-z_]*\1',
+            r'\1imports\1',
+            wl_paths.get_normalized_path(file_path)
+        )
         assert new_file['path_orig'] == wl_paths.get_normalized_path(file_path)
 
-        if i < NUM_FILES_ALL or new_file['name'] in ('[xct] Tibetan tshegs', '[bod] Tibetan tshegs'):
+        if (
+            i < NUM_FILES_ALL
+            or new_file['name'] in {'[xct] Tibetan tshegs', '[bod] Tibetan tshegs'}
+        ):
             assert new_file['encoding'] == 'utf_8', new_file['encoding']
         else:
             assert new_file['encoding'] == 'ascii', new_file['encoding']

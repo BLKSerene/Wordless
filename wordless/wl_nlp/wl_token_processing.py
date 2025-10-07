@@ -260,7 +260,7 @@ def wl_process_tokens_profiler(main, text, token_settings, tab):
 
     text_syl_tokenize(main, text)
 
-    if tab in ('readability', 'all'):
+    if tab in {'readability', 'all'}:
         if text.lang in main.settings_global['pos_taggers']:
             wl_pos_tagging.wl_pos_tag_universal(main, text.get_tokens_flat(), lang = text.lang, tagged = text.tagged)
 
@@ -270,14 +270,14 @@ def wl_process_tokens_profiler(main, text, token_settings, tab):
 
     # Lexical density
     if (
-        tab in ('lexical_density_diversity', 'all')
+        tab in {'lexical_density_diversity', 'all'}
         and text.lang in main.settings_global['pos_taggers']
     ):
         wl_pos_tagging.wl_pos_tag_universal(main, text.get_tokens_flat(), lang = text.lang, tagged = text.tagged)
 
     # Syntactic complexity
     if (
-        tab in ('syntactic_complexity', 'all')
+        tab in {'syntactic_complexity', 'all'}
         and text.lang in main.settings_global['dependency_parsers']
     ):
         # Do not modify original sentence tokenization during dependency parsing

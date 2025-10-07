@@ -37,7 +37,7 @@ test_lemmatizers_local = []
 
 for lang, lemmatizers in main.settings_global['lemmatizers'].items():
     for lemmatizer in lemmatizers:
-        if lemmatizer in ('botok_xct', 'modern_botok_bod'):
+        if lemmatizer in {'botok_xct', 'modern_botok_bod'}:
             test_lemmatizers.append(pytest.param(
                 lang, lemmatizer,
                 marks = pytest.mark.xfail(
@@ -48,13 +48,13 @@ for lang, lemmatizers in main.settings_global['lemmatizers'].items():
 
             test_lemmatizers_local.append((lang, lemmatizer))
         elif (
-            lemmatizer not in (
+            lemmatizer not in {
                 'spacy_cat', 'spacy_zho', 'spacy_hrv', 'spacy_dan', 'spacy_nld',
                 'spacy_eng', 'spacy_fin', 'spacy_fra', 'spacy_deu', 'spacy_ell',
                 'spacy_ita', 'spacy_jpn', 'spacy_kor', 'spacy_lit', 'spacy_mkd',
                 'spacy_nob', 'spacy_pol', 'spacy_por', 'spacy_ron', 'spacy_rus',
                 'spacy_slv', 'spacy_spa', 'spacy_swe', 'spacy_ukr'
-            )
+            }
             and not lemmatizer.startswith('stanza_')
         ):
             test_lemmatizers.append((lang, lemmatizer))
@@ -307,7 +307,10 @@ def wl_test_lemmatize_models(lang, lemmatizer, tokens, results):
     assert wl_texts.to_token_texts(tokens_newlines) == list(wl_test_lang_examples.TEXT_NEWLINES)
 
     # Long
-    if lemmatizer.startswith(('spacy_', 'stanza_')) or lemmatizer in ('modern_botok_bod', 'sudachipy_jpn'):
+    if (
+        lemmatizer.startswith(('spacy_', 'stanza_'))
+        or lemmatizer in {'modern_botok_bod', 'sudachipy_jpn'}
+    ):
         main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = 99
 
         tokens_long = wl_lemmatization.wl_lemmatize(

@@ -39,7 +39,7 @@ test_pos_taggers_local = []
 
 for lang, pos_taggers in main.settings_global['pos_taggers'].items():
     for pos_tagger in pos_taggers:
-        if pos_tagger in ('botok_xct', 'modern_botok_bod'):
+        if pos_tagger in {'botok_xct', 'modern_botok_bod'}:
             test_pos_taggers.append(pytest.param(
                 lang, pos_tagger,
                 marks = pytest.mark.xfail(
@@ -207,7 +207,10 @@ def wl_test_pos_tag_models(lang, pos_tagger, tokens, results, results_universal)
     assert wl_texts.to_token_texts(tokens_newlines) == list(wl_test_lang_examples.TEXT_NEWLINES)
 
     # Long
-    if pos_tagger.startswith(('spacy_', 'stanza_')) or pos_tagger in ('modern_botok_bod', 'sudachipy_jpn'):
+    if (
+        pos_tagger.startswith(('spacy_', 'stanza_'))
+        or pos_tagger in {'modern_botok_bod', 'sudachipy_jpn'}
+    ):
         main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = 99
 
         tokens_long = wl_pos_tagging.wl_pos_tag(

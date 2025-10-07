@@ -35,7 +35,7 @@ for lang, sentence_tokenizers in main.settings_global['sentence_tokenizers'].ite
             not sentence_tokenizer.startswith(('spacy_', 'stanza_'))
             # Skip tests of spaCy's and Stanza's sentence tokenizers for most languages
             or (
-                lang in ('eng_gb', 'eng_us', 'srp_cyrl', 'srp_latn', 'other')
+                lang in {'eng_gb', 'eng_us', 'srp_cyrl', 'srp_latn', 'other'}
                 and not sentence_tokenizer.startswith(('spacy_dependency_parser_', 'stanza_'))
             )
         ):
@@ -185,7 +185,10 @@ def wl_test_sentence_tokenize_models(lang, sentence_tokenizer, results):
     assert sentences == list(wl_test_lang_examples.TEXT_NEWLINES.replace('\n', ''))
 
     # Long
-    if sentence_tokenizer.startswith(('spacy_', 'stanza_')) or sentence_tokenizer in ('modern_botok_bod',):
+    if (
+        sentence_tokenizer.startswith(('spacy_', 'stanza_'))
+        or sentence_tokenizer != 'modern_botok_bod'
+    ):
         main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = 99
 
         tokens_long = wl_sentence_tokenization.wl_sentence_tokenize(
@@ -258,7 +261,7 @@ def test_sentence_seg_tokenize(lang):
 
     assert all(sentence_segs)
 
-    if lang not in ('chu', 'cop', 'orv', 'tha'):
+    if lang not in {'chu', 'cop', 'orv', 'tha'}:
         assert len(sentence_segs) > 1
     else:
         assert len(sentence_segs) == 1
@@ -465,9 +468,9 @@ def test_sentence_seg_tokenize_tokens(lang):
 
     assert all(sentence_segs)
 
-    if lang in (
+    if lang in {
         'lzh', 'zho_cn', 'zho_tw', 'chu', 'cop', 'ind', 'jpn', 'orv', 'tha'
-    ):
+    }:
         assert len(sentence_segs) == 1
     else:
         assert len(sentence_segs) > 1

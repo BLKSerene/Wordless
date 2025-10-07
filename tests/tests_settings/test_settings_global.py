@@ -44,19 +44,20 @@ def add_lang_suffixes(lang_codes):
         if lang_code == 'hy':
             lang_codes.append('hyw')
 
-        if lang_code in ('zh', 'en', 'de', 'pt', 'sr'):
+        if lang_code in {'zh', 'en', 'de', 'pt', 'sr'}:
             lang_codes.remove(lang_code)
 
-            if lang_code == 'zh':
-                lang_codes.extend(('zh_cn', 'zh_tw'))
-            elif lang_code == 'en':
-                lang_codes.extend(('en_gb', 'en_us'))
-            elif lang_code == 'de':
-                lang_codes.extend(('de_at', 'de_de', 'de_ch'))
-            elif lang_code == 'pt':
-                lang_codes.extend(('pt_br', 'pt_pt'))
-            elif lang_code == 'sr':
-                lang_codes.append('sr_cyrl')
+            match lang_code:
+                case 'zh':
+                    lang_codes.extend(('zh_cn', 'zh_tw'))
+                case 'en':
+                    lang_codes.extend(('en_gb', 'en_us'))
+                case 'de':
+                    lang_codes.extend(('de_at', 'de_de', 'de_ch'))
+                case 'pt':
+                    lang_codes.extend(('pt_br', 'pt_pt'))
+                case 'sr':
+                    lang_codes.append('sr_cyrl')
 
     # Sorted by language names
     for i, lang_code in enumerate(lang_codes.copy()):
@@ -99,8 +100,8 @@ def check_invalid_default_lang_utils(lang_utils, lang_utils_default, util_type):
         # Prefer Stanza over spaCy since their accuracy are comparable but spaCy's transformer models are much slower
         if (
             not (
-                lang in ('tha', 'vie', 'other')
-                and util_type in ('sentence tokenizers', 'word tokenizers', 'POS taggers', 'sentiment analyzers')
+                lang in {'tha', 'vie', 'other'}
+                and util_type in {'sentence tokenizers', 'word tokenizers', 'POS taggers', 'sentiment analyzers'}
             )
             and any(('stanza_' in util for util in lang_utils[lang]))
         ):
@@ -197,7 +198,7 @@ def test_settings_global():
     for file in os.listdir(os.path.split(sacremoses.__file__)[0] + '/data/nonbreaking_prefixes/'):
         file_ext = os.path.splitext(file)[1][1:]
 
-        if file_ext not in ('yue', 'zh'):
+        if file_ext not in {'yue', 'zh'}:
             langs_sacremoses_supported.append(file_ext)
 
     langs_sacremoses_supported = add_lang_suffixes(langs_sacremoses_supported)
@@ -289,7 +290,7 @@ def test_settings_global():
     for lang in pkgutil.iter_modules(spacy.lang.__path__):
         # Tibetan tokenizer is not funtional
         # Thai and Vietnamese tokenization are delegated to PyThaiNLP and Pyvi
-        if lang.ispkg and lang.name not in ('bo', 'th', 'vi', 'xx'):
+        if lang.ispkg and lang.name not in {'bo', 'th', 'vi', 'xx'}:
             langs_spacy_supported_word_tokenizers.append(lang.name)
 
     langs_spacy_supported_word_tokenizers = add_lang_suffixes(langs_spacy_supported_word_tokenizers)

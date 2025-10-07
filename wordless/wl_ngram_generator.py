@@ -804,6 +804,18 @@ class Wl_Table_Ngram_Generator(wl_tables.Wl_Table_Data):
                 if not hide_dialog_err_fatal:
                     wl_checks_work_area.check_err_fig(self.main, err_msg)
 
+def get_ngrams_is(ngrams, tokens):
+    ngrams_is = []
+    i = 0
+
+    for ngram in ngrams:
+        if ngram[0] != tokens[i]:
+            i += 1
+
+        ngrams_is.append((ngram, i))
+
+    return ngrams_is
+
 class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
     finished = QtCore.pyqtSignal(str, dict, dict)
 
@@ -850,11 +862,11 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                             raise wl_excs.Wl_Exc_Aborted(self.main)
 
                         ngrams = wl_nlp_utils.skipgrams(tokens, ngram_size, allow_skipped_tokens_num)
-                        ngrams_is.extend(self.get_ngrams_is(ngrams, tokens))
+                        ngrams_is.extend(get_ngrams_is(ngrams, tokens))
 
                 else:
                     ngrams = wl_nlp_utils.everygrams(tokens, ngram_size_min, ngram_size_max)
-                    ngrams_is.extend(self.get_ngrams_is(ngrams, tokens))
+                    ngrams_is.extend(get_ngrams_is(ngrams, tokens))
 
                 # Remove n-grams with at least 1 empty token
                 ngrams_is = [
@@ -1048,18 +1060,6 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
             self.err_msg = 'aborted'
         except Exception:
             self.err_msg = traceback.format_exc()
-
-    def get_ngrams_is(self, ngrams, tokens):
-        ngrams_is = []
-        i = 0
-
-        for ngram in ngrams:
-            if ngram[0] != tokens[i]:
-                i += 1
-
-            ngrams_is.append((ngram, i))
-
-        return ngrams_is
 
 class Wl_Worker_Ngram_Generator_Table(Wl_Worker_Ngram_Generator):
     def run(self):

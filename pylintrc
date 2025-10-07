@@ -16,10 +16,26 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-[MASTER]
+[MAIN]
 
-extension-pkg-whitelist=
-    PyQt5
+extension-pkg-allow-list=PyQt5
+
+load-plugins=
+    pylint.extensions.code_style,
+    pylint.extensions.comparison_placement,
+    pylint.extensions.for_any_all,
+    pylint.extensions.consider_refactoring_into_while_condition,
+    pylint.extensions.bad_builtin,
+    pylint.extensions.dict_init_mutate,
+    pylint.extensions.docstyle,
+    pylint.extensions.dunder,
+    pylint.extensions.eq_without_hash,
+    pylint.extensions.private_import,
+    pylint.extensions.no_self_use,
+    pylint.extensions.overlapping_exceptions,
+    pylint.extensions.docparams,
+    pylint.extensions.set_membership,
+    pylint.extensions.typing
 
 [MESSAGES CONTROL]
 
@@ -66,3 +82,7 @@ disable=
     import-error,
     # E0606
     possibly-used-before-assignment,
+
+    # Optional: R6101, R6103
+    consider-using-namedtuple-or-dataclass,
+    consider-using-assignment-expr

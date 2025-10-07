@@ -20,7 +20,6 @@
 import bisect
 import collections
 import copy
-import operator
 import re
 import traceback
 
@@ -1179,7 +1178,10 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                         if collocation not in collocations_freqs_total:
                             collocations_freqs_total[collocation] = freqs
                         else:
-                            collocations_freqs_total[collocation] = list(map(operator.add, collocations_freqs_total[collocation], freqs))
+                            collocations_freqs_total[collocation] = [
+                                freq_total + freq
+                                for freq_total, freq in zip(collocations_freqs_total[collocation], freqs)
+                            ]
 
                 # Frequency (All)
                 for collocations_freqs_file_all in collocations_freqs_files_all:

@@ -106,11 +106,11 @@ def update_gui(err_msg, tokens_freq_files, tokens_stats_files, syls_tokens):
         if show_syllabified_forms:
             token_syllabified_form = list(syls_tokens[token].values())[0]
 
-            if files_selected[0]['name'] in (
+            if files_selected[0]['name'] in {
                 '[bod] Tibetan tshegs',
                 '[xct] Tibetan tshegs',
                 '[other] No language support'
-            ):
+            }:
                 assert token_syllabified_form == 'No language support'
             else:
                 assert token_syllabified_form and token_syllabified_form != 'No language support'

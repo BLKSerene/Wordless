@@ -160,9 +160,10 @@ class Wl_Dialog_Info(Wl_Dialog):
         # Avoid circular imports
         from wordless.wl_widgets import wl_layouts # pylint: disable=import-outside-toplevel
 
-        beep = icon in ('warning', 'critical', 'question')
-
-        super().__init__(parent, title, width, height, resizable, beep)
+        super().__init__(
+            parent, title, width, height, resizable,
+            beep = icon in {'warning', 'critical', 'question'}
+        )
 
         self.wrapper_info = QtWidgets.QWidget(self)
 

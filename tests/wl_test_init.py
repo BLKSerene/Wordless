@@ -117,7 +117,7 @@ class Wl_Test_Main(wl_main.Wl_Main):
         # Menu
         self.init_menu()
 
-    def height(self):
+    def height(self): # pylint: disable=no-self-use
         return 1080
 
     def switch_lang_utils_fast(self):

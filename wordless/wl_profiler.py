@@ -63,6 +63,27 @@ from wordless.wl_widgets import (
 
 _tr = QtCore.QCoreApplication.translate
 
+# Reference: https://stackoverflow.com/a/69308502
+def copy_worksheet(sheet_src, sheet_tgt):
+    for i, row in enumerate(sheet_src.iter_rows()):
+        for j, cell in enumerate(row):
+            cel_tgt = sheet_tgt.cell(i + 1, j + 1)
+            cel_tgt.value = cell.value
+
+            if cell.has_style:
+                cel_tgt.font = copy.copy(cell.font)
+                cel_tgt.alignment = copy.copy(cell.alignment)
+                cel_tgt.number_format = copy.copy(cell.number_format)
+                cel_tgt.fill = copy.copy(cell.fill)
+
+    sheet_tgt.freeze_panes = sheet_src.freeze_panes
+
+    for row, dimensions in sheet_src.row_dimensions.items():
+        sheet_tgt.row_dimensions[row].height = dimensions.height
+
+    for col, dimensions in sheet_src.column_dimensions.items():
+        sheet_tgt.column_dimensions[col].width = dimensions.width
+
 class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
         super().__init__(main)
@@ -350,27 +371,6 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
                 if err_msg:
                     break
 
-    # Reference: https://stackoverflow.com/a/69308502
-    def copy_worksheet(self, sheet_src, sheet_tgt):
-        for i, row in enumerate(sheet_src.iter_rows()):
-            for j, cell in enumerate(row):
-                cel_tgt = sheet_tgt.cell(i + 1, j + 1)
-                cel_tgt.value = cell.value
-
-                if cell.has_style:
-                    cel_tgt.font = copy.copy(cell.font)
-                    cel_tgt.alignment = copy.copy(cell.alignment)
-                    cel_tgt.number_format = copy.copy(cell.number_format)
-                    cel_tgt.fill = copy.copy(cell.fill)
-
-        sheet_tgt.freeze_panes = sheet_src.freeze_panes
-
-        for row, dimensions in sheet_src.row_dimensions.items():
-            sheet_tgt.row_dimensions[row].height = dimensions.height
-
-        for col, dimensions in sheet_src.column_dimensions.items():
-            sheet_tgt.column_dimensions[col].width = dimensions.width
-
     @wl_misc.log_time
     def exp_all_tables(self):
         self.exp_all_tables_err_msg = ''
@@ -464,7 +464,7 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
                             workbook_src = openpyxl.load_workbook(file_path_table)
                             worksheet_src = workbook_src.active
 
-                            self.copy_worksheet(worksheet_src, worksheet_tgt)
+                            copy_worksheet(worksheet_src, worksheet_tgt)
 
                         workbook_tgt.save(file_path)
 
@@ -1560,7 +1560,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 self.progress_updated.emit(self.tr('Processing data... ({} / {})').format(i + 1, num_texts))
 
                 # Readability
-                if self.tab in ('readability', 'all'):
+                if self.tab in {'readability', 'all'}:
                     stats_readability = [
                         wl_measures_readability.rd(self.main, text),
                         wl_measures_readability.aari(self.main, text),
@@ -1605,7 +1605,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 else:
                     stats_readability = None
 
-                if self.tab in ('counts', 'lens', 'len_breakdown', 'all'):
+                if self.tab in {'counts', 'lens', 'len_breakdown', 'all'}:
                     if not self._running:
                         raise wl_excs.Wl_Exc_Aborted(self.main)
 
@@ -1683,7 +1683,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                     len_syls = None
 
                 # Lexical Density/Diversity
-                if self.tab in ('lexical_density_diversity', 'all'):
+                if self.tab in {'lexical_density_diversity', 'all'}:
                     if not self._running:
                         raise wl_excs.Wl_Exc_Aborted(self.main)
 
@@ -1720,7 +1720,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                     stats_lexical_density_diversity = None
 
                 # Syntactic Complexity
-                if self.tab in ('syntactic_complexity', 'all'):
+                if self.tab in {'syntactic_complexity', 'all'}:
                     if not self._running:
                         raise wl_excs.Wl_Exc_Aborted(self.main)
 

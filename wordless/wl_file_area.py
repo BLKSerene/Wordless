@@ -644,7 +644,7 @@ class Wl_Dialog_Open_Corpora(wl_dialogs.Wl_Dialog):
         # Display warning when opening non-text files
         if (
             any((
-                os.path.splitext(file_path)[1].lower() not in ('.csv', '.lrc', '.srt', '.txt', '.tmx', '.xml')
+                os.path.splitext(file_path)[1].lower() not in {'.csv', '.lrc', '.srt', '.txt', '.tmx', '.xml'}
                 for file_path in file_paths
             ))
             and self.main.settings_custom['files']['misc_settings']['display_warning_when_opening_nontext_files']
@@ -1138,7 +1138,7 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                 # Detect encodings
                 default_encoding = self.main.settings_custom['files']['default_settings']['encoding']
 
-                if file_ext in ('.docx', '.xlsx'):
+                if file_ext in {'.docx', '.xlsx'}:
                     new_file['encoding'] = new_file['encoding_detect'] = default_encoding
                 else:
                     if self.main.settings_custom['file_area']['dialog_open_corpora']['auto_detect_encodings']:

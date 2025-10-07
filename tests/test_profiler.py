@@ -132,7 +132,7 @@ def update_gui(err_msg, texts_stats_files):
                     type(stat) in (int, float, numpy.float64)
                     and not numpy.isnan(stat)
                 )
-                or stat in ('text_too_short', 'no_support')
+                or stat in {'text_too_short', 'no_support'}
             )
 
         # Counts
@@ -150,10 +150,10 @@ def update_gui(err_msg, texts_stats_files):
         else:
             assert count_chars
 
-        if files_selected[0]['name'] in (
+        if files_selected[0]['name'] in {
             '[xct] Tibetan tshegs',
             '[other] No language support'
-        ):
+        }:
             assert count_syls is None
         else:
             assert count_syls
@@ -174,10 +174,10 @@ def update_gui(err_msg, texts_stats_files):
         else:
             assert len_tokens_chars.size
 
-        if files_selected[0]['name'] in (
+        if files_selected[0]['name'] in {
             '[xct] Tibetan tshegs',
             '[other] No language support'
-        ):
+        }:
             assert len_syls is None
         else:
             assert len_tokens_syls.size
@@ -209,10 +209,10 @@ def update_gui(err_msg, texts_stats_files):
         assert numpy.mean(len_sentence_segs) == count_tokens / count_sentence_segs
         assert numpy.mean(len_tokens_chars) == count_chars / count_tokens
 
-        if files_selected[0]['name'] in (
+        if files_selected[0]['name'] in {
             '[xct] Tibetan tshegs',
             '[other] No language support'
-        ):
+        }:
             assert count_syls is None
         else:
             assert numpy.mean(len_tokens_syls) == count_syls / count_tokens
@@ -229,10 +229,10 @@ def update_gui(err_msg, texts_stats_files):
             assert numpy.ptp(lens) == max(lens) - min(lens)
             assert scipy.stats.iqr(lens) == numpy.percentile(lens, 75) - numpy.percentile(lens, 25)
 
-        if files_selected[0]['name'] in (
+        if files_selected[0]['name'] in {
             '[xct] Tibetan tshegs',
             '[other] No language support'
-        ):
+        }:
             assert len_tokens_syls is None
         else:
             assert numpy.ptp(len_tokens_syls) == max(len_tokens_syls) - min(len_tokens_syls)
@@ -267,10 +267,10 @@ def update_gui(err_msg, texts_stats_files):
             assert len_sentence_segs_total == numpy.sum(stats[3])
 
     # Count of n-syllable-long Tokens
-    if files_selected[0]['name'] in (
+    if files_selected[0]['name'] in {
         '[xct] Tibetan tshegs',
         '[other] No language support'
-    ):
+    }:
         assert len_tokens_syls is None
     else:
         count_tokens_lens_files = wl_misc.merge_dicts(count_tokens_lens_syls)

@@ -117,7 +117,10 @@ class Wl_List_Add_Ins_Del_Clr(QtWidgets.QListView):
             # Start editing after moving up or down if the previously selected item is being edited
             case QtCore.Qt.Key_Up | QtCore.Qt.Key_Down | QtCore.Qt.Key_PageUp | QtCore.Qt.Key_PageDown | QtCore.Qt.Key_Home | QtCore.Qt.Key_End:
                 # On OSes other than macOS, home and end keys jump to the first or last item or the start or end of the item being edited
-                if (event.key() not in (QtCore.Qt.Key_Home, QtCore.Qt.Key_End) or is_macos) and self.get_selected_rows():
+                if (
+                    (event.key() not in {QtCore.Qt.Key_Home, QtCore.Qt.Key_End} or is_macos)
+                    and self.get_selected_rows()
+                ):
                     row_selected_prev = self.get_selected_rows()[-1]
                     editing = self.findChild(QtWidgets.QLineEdit)
 

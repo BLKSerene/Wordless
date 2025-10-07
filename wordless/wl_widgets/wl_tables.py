@@ -780,7 +780,8 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
         self.finished.emit(err_msg, self.file_path)
 
     # Clean text before writing to CSV files
-    def clean_text_csv(self, items):
+    @staticmethod
+    def clean_text_csv(items):
         for i, item in enumerate(items):
             items[i] = item.replace('\n', ' ')
             items[i] = RE_REDUNDANT_SPACES.sub(' ', items[i])
@@ -789,7 +790,8 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
         return items
 
     # Remove invalid XML characters
-    def remove_invalid_xml_chars(self, text):
+    @staticmethod
+    def remove_invalid_xml_chars(text):
         # openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE is not complete
         # Reference: https://www.w3.org/TR/xml/#charsets
         return RE_INVALID_XML_CHARS.sub('', text)
@@ -852,7 +854,8 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                     wrap_text = True
                 )
 
-    def style_cell_alignment(self, cell, item):
+    @staticmethod
+    def style_cell_alignment(cell, item):
         if isinstance(item, QtGui.QStandardItem):
             alignment = item.textAlignment()
         else:
@@ -1051,7 +1054,8 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
         self.style_para_spacing(para)
 
-    def style_para_spacing(self, para):
+    @staticmethod
+    def style_para_spacing(para):
         para.paragraph_format.space_before = docx.shared.Pt(0)
         para.paragraph_format.space_after = docx.shared.Pt(0)
         para.paragraph_format.line_spacing = 1.5
@@ -1434,7 +1438,8 @@ class Wl_Table_Data(Wl_Table):
         else:
             return f'{val:.{precision}f}'
 
-    def format_pct(self, val, precision):
+    @staticmethod
+    def format_pct(val, precision):
         return f'{val:.{precision}%}'
 
     def set_item_num(self, row, col, val, total = -1):

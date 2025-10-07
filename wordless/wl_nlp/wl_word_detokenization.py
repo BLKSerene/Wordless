@@ -107,14 +107,14 @@ def wl_word_detokenize(main, tokens, lang):
                 if (
                     token[0] == '།'
                     and text
-                    and text[-1] in ('།', 'ཀ', 'ག')
+                    and text[-1] in {'།', 'ཀ', 'ག'}
                 ):
                     text += ' ' + token
                 elif (
                     token[0] != '།'
                     and text
-                    and text[-1] in ('།', '༎')
-                    and (len(text) < 3 or text[-3] not in ('།', 'ཀ', 'ག'))
+                    and text[-1] in {'།', '༎'}
+                    and (len(text) < 3 or text[-3] not in {'།', 'ཀ', 'ག'})
                 ):
                     text += ' ' + token
                 else:

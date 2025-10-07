@@ -385,7 +385,7 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                 item.text_old = item.text()
 
             # Update closing tags and preview
-            if item.column() in (0, 1, 2):
+            if item.column() in {0, 1, 2}:
                 self.disable_updates()
 
                 for row in range(self.model().rowCount()):

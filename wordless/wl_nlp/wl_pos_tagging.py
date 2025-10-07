@@ -275,7 +275,7 @@ def wl_pos_tag_text(main, text, lang, pos_tagger, tagset):
                                 tags_universal.append('\n')
     # Stanza
     elif pos_tagger.startswith('stanza_'):
-        if lang not in ('zho_cn', 'zho_tw'):
+        if lang not in {'zho_cn', 'zho_tw'}:
             lang_stanza = wl_conversion.remove_lang_code_suffixes(lang)
         else:
             lang_stanza = lang
@@ -437,7 +437,7 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger, tagset):
                         tags_universal.append(pos_clean if (pos_clean := token.pos_.strip()) else 'X')
     # Stanza
     elif pos_tagger.startswith('stanza_'):
-        if lang not in ('zho_cn', 'zho_tw'):
+        if lang not in {'zho_cn', 'zho_tw'}:
             lang_stanza = wl_conversion.remove_lang_code_suffixes(lang)
         else:
             lang_stanza = lang

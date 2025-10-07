@@ -706,14 +706,14 @@ def wl_widgets_table_settings(parent, tables):
 
     show_pct_data_changed()
 
-    if tables[0].tab in (
+    if tables[0].tab in {
         'readability',
         'wordlist_generator',
         'ngram_generator',
         'collocation_extractor',
         'colligation_extractor',
         'keyword_extractor'
-    ):
+    }:
         checkbox_show_cum_data = QtWidgets.QCheckBox(_tr('wl_widgets', 'Show cumulative data'), parent)
         checkbox_show_breakdown_file = QtWidgets.QCheckBox(_tr('wl_widgets', 'Show breakdown by file'), parent)
         checkbox_show_total = QtWidgets.QCheckBox(_tr('wl_widgets', 'Show total'), parent)
@@ -726,10 +726,10 @@ def wl_widgets_table_settings(parent, tables):
         show_breakdown_file_changed()
         show_total_changed()
 
-    if tables[0].tab in (
+    if tables[0].tab in {
         'collocation_extractor',
         'colligation_extractor'
-    ):
+    }:
         checkbox_show_breakdown_span_position = QtWidgets.QCheckBox(_tr('wl_widgets', 'Show breakdown by span position'), parent)
 
         checkbox_show_breakdown_span_position.stateChanged.connect(show_breakdown_span_position_changed)
@@ -915,10 +915,19 @@ def wl_widgets_fig_settings(parent, tab):
     ])
 
     # Network Graph
-    if tab in ('collocation_extractor', 'colligation_extractor'):
+    if tab in {
+        'collocation_extractor',
+        'colligation_extractor'
+    }:
         combo_box_graph_type.addItem(_tr('wl_widgets', 'Network graph'))
 
-    if tab in ('wordlist_generator', 'ngram_generator', 'collocation_extractor', 'colligation_extractor', 'keyword_extractor'):
+    if tab in {
+        'wordlist_generator',
+        'ngram_generator',
+        'collocation_extractor',
+        'colligation_extractor',
+        'keyword_extractor'
+    }:
         match tab:
             case 'wordlist_generator' | 'ngram_generator':
                 combo_box_use_data.measures_changed = measures_changed_wordlist_generator

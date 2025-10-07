@@ -20,7 +20,6 @@
 import bisect
 import collections
 import copy
-import operator
 import re
 import traceback
 
@@ -1181,7 +1180,10 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                         if colligation not in colligations_freqs_total:
                             colligations_freqs_total[colligation] = freqs
                         else:
-                            colligations_freqs_total[colligation] = list(map(operator.add, colligations_freqs_total[colligation], freqs))
+                            colligations_freqs_total[colligation] = [
+                                freq_total + freq
+                                for freq_total, freq in zip(colligations_freqs_total[colligation], freqs)
+                            ]
 
                 # Frequency (All)
                 for colligations_freqs_file_all in colligations_freqs_files_all:

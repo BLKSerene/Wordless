@@ -101,7 +101,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                 del tokens_multilevel[-1]
     # Stanza
     elif word_tokenizer.startswith('stanza_'):
-        if lang not in ('zho_cn', 'zho_tw'):
+        if lang not in {'zho_cn', 'zho_tw'}:
             lang_stanza = wl_conversion.remove_lang_code_suffixes(lang)
         else:
             lang_stanza = lang

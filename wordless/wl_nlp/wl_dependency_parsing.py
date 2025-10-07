@@ -161,7 +161,7 @@ def wl_dependency_parse_text(main, text, lang, dependency_parser):
                 i_head_start += len(doc)
     # Stanza
     elif dependency_parser.startswith('stanza_'):
-        if lang not in ('zho_cn', 'zho_tw'):
+        if lang not in {'zho_cn', 'zho_tw'}:
             lang_stanza = wl_conversion.remove_lang_code_suffixes(lang)
         else:
             lang_stanza = lang
@@ -260,7 +260,7 @@ def wl_dependency_parse_tokens(main, tokens, lang, dependency_parser):
                 i_head_start += len(doc)
     # Stanza
     elif dependency_parser.startswith('stanza_'):
-        if lang not in ('zho_cn', 'zho_tw'):
+        if lang not in {'zho_cn', 'zho_tw'}:
             lang_stanza = wl_conversion.remove_lang_code_suffixes(lang)
         else:
             lang_stanza = lang
@@ -365,11 +365,11 @@ def to_displacy_sentence(lang, sentence, token_properties = None):
     nlp = spacy.blank('en')
 
     # RTL languages
-    if lang in (
+    if lang in {
         'ara', 'heb', 'kmr', 'fas', 'snd', 'urd',
         # Unsupported by Stanza: Aramaic, Azerbaijani, Kurdish (Sorani), Maldivian, Fulah, Mazanderani, N'Ko, Pushto, Rohingya, Syriac
         'arc', 'aze', 'ckb', 'div', 'ful', 'mzn', 'nqo', 'pus', 'rhg', 'syr'
-    ):
+    }:
         len_sentence = len(sentence.words)
 
         if token_properties is not None:
@@ -486,7 +486,7 @@ def wl_dependency_parse_fig_text(
     # Stanza
     # Reference: https://github.com/stanfordnlp/stanza/pull/1069/files
     elif dependency_parser.startswith('stanza_'):
-        if lang not in ('zho_cn', 'zho_tw'):
+        if lang not in {'zho_cn', 'zho_tw'}:
             lang_stanza = wl_conversion.remove_lang_code_suffixes(lang)
         else:
             lang_stanza = lang
@@ -561,7 +561,7 @@ def wl_dependency_parse_fig_tokens(
                 i_tag += len(doc)
     # Stanza
     elif dependency_parser.startswith('stanza_'):
-        if lang not in ('zho_cn', 'zho_tw'):
+        if lang not in {'zho_cn', 'zho_tw'}:
             lang_stanza = wl_conversion.remove_lang_code_suffixes(lang)
         else:
             lang_stanza = lang

@@ -46,7 +46,7 @@ def wl_lemmatize(main, inputs, lang, lemmatizer = 'default', force = False):
             if lemmatizer == 'default':
                 lemmatizer = main.settings_custom['lemmatization']['lemmatizer_settings'][lang]
 
-            if lemmatizer in ('botok_xct', 'modern_botok_bod'):
+            if lemmatizer in {'botok_xct', 'modern_botok_bod'}:
                 wl_nlp_utils.init_word_tokenizers(
                     main,
                     lang = 'bod',
@@ -124,7 +124,7 @@ def wl_lemmatize_text(main, text, lang, lemmatizer):
                             lemmas.append('\n')
     # Stanza
     elif lemmatizer.startswith('stanza_'):
-        if lang not in ('zho_cn', 'zho_tw'):
+        if lang not in {'zho_cn', 'zho_tw'}:
             lang_stanza = wl_conversion.remove_lang_code_suffixes(lang)
         else:
             lang_stanza = lang
@@ -205,7 +205,7 @@ def wl_lemmatize_text(main, text, lang, lemmatizer):
                         tokens.append(str(token))
                         lemmas.append(morphological_analyzer.parse(token)[0].normal_form)
                 # Tibetan
-                elif lemmatizer in ('botok_xct', 'modern_botok_bod'):
+                elif lemmatizer in {'botok_xct', 'modern_botok_bod'}:
                     for token in main.__dict__[f'{lemmatizer[:-4]}_word_tokenizer'].tokenize(line_clean):
                         tokens.append(token.text)
 
@@ -265,7 +265,7 @@ def wl_lemmatize_tokens(main, inputs, lang, lemmatizer):
                 lemma_tokens.extend((token.text for token in doc))
     # Stanza
     elif lemmatizer.startswith('stanza_'):
-        if lang not in ('zho_cn', 'zho_tw'):
+        if lang not in {'zho_cn', 'zho_tw'}:
             lang_stanza = wl_conversion.remove_lang_code_suffixes(lang)
         else:
             lang_stanza = lang
@@ -339,7 +339,7 @@ def wl_lemmatize_tokens(main, inputs, lang, lemmatizer):
 
                 lemma_tokens.extend(tokens.copy())
             # Tibetan
-            elif lemmatizer in ('botok_xct', 'modern_botok_bod'):
+            elif lemmatizer in {'botok_xct', 'modern_botok_bod'}:
                 for token in main.__dict__[f'{lemmatizer[:-4]}_word_tokenizer'].tokenize(''.join(tokens)):
                     if token.lemma:
                         lemmas.append(token.lemma)

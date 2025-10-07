@@ -437,7 +437,7 @@ def init_model_stanza(main, lang, lang_util, tokenized = False):
             processors = ('tokenize', 'sentiment')
 
     if lang in get_langs_stanza(main, util_type = 'word_tokenizers') or lang == 'srp_cyrl':
-        if lang not in ('zho_cn', 'zho_tw'):
+        if lang not in {'zho_cn', 'zho_tw'}:
             lang = wl_conversion.remove_lang_code_suffixes(lang)
 
         if (
@@ -760,7 +760,7 @@ def split_text(main, text, nlp_util):
     text_section = []
 
     # Inputs of SudachiPy cannot be more than 49149 bytes
-    if nlp_util in ('spacy_jpn', 'sudachipy_jpn'):
+    if nlp_util in {'spacy_jpn', 'sudachipy_jpn'}:
         chunk_size = min(49149 // 4, main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'])
     else:
         chunk_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars']
@@ -786,7 +786,7 @@ def split_tokens(main, tokens, nlp_util):
     token_section = []
 
     # Inputs of SudachiPy cannot be more than 49149 bytes
-    if nlp_util in ('spacy_jpn', 'sudachipy_jpn'):
+    if nlp_util in {'spacy_jpn', 'sudachipy_jpn'}:
         chunk_size = min(49149 // 4, main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'])
     else:
         chunk_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars']
@@ -1050,7 +1050,7 @@ TSHEG = '་'
 def add_missing_ending_tshegs(main, tokens, tab):
     if (
         tokens
-        and tokens[0].lang in ('xct', 'bod')
+        and tokens[0].lang in {'xct', 'bod'}
         and main.settings_custom['tables'][tab]['lang_specific_settings']['add_missing_ending_tshegs']
     ):
         for i, token in enumerate(tokens):

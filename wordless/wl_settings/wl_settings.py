@@ -286,11 +286,10 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
             settings.load_settings(defaults = defaults)
 
     def validate_settings(self):
-        for settings in self.settings_all.values():
-            if not settings.validate_settings():
-                return False
-
-        return True
+        return all((
+            settings.validate_settings()
+            for settings in self.settings_all.values()
+        ))
 
     def reset_all_settings(self):
         if wl_dialogs.Wl_Dialog_Question(
@@ -348,6 +347,7 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
             wl_checks_work_area.check_err(self.main, traceback.format_exc())
 
 class Wl_Settings_Node(QtWidgets.QWidget):
+    # pylint: disable=no-self-use
     def __init__(self, main):
         super().__init__()
 

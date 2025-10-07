@@ -47,11 +47,11 @@ def test_concordancer():
                 settings['generation_settings']['calc_sentiment_scores'] = True
             # Miscellaneous
             case _:
-                if main.settings_custom['file_area']['files_open'][i + 1]['name'] in (
+                if main.settings_custom['file_area']['files_open'][i + 1]['name'] in {
                     '[other] No language support',
                     '[eng_us] Starting with a punctuation mark',
                     '[eng_us] Starting with tags'
-                ):
+                }:
                     wl_test_init.select_test_files(main, no_files = (i + 1,))
                 else:
                     continue
@@ -112,11 +112,11 @@ def update_gui_table(err_msg, concordance_lines):
 
         # Sentiment
         if main_global.settings_custom['concordancer']['generation_settings']['calc_sentiment_scores']:
-            if file_name in (
+            if file_name in {
                 '[bod] Tibetan tshegs',
                 '[xct] Tibetan tshegs',
                 '[other] No language support'
-            ):
+            }:
                 assert sentiment == 'No language support'
             else:
                 assert -1 <= sentiment <= 1

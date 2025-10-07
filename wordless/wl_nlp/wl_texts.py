@@ -198,11 +198,10 @@ def set_token_texts(tokens, texts):
         tokens[i] = token
 
 def has_token_properties(tokens, name):
-    for token in tokens:
-        if getattr(token, name) is not None:
-            return True
-
-    return False
+    return any((
+        getattr(token, name) is not None
+        for token in tokens
+    ))
 
 def get_token_properties(tokens, name, convert_none = False):
     if convert_none:
@@ -440,7 +439,8 @@ class Wl_Text:
 
         return tags
 
-    def add_tags_splitting(self, text, tags):
+    @staticmethod
+    def add_tags_splitting(text, tags):
         if (text := text.strip()):
             tokens = text.split()
 
