@@ -72,4 +72,5 @@ wordcloud
 # See: https://stackoverflow.com/a/57060441
 --index-url=https://download.pytorch.org/whl/cpu
 --extra-index-url=https://pypi.org/simple
-torch
+# To be compatible with Windows
+torch == 2.8.0

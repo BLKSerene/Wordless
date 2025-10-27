@@ -1167,6 +1167,10 @@ def init_settings_default(main):
             },
 
             'generation_settings': {
+                'ngram_size_sync': False,
+                'ngram_size_min': 1,
+                'ngram_size_max': 1,
+
                 'test_statistical_significance': 'pearsons_chi_squared_test',
                 'measure_bayes_factor': 'log_likelihood_ratio_test',
                 'measure_effect_size': 'or',

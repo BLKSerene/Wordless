@@ -42,7 +42,7 @@ from wordless.wl_settings import (
 from wordless.wl_utils import wl_misc
 from wordless.wl_widgets import wl_tables
 
-# English
+# English / Tibetan
 SEARCH_TERMS = ['take', 'ལ་']
 
 # An instance of QApplication must be created before any instance of QWidget

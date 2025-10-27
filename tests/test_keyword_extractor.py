@@ -137,5 +137,41 @@ def update_gui(err_msg, keywords_freq_files, keywords_stats_files):
         # Number of Files Found
         assert len([freq for freq in freq_files[1:-1] if freq]) >= 1
 
+# Check that the results of unigrams and bigrams are the exact concatenation of those of unigrams and those of bigrams
+def test_keyword_extractor_ngram_size():
+    settings = main_global.settings_custom['keyword_extractor']
+
+    wl_test_init.select_test_files(main_global, no_files = (0,))
+
+    for ngram_size_min, ngram_size_max in (
+        (1, 1),
+        (2, 2),
+        (1, 2)
+    ):
+        settings['generation_settings']['ngram_size_min'] = ngram_size_min
+        settings['generation_settings']['ngram_size_max'] = ngram_size_max
+
+        worker_keyword_extractor = wl_keyword_extractor.Wl_Worker_Keyword_Extractor_Table(
+            main_global,
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main_global),
+        )
+
+        worker_keyword_extractor.finished.connect(update_gui_ngram_size(ngram_size_min, ngram_size_max))
+        worker_keyword_extractor.run()
+
+    # pylint: disable=undefined-variable
+    assert keywords_freq_files_1_2 == keywords_freq_files_1_1 | keywords_freq_files_2_2
+    assert keywords_stats_files_1_2 == keywords_stats_files_1_1 | keywords_stats_files_2_2
+
+def update_gui_ngram_size(ngram_size_min, ngram_size_max):
+    def update_gui(err_msg, keywords_freq_files, keywords_stats_files):
+        assert not err_msg
+
+        globals()[f'keywords_freq_files_{ngram_size_min}_{ngram_size_max}'] = keywords_freq_files
+        globals()[f'keywords_stats_files_{ngram_size_min}_{ngram_size_max}'] = keywords_stats_files
+
+    return update_gui
+
 if __name__ == '__main__':
     test_keyword_extractor()
+    test_keyword_extractor_ngram_size()

@@ -156,7 +156,7 @@ def test_log_ratio():
             numpy.array([0, 0, 0]),
             numpy.array([1, 1, 0])
         ),
-        numpy.array([float('-inf'), float('inf'), 0])
+        numpy.array([-math.inf, math.inf, 0])
     )
 
 def test_mi_log_f():
@@ -246,7 +246,7 @@ def test_odds_ratio():
             numpy.array([0, 0, 0]),
             numpy.array([1, 1, 0])
         ),
-        numpy.array([float('-inf'), float('inf'), 0])
+        numpy.array([-math.inf, math.inf, 0])
     )
 
 # Reference: Gabrielatos, C., & Marchi, A. (2011, November 5). Keyness: Matching metrics to definitions [Conference session]. Corpus Linguistics in the South 1, University of Portsmouth, United Kingdom. https://eprints.lancs.ac.uk/id/eprint/51449/4/Gabrielatos_Marchi_Keyness.pdf | p. 18
@@ -270,7 +270,7 @@ def test_pct_diff():
             numpy.array([0, 0, 0]),
             numpy.array([1, 1, 0])
         ),
-        numpy.array([float('-inf'), float('inf'), 0])
+        numpy.array([-math.inf, math.inf, 0])
     )
 
 # Reference: Church, K. W., & Hanks, P. (1990). Word association norms, mutual information, and lexicography. Computational Linguistics, 16(1), 22–29. | p. 24

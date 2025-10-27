@@ -252,7 +252,7 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
             self.combo_box_measure_adjusted_freq
         ) = wl_widgets.wl_widgets_measures_wordlist_ngram_generation(self)
 
-        self.spin_box_allow_skipped_tokens.setRange(1, 20)
+        self.spin_box_allow_skipped_tokens.setRange(1, 100)
 
         self.checkbox_ngram_size_sync.stateChanged.connect(self.generation_settings_changed)
         self.spin_box_ngram_size_min.valueChanged.connect(self.generation_settings_changed)
@@ -809,10 +809,11 @@ def get_ngrams_is(ngrams, tokens):
     i = 0
 
     for ngram in ngrams:
-        if ngram[0] != tokens[i]:
-            i += 1
+        for i, token in enumerate(tokens):
+            if ngram[0] is token:
+                ngrams_is.append((ngram, i))
 
-        ngrams_is.append((ngram, i))
+                break
 
     return ngrams_is
 
@@ -868,7 +869,7 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                     ngrams = wl_nlp_utils.everygrams(tokens, ngram_size_min, ngram_size_max)
                     ngrams_is.extend(get_ngrams_is(ngrams, tokens))
 
-                # Remove n-grams with at least 1 empty token
+                # Remove n-grams with empty tokens
                 ngrams_is = [
                     (ngram, ngram_i)
                     for ngram, ngram_i in ngrams_is
@@ -876,8 +877,6 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                 ]
 
                 # Filter search terms & search term positions
-                ngrams_is_filtered = []
-
                 search_terms = wl_matching.match_search_terms_ngrams(
                     self.main, tokens,
                     lang = text.lang,
@@ -905,16 +904,26 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                 else:
                     search_term_position_max = settings['search_settings']['search_term_position_max'] - 1
 
-                for search_term in search_terms:
-                    len_search_term = len(search_term)
+                # Match each n-gram only once
+                ngrams_is_filtered = set()
+                search_terms_lens = tuple((
+                    (search_term, len(search_term))
+                    for search_term in search_terms
+                ))
 
-                    for ngram, ngram_i in ngrams_is:
+                for ngram, ngram_i in ngrams_is:
+                    for search_term, len_search_term in search_terms_lens:
                         for i in range(search_term_position_min, search_term_position_max + 1):
                             if not self._running:
                                 raise wl_excs.Wl_Exc_Aborted(self.main)
 
                             if ngram[i : i + len_search_term] == search_term:
-                                ngrams_is_filtered.append((ngram, ngram_i))
+                                ngrams_is_filtered.add((ngram, ngram_i))
+
+                                break
+
+                        if (ngram, ngram_i) in ngrams_is_filtered:
+                            break
 
                 # Check context settings
                 ngrams_is = (
@@ -929,8 +938,8 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                 )
 
                 self.ngrams_freq_files.append(collections.Counter((
-                    ngram
-                    for ngram, ngram_i in ngrams_is
+                    ngram_i[0]
+                    for ngram_i in ngrams_is
                 )))
 
                 texts.append(text)
@@ -942,10 +951,7 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
 
                 texts.append(wl_texts.Wl_Text_Total(texts))
 
-                self.ngrams_freq_files.append(sum([
-                    collections.Counter(ngrams_freq_file)
-                    for ngrams_freq_file in self.ngrams_freq_files
-                ], collections.Counter()))
+                self.ngrams_freq_files.append(sum(self.ngrams_freq_files, collections.Counter()))
 
             # Dispersion & Adjusted Frequency
             measure_dispersion = settings['generation_settings']['measure_dispersion']
@@ -957,99 +963,79 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
             type_dispersion = self.main.settings_global['measures_dispersion'][measure_dispersion]['type']
             type_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][measure_adjusted_freq]['type']
 
-            ngrams_total = list(self.ngrams_freq_files[-1].keys())
+            ngrams_total = {
+                ngram_size: set()
+                for ngram_size in range(ngram_size_min, ngram_size_max + 1)
+            }
+
+            for ngram in self.ngrams_freq_files[-1]:
+                ngrams_total[len(ngram)].add(ngram)
 
             for text in texts:
-                ngrams_lens = {}
                 ngrams_stats_file = {}
 
                 tokens = text.get_tokens_flat()
                 tokens = wl_nlp_utils.add_missing_ending_tshegs(self.main, tokens, tab = 'ngram_generator')
 
-                if allow_skipped_tokens:
-                    for ngram_size in range(ngram_size_min, ngram_size_max + 1):
-                        if not self._running:
-                            raise wl_excs.Wl_Exc_Aborted(self.main)
+                for ngram_size in range(ngram_size_min, ngram_size_max + 1):
+                    ngrams_stats_file_ngram_size = {}
 
-                        ngrams_lens[ngram_size] = list(wl_nlp_utils.skipgrams(tokens, ngram_size, allow_skipped_tokens_num))
-                else:
-                    for ngram_size in range(ngram_size_min, ngram_size_max + 1):
-                        if not self._running:
-                            raise wl_excs.Wl_Exc_Aborted(self.main)
+                    if allow_skipped_tokens:
+                        ngrams = tuple(wl_nlp_utils.skipgrams(tokens, ngram_size, allow_skipped_tokens_num))
+                    else:
+                        ngrams = tuple(wl_nlp_utils.ngrams(tokens, ngram_size))
 
-                        ngrams_lens[ngram_size] = list(wl_nlp_utils.ngrams(tokens, ngram_size))
-
-                # Dispersion
-                if measure_dispersion == 'none':
-                    ngrams_stats_file = {
-                        ngram: [None]
-                        for ngram in ngrams_total
-                    }
-                elif type_dispersion == 'parts_based':
-                    freqs_sections_ngrams = {}
-
-                    for ngram_size, ngram_list in ngrams_lens.items():
-                        if not self._running:
-                            raise wl_excs.Wl_Exc_Aborted(self.main)
-
-                        ngrams_total_len = [ngram for ngram in ngrams_total if len(ngram) == ngram_size]
-
-                        freqs_sections_ngrams.update(wl_measure_utils.to_freqs_sections_dispersion(
+                    # Dispersion
+                    if measure_dispersion == 'none':
+                        ngrams_stats_file_ngram_size = {
+                            ngram: [None]
+                            for ngram in ngrams_total[ngram_size]
+                        }
+                    elif type_dispersion == 'parts_based':
+                        freqs_sections_ngrams = wl_measure_utils.to_freqs_sections_dispersion(
                             self.main,
-                            items_to_search = ngrams_total_len,
-                            items = ngram_list
-                        ))
+                            items_to_search = ngrams_total[ngram_size],
+                            items = ngrams
+                        )
 
-                    for ngram, freqs in freqs_sections_ngrams.items():
-                        if not self._running:
-                            raise wl_excs.Wl_Exc_Aborted(self.main)
-
-                        ngrams_stats_file[ngram] = [func_dispersion(self.main, freqs)]
-                elif type_dispersion == 'dist_based':
-                    for ngram_size, ngram_list in ngrams_lens.items():
-                        ngrams_total_len = [ngram for ngram in ngrams_total if len(ngram) == ngram_size]
-
-                        for ngram in ngrams_total_len:
+                        for ngram, freqs in freqs_sections_ngrams.items():
                             if not self._running:
                                 raise wl_excs.Wl_Exc_Aborted(self.main)
 
-                            ngrams_stats_file[ngram] = [func_dispersion(self.main, ngram_list, ngram)]
-
-                # Adjusted Frequency
-                if measure_adjusted_freq == 'none':
-                    ngrams_stats_file = {
-                        ngram: stats + [None]
-                        for ngram, stats in ngrams_stats_file.items()
-                    }
-                elif type_adjusted_freq == 'parts_based':
-                    freqs_sections_ngrams = {}
-
-                    for ngram_size, ngram_list in ngrams_lens.items():
-                        if not self._running:
-                            raise wl_excs.Wl_Exc_Aborted(self.main)
-
-                        ngrams_total_len = [ngram for ngram in ngrams_total if len(ngram) == ngram_size]
-
-                        freqs_sections_ngrams.update(wl_measure_utils.to_freqs_sections_adjusted_freq(
-                            self.main,
-                            items_to_search = ngrams_total_len,
-                            items = ngram_list
-                        ))
-
-                    for ngram, freqs in freqs_sections_ngrams.items():
-                        if not self._running:
-                            raise wl_excs.Wl_Exc_Aborted(self.main)
-
-                        ngrams_stats_file[ngram].append(func_adjusted_freq(self.main, freqs))
-                elif type_adjusted_freq == 'dist_based':
-                    for ngram_size, ngram_list in ngrams_lens.items():
-                        ngrams_total_len = [ngram for ngram in ngrams_total if len(ngram) == ngram_size]
-
-                        for ngram in ngrams_total_len:
+                            ngrams_stats_file_ngram_size[ngram] = [func_dispersion(self.main, freqs)]
+                    elif type_dispersion == 'dist_based':
+                        for ngram in ngrams_total[ngram_size]:
                             if not self._running:
                                 raise wl_excs.Wl_Exc_Aborted(self.main)
 
-                            ngrams_stats_file[ngram].append(func_adjusted_freq(self.main, ngram_list, ngram))
+                            ngrams_stats_file_ngram_size[ngram] = [func_dispersion(self.main, ngrams, ngram)]
+
+                    # Adjusted Frequency
+                    if measure_adjusted_freq == 'none':
+                        ngrams_stats_file_ngram_size = {
+                            ngram: stats + [None]
+                            for ngram, stats in ngrams_stats_file_ngram_size.items()
+                        }
+                    elif type_adjusted_freq == 'parts_based':
+                        freqs_sections_ngrams = wl_measure_utils.to_freqs_sections_adjusted_freq(
+                            self.main,
+                            items_to_search = ngrams_total[ngram_size],
+                            items = ngrams
+                        )
+
+                        for ngram, freqs in freqs_sections_ngrams.items():
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                            ngrams_stats_file_ngram_size[ngram].append(func_adjusted_freq(self.main, freqs))
+                    elif type_adjusted_freq == 'dist_based':
+                        for ngram in ngrams_total[ngram_size]:
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                            ngrams_stats_file_ngram_size[ngram].append(func_adjusted_freq(self.main, ngrams, ngram))
+
+                    ngrams_stats_file |= ngrams_stats_file_ngram_size
 
                 self.ngrams_stats_files.append(ngrams_stats_file)
 

@@ -139,6 +139,15 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
         # Generation Settings
         self.group_box_generation_settings = QtWidgets.QGroupBox(self.tr('Generation Settings'))
 
+        self.label_ngram_size = QtWidgets.QLabel(self.tr('N-gram size:'), self)
+        (
+            self.checkbox_ngram_size_sync,
+            self.label_ngram_size_min,
+            self.spin_box_ngram_size_min,
+            self.label_ngram_size_max,
+            self.spin_box_ngram_size_max
+        ) = wl_boxes.wl_spin_boxes_min_max_sync(self)
+
         (
             self.label_test_statistical_significance,
             self.combo_box_test_statistical_significance,
@@ -151,17 +160,33 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
             extraction_type = 'keyword'
         )
 
+        self.checkbox_ngram_size_sync.stateChanged.connect(self.generation_settings_changed)
+        self.spin_box_ngram_size_min.valueChanged.connect(self.generation_settings_changed)
+        self.spin_box_ngram_size_max.valueChanged.connect(self.generation_settings_changed)
+
         self.combo_box_test_statistical_significance.currentTextChanged.connect(self.generation_settings_changed)
         self.combo_box_measure_bayes_factor.currentTextChanged.connect(self.generation_settings_changed)
         self.combo_box_measure_effect_size.currentTextChanged.connect(self.generation_settings_changed)
 
         self.group_box_generation_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_generation_settings.layout().addWidget(self.label_test_statistical_significance, 0, 0)
-        self.group_box_generation_settings.layout().addWidget(self.combo_box_test_statistical_significance, 1, 0)
-        self.group_box_generation_settings.layout().addWidget(self.label_measure_bayes_factor, 2, 0)
-        self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_bayes_factor, 3, 0)
-        self.group_box_generation_settings.layout().addWidget(self.label_measure_effect_size, 4, 0)
-        self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_effect_size, 5, 0)
+        self.group_box_generation_settings.layout().addWidget(self.label_ngram_size, 0, 0, 1, 3)
+        self.group_box_generation_settings.layout().addWidget(self.checkbox_ngram_size_sync, 0, 3, QtCore.Qt.AlignRight)
+        self.group_box_generation_settings.layout().addWidget(self.label_ngram_size_min, 1, 0)
+        self.group_box_generation_settings.layout().addWidget(self.spin_box_ngram_size_min, 1, 1)
+        self.group_box_generation_settings.layout().addWidget(self.label_ngram_size_max, 1, 2)
+        self.group_box_generation_settings.layout().addWidget(self.spin_box_ngram_size_max, 1, 3)
+
+        self.group_box_generation_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 2, 0, 1, 4)
+
+        self.group_box_generation_settings.layout().addWidget(self.label_test_statistical_significance, 3, 0, 1, 4)
+        self.group_box_generation_settings.layout().addWidget(self.combo_box_test_statistical_significance, 4, 0, 1, 4)
+        self.group_box_generation_settings.layout().addWidget(self.label_measure_bayes_factor, 5, 0, 1, 4)
+        self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_bayes_factor, 6, 0, 1, 4)
+        self.group_box_generation_settings.layout().addWidget(self.label_measure_effect_size, 7, 0, 1, 4)
+        self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_effect_size, 8, 0, 1, 4)
+
+        self.group_box_generation_settings.layout().setColumnStretch(1, 1)
+        self.group_box_generation_settings.layout().setColumnStretch(3, 1)
 
         # Table Settings
         self.group_box_table_settings = QtWidgets.QGroupBox(self.tr('Table Settings'))
@@ -285,6 +310,10 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
         self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
 
         # Generation Settings
+        self.checkbox_ngram_size_sync.setChecked(settings['generation_settings']['ngram_size_sync'])
+        self.spin_box_ngram_size_min.setValue(settings['generation_settings']['ngram_size_min'])
+        self.spin_box_ngram_size_max.setValue(settings['generation_settings']['ngram_size_max'])
+
         self.combo_box_test_statistical_significance.set_measure(settings['generation_settings']['test_statistical_significance'])
         self.combo_box_measure_bayes_factor.set_measure(settings['generation_settings']['measure_bayes_factor'])
         self.combo_box_measure_effect_size.set_measure(settings['generation_settings']['measure_effect_size'])
@@ -332,6 +361,10 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
 
     def generation_settings_changed(self):
         settings = self.main.settings_custom['keyword_extractor']['generation_settings']
+
+        settings['ngram_size_sync'] = self.checkbox_ngram_size_sync.isChecked()
+        settings['ngram_size_min'] = self.spin_box_ngram_size_min.value()
+        settings['ngram_size_max'] = self.spin_box_ngram_size_max.value()
 
         settings['test_statistical_significance'] = self.combo_box_test_statistical_significance.get_measure()
         settings['measure_bayes_factor'] = self.combo_box_measure_bayes_factor.get_measure()
@@ -599,15 +632,15 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data):
 
                 self.disable_updates()
 
-                for i, (keyword, stats_files) in enumerate(wl_sorting.sorted_stats_files_items(keywords_stats_files)):
-                    freq_files = keywords_freq_files[keyword]
+                for i, (ngram, stats_files) in enumerate(wl_sorting.sorted_stats_files_items(keywords_stats_files)):
+                    freq_files = keywords_freq_files[ngram]
 
                     # Rank
                     self.set_item_num(i, 0, -1)
 
                     # Keyword
-                    self.model().setItem(i, 1, wl_tables.Wl_Table_Item(keyword.display_text()))
-                    self.model().item(i, 1).tokens_filter = [keyword]
+                    self.model().setItem(i, 1, wl_tables.Wl_Table_Item(' '.join(wl_texts.to_display_texts(ngram))))
+                    self.model().item(i, 1).tokens_filter = [ngram]
 
                     # Frequency
                     for j, freq in enumerate(freq_files):
@@ -756,13 +789,22 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
             files_ref = list(self.main.wl_file_area_ref.get_selected_files())
 
             # Frequency (Reference Corpora)
+            ngram_size_min = settings['generation_settings']['ngram_size_min']
+            ngram_size_max = settings['generation_settings']['ngram_size_max']
+
+            ngrams_ref = {
+                ngram_size: ()
+                for ngram_size in range(ngram_size_min, ngram_size_max + 1)
+            }
+
+            keywords = {
+                ngram_size: set()
+                for ngram_size in range(ngram_size_min, ngram_size_max + 1)
+            }
+
             self.keywords_freq_files.append(collections.Counter())
-            tokens_ref = []
 
             for file_ref in files_ref:
-                if not self._running:
-                    raise wl_excs.Wl_Exc_Aborted(self.main)
-
                 text = wl_token_processing.wl_process_tokens_ngram_generator(
                     self.main, file_ref['text'],
                     token_settings = settings['token_settings']
@@ -771,19 +813,29 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
                 tokens = text.get_tokens_flat()
                 tokens = wl_nlp_utils.add_missing_ending_tshegs(self.main, tokens, tab = 'keyword_extractor')
 
-                # Remove empty tokens
-                self.keywords_freq_files[0] += collections.Counter([token for token in tokens if token])
+                for ngram_size in range(ngram_size_min, ngram_size_max + 1):
+                    if not self._running:
+                        raise wl_excs.Wl_Exc_Aborted(self.main)
 
-                # Preserve empty tokens for tests of statistical significance and measures of Bayes factor which require that the corpus be segmented into equal-sized sections
-                tokens_ref.extend(tokens)
+                    ngrams = tuple(wl_nlp_utils.ngrams(tokens, ngram_size))
 
-            len_tokens_ref = len(tokens_ref)
+                    # Remove n-grams with empty tokens
+                    self.keywords_freq_files[0] += collections.Counter((
+                        ngram
+                        for ngram in ngrams
+                        if all(ngram)
+                    ))
+
+                    # Preserve empty tokens for tests of statistical significance and measures of Bayes factor which require that the corpus be segmented into equal-sized sections
+                    ngrams_ref[ngram_size] += tuple(ngrams)
+
+            num_ngrams_ref = {
+                ngram_size: len(ngrams)
+                for ngram_size, ngrams in ngrams_ref.items()
+            }
 
             # Frequency (Observed Corpus)
             for file_observed in files_observed:
-                if not self._running:
-                    raise wl_excs.Wl_Exc_Aborted(self.main)
-
                 text = wl_token_processing.wl_process_tokens_ngram_generator(
                     self.main, file_observed['text'],
                     token_settings = settings['token_settings']
@@ -792,11 +844,29 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
                 tokens = text.get_tokens_flat()
                 tokens = wl_nlp_utils.add_missing_ending_tshegs(self.main, tokens, tab = 'keyword_extractor')
 
-                # Remove empty tokens
-                self.keywords_freq_files.append(collections.Counter([token for token in tokens if token]))
+                self.keywords_freq_files.append(collections.Counter())
+
+                for ngram_size in range(ngram_size_min, ngram_size_max + 1):
+                    if not self._running:
+                        raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                    # Remove n-grams with empty tokens
+                    ngrams = tuple((
+                        ngram
+                        for ngram in tuple(wl_nlp_utils.ngrams(tokens, ngram_size))
+                        if all(ngram)
+                    ))
+
+                    self.keywords_freq_files[-1] += collections.Counter(ngrams)
+                    keywords[ngram_size] |= set(ngrams)
 
                 # Preserve empty tokens for tests of statistical significance and measures of Bayes factor which require that the corpus be segmented into equal-sized sections
                 texts.append(text)
+
+            num_keywords = {
+                ngram_size: len(keywords_ngram_size)
+                for ngram_size, keywords_ngram_size in keywords.items()
+            }
 
             # Total
             if len(files_observed) > 1:
@@ -811,7 +881,7 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
             self.keywords_freq_files[0] = {
                 token: freq
                 for token, freq in self.keywords_freq_files[0].items()
-                if token in self.keywords_freq_files[-1].keys()
+                if token in self.keywords_freq_files[-1]
             }
 
             # Keyness
@@ -827,123 +897,127 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
             to_sections_bayes_factor = self.main.settings_global['measures_bayes_factor'][measure_bayes_factor]['to_sections']
 
             keywords_freq_file_ref = self.keywords_freq_files[0]
-            keywords_all = self.keywords_freq_files[-1].keys()
-            num_keywords_all = len(keywords_all)
 
             for i, text in enumerate(texts):
-                if any((func_statistical_significance, func_bayes_factor, func_effect_size)):
-                    keywords_stats_file = {}
+                keywords_stats_file = {}
 
-                    keywords_freq_file_observed = self.keywords_freq_files[i + 1]
-                    tokens_observed = text.get_tokens_flat()
-                    tokens_observed = wl_nlp_utils.add_missing_ending_tshegs(self.main, tokens, tab = 'keyword_extractor')
+                for ngram_size in range(ngram_size_min, ngram_size_max + 1):
+                    if any((func_statistical_significance, func_bayes_factor, func_effect_size)):
+                        keywords_stats_file_ngram_size = {}
 
-                    if to_sections_statistical_significance:
-                        freqs_sections_tokens_statistical_significance = wl_measure_utils.to_freqs_sections_statistical_significance(
-                            self.main,
-                            items_to_search = keywords_all,
-                            items_x1 = tokens_observed,
-                            items_x2 = tokens_ref,
-                            test_statistical_significance = test_statistical_significance
-                        )
+                        keywords_freq_file_observed = self.keywords_freq_files[i + 1]
+                        tokens_observed = text.get_tokens_flat()
+                        tokens_observed = wl_nlp_utils.add_missing_ending_tshegs(self.main, tokens, tab = 'keyword_extractor')
+                        ngrams_observed = tuple(wl_nlp_utils.ngrams(tokens_observed, ngram_size))
 
-                    if to_sections_bayes_factor:
-                        freqs_sections_tokens_bayes_factor = wl_measure_utils.to_freqs_sections_bayes_factor(
-                            self.main,
-                            items_to_search = keywords_all,
-                            items_x1 = tokens_observed,
-                            items_x2 = tokens_ref,
-                            measure_bayes_factor = measure_bayes_factor
-                        )
-
-                    o11s = numpy.empty(shape = num_keywords_all, dtype = float)
-                    o12s = numpy.empty(shape = num_keywords_all, dtype = float)
-                    o21s = numpy.empty(shape = num_keywords_all, dtype = float)
-                    o22s = numpy.empty(shape = num_keywords_all, dtype = float)
-
-                    len_tokens_observed = text.num_tokens
-
-                    for i, token in enumerate(keywords_all):
-                        if not self._running:
-                            raise wl_excs.Wl_Exc_Aborted(self.main)
-
-                        o11s[i] = keywords_freq_file_observed.get(token, 0)
-                        o12s[i] = keywords_freq_file_ref.get(token, 0)
-                        o21s[i] = len_tokens_observed - o11s[i]
-                        o22s[i] = len_tokens_ref - o12s[i]
-
-                    if to_sections_statistical_significance:
-                        freqs_x1s_statistical_significance = []
-                        freqs_x2s_statistical_significance = []
-
-                        for token in keywords_all:
-                            if not self._running:
-                                raise wl_excs.Wl_Exc_Aborted(self.main)
-
-                            freqs_x1, freqs_x2 = freqs_sections_tokens_statistical_significance[token]
-
-                            freqs_x1s_statistical_significance.append(freqs_x1)
-                            freqs_x2s_statistical_significance.append(freqs_x2)
-
-                        freqs_x1s_statistical_significance = numpy.array(freqs_x1s_statistical_significance, dtype = float)
-                        freqs_x2s_statistical_significance = numpy.array(freqs_x2s_statistical_significance, dtype = float)
-
-                    if to_sections_bayes_factor:
-                        freqs_x1s_bayes_factor = []
-                        freqs_x2s_bayes_factor = []
-
-                        for token in keywords_all:
-                            if not self._running:
-                                raise wl_excs.Wl_Exc_Aborted(self.main)
-
-                            freqs_x1, freqs_x2 = freqs_sections_tokens_bayes_factor[token]
-
-                            freqs_x1s_bayes_factor.append(freqs_x1)
-                            freqs_x2s_bayes_factor.append(freqs_x2)
-
-                        freqs_x1s_bayes_factor = numpy.array(freqs_x1s_bayes_factor, dtype = float)
-                        freqs_x2s_bayes_factor = numpy.array(freqs_x2s_bayes_factor, dtype = float)
-
-                    # Test Statistic & p-value
-                    if test_statistical_significance == 'none':
-                        test_stats = [None] * num_keywords_all
-                        p_vals = [None] * num_keywords_all
-                    else:
                         if to_sections_statistical_significance:
-                            test_stats, p_vals = func_statistical_significance(self.main, freqs_x1s_statistical_significance, freqs_x2s_statistical_significance)
-                        else:
-                            test_stats, p_vals = func_statistical_significance(self.main, o11s, o12s, o21s, o22s)
+                            freqs_sections_tokens_statistical_significance = wl_measure_utils.to_freqs_sections_statistical_significance(
+                                self.main,
+                                items_to_search = keywords[ngram_size],
+                                items_x1 = ngrams_observed,
+                                items_x2 = ngrams_ref[ngram_size],
+                                test_statistical_significance = test_statistical_significance
+                            )
 
-                    # Bayes Factor
-                    if measure_bayes_factor == 'none':
-                        bayes_factors = [None] * num_keywords_all
-                    else:
                         if to_sections_bayes_factor:
-                            bayes_factors = func_bayes_factor(self.main, freqs_x1s_bayes_factor, freqs_x2s_bayes_factor)
+                            freqs_sections_tokens_bayes_factor = wl_measure_utils.to_freqs_sections_bayes_factor(
+                                self.main,
+                                items_to_search = keywords[ngram_size],
+                                items_x1 = ngrams_observed,
+                                items_x2 = ngrams_ref[ngram_size],
+                                measure_bayes_factor = measure_bayes_factor
+                            )
+
+                        o11s = numpy.empty(shape = num_keywords[ngram_size], dtype = float)
+                        o12s = numpy.empty(shape = num_keywords[ngram_size], dtype = float)
+                        o21s = numpy.empty(shape = num_keywords[ngram_size], dtype = float)
+                        o22s = numpy.empty(shape = num_keywords[ngram_size], dtype = float)
+
+                        num_ngrams_observed = len(ngrams_observed)
+
+                        for j, token in enumerate(keywords[ngram_size]):
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                            o11s[j] = keywords_freq_file_observed.get(token, 0)
+                            o12s[j] = keywords_freq_file_ref.get(token, 0)
+                            o21s[j] = num_ngrams_observed - o11s[j]
+                            o22s[j] = num_ngrams_ref[ngram_size] - o12s[j]
+
+                        if to_sections_statistical_significance:
+                            freqs_x1s_statistical_significance = []
+                            freqs_x2s_statistical_significance = []
+
+                            for token in keywords[ngram_size]:
+                                if not self._running:
+                                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                                freqs_x1, freqs_x2 = freqs_sections_tokens_statistical_significance[token]
+
+                                freqs_x1s_statistical_significance.append(freqs_x1)
+                                freqs_x2s_statistical_significance.append(freqs_x2)
+
+                            freqs_x1s_statistical_significance = numpy.array(freqs_x1s_statistical_significance, dtype = float)
+                            freqs_x2s_statistical_significance = numpy.array(freqs_x2s_statistical_significance, dtype = float)
+
+                        if to_sections_bayes_factor:
+                            freqs_x1s_bayes_factor = []
+                            freqs_x2s_bayes_factor = []
+
+                            for token in keywords[ngram_size]:
+                                if not self._running:
+                                    raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                                freqs_x1, freqs_x2 = freqs_sections_tokens_bayes_factor[token]
+
+                                freqs_x1s_bayes_factor.append(freqs_x1)
+                                freqs_x2s_bayes_factor.append(freqs_x2)
+
+                            freqs_x1s_bayes_factor = numpy.array(freqs_x1s_bayes_factor, dtype = float)
+                            freqs_x2s_bayes_factor = numpy.array(freqs_x2s_bayes_factor, dtype = float)
+
+                        # Test Statistic & p-value
+                        if test_statistical_significance == 'none':
+                            test_stats = [None] * num_keywords[ngram_size]
+                            p_vals = [None] * num_keywords[ngram_size]
                         else:
-                            bayes_factors = func_bayes_factor(self.main, o11s, o12s, o21s, o22s)
+                            if to_sections_statistical_significance:
+                                test_stats, p_vals = func_statistical_significance(self.main, freqs_x1s_statistical_significance, freqs_x2s_statistical_significance)
+                            else:
+                                test_stats, p_vals = func_statistical_significance(self.main, o11s, o12s, o21s, o22s)
 
-                    # Effect Size
-                    if measure_effect_size == 'none':
-                        effect_sizes = [None] * num_keywords_all
+                        # Bayes Factor
+                        if measure_bayes_factor == 'none':
+                            bayes_factors = [None] * num_keywords[ngram_size]
+                        else:
+                            if to_sections_bayes_factor:
+                                bayes_factors = func_bayes_factor(self.main, freqs_x1s_bayes_factor, freqs_x2s_bayes_factor)
+                            else:
+                                bayes_factors = func_bayes_factor(self.main, o11s, o12s, o21s, o22s)
+
+                        # Effect Size
+                        if measure_effect_size == 'none':
+                            effect_sizes = [None] * num_keywords[ngram_size]
+                        else:
+                            effect_sizes = func_effect_size(self.main, o11s, o12s, o21s, o22s)
+
+                        for j, token in enumerate(keywords[ngram_size]):
+                            if not self._running:
+                                raise wl_excs.Wl_Exc_Aborted(self.main)
+
+                            keywords_stats_file_ngram_size[token] = [
+                                test_stats[j],
+                                p_vals[j],
+                                bayes_factors[j],
+                                effect_sizes[j]
+                            ]
                     else:
-                        effect_sizes = func_effect_size(self.main, o11s, o12s, o21s, o22s)
+                        keywords_stats_file_ngram_size = {
+                            token: [None] * 4
+                            for token in keywords[ngram_size]
+                        }
 
-                    for i, token in enumerate(keywords_all):
-                        if not self._running:
-                            raise wl_excs.Wl_Exc_Aborted(self.main)
-
-                        keywords_stats_file[token] = [
-                            test_stats[i],
-                            p_vals[i],
-                            bayes_factors[i],
-                            effect_sizes[i]
-                        ]
-                else:
-                    keywords_stats_file = {
-                        token: [None] * 4
-                        for token in keywords_all
-                    }
+                    keywords_stats_file |= keywords_stats_file_ngram_size
 
                 self.keywords_stats_files.append(keywords_stats_file)
 

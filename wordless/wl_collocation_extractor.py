@@ -1028,7 +1028,7 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                         if not self._running:
                             raise wl_excs.Wl_Exc_Aborted(self.main)
 
-                        # Limit Searching
+                        # Limit searching
                         if settings_limit_searching != _tr('Wl_Worker_Collocation_Extractor', 'None'):
                             if settings_limit_searching == _tr('Wl_Worker_Collocation_Extractor', 'Within sentence segments'):
                                 offsets_unit = offsets_sentence_segs
@@ -1050,7 +1050,7 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                         tokens_right = []
 
                         if window_left < 0 < window_right:
-                            # Limit Searching
+                            # Limit searching
                             if settings_limit_searching == _tr('Wl_Worker_Collocation_Extractor', 'None'):
                                 tokens_left = tokens[max(0, i + window_left) : i]
                                 tokens_right = tokens[i + ngram_size : i + ngram_size + window_right]
@@ -1093,7 +1093,7 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
 
                                 collocations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
                         elif window_left < 0 and window_right < 0:
-                            # Limit Searching
+                            # Limit searching
                             if settings_limit_searching == _tr('Wl_Worker_Collocation_Extractor', 'None'):
                                 tokens_left = tokens[max(0, i + window_left) : max(0, i + window_right + 1)]
                             else:

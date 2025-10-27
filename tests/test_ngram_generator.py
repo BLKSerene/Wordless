@@ -24,6 +24,7 @@ from tests import (
 )
 from wordless import wl_ngram_generator
 from wordless.wl_dialogs import wl_dialogs_misc
+from wordless.wl_nlp import wl_texts
 
 main_global = None
 
@@ -35,6 +36,8 @@ def test_ngram_generator():
 
     settings['search_settings']['multi_search_mode'] = True
     settings['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
+    settings['generation_settings']['ngram_size_min'] = 1
+    settings['generation_settings']['ngram_size_max'] = 1
 
     measures_dispersion = list(main.settings_global['measures_dispersion'])
     measures_adjusted_freq = list(main.settings_global['measures_adjusted_freq'])
@@ -127,5 +130,54 @@ def update_gui(err_msg, ngrams_freq_files, ngrams_stats_files):
         # Number of Files Found
         assert len([freq for freq in freq_files[:-1] if freq]) >= 1
 
+# Check that the results of unigrams and bigrams are the exact concatenation of those of unigrams and those of bigrams
+def test_ngram_generator_ngram_size():
+    settings = main_global.settings_custom['ngram_generator']
+
+    settings['search_settings']['search_term'] = wl_test_init.SEARCH_TERMS[0]
+    settings['generation_settings']['measure_dispersion'] = 'juillands_d'
+    settings['generation_settings']['measure_adjusted_freq'] = 'juillands_u'
+
+    wl_test_init.select_test_files(main_global, no_files = (0,))
+
+    for ngram_size_min, ngram_size_max in (
+        (1, 1),
+        (2, 2),
+        (1, 2)
+    ):
+        settings['generation_settings']['ngram_size_min'] = ngram_size_min
+        settings['generation_settings']['ngram_size_max'] = ngram_size_max
+
+        worker_ngram_generator = wl_ngram_generator.Wl_Worker_Ngram_Generator_Table(
+            main_global,
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main_global),
+        )
+
+        worker_ngram_generator.finished.connect(update_gui_ngram_size(ngram_size_min, ngram_size_max))
+        worker_ngram_generator.run()
+
+    # pylint: disable=undefined-variable
+    assert ngrams_freq_files_1_2 == ngrams_freq_files_1_1 | ngrams_freq_files_2_2
+    assert ngrams_stats_files_1_2 == ngrams_stats_files_1_1 | ngrams_stats_files_2_2
+
+def update_gui_ngram_size(ngram_size_min, ngram_size_max):
+    def update_gui(err_msg, ngrams_freq_files, ngrams_stats_files):
+        assert not err_msg
+
+        globals()[f'ngrams_freq_files_{ngram_size_min}_{ngram_size_max}'] = ngrams_freq_files
+        globals()[f'ngrams_stats_files_{ngram_size_min}_{ngram_size_max}'] = ngrams_stats_files
+
+    return update_gui
+
+def test_get_ngrams_is():
+    tokens = wl_texts.to_tokens(('1', '2', '1'))
+
+    assert wl_ngram_generator.get_ngrams_is(
+        ngrams = [(tokens[0],), (tokens[1],), (tokens[2],)],
+        tokens = tokens
+    ) == [((tokens[0],), 0), ((tokens[1],), 1), ((tokens[2],), 2)]
+
 if __name__ == '__main__':
     test_ngram_generator()
+    test_ngram_generator_ngram_size()
+    test_get_ngrams_is()

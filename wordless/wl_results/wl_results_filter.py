@@ -159,13 +159,13 @@ def add_layouts_filters(parent, layouts_filters, layout_filters):
 
 def get_filter_min_max(settings, filter_name):
     filter_min = (
-        float('-inf')
+        -math.inf
         if settings[f'{filter_name}_min_no_limit']
         else settings[f'{filter_name}_min']
     )
 
     filter_max = (
-        float('inf')
+        math.inf
         if settings[f'{filter_name}_max_no_limit']
         else settings[f'{filter_name}_max']
     )

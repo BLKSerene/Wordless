@@ -840,7 +840,7 @@ def everygrams(tokens, ngram_size_min, ngram_size_max):
                     yield ngram[:i]
 
 # Reference: https://www.nltk.org/_modules/nltk/util.html#skipgrams
-def skipgrams(tokens, ngram_size, num_skipped_tokens):
+def skipgrams(tokens, ngram_size, allow_skipped_tokens_num):
     if ngram_size == 1:
         yield from ngrams(tokens, ngram_size = 1)
     else:
@@ -848,7 +848,7 @@ def skipgrams(tokens, ngram_size, num_skipped_tokens):
         SENTINEL = object()
         tokens = itertools.chain(tokens, (SENTINEL,) * (ngram_size - 1))
 
-        for ngram in ngrams(tokens, ngram_size + num_skipped_tokens):
+        for ngram in ngrams(tokens, ngram_size + allow_skipped_tokens_num):
             head = ngram[:1]
             tail = ngram[1:]
 
@@ -1054,7 +1054,7 @@ def add_missing_ending_tshegs(main, tokens, tab):
         and main.settings_custom['tables'][tab]['lang_specific_settings']['add_missing_ending_tshegs']
     ):
         for i, token in enumerate(tokens):
-            if not token.endswith(TSHEG):
+            if token and not token.endswith(TSHEG):
                 tokens[i] = wl_texts.set_token_text(token, str(token) + TSHEG)
 
     return tokens

@@ -678,7 +678,7 @@ You can generate line charts or word clouds for patterns of colligation using an
 > [!NOTE]
 > Renamed from **Keyword** to **Keyword Extractor** in *Wordless* 2.2.
 
-In *Keyword Extractor*, you can search for candidates of potential keywords (tokens that have far more or far less frequency in the observed corpus than in the reference corpus) in different files given a reference corpus, conduct different tests of statistical significance on each keyword and calculate the Bayes factor and effect size for each keyword using different measures. You can adjust the settings for the generated data via **Generation Settings**. You can disable the calculation of statistical significance and/or Bayes factor and/or effect size by setting **Generation Settings → Test of Statistical Significance / Measures of Bayes Factor / Measure of Effect Size** to **None**.
+In *Keyword Extractor*, you can search for potential keywords (tokens or n-grams that appear much more or much less frequently in the observed corpus than in the reference corpus) in different files given a reference corpus, conduct different tests of statistical significance on each keyword and calculate the Bayes factor and effect size for each keyword using different measures. You can adjust the settings for the generated data via **Generation Settings**. You can disable the calculation of statistical significance and/or Bayes factor and/or effect size by setting **Generation Settings → Test of Statistical Significance / Measures of Bayes Factor / Measure of Effect Size** to **None**.
 
 You can filter the results by clicking **Filter results** or search in *Data Table* for parts that might be of interest to you by clicking **Search in results**.
 
