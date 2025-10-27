@@ -23,6 +23,7 @@
 - File Area: Add support for .srt files
 - Menu: Add Edit - Sample
 - Settings: Add Settings - Tables - Miscellaneous Settings
+- Utils: Add Stanza's Sindhi lemmatizer
 - Utils: Add Wordless's character tokenizer
 - Work Area: Add Keyword Extractor - Generation Settings - N-gram size
 - Work Area: Add Profiler - Export all tables
@@ -40,6 +41,9 @@
 
 ### 🔧 Bugfixes
 - Work Area: Fix Profiler - Syntactic Complexity
+
+### ⏫ Dependency Changes
+- Dependencies: Upgrade Stanza to 1.11.0
 
 ## [3.6.0](https://github.com/BLKSerene/Wordless/releases/tag/3.6.0) - 07/27/2025
 ### 🎉 New Features

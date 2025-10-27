@@ -19,16 +19,16 @@
 from tests.tests_nlp.tests_stanza import test_stanza
 
 def test_stanza_fra():
-    results_pos_tag = [('Le', 'DET'), ('français', 'NOUN'), ('est', 'AUX'), ('une', 'DET'), ('langue', 'NOUN'), ('indo-européenne', 'ADJ'), ('de', 'ADP'), ('la', 'DET'), ('famille', 'NOUN'), ('de', 'ADP'), ('les', 'DET'), ('langues', 'NOUN'), ('romanes', 'ADJ'), ('dont', 'PRON'), ('les', 'DET'), ('locuteurs', 'NOUN'), ('sont', 'AUX'), ('appelés', 'VERB'), ('francophones', 'NOUN'), ('.', 'PUNCT')]
+    results_pos_tag = [('Le', 'DET'), ('français', 'NOUN'), ('est', 'AUX'), ('une', 'DET'), ('langue', 'NOUN'), ('indo-européenne', 'ADJ'), ('de', 'ADP'), ('la', 'DET'), ('famille', 'NOUN'), ('de', 'ADP'), ('les', 'DET'), ('langues', 'NOUN'), ('romanes', 'ADJ'), ('dont', 'PRON'), ('les', 'DET'), ('locuteurs', 'NOUN'), ('sont', 'AUX'), ('appelés', 'VERB'), ('«', 'PUNCT'), ('francophones', 'NOUN'), ('»', 'PUNCT'), ('.', 'PUNCT')]
 
     test_stanza.wl_test_stanza(
         lang = 'fra',
-        results_sentence_tokenize = ['Le français est une langue indo-européenne de la famille des langues romanes dont les locuteurs sont appelés francophones.', 'Elle est parfois surnommée la langue de Molière.'],
-        results_word_tokenize = ['Le', 'français', 'est', 'une', 'langue', 'indo-européenne', 'de', 'la', 'famille', 'des', 'langues', 'romanes', 'dont', 'les', 'locuteurs', 'sont', 'appelés', 'francophones', '.'],
+        results_sentence_tokenize = ['Le français est une langue indo-européenne de la famille des langues romanes dont les locuteurs sont appelés « francophones ».', "Il est la cinquième langue parlée au monde après l'anglais, le mandarin, le hindi et l'espagnol."],
+        results_word_tokenize = ['Le', 'français', 'est', 'une', 'langue', 'indo-européenne', 'de', 'la', 'famille', 'des', 'langues', 'romanes', 'dont', 'les', 'locuteurs', 'sont', 'appelés', '«', 'francophones', '»', '.'],
         results_pos_tag = results_pos_tag,
         results_pos_tag_universal = results_pos_tag,
-        results_lemmatize = ['le', 'français', 'être', 'un', 'langue', 'indo-européen', 'de', 'le', 'famille', 'de', 'le', 'langue', 'roman', 'dont', 'le', 'locuteur', 'être', 'appeler', 'francophone', '.'],
-        results_dependency_parse = [('Le', 'français', 'det', 1), ('français', 'langue', 'nsubj', 3), ('est', 'langue', 'cop', 2), ('une', 'langue', 'det', 1), ('langue', 'langue', 'root', 0), ('indo-européenne', 'langue', 'amod', -1), ('de', 'famille', 'case', 2), ('la', 'famille', 'det', 1), ('famille', 'langue', 'nmod', -4), ('de', 'langues', 'case', 2), ('les', 'langues', 'det', 1), ('langues', 'famille', 'nmod', -3), ('romanes', 'langues', 'amod', -1), ('dont', 'locuteurs', 'nmod', 2), ('les', 'locuteurs', 'det', 1), ('locuteurs', 'appelés', 'nsubj:pass', 2), ('sont', 'appelés', 'aux:pass', 1), ('appelés', 'langues', 'acl:relcl', -6), ('francophones', 'appelés', 'xcomp', -1), ('.', 'langue', 'punct', -15)]
+        results_lemmatize = ['le', 'français', 'être', 'un', 'langue', 'indo-européen', 'de', 'le', 'famille', 'de', 'le', 'langue', 'roman', 'dont', 'le', 'locuteur', 'être', 'appeler', '«', 'francophone', '»', '.'],
+        results_dependency_parse = [('Le', 'français', 'det', 1), ('français', 'langue', 'nsubj', 3), ('est', 'langue', 'cop', 2), ('une', 'langue', 'det', 1), ('langue', 'langue', 'root', 0), ('indo-européenne', 'langue', 'amod', -1), ('de', 'famille', 'case', 2), ('la', 'famille', 'det', 1), ('famille', 'langue', 'nmod', -4), ('de', 'langues', 'case', 2), ('les', 'langues', 'det', 1), ('langues', 'famille', 'nmod', -3), ('romanes', 'langues', 'amod', -1), ('dont', 'locuteurs', 'nmod', 2), ('les', 'locuteurs', 'det', 1), ('locuteurs', 'appelés', 'nsubj:pass', 2), ('sont', 'appelés', 'aux:pass', 1), ('appelés', 'langue', 'acl:relcl', -13), ('«', 'francophones', 'punct', 1), ('francophones', 'appelés', 'xcomp', -2), ('»', 'francophones', 'punct', -1), ('.', 'langue', 'punct', -17)]
     )
 
 if __name__ == '__main__':

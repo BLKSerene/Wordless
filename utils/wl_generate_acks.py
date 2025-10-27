@@ -150,7 +150,7 @@ ACKS = (
         'MIT', 'https://github.com/explosion/spacy-pkuseg/blob/master/LICENSE'
     ), (
         'Stanza', 'https://github.com/stanfordnlp/stanza',
-        '1.10.1', 'Peng Qi (齐鹏), Yuhao Zhang (张宇浩), Yuhui Zhang (张钰晖),<br>Jason Bolton, Tim Dozat, John Bauer',
+        '1.11.0', 'Peng Qi (齐鹏), Yuhao Zhang (张宇浩), Yuhui Zhang (张钰晖),<br>Jason Bolton, Tim Dozat, John Bauer',
         'Apache-2.0', 'https://github.com/stanfordnlp/stanza/blob/main/LICENSE'
     ), (
         'SudachiPy', 'https://github.com/WorksApplications/sudachi.rs/tree/develop/python',

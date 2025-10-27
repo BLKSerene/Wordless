@@ -22,6 +22,7 @@ from tests import (
     wl_test_init,
     wl_test_lang_examples
 )
+from wordless.wl_nlp import wl_nlp_utils
 from wordless.wl_settings import wl_settings_word_tokenization
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
@@ -45,6 +46,12 @@ def test_wl_settings_word_tokenization():
     main.settings_word_tokenization.abort()
     main.settings_word_tokenization.update_gui('test')
     main.settings_word_tokenization.update_gui_err()
+
+    # Force the model download to fail
+    worker_download_model_stanza_temp = wl_nlp_utils.Wl_Worker_Download_Model_Stanza
+    wl_nlp_utils.Wl_Worker_Download_Model_Stanza = wl_test_init.Wl_Worker_Download_Model_Stanza_Err_Msg
+    main.settings_word_tokenization.preview_results_changed()
+    wl_nlp_utils.Wl_Worker_Download_Model_Stanza = worker_download_model_stanza_temp
 
 def test_wl_worker_preview_word_tokenizer():
     main.settings_custom['word_tokenization']['preview']['preview_lang'] = 'vie'

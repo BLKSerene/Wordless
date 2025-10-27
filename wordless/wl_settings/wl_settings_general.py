@@ -532,11 +532,10 @@ class Wl_Settings_General_Exp(wl_settings.Wl_Settings_Node):
 
         if os.path.exists(settings_custom):
             return settings_custom
-        # Fall back to default settings if the path does not exist
+        # Fall back to the default setting if the path does not exist
         else:
             # If the default path does not exist, create it
-            if not os.path.exists(settings_default):
-                os.makedirs(settings_default, exist_ok = True)
+            os.makedirs(settings_default, exist_ok = True)
 
             return settings_default
 

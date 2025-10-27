@@ -21,7 +21,10 @@ from tests import (
     wl_test_lang_examples
 )
 from wordless.wl_dialogs import wl_dialogs_misc
-from wordless.wl_nlp import wl_pos_tagging
+from wordless.wl_nlp import (
+    wl_nlp_utils,
+    wl_pos_tagging
+)
 from wordless.wl_settings import wl_settings_pos_tagging
 from wordless.wl_widgets import wl_layouts
 
@@ -49,6 +52,12 @@ def test_wl_settings_pos_tagging():
     main.settings_pos_tagging.preview_changed()
     main.settings_pos_tagging.update_gui('test')
     main.settings_pos_tagging.update_gui_err()
+
+    # Force the model download to fail
+    worker_download_model_stanza_temp = wl_nlp_utils.Wl_Worker_Download_Model_Stanza
+    wl_nlp_utils.Wl_Worker_Download_Model_Stanza = wl_test_init.Wl_Worker_Download_Model_Stanza_Err_Msg
+    main.settings_pos_tagging.preview_results_changed()
+    wl_nlp_utils.Wl_Worker_Download_Model_Stanza = worker_download_model_stanza_temp
 
 def test_wl_worker_preview_pos_tagger():
     main.settings_custom['pos_tagging']['preview']['preview_samples'] = wl_test_lang_examples.TEXT_NEWLINES

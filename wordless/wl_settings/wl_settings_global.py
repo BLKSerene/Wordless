@@ -1108,6 +1108,7 @@ def init_settings_global():
                 _tr('wl_settings_global', 'Stanza - Sanskrit lemmatizer'): 'stanza_san',
                 _tr('wl_settings_global', 'Stanza - Scottish Gaelic lemmatizer'): 'stanza_gla',
                 _tr('wl_settings_global', 'Stanza - Serbian (Latin script) lemmatizer'): 'stanza_srp_latn',
+                _tr('wl_settings_global', 'Stanza - Sindhi lemmatizer'): 'stanza_snd',
                 _tr('wl_settings_global', 'Stanza - Slovak lemmatizer'): 'stanza_slk',
                 _tr('wl_settings_global', 'Stanza - Slovenian lemmatizer'): 'stanza_slv',
                 _tr('wl_settings_global', 'Stanza - Sorbian (Upper) lemmatizer'): 'stanza_hsb',
@@ -3208,6 +3209,8 @@ def init_settings_global():
                 'simplemma_hbs',
                 'stanza_srp_latn'
             ),
+
+            'snd': ('stanza_snd',),
 
             'slk': (
                 'simplemma_slk',

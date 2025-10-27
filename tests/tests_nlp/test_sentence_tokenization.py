@@ -156,6 +156,8 @@ def wl_test_sentence_tokenize_models(lang, sentence_tokenizer, results):
                     assert len(sentences) == 3
                 case _:
                     assert len(sentences) == 2
+        case 'grc' | 'snd':
+            assert len(sentences) == 4
         case 'swe':
             if sentence_tokenizer == 'spacy_dependency_parser_swe':
                 assert len(sentences) == 3

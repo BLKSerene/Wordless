@@ -39,7 +39,10 @@ from wordless.wl_settings import (
     wl_settings_default,
     wl_settings_global
 )
-from wordless.wl_utils import wl_misc
+from wordless.wl_utils import (
+    wl_misc,
+    wl_threading
+)
 from wordless.wl_widgets import wl_tables
 
 # English / Tibetan
@@ -307,6 +310,12 @@ class Wl_Exc_Tests_Lang_Skipped(Exception):
 class Wl_Exc_Tests_Lang_Util_Skipped(Exception):
     def __init__(self, lang_util):
         super().__init__(f'Tests for language utility "{lang_util}" is skipped!')
+
+class Wl_Worker_Download_Model_Stanza_Err_Msg(wl_threading.Wl_Worker):
+    finished = QtCore.pyqtSignal(str)
+
+    def run(self):
+        self.finished.emit('error')
 
 def wl_test_index(row, col):
     return QtGui.QStandardItemModel().createIndex(row, col)

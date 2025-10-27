@@ -17,6 +17,7 @@
 # ----------------------------------------------------------------------
 
 from tests import wl_test_init
+from wordless.wl_nlp import wl_nlp_utils
 from wordless.wl_settings import wl_settings_dependency_parsing
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
@@ -35,6 +36,12 @@ def test_wl_settings_dependency_parsing():
     main.settings_dependency_parsing.preview_results_changed()
     main.settings_dependency_parsing.update_gui(['test'])
     main.settings_dependency_parsing.update_gui_err()
+
+    # Force the model download to fail
+    worker_download_model_stanza_temp = wl_nlp_utils.Wl_Worker_Download_Model_Stanza
+    wl_nlp_utils.Wl_Worker_Download_Model_Stanza = wl_test_init.Wl_Worker_Download_Model_Stanza_Err_Msg
+    main.settings_dependency_parsing.preview_results_changed()
+    wl_nlp_utils.Wl_Worker_Download_Model_Stanza = worker_download_model_stanza_temp
 
 def test_wl_dialog_preview_settings():
     dialog_preview_settings = wl_settings_dependency_parsing.Wl_Dialog_Preview_Settings(main)

@@ -1931,10 +1931,6 @@ def init_settings_default(main):
                         'stanza_san': copy.deepcopy(wl_tagset_eng_universal.tagset_mapping)
                     },
 
-                    'snd': {
-                        'stanza_snd': copy.deepcopy(wl_tagset_eng_universal.tagset_mapping)
-                    },
-
                     'hsb': {
                         'stanza_hsb': copy.deepcopy(wl_tagset_eng_universal.tagset_mapping)
                     },
@@ -2054,6 +2050,7 @@ def init_settings_default(main):
                 'gla': 'stanza_gla',
                 'srp_cyrl': 'spacy_srp_cyrl',
                 'srp_latn': 'stanza_srp_latn',
+                'snd': 'stanza_snd',
                 'slk': 'stanza_slk',
                 'slv': 'stanza_slv',
                 'hsb': 'stanza_hsb',

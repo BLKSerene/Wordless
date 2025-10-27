@@ -50,7 +50,7 @@ As *Wordless* stands on the shoulders of giants, I hereby extend my sincere grat
 26|[simplemma](https://github.com/adbar/simplemma)|1.1.2|Adrien Barbaresi|[MIT](https://github.com/adbar/simplemma/blob/main/LICENSE)
 27|[spaCy](https://spacy.io/)|3.8.7|Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann|[MIT](https://github.com/explosion/spaCy/blob/master/LICENSE)
 28|[spacy-pkuseg](https://github.com/explosion/spacy-pkuseg)|1.0.1|Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶), Xuancheng Ren (任宣丞),<br>Yi Zhang (张艺), Zhiyuan Zhang (张之远), Bingzhen Wei (位冰镇),<br>Xu Sun (孙栩), Matthew Honnibal|[MIT](https://github.com/explosion/spacy-pkuseg/blob/master/LICENSE)
-29|[Stanza](https://github.com/stanfordnlp/stanza)|1.10.1|Peng Qi (齐鹏), Yuhao Zhang (张宇浩), Yuhui Zhang (张钰晖),<br>Jason Bolton, Tim Dozat, John Bauer|[Apache-2.0](https://github.com/stanfordnlp/stanza/blob/main/LICENSE)
+29|[Stanza](https://github.com/stanfordnlp/stanza)|1.11.0|Peng Qi (齐鹏), Yuhao Zhang (张宇浩), Yuhui Zhang (张钰晖),<br>Jason Bolton, Tim Dozat, John Bauer|[Apache-2.0](https://github.com/stanfordnlp/stanza/blob/main/LICENSE)
 30|[SudachiPy](https://github.com/WorksApplications/sudachi.rs/tree/develop/python)|0.6.10|WAP Tokushima Laboratory of AI and NLP|[Apache-2.0](https://github.com/WorksApplications/sudachi.rs/blob/develop/LICENSE)
 31|[Underthesea](https://undertheseanlp.com/)|6.8.4|Vu Anh|[GPL-3.0-or-later](https://github.com/undertheseanlp/underthesea/blob/main/LICENSE)
 32|[VADER](https://github.com/cjhutto/vaderSentiment)|3.3.2|C.J. Hutto|[MIT](https://github.com/cjhutto/vaderSentiment/blob/master/LICENSE.txt)

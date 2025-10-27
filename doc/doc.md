@@ -821,7 +821,7 @@ Sanskrit                      |✔|✔|✔|✔|✔|✔|✔|✖️
 Scottish Gaelic               |✔|✔|✖️|✔|✔|✔|✔|✖️
 Serbian (Cyrillic script)     |✔|✔|✔|✔|✔|✔|✔|✖️
 Serbian (Latin script)        |✔|✔|✔|✔|✔|✔|✔|✖️
-Sindhi                        |✔|✔|✖️|✔|✖️|✔|✔|✖️
+Sindhi                        |✔|✔|✖️|✔|✔|✔|✔|✖️
 Sinhala                       |⭕️|✔|✖️|✖️|✖️|✔|✖️|✖️
 Slovak                        |✔|✔|✔|✔|✔|✔|✔|✖️
 Slovenian                     |✔|✔|✔|✔|✔|✔|✔|✖️

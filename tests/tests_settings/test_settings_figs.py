@@ -30,10 +30,33 @@ def test_wl_settings_figs_line_charts():
 
 def test_wl_settings_figs_word_clouds():
     settings_figs_word_clouds = wl_settings_figs.Wl_Settings_Figs_Word_Clouds(main)
+
+    settings_figs_word_clouds.combo_box_font.setCurrentText('Droid Sans Mono')
+    settings_figs_word_clouds.combo_box_font_color.setCurrentText('Monochrome')
     settings_figs_word_clouds.font_settings_changed()
+
+    settings_figs_word_clouds.combo_box_font.setCurrentText('Custom')
+    settings_figs_word_clouds.combo_box_font_color.setCurrentText('Colormap')
+    settings_figs_word_clouds.font_settings_changed()
+
     settings_figs_word_clouds.load_settings()
     settings_figs_word_clouds.load_settings(defaults = True)
+
+    settings_figs_word_clouds.combo_box_font.setCurrentText('Custom')
+    main.settings_custom['figs']['word_clouds']['font_settings']['font'] = 'Droid Sans Mono'
+    settings_figs_word_clouds.line_edit_font_path.setText('')
+    main.settings_custom['figs']['word_clouds']['font_settings']['font_path'] = 'test'
     settings_figs_word_clouds.validate_settings()
+
+    settings_figs_word_clouds.combo_box_font.setCurrentText('Droid Sans Mono')
+    settings_figs_word_clouds.group_box_mask_settings.setChecked(True)
+    main.settings_custom['figs']['word_clouds']['mask_settings']['mask_settings'] = False
+    settings_figs_word_clouds.line_edit_mask_path.setText('')
+    settings_figs_word_clouds.validate_settings()
+
+    settings_figs_word_clouds.group_box_mask_settings.setChecked(False)
+    settings_figs_word_clouds.validate_settings()
+
     settings_figs_word_clouds.apply_settings()
 
 def test_wl_settings_figs_network_graphs():

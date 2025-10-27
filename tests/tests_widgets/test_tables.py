@@ -290,6 +290,9 @@ def test_wl_table_data():
     table_hor.set_item_err(0, 0, 'test', alignment_hor = 'left')
     table_hor.set_item_err(0, 0, 'test', alignment_hor = 'right')
 
+    table_hor.generate_table()
+    table_hor.generate_fig()
+
 if __name__ == '__main__':
     test_wl_table()
     test_wl_worker_exp_table()

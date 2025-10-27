@@ -57,6 +57,9 @@ def test_wl_settings_general_imp():
 def test_wl_settings_general_exp():
     settings_general_exp = wl_settings_general.Wl_Settings_General_Exp(main)
     settings_general_exp.tables_default_type_changed()
+
+    settings_general_exp.check_path('tables')
+    main.settings_custom['general']['exp']['tables']['default_path'] = 'path_nonexistent'
     settings_general_exp.check_path('tables')
 
     settings_general_exp.load_settings(defaults = False)

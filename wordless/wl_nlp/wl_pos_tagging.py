@@ -46,7 +46,7 @@ UNIVERSAL_TAGSETS_STANZA = {
     'stanza_bxr', 'stanza_dan', 'stanza_fra', 'stanza_nds', 'stanza_ell',
     'stanza_heb', 'stanza_hun', 'stanza_lij', 'stanza_glv', 'stanza_mar',
     'stanza_pcm', 'stanza_qpm', 'stanza_por', 'stanza_rus', 'stanza_san',
-    'stanza_snd', 'stanza_hsb', 'stanza_tel'
+    'stanza_hsb', 'stanza_tel'
 }
 
 def to_content_function(universal_pos_tag):

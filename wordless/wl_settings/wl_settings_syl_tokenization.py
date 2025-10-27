@@ -143,30 +143,23 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
 
             self.button_show_preview.setText(self.tr('Processing...'))
 
-            if wl_nlp_utils.check_models(
-                self,
-                langs = [self.settings_custom['preview']['preview_lang']],
-                lang_utils = [['default_word_tokenizer']]
-            ):
-                syl_tokenizer = wl_nlp_utils.to_lang_util_code(
-                    self.main,
-                    util_type = 'syl_tokenizers',
-                    util_text = self.table_syl_tokenizers.model().item(row, 1).text()
-                )
+            syl_tokenizer = wl_nlp_utils.to_lang_util_code(
+                self.main,
+                util_type = 'syl_tokenizers',
+                util_text = self.table_syl_tokenizers.model().item(row, 1).text()
+            )
 
-                self.worker_preview_syl_tokenizer = Wl_Worker_Preview_Syl_Tokenizer(
-                    self.main,
-                    syl_tokenizer = syl_tokenizer
-                )
+            self.worker_preview_syl_tokenizer = Wl_Worker_Preview_Syl_Tokenizer(
+                self.main,
+                syl_tokenizer = syl_tokenizer
+            )
 
-                self.thread_preview_syl_tokenizer = QtCore.QThread()
-                wl_threading.start_worker_in_thread(
-                    self.worker_preview_syl_tokenizer,
-                    self.thread_preview_syl_tokenizer,
-                    self.update_gui
-                )
-            else:
-                self.update_gui_err()
+            self.thread_preview_syl_tokenizer = QtCore.QThread()
+            wl_threading.start_worker_in_thread(
+                self.worker_preview_syl_tokenizer,
+                self.thread_preview_syl_tokenizer,
+                self.update_gui
+            )
 
     def update_gui(self, preview_results):
         self.text_edit_preview_results.setPlainText(preview_results)
