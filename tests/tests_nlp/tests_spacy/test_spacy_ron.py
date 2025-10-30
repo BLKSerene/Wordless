@@ -22,8 +22,8 @@ def test_spacy_ron():
     results_sentence_tokenize = ['Limba română ([ˈlimba roˈmɨnə]  ( audio) sau românește [romɨˈneʃte]) este limba oficială și principală a României și a Republicii Moldova.', 'Face parte din subramura orientală a limbilor romanice, un grup lingvistic evoluat din diverse dialecte ale latinei vulgare separate de limbile romanice occidentale între secolele V și VIII.[2]']
     test_spacy.wl_test_spacy(
         lang = 'ron',
-        results_sentence_tokenize_trf = results_sentence_tokenize,
-        results_sentence_tokenize_lg = results_sentence_tokenize,
+        results_sentence_tokenize_dependency_parser = results_sentence_tokenize,
+        results_sentence_tokenize_sentence_recognizer = results_sentence_tokenize,
         results_word_tokenize = ['Limba', 'română', '(', '[', 'ˈlimba', 'roˈmɨnə', ']', '(', 'audio', ')', 'sau', 'românește', '[', 'romɨˈneʃte', ']', ')', 'este', 'limba', 'oficială', 'și', 'principală', 'a', 'României', 'și', 'a', 'Republicii', 'Moldova', '.'],
         results_pos_tag = [('Limba', 'Ncfsry'), ('română', 'Afpfsrn'), ('(', 'LPAR'), ('[', 'LSQR'), ('ˈlimba', 'Ncfsry'), ('roˈmɨnə', 'Ncfsry'), (']', 'RSQR'), ('(', 'LPAR'), ('audio', 'Ncms-n'), (')', 'RPAR'), ('sau', 'Ccssp'), ('românește', 'Rgp'), ('[', 'LSQR'), ('romɨˈneʃte', 'Ncms-n'), (']', 'RSQR'), (')', 'RPAR'), ('este', 'Vaip3s'), ('limba', 'Ncfsry'), ('oficială', 'Afpfsrn'), ('și', 'Crssp'), ('principală', 'Afpfsrn'), ('a', 'Tsfs'), ('României', 'Npfsoy'), ('și', 'Crssp'), ('a', 'Tsfs'), ('Republicii', 'Ncfsoy'), ('Moldova', 'Np'), ('.', 'PERIOD')],
         results_pos_tag_universal = [('Limba', 'NOUN'), ('română', 'ADJ'), ('(', 'PUNCT'), ('[', 'PUNCT'), ('ˈlimba', 'NOUN'), ('roˈmɨnə', 'NOUN'), (']', 'PUNCT'), ('(', 'PUNCT'), ('audio', 'NOUN'), (')', 'PUNCT'), ('sau', 'CCONJ'), ('românește', 'ADV'), ('[', 'PUNCT'), ('romɨˈneʃte', 'NOUN'), (']', 'PUNCT'), (')', 'PUNCT'), ('este', 'AUX'), ('limba', 'NOUN'), ('oficială', 'ADJ'), ('și', 'CCONJ'), ('principală', 'ADJ'), ('a', 'DET'), ('României', 'PROPN'), ('și', 'CCONJ'), ('a', 'DET'), ('Republicii', 'NOUN'), ('Moldova', 'PROPN'), ('.', 'PUNCT')],

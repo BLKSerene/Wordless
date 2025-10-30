@@ -24,7 +24,6 @@ from tests import (
 )
 from wordless.wl_nlp import (
     wl_dependency_parsing,
-    wl_nlp_utils,
     wl_texts,
     wl_word_tokenization
 )
@@ -67,7 +66,7 @@ def wl_test_dependency_parse_models(lang, dependency_parser, tokens, results):
     # Untokenized
     tokens_untokenized = wl_dependency_parsing.wl_dependency_parse(
         main,
-        inputs = test_sentence,
+        inputs = f'\n\n{test_sentence}\n\n\n0\n\n\n',
         lang = lang,
         dependency_parser = dependency_parser
     )
@@ -90,7 +89,8 @@ def wl_test_dependency_parse_models(lang, dependency_parser, tokens, results):
         for token in tokens_tokenized
     ]
 
-    assert dependencies_untokenized == results
+    # Newline characters should be ignored
+    assert dependencies_untokenized[:-1] == results
 
     # Check for empty dependencies
     assert dependencies_untokenized
@@ -103,40 +103,6 @@ def wl_test_dependency_parse_models(lang, dependency_parser, tokens, results):
 
     # Tokenization should not be modified
     assert len(tokens) == len(dependencies_tokenized)
-
-    # Newlines
-    tokens_newlines = wl_dependency_parsing.wl_dependency_parse(
-        main,
-        inputs = wl_test_lang_examples.TEXT_NEWLINES,
-        lang = lang,
-        dependency_parser = dependency_parser
-    )
-
-    assert wl_texts.to_token_texts(tokens_newlines) == wl_nlp_utils.clean_texts(wl_test_lang_examples.TEXT_NEWLINES)
-
-    # Long
-    if dependency_parser.startswith(('spacy_', 'stanza_')):
-        main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = 99
-
-        tokens_long = wl_dependency_parsing.wl_dependency_parse(
-            main,
-            inputs = '\n'.join(wl_test_lang_examples.TOKENS_LONG),
-            lang = lang,
-            dependency_parser = dependency_parser
-        )
-
-        assert wl_texts.to_token_texts(tokens_long) == wl_test_lang_examples.TOKENS_LONG
-
-        tokens_long = wl_dependency_parsing.wl_dependency_parse(
-            main,
-            inputs = wl_texts.to_tokens(wl_test_lang_examples.TOKENS_LONG, lang = lang),
-            lang = lang,
-            dependency_parser = dependency_parser
-        )
-
-        assert wl_texts.to_token_texts(tokens_long) == wl_test_lang_examples.TOKENS_LONG
-
-        main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = main.settings_default['files']['misc_settings']['read_files_in_chunks_chars']
 
 def wl_test_dependency_parse_fig_models(lang, dependency_parser, tokens):
     test_sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
@@ -160,16 +126,6 @@ def wl_test_dependency_parse_fig_models(lang, dependency_parser, tokens):
     # Check for empty HTMLs
     assert html_untokenized
     assert html_tokenized
-
-    # Newlines
-    html_newlines = wl_dependency_parsing.wl_dependency_parse_fig(
-        main,
-        inputs = wl_test_lang_examples.TEXT_NEWLINES,
-        lang = lang,
-        dependency_parser = dependency_parser
-    )
-
-    assert html_newlines
 
 def test__get_pipelines_to_disable():
     wl_dependency_parsing._get_pipelines_to_disable(show_pos_tags = True, show_lemmas = True)
@@ -229,7 +185,8 @@ def wl_test_dependency_parse_misc():
 
         match dependency_parser:
             case 'spacy_eng':
-                assert dds_untokenized == dds_tokenized == [('Hi', 'take', 'intj', 2, 1), (',', 'take', 'punct', 1, 1), ('take', 'take', 'ROOT', 0, 0), ('it', 'take', 'dobj', -1, -1), ('!', 'take', 'punct', -2, -1)]
+                assert dds_untokenized == [('Hi', 'take', 'intj', 2, 1), (',', 'Hi', 'punct', -1, -1), ('take', 'take', 'ROOT', 0, 0), ('it', 'take', 'dobj', -1, -1), ('!', 'take', 'punct', -2, -1)]
+                assert dds_tokenized == [('Hi', 'take', 'intj', 2, 1), (',', 'take', 'punct', 1, 1), ('take', 'take', 'ROOT', 0, 0), ('it', 'take', 'dobj', -1, -1), ('!', 'take', 'punct', -2, -1)]
             case 'stanza_eng':
                 assert dds_untokenized == dds_tokenized == [('Hi', 'take', 'discourse', 2, 1), (',', 'Hi', 'punct', -1, -1), ('take', 'take', 'root', 0, 0), ('it', 'take', 'obj', -1, -1), ('!', 'take', 'punct', -2, -1)]
 

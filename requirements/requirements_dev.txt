@@ -41,10 +41,6 @@ pymorphy3-dicts-uk
 spacy
 spacy-lookups-data
 spacy-pkuseg
-# Required by French and Slovenian models
-sentencepiece
-# Required by the Ukrainian model
-transformers
 
 ## SudachiPy
 sudachipy

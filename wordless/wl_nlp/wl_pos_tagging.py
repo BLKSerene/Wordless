@@ -231,48 +231,54 @@ def wl_pos_tag_text(main, text, lang, pos_tagger, tagset):
     tags = []
     tags_universal = []
 
+    lines = text.splitlines(keepends = True)
+
     # spaCy and modern-botok
     if pos_tagger.startswith('spacy_') or pos_tagger == 'modern_botok_bod':
         nlp = main.__dict__[f'spacy_nlp_{wl_conversion.remove_lang_code_suffixes(lang)}']
+        batch_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks_lines']
 
         with nlp.select_pipes(disable = (
             pipeline
             for pipeline in ('senter', 'sentencizer', 'lemmatizer', 'parser')
             if nlp.has_pipe(pipeline)
         )):
-            # Calling nlp.pipe on lists of lines is much slower
-            for doc in nlp.pipe(wl_nlp_utils.split_text(main, text, pos_tagger)):
+            for line, doc in zip(
+                lines,
+                # modern-botok's model does not ignore newline characters
+                nlp.pipe((line.strip() for line in lines), batch_size = batch_size)
+            ):
                 for token in doc:
-                    # Split newlines as single tokens
-                    if '\n' in token.text:
-                        parts = (part for part in re.split(wl_nlp_utils.RE_SPLIT_NEWLINES, token.text) if part)
+                    tokens_tagged.append(token.text)
+
+                    # modern-botok's model has no fine-grained POS tags
+                    if pos_tagger == 'modern_botok_bod':
+                        tags.append(token.pos_)
                     else:
-                        parts = (token.text,)
+                        match tagset:
+                            case 'default' | 'raw':
+                                tags.append(token.tag_)
+                            # Convert empty universal POS tags to "X" (e.g. those for numbers in the Romanian model)
+                            case 'universal':
+                                tags.append(pos_clean if (pos_clean := token.pos_.strip()) else 'X')
 
-                    for part in parts:
-                        tokens_tagged.append(part)
+                    # Apply custom mappings only to spaCy's models not adopting the Universal Dependencies tagset
+                    if pos_tagger not in UNIVERSAL_TAGSETS_SPACY:
+                        # Convert empty universal POS tags to "X" (e.g. those for numbers in the Romanian model)
+                        tags_universal.append(pos_clean if (pos_clean := token.pos_.strip()) else 'X')
 
-                        if part != '\n':
-                            # modern-botok's model has no fine-grained POS tags
-                            if pos_tagger == 'modern_botok_bod':
-                                tags.append(token.pos_)
-                            else:
-                                match tagset:
-                                    case 'default' | 'raw':
-                                        tags.append(token.tag_)
-                                    # Convert empty universal POS tags to "X" (e.g. those for numbers in the Romanian model)
-                                    case 'universal':
-                                        tags.append(pos_clean if (pos_clean := token.pos_.strip()) else 'X')
+                # Preserve newlines
+                if line.endswith('\n'):
+                    tokens_tagged.append('\n')
 
-                            # Apply custom mappings only to spaCy's models not adopting the Universal Dependencies tagset
-                            if pos_tagger not in UNIVERSAL_TAGSETS_SPACY:
-                                # Convert empty universal POS tags to "X" (e.g. those for numbers in the Romanian model)
-                                tags_universal.append(pos_clean if (pos_clean := token.pos_.strip()) else 'X')
-                        else:
+                    match tagset:
+                        case 'default' | 'raw':
                             tags.append('\n')
+                        case 'universal':
+                            tags.append('X')
 
-                            if pos_tagger not in UNIVERSAL_TAGSETS_SPACY:
-                                tags_universal.append('\n')
+                    if pos_tagger not in UNIVERSAL_TAGSETS_SPACY:
+                        tags_universal.append('X')
     # Stanza
     elif pos_tagger.startswith('stanza_'):
         if lang not in {'zho_cn', 'zho_tw'}:
@@ -281,9 +287,7 @@ def wl_pos_tag_text(main, text, lang, pos_tagger, tagset):
             lang_stanza = lang
 
         nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
-        lines = text.splitlines(keepends = True)
 
-        # Calling nlp.bulk_process on pre-split texts has no performance gains
         for line, doc in zip(lines, nlp.bulk_process(lines)):
             for sentence in doc.sentences:
                 for token in sentence.words:
@@ -302,12 +306,17 @@ def wl_pos_tag_text(main, text, lang, pos_tagger, tagset):
             # Preserve newlines
             if line.endswith('\n'):
                 tokens_tagged.append('\n')
-                tags.append('\n')
+
+                match tagset:
+                    case 'default' | 'raw':
+                        tags.append('\n')
+                    case 'universal':
+                        tags.append('X')
 
                 if pos_tagger not in UNIVERSAL_TAGSETS_STANZA:
-                    tags_universal.append('\n')
+                    tags_universal.append('X')
     else:
-        for line in text.splitlines(keepends = True):
+        for line in lines:
             if (line_clean := line.strip()):
                 match pos_tagger:
                     # English & Russian

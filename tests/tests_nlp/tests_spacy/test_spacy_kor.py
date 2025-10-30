@@ -23,8 +23,8 @@ def test_spacy_kor():
 
     test_spacy.wl_test_spacy(
         lang = 'kor',
-        results_sentence_tokenize_trf = results_sentence_tokenize,
-        results_sentence_tokenize_lg = results_sentence_tokenize,
+        results_sentence_tokenize_dependency_parser = results_sentence_tokenize,
+        results_sentence_tokenize_sentence_recognizer = results_sentence_tokenize,
         results_word_tokenize = ['한국어', '(', '韓國語', ')', ',', '조선어', '(', '朝鮮語', ')', '는', '대한민국과', '조선민주주의인민공화국의', '공용어이다', '.'],
         results_pos_tag = [('한국어', 'nq'), ('(', 'sl'), ('韓國語', 'nq'), (')', 'sr'), (',', 'sp'), ('조선어', 'nq'), ('(', 'sl'), ('朝鮮語', 'nq'), (')', 'sr'), ('는', 'jxt'), ('대한민국과', 'nq+jcj'), ('조선민주주의인민공화국의', 'nq+ncn+jcm'), ('공용어이다', 'ncn+jp+ef'), ('.', 'sf')],
         results_pos_tag_universal = [('한국어', 'PROPN'), ('(', 'PUNCT'), ('韓國語', 'PROPN'), (')', 'PUNCT'), (',', 'PUNCT'), ('조선어', 'PROPN'), ('(', 'PUNCT'), ('朝鮮語', 'PROPN'), (')', 'PUNCT'), ('는', 'ADP'), ('대한민국과', 'CCONJ'), ('조선민주주의인민공화국의', 'PROPN'), ('공용어이다', 'VERB'), ('.', 'PUNCT')],

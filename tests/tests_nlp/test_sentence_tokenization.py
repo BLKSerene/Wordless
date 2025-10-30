@@ -123,86 +123,76 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
 def wl_test_sentence_tokenize_models(lang, sentence_tokenizer, results):
     print(f'{lang} / {sentence_tokenizer}:')
 
+    test_sentence = ''.join(getattr(wl_test_lang_examples, f'TEXT_{lang.upper()}'))
     sentences = wl_sentence_tokenization.wl_sentence_tokenize(
         main,
-        text = ''.join(getattr(wl_test_lang_examples, f'TEXT_{lang.upper()}')),
+        # Empty lines should be ignored
+        text = f'\n\n{test_sentence}\n\n\n0\n\n\n',
         lang = lang,
         sentence_tokenizer = sentence_tokenizer
     )
 
     print(f'{sentences}\n')
 
-    # The count of sentences should be exactly 2
+    # The count of sentences should be exactly 3
     match lang:
         case 'ara' | 'chu' | 'cop' | 'fro' | 'pcm' | 'qpm':
-            assert len(sentences) == 1
+            assert len(sentences) == 2
         case 'hrv':
             if sentence_tokenizer == 'spacy_sentence_recognizer_hrv':
-                assert len(sentences) == 1
-            else:
                 assert len(sentences) == 2
+            else:
+                assert len(sentences) == 3
         case 'dan' | 'ita' | 'nob' | 'por_br' | 'por_pt':
-            assert len(sentences) == 3
-        case 'eng_gb' | 'eng_us' | 'srp_cyrl' | 'srp_latn' | 'other':
-            if sentence_tokenizer == 'spacy_sentencizer':
-                assert len(sentences) == 1
+            if sentence_tokenizer in {
+                'spacy_dependency_parser_dan',
+                'spacy_dependency_parser_ita',
+                'spacy_dependency_parser_nob',
+                'spacy_dependency_parser_por',
+                'spacy_sentence_recognizer_dan',
+                'spacy_sentence_recognizer_ita',
+                'spacy_sentence_recognizer_nob',
+                'spacy_sentence_recognizer_por'
+            }:
+                assert len(sentences) == 3
             else:
+                assert len(sentences) == 4
+        case 'eng_gb' | 'eng_us' | 'srp_cyrl' | 'srp_latn' | 'other':
+            if sentence_tokenizer in {
+                'spacy_dependency_parser_eng',
+                'spacy_sentence_recognizer_eng',
+                'spacy_sentencizer'
+            }:
                 assert len(sentences) == 2
+            else:
+                assert len(sentences) == 3
         case 'ell':
             match sentence_tokenizer:
                 case 'spacy_dependency_parser_ell':
-                    assert len(sentences) == 4
+                    assert len(sentences) == 5
                 case 'spacy_sentence_recognizer_ell':
-                    assert len(sentences) == 3
+                    assert len(sentences) == 4
                 case _:
-                    assert len(sentences) == 2
+                    assert len(sentences) == 3
         case 'grc' | 'snd':
-            assert len(sentences) == 4
+            assert len(sentences) == 5
         case 'swe':
             if sentence_tokenizer == 'spacy_dependency_parser_swe':
-                assert len(sentences) == 3
+                assert len(sentences) == 4
             else:
-                assert len(sentences) == 2
+                assert len(sentences) == 3
         case 'tha':
             match sentence_tokenizer:
                 case 'pythainlp_crfcut':
-                    assert len(sentences) == 3
+                    assert len(sentences) == 4
                 case 'pythainlp_thaisumcut':
-                    assert len(sentences) == 5
+                    assert len(sentences) == 6
                 case _:
-                    assert len(sentences) == 2
+                    assert len(sentences) == 3
         case _:
-            assert len(sentences) == 2
+            assert len(sentences) == 3
 
-    assert sentences == results
-
-    # Newlines
-    sentences = wl_sentence_tokenization.wl_sentence_tokenize(
-        main,
-        text = wl_test_lang_examples.TEXT_NEWLINES,
-        lang = lang,
-        sentence_tokenizer = sentence_tokenizer
-    )
-
-    assert sentences == list(wl_test_lang_examples.TEXT_NEWLINES.replace('\n', ''))
-
-    # Long
-    if (
-        sentence_tokenizer.startswith(('spacy_', 'stanza_'))
-        or sentence_tokenizer != 'modern_botok_bod'
-    ):
-        main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = 99
-
-        tokens_long = wl_sentence_tokenization.wl_sentence_tokenize(
-            main,
-            text = '\n'.join(wl_test_lang_examples.TOKENS_LONG),
-            lang = lang,
-            sentence_tokenizer = sentence_tokenizer
-        )
-
-        assert tokens_long == list(wl_test_lang_examples.TOKENS_LONG)
-
-        main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = main.settings_default['files']['misc_settings']['read_files_in_chunks_chars']
+    assert sentences == [*results, '0']
 
 def test_sentence_terminators():
     num_sentence_terminators = len(wl_sentence_tokenization.SENTENCE_TERMINATORS)

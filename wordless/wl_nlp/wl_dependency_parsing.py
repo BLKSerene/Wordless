@@ -109,9 +109,12 @@ def wl_dependency_parse_text(main, text, lang, dependency_parser):
     tokens = []
     dependencies = []
 
+    lines = wl_nlp_utils.clean_texts(text.splitlines())
+
     # spaCy
     if dependency_parser.startswith('spacy_'):
         nlp = main.__dict__[f'spacy_nlp_{wl_conversion.remove_lang_code_suffixes(lang)}']
+        batch_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks_lines']
 
         with nlp.select_pipes(disable = (
             pipeline
@@ -120,11 +123,7 @@ def wl_dependency_parse_text(main, text, lang, dependency_parser):
         )):
             i_head_start = 0
 
-            # Calling nlp.pipe on lists of lines is much slower
-            for doc in nlp.pipe(wl_nlp_utils.clean_texts(
-                wl_nlp_utils.split_text(main, text, dependency_parser),
-                remove_newlines_within = True
-            )):
+            for doc in nlp.pipe(lines, batch_size = batch_size):
                 for sentence in doc.sents:
                     i_punc_marks = [
                         i
@@ -169,8 +168,7 @@ def wl_dependency_parse_text(main, text, lang, dependency_parser):
         nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
         i_head_start = 0
 
-        # Calling nlp.bulk_process on pre-split texts has no performance gains
-        for doc in nlp.bulk_process(wl_nlp_utils.clean_texts(text.splitlines())):
+        for doc in nlp.bulk_process(lines):
             for sentence in doc.sentences:
                 i_punc_marks = [
                     i
@@ -453,14 +451,14 @@ def wl_dependency_parse_fig_text(
     # spaCy
     if dependency_parser.startswith('spacy_'):
         nlp = main.__dict__[f'spacy_nlp_{wl_conversion.remove_lang_code_suffixes(lang)}']
+        batch_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks_lines']
 
         with nlp.select_pipes(disable = (
             pipeline
             for pipeline in _get_pipelines_to_disable(show_pos_tags, show_lemmas)
             if nlp.has_pipe(pipeline)
         )):
-            # Calling nlp.pipe on lists of lines is much slower
-            for doc in nlp.pipe(wl_nlp_utils.split_text(main, text, dependency_parser)):
+            for doc in nlp.pipe(text.splitlines(), batch_size = batch_size):
                 for sentence in doc.sents:
                     span_start = 0
 
@@ -493,7 +491,6 @@ def wl_dependency_parse_fig_text(
 
         nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
 
-        # Calling nlp.bulk_process on pre-split texts has no performance gains
         for doc in nlp.bulk_process(text.splitlines()):
             for sentence in doc.sentences:
                 htmls.append(spacy.displacy.render(

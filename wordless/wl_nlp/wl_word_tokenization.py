@@ -57,7 +57,6 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
     # spaCy
     if word_tokenizer.startswith('spacy_'):
         nlp = main.__dict__[f'spacy_nlp_{wl_conversion.remove_lang_code_suffixes(lang)}']
-        tokens_multilevel.append([])
 
         # Use dependency parser or sentencizer by default
         pipelines_to_disable = ('senter', 'tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler')
@@ -72,33 +71,18 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
             elif sentence_tokenizer == 'spacy_sentencizer':
                 pipelines_to_disable = ('senter', 'tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler', 'parser')
 
+        batch_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks_lines']
+
         with nlp.select_pipes(disable = (
             pipeline
             for pipeline in pipelines_to_disable
             if nlp.has_pipe(pipeline)
         )):
-            # Calling nlp.pipe on lists of lines is much slower
-            for doc in nlp.pipe(wl_nlp_utils.split_text(main, text, word_tokenizer)):
+            for doc in nlp.pipe((line.strip() for line in text.splitlines()), batch_size = batch_size):
+                tokens_multilevel.append([])
+
                 for sentence in doc.sents:
-                    sentence_tokens = []
-
-                    for token in sentence:
-                        for _ in range(token.text.count('\n')):
-                            if sentence_tokens:
-                                tokens_multilevel[-1].append(sentence_tokens.copy())
-
-                            tokens_multilevel.append([])
-                            sentence_tokens.clear()
-
-                        if (token_clean := token.text.strip()):
-                            sentence_tokens.append(token_clean)
-
-                    if sentence_tokens:
-                        tokens_multilevel[-1].append(sentence_tokens.copy())
-
-            # Remove the newline at the end
-            if tokens_multilevel[-1] == []:
-                del tokens_multilevel[-1]
+                    tokens_multilevel[-1].append([token.text for token in sentence])
     # Stanza
     elif word_tokenizer.startswith('stanza_'):
         if lang not in {'zho_cn', 'zho_tw'}:
@@ -108,7 +92,6 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
 
         nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
 
-        # Calling nlp.bulk_process on pre-split texts has no performance gains
         for doc in nlp.bulk_process((line.strip() for line in text.splitlines())):
             tokens_multilevel.append([])
 

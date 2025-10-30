@@ -249,15 +249,6 @@ def test_to_sections_unequal():
 def test_clean_texts():
     assert wl_nlp_utils.clean_texts([' test ', ' ']) == ['test']
 
-def test_split_text():
-    main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = 10
-
-    assert list(wl_nlp_utils.split_text(main, '\n\ntest\n\n\ntest\n\n\n', nlp_util = 'spacy_jpn')) == ['\n\ntest\n\n\n', 'test\n\n\n']
-    assert list(wl_nlp_utils.split_text(main, '\n\ntest\n\n\ntest\n\n\n', nlp_util = 'test')) == ['\n\ntest\n\n\n', 'test\n\n\n']
-    assert not list(wl_nlp_utils.split_text(main, '', nlp_util = 'test'))
-
-    main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = main.settings_default['files']['misc_settings']['read_files_in_chunks_chars']
-
 def test_split_tokens():
     main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = 10
 
@@ -340,7 +331,6 @@ if __name__ == '__main__':
     test_to_sections()
     test_to_sections_unequal()
     test_clean_texts()
-    test_split_text()
     test_split_tokens()
 
     test_to_srp_latn()

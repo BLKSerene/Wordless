@@ -31,6 +31,10 @@ def test_wl_settings_sentence_tokenization():
     main.settings_sentence_tokenization.load_settings(defaults = True)
     main.settings_sentence_tokenization.apply_settings()
 
+    # Reload settings
+    main.switch_lang_utils_fast()
+    main.settings_sentence_tokenization.load_settings()
+
     main.settings_sentence_tokenization.text_edit_preview_samples.setPlainText('')
     main.settings_sentence_tokenization.preview_changed()
     main.settings_sentence_tokenization.text_edit_preview_samples.setPlainText('test')
@@ -41,10 +45,10 @@ def test_wl_settings_sentence_tokenization():
     main.settings_sentence_tokenization.update_gui_err()
 
     # Force the model download to fail
-    worker_download_model_stanza_temp = wl_nlp_utils.Wl_Worker_Download_Model_Stanza
-    wl_nlp_utils.Wl_Worker_Download_Model_Stanza = wl_test_init.Wl_Worker_Download_Model_Stanza_Err_Msg
+    check_models_temp = wl_nlp_utils.check_models
+    wl_nlp_utils.check_models = lambda parent, langs, lang_utils: False
     main.settings_sentence_tokenization.preview_results_changed()
-    wl_nlp_utils.Wl_Worker_Download_Model_Stanza = worker_download_model_stanza_temp
+    wl_nlp_utils.check_models = check_models_temp
 
 def test_wl_worker_preview_sentence_tokenizer():
     main.settings_custom['sentence_tokenization']['preview']['preview_samples'] = wl_test_lang_examples.TEXT_NEWLINES

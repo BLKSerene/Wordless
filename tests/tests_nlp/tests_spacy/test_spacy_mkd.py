@@ -24,8 +24,8 @@ def test_spacy_mkd():
 
     test_spacy.wl_test_spacy(
         lang = 'mkd',
-        results_sentence_tokenize_trf = results_sentence_tokenize,
-        results_sentence_tokenize_lg = results_sentence_tokenize,
+        results_sentence_tokenize_dependency_parser = results_sentence_tokenize,
+        results_sentence_tokenize_sentence_recognizer = results_sentence_tokenize,
         results_word_tokenize = ['Македонски', 'јазик', '—', 'јужнословенски', 'јазик', ',', 'дел', 'од', 'групата', 'словенски', 'јазици', 'од', 'јазичното', 'семејство', 'на', 'индоевропски', 'јазици', '.'],
         results_pos_tag = results_pos_tag,
         results_pos_tag_universal = results_pos_tag,

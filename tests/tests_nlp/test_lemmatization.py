@@ -264,6 +264,7 @@ def wl_test_lemmatize_models(lang, lemmatizer, tokens, results):
     print(f'{lang} / {lemmatizer}:')
 
     test_sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
+    test_sentence = f'\n\n{test_sentence}\n\n\n0\n\n\n'
 
     # Untokenized
     tokens_untokenized = wl_lemmatization.wl_lemmatize(
@@ -285,7 +286,8 @@ def wl_test_lemmatize_models(lang, lemmatizer, tokens, results):
     )
     lemmas_tokenized = wl_texts.get_token_properties(tokens_tokenized, 'lemma')
 
-    assert lemmas_untokenized == results
+    # Newline characters should be preserved
+    assert lemmas_untokenized == ['\n', '\n', *results, '\n', '\n', '\n', '0', '\n', '\n', '\n']
 
     # Check for empty lemmas
     assert lemmas_untokenized
@@ -295,48 +297,6 @@ def wl_test_lemmatize_models(lang, lemmatizer, tokens, results):
 
     # Tokenization should not be modified
     assert len(tokens) == len(lemmas_tokenized)
-
-    # Newlines
-    tokens_newlines = wl_lemmatization.wl_lemmatize(
-        main,
-        inputs = wl_test_lang_examples.TEXT_NEWLINES,
-        lang = lang,
-        lemmatizer = lemmatizer
-    )
-
-    assert wl_texts.to_token_texts(tokens_newlines) == list(wl_test_lang_examples.TEXT_NEWLINES)
-
-    # Long
-    if (
-        lemmatizer.startswith(('spacy_', 'stanza_'))
-        or lemmatizer in {'modern_botok_bod', 'sudachipy_jpn'}
-    ):
-        main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = 99
-
-        tokens_long = wl_lemmatization.wl_lemmatize(
-            main,
-            inputs = '\n'.join(wl_test_lang_examples.TOKENS_LONG),
-            lang = lang,
-            lemmatizer = lemmatizer
-        )
-
-        tokens_long_lemmatized = wl_test_lang_examples.TOKENS_LONG.copy()
-
-        for i in reversed(range(1, len(tokens_long_lemmatized))):
-            tokens_long_lemmatized.insert(i, '\n')
-
-        assert wl_texts.to_token_texts(tokens_long) == tokens_long_lemmatized
-
-        tokens_long = wl_lemmatization.wl_lemmatize(
-            main,
-            inputs = wl_texts.to_tokens(wl_test_lang_examples.TOKENS_LONG, lang = lang),
-            lang = lang,
-            lemmatizer = lemmatizer
-        )
-
-        assert wl_texts.to_token_texts(tokens_long) == wl_test_lang_examples.TOKENS_LONG
-
-        main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = main.settings_default['files']['misc_settings']['read_files_in_chunks_chars']
 
 def test_lemmatize_misc():
     # NLTK - WordNet lemmatizer

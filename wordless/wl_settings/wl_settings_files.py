@@ -95,17 +95,24 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
         self.group_box_misc_settings = QtWidgets.QGroupBox(self.tr('Miscellaneous Settings'), self)
 
         self.checkbox_display_warning_when_opening_nontext_files = QtWidgets.QCheckBox(self.tr('Display warning when opening non-text files'), self)
-        self.label_read_files_in_chunks = QtWidgets.QLabel(self.tr('Read files in chunks of'), self)
-        self.spin_box_read_files_in_chunks = wl_boxes.Wl_Spin_Box(self)
-        self.label_read_files_in_chunks_chars = QtWidgets.QLabel(self.tr('characters'), self)
+        self.label_read_files_in_chunks_lines = QtWidgets.QLabel(self.tr('Read files in chunks of'), self)
+        self.spin_box_read_files_in_chunks_lines = wl_boxes.Wl_Spin_Box(self)
+        self.label_lines = QtWidgets.QLabel(self.tr('lines'), self)
+        self.label_read_files_in_chunks_chars = QtWidgets.QLabel(self.tr('Read files in chunks of'), self)
+        self.spin_box_read_files_in_chunks_chars = wl_boxes.Wl_Spin_Box(self)
+        self.label_chars = QtWidgets.QLabel(self.tr('characters'), self)
 
-        self.spin_box_read_files_in_chunks.setRange(100, 1000000)
+        self.spin_box_read_files_in_chunks_lines.setRange(1, 10000)
+        self.spin_box_read_files_in_chunks_chars.setRange(100, 1000000)
 
         self.group_box_misc_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_misc_settings.layout().addWidget(self.checkbox_display_warning_when_opening_nontext_files, 0, 0, 1, 3)
-        self.group_box_misc_settings.layout().addWidget(self.label_read_files_in_chunks, 1, 0)
-        self.group_box_misc_settings.layout().addWidget(self.spin_box_read_files_in_chunks, 1, 1)
-        self.group_box_misc_settings.layout().addWidget(self.label_read_files_in_chunks_chars, 1, 2)
+        self.group_box_misc_settings.layout().addWidget(self.label_read_files_in_chunks_lines, 1, 0)
+        self.group_box_misc_settings.layout().addWidget(self.spin_box_read_files_in_chunks_lines, 1, 1)
+        self.group_box_misc_settings.layout().addWidget(self.label_lines, 1, 2)
+        self.group_box_misc_settings.layout().addWidget(self.label_read_files_in_chunks_chars, 2, 0)
+        self.group_box_misc_settings.layout().addWidget(self.spin_box_read_files_in_chunks_chars, 2, 1)
+        self.group_box_misc_settings.layout().addWidget(self.label_chars, 2, 2)
 
         self.group_box_misc_settings.layout().setColumnStretch(3, 1)
 
@@ -133,7 +140,8 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
 
         # Miscellaneous Settings
         self.checkbox_display_warning_when_opening_nontext_files.setChecked(settings['misc_settings']['display_warning_when_opening_nontext_files'])
-        self.spin_box_read_files_in_chunks.setValue(settings['misc_settings']['read_files_in_chunks_chars'])
+        self.spin_box_read_files_in_chunks_lines.setValue(settings['misc_settings']['read_files_in_chunks_lines'])
+        self.spin_box_read_files_in_chunks_chars.setValue(settings['misc_settings']['read_files_in_chunks_chars'])
 
     def apply_settings(self):
         # Default Settings
@@ -148,7 +156,8 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
 
         # Miscellaneous Settings
         self.settings_custom['misc_settings']['display_warning_when_opening_nontext_files'] = self.checkbox_display_warning_when_opening_nontext_files.isChecked()
-        self.settings_custom['misc_settings']['read_files_in_chunks_chars'] = self.spin_box_read_files_in_chunks.value()
+        self.settings_custom['misc_settings']['read_files_in_chunks_lines'] = self.spin_box_read_files_in_chunks_lines.value()
+        self.settings_custom['misc_settings']['read_files_in_chunks_chars'] = self.spin_box_read_files_in_chunks_chars.value()
 
         return True
 

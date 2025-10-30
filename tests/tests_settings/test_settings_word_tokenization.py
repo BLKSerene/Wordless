@@ -16,8 +16,6 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import time
-
 from tests import (
     wl_test_init,
     wl_test_lang_examples
@@ -33,6 +31,10 @@ def test_wl_settings_word_tokenization():
     main.settings_word_tokenization.load_settings(defaults = True)
     main.settings_word_tokenization.apply_settings()
 
+    # Reload settings
+    main.switch_lang_utils_fast()
+    main.settings_word_tokenization.load_settings()
+
     main.settings_word_tokenization.text_edit_preview_samples.setPlainText('')
     main.settings_word_tokenization.preview_changed()
     main.settings_word_tokenization.text_edit_preview_samples.setPlainText('test')
@@ -40,18 +42,15 @@ def test_wl_settings_word_tokenization():
 
     main.settings_word_tokenization.preview_results_changed()
     main.settings_word_tokenization.worker_preview_word_tokenizer.stop()
-    # Prevent racing
-    time.sleep(5)
-
     main.settings_word_tokenization.abort()
     main.settings_word_tokenization.update_gui('test')
     main.settings_word_tokenization.update_gui_err()
 
     # Force the model download to fail
-    worker_download_model_stanza_temp = wl_nlp_utils.Wl_Worker_Download_Model_Stanza
-    wl_nlp_utils.Wl_Worker_Download_Model_Stanza = wl_test_init.Wl_Worker_Download_Model_Stanza_Err_Msg
+    check_models_temp = wl_nlp_utils.check_models
+    wl_nlp_utils.check_models = lambda parent, langs, lang_utils: False
     main.settings_word_tokenization.preview_results_changed()
-    wl_nlp_utils.Wl_Worker_Download_Model_Stanza = worker_download_model_stanza_temp
+    wl_nlp_utils.check_models = check_models_temp
 
 def test_wl_worker_preview_word_tokenizer():
     main.settings_custom['word_tokenization']['preview']['preview_lang'] = 'vie'

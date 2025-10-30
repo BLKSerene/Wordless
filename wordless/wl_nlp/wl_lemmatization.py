@@ -16,8 +16,6 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import re
-
 import nltk
 from PyQt5 import QtCore
 import simplemma
@@ -94,34 +92,35 @@ def wl_lemmatize_text(main, text, lang, lemmatizer):
     tokens = []
     lemmas = []
 
+    lines = text.splitlines(keepends = True)
+
     # spaCy
     if lemmatizer.startswith('spacy_'):
         nlp = main.__dict__[f'spacy_nlp_{wl_conversion.remove_lang_code_suffixes(lang)}']
+        batch_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks_lines']
 
         with nlp.select_pipes(disable = (
             pipeline
             for pipeline in ('senter', 'sentencizer', 'parser')
             if nlp.has_pipe(pipeline)
         )):
-            # Calling nlp.pipe on lists of lines is much slower
-            for doc in nlp.pipe(wl_nlp_utils.split_text(main, text, lemmatizer)):
+            for line, doc in zip(
+                lines,
+                # Some of spaCy's lemmatizers do not ignore newline characters
+                nlp.pipe((line.strip() for line in lines), batch_size = batch_size)
+            ):
                 for token in doc:
-                    # Split newlines as single tokens
-                    if '\n' in token.text:
-                        parts = (part for part in re.split(wl_nlp_utils.RE_SPLIT_NEWLINES, token.text) if part)
+                    tokens.append(token.text)
+
+                    if token.lemma_:
+                        lemmas.append(token.lemma_)
                     else:
-                        parts = (token.text,)
+                        lemmas.append(token.text)
 
-                    for part in parts:
-                        tokens.append(part)
-
-                        if part != '\n':
-                            if token.lemma_:
-                                lemmas.append(token.lemma_)
-                            else:
-                                lemmas.append(token.text)
-                        else:
-                            lemmas.append('\n')
+                # Preserve newlines
+                if line.endswith('\n'):
+                    tokens.append('\n')
+                    lemmas.append('\n')
     # Stanza
     elif lemmatizer.startswith('stanza_'):
         if lang not in {'zho_cn', 'zho_tw'}:
@@ -130,9 +129,7 @@ def wl_lemmatize_text(main, text, lang, lemmatizer):
             lang_stanza = lang
 
         nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
-        lines = text.splitlines(keepends = True)
 
-        # Calling nlp.bulk_process on pre-split texts has no performance gains
         for line, doc in zip(lines, nlp.bulk_process(lines)):
             for sentence in doc.sentences:
                 for token in sentence.words:
@@ -158,7 +155,7 @@ def wl_lemmatize_text(main, text, lang, lemmatizer):
                 case _:
                     lang = wl_conversion.to_iso_639_1(main, lang, no_suffix = True)
 
-        for line in text.splitlines(keepends = True):
+        for line in lines:
             if (line_clean := line.strip()):
                 # simplemma
                 if lemmatizer.startswith('simplemma_'):

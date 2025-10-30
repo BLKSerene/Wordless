@@ -444,8 +444,6 @@ SENTENCE_ZHO_TW_CHAR_TOKENIZER = '英國的全稱是United Kingdom of Great Brit
 SENTENCE_JPN_KANJI_TOKENIZER = '''The sentence "天気がいいから、散歩しましょう。" means: The weather is good so let's take a walk.'''
 SENTENCE_BOD_WORD_DETOKENIZER = 'Test this Tibetan string: དུང་དང་འོ་མར་འགྲན་པའི་ལྷག་བསམ་མཐུ། །དམན་ཡང་དཀར་པོའི་བྱས་འབྲས་ཅུང་ཟད་ཅིག །བློ་དང་འདུན་པ་བཟང་བའི་རང་རིགས་ཀུན། །རྒྱལ་ཁའི་འཕྲིན་བཟང་ལས་དོན་འགྲུབ་ཕྱིར་འབད།།. Does detokenization work as expected?'
 
-TOKENS_LONG = ['0'] * 100
-
 def check_lang_examples(main):
     settings_langs = [lang[0] for lang in main.settings_global['langs'].values()]
 

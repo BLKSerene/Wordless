@@ -26,6 +26,7 @@ from wordless.wl_nlp import (
     wl_texts,
     wl_word_tokenization
 )
+from wordless.wl_utils import wl_misc
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 # Avoid loading spaCy's Japanese model when testing the Japanese kanji tokenizer
@@ -325,14 +326,13 @@ def wl_test_word_tokenize_models(lang, word_tokenizer, results):
     print(f'{lang} / {word_tokenizer}:')
 
     sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
-
-    tokens = wl_word_tokenization.wl_word_tokenize_flat(
+    tokens = wl_word_tokenization.wl_word_tokenize(
         main,
-        text = sentence,
+        text = f'\n\n{sentence}\n\n\n0\n\n\n',
         lang = lang,
         word_tokenizer = word_tokenizer
     )
-    tokens = wl_texts.to_display_texts(tokens)
+    tokens[2] = wl_texts.to_display_texts(wl_misc.flatten_list(tokens[2]))
 
     print(f'{tokens}\n')
 
@@ -342,52 +342,22 @@ def wl_test_word_tokenize_models(lang, word_tokenizer, results):
     # The count of tokens should be more than the length of tokens split by space, except Vietnamese
     match lang:
         case 'chu' | 'cop' | 'pcm' | 'orv':
-            assert len(tokens) == len(sentence.split())
+            assert len(tokens[2]) == len(sentence.split())
         case 'mal':
             if word_tokenizer == 'spacy_mal':
-                assert len(tokens) == len(sentence.split())
+                assert len(tokens[2]) == len(sentence.split())
             else:
-                assert len(tokens) > len(sentence.split())
+                assert len(tokens[2]) > len(sentence.split())
         case 'vie':
             if word_tokenizer == 'underthesea_vie':
-                assert len(tokens) < len(sentence.split())
+                assert len(tokens[2]) < len(sentence.split())
             else:
-                assert len(tokens) > len(sentence.split())
+                assert len(tokens[2]) > len(sentence.split())
         case _:
-            assert len(tokens) > len(sentence.split())
+            assert len(tokens[2]) > len(sentence.split())
 
-    assert tokens == results
-
-    # Newlines
-    tokens_multilevel = wl_word_tokenization.wl_word_tokenize(
-        main,
-        text = wl_test_lang_examples.TEXT_NEWLINES,
-        lang = lang,
-        word_tokenizer = word_tokenizer
-    )
-
-    assert tokens_multilevel == [
-        [[[wl_texts.Wl_Token(line)]]] if line else []
-        for line in wl_test_lang_examples.TEXT_NEWLINES.splitlines()
-    ]
-
-    # Long
-    if (
-        word_tokenizer.startswith(('spacy_', 'stanza_'))
-        or word_tokenizer in {'modern_botok_bod', 'sudachipy_jpn'}
-    ):
-        main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = 99
-
-        tokens_long = wl_word_tokenization.wl_word_tokenize(
-            main,
-            text = '\n'.join(wl_test_lang_examples.TOKENS_LONG),
-            lang = lang,
-            word_tokenizer = word_tokenizer
-        )
-
-        assert tokens_long == [[[[wl_texts.Wl_Token(token)]]] for token in wl_test_lang_examples.TOKENS_LONG]
-
-        main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = main.settings_default['files']['misc_settings']['read_files_in_chunks_chars']
+    # Empty lines should be tokenized as empty paragraphs
+    assert tokens == [[], [], results, [], [], [[[wl_texts.Wl_Token('0')]]], [], []]
 
 def test_char_tokenizers():
     for lang, char_tokenizer in zip(

@@ -96,19 +96,23 @@ def get_langs_stanza(main, util_type):
 
     return langs_stanza
 
+# spaCy's transformer models are much slower than large models optimized for CPU and batch processing does not help
+# Reference:
+#     https://github.com/explosion/spaCy/issues/13783
+#     https://github.com/explosion/spaCy/issues/13500
 LANGS_SPACY = {
-    'cat': 'ca_core_news_trf',
-    'zho': 'zh_core_web_trf',
+    'cat': 'ca_core_news_lg',
+    'zho': 'zh_core_web_lg',
     'hrv': 'hr_core_news_lg',
-    'dan': 'da_core_news_trf',
+    'dan': 'da_core_news_lg',
     'nld': 'nl_core_news_lg',
-    'eng': 'en_core_web_trf',
+    'eng': 'en_core_web_lg',
     'fin': 'fi_core_news_lg',
-    'fra': 'fr_dep_news_trf',
-    'deu': 'de_dep_news_trf',
+    'fra': 'fr_core_news_lg',
+    'deu': 'de_core_news_lg',
     'ell': 'el_core_news_lg',
     'ita': 'it_core_news_lg',
-    'jpn': 'ja_core_news_trf',
+    'jpn': 'ja_core_news_lg',
     'kor': 'ko_core_news_lg',
     'lit': 'lt_core_news_lg',
     'mkd': 'mk_core_news_lg',
@@ -117,12 +121,12 @@ LANGS_SPACY = {
     'por': 'pt_core_news_lg',
     'ron': 'ro_core_news_lg',
     'rus': 'ru_core_news_lg',
-    'slv': 'sl_core_news_trf',
-    'spa': 'es_dep_news_trf',
+    'slv': 'sl_core_news_lg',
+    'spa': 'es_core_news_lg',
     'swe': 'sv_core_news_lg',
-    'ukr': 'uk_core_news_trf',
+    'ukr': 'uk_core_news_lg',
 
-    'other': 'en_core_web_trf'
+    'other': 'en_core_web_lg'
 }
 
 LANGS_SPACY_LEMMATIZERS = (
@@ -406,11 +410,7 @@ def init_model_spacy(main, lang, sentencizer_only = False):
 
                 # Exclude NER to boost speed
                 main.__dict__[f'spacy_nlp_{lang}'] = spacy.load(model_name, exclude = ['ner'])
-
-                # Transformer-based models do not have sentence recognizers
-                if not model_name.endswith('_trf'):
-                    main.__dict__[f'spacy_nlp_{lang}'].enable_pipe('senter')
-
+                main.__dict__[f'spacy_nlp_{lang}'].enable_pipe('senter')
                 main.__dict__[f'spacy_nlp_{lang}'].add_pipe('sentencizer', config = sentencizer_config)
             # Languages without models
             else:
@@ -754,33 +754,7 @@ def clean_texts(texts,  remove_newlines_within = False):
             if (text_clean := text.strip())
         ]
 
-# Split text by paragraphs to fit limit size of spaCy and avoid memory error
-def split_text(main, text, nlp_util):
-    num_chars = 0
-    text_section = []
-
-    # Inputs of SudachiPy cannot be more than 49149 bytes
-    if nlp_util in {'spacy_jpn', 'sudachipy_jpn'}:
-        chunk_size = min(49149 // 4, main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'])
-    else:
-        chunk_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars']
-
-    for line in text.splitlines(keepends = True):
-        len_line = len(line)
-
-        if num_chars + len_line > chunk_size:
-            yield ''.join(text_section)
-
-            num_chars = 0
-            text_section.clear()
-
-        text_section.append(line)
-        num_chars += len_line
-
-    # Last section
-    if text_section:
-        yield ''.join(text_section)
-
+# Split tokens to fit size limit of spaCy
 def split_tokens(main, tokens, nlp_util):
     num_chars = 0
     token_section = []

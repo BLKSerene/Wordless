@@ -23,8 +23,8 @@ def test_spacy_pol():
 
     test_spacy.wl_test_spacy(
         lang = 'pol',
-        results_sentence_tokenize_trf = results_sentence_tokenize,
-        results_sentence_tokenize_lg = results_sentence_tokenize,
+        results_sentence_tokenize_dependency_parser = results_sentence_tokenize,
+        results_sentence_tokenize_sentence_recognizer = results_sentence_tokenize,
         results_word_tokenize = ['Język', 'polski', ',', 'polszczyzna', '–', 'język', 'lechicki', 'z', 'grupy', 'zachodniosłowiańskiej', '(', 'do', 'której', 'należą', 'również', 'czeski', ',', 'kaszubski', ',', 'słowacki', ',', 'języki', 'łużyckie', 'czy', 'wymarły', 'język', 'drzewiański', ')', ',', 'stanowiącej', 'część', 'rodziny', 'indoeuropejskiej', '.'],
         results_pos_tag = [('Język', 'SUBST'), ('polski', 'ADJ'), (',', 'INTERP'), ('polszczyzna', 'SUBST'), ('–', 'INTERP'), ('język', 'SUBST'), ('lechicki', 'ADJ'), ('z', 'PREP'), ('grupy', 'SUBST'), ('zachodniosłowiańskiej', 'ADJ'), ('(', 'INTERP'), ('do', 'PREP'), ('której', 'ADJ'), ('należą', 'FIN'), ('również', 'QUB'), ('czeski', 'ADJ'), (',', 'INTERP'), ('kaszubski', 'ADJ'), (',', 'INTERP'), ('słowacki', 'SUBST'), (',', 'INTERP'), ('języki', 'SUBST'), ('łużyckie', 'ADJ'), ('czy', 'CONJ'), ('wymarły', 'ADJ'), ('język', 'SUBST'), ('drzewiański', 'ADJ'), (')', 'SUBST'), (',', 'INTERP'), ('stanowiącej', 'PACT'), ('część', 'SUBST'), ('rodziny', 'SUBST'), ('indoeuropejskiej', 'ADJ'), ('.', 'SUBST')],
         results_pos_tag_universal = [('Język', 'NOUN'), ('polski', 'ADJ'), (',', 'PUNCT'), ('polszczyzna', 'NOUN'), ('–', 'PUNCT'), ('język', 'NOUN'), ('lechicki', 'PROPN'), ('z', 'ADP'), ('grupy', 'NOUN'), ('zachodniosłowiańskiej', 'ADJ'), ('(', 'PUNCT'), ('do', 'ADP'), ('której', 'DET'), ('należą', 'VERB'), ('również', 'PART'), ('czeski', 'ADJ'), (',', 'PUNCT'), ('kaszubski', 'ADJ'), (',', 'PUNCT'), ('słowacki', 'ADJ'), (',', 'PUNCT'), ('języki', 'NOUN'), ('łużyckie', 'ADJ'), ('czy', 'CCONJ'), ('wymarły', 'NUM'), ('język', 'NOUN'), ('drzewiański', 'ADJ'), (')', 'PUNCT'), (',', 'PUNCT'), ('stanowiącej', 'ADJ'), ('część', 'NOUN'), ('rodziny', 'NOUN'), ('indoeuropejskiej', 'ADJ'), ('.', 'PUNCT')],

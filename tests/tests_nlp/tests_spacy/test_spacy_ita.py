@@ -23,8 +23,8 @@ def test_spacy_ita():
 
     test_spacy.wl_test_spacy(
         lang = 'ita',
-        results_sentence_tokenize_trf = results_sentence_tokenize,
-        results_sentence_tokenize_lg = results_sentence_tokenize,
+        results_sentence_tokenize_dependency_parser = results_sentence_tokenize,
+        results_sentence_tokenize_sentence_recognizer = results_sentence_tokenize,
         results_word_tokenize = ["L'", 'italiano', 'è', 'una', 'lingua', 'romanza', 'parlata', 'principalmente', 'in', 'Italia', '.'],
         results_pos_tag = [("L'", 'RD'), ('italiano', 'S'), ('è', 'V'), ('una', 'RI'), ('lingua', 'S'), ('romanza', 'A'), ('parlata', 'V'), ('principalmente', 'B'), ('in', 'E'), ('Italia', 'SP'), ('.', 'FS')],
         results_pos_tag_universal = [("L'", 'DET'), ('italiano', 'NOUN'), ('è', 'AUX'), ('una', 'DET'), ('lingua', 'NOUN'), ('romanza', 'ADJ'), ('parlata', 'VERB'), ('principalmente', 'ADV'), ('in', 'ADP'), ('Italia', 'PROPN'), ('.', 'PUNCT')],

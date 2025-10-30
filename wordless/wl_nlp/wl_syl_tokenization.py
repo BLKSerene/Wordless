@@ -56,7 +56,7 @@ def wl_syl_tokenize(main, inputs, lang, syl_tokenizer = 'default', force = False
 
             # Remove empty syllables and whitespace around syllables
             syls_tokens = [
-                tuple(wl_nlp_utils.clean_texts(syls)) if syls != ['\n'] else syls
+                tuple(wl_nlp_utils.clean_texts(syls)) if syls != ('\n',) else syls
                 for syls in syls_tokens
             ]
 
@@ -97,7 +97,7 @@ def wl_syl_tokenize_text(main, text, lang, syl_tokenizer):
             ))
 
         tokens.append(wl_texts.Wl_Token('\n'))
-        syls_tokens.append(['\n'])
+        syls_tokens.append(('\n',))
 
     if tokens:
         del tokens[-1]

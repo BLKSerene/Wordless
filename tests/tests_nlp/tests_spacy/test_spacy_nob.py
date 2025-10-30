@@ -24,8 +24,8 @@ def test_spacy_nob():
 
     test_spacy.wl_test_spacy(
         lang = 'nob',
-        results_sentence_tokenize_trf = results_sentence_tokenize,
-        results_sentence_tokenize_lg = results_sentence_tokenize,
+        results_sentence_tokenize_dependency_parser = results_sentence_tokenize,
+        results_sentence_tokenize_sentence_recognizer = results_sentence_tokenize,
         results_word_tokenize = ['Bokmål', 'er', 'en', 'av', 'to', 'offisielle', 'målformer', 'av', 'norsk', 'skriftspråk', ',', 'hvorav', 'den', 'andre', 'er', 'nynorsk', '.'],
         results_pos_tag = results_pos_tag,
         results_pos_tag_universal = results_pos_tag,

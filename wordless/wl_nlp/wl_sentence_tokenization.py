@@ -78,12 +78,12 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
         sentence_tokenizer = sentence_tokenizer
     )
 
+    lines = wl_nlp_utils.clean_texts(text.splitlines())
+
     # spaCy
     if sentence_tokenizer.startswith('spacy_'):
-        # Dependency parsers
         if sentence_tokenizer.startswith('spacy_dependency_parser_'):
             pipelines_to_disable = ('senter', 'sentencizer', 'tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler')
-        # Sentence recognizers and sentencizer
         elif sentence_tokenizer.startswith('spacy_sentence_recognizer_'):
             pipelines_to_disable = ('sentencizer', 'tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler', 'parser')
         elif sentence_tokenizer == 'spacy_sentencizer':
@@ -94,29 +94,15 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
         else:
             nlp = main.__dict__[f'spacy_nlp_{wl_conversion.remove_lang_code_suffixes(lang)}']
 
+        batch_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks_lines']
+
         with nlp.select_pipes(disable = (
             pipeline
             for pipeline in pipelines_to_disable
             if nlp.has_pipe(pipeline)
         )):
-            # Calling nlp.pipe on lists of lines is much slower
-            for doc in nlp.pipe(wl_nlp_utils.split_text(main, text, sentence_tokenizer)):
-                for sentence in doc.sents:
-                    sentence_tokens = []
-
-                    for token in sentence:
-                        # Split sentences by newlines
-                        for _ in range(token.text.count('\n')):
-                            if sentence_tokens:
-                                sentences.append(''.join(sentence_tokens))
-
-                            sentence_tokens.clear()
-
-                        if token.text.replace('\n', ''):
-                            sentence_tokens.append(token.text_with_ws)
-
-                    if sentence_tokens:
-                        sentences.append(''.join(sentence_tokens))
+            for doc in nlp.pipe(lines, batch_size = batch_size):
+                sentences.extend((sentence.text for sentence in doc.sents))
     # Stanza
     elif sentence_tokenizer.startswith('stanza_'):
         if lang not in {'zho_cn', 'zho_tw'}:
@@ -126,11 +112,10 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
 
         nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
 
-        # Calling nlp.bulk_process on pre-split texts has no performance gains
-        for doc in nlp.bulk_process(wl_nlp_utils.clean_texts(text.splitlines())):
+        for doc in nlp.bulk_process(lines):
             sentences.extend((sentence.text for sentence in doc.sentences))
     else:
-        for line in wl_nlp_utils.clean_texts(text.splitlines()):
+        for line in lines:
             # NLTK
             if sentence_tokenizer.startswith('nltk_punkt'):
                 sentences.extend(nltk.sent_tokenize(line, language = LANG_TEXTS_NLTK[lang]))

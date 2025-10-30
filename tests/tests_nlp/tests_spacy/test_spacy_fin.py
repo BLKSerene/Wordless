@@ -23,8 +23,8 @@ def test_spacy_fin():
 
     test_spacy.wl_test_spacy(
         lang = 'fin',
-        results_sentence_tokenize_trf = results_sentence_tokenize,
-        results_sentence_tokenize_lg = results_sentence_tokenize,
+        results_sentence_tokenize_dependency_parser = results_sentence_tokenize,
+        results_sentence_tokenize_sentence_recognizer = results_sentence_tokenize,
         results_word_tokenize = ['Suomen', 'kieli', 'eli', 'suomi', 'on', 'uralilaisten', 'kielten', 'itämerensuomalaiseen', 'ryhmään', 'kuuluva', 'kieli', ',', 'jota', 'puhuvat', 'pääosin', 'suomalaiset', '.'],
         results_pos_tag = [('Suomen', 'N'), ('kieli', 'N'), ('eli', 'C'), ('suomi', 'N'), ('on', 'V'), ('uralilaisten', 'N'), ('kielten', 'N'), ('itämerensuomalaiseen', 'A'), ('ryhmään', 'N'), ('kuuluva', 'V'), ('kieli', 'N'), (',', 'Punct'), ('jota', 'Pron'), ('puhuvat', 'V'), ('pääosin', 'Adv'), ('suomalaiset', 'N'), ('.', 'Punct')],
         results_pos_tag_universal = [('Suomen', 'PROPN'), ('kieli', 'NOUN'), ('eli', 'CCONJ'), ('suomi', 'PROPN'), ('on', 'AUX'), ('uralilaisten', 'NOUN'), ('kielten', 'NOUN'), ('itämerensuomalaiseen', 'ADJ'), ('ryhmään', 'NOUN'), ('kuuluva', 'VERB'), ('kieli', 'NOUN'), (',', 'PUNCT'), ('jota', 'PRON'), ('puhuvat', 'VERB'), ('pääosin', 'ADV'), ('suomalaiset', 'NOUN'), ('.', 'PUNCT')],

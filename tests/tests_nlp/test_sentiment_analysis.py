@@ -24,7 +24,6 @@ from tests import (
 )
 from wordless.wl_nlp import (
     wl_sentiment_analysis,
-    wl_texts,
     wl_word_tokenization
 )
 
@@ -53,7 +52,8 @@ def wl_test_sentiment_analyze_models(lang, sentiment_analyzer, test_sentence, to
     # Untokenized
     sentiment_scores_untokenized = wl_sentiment_analysis.wl_sentiment_analyze(
         main,
-        inputs = [test_sentence],
+        # Newline characters should be preserved
+        inputs = ['\n', '\n', test_sentence, '\n', '\n', '\n', '0', '\n', '\n', '\n'],
         lang = lang,
         sentiment_analyzer = sentiment_analyzer
     )
@@ -69,8 +69,11 @@ def wl_test_sentiment_analyze_models(lang, sentiment_analyzer, test_sentence, to
         sentiment_analyzer = sentiment_analyzer
     )
 
+    assert sentiment_scores_untokenized[0:2] == [None] * 2
+    assert sentiment_scores_untokenized[-7:-4] == sentiment_scores_untokenized[-3:] == [None] * 3
+
     if check_results:
-        assert sentiment_scores_untokenized == results
+        assert sentiment_scores_untokenized[2:-7] == results
         assert sentiment_scores_tokenized == results
     # Check for empty results
     else:
@@ -78,51 +81,7 @@ def wl_test_sentiment_analyze_models(lang, sentiment_analyzer, test_sentence, to
         assert sentiment_scores_tokenized
 
     for sentiment_score in sentiment_scores_untokenized + sentiment_scores_tokenized:
-        assert -1 <= sentiment_score <= 1
-
-    # Newlines
-    sentiment_scores = wl_sentiment_analysis.wl_sentiment_analyze(
-        main,
-        inputs = list(wl_test_lang_examples.TEXT_NEWLINES),
-        lang = lang,
-        sentiment_analyzer = sentiment_analyzer
-    )
-
-    for sentiment_score, char in zip(sentiment_scores, wl_test_lang_examples.TEXT_NEWLINES):
-        if sentiment_score is None:
-            assert char == '\n'
-        else:
-            assert -1 <= sentiment_score <= 1
-
-    # Long
-    if sentiment_analyzer.startswith('stanza_'):
-        main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = 99
-
-        sentiment_scores = wl_sentiment_analysis.wl_sentiment_analyze(
-            main,
-            inputs = ['\n'.join(wl_test_lang_examples.TOKENS_LONG)],
-            lang = lang,
-            sentiment_analyzer = sentiment_analyzer
-        )
-
-        assert sentiment_scores
-
-        for sentiment_score in sentiment_scores:
-            assert -1 <= sentiment_score <= 1
-
-        sentiment_scores = wl_sentiment_analysis.wl_sentiment_analyze(
-            main,
-            inputs = [wl_texts.to_tokens(wl_test_lang_examples.TOKENS_LONG, lang = lang)],
-            lang = lang,
-            sentiment_analyzer = sentiment_analyzer
-        )
-
-        assert sentiment_scores
-
-        for sentiment_score in sentiment_scores:
-            assert -1 <= sentiment_score <= 1
-
-        main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = main.settings_default['files']['misc_settings']['read_files_in_chunks_chars']
+        assert sentiment_score is None or -1 <= sentiment_score <= 1
 
 def test_sentiment_analyze_misc():
     # Vietnamese

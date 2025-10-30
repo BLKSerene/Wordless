@@ -1351,6 +1351,7 @@ def init_settings_default(main):
 
             'misc_settings': {
                 'display_warning_when_opening_nontext_files': True,
+                'read_files_in_chunks_lines': 100,
                 'read_files_in_chunks_chars': 100000
             },
 

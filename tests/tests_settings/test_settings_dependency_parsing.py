@@ -28,6 +28,10 @@ def test_wl_settings_dependency_parsing():
     main.settings_dependency_parsing.load_settings(defaults = True)
     main.settings_dependency_parsing.apply_settings()
 
+    # Reload settings
+    main.switch_lang_utils_fast()
+    main.settings_dependency_parsing.load_settings()
+
     main.settings_dependency_parsing.text_edit_preview_samples.setPlainText('')
     main.settings_dependency_parsing.preview_changed()
     main.settings_dependency_parsing.text_edit_preview_samples.setPlainText('test')
@@ -38,10 +42,10 @@ def test_wl_settings_dependency_parsing():
     main.settings_dependency_parsing.update_gui_err()
 
     # Force the model download to fail
-    worker_download_model_stanza_temp = wl_nlp_utils.Wl_Worker_Download_Model_Stanza
-    wl_nlp_utils.Wl_Worker_Download_Model_Stanza = wl_test_init.Wl_Worker_Download_Model_Stanza_Err_Msg
+    check_models_temp = wl_nlp_utils.check_models
+    wl_nlp_utils.check_models = lambda parent, langs, lang_utils: False
     main.settings_dependency_parsing.preview_results_changed()
-    wl_nlp_utils.Wl_Worker_Download_Model_Stanza = worker_download_model_stanza_temp
+    wl_nlp_utils.check_models = check_models_temp
 
 def test_wl_dialog_preview_settings():
     dialog_preview_settings = wl_settings_dependency_parsing.Wl_Dialog_Preview_Settings(main)

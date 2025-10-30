@@ -36,6 +36,10 @@ def test_wl_settings_pos_tagging():
     main.settings_pos_tagging.load_settings(defaults = True)
     main.settings_pos_tagging.apply_settings()
 
+    # Reload settings
+    main.switch_lang_utils_fast()
+    main.settings_pos_tagging.load_settings()
+
     main.settings_pos_tagging.text_edit_preview_samples.setPlainText('')
     main.settings_pos_tagging.preview_changed()
     main.settings_pos_tagging.text_edit_preview_samples.setPlainText('test\n')
@@ -54,10 +58,10 @@ def test_wl_settings_pos_tagging():
     main.settings_pos_tagging.update_gui_err()
 
     # Force the model download to fail
-    worker_download_model_stanza_temp = wl_nlp_utils.Wl_Worker_Download_Model_Stanza
-    wl_nlp_utils.Wl_Worker_Download_Model_Stanza = wl_test_init.Wl_Worker_Download_Model_Stanza_Err_Msg
+    check_models_temp = wl_nlp_utils.check_models
+    wl_nlp_utils.check_models = lambda parent, langs, lang_utils: False
     main.settings_pos_tagging.preview_results_changed()
-    wl_nlp_utils.Wl_Worker_Download_Model_Stanza = worker_download_model_stanza_temp
+    wl_nlp_utils.check_models = check_models_temp
 
 def test_wl_worker_preview_pos_tagger():
     main.settings_custom['pos_tagging']['preview']['preview_samples'] = wl_test_lang_examples.TEXT_NEWLINES
@@ -81,6 +85,10 @@ def test_wl_settings_pos_tagging_tagsets():
     main.settings_pos_tagging_tagsets.scroll_area_settings = wl_layouts.Wl_Scroll_Area(main.settings_pos_tagging_tagsets)
     main.settings_pos_tagging_tagsets.load_settings(defaults = False)
     main.settings_pos_tagging_tagsets.load_settings(defaults = True)
+
+    # Reload settings
+    main.switch_lang_utils_fast()
+    main.settings_pos_tagging.load_settings()
 
     main.settings_custom['pos_tagging']['tagsets']['preview_settings']['preview_pos_tagger']['eng_us'] = 'nltk_perceptron_eng'
     main.settings_pos_tagging_tagsets.preview_lang_changed()

@@ -24,8 +24,8 @@ def test_spacy_rus():
 
     test_spacy.wl_test_spacy(
         lang = 'rus',
-        results_sentence_tokenize_trf = results_sentence_tokenize,
-        results_sentence_tokenize_lg = results_sentence_tokenize,
+        results_sentence_tokenize_dependency_parser = results_sentence_tokenize,
+        results_sentence_tokenize_sentence_recognizer = results_sentence_tokenize,
         results_word_tokenize = ['Русский', 'язык', '(', 'МФА', ':', '[', 'ˈruskʲɪɪ̯', 'ɪ̯ɪˈzɨk]о', 'файле)[~', '3', ']', '—', 'язык', 'восточнославянской', 'группы', 'славянской', 'ветви', 'индоевропейской', 'языковой', 'семьи', ',', 'национальный', 'язык', 'русского', 'народа', '.'],
         results_pos_tag = results_pos_tag,
         results_pos_tag_universal = results_pos_tag,

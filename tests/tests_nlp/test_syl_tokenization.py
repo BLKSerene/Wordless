@@ -44,11 +44,11 @@ def test_syl_tokenize(lang, syl_tokenizer):
     # Untokenized
     tokens_untokenized = wl_syl_tokenization.wl_syl_tokenize(
         main,
-        inputs = test_sentence,
+        inputs = f'\n\n{test_sentence}\n\n\n0\n\n\n',
         lang = lang,
         syl_tokenizer = syl_tokenizer
     )
-    syls_tokens = [token.syls for token in tokens_untokenized]
+    syls_tokens = wl_texts.get_token_properties(tokens_untokenized, 'syls')
 
     # Tokenized
     tokens = wl_word_tokenization.wl_word_tokenize_flat(
@@ -62,7 +62,7 @@ def test_syl_tokenize(lang, syl_tokenizer):
         lang = lang,
         syl_tokenizer = syl_tokenizer
     )
-    syls_tokens_tokenized = [token.syls for token in tokens_tokenized]
+    syls_tokens_tokenized = wl_texts.get_token_properties(tokens_tokenized, 'syls')
 
     print(f'{lang} / {syl_tokenizer}:')
     print(f'{syls_tokens}\n')
@@ -78,26 +78,11 @@ def test_syl_tokenize(lang, syl_tokenizer):
     # Tokenization should not be modified
     assert len(syls_tokens_tokenized) == len(tokens)
 
-    # Newlines
-    tokens_newlines = wl_syl_tokenization.wl_syl_tokenize(
-        main,
-        inputs = wl_test_lang_examples.TEXT_NEWLINES,
-        lang = lang,
-        syl_tokenizer = syl_tokenizer
-    )
+    # Newline characters should be preserved
+    assert syls_tokens[0:2] == [('\n',)] * 2
+    assert syls_tokens[-6:] == [('\n',)] * 3 + [('0',)] + [('\n',)] * 2
 
-    assert wl_texts.to_token_texts(tokens_newlines) + ['\n'] == list(wl_test_lang_examples.TEXT_NEWLINES)
-
-    # Long
-    tokens_long = wl_syl_tokenization.wl_syl_tokenize(
-        main,
-        inputs = wl_texts.to_tokens(wl_test_lang_examples.TOKENS_LONG, lang = lang),
-        lang = lang,
-        syl_tokenizer = syl_tokenizer
-    )
-    syls_tokens_long = [token.syls for token in tokens_long]
-
-    assert syls_tokens_long == [(token,) for token in wl_test_lang_examples.TOKENS_LONG]
+    syls_tokens = syls_tokens[2:-6]
 
     match lang:
         case 'afr':

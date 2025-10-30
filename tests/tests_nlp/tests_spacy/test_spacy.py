@@ -37,7 +37,8 @@ main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'spacy')
 
 def wl_test_spacy(
     lang,
-    results_sentence_tokenize_trf = None, results_sentence_tokenize_lg = None,
+    results_sentence_tokenize_dependency_parser = None,
+    results_sentence_tokenize_sentence_recognizer = None,
     results_word_tokenize = None,
     results_pos_tag = None, results_pos_tag_universal = None,
     results_lemmatize = None,
@@ -47,7 +48,11 @@ def wl_test_spacy(
     wl_nlp_utils.check_models(main, langs = [lang], lang_utils = [[f'spacy_{lang_no_suffix}']])
 
     if lang != 'other':
-        wl_test_sentence_tokenize(lang, results_sentence_tokenize_trf, results_sentence_tokenize_lg)
+        wl_test_sentence_tokenize(
+            lang,
+            results_sentence_tokenize_dependency_parser,
+            results_sentence_tokenize_sentence_recognizer
+        )
 
     wl_test_word_tokenize(lang, results_word_tokenize)
 
@@ -65,16 +70,19 @@ def wl_test_spacy(
         wl_test_lemmatize(lang, tokens, results_lemmatize)
         wl_test_dependency_parse(lang, tokens, results_dependency_parse)
 
-def wl_test_sentence_tokenize(lang, results_trf, results_lg):
+def wl_test_sentence_tokenize(lang, results_dependency_parser, results_sentence_recognizer):
     lang_no_suffix = wl_conversion.remove_lang_code_suffixes(lang)
-    sentence_tokenizer_trf = f'spacy_dependency_parser_{lang_no_suffix}'
 
-    test_sentence_tokenization.wl_test_sentence_tokenize_models(lang, sentence_tokenizer_trf, results_trf)
-
-    if not wl_nlp_utils.LANGS_SPACY[lang_no_suffix].endswith('_trf'):
-        sentence_tokenizer_lg = f'spacy_sentence_recognizer_{lang_no_suffix}'
-
-        test_sentence_tokenization.wl_test_sentence_tokenize_models(lang, sentence_tokenizer_lg, results_lg)
+    test_sentence_tokenization.wl_test_sentence_tokenize_models(
+        lang = lang,
+        sentence_tokenizer = f'spacy_dependency_parser_{lang_no_suffix}',
+        results = results_dependency_parser
+    )
+    test_sentence_tokenization.wl_test_sentence_tokenize_models(
+        lang = lang,
+        sentence_tokenizer = f'spacy_sentence_recognizer_{lang_no_suffix}',
+        results = results_sentence_recognizer
+    )
 
 def wl_test_word_tokenize(lang, results):
     if lang == 'other':

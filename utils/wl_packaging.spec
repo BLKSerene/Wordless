@@ -39,9 +39,7 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy.lang', include_py
 datas.extend(PyInstaller.utils.hooks.copy_metadata('spacy_lookups_data'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy_lookups_data', include_py_files = True))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy_pkuseg'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('en_core_web_trf'))
-datas.extend(PyInstaller.utils.hooks.copy_metadata('spacy_curated_transformers'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('curated_transformers', include_py_files = True))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('en_core_web_lg'))
 # modern-botok's Tibetan (Modern) model
 datas.extend(PyInstaller.utils.hooks.collect_data_files('xx_bo_tagger', include_py_files = True))
 datas.extend(PyInstaller.utils.hooks.copy_metadata('xx_bo_tagger'))
@@ -81,12 +79,7 @@ datas.extend((
 # Hidden imports
 hiddenimports = [
     # spaCy
-    'en_core_web_trf',
-    'spacy_curated_transformers',
-    # Required by French and Slovenian models
-    'sentencepiece',
-    # Required by the Ukrainian model
-    'transformers',
+    'en_core_web_lg',
 
     # Underthesea
     'sklearn.pipeline',

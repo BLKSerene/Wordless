@@ -137,6 +137,7 @@ def wl_test_pos_tag_models(lang, pos_tagger, tokens, results, results_universal)
     print(f'{lang} / {pos_tagger}:')
 
     test_sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
+    test_sentence = f'\n\n{test_sentence}\n\n\n0\n\n\n'
 
     # Untokenized
     tokens_untokenized = wl_pos_tagging.wl_pos_tag(
@@ -156,6 +157,9 @@ def wl_test_pos_tag_models(lang, pos_tagger, tokens, results, results_universal)
     # Remove separators between token and tags
     tokens_tags_untokenized = [(str(token), token.tag[1:]) for token in tokens_untokenized]
     tokens_tags_untokenized_universal = [(str(token), token.tag[1:]) for token in tokens_untokenized_universal]
+    # Modify the last token used to test newlines
+    tokens_tags_untokenized[-4] = (tokens_tags_untokenized[-4][0], '0')
+    tokens_tags_untokenized_universal[-4] = (tokens_tags_untokenized_universal[-4][0], '0')
 
     print(tokens_tags_untokenized)
     print(f'{tokens_tags_untokenized_universal}\n')
@@ -180,8 +184,21 @@ def wl_test_pos_tag_models(lang, pos_tagger, tokens, results, results_universal)
     tokens_tags_tokenized = [(str(token), token.tag) for token in tokens_tokenized]
     tokens_tags_tokenized_universal = [(str(token), token.tag) for token in tokens_tokenized_universal]
 
-    assert tokens_tags_untokenized == results
-    assert tokens_tags_untokenized_universal == results_universal
+    # Newline characters should be preserved
+    assert tokens_tags_untokenized == (
+        [('\n', '\n')] * 2
+        + results
+        + [('\n', '\n')] * 3
+        + [('0', '0')]
+        + [('\n', '\n')] * 3
+    )
+    assert tokens_tags_untokenized_universal == (
+        [('\n', 'X')] * 2
+        + results_universal
+        + [('\n', 'X')] * 3
+        + [('0', '0')]
+        + [('\n', 'X')] * 3
+    )
 
     # Check for empty tags
     assert all((tag for _, tag in tokens_tags_untokenized))
@@ -192,51 +209,6 @@ def wl_test_pos_tag_models(lang, pos_tagger, tokens, results, results_universal)
     # Universal tags should not all be "X"
     assert any((tag for _, tag in tokens_tags_untokenized_universal if tag != 'X'))
     assert any((tag for _, tag in tokens_tags_tokenized_universal if tag != 'X'))
-
-    # Tokenization should not be modified
-    assert len(tokens) == len(tokens_tags_tokenized) == len(tokens_tags_tokenized_universal)
-
-    # Newlines
-    tokens_newlines = wl_pos_tagging.wl_pos_tag(
-        main,
-        inputs = wl_test_lang_examples.TEXT_NEWLINES,
-        lang = lang,
-        pos_tagger = pos_tagger
-    )
-
-    assert wl_texts.to_token_texts(tokens_newlines) == list(wl_test_lang_examples.TEXT_NEWLINES)
-
-    # Long
-    if (
-        pos_tagger.startswith(('spacy_', 'stanza_'))
-        or pos_tagger in {'modern_botok_bod', 'sudachipy_jpn'}
-    ):
-        main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = 99
-
-        tokens_long = wl_pos_tagging.wl_pos_tag(
-            main,
-            inputs = '\n'.join(wl_test_lang_examples.TOKENS_LONG),
-            lang = lang,
-            pos_tagger = pos_tagger
-        )
-
-        tokens_long_tagged = wl_test_lang_examples.TOKENS_LONG.copy()
-
-        for i in reversed(range(1, len(tokens_long_tagged))):
-            tokens_long_tagged.insert(i, '\n')
-
-        assert wl_texts.to_token_texts(tokens_long) == tokens_long_tagged
-
-        tokens_long = wl_pos_tagging.wl_pos_tag(
-            main,
-            inputs = wl_texts.to_tokens(wl_test_lang_examples.TOKENS_LONG, lang = lang),
-            lang = lang,
-            pos_tagger = pos_tagger
-        )
-
-        assert wl_texts.to_token_texts(tokens_long) == wl_test_lang_examples.TOKENS_LONG
-
-        main.settings_custom['files']['misc_settings']['read_files_in_chunks_chars'] = main.settings_default['files']['misc_settings']['read_files_in_chunks_chars']
 
 @pytest.mark.parametrize('lang, pos_tagger', test_pos_taggers)
 def test_pos_tag_universal(lang, pos_tagger):

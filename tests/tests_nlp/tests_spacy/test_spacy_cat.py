@@ -18,12 +18,15 @@
 
 from tests.tests_nlp.tests_spacy import test_spacy
 
+results_sentence_tokenize = ['Hi ha altres glotònims tradicionals que es fan servir com a sinònim de "català" al llarg del domini lingüístic.', "Així, per exemple, a l'Alguer se li diu alguerès, a Fraga, fragatí, a Maella, maellà i a la comarca de la Llitera, lliterà."]
+
 def test_spacy_cat():
     results_pos_tag = [('Hi', 'PRON'), ('ha', 'VERB'), ('altres', 'DET'), ('glotònims', 'NOUN'), ('tradicionals', 'ADJ'), ('que', 'PRON'), ('es', 'PRON'), ('fan', 'VERB'), ('servir', 'VERB'), ('com', 'SCONJ'), ('a', 'ADP'), ('sinònim', 'NOUN'), ('de', 'ADP'), ('"', 'PUNCT'), ('català', 'NOUN'), ('"', 'PUNCT'), ('a', 'ADP'), ('l', 'DET'), ('llarg', 'NOUN'), ('d', 'ADP'), ('el', 'DET'), ('domini', 'NOUN'), ('lingüístic', 'ADJ'), ('.', 'PUNCT')]
 
     test_spacy.wl_test_spacy(
         lang = 'cat',
-        results_sentence_tokenize_trf = ['Hi ha altres glotònims tradicionals que es fan servir com a sinònim de "català" al llarg del domini lingüístic.', "Així, per exemple, a l'Alguer se li diu alguerès, a Fraga, fragatí, a Maella, maellà i a la comarca de la Llitera, lliterà."],
+        results_sentence_tokenize_dependency_parser = results_sentence_tokenize,
+        results_sentence_tokenize_sentence_recognizer = results_sentence_tokenize,
         results_word_tokenize = ['Hi', 'ha', 'altres', 'glotònims', 'tradicionals', 'que', 'es', 'fan', 'servir', 'com', 'a', 'sinònim', 'de', '"', 'català', '"', 'a', 'l', 'llarg', 'd', 'el', 'domini', 'lingüístic', '.'],
         results_pos_tag = results_pos_tag,
         results_pos_tag_universal = results_pos_tag,
